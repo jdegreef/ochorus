@@ -1,0 +1,795 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "clement-of-rome"
+  ],
+  "slug": "first-epistle-of-clement",
+  "language": "en-modern",
+  "title": "The First Epistle of Clement to the Corinthians",
+  "subtitle": "The Church of Rome to the Church of Corinth",
+  "description": "Written from the church at Rome to the church at Corinth around AD 96, this is the earliest Christian writing outside the New Testament. Clement, writing in the name of the Roman church, pleads with the Corinthians to end a bitter split in which younger members had deposed their faithful elders, and calls them back to humility, order, repentance, and the peace of Christ. Steeped in the Old Testament and standing only a generation behind the apostles, it is a window into the church as the apostolic age closed.",
+  "about_html": "",
+  "qa": [],
+  "publication_year": 96,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "Public domain. Translated by Alexander Roberts and James Donaldson, from the Ante-Nicene Fathers, Vol. 1 (American edition, ed. A. Cleveland Coxe, 1885).",
+  "cover_url": "/covers/art/first-epistle-of-clement.jpg",
+  "pdf_url": "",
+  "cover_color": "#734b2e",
+  "sort_order": 24,
+  "is_published": true,
+  "created_at": "2026-11-17T00:00:00Z",
+  "updated_at": "2026-11-17T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 1,
+  "title": "The salutation",
+  "body_html": "<p>The Church of God living as strangers in Rome, to the Church of God living as strangers in Corinth, to those who are called and made holy by the will of God through our Lord Jesus Christ: may grace and peace from Almighty God through Jesus Christ be yours in abundance.</p><p>Dear brothers and sisters, because of the sudden and repeated disasters that have struck us, we feel we have been rather slow in turning our attention to the questions you asked us about. We mean especially that shameful and hateful rebellion, completely foreign to God’s chosen people, which a few reckless and self-assured people have stirred up to such a frenzy that your good and famous name, which deserves to be loved by everyone, has been badly damaged. For who ever stayed among you even for a short time and did not find your faith as rich in good works as it was firmly grounded? Who did not admire the self-control and gentleness of your devotion in Christ? Who did not speak of your generous habit of hospitality? And who did not rejoice at your complete and well-founded knowledge? You did everything without favouritism, and you walked in God’s commandments. You obeyed your leaders and gave proper honour to the elders among you. You taught the young men to be sensible and serious. You instructed your wives to do everything with a blameless, fitting and pure conscience, loving their husbands as they ought. And you taught them to live by the rule of obedience, to manage their households well, and to show good sense in every way.</p>",
+  "word_count": 268
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 2,
+  "title": "Praise of the Corinthians continued",
+  "body_html": "<p>What is more, you were all known for your humility. You were never puffed up with pride. You preferred to give obedience rather than demand it, and you were more willing to give than to receive. You were content with what God had provided for you, and you paid close attention to His words. You took His teaching deep into your hearts, and His sufferings were always before your eyes. So a deep and rich peace was given to all of you. You had an endless desire to do good, and the Holy Spirit was poured out on you all. Full of holy purposes, you stretched out your hands to God Almighty with real earnestness and godly confidence, begging Him to be merciful to you if you had sinned without meaning to. Day and night you cared for the whole family of believers, that the full number of God’s chosen ones might be saved with mercy and a good conscience. You were sincere and pure, and you did not hold grudges against one another. Every kind of faction and division was hateful to you. You grieved over your neighbours’ sins and counted their failings as your own. You never begrudged any act of kindness, being “ready to every good work.” Your lives were beautifully virtuous and devout, and you did everything in the fear of God. The commandments and decrees of the Lord were written on the tablets of your hearts.</p>",
+  "word_count": 241
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 3,
+  "title": "The sad state of the church after sedition arose from envy",
+  "body_html": "<p>You were given every kind of honour and happiness, and then what is written came true: “My beloved did eat and drink, and was enlarged and became fat, and kicked.” From this came rivalry and envy, strife and rebellion, persecution and disorder, war and captivity. So the worthless rose up against the honoured, the unknown against the famous, the foolish against the wise, and the young against the old. That is why righteousness and peace are now far from you. Everyone has abandoned the fear of God and become blind in faith. No one walks by the rules God has given or behaves as a Christian should. Instead each one follows his own wicked desires and has taken up again the unjust and ungodly envy through which death itself came into the world.</p>",
+  "word_count": 133
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 4,
+  "title": "Many evils have already flowed from this source in ancient times",
+  "body_html": "<p>For this is what is written: “And it came to pass after certain days, that Cain brought of the fruits of the earth a sacrifice unto God; and Abel also brought of the firstlings of his sheep, and of the fat thereof. And God had respect to Abel and to his offerings, but Cain and his sacrifices He did not regard. And Cain was deeply grieved, and his countenance fell. And God said to Cain, Why art thou grieved, and why is thy countenance fallen? If thou offerest rightly, but dost not divide rightly, hast thou not sinned? Be at peace: thine offering returns to thyself, and thou shalt again possess it. And Cain said to Abel his brother, Let us go into the field. And it came to pass, while they were in the field, that Cain rose up against Abel his brother, and slew him.” You see, brothers and sisters, how envy and jealousy led to the murder of a brother. Envy also made our father Jacob run away from his brother Esau. Envy caused Joseph to be persecuted almost to death and sold into slavery. Envy forced Moses to flee from Pharaoh king of Egypt, when he heard his own countryman say, “Who made thee a judge or a ruler over us? wilt thou kill me, as thou didst kill the Egyptian yesterday?” Because of envy, Aaron and Miriam had to live outside the camp. Envy brought Dathan and Abiram down alive into Hades, because of the rebellion they stirred up against God’s servant Moses. Because of envy, David was hated not only by foreigners but was also hunted by Saul king of Israel.</p>",
+  "word_count": 277
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 5,
+  "title": "No less evils have arisen from the same source in the most recent times",
+  "body_html": "<p>But let us leave the ancient examples and come to the spiritual heroes closest to our own time. Let us take the noble examples of our own generation. Because of envy and jealousy, the greatest and most righteous pillars [of the Church] were persecuted and put to death. Let us set the glorious apostles before our eyes. Peter, because of unjust envy, endured not one or two but many hardships, and when at last he had died as a martyr, he went to the place of glory he deserved. Because of envy, Paul too won the prize of patient endurance. He was imprisoned seven times, forced to flee, and stoned. After preaching in both the east and the west, he won the noble fame his faith deserved. He taught righteousness to the whole world, reached the farthest limits of the west, and was martyred under the rulers. So he left this world and went to the holy place, having become an outstanding example of patient endurance.</p>",
+  "word_count": 166
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 6,
+  "title": "Continuation",
+  "body_html": "<p>To these men who spent their lives in holy living we must add a great crowd of God’s chosen ones, who suffered many insults and tortures because of envy and so gave us a most excellent example. Because of envy, women were persecuted as Danaids and Dircæ. After suffering terrible and unspeakable torments, they finished the race of faith with steadfastness, and though weak in body, they received a noble reward. Envy has turned wives against their husbands and made a mockery of what our father Adam said: “This is now bone of my bones, and flesh of my flesh.” Envy and strife have overthrown great cities and uprooted mighty nations.</p>",
+  "word_count": 111
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 7,
+  "title": "An exhortation to repentance",
+  "body_html": "<p>Dear friends, we are writing these things to you not only to warn you of your duty, but also to remind ourselves. For we are in the same arena, and the same contest lies before us both. So let us give up empty and useless worries and come to the glorious and honourable rule of our holy calling. Let us pay attention to what is good, pleasing and acceptable to the One who made us. Let us fix our eyes on the blood of Christ and see how precious it is to God, since it was poured out for our salvation and has offered the grace of repentance to the whole world. Let us look back over all the generations and learn that in every one of them the Lord has given an opportunity for repentance to all who would turn to Him. Noah preached repentance, and everyone who listened to him was saved. Jonah announced destruction to the people of Nineveh, but they repented of their sins, won God’s favour by prayer, and were saved, even though they were outsiders [to God’s covenant].</p>",
+  "word_count": 184
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 8,
+  "title": "Continuation respecting repentance",
+  "body_html": "<p>Through the Holy Spirit, those who served God’s grace have spoken of repentance. And the Lord of all things has Himself declared it with an oath: “As I live, saith the Lord, I desire not the death of the sinner, but rather his repentance;” and He added this gracious statement: “Repent, O house of Israel, of your iniquity. Say to the children of My people, Though your sins reach from earth to heaven, and though they be redder than scarlet, and blacker than sackcloth, yet if ye turn to Me with your whole heart, and say, Father! I will listen to you, as to a holy people.” And in another place He says: “Wash you, and become clean; put away the wickedness of your souls from before mine eyes; cease from your evil ways, and learn to do well; seek out judgment, deliver the oppressed, judge the fatherless, and see that justice is done to the widow; and come, and let us reason together. He declares, Though your sins be like crimson, I will make them white as snow; though they be like scarlet, I will whiten them like wool. And if ye be willing and obey Me, ye shall eat the good of the land; but if ye refuse, and will not hearken unto Me, the sword shall devour you, for the mouth of the Lord hath spoken these things.” So, because He wants all His loved ones to share in repentance, He has made [these declarations] firm by His almighty will.</p>",
+  "word_count": 253
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 9,
+  "title": "Examples of the saints",
+  "body_html": "<p>So let us obey His excellent and glorious will. Let us beg for His mercy and kindness, leave behind all useless labour and strife and the envy that leads to death, and turn to His compassion. Let us look steadily at those who served His excellent glory perfectly. Take Enoch, for example. He was found righteous in his obedience and was taken up, and no one ever saw him die. Noah was found faithful and through his ministry preached a new beginning to the world, and through him the Lord saved the animals that went into the ark together in harmony.</p>",
+  "word_count": 101
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 10,
+  "title": "Continuation of the above",
+  "body_html": "<p>Abraham, called “the friend,” was found faithful because he obeyed God’s words. In obedience he left his own country, his relatives and his father’s house, so that by giving up a small piece of land, a weak family and an unimportant house, he might inherit God’s promises. For God said to him, “Get thee out from thy country, and from thy kindred, and from thy father’s house, into the land which I shall show thee. And I will make thee a great nation, and will bless thee, and make thy name great, and thou shall be blessed. And I will bless them that bless thee, and curse them that curse thee; and in thee shall all the families of the earth be blessed.” And again, when he separated from Lot, God said to him, “Lift up thine eyes, and look from the place where thou now art, northward, and southward, and eastward, and westward; for all the land which thou seest, to thee will I give it, and to thy seed for ever. And I will make thy seed as the dust of the earth, [so that] if a man can number the dust of the earth, then shall thy seed also be numbered.” And again [the Scripture] says, “God brought forth Abram, and spake unto him, Look up now to heaven, and count the stars if thou be able to number them; so shall thy seed be. And Abram believed God, and it was counted to him for righteousness.” Because of his faith and hospitality, he was given a son in his old age, and in obedience he offered him as a sacrifice to God on one of the mountains God showed him.</p>",
+  "word_count": 284
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 11,
+  "title": "Continuation",
+  "body_html": "<p>Because of his hospitality and godliness, Lot was rescued from Sodom when the whole region around was punished with fire and sulphur. In this way the Lord made it plain that He does not abandon those who hope in Him, but hands over to punishment and torment those who turn away from Him. For Lot’s wife, who left with him, did not share his mind and did not stay in agreement with him [about the command they had been given]. She was made an example, a pillar of salt to this day. This happened so that everyone would know that those who are double-minded and doubt God’s power bring judgment on themselves and become a warning to all later generations.</p>",
+  "word_count": 120
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 12,
+  "title": "The rewards of faith and hospitality",
+  "body_html": "<p>Because of her faith and hospitality, Rahab the prostitute was saved. When Joshua son of Nun sent spies to Jericho, the king of that land found out that they had come to spy out the country, and sent men to seize them so they could be put to death. But Rahab took them in and hid them on the roof of her house under some stalks of flax. When the king’s men arrived and said, “There came men unto thee who are to spy out our land; bring them forth, for so the king commands,” she answered, “The two men whom ye seek came unto me, but quickly departed again and are gone.” So she did not give the spies away. Then she said to the men, “I know assuredly that the Lord your God hath given you this city, for the fear and dread of you have fallen on its inhabitants. When therefore ye shall have taken it, keep ye me and the house of my father in safety.” And they said to her, “It shall be as thou hast spoken to us. As soon, therefore, as thou knowest that we are at hand, thou shalt gather all thy family under thy roof, and they shall be preserved, but all that are found outside of thy dwelling shall perish.” They also gave her a sign: she was to hang a scarlet cord from her house. In this way they showed that redemption would flow through the blood of the Lord to all who believe and hope in God. You see, dear friends, that this woman had not only faith but prophecy.</p>",
+  "word_count": 272
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 13,
+  "title": "An exhortation to humility",
+  "body_html": "<p>So, brothers and sisters, let us be humble. Let us put away all arrogance, pride, foolishness and anger, and do what is written. For the Holy Spirit says, “Let not the wise man glory in his wisdom, neither let the mighty man glory in his might, neither let the rich man glory in his riches; but let him that glorieth glory in the Lord, in diligently seeking Him, and doing judgment and righteousness.” Above all, let us remember the words the Lord Jesus spoke when He taught us gentleness and patience. For this is what He said: “Be ye merciful, that ye may obtain mercy; forgive, that it may be forgiven to you; as ye do, so shall it be done unto you; as ye judge, so shall ye be judged; as ye are kind, so shall kindness be shown to you; with what measure ye mete, with the same it shall be measured to you.” Let us build our lives on this command and these rules, so that we walk in all humility, obeying His holy words. For the holy word says, “On whom shall I look, but on him that is meek and peaceable, and that trembleth at My words?”</p>",
+  "word_count": 202
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 14,
+  "title": "We should obey God rather than the authors of sedition",
+  "body_html": "<p>So, brothers and sisters, it is right and holy to obey God rather than follow those who, through pride and rebellion, have become leaders of a hateful rivalry. We will suffer no small harm, but rather great danger, if we carelessly give in to the wishes of people who aim to stir up strife and uproar and so draw us away from what is good. Let us be kind to one another, following the pattern of our Creator’s tender mercy and kindness. For it is written, “The kind-hearted shall inhabit the land, and the guiltless shall be left upon it, but transgressors shall be destroyed from off the face of it.” And again [the Scripture] says, “I saw the ungodly highly exalted, and lifted up like the cedars of Lebanon: I passed by, and, behold, he was not; and I diligently sought his place, and could not find it. Preserve innocence, and look on equity: for there shall be a remnant to the peaceful man.”</p>",
+  "word_count": 165
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 15,
+  "title": "We must adhere to those who cultivate peace",
+  "body_html": "<p>So let us hold fast to those who pursue peace with godliness, and not to those who only pretend to want it. For [the Scripture] says somewhere, “This people honoureth Me with their lips, but their heart is far from Me.” And again: “They bless with their mouth, but curse with their heart.” And again it says, “They loved Him with their mouth, and lied to Him with their tongue; but their heart was not right with Him, neither were they faithful in His covenant.” “Let the deceitful lips become silent,” [and “let the Lord destroy all the lying lips,] and the boastful tongue of those who have said, Let us magnify our tongue; our lips are our own; who is lord over us? For the oppression of the poor, and for the sighing of the needy, will I now arise, saith the Lord: I will place him in safety; I will deal confidently with him.”</p>",
+  "word_count": 156
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 16,
+  "title": "Christ as an example of humility",
+  "body_html": "<p>For Christ belongs to the humble, not to those who set themselves above His flock. Our Lord Jesus Christ, the Sceptre of God’s majesty, did not come with a show of pride or arrogance, though He could have. He came in a humble state, just as the Holy Spirit had said about Him. For He says, “Lord, who hath believed our report, and to whom is the arm of the Lord revealed? We have declared [our message] in His presence: He is, as it were, a child, and like a root in thirsty ground; He has no form nor glory, yea, we saw Him, and He had no form nor comeliness; but His form was without eminence, yea, deficient in comparison with the [ordinary] form of men. He is a man exposed to stripes and suffering, and acquainted with the endurance of grief: for His countenance was turned away; He was despised, and not esteemed. He bears our iniquities, and is in sorrow for our sakes; yet we supposed that [on His own account] He was exposed to labour, and stripes, and affliction. But He was wounded for our transgressions, and bruised for our iniquities. The chastisement of our peace was upon Him, and by His stripes we were healed. All we, like sheep, have gone astray; [every] man has wandered in his own way; and the Lord has delivered Him up for our sins, while He in the midst of His sufferings openeth not His mouth. He was brought as a sheep to the slaughter, and as a lamb before her shearer is dumb, so He openeth not His mouth. In His humiliation His judgment was taken away; who shall declare His generation? for His life is taken from the earth. For the transgressions of my people was He brought down to death. And I will give the wicked for His sepulchre, and the rich for His death, because He did no iniquity, neither was guile found in His mouth. And the Lord is pleased to purify Him by stripes. If ye make an offering for sin, your soul shall see a long-lived seed. And the Lord is pleased to relieve Him of the affliction of His soul, to show Him light, and to form Him with understanding, to justify the Just One who ministereth well to many; and He Himself shall carry their sins. On this account He shall inherit many, and shall divide the spoil of the strong; because His soul was delivered to death, and He was reckoned among the transgressors, and He bare the sins of many, and for their sins was He delivered.” And again He says, “I am a worm, and no man; a reproach of men, and despised of the people. All that see Me have derided Me; they have spoken with their lips; they have wagged their head, [saying] He hoped in God, let Him deliver Him, let Him save Him, since He delighteth in Him.” You see, dear friends, what example has been given to us. If the Lord humbled Himself like this, what should we do, who through Him have come under the yoke of His grace?</p>",
+  "word_count": 528
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 17,
+  "title": "The saints as examples of humility",
+  "body_html": "<p>Let us also follow the example of those who went about in goatskins and sheepskins announcing the coming of Christ. I mean Elijah, Elisha and Ezekiel among the prophets, and the others who are spoken of in the same way [in Scripture]. Abraham was greatly honoured and was called the friend of God, yet, with his eyes fixed on the glory of God, he humbly said, “I am but dust and ashes.” And this is written of Job: “Job was a righteous man, and blameless, truthful, God-fearing, and one that kept himself from all evil.” Yet he accused himself and said, “No man is free from defilement, even if his life be but of one day.” Moses was called faithful in all God’s house, and through him God punished Egypt with plagues and torments. Yet even though he was so highly honoured, he did not use grand words. When God spoke to him out of the bush, he said, “Who am I, that Thou sendest me? I am a man of a feeble voice and a slow tongue.” And again he said, “I am but as the smoke of a pot.”</p>",
+  "word_count": 191
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 18,
+  "title": "David as an example of humility",
+  "body_html": "<p>And what shall we say about David, who was spoken of so highly, and of whom God said, “I have found a man after Mine own heart, David the son of Jesse; and in everlasting mercy have I anointed him?” Yet this same man says to God, “Have mercy on me, O Lord, according to Thy great mercy; and according to the multitude of Thy compassions, blot out my transgression. Wash me still more from mine iniquity, and cleanse me from my sin. For I acknowledge my iniquity, and my sin is ever before me. Against Thee only have I sinned, and done that which was evil in Thy sight; that Thou mayest be justified in Thy sayings, and mayest overcome when Thou art judged. For, behold, I was conceived in transgressions, and in my sins did my mother conceive me. For, behold, Thou hast loved truth; the secret and hidden things of wisdom hast Thou shown me. Thou shalt sprinkle me with hyssop, and I shall be cleansed; Thou shalt wash me, and I shall be whiter than snow. Thou shalt make me to hear joy and gladness; my bones, which have been humbled, shall exult. Turn away Thy face from my sins, and blot out all mine iniquities. Create in me a clean heart, O God, and renew a right spirit within me. Cast me not away from Thy presence, and take not Thy Holy Spirit from me. Restore to me the joy of Thy salvation, and establish me by Thy governing Spirit. I will teach transgressors Thy ways, and the ungodly shall be converted unto Thee. Deliver me from blood-guiltiness, O God, the God of my salvation: my tongue shall exult in Thy righteousness. O Lord, Thou shalt open my mouth, and my lips shall show forth Thy praise. For if Thou hadst desired sacrifice, I would have given it; Thou wilt not delight in burnt-offerings. The sacrifice [acceptable] to God is a bruised spirit; a broken and a contrite heart God will not despise.”</p>",
+  "word_count": 338
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 19,
+  "title": "Imitating these examples, let us seek after peace",
+  "body_html": "<p>So the humility and godly obedience of such great and famous men have made better not only us but all the generations before us, everyone who has received God’s words in reverence and truth. Since we have so many great and glorious examples before us, let us return to the peace that was set before us as our goal from the beginning. Let us look steadily to the Father and Creator of the universe and hold fast to His mighty and surpassingly great gifts and blessings of peace. Let us think about Him with our minds and look with the eyes of our soul at His patient will. Let us consider how free from anger He is toward all His creation.</p>",
+  "word_count": 121
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 20,
+  "title": "The peace and harmony of the universe",
+  "body_html": "<p>The heavens turn under His rule and obey Him in peace. Day and night run the course He has set, never getting in each other’s way. The sun and moon and the bands of stars move in harmony at His command, within their set limits, without ever straying. By His will the fruitful earth produces plenty of food at the right seasons for people and animals and every living thing on it, never hesitating and never changing any of the laws He has fixed. The unsearchable depths and the indescribable regions below are held in check by the same laws. The vast, measureless sea, gathered by His work into its various basins, never goes past the boundaries set around it, but does as He commanded. For He said, “Thus far shalt thou come, and thy waves shall be broken within thee.” The ocean, which no one can cross, and the worlds beyond it are governed by the same decrees of the Lord. Spring, summer, autumn and winter give way to one another in peace. The winds from every quarter do their work at the right time without hindrance. The ever-flowing springs, made for both pleasure and health, never fail to offer their life-giving water to people. Even the smallest living creatures come together in peace and agreement. The great Creator and Lord of all has ordered all these things to exist in peace and harmony. He does good to all, but most abundantly to us who have fled for refuge to His mercy through Jesus Christ our Lord, to whom be glory and majesty for ever and ever. Amen.</p>",
+  "word_count": 269
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 21,
+  "title": "Let us obey God, and not the authors of sedition",
+  "body_html": "<p>Be careful, dear friends, that His many kindnesses do not end in condemnation for all of us. [That is what will happen] unless we live worthy of Him and, with one mind, do what is good and pleasing in His sight. For [the Scripture] says somewhere, “The Spirit of the Lord is a candle searching the secret parts of the belly.” Let us remember how near He is, and that none of our thoughts or reasonings are hidden from Him. So it is right that we should not desert the post His will has given us. Better to offend foolish, thoughtless and arrogant people who boast in their proud words than [to offend] God. Let us revere the Lord Jesus Christ, whose blood was given for us. Let us respect our leaders. Let us honour the elderly among us. Let us bring up the young in the fear of God. Let us guide our wives toward what is good. Let them show the lovely habit of purity [in all they do]. Let them show a sincere and gentle spirit. Let the way they speak show that they control their tongues. Let them show their love not by favouring some over others, but by showing equal affection to all who devoutly fear God. Let your children share in true Christian training. Let them learn how much humility counts with God, how much pure love can accomplish with Him, and how excellent and great the fear of Him is, and how it saves all who live in it with a pure mind. For He searches the thoughts and desires [of the heart]. His breath is in us, and when He chooses, He will take it away.</p>",
+  "word_count": 284
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 22,
+  "title": "These exhortations are confirmed by the Christian faith",
+  "body_html": "<p>Now faith in Christ confirms all these [warnings]. For through the Holy Spirit He Himself speaks to us like this: “Come, ye children, hearken unto Me; I will teach you the fear of the Lord. What man is he that desireth life, and loveth to see good days? Keep thy tongue from evil, and thy lips from speaking guile. Depart from evil, and do good; seek peace, and pursue it. The eyes of the Lord are upon the righteous, and His ears are [open] unto their prayers. The face of the Lord is against them that do evil, to cut off the remembrance of them from the earth. The righteous cried, and the Lord heard him, and delivered him out of all his troubles.” “Many are the stripes [appointed for] the wicked; but mercy shall compass those about who hope in the Lord.”</p>",
+  "word_count": 143
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 23,
+  "title": "Be humble, and believe that Christ will come again",
+  "body_html": "<p>Our all-merciful and kind Father has a heart of compassion for those who fear Him, and He gives His favours gently and lovingly to those who come to Him with a simple, single mind. So let us not be double-minded, and let our souls not be puffed up because of His exceedingly great and glorious gifts. May what is written never be true of us: “Wretched are they who are of a double mind, and of a doubting heart; who say, These things we have heard even in the times of our fathers; but, behold, we have grown old, and none of them has happened unto us.” You foolish people! Compare yourselves to a tree. Take the vine, for example. First it sheds its leaves, then it buds, then it puts out leaves, and then it flowers. After that come the sour grapes, and then the ripe fruit. You see how in a short time the fruit of a tree ripens. In the same way, His will is going to be accomplished quickly and suddenly, as the Scripture also testifies: “Speedily will He come, and will not tarry;” and, “The Lord shall suddenly come to His temple, even the Holy One, for whom ye look.”</p>",
+  "word_count": 205
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 24,
+  "title": "God continually shows us in nature that there will be a resurrection",
+  "body_html": "<p>Dear friends, let us consider how the Lord keeps showing us that there will be a resurrection to come. He has made the Lord Jesus Christ its first-fruits by raising Him from the dead. Let us look, dear friends, at the resurrection that is happening all the time. Day and night show us a resurrection. The night falls asleep and the day rises; the day leaves [again] and the night comes on. Let us look at the crops and see how grain is sown. The sower goes out and throws the seed into the ground. Scattered like this, the seed falls on the earth dry and bare and slowly breaks down. Then, out of its decay, the mighty power of the Lord’s providence raises it up again, and from one seed many grow and bear fruit.</p>",
+  "word_count": 136
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 25,
+  "title": "The phœnix an emblem of our resurrection",
+  "body_html": "<p>Let us consider the wonderful sign [of the resurrection] that is said to take place in the lands of the east, that is, in Arabia and the countries around it. There is a bird called the phoenix. It is the only one of its kind, and it lives five hundred years. When the time comes for it to die, it builds itself a nest of frankincense, myrrh and other spices, and when its time is up, it goes into the nest and dies. As its flesh decays, a kind of worm is produced, which feeds on the juices of the dead bird and grows feathers. When it has grown strong, it picks up the nest holding its parent’s bones and carries them from Arabia to Egypt, to the city called Heliopolis. In broad daylight, flying in full view of everyone, it lays them on the altar of the sun, and then hurries back to its home. The priests then check their records of the dates and find that it has returned exactly when the five hundredth year was completed.</p>",
+  "word_count": 179
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 26,
+  "title": "We shall rise again, then, as the Scripture also testifies",
+  "body_html": "<p>So do we think it is something great and astonishing for the Maker of all things to raise up those who have served Him devoutly in the confidence of a good faith, when He shows us the greatness of His power to keep His promise even through a bird? For [the Scripture] says somewhere, “Thou shalt raise me up, and I shall confess unto Thee;” and again, “I laid me down, and slept; I awaked, because Thou art with me;” and Job also says, “Thou shalt raise up this flesh of mine, which has suffered all these things.”</p>",
+  "word_count": 98
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 27,
+  "title": "In the hope of the resurrection",
+  "body_html": "<p>With this hope, then, let our souls be bound to the One who is faithful in His promises and just in His judgments. He who commanded us not to lie will certainly not lie Himself, for nothing is impossible for God except lying. So let our faith in Him be stirred up again, and let us remember that all things are close to Him. By His mighty word He set all things in place, and by His word He can overthrow them. “Who shall say unto Him, What hast thou done? or, Who shall resist the power of His strength?” He will do all things when and how He chooses, and nothing He has decided will fail. Everything is open before Him, and nothing can be hidden from His purpose. “The heavens declare the glory of God, and the firmament showeth His handy-work. Day unto day uttereth speech, and night unto night showeth knowledge. And there are no words or speeches of which the voices are not heard.”</p>",
+  "word_count": 168
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 28,
+  "title": "God sees all things: therefore let us avoid transgression",
+  "body_html": "<p>Since everything is seen and heard [by God], let us fear Him and turn away from the wicked deeds that come from evil desires, so that by His mercy we may be protected from the judgments to come. For where could any of us run from His mighty hand? What world would take in anyone running away from Him? The Scripture says somewhere, “Whither shall I go, and where shall I be hid from Thy presence? If I ascend into heaven, Thou art there; if I go away even to the uttermost parts of the earth, there is Thy right hand; if I make my bed in the abyss, there is Thy Spirit.” So where could anyone go, or how could anyone escape from the One who holds all things?</p>",
+  "word_count": 130
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 29,
+  "title": "Let us also draw near to God in purity of heart",
+  "body_html": "<p>So let us come near to Him with holy hearts, lifting up pure and clean hands to Him, and loving our gracious and merciful Father, who has given us a share in the blessings of His chosen people. For it is written, “When the Most High divided the nations, when He scattered the sons of Adam, He fixed the bounds of the nations according to the number of the angels of God. His people Jacob became the portion of the Lord, and Israel the lot of His inheritance.” And in another place [the Scripture] says, “Behold, the Lord taketh unto Himself a nation out of the midst of the nations, as a man takes the first-fruits of his threshing-floor; and from that nation shall come forth the Most Holy.”</p>",
+  "word_count": 129
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 30,
+  "title": "Let us do those things that please God",
+  "body_html": "<p>Since we are the Holy One’s portion, then, let us do everything that belongs to holiness. Let us avoid all slander, all shameful and impure relationships, all drunkenness and craving for novelty, all disgusting lusts, hateful adultery and detestable pride. “For God,” [the Scripture] says, “resisteth the proud, but giveth grace to the humble.” So let us hold fast to those to whom God has given grace. Let us clothe ourselves with harmony and humility, always practising self-control, keeping far away from all gossip and slander, and being made righteous by our deeds and not our words. For [the Scripture] says, “He that speaketh much, shall also hear much in answer. And does he that is ready in speech deem himself righteous? Blessed is he that is born of woman, who liveth but a short time: be not given to much speaking.” Let our praise be in God and not from ourselves, for God hates those who praise themselves. Let others speak of our good deeds, as they did for our righteous ancestors. Boldness, arrogance and brashness belong to those God has cursed. Moderation, humility and gentleness belong to those He has blessed.</p>",
+  "word_count": 193
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 31,
+  "title": "Let us see by what means we may obtain the divine blessing",
+  "body_html": "<p>So let us hold fast to His blessing and think about how it can be ours. Let us go over what has happened from the beginning. Why was our father Abraham blessed? Was it not because he did what was right and true through faith? Isaac, with complete confidence, as if he knew what was going to happen, gladly offered himself as a sacrifice. Jacob, because of his brother, humbly left his own country, went to Laban and served him, and there he was given the sceptre of the twelve tribes of Israel.</p>",
+  "word_count": 93
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 32,
+  "title": "We are justified not by our own works, but by faith",
+  "body_html": "<p>Anyone who honestly considers each of these will see how great the gifts were that came through him. For from him came the priests and all the Levites who serve at God’s altar. From him also [came] our Lord Jesus Christ as a man. From him [came] kings, princes and rulers of the tribe of Judah. And his other tribes are held in no small honour either, since God had promised, “Thy seed shall be as the stars of heaven.” All of these, then, were highly honoured and made great, not for their own sake or for their own deeds or for the righteousness they did, but through the working of His will. And we too, called by His will in Christ Jesus, are not made right with God by ourselves, or by our own wisdom or understanding or godliness, or by deeds we have done with holy hearts. We are made right by the faith through which Almighty God has made all people right with Him from the beginning. To Him be glory for ever and ever. Amen.</p>",
+  "word_count": 179
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 33,
+  "title": "But let us not give up the practice of good works and love",
+  "body_html": "<p>What then shall we do, brothers and sisters? Shall we grow lazy in doing good and stop practising love? God forbid that we should ever take that path! Instead, let us hurry with all energy and eagerness to do every good work. For the Creator and Lord of all Himself delights in His works. By His infinitely great power He set the heavens in place, and by His wisdom, which is beyond our understanding, He made them beautiful. He also separated the earth from the water around it and set it on the immovable foundation of His own will. By His own word He commanded the animals on it to exist. In the same way, when He had made the sea and the creatures in it, He enclosed them [within their proper bounds] by His own power. Above all, with His holy and pure hands He formed man, the most excellent [of His creatures], truly great because of the understanding given to him, the very likeness of His own image. For this is what God says: “Let us make man in Our image, and after Our likeness. So God made man; male and female He created them.” When He had finished all these things, He approved them and blessed them, and said, “Increase and multiply.” So we see how all righteous people have been adorned with good works, and how the Lord Himself, adorning Himself with His works, rejoiced. With such an example before us, let us follow His will without delay and do the work of righteousness with all our strength.</p>",
+  "word_count": 262
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 34,
+  "title": "Great is the reward of good works with God",
+  "body_html": "<p>The good worker accepts the bread he has earned with confidence; the lazy and idle one cannot look his employer in the face. So we must be quick to do good, for everything comes from Him. And He warns us in advance: “Behold, the Lord [cometh], and His reward is before His face, to render to every man according to his work.” So He urges us to give our whole hearts to this, and not to be lazy or idle in any good work. Let our boasting and our confidence be in Him. Let us submit ourselves to His will. Let us think of the whole multitude of His angels, how they always stand ready to serve His will. For the Scripture says, “Ten thousand times ten thousand stood around Him, and thousands of thousands ministered unto Him, and cried, Holy, holy, holy, [is] the Lord of Sabaoth; the whole creation is full of His glory.” So let us too gather in harmony with a good conscience and cry out to Him earnestly, as with one voice, that we may be given a share in His great and glorious promises. For [the Scripture] says, “Eye hath not seen, nor ear heard, neither have entered into the heart of man, the things which He hath prepared for them that wait for Him.”</p>",
+  "word_count": 221
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 35,
+  "title": "Immense is this reward",
+  "body_html": "<p>Dear friends, how blessed and wonderful God’s gifts are! Life in immortality, splendour in righteousness, truth in perfect confidence, faith in assurance, self-control in holiness! And all these are things our minds can grasp [even now]. What then must the things be that are prepared for those who wait for Him? Only the Creator and Father of all ages, the Most Holy, knows how many they are and how beautiful. So let us strive earnestly to be counted among those who wait for Him, so that we may share in the gifts He has promised. But how, dear friends, can this happen? It will happen if our minds are fixed on God by faith; if we earnestly seek what pleases Him and is acceptable to Him; if we do what agrees with His blameless will; and if we follow the way of truth, throwing away all unrighteousness and wickedness, along with all greed, strife, evil habits, deceit, gossip and slander, all hatred of God, pride and arrogance, vanity and ambition. For those who do such things are hateful to God, and not only those who do them, but also those who approve of them. For the Scripture says, “But to the sinner God said, Wherefore dost thou declare my statutes, and take my covenant into thy mouth, seeing thou hatest instruction, and castest my words behind thee? When thou sawest a thief, thou consentedst with him, and didst make thy portion with adulterers. Thy mouth has abounded with wickedness, and thy tongue contrived deceit. Thou sittest, and speakest against thy brother; thou slanderest thine own mother’s son. These things thou hast done, and I kept silence; thou thoughtest, wicked one, that I should be like to thyself. But I will reprove thee, and set thyself before thee. Consider now these things, ye that forget God, lest He tear you in pieces, like a lion, and there be none to deliver. The sacrifice of praise will glorify Me, and a way is there by which I will show him the salvation of God.”</p>",
+  "word_count": 342
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 36,
+  "title": "All blessings are given to us through Christ",
+  "body_html": "<p>This is the way, dear friends, in which we find our Saviour, Jesus Christ, the High Priest of all our offerings, the defender and helper of our weakness. Through Him we look up to the heights of heaven. Through Him we see, as in a mirror, His spotless and most excellent face. Through Him the eyes of our hearts are opened. Through Him our foolish and darkened minds blossom again toward His wonderful light. Through Him the Lord has willed that we should taste the knowledge that never dies, “who, being the brightness of His majesty, is by so much greater than the angels, as He hath by inheritance obtained a more excellent name than they.” For it is written, “Who maketh His angels spirits, and His ministers a flame of fire.” But of His Son the Lord said this: “Thou art my Son, to-day have I begotten Thee. Ask of Me, and I will give Thee the heathen for Thine inheritance, and the uttermost parts of the earth for Thy possession.” And again He says to Him, “Sit Thou at My right hand, until I make Thine enemies Thy footstool.” But who are His enemies? All the wicked, and those who set themselves against the will of God.</p>",
+  "word_count": 209
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 37,
+  "title": "Christ is our leader, and we His soldiers",
+  "body_html": "<p>So, brothers and sisters, let us serve as soldiers with all our energy, following His holy commandments. Think of those who serve under our generals, and how orderly, obedient and willing they are in carrying out their orders. Not all of them are prefects, or commanders of a thousand, or of a hundred, or of fifty, and so on. But each one, in his own rank, carries out the orders of the king and the generals. The great cannot exist without the small, nor the small without the great. Everything is a kind of mixture, and from that comes mutual benefit. Take our body as an example. The head is nothing without the feet, and the feet are nothing without the head. Even the smallest parts of our body are necessary and useful to the whole. All of them work together in harmony and are under one common rule for keeping the whole body healthy.</p>",
+  "word_count": 155
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 38,
+  "title": "Let the members of the Church submit themselves",
+  "body_html": "<p>So let our whole body be kept safe in Christ Jesus, and let each person submit to his neighbour according to the particular gift he has been given. Let the strong not look down on the weak, and let the weak respect the strong. Let the rich provide for the needs of the poor, and let the poor thank God for giving them someone to meet their need. Let the wise show their wisdom not by [mere] words but by good deeds. Let the humble not speak well of themselves, but leave it to others to speak for them. Let whoever is sexually pure not become proud of it and boast, knowing that it was Another who gave him the gift of self-control. So let us consider, brothers and sisters, what we were made from: who and what we were when we came into the world, as if out of a tomb and out of complete darkness. The One who made and shaped us prepared His generous gifts for us before we were born, and then brought us into His world. Since we receive all these things from Him, we ought to thank Him for everything. To Him be glory for ever and ever. Amen.</p>",
+  "word_count": 205
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 39,
+  "title": "There is no reason for self-conceit",
+  "body_html": "<p>Foolish and thoughtless people, with neither wisdom nor learning, mock and ridicule us, eager to raise themselves up in their own opinion. But what can a mortal do? What strength is there in someone made from dust? For it is written, “There was no shape before mine eyes, only I heard a sound, and a voice [saying], What then? Shall a man be pure before the Lord? or shall such an one be [counted] blameless in his deeds, seeing He does not confide in His servants, and has charged even His angels with perversity? The heaven is not clean in His sight: how much less they that dwell in houses of clay, of which also we ourselves were made! He smote them as a moth; and from morning even until evening they endure not. Because they could furnish no assistance to themselves, they perished. He breathed upon them, and they died, because they had no wisdom. But call now, if any one will answer thee, or if thou wilt look to any of the holy angels; for wrath destroys the foolish man, and envy killeth him that is in error. I have seen the foolish taking root, but their habitation was presently consumed. Let their sons be far from safety; let them be despised before the gates of those less than themselves, and there shall be none to deliver. For what was prepared for them, the righteous shall eat; and they shall not be delivered from evil.”</p>",
+  "word_count": 247
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 40,
+  "title": "Let us preserve in the Church the order appointed by God",
+  "body_html": "<p>Since these things are clear to us, and since we have looked into the depths of divine knowledge, we ought to do everything in [its proper] order, as the Lord has commanded us to do at set times. He has commanded that offerings [be presented] and service be performed [for Him], and not carelessly or at random, but at the appointed times and hours. Where and by whom He wants these things done, He has fixed Himself by His own supreme will, so that everything done devoutly according to His good pleasure may be acceptable to Him. So those who bring their offerings at the appointed times are accepted and blessed, because they follow the Lord’s laws and do not sin. The high priest has his own particular duties, the priests have their own proper place, and the Levites have their own special service. The layperson is bound by the rules that apply to laypeople.</p>",
+  "word_count": 155
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 41,
+  "title": "Continuation of the same subject",
+  "body_html": "<p>Brothers and sisters, let each of you give thanks to God in your own place, living with a good conscience and fitting seriousness, and not going beyond the rule of service given to you. The daily sacrifices, the peace offerings, the sin offerings and the guilt offerings are not offered just anywhere, brothers and sisters, but only in Jerusalem. And even there they are not offered in any place, but only at the altar in front of the temple, and what is offered is first carefully inspected by the high priest and the ministers already mentioned. Those who do anything beyond what agrees with His will are punished with death. You see, brothers and sisters, that the greater the knowledge we have been given, the greater the danger we face.</p>",
+  "word_count": 130
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 42,
+  "title": "The order of ministers in the Church",
+  "body_html": "<p>The apostles received the Gospel for us from the Lord Jesus Christ, and Jesus Christ [received it] from God. So Christ was sent by God, and the apostles by Christ. Both of these appointments, then, were made in good order, according to the will of God. So, having received their instructions, being fully convinced by the resurrection of our Lord Jesus Christ, and made firm in the word of God, with the full assurance of the Holy Spirit, they went out announcing that the kingdom of God was near. As they preached in country after country and city after city, they appointed their first converts, after testing them by the Spirit, to be bishops and deacons of those who would later believe. This was nothing new, because bishops and deacons had been written about many ages before. For the Scripture says somewhere, “I will appoint their bishops in righteousness, and their deacons in faith.”</p>",
+  "word_count": 154
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 43,
+  "title": "Moses stilled the contention concerning the priestly dignity",
+  "body_html": "<p>And is it any wonder that those in Christ who were given this task by God appointed the [ministers] I have mentioned? The blessed Moses also, “a faithful servant in all his house,” wrote down in the sacred books all the commands he was given, and the other prophets followed him, all bearing witness together to the rules he had laid down. When a rivalry arose over the priesthood, and the tribes were arguing among themselves about which of them should be honoured with that glorious title, he ordered the twelve leaders of the tribes to bring him their rods, each one marked with the name of its tribe. He took them, tied them [together], sealed them with the rings of the tribal leaders, and laid them up in the tabernacle of witness on God’s table. Then he shut the doors of the tabernacle, sealed the keys as he had sealed the rods, and said to them, Brothers, the tribe whose rod blossoms is the one God has chosen to serve as priests and minister to Him. When morning came, he gathered all Israel, six hundred thousand men, showed the seals to the tribal leaders, opened the tabernacle of witness and brought out the rods. And Aaron’s rod was found not only to have blossomed but to be bearing fruit. What do you think, dear friends? Did Moses not know in advance that this would happen? Of course he knew. But he did it so that there would be no rebellion in Israel, and so that the name of the true and only God would be glorified. To Him be glory for ever and ever. Amen.</p>",
+  "word_count": 276
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 44,
+  "title": "The ordinances of the apostles",
+  "body_html": "<p>Our apostles also knew, through our Lord Jesus Christ, that there would be strife over the office of bishop. For this reason, since they had been given complete foreknowledge of it, they appointed the [ministers] already mentioned, and afterwards gave instructions that when these died, other tested men should take over their ministry. So we believe that those appointed by the apostles, or later by other respected men with the agreement of the whole Church, who have served the flock of Christ blamelessly, humbly, peacefully and unselfishly, and have long been well thought of by everyone, cannot rightly be removed from their ministry. For it will be no small sin on our part if we throw out of the office of bishop those who have carried out its duties blamelessly and in holiness. Blessed are the elders who have already finished their course and had a fruitful and complete departure [from this world], for they need not fear that anyone will remove them from the place now given them. But we see that you have removed some men of excellent conduct from the ministry they carried out blamelessly and with honour.</p>",
+  "word_count": 191
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 45,
+  "title": "It is the part of the wicked to vex the righteous",
+  "body_html": "<p>You love to argue, brothers and sisters, and you are full of zeal about things that have nothing to do with salvation. Look carefully into the Scriptures, which are the true words of the Holy Spirit. Notice that nothing unjust or false is written in them. You will not find there that righteous people were thrown out by people who were themselves holy. The righteous were persecuted, yes, but only by the wicked. They were thrown into prison, but only by the ungodly. They were stoned, but only by lawbreakers. They were killed, but only by the cursed, by those who had conceived an unjust envy against them. Facing such sufferings, they endured them gloriously. What shall we say, brothers and sisters? Was Daniel thrown into the lions’ den by people who feared God? Were Ananias, Azarias and Mishael shut up in a fiery furnace by those who kept the great and glorious worship of the Most High? Far be it from us to think so! Who, then, were the people who did such things? Hateful people, full of every kind of wickedness, were stirred up to such fury that they tortured those who served God with a holy and blameless purpose [of heart]. They did not know that the Most High is the Defender and Protector of all who honour His all-excellent name with a pure conscience. To Him be glory for ever and ever. Amen. But those who endured [these things] with confidence are now heirs of glory and honour, and God has lifted them up and made them famous in their memory for ever and ever. Amen.</p>",
+  "word_count": 270
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 46,
+  "title": "Let us cleave to the righteous: your strife is pernicious",
+  "body_html": "<p>So, brothers and sisters, it is right for us to follow such examples, since it is written, “Cleave to the holy, for those that cleave to them shall [themselves] be made holy.” And again, in another place, [the Scripture] says, “With a harmless man thou shalt prove thyself harmless, and with an elect man thou shalt be elect, and with a perverse man thou shalt show thyself perverse.” So let us hold fast to the innocent and the righteous, since they are God’s chosen ones. Why are there quarrels and uproars and divisions and splits and wars among you? Do we not [all] have one God and one Christ? Is there not one Spirit of grace poured out on us? And do we not have one calling in Christ? Why do we pull apart and tear to pieces the members of Christ, and rebel against our own body? Why have we become so mad that we forget that “we are members one of another?” Remember the words of our Lord Jesus Christ, how He said, “Woe to that man [by whom offences come]! It were better for him that he had never been born, than that he should cast a stumbling-block before one of my elect. Yea, it were better for him that a millstone should be hung about [his neck], and he should be sunk in the depths of the sea, than that he should cast a stumbling-block before one of my little ones.” Your division has overturned [the faith of] many, discouraged many, made many doubt, and brought grief to all of us. And still your rebellion goes on.</p>",
+  "word_count": 271
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 47,
+  "title": "Your recent discord is worse than that in the times of Paul",
+  "body_html": "<p>Pick up the letter of the blessed Apostle Paul. What did he write to you when the Gospel was first being preached? Truly, inspired by the Spirit, he wrote to you about himself, Cephas and Apollos, because even then you had formed factions. But that preference for one over another made you less guilty, since your loyalties then were to apostles who were already highly respected, and to a man they had approved. But now think about who it is that has led you astray and dimmed the fame of your celebrated love for one another. It is shameful, dear friends, deeply shameful and unworthy of your Christian calling, to hear that the very steadfast and ancient Church of the Corinthians, because of one or two people, is rebelling against its elders. And this news has reached not only us but also people who have nothing to do with us, so that through your foolishness the name of the Lord is insulted, and you are bringing danger on yourselves as well.</p>",
+  "word_count": 171
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 48,
+  "title": "Let us return to the practice of brotherly love",
+  "body_html": "<p>So let us put an end to [this situation] as quickly as possible. Let us fall down before the Lord and beg Him with tears to be mercifully reconciled to us and to bring us back to our former good and holy practice of loving one another. For [such a life] is the gate of righteousness, opened for reaching life, as it is written, “Open to me the gates of righteousness; I will go in by them, and will praise the Lord: this is the gate of the Lord: the righteous shall enter in by it.” Many gates have been opened, but this gate of righteousness is the gate in Christ. Blessed are all who have entered by it and have walked their way in holiness and righteousness, doing everything without disorder. A person may be faithful; he may be powerful in speaking knowledge; he may be wise in judging what is said; he may be pure in all he does. Yet the more he seems to stand above others [in these things], the more humble he ought to be, and the more he should seek the common good of everyone and not only his own advantage.</p>",
+  "word_count": 197
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 49,
+  "title": "The praise of love",
+  "body_html": "<p>Let whoever has love in Christ keep Christ’s commandments. Who can describe the [blessed] bond of God’s love? Who is able to tell the excellence of its beauty as it should be told? The height to which love lifts us is beyond words. Love unites us to God. Love covers a multitude of sins. Love bears all things and is patient in all things. There is nothing cheap and nothing arrogant in love. Love allows no divisions. Love starts no rebellions. Love does everything in harmony. By love all God’s chosen ones have been made perfect; without love nothing pleases God. In love the Lord has taken us to Himself. Because of the love He had for us, Jesus Christ our Lord gave His blood for us by the will of God: His flesh for our flesh, and His life for our lives.</p>",
+  "word_count": 143
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 50,
+  "title": "Let us pray to be thought worthy of love",
+  "body_html": "<p>You see, dear friends, how great and wonderful love is, and that its perfection cannot be put into words. Who is fit to be found in it, except those God has graciously made fit? So let us pray and beg for His mercy, that we may live blamelessly in love, free from all human favouritism of one over another. All the generations from Adam to this day have passed away. But those who by God’s grace have been made perfect in love now have a place among the godly, and they will be revealed when the kingdom of Christ appears. For it is written, “Enter into thy secret chambers for a little time, until my wrath and fury pass away; and I will remember a propitious day, and will raise you up out of your graves.” We are blessed, dear friends, if we keep God’s commandments in the harmony of love, so that through love our sins may be forgiven. For it is written, “Blessed are they whose transgressions are forgiven, and whose sins are covered. Blessed is the man whose sin the Lord will not impute to him, and in whose mouth there is no guile.” This blessing comes on those God has chosen through Jesus Christ our Lord. To Him be glory for ever and ever. Amen.</p>",
+  "word_count": 219
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 51,
+  "title": "Let the partakers in strife acknowledge their sins",
+  "body_html": "<p>So let us ask forgiveness for all the wrongs we have done at any [prompting] of the enemy. And those who have led the rebellion and the disagreement ought to consider the hope we all share. For those who live in reverence and love would rather suffer themselves than see their neighbours suffer. They would rather take the blame themselves than see harm come to the harmony that has been handed down to us so well and so faithfully. It is better for a person to admit his wrongs than to harden his heart, as the hearts of those were hardened who stirred up rebellion against Moses the servant of God, and whose condemnation was made plain [to all]. They went down alive into Hades, and death swallowed them up. Pharaoh with his army and all the princes of Egypt, and the chariots with their riders, sank into the depths of the Red Sea and perished, for no other reason than that their foolish hearts were hardened, after so many signs and wonders had been done in the land of Egypt by Moses the servant of God.</p>",
+  "word_count": 187
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 52,
+  "title": "Such a confession is pleasing to God",
+  "body_html": "<p>Brothers and sisters, the Lord needs nothing, and He asks nothing of anyone except that they confess to Him. For David, His chosen one, says, “I will confess unto the Lord; and that will please Him more than a young bullock that hath horns and hoofs. Let the poor see it, and be glad.” And again he says, “Offer unto God the sacrifice of praise, and pay thy vows unto the Most High. And call upon Me in the day of thy trouble: I will deliver thee, and thou shalt glorify Me.” For “the sacrifice of God is a broken spirit.”</p>",
+  "word_count": 101
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 53,
+  "title": "The love of Moses towards his people",
+  "body_html": "<p>You understand the Holy Scriptures, dear friends, you understand them well, and you have studied God’s words very closely. So call these things to mind. When Moses went up the mountain and stayed there forty days and forty nights, fasting and humbling himself, the Lord said to him, “Moses, Moses, get thee down quickly from hence; for thy people whom thou didst bring out of the land of Egypt have committed iniquity. They have speedily departed from the way in which I commanded them to walk, and have made to themselves molten images.” And the Lord said to him, “I have spoken to thee once and again, saying, I have seen this people, and, behold, it is a stiff-necked people: let Me destroy them, and blot out their name from under heaven; and I will make thee a great and wonderful nation, and one much more numerous than this.” But Moses said, “Far be it from Thee, Lord: pardon the sin of this people; else blot me also out of the book of the living.” What wonderful love! What unsurpassed perfection! The servant speaks boldly to his Lord and asks forgiveness for the people, or else begs to perish along with them.</p>",
+  "word_count": 202
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 54,
+  "title": "He who is full of love will incur every loss",
+  "body_html": "<p>So who among you is noble-hearted? Who is compassionate? Who is full of love? Let him say, “If rebellion and disagreement and divisions have arisen because of me, I will leave. I will go wherever you want, and I will do whatever the majority decides. Only let the flock of Christ live in peace with the elders appointed over it.” Whoever does this will win great glory for himself in the Lord, and every place will welcome him. For “the earth is the Lord’s, and the fulness thereof.” Those who live a godly life, a life never to be regretted, have done these things and always will.</p>",
+  "word_count": 107
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 55,
+  "title": "Examples of such love",
+  "body_html": "<p>To give some examples even from among the pagans: many kings and rulers, in times of plague, after being told to by an oracle, have given themselves up to death so that by their own blood they might save their fellow citizens [from destruction]. Many have left their own cities so that the rebellion within them might come to an end. We know many among ourselves who have given themselves up to prison in order to set others free. Many have also sold themselves into slavery and used the price they received to buy food for others. Many women too, strengthened by the grace of God, have done many brave deeds. When her city was under siege, the blessed Judith asked the elders for permission to go out into the enemy camp. She put herself in danger and went out because of her love for her country and her people under siege, and the Lord handed Holofernes over into the hands of a woman. Esther also, perfect in faith, put herself in no less danger in order to save the twelve tribes of Israel from the destruction that threatened them. With fasting and humility she pleaded with the eternal God, who sees all things, and He, seeing the humility of her spirit, rescued the people for whose sake she had faced the danger.</p>",
+  "word_count": 223
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 56,
+  "title": "Let us admonish and correct one another",
+  "body_html": "<p>So let us also pray for those who have fallen into any sin, that they may be given gentleness and humility, so that they may submit, not to us, but to the will of God. In this way they will be remembered by us fruitfully and fully, with compassion, both in our prayers to God and when we speak of them to the saints. Let us accept correction, dear friends; no one should resent it. The warnings we give one another are good [in themselves] and very helpful, because they bind us to the will of God. For the holy Word says: “The Lord hath severely chastened me, yet hath not given me over to death.” “For whom the Lord loveth He chasteneth, and scourgeth every son whom He receiveth.” “The righteous,” it says, “shall chasten me in mercy, and reprove me; but let not the oil of sinners make fat my head.” And again it says, “Blessed is the man whom the Lord reproveth, and reject not thou the warning of the Almighty. For He causes sorrow, and again restores [to gladness]; He woundeth, and His hands make whole. He shall deliver thee in six troubles, yea, in the seventh no evil shall touch thee. In famine He shall rescue thee from death, and in war He shall free thee from the power of the sword. From the scourge of the tongue will He hide thee, and thou shalt not fear when evil cometh. Thou shalt laugh at the unrighteous and the wicked, and shalt not be afraid of the beasts of the field. For the wild beasts shall be at peace with thee: then shalt thou know that thy house shall be in peace, and the habitation of thy tabernacle shall not fail. Thou shall know also that thy seed shall be great, and thy children like the grass of the field. And thou shall come to the grave like ripened corn which is reaped in its season, or like a heap of the threshing-floor which is gathered together at the proper time.” You see, dear friends, that those the Lord disciplines are protected. Because God is good, He corrects us, so that we may be warned by His holy discipline.</p>",
+  "word_count": 373
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 57,
+  "title": "Let the authors of sedition submit themselves",
+  "body_html": "<p>So you who laid the foundation of this rebellion, submit yourselves to the elders. Accept correction and repent, bending the knees of your hearts. Learn to submit, putting aside the proud and arrogant boldness of your tongues. It is better for you to have a humble but honourable place in the flock of Christ than to be lifted high and then thrown out of the hope of His people. For this is what all-good Wisdom says: “Behold, I will bring forth to you the words of My Spirit, and I will teach you My speech. Since I called, and ye did not hear; I held forth My words, and ye regarded not, but set at naught My counsels, and yielded not at My reproofs; therefore I too will laugh at your destruction; yea, I will rejoice when ruin cometh upon you, and when sudden confusion overtakes you, when overturning presents itself like a tempest, or when tribulation and oppression fall upon you. For it shall come to pass, that when ye call upon Me, I will not hear you; the wicked shall seek Me, and they shall not find Me. For they hated wisdom, and did not choose the fear of the Lord; nor would they listen to My counsels, but despised My reproofs. Wherefore they shall eat the fruits of their own way, and they shall be filled with their own ungodliness.” …</p>",
+  "word_count": 234
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 58,
+  "title": "Blessings sought for all that call upon God",
+  "body_html": "<p>May God, who sees all things, the Ruler of all spirits and the Lord of all flesh, who chose our Lord Jesus Christ and us through Him to be His own special people, give every soul that calls on His glorious and holy Name faith, reverence, peace, patience, endurance, self-control, purity and soberness, so that they may please His Name, through our High Priest and Protector, Jesus Christ. Through Him be glory and majesty and power and honour to God, both now and for evermore. Amen.</p>",
+  "word_count": 86
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "en-modern"
+  ],
+  "order": 59,
+  "title": "The Corinthians exhorted to send back word that peace is restored",
+  "body_html": "<p>Send our messengers, Claudius Ephebus and Valerius Bito, with Fortunatus, back to us quickly, in peace and with joy, so that they can tell us all the sooner of the peace and harmony we so earnestly long for [among you], and so that we can all the sooner rejoice that good order has been restored among you. The grace of our Lord Jesus Christ be with you, and with all people everywhere who are called by God through Him. Through Him be glory, honour, power, majesty and eternal rule to God, from everlasting to everlasting. Amen.</p>",
+  "word_count": 96
+ }
+}
+]

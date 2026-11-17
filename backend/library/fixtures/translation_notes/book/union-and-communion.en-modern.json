@@ -1,0 +1,92 @@
+{
+ "kind": "book",
+ "slug": "union-and-communion",
+ "language": "en-modern",
+ "references": [
+  {
+   "reference": "John 17:3",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  },
+  {
+   "reference": "Song of Songs 1:2",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  },
+  {
+   "reference": "John 21:15",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  },
+  {
+   "reference": "Song of Songs 2:8",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  },
+  {
+   "reference": "Hebrews 2:1",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  },
+  {
+   "reference": "Song of Songs 3:6",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  },
+  {
+   "reference": "Daniel 7:9",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  },
+  {
+   "reference": "Revelation 1:13",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  },
+  {
+   "reference": "Song of Songs 6:11",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  },
+  {
+   "reference": "Song of Songs",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  },
+  {
+   "reference": "Song of Songs 8:5",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  },
+  {
+   "reference": "Revelation 14:1",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  },
+  {
+   "reference": "Luke 21:34",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  },
+  {
+   "reference": "Philippians 3:11",
+   "status": "mined",
+   "source_file": "union-and-communion.en.json"
+  }
+ ]
+}
