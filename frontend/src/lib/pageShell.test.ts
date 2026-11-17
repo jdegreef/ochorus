@@ -64,6 +64,8 @@ const LEAF_PAGES: { label: string; file: string }[] = [
 	// The seasonal hub wears the plan page's hero, so it is a leaf in shape.
 	{ label: 'advent', file: 'routes/advent/+page.svelte' },
 	{ label: 'series', file: 'routes/series/[slug]/+page.svelte' },
+	// The Bible in story order: a house-written page on the hub's shell.
+	{ label: 'bible story', file: 'routes/bible/story/+page.svelte' },
 	{ label: 'quotes author', file: 'routes/quotes/[author]/+page.svelte' },
 	{ label: 'glossary term', file: 'routes/glossary/[term]/+page.svelte' },
 	// The [slug] route is a thin switch (article reader vs topic shelf); the

@@ -407,6 +407,22 @@ export interface BookDetail extends BookSummary {
 	 *  an exposition of one passage (library/bible_companions) — as cards. []
 	 *  on every other book; optional so an API behind this build omits it. */
 	read_alongside?: BookSummary[];
+	/** A book of the Bible: its overview card (library/bible_overview) — the
+	 *  traditional author and date as the editorial words them, a one-line
+	 *  theme, and a key verse quoted from the Open Word Bible with where it sits
+	 *  in the reader. Null on every other book; optional so an API behind this
+	 *  build omits it. */
+	bible_overview?: BibleOverview | null;
+}
+
+export interface BibleOverview {
+	author: string;
+	date: string;
+	theme: string;
+	/** Null only if the Bible lookup cannot resolve the reference. `chapter` is
+	 *  the Bible chapter; `verse` the reader's `#v<n>` anchor in it, or null
+	 *  where it prints none there (a verse in a range, or in the chapter before). */
+	key_verse: { reference: string; text: string; chapter: number; verse: number | null } | null;
 }
 
 /** An article surfaced on another page that links to it — a reader's guide on

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
 	BIBLE_DIVISIONS,
+	bibleBrowseRow,
 	matchesCanonFilter,
 	THIN_SPINE,
 	canonReading,
@@ -455,5 +456,13 @@ describe('matchesCanonFilter', () => {
 		expect(matchesCanonFilter('unread', 'law', 90, { behind: 0, current: null, finished: false })).toBe(true);
 		expect(matchesCanonFilter('unread', 'law', 90, started)).toBe(false);
 		expect(matchesCanonFilter('unread', 'law', 90, done)).toBe(false);
+	});
+});
+
+describe('bibleBrowseRow', () => {
+	it('sets the Browse tab\'s Bible row in its own order, leaving out what the language lacks', () => {
+		const shelf = ['romans', 'gospel-of-john', 'obadiah', 'genesis', 'psalms'].map((slug) => ({ slug }));
+		expect(bibleBrowseRow(shelf).map((b) => b.slug)).toEqual(['genesis', 'psalms', 'gospel-of-john', 'romans']);
+		expect(bibleBrowseRow([])).toEqual([]);
 	});
 });

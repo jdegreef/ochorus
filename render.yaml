@@ -356,6 +356,8 @@ services:
         - backend/library/catena.py
         # Which classics a Bible book and its chapters list to "Read alongside".
         - backend/library/bible_companions.py
+        # A Bible book page's overview card: author, date, key verse and theme.
+        - backend/library/bible_overview.py
     # --- Security headers ---------------------------------------------------
     # The reader had none. That matters more here than on a typical static site:
     # the Supabase access token lives in localStorage and is attached as a Bearer

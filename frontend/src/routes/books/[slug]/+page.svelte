@@ -545,6 +545,15 @@
 	// heading (the English-only FAQ aside). The bar also keeps the read CTA within
 	// reach while scrolling — the page's own value over the author sub-nav.
 	const hasAbout = $derived(!!(book.about_html || book.description));
+	// A book of the Bible's overview card (library/bible_overview). Its key
+	// verse links to its place in the reader: the verse marker's id (`#v16`)
+	// where the server found one in that chapter, else the chapter's top.
+	const overview = $derived(book.bible_overview ?? null);
+	const keyVerseHref = $derived.by(() => {
+		const kv = overview?.key_verse;
+		const ch = kv && book.chapters.find((c) => chapterNumber(c.title) === kv.chapter);
+		return kv && ch ? `${readHref(ch.order)}${kv.verse ? `#v${kv.verse}` : ''}` : null;
+	});
 	// The other-language row renders only off a fallback page (the notice
 	// there lists the editions itself).
 	const showLanguages = $derived(siblingEditions.length > 0 && !fallback);
@@ -1063,6 +1072,41 @@
 	{#if hasAbout}
 		<section id="about" class="jump-anchor mt-8" aria-labelledby="about-work">
 			<h2 id="about-work" class="section-heading no-rule">{t('book.aboutWork')}</h2>
+			<!-- A book of the Bible: the overview card (library/bible_overview) —
+			     its theme in one line, who wrote it and when as the church has
+			     long held (or "Author unknown"), and a key verse whose text the API
+			     quotes from the Open Word Bible. No length: the page already gives
+			     it, counting the introduction and conclusion. English only, as the
+			     Bible books are; null on every other book. The content is English,
+			     so `lang` sits on it, not on the card's interface labels. -->
+			{#if overview}
+				<div class="bible-overview mb-6">
+					<p class="overview-theme font-display" lang={contentLang(book.language)} dir="auto">{overview.theme}</p>
+					<dl class="overview-facts mt-3 text-small">
+						<div>
+							<dt class="eyebrow text-muted">{t('search.typeAuthor')}</dt>
+							<dd lang={contentLang(book.language)} dir="auto">{overview.author}</dd>
+						</div>
+						<div>
+							<dt class="eyebrow text-muted">{t('bible.overviewDate')}</dt>
+							<dd lang={contentLang(book.language)} dir="auto">{overview.date}</dd>
+						</div>
+					</dl>
+					{#if overview.key_verse}
+						<figure class="overview-verse mt-4">
+							<figcaption class="eyebrow text-muted">
+								{t('bible.keyVerse')} ·
+								{#if keyVerseHref}<a href={keyVerseHref} class="overview-ref" lang={contentLang(book.language)}
+										>{overview.key_verse.reference}</a
+									>{:else}<span lang={contentLang(book.language)}>{overview.key_verse.reference}</span>{/if}
+							</figcaption>
+							<blockquote class="mt-1 font-display text-body leading-snug" lang={contentLang(book.language)} dir="auto">
+								{overview.key_verse.text}
+							</blockquote>
+						</figure>
+					{/if}
+				</div>
+			{/if}
 			<div class="about-layout">
 				<div class="about-prose text-body">
 					{#if book.about_html}
@@ -1794,6 +1838,45 @@
 	   an aside beside it (design review #9). On a phone they follow in flow. */
 	.about-prose {
 		max-width: 65ch;
+	}
+	/* A Bible book's overview: one quiet card at the prose's measure, the
+	   At-a-glance panel's border and surface — a reference strip, not a band. */
+	.bible-overview {
+		max-width: 65ch;
+		padding: 1rem 1.25rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+	}
+	.overview-theme {
+		font-size: var(--fs-h3);
+		line-height: 1.3;
+		color: var(--text);
+	}
+	.overview-facts {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 2rem;
+	}
+	.overview-facts dd {
+		margin-top: 0.125rem;
+		color: var(--text);
+	}
+	.overview-verse {
+		margin: 0;
+		padding-top: 0.875rem;
+		border-top: 1px solid var(--border);
+	}
+	.overview-verse blockquote {
+		color: var(--text);
+	}
+	.overview-ref {
+		color: var(--accent);
+		text-transform: none;
+		letter-spacing: normal;
+	}
+	.overview-ref:hover {
+		text-decoration: underline;
 	}
 	.about-quote {
 		margin: 2rem 0 0;

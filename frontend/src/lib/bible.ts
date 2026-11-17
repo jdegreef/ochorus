@@ -23,6 +23,12 @@ import {
 export const BIBLE_SERIES = 'the-bible';
 /** The hub's path; prerenders to bible/index.html (isSlashedPath). */
 export const BIBLE_PATH = '/bible';
+/**
+ * The Story of the Bible ($lib/bibleStory); prerenders to
+ * bible/story/index.html. Here, not beside the story, so the hub can link it
+ * without pulling the story's prose into its own chunk.
+ */
+export const BIBLE_STORY_PATH = `${BIBLE_PATH}/story`;
 
 /**
  * The UI locales whose chrome (footer, palette, More sheet) links the hub.
@@ -558,4 +564,27 @@ export function matchesCanonFilter(
 		case 'unread':
 			return !place || (!place.finished && place.behind === 0 && place.current == null);
 	}
+}
+
+/**
+ * The Bible's row on /books's Browse tab, in this order: the beginning, the
+ * prayer book, the four Gospels and the letter that sets out the gospel. The
+ * general shelves keep the 66 off their roster (`splitBible`), so this row is
+ * where a reader browsing Books meets them, with "See all" into the hub.
+ */
+export const BIBLE_BROWSE: readonly string[] = [
+	'genesis',
+	'psalms',
+	'gospel-of-matthew',
+	'gospel-of-mark',
+	'gospel-of-luke',
+	'gospel-of-john',
+	'romans'
+];
+
+/** The Browse tab's Bible row from the shelf's Bible books, in `BIBLE_BROWSE`
+ *  order; a book the language lacks is left out. */
+export function bibleBrowseRow<T extends { slug: string }>(bible: readonly T[]): T[] {
+	const bySlug = new Map(bible.map((b) => [b.slug, b]));
+	return BIBLE_BROWSE.flatMap((slug) => bySlug.get(slug) ?? []);
 }

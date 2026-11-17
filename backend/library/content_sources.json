@@ -48,7 +48,8 @@
     "library/daily_books.py",
     "library/bible_sermons.py",
     "library/catena.py",
-    "library/bible_companions.py"
+    "library/bible_companions.py",
+    "library/bible_overview.py"
   ],
   "_reader_exempt_note": [
     "Modules the serializers import that carry NO reader prose, so a change to",
@@ -62,6 +63,7 @@
   "reader_exempt": {
     "library/models.py": "Schema and queries. The prose is ROWS, shipped as fixtures; the only computed properties are chapter_count and is_live, both counts. Every commit here in the last 300 was an index or a query shape.",
     "library/fts.py": "Search vectors. Search is a runtime query against the API — no static page bakes a result.",
+    "library/quote_marks.py": "Typesetting rules only: which way a straight quote mark curls. No prose lives here; the overview card runs a verse through it, and that verse is the bundled Bible text, its own content.",
     "library/text.py": "HTML to plain text for Chapter.body_text, which feeds search rather than any rendered page.",
     "library/translation.py": "The translate pipeline. What it produces ships as fixture rows under library/fixtures/content, which is already a root.",
     "library/contemporize.py": "The modern-English pipeline. The serializers take only its MODERN_LANGUAGE key; the prose itself ships as fixture rows.",

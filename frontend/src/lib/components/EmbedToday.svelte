@@ -21,6 +21,11 @@
 	 * opening in a new tab, so a visitor who follows one keeps the church's
 	 * page. Stacked in a narrow frame, three columns in a wide one. A language
 	 * with no devotional or no sermon drops that part.
+	 *
+	 * Under the verse, the chapter of the day ($lib/dailyChapter, in its
+	 * column, as the home Today card sets it): one chapter of the Bible every
+	 * reader is given today, where the language has the Bible. It holds the
+	 * column on its own on a day with no verse.
 	 */
 	let {
 		report = false,
@@ -30,7 +35,7 @@
 		 *  iframe by it): only when this is the framed page itself. */
 		report?: boolean;
 		/** Which link a visitor followed (the verse is not one). */
-		onopen?: (part: 'brand' | 'reading' | 'sermon' | 'more') => void;
+		onopen?: (part: 'brand' | 'chapter' | 'reading' | 'sermon' | 'more') => void;
 	} = $props();
 
 	const t = i18n.t;
@@ -68,7 +73,10 @@
 		return () => ro.disconnect();
 	});
 
-	const columns = $derived(picks ? [picks.verse, picks.reading, picks.sermon].filter(Boolean).length : 3);
+	// The verse and the chapter of the day share a column (TodayCard's rule).
+	const columns = $derived(
+		picks ? [picks.verse || picks.chapter, picks.reading, picks.sermon].filter(Boolean).length : 3
+	);
 	// Static class names, so Tailwind sees each one.
 	const GRID = ['', '', 'wide-2', 'wide-3'];
 </script>
@@ -91,12 +99,31 @@
 	{#if picks}
 		{#if columns}
 			<ul role="list" class="parts m-0 mt-4 list-none p-0 {GRID[columns]}">
-				{#if picks.verse}
-					{@const v = picks.verse}
+				{#if picks.verse || picks.chapter}
 					<li class="part">
-						<span class="eyebrow block text-accent">{t('home.todayVerse')}</span>
-						<span class="title verse mt-2 block text-body" lang={v.lang} dir="auto">{v.text}</span>
-						<span class="mt-2 block text-small text-muted" lang={v.lang} dir="auto">{v.ref}</span>
+						{#if picks.verse}
+							{@const v = picks.verse}
+							<span class="eyebrow block text-accent">{t('home.todayVerse')}</span>
+							<span class="title verse mt-2 block text-body" lang={v.lang} dir="auto">{v.text}</span>
+							<span class="mt-2 block text-small text-muted" lang={v.lang} dir="auto">{v.ref}</span>
+						{/if}
+						{#if picks.chapter}
+							{@const c = picks.chapter}
+							<a
+								class="part-link chapter"
+								class:after-verse={picks.verse}
+								href={out(`${c.href}/`)}
+								target="_blank"
+								rel="noopener"
+								onclick={() => onopen?.('chapter')}
+							>
+								<span class="eyebrow block text-accent">{t('home.todayChapter')}</span>
+								<span class="title mt-1 block text-body font-semibold" lang="en">{c.title} <Arrow /></span>
+								{#if c.word_count}
+									<span class="block text-small text-muted">{readingTime(c.word_count)}</span>
+								{/if}
+							</a>
+						{/if}
 					</li>
 				{/if}
 				{#if picks.reading}
@@ -216,6 +243,13 @@
 	/* Read, not scanned: body size, book weight, no italic (TodayCard's). */
 	.verse {
 		font-weight: 400;
+	}
+	/* The chapter under the verse: a short hairline between, so it reads as
+	   the verse's next step, not another part. */
+	.chapter.after-verse {
+		margin-block-start: 0.85rem;
+		padding-block-start: 0.75rem;
+		border-block-start: 1px solid var(--border);
 	}
 	.part-link:hover .title,
 	.part-link:focus-visible .title {

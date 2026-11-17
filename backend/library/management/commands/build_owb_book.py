@@ -57,7 +57,9 @@ Footnotes, the Literal and Readable levels and the other languages are not
 carried (yet). Quotation marks are curled the house way.
 
 EDITORIAL lives beside the command in `library/data/owb/<CODE>/`: `book.json`
-(slug, title, description, Q&A), `introduction.html` and `conclusion.html`.
+(slug, title, description, Q&A, and the book page's `overview` card, which
+`library/bible_overview.py` reads at serialize time rather than this command),
+`introduction.html` and `conclusion.html`.
 Both are Ochorus's own writing, deliberately not OWB's shorter
 `data/intros/<CODE>.md`: longer, a reader's guide to the book's shape and
 meaning, and the conclusion points into the library. `{{OWB:<record id>}}` in
@@ -85,7 +87,7 @@ from django.db import transaction
 from library.content_fixtures import book_sort_order
 from library.corrections import settled_chapter_body
 from library.models import Author, Book, Chapter, Series
-from library.quote_marks import assert_punctuation_only, convert
+from library.quote_marks import assert_punctuation_only, convert, curl_singles
 from library.sanitize import clean_fragment
 from library.scripture_graph import BIBLE_SERIES
 
@@ -183,7 +185,6 @@ _SPAN = re.compile(r"\{\{([a-z_]+):([^{}]*)\}\}")
 _VERSE = re.compile(r"\\v (\d+) ?")
 _LINE = re.compile(r" ?\\q ?")
 _EMBED = re.compile(r"\{\{OWB:([A-Z0-9]+\.\d+\.\d+\.s\d+)\}\}")
-_SINGLE = re.compile(r"""(^|(?<=[\s(\[{—–\-"“]))?'""")
 #: Pe and samekh, the codex's paragraph signs.
 _HEBREW_PARAGRAPH = re.compile("[פס]")
 
@@ -218,12 +219,6 @@ def disputed_entry(record: dict) -> tuple[str, str, str | None] | None:
         ):
             return entry
     return None
-
-
-def curl_singles(text: str) -> str:
-    """Straight ' as ‘ where it opens (at the start, or after a space, bracket,
-    dash or double mark), else as ’ — a closing mark or an apostrophe."""
-    return _SINGLE.sub(lambda m: "‘" if m[1] is not None else "’", text)
 
 
 def plain(text: str, lines: bool = False) -> str:
