@@ -545,17 +545,14 @@
 	// heading (the English-only FAQ aside). The bar also keeps the read CTA within
 	// reach while scrolling — the page's own value over the author sub-nav.
 	const hasAbout = $derived(!!(book.about_html || book.description));
-	// A book of the Bible's overview card (library/bible_overview): its measure
-	// counts the Bible's own chapters, not the introduction and conclusion the
-	// edition sets around them, and the key verse links to its place in the
-	// reader (`#v16`, the verse marker's id).
+	// A book of the Bible's overview card (library/bible_overview). Its key
+	// verse links to its place in the reader: the verse marker's id (`#v16`)
+	// where the server found one in that chapter, else the chapter's top.
 	const overview = $derived(book.bible_overview ?? null);
-	const overviewChapters = $derived(overview ? book.chapters.filter((c) => chapterNumber(c.title) != null) : []);
-	const overviewWords = $derived(overviewChapters.reduce((n, c) => n + c.word_count, 0));
 	const keyVerseHref = $derived.by(() => {
 		const kv = overview?.key_verse;
-		const ch = kv && overviewChapters.find((c) => chapterNumber(c.title) === kv.chapter);
-		return kv && ch ? `${readHref(ch.order)}#v${kv.verse}` : null;
+		const ch = kv && book.chapters.find((c) => chapterNumber(c.title) === kv.chapter);
+		return kv && ch ? `${readHref(ch.order)}${kv.verse ? `#v${kv.verse}` : ''}` : null;
 	});
 	// The other-language row renders only off a fallback page (the notice
 	// there lists the editions itself).
@@ -1077,39 +1074,33 @@
 			<h2 id="about-work" class="section-heading no-rule">{t('book.aboutWork')}</h2>
 			<!-- A book of the Bible: the overview card (library/bible_overview) —
 			     its theme in one line, who wrote it and when as the church has
-			     long held (or "Author unknown"), its length, and a key verse whose
-			     text the API quotes from the Open Word Bible. English only, as the
-			     Bible books are; null on every other book. -->
+			     long held (or "Author unknown"), and a key verse whose text the API
+			     quotes from the Open Word Bible. No length: the page already gives
+			     it, counting the introduction and conclusion. English only, as the
+			     Bible books are; null on every other book. The content is English,
+			     so `lang` sits on it, not on the card's interface labels. -->
 			{#if overview}
-				<div class="bible-overview mb-6" lang={contentLang(book.language)}>
-					<p class="overview-theme font-display" dir="auto">{overview.theme}</p>
+				<div class="bible-overview mb-6">
+					<p class="overview-theme font-display" lang={contentLang(book.language)} dir="auto">{overview.theme}</p>
 					<dl class="overview-facts mt-3 text-small">
 						<div>
 							<dt class="eyebrow text-muted">{t('search.typeAuthor')}</dt>
-							<dd dir="auto">{overview.author}</dd>
+							<dd lang={contentLang(book.language)} dir="auto">{overview.author}</dd>
 						</div>
 						<div>
 							<dt class="eyebrow text-muted">{t('bible.overviewDate')}</dt>
-							<dd dir="auto">{overview.date}</dd>
+							<dd lang={contentLang(book.language)} dir="auto">{overview.date}</dd>
 						</div>
-						{#if overviewChapters.length}
-							<div>
-								<dt class="eyebrow text-muted">{t('common.length')}</dt>
-								<dd>
-									<span class="whitespace-nowrap">{chapterCount(overviewChapters.length)}</span>
-									· <span class="whitespace-nowrap">{readingTime(overviewWords)}</span>
-								</dd>
-							</div>
-						{/if}
 					</dl>
 					{#if overview.key_verse}
 						<figure class="overview-verse mt-4">
 							<figcaption class="eyebrow text-muted">
 								{t('bible.keyVerse')} ·
-								{#if keyVerseHref}<a href={keyVerseHref} class="overview-ref">{overview.key_verse.reference}</a
-									>{:else}{overview.key_verse.reference}{/if}
+								{#if keyVerseHref}<a href={keyVerseHref} class="overview-ref" lang={contentLang(book.language)}
+										>{overview.key_verse.reference}</a
+									>{:else}<span lang={contentLang(book.language)}>{overview.key_verse.reference}</span>{/if}
 							</figcaption>
-							<blockquote class="mt-1 font-display text-body leading-snug" dir="auto">
+							<blockquote class="mt-1 font-display text-body leading-snug" lang={contentLang(book.language)} dir="auto">
 								{overview.key_verse.text}
 							</blockquote>
 						</figure>

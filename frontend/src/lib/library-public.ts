@@ -419,8 +419,10 @@ export interface BibleOverview {
 	author: string;
 	date: string;
 	theme: string;
-	/** Null only if the Bible lookup cannot resolve the reference. */
-	key_verse: { reference: string; text: string; chapter: number; verse: number } | null;
+	/** Null only if the Bible lookup cannot resolve the reference. `chapter` is
+	 *  the Bible chapter; `verse` the reader's `#v<n>` anchor in it, or null
+	 *  where it prints none there (a verse in a range, or in the chapter before). */
+	key_verse: { reference: string; text: string; chapter: number; verse: number | null } | null;
 }
 
 /** An article surfaced on another page that links to it — a reader's guide on

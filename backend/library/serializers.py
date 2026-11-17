@@ -1917,12 +1917,10 @@ class BookDetailSerializer(BookListSerializer):
     bible_overview = serializers.SerializerMethodField()
 
     def get_bible_overview(self, obj) -> dict | None:
+        from .bible_crossrefs import is_bible_book
         from .bible_overview import overview
-        from .bible_sermons import BIBLE_SERIES
 
-        if obj.language != "en" or obj.series_id is None or obj.series.slug != BIBLE_SERIES:
-            return None
-        return overview(obj.slug)
+        return overview(obj.slug) if is_bible_book(obj) else None
 
     def get_daily(self, obj) -> bool:
         return obj.slug in DATED_BOOKS
