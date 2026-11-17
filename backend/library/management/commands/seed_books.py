@@ -79,7 +79,7 @@ BOOK_FIELDS = (
 # Every Series field the fixture owns (all of them — see the module docstring).
 SERIES_FIELDS = (
     "title", "description", "sort_order", "audience", "min_age", "max_age",
-    "tagline", "verse_text", "verse_ref", "planned_count", "hero_image", "hero_tone", "map",
+    "tagline", "verse_text", "verse_ref", "planned_count", "days_per_book", "hero_image", "hero_tone", "map",
 )
 SERIES_TRANSLATION_FIELDS = ("title", "description", "tagline", "verse_text", "verse_ref")
 # No `word_count`: `Chapter.save()` derives it from body_html, so passing the

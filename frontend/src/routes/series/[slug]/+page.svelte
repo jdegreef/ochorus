@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte';
 	import * as m from '$lib/paraglide/messages.js';
 	import { toBookTile, type SeriesDetail } from '$lib/library-public';
-	import { bookProgressReader } from '$lib/progress';
+	import { bookProgressReader, getProgressRecord } from '$lib/progress';
+	import { furthestOf } from '$lib/reading-schema';
 	import { chapterCount, contentLang, readingTime } from '$lib/reading';
 	import {
 		nextInSeries,
@@ -13,7 +14,9 @@
 		volumeName,
 		volumesToCome,
 		numeral,
-		volumeLabel
+		volumeLabel,
+		resumePoint,
+		dailyProgress
 	} from '$lib/series';
 	import { assetUrl } from '$lib/assetUrl';
 	import { localeName } from '$lib/lang.svelte';
@@ -21,8 +24,9 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
-	import { shareCard } from '$lib/coverArt';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangFor, pickQa, toQa } from '$lib/seo';
+	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
+	import { seriesCardUrl } from '$lib/seriesCard';
 	import { localizeHref } from '$lib/href';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
@@ -30,6 +34,10 @@
 	import SeriesVolumes from '$lib/components/SeriesVolumes.svelte';
 	import SeriesPeople from '$lib/components/SeriesPeople.svelte';
 	import SeriesMap from '$lib/components/SeriesMap.svelte';
+	import SeriesPlates from '$lib/components/SeriesPlates.svelte';
+	import SeriesDay from '$lib/components/SeriesDay.svelte';
+	import SeriesSegments from '$lib/components/SeriesSegments.svelte';
+	import QandA from '$lib/components/QandA.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -59,24 +67,26 @@
 	onMount(() => {
 		progressed = true;
 	});
+	// One reader of the progress map, shared by the action, the meter and the rows.
+	const progressOf = $derived(progressed ? bookProgressReader() : null);
 	const next = $derived(
-		progressed
-			? nextInSeries(series.books, bookProgressReader())
+		progressOf
+			? nextInSeries(series.books, progressOf)
 			: series.books.length
 				? { book: series.books[0], resume: false }
 				: null
 	);
-	const readCount = $derived(
-		progressed ? seriesProgress(series.books.map((b) => b.slug), bookProgressReader()).done : 0
+	const progress = $derived(
+		progressOf ? seriesProgress(series.books.map((b) => b.slug), progressOf) : null
 	);
+	const readCount = $derived(progress?.done ?? 0);
 
 	const path = $derived(`/series/${series.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
 	const hreflang = $derived(hreflangFor(path, series.available_languages));
-	// The first volume's share card stands in for the series: it is the cover a
-	// reader meets first, and the series has no artwork of its own yet.
-	const share = $derived(series.books[0] ? shareCard(series.books[0]) : null);
-	const ogImage = $derived(absUrl(share?.url ?? '/og/books.png'));
+	// The series' own card, drawn into the build in this page's language
+	// (scripts/build-series-cards.mjs): its name, promise, count and covers.
+	const ogImage = $derived(absUrl(seriesCardUrl(series.slug, getLang())));
 	const description = $derived(
 		series.description || m.series_meta_default({ series: series.title })
 	);
@@ -152,8 +162,41 @@
 		return name ? `${head} · ${name}` : head;
 	});
 	const opening = $derived(series.opening ?? null);
-	const progressOf = $derived(progressed ? bookProgressReader() : null);
 	const current = $derived(next?.resume ? (next.book.series_position ?? null) : null);
+
+	// A returning reader: the head greets them with where they are — the
+	// chapter, what is left of the book, a segment per volume — and the button
+	// opens that chapter rather than the book page.
+	// The volume in focus: the one the head's button opens (being read, else
+	// the first unfinished), else Book 1; and the reader's record of it, read
+	// once for the welcome and the days.
+	const focus = $derived(next?.book ?? series.books[0]);
+	const focusRec = $derived(progressed && focus ? getProgressRecord(focus.slug) : null);
+	const resume = $derived(next?.resume ? resumePoint(next.book, focusRec) : null);
+	const stages = $derived(next?.resume ? (progress?.stages ?? []) : []);
+	const primaryHref = $derived(
+		next ? localizeHref(`/books/${next.book.slug}${resume ? `/${resume.order}` : ''}`) : ''
+	);
+
+	// Questions readers ask, answered from Book 1 (its own Q&A). Parents'
+	// wording for the young series. No FAQPage here: Book 1's own page already
+	// marks up these same questions, and one URL should carry them.
+	const qa = $derived(pickQa(toQa(series.qa), []).items);
+	const forParents = $derived(series.audience === 'young_readers' || series.audience === 'teens');
+
+	// A daily devotional's month, for the volume the reader is in (Book 1
+	// before they start).
+	const daily = $derived(series.daily ?? null);
+	const days = $derived(
+		daily && focus
+			? dailyProgress(
+					focusRec ? furthestOf(focusRec) : null,
+					daily.days,
+					!!progressOf?.(focus.slug).finished
+				)
+			: { read: 0, next: 1 }
+	);
+	const plates = $derived(series.plates ?? []);
 </script>
 
 <Seo
@@ -162,8 +205,9 @@
 	{canonical}
 	{hreflang}
 	{ogImage}
-	ogImageWidth={share?.width}
-	ogImageHeight={share?.height}
+	ogImageWidth={LANDSCAPE_WIDTH}
+	ogImageHeight={LANDSCAPE_HEIGHT}
+	ogImageAlt={series.title}
 	structuredData={[seriesLd, crumbsLd]}
 />
 
@@ -190,13 +234,34 @@
 						<cite>{verse.ref}</cite>
 					</p>
 				{/if}
-				{#if series.description}
+				{#if resume && next}
+					<div class="welcome">
+						<p class="eyebrow welcome-eyebrow">{t('series.welcomeBack')}</p>
+						<p class="welcome-where" dir="auto">
+							{volumeLabel(next.book.series_position, lang) || next.book.title}
+							· {t('book.chapterOf')
+								.replace('%n%', numeral(resume.order, lang))
+								.replace('%t%', numeral(resume.total, lang))}
+							{#if resume.title}· <span class="welcome-chapter">{resume.title}</span>{/if}
+						</p>
+						<p class="text-small text-muted">
+							{resume.left === 1
+								? t('series.chaptersLeftOne')
+								: t('series.chaptersLeftMany').replace('%n%', numeral(resume.left, lang))}
+						</p>
+						{#if stages.length > 1}
+							<div class="welcome-segments">
+								<SeriesSegments {stages} label={seriesProgressLabel(readCount, count, lang)} />
+							</div>
+						{/if}
+					</div>
+				{:else if series.description}
 					<p class="series-desc" dir="auto">{series.description}</p>
 				{/if}
 				<p class="series-facts">{facts.join(' · ')}</p>
 				<div class="mt-5 flex flex-wrap items-center gap-3">
 					{#if next}
-						<a href={localizeHref(`/books/${next.book.slug}`)} class="btn btn-primary btn-solid">
+						<a href={primaryHref} class="btn btn-primary btn-solid">
 							<span dir="auto">{action}</span>
 						</a>
 					{:else}
@@ -272,6 +337,26 @@
 		{/if}
 	</section>
 
+	{#if daily && focus}
+		<SeriesDay
+			sample={daily.sample}
+			days={daily.days}
+			book={focus}
+			firstSlug={series.books[0].slug}
+			{lang}
+			read={days.read}
+			next={days.next}
+		/>
+	{/if}
+
+	{#if plates.length}
+		<section class="mt-12">
+			<h2 class="section-label mb-2">{t('series.platesHeading')}</h2>
+			<p class="mb-4 text-small text-muted">{t('series.platesNote')}</p>
+			<SeriesPlates {plates} books={series.books} {lang} />
+		</section>
+	{/if}
+
 	{#if series.map && series.ordered}
 		<section class="mt-12">
 			<h2 class="section-label mb-2">{t('series.mapHeading')}</h2>
@@ -293,6 +378,15 @@
 			<p class="mb-4 text-small text-muted">{t('series.peopleNote')}</p>
 			<SeriesPeople {people} books={series.books} seriesTitle={series.title} {lang} />
 		</section>
+	{/if}
+
+	{#if qa.length}
+		<QandA
+			items={qa}
+			title={forParents ? t('series.parentsHeading') : t('series.questionsHeading')}
+			headingClass="section-label"
+			hint={t('series.parentsNote')}
+		/>
 	{/if}
 
 	{#if data.others.length}
@@ -417,6 +511,33 @@
 		color: var(--muted);
 		font-size: var(--fs-small);
 		margin: 0;
+	}
+	.welcome {
+		display: grid;
+		gap: 0.25rem;
+		max-width: 36rem;
+		margin: 0 0 0.75rem;
+	}
+	.welcome p {
+		margin: 0;
+	}
+	.welcome-eyebrow {
+		color: var(--series-accent, var(--accent));
+	}
+	.series-head[data-tone='dark'] .welcome-eyebrow {
+		color: color-mix(in srgb, var(--series-accent) 45%, #f3d9a8); /* hex-ok: night band */
+	}
+	.welcome-where {
+		font-family: var(--font-display);
+		font-size: var(--fs-body);
+		color: var(--text);
+	}
+	.welcome-chapter {
+		font-style: italic;
+	}
+	.welcome-segments {
+		max-width: 18rem;
+		margin-top: 0.375rem;
 	}
 	.series-progress {
 		color: var(--muted);

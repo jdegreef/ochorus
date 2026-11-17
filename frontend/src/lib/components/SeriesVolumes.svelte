@@ -4,7 +4,10 @@
 	import { chapterCount, readingTime } from '$lib/reading';
 	import { volumeLabel, volumeName, type BookProgress } from '$lib/series';
 	import type { SeriesBook } from '$lib/library-public';
+	import { assetUrl } from '$lib/assetUrl';
+	import { API_BASE_URL } from '$lib/config';
 	import BookCover from './BookCover.svelte';
+	import Icon from './Icon.svelte';
 
 	/**
 	 * An ordered series' volumes as rows that pitch each book: the cover, its
@@ -50,6 +53,26 @@
 						.filter(Boolean)
 						.join(' · ')}
 				</p>
+				{#if book.pdf_url || book.epub_url}
+					<!-- The free downloads, marked up as the /for page's book list. -->
+					<p class="vol-dl">
+						{#if book.pdf_url}
+							<a class="btn btn-sm" href={assetUrl(book.pdf_url)} download title={t('book.pdfHint')}
+								><Icon name="download" size={14} /> PDF<span class="sr-only" dir="auto"> · {book.title}</span></a
+							>
+						{/if}
+						{#if book.epub_url}
+							<a
+								class="btn btn-sm"
+								href={`${API_BASE_URL}${book.epub_url}`}
+								download
+								rel="nofollow"
+								title={t('book.epubHint')}
+								><Icon name="book" size={14} /> EPUB<span class="sr-only" dir="auto"> · {book.title}</span></a
+							>
+						{/if}
+					</p>
+				{/if}
 			</div>
 			<div class="vol-act">
 				{#if p.finished}
@@ -126,6 +149,12 @@
 		color: var(--muted);
 		font-size: var(--fs-small);
 		margin: 0;
+	}
+	.vol-dl {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin: 0.625rem 0 0;
 	}
 	.vol-act {
 		justify-self: end;
