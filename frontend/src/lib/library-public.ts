@@ -447,9 +447,14 @@ export interface Chapter {
 	is_modern_edition: boolean;
 	/** A Modern English edition of this work exists (offer the toggle). */
 	has_modern_edition: boolean;
-	/** The book's published locales (en-modern excluded) — for hreflang on the
-	 * chapter page. Chapter counts match across a book's translations. */
+	/** The book's published locales (en-modern excluded). Chapter counts match
+	 * across a book's translations. */
 	available_languages: string[];
+	/** The subset whose chapter pages are offered to search — English plus
+	 * reviewed or native editions — and so the chapter page's hreflang
+	 * (`chapterHreflang`). Optional: an API behind this build omits it, and the
+	 * page then carries no hreflang, as before. */
+	indexed_languages?: string[];
 	prev: ChapterNav | null;
 	next: ChapterNav | null;
 	/**

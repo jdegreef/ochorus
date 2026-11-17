@@ -40,7 +40,10 @@ class ChapterBatchTests(TestCase):
                 body_html=f"<p>As Romans 8:28 says ({order}).</p>"
                 + ("<p>And Obadiah 1:3.</p>" if order == 1 else ""),
             )
-        Book.objects.create(author=author, slug="w", language="es", title="Una obra")
+        Book.objects.create(
+            author=author, slug="w", language="es", title="Una obra",
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
         Book.objects.create(
             author=author, slug="w", language=MODERN_LANGUAGE, title="A Work"
         )
@@ -64,6 +67,9 @@ class ChapterBatchTests(TestCase):
         self.assertIsNone(first["prev"])
         self.assertEqual(first["next"]["order"], 2)
         self.assertEqual(first["available_languages"], ["en", "es"])
+        # The Spanish edition is an unreviewed AI translation: published, but
+        # its chapters are not offered to search (no hreflang to them).
+        self.assertEqual(first["indexed_languages"], ["en"])
         self.assertTrue(first["has_modern_edition"])
         self.assertIn('href="/scripture/romans/8/28/"', first["body_html"])
         self.assertTrue(any(r["page"] for r in first["scripture_refs"]))
@@ -145,3 +151,26 @@ class ChapterBatchTests(TestCase):
             Chapter.objects.create(book=self.book, order=order, title="", body_html="<p>x</p>")
         with self.assertNumQueries(7):
             self._batch("?language=en&limit=20")
+
+
+class IndexedLanguagesTests(TestCase):
+    """`indexed_languages`: English plus the reviewed or native editions."""
+
+    def test_a_reviewed_or_native_edition_is_indexed_an_unreviewed_one_is_not(self):
+        author = Author.objects.create(slug="p", name="Pascal")
+        en = Book.objects.create(author=author, slug="x", language="en", title="X")
+        Chapter.objects.create(book=en, order=1, title="One", body_html="<p>a</p>")
+        for lang, source in [
+            ("es", Book.SourceType.AI_REVIEWED),
+            ("fr", Book.SourceType.PUBLIC_DOMAIN),
+            ("sw", Book.SourceType.AI_UNREVIEWED),
+        ]:
+            Book.objects.create(author=author, slug="x", language=lang, title="X", source_type=source)
+        Book.objects.create(
+            author=author, slug="x", language="pt", title="X",
+            source_type=Book.SourceType.AI_REVIEWED, is_published=False,
+        )
+        res = APIClient().get("/api/library/books/x/chapters/1/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["indexed_languages"], ["en", "es", "fr"])
+        self.assertEqual(res.data["available_languages"], ["en", "es", "fr", "sw"])

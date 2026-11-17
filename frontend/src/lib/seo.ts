@@ -151,6 +151,19 @@ export function hreflangExact(path: string, available: string[]): Hreflang | nul
 }
 
 /**
+ * A chapter page's hreflang: the editions whose chapters are offered to search
+ * (`indexed`, the API's English + reviewed/native editions) — or `null`. Null
+ * when THIS page's edition is not among them (an unreviewed translation must
+ * not claim, or be claimed by, an alternate set), and when it would name only
+ * itself.
+ */
+export function chapterHreflang(path: string, indexed: string[], pageLang: string): Hreflang | null {
+	const langs = ADVERTISED_LOCALES.filter((l) => indexed.includes(l));
+	if (langs.length < 2 || !(langs as readonly string[]).includes(pageLang)) return null;
+	return hreflangFor(path, langs);
+}
+
+/**
  * hreflang alternates for a page that exists in every ADVERTISED locale — an
  * author or a topic, which render via a bio/name fallback rather than needing
  * their own translation.

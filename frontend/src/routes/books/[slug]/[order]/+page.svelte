@@ -84,7 +84,19 @@
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
 	import FootFeedback from '$lib/components/FootFeedback.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumbLd, truncateMeta, absUrl, publisherLd, PUBLIC_DOMAIN_MARK, CC0, bookId, personId, toQa } from '$lib/seo';
+	import {
+		jsonLd,
+		breadcrumbLd,
+		truncateMeta,
+		absUrl,
+		publisherLd,
+		PUBLIC_DOMAIN_MARK,
+		CC0,
+		bookId,
+		personId,
+		toQa,
+		chapterHreflang
+	} from '$lib/seo';
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH, coverVariants, landscapeUrl, shareImage } from '$lib/coverArt';
 	import { baseEdition, bookChapterPath, modernChapterPath } from '$lib/reading-schema';
 	import { localizeHref } from '$lib/href';
@@ -151,11 +163,11 @@
 	const t = i18n.t;
 
 	// --- SEO head (this page prerenders — see +page.ts) -------------------------
-	// Self-referential canonical, and NO hreflang. Only English chapters are
-	// offered to search engines: the translated chapters are unreviewed AI text,
-	// which they are kept out of the sitemap for too (see `$lib/sitemap`), and an
-	// alternate pointing at one would advertise it all the same. The book pages
-	// still carry their alternates.
+	// Self-referential canonical. hreflang only among the editions offered to
+	// search — English and reviewed or native ones (`indexed_languages`, the same
+	// rule as the sitemap's `advertisesChapters`): an unreviewed AI translation
+	// is neither an alternate nor given any. Not on a fallback page or the
+	// Modern edition, whose canonical is elsewhere.
 	// A missing edition renders the English one (see languageFallback). The
 	// canonical follows it always; the notice not in the Modern edition, where
 	// English is what the reader asked for.
@@ -170,6 +182,11 @@
 	);
 	const canonical = $derived(
 		edition === 'modern' ? absUrl(modernChapterPath(slug, chapter.order)) : seo.canonical
+	);
+	const headHreflang = $derived(
+		edition || shownElsewhere
+			? null
+			: chapterHreflang(`/books/${slug}/${chapter.order}/`, chapter.indexed_languages ?? [], language)
 	);
 
 	// One trail feeds both the visible <Breadcrumb> and the JSON-LD (the reader
@@ -2023,7 +2040,7 @@
 	title={titleTag}
 	description={metaText}
 	{canonical}
-	hreflang={null}
+	hreflang={headHreflang}
 	ogType="article"
 	{ogImage}
 	ogImageWidth={LANDSCAPE_WIDTH}
