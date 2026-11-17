@@ -30,5 +30,11 @@
    "question": "Which translation of the Bible is this?",
    "answer": "The Open Word Bible, a new translation made directly from the Greek and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. It gives distances and measures in modern units, with the original measures available in the Open Word Bible itself. The reasoning behind each of its sentences, with the Greek beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
   }
- ]
+ ],
+ "overview": {
+  "author": "John, traditionally the apostle",
+  "date": "c. AD 95",
+  "key_verse": "Revelation 21:5",
+  "theme": "Christ reigns, and will return to make all things new."
+ }
 }

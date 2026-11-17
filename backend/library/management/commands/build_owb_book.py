@@ -57,7 +57,9 @@ Footnotes, the Literal and Readable levels and the other languages are not
 carried (yet). Quotation marks are curled the house way.
 
 EDITORIAL lives beside the command in `library/data/owb/<CODE>/`: `book.json`
-(slug, title, description, Q&A), `introduction.html` and `conclusion.html`.
+(slug, title, description, Q&A, and the book page's `overview` card, which
+`library/bible_overview.py` reads at serialize time rather than this command),
+`introduction.html` and `conclusion.html`.
 Both are Ochorus's own writing, deliberately not OWB's shorter
 `data/intros/<CODE>.md`: longer, a reader's guide to the book's shape and
 meaning, and the conclusion points into the library. `{{OWB:<record id>}}` in

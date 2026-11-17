@@ -1910,6 +1910,20 @@ class BookDetailSerializer(BookListSerializer):
         books = companion_books(obj.series_position, obj.language)
         return BookListSerializer(books, many=True, context=self.context).data if books else []
 
+    # A book of the Bible: its overview card — traditional author, date, key
+    # verse quoted live from the bundled Open Word Bible, theme
+    # (library/bible_overview.py). Null on every other book and every other
+    # language: the editorial is English, as the Bible books are.
+    bible_overview = serializers.SerializerMethodField()
+
+    def get_bible_overview(self, obj) -> dict | None:
+        from .bible_overview import overview
+        from .bible_sermons import BIBLE_SERIES
+
+        if obj.language != "en" or obj.series_id is None or obj.series.slug != BIBLE_SERIES:
+            return None
+        return overview(obj.slug)
+
     def get_daily(self, obj) -> bool:
         return obj.slug in DATED_BOOKS
 
@@ -2016,6 +2030,7 @@ class BookDetailSerializer(BookListSerializer):
             "daily_plan",
             "bible_sermons",
             "read_alongside",
+            "bible_overview",
         ]
 
     def get_public_domain(self, obj) -> bool:
