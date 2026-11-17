@@ -1,0 +1,1277 @@
+{
+ "kind": "book",
+ "slug": "the-bruised-reed",
+ "language": "en-modern",
+ "references": [
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "2 Corinthians 5:19",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Luke 15:17",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 26:35",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 32:3",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 51:8",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 38:13",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 61:1",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 9:36",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 9:6",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Hebrews 2:18",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Timothy 2:5",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Acts 9:4",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Luke 19:27",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 9:20",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Luke 2:10",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Philippians 4:4",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 14:27",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Genesis 34:25",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 66:2",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Romans 10:15",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 58:5",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "James 5:14",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 103:14",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Peter 4:19",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Exodus 23:19",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Corinthians 9:9",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Hosea 14:3",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Ezekiel 34:16",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 40:11",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Mark 16:7",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 17:20",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 53:2",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Zechariah 4:10",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Micah 5:2",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 2:6",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Haggai 2:9",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 34:18",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 31:22",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 8:25",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Jonah 2:4",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 65:8",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "John 20:27",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Luke 24:21",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 8:2",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 65:2",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 57:16",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Romans 15:1",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Corinthians 9:22",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Acts 26:27",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 9:17",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Revelation 2:4",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 18:6",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 50:4",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Genesis 33:14",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Peter 3:7",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Zechariah 13:9",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 48:10",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Corinthians 4:1",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Thessalonians 2:7",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 11:12",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 23:15",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Romans 14:1",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 40:1",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 58:1",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Revelation 2:2",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Jeremiah 48:10",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Proverbs 8:12",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "2 Corinthians 2:7",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Corinthians 3:17",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "James 3:1",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "2 Corinthians 10:4",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Luke 15:19",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Revelation 12:10",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "2 Peter 1:1",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Leviticus 12:8",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Deuteronomy 6:5",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Romans 7:22",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 8:20",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "2 Timothy 1:7",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 50:11",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 18:28",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Revelation 3:8",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Samuel 25:32",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Romans 7:13",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 119:5",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Proverbs 27:19",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 73:22",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 4:10",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 38:9",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Jonah 2:1",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "James 5:17",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 50:15",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Revelation 8:3",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Philippians 3:14",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Kings 14:13",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "John 3:8",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 37:24",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "2 Chronicles 30:18",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Romans 7:17",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 145:19",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 103:13",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Hebrews 11:31",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 78:39",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Hosea 2:19",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 50:21",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 4:6",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "John 17:6",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 10:17",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 50:10",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 25:30",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 2:9",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Jeremiah 51:9",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 23:37",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Proverbs 1:26",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 27:11",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Proverbs 1:31",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:19",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Ecclesiastes 4:9",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Luke 24:32",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Chronicles 22:16",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Revelation 1:10",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Timothy 4:7",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Proverbs 10:26",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Zephaniah 2:3",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Philippians 2:1",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Romans 14:22",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Colossians 3:15",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Corinthians 3:3",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "James 3:17",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "John 17:21",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 109:16",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "John 21:15",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 72:1",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Jeremiah 31:33",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 4:4",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Corinthians 3:13",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Revelation 6:2",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Revelation 19:11",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Acts 3:26",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Romans 14:9",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Luke 1:74",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Luke 7:35",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Corinthians 2:15",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "2 Peter 2:12",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Colossians 3:11",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Hebrews 11:25",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 84:10",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Joshua 24:15",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "John 16:8",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Luke 10:18",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Colossians 1:13",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "2 Timothy 3:9",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 6:22",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Malachi 1:13",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Luke 10:27",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Luke 10:42",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 11:2",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 122:3",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Philippians 1:9",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Galatians 6:16",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Proverbs 19:16",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Romans 9:5",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Peter 1:23",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 25:29",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Joshua 10:25",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Luke 1:33",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Daniel 2:35",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 59:11",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Genesis 32:24",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Luke 10:20",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Song of Songs 8:6",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Kings 18:38",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Revelation 12:1",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 John 5:4",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "2 Corinthians 13:8",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 19:22",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "James 4:7",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 John 4:4",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "2 Timothy 3:15",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Proverbs 1:17",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "2 Thessalonians 2:10",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 John 5:18",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "James 4:8",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Acts 11:23",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Chronicles 29:18",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 86:11",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Judges 20:26",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 2:12",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Judges 5:23",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 3:11",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "2 Thessalonians 1:10",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 13:43",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 37:6",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Romans 8:19",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Revelation 11:15",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 10:26",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Revelation 11:11",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Revelation 19:16",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Job 9:4",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 76:10",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 5:20",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Genesis 3:13",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Ephesians 6:10",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Revelation 12:11",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 144:1",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Matthew 26:69",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Judges 16:17",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "2 Chronicles 20:12",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Philippians 2:12",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Ephesians 1:19",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Isaiah 42:3",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Daniel 5:6",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Romans 8:6",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Corinthians 4:3",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Corinthians 6:2",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 110:2",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Luke 2:34",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Ephesians 6:16",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Judges 9:54",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 110:1",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Revelation 18:8",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Revelation 14:1",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Genesis 9:27",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Romans 11:25",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Psalms 2:8",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "John 10:16",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "1 Corinthians 15:24",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  },
+  {
+   "reference": "Exodus 14:13",
+   "status": "mined",
+   "source_file": "the-bruised-reed.en.json"
+  }
+ ]
+}
