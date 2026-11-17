@@ -8,8 +8,8 @@
  * PARALLEL_CARDS=1 (CI sets it), as three lanes at once — the order inside a
  * lane is the only order that matters:
  *
- *   share → plan     the plan card's shelf is made of the share cards'
- *                    `/og/covers/` files, and skips any not written yet
+ *   share → plan → series   the plan and series cards' shelves are made of
+ *                    the share cards' `/og/covers/` files, and skip any not written yet
  *   verse            reads only the built pages and the static `/covers/`
  *   author → quote   likewise; kept in their old order
  *
@@ -32,7 +32,7 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const buildDir = process.argv[2] ?? 'build';
 
 const LANES = [
-	['build-share-cards', 'build-plan-cards'],
+	['build-share-cards', 'build-plan-cards', 'build-series-cards'],
 	['build-verse-cards'],
 	['build-author-cards', 'build-quote-cards']
 ];
@@ -42,7 +42,8 @@ const SEQUENTIAL = [
 	'build-verse-cards',
 	'build-author-cards',
 	'build-quote-cards',
-	'build-plan-cards'
+	'build-plan-cards',
+	'build-series-cards'
 ];
 
 function run(script) {

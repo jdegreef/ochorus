@@ -459,6 +459,12 @@ class Series(models.Model):
     # come (The Lamplighters: "the first of six books"). Null = no plan stated,
     # and the page says nothing about volumes to come — never guessed.
     planned_count = models.PositiveSmallIntegerField(null=True, blank=True)
+    # A daily devotional (Rooted, Daughters of the King): each volume is an
+    # introduction (chapter 1), then one chapter a day for this many days, so
+    # chapter n + 1 is day n and a reader's furthest chapter is the day they
+    # have reached. Null = not a daily series. Drives the series page's
+    # sample day and its calendar of days.
+    days_per_book = models.PositiveSmallIntegerField(null=True, blank=True)
 
     class HeroTone(models.TextChoices):
         """Which way the hero's type reads over ``hero_image``."""
