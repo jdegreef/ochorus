@@ -265,6 +265,7 @@
 			<nav class="footer-legal footer-links" aria-label={t('footer.aboutHeading')}>
 				<a href={localizeHref('/about')}>{t('nav.about')}</a>
 				<a href={localizeHref('/contact')}>{t('nav.contact')}</a>
+				<a href={localizeHref('/editorial')}>{t('footer.editorial')}</a>
 				<a href="{localizeHref('/legal')}#privacy">{t('footer.legal')}</a>
 				{#if auth.enabled}
 					{#if auth.user}

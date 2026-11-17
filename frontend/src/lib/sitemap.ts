@@ -491,7 +491,8 @@ async function build(): Promise<SitemapData> {
 		'/biographies',
 		'/about',
 		'/contact',
-		'/legal'
+		'/legal',
+		'/editorial'
 		// Never an app-only path (search, account, admin): those are noindexed or
 		// disallowed ($lib/robots), and advertising one is a Search Console error.
 	].filter((p) => !(APP_ONLY as readonly string[]).includes(p))) {
