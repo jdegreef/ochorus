@@ -8,8 +8,8 @@ import { ADVERTISED_LOCALES } from '$lib/advertised-locales';
  * Ochorus as publisher resolve to the same entity (and the home page's
  * WebSite points at it) instead of a dozen unlinked "Organization: Ochorus"
  * strings. Carried in full wherever it is used, since an `@id` only resolves
- * within a page. No `sameAs`: the organisation has no profiles elsewhere yet —
- * add them here when it does, and every page gains them.
+ * within a page. The fuller entity (sameAs, address, founding) is
+ * `organizationLd()` below, on the home and About pages.
  */
 export const ORG_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -25,6 +25,40 @@ export const publisherLd = () => ({
 		width: 512,
 		height: 512
 	}
+});
+
+/**
+ * Profiles of the organisation elsewhere — its Wikidata item first, then
+ * social accounts — as the Organization's `sameAs`. Empty until they exist:
+ * an Ochorus Wikidata item is a founder step (docs/wikidata.md). Add a URL
+ * here and the home and About pages carry it.
+ */
+export const ORG_SAME_AS: string[] = [];
+
+/**
+ * The organisation in full: `publisherLd()` plus the facts that make it an
+ * entity an answer engine can describe — what it is, when it was founded,
+ * where it is, which languages it serves, how to reach it. Carried on the
+ * home and About pages only; every other page names it by `@id` through
+ * `publisherLd()`, which stays light because it rides on every page.
+ */
+export const organizationLd = (description: string, contactEmail: string) => ({
+	...publisherLd(),
+	description,
+	foundingDate: '2021',
+	address: [
+		{
+			'@type': 'PostalAddress',
+			addressLocality: 'Victoria',
+			addressRegion: 'BC',
+			addressCountry: 'CA'
+		},
+		{ '@type': 'PostalAddress', addressLocality: 'Kampala', addressCountry: 'UG' }
+	],
+	areaServed: 'Worldwide',
+	knowsLanguage: [...ADVERTISED_LOCALES],
+	email: contactEmail,
+	...(ORG_SAME_AS.length ? { sameAs: ORG_SAME_AS } : {})
 });
 
 /** The Public Domain Mark — a public-domain work's `license` in JSON-LD. The
@@ -114,6 +148,19 @@ export function hreflangFor(path: string, available: string[]): Hreflang {
  */
 export function hreflangExact(path: string, available: string[]): Hreflang | null {
 	return ADVERTISED_LOCALES.some((l) => available.includes(l)) ? hreflangFor(path, available) : null;
+}
+
+/**
+ * A chapter page's hreflang: the editions whose chapters are offered to search
+ * (`indexed`, the API's English + reviewed/native editions) — or `null`. Null
+ * when THIS page's edition is not among them (an unreviewed translation must
+ * not claim, or be claimed by, an alternate set), and when it would name only
+ * itself.
+ */
+export function chapterHreflang(path: string, indexed: string[], pageLang: string): Hreflang | null {
+	const langs = ADVERTISED_LOCALES.filter((l) => indexed.includes(l));
+	if (langs.length < 2 || !(langs as readonly string[]).includes(pageLang)) return null;
+	return hreflangFor(path, langs);
 }
 
 /**

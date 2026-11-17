@@ -674,6 +674,20 @@ class StoredSearchVectorTests(TestCase):
         hits = [h for h in self._search("running") if h["type"] == "sermon"]
         self.assertTrue(hits)
 
+    def test_arabic_config_stems(self):
+        # The body says المؤمنين (believers, genitive); a reader types the
+        # nominative المؤمنون. `simple` indexes each as its own word and misses;
+        # the `arabic` config reduces both to the same stem.
+        book = Book.objects.create(
+            author=self.author, slug="perfection", language="ar", title="الكمال المسيحي",
+        )
+        Chapter.objects.create(
+            book=book, order=1, title="صلاة",
+            body_html="<p>صلاة المؤمنين ترفع القلب إلى الله.</p>",
+        )
+        hits = [h for h in self._search("المؤمنون", "ar") if h["type"] == "chapter"]
+        self.assertTrue(hits)
+
     def test_backfill_covers_fixture_loaded_rows(self):
 
         # bulk_create bypasses save(), like loaddata does on deploy.

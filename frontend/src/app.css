@@ -1032,6 +1032,16 @@
 		padding: 0.35rem 0.65rem;
 		font-size: var(--fs-small);
 	}
+	/* Large button — the one conversion ask (the home sign-up band's `covers`
+	   arm), where the default size read as a chip at the end of a wide band.
+	   min-height, not a fixed height, so a long label (Ukrainian runs to 37
+	   characters) wraps to a second line instead of overflowing. */
+	.btn-lg {
+		min-height: 3.25rem;
+		padding: 0.75rem 1.5rem;
+		border-radius: var(--radius-card);
+		box-shadow: var(--shadow-card);
+	}
 	/* Square icon button: an icon, no label, equal sides. */
 	.btn-icon {
 		padding: 0.4rem;

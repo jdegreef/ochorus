@@ -1024,6 +1024,194 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    5: {
+        "slug": "the-midsummer-flame",
+        "publication_year": 2026,
+        "title": "The Midsummer Flame",
+        "subtitle": "The Lamplighters of Gloamhaven, Book Five",
+        "cover_byline": "James DeGreef",
+        "attribution": (
+            "© James DeGreef and Ochorus. An Ochorus Original, written for young "
+            "readers, free to read and share. Book 5 of The Lamplighters of Gloamhaven."
+        ),
+        "cover_url": "/covers/art/the-midsummer-flame.jpg",  # ORIGINAL_GROUND
+        "cover_color": covers.ink_safe("#8a5a1e"),  # amber of a flame at midsummer
+        "description": (
+            "The Lampwright has gone up the Bright Mountain, and the company has "
+            "been told to wait. On Midsummer morning a warm wind comes down off "
+            "the hills and a flame rests on every one of them, and on everyone "
+            "they give it to after. Wren carries it home to Emberwick, where "
+            "Guild Master Prowle has made himself Lord Steward and charges a "
+            "silver crown to light a lamp. Then the Grey Captain comes to "
+            "Harrowgate blind, asking for help, and Wren learns his real name, "
+            "and who it was he carried away from the North Wall eight years ago."
+        ),
+        "about_html": (
+            "<p>The Midsummer Flame is the fifth book of The Lamplighters of "
+            "Gloamhaven, an adventure series by James DeGreef and Ochorus for "
+            "readers aged nine to twelve. It follows on from The Hill of Cinders, "
+            "and is best read after the first four books.</p>"
+            "<p>This is the book of the gift given away: a flame that cannot be "
+            "bought, a city learning to light its neighbours' lamps, and an enemy "
+            "who turns out to have a name. It is about waiting, about courage that "
+            "spreads from one person to the next, and about the hardest "
+            "forgiveness in the whole series. Like the books before it, it never "
+            "preaches; it lets the story speak for itself, for children to "
+            "discover and for parents to talk about.</p>"
+            "<p>The book has fifteen chapters, about the length of a classic "
+            "children's fantasy, each one a good evening's reading.</p>"
+            "<p>© James DeGreef and Ochorus. An Ochorus Original, free to read and share.</p>"
+        ),
+        "qa": [
+            {
+                "question": "Do I need to read the first four books first?",
+                "answer": (
+                    "Yes. The Midsummer Flame carries straight on from The Hill of "
+                    "Cinders, and it pays off promises the earlier books make, "
+                    "above all about the Grey Captain and Wren's parents."
+                ),
+            },
+            {
+                "question": "What age is The Midsummer Flame for?",
+                "answer": (
+                    "Readers aged nine to twelve. It has real danger, a siege and "
+                    "a long stay in a cell, told without anything gory, and a "
+                    "great deal of humour."
+                ),
+            },
+            {
+                "question": "What is the Midsummer Flame?",
+                "answer": (
+                    "On Midsummer morning a warm wind comes and a small flame rests "
+                    "on each of the waiting company. It is the lamp's fire, given "
+                    "to every one of them, and it can be given on again to anyone "
+                    "who asks, without cost."
+                ),
+            },
+            {
+                "question": "Who is Aren?",
+                "answer": (
+                    "The real name of Captain Varrick, the Queen's Grey Captain. "
+                    "Thirty years ago he was Old Ash's apprentice on Emberwick's "
+                    "wall. The book tells how he lost his name and how he is "
+                    "given it back."
+                ),
+            },
+            {
+                "question": "Is it a Christian book?",
+                "answer": (
+                    "Yes. Like the classic Christian fantasies, it tells its truths "
+                    "as story rather than sermon: a gift poured out on ordinary "
+                    "people, a man who tries to buy it, an enemy turned round on "
+                    "the road. It never names God or preaches."
+                ),
+            },
+            {
+                "question": "How long is the book?",
+                "answer": (
+                    "Fifteen chapters and about fifty-one thousand words, much the "
+                    "length of a classic children's fantasy."
+                ),
+            },
+        ],
+    },
+    6: {
+        "slug": "morning-comes",
+        "publication_year": 2026,
+        "title": "Morning Comes",
+        "subtitle": "The Lamplighters of Gloamhaven, Book Six",
+        "cover_byline": "James DeGreef",
+        "attribution": (
+            "© James DeGreef and Ochorus. An Ochorus Original, written for young "
+            "readers, free to read and share. Book 6 of The Lamplighters of Gloamhaven."
+        ),
+        "cover_url": "/covers/art/morning-comes.jpg",  # ORIGINAL_GROUND
+        "cover_color": covers.ink_safe("#a8742a"),  # first gold over the mountain
+        "description": (
+            "The last book of the series. Wren, Tobin, Mira and Aren sail into "
+            "the Sunless Sea, where no boat has gone for three hundred years, to "
+            "Nightfall Spire: the Umbral Queen's tower, where the greyed stand "
+            "in silent halls, where Tobin's father waits in a cell, and where "
+            "Ardric, the king who sold the sun, sits on a throne and cannot die. "
+            "What the Queen took must be given back, and what Ardric holds can "
+            "only be let go. Then the long night comes down over Gloamhaven, and "
+            "the road runs north to the Bright Mountain, and morning."
+        ),
+        "about_html": (
+            "<p>Morning Comes is the sixth and last book of The Lamplighters of "
+            "Gloamhaven, an adventure series by James DeGreef and Ochorus for "
+            "readers aged nine to twelve. It follows on from The Midsummer Flame, "
+            "and is best read after the first five books.</p>"
+            "<p>This is the book of the ending. Every promise the series makes is "
+            "kept: lost parents found, an old friend not lost but waiting, a "
+            "song finished, the sun golden again. It is about letting go of what "
+            "we grasp, about carrying the light until morning, and about the "
+            "morning itself, when everything is made new. Like the books before "
+            "it, it never preaches; it lets the story speak for itself, for "
+            "children to discover and for parents to talk about.</p>"
+            "<p>The book has fifteen chapters, about the length of a classic "
+            "children's fantasy, each one a good evening's reading.</p>"
+            "<p>© James DeGreef and Ochorus. An Ochorus Original, free to read and share.</p>"
+        ),
+        "qa": [
+            {
+                "question": "Is Morning Comes the last book?",
+                "answer": (
+                    "Yes. It is the sixth and final book of The Lamplighters of "
+                    "Gloamhaven, and it brings every thread of the series home."
+                ),
+            },
+            {
+                "question": "Do I need to read the first five books first?",
+                "answer": (
+                    "Yes. Morning Comes carries straight on from The Midsummer "
+                    "Flame, and its biggest moments answer questions the series "
+                    "has asked since its first chapter."
+                ),
+            },
+            {
+                "question": "What age is Morning Comes for?",
+                "answer": (
+                    "Readers aged nine to twelve. It has real danger and one "
+                    "gentle death, told without anything gory, and it ends in "
+                    "great joy."
+                ),
+            },
+            {
+                "question": "Who is Ardric?",
+                "answer": (
+                    "The king who, three hundred years ago, bargained the sun's "
+                    "fire out of the sky on the Bright Mountain. He has kept it in "
+                    "his crown ever since and cannot die. The book tells how he "
+                    "lets it go."
+                ),
+            },
+            {
+                "question": "Does Wren find her parents?",
+                "answer": (
+                    "Yes. Tam and Linnet Ashby, taken from Emberwick's wall when "
+                    "Wren was four, are found in the Queen's tower, and at last "
+                    "Wren hears the rest of her mother's song."
+                ),
+            },
+            {
+                "question": "Is it a Christian book?",
+                "answer": (
+                    "Yes. Like the classic Christian fantasies, it tells its truths "
+                    "as story rather than sermon: a long night, a return no one can "
+                    "earn, and a morning in which all things are made new. It never "
+                    "names God or preaches."
+                ),
+            },
+            {
+                "question": "How long is the book?",
+                "answer": (
+                    "Fifteen chapters and about fifty-six thousand words, much the "
+                    "length of a classic children's fantasy."
+                ),
+            },
+        ],
+    },
 }
 
 

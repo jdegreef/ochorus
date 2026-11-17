@@ -447,9 +447,14 @@ export interface Chapter {
 	is_modern_edition: boolean;
 	/** A Modern English edition of this work exists (offer the toggle). */
 	has_modern_edition: boolean;
-	/** The book's published locales (en-modern excluded) — for hreflang on the
-	 * chapter page. Chapter counts match across a book's translations. */
+	/** The book's published locales (en-modern excluded). Chapter counts match
+	 * across a book's translations. */
 	available_languages: string[];
+	/** The subset whose chapter pages are offered to search — English plus
+	 * reviewed or native editions — and so the chapter page's hreflang
+	 * (`chapterHreflang`). Optional: an API behind this build omits it, and the
+	 * page then carries no hreflang, as before. */
+	indexed_languages?: string[];
 	prev: ChapterNav | null;
 	next: ChapterNav | null;
 	/**
@@ -1277,6 +1282,9 @@ export interface Article extends ArticleSummary {
 	 *  `/scripture/…` pages where one exists — the same pair a sermon carries. */
 	scripture_refs?: string[];
 	scripture_links?: Record<string, string>;
+	/** Answer-first Questions and Answers (plain text), drawn from the body.
+	 *  Optional: an API running behind this build omits it. */
+	qa?: { question: string; answer: string }[];
 }
 
 export const listArticles = (language = 'en', f?: Fetch) =>
@@ -1650,9 +1658,33 @@ export interface SeriesSummary extends SeriesFor {
 	chapter_words?: number | null;
 	/** Languages the series has a page in; the index's hreflang is their union. */
 	languages: string[];
+	/** The series page's promise line and art, for the card ("" / null = none). */
+	tagline?: string;
+	hero?: { image: string; tone: 'dark' | 'light' } | null;
 }
 
-/** One series page: see `SeriesDetailView` in the API. */
+/** A volume on its series page: the shelf card plus the blurb its row pitches
+ *  it with. Optional: an API behind this build omits it, and the row draws
+ *  only the hook. */
+export interface SeriesBook extends BookSummary {
+	description?: string;
+	/** Free downloads: a PDF URL and the API path of the EPUB ("" = none). */
+	pdf_url?: string;
+	epub_url?: string;
+	/** Chapter titles in order — the chapter a returning reader is on. */
+	toc?: string[];
+}
+
+/** A volume's place on a series' map, in percent of the image. */
+export interface SeriesMapMarker {
+	position: number;
+	x: number;
+	y: number;
+}
+
+/** One series page: see `SeriesDetailView` in the API. Everything after
+ *  `available_languages` is the selling head (2026-11) and is optional: an API
+ *  behind this build omits it, and the page draws the plain head. */
 export interface SeriesDetail extends SeriesFor {
 	slug: string;
 	/** Name and description in the requested language (no English fallback). */
@@ -1660,18 +1692,63 @@ export interface SeriesDetail extends SeriesFor {
 	description: string;
 	/** False for a collection (no volume numbers, no reading order). */
 	ordered: boolean;
+	/** Ordered and short enough (≤ 12) to pitch one row per volume, with its
+	 *  blurb; otherwise the page keeps the cover grid. */
+	pitched?: boolean;
 	/** Its published books in this language, in volume order. */
-	books: BookSummary[];
+	books: SeriesBook[];
 	/** Languages the series has a page in — for hreflang. */
 	available_languages: string[];
+	/** One line that promises what the series is; "" where it has none here. */
+	tagline?: string;
+	/** The verse the series is built on, in this language; null without one. */
+	verse?: { text: string; ref: string } | null;
+	/** Wordless art behind the head and which way its type reads. */
+	hero?: { image: string; tone: 'dark' | 'light' } | null;
+	/** Volumes planned in all, when more are to come; null when not stated. */
+	planned_count?: number | null;
+	/** A map of the series' world with each volume's place on it. */
+	map?: { image: string; markers: SeriesMapMarker[] } | null;
+	/** Volume one's first paragraph of prose and the chapter it opens. */
+	opening?: { text: string; chapter: string; order: number } | null;
+	/** The real people the volumes tell, one face per story chapter. */
+	people?: HubPerson[];
+	/** The pictures inside the books, one per chapter (Lamplighters). */
+	plates?: SeriesPlate[];
+	/** Book 1's own questions and answers, lifted to the series. */
+	qa?: { question: string; answer: string }[];
+	/** A daily devotional's shape: days per volume, and Book 1's Day 1 in its
+	 *  parts (null where that day did not split). Null for other series. */
+	daily?: { days: number; sample: SampleDay | null } | null;
+}
+
+/** One plate on a series page: the picture, and the chapter it opens. */
+export interface SeriesPlate {
+	src: string;
+	alt: string;
+	book: string;
+	order: number;
+	chapter: string;
+}
+
+/** One day of a daily series, as its parts — each in the book's own words,
+ *  prompt labels included ("Think about it", "Piénsalo"). */
+export interface SampleDay {
+	title: string;
+	order: number;
+	words: number;
+	verse: { text: string; ref: string };
+	teaching: string;
+	prompts: { label: string; text: string }[];
+	prayer: string;
 }
 
 export const listSeries = (language = 'en', f?: Fetch) =>
 	apiFetch<SeriesSummary[]>(`/api/library/series/?language=${language}`, {}, f);
 
 /** No English fallback, like `getTopic`: a series with no page here 404s. */
-export const getSeries = (slug: string, language = 'en') =>
-	apiFetch<SeriesDetail>(`/api/library/series/${slug}/?language=${language}`);
+export const getSeries = (slug: string, language = 'en', f?: Fetch) =>
+	apiFetch<SeriesDetail>(`/api/library/series/${slug}/?language=${language}`, {}, f);
 
 /** The two audiences with a hub of their own — /young-readers/ and /teens/. */
 export type HubAudience = Exclude<SeriesAudience, 'adults'>;

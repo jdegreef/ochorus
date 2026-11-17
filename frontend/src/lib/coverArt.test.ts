@@ -5,6 +5,8 @@ import { allBookRows } from '../test/bookRows';
 
 import {
 	COVER_WIDTHS,
+	WASH_WIDTH,
+	coverWash,
 	LANDSCAPE_HEIGHT,
 	LANDSCAPE_WIDTH,
 	TWIN_HEIGHT,
@@ -115,6 +117,25 @@ describe('tintable', () => {
  */
 const COVERS_PY = join(process.cwd(), '..', 'backend', 'library', 'covers.py');
 const PY = readFileSync(COVERS_PY, 'utf-8');
+
+describe('cover wash', () => {
+	it('names the width the builder writes', () => {
+		const match = PY.match(/^WASH_WIDTH = (\d+)/m);
+		expect(match, 'WASH_WIDTH not found in covers.py — was it renamed?').toBeTruthy();
+		expect(WASH_WIDTH).toBe(Number(match![1]));
+	});
+
+	it('derives the wash beside a raster cover, and nothing elsewhere', () => {
+		expect(coverWash('/covers/art/humility-2.jpg')).toBe('/covers/art/humility-2-96.webp');
+		expect(coverWash('/covers/all-of-grace.svg')).toBeNull();
+		expect(coverWash('/portraits/andrew-murray.jpg')).toBeNull();
+		expect(coverWash(null)).toBeNull();
+	});
+
+	it('is never a srcset candidate', () => {
+		expect(coverSrcset('/covers/godliness.jpg')).not.toContain(`-${WASH_WIDTH}.webp`);
+	});
+});
 
 describe('cover variants', () => {
 	it('asks for the widths the builder writes', () => {

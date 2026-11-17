@@ -51,6 +51,7 @@ from library.content_fixtures import book_editions, persist_field  # noqa: E402
 from library.covers import (  # noqa: E402
     COVER_WIDTHS,
     RASTER_SUFFIXES,
+    WASH_WIDTH,
     art_url,
     shares_a_ground,
     variant_url,
@@ -67,8 +68,9 @@ COVERS = BACKEND.parent / "frontend" / "static" / "covers"
 WEBP_QUALITY = 82
 
 
-def write_variants(source: Path, dry_run: bool) -> list[str]:
-    """Write `<source>-<width>.webp` for each width, and say what changed."""
+def write_variants(source: Path, dry_run: bool, root: Path = COVERS) -> list[str]:
+    """Write `<source>-<width>.webp` for each width, and say what changed
+    (paths under `root`; the book plates use it too, `build_plate_thumbs.py`)."""
     from PIL import Image
 
     written = []
@@ -78,7 +80,7 @@ def write_variants(source: Path, dry_run: bool) -> list[str]:
     # it stands in for. webp carries alpha.
     im = Image.open(source)
     im = im.convert("RGBA" if im.mode in ("RGBA", "LA", "P") else "RGB")
-    for width in COVER_WIDTHS:
+    for width in (*COVER_WIDTHS, WASH_WIDTH):
         # NEVER upscale. Every committed cover is 600px wide or less, so a
         # literal 640 would invent pixels — measured at 18% more bytes and a
         # third more encode time for no detail. The FILENAME keeps the nominal
@@ -93,7 +95,7 @@ def write_variants(source: Path, dry_run: bool) -> list[str]:
             continue
         if not dry_run:
             dest.write_bytes(buf.getvalue())
-        written.append(str(dest.relative_to(COVERS)))
+        written.append(str(dest.relative_to(root)))
     return written
 
 

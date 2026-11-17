@@ -1661,6 +1661,16 @@ class Original(NamedTuple):
 
 # slug -> the ground we drew. Slugs match Book.slug (shared across languages).
 ORIGINAL_GROUND: dict[str, Original] = {
+    # Coram Deo (Ochorus Original): a doorway of light standing alone under a
+    # night sky, one figure on the path toward it. Chosen by the founder
+    # 2026-11-16 from twenty open-door variations, replacing Gifford's Haverstraw
+    # Bay. Generator: scripts/original_grounds/coram_deo.py.
+    "coram-deo": Original(
+        "1f0b79bdf743843ba26e98800d0960866071f9de12d0ae869ebb6a7b329da6f8",
+        "Revelation 3:20 and the book's title, 'before the face of God': a lit "
+        "doorway standing on its own under a starry night, not set in any building, "
+        "and a small figure on the path that bends toward it. No likeness.",
+    ),
     # A Cloud of Praying Witnesses, Vol. 2: Jesus, Teacher of Prayer (Ochorus
     # Original). The series has no museum painting yet: the session that
     # shipped this volume could reach no collection host (the museum APIs,
@@ -1756,6 +1766,26 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "Book 4's own image, the fourth of the set: the dark just before morning. "
         "Drawn as SVG and rendered with Chrome; generator "
         "scripts/original_grounds/lamplighters_4.py reproduces it byte-for-byte.",
+    ),
+    # The Lamplighters of Gloamhaven, Book 5: Midsummer morning on the moor above
+    # Harrowgate. A small company in ink along a heather ridge, a small flame resting
+    # above each head; Wren at the left end holding out the lamp; warm wind in off
+    # the hills under a sky only beginning to warm. Sky stays deep for the title.
+    "the-midsummer-flame": Original(
+        "a70c31eea61f31d23113cfb7f64dd84bb8ad9723c587f72166a99d3ddf2cb976",
+        "Book 5's own image, the fifth of the set: the flame given to everyone. "
+        "Drawn as SVG and rendered with headless Chromium; generator "
+        "scripts/original_grounds/lamplighters_5.py redraws it.",
+    ),
+    # The Lamplighters of Gloamhaven, Book 6: the first golden morning. The Bright
+    # Mountain low on the cover, a zigzag of lit waystones up its face to a fire on
+    # the summit, a small figure holding the lamp up as the sun breaks the horizon.
+    # The last night stays deep blue above; gold only below the subtitle row.
+    "morning-comes": Original(
+        "d1da4d94f2256a2b407703c6eb65d756b2d69a101282b445b65bf87160be60bb",
+        "Book 6's own image, the last of the set: the sun golden again over the "
+        "Bright Mountain. Drawn as SVG and rendered with headless Chromium; "
+        "generator scripts/original_grounds/lamplighters_6.py redraws it.",
     ),
     # The Lamplighters of Gloamhaven, Book 3: one small warm light against a huge cold
     # one — Wren on the end of a harbour wall, low left, with the lamp; across the

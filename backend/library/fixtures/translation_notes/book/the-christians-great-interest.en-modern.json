@@ -1,0 +1,22 @@
+{
+ "kind": "book",
+ "slug": "the-christians-great-interest",
+ "language": "en-modern",
+ "references": [
+  {
+   "reference": "Romans 10:10",
+   "status": "mined",
+   "source_file": "the-christians-great-interest.en.json"
+  },
+  {
+   "reference": "Romans 7:22-25",
+   "status": "mined",
+   "source_file": "the-christians-great-interest.en.json"
+  },
+  {
+   "reference": "Hebrews 8:6",
+   "status": "mined",
+   "source_file": "the-christians-great-interest.en.json"
+  }
+ ]
+}

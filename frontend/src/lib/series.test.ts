@@ -14,7 +14,12 @@ import {
 	type BookStage,
 	seriesLabel,
 	groupByAudience,
-	seriesAges
+	seriesAges,
+	volumeName,
+	volumesToCome,
+	volumeLabel,
+	resumePoint,
+	dailyProgress
 } from './series';
 import { tileFace, type BookSeries, type BookSummary } from './library-public';
 
@@ -328,5 +333,83 @@ describe('seriesOrder', () => {
 	it('says nothing for one book, or when the API sends no order', () => {
 		expect(seriesOrder({ ordered: true, book_count: 1 })).toBeNull();
 		expect(seriesOrder({ book_count: 6 })).toBeNull();
+	});
+});
+
+describe('volumeName', () => {
+	const v = (title: string, subtitle = '') => ({ title, subtitle });
+	it('takes the name after a numbered title', () => {
+		expect(volumeName(v('They Were Young – Book 1: Called', 'Six who met God'), 'They Were Young')).toBe('Called');
+		expect(volumeName(v('이야기를 들려주세요 – 제1권: 태초에'), '이야기를 들려주세요')).toBe('태초에');
+	});
+	it('takes a short lead from the subtitle', () => {
+		expect(
+			volumeName(
+				v('Daughters of the King – 30 Days with God for Girls – Book 1', 'Beloved: who you are, whose you are'),
+				'Daughters of the King – 30 Days with God for Girls'
+			)
+		).toBe('Beloved');
+	});
+	it('keeps a title of its own', () => {
+		expect(
+			volumeName(v('The Black Stair', 'The Lamplighters of Gloamhaven, Book Two'), 'The Lamplighters of Gloamhaven')
+		).toBe('The Black Stair');
+	});
+	it('takes the name that follows the series name', () => {
+		expect(volumeName(v('Portraits of Courage – Amy Carmichael'), 'Portraits of Courage')).toBe('Amy Carmichael');
+		expect(volumeName(v('The Golden Chain: Matthew'), 'The Golden Chain')).toBe('Matthew');
+	});
+	it('gives nothing when the title is the series and its number', () => {
+		expect(volumeName(v('Brave for God: Book Two', 'Six more who followed Jesus'), 'Brave for God')).toBe('');
+		expect(volumeName(v('Valientes por Dios'), 'Valientes por Dios')).toBe('');
+		// A long subtitle lead is a sentence, not a name.
+		expect(volumeName(v('Rooted 1', 'Where it all begins and grows: notes'), 'Rooted')).toBe('');
+	});
+});
+
+describe('volumesToCome', () => {
+	it('counts the planned volumes not yet published', () => {
+		expect(volumesToCome(4, 6)).toBe(2);
+		expect(volumesToCome(4, 4)).toBe(0);
+		expect(volumesToCome(4, null)).toBe(0);
+		expect(volumesToCome(5, 3)).toBe(0);
+	});
+});
+
+describe('volumeLabel', () => {
+	it('numbers a placed volume and says nothing for an unplaced one', () => {
+		expect(volumeLabel(2, 'en')).toMatch(/2/);
+		expect(volumeLabel(null, 'en')).toBe('');
+		expect(volumeLabel(0, 'en')).toBe('');
+	});
+});
+
+describe('resumePoint', () => {
+	const book = { toc: ['One', 'Two', 'Three'], chapter_count: 3 };
+	it('names the chapter and counts what is left', () => {
+		expect(resumePoint(book, { order: 2 })).toEqual({ order: 2, title: 'Two', left: 1, total: 3 });
+	});
+	it('says nothing without a record or past the end', () => {
+		expect(resumePoint(book, null)).toBeNull();
+		expect(resumePoint(book, { order: 4 })).toBeNull();
+	});
+	it('resumes at the furthest chapter, not one peeked at past it', () => {
+		expect(resumePoint(book, { order: 3, furthest: 2 })?.order).toBe(2);
+	});
+	it('falls back to the chapter count with no toc', () => {
+		expect(resumePoint({ chapter_count: 15 }, { order: 6 })).toEqual({ order: 6, title: '', left: 9, total: 15 });
+	});
+});
+
+describe('dailyProgress', () => {
+	it('reads chapter n + 1 as day n, the day reached as the one to open', () => {
+		expect(dailyProgress(12, 30)).toEqual({ read: 10, next: 11 });
+		expect(dailyProgress(2, 30)).toEqual({ read: 0, next: 1 });
+		expect(dailyProgress(1, 30)).toEqual({ read: 0, next: 1 });
+		expect(dailyProgress(null, 30)).toEqual({ read: 0, next: 1 });
+	});
+	it('stops at the last day, and a finished volume has read them all', () => {
+		expect(dailyProgress(32, 30)).toEqual({ read: 30, next: 30 });
+		expect(dailyProgress(5, 30, true)).toEqual({ read: 30, next: 30 });
 	});
 });

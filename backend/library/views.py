@@ -55,6 +55,7 @@ from .models import (
     Topic,
     fold_query,
 )
+from .opening import book_opening
 from .search import (
     CAPS,
     MAX_RESULTS,
@@ -83,6 +84,7 @@ from .serializers import (
     ChapterDetailSerializer,
     PlanDetailSerializer,
     PlanListSerializer,
+    SeriesBookSerializer,
     SermonDetailSerializer,
     SermonListSerializer,
     TopicDetailSerializer,
@@ -102,6 +104,7 @@ from .serializers import (
     plan_chapter_index,
     sermon_topic_map,
 )
+from .series_page import sample_day, series_plates
 
 logger = logging.getLogger(__name__)
 
@@ -839,6 +842,12 @@ def _series_languages(series, held: set[str]) -> list[str]:
     return sorted(named & held)
 
 
+def _series_hero(series) -> dict | None:
+    """The art behind a series' head and its card: ``{image, tone}``, or None.
+    Shared by the list and the page."""
+    return {"image": series.hero_image, "tone": series.hero_tone} if series.hero_image else None
+
+
 def _series_for(series) -> dict:
     """Who a series is for — the index's group — and its age range: "" / null
     where it hasn't been given one. Shared by the list and the page."""
@@ -903,6 +912,10 @@ def _series_rows(language: str, audience: str | None = None) -> list[dict]:
                     "slug": series.slug,
                     "title": title,
                     "description": series.description_for(language),
+                    # The page's promise line and art, so the card sells the
+                    # series as its page does ("" / null where it has none).
+                    "tagline": series.tagline_for(language),
+                    "hero": _series_hero(series),
                     "book_count": len(books),
                     **_series_for(series),
                     "covers": [_book_cover(b) for b in books[:SERIES_CARD_COVERS]],
@@ -1070,14 +1083,21 @@ def split_story_title(title: str) -> tuple[str, str] | None:
 
 
 def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
-    """The hub's people strip: one face per story chapter of its series'
-    anthologies (``BookPerson.chapter``), in reading order — series, volume,
-    chapter. Name and hook come from the chapter's own title in ``language``
-    ("Charles Spurgeon: The Boy Who Looked"), so a translated anthology brings
-    its names and hooks with it; a chapter missing in the language drops out,
-    and a chapter told about two people (Jim and Elisabeth Elliot) is one face,
-    the first person's."""
-    order = {slug: i for i, slug in enumerate(s for row in series_rows for s in row["books"])}
+    """The hub's people strip: ``story_people`` over every book of its series,
+    capped at ``AUDIENCE_PEOPLE_MAX``."""
+    slugs = [s for row in series_rows for s in row["books"]]
+    return story_people(slugs, language, limit=AUDIENCE_PEOPLE_MAX)
+
+
+def story_people(book_slugs: list[str], language: str, limit: int | None = None) -> list[dict]:
+    """One face per story chapter of these anthologies (``BookPerson.chapter``),
+    in reading order — the books in the order given, then chapter. Name and
+    hook come from the chapter's own title in ``language`` ("Charles Spurgeon:
+    The Boy Who Looked"), so a translated anthology brings its names and hooks
+    with it; a chapter missing in the language drops out, and a chapter told
+    about two people (Jim and Elisabeth Elliot) is one face, the first
+    person's. Shared by the audience hubs' strip and the series page's wall."""
+    order = {slug: i for i, slug in enumerate(book_slugs)}
     members = sorted(
         BookPerson.objects.filter(book_slug__in=order, chapter__isnull=False)
         .select_related("person")
@@ -1114,7 +1134,7 @@ def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
             "chapter": m.chapter,
             "words": words or None,
         }
-        if len(people) >= AUDIENCE_PEOPLE_MAX:
+        if limit and len(people) >= limit:
             break
     return list(people.values())
 
@@ -1491,6 +1511,55 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
         )
 
 
+def _series_map(series) -> dict | None:
+    """The series' map (``Series.map``) when it has an image, its markers in
+    volume order; None otherwise."""
+    data = series.map if isinstance(series.map, dict) else {}
+    if not data.get("image"):
+        return None
+    # Lenient at request time, like the rest of the public API: a marker an
+    # admin edit left malformed drops out rather than 500ing the page (the
+    # fixture's shape is gated in tests_series).
+    markers = [
+        m
+        for m in data.get("markers") or []
+        if isinstance(m, dict) and isinstance(m.get("position"), int) and {"x", "y"} <= m.keys()
+    ]
+    return {"image": data["image"], "markers": sorted(markers, key=lambda m: m["position"])}
+
+
+def _book_tocs(books) -> dict[int, list[str]]:
+    """Each book's chapter titles in order (book pk → titles) — one query for
+    the whole series, for its rows (``SeriesBookSerializer.toc``)."""
+    tocs: dict[int, list[str]] = {}
+    for book_id, title in (
+        Chapter.objects.filter(book__in=books).order_by("book_id", "order").values_list("book_id", "title")
+    ):
+        tocs.setdefault(book_id, []).append(title)
+    return tocs
+
+
+def _series_daily(series, book_one) -> dict | None:
+    """``{days, sample}`` for a daily series (``Series.days_per_book``), else
+    None. ``sample`` is Book 1's Day 1 (chapter 2: chapter 1 is the
+    introduction) split into its parts, or None where that day is not shaped
+    like one, or this language has no Book 1."""
+    if not series.days_per_book:
+        return None
+    sample = None
+    if book_one:
+        day = book_one.chapters.filter(order=2).values_list("title", "body_html", "word_count").first()
+        if day and (parts := sample_day(day[1])):
+            sample = {**parts, "title": day[0], "order": 2, "words": day[2]}
+    return {"days": series.days_per_book, "sample": sample}
+
+
+#: The most volumes a series page pitches one row at a time (cover, hook,
+#: blurb, button). Past it — The Bible's 66 — the rows stop selling and start
+#: scrolling, so the page keeps the cover grid.
+PITCHED_MAX = 12
+
+
 class SeriesDetailView(PublicContentCacheMixin, APIView):
     """One series page: its name and description in the requested language, and
     its books there in reading order. 404 where the series has no name or no
@@ -1505,14 +1574,49 @@ class SeriesDetailView(PublicContentCacheMixin, APIView):
         if not books:
             raise Http404("No series in this language")
         ordered = _is_ordered(books)
+        first = books[0]
+        # An ordered series of a readable size pitches each volume (its blurb
+        # on the row); a collection, or a long run, is a cover grid and needs
+        # no blurbs. The first page is Book 1's — where this language lacks
+        # Book 1, "begin at the beginning" would be a lie, so there is none.
+        pitched = ordered and len(books) <= PITCHED_MAX
+        card = SeriesBookSerializer if pitched else BookListSerializer
+        # Book 1 in this language, where it has one: its first page, its Q&A
+        # (who it is for, what it is like) and its Day 1 speak for the series.
+        book_one = first if first.series_position == 1 else None
         return Response(
             {
                 "slug": series.slug,
                 "title": title,
                 "description": series.description_for(language),
                 "ordered": ordered,
+                "pitched": pitched,
                 **_series_for(series),
-                "books": BookListSerializer(
+                # The selling head (2026-11): a promise line and the series'
+                # verse in this language ("" / null where it has none here),
+                # the art behind the head, the volumes still to come, and —
+                # for a series with a world — its map.
+                "tagline": series.tagline_for(language),
+                "verse": series.verse_for(language),
+                "hero": _series_hero(series),
+                "planned_count": series.planned_count,
+                "map": _series_map(series),
+                # The first page of the first volume, so a reader can taste the
+                # series before choosing it (library/opening.py picks it).
+                "opening": (
+                    book_opening(book_one.chapters, list(book_one.chapters.values_list("order", "title")))
+                    if book_one
+                    else None
+                ),
+                # The real people the volumes tell, as faces (They Were Young).
+                "people": story_people([b.slug for b in books], language) if ordered else [],
+                # The pictures inside the books (Lamplighters), one per chapter.
+                "plates": series_plates(books) if pitched else [],
+                "qa": book_one.qa if book_one and isinstance(book_one.qa, list) else [],
+                # A daily devotional's shape: its days per volume, and Book 1's
+                # Day 1 split into its parts (library/series_page.py).
+                "daily": _series_daily(series, book_one) if pitched else None,
+                "books": card(
                     books,
                     many=True,
                     # No topic chips and no series line on these cards (the page
@@ -1522,6 +1626,7 @@ class SeriesDetailView(PublicContentCacheMixin, APIView):
                         "language": language,
                         "book_topics": {},
                         "book_series": {},
+                        "book_toc": _book_tocs(books) if pitched else {},
                     },
                 ).data,
                 "available_languages": _series_languages(

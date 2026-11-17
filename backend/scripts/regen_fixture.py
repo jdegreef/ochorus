@@ -118,6 +118,19 @@ DEFAULTED_OK = {
     ("library.planday", "entry_date"),
     # 1 on every day but a multi-chapter one, which only the seed builds.
     ("library.planday", "chapter_count"),
+    # The series page's selling head (2026-11): blank on every series and
+    # translation that hasn't been given one.
+    ("library.series", "tagline"),
+    ("library.series", "verse_text"),
+    ("library.series", "verse_ref"),
+    ("library.series", "planned_count"),
+    ("library.series", "days_per_book"),
+    ("library.series", "hero_image"),
+    ("library.series", "hero_tone"),
+    ("library.series", "map"),
+    ("library.seriestranslation", "tagline"),
+    ("library.seriestranslation", "verse_text"),
+    ("library.seriestranslation", "verse_ref"),
 }
 
 # (model, field) pairs that dumpdata materializes but whose default is NOT

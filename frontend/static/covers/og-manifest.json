@@ -8656,6 +8656,39 @@
 				469
 			]
 		},
+		"coram-deo": {
+			"ground": "8b198f1868779a0625dcbc0ae86f2fc7e27c6f5d3b7e38f0538e66bf2045ceea",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.45,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[75, 337, 525, 439]
+				],
+				"subtitle": [
+					[99, 457, 501, 485]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				310,
+				485
+			]
+		},
 		"corrie-ten-boom-a-life": {
 			"ground": "c1e02879863a1488f4e32c44279e90a6c4886a8262d287710515164e391ea4a0",
 			"style": "house",
@@ -30441,6 +30474,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"morning-comes": {
+			"ground": "0f1e2bc3e1fa9029162bfc69cc48e4e2b109431515cc00acbcb44eae6e8a19a5",
+			"style": "young",
+			"volume": "6",
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[289, 287, 311, 331],
+					[99, 362, 501, 437]
+				],
+				"subtitle": [
+					[76, 492, 524, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
+		},
 		"mortification-of-sin": {
 			"ground": "de28580f404afa0c2638547e87244c1f31e0c0aa6d019a6e4f83d210ead382c0",
 			"style": "press",
@@ -41186,6 +41253,41 @@
 			"middle": [
 				256,
 				539
+			]
+		},
+		"the-midsummer-flame": {
+			"ground": "9e9755ad3b96107d65ba6c9d54644b818598f4f9a01a7b63dc6803e48ce12473",
+			"style": "young",
+			"volume": "5",
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[289, 257, 311, 301],
+					[94, 332, 506, 407],
+					[222, 393, 378, 468]
+				],
+				"subtitle": [
+					[70, 522, 530, 550]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				245,
+				550
 			]
 		},
 		"the-normal-christian-life": {

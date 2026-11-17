@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
 	hreflangExact,
+	chapterHreflang,
 	absUrl,
 	jsonLd,
 	breadcrumb,
@@ -282,5 +283,26 @@ describe('fitList', () => {
 		expect(fitList('Today', ['Alpha', 'Beta'], 14)).toBe('Today: Alpha');
 		expect(fitList('Today', ['A very long name'], 10)).toBe('Today');
 		expect(fitList('Today', [])).toBe('Today');
+	});
+});
+
+describe('chapterHreflang', () => {
+	const path = '/books/humility/1/';
+
+	it('names English and the reviewed or native editions, never itself alone', () => {
+		const h = chapterHreflang(path, ['en', 'es'], 'en');
+		expect(h?.alternates.map((a) => a.loc)).toEqual(['en', 'es']);
+		expect(h?.xDefault).toBe(`${SITE_URL}/books/humility/1/`);
+		expect(chapterHreflang(path, ['en'], 'en')).toBeNull();
+		expect(chapterHreflang(path, [], 'en')).toBeNull();
+	});
+
+	it('gives an unreviewed edition (not in the indexed set) no alternates', () => {
+		expect(chapterHreflang(path, ['en', 'es'], 'sw')).toBeNull();
+	});
+
+	it('never names a locale the site does not advertise', () => {
+		const h = chapterHreflang(path, ['en', 'es', 'xx'], 'es');
+		expect(h?.alternates.map((a) => a.loc)).not.toContain('xx');
 	});
 });

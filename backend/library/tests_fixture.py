@@ -59,6 +59,7 @@ from library.covers import (
     COVER_WIDTHS,
     OG_MANIFEST,
     RASTER_SUFFIXES,
+    WASH_WIDTH,
     H,
     W,
     art_url,
@@ -1256,6 +1257,33 @@ class BookQaShapeTests(SimpleTestCase):
                 assert_qa_wellformed(self, qa, {"question", "answer"}, path.name)
 
 
+class ArticleQaShapeTests(SimpleTestCase):
+    """``Article.qa`` — the answer-first Q&A under an article, the same
+    ``{question, answer}`` plain-text contract as ``Book.qa``, on every article
+    file (it rides the per-language row)."""
+
+    def test_qa_entries_are_well_formed_plain_text(self):
+        for path, rows in files_by_path().items():
+            if path.parent.name != "articles":
+                continue
+            qa = rows[0]["fields"].get("qa")
+            if not qa:
+                continue
+            with self.subTest(article=path.name):
+                # Fewer, tighter pairs than a book's: an article already answers
+                # its title question; these are the 4–6 it raises on the way.
+                assert_qa_wellformed(self, qa, {"question", "answer"}, path.name, count=(4, 6))
+                for i, item in enumerate(qa):
+                    # Answer-first means short: a reply an answer engine can lift
+                    # whole (the target is 40–60 words; this is the hard edge).
+                    words = len(item["answer"].split())
+                    self.assertTrue(
+                        25 <= words <= 80,
+                        f"{path.name}[{i}]: answer is {words} words — keep it 40–60",
+                    )
+                    self.assertTrue(item["question"].rstrip().endswith("?"), f"{path.name}[{i}]: a question ends in ?")
+
+
 class ChapterQuestionsShapeTests(SimpleTestCase):
     """``Chapter.study_questions`` — the young-reader editions' "Talk about it"
     at the end of a chapter: the same plain-text contract as book Q&A, a short
@@ -1696,7 +1724,7 @@ class CoverAssetTests(SimpleTestCase):
             cover = _cover(f)
             if not cover.endswith(RASTER_SUFFIXES):
                 continue
-            for width in COVER_WIDTHS:
+            for width in (*COVER_WIDTHS, WASH_WIDTH):
                 variant = variant_url(cover, width)
                 if not (STATIC_DIR / variant.lstrip("/")).is_file():
                     missing.append(variant)

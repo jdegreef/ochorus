@@ -29,6 +29,9 @@ import type { Entry, SitemapData } from './sitemap';
 // English books, empty unless a test fills it (most cases want the Swahili-only
 // library below); reset by each such test.
 const english = vi.hoisted(() => ({ books: [] as unknown[] }));
+// Whether the Swahili Humility is a REVIEWED translation; unreviewed unless a
+// test says so, reset by each such test.
+const swahili = vi.hoisted(() => ({ reviewed: false }));
 
 vi.mock('$lib/advertised-locales', () => ({
 	ADVERTISED_LOCALES: ['en', 'es', 'sw'],
@@ -78,6 +81,7 @@ vi.mock('$lib/library-public', () => {
 							chapter_count: 2,
 							author: author('andrew-murray'),
 							updated_at: '2026-08-25T10:00:00Z',
+							source_type: swahili.reviewed ? 'ai_reviewed' : 'ai_unreviewed',
 							topics: [{ slug: 'prayer', title: 'Maombi' }],
 							series: { slug: 'rooted', title: 'Rooted', position: 1, total: 2 }
 						},
@@ -362,6 +366,22 @@ describe('build() chapter entries', () => {
 		const { chapters, openings } = await sitemapData();
 		expect(chapters).toEqual([]);
 		expect(openings).toEqual([]);
+	});
+
+	it('advertises a translated edition’s opening chapter once it is reviewed', async () => {
+		swahili.reviewed = true;
+		try {
+			const { chapters, openings } = await sitemapData();
+			expect(openings.map((e) => [...e.byLocale])).toEqual([[['sw', '/books/humility/1/']]]);
+			expect(openings[0].lastmods?.get('sw')).toBe('2026-08-25T10:00:00Z');
+			// Only that edition: the other Swahili book is still unreviewed.
+			expect(chapters.map((e) => [...e.byLocale])).toEqual([
+				[['sw', '/books/humility/1/']],
+				[['sw', '/books/humility/2/']]
+			]);
+		} finally {
+			swahili.reviewed = false;
+		}
 	});
 
 	it('lists every chapter of a REVIEWED Modern English edition at its own address', async () => {

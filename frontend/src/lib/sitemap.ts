@@ -69,6 +69,15 @@ export const loc = (locale: string, path: string) =>
 	`${SITE_URL}${locale === 'en' ? '' : `/${locale}`}${path}`;
 
 /**
+ * Whether a non-English edition's chapter pages are offered to search engines:
+ * a reviewed translation or a work written in that language, never an
+ * unreviewed AI translation (see `chapterSlices` in build()). Absent
+ * `source_type` reads as unreviewed. English editions are always offered.
+ */
+export const advertisesChapters = (b: { source_type?: string | null }): boolean =>
+	b.source_type === 'ai_reviewed' || b.source_type === 'public_domain';
+
+/**
  * The newest of `dates` (ISO strings sort chronologically), or undefined.
  *
  * The `<lastmod>` of a page that has no modification date of its own but LISTS
@@ -233,8 +242,8 @@ export interface SitemapData {
  * back into IndexNow, which submits from the sitemap. Dated by the book's own
  * `updated_at`, so a corrected edition asks for a recrawl of its first page.
  * If Search Console shows these indexing well, widening the rule (chapter 2,
- * the longest chapters) is a change to `openings` alone. English editions only:
- * no translated chapter is advertised (see `chapterSlices` in build()).
+ * the longest chapters) is a change to `openings` alone. English editions, plus
+ * a translated edition once it is reviewed (see `chapterSlices` in build()).
  *
  * THE MODERN ENGLISH EDITION IS LISTED WHOLE (`modern`), once reviewed. The
  * reasoning above is about public-domain text that older libraries already
@@ -491,7 +500,8 @@ async function build(): Promise<SitemapData> {
 		'/biographies',
 		'/about',
 		'/contact',
-		'/legal'
+		'/legal',
+		'/editorial'
 		// Never an app-only path (search, account, admin): those are noindexed or
 		// disallowed ($lib/robots), and advertising one is a Search Console error.
 	].filter((p) => !(APP_ONLY as readonly string[]).includes(p))) {
@@ -884,13 +894,18 @@ async function build(): Promise<SitemapData> {
 		}))
 	];
 
-	// Chapter pages are ENGLISH ONLY, here and in the openings below. Every
-	// translated chapter is unreviewed AI text, and offering ~2,000 of them is
-	// what Google's scaled-content policy is written against — the risk lands on
-	// the whole locale, book pages included. They still prerender, link and
-	// read; they are just not promised (and the chapter page carries no hreflang
-	// for the same reason). Widening this again is a locale filter here.
-	const chapterSlices = advertisedSlices.filter((x) => x.locale === 'en');
+	// Chapter pages: English, plus every OTHER edition a person has stood
+	// behind — reviewed (`ai_reviewed`, set only by `approve_translation`) or
+	// written in its language (`public_domain`). An unreviewed AI translation's
+	// chapters are not promised: offering ~2,000 of them is what Google's
+	// scaled-content policy is written against, and the risk lands on the whole
+	// locale, book pages included. They still prerender, link and read. So each
+	// approval moves that one edition's chapters into the sitemap (and its
+	// chapter pages' hreflang) — gated per edition, not per locale. The review
+	// state stays admin-only: nothing here reaches a reader.
+	const chapterSlices = advertisedSlices.map((x) =>
+		x.locale === 'en' ? x : { ...x, books: x.books.filter(advertisesChapters) }
+	);
 
 	// Chapter pages (prerendered): one entry per (work, chapter).
 	const byChapter = new Map<string, Entry>();

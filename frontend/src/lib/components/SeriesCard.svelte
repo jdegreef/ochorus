@@ -132,6 +132,7 @@
 	emblem={meta.emblem}
 	covers={series.covers}
 	fan={compact ? 'sm' : 'lg'}
+	art={series.hero?.image}
 	title={heading.name}
 	subtitle={heading.subtitle}
 	{headingLevel}
@@ -141,6 +142,10 @@
 		{series.book_count}
 		{series.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
 	{/snippet}
+	{#if series.tagline}
+		<!-- The series' promise, as its page leads with it. -->
+		<p class="series-tagline mt-0.5" dir="auto">{series.tagline}</p>
+	{/if}
 	{#if ages}
 		<!-- Ink, not accent: the whole card is one link, and an indigo line
 		     inside it read as a second one that went nowhere. -->
@@ -231,6 +236,13 @@
 
 
 <style>
+	.series-tagline {
+		font-family: var(--font-display);
+		font-style: italic;
+		font-size: var(--fs-small);
+		line-height: 1.4;
+		color: color-mix(in srgb, var(--shelf-hue) 70%, var(--text));
+	}
 	/* Five lines, not the shelf's three: series blurbs run to ~210 characters
 	   in English (longer in translation), and at three a three-up grid cut
 	   Sons of the King off mid-word. Still a clamp, so no blurb sets a row. */

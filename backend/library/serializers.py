@@ -34,7 +34,7 @@ from .models import (
     Topic,
     TopicBook,
 )
-from .opening import opening_candidate_orders, opening_excerpt
+from .opening import book_opening
 from .plan_seed import DAILY_PLANS
 from .rights import is_public_domain
 from .scripture import EPIGRAPH_WINDOW, book_of, epigraph_reference, opens_with_text
@@ -313,6 +313,31 @@ def _available_languages(model, slug: str) -> list[str]:
     browsable locale, so it's excluded.
     """
     return sorted(_published_languages(model, slug=slug))
+
+
+#: The editions whose chapters are offered to search besides English.
+_INDEXED_SOURCES = (Book.SourceType.AI_REVIEWED, Book.SourceType.PUBLIC_DOMAIN)
+
+
+def _book_languages(slug: str) -> tuple[list[str], list[str]]:
+    """(available, indexed) locales of book ``slug``, in ONE query.
+
+    ``available`` is ``_available_languages(Book, slug)``. ``indexed`` is the
+    subset whose CHAPTER pages are offered to search engines: English, plus any
+    edition a person stood behind — reviewed (``ai_reviewed``, set only by
+    ``approve_translation``) or written in its language (``public_domain``).
+    The chapter page's hreflang follows it, as the sitemap's chapter rule does
+    (frontend ``advertisesChapters``). Admin-only state, never shown to readers.
+    """
+    rows = set(
+        Book.objects.filter(is_published=True, slug=slug)
+        .exclude(language=MODERN_LANGUAGE)
+        .order_by()
+        .values_list("language", "source_type")
+    )
+    available = sorted({lang for lang, _ in rows})
+    indexed = sorted({lang for lang, src in rows if lang == "en" or src in _INDEXED_SOURCES})
+    return available, indexed
 
 
 def _topic_membership_map(
@@ -614,6 +639,37 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
             "position": position,
             "total": _series_total(entry["numbers"], position, entry["here"]),
         }
+
+
+
+def epub_url(book) -> str:
+    """The API path of an edition's EPUB, or "" where export_policy does not
+    list it — the twin of ``pdf_url``. The book page and the series rows."""
+    if not is_exportable(book):
+        return ""
+    return f"{reverse('book-epub', args=[book.slug])}?language={book.language}"
+
+
+class SeriesBookSerializer(BookListSerializer):
+    """A volume on its series page: the shelf card plus what its row pitches
+    the book with — the blurb (``Book.description``, in the edition's
+    language), its free downloads, and its chapter titles (``toc``, in order),
+    which name the chapter a returning reader is on and a daily series' day.
+
+    ``toc`` reads ``context["book_toc"]`` (book pk → titles), built once for the
+    whole series by the view, so the rows cost no query each."""
+
+    epub_url = serializers.SerializerMethodField()
+    toc = serializers.SerializerMethodField()
+
+    class Meta(BookListSerializer.Meta):
+        fields = [*BookListSerializer.Meta.fields, "description", "pdf_url", "epub_url", "toc"]
+
+    def get_epub_url(self, obj) -> str:
+        return epub_url(obj)
+
+    def get_toc(self, obj) -> list[str]:
+        return self.context.get("book_toc", {}).get(obj.pk, [])
 
 
 class SermonListSerializer(LocalizedMixin, serializers.ModelSerializer):
@@ -1395,6 +1451,8 @@ class ArticleDetailSerializer(ArticleListSerializer):
             # The cited passages, and their scripture pages where they exist.
             "scripture_refs",
             "scripture_links",
+            # Answer-first Q&A (plain text): the page's Q&A section + FAQPage.
+            "qa",
         ]
 
 
@@ -1891,18 +1949,10 @@ class BookDetailSerializer(BookListSerializer):
         # exists to avoid, paid again on every crawl of every book URL (the
         # 2026-08-14 OOM was this shape). Titles pick the candidates off the
         # prefetch (no query, and already in `order` sequence via Chapter.Meta,
-        # like the TOC field beside it); bodies are fetched for those orders alone.
+        # like the TOC field beside it); bodies are fetched for those orders alone
+        # (``opening.book_opening``).
         meta = [(c.order, c.title) for c in obj.chapters.all()]
-        wanted = opening_candidate_orders(meta)
-        if not wanted:
-            return None
-        rows = (
-            obj.chapters.filter(order__in=wanted)
-            .order_by("order")
-            .values_list("order", "title", "body_html")
-        )
-        text, chapter = opening_excerpt(list(rows))
-        return {"text": text, "chapter": chapter} if text else None
+        return book_opening(obj.chapters, meta)
 
     def get_featured_people(self, obj) -> list[dict]:
         """The bios of people found in this work — {slug, name, photo_url,
@@ -1979,9 +2029,7 @@ class BookDetailSerializer(BookListSerializer):
         return meta_description(obj.slug, obj.language)
 
     def get_epub_url(self, obj) -> str:
-        if not is_exportable(obj):
-            return ""
-        return f"{reverse('book-epub', args=[obj.slug])}?language={obj.language}"
+        return epub_url(obj)
 
     def get_editions(self, obj):
         """Sibling audience editions (full ⇄ teens ⇄ children) as cover cards,
@@ -2255,6 +2303,13 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
     def get_available_languages(self, obj):
         return self._batch(obj).available_languages
 
+    # The subset of `available_languages` whose chapters are offered to search
+    # (English + reviewed or native editions) — the chapter page's hreflang.
+    indexed_languages = serializers.SerializerMethodField()
+
+    def get_indexed_languages(self, obj):
+        return self._batch(obj).indexed_languages
+
     def get_book_audience(self, obj) -> str:
         return self._batch(obj).book_audience
 
@@ -2294,6 +2349,7 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "order", "title", "body_html", "word_count",
             "book_title", "book_slug", "author_name", "author_slug",
             "is_modern_edition", "has_modern_edition", "available_languages",
+            "indexed_languages",
             "source_type", "public_domain", "book_audience",
             "prev", "next",
             # The scripture index row at the foot of the chapter — see above.
@@ -2363,7 +2419,8 @@ class ChapterBatch:
         from .scripture import cited_references, reference_candidates
         from .scripture_graph import page_url, pages_for
 
-        self.available_languages = _available_languages(Book, book.slug)
+        # Both from one query: the batch's query count is pinned by a test.
+        self.available_languages, self.indexed_languages = _book_languages(book.slug)
         self.book_audience = getattr(book.series, "audience", "")
         if book.language == MODERN_LANGUAGE:
             self.has_modern_edition = True

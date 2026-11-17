@@ -79,6 +79,11 @@ _AUTHOR_Y = 112
 #: rule, so the rule lives here.
 RASTER_SUFFIXES = (".jpg", ".jpeg", ".png")
 COVER_WIDTHS = (320, 640)
+#: The tiny variant the book page blurs into its hero band (`coverWash` in
+#: `$lib/coverArt`). Not a srcset candidate: the 320/640 pair are the 1x/2x
+#: densities, and a third would break that pairing. ~3 KB, so the band (the
+#: page's largest image, so its LCP) paints early on a slow phone.
+WASH_WIDTH = 96
 
 
 def art_url(slug: str) -> tuple[str, str]:

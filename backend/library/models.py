@@ -445,6 +445,49 @@ class Series(models.Model):
     audience = models.CharField(max_length=20, choices=Audience.choices, blank=True, default="")
     min_age = models.PositiveSmallIntegerField(null=True, blank=True)
     max_age = models.PositiveSmallIntegerField(null=True, blank=True)
+
+    # The series page's selling head (the "tell and sell" redesign, 2026-11):
+    # one line that promises what the series is ("A lamp that cannot be
+    # bought, stolen or earned. Only given.") and the verse it is built on,
+    # quoted in the wording the books themselves use. Prose, so translated in
+    # SeriesTranslation like the title — and, like it, never shown in English
+    # on another language's page. Blank draws nothing.
+    tagline = models.CharField(max_length=200, blank=True)
+    verse_text = models.CharField(max_length=400, blank=True)
+    verse_ref = models.CharField(max_length=80, blank=True)
+    # How many volumes the series is planned to have, when more are still to
+    # come (The Lamplighters: "the first of six books"). Null = no plan stated,
+    # and the page says nothing about volumes to come — never guessed.
+    planned_count = models.PositiveSmallIntegerField(null=True, blank=True)
+    # A daily devotional (Rooted, Daughters of the King): each volume is an
+    # introduction (chapter 1), then one chapter a day for this many days, so
+    # chapter n + 1 is day n and a reader's furthest chapter is the day they
+    # have reached. Null = not a daily series. Drives the series page's
+    # sample day and its calendar of days.
+    days_per_book = models.PositiveSmallIntegerField(null=True, blank=True)
+
+    class HeroTone(models.TextChoices):
+        """Which way the hero's type reads over ``hero_image``."""
+
+        DARK = "dark", "Dark art, light type"
+        LIGHT = "light", "Light art, dark type"
+
+    # The art behind the series page's head: a site path to a WORDLESS image
+    # (a chapter plate, a cover ground, never a designed cover with a title in
+    # it — the head sets the series' name over it in the reader's language).
+    # Blank = the plain head with the cover fan.
+    hero_image = models.CharField(max_length=300, blank=True)
+    hero_tone = models.CharField(
+        max_length=10, choices=HeroTone.choices, default=HeroTone.DARK
+    )
+    # A map of the series' world, with each volume's place on it:
+    # {"image": "/illustrations/series/…-map.webp", "markers": [{"position": 1, "x": 47.5,
+    # "y": 52}, …]} — x/y in percent of the image, `position` the volume's
+    # series_position. Language-agnostic: a marker is labelled with its book's
+    # title in the page's language, so the map needs no translation. A marker
+    # whose volume is not published in a language draws nothing there. {} = no map.
+    map = models.JSONField(default=dict, blank=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -482,6 +525,14 @@ class Series(models.Model):
     def description_for(self, language: str) -> str:
         return self._localized("description", language)
 
+    def tagline_for(self, language: str) -> str:
+        return self._localized("tagline", language)
+
+    def verse_for(self, language: str) -> dict | None:
+        """``{text, ref}`` in ``language``, or None unless it has both."""
+        text, ref = self._localized("verse_text", language), self._localized("verse_ref", language)
+        return {"text": text, "ref": ref} if text and ref else None
+
 
 class SeriesTranslationManager(models.Manager):
     def get_by_natural_key(self, series_slug, language):
@@ -502,6 +553,10 @@ class SeriesTranslation(models.Model):
     language = models.CharField(max_length=10)
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
+    # Series.tagline / verse_* in this language (see there).
+    tagline = models.CharField(max_length=200, blank=True)
+    verse_text = models.CharField(max_length=400, blank=True)
+    verse_ref = models.CharField(max_length=80, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -1133,6 +1188,15 @@ class Article(models.Model):
     # Soft references (not FKs) so they are language-agnostic and survive a
     # re-import, exactly like TopicBook.book_slug.
     related = models.JSONField(default=list, blank=True)
+
+    # Answer-first Questions and Answers: a list of {"question", "answer"}
+    # objects, both PLAIN TEXT (rendered escaped, so no sanitize path), each
+    # answer a short 40–60 word reply drawn strictly from the article's own body.
+    # The page shows them under the standfirst-led body as "Questions and
+    # Answers" and emits FAQPage JSON-LD, the same contract as Book.qa. Per
+    # language like every other field: a translation without its own set shows
+    # none. Empty list = nothing shown.
+    qa = models.JSONField(default=list, blank=True)
 
     # Provenance / translation status — shares Book's vocabulary (as Sermon does)
     # so a machine translation carries the same "awaiting native review" trust

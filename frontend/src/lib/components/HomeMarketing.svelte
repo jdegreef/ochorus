@@ -1,4 +1,5 @@
 <script lang="ts">
+	import HomeQuestions from '$lib/components/HomeQuestions.svelte';
 	import { authorPath } from '$lib/originals';
 	import type { CoverBook, CoverFace, AuthorTileData, TopicCount, HubAudience, PlanSummary } from '$lib/library-public';
 	import { localizeHref } from '$lib/href';
@@ -143,11 +144,11 @@
      above the row it would push the books down after first paint. -->
 <TonightShelf items={data.tonight ?? []} />
 
-<!-- Create-an-account band. Four bands run behind one component (three A/B
+<!-- Create-an-account band. Five bands run behind one component (four A/B
      arms + a progress-targeted one); it self-gates on `auth.enabled`, so it
      stays hidden where accounts don't work and never bakes into the
      prerendered HTML. See SignupBand. -->
-<SignupBand />
+<SignupBand books={featured} />
 
 <!-- Topics, by situation: "What do you need today?" — chips that open three
      picks from a topic shelf, its header linking to all of them. It takes the
@@ -213,6 +214,10 @@
 		</ul>
 	</section>
 {/if}
+
+<!-- What an answer engine is asked about the site, answered here (and as
+     FAQPage JSON-LD): what Ochorus is, that it is free, which languages. -->
+<HomeQuestions />
 
 <!-- The leader behind the reader: one closing line for churches and
      ministries and a link to the /for/ hub (design #27). -->

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { assetHtml } from '$lib/assetUrl';
 	import { hasVerseNumbers, markVerse } from '$lib/verse';
+	import { anchorParagraphs, paragraphFromHash } from '$lib/paragraphAnchor';
 	import { smartQuotesHtml } from '$lib/smartQuotes';
 	import { bibleChapterMeta, bibleChapterTitle, chapterMeta, isBibleChapter } from '$lib/bookSeo';
 	import { OWB_SLUG } from '$lib/openWordBible';
@@ -83,7 +84,19 @@
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
 	import FootFeedback from '$lib/components/FootFeedback.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumbLd, truncateMeta, absUrl, publisherLd, PUBLIC_DOMAIN_MARK, CC0, bookId, personId, toQa } from '$lib/seo';
+	import {
+		jsonLd,
+		breadcrumbLd,
+		truncateMeta,
+		absUrl,
+		publisherLd,
+		PUBLIC_DOMAIN_MARK,
+		CC0,
+		bookId,
+		personId,
+		toQa,
+		chapterHreflang
+	} from '$lib/seo';
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH, coverVariants, landscapeUrl, shareImage } from '$lib/coverArt';
 	import { baseEdition, bookChapterPath, modernChapterPath } from '$lib/reading-schema';
 	import { localizeHref } from '$lib/href';
@@ -150,11 +163,11 @@
 	const t = i18n.t;
 
 	// --- SEO head (this page prerenders — see +page.ts) -------------------------
-	// Self-referential canonical, and NO hreflang. Only English chapters are
-	// offered to search engines: the translated chapters are unreviewed AI text,
-	// which they are kept out of the sitemap for too (see `$lib/sitemap`), and an
-	// alternate pointing at one would advertise it all the same. The book pages
-	// still carry their alternates.
+	// Self-referential canonical. hreflang only among the editions offered to
+	// search — English and reviewed or native ones (`indexed_languages`, the same
+	// rule as the sitemap's `advertisesChapters`): an unreviewed AI translation
+	// is neither an alternate nor given any. Not on a fallback page or the
+	// Modern edition, whose canonical is elsewhere.
 	// A missing edition renders the English one (see languageFallback). The
 	// canonical follows it always; the notice not in the Modern edition, where
 	// English is what the reader asked for.
@@ -169,6 +182,11 @@
 	);
 	const canonical = $derived(
 		edition === 'modern' ? absUrl(modernChapterPath(slug, chapter.order)) : seo.canonical
+	);
+	const headHreflang = $derived(
+		edition || shownElsewhere
+			? null
+			: chapterHreflang(`/books/${slug}/${chapter.order}/`, chapter.indexed_languages ?? [], language)
 	);
 
 	// One trail feeds both the visible <Breadcrumb> and the JSON-LD (the reader
@@ -1222,7 +1240,9 @@
 		// records paragraph N. Without this, saveProgress ran with no anchor yet
 		// and stored paragraph 0 — leaving the chapter before scrolling threw the
 		// bookmarked spot away.
-		const pParam = $page.url.searchParams.get('p');
+		// A `#p-N` paragraph anchor ($lib/paragraphAnchor) is the same jump.
+		const hashP = paragraphFromHash($page.url.hash);
+		const pParam = hashP !== null ? String(hashP) : $page.url.searchParams.get('p');
 		const jumpP = pParam !== null ? Number(pParam) : NaN;
 		// A deep-link jump strands the reader: saveProgress below moves the book's
 		// resume point to the target, so the spot they left is gone. Read it FIRST
@@ -2020,7 +2040,7 @@
 	title={titleTag}
 	description={metaText}
 	{canonical}
-	hreflang={null}
+	hreflang={headHreflang}
 	ogType="article"
 	{ogImage}
 	ogImageWidth={LANDSCAPE_WIDTH}
@@ -2401,7 +2421,7 @@
 			<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. Quotes
 			     are curled at render time, length-preserving ($lib/smartQuotes). -->
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<div class="reading" class:story={childrens} class:no-verse-numbers={!readerPrefs.verseNumbers} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(markVerse(smartQuotesHtml(chapter.body_html, language)))}</div>
+			<div class="reading" class:story={childrens} class:no-verse-numbers={!readerPrefs.verseNumbers} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html anchorParagraphs(assetHtml(markVerse(smartQuotesHtml(chapter.body_html, language))))}</div>
 			<!-- Parsed straight after the body — its previousElementSibling, so it
 			     stays INSIDE .par-wrap, next to the body — so it can put a returning
 			     reader at their paragraph before first paint (see $lib/earlyResume).
