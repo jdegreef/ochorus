@@ -77,8 +77,11 @@ BOOK_FIELDS = (
     "is_published",
 )
 # Every Series field the fixture owns (all of them — see the module docstring).
-SERIES_FIELDS = ("title", "description", "sort_order", "audience", "min_age", "max_age")
-SERIES_TRANSLATION_FIELDS = ("title", "description")
+SERIES_FIELDS = (
+    "title", "description", "sort_order", "audience", "min_age", "max_age",
+    "tagline", "verse_text", "verse_ref", "planned_count", "hero_image", "hero_tone", "map",
+)
+SERIES_TRANSLATION_FIELDS = ("title", "description", "tagline", "verse_text", "verse_ref")
 # No `word_count`: `Chapter.save()` derives it from body_html, so passing the
 # fixture's copy here would be discarded. See seed_sermons.SERMON_FIELDS, where
 # the same entry also cost a re-write on every deploy.
@@ -135,7 +138,7 @@ def sync_series(stdout) -> dict[str, Series]:
         by_slug[f["slug"]] = _upsert(
             Series,
             {"slug": f["slug"]},
-            {k: f[k] for k in SERIES_FIELDS if k in f},
+            _with_defaults(Series, f, SERIES_FIELDS),
             f"series {f['slug']}",
             stdout,
         )
@@ -155,7 +158,7 @@ def sync_series(stdout) -> dict[str, Series]:
             _upsert(
                 SeriesTranslation,
                 {"series": series, "language": f["language"]},
-                {k: f[k] for k in SERIES_TRANSLATION_FIELDS if k in f},
+                _with_defaults(SeriesTranslation, f, SERIES_TRANSLATION_FIELDS),
                 f"series {series.slug} [{f['language']}]",
                 stdout,
             ).pk
@@ -165,6 +168,14 @@ def sync_series(stdout) -> dict[str, Series]:
         stdout.write(f"  - series {tr.series.slug} [{tr.language}]")
     stale.delete()
     return by_slug
+
+
+def _with_defaults(model, f: dict, fields) -> dict:
+    """The row's values for ``fields``, a missing key read as the field's
+    default. regen_fixture leaves a field at its default OUT of the file
+    (DEFAULTED_OK), so "absent" means "cleared": skipping it would keep a
+    withdrawn hero, map or verse on the live page forever."""
+    return {k: f[k] if k in f else model._meta.get_field(k).get_default() for k in fields}
 
 
 def series_of(f: dict, series: dict[str, Series]) -> Series | None:
