@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { assetHtml } from '$lib/assetUrl';
 	import { hasVerseNumbers, markVerse } from '$lib/verse';
+	import { anchorParagraphs, paragraphFromHash } from '$lib/paragraphAnchor';
 	import { smartQuotesHtml } from '$lib/smartQuotes';
 	import { bibleChapterMeta, bibleChapterTitle, chapterMeta, isBibleChapter } from '$lib/bookSeo';
 	import { OWB_SLUG } from '$lib/openWordBible';
@@ -1222,7 +1223,9 @@
 		// records paragraph N. Without this, saveProgress ran with no anchor yet
 		// and stored paragraph 0 — leaving the chapter before scrolling threw the
 		// bookmarked spot away.
-		const pParam = $page.url.searchParams.get('p');
+		// A `#p-N` paragraph anchor ($lib/paragraphAnchor) is the same jump.
+		const hashP = paragraphFromHash($page.url.hash);
+		const pParam = hashP !== null ? String(hashP) : $page.url.searchParams.get('p');
 		const jumpP = pParam !== null ? Number(pParam) : NaN;
 		// A deep-link jump strands the reader: saveProgress below moves the book's
 		// resume point to the target, so the spot they left is gone. Read it FIRST
@@ -2401,7 +2404,7 @@
 			<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. Quotes
 			     are curled at render time, length-preserving ($lib/smartQuotes). -->
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<div class="reading" class:story={childrens} class:no-verse-numbers={!readerPrefs.verseNumbers} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(markVerse(smartQuotesHtml(chapter.body_html, language)))}</div>
+			<div class="reading" class:story={childrens} class:no-verse-numbers={!readerPrefs.verseNumbers} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html anchorParagraphs(assetHtml(markVerse(smartQuotesHtml(chapter.body_html, language))))}</div>
 			<!-- Parsed straight after the body — its previousElementSibling, so it
 			     stays INSIDE .par-wrap, next to the body — so it can put a returning
 			     reader at their paragraph before first paint (see $lib/earlyResume).
