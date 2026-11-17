@@ -53,7 +53,7 @@ import { shareImage } from '$lib/coverArt';
 import { absUrl } from '$lib/seo';
 import { xmlEscape } from '$lib/xml';
 import { ORIGINALS_PATH, ORIGINALS_SLUG, hasBylinePage } from '$lib/originals';
-import { BIBLE_PATH, BIBLE_SERIES, bibleIn, isBibleBook } from '$lib/bible';
+import { BIBLE_PATH, BIBLE_SERIES, BIBLE_STORY_PATH, bibleIn, isBibleBook } from '$lib/bible';
 import { OWB_PATH } from '$lib/openWordBible';
 import { ADVENT_PLAN } from '$lib/advent';
 import { FOR_INDEX, FOR_LINKS, FOR_LOCALES, forPath } from '$lib/forLinks';
@@ -599,6 +599,9 @@ async function build(): Promise<SitemapData> {
 		// is: the hub links it, and so does every Bible book's byline. Undated:
 		// its prose is its own, not the books'.
 		pages.push({ byLocale: new Map(bibleLocales.map(([l]) => [l, `${OWB_PATH}/`])) });
+		// The Bible in story order ($lib/bibleStory), wherever the hub is: the
+		// hub links it. Undated, for the same reason: its prose is its own.
+		pages.push({ byLocale: new Map(bibleLocales.map(([l]) => [l, `${BIBLE_STORY_PATH}/`])) });
 	}
 
 	// The young-reader hubs, in each advertised locale where the hub has

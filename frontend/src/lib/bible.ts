@@ -23,6 +23,12 @@ import {
 export const BIBLE_SERIES = 'the-bible';
 /** The hub's path; prerenders to bible/index.html (isSlashedPath). */
 export const BIBLE_PATH = '/bible';
+/**
+ * The Story of the Bible ($lib/bibleStory); prerenders to
+ * bible/story/index.html. Here, not beside the story, so the hub can link it
+ * without pulling the story's prose into its own chunk.
+ */
+export const BIBLE_STORY_PATH = `${BIBLE_PATH}/story`;
 
 /**
  * The UI locales whose chrome (footer, palette, More sheet) links the hub.
