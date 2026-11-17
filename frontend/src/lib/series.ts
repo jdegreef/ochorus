@@ -1,5 +1,6 @@
 import * as m from '$lib/paraglide/messages.js';
 import { UNNUMBERED_SERIES, volumeNumeral } from '$lib/coverStyles';
+import { resumeOrderOf } from '$lib/reading-schema';
 import type {
 	BookSeriesLine,
 	BookSummary,
@@ -406,4 +407,33 @@ export function volumeLabel(position: number | null | undefined, language: strin
 /** The books a series still has to come: its plan less what is published. */
 export function volumesToCome(count: number, planned: number | null | undefined): number {
 	return planned && planned > count ? planned - count : 0;
+}
+
+/** Where a returning reader is in one volume: the chapter they last opened
+ *  (its order and title, from the series row's `toc`) and how many chapters
+ *  are left after it, of how many. Null with no record, or a record past the book's end. */
+export function resumePoint(
+	book: { toc?: string[]; chapter_count: number },
+	rec: { order: number; furthest?: number } | null
+): { order: number; title: string; left: number; total: number } | null {
+	const total = book.toc?.length || book.chapter_count;
+	// Where every other Continue link resumes: a chapter peeked at past the
+	// furthest one read doesn't move the reader's place.
+	const order = rec ? resumeOrderOf(rec) : 0;
+	if (order < 1 || order > total) return null;
+	return { order, title: book.toc?.[order - 1] ?? '', left: total - order, total };
+}
+
+/** A daily volume's days as the reader has them: an introduction (chapter 1),
+ *  then chapter n + 1 is day n. Reaching chapter c puts the reader ON day
+ *  c - 1, so the days behind them are c - 2; `next` is the day to open (the
+ *  one they are on, the last day once all are read). A finished volume has
+ *  read every day. */
+export function dailyProgress(
+	furthest: number | null,
+	days: number,
+	finished = false
+): { read: number; next: number } {
+	const read = finished ? days : Math.max(0, Math.min(days, (furthest ?? 0) - 2));
+	return { read, next: Math.min(days, read + 1) };
 }

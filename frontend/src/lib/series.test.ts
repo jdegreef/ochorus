@@ -17,7 +17,9 @@ import {
 	seriesAges,
 	volumeName,
 	volumesToCome,
-	volumeLabel
+	volumeLabel,
+	resumePoint,
+	dailyProgress
 } from './series';
 import { tileFace, type BookSeries, type BookSummary } from './library-public';
 
@@ -379,5 +381,35 @@ describe('volumeLabel', () => {
 		expect(volumeLabel(2, 'en')).toMatch(/2/);
 		expect(volumeLabel(null, 'en')).toBe('');
 		expect(volumeLabel(0, 'en')).toBe('');
+	});
+});
+
+describe('resumePoint', () => {
+	const book = { toc: ['One', 'Two', 'Three'], chapter_count: 3 };
+	it('names the chapter and counts what is left', () => {
+		expect(resumePoint(book, { order: 2 })).toEqual({ order: 2, title: 'Two', left: 1, total: 3 });
+	});
+	it('says nothing without a record or past the end', () => {
+		expect(resumePoint(book, null)).toBeNull();
+		expect(resumePoint(book, { order: 4 })).toBeNull();
+	});
+	it('resumes at the furthest chapter, not one peeked at past it', () => {
+		expect(resumePoint(book, { order: 3, furthest: 2 })?.order).toBe(2);
+	});
+	it('falls back to the chapter count with no toc', () => {
+		expect(resumePoint({ chapter_count: 15 }, { order: 6 })).toEqual({ order: 6, title: '', left: 9, total: 15 });
+	});
+});
+
+describe('dailyProgress', () => {
+	it('reads chapter n + 1 as day n, the day reached as the one to open', () => {
+		expect(dailyProgress(12, 30)).toEqual({ read: 10, next: 11 });
+		expect(dailyProgress(2, 30)).toEqual({ read: 0, next: 1 });
+		expect(dailyProgress(1, 30)).toEqual({ read: 0, next: 1 });
+		expect(dailyProgress(null, 30)).toEqual({ read: 0, next: 1 });
+	});
+	it('stops at the last day, and a finished volume has read them all', () => {
+		expect(dailyProgress(32, 30)).toEqual({ read: 30, next: 30 });
+		expect(dailyProgress(5, 30, true)).toEqual({ read: 30, next: 30 });
 	});
 });
