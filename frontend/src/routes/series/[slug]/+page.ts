@@ -24,7 +24,9 @@ export const load: PageLoad = async ({ params, fetch }) => {
 	// "More book series" row is decoration: its own silent catch, so a failed
 	// list costs the row and never the page.
 	const [series, all] = await Promise.all([
-		orNotFound(() => getSeries(params.slug, lang)),
+		// Load's own fetch, so the response is inlined in the prerendered page:
+		// scripts/build-series-cards.mjs draws the share card from it.
+		orNotFound(() => getSeries(params.slug, lang, fetch)),
 		listSeries(lang, fetch).catch((): SeriesSummary[] => [])
 	]);
 	// Same audience first (a parent on Brave for God sees the other young

@@ -1739,8 +1739,8 @@ export const listSeries = (language = 'en', f?: Fetch) =>
 	apiFetch<SeriesSummary[]>(`/api/library/series/?language=${language}`, {}, f);
 
 /** No English fallback, like `getTopic`: a series with no page here 404s. */
-export const getSeries = (slug: string, language = 'en') =>
-	apiFetch<SeriesDetail>(`/api/library/series/${slug}/?language=${language}`);
+export const getSeries = (slug: string, language = 'en', f?: Fetch) =>
+	apiFetch<SeriesDetail>(`/api/library/series/${slug}/?language=${language}`, {}, f);
 
 /** The two audiences with a hub of their own — /young-readers/ and /teens/. */
 export type HubAudience = Exclude<SeriesAudience, 'adults'>;

@@ -393,6 +393,9 @@ describe('resumePoint', () => {
 		expect(resumePoint(book, null)).toBeNull();
 		expect(resumePoint(book, { order: 4 })).toBeNull();
 	});
+	it('resumes at the furthest chapter, not one peeked at past it', () => {
+		expect(resumePoint(book, { order: 3, furthest: 2 })?.order).toBe(2);
+	});
 	it('falls back to the chapter count with no toc', () => {
 		expect(resumePoint({ chapter_count: 15 }, { order: 6 })).toEqual({ order: 6, title: '', left: 9, total: 15 });
 	});

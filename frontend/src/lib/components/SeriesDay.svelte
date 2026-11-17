@@ -58,7 +58,7 @@
 				<p class="day-label">{t('series.dayTeaching')}</p>
 				<p class="day-teaching" dir="auto">{sample.teaching}</p>
 			</div>
-			{#each sample.prompts as prompt (prompt.label)}
+			{#each sample.prompts as prompt, i (i)}
 				<div class="day-part">
 					<p class="day-label" dir="auto">{prompt.label}</p>
 					<p dir="auto">{prompt.text}</p>

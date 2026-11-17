@@ -22,7 +22,7 @@ import html as _html
 import re
 
 from django.db.models import F, Value
-from django.db.models.functions import StrIndex, Substr
+from django.db.models.functions import Greatest, StrIndex, Substr
 
 from .text import html_to_text
 
@@ -30,9 +30,12 @@ from .text import html_to_text
 #: whole series rather than filling up with Book 1.
 PLATES_PER_BOOK = 5
 
-#: How much of a chapter, from its first image on, is read for its plate. A
-#: book's opening chapter leads with the map and puts its plate after it; one
-#: window holds both, and the body past it never leaves the database.
+#: How much of a chapter is read for its plate: a window around the first
+#: ``plate-`` file name (every plate is named so, ``frontend/src/lib/plates.ts``),
+#: reaching back far enough to hold the start of its ``<img`` tag. A book's
+#: opening chapter puts its map first, with an alt text of thousands of
+#: characters, so the window starts at the plate, not at the first picture.
+PLATE_BACK = 1200
 PLATE_WINDOW = 2400
 
 _IMG = re.compile(r"<img\b[^>]*>")
@@ -64,9 +67,9 @@ def series_plates(books) -> list[dict]:
     ``PLATES_PER_BOOK`` from each. ``book`` is the slug, ``chapter`` the chapter's title in
     the edition's language. Empty for a series without pictures.
 
-    Reads a window of each illustrated chapter, from its first ``<img``, rather
+    Reads a window of each illustrated chapter, around its plate, rather
     than whole bodies: forty-five chapters of Lamplighters are ~1.3 MB of HTML,
-    and the plates sit in the first few hundred bytes of the window.
+    and the database hands back only the window.
     """
     from .models import Chapter
 
@@ -74,9 +77,9 @@ def series_plates(books) -> list[dict]:
     slug = {b.pk: b.slug for b in books}
     rows = (
         Chapter.objects.filter(book_id__in=rank)
-        .annotate(at=StrIndex("body_html", Value("<img")))
+        .annotate(at=StrIndex("body_html", Value("plate-")))
         .filter(at__gt=0)
-        .annotate(window=Substr("body_html", F("at"), PLATE_WINDOW))
+        .annotate(window=Substr("body_html", Greatest(F("at") - PLATE_BACK, 1), PLATE_WINDOW))
         .values_list("book_id", "order", "title", "window")
     )
     plates, per_book = [], dict.fromkeys(rank, 0)
@@ -91,7 +94,12 @@ _P = re.compile(r"<p\b[^>]*>(.*?)</p>", re.S)
 _BLOCKQUOTE = re.compile(r"<blockquote\b[^>]*>(.*?)</blockquote>", re.S)
 #: A prompt paragraph: its label in bold, then the prompt ("Think about it:
 #: What does…"). The label is the book's own, in the book's own language.
-_PROMPT = re.compile(r"^\s*<strong>([^<]{1,40}?)\s*[:：]?\s*</strong>\s*[:：]?\s*(.+)$", re.S)
+#: The colon is required, inside the bold or just after it — a teaching
+#: paragraph that merely opens on a bold phrase ("<strong>“I am with
+#: you.”</strong> …") is not a prompt. Latin, CJK and Ethiopic (፦) colons.
+_PROMPT = re.compile(
+    r"^\s*<strong>([^<]{1,40}?)\s*(?:[:：፦]\s*</strong>|</strong>\s*[:：፦])\s*(.+)$", re.S
+)
 #: The day's prayer: one paragraph set wholly in italics, last in the chapter.
 _PRAYER = re.compile(r"^\s*<em>(.+)</em>\s*$", re.S)
 
@@ -120,7 +128,7 @@ def sample_day(body_html: str) -> dict | None:
         return None
     teaching, prompts, prayer = "", [], ""
     for raw in rest:
-        if m := _PROMPT.match(raw):
+        if teaching and (m := _PROMPT.match(raw)):
             prompts.append({"label": html_to_text(m.group(1)), "text": html_to_text(m.group(2))})
         elif not teaching and not prompts:
             teaching = html_to_text(raw)

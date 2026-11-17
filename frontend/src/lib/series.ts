@@ -1,5 +1,6 @@
 import * as m from '$lib/paraglide/messages.js';
 import { UNNUMBERED_SERIES, volumeNumeral } from '$lib/coverStyles';
+import { resumeOrderOf } from '$lib/reading-schema';
 import type {
 	BookSeriesLine,
 	BookSummary,
@@ -413,11 +414,14 @@ export function volumesToCome(count: number, planned: number | null | undefined)
  *  are left after it, of how many. Null with no record, or a record past the book's end. */
 export function resumePoint(
 	book: { toc?: string[]; chapter_count: number },
-	rec: { order: number } | null
+	rec: { order: number; furthest?: number } | null
 ): { order: number; title: string; left: number; total: number } | null {
 	const total = book.toc?.length || book.chapter_count;
-	if (!rec || rec.order < 1 || rec.order > total) return null;
-	return { order: rec.order, title: book.toc?.[rec.order - 1] ?? '', left: total - rec.order, total };
+	// Where every other Continue link resumes: a chapter peeked at past the
+	// furthest one read doesn't move the reader's place.
+	const order = rec ? resumeOrderOf(rec) : 0;
+	if (order < 1 || order > total) return null;
+	return { order, title: book.toc?.[order - 1] ?? '', left: total - order, total };
 }
 
 /** A daily volume's days as the reader has them: an introduction (chapter 1),

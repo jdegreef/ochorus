@@ -67,7 +67,7 @@
 	onMount(() => {
 		progressed = true;
 	});
-	// One parse of the progress map, shared by everything below that reads it.
+	// One reader of the progress map, shared by the action, the meter and the rows.
 	const progressOf = $derived(progressed ? bookProgressReader() : null);
 	const next = $derived(
 		progressOf
@@ -167,9 +167,10 @@
 	// A returning reader: the head greets them with where they are — the
 	// chapter, what is left of the book, a segment per volume — and the button
 	// opens that chapter rather than the book page.
-	// The volume in focus: the one being read, else Book 1; and the reader's
-	// record of it, read once for the welcome and the days.
-	const focus = $derived(next?.resume ? next.book : series.books[0]);
+	// The volume in focus: the one the head's button opens (being read, else
+	// the first unfinished), else Book 1; and the reader's record of it, read
+	// once for the welcome and the days.
+	const focus = $derived(next?.book ?? series.books[0]);
 	const focusRec = $derived(progressed && focus ? getProgressRecord(focus.slug) : null);
 	const resume = $derived(next?.resume ? resumePoint(next.book, focusRec) : null);
 	const stages = $derived(next?.resume ? (progress?.stages ?? []) : []);
@@ -177,9 +178,10 @@
 		next ? localizeHref(`/books/${next.book.slug}${resume ? `/${resume.order}` : ''}`) : ''
 	);
 
-	// Questions readers ask, answered from Book 1 (its own Q&A), with the
-	// FAQPage a search engine reads. Parents' wording for the young series.
-	const qa = $derived(pickQa(toQa(series.qa), []));
+	// Questions readers ask, answered from Book 1 (its own Q&A). Parents'
+	// wording for the young series. No FAQPage here: Book 1's own page already
+	// marks up these same questions, and one URL should carry them.
+	const qa = $derived(pickQa(toQa(series.qa), []).items);
 	const forParents = $derived(series.audience === 'young_readers' || series.audience === 'teens');
 
 	// A daily devotional's month, for the volume the reader is in (Book 1
@@ -206,7 +208,7 @@
 	ogImageWidth={LANDSCAPE_WIDTH}
 	ogImageHeight={LANDSCAPE_HEIGHT}
 	ogImageAlt={series.title}
-	structuredData={[seriesLd, crumbsLd, qa.ld].filter(Boolean)}
+	structuredData={[seriesLd, crumbsLd]}
 />
 
 <div class="page-col px-5 py-10" style="--series-accent: {accent}">
@@ -378,9 +380,9 @@
 		</section>
 	{/if}
 
-	{#if qa.items.length}
+	{#if qa.length}
 		<QandA
-			items={qa.items}
+			items={qa}
 			title={forParents ? t('series.parentsHeading') : t('series.questionsHeading')}
 			headingClass="section-label"
 			hint={t('series.parentsNote')}

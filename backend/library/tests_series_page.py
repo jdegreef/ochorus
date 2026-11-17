@@ -57,6 +57,17 @@ class SampleDayTests(TestCase):
         self.assertEqual(day["prompts"], [{"label": "Piénsalo", "text": "¿Qué te da miedo?"}])
         self.assertEqual(day["prayer"], "Querido Dios, gracias. Amén.")
 
+    def test_a_bold_phrase_without_a_colon_is_teaching_not_a_prompt(self):
+        day = sample_day(DAY.replace(
+            "<p>Lots of girls", "<p><strong>“I am with you.”</strong> God says it first.</p><p>Lots of girls", 1
+        ))
+        self.assertEqual(day["teaching"], "“I am with you.” God says it first.")
+        self.assertEqual([p["label"] for p in day["prompts"]], ["Think about it", "Try this"])
+
+    def test_an_ethiopic_colon_ends_a_label(self):
+        day = sample_day(DIA.replace("Piénsalo:", "አስቢበት፦"))
+        self.assertEqual(day["prompts"][0]["label"], "አስቢበት")
+
     def test_a_chapter_not_shaped_like_a_day_is_none(self):
         self.assertIsNone(sample_day("<p>An introduction, all prose.</p>"))
         # A verse and teaching but no prayer is not a whole day.
@@ -99,6 +110,17 @@ class PlateTests(TestCase):
         )
         self.assertEqual(plates[PLATES_PER_BOOK]["book"], "lamps-2")
         self.assertEqual(series_plates([]), [])
+
+    def test_a_plate_after_a_long_map_is_still_found(self):
+        # Book 1's opening chapter leads with the map, whose alt text runs to
+        # thousands of characters; the plate after it is the chapter's.
+        book = Book.objects.create(author=self.author, slug="lamps-1", title="Lamps 1",
+                                   series=self.series, series_position=1)
+        Chapter.objects.create(book=book, order=1, title="Ch 1", body_html=(
+            _img("/illustrations/1/map.jpg", 1600, 900, "A land of hills. " * 600)
+            + "<p>Text.</p>" + _img("/illustrations/1/plate-01-the-flue.jpg", 600, 800)
+        ))
+        self.assertEqual([p["src"] for p in series_plates([book])], ["/illustrations/1/plate-01-the-flue.jpg"])
 
 
 class SeriesPageApiTests(TestCase):

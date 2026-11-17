@@ -52,9 +52,13 @@ const LOCALES = JSON.parse(
 const RTL = new Set(['ar']);
 const TEXT_W = 820;
 
-/** Trimmed on a word, so a long description reads as a lede. */
-const lede = (s, limit) =>
-	s.length <= limit ? s : `${s.slice(0, s.lastIndexOf(' ', limit)).replace(/[,;:—-]+$/, '')}…`;
+/** Trimmed on a word, so a long description reads as a lede — or, in a
+ *  script written without spaces (Japanese), at the limit itself. */
+function lede(s, limit) {
+	if (s.length <= limit) return s;
+	const space = s.lastIndexOf(' ', limit);
+	return `${s.slice(0, space > limit / 2 ? space : limit).replace(/[,;:—、，-]+$/, '')}…`;
+}
 
 /** The largest size at which the title fits two lines. */
 async function titleBlock(title, rtl) {
