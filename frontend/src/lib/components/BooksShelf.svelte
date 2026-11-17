@@ -47,7 +47,7 @@
 	import { groupBySeries, seriesAmong } from '$lib/series';
 	import { browseRows } from '$lib/browseRows';
 	import { collapseEditions, editionFamilies } from '$lib/edition';
-	import { BIBLE_PATH, shelfSplit } from '$lib/bible';
+	import { BIBLE_PATH, bibleBrowseRow, shelfSplit } from '$lib/bible';
 
 	let {
 		books,
@@ -170,6 +170,9 @@
 	);
 	// The Browse rows — from the books already loaded, no request of their own.
 	const rows = $derived(browseRows(books, folding)); // folds as the grid does
+	// The Bible's own row, first on Browse: the 66 are off the classics' roster
+	// above, so this is where a reader browsing Books meets them (and the hub).
+	const bibleRow = $derived(bibleBrowseRow(bibleBooks));
 	// Any filter or search in the URL lands on the grid, never on the rows; so
 	// does a shelf too small to make a single row (a young language).
 	const hasBrowse = $derived(rows.length > 0);
@@ -464,6 +467,22 @@
 			     "See all" into the grid (pre-filtered to its topic). The full grid
 			     is the "All N books" tab above. -->
 			<div class="browse-rows">
+				{#if bibleRow.length >= 4}
+					<section class="mb-8" aria-labelledby="row-bible">
+						<div class="flex items-baseline justify-between gap-3">
+							<h2 id="row-bible" class="section-label">{t('nav.bible')}</h2>
+							<a href={localizeHref(`${BIBLE_PATH}/`)} class="shrink-0 text-small font-medium">
+								{t('books.seeAll').replace('%n%', String(bibleBooks.length))}
+							</a>
+						</div>
+						<!-- No author line: every one is the Open Word Bible's. -->
+						<div class="cover-rail browse-row" use:scrollEdges>
+							{#each bibleRow as book, i (book.slug)}
+								<BookCard {book} showAuthor={false} showSeries={false} eager={i < 6} />
+							{/each}
+						</div>
+					</section>
+				{/if}
 				<!-- Start here has no "See all": the whole library is the tab above. -->
 				{#each rows as row, ri (row.topic?.slug ?? '')}
 					{@const id = `row-${row.topic?.slug ?? 'start'}`}
@@ -478,7 +497,7 @@
 						</div>
 						<div class="cover-rail browse-row" use:scrollEdges>
 							{#each row.books as book, i (book.slug)}
-								<BookCard {book} showAuthor eager={ri === 0 && i < 6} editions={editionsOf(book)} />
+								<BookCard {book} showAuthor eager={ri === 0 && bibleRow.length < 4 && i < 6} editions={editionsOf(book)} />
 							{/each}
 						</div>
 					</section>
