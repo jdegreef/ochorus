@@ -407,3 +407,29 @@ export function volumeLabel(position: number | null | undefined, language: strin
 export function volumesToCome(count: number, planned: number | null | undefined): number {
 	return planned && planned > count ? planned - count : 0;
 }
+
+/** Where a returning reader is in one volume: the chapter they last opened
+ *  (its order and title, from the series row's `toc`) and how many chapters
+ *  are left after it. Null with no record, or a record past the book's end. */
+export function resumePoint(
+	book: { toc?: string[]; chapter_count: number },
+	rec: { order: number } | null
+): { order: number; title: string; left: number } | null {
+	const total = book.toc?.length || book.chapter_count;
+	if (!rec || rec.order < 1 || rec.order > total) return null;
+	return { order: rec.order, title: book.toc?.[rec.order - 1] ?? '', left: total - rec.order };
+}
+
+/** A daily volume's days as the reader has them: an introduction (chapter 1),
+ *  then chapter n + 1 is day n. Reaching chapter c puts the reader ON day
+ *  c - 1, so the days behind them are c - 2; `next` is the day to open (the
+ *  one they are on, the last day once all are read). A finished volume has
+ *  read every day. */
+export function dailyProgress(
+	furthest: number | null,
+	days: number,
+	finished = false
+): { read: number; next: number } {
+	const read = finished ? days : Math.max(0, Math.min(days, (furthest ?? 0) - 2));
+	return { read, next: Math.min(days, read + 1) };
+}

@@ -4,6 +4,8 @@
 	import { chapterCount, readingTime } from '$lib/reading';
 	import { volumeLabel, volumeName, type BookProgress } from '$lib/series';
 	import type { SeriesBook } from '$lib/library-public';
+	import { assetUrl } from '$lib/assetUrl';
+	import { API_BASE_URL } from '$lib/config';
 	import BookCover from './BookCover.svelte';
 
 	/**
@@ -50,6 +52,18 @@
 						.filter(Boolean)
 						.join(' · ')}
 				</p>
+				{#if book.pdf_url || book.epub_url}
+					<!-- The free downloads, as the book page's menu offers them. -->
+					<p class="vol-dl">
+						<span class="text-muted">{t('book.download')}:</span>
+						{#if book.pdf_url}
+							<a href={assetUrl(book.pdf_url)} download title={t('book.pdfHint')}>PDF</a>
+						{/if}
+						{#if book.epub_url}
+							<a href={`${API_BASE_URL}${book.epub_url}`} download rel="nofollow" title={t('book.epubHint')}>EPUB</a>
+						{/if}
+					</p>
+				{/if}
 			</div>
 			<div class="vol-act">
 				{#if p.finished}
@@ -126,6 +140,26 @@
 		color: var(--muted);
 		font-size: var(--fs-small);
 		margin: 0;
+	}
+	.vol-dl {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.375rem;
+		margin: 0.5rem 0 0;
+		font-size: var(--fs-eyebrow);
+	}
+	.vol-dl a {
+		padding: 0.125rem 0.5rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-pill);
+		color: var(--text);
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		text-decoration: none;
+	}
+	.vol-dl a:hover {
+		border-color: var(--series-accent, var(--accent));
 	}
 	.vol-act {
 		justify-self: end;

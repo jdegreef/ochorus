@@ -43,6 +43,7 @@
 		title,
 		subtitle = '',
 		fan = 'sm',
+		art = '',
 		headingLevel = 2,
 		aside,
 		children,
@@ -71,6 +72,9 @@
 		 *  the point of the card — they grow to legible width, centred in the
 		 *  band, and the emblem badge steps aside for them. */
 		fan?: 'sm' | 'lg';
+		/** A picture washed behind the band (a series' hero art), under the
+		 *  covers: the series' own world, not only its colour. */
+		art?: string;
 		/** 2 when the card sits directly under the page's <h1> (Topics); 3
 		 *  when it sits in a section under its own <h2> (the Books page's rail). */
 		headingLevel?: 2 | 3;
@@ -90,7 +94,11 @@
 </script>
 
 {#snippet content()}
-	<div class="shelf-card-band hue-band" class:fan-lg={bigFan}>
+	<div class="shelf-card-band hue-band" class:fan-lg={bigFan} class:with-art={!!art}>
+		{#if art}
+			{@const src = assetUrl(art)}
+			<img class="shelf-card-art" {src} use:hydrateSrc={{ src }} alt="" loading="lazy" decoding="async" />
+		{/if}
 		{#if bigFan}
 			<!-- The covers carry the card's identity in the large fan. -->
 		{:else if mark && !portrait}
@@ -228,6 +236,17 @@
 			min-height: 5.75rem;
 			padding: 1rem 1.1rem 0.9rem;
 		}
+		/* A series' hero art, washed under the band's covers. */
+		.shelf-card-art {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			opacity: 0.55;
+			mask-image: linear-gradient(to bottom, black 40%, transparent);
+			pointer-events: none;
+		}
 		/* The shelf card's badge: an emblem chip in the card's hue. */
 		.shelf-card-badge {
 			--chip-size: 3.5rem;
@@ -276,6 +295,17 @@
 			   wrong with the Topics page on a phone). Clipping it to the band keeps the
 			   peek without the overflow. */
 			max-width: 62%;
+		}
+
+		/* After the band's child rule above, which would otherwise pull the art
+		   to the end and cap it at 62%. */
+		.shelf-card-band > .shelf-card-art {
+			margin: 0;
+			padding: 0;
+			max-width: none;
+		}
+		.shelf-card-band.with-art > :not(.shelf-card-art) {
+			position: relative;
 		}
 
 		.cover-fan {

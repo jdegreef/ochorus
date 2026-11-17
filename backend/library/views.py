@@ -104,6 +104,7 @@ from .serializers import (
     plan_chapter_index,
     sermon_topic_map,
 )
+from .series_page import sample_day, series_plates
 
 logger = logging.getLogger(__name__)
 
@@ -905,6 +906,14 @@ def _series_rows(language: str, audience: str | None = None) -> list[dict]:
                     "slug": series.slug,
                     "title": title,
                     "description": series.description_for(language),
+                    # The page's promise line and art, so the card sells the
+                    # series as its page does ("" / null where it has none).
+                    "tagline": series.tagline_for(language),
+                    "hero": (
+                        {"image": series.hero_image, "tone": series.hero_tone}
+                        if series.hero_image
+                        else None
+                    ),
                     "book_count": len(books),
                     **_series_for(series),
                     "covers": [_book_cover(b) for b in books[:SERIES_CARD_COVERS]],
@@ -1517,6 +1526,32 @@ def _series_map(series) -> dict | None:
     return {"image": data["image"], "markers": sorted(markers, key=lambda m: m["position"])}
 
 
+def _book_tocs(books) -> dict[int, list[str]]:
+    """Each book's chapter titles in order (book pk → titles) — one query for
+    the whole series, for its rows (``SeriesBookSerializer.toc``)."""
+    tocs: dict[int, list[str]] = {}
+    for book_id, title in (
+        Chapter.objects.filter(book__in=books).order_by("book_id", "order").values_list("book_id", "title")
+    ):
+        tocs.setdefault(book_id, []).append(title)
+    return tocs
+
+
+def _series_daily(series, first) -> dict | None:
+    """``{days, sample}`` for a daily series (``Series.days_per_book``), else
+    None. ``sample`` is Book 1's Day 1 (chapter 2: chapter 1 is the
+    introduction) split into its parts, or None where that day is not shaped
+    like one, or this language has no Book 1."""
+    if not series.days_per_book:
+        return None
+    sample = None
+    if first.series_position == 1:
+        day = first.chapters.filter(order=2).values_list("title", "body_html", "word_count").first()
+        if day and (parts := sample_day(day[1])):
+            sample = {**parts, "title": day[0], "order": 2, "words": day[2]}
+    return {"days": series.days_per_book, "sample": sample}
+
+
 #: The most volumes a series page pitches one row at a time (cover, hook,
 #: blurb, button). Past it — The Bible's 66 — the rows stop selling and start
 #: scrolling, so the page keeps the cover grid.
@@ -1544,6 +1579,9 @@ class SeriesDetailView(PublicContentCacheMixin, APIView):
         # Book 1, "begin at the beginning" would be a lie, so there is none.
         pitched = ordered and len(books) <= PITCHED_MAX
         card = SeriesBookSerializer if pitched else BookListSerializer
+        # Book 1's own Q&A, lifted to the series: who it is for, what it is
+        # like. Only Book 1's, and only where this language has Book 1.
+        qa = first.qa if first.series_position == 1 else []
         return Response(
             {
                 "slug": series.slug,
@@ -1574,6 +1612,12 @@ class SeriesDetailView(PublicContentCacheMixin, APIView):
                 ),
                 # The real people the volumes tell, as faces (They Were Young).
                 "people": story_people([b.slug for b in books], language) if ordered else [],
+                # The pictures inside the books (Lamplighters), one per chapter.
+                "plates": series_plates(books) if pitched else [],
+                "qa": qa if isinstance(qa, list) else [],
+                # A daily devotional's shape: its days per volume, and Book 1's
+                # Day 1 split into its parts (library/series_page.py).
+                "daily": _series_daily(series, first) if pitched else None,
                 "books": card(
                     books,
                     many=True,
@@ -1584,6 +1628,7 @@ class SeriesDetailView(PublicContentCacheMixin, APIView):
                         "language": language,
                         "book_topics": {},
                         "book_series": {},
+                        "book_toc": _book_tocs(books) if pitched else {},
                     },
                 ).data,
                 "available_languages": _series_languages(

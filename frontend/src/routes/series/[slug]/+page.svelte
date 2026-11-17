@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte';
 	import * as m from '$lib/paraglide/messages.js';
 	import { toBookTile, type SeriesDetail } from '$lib/library-public';
-	import { bookProgressReader } from '$lib/progress';
+	import { bookProgressReader, getProgressRecord } from '$lib/progress';
+	import { furthestOf } from '$lib/reading-schema';
 	import { chapterCount, contentLang, readingTime } from '$lib/reading';
 	import {
 		nextInSeries,
@@ -13,7 +14,9 @@
 		volumeName,
 		volumesToCome,
 		numeral,
-		volumeLabel
+		volumeLabel,
+		resumePoint,
+		dailyProgress
 	} from '$lib/series';
 	import { assetUrl } from '$lib/assetUrl';
 	import { localeName } from '$lib/lang.svelte';
@@ -21,7 +24,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangFor, faqPage, toQa } from '$lib/seo';
 	import { shareCard } from '$lib/coverArt';
 	import { localizeHref } from '$lib/href';
 	import BookCard from '$lib/components/BookCard.svelte';
@@ -30,9 +33,14 @@
 	import SeriesVolumes from '$lib/components/SeriesVolumes.svelte';
 	import SeriesPeople from '$lib/components/SeriesPeople.svelte';
 	import SeriesMap from '$lib/components/SeriesMap.svelte';
+	import SeriesPlates from '$lib/components/SeriesPlates.svelte';
+	import SeriesDay from '$lib/components/SeriesDay.svelte';
+	import SeriesSegments from '$lib/components/SeriesSegments.svelte';
+	import QandA from '$lib/components/QandA.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import SERIES_OG from '../../../../static/og/series/og-manifest.json';
 
 	/**
 	 * A series page: the volumes of one series in reading order (Brave for God,
@@ -73,9 +81,15 @@
 	const path = $derived(`/series/${series.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
 	const hreflang = $derived(hreflangFor(path, series.available_languages));
-	// The first volume's share card stands in for the series: it is the cover a
-	// reader meets first, and the series has no artwork of its own yet.
-	const share = $derived(series.books[0] ? shareCard(series.books[0]) : null);
+	// The series' own card (`npm run og:series`: its name, promise and covers),
+	// which every series with an English volume has; else the first volume's.
+	const share = $derived(
+		series.slug in SERIES_OG.cards
+			? { url: `/og/series/${series.slug}.png`, width: 1200, height: 630 }
+			: series.books[0]
+				? shareCard(series.books[0])
+				: null
+	);
 	const ogImage = $derived(absUrl(share?.url ?? '/og/books.png'));
 	const description = $derived(
 		series.description || m.series_meta_default({ series: series.title })
@@ -154,6 +168,36 @@
 	const opening = $derived(series.opening ?? null);
 	const progressOf = $derived(progressed ? bookProgressReader() : null);
 	const current = $derived(next?.resume ? (next.book.series_position ?? null) : null);
+
+	// A returning reader: the head greets them with where they are — the
+	// chapter, what is left of the book, a segment per volume — and the button
+	// opens that chapter rather than the book page.
+	const resume = $derived(
+		next?.resume ? resumePoint(next.book, getProgressRecord(next.book.slug)) : null
+	);
+	const stages = $derived(
+		progressOf && next?.resume ? seriesProgress(series.books.map((b) => b.slug), progressOf).stages : []
+	);
+	const primaryHref = $derived(
+		next ? localizeHref(`/books/${next.book.slug}${resume ? `/${resume.order}` : ''}`) : ''
+	);
+
+	// Questions readers ask, answered from Book 1 (its own Q&A), with the
+	// FAQPage a search engine reads. Parents' wording for the young series.
+	const qa = $derived(toQa(series.qa));
+	const qaLd = $derived(qa.length >= 2 ? faqPage(qa) : '');
+	const forParents = $derived(series.audience === 'young_readers' || series.audience === 'teens');
+
+	// A daily devotional's month, for the volume the reader is in (Book 1
+	// before they start).
+	const daily = $derived(series.daily ?? null);
+	const dayBook = $derived(next?.resume ? next.book : series.books[0]);
+	const days = $derived.by(() => {
+		if (!daily || !dayBook) return { read: 0, next: 1 };
+		const rec = progressed ? getProgressRecord(dayBook.slug) : null;
+		return dailyProgress(rec ? furthestOf(rec) : null, daily.days, !!progressOf?.(dayBook.slug).finished);
+	});
+	const plates = $derived(series.plates ?? []);
 </script>
 
 <Seo
@@ -164,7 +208,7 @@
 	{ogImage}
 	ogImageWidth={share?.width}
 	ogImageHeight={share?.height}
-	structuredData={[seriesLd, crumbsLd]}
+	structuredData={[seriesLd, crumbsLd, qaLd].filter(Boolean)}
 />
 
 <div class="page-col px-5 py-10" style="--series-accent: {accent}">
@@ -190,13 +234,34 @@
 						<cite>{verse.ref}</cite>
 					</p>
 				{/if}
-				{#if series.description}
+				{#if resume && next}
+					<div class="welcome">
+						<p class="eyebrow welcome-eyebrow">{t('series.welcomeBack')}</p>
+						<p class="welcome-where" dir="auto">
+							{volumeLabel(next.book.series_position, lang) || next.book.title}
+							· {t('book.chapterOf')
+								.replace('%n%', numeral(resume.order, lang))
+								.replace('%t%', numeral(next.book.toc?.length || next.book.chapter_count, lang))}
+							{#if resume.title}· <span class="welcome-chapter">{resume.title}</span>{/if}
+						</p>
+						<p class="text-small text-muted">
+							{resume.left === 1
+								? t('series.chaptersLeftOne')
+								: t('series.chaptersLeftMany').replace('%n%', numeral(resume.left, lang))}
+						</p>
+						{#if stages.length > 1}
+							<div class="welcome-segments">
+								<SeriesSegments {stages} label={seriesProgressLabel(readCount, count, lang)} />
+							</div>
+						{/if}
+					</div>
+				{:else if series.description}
 					<p class="series-desc" dir="auto">{series.description}</p>
 				{/if}
 				<p class="series-facts">{facts.join(' · ')}</p>
 				<div class="mt-5 flex flex-wrap items-center gap-3">
 					{#if next}
-						<a href={localizeHref(`/books/${next.book.slug}`)} class="btn btn-primary btn-solid">
+						<a href={primaryHref} class="btn btn-primary btn-solid">
 							<span dir="auto">{action}</span>
 						</a>
 					{:else}
@@ -272,6 +337,26 @@
 		{/if}
 	</section>
 
+	{#if daily && dayBook}
+		<SeriesDay
+			sample={daily.sample}
+			days={daily.days}
+			book={dayBook}
+			firstSlug={series.books[0].slug}
+			{lang}
+			read={days.read}
+			next={days.next}
+		/>
+	{/if}
+
+	{#if plates.length}
+		<section class="mt-12">
+			<h2 class="section-label mb-2">{t('series.platesHeading')}</h2>
+			<p class="mb-4 text-small text-muted">{t('series.platesNote')}</p>
+			<SeriesPlates {plates} books={series.books} {lang} />
+		</section>
+	{/if}
+
 	{#if series.map && series.ordered}
 		<section class="mt-12">
 			<h2 class="section-label mb-2">{t('series.mapHeading')}</h2>
@@ -293,6 +378,15 @@
 			<p class="mb-4 text-small text-muted">{t('series.peopleNote')}</p>
 			<SeriesPeople {people} books={series.books} seriesTitle={series.title} {lang} />
 		</section>
+	{/if}
+
+	{#if qa.length >= 2}
+		<QandA
+			items={qa}
+			title={forParents ? t('series.parentsHeading') : t('series.questionsHeading')}
+			headingClass="section-label"
+			hint={t('series.parentsNote')}
+		/>
 	{/if}
 
 	{#if data.others.length}
@@ -417,6 +511,33 @@
 		color: var(--muted);
 		font-size: var(--fs-small);
 		margin: 0;
+	}
+	.welcome {
+		display: grid;
+		gap: 0.25rem;
+		max-width: 36rem;
+		margin: 0 0 0.75rem;
+	}
+	.welcome p {
+		margin: 0;
+	}
+	.welcome-eyebrow {
+		color: var(--series-accent, var(--accent));
+	}
+	.series-head[data-tone='dark'] .welcome-eyebrow {
+		color: color-mix(in srgb, var(--series-accent) 45%, #f3d9a8); /* hex-ok: night band */
+	}
+	.welcome-where {
+		font-family: var(--font-display);
+		font-size: var(--fs-body);
+		color: var(--text);
+	}
+	.welcome-chapter {
+		font-style: italic;
+	}
+	.welcome-segments {
+		max-width: 18rem;
+		margin-top: 0.375rem;
 	}
 	.series-progress {
 		color: var(--muted);

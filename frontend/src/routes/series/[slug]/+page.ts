@@ -27,5 +27,12 @@ export const load: PageLoad = async ({ params, fetch }) => {
 		orNotFound(() => getSeries(params.slug, lang)),
 		listSeries(lang, fetch).catch((): SeriesSummary[] => [])
 	]);
-	return { series, others: all.filter((s) => s.slug !== params.slug).slice(0, 4) };
+	// Same audience first (a parent on Brave for God sees the other young
+	// series before the adult ones); the index's own order otherwise (sort is stable).
+	const same = (s: SeriesSummary) => (s.audience && s.audience === series.audience ? 0 : 1);
+	const others = all
+		.filter((s) => s.slug !== params.slug)
+		.sort((a, b) => same(a) - same(b))
+		.slice(0, 4);
+	return { series, others };
 };

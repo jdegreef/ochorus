@@ -1650,6 +1650,9 @@ export interface SeriesSummary extends SeriesFor {
 	chapter_words?: number | null;
 	/** Languages the series has a page in; the index's hreflang is their union. */
 	languages: string[];
+	/** The series page's promise line and art, for the card ("" / null = none). */
+	tagline?: string;
+	hero?: { image: string; tone: 'dark' | 'light' } | null;
 }
 
 /** A volume on its series page: the shelf card plus the blurb its row pitches
@@ -1657,6 +1660,11 @@ export interface SeriesSummary extends SeriesFor {
  *  only the hook. */
 export interface SeriesBook extends BookSummary {
 	description?: string;
+	/** Free downloads: a PDF URL and the API path of the EPUB ("" = none). */
+	pdf_url?: string;
+	epub_url?: string;
+	/** Chapter titles in order — the chapter a returning reader is on. */
+	toc?: string[];
 }
 
 /** A volume's place on a series' map, in percent of the image. */
@@ -1697,6 +1705,34 @@ export interface SeriesDetail extends SeriesFor {
 	opening?: { text: string; chapter: string; order: number } | null;
 	/** The real people the volumes tell, one face per story chapter. */
 	people?: HubPerson[];
+	/** The pictures inside the books, one per chapter (Lamplighters). */
+	plates?: SeriesPlate[];
+	/** Book 1's own questions and answers, lifted to the series. */
+	qa?: { question: string; answer: string }[];
+	/** A daily devotional's shape: days per volume, and Book 1's Day 1 in its
+	 *  parts (null where that day did not split). Null for other series. */
+	daily?: { days: number; sample: SampleDay | null } | null;
+}
+
+/** One plate on a series page: the picture, and the chapter it opens. */
+export interface SeriesPlate {
+	src: string;
+	alt: string;
+	book: string;
+	order: number;
+	chapter: string;
+}
+
+/** One day of a daily series, as its parts — each in the book's own words,
+ *  prompt labels included ("Think about it", "Piénsalo"). */
+export interface SampleDay {
+	title: string;
+	order: number;
+	words: number;
+	verse: { text: string; ref: string };
+	teaching: string;
+	prompts: { label: string; text: string }[];
+	prayer: string;
 }
 
 export const listSeries = (language = 'en', f?: Fetch) =>
