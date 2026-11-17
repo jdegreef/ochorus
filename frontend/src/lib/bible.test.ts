@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
 	BIBLE_DIVISIONS,
+	matchesCanonFilter,
 	THIN_SPINE,
 	canonReading,
 	spineLabel,
@@ -428,5 +429,31 @@ describe('canon strip: names, height, reading', () => {
 		} as const;
 		const books = [{ slug: 'psalms' }, { slug: 'romans' }, { slug: 'obadiah' }] as const;
 		expect(canonReading(books, (b) => places[b.slug])).toEqual({ finished: 1, started: 1, total: 3 });
+	});
+});
+
+describe('matchesCanonFilter', () => {
+	const fresh = null;
+	const started = { behind: 2, current: 3, finished: false };
+	const done = { behind: 5, current: null, finished: true };
+	it('keeps the short books by reading time', () => {
+		expect(matchesCanonFilter('short', 'law', 18, fresh)).toBe(true);
+		expect(matchesCanonFilter('short', 'law', 20, fresh)).toBe(true);
+		expect(matchesCanonFilter('short', 'law', 21, fresh)).toBe(false);
+		expect(matchesCanonFilter('short', 'law', null, fresh)).toBe(false);
+	});
+	it('keeps a division or two', () => {
+		expect(matchesCanonFilter('gospels', 'gospels', 90, fresh)).toBe(true);
+		expect(matchesCanonFilter('gospels', 'acts', 90, fresh)).toBe(false);
+		expect(matchesCanonFilter('poetry', 'wisdom', 90, fresh)).toBe(true);
+		expect(matchesCanonFilter('letters', 'paul', 90, fresh)).toBe(true);
+		expect(matchesCanonFilter('letters', 'general-letters', 90, fresh)).toBe(true);
+		expect(matchesCanonFilter('letters', 'revelation', 90, fresh)).toBe(false);
+	});
+	it('keeps the books not yet started', () => {
+		expect(matchesCanonFilter('unread', 'law', 90, fresh)).toBe(true);
+		expect(matchesCanonFilter('unread', 'law', 90, { behind: 0, current: null, finished: false })).toBe(true);
+		expect(matchesCanonFilter('unread', 'law', 90, started)).toBe(false);
+		expect(matchesCanonFilter('unread', 'law', 90, done)).toBe(false);
 	});
 });

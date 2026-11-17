@@ -1,8 +1,13 @@
 <script lang="ts">
 	import type { BookSummary } from '$lib/library-public';
+	import { onMount } from 'svelte';
 	import {
+		CANON_FILTERS,
 		bibleChapterOrder,
+		bibleChapters,
 		canonReading,
+		matchesCanonFilter,
+		type CanonFilter,
 		canonStrip,
 		divisionKey,
 		spineLabel,
@@ -13,7 +18,9 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { scrollEdges } from '$lib/actions/scrollEdges';
-	import { chapterCount, readingTime } from '$lib/reading';
+	import Arrow from '$lib/components/Arrow.svelte';
+	import { chapterCount, readingMinutes, readingTime } from '$lib/reading';
+	import { pickDailyChapter, type DailyChapter } from '$lib/dailyChapter';
 	import { bookChapterPath } from '$lib/reading-schema';
 
 	/**
@@ -47,6 +54,16 @@
 	 * stop. Below 40rem of width (a container query: the strip, not the
 	 * window) the spines become wrapped colour tiles under their division's
 	 * name: the whole canon in one short scroll, nothing off to the side.
+	 *
+	 * Each row fills the column: a spine grows from its own width in
+	 * proportion to it (`--g`), so the New Testament no longer stops two-thirds
+	 * across, and a row too wide for the column still scrolls. The card holds
+	 * the book's chapters as a grid — Psalm 23 two moves from the hub — the
+	 * read ones quieter, the reader's own marked. The book holding today's
+	 * chapter of the day ($lib/dailyChapter, the home page's Today card) wears
+	 * a ribbon, with a line over the strip leading to the chapter. Quick
+	 * filters (`matchesCanonFilter`) dim the books that don't match rather than
+	 * remove them, so the canon keeps its shape.
 	 */
 	let {
 		books,
@@ -114,6 +131,58 @@
 		if (e.key === 'Escape') card = null;
 	}
 	const cardPlace = $derived(card?.slot.book ? (placeOf?.(card.slot.book) ?? null) : null);
+	const cardChapters = $derived(card?.slot.book ? bibleChapters(card.slot.book) : []);
+
+	// --- Today's chapter: by the reader's local date, so only after mount. ---
+	let today = $state<DailyChapter | null>(null);
+	onMount(() => {
+		today = pickDailyChapter(new Date());
+	});
+	const todayBook = $derived(today ? books.find((b) => b.slug === today!.slug) : undefined);
+
+	// --- Quick filters: dim what doesn't match. ---
+	let filter = $state<CanonFilter | null>(null);
+	const filterLabel = (f: CanonFilter) =>
+		f === 'short'
+			? t('bible.filterShort')
+			: f === 'gospels'
+				? t('bible.division_gospels')
+				: f === 'poetry'
+					? t('bible.filterPoetry')
+					: f === 'letters'
+						? t('bible.filterLetters')
+						: t('bible.filterUnread');
+	/** Whether `slot` matches filter `f`. */
+	function matches(f: CanonFilter, slot: CanonSlot<BookSummary>, divisionId: string): boolean {
+		const b = slot.book;
+		if (!b) return false;
+		return matchesCanonFilter(
+			f,
+			divisionId,
+			b.word_count ? readingMinutes(b.word_count) : null,
+			placeOf?.(b) ?? null
+		);
+	}
+	/** Each filter on offer with how many books it keeps. "Not started" only
+	 *  once the reader has started one — before that it would keep them all. */
+	const filters = $derived(
+		CANON_FILTERS.filter((f) => f !== 'unread' || !!(reading && (reading.finished || reading.started))).map(
+			(f) => ({
+				f,
+				count: testaments.reduce(
+					(n, tm) =>
+						n +
+						tm.divisions.reduce(
+							(m, d) => m + d.slots.filter((sl) => matches(f, sl, d.division.id)).length,
+							0
+						),
+					0
+				)
+			})
+		)
+	);
+	/** A spine's grow factor: its own width, in rem, as a unitless number. */
+	const grow = (slot: CanonSlot<BookSummary>) => (slot.book ? 1.0625 + slot.weight * 1.125 : 1.0625);
 </script>
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
@@ -132,6 +201,24 @@
 			>
 		</div>
 	{/if}
+	{#if today && todayBook}
+		<!-- Today's chapter (the home page's Today card): its book wears the
+		     ribbon below. -->
+		<a class="canon-today" href={localizeHref(today.href)}
+			><span class="canon-today-mark" aria-hidden="true"></span>{t('home.todayChapter')}
+			<span class="font-semibold">{today.title}</span> <Arrow /></a
+		>
+	{/if}
+	<div class="canon-filters" role="group" aria-label={t('bible.filterLabel')}>
+		{#each filters as { f, count } (f)}
+			<button
+				type="button"
+				class="canon-chip"
+				aria-pressed={filter === f}
+				onclick={() => (filter = filter === f ? null : f)}>{filterLabel(f)} <span class="canon-chip-n">{count}</span></button
+			>
+		{/each}
+	</div>
 	{#each testaments as testament (testament.testament)}
 		{@const all = totals(testament.divisions.flatMap((d) => d.slots))}
 		<div class="canon-row">
@@ -145,17 +232,25 @@
 				{#each testament.divisions as group (group.division.id)}
 					{@const sum = totals(group.slots)}
 					{@const divisionName = t(divisionKey(group.division.id))}
-					<li class="canon-division">
+					<li
+						class="canon-division"
+						style:--dg={group.slots.reduce((n, sl) => n + grow(sl), 0) + (group.slots.length - 1) * 0.125}
+					>
 						<ol class="canon-spines" aria-label={t(divisionKey(group.division.id))}>
 							{#each group.slots as slot (slot.position)}
 								<!-- An absent book has nothing to open, so nothing to announce:
 								     a screen reader hears the books that are here. -->
-								<li aria-hidden={slot.book ? undefined : 'true'}>
+								<li
+									aria-hidden={slot.book ? undefined : 'true'}
+									style:--g={grow(slot)}
+									class:dim={filter && !matches(filter, slot, group.division.id)}
+								>
 									{#if slot.book}
 										{@const read = readOf(slot.book, slot.chapters)}
 										<a
 											class="spine"
 											class:done={read?.done}
+											class:today={todayBook?.slug === slot.book.slug}
 											href={localizeHref(`/books/${slot.book.slug}`)}
 											title={slot.book.title}
 											aria-label={read?.done
@@ -168,7 +263,8 @@
 											style:--spine-w={slot.weight}
 											style:--spine-t={slot.tall}
 											style:--spine-c={slot.book.cover_color || null}
-											>{#if read && !read.done}<span class="spine-fill" style:height="{read.fill * 100}%" style:--fill-w="{read.fill * 100}%"
+											>{#if todayBook?.slug === slot.book.slug}<span class="spine-ribbon" aria-hidden="true"
+												></span>{/if}{#if read && !read.done}<span class="spine-fill" style:height="{read.fill * 100}%" style:--fill-w="{read.fill * 100}%"
 												></span>{/if}<span class="spine-name long">{spineLabel(slot)}</span><span
 												class="spine-name short">{slot.abbr}</span
 											></a
@@ -222,6 +318,20 @@
 					>{t('book.chapterOf').replace('%n%', String(cardPlace.current)).replace('%t%', String(card.slot.chapters))}</span
 				>
 			{/if}
+			{#if cardChapters.length > 1}
+				<!-- Straight to a chapter: the read ones quieter, the reader's own marked. -->
+				<span class="canon-card-chapters">
+					{#each cardChapters as ch (ch.n)}
+						<a
+							href={localizeHref(ch.href)}
+							tabindex="-1"
+							title={ch.name}
+							class:read={cardPlace?.finished || ch.n <= (cardPlace?.behind ?? 0)}
+							class:current={cardPlace?.current === ch.n}>{ch.n}</a
+						>
+					{/each}
+				</span>
+			{/if}
 			<a class="btn btn-primary btn-solid mt-2" href={localizeHref(bookChapterPath(b.slug, into, false))} tabindex="-1"
 				>{cardPlace?.current != null ? t('book.continue') : t('book.beginReading')}</a
 			>
@@ -266,8 +376,19 @@
 	.canon-division {
 		display: flex;
 		flex-direction: column;
-		flex-shrink: 0;
+		/* Fills the row: grows by its spines' summed widths, never below them. */
+		flex: var(--dg, 1) 0 auto;
 		scroll-snap-align: start;
+	}
+	.canon-spines > li {
+		display: flex;
+		flex: var(--g, 1) 0 auto;
+		align-items: flex-end;
+		transition: opacity 0.15s ease;
+	}
+	/* Not what the quick filter asks for: still there, set back. */
+	.canon-spines > li.dim {
+		opacity: 0.22;
 	}
 	.canon-spines {
 		display: flex;
@@ -323,6 +444,10 @@
 	.canon-label.single::after {
 		display: none;
 	}
+	.canon-label.single {
+		/* Its hidden name keeps the label's height but must not widen the row. */
+		overflow: hidden;
+	}
 	.canon-label.single .canon-label-name {
 		visibility: hidden;
 	}
@@ -362,6 +487,107 @@
 	.canon-card .btn {
 		justify-self: start;
 	}
+	.canon-card-chapters {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(1.85rem, 1fr));
+		gap: 3px;
+		max-height: 8.25rem;
+		margin-top: 0.4rem;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+	}
+	.canon-card-chapters a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 1.7rem;
+		border-radius: 4px;
+		background: var(--surface-2, var(--bg));
+		font-size: var(--fs-micro);
+		font-variant-numeric: tabular-nums;
+		color: var(--text);
+		text-decoration: none;
+	}
+	.canon-card-chapters a:hover {
+		background: var(--accent);
+		color: var(--bg);
+	}
+	.canon-card-chapters a.read {
+		color: var(--muted);
+		opacity: 0.6;
+	}
+	.canon-card-chapters a.current {
+		outline: 1.5px solid var(--accent);
+		color: var(--accent);
+		opacity: 1;
+		font-weight: 600;
+	}
+	/* Today's chapter, over the strip. */
+	.canon-today {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		margin-bottom: 0.75rem;
+		font-size: var(--fs-small);
+		color: var(--accent);
+		text-decoration: none;
+	}
+	.canon-today:hover {
+		text-decoration: underline;
+	}
+	.canon-today-mark {
+		width: 0.45rem;
+		height: 0.8rem;
+		/* hex-ok: the ribbon's gilt, the same in both themes */
+		background: #c9973a;
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
+	}
+	/* The quick filters: a row of small chips. */
+	.canon-filters {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+		margin-bottom: 1rem;
+	}
+	.canon-chip {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		padding: 0.2rem 0.7rem;
+		border: 1px solid var(--border-strong);
+		border-radius: var(--radius-pill);
+		background: transparent;
+		font-size: var(--fs-small);
+		color: var(--text);
+		cursor: pointer;
+	}
+	.canon-chip:hover {
+		border-color: var(--accent);
+	}
+	.canon-chip[aria-pressed='true'] {
+		background: var(--accent);
+		border-color: var(--accent);
+		color: var(--bg);
+	}
+	.canon-chip-n {
+		font-size: var(--fs-micro);
+		opacity: 0.7;
+	}
+	/* Today's book: a gilt ribbon hanging from its head. In the spine's
+	   vertical writing the block axis is the horizontal one, so inset-block
+	   with auto margins centres it across the spine. */
+	.spine-ribbon {
+		position: absolute;
+		top: 0;
+		inset-block: 0;
+		margin-block: auto;
+		width: 0.45rem;
+		height: 1.3rem;
+		/* hex-ok: the ribbon's gilt, the same in both themes */
+		background: #c9973a;
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
+		z-index: 1;
+	}
 	.spine {
 		position: relative;
 		display: flex;
@@ -370,7 +596,10 @@
 		box-sizing: border-box;
 		/* 17px for the shortest book, 35px for the longest: both testaments
 		   fit a desktop column, and scroll on anything narrower. */
-		width: calc(1.0625rem + var(--spine-w, 0) * 1.125rem);
+		/* The spine's own width is its floor; the row's spare room widens it
+		   in proportion (`--g` on its item). */
+		min-width: calc(1.0625rem + var(--spine-w, 0) * 1.125rem);
+		width: 100%;
 		/* Chapters set the height (`tall`): 5rem for one, 8.5rem for Psalms'
 		   150. The spines stand on one shelf line, so only the tops vary. */
 		height: calc(5rem + var(--spine-t, 0.4) * 3.5rem);
@@ -525,6 +754,9 @@
 		.canon-label::after {
 			display: none;
 		}
+		.canon-label.single {
+			overflow: visible;
+		}
 		.canon-label.single .canon-label-name {
 			visibility: visible;
 		}
@@ -581,6 +813,23 @@
 		.spine.absent {
 			width: auto;
 			height: 2.1rem;
+		}
+		/* Tiles keep their own widths: no growing to fill a row. */
+		.canon-division {
+			flex: none;
+		}
+		.canon-spines > li {
+			flex: none;
+		}
+		.spine {
+			min-width: 2.9rem;
+		}
+		/* The ribbon on a tile: from its top edge, near its end. */
+		.spine-ribbon {
+			inset-block: 0 auto;
+			inset-inline: auto 0.35rem;
+			margin: 0;
+			height: 0.95rem;
 		}
 	}
 </style>
