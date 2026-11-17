@@ -1282,6 +1282,9 @@ export interface Article extends ArticleSummary {
 	 *  `/scripture/…` pages where one exists — the same pair a sermon carries. */
 	scripture_refs?: string[];
 	scripture_links?: Record<string, string>;
+	/** Answer-first Questions and Answers (plain text), drawn from the body.
+	 *  Optional: an API running behind this build omits it. */
+	qa?: { question: string; answer: string }[];
 }
 
 export const listArticles = (language = 'en', f?: Fetch) =>
