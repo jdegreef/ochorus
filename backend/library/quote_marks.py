@@ -304,3 +304,16 @@ def assert_punctuation_only(before: str, after: str, where: str) -> None:
     assert rendered_without_marks(before) == rendered_without_marks(after), (
         f"{where}: text other than the quotation marks changed"
     )
+
+
+#: A straight single mark that opens: at the start, or after a space, bracket,
+#: dash or double mark.
+_SINGLE = re.compile(r"""(^|(?<=[\s(\[{—–\-"“]))?'""")
+
+
+def curl_singles(text: str) -> str:
+    """Straight ' as ‘ where it opens (at the start, or after a space, bracket,
+    dash or double mark), else as ’ — a closing mark or an apostrophe.
+    ``convert`` curls only the double marks; the Open Word Bible's builders and
+    the Bible overview card curl the singles with this."""
+    return _SINGLE.sub(lambda m: "‘" if m[1] is not None else "’", text)
