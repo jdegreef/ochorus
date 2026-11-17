@@ -22,6 +22,28 @@
     "slug": "a-true-and-a-false-faith"
    }
   ],
+  "qa": [
+   {
+    "question": "Has the Bible been changed over time?",
+    "answer": "Small copying variations crept in, but we are not guessing about the original. The New Testament survives in thousands of Greek manuscripts and thousands more in other ancient languages, far more than any other ancient work. Laying them side by side exposes each scribe’s slip, no Christian teaching hangs on a disputed reading, and your Bible’s footnotes flag the debated places."
+   },
+   {
+    "question": "Is the Bible full of contradictions?",
+    "answer": "A passage that is hard to understand is not the same as one that is untrustworthy. The resurrection accounts differ on details such as one angel or two, which is how honest, independent witnesses sound; matching word for word would suggest collusion. They agree completely on what matters: the tomb was empty and Jesus was alive. Many apparent contradictions dissolve under basic questions."
+   },
+   {
+    "question": "Why does the Bible show its heroes failing?",
+    "answer": "Because it is telling the truth. David commits adultery and arranges a man’s death; Peter denies Jesus three times; the disciples squabble and run. Historians note that embarrassing details tend to be true, since nobody invents material that makes their own side look bad. Myths make their heroes shine; the Bible lets its heroes bleed."
+   },
+   {
+    "question": "Is the Bible just a book of old myths?",
+    "answer": "The New Testament writers rejected that flatly. Peter says they “did not follow cleverly devised myths” but were eyewitnesses (2 Peter 1:16), and Luke says he investigated everything carefully (Luke 1:1–4). Genesis is not a science textbook; it answers different questions, about who made the world, why we are here and what has gone wrong."
+   },
+   {
+    "question": "Does trusting the Bible mean believing without reasons?",
+    "answer": "No. Faith is involved, but biblical faith is trust placed on good grounds, the way you trust a friend who has proven honest. Jesus did not scold Thomas for wanting evidence; he invited him to touch the wounds (John 20:27). The best next step is to read a Gospel for yourself, starting with Mark."
+   }
+  ],
   "source_url": "",
   "sort_order": 82,
   "is_published": true,

@@ -31,6 +31,7 @@ ARTICLE_FIELDS = (
     "description",
     "body_html",
     "related",
+    "qa",
     "source_type",
     "source_url",
     "sort_order",

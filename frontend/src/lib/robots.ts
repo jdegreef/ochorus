@@ -33,3 +33,43 @@ export const appOnlyDisallows = (): string[] =>
 	APP_ONLY.flatMap((p) =>
 		locales.map((l) => `Disallow: ${l === 'en' ? '' : `/${l}`}${blocked(p)}`)
 	);
+
+/**
+ * AI assistants and answer engines, named so the welcome is explicit rather
+ * than implied by `*`: a host or CDN "block AI bots" default, or a later
+ * blanket rule, would otherwise shut them out without anyone noticing. They
+ * share the `*` group (several User-agent lines may open one group, RFC 9309
+ * §2.2.1), so they obey exactly the same Disallows — a SEPARATE named group
+ * would make each bot ignore every `*` rule.
+ *
+ * Search/answer fetchers first (they cite and link the page), then the
+ * crawlers that gather training data, allowed too as a founder decision
+ * (2026-11-16): the classics are public domain and the point is reach. To stop
+ * training only, delete the second list.
+ */
+export const AI_SEARCH_AGENTS = [
+	'OAI-SearchBot',
+	'ChatGPT-User',
+	'Claude-SearchBot',
+	'Claude-User',
+	'PerplexityBot',
+	'Perplexity-User',
+	'DuckAssistBot',
+	'MistralAI-User',
+	'Applebot'
+] as const;
+export const AI_TRAINING_AGENTS = [
+	'GPTBot',
+	'ClaudeBot',
+	'Google-Extended',
+	'Applebot-Extended',
+	'CCBot',
+	'meta-externalagent',
+	'Amazonbot'
+] as const;
+
+/** The opening of the one shared group: `*`, then every named AI agent. */
+export const userAgentLines = (): string[] => [
+	'User-agent: *',
+	...[...AI_SEARCH_AGENTS, ...AI_TRAINING_AGENTS].map((a) => `User-agent: ${a}`)
+];
