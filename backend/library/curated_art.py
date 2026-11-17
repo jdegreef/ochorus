@@ -1767,6 +1767,26 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "Drawn as SVG and rendered with Chrome; generator "
         "scripts/original_grounds/lamplighters_4.py reproduces it byte-for-byte.",
     ),
+    # The Lamplighters of Gloamhaven, Book 5: Midsummer morning on the moor above
+    # Harrowgate. A small company in ink along a heather ridge, a small flame resting
+    # above each head; Wren at the left end holding out the lamp; warm wind in off
+    # the hills under a sky only beginning to warm. Sky stays deep for the title.
+    "the-midsummer-flame": Original(
+        "a70c31eea61f31d23113cfb7f64dd84bb8ad9723c587f72166a99d3ddf2cb976",
+        "Book 5's own image, the fifth of the set: the flame given to everyone. "
+        "Drawn as SVG and rendered with headless Chromium; generator "
+        "scripts/original_grounds/lamplighters_5.py redraws it.",
+    ),
+    # The Lamplighters of Gloamhaven, Book 6: the first golden morning. The Bright
+    # Mountain low on the cover, a zigzag of lit waystones up its face to a fire on
+    # the summit, a small figure holding the lamp up as the sun breaks the horizon.
+    # The last night stays deep blue above; gold only below the subtitle row.
+    "morning-comes": Original(
+        "d1da4d94f2256a2b407703c6eb65d756b2d69a101282b445b65bf87160be60bb",
+        "Book 6's own image, the last of the set: the sun golden again over the "
+        "Bright Mountain. Drawn as SVG and rendered with headless Chromium; "
+        "generator scripts/original_grounds/lamplighters_6.py redraws it.",
+    ),
     # The Lamplighters of Gloamhaven, Book 3: one small warm light against a huge cold
     # one — Wren on the end of a harbour wall, low left, with the lamp; across the
     # water, low right, the glowstone city of Vaelport in hard blue-white light.
