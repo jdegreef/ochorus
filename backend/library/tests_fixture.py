@@ -59,6 +59,7 @@ from library.covers import (
     COVER_WIDTHS,
     OG_MANIFEST,
     RASTER_SUFFIXES,
+    WASH_WIDTH,
     H,
     W,
     art_url,
@@ -1696,7 +1697,7 @@ class CoverAssetTests(SimpleTestCase):
             cover = _cover(f)
             if not cover.endswith(RASTER_SUFFIXES):
                 continue
-            for width in COVER_WIDTHS:
+            for width in (*COVER_WIDTHS, WASH_WIDTH):
                 variant = variant_url(cover, width)
                 if not (STATIC_DIR / variant.lstrip("/")).is_file():
                     missing.append(variant)

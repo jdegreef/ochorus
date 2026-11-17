@@ -182,6 +182,9 @@ export function shareCard(book: {
 }
 
 export const COVER_WIDTHS = [320, 640];
+/** The tiny variant the book page blurs into its hero band — `WASH_WIDTH` in
+ *  covers.py. Not a srcset candidate (see `coverSrcset`). */
+export const WASH_WIDTH = 96;
 const RASTER = /\.(jpe?g|png)$/;
 
 /**
@@ -240,6 +243,17 @@ export function coverVariants(url: string | null | undefined): string[] {
 	if (!url?.startsWith('/covers/') || !RASTER.test(url)) return [];
 	const base = url.replace(RASTER, '');
 	return COVER_WIDTHS.map((w) => `${base}-${w}.webp`);
+}
+
+/**
+ * The ~3 KB variant a book page blurs into its hero band; null where
+ * `coverVariants` offers nothing (a plate, a portrait, an external URL). Blurred
+ * to a colour, a larger file shows nothing more and only races the page for
+ * bandwidth — and the band is the page's largest image, so its LCP.
+ */
+export function coverWash(url: string | null | undefined): string | null {
+	if (!url?.startsWith('/covers/') || !RASTER.test(url)) return null;
+	return `${url.replace(RASTER, '')}-${WASH_WIDTH}.webp`;
 }
 
 /**

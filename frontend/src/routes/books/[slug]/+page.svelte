@@ -3,7 +3,7 @@
 	import ForPromo from '$lib/components/ForPromo.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import ReadBar from '$lib/components/ReadBar.svelte';
-	import { coverVariants, isPlateCover, shareCard, shareImage } from '$lib/coverArt';
+	import { coverWash, isPlateCover, shareCard, shareImage } from '$lib/coverArt';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { authorLdType, authorPath, isImprint } from '$lib/originals';
 	import { type BookDetail, formatLifespan, isTranslated } from '$lib/library-public';
@@ -146,15 +146,15 @@
 	// The cover's painting, blurred and veiled behind the hero as its colour
 	// (app.css --wash-veil) — a raster cover only: a plate is the house's own
 	// drawing, not a painting, and a file that fails to load leaves the plain page.
-	// Its smallest webp (the cover's own 1x file): blurred to a colour, the
-	// full-size original (up to ~400 KB) would race the cover for nothing.
-	// Fetched HIGH, beside the cover, not low as it once was: the band is the
-	// largest image on the page, so it is what the browser times as the LCP
-	// (measured on phone and desktop alike), and `low` held exactly that paint
-	// back. On a 1x screen it is the cover's own file — one request for both.
+	// Its smallest webp, the 96px variant (~3 KB): blurred to a colour, a
+	// larger file adds nothing a viewer can see (checked side by side at 1400px
+	// against the 320) and only races the page for bandwidth. Fetched HIGH:
+	// the band is the largest image on the page, so it is what the browser
+	// times as the LCP. With the 320 (~23 KB) a throttled phone painted it at
+	// ~8.5 s, queued behind the page's scripts (2026-11-16).
 	let washBroken = $state<string | null>(null);
 	const washSrc = $derived(
-		book.cover_url && !isPlateCover(book.cover_url) ? (coverVariants(book.cover_url)[0] ?? book.cover_url) : null
+		book.cover_url && !isPlateCover(book.cover_url) ? (coverWash(book.cover_url) ?? book.cover_url) : null
 	);
 	const wash = $derived(washSrc !== washBroken ? washSrc : null);
 
