@@ -63,5 +63,8 @@ jobs:
           node-version-file: frontend/.nvmrc
       - name: Audit runtime packages (high and critical)
         # Reads the lockfile; installs nothing. Low/moderate advisories in
-        # runtime packages are left to Dependabot's weekly bumps.
-        run: npm audit --omit=dev --audit-level=high
+        # runtime packages are left to Dependabot's weekly bumps. Fails on any
+        # high/critical advisory except the few allowed, each with its reason
+        # and its way out, in scripts/audit-runtime.mjs (which also fails on an
+        # allowed advisory npm no longer reports, so the list cannot go stale).
+        run: node scripts/audit-runtime.mjs
