@@ -1,6 +1,13 @@
 <script lang="ts">
-	import { SITE_URL } from '$lib/config';
-	import { OG_LOCALES, WEBSITE_ID, jsonLd, hreflangAll, publisherLd } from '$lib/seo';
+	import { CONTACT_EMAIL, SITE_URL } from '$lib/config';
+	import {
+		OG_LOCALES,
+		WEBSITE_ID,
+		jsonLd,
+		hreflangAll,
+		organizationLd,
+		publisherLd
+	} from '$lib/seo';
 	import { getLocale } from '$lib/paraglide/runtime';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
@@ -36,8 +43,9 @@
 		},
 		{
 			'@context': 'https://schema.org',
-			...publisherLd(),
-			description: t('home.metaDescription')
+			// The full entity (founding, address, languages, sameAs) lives here
+			// and on /about; other pages name it by @id ($lib/seo).
+			...organizationLd(t('home.qa.whatA'), CONTACT_EMAIL)
 		}
 	]);
 

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { assetSrcset, assetUrl } from '$lib/assetUrl';
 	import { hydrateSrc } from '$lib/hydrateSrc';
-	import { SITE_URL } from '$lib/config';
-	import { hreflangAll, jsonLd } from '$lib/seo';
+	import { CONTACT_EMAIL, SITE_URL } from '$lib/config';
+	import { hreflangAll, jsonLd, organizationLd } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { LIVE_LOCALES } from '$lib/live-locales.generated';
@@ -141,7 +141,10 @@
 			description: t('about.metaDescription'),
 			url: canonical,
 			isPartOf: { '@type': 'WebSite', name: 'Ochorus', url: SITE_URL },
-			isAccessibleForFree: true
+			isAccessibleForFree: true,
+			// The page is about the organisation: its full entity, the same
+			// @id every book and chapter names as publisher.
+			mainEntity: organizationLd(t('home.qa.whatA'), CONTACT_EMAIL)
 		})
 	);
 </script>

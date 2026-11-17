@@ -1,4 +1,5 @@
 <script lang="ts">
+	import HomeQuestions from '$lib/components/HomeQuestions.svelte';
 	import { authorPath } from '$lib/originals';
 	import type { CoverBook, CoverFace, AuthorTileData, TopicCount, HubAudience, PlanSummary } from '$lib/library-public';
 	import { localizeHref } from '$lib/href';
@@ -213,6 +214,10 @@
 		</ul>
 	</section>
 {/if}
+
+<!-- What an answer engine is asked about the site, answered here (and as
+     FAQPage JSON-LD): what Ochorus is, that it is free, which languages. -->
+<HomeQuestions />
 
 <!-- The leader behind the reader: one closing line for churches and
      ministries and a link to the /for/ hub (design #27). -->
