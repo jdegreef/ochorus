@@ -387,14 +387,14 @@ describe('volumeLabel', () => {
 describe('resumePoint', () => {
 	const book = { toc: ['One', 'Two', 'Three'], chapter_count: 3 };
 	it('names the chapter and counts what is left', () => {
-		expect(resumePoint(book, { order: 2 })).toEqual({ order: 2, title: 'Two', left: 1 });
+		expect(resumePoint(book, { order: 2 })).toEqual({ order: 2, title: 'Two', left: 1, total: 3 });
 	});
 	it('says nothing without a record or past the end', () => {
 		expect(resumePoint(book, null)).toBeNull();
 		expect(resumePoint(book, { order: 4 })).toBeNull();
 	});
 	it('falls back to the chapter count with no toc', () => {
-		expect(resumePoint({ chapter_count: 15 }, { order: 6 })).toEqual({ order: 6, title: '', left: 9 });
+		expect(resumePoint({ chapter_count: 15 }, { order: 6 })).toEqual({ order: 6, title: '', left: 9, total: 15 });
 	});
 });
 

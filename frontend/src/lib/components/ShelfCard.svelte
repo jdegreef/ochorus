@@ -288,7 +288,7 @@
 		   to the far end; under RTL that is the left, which is correct. */
 		/* The band's far end. The band does the pushing, so an occupant only styles
 		   itself. */
-		.shelf-card-band > :not(.shelf-card-badge) {
+		.shelf-card-band > :not(.shelf-card-badge, .shelf-card-art) {
 			margin-inline-start: auto;
 			padding-inline-start: 0.5rem;
 			/* Content used to run off the right edge at 375px (it was the one thing
@@ -297,13 +297,6 @@
 			max-width: 62%;
 		}
 
-		/* After the band's child rule above, which would otherwise pull the art
-		   to the end and cap it at 62%. */
-		.shelf-card-band > .shelf-card-art {
-			margin: 0;
-			padding: 0;
-			max-width: none;
-		}
 		.shelf-card-band.with-art > :not(.shelf-card-art) {
 			position: relative;
 		}

@@ -35,6 +35,7 @@
 	} = $props();
 	const t = i18n.t;
 	const nextTitle = $derived(book.toc?.[next] ?? '');
+	const heading = $derived(t('series.daysHeading').replace('%n%', numeral(days, lang)));
 	const dayLabel = (n: number) => `${t('plans.day')} ${numeral(n, lang)}`;
 </script>
 
@@ -78,13 +79,13 @@
 
 <section class="mt-12">
 	<h2 class="section-label mb-2">
-		{t('series.daysHeading').replace('%n%', numeral(days, lang))}
+		{heading}
 		{#if book.series_position}<span class="text-muted"> · {volumeLabel(book.series_position, lang)}</span>{/if}
 	</h2>
 	<p class="mb-4 text-small text-muted">
 		{t('series.daysRead').replace('%n%', numeral(read, lang)).replace('%total%', numeral(days, lang))}
 	</p>
-	<ol class="dots" aria-label={t('series.daysHeading').replace('%n%', numeral(days, lang))}>
+	<ol class="dots" aria-label={heading}>
 		{#each Array.from({ length: days }, (_, i) => i + 1) as d (d)}
 			<li>
 				<a

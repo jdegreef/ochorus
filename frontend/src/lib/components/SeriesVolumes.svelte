@@ -7,6 +7,7 @@
 	import { assetUrl } from '$lib/assetUrl';
 	import { API_BASE_URL } from '$lib/config';
 	import BookCover from './BookCover.svelte';
+	import Icon from './Icon.svelte';
 
 	/**
 	 * An ordered series' volumes as rows that pitch each book: the cover, its
@@ -53,14 +54,22 @@
 						.join(' · ')}
 				</p>
 				{#if book.pdf_url || book.epub_url}
-					<!-- The free downloads, as the book page's menu offers them. -->
+					<!-- The free downloads, marked up as the /for page's book list. -->
 					<p class="vol-dl">
-						<span class="text-muted">{t('book.download')}:</span>
 						{#if book.pdf_url}
-							<a href={assetUrl(book.pdf_url)} download title={t('book.pdfHint')}>PDF</a>
+							<a class="btn btn-sm" href={assetUrl(book.pdf_url)} download title={t('book.pdfHint')}
+								><Icon name="download" size={14} /> PDF<span class="sr-only" dir="auto"> · {book.title}</span></a
+							>
 						{/if}
 						{#if book.epub_url}
-							<a href={`${API_BASE_URL}${book.epub_url}`} download rel="nofollow" title={t('book.epubHint')}>EPUB</a>
+							<a
+								class="btn btn-sm"
+								href={`${API_BASE_URL}${book.epub_url}`}
+								download
+								rel="nofollow"
+								title={t('book.epubHint')}
+								><Icon name="book" size={14} /> EPUB<span class="sr-only" dir="auto"> · {book.title}</span></a
+							>
 						{/if}
 					</p>
 				{/if}
@@ -144,22 +153,8 @@
 	.vol-dl {
 		display: flex;
 		flex-wrap: wrap;
-		align-items: center;
-		gap: 0.375rem;
-		margin: 0.5rem 0 0;
-		font-size: var(--fs-eyebrow);
-	}
-	.vol-dl a {
-		padding: 0.125rem 0.5rem;
-		border: 1px solid var(--border);
-		border-radius: var(--radius-pill);
-		color: var(--text);
-		font-weight: 600;
-		letter-spacing: 0.04em;
-		text-decoration: none;
-	}
-	.vol-dl a:hover {
-		border-color: var(--series-accent, var(--accent));
+		gap: 0.5rem;
+		margin: 0.625rem 0 0;
 	}
 	.vol-act {
 		justify-self: end;

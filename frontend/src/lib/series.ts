@@ -410,14 +410,14 @@ export function volumesToCome(count: number, planned: number | null | undefined)
 
 /** Where a returning reader is in one volume: the chapter they last opened
  *  (its order and title, from the series row's `toc`) and how many chapters
- *  are left after it. Null with no record, or a record past the book's end. */
+ *  are left after it, of how many. Null with no record, or a record past the book's end. */
 export function resumePoint(
 	book: { toc?: string[]; chapter_count: number },
 	rec: { order: number } | null
-): { order: number; title: string; left: number } | null {
+): { order: number; title: string; left: number; total: number } | null {
 	const total = book.toc?.length || book.chapter_count;
 	if (!rec || rec.order < 1 || rec.order > total) return null;
-	return { order: rec.order, title: book.toc?.[rec.order - 1] ?? '', left: total - rec.order };
+	return { order: rec.order, title: book.toc?.[rec.order - 1] ?? '', left: total - rec.order, total };
 }
 
 /** A daily volume's days as the reader has them: an introduction (chapter 1),

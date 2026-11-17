@@ -67,8 +67,9 @@ COVERS = BACKEND.parent / "frontend" / "static" / "covers"
 WEBP_QUALITY = 82
 
 
-def write_variants(source: Path, dry_run: bool) -> list[str]:
-    """Write `<source>-<width>.webp` for each width, and say what changed."""
+def write_variants(source: Path, dry_run: bool, root: Path = COVERS) -> list[str]:
+    """Write `<source>-<width>.webp` for each width, and say what changed
+    (paths under `root`; the book plates use it too, `build_plate_thumbs.py`)."""
     from PIL import Image
 
     written = []
@@ -93,7 +94,7 @@ def write_variants(source: Path, dry_run: bool) -> list[str]:
             continue
         if not dry_run:
             dest.write_bytes(buf.getvalue())
-        written.append(str(dest.relative_to(COVERS)))
+        written.append(str(dest.relative_to(root)))
     return written
 
 

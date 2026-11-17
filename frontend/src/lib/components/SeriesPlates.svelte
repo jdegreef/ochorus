@@ -4,14 +4,14 @@
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { i18n } from '$lib/i18n.svelte';
 	import { numeral, volumeLabel } from '$lib/series';
-	import { plateThumb } from '$lib/plates';
+	import { plateSrcset } from '$lib/plates';
 	import type { SeriesBook, SeriesPlate } from '$lib/library-public';
 
 	/**
 	 * "From the pages": the full-page plates inside an illustrated series
 	 * (The Lamplighters of Gloamhaven), one per chapter, as a row that scrolls
 	 * sideways. Each opens its chapter. The picture is the plate's small twin
-	 * (`plateThumb`, drawn by backend/scripts/build_plate_thumbs.py); the
+	 * (`plateSrcset`: webp twins drawn by backend/scripts/build_plate_thumbs.py); the
 	 * caption is the chapter's own title and its book's number.
 	 */
 	let {
@@ -24,7 +24,6 @@
 	const items = $derived(
 		plates.map((p) => ({
 			...p,
-			thumb: plateThumb(p.src),
 			where: [volumeLabel(position(p.book), lang), `${i18n.t('continue.chapter')} ${numeral(p.order, lang)}`]
 				.filter(Boolean)
 				.join(' · ')
@@ -34,16 +33,12 @@
 
 <ul class="plates">
 	{#each items as p (p.src)}
-		{@const source = {
-			src: assetUrl(p.thumb ?? p.src),
-			srcset: p.thumb ? assetSrcset(`${p.thumb} 320w, ${p.src} 900w`) : undefined
-		}}
+		{@const source = { src: assetUrl(p.src), srcset: assetSrcset(plateSrcset(p.src)) || undefined }}
 		<li>
 			<a href={localizeHref(`/books/${p.book}/${p.order}`)} class="plate">
 				<img
 					src={source.src}
 					srcset={source.srcset}
-					sizes="9.5rem"
 					use:hydrateSrc={source}
 					alt={p.alt}
 					width="152"

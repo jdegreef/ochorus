@@ -24,6 +24,8 @@ import re
 from django.db.models import F, Value
 from django.db.models.functions import StrIndex, Substr
 
+from .text import html_to_text
+
 #: The most plates a series page shows from one book, so the row walks the
 #: whole series rather than filling up with Book 1.
 PLATES_PER_BOOK = 5
@@ -35,11 +37,6 @@ PLATE_WINDOW = 2400
 
 _IMG = re.compile(r"<img\b[^>]*>")
 _ATTR = re.compile(r'(\w+)="([^"]*)"')
-_TAG = re.compile(r"<[^>]+>")
-
-
-def _text(fragment: str) -> str:
-    return _html.unescape(re.sub(r"\s+", " ", _TAG.sub("", fragment))).strip()
 
 
 def _is_plate(attrs: dict) -> bool:
@@ -76,8 +73,9 @@ def series_plates(books) -> list[dict]:
     rank = {b.pk: i for i, b in enumerate(books)}
     slug = {b.pk: b.slug for b in books}
     rows = (
-        Chapter.objects.filter(book_id__in=rank, body_html__contains="<img")
+        Chapter.objects.filter(book_id__in=rank)
         .annotate(at=StrIndex("body_html", Value("<img")))
+        .filter(at__gt=0)
         .annotate(window=Substr("body_html", F("at"), PLATE_WINDOW))
         .values_list("book_id", "order", "title", "window")
     )
@@ -111,7 +109,7 @@ def sample_day(body_html: str) -> dict | None:
     quote = _BLOCKQUOTE.search(body_html or "")
     if not quote:
         return None
-    lines = [_text(p) for p in _P.findall(quote.group(1))]
+    lines = [html_to_text(p) for p in _P.findall(quote.group(1))]
     lines = [line for line in lines if line]
     if len(lines) < 2:
         return None
@@ -123,11 +121,11 @@ def sample_day(body_html: str) -> dict | None:
     teaching, prompts, prayer = "", [], ""
     for raw in rest:
         if m := _PROMPT.match(raw):
-            prompts.append({"label": _text(m.group(1)), "text": _text(m.group(2))})
+            prompts.append({"label": html_to_text(m.group(1)), "text": html_to_text(m.group(2))})
         elif not teaching and not prompts:
-            teaching = _text(raw)
+            teaching = html_to_text(raw)
     if m := _PRAYER.match(rest[-1]):
-        prayer = _text(m.group(1))
+        prayer = html_to_text(m.group(1))
     if not (teaching and prompts and prayer):
         return None
     return {"verse": {"text": text, "ref": ref}, "teaching": teaching, "prompts": prompts, "prayer": prayer}

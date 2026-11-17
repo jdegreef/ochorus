@@ -24,8 +24,9 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumbLd, hreflangFor, faqPage, toQa } from '$lib/seo';
-	import { shareCard } from '$lib/coverArt';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangFor, pickQa, toQa } from '$lib/seo';
+	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
+	import { seriesCardUrl } from '$lib/seriesCard';
 	import { localizeHref } from '$lib/href';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
@@ -40,7 +41,6 @@
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
-	import SERIES_OG from '../../../../static/og/series/og-manifest.json';
 
 	/**
 	 * A series page: the volumes of one series in reading order (Brave for God,
@@ -67,30 +67,26 @@
 	onMount(() => {
 		progressed = true;
 	});
+	// One parse of the progress map, shared by everything below that reads it.
+	const progressOf = $derived(progressed ? bookProgressReader() : null);
 	const next = $derived(
-		progressed
-			? nextInSeries(series.books, bookProgressReader())
+		progressOf
+			? nextInSeries(series.books, progressOf)
 			: series.books.length
 				? { book: series.books[0], resume: false }
 				: null
 	);
-	const readCount = $derived(
-		progressed ? seriesProgress(series.books.map((b) => b.slug), bookProgressReader()).done : 0
+	const progress = $derived(
+		progressOf ? seriesProgress(series.books.map((b) => b.slug), progressOf) : null
 	);
+	const readCount = $derived(progress?.done ?? 0);
 
 	const path = $derived(`/series/${series.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
 	const hreflang = $derived(hreflangFor(path, series.available_languages));
-	// The series' own card (`npm run og:series`: its name, promise and covers),
-	// which every series with an English volume has; else the first volume's.
-	const share = $derived(
-		series.slug in SERIES_OG.cards
-			? { url: `/og/series/${series.slug}.png`, width: 1200, height: 630 }
-			: series.books[0]
-				? shareCard(series.books[0])
-				: null
-	);
-	const ogImage = $derived(absUrl(share?.url ?? '/og/books.png'));
+	// The series' own card, drawn into the build in this page's language
+	// (scripts/build-series-cards.mjs): its name, promise, count and covers.
+	const ogImage = $derived(absUrl(seriesCardUrl(series.slug, getLang())));
 	const description = $derived(
 		series.description || m.series_meta_default({ series: series.title })
 	);
@@ -166,37 +162,38 @@
 		return name ? `${head} · ${name}` : head;
 	});
 	const opening = $derived(series.opening ?? null);
-	const progressOf = $derived(progressed ? bookProgressReader() : null);
 	const current = $derived(next?.resume ? (next.book.series_position ?? null) : null);
 
 	// A returning reader: the head greets them with where they are — the
 	// chapter, what is left of the book, a segment per volume — and the button
 	// opens that chapter rather than the book page.
-	const resume = $derived(
-		next?.resume ? resumePoint(next.book, getProgressRecord(next.book.slug)) : null
-	);
-	const stages = $derived(
-		progressOf && next?.resume ? seriesProgress(series.books.map((b) => b.slug), progressOf).stages : []
-	);
+	// The volume in focus: the one being read, else Book 1; and the reader's
+	// record of it, read once for the welcome and the days.
+	const focus = $derived(next?.resume ? next.book : series.books[0]);
+	const focusRec = $derived(progressed && focus ? getProgressRecord(focus.slug) : null);
+	const resume = $derived(next?.resume ? resumePoint(next.book, focusRec) : null);
+	const stages = $derived(next?.resume ? (progress?.stages ?? []) : []);
 	const primaryHref = $derived(
 		next ? localizeHref(`/books/${next.book.slug}${resume ? `/${resume.order}` : ''}`) : ''
 	);
 
 	// Questions readers ask, answered from Book 1 (its own Q&A), with the
 	// FAQPage a search engine reads. Parents' wording for the young series.
-	const qa = $derived(toQa(series.qa));
-	const qaLd = $derived(qa.length >= 2 ? faqPage(qa) : '');
+	const qa = $derived(pickQa(toQa(series.qa), []));
 	const forParents = $derived(series.audience === 'young_readers' || series.audience === 'teens');
 
 	// A daily devotional's month, for the volume the reader is in (Book 1
 	// before they start).
 	const daily = $derived(series.daily ?? null);
-	const dayBook = $derived(next?.resume ? next.book : series.books[0]);
-	const days = $derived.by(() => {
-		if (!daily || !dayBook) return { read: 0, next: 1 };
-		const rec = progressed ? getProgressRecord(dayBook.slug) : null;
-		return dailyProgress(rec ? furthestOf(rec) : null, daily.days, !!progressOf?.(dayBook.slug).finished);
-	});
+	const days = $derived(
+		daily && focus
+			? dailyProgress(
+					focusRec ? furthestOf(focusRec) : null,
+					daily.days,
+					!!progressOf?.(focus.slug).finished
+				)
+			: { read: 0, next: 1 }
+	);
 	const plates = $derived(series.plates ?? []);
 </script>
 
@@ -206,9 +203,10 @@
 	{canonical}
 	{hreflang}
 	{ogImage}
-	ogImageWidth={share?.width}
-	ogImageHeight={share?.height}
-	structuredData={[seriesLd, crumbsLd, qaLd].filter(Boolean)}
+	ogImageWidth={LANDSCAPE_WIDTH}
+	ogImageHeight={LANDSCAPE_HEIGHT}
+	ogImageAlt={series.title}
+	structuredData={[seriesLd, crumbsLd, qa.ld].filter(Boolean)}
 />
 
 <div class="page-col px-5 py-10" style="--series-accent: {accent}">
@@ -241,7 +239,7 @@
 							{volumeLabel(next.book.series_position, lang) || next.book.title}
 							· {t('book.chapterOf')
 								.replace('%n%', numeral(resume.order, lang))
-								.replace('%t%', numeral(next.book.toc?.length || next.book.chapter_count, lang))}
+								.replace('%t%', numeral(resume.total, lang))}
 							{#if resume.title}· <span class="welcome-chapter">{resume.title}</span>{/if}
 						</p>
 						<p class="text-small text-muted">
@@ -337,11 +335,11 @@
 		{/if}
 	</section>
 
-	{#if daily && dayBook}
+	{#if daily && focus}
 		<SeriesDay
 			sample={daily.sample}
 			days={daily.days}
-			book={dayBook}
+			book={focus}
 			firstSlug={series.books[0].slug}
 			{lang}
 			read={days.read}
@@ -380,9 +378,9 @@
 		</section>
 	{/if}
 
-	{#if qa.length >= 2}
+	{#if qa.items.length}
 		<QandA
-			items={qa}
+			items={qa.items}
 			title={forParents ? t('series.parentsHeading') : t('series.questionsHeading')}
 			headingClass="section-label"
 			hint={t('series.parentsNote')}
