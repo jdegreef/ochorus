@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { locales } from '$lib/paraglide/runtime';
-import { APP_ONLY, appOnlyDisallows } from './robots';
+import {
+	AI_SEARCH_AGENTS,
+	AI_TRAINING_AGENTS,
+	APP_ONLY,
+	appOnlyDisallows,
+	userAgentLines
+} from './robots';
 
 describe('appOnlyDisallows', () => {
 	const rules = appOnlyDisallows();
@@ -22,5 +28,21 @@ describe('appOnlyDisallows', () => {
 		for (const path of ['/books/', '/sermons/', '/articles/', '/es/books/', '/scripture/']) {
 			expect(rules.some((r) => path.startsWith(r.slice('Disallow: '.length)))).toBe(false);
 		}
+	});
+});
+
+describe('userAgentLines', () => {
+	const lines = userAgentLines();
+
+	it('opens the one shared group with * and then names every AI agent', () => {
+		expect(lines[0]).toBe('User-agent: *');
+		for (const a of [...AI_SEARCH_AGENTS, ...AI_TRAINING_AGENTS]) {
+			expect(lines).toContain(`User-agent: ${a}`);
+		}
+	});
+
+	it('holds only User-agent lines, so no rule splits the group', () => {
+		expect(lines.every((l) => l.startsWith('User-agent: '))).toBe(true);
+		expect(new Set(lines).size).toBe(lines.length);
 	});
 });

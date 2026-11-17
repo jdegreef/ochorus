@@ -34,7 +34,7 @@ from .models import (
     Topic,
     TopicBook,
 )
-from .opening import opening_candidate_orders, opening_excerpt
+from .opening import book_opening
 from .plan_seed import DAILY_PLANS
 from .rights import is_public_domain
 from .scripture import EPIGRAPH_WINDOW, book_of, epigraph_reference, opens_with_text
@@ -639,6 +639,15 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
             "position": position,
             "total": _series_total(entry["numbers"], position, entry["here"]),
         }
+
+
+
+class SeriesBookSerializer(BookListSerializer):
+    """A volume on its series page: the shelf card plus the blurb its row
+    pitches the book with (``Book.description``, in the edition's language)."""
+
+    class Meta(BookListSerializer.Meta):
+        fields = [*BookListSerializer.Meta.fields, "description"]
 
 
 class SermonListSerializer(LocalizedMixin, serializers.ModelSerializer):
@@ -1916,18 +1925,10 @@ class BookDetailSerializer(BookListSerializer):
         # exists to avoid, paid again on every crawl of every book URL (the
         # 2026-08-14 OOM was this shape). Titles pick the candidates off the
         # prefetch (no query, and already in `order` sequence via Chapter.Meta,
-        # like the TOC field beside it); bodies are fetched for those orders alone.
+        # like the TOC field beside it); bodies are fetched for those orders alone
+        # (``opening.book_opening``).
         meta = [(c.order, c.title) for c in obj.chapters.all()]
-        wanted = opening_candidate_orders(meta)
-        if not wanted:
-            return None
-        rows = (
-            obj.chapters.filter(order__in=wanted)
-            .order_by("order")
-            .values_list("order", "title", "body_html")
-        )
-        text, chapter = opening_excerpt(list(rows))
-        return {"text": text, "chapter": chapter} if text else None
+        return book_opening(obj.chapters, meta)
 
     def get_featured_people(self, obj) -> list[dict]:
         """The bios of people found in this work — {slug, name, photo_url,

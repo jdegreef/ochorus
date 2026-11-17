@@ -419,8 +419,10 @@ class AudienceShelfTests(TestCase):
         # The seed names chapters by number; a re-cut anthology would point a
         # face at the wrong life. Checked against the English fixture.
         books = Path(__file__).parent / "fixtures" / "content" / "books"
-        surname = {
-            a["fields"]["slug"]: a["fields"]["name"].split()[-1].replace("'", "’")
+        # Surname, or the first name for one known by it alone ("Augustine
+        # of Hippo" is titled "Augustine: …").
+        names = {
+            a["fields"]["slug"]: a["fields"]["name"].replace("'", "’").split()
             for a in json.loads((books.parent / "authors.json").read_text())
         }
         wrong = []
@@ -431,7 +433,8 @@ class AudienceShelfTests(TestCase):
             rows = json.loads((books / f"{slug}.en.json").read_text())
             titles = {r["fields"]["order"]: r["fields"]["title"] for r in rows[1:]}
             for person, _role, chapter in stories:
-                if surname[person] not in titles.get(chapter, ""):
+                title = titles.get(chapter, "")
+                if names[person][-1] not in title and names[person][0] not in title:
                     wrong.append((slug, person, chapter))
         self.assertEqual(wrong, [])
 

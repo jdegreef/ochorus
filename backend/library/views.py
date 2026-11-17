@@ -55,6 +55,7 @@ from .models import (
     Topic,
     fold_query,
 )
+from .opening import book_opening
 from .search import (
     CAPS,
     MAX_RESULTS,
@@ -83,6 +84,7 @@ from .serializers import (
     ChapterDetailSerializer,
     PlanDetailSerializer,
     PlanListSerializer,
+    SeriesBookSerializer,
     SermonDetailSerializer,
     SermonListSerializer,
     TopicDetailSerializer,
@@ -1070,14 +1072,21 @@ def split_story_title(title: str) -> tuple[str, str] | None:
 
 
 def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
-    """The hub's people strip: one face per story chapter of its series'
-    anthologies (``BookPerson.chapter``), in reading order — series, volume,
-    chapter. Name and hook come from the chapter's own title in ``language``
-    ("Charles Spurgeon: The Boy Who Looked"), so a translated anthology brings
-    its names and hooks with it; a chapter missing in the language drops out,
-    and a chapter told about two people (Jim and Elisabeth Elliot) is one face,
-    the first person's."""
-    order = {slug: i for i, slug in enumerate(s for row in series_rows for s in row["books"])}
+    """The hub's people strip: ``story_people`` over every book of its series,
+    capped at ``AUDIENCE_PEOPLE_MAX``."""
+    slugs = [s for row in series_rows for s in row["books"]]
+    return story_people(slugs, language, limit=AUDIENCE_PEOPLE_MAX)
+
+
+def story_people(book_slugs: list[str], language: str, limit: int | None = None) -> list[dict]:
+    """One face per story chapter of these anthologies (``BookPerson.chapter``),
+    in reading order — the books in the order given, then chapter. Name and
+    hook come from the chapter's own title in ``language`` ("Charles Spurgeon:
+    The Boy Who Looked"), so a translated anthology brings its names and hooks
+    with it; a chapter missing in the language drops out, and a chapter told
+    about two people (Jim and Elisabeth Elliot) is one face, the first
+    person's. Shared by the audience hubs' strip and the series page's wall."""
+    order = {slug: i for i, slug in enumerate(book_slugs)}
     members = sorted(
         BookPerson.objects.filter(book_slug__in=order, chapter__isnull=False)
         .select_related("person")
@@ -1114,7 +1123,7 @@ def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
             "chapter": m.chapter,
             "words": words or None,
         }
-        if len(people) >= AUDIENCE_PEOPLE_MAX:
+        if limit and len(people) >= limit:
             break
     return list(people.values())
 
@@ -1491,6 +1500,29 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
         )
 
 
+def _series_map(series) -> dict | None:
+    """The series' map (``Series.map``) when it has an image, its markers in
+    volume order; None otherwise."""
+    data = series.map if isinstance(series.map, dict) else {}
+    if not data.get("image"):
+        return None
+    # Lenient at request time, like the rest of the public API: a marker an
+    # admin edit left malformed drops out rather than 500ing the page (the
+    # fixture's shape is gated in tests_series).
+    markers = [
+        m
+        for m in data.get("markers") or []
+        if isinstance(m, dict) and isinstance(m.get("position"), int) and {"x", "y"} <= m.keys()
+    ]
+    return {"image": data["image"], "markers": sorted(markers, key=lambda m: m["position"])}
+
+
+#: The most volumes a series page pitches one row at a time (cover, hook,
+#: blurb, button). Past it — The Bible's 66 — the rows stop selling and start
+#: scrolling, so the page keeps the cover grid.
+PITCHED_MAX = 12
+
+
 class SeriesDetailView(PublicContentCacheMixin, APIView):
     """One series page: its name and description in the requested language, and
     its books there in reading order. 404 where the series has no name or no
@@ -1505,14 +1537,44 @@ class SeriesDetailView(PublicContentCacheMixin, APIView):
         if not books:
             raise Http404("No series in this language")
         ordered = _is_ordered(books)
+        first = books[0]
+        # An ordered series of a readable size pitches each volume (its blurb
+        # on the row); a collection, or a long run, is a cover grid and needs
+        # no blurbs. The first page is Book 1's — where this language lacks
+        # Book 1, "begin at the beginning" would be a lie, so there is none.
+        pitched = ordered and len(books) <= PITCHED_MAX
+        card = SeriesBookSerializer if pitched else BookListSerializer
         return Response(
             {
                 "slug": series.slug,
                 "title": title,
                 "description": series.description_for(language),
                 "ordered": ordered,
+                "pitched": pitched,
                 **_series_for(series),
-                "books": BookListSerializer(
+                # The selling head (2026-11): a promise line and the series'
+                # verse in this language ("" / null where it has none here),
+                # the art behind the head, the volumes still to come, and —
+                # for a series with a world — its map.
+                "tagline": series.tagline_for(language),
+                "verse": series.verse_for(language),
+                "hero": (
+                    {"image": series.hero_image, "tone": series.hero_tone}
+                    if series.hero_image
+                    else None
+                ),
+                "planned_count": series.planned_count,
+                "map": _series_map(series),
+                # The first page of the first volume, so a reader can taste the
+                # series before choosing it (library/opening.py picks it).
+                "opening": (
+                    book_opening(first.chapters, list(first.chapters.values_list("order", "title")))
+                    if first.series_position == 1
+                    else None
+                ),
+                # The real people the volumes tell, as faces (They Were Young).
+                "people": story_people([b.slug for b in books], language) if ordered else [],
+                "books": card(
                     books,
                     many=True,
                     # No topic chips and no series line on these cards (the page
