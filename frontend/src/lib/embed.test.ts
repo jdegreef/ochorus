@@ -122,7 +122,8 @@ describe('the church widget page', () => {
 	it('opens every link in a new tab, as a plain ochorus.com URL', () => {
 		// Whole tags, past the `>` of an `onclick={() => …}` arrow.
 		const anchors = EMBED_CARD.match(/<a\b(?:[^>{]|\{[^}]*\})*>/g) ?? [];
-		expect(anchors).toHaveLength(4);
+		// The mark, the chapter of the day, the reading, the sermon, "read free".
+		expect(anchors).toHaveLength(5);
 		for (const a of anchors) {
 			expect(a).toContain('target="_blank"');
 			expect(a).toContain('rel="noopener"');
