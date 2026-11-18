@@ -6390,6 +6390,10 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # Paragraph boundaries are preserved so the editions stay parallel.
         "replacements": [
             ("<p>umility is the blossom", "<p>Humility is the blossom"),
+            # ch08: the same lost drop-cap, here after the epigraph the import
+            # ran into the first paragraph ("1:15 umility is often"). Found by
+            # the ja translation (job #8094); en-modern already reads it right.
+            ("1 Timothy 1:15 umility is often", "1 Timothy 1:15. Humility is often"),
             # -- en
             ("The poor, who have given up everything for the sake of Christ, to"
              " them the kingdom comes. One might say: “But some Christians"
