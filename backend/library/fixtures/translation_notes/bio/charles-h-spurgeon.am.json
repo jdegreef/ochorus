@@ -5,15 +5,22 @@
  "job_issue": 3544,
  "pull_request": null,
  "note": [
-  "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
-  "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
-  "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
+  "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the Open Word Bible, Amharic, Balanced edition (OWB, CC0), bundled as backend/library/data/bible/owb-am-b.json.gz and read offline with fetch_verse_text(\"owb-am\", ref) — per the founder decision of 2026-11-18 that every Amharic work quotes OWB. It replaces the 1962 UBS text this bio first quoted.",
+  "A `mined` row means the quotation is a verbatim contiguous span of the OWB verse, spliced by script. Book names follow the Amharic library's own citations, not OWB's spellings.",
+  "Isaiah 45:22 is quoted as its first clause (the shortest OWB span carrying \"Look unto me, and be ye saved, all the ends of the earth\"). OWB reads \"turn\" (ዞር በሉ) where Spurgeon's English Bible reads \"look\", and the story turns on the preacher's cry \"Look!\", so a one-time bridging gloss follows the quote in the bio and in the FAQ answer."
  ],
  "references": [
   {
    "reference": "Isaiah 45:22",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 3
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "FAQ answer 1 (charles-h-spurgeon.faq.json) quotes the same clause as body block 3, kept identical."
   }
  ]
 }
