@@ -382,9 +382,8 @@
     },
     {
       "reference": "Ecclesiastes 4:9",
-      "status": "mined",
-      "block_index": 1023,
-      "source_file": "watchman-nee-a-life.am.json"
+      "status": "self_rendered",
+      "block_index": 1023
     },
     {
       "reference": "Ephesians 6:16",
