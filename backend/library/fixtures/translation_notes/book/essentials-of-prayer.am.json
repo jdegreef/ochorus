@@ -195,10 +195,9 @@
   },
   {
    "reference": "1 Thessalonians 5:17-18",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 4,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 4
   },
   {
    "reference": "Psalm 65:1",

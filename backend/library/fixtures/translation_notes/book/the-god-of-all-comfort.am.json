@@ -112,10 +112,9 @@
   },
   {
    "reference": "Proverbs 18:10",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 2,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 2
   },
   {
    "reference": "Psalm 20:7-8",
@@ -1332,10 +1331,9 @@
   },
   {
    "reference": "Proverbs 18:10",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 33,
-   "chapter_order": 8,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 8
   },
   {
    "reference": "Matthew 23:37",

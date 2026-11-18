@@ -55,10 +55,9 @@
   },
   {
    "reference": "1 Thessalonians 5:16-18",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 7,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 7
   },
   {
    "reference": "James 4:8a",
