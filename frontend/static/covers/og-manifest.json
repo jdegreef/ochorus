@@ -23193,6 +23193,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/he-holds-my-tomorrows": {
+			"ground": "9d4f01935aefb14ad300daab3903e11a093acbc763870f476e07ebe0b2eb9f6c",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "d3f17829d21379a019674013902347ddf4d75cefc1580d26fe4c47c9dd5211f4",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": true,
+			"sitemark": null
+		},
 		"ja/how-i-became-a-christian": {
 			"ground": "db014814ef5bb0776aa9537a9839c634731e72119ea2a4126efca579eb2d8057",
 			"style": "revival",

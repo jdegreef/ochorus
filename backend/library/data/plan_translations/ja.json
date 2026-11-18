@@ -30,5 +30,13 @@
    "Single-book plan backed by the ja edition of school-of-prayer (queue job #7993; book title 『キリストと共に祈りの学び舎で』); PlanTranslationCoverageTests required it once the book exists in ja.",
    "「祈りの学び舎」 echoes the book title; 「ただひとりの教師」 is the ja book's ch02 title; the refrain 「主よ、祈ることを教えてください」 is the form the ja book uses throughout. です・ます体. AI-written; for native review with the book."
   ]
+ },
+ "faith-in-the-fire": {
+  "title": "慰めに満ちたる神――火の中の信仰",
+  "description": "祈ることさえつらい日々のために。ハンナ・ホイットール・スミスは慰めに満ちたる神について、ギャレス・エヴァンズはわたしたちの明日を握っておられる方に信頼することについて語ります。先の見えないときに、揺るがない平安の中へと歩み入る5週間の旅です。",
+  "note": [
+   "Curated plan whose source books are the-god-of-all-comfort and he-holds-my-tomorrows; ships with he-holds-my-tomorrows.ja (queue job #8096) so the plan prose is in place before the row can exist. seed_plans creates the (faith-in-the-fire, ja) row only once the-god-of-all-comfort also ships in ja — no ja edition of it exists yet.",
+   "The title echoes 2 Corinthians 1:3 in the 口語訳 (慰めに満ちたる神), the verse that names Smith's book; when the-god-of-all-comfort.ja ships, harmonise this card's title and description to that edition's own title. 「わたしたちの明日を握っておられる方」 echoes the shipped ja title 『わたしの明日を握っておられる方』 (the English says 'our tomorrows'). Names: ハンナ・ホイットール・スミス, ギャレス・エヴァンズ (the ja edition's form). The ―― dash follows the faithful-with-little card. です・ます体. AI-written; for native review."
+  ]
  }
 }
