@@ -23228,6 +23228,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/prevailing-prayer": {
+			"ground": "b59e14779d62fa71a8004c00767bf02abd105513d1dc4b45a036a30e06b5c2f3",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "be6ea20c4d69f8c77ee39627a38f95fca476655590f2961792d193b74f171b2b",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/school-of-prayer": {
 			"ground": "ca319df79b35e2c1ba2a3c5152fb600a889505ae2acda130f0b29ccdeefb648a",
 			"style": "devotional",
