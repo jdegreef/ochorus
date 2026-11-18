@@ -3,7 +3,7 @@
   "slug": "ever-increasing-faith",
   "language": "pt",
   "job_issue": 8034,
-  "pull_request": null,
+  "pull_request": 8371,
   "note": "Keyless in-session translation. 'mined' rows quote the Bíblia Livre (porbrbsl, ebible mirror por_bpm) verbatim, checked by script against the verse index; 'self_rendered' rows are allusions, loose or adapted quotations (author's emphasis, merged verses, re-personed), unverified.",
   "references": [
     {
