@@ -23148,6 +23148,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/absolute-surrender": {
+			"ground": "b853091833fc38102dcdae98f733bff781a890b9eef1fbb784a03a1cea4360f0",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "0d1dfdf01c900d9b75ac8ff394f7794065067f764d3cab23676fed3a595d9244",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/all-of-grace": {
 			"ground": "ac729450372743669bed1cff78be7e34a6503a3086290262cb59e007853a81f9",
 			"style": "revival",
@@ -23176,6 +23191,21 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null
+		},
+		"ja/he-holds-my-tomorrows": {
+			"ground": "9d4f01935aefb14ad300daab3903e11a093acbc763870f476e07ebe0b2eb9f6c",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "d3f17829d21379a019674013902347ddf4d75cefc1580d26fe4c47c9dd5211f4",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": true,
 			"sitemark": null
 		},
 		"ja/how-i-became-a-christian": {
@@ -23243,6 +23273,36 @@
 				480
 			]
 		},
+		"ja/men-of-prayer-2": {
+			"ground": "2c3734aba7821f26edd01364fd8ba713575196582789fa1aa1ce43e901b9df1c",
+			"style": "originals",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "cc09ffa24e70127f94e727ab28a5c7a4639e11233c03c671a9447aed018e8335",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.2,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[149, 341, 451, 417]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				346,
+				449
+			]
+		},
 		"ja/pilgrims-progress": {
 			"ground": "d7aa3d996830d95b331d5efea0e1c516cfec332142c46eb9b5efb866fe870589",
 			"style": "press",
@@ -23257,6 +23317,57 @@
 			"bar": 0.03,
 			"caps": false,
 			"sitemark": null
+		},
+		"ja/prayer-the-pulse-of-life": {
+			"ground": "47921fc7f4ef20a8c5dcf535f4a47e6cb268aeec85a86235d85bb2e8b21e4d4e",
+			"style": "house",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "1dd6807b1f01b11580af12bdbb52e6fbeb4f5eaa9f62fb60bde3cb8eba47eac0",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[
+						144,
+						102,
+						456,
+						131
+					]
+				],
+				"title": [
+					[
+						130,
+						325,
+						471,
+						415
+					],
+					[
+						118,
+						409,
+						483,
+						499
+					]
+				],
+				"mark": [
+					[
+						232,
+						664,
+						368,
+						746
+					]
+				]
+			},
+			"middle": [
+				298,
+				497
+			]
 		},
 		"ja/school-of-prayer": {
 			"ground": "ca319df79b35e2c1ba2a3c5152fb600a889505ae2acda130f0b29ccdeefb648a",
