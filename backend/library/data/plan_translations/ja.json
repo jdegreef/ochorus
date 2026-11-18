@@ -15,6 +15,14 @@
    "The title opens with the shipped ja edition's own title (密室), so the plan card and the book on the shelf agree. です・ます体. AI-written; for native review with the book."
   ]
  },
+ "growing-in-wisdom-18-days": {
+  "title": "知恵を育む18日間",
+  "description": "ジェームズ・デグリーフが学生のために書いたガイドを、1日に短い章を一つずつ、18日間かけて読みます。自分の目的を見いだすことから未来へのビジョンを築くことまで、毎日、実際的な助言に聖書のことばと黙想と祈りが添えられています。",
+  "note": [
+   "Single-book LAUNCH plan backed by the ja edition of growing-in-wisdom (queue job #8100, which ships it); the card title quotes that edition's own title 知恵を育む, in the 〜18日間 pattern of 祈りの学び舎で過ごす31日. Without this prose seed_plans would publish an English-titled card in Japanese and PlanTranslationCoverageTests would fail.",
+   "James DeGreef has no Japanese form elsewhere in the ja corpus; ジェームズ・デグリーフ matches the edition's about_html. 黙想 is the edition's word for each chapter's Reflection. です・ます体. AI-written; for native review with the book."
+  ]
+ },
  "school-of-prayer-31-days": {
   "title": "祈りの学び舎で過ごす31日",
   "description": "ただひとりの教師の足もとで、アンドリュー・マーレーとともに過ごすひと月。毎日、祈りについてのイエスご自身のことばを一つ開き、「主よ、祈ることを教えてください」から最後の夜の約束にいたるまでを学び、その日の祈りで閉じます。1日1課、約10分。とりなしと祈りの生活へと成長していきます。",
