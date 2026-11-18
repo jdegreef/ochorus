@@ -32,7 +32,7 @@ from __future__ import annotations
 import gzip
 import json
 import re
-from functools import lru_cache
+from functools import cache, lru_cache
 from pathlib import Path
 
 import pythonbible as bible
@@ -42,26 +42,38 @@ VERSION = Version.AMERICAN_STANDARD
 ASV_LABEL = "American Standard Version"
 #: The Bible readers see: the popover, the /scripture/ pages, the daily verse.
 VERSION_LABEL = "Open Word Bible"
-_OWB_PATH = Path(__file__).resolve().parent / "data" / "bible" / "owb-en-b.json.gz"
+_BIBLE_DIR = Path(__file__).resolve().parent / "data" / "bible"
+_OWB_PATH = _BIBLE_DIR / "owb-en-b.json.gz"
 
 
-@lru_cache(maxsize=1)
-def _owb() -> tuple[dict[int, str], dict[int, int]]:
+def owb_path(language: str = "en") -> Path:
+    """The bundled OWB Balanced text for a language (``scripts/build_owb_bible.py``)."""
+    return _BIBLE_DIR / f"owb-{language}-b.json.gz"
+
+
+def owb_languages() -> frozenset[str]:
+    """Languages with a bundled OWB text: English, plus any built with ``--language``."""
+    return frozenset(p.name[len("owb-") : -len("-b.json.gz")] for p in _BIBLE_DIR.glob("owb-*-b.json.gz"))
+
+
+@cache
+def _owb(language: str = "en") -> tuple[dict[int, str], dict[int, int]]:
     """(verse id -> text, joined verse id -> the id holding its text)."""
-    with gzip.open(_OWB_PATH, "rt", encoding="utf-8") as fh:
+    with gzip.open(_OWB_PATH if language == "en" else owb_path(language), "rt", encoding="utf-8") as fh:
         data = json.load(fh)
     verses = {int(k): v for k, v in data["verses"].items()}
     joined = {int(k): int(v) for k, v in data["joined"].items()}
     return verses, joined
 
 
-def owb_verse(verse_id: int) -> tuple[int, str] | None:
+def owb_verse(verse_id: int, language: str = "en") -> tuple[int, str] | None:
     """(id the text is printed under, text) for one verse id, or None.
 
     Where OWB prints two verses as one (Psalm 13:5-6) both ids answer with the
     first's id, so a caller walking a range can print the text once.
+    ``language`` picks another bundled OWB text (Amharic: ``"am"``).
     """
-    verses, joined = _owb()
+    verses, joined = _owb(language)
     first = joined.get(verse_id, verse_id)
     text = verses.get(first)
     return (first, text) if text else None

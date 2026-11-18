@@ -756,6 +756,15 @@ So when the English does not say what it should:
    `--absorb` and say why in the PR; they are policy, not drift. The rule is
    for NEW Swahili Originals: the 33 shipped before 2026-11-18 keep their Union
    wording, and a later volume of one of their series follows its series.
+   **Amharic is OWB for EVERY work** (founder decision, 2026-11-18): an
+   Original or a classic alike quotes OWB Amharic Balanced verbatim. It is
+   bundled, so fetch it with `fetch_verse_text("owb-am", "John 3:16")` (or
+   `fetch_chapter("owb-am", Ref(...))`), with no network and no crib. Don't use
+   the ebible `amh` 1962 mirror: it is © UBS, NT-only, and its bridged keys
+   hold only the last verse's text. Notes record `source_file: "Open Word
+   Bible (OWB), Balanced edition, Amharic"`. Cite with the book names the
+   Amharic library already uses (ዘኍልቍ, ዕብራውያን, 2ኛ ቆሮንቶስ, ቆላስይስ), not
+   OWB's own spellings.
 
 The `english-qa` skill has the full triage table and the rule that matters most:
 archaic spelling and period punctuation are the text, not defects in it.

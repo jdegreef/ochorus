@@ -570,3 +570,64 @@ class OpensWithTextTests(SimpleTestCase):
         self.assertFalse(self._check(verse, ""))
         self.assertFalse(self._check(verse, "Not a reference"))
         self.assertFalse(self._check("", "John 3:16"))
+
+
+class BundledOwbBibleTests(SimpleTestCase):
+    """``owb-<language>`` Bible ids are served from the bundled OWB text.
+
+    Amharic quotes the Open Word Bible (founder decision, 2026-11-18): every
+    Amharic work's Scripture is OWB Amharic Balanced, bundled as
+    ``data/bible/owb-am-b.json.gz`` by ``scripts/build_owb_bible.py --language
+    am``. The lookup is offline, so a translation job never waits on, or is
+    stopped by, the Take Root API for it.
+    """
+
+    def test_amharic_is_bundled_with_the_whole_bible(self):
+        from library import scripture
+
+        self.assertIn("am", scripture.owb_languages())
+        verses, _joined = scripture._owb("am")
+        self.assertGreater(len(verses), 31000)  # all 66 books, OT and NT
+        self.assertIn(1001001, verses)  # Genesis 1:1
+        self.assertIn(66022021, verses)  # Revelation 22:21
+
+    def test_fetch_verse_text_reads_the_bundle_without_the_network(self):
+        from library import translation as m
+
+        with mock.patch.object(m.requests, "get", side_effect=AssertionError("network")):
+            john = m.fetch_verse_text("owb-am", "John 3:16")
+        self.assertTrue(john.startswith("እግዚአብሔር ለዓለም ያለው ፍቅር"), john)
+
+    def test_a_joined_verse_answers_with_the_text_that_holds_it(self):
+        from library import translation as m
+
+        # OWB prints 1 Kings 18:33-34 as one verse, under 33.
+        self.assertEqual(
+            m.fetch_verse_text("owb-am", "1 Kings 18:34"),
+            m.fetch_verse_text("owb-am", "1 Kings 18:33"),
+        )
+
+    def test_a_chapter_comes_back_in_take_roots_shape(self):
+        from library import translation as m
+
+        psalm = m.fetch_chapter("owb-am", m.Ref("PSA", 23))
+        self.assertEqual([v["number"] for v in psalm["verses"]], [1, 2, 3, 4, 5, 6])
+
+    def test_an_unknown_owb_language_is_absent_not_a_paraphrase(self):
+        from library import translation as m
+
+        self.assertEqual(m.fetch_verse_text("owb-zz", "John 3:16"), "")
+        self.assertIsNone(m.fetch_chapter("owb-zz", m.Ref("JHN", 1)))
+        self.assertEqual(m.fetch_verse_text("owb-am", "John 99:1"), "")
+
+    def test_english_is_unchanged(self):
+        from library import scripture
+
+        self.assertEqual(scripture.owb_verse(43003016), scripture.owb_verse(43003016, "en"))
+        self.assertNotEqual(scripture.owb_verse(43003016)[1], scripture.owb_verse(43003016, "am")[1])
+
+    def test_the_canonical_book_order_matches_owbs_verse_ids(self):
+        from library import translation as m
+
+        self.assertEqual(len(m.USFM_ORDER), 66)
+        self.assertEqual((m.USFM_ORDER[0], m.USFM_ORDER[39], m.USFM_ORDER[-1]), ("GEN", "MAT", "REV"))

@@ -3,9 +3,12 @@
  * Regenerates src/lib/benediction.generated.ts: the footer's closing blessings,
  * one per season of the Church year, VERBATIM from each locale's own Bible on
  * Take Root (the `bible` code backend/library/language_seed.py names). English
- * is the exception: it quotes the Open Word Bible (Balanced, CC0) the reader's
- * Scripture popover uses, read from the copy the backend bundles
- * (backend/library/data/bible/owb-en-b.json.gz, scripts/build_owb_bible.py).
+ * and Amharic are the exceptions: they quote the Open Word Bible (Balanced,
+ * CC0), read from the copies the backend bundles
+ * (backend/library/data/bible/owb-<lang>-b.json.gz, scripts/build_owb_bible.py).
+ * Amharic moved from the ULB to OWB on 2026-11-18 (founder decision: every
+ * Amharic work quotes OWB); its book names are the forms the Amharic library
+ * itself cites (ዘኍልቍ, ዕብራውያን, 2ኛ ቆሮንቶስ), not OWB's own spellings.
  *
  * Scripture is never ours to write, so this is the only way the text gets in.
  * Run it by hand when a Bible or a locale changes, review the diff, commit:
@@ -26,7 +29,7 @@ import { gunzipSync } from 'node:zlib';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT = join(HERE, '..', 'src', 'lib', 'benediction.generated.ts');
-const OWB = join(HERE, '..', '..', 'backend', 'library', 'data', 'bible', 'owb-en-b.json.gz');
+const owbFile = (code) => join(HERE, '..', '..', 'backend', 'library', 'data', 'bible', `${code}.json.gz`);
 const API = 'https://api.takeroot.bible/api/bible';
 
 /** locale → Take Root code (mirrors language_seed.py). */
@@ -40,7 +43,7 @@ const BIBLES = {
 	hi: 'irvhin',
 	uk: 'ukr-kul',
 	fr: 'fralsg',
-	am: 'am-ulb',
+	am: 'owb-am-b',
 	vi: 'vietnamese',
 	ko: 'korean',
 	ja: 'japkougo',
@@ -85,10 +88,13 @@ function clean(text, locale) {
 
 /** The bundled Open Word Bible, as Take Root shapes a chapter. */
 const OWB_BOOKS = { NUM: [4, 'Numbers'], ROM: [45, 'Romans'], JUD: [65, 'Jude'], HEB: [58, 'Hebrews'], '2CO': [47, '2 Corinthians'] };
-let owb;
-function owbChapter(usfm, ch) {
-	owb ??= JSON.parse(gunzipSync(readFileSync(OWB)).toString('utf-8')).verses;
-	const [number, name] = OWB_BOOKS[usfm];
+/** Amharic book names as the Amharic library cites them (counted across its .am fixtures). */
+const AM_BOOKS = { NUM: 'ዘኍልቍ', ROM: 'ሮሜ', JUD: 'ይሁዳ', HEB: 'ዕብራውያን', '2CO': '2ኛ ቆሮንቶስ' };
+const owbCache = {};
+function owbChapter(code, usfm, ch) {
+	const owb = (owbCache[code] ??= JSON.parse(gunzipSync(readFileSync(owbFile(code))).toString('utf-8')).verses);
+	const [number, english] = OWB_BOOKS[usfm];
+	const name = code === 'owb-am-b' ? AM_BOOKS[usfm] : english;
 	const base = number * 1_000_000 + ch * 1000;
 	// Every verse of the chapter, past any OWB lacks; a verse it prints joined
 	// to the one before (Psalm 13:5-6) is that one's entry, as Take Root gives it.
@@ -101,7 +107,7 @@ function owbChapter(usfm, ch) {
 }
 
 async function chapter(bible, usfm, ch) {
-	if (bible === 'owb-en-b') return owbChapter(usfm, ch);
+	if (bible.startsWith('owb-')) return owbChapter(bible, usfm, ch);
 	const res = await fetch(`${API}/${bible}/${usfm}/${ch}/`, { signal: AbortSignal.timeout(20_000) });
 	if (!res.ok) throw new Error(`${bible} ${usfm} ${ch}: HTTP ${res.status}`);
 	return res.json();

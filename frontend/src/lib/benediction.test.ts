@@ -41,7 +41,7 @@ describe('benediction', () => {
 	 * credit there would be an obligation silently left undone.
 	 */
 	it('quotes a licensed Bible only where the footer credits it', () => {
-		const licensed = new Set(['irvhin', 'lug', 'am-ulb']);
+		const licensed = new Set(['irvhin', 'lug']);
 		for (const l of Object.keys(BLESSINGS)) {
 			if (licensed.has(blessingBible(l) ?? '')) expect(bibleCredit(l), l).not.toBe('');
 		}
