@@ -10,6 +10,14 @@ describe('bibleCredit', () => {
 		expect(hi).toContain('CC BY-SA 4.0');
 	});
 
+	it('credits both Amharic texts: the 1962 Bible the books quote, and the ULB', () => {
+		const am = bibleCredit('am');
+		expect(am).toContain('1962');
+		expect(am).toContain('United Bible Societies');
+		expect(am).toContain('Amharic Unlocked Literal Bible');
+		expect(am).toContain('CC BY-SA 4.0');
+	});
+
 	it('says nothing for a public-domain Bible, or an unknown locale', () => {
 		// The normal case. KJV, Van Dyck, Kulish and Almeida owe no credit, and a
 		// footer line saying so anyway would be noise on every page of the site.
