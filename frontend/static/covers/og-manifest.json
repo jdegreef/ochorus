@@ -23243,6 +23243,36 @@
 				603
 			]
 		},
+		"ja/humility-2": {
+			"ground": "ab8070b18dbfdbb83365757093735ef727752735dac588a9ed8680594aae3fbd",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "9b4f001a822ac8383d45bba4be35f1807678b12b26dfe2e65347a0fc12ef17aa",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[209, 307, 391, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
+		},
 		"ja/men-of-prayer-2": {
 			"ground": "2c3734aba7821f26edd01364fd8ba713575196582789fa1aa1ce43e901b9df1c",
 			"style": "originals",
