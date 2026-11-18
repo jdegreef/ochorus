@@ -23213,6 +23213,36 @@
 				603
 			]
 		},
+		"ja/humility-2": {
+			"ground": "ab8070b18dbfdbb83365757093735ef727752735dac588a9ed8680594aae3fbd",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "9b4f001a822ac8383d45bba4be35f1807678b12b26dfe2e65347a0fc12ef17aa",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[209, 307, 391, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
+		},
 		"ja/pilgrims-progress": {
 			"ground": "d7aa3d996830d95b331d5efea0e1c516cfec332142c46eb9b5efb866fe870589",
 			"style": "press",
