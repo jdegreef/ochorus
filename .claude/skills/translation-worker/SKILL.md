@@ -753,7 +753,9 @@ So when the English does not say what it should:
    Swahili"` — `jesus-teacher-of-prayer.sw` (#7816) is the model. A classic
    (Torrey, Murray, Guyon…) keeps the corpus's Swahili Union wording, mined as
    below. Pin the OWB-vs-Union verse-ratchet conflicts this creates with
-   `--absorb` and say why in the PR; they are policy, not drift.
+   `--absorb` and say why in the PR; they are policy, not drift. The rule is
+   for NEW Swahili Originals: the 33 shipped before 2026-11-18 keep their Union
+   wording, and a later volume of one of their series follows its series.
 
 The `english-qa` skill has the full triage table and the rule that matters most:
 archaic spelling and period punctuation are the text, not defects in it.
