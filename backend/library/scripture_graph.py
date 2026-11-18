@@ -413,17 +413,29 @@ def bible_book_of(book) -> bible.Book | None:
     return bible.Book(pos)
 
 
-def book_chapter_pages(book: bible.Book) -> dict[int, int]:
-    """{Bible chapter: citing count} for each chapter of ``book`` with a page.
+def book_tally(book: bible.Book) -> tuple[dict[int, set[int]], dict[int, set[int]]]:
+    """`bucket` over every citation row touching ``book`` — ONE QUERY.
 
-    ONE QUERY over the book's own verse range, bucketed by the rule
-    ``qualifying_pages`` uses (`bucket`, the chapter floor, the text check), so
-    it names exactly the chapter pages the list builds — without the
-    full-corpus tally on a reader's request path.
+    Every row overlapping the book's verse range, which is every row that can
+    put a verse or chapter of it into `qualifying_pages`' tally — so the counts
+    read off this are the full-corpus counts for this book, without the
+    full-corpus tally on a reader's request path. The reader's chapter batch
+    reads it once and derives both its chapter pages and each chapter's most
+    quoted verses from it.
     """
     lo, hi = book.value * 1000000, book.value * 1000000 + 999999
-    rows = english_citation_rows().filter(start_verse_id__lte=hi, end_verse_id__gte=lo)
-    _, by_chapter = bucket(rows)
+    return bucket(english_citation_rows().filter(start_verse_id__lte=hi, end_verse_id__gte=lo))
+
+
+def book_chapter_pages(book: bible.Book, tally=None) -> dict[int, int]:
+    """{Bible chapter: citing count} for each chapter of ``book`` with a page.
+
+    Bucketed by the rule ``qualifying_pages`` uses (`bucket`, the chapter
+    floor, the text check), so it names exactly the chapter pages the list
+    builds. ``tally`` is a `book_tally(book)` already in hand; without one this
+    is that one query.
+    """
+    _, by_chapter = tally if tally is not None else book_tally(book)
     return {
         key % 1000: len(cids)
         for key, cids in by_chapter.items()
@@ -432,6 +444,47 @@ def book_chapter_pages(book: bible.Book) -> dict[int, int]:
         and len(cids) >= CHAPTER_FLOOR
         and verse_text(key * 1000 + 1)
     }
+
+
+#: How many of a Bible chapter's verses its "Most quoted in the classics" row
+#: lists. A handful: the row says where the library's attention falls in this
+#: chapter, and the scripture pages carry the rest.
+QUOTED_VERSES = 5
+
+
+def quoted_verses(book: bible.Book, chapter: int, by_verse: dict[int, set[int]]) -> list[dict]:
+    """The verses of Bible ``chapter`` the classics quote most — each one that
+    has its own scripture page, most-quoted first, at most `QUOTED_VERSES`.
+
+    ``by_verse`` is `book_tally(book)[0]`. The count is DISTINCT citing
+    chapters, the graph's own measure (`bucket`: one chapter returning to a
+    verse ten times is one voice), so it is the number the verse page itself
+    publishes as ``citing_count``. A verse is listed only when that page was
+    built — the verse floor and the text check `qualifying_pages` applies — so
+    the row never links a 404; a verse quoted under the floor is left out
+    rather than listed unlinked, because the row is a way onto those pages.
+    Ties fall to verse order, so the row reads down the chapter.
+    """
+    key = book.value * 1000 + chapter
+    found = [
+        (len(cids), vid)
+        for vid, cids in by_verse.items()
+        if vid // 1000 == key
+        and vid % 1000
+        and len(cids) >= VERSE_FLOOR
+        and verse_text(vid)
+    ]
+    found.sort(key=lambda f: (-f[0], f[1]))
+    slug = book_slug(book)
+    return [
+        {
+            "verse": vid % 1000,
+            "reference": reference_label(book, chapter, vid % 1000),
+            "count": count,
+            "page": {"book": slug, "chapter": chapter, "verse": vid % 1000},
+        }
+        for count, vid in found[:QUOTED_VERSES]
+    ]
 
 
 def bible_chapter_number(chapter) -> int | None:
