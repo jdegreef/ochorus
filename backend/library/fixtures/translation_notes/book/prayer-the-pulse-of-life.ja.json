@@ -3,7 +3,7 @@
   "slug": "prayer-the-pulse-of-life",
   "language": "ja",
   "job_issue": 8104,
-  "pull_request": null,
+  "pull_request": 8323,
   "note": [
     "Queue job #8104 (2026-11-18): six parallel translators plus a whole-book reconciliation pass. Scripture from the 口語訳聖書 (1954/55, public domain) as served by getBible v2 (japkougo), the same text as Take Root japkougo, which returned 502 throughout the job. Every mined row was checked as a verbatim substring of that verse. Romans 10 is absent from getBible japkougo (404), so Romans 10:9 is self_rendered. AI-drafted, awaiting native review."
   ],
