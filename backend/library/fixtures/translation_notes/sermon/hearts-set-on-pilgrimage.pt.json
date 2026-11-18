@@ -1,0 +1,82 @@
+{
+ "kind": "sermon",
+ "slug": "hearts-set-on-pilgrimage",
+ "language": "pt",
+ "job_issue": 8073,
+ "references": [
+  {
+   "reference": "Romans 8:28b",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 8:29",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Hebrews 11:13",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Job 10:8-9a",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Job 10:9b",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 77:8-9",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "1 Peter 4:12",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 40
+  },
+  {
+   "reference": "Psalm 84:6a",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 50
+  },
+  {
+   "reference": "Hebrews 5:8b",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 77
+  },
+  {
+   "reference": "Psalm 22:6a",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Psalm 126:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 93
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "self_rendered",
+   "block_index": 98
+  }
+ ]
+}
