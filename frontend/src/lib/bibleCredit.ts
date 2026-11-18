@@ -9,6 +9,15 @@
  * Amharic Unlocked Literal Bible (Take Root `am-ulb`) is CC BY-SA 4.0 to the
  * Door43 World Missions Community.
  *
+ * Amharic has since moved to the Open Word Bible (founder decision,
+ * 2026-11-18): its footer blessings and About verses are OWB, which is CC0 and
+ * owes nothing, and the ULB is no longer quoted. The Amharic BOOKS still quote
+ * the 1962 Bible, © 1962, 2003 United Bible Societies (whose terms bar
+ * commercial use without the Bible Society of Ethiopia's permission; Ochorus
+ * is free), until they are re-quoted to OWB. So the line credits that text, and
+ * goes once the last book is re-quoted. It must stay within the 300 characters
+ * of `Language.bible_attribution` (migration 0219 writes the same string).
+ *
  * Luganda arrived here the hard way, and the lesson is worth keeping: its seed
  * entry set no `bible_licence` and labelled the text "(open)", so the readiness
  * check written for exactly this case skipped with "Public-domain Bible —
@@ -39,9 +48,9 @@ export const BIBLE_CREDIT: Readonly<Record<string, string>> = {
 		'© 2017–2019 Bridge Connectivity Solutions, licensed under ' +
 		'CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).',
 	am:
-		'Scripture quotations are from the Amharic Unlocked Literal Bible, ' +
-		'© 2020 Door43 World Missions Community, licensed under ' +
-		'CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).',
+		'Scripture quotations in Amharic books are from the Amharic Bible (1962), ' +
+		'© 1962, 2003 United Bible Societies. Other Amharic Scripture here is from the ' +
+		'Open Word Bible (https://openwordbible.org), dedicated to the public domain (CC0).',
 	lg:
 		'Scripture quotations are from the Open Luganda Contemporary Bible, ' +
 		'© Biblica, Inc., licensed under ' +

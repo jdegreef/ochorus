@@ -89,6 +89,15 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
   expected, not drift. The 33 Swahili Originals shipped before the decision keep
   their Union wording, as the BSB house books do in English: don't re-quote
   them. (Founder decision, 2026-11-18.)
+- **Amharic quotes OWB everywhere**: Originals and classics alike, plus the
+  site's own Amharic Scripture. The text is the **OWB Amharic Balanced**
+  (CC0), bundled as `backend/library/data/bible/owb-am-b.json.gz`
+  (`scripts/build_owb_bible.py --language am`); the Amharic Bible code is
+  `owb-am`, and `translation.fetch_verse_text("owb-am", ref)` reads it
+  offline. Unlike Swahili there is no public-domain text to keep: the 1962
+  Bible the older Amharic books quote is © UBS, so those are being re-quoted to
+  OWB, and the Amharic credit line goes once the last one is.
+  (Founder decision, 2026-11-18.)
 
 ## The fixture (now a friendly edge)
 

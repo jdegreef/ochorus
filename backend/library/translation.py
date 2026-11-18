@@ -83,6 +83,14 @@ _REF_RE = re.compile(
 )
 
 
+#: The 66 books in canonical order (BOOK_USFM lists them in order, with aliases).
+USFM_ORDER: tuple[str, ...] = tuple(dict.fromkeys(BOOK_USFM.values()))
+
+#: Bible ids served from a bundled Open Word Bible text rather than Take Root:
+#: ``owb-<language>`` reads ``library/data/bible/owb-<language>-b.json.gz``.
+OWB_PREFIX = "owb-"
+
+
 @dataclass(frozen=True)
 class Ref:
     usfm: str
@@ -179,6 +187,8 @@ def fetch_chapter(bible: str, ref: Ref) -> dict | None:
     :class:`ScriptureUnavailable` — it is never cached, so a later reference to
     the same passage isn't poisoned by one bad request.
     """
+    if bible.startswith(OWB_PREFIX):
+        return _owb_chapter(bible[len(OWB_PREFIX) :], ref)
     key = (bible, ref.usfm, ref.chapter)
     if key in _verse_cache:
         return _verse_cache[key]
@@ -212,6 +222,32 @@ def fetch_chapter(bible: str, ref: Ref) -> dict | None:
         "so the job is stopping rather than shipping the chapter without it — "
         "re-run once the API is reachable to resume where it left off."
     )
+
+
+def _owb_verse_base(ref: Ref) -> int:
+    return (USFM_ORDER.index(ref.usfm) + 1) * 1_000_000 + ref.chapter * 1000
+
+
+def _owb_chapter(language: str, ref: Ref) -> dict | None:
+    """One chapter from a bundled OWB text, in Take Root's shape.
+
+    Offline and deterministic, so it never raises ``ScriptureUnavailable``. A
+    language with no bundle returns ``None`` — which is what makes
+    ``verify_bible_code`` refuse a mistyped ``owb-`` id instead of shipping a
+    job with no scripture.
+    """
+    from . import scripture
+
+    if language not in scripture.owb_languages():
+        return None
+    verses, _joined = scripture._owb(language)
+    base = _owb_verse_base(ref)
+    found = [
+        {"number": vid - base, "text": text}
+        for vid, text in sorted(verses.items())
+        if base < vid < base + 1000
+    ]
+    return {"reference": f"{ref.usfm} {ref.chapter}", "verses": found} if found else None
 
 
 def verify_bible_code(language: str) -> None:
@@ -282,6 +318,16 @@ def fetch_verse_text(bible: str, ref_text: str) -> str:
     if not m:
         return ""
     book, chapter, verse = m.group(1).lower(), int(m.group(2)), int(m.group(3))
+    if bible.startswith(OWB_PREFIX):
+        # Through owb_verse, so a verse OWB prints joined to its neighbour
+        # (1 Kings 18:33-34) still answers with the text that holds it.
+        from . import scripture
+
+        language = bible[len(OWB_PREFIX) :]
+        if language not in scripture.owb_languages():
+            return ""
+        found = scripture.owb_verse(_owb_verse_base(Ref(BOOK_USFM[book], chapter)) + verse, language)
+        return found[1].strip() if found else ""
     data = fetch_chapter(bible, Ref(BOOK_USFM[book], chapter))
     if not data or not data.get("verses"):
         return ""
