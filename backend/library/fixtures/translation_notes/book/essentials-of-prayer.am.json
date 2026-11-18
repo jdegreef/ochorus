@@ -452,10 +452,9 @@
   },
   {
    "reference": "1 John 3:8",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 7,
-   "source_file": "aggressive-christianity.am.json"
+   "chapter_order": 7
   },
   {
    "reference": "1 Peter 1:15-16",
