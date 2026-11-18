@@ -3,7 +3,7 @@
  "slug": "a-retrospect",
  "language": "pt",
  "job_issue": 8036,
- "pull_request": null,
+ "pull_request": 8364,
  "note": [
   "Taylor quotes scripture constantly and almost never cites it, so the references were identified by the chapter translators (seeded from the fr/sw editions' notes, then extended by reading). Every quotation uses the Bíblia Livre para o Mundo (porbrbsl, ebible mirror por_bpm): where it says what Taylor quotes, the words were pasted verbatim and the row is `mined` (109 rows, each re-verified by script as a substring of the porbrbsl verse); where Taylor re-persons, abridges, blends or alludes, the row is `self_rendered` in porbrbsl's register (61 rows) and needs a native check.",
   "Inner quotation marks that porbrbsl prints inside a verse were dropped where the English has none (Psalm 91:2, Proverbs 24:12), to keep the source's quote marks; Isaiah 53:3 keeps porbrbsl's “familiarizado com a enfermidade” verbatim, a shade from the KJV's “grief”. Acts 9:6 (“Senhor, que queres que eu faça?”) is the KJV/Textus Receptus wording, absent from porbrbsl, so it is self-rendered.",
