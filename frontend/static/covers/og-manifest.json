@@ -33846,6 +33846,40 @@
 				467
 			]
 		},
+		"pt/pensees": {
+			"ground": "fefb73f9387628ca6b5072552c1c09e47ab9039dee36cf00209f3b6247de33c9",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[106, 316, 494, 409]
+				],
+				"subtitle": [
+					[160, 461, 440, 482],
+					[144, 482, 456, 503]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				292,
+				503
+			]
+		},
 		"pt/pilgrims-progress": {
 			"ground": "e51826a893bc398df857ac4c8ab4bca31cb623a1bd0c7171854592c0a31f0439",
 			"style": "press",
