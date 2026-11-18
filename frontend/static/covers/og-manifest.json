@@ -34085,6 +34085,40 @@
 				570
 			]
 		},
+		"pt/religious-experience-and-journal": {
+			"ground": "0819cff871258f81c062c0fe1d6c0f5c32af02738e1d8e900181bd90236cc080",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[195, 102, 405, 131]
+				],
+				"title": [
+					[144, 172, 456, 235],
+					[83, 234, 517, 297]
+				],
+				"subtitle": [
+					[52, 361, 548, 389]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				389
+			]
+		},
 		"pt/revival-lectures": {
 			"ground": "46329a6f87b3f24be85da1d42487335ae28ea3455bcd7e45635575b2e4fd7f57",
 			"style": "revival",
