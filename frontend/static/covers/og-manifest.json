@@ -23148,6 +23148,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/absolute-surrender": {
+			"ground": "b853091833fc38102dcdae98f733bff781a890b9eef1fbb784a03a1cea4360f0",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "0d1dfdf01c900d9b75ac8ff394f7794065067f764d3cab23676fed3a595d9244",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/all-of-grace": {
 			"ground": "ac729450372743669bed1cff78be7e34a6503a3086290262cb59e007853a81f9",
 			"style": "revival",
