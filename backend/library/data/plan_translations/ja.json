@@ -17,10 +17,10 @@
  },
  "school-of-prayer": {
   "title": "祈りの土台",
-  "description": "三人の導き手とともに、祈りの土台を据える4週間。主ご自身がどのように私たちに祈りを教えてくださるかをアンドリュー・マーレーから、力ある祈りをD・L・ムーディから、そしてキリスト者の生活の日々の鼓動である祈りをハンナ・ブインザから学びます。",
+  "description": "三人の導き手とともに、祈りの土台を据える4週間です。主ご自身がどのように祈ることを教えてくださるかをアンドリュー・マーレーから、力ある祈りをD. L. ムーディから、そしてキリスト者の生活の日々の鼓動としての祈りをハンナ・ブインザから学びます。",
   "note": [
-   "CURATED multi-book plan (school-of-prayer lessons 1-4, prevailing-prayer, prayer-the-pulse-of-life); written with the prevailing-prayer ja job (#8107) because that book is one of its sources. It stays dormant in Japanese until prayer-the-pulse-of-life ships in ja — the prose ships ahead so that book's arrival cannot publish an English-titled plan.",
-   "「力ある祈り」 is the ja title of Moody's book (job #8107); マーレー follows the shipped ja school-of-prayer edition and plan; Hannah Buyinza has no ja bio yet — ハンナ・ブインザ is a katakana transliteration to align when one ships. です・ます体. AI-written; for native review."
+   "Written with prayer-the-pulse-of-life.ja (queue job #8104), one of this plan's three source books, per the book-backs-a-plan rule; it also answers plan job #8164. The plan row appears in ja only once prevailing-prayer has a ja edition too (school-of-prayer.ja and prayer-the-pulse-of-life.ja exist). The prevailing-prayer ja job (#8107) completes the set and aligned 「力ある祈り」 with that edition's title 『力ある祈り』 (was 勝利する祈り).",
+   "「祈りの土台」 renders the English title Foundations in Prayer. Names follow the ja corpus (アンドリュー・マーレー, ムーディ) and the new ja book (ハンナ・ブインザ); 「日々の鼓動」 echoes that book's title 『祈り——いのちの鼓動』. です・ます体. AI-written; for native review with the book."
   ]
  },
  "school-of-prayer-31-days": {
