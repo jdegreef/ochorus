@@ -81,6 +81,12 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
   Questions, The Big Story, They Were Young) **keep the BSB on purpose**, and so
   does a further volume of one of those series: their teaching is written
   around the BSB's wording. Don't re-quote them. (Founder decision, 2026-10-25.)
+- **Swahili follows the same split.** A Swahili edition of an Ochorus Original
+  quotes the **OWB Swahili, Balanced** text verbatim (`jdegreef/open-word-bible`,
+  Swahili renderings, B edition); a Swahili edition of a public-domain classic
+  keeps the Swahili Union wording our corpus already quotes. The verse-ratchet
+  pins this produces (OWB in an Original vs Union in a classic, same verse) are
+  expected, not drift. (Founder decision, 2026-11-18.)
 
 ## The fixture (now a friendly edge)
 

@@ -745,6 +745,15 @@ So when the English does not say what it should:
    under `library/management/commands/data/<slug>/`, or `tests_praying_witnesses`
    fails. Their quoted classics can be pasted from that language's shipped
    editions of those works (a voices crib) instead of re-translated.
+   **Their Scripture is OWB, never the language's classic Bible, when that
+   language has an OWB rendering.** For Swahili that is a founder decision
+   (2026-11-18): an Original quotes OWB Swahili, Balanced
+   (`jdegreef/open-word-bible`, Swahili renderings, B edition) verbatim, and
+   its notes record `source_file: "Open Word Bible (OWB), Balanced edition,
+   Swahili"` — `jesus-teacher-of-prayer.sw` (#7816) is the model. A classic
+   (Torrey, Murray, Guyon…) keeps the corpus's Swahili Union wording, mined as
+   below. Pin the OWB-vs-Union verse-ratchet conflicts this creates with
+   `--absorb` and say why in the PR; they are policy, not drift.
 
 The `english-qa` skill has the full triage table and the rule that matters most:
 archaic spelling and period punctuation are the text, not defects in it.
@@ -1167,7 +1176,8 @@ archaic spelling and period punctuation are the text, not defects in it.
   book's own display name is the `<para style="toc2">` — take `scripture_ref`
   names from that, never from a guess.
 - **…but check the mirror's LICENCE and its TEXT before using it. For Swahili,
-  don't.** The only Swahili Bible in that collection is `swh_ulb` (Unlocked
+  don't.** (This is about the CLASSICS. A Swahili *Ochorus Original* quotes OWB
+  Swahili instead; see item 6, "House Originals", under "When the ENGLISH is wrong".) The only Swahili Bible in that collection is `swh_ulb` (Unlocked
   Literal Bible, 2019) and it fails on both counts: it is **CC BY-SA 4.0, not
   public domain** — which would put an attribution obligation on every verse
   the library renders — and it is a different translation from the one our
