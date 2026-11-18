@@ -23437,6 +23437,21 @@
 				542
 			]
 		},
+		"ja/the-way-to-god": {
+			"ground": "613cd17b19a51451c3ef932bc83aa2cfdc89e8939c1f22067c85036f3f855089",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "cda6ac23a0dbd8c1483319b17b5e64a74b5f8a3c2a5504c2cb6fbb4522b1762c",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/ochre",
+			"bar": 0.015,
+			"caps": false,
+			"sitemark": null
+		},
 		"james": {
 			"ground": "063d330a75164dead466f10646bd7392fdfd7e4da3f18daabace1377db3b150c",
 			"style": "devotional",
