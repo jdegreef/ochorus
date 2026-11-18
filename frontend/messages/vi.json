@@ -983,6 +983,8 @@
   "topics_articles": "Bài viết",
   "topics_authors": "Tác giả",
   "topics_related": "Chủ đề liên quan",
+  "topics_in_bible": "Trong Kinh Thánh",
+  "topics_in_bible_note": "Những chương mà các tác phẩm kinh điển này trở lại nhiều nhất.",
   "settings_title": "Cài đặt",
   "settings_subtitle": "Quản lý tài khoản, việc đọc và giao diện của bạn.",
   "settings_nav_reading": "Đọc",

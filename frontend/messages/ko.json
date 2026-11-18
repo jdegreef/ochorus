@@ -983,6 +983,8 @@
   "topics_articles": "글",
   "topics_authors": "저자",
   "topics_related": "관련 주제",
+  "topics_in_bible": "성경에서",
+  "topics_in_bible_note": "이 고전들이 가장 자주 돌아가는 장들입니다.",
   "settings_title": "설정",
   "settings_subtitle": "계정, 읽기, 화면 설정을 관리합니다.",
   "settings_nav_reading": "읽기",

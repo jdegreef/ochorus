@@ -3026,10 +3026,12 @@ class TopicDetailSerializer(TopicListSerializer):
     meta_description = serializers.SerializerMethodField()
     qa = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
+    bible_chapters = serializers.SerializerMethodField()
 
     class Meta(TopicListSerializer.Meta):
         fields = TopicListSerializer.Meta.fields + [
             "scripture_text",
+            "bible_chapters",
             "seo_title",
             "meta_description",
             "qa",
@@ -3069,6 +3071,17 @@ class TopicDetailSerializer(TopicListSerializer):
 
     def get_scripture_text(self, obj):
         return obj.scripture_text_for(self._language())
+
+    def get_bible_chapters(self, obj):
+        """The "In the Bible" row: the Bible chapters this shelf's own classics
+        return to most, each a link into the library's Bible
+        (``scripture_graph.topic_bible_chapters``). English only — the Bible
+        and the citation index are — so every other locale gets ``[]``."""
+        if self._language() != "en":
+            return []
+        from .scripture_graph import topic_bible_chapters
+
+        return topic_bible_chapters(obj)
 
     def get_seo_title(self, obj):
         return obj.seo_title_for(self._language())

@@ -1600,6 +1600,26 @@ export interface TopicDetail extends TopicSummary {
 	authors?: TopicAuthor[];
 	/** Sibling shelves that share books, most-shared first — the lateral "see also". */
 	related_topics?: TopicChip[];
+	/**
+	 * "In the Bible": the Bible chapters this shelf's own classics return to
+	 * most, derived from their citations (`scripture_graph.topic_bible_chapters`),
+	 * each a chapter of the library's Bible (`/books/<slug>/<order>`). English
+	 * only — `[]` elsewhere. Optional for a rolling-deploy skew.
+	 */
+	bible_chapters?: TopicBibleChapter[];
+}
+
+/** One chapter of a topic's "In the Bible" row. */
+export interface TopicBibleChapter {
+	/** The reader chapter's own title: "Matthew 6", "Psalm 23". */
+	reference: string;
+	/** The Bible book's library slug and reader order (Bible chapter + 1). */
+	slug: string;
+	order: number;
+	/** That chapter's one-line summary; "" when it has none. */
+	summary: string;
+	/** Distinct citing chapters and sermons on the shelf. */
+	count: number;
 }
 
 /**

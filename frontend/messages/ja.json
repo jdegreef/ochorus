@@ -983,6 +983,8 @@
   "topics_articles": "記事",
   "topics_authors": "著者",
   "topics_related": "関連テーマ",
+  "topics_in_bible": "聖書の中で",
+  "topics_in_bible_note": "これらの古典が最もよく立ち返る章。",
   "settings_title": "設定",
   "settings_subtitle": "アカウント、読書、表示を管理します。",
   "settings_nav_reading": "読書",
