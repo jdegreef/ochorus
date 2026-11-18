@@ -513,6 +513,14 @@ export interface Chapter {
 	 */
 	catena?: CatenaPointer | null;
 	/**
+	 * A chapter of the Bible itself: its verses the library's classics quote
+	 * most ("Most quoted in the classics"), most-quoted first — `count` is the
+	 * distinct passages quoting it, the figure its verse page publishes. Only
+	 * verses whose /scripture/ page was built. [] for every other chapter;
+	 * optional: an API behind this build omits it.
+	 */
+	quoted_verses?: { verse: number; reference: string; count: number; page: ScripturePageRef }[];
+	/**
 	 * A chapter of the Bible itself: the chapters of the classics written on it
 	 * that treat it (library/bible_companions). `order` is null for a book on
 	 * this one passage (Watson's Beatitudes on Matthew 5), which opens at its

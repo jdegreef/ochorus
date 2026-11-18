@@ -1805,6 +1805,7 @@
   "bible_sermons_on_book": "この書についての説教",
   "bible_sermons_all": "%book%についての説教すべて（%count%編）",
   "bible_read_alongside": "あわせて読む",
+  "bible_most_quoted": "古典に最も多く引かれた節",
   "bible_read_alongside_lede": "この書についての注解と講解（ライブラリー所蔵）。",
   "bible_sermons_on_chapter": "この章についての説教",
   "bible_sermons_book_link": "%book%についての説教すべて",
