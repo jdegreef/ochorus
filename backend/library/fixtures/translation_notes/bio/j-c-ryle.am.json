@@ -5,15 +5,21 @@
  "job_issue": 4001,
  "pull_request": null,
  "note": [
-  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh); the mirror has no Old Testament, so OT quotations reuse a shipped Amharic work's wording where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
-  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited shipped work) inside that block. Shorter, re-personed, or bridged-range verses (the mirror merges some verse ranges into one entry holding only part of the text) are self_rendered."
+  "Scripture is quoted verbatim from the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled offline at backend/library/data/bible/owb-am-b.json.gz (founder decision, 2026-11-18: every Amharic work quotes OWB); it replaces the 1962 Amharic Bible (UBS) wording this bio first used.",
+  "Block indices count the long bio's top-level blocks (0-18), then the FAQ answers from 19. Block 3 keeps the reader's emphatic pauses as ' — ' between OWB's own clauses; with the dashes removed it is the OWB verse byte for byte. Block 18 is the author's own paraphrase of the verse in prose, not a quotation, and stays self_rendered."
  ],
  "references": [
   {
    "reference": "Ephesians 2:8",
    "status": "mined",
    "block_index": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 2:8",
@@ -22,8 +28,15 @@
   },
   {
    "reference": "Ephesians 2:8",
-   "status": "self_rendered",
-   "block_index": 20
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   }
  ]
 }
