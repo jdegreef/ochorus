@@ -23243,6 +23243,36 @@
 				603
 			]
 		},
+		"ja/men-of-prayer-2": {
+			"ground": "2c3734aba7821f26edd01364fd8ba713575196582789fa1aa1ce43e901b9df1c",
+			"style": "originals",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "cc09ffa24e70127f94e727ab28a5c7a4639e11233c03c671a9447aed018e8335",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.2,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[149, 341, 451, 417]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				346,
+				449
+			]
+		},
 		"ja/pilgrims-progress": {
 			"ground": "d7aa3d996830d95b331d5efea0e1c516cfec332142c46eb9b5efb866fe870589",
 			"style": "press",
