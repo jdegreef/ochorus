@@ -3652,6 +3652,25 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # Peter's "yet will I never be offended" is Matthew 26:33; 26:23 is
             # the sop.
             ("(Matt. xxvi. 23.)", "(Matt. xxvi. 33.)"),
+            # Found by the translators of job #8098 (ja). "The wind bloweth
+            # where it listeth" is John 3:8; the printed "(John 8.)" lost its
+            # chapter.
+            ("(John 8.)", "(John iii. 8.)"),
+            # Typesetting/OCR slips in Moody's own prose, each unambiguous.
+            ("so much us they do Love", "so much as they do Love"),
+            ("the height of the depth of God’s love",
+             "the height or the depth of God’s love"),
+            ("a dispatch ard sent", "a dispatch and sent"),
+            ("confess you sins", "confess your sins"),
+            ("pinacle of self-conceit", "pinnacle of self-conceit"),
+            ("went over to great Britain", "went over to Great Britain"),
+            ("“Young men,” he said “you", "“Young men,” he said, “you"),
+            ("“Yes. it is hard;", "“Yes, it is hard;"),
+            ("what I do with them. I say", "what I do with them, I say"),
+            # KJV pronouns: Paul's "in me" (Gal 1:16) and the angel's "he"
+            # (Rev 22:9) were capitalised as if divine.
+            ("reveal His Son in Me,", "reveal His Son in me,"),
+            ("Then saith He unto me, See", "Then saith he unto me, See"),
         ],
     },
     "a-call-to-the-unconverted": {

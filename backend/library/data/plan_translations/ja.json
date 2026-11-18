@@ -45,5 +45,13 @@
    "Curated plan whose source books are the-god-of-all-comfort and he-holds-my-tomorrows; ships with he-holds-my-tomorrows.ja (queue job #8096) so the plan prose is in place before the row can exist. seed_plans creates the (faith-in-the-fire, ja) row only once the-god-of-all-comfort also ships in ja — no ja edition of it exists yet.",
    "The title echoes 2 Corinthians 1:3 in the 口語訳 (慰めに満ちたる神), the verse that names Smith's book; when the-god-of-all-comfort.ja ships, harmonise this card's title and description to that edition's own title. 「わたしたちの明日を握っておられる方」 echoes the shipped ja title 『わたしの明日を握っておられる方』 (the English says 'our tomorrows'). Names: ハンナ・ホイットール・スミス, ギャレス・エヴァンズ (the ja edition's form). The ―― dash follows the faithful-with-little card. です・ます体. AI-written; for native review."
   ]
+ },
+ "grace-for-every-sinner": {
+  "title": "神に至る道――すべての罪人への恵み",
+  "description": "最も古くからある良い知らせとともに過ごすひと月です。回心していない人々へのリチャード・バクスターの優しい呼びかけ、神に至る道を語るD・L・ムーディ、そしてチャールズ・スポルジョンの『すべては恵み』。罪人がどのようにして救われ、どのようにしてそれを確信できるのかを示す、このうえなく平易な手引きです。",
+  "note": [
+   "Shipping with the-way-to-god.ja (queue job #8098). This plan's source books are a-call-to-the-unconverted, the-way-to-god and all-of-grace; it becomes creatable in ja only once all three exist, so the prose is written ahead of the last of them rather than left for whichever job completes the set.",
+   "The title opens with the ja edition's own title (神に至る道) and the ―― dash the shipped ja plans use; 『すべては恵み』 is the shipped ja title of all-of-grace. Baxter's work is described rather than titled, since no ja edition of it exists yet to take a title from. です・ます体. AI-written; for native review with the book."
+  ]
  }
 }
