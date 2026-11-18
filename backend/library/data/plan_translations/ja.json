@@ -7,6 +7,13 @@
    "The title opens with the shipped ja edition's own title (わずかなものに忠実に, Matthew 25:21 口語訳) and the ―― dash that edition uses; names follow its renderings (ウェスレー, ミュラー, スポルジョン, トウザー). です・ます体, the ja house register. AI-written; for native review with the book."
   ]
  },
+ "humility-12-days": {
+  "title": "12日間で読む『謙遜』",
+  "description": "すべての徳の根である謙遜を語る、アンドリュー・マーレーの古典です。12日間、1日に短い章を一つずつ読み進めます。",
+  "note": [
+   "Single-book LAUNCH plan backed by the ja edition of humility-2 (queue job #8094), shipped in the same PR so seed_plans does not publish a ja plan row with no prose. Title in the book's own ja title 『謙遜』 and the 1日1章 / 12日間 phrasing of the shipped ja plans; です・ます体, the ja house register. AI-drafted; awaiting native review."
+  ]
+ },
  "the-inner-chamber-month": {
   "title": "密室で過ごすひと月",
   "description": "祈りとみことばの毎日の習慣を身につけましょう。アンドリュー・マーレーとともに過ごす36の朝。1日1章ずつ読み進めます。",
@@ -15,12 +22,44 @@
    "The title opens with the shipped ja edition's own title (密室), so the plan card and the book on the shelf agree. です・ます体. AI-written; for native review with the book."
   ]
  },
+ "growing-in-wisdom-18-days": {
+  "title": "知恵を育む18日間",
+  "description": "ジェームズ・デグリーフが学生のために書いたガイドを、1日に短い章を一つずつ、18日間かけて読みます。自分の目的を見いだすことから未来へのビジョンを築くことまで、毎日、実際的な助言に聖書のことばと黙想と祈りが添えられています。",
+  "note": [
+   "Single-book LAUNCH plan backed by the ja edition of growing-in-wisdom (queue job #8100, which ships it); the card title quotes that edition's own title 知恵を育む, in the 〜18日間 pattern of 祈りの学び舎で過ごす31日. Without this prose seed_plans would publish an English-titled card in Japanese and PlanTranslationCoverageTests would fail.",
+   "James DeGreef has no Japanese form elsewhere in the ja corpus; ジェームズ・デグリーフ matches the edition's about_html. 黙想 is the edition's word for each chapter's Reflection. です・ます体. AI-written; for native review with the book."
+  ]
+ },
+ "school-of-prayer": {
+  "title": "祈りの土台",
+  "description": "三人の導き手とともに、祈りの土台を据える4週間です。主ご自身がどのように祈ることを教えてくださるかをアンドリュー・マーレーから、力ある祈りをD. L. ムーディから、そしてキリスト者の生活の日々の鼓動としての祈りをハンナ・ブインザから学びます。",
+  "note": [
+   "Written with prayer-the-pulse-of-life.ja (queue job #8104), one of this plan's three source books, per the book-backs-a-plan rule; it also answers plan job #8164. The plan row appears in ja only once prevailing-prayer has a ja edition too (school-of-prayer.ja and prayer-the-pulse-of-life.ja exist). The prevailing-prayer ja job (#8107) completes the set and aligned 「力ある祈り」 with that edition's title 『力ある祈り』 (was 勝利する祈り).",
+   "「祈りの土台」 renders the English title Foundations in Prayer. Names follow the ja corpus (アンドリュー・マーレー, ムーディ) and the new ja book (ハンナ・ブインザ); 「日々の鼓動」 echoes that book's title 『祈り——いのちの鼓動』. です・ます体. AI-written; for native review with the book."
+  ]
+ },
  "school-of-prayer-31-days": {
   "title": "祈りの学び舎で過ごす31日",
   "description": "ただひとりの教師の足もとで、アンドリュー・マーレーとともに過ごすひと月。毎日、祈りについてのイエスご自身のことばを一つ開き、「主よ、祈ることを教えてください」から最後の夜の約束にいたるまでを学び、その日の祈りで閉じます。1日1課、約10分。とりなしと祈りの生活へと成長していきます。",
   "note": [
    "Single-book plan backed by the ja edition of school-of-prayer (queue job #7993; book title 『キリストと共に祈りの学び舎で』); PlanTranslationCoverageTests required it once the book exists in ja.",
    "「祈りの学び舎」 echoes the book title; 「ただひとりの教師」 is the ja book's ch02 title; the refrain 「主よ、祈ることを教えてください」 is the form the ja book uses throughout. です・ます体. AI-written; for native review with the book."
+  ]
+ },
+ "faith-in-the-fire": {
+  "title": "慰めに満ちたる神――火の中の信仰",
+  "description": "祈ることさえつらい日々のために。ハンナ・ホイットール・スミスは慰めに満ちたる神について、ギャレス・エヴァンズはわたしたちの明日を握っておられる方に信頼することについて語ります。先の見えないときに、揺るがない平安の中へと歩み入る5週間の旅です。",
+  "note": [
+   "Curated plan whose source books are the-god-of-all-comfort and he-holds-my-tomorrows; ships with he-holds-my-tomorrows.ja (queue job #8096) so the plan prose is in place before the row can exist. seed_plans creates the (faith-in-the-fire, ja) row only once the-god-of-all-comfort also ships in ja — no ja edition of it exists yet.",
+   "The title echoes 2 Corinthians 1:3 in the 口語訳 (慰めに満ちたる神), the verse that names Smith's book; when the-god-of-all-comfort.ja ships, harmonise this card's title and description to that edition's own title. 「わたしたちの明日を握っておられる方」 echoes the shipped ja title 『わたしの明日を握っておられる方』 (the English says 'our tomorrows'). Names: ハンナ・ホイットール・スミス, ギャレス・エヴァンズ (the ja edition's form). The ―― dash follows the faithful-with-little card. です・ます体. AI-written; for native review."
+  ]
+ },
+ "grace-for-every-sinner": {
+  "title": "神に至る道――すべての罪人への恵み",
+  "description": "最も古くからある良い知らせとともに過ごすひと月です。回心していない人々へのリチャード・バクスターの優しい呼びかけ、神に至る道を語るD・L・ムーディ、そしてチャールズ・スポルジョンの『すべては恵み』。罪人がどのようにして救われ、どのようにしてそれを確信できるのかを示す、このうえなく平易な手引きです。",
+  "note": [
+   "Shipping with the-way-to-god.ja (queue job #8098). This plan's source books are a-call-to-the-unconverted, the-way-to-god and all-of-grace; it becomes creatable in ja only once all three exist, so the prose is written ahead of the last of them rather than left for whichever job completes the set.",
+   "The title opens with the ja edition's own title (神に至る道) and the ―― dash the shipped ja plans use; 『すべては恵み』 is the shipped ja title of all-of-grace. Baxter's work is described rather than titled, since no ja edition of it exists yet to take a title from. です・ます体. AI-written; for native review with the book."
   ]
  }
 }

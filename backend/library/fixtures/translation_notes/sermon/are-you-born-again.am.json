@@ -1,0 +1,73 @@
+{
+    "kind": "sermon",
+    "slug": "are-you-born-again",
+    "language": "am",
+    "job_issue": 8247,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "John 3:3",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 0
+        },
+        {
+            "reference": "1 John 3:9",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 3
+        },
+        {
+            "reference": "1 John 5:18",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 3
+        },
+        {
+            "reference": "1 John 1:8",
+            "status": "self_rendered",
+            "block_index": 3
+        },
+        {
+            "reference": "James 3:2",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 3
+        },
+        {
+            "reference": "1 John 5:1",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 5
+        },
+        {
+            "reference": "1 John 2:29",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 8
+        },
+        {
+            "reference": "1 Corinthians 15:10",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 9
+        },
+        {
+            "reference": "1 John 3:14",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 11
+        },
+        {
+            "reference": "1 John 5:4",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 14
+        },
+        {
+            "reference": "1 Corinthians 15:33",
+            "status": "self_rendered",
+            "block_index": 18
+        }
+    ]
+}
