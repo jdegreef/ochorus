@@ -3,7 +3,7 @@
  "slug": "pensees",
  "language": "pt",
  "job_issue": 8035,
- "pull_request": null,
+ "pull_request": 8365,
  "note": [
   "Translation job #8035 (2026-11-18): translated from W. F. Trotter's English in 20 units split at fragment boundaries (4 translators at a time) against a shared term table; every unit machine-checked for an identical tag sequence, identical fragment numbers and mirrored curly quotes, then a whole-book reconciliation pass. Scripture quoted in English is the Bíblia Livre para o Mundo (porbrbsl; ebible por_bpm via scripts/bible_mirror.py), pasted by script; `mined` rows were re-verified as verbatim (case-folded) substrings of that verse window and of the shipped block. Pascal's Latin (Vulgate) quotations stay Latin, as Trotter prints them, and are self_rendered; so are Pascal's paraphrases, Vulgate-shaped compressions and deuterocanonical quotations (not in the Bíblia Livre). AI-drafted, awaiting native review."
  ],
