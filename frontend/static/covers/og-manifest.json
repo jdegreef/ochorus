@@ -32305,6 +32305,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"pt/at-the-masters-feet": {
+			"ground": "cdd5f88f3356cc2fdf4d4cd2c01456b47378ba22571135d66f4f3bf6431c2a2b",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[104, 102, 496, 131]
+				],
+				"title": [
+					[46, 324, 554, 406]
+				],
+				"subtitle": [
+					[113, 479, 487, 500],
+					[82, 500, 519, 521]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				274,
+				521
+			]
+		},
 		"pt/baptism-with-the-holy-spirit": {
 			"ground": "dd1ca172911e6482077dfdb3e5f2e02dfe726ad7d977f86d0f5d5e900cb05f52",
 			"style": "revival",
