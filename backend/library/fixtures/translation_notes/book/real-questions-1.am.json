@@ -1220,8 +1220,7 @@
         },
         {
             "reference": "Proverbs 15:22",
-            "status": "mined",
-            "source_file": "watchman-nee-a-life.am.json",
+            "status": "self_rendered",
             "block_index": 12
         },
         {
