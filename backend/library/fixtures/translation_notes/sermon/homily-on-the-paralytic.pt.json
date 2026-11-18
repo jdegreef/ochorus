@@ -1,0 +1,340 @@
+{
+ "kind": "sermon",
+ "slug": "homily-on-the-paralytic",
+ "language": "pt",
+ "job_issue": 8058,
+ "note": [
+  "Scripture authority is the Bíblia Livre (porbrbsl, public domain), quoted verbatim from the ebible mirror por_bpm via scripts/bible_mirror.py.",
+  "The English (NPNF) cites no references; every quotation was identified by hand. Each 'mined' row was re-verified by script: the quoted span is a byte-exact substring of both this body and the Bible verse. Loose, merged, Septuagint-shaped or re-personed quotations are self_rendered (Sirach is not in the Bíblia Livre).",
+  "Register: the congregation is addressed as vós (as in the shipped against-eutropius.pt); Bíblia Livre quotations keep their own você/vocês."
+ ],
+ "references": [
+  {
+   "reference": "John 5:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "John 5:7a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Sirach 2:1-2",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Sirach 2:4",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 22:31",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 22:32",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "2 Corinthians 1:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "2 Corinthians 1:4",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "John 5:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "John 5:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 25:42",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "John 5:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "John 5:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 9:2",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 9:1",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 9:2",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 8:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "John 5:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "John 5:13",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 8:10",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 15:22",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 17:15",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 9:2",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 7:39",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 9:12",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "John 5:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Corinthians 11:30a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 9:2",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 40:1-2",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 26:12",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Mark 2:7a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Mark 2:7b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 5:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Micah 7:18a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 9:3",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "2 Chronicles 6:30",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "John 2:25",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 8:27a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 9:4",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 9:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 9:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 9:6a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 9:6b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 8:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 8:9",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "John 5:18",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Corinthians 4:11",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Timothy 5:23",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 5:11",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 5:12",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Luke 6:22-23",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 12:36",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Thessalonians 4:13",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl; ebible por_bpm) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "self_rendered",
+   "block_index": 15
+  }
+ ]
+}
