@@ -980,10 +980,9 @@
   },
   {
    "reference": "Ezekiel 22:30",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 18,
-   "source_file": "men-of-prayer-2.am.json"
+   "chapter_order": 18
   },
   {
    "reference": "Isaiah 62:6",

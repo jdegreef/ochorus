@@ -304,8 +304,7 @@
         },
         {
             "reference": "Ezekiel 22:30",
-            "status": "mined",
-            "source_file": "men-of-prayer-2.am.json",
+            "status": "self_rendered",
             "block_index": 32
         },
         {
@@ -1085,14 +1084,12 @@
         },
         {
             "reference": "John 17:1",
-            "status": "mined",
-            "source_file": "freedom-of-the-will.am.json",
+            "status": "self_rendered",
             "block_index": 24
         },
         {
             "reference": "Hebrews 12:2",
-            "status": "mined",
-            "source_file": "freedom-of-the-will.am.json",
+            "status": "self_rendered",
             "block_index": 24
         },
         {

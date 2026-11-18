@@ -223,8 +223,7 @@
         },
         {
             "reference": "Psalm 56:8",
-            "status": "mined",
-            "source_file": "sons-of-the-king-1.am.json",
+            "status": "self_rendered",
             "block_index": 19
         },
         {
@@ -1219,8 +1218,7 @@
         },
         {
             "reference": "Proverbs 15:22",
-            "status": "mined",
-            "source_file": "watchman-nee-a-life.am.json",
+            "status": "self_rendered",
             "block_index": 12
         },
         {
