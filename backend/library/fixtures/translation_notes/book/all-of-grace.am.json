@@ -278,10 +278,9 @@
   },
   {
    "reference": "Isaiah 45:22",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 4,
-   "source_file": "men-of-prayer-2.am.json"
+   "chapter_order": 4
   },
   {
    "reference": "2 Corinthians 5:21",
