@@ -23326,6 +23326,21 @@
 				542
 			]
 		},
+		"ja/waiting-on-god": {
+			"ground": "c709fc15fee9a6673c0534989e509573fb063032547434ba0eba7b50a194ecf7",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "627798cd47358050548c3b590146213b7bd3449618a14a3214c02d66e9250925",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null
+		},
 		"james": {
 			"ground": "063d330a75164dead466f10646bd7392fdfd7e4da3f18daabace1377db3b150c",
 			"style": "devotional",
