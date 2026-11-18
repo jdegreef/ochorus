@@ -3275,6 +3275,14 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # (pt “sim”/“não”, es «si»/«no», ar «نعم»/«لا»), which is what
             # settles the intended reading.
             ("positively, “yes, “or” no, &#x27; &#x27; to the question", "positively, “yes” or “no” to the question"),
+            # Found translating the book to Japanese (#8095): plain typos and
+            # one OCR misreading. "Raised in their heart" is Acts 2:37, which
+            # every English version reads "pricked"/"cut to the heart".
+            ("he would be suprised", "he would be surprised"),
+            ("secretaries, Sundayschool teachers", "secretaries, Sunday-school teachers"),
+            ("preparation for elective service", "preparation for effective service"),
+            ("“Raised in their heart” by this charge", "“Pricked in their heart” by this charge"),
+            ("The second steptoward the Baptism", "The second step toward the Baptism"),
         ],
     },
     "the-fundamental-doctrines-of-the-christian-faith": {
