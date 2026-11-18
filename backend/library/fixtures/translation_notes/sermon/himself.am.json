@@ -5,36 +5,39 @@
  "job_issue": 3567,
  "pull_request": null,
  "note": [
-  "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
-  "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
-  "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), read offline from backend/library/data/bible/owb-am-b.json.gz — the founder decision of 2026-11-18 that every Amharic work quotes OWB. Every quotation this sermon makes is OWB verbatim (the shortest contiguous OWB span carrying the clause), spliced by script; the 1962 UBS wording it used to carry is gone.",
+  "A `mined` row means its quotation is an exact substring of the OWB verse, measured against the finished text. `self_rendered` rows are either the author's own allusions in prose (Scripture he paraphrases without quoting, left as prose), or quotations OWB cannot carry: Galatians 2:20's \"by the faith of the Son of God\" (Simpson argues from the KJV's genitive against \"faith on the Son\"; OWB reads በማመን, the very sense he rejects) and 1 Corinthians 1:30 spoken by Christ in the first person (\"I am made unto you Wisdom\").",
+  "Prose adjusted for OWB: the two rhetorical questions Simpson builds on Matthew 22:42 (\"What think you of Bethshan / of divine healing?\") now echo OWB's ያላችሁ አመለካከት ምንድን ነው? wording, and the Colossians 1:26 \"hidden from ages and from generations\" clause in his voice now uses OWB's ባለፉት ዘመናትና ትውልዶች ሁሉ ተሰውሮ የነበረው."
  ],
  "references": [
   {
    "reference": "Matthew 8:17",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0
   },
   {
    "reference": "1 Peter 2:24",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0
   },
   {
    "reference": "Matthew 13:43",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 1
   },
   {
    "reference": "Ephesians 3:19",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 1
   },
   {
    "reference": "Matthew 22:42",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 5
   },
   {
@@ -44,7 +47,14 @@
   },
   {
    "reference": "Mark 11:22",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 5
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 5
   },
   {
@@ -60,25 +70,25 @@
   {
    "reference": "Colossians 1:26",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 7
   },
   {
    "reference": "Colossians 1:27",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 7
   },
   {
    "reference": "Colossians 1:27",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 8
   },
   {
    "reference": "Colossians 1:27",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 9
   },
   {
@@ -99,13 +109,13 @@
   {
    "reference": "Philippians 2:13",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 11
   },
   {
    "reference": "Colossians 1:27",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 12
   },
   {
