@@ -140,8 +140,7 @@
         },
         {
             "reference": "Psalms 127:1",
-            "status": "mined",
-            "source_file": "spurgeon-on-prayer.am.json",
+            "status": "self_rendered",
             "block_index": 21
         },
         {
