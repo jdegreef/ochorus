@@ -112,6 +112,8 @@ DEFAULTED_OK = {
     ("library.sermon", "attribution"),
     ("library.sermon", "study_questions"),
     ("library.article", "source_type"),
+    # Empty on every article without an answer-first Q&A set (#8185).
+    ("library.article", "qa"),
     # Blank on every book-chapter plan day (migration 0173 added article days).
     ("library.planday", "article_slug"),
     # Blank on every chapter and article day; only seeded devotional days set it.
