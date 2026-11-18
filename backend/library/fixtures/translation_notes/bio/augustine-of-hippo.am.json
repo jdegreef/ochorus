@@ -5,20 +5,21 @@
  "job_issue": 3994,
  "pull_request": null,
  "note": [
-  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh); the mirror has no Old Testament, so OT quotations reuse a shipped Amharic work's wording where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
-  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited shipped work) inside that block. Shorter, re-personed, or bridged-range verses (the mirror merges some verse ranges into one entry holding only part of the text) are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), read offline from backend/library/data/bible/owb-am-b.json.gz; quotations are spliced verbatim from it (founder decision 2026-11-18: Amharic quotes OWB everywhere). A partial verse quotes the shortest contiguous OWB span that carries the clause; the FAQ answer's Romans 13 quotation matches the body's.",
+  "Matthew 13:24-30 is an allusion (the Church as a mixed field of wheat and weeds) in the biographer's own voice, not a quotation, and stays prose."
  ],
  "references": [
   {
    "reference": "Romans 13:13-14",
    "status": "mined",
    "block_index": 22,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 14:1",
-   "status": "self_rendered",
-   "block_index": 22
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 13:24-30",
