@@ -7,6 +7,13 @@
    "The title opens with the shipped ja edition's own title (わずかなものに忠実に, Matthew 25:21 口語訳) and the ―― dash that edition uses; names follow its renderings (ウェスレー, ミュラー, スポルジョン, トウザー). です・ます体, the ja house register. AI-written; for native review with the book."
   ]
  },
+ "humility-12-days": {
+  "title": "12日間で読む『謙遜』",
+  "description": "すべての徳の根である謙遜を語る、アンドリュー・マーレーの古典です。12日間、1日に短い章を一つずつ読み進めます。",
+  "note": [
+   "Single-book LAUNCH plan backed by the ja edition of humility-2 (queue job #8094), shipped in the same PR so seed_plans does not publish a ja plan row with no prose. Title in the book's own ja title 『謙遜』 and the 1日1章 / 12日間 phrasing of the shipped ja plans; です・ます体, the ja house register. AI-drafted; awaiting native review."
+  ]
+ },
  "the-inner-chamber-month": {
   "title": "密室で過ごすひと月",
   "description": "祈りとみことばの毎日の習慣を身につけましょう。アンドリュー・マーレーとともに過ごす36の朝。1日1章ずつ読み進めます。",
