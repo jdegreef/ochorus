@@ -31944,6 +31944,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"pt/a-retrospect": {
+			"ground": "01664f4222edb30c798a0e8c6d299ac6e09bb570950c197a3e0325363c009b38",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/teal",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"pt/a-retrospect-children": {
 			"ground": "7459aa23e9b9cce4cb946e6e64c39d80dc7ada3eeb223400b51aa30d1c222447",
 			"style": "revival",
