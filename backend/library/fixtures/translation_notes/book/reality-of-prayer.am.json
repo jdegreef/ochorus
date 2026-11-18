@@ -486,10 +486,9 @@
   },
   {
    "reference": "1 Thessalonians 5:17-18",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 26,
-   "chapter_order": 4,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 4
   },
   {
    "reference": "Matthew 6:9-10",
@@ -1626,10 +1625,9 @@
   },
   {
    "reference": "John 17:24",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 16,
-   "chapter_order": 12,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 12
   },
   {
    "reference": "John 15:7",
@@ -1745,10 +1743,9 @@
   },
   {
    "reference": "John 14:16",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 13,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 13
   },
   {
    "reference": "James 4:2",

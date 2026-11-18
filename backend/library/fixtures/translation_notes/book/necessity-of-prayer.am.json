@@ -522,10 +522,9 @@
   },
   {
    "reference": "1 Thessalonians 5:17",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 19,
-   "chapter_order": 13,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 13
   },
   {
    "reference": "John 15:7",

@@ -91,10 +91,9 @@
   },
   {
    "reference": "Luke 11:1",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 3,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 3
   },
   {
    "reference": "John 15:7",

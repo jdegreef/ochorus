@@ -258,9 +258,8 @@
   },
   {
    "reference": "John 17:24",
-   "status": "mined",
-   "block_index": 57,
-   "source_file": "school-of-prayer.am.json"
+   "status": "self_rendered",
+   "block_index": 57
   },
   {
    "reference": "Isaiah 33:17",
