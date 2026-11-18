@@ -97,6 +97,19 @@ SAME_VERSE_OVERLAP = 0.5
 _FIXTURE_NAME = re.compile(r"[a-z0-9-]+\.[a-z]{2,3}\.json")
 _REF_NUMBERS = re.compile(r"(\d{1,3})\s*:\s*(\d{1,3})")
 
+# A row mined from the Open Word Bible names it in prose, not as a file. Where
+# that language's OWB text is bundled (`data/bible/owb-<lang>-b.json.gz`), the
+# claim is checkable against the Bible itself rather than against a sibling
+# fixture — and must be: the Amharic re-quote moves tens of thousands of rows to
+# this source, and a `mined` claim nothing checks is the gap this gate exists to
+# close.
+OWB_SOURCE = re.compile(r"^Open Word Bible \(OWB\), Balanced edition, (?P<name>.+)$")
+OWB_LANGUAGE_NAMES = {"Amharic": "am", "Swahili": "sw", "English": "en"}
+_OWB_REF = re.compile(
+    r"^(?P<book>(?:[1-3]\s)?[A-Za-z][A-Za-z ]*?)\s+(?P<ch>\d{1,3})\s*:\s*(?P<v1>\d{1,3})[ab]?"
+    r"(?:\s*[-–]\s*(?P<v2>\d{1,3})[ab]?)?$"
+)
+
 
 @dataclass(frozen=True)
 class Finding:
@@ -166,6 +179,35 @@ def cited_quotations(filename: str) -> dict[tuple[int, int], tuple[str, ...]]:
     return {k: tuple(v) for k, v in found.items()}
 
 
+def owb_language(source_file: str) -> str | None:
+    """The language code an OWB ``source_file`` names, if its text is bundled."""
+    from . import scripture
+
+    m = OWB_SOURCE.match(source_file or "")
+    code = OWB_LANGUAGE_NAMES.get(m.group("name").strip()) if m else None
+    return code if code and code in scripture.owb_languages() else None
+
+
+def owb_text(reference: str, language: str) -> str:
+    """The bundled OWB wording of an English reference (a range joined), or ""."""
+    from . import scripture
+    from .translation import BOOK_USFM, USFM_ORDER
+
+    m = _OWB_REF.match((reference or "").strip())
+    if not m or m.group("book").lower() not in BOOK_USFM:
+        return ""
+    book = USFM_ORDER.index(BOOK_USFM[m.group("book").lower()]) + 1
+    base = book * 1_000_000 + int(m.group("ch")) * 1000
+    first = int(m.group("v1"))
+    last = int(m.group("v2") or first)
+    texts: list[str] = []
+    for verse in range(first, max(first, last) + 1):
+        found = scripture.owb_verse(base + verse, language)
+        if found and found[1] not in texts:
+            texts.append(found[1])
+    return " ".join(texts)
+
+
 def reference_numbers(reference: str) -> tuple[int, int] | None:
     """``"Matthew 15:28a"`` → ``(15, 28)``; ``None`` when there are none.
 
@@ -225,6 +267,28 @@ def audit(notes_dir: Path | None = None) -> tuple[list[Finding], Counter]:
                 continue
             reference = (ref.get("reference") or "").strip()
             source_file = (ref.get("source_file") or "").strip()
+
+            owb = owb_language(source_file)
+            if owb:
+                numbers = reference_numbers(reference)
+                text = owb_text(reference, owb)
+                mine = cited_quotations(target).get(numbers, ()) if numbers else ()
+                if not text:
+                    census["owb_reference_unresolved"] += 1
+                    continue
+                if not mine:
+                    census["owb_not_quoted_in_translation"] += 1
+                    continue
+                same = [q for q in mine if same_verse(q, text)]
+                if not same:
+                    census["owb_different_book_same_numbers"] += 1
+                    continue
+                if any(is_verbatim(q, text) for q in same):
+                    census["owb_verified"] += 1
+                else:
+                    census["owb_contradicted"] += 1
+                    findings.append(Finding(path.name, reference, source_file, same[0], text))
+                continue
 
             if not names_a_shipped_fixture(source_file):
                 if looks_like_a_filename(source_file):
@@ -295,5 +359,15 @@ def format_census(census: Counter) -> str:
         "",
         f"  CHECKED: {checkable}  →  {census.get('verified', 0)} verbatim, "
         f"{census.get('contradicted', 0)} contradicted",
+        "",
+        "  Mined from a bundled Open Word Bible (checked against the Bible itself):",
+        f"    not quoted in the translation:                       "
+        f"{census.get('owb_not_quoted_in_translation', 0)}",
+        f"    reference not resolvable:                            "
+        f"{census.get('owb_reference_unresolved', 0)}",
+        f"    same numbers, different book:                        "
+        f"{census.get('owb_different_book_same_numbers', 0)}",
+        f"    CHECKED: {census.get('owb_verified', 0) + census.get('owb_contradicted', 0)}  →  "
+        f"{census.get('owb_verified', 0)} verbatim, {census.get('owb_contradicted', 0)} contradicted",
     ]
     return "\n".join(lines)
