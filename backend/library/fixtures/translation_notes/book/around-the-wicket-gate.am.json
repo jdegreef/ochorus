@@ -70,10 +70,9 @@
   },
   {
    "reference": "Isaiah 64:6",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 2,
-   "source_file": "fall-and-recovery-of-man.am.json"
+   "chapter_order": 2
   },
   {
    "reference": "Genesis 3:7",

@@ -540,10 +540,9 @@
   },
   {
    "reference": "Romans 5:20",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 21,
-   "chapter_order": 5,
-   "source_file": "fall-and-recovery-of-man.am.json"
+   "chapter_order": 5
   },
   {
    "reference": "Romans 6:2",
