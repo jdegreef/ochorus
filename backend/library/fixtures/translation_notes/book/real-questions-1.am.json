@@ -310,8 +310,7 @@
         },
         {
             "reference": "Isaiah 55:9",
-            "status": "mined",
-            "source_file": "a-retrospect.am.json",
+            "status": "self_rendered",
             "block_index": 9
         },
         {
