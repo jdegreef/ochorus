@@ -2552,10 +2552,9 @@
   },
   {
    "reference": "Psalm 100:4",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 39,
-   "chapter_order": 15,
-   "source_file": "rooted-3.am.json"
+   "chapter_order": 15
   },
   {
    "reference": "2 Chronicles 5:13-14",

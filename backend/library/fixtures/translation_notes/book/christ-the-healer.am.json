@@ -2420,8 +2420,7 @@
   },
   {
    "reference": "Psalm 100:4",
-   "status": "mined",
-   "source_file": "rooted-3.am.json",
+   "status": "self_rendered",
    "block_index": 401
   },
   {
