@@ -1,0 +1,102 @@
+{
+    "kind": "sermon",
+    "slug": "the-parable-of-the-prodigal-son",
+    "language": "pt",
+    "job_issue": 8070,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Luke 15:1-2",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "Luke 15:1",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 13
+        },
+        {
+            "reference": "Luke 15:17a",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 26
+        },
+        {
+            "reference": "Luke 15:16b",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 29
+        },
+        {
+            "reference": "Luke 15:16b",
+            "status": "self_rendered",
+            "block_index": 31
+        },
+        {
+            "reference": "Luke 15:12",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 33
+        },
+        {
+            "reference": "Luke 15:19b",
+            "status": "self_rendered",
+            "block_index": 34
+        },
+        {
+            "reference": "John 3:16",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 48
+        },
+        {
+            "reference": "Revelation 21:5",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 48
+        },
+        {
+            "reference": "Galatians 3:13",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 52
+        },
+        {
+            "reference": "Isaiah 64:6",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 52
+        },
+        {
+            "reference": "Isaiah 53:11",
+            "status": "self_rendered",
+            "block_index": 52
+        },
+        {
+            "reference": "Luke 15:27",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 55
+        },
+        {
+            "reference": "Luke 15:20",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 55
+        },
+        {
+            "reference": "Luke 15:30",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 56
+        },
+        {
+            "reference": "John 3:16",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 58
+        }
+    ]
+}
