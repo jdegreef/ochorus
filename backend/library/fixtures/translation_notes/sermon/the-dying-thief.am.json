@@ -7,84 +7,83 @@
   {
    "reference": "Luke 23:40",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 4
   },
   {
    "reference": "Matthew 27:44",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 4
   },
   {
    "reference": "Proverbs 9:10",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 4
   },
   {
    "reference": "Matthew 27:37",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 6
   },
   {
    "reference": "Luke 23:34",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 8
   },
   {
    "reference": "Luke 23:34",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 9
   },
   {
    "reference": "Luke 23:41",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 11
   },
   {
    "reference": "Hebrews 5:6",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 12
   },
   {
    "reference": "Galatians 3:13",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 16
   },
   {
    "reference": "Luke 23:35",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 16
   },
   {
    "reference": "Luke 23:41",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 16
   },
   {
    "reference": "Luke 23:42",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "status": "self_rendered",
    "block_index": 16
   },
   {
    "reference": "Matthew 3:17",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 16
   },
   {
    "reference": "Luke 23:42",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "status": "self_rendered",
    "block_index": 17
   },
   {
@@ -94,42 +93,41 @@
   },
   {
    "reference": "Luke 23:42",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "status": "self_rendered",
    "block_index": 18
   },
   {
    "reference": "Luke 23:43",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 20
   },
   {
    "reference": "Hebrews 9:22",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 23
   },
   {
    "reference": "John 19:30",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 23
   },
   {
    "reference": "Luke 2:14",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 23
   },
   {
    "reference": "Luke 23:42",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "status": "self_rendered",
    "block_index": 25
   }
  ],
  "note": [
-  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). NT verses are pasted from the ebible mirror (amh_amh); the mirror has no OT, so OT quotations are self_rendered in the 1962 register unless a shipped Amharic work already quotes the verse (source_file names it).",
-  "Rows come from the translators' reports and every 'mined' claim was re-verified: each quoted fragment must be a byte-exact substring both of this body and of the NT file (or of the cited shipped work); a claim that fails is recorded as self_rendered. Some mirror entries are merged verse ranges holding only part of the text, so verses inside them are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled offline (fetch_verse_text('owb-am', ref)). Every quotation was re-quoted to it verbatim by script (founder decision 2026-11-18); nothing from the 1962 UBS text remains. A partial verse quotes the shortest contiguous OWB span carrying the clause; Luke 23:35 is quoted as two OWB fragments around the narrative 'they said'.",
+  "Luke 23:42 is self_rendered everywhere it is quoted (blocks 16, 17 heading, 18, 25): OWB follows the critical text 'Jesus, remember me' (ኢየሱስ ሆይ), but Moody argues from the KJV vocative ('now he calls Him \"Lord\"', 'He called Him Lord there and then'), so the quote reads ጌታ ሆይ with OWB's wording otherwise (በመንግሥትህ በምትመጣበት ጊዜ አስታውሰኝ). Block 18's prose 'to be remembered' follows OWB's verb (እንዲታወስ)."
  ]
 }

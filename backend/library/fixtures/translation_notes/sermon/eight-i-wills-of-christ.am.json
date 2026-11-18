@@ -226,9 +226,8 @@
   },
   {
    "reference": "Matthew 28:20",
-   "status": "mined",
-   "block_index": 53,
-   "source_file": "aggressive-christianity.am.json"
+   "status": "self_rendered",
+   "block_index": 53
   },
   {
    "reference": "John 14:26",

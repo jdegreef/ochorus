@@ -97,8 +97,7 @@
         },
         {
             "reference": "1 Kings 18:21",
-            "status": "mined",
-            "source_file": "sons-of-the-king-1.am.json",
+            "status": "self_rendered",
             "block_index": 15
         },
         {
@@ -108,8 +107,7 @@
         },
         {
             "reference": "Isaiah 38:1",
-            "status": "mined",
-            "source_file": "sons-of-the-king-1.am.json",
+            "status": "self_rendered",
             "block_index": 15
         },
         {

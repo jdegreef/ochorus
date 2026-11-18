@@ -199,10 +199,9 @@
   },
   {
    "reference": "Romans 5:5",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 6,
-   "source_file": "essentials-of-prayer.am.json"
+   "chapter_order": 6
   },
   {
    "reference": "Acts 26:6",
@@ -830,10 +829,9 @@
   },
   {
    "reference": "2 Chronicles 7:14",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 16,
-   "source_file": "men-of-prayer-2.am.json"
+   "chapter_order": 16
   },
   {
    "reference": "Exodus 33:15",
@@ -887,10 +885,9 @@
   },
   {
    "reference": "Numbers 14:24",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 22,
-   "chapter_order": 16,
-   "source_file": "sons-of-the-king-1.am.json"
+   "chapter_order": 16
   },
   {
    "reference": "Exodus 33:18",

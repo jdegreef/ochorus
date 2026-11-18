@@ -1112,10 +1112,9 @@
   },
   {
    "reference": "Hebrews 12:6",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 29,
-   "source_file": "essentials-of-prayer.am.json"
+   "chapter_order": 29
   },
   {
    "reference": "Psalm 42:7",
@@ -1164,10 +1163,9 @@
   },
   {
    "reference": "2 Corinthians 4:17",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 19,
-   "chapter_order": 29,
-   "source_file": "essentials-of-prayer.am.json"
+   "chapter_order": 29
   },
   {
    "reference": "Hebrews 12:12",

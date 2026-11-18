@@ -86,6 +86,43 @@ class MinedProvenanceGateTests(SimpleTestCase):
         self.assertGreater(checked, 60, f"census: {dict(self.census)}")
 
 
+class OwbMinedTests(SimpleTestCase):
+    """A row mined from a BUNDLED Open Word Bible is checked against the Bible.
+
+    Before this, such a row counted as ``cites_a_bible`` and nothing verified it.
+    The Amharic re-quote (founder decision, 2026-11-18) moves tens of thousands
+    of rows to ``Open Word Bible (OWB), Balanced edition, Amharic``, so the gate
+    has to read the bundle, not wave those rows through.
+    """
+
+    def test_only_a_bundled_language_is_checkable(self):
+        self.assertEqual(mv.owb_language("Open Word Bible (OWB), Balanced edition, Amharic"), "am")
+        # Swahili OWB is quoted (jesus-teacher-of-prayer.sw) but not bundled: unchecked, as before.
+        self.assertIsNone(mv.owb_language("Open Word Bible (OWB), Balanced edition, Swahili"))
+        self.assertIsNone(mv.owb_language("Amharic Bible 1962/2003 (UBS), NT — ebible amh"))
+
+    def test_a_reference_resolves_to_its_owb_wording(self):
+        john = mv.owb_text("John 3:16", "am")
+        self.assertTrue(john.startswith("እግዚአብሔር ለዓለም ያለው ፍቅር"), john)
+        self.assertEqual(mv.owb_text("John 3:16a", "am"), john)
+        self.assertIn(john, mv.owb_text("John 3:16-17", "am"))
+        # A verse OWB prints joined to the one before (1 Kings 18:33-34) is not doubled.
+        self.assertEqual(mv.owb_text("1 Kings 18:33-34", "am"), mv.owb_text("1 Kings 18:33", "am"))
+        self.assertEqual(mv.owb_text("Not a book 3:16", "am"), "")
+
+    def test_a_partial_owb_quotation_is_verbatim_and_a_reworded_one_is_not(self):
+        verse = mv.owb_text("Psalm 119:68", "am")
+        self.assertTrue(mv.is_verbatim("አንተ መልካም ነህ፤ መልካምንም ታደርጋለህ", verse))
+        # The old self-rendered wording of the same clause is not OWB.
+        self.assertFalse(mv.is_verbatim("አንተ ቸር ነህ፥ ቸርነትንም ታደርጋለህ", verse))
+
+    def test_the_corpus_has_owb_rows_and_none_contradict(self):
+        findings, census = mv.audit()
+        self.assertGreater(census.get("owb_verified", 0), 0, dict(census))
+        self.assertEqual(census.get("owb_contradicted", 0), 0,
+                         [str(f) for f in findings if "Open Word Bible" in f.source_file])
+
+
 class MinedPrecisionTests(SimpleTestCase):
     """One test per rule, each pinning the defect AND the convention it spares."""
 
