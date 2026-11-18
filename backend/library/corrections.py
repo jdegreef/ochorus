@@ -24858,7 +24858,6 @@ BODY_CORRECTIONS.setdefault("separation-and-service", {}).setdefault("replacemen
 # 1 Samuel 18:14 is said of David, not Jonathan.
 BODY_CORRECTIONS.setdefault("rise-up-men-of-god-2", {}).setdefault("replacements", []).extend([
     ('In everything Jonathan did, he had great success', 'In everything David did, he had great success'),
-    ('«ዮናታን በሚያደርገው ነገር ሁሉ', '«ዳዊት በሚያደርገው ነገር ሁሉ'),
     ('«كان يوناثان ناجحا في كل ما فعله', '«كان داود ناجحا في كل ما فعله'),
     ('“योनातान अपने सब कामों में सफल', '“दाऊद अपने सब कामों में सफल'),
     ('“Katika kila jambo Yonathani alilolifanya', '“Katika kila jambo Daudi alilolifanya'),
