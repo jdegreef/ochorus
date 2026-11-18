@@ -86,7 +86,9 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
   Swahili renderings, B edition); a Swahili edition of a public-domain classic
   keeps the Swahili Union wording our corpus already quotes. The verse-ratchet
   pins this produces (OWB in an Original vs Union in a classic, same verse) are
-  expected, not drift. (Founder decision, 2026-11-18.)
+  expected, not drift. The 33 Swahili Originals shipped before the decision keep
+  their Union wording, as the BSB house books do in English: don't re-quote
+  them. (Founder decision, 2026-11-18.)
 
 ## The fixture (now a friendly edge)
 
