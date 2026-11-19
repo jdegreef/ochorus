@@ -81,23 +81,18 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
   Questions, The Big Story, They Were Young) **keep the BSB on purpose**, and so
   does a further volume of one of those series: their teaching is written
   around the BSB's wording. Don't re-quote them. (Founder decision, 2026-10-25.)
-- **Swahili follows the same split.** A Swahili edition of an Ochorus Original
-  quotes the **OWB Swahili, Balanced** text verbatim (`jdegreef/open-word-bible`,
-  Swahili renderings, B edition); a Swahili edition of a public-domain classic
-  keeps the Swahili Union wording our corpus already quotes. The verse-ratchet
-  pins this produces (OWB in an Original vs Union in a classic, same verse) are
-  expected, not drift. The 33 Swahili Originals shipped before the decision keep
-  their Union wording, as the BSB house books do in English: don't re-quote
-  them. (Founder decision, 2026-11-18.)
-- **Amharic quotes OWB everywhere**: Originals and classics alike, plus the
-  site's own Amharic Scripture. The text is the **OWB Amharic Balanced**
-  (CC0), bundled as `backend/library/data/bible/owb-am-b.json.gz`
-  (`scripts/build_owb_bible.py --language am`); the Amharic Bible code is
-  `owb-am`, and `translation.fetch_verse_text("owb-am", ref)` reads it
-  offline. Unlike Swahili there is no public-domain text to keep: the 1962
-  Bible the older Amharic books quote is © UBS, so those are being re-quoted to
-  OWB, and the Amharic credit line goes once the last one is.
-  (Founder decision, 2026-11-18.)
+- **Amharic, Swahili and Japanese quote OWB everywhere**: Originals and classics
+  alike, plus the site's own Scripture in those languages (footer blessings,
+  About verses, topic-shelf verses). The text is the language's **OWB
+  Balanced** (CC0), bundled as `backend/library/data/bible/owb-<lang>-b.json.gz`
+  (`scripts/build_owb_bible.py --language <lang>`); the Bible codes are
+  `owb-am`, `owb-sw` and `owb-ja`, and `translation.fetch_verse_text("owb-sw",
+  ref)` reads one offline. The works shipped before the switch (Amharic's 1962
+  quotes, © UBS; Swahili's Union wording; Japanese's 口語訳) are being re-quoted
+  to OWB, and the Amharic credit line goes once the last Amharic book is.
+  Swahili's earlier split (Originals OWB, classics Union, 33 Originals left on
+  Union) is superseded. (Founder decisions: Amharic 2026-11-18; Swahili and
+  Japanese 2026-11-19.)
 
 ## The fixture (now a friendly edge)
 

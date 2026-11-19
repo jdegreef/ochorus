@@ -53,8 +53,12 @@ def owb_path(language: str = "en") -> Path:
     return _BIBLE_DIR / f"owb-{language}-b.json.gz"
 
 
+@cache
 def owb_languages() -> frozenset[str]:
-    """Languages with a bundled OWB text: English, plus any built with ``--language``."""
+    """Languages with a bundled OWB text: English, plus any built with ``--language``.
+
+    Cached: the bundles are fixed for the process, and the mined-claims audit
+    asks once per row."""
     return frozenset(p.name[len("owb-") : -len("-b.json.gz")] for p in _BIBLE_DIR.glob("owb-*-b.json.gz"))
 
 

@@ -13,9 +13,10 @@ verse numbering are the ones its own downloads carry:
     uv run python scripts/build_owb_bible.py /tmp/owb --language am
 
 ``--language`` builds another language's Balanced text to
-`library/data/bible/owb-<language>-b.json.gz`. Amharic is bundled this way
-(founder decision, 2026-11-18): every Amharic work quotes OWB, and the
-translation lookup resolves the Bible id ``owb-am`` from this file
+`library/data/bible/owb-<language>-b.json.gz`. Amharic, Swahili and Japanese
+are bundled this way (founder decisions, 2026-11-18 and 2026-11-19): every work
+in those languages quotes OWB, and the translation lookup resolves the Bible
+ids ``owb-am``, ``owb-sw`` and ``owb-ja`` from these files
 (`translation.fetch_chapter` / `fetch_verse_text`), offline.
 
 Run it when the OWB text changes, review the diff of the manifest it prints,
@@ -32,11 +33,22 @@ import argparse
 import glob
 import gzip
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
 
 BIBLE_DIR = Path(__file__).resolve().parents[1] / "library" / "data" / "bible"
+
+
+#: Languages written without spaces between words or sentences. OWB's exporter
+#: joins a verse's poetic lines with an ASCII space (right for English, Swahili,
+#: Amharic), which in Japanese leaves 8,577 verses reading 「主はわたしの羊飼い。
+#: わたしが…」 against the ja typography rule (no spaces after punctuation). The
+#: space is layout, not wording, so it is dropped here wherever no Latin letter
+#: or digit stands beside it; every character of the text is kept.
+NO_SPACE_LANGUAGES = frozenset({"ja"})
+_UNSPACED_JOIN = re.compile(r"(?<![A-Za-z0-9]) (?![A-Za-z0-9])")
 
 
 def out_path(language: str) -> Path:
@@ -70,7 +82,10 @@ def main() -> None:
         for chapter in book["chapters"]:
             for v in chapter["verses"]:
                 first = number * 1_000_000 + chapter["chapter"] * 1000 + v["verse"]
-                verses[str(first)] = v["text"]
+                text = v["text"]
+                if args.language in NO_SPACE_LANGUAGES:
+                    text = _UNSPACED_JOIN.sub("", text)
+                verses[str(first)] = text
                 if "to" in v:
                     others = [
                         number * 1_000_000 + chapter["chapter"] * 1000 + n
