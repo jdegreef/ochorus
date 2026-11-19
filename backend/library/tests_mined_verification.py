@@ -18,6 +18,8 @@ have, for the same reasons.
 
 from __future__ import annotations
 
+from unittest import mock
+
 from django.test import SimpleTestCase
 
 from library import mined_verification as mv
@@ -121,6 +123,40 @@ class OwbMinedTests(SimpleTestCase):
         self.assertGreater(census.get("owb_verified", 0), 0, dict(census))
         self.assertEqual(census.get("owb_contradicted", 0), 0,
                          [str(f) for f in findings if "Open Word Bible" in f.source_file])
+
+
+    def test_a_bio_is_checked_against_its_html_and_faq(self):
+        """Bios sat outside this gate: their notes have no fixture to open, and
+        they cite in prose ("he preached on Isaiah 54:2"), not «…» (Ref c:v)."""
+        import json
+        import tempfile
+        from pathlib import Path
+
+        verse = mv.owb_text("Psalm 119:68", "am")
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            bios = root / "author_bios_am"
+            bios.mkdir()
+            notes = root / "notes" / "bio"
+            notes.mkdir(parents=True)
+            (notes / "x.am.json").write_text(json.dumps({
+                "kind": "bio", "slug": "x", "language": "am",
+                "references": [{"reference": "Psalm 119:68", "status": "mined",
+                                "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"}],
+            }), encoding="utf-8")
+            (bios / "x.faq.json").write_text("[]", encoding="utf-8")
+
+            def run(html):
+                (bios / "x.html").write_text(html, encoding="utf-8")
+                mv.bio_quotations.cache_clear()
+                with mock.patch.object(mv, "BIOS", root):
+                    return mv.audit(root / "notes")[1]
+
+            self.assertEqual(run(f"<p>ይጸልይ ነበር፦ «{verse}»</p>")["owb_verified"], 1)
+            reworded = verse.replace("መልካም", "ቸር")
+            self.assertNotEqual(reworded, verse)
+            self.assertEqual(run(f"<p>ይጸልይ ነበር፦ «{reworded}»</p>")["owb_contradicted"], 1)
+        mv.bio_quotations.cache_clear()
 
 
 class MinedPrecisionTests(SimpleTestCase):

@@ -607,6 +607,29 @@ class BundledOwbBibleTests(SimpleTestCase):
             m.fetch_verse_text("owb-am", "1 Kings 18:33"),
         )
 
+    def test_a_passage_joins_every_verse_of_its_range(self):
+        from library import translation as m
+
+        verses = [m.fetch_verse_text("owb-am", f"Psalm 46:{v}") for v in (1, 2, 3)]
+        self.assertEqual(m.fetch_passage_text("owb-am", "Psalm 46:1-3"), " ".join(verses))
+        self.assertEqual(m.fetch_passage_text("owb-am", "Psalm 46:1\u20133"), " ".join(verses))
+        # A single verse, and a cross-chapter end, answer like fetch_verse_text.
+        self.assertEqual(m.fetch_passage_text("owb-am", "John 3:16"), m.fetch_verse_text("owb-am", "John 3:16"))
+        self.assertEqual(m.fetch_passage_text("owb-am", "John 3:16-4:2"), m.fetch_verse_text("owb-am", "John 3:16"))
+
+    def test_a_passage_prints_a_joined_verse_once(self):
+        from library import translation as m
+
+        self.assertEqual(
+            m.fetch_passage_text("owb-am", "1 Kings 18:33-34"),
+            m.fetch_verse_text("owb-am", "1 Kings 18:33"),
+        )
+
+    def test_a_passage_past_the_chapter_end_is_absent(self):
+        from library import translation as m
+
+        self.assertEqual(m.fetch_passage_text("owb-am", "Psalm 23:5-9"), "")
+
     def test_a_chapter_comes_back_in_take_roots_shape(self):
         from library import translation as m
 
