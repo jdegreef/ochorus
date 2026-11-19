@@ -89,6 +89,8 @@ USFM_ORDER: tuple[str, ...] = tuple(dict.fromkeys(BOOK_USFM.values()))
 #: Bible ids served from a bundled Open Word Bible text rather than Take Root:
 #: ``owb-<language>`` reads ``library/data/bible/owb-<language>-b.json.gz``.
 OWB_PREFIX = "owb-"
+#: Bibles in a language written without spaces: their verses join with none.
+UNSPACED_BIBLES = frozenset({"owb-ja"})
 
 
 @dataclass(frozen=True)
@@ -342,7 +344,8 @@ _RANGE_END_RE = re.compile(r"\s*[-\u2013]\s*(\d{1,3})\b(?!\s*[:.]\s*\d)")
 
 def fetch_passage_text(bible: str, ref_text: str) -> str:
     """Every verse a reference spans, joined by a space: "Psalm 46:1-3" gives
-    all three verses, where ``fetch_verse_text`` would stop at verse 1.
+    all three verses, where ``fetch_verse_text`` would stop at verse 1. A
+    language written without spaces (OWB Japanese) joins with none.
 
     A single-verse reference answers exactly like ``fetch_verse_text``. The
     range must stay inside one chapter; a cross-chapter end ("3:16-4:2") is not
@@ -369,7 +372,7 @@ def fetch_passage_text(bible: str, ref_text: str) -> str:
         if text not in seen:
             seen.add(text)
             parts.append(text)
-    return " ".join(parts)
+    return ("" if bible in UNSPACED_BIBLES else " ").join(parts)
 
 
 def scripture_context(text: str, bible: str, max_refs: int = 12) -> str:

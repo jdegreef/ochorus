@@ -105,7 +105,10 @@ _REF_NUMBERS = re.compile(r"(\d{1,3})\s*:\s*(\d{1,3})")
 # this source, and a `mined` claim nothing checks is the gap this gate exists to
 # close.
 OWB_SOURCE = re.compile(r"^Open Word Bible \(OWB\), Balanced edition, (?P<name>.+)$")
-OWB_LANGUAGE_NAMES = {"Amharic": "am", "Swahili": "sw", "English": "en"}
+# Japanese resolves too, but its quotations are not extracted yet (「…」 and no
+# spaces defeat the «…» (Ref c:v) / word-count readers), so its rows count as
+# ``owb_not_quoted_in_translation``: visible in the census, not verified.
+OWB_LANGUAGE_NAMES = {"Amharic": "am", "Swahili": "sw", "Japanese": "ja", "English": "en"}
 _OWB_REF = re.compile(
     r"^(?P<book>(?:[1-3]\s)?[A-Za-z][A-Za-z ]*?)\s+(?P<ch>\d{1,3})\s*:\s*(?P<v1>\d{1,3})[ab]?"
     r"(?:\s*[-–]\s*(?P<v2>\d{1,3})[ab]?)?$"
@@ -276,6 +279,7 @@ def same_verse(a: str, b: str) -> bool:
     return len(wa & wb) / min(len(wa), len(wb)) >= SAME_VERSE_OVERLAP
 
 
+_MIN_PIECE = 8  # normalised characters
 _ELLIPSIS = re.compile(r"\s*(?:\u2026|\.{3})\s*")
 
 
@@ -292,7 +296,11 @@ def is_verbatim(translation: str, source: str) -> bool:
     if t in s or s in t:
         return True
     pieces = [vc.normalise(p) for p in _ELLIPSIS.split(translation)]
+    # Each piece must be a real span, or a two-letter particle ("na") would
+    # be found inside any later word and pass a reworded tail.
     pieces = [p for p in pieces if p]
+    if any(len(p) < _MIN_PIECE for p in pieces):
+        return False
     at = 0
     for piece in pieces:
         at = s.find(piece, at)

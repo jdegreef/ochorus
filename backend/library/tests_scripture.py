@@ -669,8 +669,8 @@ class SwahiliAndJapaneseQuoteOwbTests(SimpleTestCase):
     """
 
     def test_the_seed_points_both_languages_at_their_bundle(self):
-        from library.language_seed import SEED_LANGUAGES
         from library import translation as m
+        from library.language_seed import SEED_LANGUAGES
 
         for lang in ("sw", "ja"):
             with self.subTest(lang=lang):
@@ -694,3 +694,11 @@ class SwahiliAndJapaneseQuoteOwbTests(SimpleTestCase):
         self.assertEqual(spaced, [])
         # Psalm 23:1 is poetry: its lines now join with nothing between them.
         self.assertEqual(scripture.owb_verse(19023001, "ja")[1], "ダビデの賛歌。主はわたしの羊飼い。わたしが乏しくなることは決してない。")
+
+    def test_a_japanese_passage_joins_without_a_space(self):
+        from library import translation as m
+
+        passage = m.fetch_passage_text("owb-ja", "Lamentations 3:22-23")
+        self.assertTrue(passage)
+        self.assertNotIn(" ", passage)
+        self.assertIn(" ", m.fetch_passage_text("owb-sw", "Lamentations 3:22-23"))

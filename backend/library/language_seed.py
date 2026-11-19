@@ -443,8 +443,8 @@ SEED_LANGUAGES: dict[str, dict] = {
             "(スポルジョン, アンドリュー・マーレー), never left in Latin letters."
         ),
         # Protestant register throughout: 神 (never the Catholic-leaning 天主),
-        # 聖霊, 主. "abide" is OWB's own John 15:4 (わたしのうちにとどまりなさい)
-        # and "the flesh" its Romans 8 肉. Prose is です・ます体; a quoted verse
+        # 聖霊, 主. "abide" is OWB's own John 15:4 (わたしのうちにとどまりなさい),
+        # with つながる kept for the shelf title キリストにつながる; and "the flesh" its Romans 8 肉. Prose is です・ます体; a quoted verse
         # keeps OWB's own wording and register. A draft for native review.
         "glossary": {
             "justification": "義認",
@@ -452,7 +452,7 @@ SEED_LANGUAGES: dict[str, dict] = {
             "atonement": "贖い",
             "grace": "恵み",
             "the flesh": "肉",
-            "abide": "とどまる",
+            "abide": "とどまる / つながる",
             "the Holy Spirit": "聖霊",
             "the Lord": "主",
             "godliness": "敬虔",

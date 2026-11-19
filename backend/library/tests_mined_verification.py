@@ -101,6 +101,7 @@ class OwbMinedTests(SimpleTestCase):
         self.assertEqual(mv.owb_language("Open Word Bible (OWB), Balanced edition, Amharic"), "am")
         # Swahili and Japanese are bundled too (founder decision, 2026-11-19).
         self.assertEqual(mv.owb_language("Open Word Bible (OWB), Balanced edition, Swahili"), "sw")
+        self.assertEqual(mv.owb_language("Open Word Bible (OWB), Balanced edition, Japanese"), "ja")
         self.assertIsNone(mv.owb_language("Open Word Bible (OWB), Balanced edition, Klingon"))
         self.assertIsNone(mv.owb_language("Amharic Bible 1962/2003 (UBS), NT — ebible amh"))
 
@@ -126,6 +127,8 @@ class OwbMinedTests(SimpleTestCase):
         # Out of order, or a reworded piece, is not.
         self.assertFalse(mv.is_verbatim("Ni BWANA anayeokoa… Mimi nitakutolea dhabihu", verse))
         self.assertFalse(mv.is_verbatim("Mimi nitakutolea sadaka… Ni BWANA anayeokoa", verse))
+        # A particle-sized piece is found anywhere; it proves nothing.
+        self.assertFalse(mv.is_verbatim("Mimi nitakutolea dhabihu… ni", verse))
 
     def test_the_corpus_has_owb_rows_and_none_contradict(self):
         findings, census = mv.audit()
