@@ -3,7 +3,8 @@
 A house series for adults on prayer through the whole story of the church, one
 volume to an era; the plan of all eleven is
 ``data/a-cloud-of-praying-witnesses/SERIES-PLAN.md``. Every volume is an
-Introduction, its chapters, a Conclusion and two appendices, and every chapter
+Introduction, its chapters, a Conclusion and two appendices (the last volume:
+the five series appendices below), and every chapter
 ends with the same six sections (``REQUIRED``).
 
 A volume is three files under ``data/a-cloud-of-praying-witnesses/``:
@@ -16,7 +17,8 @@ A volume is three files under ``data/a-cloud-of-praying-witnesses/``:
   of its three key insights, from the series' ``THEMES``; the insights
   themselves are read from the chapter's own "Three key insights" list.
   ``person``, ``era``, ``region`` and ``read_more`` feed the last volume's
-  timeline and reading list, which gather every volume's records;
+  timeline and reading list, which gather every volume's records; ``voices``
+  notes where each library quote comes from, for the editor (nothing reads it);
 - ``volume-NN.appendices.md``, GENERATED from the other two and never edited:
   Appendix 1 gathers the insights by theme; Appendix 2 indexes every Scripture
   the chapters cite, read from the prose with ``scripture.extract_citations``
@@ -26,7 +28,7 @@ A volume is three files under ``data/a-cloud-of-praying-witnesses/``:
 
 The last volume (``FINAL_VOLUME``) carries the series appendices in place of its
 own two: A and B merge every volume's insights and Scripture index, C is a
-timeline of every chapter's ``person``/``era``/``region``, D is the hand-written
+timeline of every record's ``person``/``era``/``region``, D is the hand-written
 methods toolkit (``series-toolkit.md``), and E lists every chapter's
 ``read_more`` books. Because they read every volume, an edit to any volume makes
 the last volume's appendices stale too, and the same test says so.
@@ -958,7 +960,9 @@ def appendices(sections: list[tuple[str, str]], entries: list[dict]) -> str:
 FINAL_VOLUME = max(VOLUMES)
 TOOLKIT = SERIES_DIR / "series-toolkit.md"
 
+_NUMBER_WORDS = dict(enumerate("zero one two three four five six seven eight nine ten eleven twelve".split()))
 _YEAR = re.compile(r"\d+")
+_BC = re.compile(r"\bB\.?C\.?(?:E\.?)?(?!\w)", re.IGNORECASE)
 
 
 def era_year(era: str) -> int:
@@ -968,7 +972,7 @@ def era_year(era: str) -> int:
     if not found:
         return 10_000
     year = int(found.group())
-    return -year if "BC" in era[found.end():] else year
+    return -year if _BC.search(era, found.end()) else year
 
 
 def _book_titles(slugs: set[str]) -> dict[str, str]:
@@ -993,7 +997,10 @@ def series_appendices(volumes: dict[int, tuple[list[tuple[str, str]], list[dict]
     by_theme: dict[str, list[str]] = {t: [] for t in THEMES}
     refs: dict[tuple[int, int], dict] = {}
     for volume, (sections, entries) in ordered:
-        _gather(sections, entries, by_theme, refs, prefix=f"Vol. {volume}, ", chapter="ch.")
+        try:
+            _gather(sections, entries, by_theme, refs, prefix=f"Vol. {volume}, ", chapter="ch.")
+        except CommandError as exc:
+            raise CommandError(f"volume {volume}: {exc}") from exc
     out = _insights_md(
         "## Appendix A: Key Insights from the Whole Series",
         "Every chapter of every volume closes with three key insights. Here they are "
@@ -1004,18 +1011,24 @@ def series_appendices(volumes: dict[int, tuple[list[tuple[str, str]], list[dict]
     out += ["", "---", ""]
     out += _scripture_md(
         "## Appendix B: Scripture Index to the Whole Series",
-        "Every passage of Scripture quoted or referred to in the eleven volumes, in "
-        'Bible order, with the volumes and chapters where it appears. "Key verse" '
+        f"Every passage of Scripture quoted or referred to in the {_NUMBER_WORDS[len(volumes)]} volumes, "
+        'in Bible order, with the volumes and chapters where it appears. "Key verse" '
         "marks the Scripture a chapter is built on.",
         refs,
     )
 
-    # Every chapter record but the last volume's own, whose "person" is a theme.
+    # Every record that names a person or movement (each Conclusion's too), but
+    # not the last volume's own, whose "person" is a theme.
     lives = sorted(
-        ((era_year(e["era"]), volume, i), f"- **{e['era']}**: {e['person']}, {e['region']}. Vol. {volume}, ch. {i}, *{e['title']}*")
+        (
+            (era_year(e["era"]), volume, i),
+            f"- **{e['era']}**: {e['person']}, {e['region']}. "
+            + _label(i, len(entries) - 1, e["title"], prefix=f"Vol. {volume}, ", chapter="ch."),
+        )
         for volume, (_, entries) in ordered
         if volume != FINAL_VOLUME
-        for i, e in enumerate(entries[1:-1], start=1)
+        for i, e in enumerate(entries)
+        if e["person"]
     )
     out += [
         "",
@@ -1031,7 +1044,7 @@ def series_appendices(volumes: dict[int, tuple[list[tuple[str, str]], list[dict]
 
     out += ["", "---", "", TOOLKIT.read_text().strip(), "", "---", ""]
 
-    titles = _book_titles({s for _, entries in volumes.values() for e in entries for s in e.get("read_more", [])})
+    titles = _book_titles({s for _, entries in volumes.values() for e in entries[1:-1] for s in e.get("read_more", [])})
     out += [
         "## Appendix E: Keep Reading on Ochorus",
         "",

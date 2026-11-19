@@ -1859,6 +1859,7 @@ Every person and movement in the series on one line, in the order of their times
 - **c. 605 BC**: Habakkuk, Judah. Vol. 1, ch. 17, *Though the Fig Tree Does Not Flower*
 - **c. 539 BC**: Daniel, Babylon. Vol. 1, ch. 14, *Windows Open Toward Jerusalem*
 - **c. 445 BC**: Nehemiah, Susa (Persia) and Jerusalem. Vol. 1, ch. 15, *Arrow Prayers and Long Fasts*
+- **c. 5 BC**: Simeon and Anna, Jerusalem. Vol. 1, Conclusion
 - **c. AD 28**: Jesus, Galilee. Vol. 2, ch. 1, *Very Early in the Morning*
 - **c. AD 28**: Jesus, Galilee. Vol. 2, ch. 2, *All Night on the Mountain*
 - **c. AD 28**: The Lord's Prayer (I), Galilee. Vol. 2, ch. 4, *Our Father in Heaven*
@@ -1879,6 +1880,7 @@ Every person and movement in the series on one line, in the order of their times
 - **c. AD 30**: Jesus in Gethsemane, Jerusalem. Vol. 2, ch. 18, *Not My Will but Yours*
 - **c. AD 30**: Jesus on the cross, Jerusalem. Vol. 2, ch. 19, *Prayers from the Cross*
 - **c. AD 30 and now**: The ascended Christ, Bethany; heaven. Vol. 2, ch. 20, *He Always Lives to Pray for Us*
+- **c. AD 30**: The disciples in the upper room, Jerusalem. Vol. 2, Conclusion
 - **c. AD 30**: The 120, Jerusalem. Vol. 3, ch. 1, *Waiting in the Upper Room*
 - **c. AD 30**: The Jerusalem church, Jerusalem. Vol. 3, ch. 2, *Devoted to the Prayers*
 - **c. AD 30**: Peter and John at the gate, Jerusalem. Vol. 3, ch. 3, *The Hour of Prayer*
@@ -1897,10 +1899,12 @@ Every person and movement in the series on one line, in the order of their times
 - **c. AD 60-62**: Paul's prayers (II), Ephesus and the province of Asia. Vol. 3, ch. 13, *Rooted Deep in Love*
 - **c. AD 60-62**: Epaphras, Colossae and the Lycus valley. Vol. 3, ch. 15, *Always Wrestling in Prayer*
 - **c. AD 60-62**: Paul in chains, Rome (writing to Philippi). Vol. 3, ch. 16, *Do Not Worry About Anything*
+- **c. AD 60-95**: The first church, Rome and Patmos. Vol. 3, Conclusion
 - **c. AD 62-64**: Timothy at Ephesus, Ephesus, province of Asia. Vol. 3, ch. 18, *For Kings and All in Authority*
 - **c. AD 95**: John on Patmos, Patmos, Aegean Sea. Vol. 3, ch. 20, *Golden Bowls*
 - **c. AD 96**: Clement of Rome, Rome. Vol. 4, ch. 2, *A Prayer for Rulers Who Persecute*
 - **c. AD 100**: The Didache, Syria or Egypt (uncertain). Vol. 4, ch. 1, *Three Times a Day*
+- **c. AD 100-500**: The church of the martyrs and the desert, The Roman world and beyond. Vol. 4, Conclusion
 - **c. AD 108**: Ignatius of Antioch, Antioch (Syria) to Rome, by way of Smyrna. Vol. 4, ch. 3, *Prayer on the Road to the Lions*
 - **c. AD 155**: Polycarp, Smyrna (Asia Minor). Vol. 4, ch. 4, *"Eighty and Six Years Have I Served Him"*
 - **c. AD 200**: Tertullian, Carthage (North Africa). Vol. 4, ch. 6, *Prayer, the Wall of Faith*
@@ -1934,6 +1938,7 @@ Every person and movement in the series on one line, in the order of their times
 - **c. AD 1380**: John Wycliffe and the Lollards, Oxford and Lutterworth (England). Vol. 5, ch. 15, *Open My Eyes to Your Word*
 - **AD 1415**: Jan Hus, Prague (Bohemia) and Constance (Germany). Vol. 5, ch. 16, *Praying for Those Who Burn You*
 - **c. AD 1420**: Thomas à Kempis, Deventer and Mount Saint Agnes, near Zwolle (the Netherlands). Vol. 5, ch. 17, *"Speak, for Your Servant Is Listening"*
+- **c. AD 1450-1500**: The praying church of the Middle Ages, Europe. Vol. 5, Conclusion
 - **c. 1521-1556**: Ignatius of Loyola and the examen, Loyola and Manresa (Spain). Vol. 6, ch. 8, *Search Me, O God*
 - **c. 1527-1569**: The Anabaptist martyrs (Felix Manz, Michael and Margaretha Sattler, Leopold Schneider, Anneken Jans, Dirk Willems), Zurich (Switzerland), Rottenburg (Germany), Rotterdam and Asperen (the Netherlands). Vol. 6, ch. 17, *Prayer in the Fire*
 - **c. 1530**: Martin Luther, Wittenberg and Coburg (Germany). Vol. 6, ch. 1, *Too Busy Not to Pray*
@@ -1949,6 +1954,7 @@ Every person and movement in the series on one line, in the order of their times
 - **c. 1630-1633**: George Herbert, Bemerton, near Salisbury (England). Vol. 6, ch. 12, *Taste and See*
 - **c. 1630**: Richard Sibbes, London and Cambridge (England). Vol. 6, ch. 13, *The Bruised Reed*
 - **c. 1650**: Richard Baxter, Rous Lench and Kidderminster, Worcestershire (England). Vol. 6, ch. 14, *Set Your Mind on Things Above*
+- **c. 1650**: The praying church of the Reformation age, Europe. Vol. 6, Conclusion
 - **c. 1662**: John Bunyan, Bedford (England). Vol. 6, ch. 15, *A Heart Without Words*
 - **c. 1666**: Brother Lawrence (Nicolas Herman), Paris (France). Vol. 6, ch. 16, *Among the Pots and Pans*
 - **c. 1675**: Philipp Jakob Spener and the collegia pietatis, Frankfurt am Main (Germany). Vol. 7, ch. 2, *Little Churches Within the Church*
@@ -1968,6 +1974,7 @@ Every person and movement in the series on one line, in the order of their times
 - **c. 1787**: Samson Occom, New Stockbridge and Brothertown (New York). Vol. 7, ch. 15, *All the Families of the Nations*
 - **c. 1792**: Richard Allen and Absalom Jones, Philadelphia (Pennsylvania). Vol. 7, ch. 14, *Pulled from Their Knees*
 - **c. 1792**: William Carey, Nottingham (England) and Serampore (Bengal, India). Vol. 7, ch. 17, *Expect Great Things*
+- **c. 1793**: The praying church of the awakenings, Europe, North America and India. Vol. 7, Conclusion
 - **c. 1800**: Christmas Evans, Cadair Idris and Llangefni, Anglesey (Wales). Vol. 8, ch. 3, *A Covenant with God*
 - **c. 1806**: The Haystack Prayer Meeting (Samuel J. Mills and friends), Williamstown, Massachusetts (USA). Vol. 8, ch. 1, *A Prayer Meeting in the Rain*
 - **c. 1825**: Daniel Nash and Charles Finney, Gouverneur and northern New York (USA). Vol. 8, ch. 2, *The Man Who Prayed Ahead*
@@ -1988,6 +1995,7 @@ Every person and movement in the series on one line, in the order of their times
 - **c. 1888**: Mary Slessor, Okoyong, Calabar (Nigeria). Vol. 8, ch. 18, *He Will Not Leave You*
 - **c. 1896**: Thérèse of Lisieux, Lisieux (France). Vol. 8, ch. 19, *The Little Way*
 - **c. 1900**: E. M. Bounds, Washington, Georgia (USA). Vol. 8, ch. 20, *God Looked for an Intercessor*
+- **c. 1900**: The praying church of the great century, The whole world. Vol. 8, Conclusion
 - **c. 1901**: Amy Carmichael, Dohnavur (South India). Vol. 9, ch. 8, *Let the Children Come*
 - **c. 1904**: Evan Roberts and the Welsh Revival, Loughor (Wales). Vol. 9, ch. 1, *"Bend Me"*
 - **c. 1904**: Dora Yu, Shanghai (China) and Seoul (Korea). Vol. 9, ch. 11, *Here Am I, Send Me*
@@ -2009,6 +2017,7 @@ Every person and movement in the series on one line, in the order of their times
 - **c. 1944**: Corrie and Betsie ten Boom, Haarlem (Netherlands) and Ravensbrück (Germany). Vol. 9, ch. 15, *Give Thanks for the Fleas*
 - **c. 1948**: A. W. Tozer, Chicago (USA). Vol. 9, ch. 20, *The Pursuit of God*
 - **c. 1949**: Peggy and Christine Smith and the Lewis revival, Barvas, Isle of Lewis (Scotland). Vol. 9, ch. 18, *Two Old Sisters on Lewis*
+- **c. 1950**: The praying church of the twentieth century, The whole world. Vol. 9, Conclusion
 - **c. 1950**: Mother Teresa and the Missionaries of Charity, Calcutta (India). Vol. 10, ch. 5, *Prayer Gives a Clean Heart*
 - **c. 1955-1979**: Samuel Lamb and China's house churches, Guangzhou (China). Vol. 10, ch. 9, *More Persecution, More Growth*
 - **c. 1956**: Jim and Elisabeth Elliot, Shandia and the Curaray River (Ecuador). Vol. 10, ch. 1, *Ask of Me, and I Will Give You the Nations*
@@ -2028,6 +2037,7 @@ Every person and movement in the series on one line, in the order of their times
 - **c. 2001**: Graham Power and the Global Day of Prayer; Thy Kingdom Come, Cape Town (South Africa). Vol. 10, ch. 16, *Your Kingdom Come*
 - **c. 2004**: Helen Berhane, Mai Serwa (Eritrea). Vol. 10, ch. 18, *Prayer in a Shipping Container*
 - **c. 2014**: Tim Keller, New York (USA). Vol. 10, ch. 20, *Awe and Intimacy*
+- **today**: The worldwide praying church, The whole world. Vol. 10, Conclusion
 
 ---
 
