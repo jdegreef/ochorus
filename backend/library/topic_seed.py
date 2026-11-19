@@ -58,6 +58,7 @@ TOPICS = [
             "the-fire-on-the-altar",
             "open-your-mouth-wide",
             "revival-fires",
+            "every-tribe-and-tongue",
             "psalms",
             "habakkuk",
         ],

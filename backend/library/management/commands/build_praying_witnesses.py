@@ -709,6 +709,79 @@ VOLUMES: dict[int, dict[str, object]] = {
             ],
         },
     },
+    10: {
+        "slug": "every-tribe-and-tongue",
+        "book": {
+            "publication_year": 2026,
+            "title": "Every Tribe and Tongue",
+            "subtitle": "The Global Praying Church",
+            "cover_url": "/covers/art/every-tribe-and-tongue.jpg",
+            "cover_color": covers.ink_safe("#325f95"),  # an afternoon blue
+            "description": (
+                "Twenty short chapters on the praying church around the world from 1950 to "
+                "today: Jim and Elisabeth Elliot, Helen Roseveare, Brother Andrew, Taizé, "
+                "Mother Teresa, Korea's prayer mountains, Festo Kivengere and Janani Luwum, "
+                "Evelyn Christenson, China's house churches, prayer and fasting, YWAM, the "
+                "Brooklyn Tabernacle, the 10/40 Window, Argentina, 24-7 Prayer, the Global "
+                "Day of Prayer, Africa's all-night vigils, Helen Berhane, Iran's house "
+                "churches and Tim Keller."
+            ),
+            "about_html": (
+                "<p>Since 1950 the church has become, for the first time, truly a church of "
+                "every tribe and tongue. Most Christians now live in Africa, Asia and Latin "
+                "America, and some of the most faithful praying in the world happens in "
+                "places where believers are watched, arrested or killed for their faith. "
+                "This book follows the praying people of these decades, many of them still "
+                "living. It is Volume 10 of A Cloud of Praying Witnesses, an Ochorus series "
+                "that follows the people of God at prayer from the Old Testament to the "
+                "church around the world today.</p>"
+                "<p>Its twenty chapters follow missionaries who gave their lives and those "
+                "who stayed, from the Elliots and Helen Roseveare to Brother Andrew; "
+                "communities of prayer such as Taizé, Mother Teresa's sisters and Korea's "
+                "prayer mountains; African bishops who blessed their persecutors; women who "
+                "learned to pray together; the house churches of China and Iran; prayer and "
+                "fasting, listening prayer and a Brooklyn prayer meeting; movements that "
+                "prayed for the nations and for whole cities; a prayer room that never "
+                "closed; Africa's all-night vigils; a singer who prayed in a shipping "
+                "container; and a pastor who wrote of awe and intimacy with God.</p>"
+                "<p>Every chapter tells its story from public sources, says plainly where "
+                "accounts differ, and takes care to protect believers who are still at risk. "
+                "Because these stories are recent, they are told in the book's own words, "
+                "with voices from the classics quoted word for word from the library. Each "
+                "chapter ends with three key insights, a word for today, a practice to try, "
+                "a closing prayer and questions for reflection. Two appendices gather every "
+                "insight by theme and every Scripture in Bible order. Scripture is quoted "
+                "from the Open Word Bible (OWB), Balanced edition, which is dedicated to the "
+                "public domain.</p>"
+            ),
+            "qa": [
+                {
+                    "question": "What is Every Tribe and Tongue about?",
+                    "answer": "How the worldwide church has prayed from 1950 to today: twenty short chapters from Jim and Elisabeth Elliot and Helen Roseveare to Korea's prayer mountains, the house churches of China and Iran, Africa's all-night vigils and 24-7 Prayer.",
+                },
+                {
+                    "question": "What is A Cloud of Praying Witnesses?",
+                    "answer": "A series of books on prayer through the whole story of the church, named for Hebrews 12:1. The first nine volumes follow prayer from the Old Testament to the revivals of the early twentieth century. This tenth volume follows the global church from 1950 to today, and the final volume gathers what the whole cloud of witnesses teaches.",
+                },
+                {
+                    "question": "Do I need to read the volumes in order?",
+                    "answer": "No. Each volume stands on its own. Reading them in order follows the story from Abraham to today, but you can begin with any volume.",
+                },
+                {
+                    "question": "Does the book name believers in countries where they are persecuted?",
+                    "answer": "Only people who have already told their own stories in public, or whose cases have been widely reported. It describes house churches and prayer movements in persecuted countries in general terms, so that no one is put at risk.",
+                },
+                {
+                    "question": "Can I read it with a small group?",
+                    "answer": "Yes. One chapter a day takes twenty days on your own, and with a group one or two chapters a week works well. The questions at the end of every chapter are written to start a conversation.",
+                },
+                {
+                    "question": "Which Bible translation does it use?",
+                    "answer": "Every Scripture is quoted from the Open Word Bible (OWB), Balanced edition, a new translation from the Hebrew and Greek that is dedicated to the public domain.",
+                },
+            ],
+        },
+    },
 }
 
 
