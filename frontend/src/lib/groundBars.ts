@@ -115,6 +115,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'refutation-of-all-heresies': 0.030,
 	'religious-affections': 0.035,
 	'revelations-of-divine-love': 0.110,
+	'revival-fires': 0.110,
 	'revival-lectures': 0.090,
 	'rise-up-men-of-god-2': 0.110,
 	'samuel-ajayi-crowther-a-life-children': 0.110,

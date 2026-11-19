@@ -62,6 +62,11 @@ Vol. 8: Open Your Mouth Wide. Late morning over the sea, the sun well up on the
 right and its light on the water; a sailing ship putting out to sea under its
 sails, and on the shore, low left, a small chapel with a cross and a lit window:
 the century when the church sent its missionaries out (Psalm 81:10).
+
+Vol. 9: Revival Fires. Midday over a valley of coal-mining hills: the sun high
+on the right; on the valley floor, left, a plain chapel with its windows lit and
+a terrace of miners' houses, and to the right a colliery's winding headframe
+(Ephesians 5:18). No particular valley.
 """
 import pathlib
 import random
@@ -387,6 +392,44 @@ VOL8 = f'''<!doctype html><html><body style="margin:0;background:#000">
 <rect width="600" height="800" fill="url(#grain)"/>
 </svg></body></html>'''
 
+VOL9 = f'''<!doctype html><html><body style="margin:0;background:#000">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#18345f"/><stop offset=".30" stop-color="#2e5a8f"/>
+  <stop offset=".45" stop-color="#628bb6"/><stop offset=".54" stop-color="#b8bcb2"/>
+  <stop offset=".60" stop-color="#ecd7a6"/><stop offset="1" stop-color="#ecd7a6"/>
+ </linearGradient>
+ <radialGradient id="sun" cx="470" cy="425" r="230" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#fffaea" stop-opacity=".95"/>
+  <stop offset=".2" stop-color="#fae0a6" stop-opacity=".5"/>
+  <stop offset="1" stop-color="#ecd7a6" stop-opacity="0"/>
+ </radialGradient>
+ {GRAIN}
+</defs>
+<rect width="600" height="800" fill="url(#sky)"/>
+<rect width="600" height="800" fill="url(#sun)"/>
+<circle cx="470" cy="425" r="22" fill="#fffdf2" opacity=".95"/>
+{ridge([(0, 478), (70, 470), (150, 480), (240, 488), (330, 484), (420, 474), (520, 480), (600, 472)], "#6d6f7c")}
+{ridge([(0, 492), (80, 486), (160, 494), (250, 500), (340, 497), (430, 490), (520, 494), (600, 488)], "#2e2e3c")}
+<g fill="#0b0a10">
+ <path d="M0 800 L0 506 L100 503 L200 507 L300 509 L400 506 L500 503 L600 505 L600 800 Z"/>
+ <rect x="112" y="486" width="46" height="18"/><path d="M108 488 L135 472 L162 488 Z"/>
+ <rect x="134" y="463" width="2" height="10"/><rect x="131" y="466" width="8" height="2"/>
+ <rect x="186" y="496" width="16" height="9"/><rect x="204" y="497" width="16" height="8"/><rect x="222" y="498" width="16" height="8"/>
+ <path d="M392 506 L402 462 L406 462 L416 506 L411 506 L404 472 L397 506 Z"/>
+ <rect x="394" y="478" width="20" height="2"/><rect x="396" y="490" width="16" height="2"/>
+ <circle cx="404" cy="462" r="7" fill="none" stroke="#0b0a10" stroke-width="2"/>
+ <rect x="418" y="494" width="20" height="12"/>
+</g>
+<rect x="122" y="492" width="4" height="6" fill="#f2b66a" opacity=".75"/>
+<rect x="134" y="492" width="4" height="6" fill="#f2b66a" opacity=".75"/>
+<rect x="146" y="492" width="4" height="6" fill="#f2b66a" opacity=".75"/>
+<rect x="192" y="499" width="3" height="4" fill="#f2b66a" opacity=".6"/>
+<rect x="210" y="500" width="3" height="4" fill="#f2b66a" opacity=".6"/>
+<rect width="600" height="800" fill="url(#grain)"/>
+</svg></body></html>'''
+
 SCENES = {
     "the-prayers-jesus-learned": VOL1,
     "jesus-teacher-of-prayer": VOL2,
@@ -396,6 +439,7 @@ SCENES = {
     "a-mighty-fortress": VOL6,
     "the-fire-on-the-altar": VOL7,
     "open-your-mouth-wide": VOL8,
+    "revival-fires": VOL9,
 }
 
 if __name__ == "__main__":

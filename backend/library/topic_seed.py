@@ -57,6 +57,7 @@ TOPICS = [
             "a-mighty-fortress",
             "the-fire-on-the-altar",
             "open-your-mouth-wide",
+            "revival-fires",
             "psalms",
             "habakkuk",
         ],

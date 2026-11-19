@@ -36023,6 +36023,40 @@
 				472
 			]
 		},
+		"revival-fires": {
+			"ground": "ad822a05d225021eaf269f2aeb127064f755bf6a6358c639c7787e3045ae4856",
+			"style": "originals",
+			"volume": "9",
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.15,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 283, 311, 327],
+					[107, 361, 493, 437]
+				],
+				"subtitle": [
+					[182, 495, 418, 523]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				523
+			]
+		},
 		"revival-lectures": {
 			"ground": "842406cf6789e2fa5426e898a4ab03998bc0395d73e3ce44b25030af0ec886ea",
 			"style": "revival",

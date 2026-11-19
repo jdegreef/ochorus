@@ -109,6 +109,7 @@ export const COVER_LIFT: Record<string, number> = {
 	'real-questions-2': 1.45,
 	'real-questions-3': 1.45,
 	'revelations-of-divine-love': 1.45,
+	'revival-fires': 1.15,
 	'rise-up-men-of-god-2': 1.30,
 	'rooted-4': 1.20,
 	'samuel-ajayi-crowther-a-life-children': 1.30,

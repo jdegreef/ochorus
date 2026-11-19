@@ -638,6 +638,77 @@ VOLUMES: dict[int, dict[str, object]] = {
             ],
         },
     },
+    9: {
+        "slug": "revival-fires",
+        "book": {
+            "publication_year": 2026,
+            "title": "Revival Fires",
+            "subtitle": "Prayer and Awakening",
+            "cover_url": "/covers/art/revival-fires.jpg",
+            "cover_color": covers.ink_safe("#2e5a8f"),  # a midday blue
+            "description": (
+                "Twenty short chapters on prayer and revival from about 1900 to 1950: "
+                "Evan Roberts and Wales, Pandita Ramabai, Azusa Street, Pyongyang and "
+                "Korean dawn prayer, Praying Hyde, Sadhu Sundar Singh, Amy Carmichael, "
+                "Smith Wigglesworth, Rees Howells, Dora Yu, John Sung, Watchman Nee, "
+                "Dietrich Bonhoeffer, Corrie ten Boom, Gladys Aylward, the East African "
+                "revival, the Hebrides, Billy Graham and A. W. Tozer."
+            ),
+            "about_html": (
+                "<p>The twentieth century began with revival. In a Welsh chapel, an Indian "
+                "women's home, a run-down building in Los Angeles and a church in "
+                "Pyongyang, ordinary believers prayed, confessed their sins and saw God "
+                "move. Then came two world wars, revolution and the end of empires, and the "
+                "church learned to pray in prison camps, in hiding and on the road. This "
+                "book follows the praying people of those fifty years. It is Volume 9 of A "
+                "Cloud of Praying Witnesses, an Ochorus series that follows the people of "
+                "God at prayer from the Old Testament to the church around the world "
+                "today.</p>"
+                "<p>Its twenty chapters follow Evan Roberts and the Welsh revival, Pandita "
+                "Ramabai and the women of Mukti, William Seymour on Azusa Street, the "
+                "praying churches of Korea, Praying Hyde, Sadhu Sundar Singh and Amy "
+                "Carmichael; Smith Wigglesworth, Rees Howells, Dora Yu, John Sung and "
+                "Watchman Nee; Dietrich Bonhoeffer, Corrie ten Boom and Gladys Aylward; and "
+                "the East African revival, the two sisters who prayed for the Isle of "
+                "Lewis, the men who prayed for Charlotte, Billy Graham and A. W. "
+                "Tozer.</p>"
+                "<p>Every chapter tells its story from the best sources it can, says "
+                "plainly where a story has grown in the telling, and is fair to readers who "
+                "differ. It quotes the witnesses word for word where their words are free "
+                "to share, and ends with three key insights, a word for today, a practice "
+                "to try, a closing prayer and questions for reflection. Two appendices "
+                "gather every insight by theme and every Scripture in Bible order. "
+                "Scripture is quoted from the Open Word Bible (OWB), Balanced edition, "
+                "which is dedicated to the public domain.</p>"
+            ),
+            "qa": [
+                {
+                    "question": "What is Revival Fires about?",
+                    "answer": "How believers prayed in the revivals and the wars of the first half of the twentieth century, from about 1900 to 1950: twenty short chapters from Evan Roberts and Pandita Ramabai to Korea's dawn prayer, Corrie ten Boom, the East African revival and A. W. Tozer.",
+                },
+                {
+                    "question": "What is A Cloud of Praying Witnesses?",
+                    "answer": "A series of books on prayer through the whole story of the church, named for Hebrews 12:1. The first eight volumes follow prayer from the Old Testament to the great missionary century. This ninth volume follows the first half of the twentieth century, and the last volumes follow the church around the world to today.",
+                },
+                {
+                    "question": "Do I need to read the volumes in order?",
+                    "answer": "No. Each volume stands on its own. Reading them in order follows the story from Abraham to today, but you can begin with any volume.",
+                },
+                {
+                    "question": "Does the book take sides on revivals and spiritual gifts?",
+                    "answer": "It tells what happened from the best sources and describes the revivals warmly and fairly, including the ones that began new movements such as Pentecostalism. Where churches still differ, it keeps its focus on what every believer can learn about prayer.",
+                },
+                {
+                    "question": "Can I read it with a small group?",
+                    "answer": "Yes. One chapter a day takes twenty days on your own, and with a group one or two chapters a week works well. The questions at the end of every chapter are written to start a conversation.",
+                },
+                {
+                    "question": "Which Bible translation does it use?",
+                    "answer": "Every Scripture is quoted from the Open Word Bible (OWB), Balanced edition, a new translation from the Hebrew and Greek that is dedicated to the public domain.",
+                },
+            ],
+        },
+    },
 }
 
 
