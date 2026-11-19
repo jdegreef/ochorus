@@ -65,10 +65,13 @@ EXPOSE 8000
 # nothing. Django gives each thread its own DB connection, so up to 4 persistent
 # ones.
 #
-# --max-requests recycles the worker after ~200 requests (500 until 2026-11-19,
-# when the web build's crawl restarted the instance twice in five minutes).
+# --max-requests recycles the worker after ~500 requests. (Briefly ~200 on
+# 2026-11-19: with MALLOC_ARENA_MAX=2 the crawl then peaked at 335 MB, but each
+# recycle started a cold worker whose caches rebuilt on the next big lists, and
+# the web build took 68 minutes instead of ~21. config/memory.py logs requests
+# that grow memory, so creep toward the limit shows up before it bites.)
 # CPython retains freed memory pages, so occasional large allocations ratchet RSS
 # toward the plan limit over a process's lifetime; recycling resets the ratchet with a clean handover
 # instead of an OOM kill. With one worker, requests queue in the listen backlog
 # while its replacement boots (they wait, they don't fail).
-CMD ["sh", "-c", "uv run gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 1 --threads 4 --timeout 120 --max-requests 200 --max-requests-jitter 50"]
+CMD ["sh", "-c", "uv run gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 1 --threads 4 --timeout 120 --max-requests 500 --max-requests-jitter 100"]
