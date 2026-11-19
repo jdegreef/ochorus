@@ -6,93 +6,7 @@ from django.http import HttpResponse
 from django.urls import include, path
 
 from accounts.views import MeView, PromptEventView, SignupSourceView, health
-from emails.admin_auto import AdminAutoEmailBuildView, AdminAutoEmailsView
-from emails.admin_automations import (
-    AdminAutomationActionView,
-    AdminAutomationDetailView,
-    AdminAutomationEmailDetailView,
-    AdminAutomationEmailsView,
-    AdminAutomationEmailTranslationView,
-    AdminAutomationsView,
-    AdminAutomationVocabularyView,
-)
-from emails.admin_design import (
-    AdminBroadcastTranslationView,
-    AdminEmailImageView,
-    AdminEmailLibrarySearchView,
-    AdminEmailLibraryView,
-    AdminEmailMergeTagsView,
-    AdminEmailPreviewView,
-    AdminEmailTemplateDetailView,
-    AdminEmailTemplatesView,
-)
-from emails.admin_lifecycle import (
-    AdminLifecycleActionView,
-    AdminLifecycleDetailView,
-    AdminLifecycleListView,
-)
-from emails.admin_views import (
-    AdminAudiencePreviewView,
-    AdminBroadcastActionView,
-    AdminBroadcastDetailView,
-    AdminBroadcastsView,
-    AdminEmailMetricsView,
-    AdminReaderEmailsView,
-)
-from feedback.admin_views import AdminFeedbackDetailView, AdminFeedbackListView
-from library.admin_import_views import (
-    AdminAuthorCreateView,
-    AdminImportLanguagesView,
-    AdminImportParseView,
-    AdminImportPublishView,
-)
-from library.admin_views import (
-    AdminActivityView,
-    AdminAttentionView,
-    AdminAuditDismissView,
-    AdminAuditView,
-    AdminAuthorsWithoutBioView,
-    AdminBookDetailView,
-    AdminBookPublishView,
-    AdminContentEditJobsView,
-    AdminCoverageView,
-    AdminCoversView,
-    AdminDropOffView,
-    AdminEngagementView,
-    AdminExportView,
-    AdminLanguageCreateView,
-    AdminLanguageDeployCheckView,
-    AdminLanguageDetailView,
-    AdminLanguageGoLiveView,
-    AdminLanguageHealthView,
-    AdminLanguageManualView,
-    AdminLanguageReadinessView,
-    AdminLanguageSettingsView,
-    AdminLanguageTargetsView,
-    AdminLanguageThresholdsView,
-    AdminLanguageWantedView,
-    AdminManualView,
-    AdminReviewDetailView,
-    AdminReviewQueueView,
-    AdminRolesView,
-    AdminSearchDecisionListView,
-    AdminSearchDecisionView,
-    AdminSearchGapView,
-    AdminSearchPreviewView,
-    AdminSearchView,
-    AdminSermonDetailView,
-    AdminSermonPublishView,
-    AdminStatsView,
-    AdminTeamView,
-    AdminTranslationJobsView,
-    AdminTranslationMarkCurrentView,
-    AdminUnpublishedView,
-    AdminUserDeleteView,
-    AdminUserDetailView,
-    AdminUserDirectoryView,
-    AdminUsersView,
-    AdminVerseReviewView,
-)
+from config.lazy_views import lazy_view
 
 
 def robots_txt(_request):
@@ -117,283 +31,391 @@ urlpatterns = [
     path("api/auth/me/", MeView.as_view(), name="me"),
     path("api/auth/signup-source/", SignupSourceView.as_view(), name="signup-source"),
     path("api/auth/prompt-event/", PromptEventView.as_view(), name="prompt-event"),
-    path("api/admin/stats/", AdminStatsView.as_view(), name="admin-stats"),
-    path("api/admin/attention/", AdminAttentionView.as_view(), name="admin-attention"),
-    path("api/admin/unpublished/", AdminUnpublishedView.as_view(), name="admin-unpublished"),
+    # The admin dashboard's views (and the email / import / jobs stacks behind
+    # them) load on first use, not at startup: importing them eagerly was ~38 MB
+    # of the worker's baseline, paid on every recycle, for routes reader traffic
+    # never hits. Name the module that DEFINES the view (config/lazy_views.py).
+    path(
+        "api/admin/stats/",
+        lazy_view("library.admin_views.content", "AdminStatsView"),
+        name="admin-stats",
+    ),
+    path(
+        "api/admin/attention/",
+        lazy_view("library.admin_views.attention", "AdminAttentionView"),
+        name="admin-attention",
+    ),
+    path(
+        "api/admin/unpublished/",
+        lazy_view("library.admin_views.attention", "AdminUnpublishedView"),
+        name="admin-unpublished",
+    ),
     path(
         "api/admin/authors-without-bio/",
-        AdminAuthorsWithoutBioView.as_view(),
+        lazy_view("library.admin_views.attention", "AdminAuthorsWithoutBioView"),
         name="admin-authors-without-bio",
     ),
-    path("api/admin/covers/", AdminCoversView.as_view(), name="admin-covers"),
-    path("api/admin/search-stats/", AdminSearchView.as_view(), name="admin-search-stats"),
-    path("api/admin/search-gap/", AdminSearchGapView.as_view(), name="admin-search-gap"),
+    path(
+        "api/admin/covers/",
+        lazy_view("library.admin_views.covers", "AdminCoversView"),
+        name="admin-covers",
+    ),
+    path(
+        "api/admin/search-stats/",
+        lazy_view("library.admin_views.analytics", "AdminSearchView"),
+        name="admin-search-stats",
+    ),
+    path(
+        "api/admin/search-gap/",
+        lazy_view("library.admin_views.analytics", "AdminSearchGapView"),
+        name="admin-search-gap",
+    ),
     path(
         "api/admin/search-preview/",
-        AdminSearchPreviewView.as_view(),
+        lazy_view("library.admin_views.analytics", "AdminSearchPreviewView"),
         name="admin-search-preview",
     ),
     path(
         "api/admin/search-decisions/",
-        AdminSearchDecisionListView.as_view(),
+        lazy_view("library.admin_views.analytics", "AdminSearchDecisionListView"),
         name="admin-search-decisions",
     ),
     path(
         "api/admin/search-decisions/decide/",
-        AdminSearchDecisionView.as_view(),
+        lazy_view("library.admin_views.analytics", "AdminSearchDecisionView"),
         name="admin-search-decide",
     ),
-    path("api/admin/coverage/", AdminCoverageView.as_view(), name="admin-coverage"),
-    path("api/admin/drop-off/", AdminDropOffView.as_view(), name="admin-drop-off"),
+    path(
+        "api/admin/coverage/",
+        lazy_view("library.admin_views.content", "AdminCoverageView"),
+        name="admin-coverage",
+    ),
+    path(
+        "api/admin/drop-off/",
+        lazy_view("library.admin_views.dropoff", "AdminDropOffView"),
+        name="admin-drop-off",
+    ),
     path(
         "api/admin/coverage/mark-current/",
-        AdminTranslationMarkCurrentView.as_view(),
+        lazy_view("library.admin_views.content", "AdminTranslationMarkCurrentView"),
         name="admin-translation-mark-current",
     ),
     path(
         "api/admin/language-health/",
-        AdminLanguageHealthView.as_view(),
+        lazy_view("library.admin_views.health", "AdminLanguageHealthView"),
         name="admin-language-health",
     ),
-    path("api/admin/manual/", AdminManualView.as_view(), name="admin-manual"),
+    path(
+        "api/admin/manual/",
+        lazy_view("library.admin_views.manual", "AdminManualView"),
+        name="admin-manual",
+    ),
     path(
         "api/admin/language-manual/",
-        AdminLanguageManualView.as_view(),
+        lazy_view("library.admin_views.manual", "AdminLanguageManualView"),
         name="admin-language-manual",
     ),
-    path("api/admin/audit/", AdminAuditView.as_view(), name="admin-audit"),
+    path(
+        "api/admin/audit/",
+        lazy_view("library.admin_views.quality", "AdminAuditView"),
+        name="admin-audit",
+    ),
     path(
         "api/admin/audit/dismiss/",
-        AdminAuditDismissView.as_view(),
+        lazy_view("library.admin_views.quality", "AdminAuditDismissView"),
         name="admin-audit-dismiss",
     ),
-    path("api/admin/activity/", AdminActivityView.as_view(), name="admin-activity"),
+    path(
+        "api/admin/activity/",
+        lazy_view("library.admin_views.activity", "AdminActivityView"),
+        name="admin-activity",
+    ),
     path(
         "api/admin/engagement/",
-        AdminEngagementView.as_view(),
+        lazy_view("library.admin_views.analytics", "AdminEngagementView"),
         name="admin-engagement",
     ),
-    path("api/admin/users/", AdminUsersView.as_view(), name="admin-users"),
+    path(
+        "api/admin/users/",
+        lazy_view("library.admin_views.analytics", "AdminUsersView"),
+        name="admin-users",
+    ),
     path(
         "api/admin/users/directory/",
-        AdminUserDirectoryView.as_view(),
+        lazy_view("library.admin_views.user_directory", "AdminUserDirectoryView"),
         name="admin-user-directory",
     ),
     path(
         "api/admin/users/<uuid:uid>/",
-        AdminUserDetailView.as_view(),
+        lazy_view("library.admin_views.user_detail", "AdminUserDetailView"),
         name="admin-user-detail",
     ),
     path(
         "api/admin/users/<uuid:uid>/account/",
-        AdminUserDeleteView.as_view(),
+        lazy_view("library.admin_views.user_delete", "AdminUserDeleteView"),
         name="admin-user-delete",
     ),
-    path("api/admin/export/", AdminExportView.as_view(), name="admin-export"),
-    path("api/admin/authors/", AdminAuthorCreateView.as_view(), name="admin-author-create"),
+    path(
+        "api/admin/export/",
+        lazy_view("library.admin_views.detail", "AdminExportView"),
+        name="admin-export",
+    ),
+    path(
+        "api/admin/authors/",
+        lazy_view("library.admin_import_views", "AdminAuthorCreateView"),
+        name="admin-author-create",
+    ),
     path(
         "api/admin/import/languages/",
-        AdminImportLanguagesView.as_view(),
+        lazy_view("library.admin_import_views", "AdminImportLanguagesView"),
         name="admin-import-languages",
     ),
     path(
         "api/admin/import/parse/",
-        AdminImportParseView.as_view(),
+        lazy_view("library.admin_import_views", "AdminImportParseView"),
         name="admin-import-parse",
     ),
     path(
         "api/admin/import/publish/",
-        AdminImportPublishView.as_view(),
+        lazy_view("library.admin_import_views", "AdminImportPublishView"),
         name="admin-import-publish",
     ),
     path(
         "api/admin/books/<slug:slug>/publish/",
-        AdminBookPublishView.as_view(),
+        lazy_view("library.admin_views.detail", "AdminBookPublishView"),
         name="admin-book-publish",
     ),
     path(
         "api/admin/books/<slug:slug>/",
-        AdminBookDetailView.as_view(),
+        lazy_view("library.admin_views.detail", "AdminBookDetailView"),
         name="admin-book-detail",
     ),
     path(
         "api/admin/sermons/<slug:slug>/publish/",
-        AdminSermonPublishView.as_view(),
+        lazy_view("library.admin_views.detail", "AdminSermonPublishView"),
         name="admin-sermon-publish",
     ),
     path(
         "api/admin/sermons/<slug:slug>/",
-        AdminSermonDetailView.as_view(),
+        lazy_view("library.admin_views.detail", "AdminSermonDetailView"),
         name="admin-sermon-detail",
     ),
     path(
         "api/admin/review-queue/",
-        AdminReviewQueueView.as_view(),
+        lazy_view("library.admin_views.quality", "AdminReviewQueueView"),
         name="admin-review-queue",
     ),
     path(
         "api/admin/review-queue/detail/",
-        AdminReviewDetailView.as_view(),
+        lazy_view("library.admin_views.quality", "AdminReviewDetailView"),
         name="admin-review-detail",
     ),
     path(
         "api/admin/review-queue/verse/",
-        AdminVerseReviewView.as_view(),
+        lazy_view("library.admin_views.quality", "AdminVerseReviewView"),
         name="admin-review-verse",
     ),
     path(
         "api/admin/translation-jobs/",
-        AdminTranslationJobsView.as_view(),
+        lazy_view("library.admin_views.jobs", "AdminTranslationJobsView"),
         name="admin-translation-jobs",
     ),
-    path("api/admin/team/", AdminTeamView.as_view(), name="admin-team"),
-    path("api/admin/roles/", AdminRolesView.as_view(), name="admin-roles"),
-    path("api/admin/feedback/", AdminFeedbackListView.as_view(), name="admin-feedback"),
+    path(
+        "api/admin/team/",
+        lazy_view("library.admin_views.team", "AdminTeamView"),
+        name="admin-team",
+    ),
+    path(
+        "api/admin/roles/",
+        lazy_view("library.admin_views.team", "AdminRolesView"),
+        name="admin-roles",
+    ),
+    path(
+        "api/admin/feedback/",
+        lazy_view("feedback.admin_views", "AdminFeedbackListView"),
+        name="admin-feedback",
+    ),
     path(
         "api/admin/feedback/<int:pk>/",
-        AdminFeedbackDetailView.as_view(),
+        lazy_view("feedback.admin_views", "AdminFeedbackDetailView"),
         name="admin-feedback-detail",
     ),
     path(
         "api/admin/email-metrics/",
-        AdminEmailMetricsView.as_view(),
+        lazy_view("emails.admin_views", "AdminEmailMetricsView"),
         name="admin-email-metrics",
     ),
-    path("api/admin/broadcasts/", AdminBroadcastsView.as_view(), name="admin-broadcasts"),
+    path(
+        "api/admin/broadcasts/",
+        lazy_view("emails.admin_views", "AdminBroadcastsView"),
+        name="admin-broadcasts",
+    ),
     path(
         "api/admin/broadcasts/audience-preview/",
-        AdminAudiencePreviewView.as_view(),
+        lazy_view("emails.admin_views", "AdminAudiencePreviewView"),
         name="admin-audience-preview",
     ),
     path(
         "api/admin/broadcasts/<int:pk>/",
-        AdminBroadcastDetailView.as_view(),
+        lazy_view("emails.admin_views", "AdminBroadcastDetailView"),
         name="admin-broadcast-detail",
     ),
     path(
         "api/admin/broadcasts/<int:pk>/action/",
-        AdminBroadcastActionView.as_view(),
+        lazy_view("emails.admin_views", "AdminBroadcastActionView"),
         name="admin-broadcast-action",
     ),
     path(
         "api/admin/broadcasts/<int:pk>/translations/",
-        AdminBroadcastTranslationView.as_view(),
+        lazy_view("emails.admin_design", "AdminBroadcastTranslationView"),
         name="admin-broadcast-translations",
     ),
-    path("api/admin/emails/auto/", AdminAutoEmailsView.as_view(), name="admin-email-auto"),
-    path("api/admin/automations/", AdminAutomationsView.as_view(), name="admin-automations"),
+    path(
+        "api/admin/emails/auto/",
+        lazy_view("emails.admin_auto", "AdminAutoEmailsView"),
+        name="admin-email-auto",
+    ),
+    path(
+        "api/admin/automations/",
+        lazy_view("emails.admin_automations", "AdminAutomationsView"),
+        name="admin-automations",
+    ),
     path(
         "api/admin/automations/vocabulary/",
-        AdminAutomationVocabularyView.as_view(),
+        lazy_view("emails.admin_automations", "AdminAutomationVocabularyView"),
         name="admin-automation-vocabulary",
     ),
-    path("api/admin/automations/<int:pk>/", AdminAutomationDetailView.as_view(), name="admin-automation"),
+    path(
+        "api/admin/automations/<int:pk>/",
+        lazy_view("emails.admin_automations", "AdminAutomationDetailView"),
+        name="admin-automation",
+    ),
     path(
         "api/admin/automations/<int:pk>/action/",
-        AdminAutomationActionView.as_view(),
+        lazy_view("emails.admin_automations", "AdminAutomationActionView"),
         name="admin-automation-action",
     ),
     path(
         "api/admin/automations/<int:pk>/emails/",
-        AdminAutomationEmailsView.as_view(),
+        lazy_view("emails.admin_automations", "AdminAutomationEmailsView"),
         name="admin-automation-emails",
     ),
     path(
         "api/admin/automation-emails/<int:pk>/",
-        AdminAutomationEmailDetailView.as_view(),
+        lazy_view("emails.admin_automations", "AdminAutomationEmailDetailView"),
         name="admin-automation-email",
     ),
     path(
         "api/admin/automation-emails/<int:pk>/translations/",
-        AdminAutomationEmailTranslationView.as_view(),
+        lazy_view("emails.admin_automations", "AdminAutomationEmailTranslationView"),
         name="admin-automation-email-translations",
     ),
-    path("api/admin/emails/lifecycle/", AdminLifecycleListView.as_view(), name="admin-email-lifecycle"),
+    path(
+        "api/admin/emails/lifecycle/",
+        lazy_view("emails.admin_lifecycle", "AdminLifecycleListView"),
+        name="admin-email-lifecycle",
+    ),
     path(
         "api/admin/emails/lifecycle/<str:step>/",
-        AdminLifecycleDetailView.as_view(),
+        lazy_view("emails.admin_lifecycle", "AdminLifecycleDetailView"),
         name="admin-email-lifecycle-detail",
     ),
     path(
         "api/admin/emails/lifecycle/<str:step>/action/",
-        AdminLifecycleActionView.as_view(),
+        lazy_view("emails.admin_lifecycle", "AdminLifecycleActionView"),
         name="admin-email-lifecycle-action",
     ),
     path(
         "api/admin/emails/auto/build/",
-        AdminAutoEmailBuildView.as_view(),
+        lazy_view("emails.admin_auto", "AdminAutoEmailBuildView"),
         name="admin-email-auto-build",
     ),
-    path("api/admin/emails/preview/", AdminEmailPreviewView.as_view(), name="admin-email-preview"),
-    path("api/admin/emails/library/", AdminEmailLibraryView.as_view(), name="admin-email-library"),
-    path("api/admin/emails/merge-tags/", AdminEmailMergeTagsView.as_view(), name="admin-email-merge-tags"),
+    path(
+        "api/admin/emails/preview/",
+        lazy_view("emails.admin_design", "AdminEmailPreviewView"),
+        name="admin-email-preview",
+    ),
+    path(
+        "api/admin/emails/library/",
+        lazy_view("emails.admin_design", "AdminEmailLibraryView"),
+        name="admin-email-library",
+    ),
+    path(
+        "api/admin/emails/merge-tags/",
+        lazy_view("emails.admin_design", "AdminEmailMergeTagsView"),
+        name="admin-email-merge-tags",
+    ),
     path(
         "api/admin/emails/library/search/",
-        AdminEmailLibrarySearchView.as_view(),
+        lazy_view("emails.admin_design", "AdminEmailLibrarySearchView"),
         name="admin-email-library-search",
     ),
-    path("api/admin/emails/images/", AdminEmailImageView.as_view(), name="admin-email-images"),
+    path(
+        "api/admin/emails/images/",
+        lazy_view("emails.admin_design", "AdminEmailImageView"),
+        name="admin-email-images",
+    ),
     path(
         "api/admin/emails/templates/",
-        AdminEmailTemplatesView.as_view(),
+        lazy_view("emails.admin_design", "AdminEmailTemplatesView"),
         name="admin-email-templates",
     ),
     path(
         "api/admin/emails/templates/<int:pk>/",
-        AdminEmailTemplateDetailView.as_view(),
+        lazy_view("emails.admin_design", "AdminEmailTemplateDetailView"),
         name="admin-email-template-detail",
     ),
     path(
         "api/admin/users/<uuid:uid>/emails/",
-        AdminReaderEmailsView.as_view(),
+        lazy_view("emails.admin_views", "AdminReaderEmailsView"),
         name="admin-user-emails",
     ),
     path(
         "api/admin/content-edit-jobs/",
-        AdminContentEditJobsView.as_view(),
+        lazy_view("library.admin_views.content_jobs", "AdminContentEditJobsView"),
         name="admin-content-edit-jobs",
     ),
     # Creating a language is how a new one begins: the row is what the
     # translate_* commands read, so it must exist before any work can be queued.
     path(
         "api/admin/languages/",
-        AdminLanguageCreateView.as_view(),
+        lazy_view("library.admin_views.languages", "AdminLanguageCreateView"),
         name="admin-language-create",
     ),
     path(
         "api/admin/languages/<str:code>/",
-        AdminLanguageDetailView.as_view(),
+        lazy_view("library.admin_views.content", "AdminLanguageDetailView"),
         name="admin-language-detail",
     ),
     path(
         "api/admin/languages/<str:code>/wanted/",
-        AdminLanguageWantedView.as_view(),
+        lazy_view("library.admin_views.demand", "AdminLanguageWantedView"),
         name="admin-language-wanted",
     ),
     # This language against the named Level 1 content targets
     # (library.content_targets), every item with its state.
     path(
         "api/admin/languages/<str:code>/targets/",
-        AdminLanguageTargetsView.as_view(),
+        lazy_view("library.admin_views.targets", "AdminLanguageTargetsView"),
         name="admin-language-targets",
     ),
     # Identity (names, Bible, glossary) — refused for repo-defined languages,
     # whose rows the deploy re-asserts.
     path(
         "api/admin/languages/<str:code>/settings/",
-        AdminLanguageSettingsView.as_view(),
+        lazy_view("library.admin_views.languages", "AdminLanguageSettingsView"),
         name="admin-language-settings",
     ),
     # Readiness is its own route: it makes a live Bible-API call, so it must not
     # ride along on every load of the detail page.
     path(
         "api/admin/languages/<str:code>/readiness/",
-        AdminLanguageReadinessView.as_view(),
+        lazy_view("library.admin_views.languages", "AdminLanguageReadinessView"),
         name="admin-language-readiness",
     ),
     path(
         "api/admin/languages/<str:code>/thresholds/",
-        AdminLanguageThresholdsView.as_view(),
+        lazy_view("library.admin_views.languages", "AdminLanguageThresholdsView"),
         name="admin-language-thresholds",
     ),
     # The switch. POST re-runs the checks server-side, records the launch, and
@@ -401,13 +423,13 @@ urlpatterns = [
     # is deliberately not a bare status write.
     path(
         "api/admin/languages/<str:code>/go-live/",
-        AdminLanguageGoLiveView.as_view(),
+        lazy_view("library.admin_views.languages", "AdminLanguageGoLiveView"),
         name="admin-language-go-live",
     ),
     # "status" is what was decided; this is what actually shipped.
     path(
         "api/admin/languages/<str:code>/deploy-check/",
-        AdminLanguageDeployCheckView.as_view(),
+        lazy_view("library.admin_views.languages", "AdminLanguageDeployCheckView"),
         name="admin-language-deploy-check",
     ),
     path("api/emails/", include("emails.urls")),
