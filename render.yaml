@@ -58,6 +58,14 @@ services:
     envVars:
       - key: DJANGO_DEBUG
         value: "false"
+      # glibc gives each thread its own malloc arena and rarely returns their
+      # memory, so a 4-thread gunicorn worker's RSS creeps toward the 512 MB
+      # Starter limit. Two arenas is the standard cap for threaded Python
+      # servers. Added 2026-11-19, after the web build's crawl restarted this
+      # instance twice in five minutes and every web deploy since 11-16 failed.
+      # config/memory.py logs the requests that still grow memory.
+      - key: MALLOC_ARENA_MAX
+        value: "2"
       - key: DJANGO_SECRET_KEY
         generateValue: true # Render generates a strong secret
       - key: DATABASE_URL # Supabase session-pooler connection string
