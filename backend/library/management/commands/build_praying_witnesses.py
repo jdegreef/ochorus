@@ -960,7 +960,7 @@ def appendices(sections: list[tuple[str, str]], entries: list[dict]) -> str:
 FINAL_VOLUME = max(VOLUMES)
 TOOLKIT = SERIES_DIR / "series-toolkit.md"
 
-_NUMBER_WORDS = dict(enumerate("zero one two three four five six seven eight nine ten eleven twelve".split()))
+_NUMBER_WORDS = {10: "ten", 11: "eleven", 12: "twelve"}
 _YEAR = re.compile(r"\d+")
 _BC = re.compile(r"\bB\.?C\.?(?:E\.?)?(?!\w)", re.IGNORECASE)
 
