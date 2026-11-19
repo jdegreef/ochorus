@@ -788,6 +788,72 @@ VOLUMES: dict[int, dict[str, object]] = {
             ],
         },
     },
+    11: {
+        "slug": "golden-bowls",
+        "book": {
+            "publication_year": 2026,
+            "title": "Golden Bowls",
+            "subtitle": "Your Place in the Prayer Meeting",
+            "cover_url": "/covers/art/golden-bowls.jpg",
+            "cover_color": covers.ink_safe("#232a56"),  # an evening indigo
+            "description": (
+                "The last volume of A Cloud of Praying Witnesses: twelve short chapters that "
+                "gather what the praying church has learned from Abraham to today, on praying "
+                "the Scriptures, fasting, praying alone and together, waiting, unanswered "
+                "prayer, the nations, revival, prayer at home and a rhythm of prayer for your "
+                "own life."
+            ),
+            "about_html": (
+                "<p>In the throne room of heaven, John saw golden bowls full of incense, "
+                "\"the prayers of God's holy people\" (Revelation 5:8). This book asks what "
+                "the whole cloud of witnesses, from Abraham to the praying church of our own "
+                "day, teaches about prayer, and how you can take your own place among them. "
+                "It is Volume 11, the last, of A Cloud of Praying Witnesses, an Ochorus series "
+                "that follows the people of God at prayer from the Old Testament to the "
+                "church around the world today.</p>"
+                "<p>Its twelve chapters each take one theme: the prayer meeting that has "
+                "lasted for thousands of years, what the witnesses agree on, praying the "
+                "Scriptures, fasting, praying alone and with others, waiting on the Lord, "
+                "unanswered prayer, intercession for the nations, prayer for revival, prayer "
+                "in the home, building your own rhythm of prayer, and the church's last "
+                "prayer, \"Come, Lord Jesus.\" Each opens with a scene from a witness met "
+                "earlier in the series and follows the thread through the centuries.</p>"
+                "<p>Every chapter ends with three key insights, a word for today, a simple "
+                "practice that can be done anywhere, a closing prayer and questions for "
+                "reflection. Five appendices gather the whole series: every key insight by "
+                "theme, a Scripture index from Genesis to Revelation, a timeline of every "
+                "witness, a toolkit of ways to pray, and the books on Ochorus where you can "
+                "keep reading. Scripture is quoted from the Open Word Bible (OWB), Balanced "
+                "edition, which is dedicated to the public domain.</p>"
+            ),
+            "qa": [
+                {
+                    "question": "What is Golden Bowls about?",
+                    "answer": "What the whole history of the praying church teaches about your own life of prayer: twelve themed chapters on praying the Scriptures, fasting, praying alone and together, waiting, unanswered prayer, the nations, revival, prayer at home and a daily rhythm of prayer.",
+                },
+                {
+                    "question": "What is A Cloud of Praying Witnesses?",
+                    "answer": "A series of books on prayer through the whole story of the church, named for Hebrews 12:1. The first ten volumes follow prayer from the Old Testament to the global church of today. This eleventh and last volume gathers what the whole cloud of witnesses teaches.",
+                },
+                {
+                    "question": "Do I need to read the earlier volumes first?",
+                    "answer": "No. Each chapter tells you enough of every story to stand on its own, and points to the volume where the full story is told if you want to read more.",
+                },
+                {
+                    "question": "What are the appendices at the end of the book?",
+                    "answer": "Five appendices for the whole series: every key insight from all eleven volumes by theme, a Scripture index from Genesis to Revelation, a timeline of every person and movement, a toolkit of simple ways to pray, and the books on Ochorus where you can keep reading.",
+                },
+                {
+                    "question": "Can I read it with a small group?",
+                    "answer": "Yes. One chapter a week gives time to practise each chapter's suggestion before the next meeting, and the questions at the end of every chapter are written to start a conversation.",
+                },
+                {
+                    "question": "Which Bible translation does it use?",
+                    "answer": "Every Scripture is quoted from the Open Word Bible (OWB), Balanced edition, a new translation from the Hebrew and Greek that is dedicated to the public domain.",
+                },
+            ],
+        },
+    },
 }
 
 

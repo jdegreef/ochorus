@@ -59,6 +59,7 @@ TOPICS = [
             "open-your-mouth-wide",
             "revival-fires",
             "every-tribe-and-tongue",
+            "golden-bowls",
             "psalms",
             "habakkuk",
         ],
