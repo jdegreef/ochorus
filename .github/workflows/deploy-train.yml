@@ -5,6 +5,10 @@ name: Deploy train
 # workflow is the only thing that ships them: every two hours it moves both
 # to the newest commit whose `test-and-build` passed, if anything
 # deployable changed since the last deploy.
+# It never overlaps a deploy: if ochorus-api or ochorus-web still has one
+# running (the web build takes 20-70 min after the train exits), the run
+# deploys nothing and stays green; the next run picks the work up. If Render
+# cannot be asked, it deploys nothing and goes red.
 # .github/scripts/deploy_train.py has the rules and the why.
 #
 # A RED RUN MEANS PRODUCTION IS FROZEN: nothing else deploys. Fix it the same
@@ -24,7 +28,7 @@ on:
   workflow_dispatch:
     inputs:
       force:
-        description: 'Deploy the newest green commit even if nothing deployable changed'
+        description: 'Deploy the newest green commit even if nothing deployable changed (never over a running deploy)'
         type: boolean
         default: false
 
@@ -41,7 +45,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     # Long enough to wait out the API deploy before starting the web one
-    # (deploy_train.py API_WAIT_SECONDS is 40 minutes).
+    # (deploy_train.py API_WAIT_SECONDS is 40 minutes), plus the few minutes
+    # of retries checking Render for a running deploy first.
     timeout-minutes: 50
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
