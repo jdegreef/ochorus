@@ -73,7 +73,6 @@ describe('benediction sources', () => {
 		const seeded = new Map<string, string>();
 		for (const m of seed.matchAll(/^ {4}"([a-z]{2})": \{[\s\S]*?^ {8}"bible": "([^"]+)"/gm)) seeded.set(m[1], m[2]);
 		expect(seeded.size).toBeGreaterThan(5);
-		// An OWB file id names its edition (owb-sw-b, Balanced); the seed names the Bible (owb-sw).
-		for (const [l, bible] of seeded) expect(blessingBible(l)?.replace(/^(owb-[a-z]+)-b$/, '$1'), l).toBe(bible);
+		for (const [l, bible] of seeded) expect(blessingBible(l), l).toBe(bible);
 	});
 });

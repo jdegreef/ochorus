@@ -293,8 +293,6 @@ def is_verbatim(translation: str, source: str) -> bool:
         return True
     pieces = [vc.normalise(p) for p in _ELLIPSIS.split(translation)]
     pieces = [p for p in pieces if p]
-    if len(pieces) < 2:
-        return False
     at = 0
     for piece in pieces:
         at = s.find(piece, at)

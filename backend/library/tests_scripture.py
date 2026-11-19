@@ -582,14 +582,16 @@ class BundledOwbBibleTests(SimpleTestCase):
     stopped by, the Take Root API for it.
     """
 
-    def test_amharic_is_bundled_with_the_whole_bible(self):
+    def test_each_bundle_holds_the_whole_bible(self):
         from library import scripture
 
-        self.assertIn("am", scripture.owb_languages())
-        verses, _joined = scripture._owb("am")
-        self.assertGreater(len(verses), 31000)  # all 66 books, OT and NT
-        self.assertIn(1001001, verses)  # Genesis 1:1
-        self.assertIn(66022021, verses)  # Revelation 22:21
+        for lang in ("am", "sw", "ja"):
+            with self.subTest(lang=lang):
+                self.assertIn(lang, scripture.owb_languages())
+                verses, _joined = scripture._owb(lang)
+                self.assertGreater(len(verses), 31000)  # all 66 books, OT and NT
+                self.assertIn(1001001, verses)  # Genesis 1:1
+                self.assertIn(66022021, verses)  # Revelation 22:21
 
     def test_fetch_verse_text_reads_the_bundle_without_the_network(self):
         from library import translation as m
@@ -650,6 +652,13 @@ class BundledOwbBibleTests(SimpleTestCase):
         self.assertNotEqual(scripture.owb_verse(43003016)[1], scripture.owb_verse(43003016, "am")[1])
 
 
+    def test_the_canonical_book_order_matches_owbs_verse_ids(self):
+        from library import translation as m
+
+        self.assertEqual(len(m.USFM_ORDER), 66)
+        self.assertEqual((m.USFM_ORDER[0], m.USFM_ORDER[39], m.USFM_ORDER[-1]), ("GEN", "MAT", "REV"))
+
+
 class SwahiliAndJapaneseQuoteOwbTests(SimpleTestCase):
     """Swahili and Japanese quote OWB too (founder decision, 2026-11-19).
 
@@ -658,17 +667,6 @@ class SwahiliAndJapaneseQuoteOwbTests(SimpleTestCase):
     the Japanese bundle carries no ASCII space: OWB's exporter joins poetic
     lines with one, and Japanese writes none.
     """
-
-    def test_both_are_bundled_with_the_whole_bible(self):
-        from library import scripture
-
-        for lang in ("sw", "ja"):
-            with self.subTest(lang=lang):
-                self.assertIn(lang, scripture.owb_languages())
-                verses, _joined = scripture._owb(lang)
-                self.assertGreater(len(verses), 31000)  # all 66 books
-                self.assertIn(1001001, verses)  # Genesis 1:1
-                self.assertIn(66022021, verses)  # Revelation 22:21
 
     def test_the_seed_points_both_languages_at_their_bundle(self):
         from library.language_seed import SEED_LANGUAGES
@@ -696,9 +694,3 @@ class SwahiliAndJapaneseQuoteOwbTests(SimpleTestCase):
         self.assertEqual(spaced, [])
         # Psalm 23:1 is poetry: its lines now join with nothing between them.
         self.assertEqual(scripture.owb_verse(19023001, "ja")[1], "ダビデの賛歌。主はわたしの羊飼い。わたしが乏しくなることは決してない。")
-
-    def test_the_canonical_book_order_matches_owbs_verse_ids(self):
-        from library import translation as m
-
-        self.assertEqual(len(m.USFM_ORDER), 66)
-        self.assertEqual((m.USFM_ORDER[0], m.USFM_ORDER[39], m.USFM_ORDER[-1]), ("GEN", "MAT", "REV"))

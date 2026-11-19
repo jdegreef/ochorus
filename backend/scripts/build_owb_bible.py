@@ -47,7 +47,7 @@ BIBLE_DIR = Path(__file__).resolve().parents[1] / "library" / "data" / "bible"
 #: わたしが…」 against the ja typography rule (no spaces after punctuation). The
 #: space is layout, not wording, so it is dropped here wherever no Latin letter
 #: or digit stands beside it; every character of the text is kept.
-NO_SPACE_LANGUAGES = frozenset({"ja", "zh"})
+NO_SPACE_LANGUAGES = frozenset({"ja"})
 _UNSPACED_JOIN = re.compile(r"(?<![A-Za-z0-9]) (?![A-Za-z0-9])")
 
 
@@ -77,13 +77,15 @@ def main() -> None:
 
     verses: dict[str, str] = {}
     joined: dict[str, str] = {}
-    unspace = _UNSPACED_JOIN.sub if args.language in NO_SPACE_LANGUAGES else None
     for book in json.loads(body)["books"]:
         number = refs.BOOK_CODES.index(book["code"]) + 1
         for chapter in book["chapters"]:
             for v in chapter["verses"]:
                 first = number * 1_000_000 + chapter["chapter"] * 1000 + v["verse"]
-                verses[str(first)] = unspace("", v["text"]) if unspace else v["text"]
+                text = v["text"]
+                if args.language in NO_SPACE_LANGUAGES:
+                    text = _UNSPACED_JOIN.sub("", text)
+                verses[str(first)] = text
                 if "to" in v:
                     others = [
                         number * 1_000_000 + chapter["chapter"] * 1000 + n

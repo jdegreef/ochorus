@@ -2,7 +2,7 @@
 // Verbatim from each locale's own Bible (Take Root; English: Open Word Bible); see that script.
 export const BLESSINGS = {
 	"en": {
-		"bible": "owb-en-b",
+		"bible": "owb-en",
 		"aaronic": {
 			"book": "Numbers",
 			"passage": "6:24–26",
@@ -58,7 +58,7 @@ export const BLESSINGS = {
 		}
 	},
 	"sw": {
-		"bible": "owb-sw-b",
+		"bible": "owb-sw",
 		"aaronic": {
 			"book": "Hesabu",
 			"passage": "6:24–26",
@@ -254,7 +254,7 @@ export const BLESSINGS = {
 		}
 	},
 	"am": {
-		"bible": "owb-am-b",
+		"bible": "owb-am",
 		"aaronic": {
 			"book": "ዘኍልቍ",
 			"passage": "6:24–26",
@@ -338,7 +338,7 @@ export const BLESSINGS = {
 		}
 	},
 	"ja": {
-		"bible": "owb-ja-b",
+		"bible": "owb-ja",
 		"aaronic": {
 			"book": "民数記",
 			"passage": "6:24–26",

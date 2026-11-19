@@ -29,24 +29,24 @@ import { gunzipSync } from 'node:zlib';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT = join(HERE, '..', 'src', 'lib', 'benediction.generated.ts');
-const owbFile = (code) => join(HERE, '..', '..', 'backend', 'library', 'data', 'bible', `${code}.json.gz`);
+const owbFile = (code) => join(HERE, '..', '..', 'backend', 'library', 'data', 'bible', `${code}-b.json.gz`);
 const API = 'https://api.takeroot.bible/api/bible';
 
 /** locale → Take Root code (mirrors language_seed.py). */
 const BIBLES = {
-	en: 'owb-en-b',
+	en: 'owb-en',
 	es: 'rv1858',
-	sw: 'owb-sw-b',
+	sw: 'owb-sw',
 	lg: 'lug',
 	pt: 'porbrbsl',
 	ar: 'arb-vd',
 	hi: 'irvhin',
 	uk: 'ukr-kul',
 	fr: 'fralsg',
-	am: 'owb-am-b',
+	am: 'owb-am',
 	vi: 'vietnamese',
 	ko: 'korean',
-	ja: 'owb-ja-b',
+	ja: 'owb-ja',
 	ru: 'synodal'
 };
 
@@ -64,19 +64,18 @@ const PASSAGES = {
 };
 
 const QUOTES = /^[\s“”‘’"]+|[\s“”‘’"]+$/g;
-// OWB English and Swahili quote with straight marks: Numbers 6:26 closes on
-// ."' (the Lord's speech, then Moses'). Only the ends are trimmed, so a
-// word-internal apostrophe (Swahili aung'aze) is kept.
+// OWB quotes with straight marks: Numbers 6:26 closes on ."' (the Lord's
+// speech, then Moses'). Only the ends are trimmed, so a word-internal
+// apostrophe (Swahili aung'aze) is kept.
 const STRAIGHT = /^[\s“”‘’"']+|[\s“”‘’"']+$/g;
-const STRAIGHT_QUOTED = new Set(['en', 'sw']);
 
-function clean(text, locale) {
-	let s = text.replace(STRAIGHT_QUOTED.has(locale) ? STRAIGHT : QUOTES, '');
+function clean(text, locale, bible) {
+	let s = text.replace(bible.startsWith('owb-') ? STRAIGHT : QUOTES, '');
 	if (locale === 'fr') s = s.replace(/’ /g, '’').replace(/ ’/g, '’');
 	if (locale === 'vi') s = s.replace(/Ð/g, 'Đ');
 	// Japanese: OWB sets the Aaronic blessing inside the speech that frames
-	// it (「…」), and Japanese writes no spaces (its verses also join with
-	// none — see the join below).
+	// it (「…」), and Japanese writes no spaces (the bundle is built without
+	// them; stripping here only guards a passage join).
 	if (locale === 'ja') s = s.replace(/^[\s「『]+|[\s」』]+。?$/g, '').replace(/\s+/g, '');
 	// Russian: the Synodal brackets words its editors supplied (Иисуса
 	// [Христа], Heb 13:20) — print them as text, as Russian Bibles read aloud
@@ -98,9 +97,9 @@ const OWB_BOOKS = { NUM: [4, 'Numbers'], ROM: [45, 'Romans'], JUD: [65, 'Jude'],
  * keep the forms their earlier Bibles printed here.
  */
 const OWB_BOOK_NAMES = {
-	'owb-am-b': { NUM: 'ዘኍልቍ', ROM: 'ሮሜ', JUD: 'ይሁዳ', HEB: 'ዕብራውያን', '2CO': '2ኛ ቆሮንቶስ' },
-	'owb-sw-b': { NUM: 'Hesabu', ROM: 'Warumi', JUD: 'Yuda', HEB: 'Waebrania', '2CO': '2 Wakorintho' },
-	'owb-ja-b': { NUM: '民数記', ROM: 'ローマ', JUD: 'ユダ', HEB: 'ヘブル', '2CO': 'コリント第二' }
+	'owb-am': { NUM: 'ዘኍልቍ', ROM: 'ሮሜ', JUD: 'ይሁዳ', HEB: 'ዕብራውያን', '2CO': '2ኛ ቆሮንቶስ' },
+	'owb-sw': { NUM: 'Hesabu', ROM: 'Warumi', JUD: 'Yuda', HEB: 'Waebrania', '2CO': '2 Wakorintho' },
+	'owb-ja': { NUM: '民数記', ROM: 'ローマ', JUD: 'ユダ', HEB: 'ヘブル', '2CO': 'コリント第二' }
 };
 const owbCache = {};
 function owbChapter(code, usfm, ch) {
@@ -159,7 +158,7 @@ for (const [locale, bible] of Object.entries(BIBLES)) {
 				const nums = p.last ? picked.map((v) => v.n) : p.verses;
 				return p.usfm === 'JUD' ? span(nums) : `${p.chapter}:${span(nums)}`;
 			})(),
-			text: picked.map((v) => clean(v.text, locale)).join(locale === 'ja' ? '' : ' ')
+			text: picked.map((v) => clean(v.text, locale, bible)).join(locale === 'ja' ? '' : ' ')
 		};
 	}
 	console.log(`✓ ${locale} (${bible})`);
