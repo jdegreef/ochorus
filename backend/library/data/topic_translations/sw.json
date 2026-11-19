@@ -1,6 +1,6 @@
 {
   "_note": [
-    "Shelf verses are WHOLE verses fetched verbatim from Take Root (swhonen) on 2026-10-01, at the English shelf's chapter:verse; only the book name is localized, as that Bible prints it."
+    "Shelf verses are WHOLE verses, verbatim from the Open Word Bible (OWB), Balanced, Swahili (CC0; bundled as data/bible/owb-sw-b.json.gz, read with translation.fetch_passage_text), at the English shelf's chapter:verse; only the book name is localized, in the form the Swahili library already cites. Speech marks at a verse's ends are trimmed, and a speech the verse opens but the next verse closes is closed at the end (punctuation only; no word is changed). (Founder decision, 2026-11-19: every Swahili work quotes OWB.)"
   ],
   "abiding-in-christ": {
     "title": "Kukaa ndani ya Kristo",
@@ -9,7 +9,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Kukaa ndani ya Kristo, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Yohana 15:4",
-      "text": "Kaeni ndani yangu, nami nikae ndani yenu. Kama vile tawi lisivyoweza kuzaa matunda lisipokaa ndani ya mzabibu, vivyo hivyo ninyi msipokaa ndani yangu hamwezi kuzaa matunda."
+      "text": "Kaeni ndani Yangu, Nami nitakaa ndani yenu. Tawi haliwezi kuzaa matunda peke yake; ni lazima likae katika mzabibu. Vivyo hivyo, ninyi hamwezi kuzaa matunda msipokaa ndani Yangu."
     }
   },
   "christ-and-the-cross": {
@@ -25,7 +25,7 @@
     "meta_description": "Vitabu vya Kikristo kuhusu Sauti za Kisasa, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Zaburi 145:4",
-      "text": "Kizazi kimoja kitasifia kazi zako kwa kizazi kingine, watasimulia matendo yako makuu."
+      "text": "Kila kizazi kitazisifu kazi Zako kwa kizazi kinachofuata na kuyatangaza matendo Yako makuu."
     }
   },
   "day-by-day": {
@@ -35,7 +35,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Siku kwa Siku, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Maombolezo 3:22–23",
-      "text": "Kwa sababu ya upendo mkuu wa Bwana, hatuangamii, kwa kuwa huruma zake hazikomi kamwe. Ni mpya kila asubuhi, uaminifu wako ni mkuu."
+      "text": "Ni kwa upendo usiokoma wa BWANA kwamba hatujafutiliwa mbali, kwa maana huruma Zake hazijapungua. Zinafanywa upya kila asubuhi; jinsi ulivyo mkuu uaminifu Wako!"
     }
   },
   "deeper-life": {
@@ -45,7 +45,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Maisha ya Ndani Zaidi, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Wakolosai 3:3",
-      "text": "Kwa maana ninyi mlikufa, nao uhai wenu sasa umefichwa pamoja na Kristo katika Mungu."
+      "text": "Kwa maana mlikufa, na uzima mlio nao sasa umefichwa pamoja na Kristo ndani ya Mungu."
     }
   },
   "enduring-classics": {
@@ -55,7 +55,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Vitabu vya Kale Vidumuvyo, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Yeremia 6:16",
-      "text": "Hivi ndivyo asemavyo Bwana: “Simama kwenye njia panda utazame, ulizia mapito ya zamani, ulizia wapi ilipo njia nzuri, uifuate hiyo, nanyi mtapata raha nafsini mwenu. Lakini ninyi mlisema, ‘Hatutaipita hiyo.’"
+      "text": "Hivi ndivyo BWANA asemavyo: Simameni mahali njia zinapokutana mkaangalie; ulizeni habari za mapito ya kale, ni ipi njia njema, mkaifuate; ndipo mtapata raha nafsini mwenu. Lakini walijibu, \"Hatutakwenda njia hiyo.\""
     }
   },
   "faith-and-guidance": {
@@ -65,7 +65,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Imani na Uongozi, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Mithali 3:6",
-      "text": "katika njia zako zote mkiri yeye, naye atayanyoosha mapito yako."
+      "text": "Mkumbuke Yeye katika kila unalofanya, Naye atakutengenezea njia iliyonyooka mbele yako."
     }
   },
   "faith-for-the-impossible": {
@@ -75,7 +75,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Imani kwa Yasiyowezekana, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Marko 9:23",
-      "text": "Yesu akamwambia, “Kama ukiweza kuamini, yote yawezekana kwake yeye aaminiye.”"
+      "text": "Yesu akamwambia, \"'Kama unaweza!' Kila kitu kinawezekana kwa mtu anayeamini.\""
     }
   },
   "for-teens": {
@@ -85,7 +85,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kwa vijana balehe, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "1 Timotheo 4:12",
-      "text": "Mtu yeyote asikudharau kwa kuwa wewe ni kijana, bali uwe kielelezo kizuri kwa waumini katika usemi, mwenendo, upendo, imani na usafi."
+      "text": "Usimwache mtu yeyote akudharau kwa sababu wewe ni kijana, bali uwe kielelezo kwa waumini katika jinsi unavyosema na kuishi, katika upendo, katika imani na katika usafi."
     }
   },
   "for-those-who-lead": {
@@ -95,7 +95,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu uongozi wa Kikristo na uchungaji, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "1 Petro 5:2",
-      "text": "lichungeni kundi la Mungu mlilokabidhiwa, mkitumika kama waangalizi, si kwa kulazimishwa bali kwa hiari, kama Mungu anavyowataka mwe; si kwa tamaa ya fedha, bali mlio na bidii katika kutumika."
+      "text": "Lichungeni kundi la Mungu lililo kati yenu kama wachungaji. Litunzeni kwa hiari yenu, kama Mungu anavyotaka, wala si kwa sababu mmelazimishwa; si ili mjipatie fedha, bali kwa moyo wa kupenda na kwa utayari."
     }
   },
   "for-young-readers": {
@@ -105,7 +105,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kwa wasomaji wachanga na watoto, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Mathayo 19:14",
-      "text": "Yesu akasema, “Waacheni watoto wadogo waje kwangu, wala msiwazuie, kwa maana Ufalme wa Mbinguni ni wa wale walio kama hawa.”"
+      "text": "Yesu alisema, \"Waacheni watoto hao. Msiwazuie kuja Kwangu, kwa sababu ufalme wa mbinguni ni kwa ajili ya wale walio kama wao.\""
     }
   },
   "foundations-of-the-faith": {
@@ -115,7 +115,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Misingi ya Imani, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Yuda 3",
-      "text": "Wapendwa, ingawa nilikuwa ninatamani sana kuwaandikia kuhusu wokovu ambao tunaushiriki sisi sote, niliona imenipasa kuwaandikia na kuwasihi kwamba mwitetee imani iliyokabidhiwa watakatifu kwa nafasi moja itoshayo."
+      "text": "Wapendwa, nilipokuwa nikifanya kila juhudi kuwaandikia kuhusu wokovu tunaoushiriki sote, niliona sina budi kuwaandikia na kuwasihi mpigane kwa bidii kwa ajili ya imani ambayo watu wa Mungu walio watakatifu walikabidhiwa mara moja kwa daima."
     }
   },
   "grace-and-comfort": {
@@ -125,7 +125,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Neema na Faraja, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "2 Wakorintho 12:9",
-      "text": "Lakini aliniambia, “Neema yangu inakutosha, kwa kuwa uweza wangu hukamilika katika udhaifu.” Kwa hiyo nitajisifu kwa furaha zaidi kuhusu udhaifu wangu, ili uweza wa Kristo ukae juu yangu."
+      "text": "Lakini Yeye alinijibu, \"Neema Yangu inakutosha, kwa maana nguvu hufikia utimilifu wake katika udhaifu.\" Kwa hiyo nitafurahi zaidi kujivunia udhaifu wangu, ili nguvu ya Kristo itande hema yake juu yangu."
     }
   },
   "holy-spirit": {
@@ -135,7 +135,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Roho Mtakatifu, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Zekaria 4:6",
-      "text": "Kisha akaniambia, “Hili ni neno la Bwana kwa Zerubabeli: ‘Si kwa uwezo, wala si kwa nguvu, bali ni kwa Roho yangu,’ asema Bwana Mwenye Nguvu Zote."
+      "text": "Kisha akaniambia, \"Hili ndilo neno la BWANA kwa Zerubabeli: 'Si kwa nguvu za jeshi, wala si kwa uwezo, bali kwa Roho Wangu, asema BWANA wa majeshi.'\""
     }
   },
   "men-of-valour": {
@@ -145,7 +145,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kwa wanaume, wito wa ushujaa na imani, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "1 Wakorintho 16:13",
-      "text": "Kesheni, simameni imara katika imani, fanyeni kiume, kuweni mashujaa kuweni hodari."
+      "text": "Kaeni macho. Simameni imara katika imani. Kuweni jasiri na hodari."
     }
   },
   "prayer": {
@@ -155,7 +155,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Maombi, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Yeremia 33:3",
-      "text": "‘Niite nami nitakuitika na kukuambia mambo makuu na yasiyochunguzika, usiyoyajua.’"
+      "text": "Niite, nami nitakujibu. Nitakujulisha mambo makuu, mambo yaliyo nje ya uwezo wako, ambayo hukuyajua."
     }
   },
   "revival-and-missions": {
@@ -165,7 +165,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Uamsho na Umisheni, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Habakuki 3:2",
-      "text": "Bwana, nimezisikia sifa zako; nami naogopa kwa matendo yako, Ee Bwana. Fufua kazi yako katikati ya miaka, katikati ya miaka tangaza habari yako; katika ghadhabu kumbuka rehema."
+      "text": "Ee BWANA, nimesikia sifa Zako, nami ninasimama kwa hofu. Ee BWANA, ifanye upya kazi Yako katika siku zetu; katika siku zetu ijulishe; katika ghadhabu, kumbuka rehema."
     }
   },
   "saints-of-the-african-diaspora": {
@@ -175,7 +175,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Watakatifu wa Diaspora ya Kiafrika, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Zaburi 68:31",
-      "text": "Wajumbe watakuja kutoka Misri, Kushi atajisalimisha kwa Mungu."
+      "text": "Maafisa wakuu watakuja kutoka Misri; Kushi itainua mikono yake upesi katika maombi kwa Mungu."
     }
   },
   "soar-like-the-eagle": {
@@ -185,7 +185,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kwa waliochoka, upate nguvu mpya na kupaa kama tai, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Isaya 40:31",
-      "text": "bali wale wamtumainio Bwana atafanya upya nguvu zao. Watapaa juu kwa mbawa kama tai; watapiga mbio wala hawatachoka, watatembea kwa miguu wala hawatazimia."
+      "text": "Lakini wanaomngojea BWANA watajazwa nguvu upya. Watapaa juu kwa mabawa yaliyokunjuliwa kama tai. Watakimbia, nao hawatachoka; watatembea, nao hawatalegea."
     }
   },
   "the-body-of-christ": {
@@ -195,7 +195,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Mwili wa Kristo, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "1 Wakorintho 12:27",
-      "text": "Sasa ninyi ni mwili wa Kristo na kila mmoja wenu ni sehemu ya huo mwili."
+      "text": "Ninyi ni mwili wa Kristo, na kila mmoja wenu ni sehemu yake."
     }
   },
   "the-east-african-revival": {
@@ -205,7 +205,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Uamsho wa Afrika Mashariki, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "1 Yohana 1:7",
-      "text": "Lakini tukienenda nuruni, kama yeye alivyo nuruni, twashirikiana sisi kwa sisi na damu yake Yesu, Mwana wake, yatusafisha dhambi yote."
+      "text": "Lakini tukitembea katika nuru, kama vile Yeye alivyo katika nuru, tuna ushirika sisi kwa sisi, na damu ya Yesu, Mwana Wake, inaendelea kutusafisha kutoka kila dhambi."
     }
   },
   "the-gospel-call": {
@@ -215,7 +215,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Wito wa Injili, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "2 Wakorintho 5:20",
-      "text": "Kwa hiyo sisi ni mabalozi wa Kristo, kana kwamba Mungu anawasihi kupitia kwa vinywa vyetu. Nasi twawaomba sana ninyi kwa niaba ya Kristo, mpatanishwe na Mungu."
+      "text": "Kwa hiyo sisi ni mabalozi tunaozungumza kwa niaba ya Kristo, na ni Mungu Mwenyewe anayetoa wito Wake kupitia sisi. Tukizungumza kwa niaba ya Kristo, tunawasihi: mpatanishwe na Mungu."
     }
   },
   "the-grace-of-god": {
@@ -225,7 +225,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Neema ya Mungu, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Waefeso 2:8",
-      "text": "Kwa maana mmeokolewa kwa neema, kwa njia ya imani, wala si kwa matendo yenu mema. Hii ni zawadi kutoka kwa Mungu,"
+      "text": "Kwa maana ni kwa neema hiyo mmeokolewa, kupitia imani. Jambo hili halitoki kwenu; ni zawadi ya Mungu."
     }
   },
   "the-great-awakening": {
@@ -235,7 +235,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Uamsho Mkuu, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Zaburi 85:6",
-      "text": "Je, hutatuhuisha tena, ili watu wako wakufurahie?"
+      "text": "Je, hutaturudishia uhai tena, watu Wako wapate kufurahi ndani Yako?"
     }
   },
   "the-inner-life": {
@@ -245,7 +245,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Maisha ya Ndani, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Mathayo 6:6",
-      "text": "Lakini wewe unaposali, ingia chumbani mwako, funga mlango na umwombe Baba yako aliye sirini. Naye Baba yako aonaye sirini atakupa thawabu yako."
+      "text": "Lakini unapoomba, ingia katika chumba cha ndani, ufunge mlango, umwombe Baba yako aliye pale kwa siri. Baba yako huona yaliyofichika, Naye atakulipa."
     }
   },
   "the-preached-word": {
@@ -255,7 +255,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Neno Lihubiriwalo, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Warumi 10:14",
-      "text": "Lakini watamwitaje yeye ambaye hawajamwamini? Nao watawezaje kumwamini yeye ambaye hawajamsikia? Tena watamsikiaje bila mtu kuwahubiria?"
+      "text": "Basi, watamwitaje ikiwa hawajamwamini? Na watamwaminije ikiwa hawajawahi kumsikia? Na watasikiaje bila mtu wa kutangaza?"
     }
   },
   "the-puritans": {
@@ -265,7 +265,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Wapuritani, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Waebrania 4:12",
-      "text": "Kwa maana Neno la Mungu li hai tena lina nguvu. Lina makali kuliko upanga wowote wenye makali kuwili, hivyo linachoma hata kuzigawanya nafsi na roho, viungo na mafuta yaliyo ndani yake; tena li jepesi kuyatambua mawazo na makusudi ya moyo."
+      "text": "Kwa maana neno la Mungu liko hai na linafanya kazi, nalo lina makali kuliko upanga wowote wenye makali pande mbili. Linapenya ndani kabisa, likikata kupitia nafsi na roho, kupitia viungo na uboho, nalo linapima mawazo na nia za moyo."
     }
   },
   "the-way-of-holiness": {
@@ -275,7 +275,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Njia ya Utakatifu, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Waebrania 12:14",
-      "text": "Tafuteni kwa bidii kuwa na amani na watu wote na huo utakatifu, ambao bila kuwa nao hakuna mtu atakayemwona Bwana."
+      "text": "Jitahidini kuwa na amani na kila mtu, na kuufuata utakatifu, kwa kuwa bila huo hakuna atakayemwona Bwana."
     }
   },
   "the-wesleys-and-early-methodism": {
@@ -285,7 +285,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu akina Wesley na Umethodisti wa mwanzo, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Luka 24:32",
-      "text": "Wakaulizana wao kwa wao, “Je, mioyo yetu haikuwakawaka kwa furaha ndani yetu alipokuwa anazungumza nasi njiani na kutufafanulia Maandiko?”"
+      "text": "Wakaambiana, \"Je, hatukuhisi mioyo yetu ikiwaka moto ndani yetu alipokuwa akizungumza nasi njiani na kutufunulia maana ya Maandiko?\""
     }
   },
   "to-the-ends-of-the-earth": {
@@ -295,7 +295,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Hata Miisho ya Dunia, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Matendo 1:8",
-      "text": "Lakini mtapokea nguvu akiisha kuwajilia juu yenu Roho Mtakatifu, nanyi mtakuwa mashahidi wangu katika Yerusalemu, Uyahudi kote na Samaria, hadi miisho ya dunia.”"
+      "text": "Lakini Roho Mtakatifu atakapowajia, mtapokea nguvu, nanyi mtanishuhudia huko Yerusalemu, kote Uyahudi na Samaria, hadi miisho ya dunia."
     }
   },
   "victory-over-sin": {
@@ -305,7 +305,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Ushindi Juu ya Dhambi, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Warumi 6:14",
-      "text": "Kwa maana dhambi haitakuwa na mamlaka juu yenu, kwa sababu hampo chini ya sheria, bali chini ya neema."
+      "text": "Dhambi haitakuwa bwana wenu, kwa maana hamwishi chini ya sheria bali chini ya neema."
     }
   },
   "voices-of-the-early-church": {
@@ -315,7 +315,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Sauti za Kanisa la Kwanza, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Waebrania 12:1",
-      "text": "Kwa sababu hii, kwa kuwa tumezungukwa na wingu kubwa namna hii la mashahidi, basi na tuweke kando kila kitu kinachotuzuia na ile dhambi inayotuzinga kwa urahisi, nasi tupige mbio kwa saburi katika yale mashindano yaliyowekwa kwa ajili yetu."
+      "text": "Basi, kwa kuwa nasi tumezungukwa pande zote na wingu la mashahidi lililo kubwa hivyo, tuvue kila mzigo, pamoja na dhambi inayojifunga kwetu kwa urahisi, tukimbie mbio zilizopangwa mbele yetu, na tuzikimbie kwa saburi."
     }
   },
   "women-of-faith": {
@@ -325,7 +325,7 @@
     "meta_description": "Vitabu vya Kikristo vya kale kuhusu Wanawake wa Imani, soma bila malipo katika Ochorus.",
     "scripture": {
       "reference": "Mithali 31:30",
-      "text": "Kujipamba ili kuvutia ni udanganyifu na uzuri unapita upesi, bali mwanamke anayemcha Bwana atasifiwa."
+      "text": "Haiba inaweza kudanganya na uzuri hupita kama pumzi, lakini mwanamke amchaye BWANA ndiye anayestahili kusifiwa."
     }
   }
 }

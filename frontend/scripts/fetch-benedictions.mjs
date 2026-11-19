@@ -2,9 +2,9 @@
 /**
  * Regenerates src/lib/benediction.generated.ts: the footer's closing blessings,
  * one per season of the Church year, VERBATIM from each locale's own Bible on
- * Take Root (the `bible` code backend/library/language_seed.py names). English
- * and Amharic are the exceptions: they quote the Open Word Bible (Balanced,
- * CC0), read from the copies the backend bundles
+ * Take Root (the `bible` code backend/library/language_seed.py names). English,
+ * Amharic, Swahili and Japanese are the exceptions: they quote the Open Word
+ * Bible (Balanced, CC0), read from the copies the backend bundles
  * (backend/library/data/bible/owb-<lang>-b.json.gz, scripts/build_owb_bible.py).
  * Amharic moved from the ULB to OWB on 2026-11-18 (founder decision: every
  * Amharic work quotes OWB); its book names are the forms the Amharic library
@@ -36,7 +36,7 @@ const API = 'https://api.takeroot.bible/api/bible';
 const BIBLES = {
 	en: 'owb-en-b',
 	es: 'rv1858',
-	sw: 'swhonen',
+	sw: 'owb-sw-b',
 	lg: 'lug',
 	pt: 'porbrbsl',
 	ar: 'arb-vd',
@@ -46,7 +46,7 @@ const BIBLES = {
 	am: 'owb-am-b',
 	vi: 'vietnamese',
 	ko: 'korean',
-	ja: 'japkougo',
+	ja: 'owb-ja-b',
 	ru: 'synodal'
 };
 
@@ -64,16 +64,18 @@ const PASSAGES = {
 };
 
 const QUOTES = /^[\s“”‘’"]+|[\s“”‘’"]+$/g;
-// OWB English quotes with straight marks: Numbers 6:26 closes on ."' (the
-// Lord's speech, then Moses').
+// OWB English and Swahili quote with straight marks: Numbers 6:26 closes on
+// ."' (the Lord's speech, then Moses'). Only the ends are trimmed, so a
+// word-internal apostrophe (Swahili aung'aze) is kept.
 const STRAIGHT = /^[\s“”‘’"']+|[\s“”‘’"']+$/g;
+const STRAIGHT_QUOTED = new Set(['en', 'sw']);
 
 function clean(text, locale) {
-	let s = text.replace(locale === 'en' ? STRAIGHT : QUOTES, '');
+	let s = text.replace(STRAIGHT_QUOTED.has(locale) ? STRAIGHT : QUOTES, '');
 	if (locale === 'fr') s = s.replace(/’ /g, '’').replace(/ ’/g, '’');
 	if (locale === 'vi') s = s.replace(/Ð/g, 'Đ');
-	// Japanese: the 口語訳 sets the Aaronic blessing inside the speech that
-	// frames it (「…」』。), and writes no spaces (its verses also join with
+	// Japanese: OWB sets the Aaronic blessing inside the speech that frames
+	// it (「…」), and Japanese writes no spaces (its verses also join with
 	// none — see the join below).
 	if (locale === 'ja') s = s.replace(/^[\s「『]+|[\s」』]+。?$/g, '').replace(/\s+/g, '');
 	// Russian: the Synodal brackets words its editors supplied (Иисуса
@@ -88,13 +90,23 @@ function clean(text, locale) {
 
 /** The bundled Open Word Bible, as Take Root shapes a chapter. */
 const OWB_BOOKS = { NUM: [4, 'Numbers'], ROM: [45, 'Romans'], JUD: [65, 'Jude'], HEB: [58, 'Hebrews'], '2CO': [47, '2 Corinthians'] };
-/** Amharic book names as the Amharic library cites them (counted across its .am fixtures). */
-const AM_BOOKS = { NUM: 'ዘኍልቍ', ROM: 'ሮሜ', JUD: 'ይሁዳ', HEB: 'ዕብራውያን', '2CO': '2ኛ ቆሮንቶስ' };
+/**
+ * Book names for the OWB locales other than English, as each library already
+ * cites them (counted across its fixtures), not OWB's own spellings. Amharic
+ * moved to OWB on 2026-11-18, Swahili and Japanese on 2026-11-19 (founder
+ * decisions: every work in those languages quotes OWB). Swahili and Japanese
+ * keep the forms their earlier Bibles printed here.
+ */
+const OWB_BOOK_NAMES = {
+	'owb-am-b': { NUM: 'ዘኍልቍ', ROM: 'ሮሜ', JUD: 'ይሁዳ', HEB: 'ዕብራውያን', '2CO': '2ኛ ቆሮንቶስ' },
+	'owb-sw-b': { NUM: 'Hesabu', ROM: 'Warumi', JUD: 'Yuda', HEB: 'Waebrania', '2CO': '2 Wakorintho' },
+	'owb-ja-b': { NUM: '民数記', ROM: 'ローマ', JUD: 'ユダ', HEB: 'ヘブル', '2CO': 'コリント第二' }
+};
 const owbCache = {};
 function owbChapter(code, usfm, ch) {
 	const owb = (owbCache[code] ??= JSON.parse(gunzipSync(readFileSync(owbFile(code))).toString('utf-8')).verses);
 	const [number, english] = OWB_BOOKS[usfm];
-	const name = code === 'owb-am-b' ? AM_BOOKS[usfm] : english;
+	const name = OWB_BOOK_NAMES[code]?.[usfm] ?? english;
 	const base = number * 1_000_000 + ch * 1000;
 	// Every verse of the chapter, past any OWB lacks; a verse it prints joined
 	// to the one before (Psalm 13:5-6) is that one's entry, as Take Root gives it.

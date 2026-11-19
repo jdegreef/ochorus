@@ -649,6 +649,54 @@ class BundledOwbBibleTests(SimpleTestCase):
         self.assertEqual(scripture.owb_verse(43003016), scripture.owb_verse(43003016, "en"))
         self.assertNotEqual(scripture.owb_verse(43003016)[1], scripture.owb_verse(43003016, "am")[1])
 
+
+class SwahiliAndJapaneseQuoteOwbTests(SimpleTestCase):
+    """Swahili and Japanese quote OWB too (founder decision, 2026-11-19).
+
+    Both are bundled like Amharic, both languages' Bible code in the seed is
+    their ``owb-`` id (so every translation job reads the bundle, offline), and
+    the Japanese bundle carries no ASCII space: OWB's exporter joins poetic
+    lines with one, and Japanese writes none.
+    """
+
+    def test_both_are_bundled_with_the_whole_bible(self):
+        from library import scripture
+
+        for lang in ("sw", "ja"):
+            with self.subTest(lang=lang):
+                self.assertIn(lang, scripture.owb_languages())
+                verses, _joined = scripture._owb(lang)
+                self.assertGreater(len(verses), 31000)  # all 66 books
+                self.assertIn(1001001, verses)  # Genesis 1:1
+                self.assertIn(66022021, verses)  # Revelation 22:21
+
+    def test_the_seed_points_both_languages_at_their_bundle(self):
+        from library.language_seed import SEED_LANGUAGES
+        from library import translation as m
+
+        for lang in ("sw", "ja"):
+            with self.subTest(lang=lang):
+                code = SEED_LANGUAGES[lang]["bible"]
+                self.assertEqual(code, f"owb-{lang}")
+                with mock.patch.object(m.requests, "get", side_effect=AssertionError("network")):
+                    self.assertTrue(m.fetch_verse_text(code, "John 3:16"))
+
+    def test_swahili_reads_the_owb_wording(self):
+        from library import translation as m
+
+        self.assertTrue(
+            m.fetch_verse_text("owb-sw", "John 3:16").startswith("Kwa maana Mungu aliupenda ulimwengu"),
+        )
+
+    def test_japanese_has_no_ascii_space(self):
+        from library import scripture
+
+        verses, _joined = scripture._owb("ja")
+        spaced = [vid for vid, text in verses.items() if " " in text]
+        self.assertEqual(spaced, [])
+        # Psalm 23:1 is poetry: its lines now join with nothing between them.
+        self.assertEqual(scripture.owb_verse(19023001, "ja")[1], "ダビデの賛歌。主はわたしの羊飼い。わたしが乏しくなることは決してない。")
+
     def test_the_canonical_book_order_matches_owbs_verse_ids(self):
         from library import translation as m
 
