@@ -16,6 +16,7 @@ from library.management.commands.build_praying_witnesses import (
     SERIES_DIR,
     VOLUMES,
     chapter_rows,
+    era_year,
 )
 
 
@@ -41,3 +42,14 @@ class VolumesInStepTests(SimpleTestCase):
                     f"{meta['slug']}.en.json is stale: run build_praying_witnesses {volume} "
                     "and serialize the book",
                 )
+
+
+class EraYearTests(SimpleTestCase):
+    """The series timeline (the last volume's Appendix C) sorts on ``era_year``."""
+
+    def test_bc_eras_sort_before_ad_and_open_eras_last(self):
+        cases = ["today", "c. AD 30", "c. 1850 BC", "c. 1920-1972", "c. 1000-587 BC", "AD 203"]
+        self.assertEqual(
+            sorted(cases, key=era_year),
+            ["c. 1850 BC", "c. 1000-587 BC", "c. AD 30", "AD 203", "c. 1920-1972", "today"],
+        )

@@ -15,15 +15,21 @@ A volume is three files under ``data/a-cloud-of-praying-witnesses/``:
   chapter), its key verse (which the chapter must cite) and the theme of each
   of its three key insights, from the series' ``THEMES``; the insights
   themselves are read from the chapter's own "Three key insights" list.
-  ``person``, ``era``, ``region``, ``voices`` and ``read_more`` are not read
-  here: they are kept for the last volume's timeline and reading list, which
-  gather every volume's records;
+  ``person``, ``era``, ``region`` and ``read_more`` feed the last volume's
+  timeline and reading list, which gather every volume's records;
 - ``volume-NN.appendices.md``, GENERATED from the other two and never edited:
   Appendix 1 gathers the insights by theme; Appendix 2 indexes every Scripture
   the chapters cite, read from the prose with ``scripture.extract_citations``
   (the reader's own citation grammar), so a verse added to a chapter is
   indexed on the next build. Committed so it can be reviewed like the
   chapters; ``tests_praying_witnesses`` fails when it is stale.
+
+The last volume (``FINAL_VOLUME``) carries the series appendices in place of its
+own two: A and B merge every volume's insights and Scripture index, C is a
+timeline of every chapter's ``person``/``era``/``region``, D is the hand-written
+methods toolkit (``series-toolkit.md``), and E lists every chapter's
+``read_more`` books. Because they read every volume, an edit to any volume makes
+the last volume's appendices stale too, and the same test says so.
 
 Fixture-driven: ``seed_books`` creates the book on the next deploy from
 ``fixtures/content/books/<slug>.en.json``. Idempotent. The series row lives in
@@ -808,15 +814,13 @@ def _span(ref: str) -> tuple[int, int] | None:
     return (min(ids), max(ids)) if ids else None
 
 
-def appendices(sections: list[tuple[str, str]], entries: list[dict]) -> str:
-    """Both appendices for a volume from its parsed ``(title, html)`` sections."""
+def _gather(sections, entries, label, by_theme, refs) -> None:
+    """Add one volume's key insights (by theme) and Scripture citations to the
+    running indexes; ``label(i, title)`` names a section in an index line."""
     if [title for title, _ in sections] != [e["title"] for e in entries]:
         raise CommandError("volume's chapters.json titles do not match the manuscript's ## headings, in order")
-    last = len(entries) - 1
-    by_theme: dict[str, list[str]] = {t: [] for t in THEMES}
-    refs: dict[tuple[int, int], dict] = {}
     for i, ((title, body), e) in enumerate(zip(sections, entries, strict=True)):
-        label = _label(i, last, title)
+        name = label(i, title)
         found = _INSIGHTS.search(body)
         insights = [html.unescape(x) for x in _INSIGHT.findall(found.group(1))] if found else []
         if len(insights) != len(e["themes"]):
@@ -824,43 +828,164 @@ def appendices(sections: list[tuple[str, str]], entries: list[dict]) -> str:
         for text, theme in zip(insights, e["themes"], strict=True):
             if theme not in by_theme:
                 raise CommandError(f"{title!r}: unknown theme {theme!r}; add it to THEMES")
-            by_theme[theme].append(f"- **{text}** {label} ({e['anchor']})")
+            by_theme[theme].append(f"- **{text}** {name} ({e['anchor']})")
         anchor = _span(e["anchor"])
         cited = {(c["start"], c["end"]): c["ref"] for c in scripture.extract_citations(body)}
         if anchor not in cited:
             raise CommandError(f"{title!r}: its key verse {e['anchor']!r} is not cited in the chapter")
         for span, ref in cited.items():
             r = refs.setdefault(span, {"ref": ref, "chapters": []})
-            r["chapters"].append(label + (" (key verse)" if span == anchor else ""))
+            r["chapters"].append(name + (" (key verse)" if span == anchor else ""))
 
-    out = [
-        "## Appendix 1: Key Insights",
-        "",
-        "Every chapter of this book closes with three key insights. Here they are "
-        "gathered by theme, each pointing back to the chapter where it is taught "
-        "and to that chapter's key verse.",
-    ]
+
+def _insights_md(heading: str, intro: str, by_theme: dict[str, list[str]]) -> list[str]:
+    out = [heading, "", intro]
     for theme in THEMES:
         if by_theme[theme]:
             out += ["", f"### {theme}", "", *by_theme[theme]]
+    return out
+
+
+def _scripture_md(heading: str, intro: str, refs: dict) -> list[str]:
+    out = [heading, "", intro]
+    book_heading = None
+    for _, r in sorted(refs.items()):
+        if (book := scripture.book_of(r["ref"])) is None:
+            raise CommandError(f"{r['ref']!r} names no book of the Bible")
+        if book[0] != book_heading:
+            book_heading = book[0]
+            out += ["", f"### {book_heading}", ""]
+        out.append(f"- **{r['ref']}**: {'; '.join(r['chapters'])}")
+    return out
+
+
+def appendices(sections: list[tuple[str, str]], entries: list[dict]) -> str:
+    """Both appendices for a volume from its parsed ``(title, html)`` sections."""
+    last = len(entries) - 1
+    by_theme: dict[str, list[str]] = {t: [] for t in THEMES}
+    refs: dict[tuple[int, int], dict] = {}
+    _gather(sections, entries, lambda i, title: _label(i, last, title), by_theme, refs)
+    out = _insights_md(
+        "## Appendix 1: Key Insights",
+        "Every chapter of this book closes with three key insights. Here they are "
+        "gathered by theme, each pointing back to the chapter where it is taught "
+        "and to that chapter's key verse.",
+        by_theme,
+    )
+    out += ["", "---", ""]
+    out += _scripture_md(
+        "## Appendix 2: Scripture Index",
+        "Every passage of Scripture quoted or referred to in this book, in Bible "
+        'order, with the chapters where it appears. "Key verse" marks the '
+        "Scripture a chapter is built on.",
+        refs,
+    )
+    return "\n".join(out) + "\n"
+
+
+# ── The series appendices (the last volume only) ────────────────────────────
+
+# The last volume closes the series: in place of its own two appendices it
+# carries five for the whole series. A, B, C and E are generated from every
+# volume's manuscript and records; D, the methods toolkit, is written by hand.
+FINAL_VOLUME = 11
+TOOLKIT = SERIES_DIR / "series-toolkit.md"
+
+_YEAR = re.compile(r"\d+")
+
+
+def era_year(era: str) -> int:
+    """A sortable year for a record's ``era``: its first number, negative when
+    the era is BC; "today" and the like sort last."""
+    found = _YEAR.search(era)
+    if not found:
+        return 10_000
+    year = int(found.group())
+    return -year if "BC" in era[found.end():] else year
+
+
+def _series_label(volume: int, last: int):
+    def label(i: int, title: str) -> str:
+        if i == 0:
+            return f"Vol. {volume}, Introduction"
+        if i == last:
+            return f"Vol. {volume}, Conclusion"
+        return f"Vol. {volume}, ch. {i}, *{title}*"
+
+    return label
+
+
+def _book_titles() -> dict[str, str]:
+    """``slug -> "*Title*, Author"`` for every English book the reading list may name."""
+    from library.content_fixtures import BOOKS_DIR
+
+    authors = {
+        r["fields"]["slug"]: r["fields"]["name"]
+        for r in json.loads((BOOKS_DIR.parent / "authors.json").read_text())
+    }
+    titles = {}
+    for path in BOOKS_DIR.glob("*.en.json"):
+        book = json.loads(path.read_text())[0]["fields"]
+        titles[path.name[: -len(".en.json")]] = f"*{book['title']}*, {authors.get(book['author'][0], '')}".rstrip(", ")
+    return titles
+
+
+def series_appendices(volumes: dict[int, tuple[list[tuple[str, str]], list[dict]]]) -> str:
+    """The series appendices A to E from every volume's ``(sections, entries)``."""
+    by_theme: dict[str, list[str]] = {t: [] for t in THEMES}
+    refs: dict[tuple[int, int], dict] = {}
+    for volume, (sections, entries) in sorted(volumes.items()):
+        _gather(sections, entries, _series_label(volume, len(entries) - 1), by_theme, refs)
+    out = _insights_md(
+        "## Appendix A: Key Insights from the Whole Series",
+        "Every chapter of every volume closes with three key insights. Here they are "
+        "all gathered by theme, each pointing back to its volume and chapter and to "
+        "that chapter's key verse.",
+        by_theme,
+    )
+    out += ["", "---", ""]
+    out += _scripture_md(
+        "## Appendix B: Scripture Index to the Whole Series",
+        "Every passage of Scripture quoted or referred to in the eleven volumes, in "
+        'Bible order, with the volumes and chapters where it appears. "Key verse" '
+        "marks the Scripture a chapter is built on.",
+        refs,
+    )
+
+    lives = []
+    for volume, (sections, entries) in sorted(volumes.items()):
+        if volume == FINAL_VOLUME:
+            continue
+        for i, e in enumerate(entries[1:-1], start=1):
+            lives.append((era_year(e["era"]), volume, i, e))
     out += [
         "",
         "---",
         "",
-        "## Appendix 2: Scripture Index",
+        "## Appendix C: Timeline",
         "",
-        "Every passage of Scripture quoted or referred to in this book, in Bible "
-        'order, with the chapters where it appears. "Key verse" marks the '
-        "Scripture a chapter is built on.",
+        "Every person and movement in the series on one line, in the order of their "
+        "times. Dates are as each chapter gives them, most of them approximate.",
+        "",
     ]
-    heading = None
-    for _, r in sorted(refs.items()):
-        if (book := scripture.book_of(r["ref"])) is None:
-            raise CommandError(f"{r['ref']!r} names no book of the Bible")
-        if book[0] != heading:
-            heading = book[0]
-            out += ["", f"### {heading}", ""]
-        out.append(f"- **{r['ref']}**: {'; '.join(r['chapters'])}")
+    for _, volume, i, e in sorted(lives, key=lambda x: x[:3]):
+        out.append(f"- **{e['era']}**: {e['person']}, {e['region']}. Vol. {volume}, ch. {i}, *{e['title']}*")
+
+    out += ["", "---", "", TOOLKIT.read_text().strip(), "", "---", ""]
+
+    titles = _book_titles()
+    out += [
+        "## Appendix E: Keep Reading on Ochorus",
+        "",
+        "The books in the Ochorus library that each chapter recommends, volume by "
+        "volume, so that you can go on listening to the witnesses in their own words.",
+    ]
+    for volume, (sections, entries) in sorted(volumes.items()):
+        out += ["", f"### Volume {volume}", ""]
+        for i, e in enumerate(entries[1:-1], start=1):
+            books = [titles[s] for s in e.get("read_more", []) if s in titles]
+            if books:
+                out.append(f"- **Ch. {i}, *{e['title']}***: {'; '.join(books)}")
     return "\n".join(out) + "\n"
 
 
@@ -880,10 +1005,16 @@ def chapter_rows(volume: int) -> tuple[list[tuple[str, str]], str]:
 
 def volume_text(volume: int) -> tuple[list[tuple[str, str]], str]:
     """A volume's parsed manuscript sections and its generated appendices."""
+    sections, entries = _volume_records(volume)
+    if volume != FINAL_VOLUME:
+        return sections, appendices(sections, entries)
+    return sections, series_appendices({v: _volume_records(v) for v in sorted(VOLUMES)})
+
+
+def _volume_records(volume: int) -> tuple[list[tuple[str, str]], list[dict]]:
+    """A volume's parsed manuscript sections and its chapter records."""
     stem = SERIES_DIR / f"volume-{volume:02d}"
-    sections = parse(stem.with_suffix(".md").read_text())
-    entries = json.loads(stem.with_suffix(".chapters.json").read_text())
-    return sections, appendices(sections, entries)
+    return parse(stem.with_suffix(".md").read_text()), json.loads(stem.with_suffix(".chapters.json").read_text())
 
 
 # ── The book ────────────────────────────────────────────────────────────────
