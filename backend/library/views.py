@@ -133,6 +133,8 @@ def _language_entry(code: str) -> dict:
 class AuthorListView(PublicContentCacheMixin, generics.ListAPIView):
     """Authors for the Biographies page: anyone with a bio OR a book to read."""
 
+    response_cache = True
+
     serializer_class = AuthorListSerializer
 
     def get_queryset(self):
@@ -257,6 +259,8 @@ class OriginalsView(PublicContentCacheMixin, APIView):
     alone on the shelf rather than sitting under an English heading.
     """
 
+    response_cache = True
+
     def get(self, request):
         lang = _language(request)
         imprint = Q(author__is_imprint=True, is_published=True)
@@ -306,6 +310,8 @@ class OriginalsView(PublicContentCacheMixin, APIView):
 
 class BookListView(PublicContentCacheMixin, generics.ListAPIView):
     """All published books for a language, ordered for the shelf."""
+
+    response_cache = True
 
     serializer_class = BookListSerializer
 
@@ -518,6 +524,8 @@ def _epub_etag(request) -> str:
 class SermonListView(PublicContentCacheMixin, generics.ListAPIView):
     """All published sermons for a language, ordered for the shelf."""
 
+    response_cache = True
+
     serializer_class = SermonListSerializer
 
     def get_queryset(self):
@@ -552,6 +560,8 @@ class SermonDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
 
 class ArticleListView(PublicContentCacheMixin, generics.ListAPIView):
     """All published articles for a language, newest curation first."""
+
+    response_cache = True
 
     serializer_class = ArticleListSerializer
 
@@ -695,6 +705,8 @@ def _plan_card_context(plans, language: str) -> dict:
 
 class PlanListView(PublicContentCacheMixin, generics.ListAPIView):
     """Published reading plans for a language."""
+
+    response_cache = True
 
     serializer_class = PlanListSerializer
 
@@ -947,6 +959,8 @@ class SeriesListView(PublicContentCacheMixin, APIView):
     Both are read in bulk for the whole list rather than per series.
     """
 
+    response_cache = True
+
     def get(self, request):
         return Response(_series_rows(_language(request)))
 
@@ -1060,6 +1074,8 @@ def audience_book_slugs(audience: str) -> set[str]:
 class AudienceLanguagesView(PublicContentCacheMixin, APIView):
     """``{audience: [languages]}`` for both young-reader hubs — what the home
     page's hub links and the sitemap need, without building either shelf."""
+
+    response_cache = True
 
     def get(self, request):
         return Response(
@@ -1642,6 +1658,8 @@ class HubListView(PublicContentCacheMixin, APIView):
     ``library/hubs.py`` for the rule and the data. The list is small (a few
     dozen), so it is the one endpoint for both the index rows and a hub page."""
 
+    response_cache = True
+
     def get(self, request):
         return Response(Hubs().for_language(_language(request)))
 
@@ -1650,6 +1668,8 @@ class TopicListView(PublicContentCacheMixin, generics.ListAPIView):
     """Published topical shelves that have at least one member — book OR sermon —
     in the requested language, so a partially-translated library never shows an
     empty shelf. Localized titles/descriptions, with a few sample tiles each."""
+
+    response_cache = True
 
     serializer_class = TopicListSerializer
 
