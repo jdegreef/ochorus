@@ -387,6 +387,30 @@ class AuthorTranslation(models.Model):
 SERMON_CARD_DEFER = ("body_html", "body_text", "search_vector")
 
 
+#: The book columns no CARD reads (``BookListSerializer``): the page's own Q&A,
+#: about and quiz blocks and the long description. ``qa`` alone was 859 KB of
+#: the English list's rows (2026-11-19). Deferred only on the list, topic and
+#: series querysets, which serve nothing but cards.
+BOOK_CARD_DEFER = ("description", "about_html", "qa", "quiz", "parts")
+
+
+#: The author columns no CARD reads, deferred on every card queryset that
+#: ``select_related("author")``s. A join builds a fresh Author per row, so a
+#: list of 464 English books held 464 copies of a handful of long-form
+#: biographies (``bio_html``, 1.8 MB in English alone) and their Q&A sets.
+#: Measured 2026-11-19, when the web build's crawl was pushing the 512 MB API
+#: to its limit. A card reads slug, name, bio, tagline, photo, years and
+#: is_imprint (``AuthorSerializer``), and ``bio_for`` reads original_language.
+AUTHOR_CARD_DEFER = (
+    "author__bio_html",
+    "author__faq",
+    "author__milestones",
+    "author__same_as",
+    "author__photo_attribution",
+    "author__photo_source_url",
+)
+
+
 #: What a quote's joined source rows carry that no quote card reads: the card
 #: needs titles and slugs, never the bodies they sit in (nor any search vector —
 #: select_related joins past the managers that would defer them).
