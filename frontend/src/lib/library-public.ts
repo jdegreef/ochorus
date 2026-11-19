@@ -27,6 +27,11 @@ export interface Author {
 	is_imprint?: boolean;
 }
 
+/** The author on a book or sermon CARD (list endpoints): no bio, which every
+ *  row used to repeat. Pages that show the bio read it from their own detail
+ *  endpoint (BookDetail.author, AuthorDetail, AuthorBio). */
+export type CardAuthor = Omit<Author, 'bio'>;
+
 export type SourceType = 'public_domain' | 'ai_reviewed' | 'ai_unreviewed';
 
 /**
@@ -63,7 +68,7 @@ export interface BookSummary {
 	 *  sound nice…"), in this edition's language; "" for most books. Optional:
 	 *  an API behind this build omits it, and the card shows no line. */
 	hook?: string;
-	author: Author;
+	author: CardAuthor;
 	source_type: SourceType;
 	cover_color: string;
 	cover_url: string;
@@ -262,7 +267,9 @@ export interface BookSeries {
 	next: SeriesVolume | null;
 }
 
-export interface BookDetail extends BookSummary {
+export interface BookDetail extends Omit<BookSummary, 'author'> {
+	/** The full author, bio included (the card's has none). */
+	author: Author;
 	description: string;
 	/** A hand-written search snippet (~90–125 chars), or "" when none has been
 	 *  written for this edition — the page then trims `description` instead.
@@ -743,7 +750,9 @@ export interface SermonSummary {
 	summary: string;
 	preached_on: string | null;
 	word_count: number;
-	author: Author;
+	/** `bio` comes only when the author has no `tagline` (the shelf heading
+	 *  reads `tagline || bio`). */
+	author: CardAuthor & { bio?: string };
 	/** Published topics this sermon belongs to (for the shelf's topic filter). */
 	topics: TopicChip[];
 	/** When the sermon was added to Ochorus (ISO) — powers the "recent" feed. */
