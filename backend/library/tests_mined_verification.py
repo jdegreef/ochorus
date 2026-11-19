@@ -99,8 +99,9 @@ class OwbMinedTests(SimpleTestCase):
 
     def test_only_a_bundled_language_is_checkable(self):
         self.assertEqual(mv.owb_language("Open Word Bible (OWB), Balanced edition, Amharic"), "am")
-        # Swahili OWB is quoted (jesus-teacher-of-prayer.sw) but not bundled: unchecked, as before.
-        self.assertIsNone(mv.owb_language("Open Word Bible (OWB), Balanced edition, Swahili"))
+        # Swahili and Japanese are bundled too (founder decision, 2026-11-19).
+        self.assertEqual(mv.owb_language("Open Word Bible (OWB), Balanced edition, Swahili"), "sw")
+        self.assertIsNone(mv.owb_language("Open Word Bible (OWB), Balanced edition, Klingon"))
         self.assertIsNone(mv.owb_language("Amharic Bible 1962/2003 (UBS), NT — ebible amh"))
 
     def test_a_reference_resolves_to_its_owb_wording(self):
@@ -117,6 +118,14 @@ class OwbMinedTests(SimpleTestCase):
         self.assertTrue(mv.is_verbatim("አንተ መልካም ነህ፤ መልካምንም ታደርጋለህ", verse))
         # The old self-rendered wording of the same clause is not OWB.
         self.assertFalse(mv.is_verbatim("አንተ ቸር ነህ፥ ቸርነትንም ታደርጋለህ", verse))
+
+    def test_pieces_joined_by_an_ellipsis_are_verbatim_in_order(self):
+        verse = mv.owb_text("Jonah 2:9", "sw")
+        self.assertTrue(mv.is_verbatim("Mimi nitakutolea dhabihu kwa wimbo wa shukrani... Ni BWANA anayeokoa", verse))
+        self.assertTrue(mv.is_verbatim("Mimi nitakutolea dhabihu kwa wimbo wa shukrani… Ni BWANA anayeokoa", verse))
+        # Out of order, or a reworded piece, is not.
+        self.assertFalse(mv.is_verbatim("Ni BWANA anayeokoa… Mimi nitakutolea dhabihu", verse))
+        self.assertFalse(mv.is_verbatim("Mimi nitakutolea sadaka… Ni BWANA anayeokoa", verse))
 
     def test_the_corpus_has_owb_rows_and_none_contradict(self):
         findings, census = mv.audit()

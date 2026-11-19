@@ -276,10 +276,32 @@ def same_verse(a: str, b: str) -> bool:
     return len(wa & wb) / min(len(wa), len(wb)) >= SAME_VERSE_OVERLAP
 
 
+_ELLIPSIS = re.compile(r"\s*(?:\u2026|\.{3})\s*")
+
+
 def is_verbatim(translation: str, source: str) -> bool:
-    """Verbatim in the containment sense — rule 3."""
+    """Verbatim in the containment sense — rule 3.
+
+    A quotation joined with an ellipsis ("Mpaka lini… na kutulipia kisasi?")
+    is verbatim when each piece is, in order: the translation-worker rules
+    allow joined pieces, and the gap is the quoter's, not a rewording.
+    """
     t, s = vc.normalise(translation), vc.normalise(source)
-    return bool(t) and bool(s) and (t in s or s in t)
+    if not t or not s:
+        return False
+    if t in s or s in t:
+        return True
+    pieces = [vc.normalise(p) for p in _ELLIPSIS.split(translation)]
+    pieces = [p for p in pieces if p]
+    if len(pieces) < 2:
+        return False
+    at = 0
+    for piece in pieces:
+        at = s.find(piece, at)
+        if at < 0:
+            return False
+        at += len(piece)
+    return True
 
 
 def audit(notes_dir: Path | None = None) -> tuple[list[Finding], Counter]:
