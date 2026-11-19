@@ -42,16 +42,10 @@ _DASHES = {"—", "–", "-", "&", "·"}
 #: plus a title, not "conclusion a call").
 EXCLUDE = frozenset({
     "Conclusion A Call to Action and a Closing Prayer",
-    # "Appendix A" is a label (the lettered appendix), not the article.
-    "Appendix A: Scripture Texts That Moulded George Müller",
-    "Appendix A: Twenty-Five Lessons from Hyde’s Prayer Life",
-    "Appendix A: Lessons from the Life of Corrie ten Boom",
-    "Appendix A: Twenty-Five Core Teachings of Watchman Nee",
-    "Appendix A: Lessons from the Life of Mary Slessor",
-    "Appendix A: Lessons from the Life of Samuel Ajayi Crowther",
-    "Appendix A: Lessons from the Life of Pandita Ramabai",
-    "Appendix A: Lessons from the Life of Elisabeth Elliot",
 })
+
+#: Words a single letter after is a label, not the article: "Appendix A: …".
+_LETTER_LABELS = {"Appendix", "Part", "Section"}
 
 
 def is_title_case(t: str) -> bool:
@@ -90,6 +84,7 @@ def recase_title(title: str) -> str:
         letters = re.sub(r"[^A-Za-z]", "", tok)
         if (
             letters
+            and not (prev in _LETTER_LABELS and len(letters) == 1)
             and letters.lower() in MINOR
             and letters[:1].isupper()
             and not clause_start

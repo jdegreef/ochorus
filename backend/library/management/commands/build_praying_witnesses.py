@@ -843,7 +843,7 @@ VOLUMES: dict[int, dict[str, object]] = {
                 },
                 {
                     "question": "What are the appendices at the end of the book?",
-                    "answer": "Five appendices for the whole series: every key insight from all eleven volumes by theme, a Scripture index from Genesis to Revelation, a timeline of every person and movement, a toolkit of simple ways to pray, and the books on Ochorus where you can keep reading.",
+                    "answer": "Five appendices for the whole series: every key insight from all eleven volumes by theme, a Scripture index from Genesis to Revelation, a timeline of every person and movement, a toolkit of simple ways to pray, and the books in the library where you can keep reading.",
                 },
                 {
                     "question": "Can I read it with a small group?",
