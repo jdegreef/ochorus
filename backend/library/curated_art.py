@@ -1770,6 +1770,12 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "left, a small church with a cross and a lit door in the middle, and the "
         "towers of a modern city in the haze on the right. No likeness.",
     ),
+    "golden-bowls": Original(
+        "c7e8581f2d2f4a9a6b126fc7512514b70e71c50e775d4140c613d534ff771df6",
+        "Psalm 141:2, Revelation 5:8: evening, the sun going down on the right and "
+        "the first stars out; low on the left a house with a lit window and smoke "
+        "rising like incense, and a figure kneeling beside it. No likeness.",
+    ),
     # The Lamplighters of Gloamhaven, Book 2 — a companion to Book 1's ground:
     # the same slate dark and the Flame's gold, now underground. A vast cavern
     # under faint stalactites; low on the left, Tobin climbs the Black Stair

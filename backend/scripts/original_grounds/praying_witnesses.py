@@ -72,6 +72,14 @@ Vol. 10: Every Tribe and Tongue. Afternoon, the sun on the left: village homes
 low on the left, a small church with its cross in the middle, and the towers of
 a modern city in the haze on the right, the church of every land at prayer
 (Revelation 7:9). No particular place.
+
+Vol. 11: Golden Bowls. Evening, the end of the series' day: the sun going down
+behind the far hills on the right, the sky deepening from amber to indigo and
+the first stars and the evening star coming out above, as they shone over Vol.
+1. On the near ridge, low left, a small house with a lit window and door and a
+thin line of smoke rising from its roof like incense, and beside it one figure
+kneeling: "Let my prayer stand before you like incense, my lifted hands like the
+offering at evening" (Psalm 141:2; Revelation 5:8). No likeness.
 """
 import pathlib
 import random
@@ -475,6 +483,47 @@ VOL10 = f'''<!doctype html><html><body style="margin:0;background:#000">
 <rect width="600" height="800" fill="url(#grain)"/>
 </svg></body></html>'''
 
+VOL11 = f'''<!doctype html><html><body style="margin:0;background:#000">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#0d1230"/><stop offset=".32" stop-color="#232a56"/>
+  <stop offset=".46" stop-color="#5a4772"/><stop offset=".54" stop-color="#b06a5e"/>
+  <stop offset=".60" stop-color="#e59a56"/><stop offset="1" stop-color="#e59a56"/>
+ </linearGradient>
+ <radialGradient id="sun" cx="455" cy="488" r="210" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#ffe2a0" stop-opacity=".95"/>
+  <stop offset=".22" stop-color="#f2a85c" stop-opacity=".55"/>
+  <stop offset="1" stop-color="#e59a56" stop-opacity="0"/>
+ </radialGradient>
+ <linearGradient id="smoke" x1="0" y1="1" x2="0" y2="0">
+  <stop offset="0" stop-color="#d9c6c0" stop-opacity=".55"/>
+  <stop offset="1" stop-color="#d9c6c0" stop-opacity="0"/>
+ </linearGradient>
+ {GRAIN}
+</defs>
+<rect width="600" height="800" fill="url(#sky)"/>
+<rect width="600" height="800" fill="url(#sun)"/>
+{stars(11, n=70, ymax=300)}
+<circle cx="168" cy="118" r="2.1" fill="#fff" opacity=".95"/>
+<circle cx="452" cy="86" r="1.6" fill="#fff" opacity=".8"/>
+<circle cx="455" cy="488" r="24" fill="#fff4d6" opacity=".95"/>
+{ridge([(0, 482), (90, 476), (180, 482), (270, 474), (360, 480), (440, 487), (520, 481), (600, 476)], "#5e3f52")}
+{ridge([(0, 496), (80, 492), (160, 497), (250, 501), (340, 498), (430, 493), (520, 497), (600, 494)], "#2a2034")}
+<g fill="#0a0810">
+ <path d="M0 800 L0 507 L110 504 L220 507 L330 509 L440 506 L530 504 L600 506 L600 800 Z"/>
+ <rect x="70" y="488" width="44" height="18"/><path d="M66 490 L92 474 L118 490 Z"/>
+ <rect x="102" y="476" width="6" height="10"/>
+ <path d="M134 506 C135 497 138 490 144 486 C148 483 153 482 156 485 C159 488 160 492 159 497 L168 501 C171 503 170 506 166 506 Z"/>
+ <circle cx="154.5" cy="480.5" r="5.2"/>
+ <path d="M154 489 C158 487 162 486 164 487 C165 489 164 491 161 492 C158 493 155 493 154 492 Z"/>
+</g>
+<path d="M105 476 C100 468 110 462 104 454 C99 447 108 441 103 433" fill="none" stroke="url(#smoke)" stroke-width="2.4" stroke-linecap="round"/>
+<rect x="78" y="493" width="6" height="6" fill="#f2b66a" opacity=".85"/>
+<rect x="96" y="494" width="7" height="12" fill="#f2b66a" opacity=".7"/>
+<rect width="600" height="800" fill="url(#grain)"/>
+</svg></body></html>'''
+
 SCENES = {
     "the-prayers-jesus-learned": VOL1,
     "jesus-teacher-of-prayer": VOL2,
@@ -486,6 +535,7 @@ SCENES = {
     "open-your-mouth-wide": VOL8,
     "revival-fires": VOL9,
     "every-tribe-and-tongue": VOL10,
+    "golden-bowls": VOL11,
 }
 
 if __name__ == "__main__":

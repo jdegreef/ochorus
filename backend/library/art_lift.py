@@ -62,6 +62,7 @@ ART_LIFT: dict[str, float] = {
     "foxes-book-of-martyrs-teens": 1.45,
     "george-muller-of-bristol": 1.45,
     "godliness": 1.10,
+    "golden-bowls": 1.45,
     "grace-abounding-teens": 1.45,
     "growing-in-wisdom": 1.45,
     "heretics": 1.45,

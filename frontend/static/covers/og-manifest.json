@@ -20137,6 +20137,40 @@
 				525
 			]
 		},
+		"golden-bowls": {
+			"ground": "222fe90a55bcfda150f97a72602a4e1578133b0efc2ef7341161507fd0effd4a",
+			"style": "originals",
+			"volume": "11",
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.85,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[283, 283, 317, 327],
+					[95, 361, 505, 437]
+				],
+				"subtitle": [
+					[130, 495, 470, 523]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				523
+			]
+		},
 		"gospel-of-john": {
 			"ground": "d6fc28dbb66e196887b195f658501a0a01617983fae50f9ecfbe77d7d250190c",
 			"style": "devotional",
