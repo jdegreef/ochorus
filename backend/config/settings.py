@@ -520,8 +520,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # content_version is here for the same reason collectstatic is: the image build
 # runs it (Dockerfile) to bake the content digest, long before DATABASE_URL or
-# SUPABASE_URL exist. It reads files and touches neither.
-_NO_CONFIG_COMMANDS = {"test", "collectstatic", "makemigrations", "content_version"}
+# SUPABASE_URL exist. It reads files and touches neither. build_bible_store is
+# the same: the Dockerfile bakes the on-disk Bible store from bundled files.
+_NO_CONFIG_COMMANDS = {
+    "test",
+    "collectstatic",
+    "makemigrations",
+    "content_version",
+    "build_bible_store",
+}
 _skip_config_checks = len(sys.argv) > 1 and sys.argv[1] in _NO_CONFIG_COMMANDS
 
 if not DEBUG and not _skip_config_checks:
