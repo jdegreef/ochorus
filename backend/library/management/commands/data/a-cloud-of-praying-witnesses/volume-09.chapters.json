@@ -1,0 +1,523 @@
+[
+  {
+    "title": "Introduction: Where We Are in the Story",
+    "anchor": "Zechariah 4:6",
+    "themes": [],
+    "person": null,
+    "era": "c. 1900-1950",
+    "region": "The whole world",
+    "voices": [],
+    "read_more": []
+  },
+  {
+    "title": "\"Bend Me\"",
+    "anchor": "Ephesians 5:18",
+    "themes": [
+      "Guidance and Surrender",
+      "Humility and Mercy",
+      "Praying for Others"
+    ],
+    "person": "Evan Roberts and the Welsh Revival",
+    "era": "c. 1904",
+    "region": "Loughor (Wales)",
+    "voices": [
+      {
+        "author": "dwight-l-moody",
+        "book": "secret-power",
+        "chapter": "Power: In and Upon"
+      }
+    ],
+    "read_more": [
+      "secret-power",
+      "key-teachings-of-martyn-lloyd-jones"
+    ]
+  },
+  {
+    "title": "Your Daughters Will Prophesy",
+    "anchor": "Joel 2:28",
+    "themes": [
+      "The Father's Love",
+      "Humility and Mercy",
+      "Praying for Others"
+    ],
+    "person": "Pandita Ramabai and the Mukti revival",
+    "era": "c. 1905",
+    "region": "Kedgaon, near Poona (India)",
+    "voices": [
+      {
+        "author": "zilpha-elaw",
+        "book": "memoirs-of-mrs-zilpha-elaw",
+        "chapter": "Maine and Nantucket"
+      }
+    ],
+    "read_more": [
+      "pandita-ramabai-a-life",
+      "memoirs-of-mrs-zilpha-elaw"
+    ]
+  },
+  {
+    "title": "A Stable on Azusa Street",
+    "anchor": "Acts 1:8",
+    "themes": [
+      "Asking Boldly",
+      "Humility and Mercy",
+      "Praying Together"
+    ],
+    "person": "William J. Seymour and the Azusa Street revival",
+    "era": "c. 1906",
+    "region": "Los Angeles, California (USA)",
+    "voices": [
+      {
+        "author": "r-a-torrey",
+        "book": "baptism-with-the-holy-spirit",
+        "chapter": "How the Baptism with the Holy Spirit can be obtained"
+      },
+      {
+        "author": "amanda-berry-smith",
+        "book": "amanda-smith-autobiography",
+        "chapter": "Marriage and Conversion"
+      }
+    ],
+    "read_more": [
+      "baptism-with-the-holy-spirit",
+      "amanda-smith-autobiography",
+      "power-from-on-high-new-testament"
+    ]
+  },
+  {
+    "title": "Everyone Praying Aloud Together",
+    "anchor": "1 John 1:9",
+    "themes": [
+      "Praying Together",
+      "Forgiveness",
+      "Humility and Mercy"
+    ],
+    "person": "The Pyongyang revival (Graham Lee, William Blair, Kil Sun-ju)",
+    "era": "c. 1907",
+    "region": "Pyongyang (Korea)",
+    "voices": [
+      {
+        "author": "augustine-of-hippo",
+        "book": "homilies-on-the-first-epistle-of-john",
+        "chapter": "Homily I: 1 John 1:1–2:11"
+      }
+    ],
+    "read_more": [
+      "homilies-on-the-first-epistle-of-john",
+      "prevailing-prayer"
+    ]
+  },
+  {
+    "title": "At the Break of Dawn",
+    "anchor": "Psalm 46:5",
+    "themes": [
+      "Praying Together",
+      "Guidance and Surrender",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "Kil Sun-ju and Korean daybreak prayer",
+    "era": "c. 1909",
+    "region": "Pyongyang (Korea)",
+    "voices": [
+      {
+        "author": "john-bunyan",
+        "book": "pilgrims-progress",
+        "chapter": "The Seventh Stage"
+      }
+    ],
+    "read_more": [
+      "pilgrims-progress",
+      "the-inner-chamber"
+    ]
+  },
+  {
+    "title": "Sowing in Tears",
+    "anchor": "Psalm 126:5-6",
+    "themes": [
+      "Praying for Others",
+      "Thanksgiving",
+      "Humility and Mercy"
+    ],
+    "person": "John Hyde (\"Praying Hyde\")",
+    "era": "c. 1908",
+    "region": "Sialkot (Punjab)",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "cheque-book",
+        "chapter": "The Month of October"
+      }
+    ],
+    "read_more": [
+      "john-hyde-a-life",
+      "cheque-book"
+    ]
+  },
+  {
+    "title": "Prayer Is Breathing",
+    "anchor": "Psalm 16:11",
+    "themes": [
+      "Making Room for Prayer",
+      "The Father's Love",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "Sadhu Sundar Singh",
+    "era": "c. 1905",
+    "region": "Rampur (Punjab, India)",
+    "voices": [
+      {
+        "author": "sadhu-sundar-singh",
+        "book": "at-the-masters-feet",
+        "chapter": "Prayer"
+      },
+      {
+        "author": "sadhu-sundar-singh",
+        "book": "at-the-masters-feet",
+        "chapter": "Introduction"
+      },
+      {
+        "author": "sadhu-sundar-singh",
+        "book": "reality-and-religion",
+        "chapter": "Prayer"
+      }
+    ],
+    "read_more": [
+      "at-the-masters-feet",
+      "reality-and-religion"
+    ]
+  },
+  {
+    "title": "Let the Children Come",
+    "anchor": "Mark 10:14",
+    "themes": [
+      "Praying for Others",
+      "Faith",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "Amy Carmichael",
+    "era": "c. 1901",
+    "region": "Dohnavur (South India)",
+    "voices": [
+      {
+        "author": "amy-carmichael",
+        "book": "things-as-they-are",
+        "chapter": "What do we count them worth?"
+      },
+      {
+        "author": "amy-carmichael",
+        "book": "things-as-they-are",
+        "chapter": "The Elf"
+      }
+    ],
+    "read_more": [
+      "things-as-they-are",
+      "amy-carmichael-a-life"
+    ]
+  },
+  {
+    "title": "Only Believe",
+    "anchor": "Mark 11:22",
+    "themes": [
+      "Faith",
+      "Prayer in Suffering and Testing",
+      "Humility and Mercy"
+    ],
+    "person": "Smith Wigglesworth",
+    "era": "c. 1907",
+    "region": "Bradford (England)",
+    "voices": [
+      {
+        "author": "smith-wigglesworth",
+        "book": "ever-increasing-faith",
+        "chapter": "Have Faith in God"
+      }
+    ],
+    "read_more": [
+      "ever-increasing-faith",
+      "school-of-prayer"
+    ]
+  },
+  {
+    "title": "Standing in the Gap for a World at War",
+    "anchor": "Ezekiel 22:30",
+    "themes": [
+      "Praying for Others",
+      "Praying Together",
+      "Humility and Mercy"
+    ],
+    "person": "Rees Howells",
+    "era": "c. 1940",
+    "region": "Swansea (Wales)",
+    "voices": [
+      {
+        "author": "andrew-murray",
+        "book": "the-two-covenants",
+        "chapter": "The Covenant of an Everlasting Priesthood"
+      }
+    ],
+    "read_more": [
+      "men-of-prayer-2",
+      "the-two-covenants"
+    ]
+  },
+  {
+    "title": "Here Am I, Send Me",
+    "anchor": "Isaiah 6:8",
+    "themes": [
+      "Guidance and Surrender",
+      "Faith",
+      "Humility and Mercy"
+    ],
+    "person": "Dora Yu",
+    "era": "c. 1904",
+    "region": "Shanghai (China) and Seoul (Korea)",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "lectures-to-my-students",
+        "chapter": "The Call to the Ministry"
+      }
+    ],
+    "read_more": [
+      "lectures-to-my-students",
+      "holy-in-christ",
+      "watchman-nee-a-life"
+    ]
+  },
+  {
+    "title": "Prayer Bands Across Asia",
+    "anchor": "Acts 3:19-20",
+    "themes": [
+      "Forgiveness",
+      "Praying Together",
+      "The Father's Love"
+    ],
+    "person": "John Sung",
+    "era": "c. 1935",
+    "region": "Singapore and China",
+    "voices": [
+      {
+        "author": "charles-finney",
+        "book": "revival-lectures",
+        "chapter": "Lecture III. How to Promote a Revival"
+      }
+    ],
+    "read_more": [
+      "revival-lectures",
+      "old-paths"
+    ]
+  },
+  {
+    "title": "The Prayer Ministry of the Church",
+    "anchor": "Matthew 18:18",
+    "themes": [
+      "Asking Boldly",
+      "Praying Together",
+      "Guidance and Surrender"
+    ],
+    "person": "Watchman Nee",
+    "era": "c. 1920-1972",
+    "region": "Fuzhou and Shanghai (China)",
+    "voices": [
+      {
+        "author": "cyprian-of-carthage",
+        "book": "treatises-of-cyprian",
+        "chapter": "On the Unity of the Church"
+      }
+    ],
+    "read_more": [
+      "key-teachings-of-watchman-nee",
+      "watchman-nee-a-life",
+      "treatises-of-cyprian"
+    ]
+  },
+  {
+    "title": "My Times Are in Your Hand",
+    "anchor": "Psalm 31:15",
+    "themes": [
+      "Making Room for Prayer",
+      "Prayer in Suffering and Testing",
+      "Guidance and Surrender"
+    ],
+    "person": "Dietrich Bonhoeffer",
+    "era": "c. 1935-1945",
+    "region": "Finkenwalde, Berlin and Flossenbürg (Germany)",
+    "voices": [
+      {
+        "author": "j-c-ryle",
+        "book": "the-upper-room",
+        "chapter": "Without Clouds"
+      }
+    ],
+    "read_more": [
+      "key-teachings-of-dietrich-bonhoeffer",
+      "the-upper-room"
+    ]
+  },
+  {
+    "title": "Give Thanks for the Fleas",
+    "anchor": "1 Thessalonians 5:18",
+    "themes": [
+      "Thanksgiving",
+      "Prayer in Suffering and Testing",
+      "Forgiveness"
+    ],
+    "person": "Corrie and Betsie ten Boom",
+    "era": "c. 1944",
+    "region": "Haarlem (Netherlands) and Ravensbrück (Germany)",
+    "voices": [
+      {
+        "author": "hannah-whitall-smith",
+        "book": "the-god-of-all-comfort",
+        "chapter": "Thanksgiving Versus Complaining"
+      }
+    ],
+    "read_more": [
+      "corrie-ten-boom-a-life",
+      "key-teachings-of-corrie-ten-boom",
+      "the-god-of-all-comfort"
+    ]
+  },
+  {
+    "title": "Over the Mountains with a Hundred Children",
+    "anchor": "Isaiah 41:10",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Faith",
+      "Praying Together"
+    ],
+    "person": "Gladys Aylward",
+    "era": "c. 1938-1940",
+    "region": "Yangcheng (Shanxi) to Xi'an (China)",
+    "voices": [
+      {
+        "author": "hudson-taylor",
+        "book": "a-retrospect",
+        "chapter": "Man Proposes, God Disposes"
+      }
+    ],
+    "read_more": [
+      "brave-for-god",
+      "a-retrospect"
+    ]
+  },
+  {
+    "title": "Sleeper, Wake Up",
+    "anchor": "Ephesians 5:14",
+    "themes": [
+      "Humility and Mercy",
+      "Forgiveness",
+      "Praying Together"
+    ],
+    "person": "The East African Revival: Simeon Nsibambi, Joe Church, Blasio Kigozi",
+    "era": "c. 1929",
+    "region": "Kampala (Uganda) and Gahini (Rwanda)",
+    "voices": [
+      {
+        "author": "catherine-booth",
+        "book": "godliness",
+        "chapter": "Conditions of Effectual Prayer"
+      },
+      {
+        "author": "john-wesley",
+        "book": "sermons-on-several-occasions",
+        "chapter": "Awake, Thou That Sleepest"
+      }
+    ],
+    "read_more": [
+      "a-hidden-fire",
+      "tukutendereza",
+      "sermons-on-several-occasions"
+    ]
+  },
+  {
+    "title": "Two Old Sisters on Lewis",
+    "anchor": "Isaiah 44:3",
+    "themes": [
+      "Praying for Others",
+      "Persistence",
+      "Praying Together"
+    ],
+    "person": "Peggy and Christine Smith and the Lewis revival",
+    "era": "c. 1949",
+    "region": "Barvas, Isle of Lewis (Scotland)",
+    "voices": [
+      {
+        "author": "john-calvin",
+        "book": "institutes-of-the-christian-religion",
+        "chapter": "Book 2, Chapter 2 — Man Now Deprived of Freedom of Will, and Miserably Enslaved"
+      },
+      {
+        "author": "samuel-rutherford",
+        "book": "letters-of-samuel-rutherford",
+        "chapter": "Letter CCCXLII: For the Right Honourable and truly worthy Colonel Gilbert Ker"
+      }
+    ],
+    "read_more": [
+      "letters-of-samuel-rutherford",
+      "morning-by-morning",
+      "how-to-pray"
+    ]
+  },
+  {
+    "title": "The Praying Men of Charlotte",
+    "anchor": "Isaiah 55:11",
+    "themes": [
+      "Praying for Others",
+      "Faith",
+      "Praying Together"
+    ],
+    "person": "Billy Graham and the Christian Men's Club of Charlotte",
+    "era": "c. 1934",
+    "region": "Charlotte, North Carolina (USA)",
+    "voices": [
+      {
+        "author": "george-whitefield",
+        "book": "selected-sermons-whitefield",
+        "chapter": "Intercession Every Christian's Duty"
+      }
+    ],
+    "read_more": [
+      "selected-sermons-whitefield",
+      "revival-lectures"
+    ]
+  },
+  {
+    "title": "The Pursuit of God",
+    "anchor": "Psalm 42:1",
+    "themes": [
+      "Learning to Pray",
+      "Humility and Mercy",
+      "Making Room for Prayer"
+    ],
+    "person": "A. W. Tozer",
+    "era": "c. 1948",
+    "region": "Chicago (USA)",
+    "voices": [
+      {
+        "author": "a-w-tozer",
+        "book": "the-pursuit-of-god",
+        "chapter": "Preface"
+      },
+      {
+        "author": "a-w-tozer",
+        "book": "the-pursuit-of-god",
+        "chapter": "Following Hard after God"
+      }
+    ],
+    "read_more": [
+      "the-pursuit-of-god",
+      "key-teachings-of-a-w-tozer"
+    ]
+  },
+  {
+    "title": "Conclusion: Passing the Torch",
+    "anchor": "Hosea 6:3",
+    "themes": [],
+    "person": "The praying church of the twentieth century",
+    "era": "c. 1950",
+    "region": "The whole world",
+    "voices": [],
+    "read_more": []
+  }
+]
