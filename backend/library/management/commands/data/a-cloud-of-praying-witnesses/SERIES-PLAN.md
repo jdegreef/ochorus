@@ -288,7 +288,7 @@ told…"). Known cases are flagged ⚑ below.
 | 3 | Prayer That Opens Closed Doors | Brother Andrew | Revelation 3:8 |
 | 4 | Living Together in Unity | Brother Roger and Taizé | Psalm 133:1 |
 | 5 | Prayer Gives a Clean Heart | Mother Teresa | Matthew 25:40 |
-| 6 | I Lift My Eyes to the Hills | Choi Ja-shil and Korea's prayer mountains | Psalm 121:1 |
+| 6 | I Look Up to the Mountains | Choi Ja-shil and Korea's prayer mountains | Psalm 121:1 |
 | 7 | Bless Those Who Persecute You | Festo Kivengere ★ and Janani Luwum ★ | Romans 12:14 |
 | 8 | What Happens When Women Pray | Evelyn Christenson ★ | Jeremiah 33:3 |
 | 9 | More Persecution, More Growth | Samuel Lamb and China's house churches | 2 Corinthians 4:8–9 |

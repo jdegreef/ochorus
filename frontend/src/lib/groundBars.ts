@@ -57,6 +57,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'elisabeth-elliot-a-life-children': 0.045,
 	'elisabeth-elliot-a-life': 0.055,
 	'essentials-of-prayer': 0.040,
+	'every-tribe-and-tongue': 0.110,
 	'faithful-unto-death': 0.110,
 	'fire-against-the-dark': 0.110,
 	'first-principles-of-the-reformation': 0.030,

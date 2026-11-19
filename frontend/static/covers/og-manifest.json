@@ -14182,6 +14182,41 @@
 				427
 			]
 		},
+		"every-tribe-and-tongue": {
+			"ground": "be54717aa6976e0aa521fa54e5a16fec25c2a798e5a7a5a02f8764702988c07e",
+			"style": "originals",
+			"volume": "10",
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[279, 250, 321, 294],
+					[126, 328, 474, 404],
+					[125, 394, 475, 470]
+				],
+				"subtitle": [
+					[159, 528, 441, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
+		},
 		"exhortation-to-the-heathen": {
 			"ground": "c4962ad07ad941f50e1cb4d713bbcb8e8e24bb1cc33791f12fcb749a06d1d551",
 			"style": "inscriptional",

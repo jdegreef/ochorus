@@ -53,6 +53,7 @@ ART_LIFT: dict[str, float] = {
     "elisabeth-elliot-a-life-children": 1.25,
     "elisabeth-elliot-a-life-teens": 1.45,
     "epistles-of-ignatius": 1.20,
+    "every-tribe-and-tongue": 1.10,
     "exhortation-to-the-heathen": 1.15,
     "faithful-unto-death": 1.45,
     "fire-against-the-dark": 1.45,
