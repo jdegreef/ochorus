@@ -764,7 +764,22 @@ So when the English does not say what it should:
    hold only the last verse's text. Notes record `source_file: "Open Word
    Bible (OWB), Balanced edition, Amharic"`. Cite with the book names the
    Amharic library already uses (ዘኍልቍ, ዕብራውያን, 2ኛ ቆሮንቶስ, ቆላስይስ), not
-   OWB's own spellings.
+   OWB's own spellings. For a range use `fetch_passage_text("owb-am",
+   "Psalm 46:1-3")`: `fetch_verse_text` stops at the range's first verse.
+   Four rules the founder settled after the first re-quote wave (2026-11-19):
+   - **A verbatim recitation is a quotation, marks or not.** Where the author
+     recites a verse word for word without quote marks (Ps 91:2-6, Phil 2:13
+     "to will and to do", Heb 7:25), the Amharic gives OWB's words too. Only a
+     true allusion, the author's own paraphrase, stays the translator's.
+   - **Joined pieces are allowed.** Where the author drops words from a verse
+     with "…", the Amharic may join OWB pieces with "…" as long as each piece
+     is exact OWB. Don't force one long contiguous span.
+   - **Acts 9:6's question comes from Acts 22:10.** OWB's Acts 9:6 lacks the
+     KJV's "Lord, what wilt thou have me to do?"; Paul's retelling at Acts
+     22:10 has it. Quote that verse and cite Acts 22:10.
+   - **Psalm 68:31 "Ethiopia".** OWB Amharic reads ኩሽ (Cush). Where the
+     author argues from "Ethiopia", keep ኢትዮጵያ and mark the row
+     `self_rendered`; the rendering itself is raised with the OWB project.
 
 The `english-qa` skill has the full triage table and the rule that matters most:
 archaic spelling and period punctuation are the text, not defects in it.

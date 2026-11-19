@@ -337,6 +337,41 @@ def fetch_verse_text(bible: str, ref_text: str) -> str:
     return ""
 
 
+_RANGE_END_RE = re.compile(r"\s*[-\u2013]\s*(\d{1,3})\b(?!\s*[:.]\s*\d)")
+
+
+def fetch_passage_text(bible: str, ref_text: str) -> str:
+    """Every verse a reference spans, joined by a space: "Psalm 46:1-3" gives
+    all three verses, where ``fetch_verse_text`` would stop at verse 1.
+
+    A single-verse reference answers exactly like ``fetch_verse_text``. The
+    range must stay inside one chapter; a cross-chapter end ("3:16-4:2") is not
+    read as a range, so it answers with the first verse alone. A verse OWB
+    prints joined to its neighbour is given once. Returns ``""`` when any verse
+    of the span is definitively absent: a partial passage must not be quoted
+    as the whole.
+    """
+    m = _REF_RE.search(ref_text or "")
+    if not m:
+        return ""
+    end = _RANGE_END_RE.match(ref_text, m.end())
+    first = int(m.group(3))
+    last = int(end.group(1)) if end else first
+    if last <= first:
+        return fetch_verse_text(bible, m.group(0))
+    head = f"{m.group(1)} {m.group(2)}:"
+    parts: list[str] = []
+    seen: set[str] = set()
+    for verse in range(first, last + 1):
+        text = fetch_verse_text(bible, f"{head}{verse}")
+        if not text:
+            return ""
+        if text not in seen:
+            seen.add(text)
+            parts.append(text)
+    return " ".join(parts)
+
+
 def scripture_context(text: str, bible: str, max_refs: int = 12) -> str:
     """Build the authoritative-scripture prompt block for a chapter.
 

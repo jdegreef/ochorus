@@ -86,6 +86,7 @@ from . import verse_consistency as vc
 
 CONTENT = Path(__file__).resolve().parent / "fixtures" / "content"
 NOTES = Path(__file__).resolve().parent / "fixtures" / "translation_notes"
+BIOS = Path(__file__).resolve().parent / "migrations" / "data"
 
 # The shorter quotation must share this proportion of its content words with the
 # longer one before the two are accepted as renderings of the SAME verse. See
@@ -155,6 +156,22 @@ def looks_like_a_filename(source_file: str) -> bool:
     return bool(_FIXTURE_NAME.fullmatch(source_file))
 
 
+#: The key under which ``bio_quotations`` keeps every quotation, located or not.
+UNLOCATED = (0, 0)
+_ANY_QUOTE = re.compile(r"[«“„]([^«»“”]{12,600}?)[»”]", re.S)
+
+
+def _quotations(texts) -> dict[tuple[int, int], tuple[str, ...]]:
+    found: dict[tuple[int, int], list[str]] = defaultdict(list)
+    for text in texts:
+        for m in vc.PAIR.finditer(text):
+            quote = vc.clean(vc.quoted(m))
+            if len(quote.split()) < vc.MIN_WORDS:
+                continue
+            found[(int(m.group("chapter")), int(m.group("verse")))].append(quote)
+    return {k: tuple(v) for k, v in found.items()}
+
+
 @cache
 def cited_quotations(filename: str) -> dict[tuple[int, int], tuple[str, ...]]:
     """``{(chapter, verse): (quote, …)}`` for one shipped fixture.
@@ -166,17 +183,46 @@ def cited_quotations(filename: str) -> dict[tuple[int, int], tuple[str, ...]]:
     path = _fixture_paths().get(filename)
     if path is None:
         return {}
-    found: dict[tuple[int, int], list[str]] = defaultdict(list)
-    for row in json.loads(path.read_text(encoding="utf-8")):
-        body = row.get("fields", {}).get("body_html")
-        if not body:
-            continue
-        for m in vc.PAIR.finditer(body):
-            quote = vc.clean(vc.quoted(m))
-            if len(quote.split()) < vc.MIN_WORDS:
-                continue
-            found[(int(m.group("chapter")), int(m.group("verse")))].append(quote)
-    return {k: tuple(v) for k, v in found.items()}
+    rows = json.loads(path.read_text(encoding="utf-8"))
+    return _quotations(
+        body for row in rows if (body := row.get("fields", {}).get("body_html"))
+    )
+
+
+@cache
+def bio_quotations(slug: str, language: str) -> dict[tuple[int, int], tuple[str, ...]]:
+    """The same map for a translated author bio: the long bio's HTML and its
+    Q&A answers, which repeat its quotations. A bio's notes row covers both,
+    so both are read; neither is a fixture, which is why bios sat outside
+    this gate until the Amharic re-quote measured the gap."""
+    root = BIOS / f"author_bios_{language}"
+    texts: list[str] = []
+    html = root / f"{slug}.html"
+    if html.exists():
+        texts.append(html.read_text(encoding="utf-8"))
+    faq = root / f"{slug}.faq.json"
+    if faq.exists():
+        for item in json.loads(faq.read_text(encoding="utf-8")):
+            texts.extend(str(item.get(k) or "") for k in ("q", "a"))
+    found = _quotations(texts)
+    # A bio names its verse in prose ("he preached on Isaiah 54:2: «…»"), not
+    # in the «…» (Ref c:v) form, so the numbers rarely key a quotation. Every
+    # quotation in the bio is kept under UNLOCATED as well; a bio holds a
+    # handful, and rule 2 still has to pair one with the verse before a verdict.
+    every = [
+        q
+        for text in texts
+        for m in _ANY_QUOTE.finditer(text)
+        if len((q := vc.clean(m.group(1))).split()) >= vc.MIN_WORDS
+    ]
+    return {**found, UNLOCATED: tuple(every)}
+
+
+def translation_quotations(kind: str | None, slug: str, language: str):
+    """Where a notes file's own quotations live: a bio's files, else its fixture."""
+    if kind == "bio":
+        return bio_quotations(slug, language)
+    return cited_quotations(f"{slug}.{language}.json")
 
 
 def owb_language(source_file: str) -> str | None:
@@ -259,6 +305,7 @@ def audit(notes_dir: Path | None = None) -> tuple[list[Finding], Counter]:
             census["notes_missing_header"] += 1
             continue
         target = f"{slug}.{language}.json"
+        own = translation_quotations(data.get("kind"), slug, language)
 
         for ref in data.get("references") or []:
             status = ref.get("status")
@@ -272,7 +319,9 @@ def audit(notes_dir: Path | None = None) -> tuple[list[Finding], Counter]:
             if owb:
                 numbers = reference_numbers(reference)
                 text = owb_text(reference, owb)
-                mine = cited_quotations(target).get(numbers, ()) if numbers else ()
+                mine = own.get(numbers, ()) if numbers else ()
+                if not mine:
+                    mine = own.get(UNLOCATED, ())
                 if not text:
                     census["owb_reference_unresolved"] += 1
                     continue
@@ -310,7 +359,7 @@ def audit(notes_dir: Path | None = None) -> tuple[list[Finding], Counter]:
             if numbers is None:
                 census["reference_has_no_numbers"] += 1
                 continue
-            mine = cited_quotations(target).get(numbers, ())
+            mine = own.get(numbers, ())
             theirs = cited_quotations(source_file).get(numbers, ())
             if not mine:
                 census["not_quoted_in_translation"] += 1
