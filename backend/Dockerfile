@@ -48,6 +48,11 @@ RUN DJANGO_SECRET_KEY=build-time-only uv run python manage.py collectstatic --no
 # the same immutable content the image ships, it cannot be stale.
 RUN DJANGO_SECRET_KEY=build-time-only uv run python manage.py content_version --write
 
+# Bake the on-disk copy of the bundled Bibles (library/bible_store.py) the API
+# reads verses from, so no request builds it. Held as dicts instead, OWB English
+# and the ASV cost the one worker ~26 MB of resident memory for its whole life.
+RUN DJANGO_SECRET_KEY=build-time-only uv run python manage.py build_bible_store
+
 EXPOSE 8000
 
 # Migrations run once per deploy via Render's preDeployCommand (see render.yaml),

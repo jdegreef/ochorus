@@ -240,13 +240,8 @@ def _owb_chapter(language: str, ref: Ref) -> dict | None:
 
     if language not in scripture.owb_languages():
         return None
-    verses, _joined = scripture._owb(language)
     base = _owb_verse_base(ref)
-    found = [
-        {"number": vid - base, "text": text}
-        for vid, text in sorted(verses.items())
-        if base < vid < base + 1000
-    ]
+    found = [{"number": vid - base, "text": text} for vid, text in scripture.owb_chapter_verses(base, language)]
     return {"reference": f"{ref.usfm} {ref.chapter}", "verses": found} if found else None
 
 
