@@ -1752,6 +1752,15 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "its light on the water; a sailing ship putting out under its sails, and on "
         "the shore a small chapel with a cross and a lit window. No likeness.",
     ),
+    # A Cloud of Praying Witnesses, Vol. 9, Revival Fires: the series ground at
+    # midday over a mining valley: a chapel with lit windows, a terrace of houses
+    # and a colliery's winding headframe (Ephesians 5:18). No particular valley.
+    "revival-fires": Original(
+        "f9f765f0a5b32ca2d3491e09cc2f2f3aa06d019ff6950a71a5af4bf14ba3da41",
+        "Ephesians 5:18: midday over a valley of coal-mining hills, the sun high on "
+        "the right; a plain chapel with lit windows and a terrace of miners' houses "
+        "on the valley floor, and a colliery's winding headframe. No likeness.",
+    ),
     # The Lamplighters of Gloamhaven, Book 2 — a companion to Book 1's ground:
     # the same slate dark and the Flame's gold, now underground. A vast cavern
     # under faint stalactites; low on the left, Tobin climbs the Black Stair

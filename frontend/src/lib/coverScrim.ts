@@ -207,6 +207,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'refutation-of-all-heresies': 0.70,
 	'religious-experience-and-journal': 0.80,
 	'revelations-of-divine-love': 0.80,
+	'revival-fires': 0.60,
 	'revival-lectures': 0.80,
 	'rise-up-men-of-god-2': 0.55,
 	'rooted-1': 0.70,
