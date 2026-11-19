@@ -84,7 +84,12 @@ def companion_slugs(position: int) -> tuple[str, ...]:
 def companion_books(position: int, language: str):
     """The published works on the Bible book at ``position`` in ``language``,
     in ``COMPANIONS`` order, as Book rows ready for the card serializer."""
-    from .models import Book
+    from .models import (
+        AUTHOR_CARD_DEFER,
+        BOOK_CARD_DEFER,
+        Book,
+        card_author_translations,
+    )
     from .serializers import BOOK_CARD_ANNOTATIONS
 
     slugs = companion_slugs(position)
@@ -94,7 +99,8 @@ def companion_books(position: int, language: str):
         b.slug: b
         for b in Book.objects.filter(slug__in=slugs, language=language, is_published=True)
         .select_related("author")
-        .prefetch_related("author__translations")
+        .defer(*AUTHOR_CARD_DEFER, *BOOK_CARD_DEFER)
+        .prefetch_related(card_author_translations(language))
         .annotate(**BOOK_CARD_ANNOTATIONS)
     }
     return [found[s] for s in slugs if s in found]

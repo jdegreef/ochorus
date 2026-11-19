@@ -15,7 +15,12 @@ the shelf's "See all" link (``/sermons?book=<name>``) lists the same sermons.
 
 from functools import lru_cache
 
-from .models import SERMON_CARD_DEFER, Sermon
+from .models import (
+    AUTHOR_CARD_DEFER,
+    SERMON_CARD_DEFER,
+    Sermon,
+    card_author_translations,
+)
 from .scripture import book_of, reference_verse_ids
 
 #: The series the Bible's books are in (``build_owb_book.SERIES_SLUG``).
@@ -65,8 +70,8 @@ def _sermons_in(position: int, window: range | None, language: str, limit: int) 
         s.pk: s
         for s in Sermon.objects.filter(pk__in=wanted)
         .select_related("author")
-        .prefetch_related("author__translations")
-        .defer(*SERMON_CARD_DEFER)
+        .prefetch_related(card_author_translations(language))
+        .defer(*SERMON_CARD_DEFER, *AUTHOR_CARD_DEFER)
     }
     return {"book": name, "count": len(hits), "sermons": [rows[pk] for pk in wanted]}
 

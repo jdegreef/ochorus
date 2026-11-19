@@ -1752,6 +1752,30 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "its light on the water; a sailing ship putting out under its sails, and on "
         "the shore a small chapel with a cross and a lit window. No likeness.",
     ),
+    # A Cloud of Praying Witnesses, Vol. 9, Revival Fires: the series ground at
+    # midday over a mining valley: a chapel with lit windows, a terrace of houses
+    # and a colliery's winding headframe (Ephesians 5:18). No particular valley.
+    "revival-fires": Original(
+        "f9f765f0a5b32ca2d3491e09cc2f2f3aa06d019ff6950a71a5af4bf14ba3da41",
+        "Ephesians 5:18: midday over a valley of coal-mining hills, the sun high on "
+        "the right; a plain chapel with lit windows and a terrace of miners' houses "
+        "on the valley floor, and a colliery's winding headframe. No likeness.",
+    ),
+    # A Cloud of Praying Witnesses, Vol. 10, Every Tribe and Tongue: the series
+    # ground in the afternoon: village homes, a small church with its cross and a
+    # city's towers in the haze (Revelation 7:9). No particular place.
+    "every-tribe-and-tongue": Original(
+        "7bdb2f3d2aa21dce531a2721fbe7f8d112872ef9247ab02d17a54a2254f3bf2b",
+        "Revelation 7:9: afternoon, the sun on the left; village homes low on the "
+        "left, a small church with a cross and a lit door in the middle, and the "
+        "towers of a modern city in the haze on the right. No likeness.",
+    ),
+    "golden-bowls": Original(
+        "c7e8581f2d2f4a9a6b126fc7512514b70e71c50e775d4140c613d534ff771df6",
+        "Psalm 141:2, Revelation 5:8: evening, the sun going down on the right and "
+        "the first stars out; low on the left a house with a lit window and smoke "
+        "rising like incense, and a figure kneeling beside it. No likeness.",
+    ),
     # The Lamplighters of Gloamhaven, Book 2 — a companion to Book 1's ground:
     # the same slate dark and the Flame's gold, now underground. A vast cavern
     # under faint stalactites; low on the left, Tobin climbs the Black Stair

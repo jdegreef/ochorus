@@ -2,10 +2,13 @@
 /**
  * Regenerates src/lib/benediction.generated.ts: the footer's closing blessings,
  * one per season of the Church year, VERBATIM from each locale's own Bible on
- * Take Root (the `bible` code backend/library/language_seed.py names). English
- * is the exception: it quotes the Open Word Bible (Balanced, CC0) the reader's
- * Scripture popover uses, read from the copy the backend bundles
- * (backend/library/data/bible/owb-en-b.json.gz, scripts/build_owb_bible.py).
+ * Take Root (the `bible` code backend/library/language_seed.py names). English,
+ * Amharic, Swahili and Japanese are the exceptions: they quote the Open Word
+ * Bible (Balanced, CC0), read from the copies the backend bundles
+ * (backend/library/data/bible/owb-<lang>-b.json.gz, scripts/build_owb_bible.py).
+ * Amharic moved from the ULB to OWB on 2026-11-18 (founder decision: every
+ * Amharic work quotes OWB); its book names are the forms the Amharic library
+ * itself cites (ዘኍልቍ, ዕብራውያን, 2ኛ ቆሮንቶስ), not OWB's own spellings.
  *
  * Scripture is never ours to write, so this is the only way the text gets in.
  * Run it by hand when a Bible or a locale changes, review the diff, commit:
@@ -26,24 +29,24 @@ import { gunzipSync } from 'node:zlib';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT = join(HERE, '..', 'src', 'lib', 'benediction.generated.ts');
-const OWB = join(HERE, '..', '..', 'backend', 'library', 'data', 'bible', 'owb-en-b.json.gz');
+const owbFile = (code) => join(HERE, '..', '..', 'backend', 'library', 'data', 'bible', `${code}-b.json.gz`);
 const API = 'https://api.takeroot.bible/api/bible';
 
 /** locale → Take Root code (mirrors language_seed.py). */
 const BIBLES = {
-	en: 'owb-en-b',
+	en: 'owb-en',
 	es: 'rv1858',
-	sw: 'swhonen',
+	sw: 'owb-sw',
 	lg: 'lug',
 	pt: 'porbrbsl',
 	ar: 'arb-vd',
 	hi: 'irvhin',
 	uk: 'ukr-kul',
 	fr: 'fralsg',
-	am: 'am-ulb',
+	am: 'owb-am',
 	vi: 'vietnamese',
 	ko: 'korean',
-	ja: 'japkougo',
+	ja: 'owb-ja',
 	ru: 'synodal'
 };
 
@@ -61,17 +64,18 @@ const PASSAGES = {
 };
 
 const QUOTES = /^[\s“”‘’"]+|[\s“”‘’"]+$/g;
-// OWB English quotes with straight marks: Numbers 6:26 closes on ."' (the
-// Lord's speech, then Moses').
+// OWB quotes with straight marks: Numbers 6:26 closes on ."' (the Lord's
+// speech, then Moses'). Only the ends are trimmed, so a word-internal
+// apostrophe (Swahili aung'aze) is kept.
 const STRAIGHT = /^[\s“”‘’"']+|[\s“”‘’"']+$/g;
 
-function clean(text, locale) {
-	let s = text.replace(locale === 'en' ? STRAIGHT : QUOTES, '');
+function clean(text, locale, bible) {
+	let s = text.replace(bible.startsWith('owb-') ? STRAIGHT : QUOTES, '');
 	if (locale === 'fr') s = s.replace(/’ /g, '’').replace(/ ’/g, '’');
 	if (locale === 'vi') s = s.replace(/Ð/g, 'Đ');
-	// Japanese: the 口語訳 sets the Aaronic blessing inside the speech that
-	// frames it (「…」』。), and writes no spaces (its verses also join with
-	// none — see the join below).
+	// Japanese: OWB sets the Aaronic blessing inside the speech that frames
+	// it (「…」), and Japanese writes no spaces (the bundle is built without
+	// them; stripping here only guards a passage join).
 	if (locale === 'ja') s = s.replace(/^[\s「『]+|[\s」』]+。?$/g, '').replace(/\s+/g, '');
 	// Russian: the Synodal brackets words its editors supplied (Иисуса
 	// [Христа], Heb 13:20) — print them as text, as Russian Bibles read aloud
@@ -85,10 +89,23 @@ function clean(text, locale) {
 
 /** The bundled Open Word Bible, as Take Root shapes a chapter. */
 const OWB_BOOKS = { NUM: [4, 'Numbers'], ROM: [45, 'Romans'], JUD: [65, 'Jude'], HEB: [58, 'Hebrews'], '2CO': [47, '2 Corinthians'] };
-let owb;
-function owbChapter(usfm, ch) {
-	owb ??= JSON.parse(gunzipSync(readFileSync(OWB)).toString('utf-8')).verses;
-	const [number, name] = OWB_BOOKS[usfm];
+/**
+ * Book names for the OWB locales other than English, as each library already
+ * cites them (counted across its fixtures), not OWB's own spellings. Amharic
+ * moved to OWB on 2026-11-18, Swahili and Japanese on 2026-11-19 (founder
+ * decisions: every work in those languages quotes OWB). Swahili and Japanese
+ * keep the forms their earlier Bibles printed here.
+ */
+const OWB_BOOK_NAMES = {
+	'owb-am': { NUM: 'ዘኍልቍ', ROM: 'ሮሜ', JUD: 'ይሁዳ', HEB: 'ዕብራውያን', '2CO': '2ኛ ቆሮንቶስ' },
+	'owb-sw': { NUM: 'Hesabu', ROM: 'Warumi', JUD: 'Yuda', HEB: 'Waebrania', '2CO': '2 Wakorintho' },
+	'owb-ja': { NUM: '民数記', ROM: 'ローマ', JUD: 'ユダ', HEB: 'ヘブル', '2CO': '第二コリント' }
+};
+const owbCache = {};
+function owbChapter(code, usfm, ch) {
+	const owb = (owbCache[code] ??= JSON.parse(gunzipSync(readFileSync(owbFile(code))).toString('utf-8')).verses);
+	const [number, english] = OWB_BOOKS[usfm];
+	const name = OWB_BOOK_NAMES[code]?.[usfm] ?? english;
 	const base = number * 1_000_000 + ch * 1000;
 	// Every verse of the chapter, past any OWB lacks; a verse it prints joined
 	// to the one before (Psalm 13:5-6) is that one's entry, as Take Root gives it.
@@ -101,7 +118,7 @@ function owbChapter(usfm, ch) {
 }
 
 async function chapter(bible, usfm, ch) {
-	if (bible === 'owb-en-b') return owbChapter(usfm, ch);
+	if (bible.startsWith('owb-')) return owbChapter(bible, usfm, ch);
 	const res = await fetch(`${API}/${bible}/${usfm}/${ch}/`, { signal: AbortSignal.timeout(20_000) });
 	if (!res.ok) throw new Error(`${bible} ${usfm} ${ch}: HTTP ${res.status}`);
 	return res.json();
@@ -141,7 +158,7 @@ for (const [locale, bible] of Object.entries(BIBLES)) {
 				const nums = p.last ? picked.map((v) => v.n) : p.verses;
 				return p.usfm === 'JUD' ? span(nums) : `${p.chapter}:${span(nums)}`;
 			})(),
-			text: picked.map((v) => clean(v.text, locale)).join(locale === 'ja' ? '' : ' ')
+			text: picked.map((v) => clean(v.text, locale, bible)).join(locale === 'ja' ? '' : ' ')
 		};
 	}
 	console.log(`✓ ${locale} (${bible})`);
@@ -150,7 +167,7 @@ for (const [locale, bible] of Object.entries(BIBLES)) {
 writeFileSync(
 	OUT,
 	`// GENERATED by scripts/fetch-benedictions.mjs — do not edit by hand.\n` +
-		`// Verbatim from each locale's own Bible (Take Root; English: Open Word Bible); see that script.\n` +
+		`// Verbatim from each locale's own Bible (Take Root; en/am/sw/ja: the bundled Open Word Bible); see that script.\n` +
 		`export const BLESSINGS = ${JSON.stringify(out, null, '\t')} as const;\n`,
 	'utf-8'
 );

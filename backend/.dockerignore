@@ -31,6 +31,8 @@ staticfiles/
 # Baked during the build (manage.py content_version --write); a stale local
 # copy must not be shipped instead.
 .content-version
+# The Bible store (manage.py build_bible_store), likewise baked by the build.
+.cache/
 
 # Editor / OS noise.
 .DS_Store

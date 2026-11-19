@@ -214,3 +214,74 @@ class ServerSideMemoisationTests(TestCase):
         self.assertTrue(
             other.captured_queries, "Spanish reused the English cache entry"
         )
+
+
+RESPONSE_CACHE_ON = override_settings(
+    CACHES={
+        "default": {"BACKEND": "django.core.cache.backends.dummy.DummyCache"},
+        "throttle": {"BACKEND": "django.core.cache.backends.dummy.DummyCache"},
+        "search": {"BACKEND": "django.core.cache.backends.dummy.DummyCache"},
+        "responses": {
+            "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+            "LOCATION": "response-cache-tests",
+        },
+    }
+)
+
+
+@RESPONSE_CACHE_ON
+class ResponseCacheTests(TestCase):
+    """The big lists' rendered bodies, kept across worker recycles
+    (``response_cache``): built once per content version, served as bytes."""
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.author = Author.objects.create(slug="am", name="Andrew Murray", bio="Bio.")
+        cls.book = Book.objects.create(
+            author=cls.author, slug="humility", language="en", title="Humility",
+            is_published=True,
+        )
+        Chapter.objects.create(book=cls.book, order=1, title="One", body_html="<p>T.</p>")
+
+    def setUp(self):
+        from django.core.cache import caches
+
+        caches["responses"].clear()
+        self.client = APIClient()
+
+    def test_a_second_read_is_the_same_body_with_almost_no_queries(self):
+        url = reverse("book-list")
+        first = self.client.get(url)
+        with CaptureQueriesContext(connection) as ctx:
+            second = self.client.get(url)
+        self.assertEqual(second.status_code, 200)
+        self.assertEqual(second.content, first.content)
+        self.assertEqual(second["ETag"], first["ETag"])
+        self.assertEqual(second["Cache-Control"], first["Cache-Control"])
+        # Only the content revision is read to build the key; no book rows.
+        self.assertLessEqual(len(ctx.captured_queries), 1, ctx.captured_queries)
+
+    def test_a_publish_busts_the_stored_body(self):
+        url = reverse("book-list")
+        self.client.get(url)
+        Book.objects.filter(pk=self.book.pk).update(title="Humility (Revised)")
+        ContentRevision.bump()
+        self.assertIn("Humility (Revised)", self.client.get(url).content.decode())
+
+    def test_a_new_release_busts_the_stored_body(self):
+        url = reverse("book-list")
+        self.client.get(url)
+        Book.objects.filter(pk=self.book.pk).update(title="Humility (New code)")
+        with self.settings(RELEASE_COMMIT="next-release"):
+            self.assertIn("Humility (New code)", self.client.get(url).content.decode())
+
+    def test_each_language_is_its_own_entry(self):
+        en = self.client.get(reverse("book-list"), {"language": "en"})
+        sw = self.client.get(reverse("book-list"), {"language": "sw"})
+        self.assertNotEqual(en.content, sw.content)
+
+    def test_a_view_that_did_not_opt_in_is_not_stored(self):
+        from django.core.cache import caches
+
+        self.client.get(reverse("book-detail", args=["humility"]))
+        self.assertEqual(caches["responses"]._cache, {})

@@ -7,28 +7,32 @@
     "references": [
         {
             "reference": "Exodus 3:7-8",
-            "status": "self_rendered",
-            "block_index": 0
+            "status": "mined",
+            "block_index": 0,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Psalm 97:2",
-            "status": "self_rendered",
-            "block_index": 3
+            "status": "mined",
+            "block_index": 3,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Psalm 98:1",
-            "status": "self_rendered",
-            "block_index": 3
+            "status": "mined",
+            "block_index": 3,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Psalm 98:3",
-            "status": "self_rendered",
-            "block_index": 3
+            "status": "mined",
+            "block_index": 3,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Hebrews 13:8",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 4
         },
         {
@@ -39,7 +43,7 @@
         {
             "reference": "Luke 2:14",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 4
         },
         {
@@ -74,8 +78,9 @@
         },
         {
             "reference": "2 Timothy 3:15",
-            "status": "self_rendered",
-            "block_index": 8
+            "status": "mined",
+            "block_index": 8,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Joshua 4:6",
@@ -129,13 +134,15 @@
         },
         {
             "reference": "Isaiah 11:6",
-            "status": "self_rendered",
-            "block_index": 11
+            "status": "mined",
+            "block_index": 11,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Isaiah 55:13",
-            "status": "self_rendered",
-            "block_index": 11
+            "status": "mined",
+            "block_index": 11,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Romans 15:33",
@@ -144,8 +151,9 @@
         },
         {
             "reference": "Revelation 4:8",
-            "status": "self_rendered",
-            "block_index": 11
+            "status": "mined",
+            "block_index": 11,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Isaiah 6:3",

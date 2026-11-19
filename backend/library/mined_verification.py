@@ -86,6 +86,7 @@ from . import verse_consistency as vc
 
 CONTENT = Path(__file__).resolve().parent / "fixtures" / "content"
 NOTES = Path(__file__).resolve().parent / "fixtures" / "translation_notes"
+BIOS = Path(__file__).resolve().parent / "migrations" / "data"
 
 # The shorter quotation must share this proportion of its content words with the
 # longer one before the two are accepted as renderings of the SAME verse. See
@@ -96,6 +97,22 @@ SAME_VERSE_OVERLAP = 0.5
 # naming a Bible edition, which is a real provenance and simply not a file.
 _FIXTURE_NAME = re.compile(r"[a-z0-9-]+\.[a-z]{2,3}\.json")
 _REF_NUMBERS = re.compile(r"(\d{1,3})\s*:\s*(\d{1,3})")
+
+# A row mined from the Open Word Bible names it in prose, not as a file. Where
+# that language's OWB text is bundled (`data/bible/owb-<lang>-b.json.gz`), the
+# claim is checkable against the Bible itself rather than against a sibling
+# fixture — and must be: the Amharic re-quote moves tens of thousands of rows to
+# this source, and a `mined` claim nothing checks is the gap this gate exists to
+# close.
+OWB_SOURCE = re.compile(r"^Open Word Bible \(OWB\), Balanced edition, (?P<name>.+)$")
+# Japanese resolves too, but its quotations are not extracted yet (「…」 and no
+# spaces defeat the «…» (Ref c:v) / word-count readers), so its rows count as
+# ``owb_not_quoted_in_translation``: visible in the census, not verified.
+OWB_LANGUAGE_NAMES = {"Amharic": "am", "Swahili": "sw", "Japanese": "ja", "English": "en"}
+_OWB_REF = re.compile(
+    r"^(?P<book>(?:[1-3]\s)?[A-Za-z][A-Za-z ]*?)\s+(?P<ch>\d{1,3})\s*:\s*(?P<v1>\d{1,3})[ab]?"
+    r"(?:\s*[-–]\s*(?P<v2>\d{1,3})[ab]?)?$"
+)
 
 
 @dataclass(frozen=True)
@@ -142,6 +159,22 @@ def looks_like_a_filename(source_file: str) -> bool:
     return bool(_FIXTURE_NAME.fullmatch(source_file))
 
 
+#: The key under which ``bio_quotations`` keeps every quotation, located or not.
+UNLOCATED = (0, 0)
+_ANY_QUOTE = re.compile(r"[«“„]([^«»“”]{12,600}?)[»”]", re.S)
+
+
+def _quotations(texts) -> dict[tuple[int, int], tuple[str, ...]]:
+    found: dict[tuple[int, int], list[str]] = defaultdict(list)
+    for text in texts:
+        for m in vc.PAIR.finditer(text):
+            quote = vc.clean(vc.quoted(m))
+            if len(quote.split()) < vc.MIN_WORDS:
+                continue
+            found[(int(m.group("chapter")), int(m.group("verse")))].append(quote)
+    return {k: tuple(v) for k, v in found.items()}
+
+
 @cache
 def cited_quotations(filename: str) -> dict[tuple[int, int], tuple[str, ...]]:
     """``{(chapter, verse): (quote, …)}`` for one shipped fixture.
@@ -153,17 +186,75 @@ def cited_quotations(filename: str) -> dict[tuple[int, int], tuple[str, ...]]:
     path = _fixture_paths().get(filename)
     if path is None:
         return {}
-    found: dict[tuple[int, int], list[str]] = defaultdict(list)
-    for row in json.loads(path.read_text(encoding="utf-8")):
-        body = row.get("fields", {}).get("body_html")
-        if not body:
-            continue
-        for m in vc.PAIR.finditer(body):
-            quote = vc.clean(vc.quoted(m))
-            if len(quote.split()) < vc.MIN_WORDS:
-                continue
-            found[(int(m.group("chapter")), int(m.group("verse")))].append(quote)
-    return {k: tuple(v) for k, v in found.items()}
+    rows = json.loads(path.read_text(encoding="utf-8"))
+    return _quotations(
+        body for row in rows if (body := row.get("fields", {}).get("body_html"))
+    )
+
+
+@cache
+def bio_quotations(slug: str, language: str) -> dict[tuple[int, int], tuple[str, ...]]:
+    """The same map for a translated author bio: the long bio's HTML and its
+    Q&A answers, which repeat its quotations. A bio's notes row covers both,
+    so both are read; neither is a fixture, which is why bios sat outside
+    this gate until the Amharic re-quote measured the gap."""
+    root = BIOS / f"author_bios_{language}"
+    texts: list[str] = []
+    html = root / f"{slug}.html"
+    if html.exists():
+        texts.append(html.read_text(encoding="utf-8"))
+    faq = root / f"{slug}.faq.json"
+    if faq.exists():
+        for item in json.loads(faq.read_text(encoding="utf-8")):
+            texts.extend(str(item.get(k) or "") for k in ("q", "a"))
+    found = _quotations(texts)
+    # A bio names its verse in prose ("he preached on Isaiah 54:2: «…»"), not
+    # in the «…» (Ref c:v) form, so the numbers rarely key a quotation. Every
+    # quotation in the bio is kept under UNLOCATED as well; a bio holds a
+    # handful, and rule 2 still has to pair one with the verse before a verdict.
+    every = [
+        q
+        for text in texts
+        for m in _ANY_QUOTE.finditer(text)
+        if len((q := vc.clean(m.group(1))).split()) >= vc.MIN_WORDS
+    ]
+    return {**found, UNLOCATED: tuple(every)}
+
+
+def translation_quotations(kind: str | None, slug: str, language: str):
+    """Where a notes file's own quotations live: a bio's files, else its fixture."""
+    if kind == "bio":
+        return bio_quotations(slug, language)
+    return cited_quotations(f"{slug}.{language}.json")
+
+
+def owb_language(source_file: str) -> str | None:
+    """The language code an OWB ``source_file`` names, if its text is bundled."""
+    from . import scripture
+
+    m = OWB_SOURCE.match(source_file or "")
+    code = OWB_LANGUAGE_NAMES.get(m.group("name").strip()) if m else None
+    return code if code and code in scripture.owb_languages() else None
+
+
+def owb_text(reference: str, language: str) -> str:
+    """The bundled OWB wording of an English reference (a range joined), or ""."""
+    from . import scripture
+    from .translation import BOOK_USFM, USFM_ORDER
+
+    m = _OWB_REF.match((reference or "").strip())
+    if not m or m.group("book").lower() not in BOOK_USFM:
+        return ""
+    book = USFM_ORDER.index(BOOK_USFM[m.group("book").lower()]) + 1
+    base = book * 1_000_000 + int(m.group("ch")) * 1000
+    first = int(m.group("v1"))
+    last = int(m.group("v2") or first)
+    texts: list[str] = []
+    for verse in range(first, max(first, last) + 1):
+        found = scripture.owb_verse(base + verse, language)
+        if found and found[1] not in texts:
+            texts.append(found[1])
+    return " ".join(texts)
 
 
 def reference_numbers(reference: str) -> tuple[int, int] | None:
@@ -188,10 +279,35 @@ def same_verse(a: str, b: str) -> bool:
     return len(wa & wb) / min(len(wa), len(wb)) >= SAME_VERSE_OVERLAP
 
 
+_MIN_PIECE = 8  # normalised characters
+_ELLIPSIS = re.compile(r"\s*(?:\u2026|\.{3})\s*")
+
+
 def is_verbatim(translation: str, source: str) -> bool:
-    """Verbatim in the containment sense — rule 3."""
+    """Verbatim in the containment sense — rule 3.
+
+    A quotation joined with an ellipsis ("Mpaka lini… na kutulipia kisasi?")
+    is verbatim when each piece is, in order: the translation-worker rules
+    allow joined pieces, and the gap is the quoter's, not a rewording.
+    """
     t, s = vc.normalise(translation), vc.normalise(source)
-    return bool(t) and bool(s) and (t in s or s in t)
+    if not t or not s:
+        return False
+    if t in s or s in t:
+        return True
+    pieces = [vc.normalise(p) for p in _ELLIPSIS.split(translation)]
+    # Each piece must be a real span, or a two-letter particle ("na") would
+    # be found inside any later word and pass a reworded tail.
+    pieces = [p for p in pieces if p]
+    if any(len(p) < _MIN_PIECE for p in pieces):
+        return False
+    at = 0
+    for piece in pieces:
+        at = s.find(piece, at)
+        if at < 0:
+            return False
+        at += len(piece)
+    return True
 
 
 def audit(notes_dir: Path | None = None) -> tuple[list[Finding], Counter]:
@@ -217,6 +333,7 @@ def audit(notes_dir: Path | None = None) -> tuple[list[Finding], Counter]:
             census["notes_missing_header"] += 1
             continue
         target = f"{slug}.{language}.json"
+        own = translation_quotations(data.get("kind"), slug, language)
 
         for ref in data.get("references") or []:
             status = ref.get("status")
@@ -225,6 +342,30 @@ def audit(notes_dir: Path | None = None) -> tuple[list[Finding], Counter]:
                 continue
             reference = (ref.get("reference") or "").strip()
             source_file = (ref.get("source_file") or "").strip()
+
+            owb = owb_language(source_file)
+            if owb:
+                numbers = reference_numbers(reference)
+                text = owb_text(reference, owb)
+                mine = own.get(numbers, ()) if numbers else ()
+                if not mine:
+                    mine = own.get(UNLOCATED, ())
+                if not text:
+                    census["owb_reference_unresolved"] += 1
+                    continue
+                if not mine:
+                    census["owb_not_quoted_in_translation"] += 1
+                    continue
+                same = [q for q in mine if same_verse(q, text)]
+                if not same:
+                    census["owb_different_book_same_numbers"] += 1
+                    continue
+                if any(is_verbatim(q, text) for q in same):
+                    census["owb_verified"] += 1
+                else:
+                    census["owb_contradicted"] += 1
+                    findings.append(Finding(path.name, reference, source_file, same[0], text))
+                continue
 
             if not names_a_shipped_fixture(source_file):
                 if looks_like_a_filename(source_file):
@@ -246,7 +387,7 @@ def audit(notes_dir: Path | None = None) -> tuple[list[Finding], Counter]:
             if numbers is None:
                 census["reference_has_no_numbers"] += 1
                 continue
-            mine = cited_quotations(target).get(numbers, ())
+            mine = own.get(numbers, ())
             theirs = cited_quotations(source_file).get(numbers, ())
             if not mine:
                 census["not_quoted_in_translation"] += 1
@@ -295,5 +436,15 @@ def format_census(census: Counter) -> str:
         "",
         f"  CHECKED: {checkable}  →  {census.get('verified', 0)} verbatim, "
         f"{census.get('contradicted', 0)} contradicted",
+        "",
+        "  Mined from a bundled Open Word Bible (checked against the Bible itself):",
+        f"    not quoted in the translation:                       "
+        f"{census.get('owb_not_quoted_in_translation', 0)}",
+        f"    reference not resolvable:                            "
+        f"{census.get('owb_reference_unresolved', 0)}",
+        f"    same numbers, different book:                        "
+        f"{census.get('owb_different_book_same_numbers', 0)}",
+        f"    CHECKED: {census.get('owb_verified', 0) + census.get('owb_contradicted', 0)}  →  "
+        f"{census.get('owb_verified', 0)} verbatim, {census.get('owb_contradicted', 0)} contradicted",
     ]
     return "\n".join(lines)

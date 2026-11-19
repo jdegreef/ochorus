@@ -30,7 +30,14 @@ from .cover_face import cover_face
 from .daily_books import DATED_BOOKS
 from .http_cache import PublicContentCacheMixin
 from .localization import language_from_request
-from .models import SERMON_CARD_DEFER, Book, Chapter, Sermon
+from .models import (
+    AUTHOR_CARD_DEFER,
+    SERMON_CARD_DEFER,
+    Book,
+    Chapter,
+    Sermon,
+    card_author_translations,
+)
 from .serializers import EDITION_SUFFIXES, SermonListSerializer
 
 #: The longest window anyone can ask for (a 60-minute pick at a slow pace,
@@ -90,8 +97,8 @@ def fitting_sermon(language: str, lo: int, hi: int, seed: int):
         return None
     return (
         Sermon.objects.select_related("author")
-        .prefetch_related("author__translations")
-        .defer(*SERMON_CARD_DEFER)
+        .prefetch_related(card_author_translations(language))
+        .defer(*SERMON_CARD_DEFER, *AUTHOR_CARD_DEFER)
         .get(pk=pk)
     )
 

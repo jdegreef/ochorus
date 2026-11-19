@@ -273,9 +273,9 @@ told…"). Known cases are flagged ⚑ below.
 | 14 | My Times Are in Your Hand | Dietrich Bonhoeffer ★ | Psalm 31:15 |
 | 15 | Give Thanks for the Fleas | Corrie ten Boom ★ | 1 Thessalonians 5:18 |
 | 16 | Over the Mountains with a Hundred Children | Gladys Aylward ★ | Isaiah 41:10 |
-| 17 | Wake Up, Sleeper | The East African Revival: Simeon Nsibambi ★, Joe Church ★, Blasio Kigozi ★ | Ephesians 5:14 |
+| 17 | Sleeper, Wake Up | The East African Revival: Simeon Nsibambi ★, Joe Church ★, Blasio Kigozi ★ | Ephesians 5:14 |
 | 18 | Two Old Sisters on Lewis | Peggy and Christine Smith, the Hebrides, 1949 | Isaiah 44:3 |
-| 19 | The Praying Farmers of Charlotte | Billy Graham ★ | Isaiah 55:11 |
+| 19 | The Praying Men of Charlotte | Billy Graham ★ | Isaiah 55:11 |
 | 20 | The Pursuit of God | A. W. Tozer ★ | Psalm 42:1 |
 
 ## Volume 10 — Every Tribe and Tongue
@@ -288,7 +288,7 @@ told…"). Known cases are flagged ⚑ below.
 | 3 | Prayer That Opens Closed Doors | Brother Andrew | Revelation 3:8 |
 | 4 | Living Together in Unity | Brother Roger and Taizé | Psalm 133:1 |
 | 5 | Prayer Gives a Clean Heart | Mother Teresa | Matthew 25:40 |
-| 6 | I Lift My Eyes to the Hills | Choi Ja-shil and Korea's prayer mountains | Psalm 121:1 |
+| 6 | I Look Up to the Mountains | Choi Ja-shil and Korea's prayer mountains | Psalm 121:1 |
 | 7 | Bless Those Who Persecute You | Festo Kivengere ★ and Janani Luwum ★ | Romans 12:14 |
 | 8 | What Happens When Women Pray | Evelyn Christenson ★ | Jeremiah 33:3 |
 | 9 | More Persecution, More Growth | Samuel Lamb and China's house churches | 2 Corinthians 4:8–9 |

@@ -320,10 +320,9 @@
   },
   {
    "reference": "Proverbs 3:5-6",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 10,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 10
   },
   {
    "reference": "2 Corinthians 5:7",
@@ -681,10 +680,9 @@
   },
   {
    "reference": "Proverbs 3:5-6",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 56,
-   "chapter_order": 13,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 13
   },
   {
    "reference": "2 Corinthians 5:7",

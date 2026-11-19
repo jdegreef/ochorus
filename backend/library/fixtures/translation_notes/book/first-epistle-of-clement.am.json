@@ -384,10 +384,9 @@
   },
   {
    "reference": "Genesis 1:26",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 33,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 33
   },
   {
    "reference": "Genesis 1:27",

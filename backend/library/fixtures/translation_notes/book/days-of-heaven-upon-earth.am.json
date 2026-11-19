@@ -511,10 +511,9 @@
   },
   {
    "reference": "Matthew 28:20",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 18,
-   "chapter_order": 2,
-   "source_file": "aggressive-christianity.am.json"
+   "chapter_order": 2
   },
   {
    "reference": "Psalm 37:7",
@@ -5066,10 +5065,9 @@
   },
   {
    "reference": "Romans 5:20",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 87,
-   "chapter_order": 10,
-   "source_file": "fall-and-recovery-of-man.am.json"
+   "chapter_order": 10
   },
   {
    "reference": "Romans 4:3",

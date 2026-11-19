@@ -20822,6 +20822,21 @@ BODY_CORRECTIONS.setdefault("pensees-teens", {}).setdefault("replacements", []).
     ("taking holy water and attending Mass",
      "taking holy water and having Masses said"),
 ])
+# Found while translating Pensées to Portuguese (job #8035, 2026-11-18): five
+# plain typos in the Gutenberg Trotter text (B. 521, 229, 324, 171, 252). The
+# translations already render the intended words.
+BODY_CORRECTIONS.setdefault("pensees", {}).setdefault("replacements", []).extend([
+    # [en]
+    ("Grace gives what is imposes.", "Grace gives what it imposes."),
+    # [en]
+    ("I have a hundred time wished", "I have a hundred times wished"),
+    # [en]
+    ("offended at a blow, on in desiring glory", "offended at a blow, or in desiring glory"),
+    # [en]
+    ("and yet this it the greatest of our miseries", "and yet this is the greatest of our miseries"),
+    # [en]
+    ("so that out soul falls naturally into it", "so that our soul falls naturally into it"),
+])
 # Found while translating Brave for God: Book Four to French (2026-10-13):
 # three factual slips, fixed in every edition. Mary Paton and her baby died
 # some four months after the Patons landed on Tanna (Nov 1858 - Mar 1859),
@@ -24843,7 +24858,6 @@ BODY_CORRECTIONS.setdefault("separation-and-service", {}).setdefault("replacemen
 # 1 Samuel 18:14 is said of David, not Jonathan.
 BODY_CORRECTIONS.setdefault("rise-up-men-of-god-2", {}).setdefault("replacements", []).extend([
     ('In everything Jonathan did, he had great success', 'In everything David did, he had great success'),
-    ('«ዮናታን በሚያደርገው ነገር ሁሉ', '«ዳዊት በሚያደርገው ነገር ሁሉ'),
     ('«كان يوناثان ناجحا في كل ما فعله', '«كان داود ناجحا في كل ما فعله'),
     ('“योनातान अपने सब कामों में सफल', '“दाऊद अपने सब कामों में सफल'),
     ('“Katika kila jambo Yonathani alilolifanya', '“Katika kila jambo Daudi alilolifanya'),

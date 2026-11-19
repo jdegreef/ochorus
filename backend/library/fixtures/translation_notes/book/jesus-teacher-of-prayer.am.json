@@ -1039,8 +1039,7 @@
   },
   {
    "reference": "John 17:20",
-   "status": "mined",
-   "source_file": "school-of-prayer.am.json",
+   "status": "self_rendered",
    "block_index": 12
   },
   {
@@ -1123,8 +1122,7 @@
   },
   {
    "reference": "Matthew 5:44",
-   "status": "mined",
-   "source_file": "tukutendereza.am.json",
+   "status": "self_rendered",
    "block_index": 9
   },
   {

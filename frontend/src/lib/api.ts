@@ -110,6 +110,16 @@ export function setAuthTokenProvider(fn: () => string | null) {
  * signal, so the error UI is never pushed back past it.
  */
 const BUILD_RETRY_DELAYS_MS = [1000, 4000, 10000];
+/**
+ * A failure shaped like the API RESTARTING (a network error, or 502/503/504
+ * from Render's proxy) gets a longer ladder at build time: ~105s in all. The
+ * 512 MB instance restarts under the crawl, and a restart outlasted the 15s
+ * ladder above on every web deploy from 2026-11-16 to 11-19 (the Swahili home
+ * page failed each time, while every endpoint answered fine minutes later).
+ * A plain 500 keeps the short ladder: Django answered, so waiting will not
+ * help, and a decorative endpoint that is down must not add minutes per page.
+ */
+const BUILD_RESTART_DELAYS_MS = [1000, 4000, 10000, 30000, 60000];
 const RUNTIME_RETRY_DELAYS_MS = [700, 2500];
 const RUNTIME_TRANSIENT = new Set([502, 503, 504]);
 
@@ -126,17 +136,25 @@ async function robustFetch(url: string, init: RequestInit, f: Fetch = fetch): Pr
 		);
 	}
 	if (!isIdempotent(init)) return f(url, init);
-	const delays = building ? BUILD_RETRY_DELAYS_MS : RUNTIME_RETRY_DELAYS_MS;
 	const transient = (status: number) => (building ? status >= 500 : RUNTIME_TRANSIENT.has(status));
+	const ladder = (restartShaped: boolean) =>
+		!building
+			? RUNTIME_RETRY_DELAYS_MS
+			: restartShaped
+				? BUILD_RESTART_DELAYS_MS
+				: BUILD_RETRY_DELAYS_MS;
+	let delays = ladder(false);
 	for (let attempt = 0; ; attempt++) {
-		const outOfRetries = attempt >= delays.length;
 		let failure: string;
 		try {
 			const res = await f(url, init);
-			if (!transient(res.status) || outOfRetries) return res;
+			if (!transient(res.status)) return res;
+			delays = ladder(RUNTIME_TRANSIENT.has(res.status));
+			if (attempt >= delays.length) return res;
 			failure = `${res.status}`;
 		} catch (err) {
-			if (outOfRetries || init.signal?.aborted) throw err;
+			delays = ladder(true);
+			if (attempt >= delays.length || init.signal?.aborted) throw err;
 			failure = String(err);
 		}
 		const delay = delays[attempt];

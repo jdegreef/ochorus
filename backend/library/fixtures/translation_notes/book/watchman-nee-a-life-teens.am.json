@@ -40,8 +40,7 @@
    "reference": "1 Corinthians 6:19-20",
    "block_index": 0,
    "chapter_order": 2,
-   "status": "mined",
-   "source_file": "watchman-nee-a-life.am.json"
+   "status": "self_rendered"
   },
   {
    "reference": "2 Corinthians 6:14",
@@ -66,8 +65,7 @@
    "reference": "Isaiah 40:31",
    "block_index": 0,
    "chapter_order": 3,
-   "status": "mined",
-   "source_file": "watchman-nee-a-life.am.json"
+   "status": "self_rendered"
   },
   {
    "reference": "John 5:19",
@@ -107,8 +105,7 @@
    "reference": "Psalm 90:12",
    "block_index": 0,
    "chapter_order": 5,
-   "status": "mined",
-   "source_file": "watchman-nee-a-life.am.json"
+   "status": "self_rendered"
   },
   {
    "reference": "1 Thessalonians 5:23",
@@ -208,8 +205,7 @@
    "reference": "Ephesians 2:6",
    "block_index": 7,
    "chapter_order": 7,
-   "status": "mined",
-   "source_file": "watchman-nee-a-life.am.json"
+   "status": "self_rendered"
   },
   {
    "reference": "2 Corinthians 1:8",

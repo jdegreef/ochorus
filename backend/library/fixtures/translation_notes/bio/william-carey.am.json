@@ -5,8 +5,8 @@
  "job_issue": 4011,
  "pull_request": null,
  "note": [
-  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh); the mirror has no Old Testament, so OT quotations reuse a shipped Amharic work's wording where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
-  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited shipped work) inside that block. Shorter, re-personed, or bridged-range verses (the mirror merges some verse ranges into one entry holding only part of the text) are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled offline as backend/library/data/bible/owb-am-b.json.gz (founder decision, 2026-11-18: Amharic quotes OWB everywhere). Quotations are verbatim OWB spans, spliced by script; a partial verse is the shortest contiguous OWB span carrying the clause. Citations keep the Amharic library's book names.",
+  "Isaiah 54:2 is quoted identically in the long bio (block 7) and the Q&A; the 'Be still' section heading follows the OWB wording of Psalm 46:10 (ተዉ) so heading and body agree. Matthew 28:19 (block 4) is indirect speech in the biographer's voice and Romans 11:33 (block 20) is Carey's own exclamation, not a quotation; both are prose, left as translated, and stay self_rendered."
  ],
  "references": [
   {
@@ -16,14 +16,15 @@
   },
   {
    "reference": "Isaiah 54:2",
-   "status": "self_rendered",
-   "block_index": 7
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 46:10",
    "status": "mined",
    "block_index": 21,
-   "source_file": "waiting-on-god.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 11:33",

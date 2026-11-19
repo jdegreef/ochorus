@@ -53,8 +53,7 @@
         },
         {
             "reference": "Genesis 18:25",
-            "status": "mined",
-            "source_file": "spurgeon-on-prayer.am.json",
+            "status": "self_rendered",
             "block_index": 0
         },
         {
@@ -79,8 +78,7 @@
         },
         {
             "reference": "Genesis 18:27",
-            "status": "mined",
-            "source_file": "spurgeon-on-prayer.am.json",
+            "status": "self_rendered",
             "block_index": 11
         },
         {
@@ -304,8 +302,7 @@
         },
         {
             "reference": "Ezekiel 22:30",
-            "status": "mined",
-            "source_file": "men-of-prayer-2.am.json",
+            "status": "self_rendered",
             "block_index": 32
         },
         {
@@ -1085,14 +1082,12 @@
         },
         {
             "reference": "John 17:1",
-            "status": "mined",
-            "source_file": "freedom-of-the-will.am.json",
+            "status": "self_rendered",
             "block_index": 24
         },
         {
             "reference": "Hebrews 12:2",
-            "status": "mined",
-            "source_file": "freedom-of-the-will.am.json",
+            "status": "self_rendered",
             "block_index": 24
         },
         {
@@ -1163,8 +1158,7 @@
         },
         {
             "reference": "2 Chronicles 30:20",
-            "status": "mined",
-            "source_file": "christ-the-healer.am.json",
+            "status": "self_rendered",
             "block_index": 14
         },
         {
@@ -1620,8 +1614,7 @@
         },
         {
             "reference": "Habakkuk 3:19",
-            "status": "mined",
-            "source_file": "the-christians-secret-of-a-happy-life-4.am.json",
+            "status": "self_rendered",
             "block_index": 22
         },
         {

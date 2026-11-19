@@ -3,7 +3,8 @@
 A house series for adults on prayer through the whole story of the church, one
 volume to an era; the plan of all eleven is
 ``data/a-cloud-of-praying-witnesses/SERIES-PLAN.md``. Every volume is an
-Introduction, its chapters, a Conclusion and two appendices, and every chapter
+Introduction, its chapters, a Conclusion and two appendices (the last volume:
+the five series appendices below), and every chapter
 ends with the same six sections (``REQUIRED``).
 
 A volume is three files under ``data/a-cloud-of-praying-witnesses/``:
@@ -15,15 +16,22 @@ A volume is three files under ``data/a-cloud-of-praying-witnesses/``:
   chapter), its key verse (which the chapter must cite) and the theme of each
   of its three key insights, from the series' ``THEMES``; the insights
   themselves are read from the chapter's own "Three key insights" list.
-  ``person``, ``era``, ``region``, ``voices`` and ``read_more`` are not read
-  here: they are kept for the last volume's timeline and reading list, which
-  gather every volume's records;
+  ``person``, ``era``, ``region`` and ``read_more`` feed the last volume's
+  timeline and reading list, which gather every volume's records; ``voices``
+  notes where each library quote comes from, for the editor (nothing reads it);
 - ``volume-NN.appendices.md``, GENERATED from the other two and never edited:
   Appendix 1 gathers the insights by theme; Appendix 2 indexes every Scripture
   the chapters cite, read from the prose with ``scripture.extract_citations``
   (the reader's own citation grammar), so a verse added to a chapter is
   indexed on the next build. Committed so it can be reviewed like the
   chapters; ``tests_praying_witnesses`` fails when it is stale.
+
+The last volume (``FINAL_VOLUME``) carries the series appendices in place of its
+own two: A and B merge every volume's insights and Scripture index, C is a
+timeline of every record's ``person``/``era``/``region``, D is the hand-written
+methods toolkit (``series-toolkit.md``), and E lists every chapter's
+``read_more`` books. Because they read every volume, an edit to any volume makes
+the last volume's appendices stale too, and the same test says so.
 
 Fixture-driven: ``seed_books`` creates the book on the next deploy from
 ``fixtures/content/books/<slug>.en.json``. Idempotent. The series row lives in
@@ -638,19 +646,230 @@ VOLUMES: dict[int, dict[str, object]] = {
             ],
         },
     },
+    9: {
+        "slug": "revival-fires",
+        "book": {
+            "publication_year": 2026,
+            "title": "Revival Fires",
+            "subtitle": "Prayer and Awakening",
+            "cover_url": "/covers/art/revival-fires.jpg",
+            "cover_color": covers.ink_safe("#2e5a8f"),  # a midday blue
+            "description": (
+                "Twenty short chapters on prayer and revival from about 1900 to 1950: "
+                "Evan Roberts and Wales, Pandita Ramabai, Azusa Street, Pyongyang and "
+                "Korean dawn prayer, Praying Hyde, Sadhu Sundar Singh, Amy Carmichael, "
+                "Smith Wigglesworth, Rees Howells, Dora Yu, John Sung, Watchman Nee, "
+                "Dietrich Bonhoeffer, Corrie ten Boom, Gladys Aylward, the East African "
+                "revival, the Hebrides, Billy Graham and A. W. Tozer."
+            ),
+            "about_html": (
+                "<p>The twentieth century began with revival. In a Welsh chapel, an Indian "
+                "women's home, a run-down building in Los Angeles and a church in "
+                "Pyongyang, ordinary believers prayed, confessed their sins and saw God "
+                "move. Then came two world wars, revolution and the end of empires, and the "
+                "church learned to pray in prison camps, in hiding and on the road. This "
+                "book follows the praying people of those fifty years. It is Volume 9 of A "
+                "Cloud of Praying Witnesses, an Ochorus series that follows the people of "
+                "God at prayer from the Old Testament to the church around the world "
+                "today.</p>"
+                "<p>Its twenty chapters follow Evan Roberts and the Welsh revival, Pandita "
+                "Ramabai and the women of Mukti, William Seymour on Azusa Street, the "
+                "praying churches of Korea, Praying Hyde, Sadhu Sundar Singh and Amy "
+                "Carmichael; Smith Wigglesworth, Rees Howells, Dora Yu, John Sung and "
+                "Watchman Nee; Dietrich Bonhoeffer, Corrie ten Boom and Gladys Aylward; and "
+                "the East African revival, the two sisters who prayed for the Isle of "
+                "Lewis, the men who prayed for Charlotte, Billy Graham and A. W. "
+                "Tozer.</p>"
+                "<p>Every chapter tells its story from the best sources it can, says "
+                "plainly where a story has grown in the telling, and is fair to readers who "
+                "differ. It quotes the witnesses word for word where their words are free "
+                "to share, and ends with three key insights, a word for today, a practice "
+                "to try, a closing prayer and questions for reflection. Two appendices "
+                "gather every insight by theme and every Scripture in Bible order. "
+                "Scripture is quoted from the Open Word Bible (OWB), Balanced edition, "
+                "which is dedicated to the public domain.</p>"
+            ),
+            "qa": [
+                {
+                    "question": "What is Revival Fires about?",
+                    "answer": "How believers prayed in the revivals and the wars of the first half of the twentieth century, from about 1900 to 1950: twenty short chapters from Evan Roberts and Pandita Ramabai to Korea's dawn prayer, Corrie ten Boom, the East African revival and A. W. Tozer.",
+                },
+                {
+                    "question": "What is A Cloud of Praying Witnesses?",
+                    "answer": "A series of books on prayer through the whole story of the church, named for Hebrews 12:1. The first eight volumes follow prayer from the Old Testament to the great missionary century. This ninth volume follows the first half of the twentieth century, and the last volumes follow the church around the world to today.",
+                },
+                {
+                    "question": "Do I need to read the volumes in order?",
+                    "answer": "No. Each volume stands on its own. Reading them in order follows the story from Abraham to today, but you can begin with any volume.",
+                },
+                {
+                    "question": "Does the book take sides on revivals and spiritual gifts?",
+                    "answer": "It tells what happened from the best sources and describes the revivals warmly and fairly, including the ones that began new movements such as Pentecostalism. Where churches still differ, it keeps its focus on what every believer can learn about prayer.",
+                },
+                {
+                    "question": "Can I read it with a small group?",
+                    "answer": "Yes. One chapter a day takes twenty days on your own, and with a group one or two chapters a week works well. The questions at the end of every chapter are written to start a conversation.",
+                },
+                {
+                    "question": "Which Bible translation does it use?",
+                    "answer": "Every Scripture is quoted from the Open Word Bible (OWB), Balanced edition, a new translation from the Hebrew and Greek that is dedicated to the public domain.",
+                },
+            ],
+        },
+    },
+    10: {
+        "slug": "every-tribe-and-tongue",
+        "book": {
+            "publication_year": 2026,
+            "title": "Every Tribe and Tongue",
+            "subtitle": "The Global Praying Church",
+            "cover_url": "/covers/art/every-tribe-and-tongue.jpg",
+            "cover_color": covers.ink_safe("#325f95"),  # an afternoon blue
+            "description": (
+                "Twenty short chapters on the praying church around the world from 1950 to "
+                "today: Jim and Elisabeth Elliot, Helen Roseveare, Brother Andrew, Taizé, "
+                "Mother Teresa, Korea's prayer mountains, Festo Kivengere and Janani Luwum, "
+                "Evelyn Christenson, China's house churches, prayer and fasting, YWAM, the "
+                "Brooklyn Tabernacle, the 10/40 Window, Argentina, 24-7 Prayer, the Global "
+                "Day of Prayer, Africa's all-night vigils, Helen Berhane, Iran's house "
+                "churches and Tim Keller."
+            ),
+            "about_html": (
+                "<p>Since 1950 the church has become, for the first time, truly a church of "
+                "every tribe and tongue. Most Christians now live in Africa, Asia and Latin "
+                "America, and some of the most faithful praying in the world happens in "
+                "places where believers are watched, arrested or killed for their faith. "
+                "This book follows the praying people of these decades, many of them still "
+                "living. It is Volume 10 of A Cloud of Praying Witnesses, an Ochorus series "
+                "that follows the people of God at prayer from the Old Testament to the "
+                "church around the world today.</p>"
+                "<p>Its twenty chapters follow missionaries who gave their lives and those "
+                "who stayed, from the Elliots and Helen Roseveare to Brother Andrew; "
+                "communities of prayer such as Taizé, Mother Teresa's sisters and Korea's "
+                "prayer mountains; African bishops who blessed their persecutors; women who "
+                "learned to pray together; the house churches of China and Iran; prayer and "
+                "fasting, listening prayer and a Brooklyn prayer meeting; movements that "
+                "prayed for the nations and for whole cities; a prayer room that never "
+                "closed; Africa's all-night vigils; a singer who prayed in a shipping "
+                "container; and a pastor who wrote of awe and intimacy with God.</p>"
+                "<p>Every chapter tells its story from public sources, says plainly where "
+                "accounts differ, and takes care to protect believers who are still at risk. "
+                "Because these stories are recent, they are told in the book's own words, "
+                "with voices from the classics quoted word for word from the library. Each "
+                "chapter ends with three key insights, a word for today, a practice to try, "
+                "a closing prayer and questions for reflection. Two appendices gather every "
+                "insight by theme and every Scripture in Bible order. Scripture is quoted "
+                "from the Open Word Bible (OWB), Balanced edition, which is dedicated to the "
+                "public domain.</p>"
+            ),
+            "qa": [
+                {
+                    "question": "What is Every Tribe and Tongue about?",
+                    "answer": "How the worldwide church has prayed from 1950 to today: twenty short chapters from Jim and Elisabeth Elliot and Helen Roseveare to Korea's prayer mountains, the house churches of China and Iran, Africa's all-night vigils and 24-7 Prayer.",
+                },
+                {
+                    "question": "What is A Cloud of Praying Witnesses?",
+                    "answer": "A series of books on prayer through the whole story of the church, named for Hebrews 12:1. The first nine volumes follow prayer from the Old Testament to the revivals of the early twentieth century. This tenth volume follows the global church from 1950 to today, and the final volume gathers what the whole cloud of witnesses teaches.",
+                },
+                {
+                    "question": "Do I need to read the volumes in order?",
+                    "answer": "No. Each volume stands on its own. Reading them in order follows the story from Abraham to today, but you can begin with any volume.",
+                },
+                {
+                    "question": "Does the book name believers in countries where they are persecuted?",
+                    "answer": "Only people who have already told their own stories in public, or whose cases have been widely reported. It describes house churches and prayer movements in persecuted countries in general terms, so that no one is put at risk.",
+                },
+                {
+                    "question": "Can I read it with a small group?",
+                    "answer": "Yes. One chapter a day takes twenty days on your own, and with a group one or two chapters a week works well. The questions at the end of every chapter are written to start a conversation.",
+                },
+                {
+                    "question": "Which Bible translation does it use?",
+                    "answer": "Every Scripture is quoted from the Open Word Bible (OWB), Balanced edition, a new translation from the Hebrew and Greek that is dedicated to the public domain.",
+                },
+            ],
+        },
+    },
+    11: {
+        "slug": "golden-bowls",
+        "book": {
+            "publication_year": 2026,
+            "title": "Golden Bowls",
+            "subtitle": "Your Place in the Prayer Meeting",
+            "cover_url": "/covers/art/golden-bowls.jpg",
+            "cover_color": covers.ink_safe("#232a56"),  # an evening indigo
+            "description": (
+                "The last volume of A Cloud of Praying Witnesses: twelve short chapters that "
+                "gather what the praying church has learned from Abraham to today, on praying "
+                "the Scriptures, fasting, praying alone and together, waiting, unanswered "
+                "prayer, the nations, revival, prayer at home and a rhythm of prayer for your "
+                "own life."
+            ),
+            "about_html": (
+                "<p>In the throne room of heaven, John saw golden bowls full of incense, "
+                "\"the prayers of God's holy people\" (Revelation 5:8). This book asks what "
+                "the whole cloud of witnesses, from Abraham to the praying church of our own "
+                "day, teaches about prayer, and how you can take your own place among them. "
+                "It is Volume 11, the last, of A Cloud of Praying Witnesses, an Ochorus series "
+                "that follows the people of God at prayer from the Old Testament to the "
+                "church around the world today.</p>"
+                "<p>Its twelve chapters each take one theme: the prayer meeting that has "
+                "lasted for thousands of years, what the witnesses agree on, praying the "
+                "Scriptures, fasting, praying alone and with others, waiting on the Lord, "
+                "unanswered prayer, intercession for the nations, prayer for revival, prayer "
+                "in the home, building your own rhythm of prayer, and the church's last "
+                "prayer, \"Come, Lord Jesus.\" Each opens with a scene from a witness met "
+                "earlier in the series and follows the thread through the centuries.</p>"
+                "<p>Every chapter ends with three key insights, a word for today, a simple "
+                "practice that can be done anywhere, a closing prayer and questions for "
+                "reflection. Five appendices gather the whole series: every key insight by "
+                "theme, a Scripture index from Genesis to Revelation, a timeline of every "
+                "witness, a toolkit of ways to pray, and the books on Ochorus where you can "
+                "keep reading. Scripture is quoted from the Open Word Bible (OWB), Balanced "
+                "edition, which is dedicated to the public domain.</p>"
+            ),
+            "qa": [
+                {
+                    "question": "What is Golden Bowls about?",
+                    "answer": "What the whole history of the praying church teaches about your own life of prayer: twelve themed chapters on praying the Scriptures, fasting, praying alone and together, waiting, unanswered prayer, the nations, revival, prayer at home and a daily rhythm of prayer.",
+                },
+                {
+                    "question": "What is A Cloud of Praying Witnesses?",
+                    "answer": "A series of books on prayer through the whole story of the church, named for Hebrews 12:1. The first ten volumes follow prayer from the Old Testament to the global church of today. This eleventh and last volume gathers what the whole cloud of witnesses teaches.",
+                },
+                {
+                    "question": "Do I need to read the earlier volumes first?",
+                    "answer": "No. Each chapter tells you enough of every story to stand on its own, and points to the volume where the full story is told if you want to read more.",
+                },
+                {
+                    "question": "What are the appendices at the end of the book?",
+                    "answer": "Five appendices for the whole series: every key insight from all eleven volumes by theme, a Scripture index from Genesis to Revelation, a timeline of every person and movement, a toolkit of simple ways to pray, and the books in the library where you can keep reading.",
+                },
+                {
+                    "question": "Can I read it with a small group?",
+                    "answer": "Yes. One chapter a week gives time to practise each chapter's suggestion before the next meeting, and the questions at the end of every chapter are written to start a conversation.",
+                },
+                {
+                    "question": "Which Bible translation does it use?",
+                    "answer": "Every Scripture is quoted from the Open Word Bible (OWB), Balanced edition, a new translation from the Hebrew and Greek that is dedicated to the public domain.",
+                },
+            ],
+        },
+    },
 }
 
 
 # ── The generated appendices ────────────────────────────────────────────────
 
 
-def _label(index: int, last: int, title: str) -> str:
-    """How the section at ``index`` (of ``0..last``) is named in an index line."""
+def _label(index: int, last: int, title: str, prefix: str = "", chapter: str = "Chapter") -> str:
+    """How the section at ``index`` (of ``0..last``) is named in an index line;
+    the series appendices name its volume too (``prefix="Vol. 3, "``, ``chapter="ch."``)."""
     if index == 0:
-        return "Introduction"
+        return f"{prefix}Introduction"
     if index == last:
-        return "Conclusion"
-    return f"Chapter {index}, *{title}*"
+        return f"{prefix}Conclusion"
+    return f"{prefix}{chapter} {index}, *{title}*"
 
 
 # A chapter's "Three key insights" list: each item opens on its insight in bold.
@@ -664,15 +883,14 @@ def _span(ref: str) -> tuple[int, int] | None:
     return (min(ids), max(ids)) if ids else None
 
 
-def appendices(sections: list[tuple[str, str]], entries: list[dict]) -> str:
-    """Both appendices for a volume from its parsed ``(title, html)`` sections."""
+def _gather(sections, entries, by_theme, refs, **label) -> None:
+    """Add one volume's key insights (by theme) and Scripture citations to the
+    running indexes; ``label`` is passed on to ``_label``."""
+    last = len(entries) - 1
     if [title for title, _ in sections] != [e["title"] for e in entries]:
         raise CommandError("volume's chapters.json titles do not match the manuscript's ## headings, in order")
-    last = len(entries) - 1
-    by_theme: dict[str, list[str]] = {t: [] for t in THEMES}
-    refs: dict[tuple[int, int], dict] = {}
     for i, ((title, body), e) in enumerate(zip(sections, entries, strict=True)):
-        label = _label(i, last, title)
+        name = _label(i, last, title, **label)
         found = _INSIGHTS.search(body)
         insights = [html.unescape(x) for x in _INSIGHT.findall(found.group(1))] if found else []
         if len(insights) != len(e["themes"]):
@@ -680,43 +898,167 @@ def appendices(sections: list[tuple[str, str]], entries: list[dict]) -> str:
         for text, theme in zip(insights, e["themes"], strict=True):
             if theme not in by_theme:
                 raise CommandError(f"{title!r}: unknown theme {theme!r}; add it to THEMES")
-            by_theme[theme].append(f"- **{text}** {label} ({e['anchor']})")
+            by_theme[theme].append(f"- **{text}** {name} ({e['anchor']})")
         anchor = _span(e["anchor"])
         cited = {(c["start"], c["end"]): c["ref"] for c in scripture.extract_citations(body)}
         if anchor not in cited:
             raise CommandError(f"{title!r}: its key verse {e['anchor']!r} is not cited in the chapter")
         for span, ref in cited.items():
             r = refs.setdefault(span, {"ref": ref, "chapters": []})
-            r["chapters"].append(label + (" (key verse)" if span == anchor else ""))
+            r["chapters"].append(name + (" (key verse)" if span == anchor else ""))
 
-    out = [
-        "## Appendix 1: Key Insights",
-        "",
-        "Every chapter of this book closes with three key insights. Here they are "
-        "gathered by theme, each pointing back to the chapter where it is taught "
-        "and to that chapter's key verse.",
-    ]
+
+def _insights_md(heading: str, intro: str, by_theme: dict[str, list[str]]) -> list[str]:
+    out = [heading, "", intro]
     for theme in THEMES:
         if by_theme[theme]:
             out += ["", f"### {theme}", "", *by_theme[theme]]
+    return out
+
+
+def _scripture_md(heading: str, intro: str, refs: dict) -> list[str]:
+    out = [heading, "", intro]
+    book_heading = None
+    for _, r in sorted(refs.items()):
+        if (book := scripture.book_of(r["ref"])) is None:
+            raise CommandError(f"{r['ref']!r} names no book of the Bible")
+        if book[0] != book_heading:
+            book_heading = book[0]
+            out += ["", f"### {book_heading}", ""]
+        out.append(f"- **{r['ref']}**: {'; '.join(r['chapters'])}")
+    return out
+
+
+def appendices(sections: list[tuple[str, str]], entries: list[dict]) -> str:
+    """Both appendices for a volume from its parsed ``(title, html)`` sections."""
+    by_theme: dict[str, list[str]] = {t: [] for t in THEMES}
+    refs: dict[tuple[int, int], dict] = {}
+    _gather(sections, entries, by_theme, refs)
+    out = _insights_md(
+        "## Appendix 1: Key Insights",
+        "Every chapter of this book closes with three key insights. Here they are "
+        "gathered by theme, each pointing back to the chapter where it is taught "
+        "and to that chapter's key verse.",
+        by_theme,
+    )
+    out += ["", "---", ""]
+    out += _scripture_md(
+        "## Appendix 2: Scripture Index",
+        "Every passage of Scripture quoted or referred to in this book, in Bible "
+        'order, with the chapters where it appears. "Key verse" marks the '
+        "Scripture a chapter is built on.",
+        refs,
+    )
+    return "\n".join(out) + "\n"
+
+
+# ── The series appendices (the last volume only) ────────────────────────────
+
+# The last volume closes the series: in place of its own two appendices it
+# carries five for the whole series. A, B, C and E are generated from every
+# volume's manuscript and records; D, the methods toolkit, is written by hand.
+FINAL_VOLUME = max(VOLUMES)
+TOOLKIT = SERIES_DIR / "series-toolkit.md"
+
+_NUMBER_WORDS = {10: "ten", 11: "eleven", 12: "twelve"}
+_YEAR = re.compile(r"\d+")
+_BC = re.compile(r"\bB\.?C\.?(?:E\.?)?(?!\w)", re.IGNORECASE)
+
+
+def era_year(era: str) -> int:
+    """A sortable year for a record's ``era``: its first number, negative when
+    the era is BC; "today" and the like sort last."""
+    found = _YEAR.search(era)
+    if not found:
+        return 10_000
+    year = int(found.group())
+    return -year if _BC.search(era, found.end()) else year
+
+
+def _book_titles(slugs: set[str]) -> dict[str, str]:
+    """``slug -> "*Title*, Author"`` for the English books the reading list names,
+    reading only their own fixture files (the library holds hundreds)."""
+    from library.content_fixtures import authors_by_slug, book_fixture_path
+
+    authors = authors_by_slug()
+    titles = {}
+    for slug in slugs:
+        path = book_fixture_path(slug, "en")
+        if not path.exists():
+            raise CommandError(f"read_more names {slug!r}, which is no English book")
+        book = next(r["fields"] for r in json.loads(path.read_text()) if r["model"] == "library.book")
+        titles[slug] = f"*{book['title']}*, {authors[book['author'][0]]['name']}"
+    return titles
+
+
+def series_appendices(volumes: dict[int, tuple[list[tuple[str, str]], list[dict]]]) -> str:
+    """The series appendices A to E from every volume's ``(sections, entries)``."""
+    ordered = sorted(volumes.items())
+    by_theme: dict[str, list[str]] = {t: [] for t in THEMES}
+    refs: dict[tuple[int, int], dict] = {}
+    for volume, (sections, entries) in ordered:
+        try:
+            _gather(sections, entries, by_theme, refs, prefix=f"Vol. {volume}, ", chapter="ch.")
+        except CommandError as exc:
+            raise CommandError(f"volume {volume}: {exc}") from exc
+    out = _insights_md(
+        "## Appendix A: Key Insights from the Whole Series",
+        "Every chapter of every volume closes with three key insights. Here they are "
+        "all gathered by theme, each pointing back to its volume and chapter and to "
+        "that chapter's key verse.",
+        by_theme,
+    )
+    out += ["", "---", ""]
+    out += _scripture_md(
+        "## Appendix B: Scripture Index to the Whole Series",
+        f"Every passage of Scripture quoted or referred to in the {_NUMBER_WORDS[len(volumes)]} volumes, "
+        'in Bible order, with the volumes and chapters where it appears. "Key verse" '
+        "marks the Scripture a chapter is built on.",
+        refs,
+    )
+
+    # Every record that names a person or movement (each Conclusion's too), but
+    # not the last volume's own, whose "person" is a theme.
+    lives = sorted(
+        (
+            (era_year(e["era"]), volume, i),
+            f"- **{e['era']}**: {e['person']}, {e['region']}. "
+            + _label(i, len(entries) - 1, e["title"], prefix=f"Vol. {volume}, ", chapter="ch."),
+        )
+        for volume, (_, entries) in ordered
+        if volume != FINAL_VOLUME
+        for i, e in enumerate(entries)
+        if e["person"]
+    )
     out += [
         "",
         "---",
         "",
-        "## Appendix 2: Scripture Index",
+        "## Appendix C: Timeline",
         "",
-        "Every passage of Scripture quoted or referred to in this book, in Bible "
-        'order, with the chapters where it appears. "Key verse" marks the '
-        "Scripture a chapter is built on.",
+        "Every person and movement in the series on one line, in the order of their "
+        "times. Dates are as each chapter gives them, most of them approximate.",
+        "",
     ]
-    heading = None
-    for _, r in sorted(refs.items()):
-        if (book := scripture.book_of(r["ref"])) is None:
-            raise CommandError(f"{r['ref']!r} names no book of the Bible")
-        if book[0] != heading:
-            heading = book[0]
-            out += ["", f"### {heading}", ""]
-        out.append(f"- **{r['ref']}**: {'; '.join(r['chapters'])}")
+    out += [line for _, line in lives]
+
+    out += ["", "---", "", TOOLKIT.read_text().strip(), "", "---", ""]
+
+    titles = _book_titles({s for _, entries in volumes.values() for e in entries[1:-1] for s in e.get("read_more", [])})
+    out += [
+        "## Appendix E: Keep Reading on Ochorus",
+        "",
+        "The books in the Ochorus library that each chapter recommends, volume by "
+        "volume, so that you can go on listening to the witnesses in their own words.",
+    ]
+    for volume, (_, entries) in ordered:
+        lines = [
+            f"- **Ch. {i}, *{e['title']}***: {'; '.join(books)}"
+            for i, e in enumerate(entries[1:-1], start=1)
+            if (books := [titles[s] for s in e.get("read_more", [])])
+        ]
+        if lines:
+            out += ["", f"### Volume {volume}", "", *lines]
     return "\n".join(out) + "\n"
 
 
@@ -736,10 +1078,17 @@ def chapter_rows(volume: int) -> tuple[list[tuple[str, str]], str]:
 
 def volume_text(volume: int) -> tuple[list[tuple[str, str]], str]:
     """A volume's parsed manuscript sections and its generated appendices."""
+    if volume != FINAL_VOLUME:
+        sections, entries = _volume_records(volume)
+        return sections, appendices(sections, entries)
+    records = {v: _volume_records(v) for v in VOLUMES}
+    return records[volume][0], series_appendices(records)
+
+
+def _volume_records(volume: int) -> tuple[list[tuple[str, str]], list[dict]]:
+    """A volume's parsed manuscript sections and its chapter records."""
     stem = SERIES_DIR / f"volume-{volume:02d}"
-    sections = parse(stem.with_suffix(".md").read_text())
-    entries = json.loads(stem.with_suffix(".chapters.json").read_text())
-    return sections, appendices(sections, entries)
+    return parse(stem.with_suffix(".md").read_text()), json.loads(stem.with_suffix(".chapters.json").read_text())
 
 
 # ── The book ────────────────────────────────────────────────────────────────

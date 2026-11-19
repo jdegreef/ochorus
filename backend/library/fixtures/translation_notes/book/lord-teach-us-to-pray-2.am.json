@@ -32,10 +32,9 @@
   },
   {
    "reference": "John 4:23",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 2,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 2
   },
   {
    "reference": "John 4:24",
@@ -60,10 +59,9 @@
   },
   {
    "reference": "John 4:23",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 12,
-   "chapter_order": 2,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 2
   },
   {
    "reference": "John 1:14",
@@ -121,10 +119,9 @@
   },
   {
    "reference": "Psalm 103:13",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 3,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 3
   },
   {
    "reference": "Matthew 6:6",

@@ -5,8 +5,8 @@
  "job_issue": 3766,
  "pull_request": null,
  "note": [
-  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
-  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled as library/data/bible/owb-am-b.json.gz and read with fetch_verse_text(\"owb-am\", ref) (founder decision, 2026-11-18: every Amharic work quotes OWB). Every quotation was re-quoted verbatim from it: a whole verse where the English quotes one, otherwise the shortest contiguous OWB span carrying the quoted clause.",
+  "Rows still marked self_rendered are allusions, not quotations — the Tukutendereza hymn's own words (\"Lamb of God\", \"Your blood has cleansed me\"), section headings and prose echoing \"walk in the light\", and a bare citation of Galatians 3:28 — so they carry no Scripture wording to re-quote."
  ],
  "references": [
   {
@@ -14,48 +14,49 @@
    "status": "mined",
    "block_index": 19,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 5:18",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 15,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Galatians 3:28",
    "status": "mined",
    "block_index": 15,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 5:14",
    "status": "mined",
    "block_index": 17,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 1:16",
    "status": "mined",
    "block_index": 18,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 5:16",
    "status": "mined",
    "block_index": 25,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Philippians 1:21",
    "status": "mined",
    "block_index": 19,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 1:7",
@@ -68,27 +69,28 @@
    "status": "mined",
    "block_index": 20,
    "chapter_order": 9,
-   "source_file": "school-of-prayer.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 12:11",
    "status": "mined",
    "block_index": 20,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Timothy 4:12",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 20,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Galatians 3:28",
    "status": "mined",
    "block_index": 18,
    "chapter_order": 12,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 1:29",
@@ -113,14 +115,14 @@
    "status": "mined",
    "block_index": 20,
    "chapter_order": 13,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 1:7",
    "status": "mined",
    "block_index": 20,
    "chapter_order": 13,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 1:29",
@@ -139,7 +141,7 @@
    "status": "mined",
    "block_index": 23,
    "chapter_order": 14,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   }
  ]
 }

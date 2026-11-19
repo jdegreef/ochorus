@@ -891,10 +891,9 @@
   },
   {
    "reference": "Mark 11:24",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 16,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 16
   },
   {
    "reference": "Mark 9:23",
@@ -939,10 +938,9 @@
   },
   {
    "reference": "Joshua 7:12",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 17,
-   "source_file": "the-christians-secret-of-a-happy-life-4.am.json"
+   "chapter_order": 17
   },
   {
    "reference": "1 John 1:9",
@@ -980,10 +978,9 @@
   },
   {
    "reference": "Ezekiel 22:30",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 18,
-   "source_file": "men-of-prayer-2.am.json"
+   "chapter_order": 18
   },
   {
    "reference": "Isaiah 62:6",

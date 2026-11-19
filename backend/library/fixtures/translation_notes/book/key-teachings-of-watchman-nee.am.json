@@ -936,10 +936,9 @@
   },
   {
    "reference": "Genesis 1:26",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 15,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 15
   },
   {
    "reference": "2 Thessalonians 2:9",
@@ -1529,10 +1528,9 @@
   },
   {
    "reference": "Philippians 3:12",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 22,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 22
   },
   {
    "reference": "Hebrews 12:2",

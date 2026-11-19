@@ -745,6 +745,51 @@ So when the English does not say what it should:
    under `library/management/commands/data/<slug>/`, or `tests_praying_witnesses`
    fails. Their quoted classics can be pasted from that language's shipped
    editions of those works (a voices crib) instead of re-translated.
+   **Their Scripture is OWB, never the language's classic Bible, when that
+   language has an OWB rendering.**
+   **Amharic, Swahili and Japanese are OWB for EVERY work** (founder decisions:
+   Amharic 2026-11-18; Swahili and Japanese 2026-11-19): an Original or a
+   classic alike quotes that language's OWB Balanced text verbatim. Each is
+   bundled, so fetch it with `fetch_verse_text("owb-sw", "John 3:16")` (or
+   `fetch_chapter("owb-ja", Ref(...))`), with no network and no crib. For a
+   range use `fetch_passage_text("owb-am", "Psalm 46:1-3")`:
+   `fetch_verse_text` stops at the range's first verse. Notes record
+   `source_file: "Open Word Bible (OWB), Balanced edition, <Amharic|Swahili|
+   Japanese>"`, status `mined`. Cite with the book names each library already
+   uses, not OWB's own spellings: Amharic ዘኍልቍ, ዕብራውያን, 2ኛ ቆሮንቶስ,
+   ቆላስይስ; Swahili Yohana, Warumi, Waebrania, 2 Wakorintho; Japanese the
+   short forms マタイ, ヨハネ, ローマ, ヘブル, 第一コリント (no space before the
+   numbers: ヨハネ15:4).
+   - **Don't fall back to the old Bibles.** Amharic: not the ebible `amh` 1962
+     mirror (© UBS, NT-only, bridged keys hold only the last verse). Swahili:
+     not `swhonen` and not the Union wording mined from the corpus; the
+     corpus-mining entries further down describe the pre-OWB world. Japanese:
+     not the 口語訳 (`japkougo`).
+   - **Swahili's 2026-11-18 split is superseded.** Originals and classics both
+     quote OWB now, and the Union-quoting works shipped before the switch,
+     including the 33 Originals, are re-quoted to OWB.
+   - **Japanese wording and register follow OWB**, which mixes である and
+     です・ます by book; the translator's own prose stays です・ます. The bundle
+     already drops the space OWB's exporter puts between poetic lines.
+   - **Swahili OWB capitalises pronouns for God** (Yangu, Wake, Mwenyewe), and
+     its dynamic renderings can differ from the glossary (Rom 8 "flesh" is
+     *asili ya dhambi*). A quoted verse keeps OWB's words; the glossary governs
+     only the translator's own prose.
+   Four rules the founder settled after the first Amharic re-quote wave (2026-11-19); they hold for all three languages:
+   - **A verbatim recitation is a quotation, marks or not.** Where the author
+     recites a verse word for word without quote marks (Ps 91:2-6, Phil 2:13
+     "to will and to do", Heb 7:25), the Amharic gives OWB's words too. Only a
+     true allusion, the author's own paraphrase, stays the translator's.
+   - **Joined pieces are allowed.** Where the author drops words from a verse
+     with "…", the Amharic may join OWB pieces with "…" as long as each piece
+     is exact OWB. Don't force one long contiguous span.
+   - **Acts 9:6's question comes from Acts 22:10.** OWB's Acts 9:6 lacks the
+     KJV's "Lord, what wilt thou have me to do?"; Paul's retelling at Acts
+     22:10 has it. Quote that verse and cite Acts 22:10.
+   - **Psalm 68:31 "Ethiopia".** OWB reads Cush (Amharic ኩሽ, Swahili Kushi,
+     Japanese クシュ). Where the author argues from "Ethiopia", keep the
+     language's "Ethiopia" and mark the row `self_rendered`; the rendering
+     itself is raised with the OWB project.
 
 The `english-qa` skill has the full triage table and the rule that matters most:
 archaic spelling and period punctuation are the text, not defects in it.
@@ -1167,7 +1212,10 @@ archaic spelling and period punctuation are the text, not defects in it.
   book's own display name is the `<para style="toc2">` — take `scripture_ref`
   names from that, never from a guess.
 - **…but check the mirror's LICENCE and its TEXT before using it. For Swahili,
-  don't.** The only Swahili Bible in that collection is `swh_ulb` (Unlocked
+  don't.** (**Superseded 2026-11-19:** every Swahili work now quotes the bundled
+  OWB Swahili, `owb-sw`; see item 6, "House Originals", under "When the ENGLISH
+  is wrong". This entry and the Swahili corpus-mining entries below record the
+  pre-OWB world, kept for the reasoning.) The only Swahili Bible in that collection is `swh_ulb` (Unlocked
   Literal Bible, 2019) and it fails on both counts: it is **CC BY-SA 4.0, not
   public domain** — which would put an attribution obligation on every verse
   the library renders — and it is a different translation from the one our
@@ -2498,7 +2546,7 @@ archaic spelling and period punctuation are the text, not defects in it.
   belongs to that slug — a distinctive name token from the input appears in the
   output, allowing for localized forms) before shipping, not just a tag/ratio
   check. A tag-count-and-ratio-clean file can still be the WRONG author.
-- **For Swahili, the DECLARED `swhonen` Bible (Take Root API) is a DIFFERENT
+- **(Pre-OWB, superseded 2026-11-19: Swahili is now `owb-sw`.) For Swahili, the DECLARED `swhonen` Bible (Take Root API) is a DIFFERENT
   EDITION from the shipped sw corpus — do NOT paste it; mine the corpus**
   (jobs #1301/#1315/#1317, 2026-09-06, three books). Earlier sw entries said
   "the corpus follows the Swahili Union tradition, which `language_seed.py`
