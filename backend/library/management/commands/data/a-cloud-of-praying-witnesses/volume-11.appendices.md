@@ -2114,7 +2114,7 @@ Arrow prayers fly far from a life of longer prayer, as Nehemiah's did.
 
 ### Set hours of prayer
 
-David prayed "at evening, at morning and at noon" (Psalm 55:17), and Daniel knelt three times a day (Volume 1, chapter 14). In Volume 3, chapter 3, Peter and John went to the temple "for the afternoon prayer at three o'clock" (Acts 3:1). The *Didache* gave new believers one prayer and three times a day (Volume 4, chapter 1), and Benedict's monks stopped their work to pray seven times a day (Volume 5, chapter 1).
+David prayed "at evening, at morning and at noon" (Psalm 55:17), and Daniel knelt three times a day (Volume 1, chapter 14). In Volume 3, chapter 3, Peter and John went to the temple "for the afternoon prayer at three o'clock" (Acts 3:1). The *Didache* told new believers to pray the Lord's Prayer three times a day (Volume 4, chapter 1), and Benedict's monks stopped their work to pray seven times a day (Volume 5, chapter 1).
 
 1. Choose two or three times: morning, midday and evening is the oldest pattern.
 2. Tie each to something you already do, such as waking, eating or going to bed.

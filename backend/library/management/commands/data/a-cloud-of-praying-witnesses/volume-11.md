@@ -74,7 +74,7 @@ The witnesses in this series were ordinary people. They were tired, busy, afraid
 
 > "So then, since we too have so vast a cloud of witnesses all around us, let us strip off every burden, and the sin that wraps itself around us so readily, and let us run the race laid out ahead of us, and run it with endurance." (Hebrews 12:1)
 
-In the winter of 1858, the city of Boston, on the east coast of the United States, was full of prayer meetings. At twelve o'clock each day, business men crowded into the chapel of the Old South Church to pray, so many that some could not get in. Across the city, at Park Street Church, Elizabeth Finney led a daily meeting for women. It grew so full that women stood outside the doors, listening as well as they could. In Volume 8 we saw how this wave of prayer began, with one man waiting alone in an upper room in New York.
+In the winter of 1858, the city of Boston, on the east coast of the United States, was full of prayer meetings. At twelve o'clock each day, businessmen crowded into the chapel of the Old South Church to pray, so many that some could not get in. Across the city, at Park Street Church, Elizabeth Finney led a daily meeting for women. It grew so full that women stood outside the doors, listening as well as they could. In Volume 8 we saw how this wave of prayer began, with one man waiting alone in an empty room in New York.
 
 The preacher Charles Finney was in Boston that winter, and years later he remembered one meeting in his *Memoirs*. A stranger stood up to speak. He said that he came from Omaha, in Nebraska, then a small new town on the Missouri River, far to the west. On his journey east, the man said, he had found "a continuous prayer-meeting all the way." By his reckoning it was about two thousand miles from Omaha to Boston. So this, he said, was a prayer meeting two thousand miles long.
 
@@ -190,7 +190,7 @@ The witnesses in this series did not agree on everything. But on the heart of pr
 
 The "closet" is the private room where we pray. Faith does not look at itself. It looks at the Father.
 
-**We come as children to a Father.** Cyprian of Carthage taught that the first word of the Lord's Prayer makes us one family (Volume 4, chapter 8). Mary Slessor, alone and afraid on a dark forest path in Nigeria, found that the single cry "Father!" was a whole prayer (Volume 8, chapter 18). "How much more will your Father in heaven give good things to those who ask Him!" (Matthew 7:11).
+**We come as children to a Father.** Cyprian of Carthage taught that the first word of the Lord's Prayer makes us one family (Volume 4, chapter 8). Mary Slessor, afraid on a dark forest path in Nigeria with the children in her care, found that the single cry "Father!" was a whole prayer (Volume 8, chapter 18). "How much more will your Father in heaven give good things to those who ask Him!" (Matthew 7:11).
 
 **We come through Jesus.** The verb "approaches" in our key verse is used again and again in Hebrews. We "approach the throne of grace" with confidence (Hebrews 4:16), because Jesus "is able to save completely those who approach God through Him" (Hebrews 7:25). The monks of the deserts of Egypt and Palestine gave the church the Jesus Prayer, in the form most used today, "Lord Jesus Christ, Son of God, have mercy on me" (Volume 4, chapter 18). Calvin taught that only Christ turns God's throne of glory into a throne of grace (Volume 6, chapter 3). Cyprian loved to pray the very words Jesus gave:
 
@@ -199,11 +199,11 @@ The "closet" is the private room where we pray. Faith does not look at itself. I
 
 **We keep on asking.** Jesus taught "about their need to pray at all times and not lose heart" (Luke 18:1). Monica prayed for years for her wandering son (Volume 4, chapter 15). Catherine of Siena gave God no rest (Volume 5, chapter 14). John Hyde wept and prayed over the Punjab (Volume 9, chapter 6).
 
-**We pray with others.** From the upper room (Volume 3, chapter 1) to Herrnhut (Volume 7, chapter 4), Fulton Street (Volume 8, chapter 8) and Pyongyang (Volume 9, chapter 4), the witnesses found that Jesus meant it: "if two of you here on earth are of one mind about anything they ask for, it will be done for them by My Father in heaven" (Matthew 18:19).
+**We pray with others.** From the church at Antioch (Volume 3, chapter 9) to the Olney prayer meeting (Volume 7, chapter 13) and the students who prayed beside a haystack in the rain (Volume 8, chapter 1), the witnesses found that Jesus meant it: "if two of you here on earth are of one mind about anything they ask for, it will be done for them by My Father in heaven" (Matthew 18:19).
 
 **We pray God's own words.** Jesus prayed the psalms on the cross. Benedict's monks prayed them every week, and Luther wove the Lord's Prayer into a garland (Volume 5, chapter 1; Volume 6, chapter 2). We will follow this thread in the next chapter.
 
-**Prayer and obedience go together.** "The Lord would not have heard me if I had kept wrongdoing in my heart" (Psalm 66:18). Jesus told us to forgive before we pray (Mark 11:25). John Sung called on believers to name their sins and turn from them (Volume 9, chapter 12). And Volume 8 told honestly how the revival prayers of 1858 opened many hearts, but did not make the people who prayed them turn from the great evil of slavery.
+**Prayer and obedience go together.** "The Lord would not have heard me if I had kept wrongdoing in my heart" (Psalm 66:18). Jesus told us to forgive before we pray (Mark 11:25). John Sung called on believers to name their sins and turn from them (Volume 9, chapter 12). And Volume 8 told honestly how the revival prayers of 1858 opened many hearts, while many who prayed in the North still accepted a nation divided by the great evil of slavery.
 
 **We may come honestly.** Hannah poured out her pain (Volume 1, chapter 5), the psalms of lament ask "How long?" (Volume 1, chapter 16), and John Bunyan taught that the heart matters more than fine words (Volume 6, chapter 15).
 
@@ -256,7 +256,7 @@ Father in heaven, I believe that You are here, and that You reward those who sea
 
 > "Take the veil from my eyes, so that I may see the wonders in Your instruction." (Psalm 119:18)
 
-Picture an early morning in the spring of 1841. A German-born pastor walks out of the city of Bristol, in England, into the fields. He carries two books: his Bible, and a New Testament printed in large type, easy to read in the open air. When he grows tired of walking, he sits for a while on a stile, the wooden steps that let people climb over a farm fence. He reads slowly, one verse at a time. (He describes these walks himself, as part of the new habit he began that spring.)
+Picture an early summer morning in the 1840s. A German-born pastor walks out of the city of Bristol, in England, into the fields. He carries two books: his Bible, and a New Testament printed in large type, easy to read in the open air. When he grows tired of walking, he sits for a while on a stile, the wooden steps that let people climb over a farm fence. He reads slowly, one verse at a time. (He describes these walks himself, as part of a habit he began in the spring of 1841.)
 
 His name was George Müller. In Volume 8 we met him as the man who cared for thousands of orphans by prayer alone. But in these hours he was not asking for money. He was learning something new about how to begin the day with God.
 
@@ -296,7 +296,7 @@ But look at the psalm from another side. It is not a lesson about the Bible. It 
 
 That is the pattern the witnesses teach. Pray before you read: "Take the veil from my eyes." Read slowly, as Müller did. Then let each verse turn into thanks, confession or a request. Jesus promised, "If you remain in Me and My words remain in you, ask for whatever you want, and it will be done for you" (John 15:7). When His words fill our prayers, our requests begin to match His will.
 
-One honest word. Some psalms cry out for God to punish enemies, and believers have prayed them in different ways. Some, like Bonhoeffer, taught that we pray them with Christ, handing our anger to the Judge of all the earth. Others leave them unspoken. All agree that these psalms give our anger to God rather than to our own hands.
+One honest word. Some psalms cry out for God to punish enemies, and believers have prayed them in different ways. Some teach that we pray them with Christ, handing our anger to the Judge of all the earth. Others leave them unspoken. Either way, these psalms show us that anger can be given to God instead of being taken into our own hands.
 
 ### Three key insights
 
@@ -358,7 +358,7 @@ The Reformers did not throw fasting away. John Calvin, whom we met in Volume 6, 
 > "A holy and lawful fast has three ends in view. We use it either to mortify and subdue the flesh, that it may not wanton, or to prepare the better for prayer and holy meditation; or to give evidence of humbling ourselves before God, when we would confess our guilt before him."
 > John Calvin, *Institutes of the Christian Religion*
 
-To "mortify the flesh" means to put our selfish desires to death, so that they do not run wild. Puritans in England, Scotland and New England called days of fasting and humiliation in times of war, plague or failed harvests, and David Brainerd set apart days to fast and pray for people he had not yet met (Volume 7, chapter 10).
+To "mortify the flesh" means to put our selfish desires to death, so that they do not run wild. Puritans in England, Scotland and New England called days of fasting and humiliation in times of war, plague or failed harvests, and David Brainerd set apart a day to fast and pray for souls "in many distant places" (Volume 7, chapter 10).
 
 The thread runs on. Pastor Hsi in China called his household to fast and pray for three days for his troubled wife (Volume 8, chapter 12). The little group in Los Angeles that saw the beginning of Azusa Street had agreed to pray and fast for ten days (Volume 9, chapter 3). Korean believers have climbed prayer mountains to fast and pray (Volume 10, chapter 6), and Derek Prince and Bill Bright called a generation back to fasting (Volume 10, chapter 10). In many churches of Africa, Asia and Latin America, fasting is simply part of Christian life.
 
@@ -430,7 +430,7 @@ In Volume 7 we visited a crowded house in the flat, wet country of eastern Engla
 
 Her family remembered a picture of her that has been told ever since. When she needed to pray and there was no quiet room to go to, she sat down and threw her long apron up over her head. Under that cloth she was alone with God. The children learned that when their mother's head was covered, they must leave her in peace. The story comes from family memory, not from her own letters, so we cannot be sure of every detail. But her letters show that she kept set hours with God.
 
-Now see her on a winter Sunday evening, when her husband was away in London. The parish church held no afternoon service, so Susanna began to read a sermon and pray with her own household in the rectory kitchen. A servant boy told his parents, and they asked if they could come too. Then their neighbors came. Soon, she wrote to her husband, more than two hundred people were coming, and many were turned away for lack of room.
+Now see her on a winter Sunday evening, when her husband was away in London. The parish church held no afternoon service, so Susanna began to read a sermon and pray with her own household in the rectory kitchen. A servant boy told his parents, and they asked if they could come too. Then their neighbors came. Soon, she wrote, more than two hundred people were coming, and many were turned away for lack of room.
 
 So the same woman who hid under her apron to be alone with God also opened her kitchen to pray with her neighbors. She did not think she had to choose. The hidden place and the crowded room both belonged to her life with God (Volume 7, chapter 6).
 
@@ -448,7 +448,7 @@ Jesus lived the same way. He told us to "go into an inner room, shut the door, a
 
 The witnesses in this series kept both places.
 
-Some are remembered mostly for praying alone. Antony went into the Egyptian desert to be alone with God. Yet after twenty years in an old fort, Athanasius tells us, he came out, and many people came to him for help, and he prayed for them (Volume 4, chapter 9). Lancelot Andrewes, a bishop at the court of King James, prayed for hours each day from a little notebook of prayers he had written for himself and never meant to publish (Volume 6, chapter 11).
+Some are remembered mostly for praying alone. Antony went into the Egyptian desert to be alone with God. Yet after nearly twenty years in an old fort, Athanasius tells us, he came out, and many people came to him for help, and he prayed for them (Volume 4, chapter 9). Lancelot Andrewes, a bishop at the court of King James, prayed for hours each day from a little notebook of prayers he had written for himself and never meant to publish (Volume 6, chapter 11).
 
 Others are remembered for praying together. The first disciples waited in the upper room, "devoted to prayer and of one mind in it" (Acts 1:14; Volume 3, chapter 1). At Herrnhut the Moravian Brethren divided the day and night into hours, so that someone was always praying (Volume 7, chapter 4). At Kells in Ireland four young men met every Friday in a schoolhouse to pray (Volume 8, chapter 9). In Pyongyang in 1907 a whole church prayed aloud at once (Volume 9, chapter 4). In the 1960s Evelyn Christenson taught women in small groups to pray short, simple prayers one subject at a time (Volume 10, chapter 8).
 
@@ -513,7 +513,7 @@ In Volume 9 we went far out into the Atlantic Ocean, to the Isle of Lewis off th
 
 Their parish grieved them. The island had a long and serious faith, but many young people were drifting away from God. So the sisters prayed for revival. The story says that twice a week they prayed through the night, from late evening until the early hours. They held on to one promise from God's word: "I will pour out water on parched ground and send streams across the dry land; I will pour out My Spirit on your children" (Isaiah 44:3).
 
-Then, as Campbell told it, Peggy sent for her minister, James Murray MacKay, and urged him to gather the leaders of the church to pray. Some men began to meet in a barn two or three nights a week. For weeks nothing seemed to change. Then, as the story is told, one night a young deacon read from Psalm 24 about clean hands and a pure heart, and the men humbled themselves before God. In December 1949 the evangelist Duncan Campbell came to the island, and within days, by his account, the meetings were crowded late into the night. Over the next two years many people on Lewis and Harris came to faith.
+Then, as the evangelist Duncan Campbell later told it, Peggy sent for her minister, James Murray MacKay, and urged him to gather the leaders of the church to pray. Some men began to meet in a barn two or three nights a week. For weeks nothing seemed to change. Then, as the story is told, one night a young deacon read from Psalm 24 about clean hands and a pure heart, and the men humbled themselves before God. In December 1949 Campbell himself came to the island, and within days, by his account, the meetings were crowded late into the night. Over the next two years many people on Lewis and Harris came to faith.
 
 As we said in Volume 9, most of the famous details come from Campbell's later talks, and historians have rightly asked careful questions about them. Others were praying too, and the sisters' ages and part are told differently in different places. But this much is plain. There was a real revival on Lewis, and before it came, believers old and young had waited on God for a long time, with nothing to show for it but a promise (Volume 9, chapter 18).
 
@@ -606,7 +606,7 @@ Was His prayer unheard? The letter to the Hebrews gives a surprising answer. "In
 
 Our key verse comes from a man who knew that night by heart. Paul tells the church in Corinth about "a thorn in the flesh." No one knows what it was: perhaps an illness, perhaps enemies. He calls it "a messenger of Satan, sent to beat me down" (2 Corinthians 12:7). Like his Lord in the garden, he asked three times for it to go.
 
-It did not go. Instead the Lord answered with a word: "My grace is enough for you." Paul did not receive what he asked for. He received the Lord's own word, and a strength that worked best when he was weak. From then on, he stopped asking for the thorn to be taken away, and began to boast about his weakness, "for then the power of Christ may spread its tent over me" (2 Corinthians 12:9). Notice that he did not stop because he had given up on God. He stopped because God had spoken.
+It did not go. Instead the Lord answered with a word: "My grace is enough for you." Paul did not receive what he asked for. He received the Lord's own word, and a strength that worked best when he was weak. So he chose to boast about his weakness, "for then the power of Christ may spread its tent over me" (2 Corinthians 12:9). Notice that he did not stop because he had given up on God. He stopped because God had spoken.
 
 ### The thread through the centuries
 
@@ -617,7 +617,7 @@ Some refusals turned out, years later, to be a deeper answer. Monica prayed all 
 > "God's real answers to prayer are often seeming denials. Beneath the outward request He hears the voice of the inward desire, and He responds to the mind of the Spirit rather than to the imperfect and perhaps mistaken words in which the yearning seeks expression."
 > Arthur T. Pierson, *George Müller of Bristol*
 
-But we must be careful here, because not every story has a happy ending in this life. When Herod killed the apostle James and Peter walked free, Scripture gives no reason (Volume 3, chapter 8). David Brainerd agonized in prayer for the Native peoples of America, and once wrote after hours of it that he felt he "had done nothing." He lived to see a harvest among the Lenape, but tuberculosis took him at twenty-nine (Volume 7, chapter 10). Samuel Ajayi Crowther, the first African bishop of his church, asked God that every mission station might have a good, solid church before he was laid aside. Instead, in his old age, his authority was broken by younger missionaries, and he died in Lagos in 1891 (Volume 8, chapter 16). From Easter 1896 until her death the next year, Thérèse of Lisieux often lost all joy in the thought of heaven, and kept praying in the dark (Volume 8, chapter 19). Dietrich Bonhoeffer prayed in his cell for his family and his fiancée, but he never came home to them. He was hanged two weeks before American soldiers reached the camp (Volume 9, chapter 14). Mother Teresa, her letters show, felt no sense of God's presence for nearly fifty years (Volume 10, chapter 5).
+But we must be careful here, because not every story has a happy ending in this life. When Herod killed the apostle James and Peter walked free, Scripture gives no reason (Volume 3, chapter 8). David Brainerd once wrestled in prayer for "multitudes of poor souls" until he was wet with sweat, and afterward felt that he "had done nothing." He lived to see a harvest among the Lenape, but tuberculosis took him at twenty-nine (Volume 7, chapter 10). Samuel Ajayi Crowther, the first African bishop of his church, asked God that every mission station might have a good, solid church before he was laid aside. Instead, in his old age, his authority was broken by younger missionaries, and he died in Lagos in 1891 (Volume 8, chapter 16). From Easter 1896 until her death the next year, Thérèse of Lisieux often lost all joy in the thought of heaven, and kept praying in the dark (Volume 8, chapter 19). Dietrich Bonhoeffer prayed in his cell for his family and his fiancée, but he never came home to them. He was hanged two weeks before American soldiers reached the camp (Volume 9, chapter 14). Mother Teresa, her letters show, felt no sense of God's presence for nearly fifty years (Volume 10, chapter 5).
 
 And in Ravensbrück, the Nazi camp for women, Betsie ten Boom gave thanks in a barracks full of fleas. Every prisoner there longed to go home. Betsie did not go home. She died in the camp on 16 December 1944, and her sister Corrie was released at the end of that month. Before she died, as Corrie told it, Betsie said that there is no pit so deep that God's love is not deeper still (Volume 9, chapter 15).
 
@@ -685,7 +685,7 @@ While they waited, they talked about what some of them had been studying in clas
 
 Then Mills said, "Come, let us make it a subject of prayer under the haystack, while the dark clouds are going and the clear sky is coming." So, in the wet field, they prayed one by one for the world. Loomis kept silent. Mills prayed last, and asked God boldly to protect those who would carry the message of the cross.
 
-We know the story because Green wrote it down nearly fifty years later, so we hold the details gently. But we know what followed. Four years later Mills and his friends asked the churches of Massachusetts to send them, and the first American society for overseas missions was formed. In 1812 Adoniram and Ann Judson sailed for Asia, and later they gave their lives to Burma, today called Myanmar. James Richards, who prayed by the haystack, served in Ceylon, today Sri Lanka, and died there (Volume 8, chapter 1).
+We know the story because Green wrote it down nearly fifty years later, so we hold the details gently. But we know what followed. Four years later Mills and his friends asked the ministers of Massachusetts whether the churches would send them, and the first American society for overseas missions was formed. In 1812 Adoniram and Ann Judson sailed for Asia, and later they gave their lives to Burma, today called Myanmar. James Richards, who prayed by the haystack, served in Ceylon, today Sri Lanka, and died there (Volume 8, chapter 1).
 
 Five students, one storm and a prayer for a continent they had never seen.
 
@@ -715,17 +715,17 @@ E. M. Bounds tells a story about Hudson Taylor and the China Inland Mission. At 
 > "A praying man at home, praying definitely, praying daily, for specific cases among the heathen. That is the real intercessory missionary."
 > E. M. Bounds, *Purpose in Prayer*
 
-("Heathen" was the old word for people who did not know the true God.) We do not know the man's name, and Bounds gives us the story second-hand. But the lesson is simple. A letter on a kitchen table became a prayer list, and a friend who never left his country shared in the harvest.
+("Heathen" was the old word for people who did not know the true God.) We do not know the man's name, and Bounds gives us the story second-hand. But the lesson is simple. A letter on a kitchen table became a prayer list, and a friend at home shared in the harvest.
 
 ### Three key insights
 
 1. **Intercession for the world rests on the one Mediator who gave Himself for all.** We do not pray for the nations because we are strong, but because Christ Jesus stands between God and every people, and gave Himself as a ransom for all.
 2. **Every piece of news from a distant land can become a call to prayer.** A map, a calendar, a news report or a missionary's letter brings the world to our door. What we do with it next is up to us.
-3. **A believer who prays faithfully for one far-off worker shares in the harvest that worker gathers.** The man at home never saw China, yet the names in his friend's letters became his daily prayer, and God answered.
+3. **A believer who prays faithfully for one far-off worker shares in the harvest that worker gathers.** The man at home stayed in England, yet the names in his friend's letters became his daily prayer, and God answered.
 
 ### For us today
 
-The haystack students lived in a land that sent missionaries. Today the map has changed. Churches in Nigeria, Korea and Brazil now send missionaries of their own around the world. A grandmother in Kenya can pray for Pakistan, and a student in Lima for Iran. The call to pray for all people belongs to every believer in every land.
+The haystack students lived in a land that sent missionaries. Today the map has changed. Churches in Nigeria, Korea and Brazil now send missionaries of their own around the world. A grandmother in Malawi can pray for Pakistan, and a factory worker in Dhaka for Peru. The call to pray for all people belongs to every believer in every land.
 
 You do not need money, travel or education to pray for the world. You need something to remind you. It may be a map on the wall, or a calendar that gives one country for each day. It may be the evening news: a flood, a war, an election, a hungry city. Turn the report into a prayer for the people in it and for the believers among them. It may be a letter, or a message on a phone, from a missionary or a believer far away.
 
@@ -762,11 +762,11 @@ God our Savior, You want everyone to be saved and to come to know the truth. Tha
 
 In Volume 8 (chapter 9) we walked with four young men along the country lanes of County Antrim, in the north of Ireland. It was the autumn of 1857. Every Friday evening they met in an old schoolhouse near the village of Kells, because it stood halfway between their homes. They were young laymen, not ministers. Their leader, James McQuilkin, had come to faith in Christ only the year before.
 
-What set McQuilkin praying was a book about George Müller, who cared for hundreds of orphans in Bristol, England, by asking God alone for all they needed. Then news came of great prayer meetings in America. A question would not leave him. If God had done such things for Mr. Müller, simply in answer to prayer, why should He not do them in Antrim?
+What set McQuilkin praying was George Müller's own story of how God had supplied an orphan house in Bristol, England, in answer to prayer alone. Then news came of great prayer meetings in America. A question would not leave him. If God had done such things for Mr. Müller, simply in answer to prayer, why should He not do them in Antrim?
 
 So the four friends read the Bible and prayed for their parish. Week after week, through the winter, nothing happened that anyone could see. Then, on the first day of 1858, a young farm servant came to faith in Christ and joined them. Now there were five. Soon there were six. All through that year the work grew quietly, with no crowds and no excitement. A minister from the nearby town of Ballymena called it "a calm, quiet, gradual" work.
 
-Then the fire spread. By the summer of 1859, farmers and weavers were leading prayer meetings all over the countryside, and tens of thousands gathered for prayer in the open air in Belfast. People called it "the year of grace."
+Then the fire spread. By the summer of 1859, farmers and weavers were leading prayer meetings all over the countryside, and tens of thousands gathered for prayer in the open air in Belfast. A Belfast professor who visited Connor, William Gibson, called it *The Year of Grace*.
 
 Kells was not the only root of that revival: others in the parish had prayed for years. But it shows clearly what God can do through a few ordinary believers who keep on asking Him to bring His people back to life.
 
@@ -774,7 +774,7 @@ Kells was not the only root of that revival: others in the parish had prayed for
 
 Volumes 7 to 10 were full of revivals: seasons when God woke His people, and many who had been far from Him came to faith. They were not all alike. But when we lay them side by side, five lessons about prayer stand out.
 
-**They began in prayer.** Before the crowds came to Cambuslang in Scotland in 1742, small praying societies had met in kitchens and barns for years (Volume 7, chapter 11). Evan Roberts prayed for revival in Wales long before anyone knew his name (Volume 9, chapter 1). Two old sisters on the Isle of Lewis prayed through the winter nights (Volume 9, chapter 18). In New York in 1857, one man opened a room for prayer at noon, prayed alone for half an hour, and saw only six people come on the first day (Volume 8, chapter 8).
+**They began in prayer.** Before the crowds came to Cambuslang in Scotland in 1742, small praying societies had met in kitchens and barns for years (Volume 7, chapter 11). Evan Roberts prayed for revival in Wales long before anyone knew his name (Volume 9, chapter 1). Two old sisters on the Isle of Lewis prayed through the night, twice a week, in their cottage (Volume 9, chapter 18). In New York in 1857, one man opened a room for prayer at noon, prayed alone for half an hour, and saw only six people come on the first day (Volume 8, chapter 8).
 
 **They came with confession.** In Wales, Roberts's first point was to confess to God every sin not yet confessed. In Pyongyang in 1907, a church elder named Kim stood up and confessed that he had hated another leader and a missionary, and asked them to forgive him (Volume 9, chapter 4). In East Africa, believers learned to "walk in the light," putting wrongs right and even returning stolen goods (Volume 9, chapter 17).
 
@@ -785,7 +785,7 @@ Volumes 7 to 10 were full of revivals: seasons when God woke His people, and man
 > "Regeneration, the giving of Divine life, we all acknowledge to be God's act, a miracle of His power. The restoring or reviving of the Divine life, in a soul or a Church, is as much a supernatural work."
 > Andrew Murray, *The Ministry of Intercession*
 
-**They had their excesses, and their fruit.** In Ulster some people trembled and fell to the ground, and a Belfast minister answered the story of 1859 with a book called *The Year of Delusion* (Volume 8, chapter 9). By 1906 Evan Roberts was worn out in body and mind, and he never returned to public life. The great prayer meetings of 1858 did not heal America of the sin of slavery (Volume 8, chapter 8). Some churches that were full of fire still pulled Black believers from their knees (Volume 7, chapter 14). Yet the fruit was real. In Connor, the parish where Kells lies, arrests for drunkenness fell from thirty-seven in 1857 to four in 1859. In Wales, people paid old debts and made peace with their neighbors. Charles Finney, who saw many revivals, gave a test that still helps:
+**They had their excesses, and their fruit.** In Ulster some people trembled and fell to the ground, and a Belfast minister answered the story of 1859 with a book called *The Year of Delusion* (Volume 8, chapter 9). By 1906 Evan Roberts was worn out in body and mind, and he never returned to public life. The great prayer meetings of 1858 did not heal America of the sin of slavery (Volume 8, chapter 8). In Philadelphia, in an age of awakening, church trustees pulled Black believers from their knees in the middle of prayer (Volume 7, chapter 14). Yet the fruit was real. In Connor, the parish where Kells lies, arrests for drunkenness fell from thirty-seven in 1857 to four in 1859. In Wales, people paid old debts and made peace with their neighbors. Charles Finney, who saw many revivals, gave a test that still helps:
 
 > "Those religious excitements which do not consist in the spirit of love, are not revivals of religion. Perhaps the church may be much excited, and bustle about with a great show of zeal, and boisterous noise, but no tenderness of spirit."
 > Charles G. Finney, *Lectures to Professing Christians*
@@ -859,7 +859,7 @@ Hannah poured out her soul to God for a child, and when Samuel was born she gave
 
 In the fourth century, Macrina turned her family's country house in Pontus into a home of prayer. From girlhood, her brother wrote, the Psalms went with her through every part of her day (Volume 4, chapter 12). In North Africa, Monica lived with a husband who did not believe and had a hot temper. She prayed for him, and for her wandering son Augustine, for years, and before he died her husband came to Christ (Volume 4, chapter 15).
 
-In the 1640s and 1650s, Richard Baxter gave a small book to every family in Kidderminster, and a Bible to the poor families who had none. In time, he wrote, on Sundays you could hear families singing psalms as you walked through the streets (Volume 6, chapter 14). In Japan, where Christians had to hide for more than two hundred years, parents taught the prayers to their children by mouth, softly, so the neighbors would not hear (Volume 6, chapter 10). In a crowded rectory in England, Susanna Wesley gave each child one evening a week alone with her to talk about their souls (Volume 7, chapter 6). And in our own day the short songs of Taizé, each a single line of Scripture or prayer, are easy to carry home and simple enough for a small child to sing (Volume 10, chapter 4).
+In the 1640s and 1650s, Richard Baxter gave a small book to every family in Kidderminster, and a Bible to the poor families who had none. In time, he wrote, on Sundays you could hear families singing psalms as you walked through the streets (Volume 6, chapter 14). In Japan, where Christians had to hide for more than two hundred years, parents taught the prayers to their children by mouth, softly, so the neighbors would not hear (Volume 6, chapter 10). In a crowded rectory in England, Susanna Wesley gave each child one evening a week alone with her to talk about their souls (Volume 7, chapter 6). And in our own day the short songs of Taizé, each a single line of Scripture or prayer, are easy to carry home and simple enough for anyone to learn, children included (Volume 10, chapter 4).
 
 ### At home, on the road, at night and in the morning
 
@@ -940,9 +940,9 @@ Christians have often called such a pattern a *rule* of prayer. In this sense a 
 
 **Three times a day.** David prayed "at evening, at morning and at noon" (Psalm 55:17). Peter and John went up to the temple "for the afternoon prayer at three o'clock" (Acts 3:1; Volume 3, chapter 3). Around AD 100 the *Didache*, a handbook for new believers, wrote out the Lord's Prayer and then said, in an old English translation, "Thrice in the day thus pray" (Volume 4, chapter 1). Brother Roger of Taizé kept prayer three times a day, alone at first and later with his brothers (Volume 10, chapter 4).
 
-**The whole day turned to God.** Benedict built his monks' day around seven times of prayer, from Psalm 119:164, yet he called his Rule a little rule for beginners (Volume 5, chapter 1). Columba of Iona blessed the milk, the tools and the daily work of his monks, and Celtic believers learned to bring ordinary tasks to God in short blessings (Volume 5, chapter 4). The Russian pilgrim learned to carry the Jesus Prayer, "Lord Jesus Christ, have mercy on me," into every hour (Volume 8, chapter 6).
+**The whole day turned to God.** Benedict built his monks' day around seven times of prayer, from Psalm 119:164, yet he called his Rule a little rule for beginners (Volume 5, chapter 1). Columba of Iona blessed a pail of new milk, a knife, a barn and an old work horse, and Celtic believers learned to bring ordinary tasks to God in short blessings (Volume 5, chapter 4). The Russian pilgrim learned to carry the Jesus Prayer, "Lord Jesus Christ, have mercy on me," into every hour (Volume 8, chapter 6).
 
-**Morning and evening.** Luther told his barber to make prayer the first business of the morning and the last of the night, and warned him that the hour we promise to pray "later" seldom comes (Volume 6, chapter 2). Ignatius of Loyola taught a short look back over each day, beginning with thanks (Volume 6, chapter 8). In Korea, Kil Sun-ju opened the dawn to the whole church, and Korean churches around the world still meet to pray before sunrise (Volume 9, chapter 5).
+**Morning and evening.** Luther told his barber to make prayer the first business of the morning and the last of the night, and warned him that if we put prayer off until this job or that one is finished, the hour never comes (Volume 6, chapter 2). Ignatius of Loyola taught a short look back over each day, beginning with thanks (Volume 6, chapter 8). In Korea, Kil Sun-ju opened the dawn to the whole church, and Korean churches around the world still meet to pray before sunrise (Volume 9, chapter 5).
 
 **A plan to share.** Robert Murray M'Cheyne gave his church in Dundee a calendar for reading the Bible, so that they could feed "in the same portion of the green pasture at the same time" (Volume 8, chapter 4). Yet he warned them, "Let the calendar perish rather than this rust eat up your souls." The plan was there to serve their thirst for God, not to replace it.
 
@@ -1051,7 +1051,7 @@ Waiting is not easy. Charles Spurgeon knew how weary believers grow, and how the
 
 This series began with the "cloud of witnesses all around us" (Hebrews 12:1). We have met them one by one: patriarchs and prophets, apostles and martyrs, monks and mothers, reformers and revival preachers, missionaries, prisoners and ordinary believers from every continent. They were not perfect people. Many failed, and some failed badly. But they prayed, and their prayers rose before God like incense.
 
-In the first chapter of this book we pictured the praying church as one prayer meeting, two thousand years long. Now we can see how it ends. The witnesses have finished their race, and their seats are empty. But there is a place in that meeting with your name on it. No one else can pray your prayers: for your family, your street, your church, your nation. They will go into the same golden bowls as theirs.
+In the first chapter of this book we pictured the praying church as one prayer meeting, two thousand years long. Now we can see how it ends. The witnesses have finished their race. But there is a place in that meeting with your name on it. No one else can pray your prayers: for your family, your street, your church, your nation. They will go into the same golden bowls as theirs.
 
 Each generation kept its place by teaching the next. Hannah gave Samuel to the LORD, Lois taught Eunice, and Paul told Timothy to pass on what he had heard "to trustworthy people who will be able to teach others as well" (2 Timothy 2:2). Someone taught you to pray. Now it is your turn to teach someone else, until the day the door opens and the One we have prayed to comes. Then the prayer meeting will become a feast, and the bowls of prayer will give way to songs of praise.
 
@@ -1111,7 +1111,7 @@ Here, in a few lines, is some of what the whole cloud of witnesses taught us abo
 - God's word gives us not only something to read but words to speak back to Him (chapter 3).
 - In every century the church has fasted, and fasting has always served prayer, never replaced it (chapter 4).
 - Praying alone teaches us to hear God, and praying together teaches us to carry one another (chapter 5).
-- Persistence keeps coming back to God Himself, not only to the thing we want (chapter 6).
+- Persistence keeps coming back to God Himself, while nagging only keeps coming back to the thing we want (chapter 6).
 - Even the Son of God prayed a prayer that the Father did not grant, and He was still heard (chapter 7).
 - Every piece of news from a distant land can become a call to prayer (chapter 8).
 - Revival cannot be manufactured, but God has always loved to send it to people who pray (chapter 9).
@@ -1139,7 +1139,7 @@ So take your seat in the meeting. Open the Scriptures and pray them back to God.
 
 One day the meeting will end. The crowd that no one could number, "from every nation and from all tribes and peoples and languages" (Revelation 7:9), will stand together before the throne. Abraham will be there, and Hannah, and the apostles, the martyrs and the monks, the reformers and the missionaries, the praying grandmothers and the prisoners who sang. And if you have trusted in Jesus, you will be there too. On that day, prayer will become praise, and we will see the One we have prayed to face to face.
 
-Until then, the bowls are not yet full. There is room in them for your prayers.
+Until then, there is still room in the bowls for your prayers.
 
 ### A closing prayer
 

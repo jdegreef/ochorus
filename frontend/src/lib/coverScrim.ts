@@ -89,6 +89,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'george-muller-of-bristol': 0.10,
 	'godliness': 0.10,
 	'gods-way-of-peace': 0.70,
+	'golden-bowls': 0.85,
 	'grace-abounding-teens': 0.65,
 	'growing-in-wisdom': 0.90,
 	'heretics': 0.60,

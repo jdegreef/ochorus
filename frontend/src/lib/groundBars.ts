@@ -64,6 +64,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'foxes-book-of-martyrs-teens': 0.110,
 	'george-muller-of-bristol': 0.110,
 	'gleanings-among-the-sheaves': 0.020,
+	'golden-bowls': 0.110,
 	'grace-abounding-teens': 0.060,
 	'grace-abounding': 0.020,
 	'growing-in-wisdom': 0.110,
