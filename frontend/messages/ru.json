@@ -983,6 +983,8 @@
   "topics_articles": "Статьи",
   "topics_authors": "Авторы",
   "topics_related": "Связанные темы",
+  "topics_in_bible": "В Библии",
+  "topics_in_bible_note": "Главы, к которым эти классики обращаются чаще всего.",
   "settings_title": "Настройки",
   "settings_subtitle": "Управляйте учётной записью, чтением и внешним видом.",
   "settings_nav_reading": "Чтение",

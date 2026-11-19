@@ -48,6 +48,9 @@
 	// rolling-deploy skew) renders those sections away rather than throwing.
 	const authors = $derived(topic.authors ?? []);
 	const relatedTopics = $derived(topic.related_topics ?? []);
+	// "In the Bible": the chapters this shelf's own classics return to most,
+	// derived server-side from their citations. English only; [] elsewhere.
+	const bibleChapters = $derived(topic.bible_chapters ?? []);
 	const meta = $derived(topicMeta(topic.slug));
 
 	// Editorial Q&A about the shelf. Content, per-language via qa_for on the API,
@@ -543,6 +546,33 @@
 		</div>
 	{/each}
 
+	<!-- In the Bible: the Bible chapters the shelf's books and sermons treat
+	     most (distinct citing chapters, with a floor — see
+	     scripture_graph.topic_bible_chapters), each opening that chapter in the
+	     library's own Bible. Hidden when the shelf has none, and in every
+	     language but English, where the library has no Bible to open. -->
+	{#if bibleChapters.length}
+		<section class="mb-10" aria-labelledby="topic-in-bible">
+			<h2 id="topic-in-bible" class="section-heading">{t('topics.inBible')}</h2>
+			<p class="-mt-2 mb-4 text-small text-muted">{t('topics.inBibleNote')}</p>
+			<ul class="bible-chapters grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+				{#each bibleChapters as ch (`${ch.slug}/${ch.order}`)}
+					<li>
+						<a
+							class="card-tint rounded-card border border-border bg-surface"
+							href={localizeHref(`/books/${ch.slug}/${ch.order}`)}
+						>
+							<span class="ref">{ch.reference}</span>
+							{#if ch.summary}
+								<span class="mt-1 line-clamp-2 text-small text-muted">{ch.summary}</span>
+							{/if}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</section>
+	{/if}
+
 	<!-- Authors on this shelf: a reader here often wants more of a voice, not
 	     only more of the theme. Distinct writers behind the books and sermons. -->
 	{#if authors.length}
@@ -657,6 +687,26 @@
 		overflow: hidden;
 		clip-path: inset(50%);
 		white-space: nowrap;
+	}
+
+	/* The In the Bible row: one row card per chapter (the shared .card-tint
+	   hover), the reference in the display face over its one-line summary. */
+	.bible-chapters {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.bible-chapters a {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		padding: 0.75rem 1rem;
+		color: var(--color-text);
+		text-decoration: none;
+	}
+	.bible-chapters .ref {
+		font-family: var(--font-display);
+		font-weight: 600;
 	}
 
 	/* Related-topics chips: quiet pills in the topic accent, a lateral "see also"

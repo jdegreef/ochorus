@@ -983,6 +983,8 @@
   "topics_articles": "Articles",
   "topics_authors": "Authors",
   "topics_related": "Related topics",
+  "topics_in_bible": "In the Bible",
+  "topics_in_bible_note": "The chapters these classics return to most.",
   "settings_title": "Settings",
   "settings_subtitle": "Manage your account, reading, and appearance.",
   "settings_nav_reading": "Reading",

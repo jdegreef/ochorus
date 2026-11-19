@@ -983,6 +983,8 @@
   "topics_articles": "Articles",
   "topics_authors": "Auteurs",
   "topics_related": "Thèmes connexes",
+  "topics_in_bible": "Dans la Bible",
+  "topics_in_bible_note": "Les chapitres auxquels ces classiques reviennent le plus.",
   "settings_title": "Paramètres",
   "settings_subtitle": "Gérez votre compte, votre lecture et l’apparence.",
   "settings_nav_reading": "Lecture",

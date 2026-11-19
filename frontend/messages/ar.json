@@ -983,6 +983,8 @@
   "topics_articles": "مقالات",
   "topics_authors": "المؤلفون",
   "topics_related": "مواضيع ذات صلة",
+  "topics_in_bible": "في الكتاب المقدس",
+  "topics_in_bible_note": "الأصحاحات التي تعود إليها هذه الكتب أكثر من غيرها.",
   "settings_title": "الإعدادات",
   "settings_subtitle": "أدِر حسابك وقراءتك ومظهر التطبيق.",
   "settings_nav_reading": "القراءة",

@@ -983,6 +983,8 @@
   "topics_articles": "लेख",
   "topics_authors": "लेखक",
   "topics_related": "संबंधित विषय",
+  "topics_in_bible": "बाइबल में",
+  "topics_in_bible_note": "वे अध्याय जिन पर ये पुस्तकें सबसे अधिक लौटती हैं।",
   "settings_title": "सेटिंग्स",
   "settings_subtitle": "अपना खाता, पठन और रूप-रंग प्रबंधित करें।",
   "settings_nav_reading": "पठन",

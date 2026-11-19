@@ -983,6 +983,8 @@
   "topics_articles": "Статті",
   "topics_authors": "Автори",
   "topics_related": "Пов’язані теми",
+  "topics_in_bible": "У Біблії",
+  "topics_in_bible_note": "Розділи, до яких ці класики звертаються найчастіше.",
   "settings_title": "Налаштування",
   "settings_subtitle": "Керуйте обліковим записом, читанням і виглядом.",
   "settings_nav_reading": "Читання",
