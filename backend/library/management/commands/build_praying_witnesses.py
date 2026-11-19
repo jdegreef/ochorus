@@ -860,13 +860,14 @@ VOLUMES: dict[int, dict[str, object]] = {
 # ── The generated appendices ────────────────────────────────────────────────
 
 
-def _label(index: int, last: int, title: str) -> str:
-    """How the section at ``index`` (of ``0..last``) is named in an index line."""
+def _label(index: int, last: int, title: str, prefix: str = "", chapter: str = "Chapter") -> str:
+    """How the section at ``index`` (of ``0..last``) is named in an index line;
+    the series appendices name its volume too (``prefix="Vol. 3, "``, ``chapter="ch."``)."""
     if index == 0:
-        return "Introduction"
+        return f"{prefix}Introduction"
     if index == last:
-        return "Conclusion"
-    return f"Chapter {index}, *{title}*"
+        return f"{prefix}Conclusion"
+    return f"{prefix}{chapter} {index}, *{title}*"
 
 
 # A chapter's "Three key insights" list: each item opens on its insight in bold.
@@ -880,13 +881,14 @@ def _span(ref: str) -> tuple[int, int] | None:
     return (min(ids), max(ids)) if ids else None
 
 
-def _gather(sections, entries, label, by_theme, refs) -> None:
+def _gather(sections, entries, by_theme, refs, **label) -> None:
     """Add one volume's key insights (by theme) and Scripture citations to the
-    running indexes; ``label(i, title)`` names a section in an index line."""
+    running indexes; ``label`` is passed on to ``_label``."""
+    last = len(entries) - 1
     if [title for title, _ in sections] != [e["title"] for e in entries]:
         raise CommandError("volume's chapters.json titles do not match the manuscript's ## headings, in order")
     for i, ((title, body), e) in enumerate(zip(sections, entries, strict=True)):
-        name = label(i, title)
+        name = _label(i, last, title, **label)
         found = _INSIGHTS.search(body)
         insights = [html.unescape(x) for x in _INSIGHT.findall(found.group(1))] if found else []
         if len(insights) != len(e["themes"]):
@@ -927,10 +929,9 @@ def _scripture_md(heading: str, intro: str, refs: dict) -> list[str]:
 
 def appendices(sections: list[tuple[str, str]], entries: list[dict]) -> str:
     """Both appendices for a volume from its parsed ``(title, html)`` sections."""
-    last = len(entries) - 1
     by_theme: dict[str, list[str]] = {t: [] for t in THEMES}
     refs: dict[tuple[int, int], dict] = {}
-    _gather(sections, entries, lambda i, title: _label(i, last, title), by_theme, refs)
+    _gather(sections, entries, by_theme, refs)
     out = _insights_md(
         "## Appendix 1: Key Insights",
         "Every chapter of this book closes with three key insights. Here they are "
@@ -954,7 +955,7 @@ def appendices(sections: list[tuple[str, str]], entries: list[dict]) -> str:
 # The last volume closes the series: in place of its own two appendices it
 # carries five for the whole series. A, B, C and E are generated from every
 # volume's manuscript and records; D, the methods toolkit, is written by hand.
-FINAL_VOLUME = 11
+FINAL_VOLUME = max(VOLUMES)
 TOOLKIT = SERIES_DIR / "series-toolkit.md"
 
 _YEAR = re.compile(r"\d+")
@@ -970,38 +971,29 @@ def era_year(era: str) -> int:
     return -year if "BC" in era[found.end():] else year
 
 
-def _series_label(volume: int, last: int):
-    def label(i: int, title: str) -> str:
-        if i == 0:
-            return f"Vol. {volume}, Introduction"
-        if i == last:
-            return f"Vol. {volume}, Conclusion"
-        return f"Vol. {volume}, ch. {i}, *{title}*"
+def _book_titles(slugs: set[str]) -> dict[str, str]:
+    """``slug -> "*Title*, Author"`` for the English books the reading list names,
+    reading only their own fixture files (the library holds hundreds)."""
+    from library.content_fixtures import authors_by_slug, book_fixture_path
 
-    return label
-
-
-def _book_titles() -> dict[str, str]:
-    """``slug -> "*Title*, Author"`` for every English book the reading list may name."""
-    from library.content_fixtures import BOOKS_DIR
-
-    authors = {
-        r["fields"]["slug"]: r["fields"]["name"]
-        for r in json.loads((BOOKS_DIR.parent / "authors.json").read_text())
-    }
+    authors = authors_by_slug()
     titles = {}
-    for path in BOOKS_DIR.glob("*.en.json"):
-        book = json.loads(path.read_text())[0]["fields"]
-        titles[path.name[: -len(".en.json")]] = f"*{book['title']}*, {authors.get(book['author'][0], '')}".rstrip(", ")
+    for slug in slugs:
+        path = book_fixture_path(slug, "en")
+        if not path.exists():
+            raise CommandError(f"read_more names {slug!r}, which is no English book")
+        book = next(r["fields"] for r in json.loads(path.read_text()) if r["model"] == "library.book")
+        titles[slug] = f"*{book['title']}*, {authors[book['author'][0]]['name']}"
     return titles
 
 
 def series_appendices(volumes: dict[int, tuple[list[tuple[str, str]], list[dict]]]) -> str:
     """The series appendices A to E from every volume's ``(sections, entries)``."""
+    ordered = sorted(volumes.items())
     by_theme: dict[str, list[str]] = {t: [] for t in THEMES}
     refs: dict[tuple[int, int], dict] = {}
-    for volume, (sections, entries) in sorted(volumes.items()):
-        _gather(sections, entries, _series_label(volume, len(entries) - 1), by_theme, refs)
+    for volume, (sections, entries) in ordered:
+        _gather(sections, entries, by_theme, refs, prefix=f"Vol. {volume}, ", chapter="ch.")
     out = _insights_md(
         "## Appendix A: Key Insights from the Whole Series",
         "Every chapter of every volume closes with three key insights. Here they are "
@@ -1018,12 +1010,13 @@ def series_appendices(volumes: dict[int, tuple[list[tuple[str, str]], list[dict]
         refs,
     )
 
-    lives = []
-    for volume, (sections, entries) in sorted(volumes.items()):
-        if volume == FINAL_VOLUME:
-            continue
-        for i, e in enumerate(entries[1:-1], start=1):
-            lives.append((era_year(e["era"]), volume, i, e))
+    # Every chapter record but the last volume's own, whose "person" is a theme.
+    lives = sorted(
+        ((era_year(e["era"]), volume, i), f"- **{e['era']}**: {e['person']}, {e['region']}. Vol. {volume}, ch. {i}, *{e['title']}*")
+        for volume, (_, entries) in ordered
+        if volume != FINAL_VOLUME
+        for i, e in enumerate(entries[1:-1], start=1)
+    )
     out += [
         "",
         "---",
@@ -1034,24 +1027,25 @@ def series_appendices(volumes: dict[int, tuple[list[tuple[str, str]], list[dict]
         "times. Dates are as each chapter gives them, most of them approximate.",
         "",
     ]
-    for _, volume, i, e in sorted(lives, key=lambda x: x[:3]):
-        out.append(f"- **{e['era']}**: {e['person']}, {e['region']}. Vol. {volume}, ch. {i}, *{e['title']}*")
+    out += [line for _, line in lives]
 
     out += ["", "---", "", TOOLKIT.read_text().strip(), "", "---", ""]
 
-    titles = _book_titles()
+    titles = _book_titles({s for _, entries in volumes.values() for e in entries for s in e.get("read_more", [])})
     out += [
         "## Appendix E: Keep Reading on Ochorus",
         "",
         "The books in the Ochorus library that each chapter recommends, volume by "
         "volume, so that you can go on listening to the witnesses in their own words.",
     ]
-    for volume, (sections, entries) in sorted(volumes.items()):
-        out += ["", f"### Volume {volume}", ""]
-        for i, e in enumerate(entries[1:-1], start=1):
-            books = [titles[s] for s in e.get("read_more", []) if s in titles]
-            if books:
-                out.append(f"- **Ch. {i}, *{e['title']}***: {'; '.join(books)}")
+    for volume, (_, entries) in ordered:
+        lines = [
+            f"- **Ch. {i}, *{e['title']}***: {'; '.join(books)}"
+            for i, e in enumerate(entries[1:-1], start=1)
+            if (books := [titles[s] for s in e.get("read_more", [])])
+        ]
+        if lines:
+            out += ["", f"### Volume {volume}", "", *lines]
     return "\n".join(out) + "\n"
 
 
@@ -1071,10 +1065,11 @@ def chapter_rows(volume: int) -> tuple[list[tuple[str, str]], str]:
 
 def volume_text(volume: int) -> tuple[list[tuple[str, str]], str]:
     """A volume's parsed manuscript sections and its generated appendices."""
-    sections, entries = _volume_records(volume)
     if volume != FINAL_VOLUME:
+        sections, entries = _volume_records(volume)
         return sections, appendices(sections, entries)
-    return sections, series_appendices({v: _volume_records(v) for v in sorted(VOLUMES)})
+    records = {v: _volume_records(v) for v in VOLUMES}
+    return records[volume][0], series_appendices(records)
 
 
 def _volume_records(volume: int) -> tuple[list[tuple[str, str]], list[dict]]:
