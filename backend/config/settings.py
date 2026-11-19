@@ -67,6 +67,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # Outermost, so its measurement covers every other layer (config/memory.py).
+    "config.memory.MemoryLogMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",  # must come before CommonMiddleware

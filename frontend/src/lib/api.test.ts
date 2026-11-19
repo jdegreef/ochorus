@@ -61,6 +61,29 @@ describe('apiFetch build-time retries', () => {
 		expect(fetchMock.mock.calls.length).toBeGreaterThanOrEqual(3);
 	});
 
+	it('rides out an API restart: network errors and 502-504 get the long ladder', async () => {
+		// A restart outlasted 15s on every web deploy 2026-11-16..19.
+		fetchMock
+			.mockRejectedValueOnce(new TypeError('fetch failed'))
+			.mockResolvedValueOnce(new Response('bad gateway', { status: 502 }))
+			.mockRejectedValueOnce(new TypeError('fetch failed'))
+			.mockResolvedValueOnce(new Response('unavailable', { status: 503 }))
+			.mockResolvedValueOnce(ok());
+		const promise = apiFetch('/library/books/?language=sw');
+		await vi.runAllTimersAsync();
+		await expect(promise).resolves.toEqual({ ok: true });
+		expect(fetchMock).toHaveBeenCalledTimes(5);
+	});
+
+	it('gives a plain 500 only the short ladder: Django answered, so waiting will not help', async () => {
+		fetchMock.mockImplementation(async () => boom());
+		const promise = apiFetch('/library/topics/');
+		const outcome = expect(promise).rejects.toBeInstanceOf(ApiError);
+		await vi.runAllTimersAsync();
+		await outcome;
+		expect(fetchMock).toHaveBeenCalledTimes(4);
+	});
+
 	it('never retries a 4xx — a client error is not transient', async () => {
 		fetchMock.mockResolvedValueOnce(new Response('nope', { status: 404 }));
 		await expect(apiFetch('/library/topics/nope/')).rejects.toBeInstanceOf(ApiError);
