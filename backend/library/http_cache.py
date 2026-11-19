@@ -44,6 +44,7 @@ anonymous.
 
 from __future__ import annotations
 
+import contextlib
 import hashlib
 
 from django.http import HttpResponseNotModified
@@ -97,12 +98,22 @@ def content_etag(request, *, release: bool = False) -> str:
     from .content_fixtures import content_digest
     from .models import ContentRevision
 
+    # Once per request: the response cache asks for the same tag on lookup and
+    # on store, and a query-budgeted view must not pay the revision read twice.
+    memo = getattr(request, "_content_etags", None)
+    if memo is None:
+        memo = {}
+        with contextlib.suppress(AttributeError):  # refuses attributes: no memo
+            request._content_etags = memo
+    if release in memo:
+        return memo[release]
     material = f"{request.get_full_path()}|{content_digest()}|{ContentRevision.current()}"
     if release:
         from django.conf import settings
 
         material += f"|{settings.RELEASE_COMMIT}"
-    return 'W/"' + hashlib.sha256(material.encode()).hexdigest()[:16] + '"'
+    memo[release] = 'W/"' + hashlib.sha256(material.encode()).hexdigest()[:16] + '"'
+    return memo[release]
 
 
 def _if_none_match(request, etag: str) -> bool:
@@ -113,6 +124,34 @@ def _if_none_match(request, etag: str) -> bool:
     # ("304 if any representation exists"), which a plain split would miss.
     candidates = parse_etags(header)
     return "*" in candidates or etag in candidates
+
+
+#: The cache alias the rendered bodies of ``response_cache`` views live in
+#: (``config/settings.py``): file-based, on the instance's disk.
+RESPONSE_CACHE = "responses"
+
+
+def _response_key(request) -> str:
+    """The cache key for one rendered response: the release-tracking ETag (path,
+    content digest, admin revision, deployed commit), plus the calendar year,
+    which ``rights.py`` folds into what a card says (public-domain terms)."""
+    from datetime import date
+
+    return f"body:{date.today().year}:{content_etag(request, release=True)}"
+
+
+def _enabled() -> bool:
+    """False when the alias is a DummyCache (the test suite), so a disabled
+    cache costs no key computation at all."""
+    from django.core.cache import caches
+    from django.core.cache.backends.dummy import DummyCache
+
+    return not isinstance(caches[RESPONSE_CACHE], DummyCache)
+
+
+def _cacheable_renderer(response) -> bool:
+    renderer = getattr(response, "accepted_renderer", None)
+    return bool(renderer) and getattr(renderer, "media_type", "").startswith("application/json")
 
 
 class PublicContentCacheMixin:
@@ -129,6 +168,15 @@ class PublicContentCacheMixin:
 
     etag_tracks_release = False
 
+    #: Also keep this view's rendered JSON in the on-disk ``responses`` cache,
+    #: under the content key, so it is built once per deploy or admin publish
+    #: instead of once per worker. The worker recycles every ~500 requests, and
+    #: each fresh one rebuilt the big lists from rows: 30-100 MB and seconds
+    #: apiece under the web build's crawl (``[memory]`` log, 2026-11-19).
+    #: Opt in only for a view whose body is a pure function of its URL and the
+    #: content: nothing per reader, per day or random.
+    response_cache = False
+
     def dispatch(self, request, *args, **kwargs):
         # Conditional GET: when the client already holds this content version,
         # answer 304 BEFORE running the queryset (the origin is compute-bound).
@@ -141,6 +189,10 @@ class PublicContentCacheMixin:
                 not_modified["ETag"] = etag
                 set_cache_headers(not_modified)
                 return not_modified
+        if self.response_cache and _enabled() and request.method in ("GET", "HEAD"):
+            hit = _cached_body(request)
+            if hit is not None:
+                return hit
         return super().dispatch(request, *args, **kwargs)
 
     def finalize_response(self, request, response, *args, **kwargs):
@@ -150,4 +202,36 @@ class PublicContentCacheMixin:
         if request.method in ("GET", "HEAD") and response.status_code == 200:
             set_cache_headers(response)
             response["ETag"] = content_etag(request, release=self.etag_tracks_release)
+            if self.response_cache and _enabled() and _cacheable_renderer(response):
+                _store_body(request, response)
         return response
+
+
+def _cached_body(request):
+    """A stored response for this request's content key, or None."""
+    from django.core.cache import caches
+    from django.http import HttpResponse
+
+    try:
+        stored = caches[RESPONSE_CACHE].get(_response_key(request))
+    except Exception:  # noqa: BLE001 -- a broken cache is a miss, never an error
+        return None
+    if not stored:
+        return None
+    content_type, body, etag = stored
+    response = HttpResponse(body, content_type=content_type)
+    set_cache_headers(response)
+    response["ETag"] = etag
+    return response
+
+
+def _store_body(request, response) -> None:
+    from django.core.cache import caches
+
+    response.render()
+    # A full disk or a broken cache must not fail the read.
+    with contextlib.suppress(Exception):
+        caches[RESPONSE_CACHE].set(
+            _response_key(request),
+            (response["Content-Type"], response.content, response["ETag"]),
+        )
