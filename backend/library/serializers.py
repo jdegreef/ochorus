@@ -459,7 +459,21 @@ class AuthorSerializer(LocalizedMixin, serializers.ModelSerializer):
         return obj.bio_for(self._language())
 
 
-class SermonAuthorSerializer(AuthorSerializer):
+class CardAuthorSerializer(AuthorSerializer):
+    """The author on a book or sermon CARD: everything but the bio.
+
+    A list repeats its author on every row, and the bio was over half of each
+    big list (2026-11-19: 148 KB of the English sermons list, 94 KB of the
+    books list, the same few bios over and over). No card shows it; the pages
+    that do (book detail, the author and biographies pages) get it from their
+    own serializers, so only the lists lose it.
+    """
+
+    class Meta(AuthorSerializer.Meta):
+        fields = [f for f in AuthorSerializer.Meta.fields if f != "bio"]
+
+
+class SermonAuthorSerializer(CardAuthorSerializer):
     """A sermon card's author: the card fields plus the one-line ``tagline``.
 
     Only the sermons shelf reads it (under each preacher heading), so it rides
@@ -469,11 +483,21 @@ class SermonAuthorSerializer(AuthorSerializer):
 
     tagline = serializers.SerializerMethodField()
 
-    class Meta(AuthorSerializer.Meta):
-        fields = AuthorSerializer.Meta.fields + ["tagline"]
+    class Meta(CardAuthorSerializer.Meta):
+        fields = CardAuthorSerializer.Meta.fields + ["tagline"]
 
     def get_tagline(self, obj):
         return obj.tagline_for(self._language())
+
+    def to_representation(self, instance):
+        # The sermons shelf's preacher heading reads ``tagline || bio``, so the
+        # bio rides along only where there is no tagline (any language but the
+        # author's own, or one not yet written). Where a tagline exists, which
+        # covers most English rows, the card stays bio-free.
+        data = super().to_representation(instance)
+        if not data.get("tagline"):
+            data["bio"] = instance.bio_for(self._language())
+        return data
 
 
 class AuthorListSerializer(LocalizedMixin, serializers.ModelSerializer):
@@ -524,7 +548,7 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
     different shapes depending on which view rendered it.
     """
 
-    author = AuthorSerializer(read_only=True)
+    author = CardAuthorSerializer(read_only=True)
     chapter_count = serializers.IntegerField(source="num_chapters", read_only=True)
     word_count = serializers.IntegerField(source="total_words", read_only=True)
     topics = serializers.SerializerMethodField()
@@ -1817,6 +1841,9 @@ class BookDetailSerializer(BookListSerializer):
     """Book detail — adds description, the chapter TOC, topic chips, and a
     "more like this" list of related books."""
 
+    # The full author, bio included: the book page's "About the author" reads
+    # it, where a card (BookListSerializer) does not.
+    author = AuthorSerializer(read_only=True)
     chapters = ChapterTocSerializer(many=True, read_only=True)
     topics = serializers.SerializerMethodField()
     related = serializers.SerializerMethodField()
