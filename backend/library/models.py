@@ -2618,3 +2618,22 @@ class ContentRevision(models.Model):
         For the read path (the ETag, on every public request) — one SELECT, and
         no row yet means nothing has changed through the API, i.e. revision 0."""
         return cls.objects.values_list("revision", flat=True).first() or 0
+
+
+def card_author_translations(language):
+    """The ``author__translations`` prefetch a card needs: this language's row
+    only, without the long-form ``bio_html`` and ``faq``.
+
+    ``Author._localized`` reads only the requested language from the prefetch,
+    so the other languages were pure cost: a list loaded all 838 translated
+    biographies (8.7 MB of text, measured 2026-11-19) to show one short bio.
+    Pair it with ``.defer(*AUTHOR_CARD_DEFER)`` on the card queryset.
+    """
+    from django.db.models import Prefetch
+
+    return Prefetch(
+        "author__translations",
+        queryset=AuthorTranslation.objects.filter(language=language).only(
+            "id", "author_id", "language", "bio"
+        ),
+    )

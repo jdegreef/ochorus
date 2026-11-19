@@ -20,6 +20,7 @@ from .leader_guides import guide_for
 from .localization import language_from_request
 from .meta_descriptions import meta_description
 from .models import (
+    AUTHOR_CARD_DEFER,
     SERMON_CARD_DEFER,
     Article,
     Author,
@@ -33,6 +34,7 @@ from .models import (
     Sermon,
     Topic,
     TopicBook,
+    card_author_translations,
 )
 from .opening import book_opening
 from .plan_seed import DAILY_PLANS
@@ -138,7 +140,8 @@ def sibling_editions(book):
             is_published=True,
         )
         .select_related("author")
-        .prefetch_related("author__translations")
+        .defer(*AUTHOR_CARD_DEFER)
+        .prefetch_related(card_author_translations(book.language))
         .annotate(**BOOK_CARD_ANNOTATIONS)
     )
     return sorted(rows, key=lambda b: rank[b.slug])
@@ -1681,8 +1684,8 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
             lambda: list(
                 obj.sermons.filter(is_published=True, language=self._language())
                 .select_related("author")
-                .prefetch_related("author__translations")
-                .defer(*SERMON_CARD_DEFER)
+                .prefetch_related(card_author_translations(self._language()))
+                .defer(*SERMON_CARD_DEFER, *AUTHOR_CARD_DEFER)
                 .order_by("sort_order", "title")
             ),
         )
@@ -1694,7 +1697,8 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
             lambda: list(
                 obj.books.filter(is_published=True, language=self._language())
                 .select_related("author")
-                .prefetch_related("author__translations")
+                .defer(*AUTHOR_CARD_DEFER)
+                .prefetch_related(card_author_translations(self._language()))
                 # total_words too, not just the chapter count: without it these
                 # cards shipped without word_count while every other path had
                 # it, so reading-time estimates vanished on author pages alone.
@@ -1803,7 +1807,8 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
             Book.objects.filter(slug__in=roles.keys(), is_published=True, language=lang)
             .exclude(author=obj)
             .select_related("author")
-            .prefetch_related("author__translations")
+            .defer(*AUTHOR_CARD_DEFER)
+            .prefetch_related(card_author_translations(lang))
             .annotate(**BOOK_CARD_ANNOTATIONS)
         )
         # Empty book_topics so BookListSerializer doesn't scan the whole topic
@@ -2193,7 +2198,8 @@ class BookDetailSerializer(BookListSerializer):
                 slug__in=scores.keys(), language=obj.language, is_published=True
             )
             .select_related("author")
-            .prefetch_related("author__translations")
+            .defer(*AUTHOR_CARD_DEFER)
+            .prefetch_related(card_author_translations(obj.language))
             .annotate(**BOOK_CARD_ANNOTATIONS)
         )
         ranked = sorted(
@@ -3012,7 +3018,8 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
                 slug__in=order, language=self._language(), is_published=True
             )
             .select_related("author")
-            .prefetch_related("author__translations")
+            .defer(*AUTHOR_CARD_DEFER)
+            .prefetch_related(card_author_translations(self._language()))
             .annotate(num_chapters=Count("chapters"), total_words=Sum("chapters__word_count"))
         }
         return [by_slug[s] for s in order if s in by_slug]
@@ -3034,8 +3041,8 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
             .select_related("author")
             # author__translations was missing here alone: AuthorSerializer.get_bio
             # reads them, so this fallback N+1'd one query per sermon.
-            .prefetch_related("author__translations")
-            .defer(*SERMON_CARD_DEFER)
+            .prefetch_related(card_author_translations(self._language()))
+            .defer(*SERMON_CARD_DEFER, *AUTHOR_CARD_DEFER)
         }
         return [by_slug[s] for s in order if s in by_slug]
 
