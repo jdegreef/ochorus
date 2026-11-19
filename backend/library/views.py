@@ -55,6 +55,7 @@ from .models import (
     Series,
     Sermon,
     Topic,
+    card_author_translations,
     fold_query,
 )
 from .opening import book_opening
@@ -350,7 +351,7 @@ class BookDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
                         "order", "title", "word_count", "book_id"
                     ),
                 ),
-                "author__translations",
+                card_author_translations(_language(self.request)),
             ),
             slug=self.kwargs["slug"],
             language=_language(self.request),
@@ -758,24 +759,6 @@ class PlanDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
         ctx["plan_articles"] = plan_article_index([plan], plan.language)
         ctx["plan_entries"] = plan_entry_index([plan], ctx["plan_books"])
         return ctx
-
-
-def card_author_translations(language):
-    """The ``author__translations`` prefetch a card needs: this language's row
-    only, without the long-form ``bio_html`` and ``faq``.
-
-    ``Author._localized`` reads only the requested language from the prefetch,
-    so the other languages were pure cost: every list loaded all 838 translated
-    biographies (8.7 MB of text, measured 2026-11-19) to show one short bio.
-    """
-    from .models import AuthorTranslation
-
-    return Prefetch(
-        "author__translations",
-        queryset=AuthorTranslation.objects.filter(language=language).only(
-            "id", "author_id", "language", "bio"
-        ),
-    )
 
 
 def _attach_books(topics, language):
