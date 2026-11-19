@@ -1,0 +1,518 @@
+[
+  {
+    "title": "Introduction: Where We Are in the Story",
+    "anchor": "Matthew 24:14",
+    "themes": [],
+    "person": null,
+    "era": "c. 1950-today",
+    "region": "The whole world",
+    "voices": [],
+    "read_more": []
+  },
+  {
+    "title": "Ask of Me, and I Will Give You the Nations",
+    "anchor": "Psalm 2:8",
+    "themes": [
+      "Praying for Others",
+      "Faith",
+      "Guidance and Surrender"
+    ],
+    "person": "Jim and Elisabeth Elliot",
+    "era": "c. 1956",
+    "region": "Shandia and the Curaray River (Ecuador)",
+    "voices": [
+      {
+        "author": "amy-carmichael",
+        "book": "things-as-they-are",
+        "chapter": "Missed Ends"
+      }
+    ],
+    "read_more": [
+      "elisabeth-elliot-a-life",
+      "key-teachings-of-elisabeth-elliot",
+      "things-as-they-are"
+    ]
+  },
+  {
+    "title": "Before They Call, I Will Answer",
+    "anchor": "Isaiah 65:24",
+    "themes": [
+      "Faith",
+      "Asking Boldly",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "Helen Roseveare",
+    "era": "c. 1964",
+    "region": "Nebobongo (Congo)",
+    "voices": [
+      {
+        "author": "samuel-rutherford",
+        "book": "letters-of-samuel-rutherford",
+        "chapter": "Letter LXXI: To Mr. Hugh M’Kail"
+      },
+      {
+        "author": "charles-h-spurgeon",
+        "book": "cheque-book",
+        "chapter": "The Month of August"
+      }
+    ],
+    "read_more": [
+      "cheque-book",
+      "letters-of-samuel-rutherford"
+    ]
+  },
+  {
+    "title": "Prayer That Opens Closed Doors",
+    "anchor": "Revelation 3:8",
+    "themes": [
+      "Asking Boldly",
+      "Faith",
+      "Praying for Others"
+    ],
+    "person": "Brother Andrew and Open Doors",
+    "era": "c. 1957",
+    "region": "Eastern Europe (from the Netherlands)",
+    "voices": [
+      {
+        "author": "amanda-berry-smith",
+        "book": "amanda-smith-autobiography",
+        "chapter": "Cape Palmas, and a Great Revival"
+      }
+    ],
+    "read_more": [
+      "amanda-smith-autobiography",
+      "essentials-of-prayer"
+    ]
+  },
+  {
+    "title": "Living Together in Unity",
+    "anchor": "Psalm 133:1",
+    "themes": [
+      "Praying Together",
+      "Learning to Pray",
+      "Making Room for Prayer"
+    ],
+    "person": "Brother Roger and the Taizé Community",
+    "era": "c. 1940-2005",
+    "region": "Taizé (France)",
+    "voices": [
+      {
+        "author": "thomas-watson",
+        "book": "a-body-of-divinity",
+        "chapter": "The Unity of God"
+      }
+    ],
+    "read_more": [
+      "a-body-of-divinity",
+      "introduction-to-the-devout-life"
+    ]
+  },
+  {
+    "title": "Prayer Gives a Clean Heart",
+    "anchor": "Matthew 25:40",
+    "themes": [
+      "Humility and Mercy",
+      "Prayer in Suffering and Testing",
+      "Making Room for Prayer"
+    ],
+    "person": "Mother Teresa and the Missionaries of Charity",
+    "era": "c. 1950",
+    "region": "Calcutta (India)",
+    "voices": [
+      {
+        "author": "thomas-a-kempis",
+        "book": "the-imitation-of-christ",
+        "chapter": "Purity of Mind and Unity of Purpose"
+      }
+    ],
+    "read_more": [
+      "the-imitation-of-christ",
+      "the-practice-of-the-presence-of-god"
+    ]
+  },
+  {
+    "title": "I Look Up to the Mountains",
+    "anchor": "Psalm 121:1-2",
+    "themes": [
+      "Faith",
+      "Making Room for Prayer",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "Choi Ja-shil and Korea's prayer mountains",
+    "era": "c. 1973",
+    "region": "Osan-ri, Paju (South Korea)",
+    "voices": [
+      {
+        "author": "john-chrysostom",
+        "book": "homilies-on-matthew",
+        "chapter": "Homily L: Matthew 14:23, 24"
+      }
+    ],
+    "read_more": [
+      "school-of-prayer",
+      "revival-fires"
+    ]
+  },
+  {
+    "title": "Bless Those Who Persecute You",
+    "anchor": "Romans 12:14",
+    "themes": [
+      "Praying for Others",
+      "Forgiveness",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "Festo Kivengere and Janani Luwum",
+    "era": "c. 1977",
+    "region": "Kampala and Kabale (Uganda)",
+    "voices": [
+      {
+        "author": "george-whitefield",
+        "book": "selected-sermons-whitefield",
+        "chapter": "Intercession Every Christian's Duty"
+      }
+    ],
+    "read_more": [
+      "brave-for-god-2",
+      "selected-sermons-whitefield"
+    ]
+  },
+  {
+    "title": "What Happens When Women Pray",
+    "anchor": "Jeremiah 33:3",
+    "themes": [
+      "Learning to Pray",
+      "Praying Together",
+      "Humility and Mercy"
+    ],
+    "person": "Evelyn Christenson",
+    "era": "c. 1968",
+    "region": "St. Paul, Minnesota (USA)",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "spurgeon-on-prayer",
+        "chapter": "The Golden Key of Prayer"
+      }
+    ],
+    "read_more": [
+      "spurgeon-on-prayer",
+      "school-of-prayer"
+    ]
+  },
+  {
+    "title": "More Persecution, More Growth",
+    "anchor": "2 Corinthians 4:8-9",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Learning to Pray",
+      "Faith"
+    ],
+    "person": "Samuel Lamb and China's house churches",
+    "era": "c. 1955-1979",
+    "region": "Guangzhou (China)",
+    "voices": [
+      {
+        "author": "john-bunyan",
+        "book": "grace-abounding",
+        "chapter": "A Brief Account of the Author’s Imprisonment"
+      }
+    ],
+    "read_more": [
+      "watchman-nee-a-life",
+      "grace-abounding"
+    ]
+  },
+  {
+    "title": "The Fast God Chooses",
+    "anchor": "Isaiah 58:6",
+    "themes": [
+      "Humility and Mercy",
+      "Making Room for Prayer",
+      "Learning to Pray"
+    ],
+    "person": "Derek Prince and Bill Bright",
+    "era": "c. 1973-1995",
+    "region": "Florida (USA)",
+    "voices": [
+      {
+        "author": "john-wesley",
+        "book": "sermons-on-several-occasions",
+        "chapter": "Discourse 7"
+      }
+    ],
+    "read_more": [
+      "key-teachings-of-derek-prince",
+      "sermons-on-several-occasions"
+    ]
+  },
+  {
+    "title": "My Sheep Hear My Voice",
+    "anchor": "John 10:27",
+    "themes": [
+      "The Father's Love",
+      "Learning to Pray",
+      "Guidance and Surrender"
+    ],
+    "person": "Loren Cunningham and Youth With A Mission",
+    "era": "c. 1956-1960",
+    "region": "The Bahamas and California (USA)",
+    "voices": [
+      {
+        "author": "john-wesley",
+        "book": "sermons-on-several-occasions",
+        "chapter": "The Nature of Enthusiasm"
+      },
+      {
+        "author": "a-w-tozer",
+        "book": "the-pursuit-of-god",
+        "chapter": "The Speaking Voice"
+      }
+    ],
+    "read_more": [
+      "the-pursuit-of-god",
+      "sermons-on-several-occasions"
+    ]
+  },
+  {
+    "title": "Fresh Wind, Fresh Fire",
+    "anchor": "Isaiah 56:7",
+    "themes": [
+      "Praying Together",
+      "The Father's Love",
+      "Asking Boldly"
+    ],
+    "person": "Jim Cymbala and the Brooklyn Tabernacle",
+    "era": "c. 1972",
+    "region": "Brooklyn, New York (USA)",
+    "voices": [
+      {
+        "author": "charles-finney",
+        "book": "revival-lectures",
+        "chapter": "Lecture VIII. Meetings for Prayer"
+      }
+    ],
+    "read_more": [
+      "revival-lectures",
+      "how-to-succeed-in-the-christian-life"
+    ]
+  },
+  {
+    "title": "The 10/40 Window",
+    "anchor": "Revelation 7:9",
+    "themes": [
+      "Praying for Others",
+      "Faith",
+      "Persistence"
+    ],
+    "person": "Luis Bush and the AD2000 and Beyond Movement",
+    "era": "c. 1990",
+    "region": "The 10/40 Window (North Africa to East Asia)",
+    "voices": [
+      {
+        "author": "john-r-mott",
+        "book": "evangelization-of-the-world",
+        "chapter": "Factors Essential to the Evangelization of the World in This Generation"
+      },
+      {
+        "author": "amy-carmichael",
+        "book": "things-as-they-are",
+        "chapter": "The Call Intensified"
+      }
+    ],
+    "read_more": [
+      "evangelization-of-the-world",
+      "ministry-of-intercession"
+    ]
+  },
+  {
+    "title": "Pray for the Peace of the City",
+    "anchor": "Jeremiah 29:7",
+    "themes": [
+      "Praying for Others",
+      "Praying Together",
+      "Humility and Mercy"
+    ],
+    "person": "Carlos Annacondia, Omar Cabrera, Ed Silvoso and the Argentine revival; Almolonga",
+    "era": "c. 1984",
+    "region": "Argentina; Almolonga (Guatemala)",
+    "voices": [
+      {
+        "author": "charles-finney",
+        "book": "finney-memoirs",
+        "chapter": "Labors in England and Scotland"
+      }
+    ],
+    "read_more": [
+      "prevailing-prayer",
+      "finney-memoirs"
+    ]
+  },
+  {
+    "title": "The Fire Is Lit Again",
+    "anchor": "Leviticus 6:13",
+    "themes": [
+      "Learning to Pray",
+      "Praying Together",
+      "Humility and Mercy"
+    ],
+    "person": "Pete Greig and 24-7 Prayer",
+    "era": "c. 1999",
+    "region": "Chichester (England)",
+    "voices": [
+      {
+        "author": "sadhu-sundar-singh",
+        "book": "reality-and-religion",
+        "chapter": "Prayer"
+      },
+      {
+        "author": "charles-h-spurgeon",
+        "book": "an-all-round-ministry",
+        "chapter": "Light. Fire. Faith. Life. Love."
+      }
+    ],
+    "read_more": [
+      "an-all-round-ministry",
+      "reality-and-religion",
+      "the-fire-on-the-altar"
+    ]
+  },
+  {
+    "title": "Your Kingdom Come",
+    "anchor": "Matthew 6:10",
+    "themes": [
+      "Humility and Mercy",
+      "Praying Together",
+      "Praying for Others"
+    ],
+    "person": "Graham Power and the Global Day of Prayer; Thy Kingdom Come",
+    "era": "c. 2001",
+    "region": "Cape Town (South Africa)",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "possibilities-of-prayer",
+        "chapter": "Prayer and the Promises (Continued)"
+      },
+      {
+        "author": "thomas-watson",
+        "book": "the-lords-prayer",
+        "chapter": "The Second Petition: Thy Kingdom Come"
+      }
+    ],
+    "read_more": [
+      "possibilities-of-prayer",
+      "the-lords-prayer"
+    ]
+  },
+  {
+    "title": "All Night Before God",
+    "anchor": "Luke 6:12",
+    "themes": [
+      "Making Room for Prayer",
+      "Praying Together",
+      "Faith"
+    ],
+    "person": "Africa's all-night prayer vigils",
+    "era": "c. 1986",
+    "region": "Nigeria, Ghana and Kenya",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "evening-by-evening",
+        "chapter": "November"
+      }
+    ],
+    "read_more": [
+      "evening-by-evening",
+      "jesus-teacher-of-prayer",
+      "how-to-pray"
+    ]
+  },
+  {
+    "title": "Prayer in a Shipping Container",
+    "anchor": "Hebrews 13:3",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Persistence",
+      "Praying for Others"
+    ],
+    "person": "Helen Berhane",
+    "era": "c. 2004",
+    "region": "Mai Serwa (Eritrea)",
+    "voices": [
+      {
+        "author": "f-f-bosworth",
+        "book": "christ-the-healer",
+        "chapter": "How to Appropriate the Redemptive and Covenant Blessing of Bodily Healing"
+      }
+    ],
+    "read_more": [
+      "devoted-to-prayer",
+      "christ-the-healer",
+      "faithful-unto-death"
+    ]
+  },
+  {
+    "title": "Not Bowing to the Image",
+    "anchor": "Daniel 3:17-18",
+    "themes": [
+      "Faith",
+      "Prayer in Suffering and Testing",
+      "Praying for Others"
+    ],
+    "person": "Mehdi Dibaj, Haik Hovsepian-Mehr and Iran's house churches",
+    "era": "c. 1993",
+    "region": "Sari and Tehran (Iran)",
+    "voices": [
+      {
+        "author": "j-c-ryle",
+        "book": "expository-thoughts-on-matthew",
+        "chapter": "Matthew 8"
+      }
+    ],
+    "read_more": [
+      "expository-thoughts-on-matthew",
+      "prayer-and-praying-men",
+      "faithful-unto-death"
+    ]
+  },
+  {
+    "title": "Awe and Intimacy",
+    "anchor": "Psalm 63:3",
+    "themes": [
+      "The Father's Love",
+      "Learning to Pray",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "Tim Keller",
+    "era": "c. 2014",
+    "region": "New York (USA)",
+    "voices": [
+      {
+        "author": "john-calvin",
+        "book": "institutes-of-the-christian-religion",
+        "chapter": "Book 3, Chapter 20 — Of Prayer"
+      },
+      {
+        "author": "john-owen",
+        "book": "communion-with-god",
+        "chapter": "Of particular communion with the Holy Ghost"
+      }
+    ],
+    "read_more": [
+      "communion-with-god",
+      "key-teachings-of-john-calvin",
+      "a-mighty-fortress"
+    ]
+  },
+  {
+    "title": "Conclusion: Passing the Torch",
+    "anchor": "Psalm 96:3",
+    "themes": [],
+    "person": "The worldwide praying church",
+    "era": "today",
+    "region": "The whole world",
+    "voices": [],
+    "read_more": []
+  }
+]

@@ -1761,6 +1761,15 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "the right; a plain chapel with lit windows and a terrace of miners' houses "
         "on the valley floor, and a colliery's winding headframe. No likeness.",
     ),
+    # A Cloud of Praying Witnesses, Vol. 10, Every Tribe and Tongue: the series
+    # ground in the afternoon: village homes, a small church with its cross and a
+    # city's towers in the haze (Revelation 7:9). No particular place.
+    "every-tribe-and-tongue": Original(
+        "7bdb2f3d2aa21dce531a2721fbe7f8d112872ef9247ab02d17a54a2254f3bf2b",
+        "Revelation 7:9: afternoon, the sun on the left; village homes low on the "
+        "left, a small church with a cross and a lit door in the middle, and the "
+        "towers of a modern city in the haze on the right. No likeness.",
+    ),
     # The Lamplighters of Gloamhaven, Book 2 — a companion to Book 1's ground:
     # the same slate dark and the Flame's gold, now underground. A vast cavern
     # under faint stalactites; low on the left, Tobin climbs the Black Stair
