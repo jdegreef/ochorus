@@ -129,7 +129,12 @@
 		query: ran || q.trim()
 	});
 	const rows = $derived<ResultRow[]>(
-		hits.map((h) => ({ ...toRow(h, rowCtx), type: h.type, pinned: h.pinned }))
+		hits.map((h) => ({
+			...toRow(h, rowCtx),
+			type: h.type,
+			pinned: h.pinned,
+			named: h.named
+		}))
 	);
 	const groups = $derived<ResultGroup[]>(leadWithPinned(groupRows(rows)));
 
