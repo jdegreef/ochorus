@@ -13,19 +13,18 @@
         {
             "reference": "Luke 11:13",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 9
         },
         {
             "reference": "Proverbs 28:13",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 25
         },
         {
             "reference": "Luke 14:11",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "status": "self_rendered",
             "block_index": 25
         },
         {
@@ -41,19 +40,19 @@
         {
             "reference": "Acts 26:25",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 39
         },
         {
             "reference": "2 Corinthians 4:10",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 41
         },
         {
             "reference": "1 Corinthians 15:31",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 41
         },
         {
@@ -64,7 +63,7 @@
         {
             "reference": "Romans 9:1-3",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 41
         },
         {
@@ -75,7 +74,7 @@
         {
             "reference": "Galatians 5:17",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 45
         },
         {
@@ -86,7 +85,7 @@
         {
             "reference": "Psalms 25:14",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 49
         },
         {
@@ -107,19 +106,19 @@
         {
             "reference": "Romans 8:9",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 55
         },
         {
             "reference": "2 Corinthians 13:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 55
         },
         {
             "reference": "Luke 18:8",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 76
         }
     ]
