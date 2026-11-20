@@ -1,0 +1,177 @@
+{
+    "kind": "sermon",
+    "slug": "the-triumph-of-calvary",
+    "language": "ja",
+    "job_issue": 8156,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Isaiah 63:1",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Hebrews 2:10",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Matthew 2:23",
+            "status": "self_rendered",
+            "block_index": 5
+        },
+        {
+            "reference": "Isaiah 63:3",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 18
+        },
+        {
+            "reference": "Isaiah 26:19",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "1 Peter 1:8",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 9
+        },
+        {
+            "reference": "Hebrews 7:16",
+            "status": "self_rendered",
+            "block_index": 9
+        },
+        {
+            "reference": "Colossians 2:15",
+            "status": "self_rendered",
+            "block_index": 9
+        },
+        {
+            "reference": "Isaiah 63:5",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "Hebrews 10:7",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "Acts 2:31",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "Revelation 6:2",
+            "status": "self_rendered",
+            "block_index": 11
+        },
+        {
+            "reference": "Isaiah 55:11",
+            "status": "self_rendered",
+            "block_index": 11
+        },
+        {
+            "reference": "Genesis 3:15",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 13
+        },
+        {
+            "reference": "Isaiah 28:18",
+            "status": "self_rendered",
+            "block_index": 13
+        },
+        {
+            "reference": "Luke 11:21-22",
+            "status": "self_rendered",
+            "block_index": 13
+        },
+        {
+            "reference": "2 Samuel 3:1",
+            "status": "self_rendered",
+            "block_index": 13
+        },
+        {
+            "reference": "Revelation 11:15",
+            "status": "self_rendered",
+            "block_index": 13
+        },
+        {
+            "reference": "Isaiah 42:13",
+            "status": "self_rendered",
+            "block_index": 14
+        },
+        {
+            "reference": "Isaiah 42:17",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 14
+        },
+        {
+            "reference": "Isaiah 42:7",
+            "status": "self_rendered",
+            "block_index": 14
+        },
+        {
+            "reference": "Revelation 22:16",
+            "status": "self_rendered",
+            "block_index": 14
+        },
+        {
+            "reference": "Malachi 4:2",
+            "status": "self_rendered",
+            "block_index": 14
+        },
+        {
+            "reference": "Romans 8:1",
+            "status": "self_rendered",
+            "block_index": 15
+        },
+        {
+            "reference": "Ephesians 6:10",
+            "status": "self_rendered",
+            "block_index": 16
+        },
+        {
+            "reference": "John 20:19",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 18
+        },
+        {
+            "reference": "Isaiah 63:2",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 18
+        },
+        {
+            "reference": "Isaiah 63:4",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 18
+        },
+        {
+            "reference": "Ezekiel 34:16",
+            "status": "self_rendered",
+            "block_index": 18
+        },
+        {
+            "reference": "Psalms 2:9",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Matthew 3:7",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "Luke 14:17",
+            "status": "self_rendered",
+            "block_index": 19
+        }
+    ]
+}
