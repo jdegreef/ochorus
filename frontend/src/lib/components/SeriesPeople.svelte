@@ -24,39 +24,55 @@
 			.map((book) => ({ book, people: people.filter((p) => p.book === book.slug) }))
 			.filter((g) => g.people.length)
 	);
+	// One even wall when the volumes hold uneven numbers of faces (Brave for
+	// God: 6, 5, 5, 1 — a lone face under the last heading): every face in one
+	// grid, each card naming its volume. Grouped otherwise (They Were Young).
+	const even = $derived(groups.every((g) => g.people.length === groups[0].people.length));
+	const wall = $derived(groups.flatMap((g) => g.people.map((p) => ({ p, book: g.book }))));
 	const heading = (b: SeriesBook) =>
 		[volumeLabel(b.series_position, lang), volumeName(b, seriesTitle)].filter(Boolean).join(' · ') ||
 		b.title;
 </script>
 
+{#snippet face(p: HubPerson, volume: string)}
+	<a href={localizeHref(`/books/${p.book}/${p.chapter}`)} class="face card-lift">
+		<Portrait
+			slug={p.slug}
+			name={p.name}
+			url={p.photo_url}
+			px={80}
+			class="size-20 rounded-full object-cover"
+			initialsClass="text-h3"
+			tone="hover"
+			decorative
+		/>
+		{#if volume}<span class="face-volume eyebrow" dir="auto">{volume}</span>{/if}
+		<span class="face-name" dir="auto">{p.name}</span>
+		<span class="face-hook" dir="auto">{p.hook}</span>
+		{#if p.words}<span class="face-time">{readingTime(p.words)}</span>{/if}
+	</a>
+{/snippet}
+
+{#if !even && groups.length > 1}
+	<ul class="faces wall">
+		{#each wall as { p, book } (`${p.book}/${p.chapter}`)}
+			<li>{@render face(p, volumeLabel(book.series_position, lang) || heading(book))}</li>
+		{/each}
+	</ul>
+{:else}
 <div class="groups">
 	{#each groups as g (g.book.slug)}
 		<div class="group">
 			<h3 class="eyebrow group-name" dir="auto">{heading(g.book)}</h3>
 			<ul class="faces">
 				{#each g.people as p (`${p.book}/${p.chapter}`)}
-					<li>
-						<a href={localizeHref(`/books/${p.book}/${p.chapter}`)} class="face card-lift">
-							<Portrait
-								slug={p.slug}
-								name={p.name}
-								url={p.photo_url}
-								px={80}
-								class="size-20 rounded-full object-cover"
-								initialsClass="text-h3"
-								tone="hover"
-								decorative
-							/>
-							<span class="face-name" dir="auto">{p.name}</span>
-							<span class="face-hook" dir="auto">{p.hook}</span>
-							{#if p.words}<span class="face-time">{readingTime(p.words)}</span>{/if}
-						</a>
-					</li>
+					<li>{@render face(p, '')}</li>
 				{/each}
 			</ul>
 		</div>
 	{/each}
 </div>
+{/if}
 
 <style>
 	.groups {
@@ -86,6 +102,23 @@
 		border: 1px solid var(--border);
 		background: var(--surface);
 		text-decoration: none;
+	}
+	/* The flat wall centres its rows, so a short last row sits under the
+	   middle of the wall rather than hanging off its first column. */
+	.faces.wall {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.faces.wall > li {
+		flex: 0 0 8.5rem;
+	}
+	.face-volume {
+		margin-top: 0.6rem;
+		color: var(--series-accent, var(--accent));
+	}
+	.face-volume + .face-name {
+		margin-top: 0.2rem;
 	}
 	.face-name {
 		margin-top: 0.75rem;
