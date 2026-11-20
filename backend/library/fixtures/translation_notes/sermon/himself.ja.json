@@ -1,0 +1,122 @@
+{
+    "kind": "sermon",
+    "slug": "himself",
+    "language": "ja",
+    "job_issue": 8126,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Matthew 8:17",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 0
+        },
+        {
+            "reference": "1 Peter 2:24",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 0
+        },
+        {
+            "reference": "Matthew 13:43",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Ephesians 3:19",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Matthew 22:42",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 5
+        },
+        {
+            "reference": "Mark 11:22",
+            "status": "self_rendered",
+            "block_index": 5
+        },
+        {
+            "reference": "Galatians 2:20",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 5
+        },
+        {
+            "reference": "1 Peter 5:8",
+            "status": "self_rendered",
+            "block_index": 5
+        },
+        {
+            "reference": "Colossians 1:26",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 7
+        },
+        {
+            "reference": "Colossians 1:27",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 7
+        },
+        {
+            "reference": "Colossians 2:9",
+            "status": "self_rendered",
+            "block_index": 6
+        },
+        {
+            "reference": "Ephesians 5:30",
+            "status": "self_rendered",
+            "block_index": 6
+        },
+        {
+            "reference": "1 Corinthians 1:30",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "1 Corinthians 2:16",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "2 Corinthians 10:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 10
+        },
+        {
+            "reference": "Philippians 2:13",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 11
+        },
+        {
+            "reference": "John 1:16",
+            "status": "self_rendered",
+            "block_index": 12
+        },
+        {
+            "reference": "Psalm 84:7",
+            "status": "self_rendered",
+            "block_index": 12
+        },
+        {
+            "reference": "2 Corinthians 3:18",
+            "status": "self_rendered",
+            "block_index": 12
+        },
+        {
+            "reference": "Psalm 113:2",
+            "status": "self_rendered",
+            "block_index": 12
+        },
+        {
+            "reference": "Hebrews 6:19",
+            "status": "self_rendered",
+            "block_index": 32
+        }
+    ]
+}

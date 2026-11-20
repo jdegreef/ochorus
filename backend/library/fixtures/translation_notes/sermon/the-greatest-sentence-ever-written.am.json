@@ -1,0 +1,62 @@
+{
+    "kind": "sermon",
+    "slug": "the-greatest-sentence-ever-written",
+    "language": "am",
+    "job_issue": 8251,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "1 John 4:8",
+            "status": "self_rendered",
+            "block_index": 0
+        },
+        {
+            "reference": "Isaiah 55:7",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 9
+        },
+        {
+            "reference": "Hebrews 12:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 12
+        },
+        {
+            "reference": "Isaiah 63:9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 17
+        },
+        {
+            "reference": "1 John 3:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 19
+        },
+        {
+            "reference": "John 3:16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 20
+        },
+        {
+            "reference": "Matthew 27:46",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 22
+        },
+        {
+            "reference": "Isaiah 53:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 25
+        },
+        {
+            "reference": "Philippians 1:23",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 25
+        }
+    ]
+}

@@ -1,0 +1,169 @@
+{
+    "kind": "sermon",
+    "slug": "christs-boundless-compassion",
+    "language": "ja",
+    "job_issue": 8150,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Matthew 14:14",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 0
+        },
+        {
+            "reference": "Matthew 12:20",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 2
+        },
+        {
+            "reference": "Leviticus 13:45",
+            "status": "self_rendered",
+            "block_index": 5
+        },
+        {
+            "reference": "Matthew 8:2",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 5
+        },
+        {
+            "reference": "Matthew 8:3",
+            "status": "self_rendered",
+            "block_index": 7
+        },
+        {
+            "reference": "Luke 7:14",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 10
+        },
+        {
+            "reference": "Mark 4:39",
+            "status": "self_rendered",
+            "block_index": 11
+        },
+        {
+            "reference": "Luke 19:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 13
+        },
+        {
+            "reference": "John 8:11",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 15
+        },
+        {
+            "reference": "Luke 15:12",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 17
+        },
+        {
+            "reference": "Luke 15:18",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 21
+        },
+        {
+            "reference": "Matthew 21:9",
+            "status": "self_rendered",
+            "block_index": 23
+        },
+        {
+            "reference": "Matthew 23:37",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 23
+        },
+        {
+            "reference": "Luke 19:44",
+            "status": "self_rendered",
+            "block_index": 24
+        },
+        {
+            "reference": "John 1:29",
+            "status": "self_rendered",
+            "block_index": 24
+        },
+        {
+            "reference": "Matthew 26:75",
+            "status": "self_rendered",
+            "block_index": 26
+        },
+        {
+            "reference": "Acts 9:1",
+            "status": "self_rendered",
+            "block_index": 28
+        },
+        {
+            "reference": "Acts 9:4",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 28
+        },
+        {
+            "reference": "Acts 9:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 28
+        },
+        {
+            "reference": "Acts 26:14",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 28
+        },
+        {
+            "reference": "Acts 22:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 28
+        },
+        {
+            "reference": "1 Kings 19:12",
+            "status": "self_rendered",
+            "block_index": 31
+        },
+        {
+            "reference": "John 3:16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 31
+        },
+        {
+            "reference": "Revelation 5:12",
+            "status": "self_rendered",
+            "block_index": 32
+        },
+        {
+            "reference": "Song of Solomon 5:10",
+            "status": "self_rendered",
+            "block_index": 32
+        },
+        {
+            "reference": "Song of Solomon 5:16",
+            "status": "self_rendered",
+            "block_index": 32
+        },
+        {
+            "reference": "John 14:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 34
+        },
+        {
+            "reference": "John 11:44",
+            "status": "self_rendered",
+            "block_index": 41
+        },
+        {
+            "reference": "Luke 7:50",
+            "status": "self_rendered",
+            "block_index": 41
+        }
+    ]
+}
