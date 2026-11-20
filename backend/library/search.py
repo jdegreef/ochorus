@@ -64,7 +64,9 @@ from .models import (
     TopicTranslation,
 )
 from .people import People, strongest
+from .people import words as name_words
 from .scripture import reference_verse_ids
+from .search_aliases import AUTHOR_ALIASES, books_named
 
 MAX_RESULTS = 30
 
@@ -453,6 +455,7 @@ class _Ctx:
         self.q = q
         self.language = language
         self._people = None
+        self._books = None
 
     def _read_people(self):
         if self._people is None:
@@ -478,6 +481,13 @@ class _Ctx:
         return self._read_people()[1]
 
     @property
+    def aliased_books(self) -> list[tuple[str, str]]:
+        """Books the query names by another title: (slug, title)."""
+        if self._books is None:
+            self._books = _aliased_books(self)
+        return self._books
+
+    @property
     def person(self):
         """The one person the query names by two or more words, or None."""
         return self._read_people()[2]
@@ -486,10 +496,29 @@ class _Ctx:
 def _author_names(language: str) -> list[tuple[int, str]]:
     """(pk, name) of every author findable in ``language`` — the whole library,
     never a scope, so "d l moody" reads the same inside a shelf as outside."""
-    return memoized(
-        "people",
-        lambda: list(_base_querysets(language)["author"].values_list("pk", "name")),
-        language,
+    def compute():
+        rows = list(_base_querysets(language)["author"].values_list("pk", "name", "slug"))
+        names = [(pk, name) for pk, name, _ in rows]
+        # And the other names each is known by (library/search_aliases.py).
+        names += [
+            (pk, other, name)
+            for pk, name, slug in rows
+            for other in AUTHOR_ALIASES.get(slug, ())
+        ]
+        return names
+
+    return memoized("people", compute, language)
+
+
+def _aliased_books(ctx) -> list[tuple[str, str]]:
+    """(slug, title in this language) of the books the query names by another
+    title ("de civitate dei" → The City of God), from library/search_aliases.py."""
+    slugs = books_named(name_words(ctx.q))
+    if not slugs:
+        return []
+    return list(
+        Book.objects.filter(slug__in=slugs, language=ctx.language, is_published=True)
+        .values_list("slug", "title")
     )
 
 
@@ -518,10 +547,14 @@ _AUTHOR_FIELD = {"book": "author", "chapter": "book__author", "sermon": "author"
 
 def _query(ctx):
     """The SearchQuery for ``ctx``: the query as typed, OR'd with its person
-    spelt the library's way ("d l moody" also asks for "dwight l moody")."""
+    spelt the library's way ("d l moody" also asks for "dwight l moody"), and
+    with the title of any book it names by another one ("de civitate dei" also
+    asks for the phrase "The City of God")."""
     query = search_query(ctx.q, ctx.language)
     if ctx.rewritten:
         query = query | search_query(ctx.rewritten, ctx.language)
+    for _, title in ctx.aliased_books:
+        query = query | search_query('"' + title.replace('"', " ") + '"', ctx.language)
     return query
 
 
@@ -895,6 +928,10 @@ def _match(kind: str, ctx, qs):
             if person.rest:
                 works &= _lite_match(kind, " ".join(person.rest), ctx.language)
             predicate |= works
+        book_slugs = [slug for slug, _ in ctx.aliased_books]
+        if book_slugs and kind in ("book", "chapter"):
+            field = "slug__in" if kind == "book" else "book__slug__in"
+            predicate |= Q(**{field: book_slugs})
         matched = qs.filter(predicate)
         return matched.distinct() if kind == "topic" else matched
 
