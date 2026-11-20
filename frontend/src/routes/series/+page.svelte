@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import type { SeriesSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, hreflangFor, itemList } from '$lib/seo';
@@ -13,7 +12,13 @@
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import LibraryTabs from '$lib/components/LibraryTabs.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
-	import { audienceBlurb, audienceName, groupByAudience, seriesCompanion } from '$lib/series';
+	import {
+		audienceBlurb,
+		audienceName,
+		groupByAudience,
+		seriesCompanion,
+		splitSeriesTitle
+	} from '$lib/series';
 	import { hubFor } from '$lib/audienceHub';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import ParentsNote from '$lib/components/ParentsNote.svelte';
@@ -21,6 +26,9 @@
 	import { SHELF_SEARCH_MIN, matchesQuery } from '$lib/shelfSearch';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import { page } from '$app/stores';
+	import * as m from '$lib/paraglide/messages.js';
+	import CoverStrip from '$lib/components/CoverStrip.svelte';
+	import { readingLadder } from '$lib/seriesLadder';
 
 	/**
 	 * Every book series in this language — the Topics shelf's anatomy and card,
@@ -53,6 +61,10 @@
 	const grouped = $derived(groups.some((g) => g.audience));
 	// The jump chips' targets: one id per audience group, "more" for the rest.
 	const groupId = (audience: string | null) => `audience-${audience ?? 'more'}`;
+	// The doors' covers: the first volume of each of the group's first series.
+	const doorCovers = (g: { series: SeriesSummary[] }) =>
+		g.series.flatMap((s) => s.covers.slice(0, 1)).slice(0, 3);
+	const ladder = $derived(readingLadder(series));
 
 	// schema.org ItemList of the series: each entry is the series page, whose own
 	// BookSeries LD names its parts.
@@ -154,17 +166,41 @@
 			<EmptyState art="search" message={t('series.noResults')} action={clearFiltersAction} />
 		{/if}
 		{#if grouped && groups.length > 1}
-			<!-- One link per audience group: "7 Book Series" with only the young
-			     readers' four above the fold left adults guessing whether there
-			     was anything for them. Anchors, not a filter — every card stays
-			     in the prerendered page. -->
-			<nav class="chip-scroller mb-8 flex gap-2" use:scrollEdges aria-label={t('nav.series')}>
+			<!-- Three doors, one per reader — "who is this for?" before the shelf.
+			     Anchors, not a filter: every card stays in the prerendered page. -->
+			<nav class="doors mb-10" aria-label={t('nav.series')}>
 				{#each groups as g (g.audience ?? 'more')}
-					<a class="tag" href="#{groupId(g.audience)}"
-						>{audienceName(g.audience)}<span class="count">{g.series.length}</span></a
-					>
+					<a class="door card-lift" href="#{groupId(g.audience)}">
+						<span class="door-covers" aria-hidden="true"><CoverStrip covers={doorCovers(g)} max={3} /></span>
+						<span class="door-name font-display">{audienceName(g.audience)}</span>
+						<span class="text-small text-muted"
+							>{g.series.length}
+							{g.series.length === 1 ? t('common.seriesOne') : t('common.seriesMany')} <Arrow /></span
+						>
+					</a>
 				{/each}
 			</nav>
+		{/if}
+		{#if !filtering && ladder.length > 2}
+			<!-- The reading ladder: the series as rungs from six to grown-up. -->
+			<section class="mb-12" aria-labelledby="ladder-heading">
+				<h2 id="ladder-heading" class="section-label">{t('series.ladderHeading')}</h2>
+				<p class="-mt-1 mb-4 max-w-2xl text-small text-muted">{t('series.ladderNote')}</p>
+				<ol class="ladder" style="--rungs: {ladder.length}">
+					{#each ladder as r, i (r.min ?? 'adults')}
+						<li class="rung" style="--step: {i}">
+							<span class="rung-age font-display"
+								>{r.min == null ? audienceName('adults') : m.series_ages_from({ min: r.min })}</span
+							>
+							<span class="rung-series">
+								{#each r.series as s (s.slug)}
+									<a href={localizeHref(`/series/${s.slug}/`)}>{splitSeriesTitle(s.title).name}</a>
+								{/each}
+							</span>
+						</li>
+					{/each}
+				</ol>
+			</section>
 		{/if}
 		{#each groups as g (g.audience ?? 'more')}
 			{@const blurb = audienceBlurb(g.audience)}
@@ -212,6 +248,77 @@
 </div>
 
 <style>
+	.doors {
+		display: grid;
+		gap: 0.75rem;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+	}
+	.door {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		padding: 1.1rem 1.25rem 1.25rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+		color: var(--text);
+		text-decoration: none;
+	}
+	.door-covers {
+		margin-bottom: 0.5rem;
+	}
+	.door-name {
+		font-size: var(--fs-h3);
+		font-weight: 600;
+		line-height: 1.2;
+	}
+	/* The ladder: rungs climbing to the end on a wide screen (each one a step
+	   higher), a plain stack on a phone. */
+	.ladder {
+		display: grid;
+		gap: 0.5rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.rung {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		padding: 0.75rem 1rem;
+		border-inline-start: 3px solid var(--accent);
+		background: var(--surface);
+		border-radius: var(--radius-sm);
+	}
+	.rung-age {
+		font-weight: 600;
+		color: var(--accent);
+	}
+	.rung-series {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.15rem 0.9rem;
+		font-size: var(--fs-small);
+	}
+	.rung-series a {
+		color: var(--text);
+	}
+	.rung-series a:hover {
+		color: var(--accent);
+	}
+	@media (min-width: 768px) {
+		.ladder {
+			grid-auto-flow: column;
+			grid-auto-columns: minmax(0, 1fr);
+			align-items: start;
+		}
+		.rung {
+			margin-block-start: calc((var(--rungs) - 1 - var(--step)) * 1.5rem);
+			min-height: 6rem;
+			border-inline-start: 0;
+			border-block-start: 3px solid var(--accent);
+		}
+	}
 	/* Jump targets clear the pinned app nav (the authors and biographies
 	   indexes' group sections use the same recipe). */
 	.jump-anchor {
