@@ -1,0 +1,1798 @@
+# Every Tribe and Tongue
+
+*The Global Praying Church*
+
+*A Cloud of Praying Witnesses, Volume 10*
+
+Scripture quotations are from the Open Word Bible (OWB), Balanced edition, dedicated to the public domain.
+
+---
+
+## Introduction: Where We Are in the Story
+
+> "This gospel of the kingdom will be announced throughout the world, so that every nation hears the witness, and only then will the end come." (Matthew 24:14)
+
+In 1950, most of the world's Christians still lived in Europe and North America. Today most of them live in Africa, Asia and Latin America. A typical Christian today is not a European or an American. She is more likely to be a young woman in Nigeria, Brazil, the Philippines or China.
+
+That change has happened within a single lifetime, and it is one of the great stories of the church. It is also a story of prayer. In the decades since 1950, believers have prayed through the night in African cities, climbed mountains in Korea to fast and pray, met secretly in homes in China and Iran, and kept rooms of prayer open day and night in towns across the world. Jesus said that the gospel would be announced to every nation. In our own time we are seeing that promise come closer than ever before.
+
+### Where we are in the series
+
+This is the tenth volume of *A Cloud of Praying Witnesses*, a series that follows the people of God at prayer through the whole story of the church. The name comes from Hebrews 12:1, which pictures all the faithful who went before us as "so vast a cloud of witnesses all around us."
+
+The first volumes followed prayer from the Old Testament to the great missionary century. Volume 9, *Revival Fires*, followed the revivals and the wars of the first half of the twentieth century, from Wales and Korea to the concentration camps of Europe, and ended with A. W. Tozer calling the church to pursue God Himself.
+
+This volume brings the story to our own day, from 1950 to now.
+
+### The world of these witnesses
+
+These have been years of enormous change. Empires ended, and dozens of new nations were born in Africa and Asia. Communist governments ruled much of the world for decades, and in many of those countries believers were imprisoned for their faith. Air travel, television and then the internet connected the whole world. Cities grew larger than ever. Millions of people moved from villages to cities, and from one country to another.
+
+In many places, following Jesus is still costly. In some countries today, believers can lose their jobs, their families, their freedom or their lives for their faith. Some of the witnesses in this book prayed in prison. Some were killed. Some still live in exile, far from home.
+
+### A word about the people in this book
+
+Many of the people in this book are still living, or died only recently. We tell only what they have said or done in public, through their own books, talks and widely reported events, and we do not put words in their mouths. Because their books are recent, we tell their stories in our own words and name the books they come from, so that you can read them for yourself.
+
+Some of the stories come from countries where believers are still in danger. In those chapters we name only people who have already told their own stories in public, or whose cases are widely known, and we describe the life of the church in general terms. If you live in such a place, this book is especially for you. If you do not, it will teach you to pray for those who do.
+
+The witnesses in this book come from many traditions: Catholic and Orthodox, Protestant and Pentecostal, old churches and new movements. We will tell their stories warmly and fairly, and keep our focus on what every believer can learn about prayer.
+
+### What we will see
+
+This volume has twenty chapters, in four movements:
+
+- **Prayer that goes** (chapters 1 to 4). Jim and Elisabeth Elliot ask God for the nations, and pay a great price. Helen Roseveare learns that God answers before we call. Brother Andrew prays his way through closed borders, and the brothers of Taizé gather young people from every church to pray in simple song.
+- **Prayer that stays** (chapters 5 to 8). Mother Teresa prays before she serves the dying of Calcutta. Choi Ja-shil and many Korean believers climb mountains to fast and pray. Two Ugandan church leaders bless those who persecute them, and Evelyn Christenson discovers what happens when women pray together.
+- **Prayer that spreads** (chapters 9 to 16). Samuel Lamb learns in prison that persecution can bring growth. Derek Prince and Bill Bright teach the church to fast and pray, and Loren Cunningham teaches young people to listen for God's voice. A church in Brooklyn is renewed through a weekly prayer meeting. Believers pray for the least-reached nations, for whole cities, and through a prayer room that never closes, and churches around the world join to pray, "Your kingdom come."
+- **Prayer that endures** (chapters 17 to 20). African believers pray through the night. Helen Berhane prays in a shipping container in an Eritrean prison, and Iran's house churches refuse to bow down. And Tim Keller writes of awe and intimacy with God, and in his last years, facing death, learns to pray more than ever.
+
+### How each chapter works
+
+Every chapter in this series has the same shape:
+
+- **A key verse** opens the chapter, the Scripture it rests on.
+- **A story** sets the scene.
+- **The teaching** looks at what the story shows us about prayer.
+- **Voices from the past** quote men and women of prayer word for word from books in the Ochorus library.
+- **Three key insights** sum up what the chapter teaches.
+- **For us today** brings the lesson into ordinary life, wherever in the world you live.
+- **Try this** gives one simple practice for the coming week.
+- **A closing prayer** and **Questions for reflection** help you respond, alone or with others.
+- **Read more on Ochorus** points you to books where you can go deeper.
+
+At the end of the book, two appendices gather all the key insights by theme and list every Scripture quoted, in Bible order, with the chapters where it appears.
+
+### How to read this book
+
+One chapter a day will carry you through the book in twenty days. With a small group, one or two chapters a week works well.
+
+This is the story of our own time, and you are part of it. The witnesses in this book are your brothers and sisters, some of them still alive, some of them still in prison. As you read, pray for them, and ask God to make you one of the praying people of your own generation.
+
+---
+
+## Ask of Me, and I Will Give You the Nations
+
+> "Ask Me, and I will give You the nations to inherit, and the farthest places of the earth to hold as Your own." (Psalm 2:8)
+
+On Tuesday 3 January 1956 a small yellow plane landed on a strip of sand beside the Curaray River, deep in the rainforest of eastern Ecuador. The pilot was Nate Saint of Mission Aviation Fellowship. Over several flights he brought in Jim Elliot, Ed McCully and Roger Youderian, with their tools, food and a radio. Pete Fleming flew in and out with Nate. The five men built a shelter in a tree above the beach and gave the place a cheerful name: Palm Beach.
+
+A few miles away lived the Waorani, a forest people whom outsiders feared. The Waorani had good reason to fear outsiders too. For months the missionaries had flown over their houses and lowered gifts on a long line from the plane: machetes, cooking pots, cloth. They had called out friendly words through a loudspeaker. After a while the Waorani began to tie gifts of their own to the line. To the men in the plane, it looked like the beginning of friendship.
+
+As Elisabeth Elliot tells it in *Through Gates of Splendor* (1957), before they set out the men sang a hymn together, "We Rest on Thee," a prayer of trust in God as their shield. Her book takes its title from a line in the hymn's last verse.
+
+On Friday 6 January three Waorani came out of the forest: a young man and two women. They spent most of the day on the beach. The young man was even taken up in the plane. The missionaries were full of joy. On Saturday no one came.
+
+On Sunday 8 January, Nate flew over the Waorani houses and saw a group of men walking toward the beach. Soon after noon he spoke by radio to his wife, Marj. Visitors were coming, he said, and he would call again at half past four. When that time came, the radio was silent. It never spoke again.
+
+What happened that afternoon was pieced together only years later, from the Waorani who were there, and the accounts do not agree in every detail. A group of men had been told, falsely, that the foreigners had attacked their people. They came with spears. The five missionaries had guns, but they had agreed beforehand that they would not use them to kill. All five died on the beach or in the river. Four of them had young children. Jim Elliot was twenty-eight. His daughter, Valerie, was ten months old.
+
+### Who they were
+
+Jim Elliot was born in 1927 in Portland, Oregon, in the United States. At Wheaton College near Chicago he studied Greek, wrestled on the college team and kept a journal that was mostly a conversation with God. He prayed about where God wanted him, and for a long time he did not know. Slowly he became sure that God was sending him to South America, to people who had never heard of Jesus.
+
+On 28 October 1949, still a young man testing his own heart, he wrote in that journal the sentence for which he is remembered, later printed in Elisabeth's book about him, *Shadow of the Almighty* (1958): "He is no fool who gives what he cannot keep to gain what he cannot lose." He did not know that he would die young. He was simply asking whether Christ was worth more than everything he had.
+
+He sailed for Ecuador in 1952 with his friend Pete Fleming. The next year, in Quito, he married Elisabeth Howard, who had studied Greek with him at Wheaton and was working as a missionary linguist. They lived at Shandia, a station among the Quichua people, where Jim taught, preached and built a house.
+
+After his death, Elisabeth went back to Shandia with her baby and carried on the Quichua work. Then, in 1958, two Waorani women who had come out of the forest invited her to live among their people. In October 1958 she walked into the Waorani clearing with three-year-old Valerie and Rachel Saint, Nate's sister. Some of the men who had killed her husband lived a few steps from her door. She did not go to accuse them. She went to learn their language, to give what medicine she could and to tell them about God. In the years that followed, several of those men came to follow Christ.
+
+### The prayer of the five, and the prayer of the widow
+
+The title of this chapter follows the older English wording of Psalm 2:8. In the psalm, God speaks to His chosen King, His Son. The nations are promised to the Son, and He receives them by asking. Christians have long read this as a promise about Jesus, and as an invitation to the church. If even the Son is told to ask, how much more should His people pray for the nations?
+
+The five men prayed for the Waorani long before they met them, and their wives prayed with them. But the answer did not come as they expected. It came through a grave on a sandbar, and through a widow who walked into the forest.
+
+Elisabeth Elliot spent the rest of her long life correcting a too-pretty version of this story. She grieved deeply. She had questions that were not answered. In her later books and talks, and on her radio program *Gateway to Joy*, she taught that prayer is not a way to make God do what we want. It is the place where we offer our will to Him. She often repeated the old advice to "do the next thing": not to wait until we understand everything, but to take the next duty in front of us and leave the rest to God. A book gathered from her talks after her death carries the title *Suffering Is Never for Nothing*.
+
+Long before Ecuador, a French missionary in Africa, François Coillard, put the cost of praying for the nations plainly. Amy Carmichael, whose life Elisabeth later wrote in *A Chance to Die*, printed his words:
+
+> "We must remember that it was not by interceding for the world in glory that Jesus saved it. He gave Himself. Our prayers for the evangelisation of the world are but a bitter irony so long as we only give of our superfluity, and draw back before the sacrifice of ourselves."
+> François Coillard, quoted in Amy Carmichael, *Things as They Are*
+
+Jesus Himself said, "If a grain of wheat does not fall into the ground and die, it stays just a single grain; but if it dies, it bears much fruit" (John 12:24).
+
+### Three key insights
+
+1. **When we pray for the nations, God may ask us to be part of His answer.** The five men did not only pray for the Waorani. They offered their lives. Prayer for the nations is honest only when we are willing to be sent, or to give, or to let go of those we love.
+2. **God answers prayer for a people in His own time and in His own way, not ours.** The men hoped for a peaceful meeting and a quick harvest. The answer came slowly, through a widow, a child and a translator, over many years.
+3. **Offering our will to God is the heart of prayer, especially in grief.** Elisabeth Elliot did not pretend to understand. She brought her sorrow to God, did the next thing, and found that He was faithful.
+
+### For us today
+
+Most of us will never land a plane on a sandbar. But Psalm 2:8 is still an invitation to every believer. A grandmother in a village in Ghana can pray for a people she has never seen. A student in Manila can pray for a country on the news. A church in Bolivia can pray for missionaries from its own congregation who have gone to North Africa. Today many missionaries go out from Africa, Asia and Latin America, and they need our prayers.
+
+And many of us know grief that makes no sense: a sudden death, a long illness, a child lost. Elisabeth Elliot's way is open to us. We can tell God the truth about our sorrow, offer Him our questions, and then take up the next small duty in front of us.
+
+### Try this
+
+This week, let Psalm 2:8 shape your prayers.
+
+- **Choose one people.** Learn the name of one people group or nation where few know Christ, and pray for them each day.
+- **Ask to be part of the answer.** Pray, "Lord, what would You have me give or do for them?" and write down what comes to mind.
+- **Do the next thing.** When you feel overwhelmed, ask God for the one next duty, and do it.
+- **Pray for those who are sent.** Pray by name for a missionary you know, especially one from your own country.
+
+### A closing prayer
+
+Father, You promised the nations to Your Son, and You invite us to ask with Him. Thank You for Jim and Elisabeth Elliot and their friends, who prayed for a people they had never met and gave what they could not keep. Give me a heart for the peoples of the earth who have not yet heard of Jesus. Make me willing to be part of Your answer. When grief comes, teach me to bring it to You honestly, to offer You my will, and to do the next thing. Let the farthest places of the earth come to worship Your Son. In His name I pray. Amen.
+
+### Questions for reflection
+
+- Why do you think God invites us to ask for what He has already promised?
+- Jim Elliot asked whether Christ was worth more than everything he had. How would you answer that question today?
+- What is "the next thing" God is asking you to do in a hard season of your life?
+
+### Read more on Ochorus
+
+- Ochorus Originals, *Portraits of Courage – Elisabeth Elliot*, especially "Palm Beach" and "Into the Forest"
+- Ochorus Originals, *The Key Teachings of Elisabeth Elliot*, especially "Suffering Is Never for Nothing" and "Do the Next Thing"
+- Amy Carmichael, *Things as They Are*, especially "Missed Ends"
+
+---
+
+## Before They Call, I Will Answer
+
+> "It will happen that I answer them before they call, and hear them while the words are still on their lips." (Isaiah 65:24)
+
+The story took place at Nebobongo, a mission hospital in the forest of north-eastern Congo, in the years before 1964. Helen Roseveare, an English doctor, told it many times in talks around the world, and she wrote it down in her book *Living Faith* (1980). What follows is her story, told in our own words.
+
+One night she worked hard to help a mother in labor, but in spite of all they could do, the mother died. She left behind a tiny baby, born too early, and a crying two-year-old daughter.
+
+The hospital had no electricity and no incubator, the box that keeps small babies warm. And although the days near the equator are hot, the nights can be cold. A student midwife went to fill a hot-water bottle, a rubber bag filled with hot water to give warmth. She came back upset: the bottle had burst. It was the last one they had, and there were no shops in the forest where another could be bought. So they kept the baby as near the fire as they safely could.
+
+The next day at noon, as she often did, Helen went to pray with the children from the orphanage. She told them about the baby and the broken hot-water bottle, and about the little sister who was crying because her mother had died.
+
+A ten-year-old girl named Ruth prayed, plainly and simply, as children do. As Helen told it, Ruth asked God to send a hot-water bottle that very afternoon, because tomorrow would be too late: the baby would be dead. Then she added a second request. Would God please send a doll for the little girl too, so that she would know He really loved her?
+
+Helen admitted later that she could not honestly say "Amen." She believed God could do anything. But in almost four years in Africa she had never once received a parcel from home. And who would send a hot-water bottle to the equator?
+
+That afternoon a large parcel arrived at her house. She sent for the orphan children, and together they opened it. Among the clothes and bandages was a hot-water bottle. Ruth was sure that if God had sent the bottle, He had sent the doll too. At the bottom of the box she found a small doll.
+
+The parcel, Helen said, had been on its way for about five months. It came from her former Sunday school class in England, whose leader had felt that God wanted her to put in a hot-water bottle, even for Africa. Long before Ruth prayed, God had set the answer on its way.
+
+### Who she was
+
+Helen Roseveare was born in 1925 in Hertfordshire, England. She came to faith as a medical student at Cambridge in 1945. At a student meeting soon afterward, the Bible teacher Graham Scroggie wrote a verse in her new Bible: "I want to know Him, to know the power of His resurrection and what it is to share in His sufferings" (Philippians 3:10). She had begun to know Christ, he told her. He prayed that she would one day know the rest of the verse too.
+
+In 1953 she went to the Congo with the Worldwide Evangelization Crusade, the mission founded by C. T. Studd. She built a hospital and a training school for African nurses and medical workers, first at Ibambi and then at Nebobongo, in an old leprosy camp. There was no other doctor for many miles.
+
+In 1964, during the civil war that followed Congo's independence, rebel soldiers took over the region. Helen was held prisoner for about five months. She was beaten, and on the night of 29 October 1964 she was sexually assaulted by a soldier. What was done to her was a great evil, and it is painful even to read. In later years she chose to speak of it openly, gently and without bitterness, so that others who had suffered in the same way would know how God had met her there.
+
+### When God does not stop the pain
+
+Helen told how, on that dreadful night, she felt that God had failed her. Then, she said, He met her in the darkness. She sensed Him reminding her that she had once asked Him for the privilege of serving Him, and that these sufferings were not hers but His. One word filled her mind, she said: privilege. The pain was not taken away, but it was changed. It was with Him, and for Him.
+
+She was released at the end of 1964. In 1966 she went back to the Congo to help start a new medical school and hospital at Nyankunde. In her later years she spoke of a question she believed God had asked her: Could she thank Him for trusting her with this experience, even if He never told her why?
+
+The Scottish pastor Samuel Rutherford, writing from exile in the 1600s, knew something of this:
+
+> "And believe me, brother, I give it to you under mine own hand-writ, that whoso looketh to the white side of Christ's cross, and can take it up handsomely with faith and courage, shall find it such a burden as sails are to a ship, or wings to a bird."
+> Samuel Rutherford, *Letters of Samuel Rutherford*
+
+So the God who sent a hot-water bottle before Ruth asked for it was the same God who did not stop the soldiers. Helen held these two things together. God hears His children before they call. And sometimes He leads them through the fire rather than around it, and walks there with them.
+
+Charles Spurgeon wrote about Isaiah 65:24:
+
+> "Foreseeing our needs, and our prayers, He so arranges providence that before the need actually arises He has supplied it, before the trial assails us He has armed us against it."
+> Charles H. Spurgeon, *The Cheque Book of the Bank of Faith*
+
+Helen found that God had armed her too. Long before the night of 29 October, a verse had been written in her Bible about sharing Christ's sufferings.
+
+### Three key insights
+
+1. **God often begins to answer our prayers before we pray them.** The parcel was on its way for months before Ruth asked. When we pray, we join a work that God has already begun.
+2. **The simple prayers of children can teach adults to trust.** Ruth asked plainly and expected an answer that afternoon. Helen said she herself could hardly say "Amen." God was pleased to answer the child.
+3. **God's nearness in suffering is itself an answer to prayer.** God did not stop the war in Congo. But Helen found Him present in the worst night of her life, and she learned to call even that a privilege.
+
+### For us today
+
+Many believers today live where there is no doctor, no shop and no electricity. For them, Ruth's prayer for a hot-water bottle is not a sweet story. It is how they live: asking God each day for food, medicine and safety. Their faith can teach the rest of us.
+
+Others live where believers are beaten, imprisoned or attacked, in parts of Nigeria, Congo, Pakistan and elsewhere. Some women and men carry the same wound Helen carried. If that is your story, hear this: God has not left you. What was done to you was evil, and it was not your fault. The Lord who suffered on the cross knows your pain from the inside, and He is near. Please also speak with someone you trust, such as a pastor, a counselor or a doctor, so that you do not carry it alone.
+
+And all of us can remember Isaiah 65:24 when we pray. Before we finish speaking, God has heard.
+
+### Try this
+
+This week, practice praying like Ruth, and trusting like Helen.
+
+- **Pray plainly.** Bring one real need to God in simple words, as a child would, and ask Him to act.
+- **Look for answers already on the way.** Each evening, think back over the day and ask, "Where had God prepared something before I asked?"
+- **Pray with a child.** Ask a child you know what they would like to pray for, and pray together.
+- **Remember the wounded.** Pray for believers who have been beaten, abused or held captive for their faith, and for those caring for them.
+
+### A closing prayer
+
+Lord God, You answer before we call, and You hear us while the words are still on our lips. Thank You for Helen Roseveare, for Ruth and her bold prayer, and for the parcel You sent long before it was needed. Teach me to pray simply and to expect You to act. When You do not take away my pain, let me find You in it, and give me grace to trust You even when You do not tell me why. Comfort all who suffer violence for Your name, and hold them close. In Jesus' name. Amen.
+
+### Questions for reflection
+
+- Why do you think Helen found it hard to say "Amen" to Ruth's prayer? Have you ever felt the same?
+- What does it mean to you that God may answer a prayer before you pray it?
+- Helen learned to speak of suffering as a privilege. Is that something you could say? Why, or why not?
+
+### Read more on Ochorus
+
+- Charles H. Spurgeon, *The Cheque Book of the Bank of Faith*, especially "The Month of August"
+- Samuel Rutherford, *Letters of Samuel Rutherford*, especially "Letter LXXI: To Mr. Hugh M’Kail"
+
+---
+
+## Prayer That Opens Closed Doors
+
+> "I know your works. Look: I have opened a door for you, and no one can shut it. Your strength is small, yet you have kept My word, and you have not disowned My name." (Revelation 3:8)
+
+The line of cars at the border moved very slowly. Ahead of him, a young Dutchman could see the guards at work, searching each car with great care.
+
+The young man was Anne van der Bijl, known in English as Brother Andrew. He was driving a small Volkswagen Beetle into a communist country of Eastern Europe. In those years, the governments of these lands were hostile to Christian faith. Churches were watched, pastors were arrested, and Bibles were very hard to find. And in Andrew's car, hidden in his luggage and in corners of the car, and some of them lying in plain sight, were Bibles and parts of the Bible in the language of the people.
+
+He tells the story in his book *God's Smuggler*, written with John and Elizabeth Sherrill and published in 1967. As he waited, he prayed. He told God that he was carrying Scripture for His children on the other side of the border. Then he made a strange request. When Jesus was on earth, Andrew said, He made blind eyes see. Now, he prayed, would God make seeing eyes blind, so that the guards would not see what God did not want them to see?
+
+At last it was his turn. As he tells it, the guard looked at his passport, hardly looked at the car at all, and waved him on. After all the careful searching of the cars ahead, Andrew was through.
+
+Andrew prayed this prayer at border after border for many years. It was not a magic formula. Sometimes he was stopped and questioned. But again and again he crossed with his cargo, and again and again he found believers waiting on the other side who had prayed for years for a Bible of their own.
+
+### Who he was
+
+Anne van der Bijl was born in 1928 in a village in North Holland, in the Netherlands. His father was a poor blacksmith, and his mother was often ill. As a young man he joined the Dutch colonial army and fought in Indonesia. He saw and did things there that troubled him for the rest of his life. He was wounded in the ankle, and while he was recovering he began to read a Bible his mother had given him. Back in the Netherlands, he gave his life to Christ.
+
+In 1953 he went to study at the missionary college of the Worldwide Evangelization Crusade in Glasgow, Scotland. This was the same mission that had sent Helen Roseveare to Congo, whom we met in the last chapter.
+
+In 1955 he went to a communist youth festival in Warsaw, Poland. There, and on a trip to Czechoslovakia soon after, he met Christians who were struggling to keep their faith alive with few Bibles and few pastors. Around this time, he said, a verse took hold of him: "Become watchful, and put strength into what remains and was on the point of dying" (Revelation 3:2). He believed God was sending him to the persecuted church. In 1957 a couple who had been praying gave him the little Volkswagen, and his long journeys began. Out of them grew a mission called Open Doors.
+
+### Praying at the border
+
+Revelation 3 contains Jesus' letters to two very different churches. One, in Sardis, had a name for being alive but was close to dying. Jesus told it to wake up and strengthen what remained. The other, in Philadelphia, was small and weak, but it had kept His word. To that church Jesus made a promise: He had opened a door that no one could shut.
+
+Andrew lived between those two verses. He saw churches that seemed close to dying, and he went to strengthen them. And he trusted that the One who holds the key could open doors that governments had shut.
+
+His prayer at the border was bold, but it was also humble. He did not trust his own cleverness at hiding things. In fact he often left some Bibles where anyone could see them, as a sign that he was relying on God's protection and not on tricks. He also knew that he was breaking the laws of these countries, and he did not pretend otherwise. He believed that the command of Christ to make disciples of all nations came first. Christians have not all agreed with him about that, and some mission groups of his time criticized Bible smuggling. But no one doubted that he prayed.
+
+Amanda Smith, the African American evangelist we met in Volume 8, knew what it was to find doors shut against her. In Liberia some church leaders did not want a woman to take any public part in their meetings. She remembered the promise of this very verse:
+
+> "But when God is on our side, you may not fear what man may do. Away back in the years before, He had said, “Behold, I have set before you an open door, and no man shall shut it.” How I proved His every word true."
+> Amanda Smith, *Amanda Smith: An Autobiography*
+
+Notice where her confidence came from. Before any door opens in the world, the door into God's presence is already open through Jesus. Andrew's journeys began in prayer, and they could only be made in prayer.
+
+In later years, after *God's Smuggler* made him well known, Andrew no longer carried Bibles across borders himself. He traveled to Cuba, China, Africa and the Middle East. He visited Christians in the Muslim world, and he met and prayed for leaders whom most Christians feared or hated. In his 1990 book *And God Changed His Mind* he taught that prayer can change the course of events, and he pointed to Moses, who pleaded with God for Israel and was heard. He often said, in effect, that there is no door closed to the gospel for those willing to go through it and pay the price. He died in 2022, at ninety-four.
+
+### Three key insights
+
+1. **The God who opens blind eyes can also close watching eyes, and we may ask Him to protect His word.** Andrew's border prayer was not a trick. It was a humble request that God would carry His word where human strength could not.
+2. **The door into God's presence is always open, even when every other door is shut.** Before Andrew crossed any border, he came to God through Jesus. No government can close that door.
+3. **Small and weak churches are precious to Christ, and He sends others to strengthen them.** The church in Philadelphia had little strength, but it had kept His word. Brother Andrew spent his life finding such churches and standing with them.
+
+### For us today
+
+Today Open Doors works in more than sixty countries, and each year it publishes a list of the countries where it is most dangerous to follow Christ. Many of those countries are in Africa and Asia. Believers there still wait for Bibles, for teaching, and for brothers and sisters who will remember them.
+
+Most of us will never drive a car full of Bibles across a border. But all of us can stand at the open door of prayer. A housewife in Seoul, a farmer in Malawi or a factory worker in Mexico can pray for a believer in prison in a land they will never visit. And some of us live in countries where the doors are shut. To you, Jesus says what He said to Philadelphia: your strength is small, yet you have kept His word, and He has set before you a door that no one can shut.
+
+### Try this
+
+This week, pray for the doors that only God can open.
+
+- **Begin at the open door.** Before you pray for anything else, thank God that the way into His presence is open through Jesus.
+- **Pray for one closed country.** Choose one country where Christians are persecuted and pray each day for its believers, its leaders and its pastors.
+- **Ask God to strengthen what remains.** Pray for a weak or struggling church that you know, near or far.
+- **Pray for God's word.** Ask God to carry the Bible to people who long to read it in their own language.
+
+### A closing prayer
+
+Lord Jesus, You hold the key of David. When You open, no one can shut. Thank You for Brother Andrew, who carried Your word to Your children behind closed borders and trusted You to keep him. Thank You that the door into Your presence is always open to me. Strengthen the churches that are small and weak. Protect believers who suffer for Your name, and give them Your word in their own language. Make me watchful and faithful, and use me, in prayer and in deed, to strengthen what remains. Amen.
+
+### Questions for reflection
+
+- What do you think of Brother Andrew's prayer at the border? Why is it bold, and why is it humble?
+- Amanda Smith found that no one could shut a door that God had opened. How does that change the way you pray about the doors that seem closed in your life?
+- Which weak or persecuted church could you begin to pray for this week?
+
+### Read more on Ochorus
+
+- Amanda Smith, *Amanda Smith: An Autobiography*, especially "Cape Palmas, and a Great Revival"
+- E. M. Bounds, *The Essentials of Prayer*, especially "Prayer and Missions"
+
+---
+
+## Living Together in Unity
+
+> "See how good it is, how lovely, when brothers and sisters live together in harmony!" (Psalm 133:1)
+
+On the evening of Tuesday 16 August 2005, the bells rang out over the hill of Taizé, a small village in Burgundy, in eastern France. As they did three times every day, young people walked toward the Church of Reconciliation. They came from all over Europe and from much farther away. There were Catholics and Protestants, Orthodox and Anglicans, and some who were not sure what they believed. They took off their shoes, sat on the carpeted floor, and waited.
+
+The brothers of the community came in, dressed in long white robes, and knelt in a line down the middle of the church. Then the singing began. At Taizé the songs are short: a single line from a psalm or a prayer, sung over and over, in Latin, French, English, German, Spanish and many other languages. The words are simple enough for anyone to learn in a few minutes. As the song goes on, it becomes a prayer that the whole crowd is praying together. Then there is a Bible reading, and then a long silence, sometimes as long as ten minutes, when thousands of people sit still before God.
+
+Among the brothers that evening sat an old man of ninety, small and frail, often using a wheelchair in his last years. He was Brother Roger, who had come to Taizé alone sixty-five years before and had founded the community. News reports said that some 2,500 people were in the church.
+
+During the prayer, a woman came out of the crowd and attacked him with a knife. She was mentally ill. Brothers carried him out of the church, but he died shortly afterward. The prayer had been interrupted. But in the days that followed, the brothers and the young people went on praying three times a day, as Brother Roger had taught them.
+
+At his funeral a week later, leaders of many churches, Catholic, Protestant and Orthodox, prayed side by side. Brother Roger's successor, Brother Alois, prayed for the woman who had killed him. In words that echoed Jesus on the cross, he asked the Father to forgive her, for she did not know what she had done.
+
+### Who he was
+
+Roger Schutz was born in 1915 in a small village in Switzerland, the youngest of nine children of a Protestant pastor. As a young man he studied theology. A long illness with tuberculosis gave him time to think and pray, and he began to feel drawn to a shared life of prayer.
+
+In 1940, in the middle of the Second World War, he rode a bicycle from Geneva into France and bought an empty house in Taizé. The village lay near the line between the part of France occupied by Germany and the part that was not. For two years he and his sister Geneviève hid refugees there, among them Jews fleeing the Nazis. Out of respect for the guests he sheltered, who were not all Christians, he prayed alone, often walking into the woods to sing. He already kept prayer three times a day. In 1942, while he was away in Switzerland, he learned that the German secret police knew what was happening at the house, and he could not return until 1944.
+
+Then others joined him. On Easter Day 1949 seven brothers committed their whole lives to Christ in a shared life of prayer, simplicity and celibacy. Later, brothers came from Catholic as well as Protestant churches. Today, the community says, about a hundred brothers from some thirty countries belong to it, and small groups of brothers have lived among the poor in places such as Bangladesh, Senegal, Brazil, Kenya and Korea.
+
+From the late 1950s, young people began to come to Taizé. Brother Roger did not want to start a new church or a movement. He wanted the young people to meet Christ in prayer and then go home to serve in their own churches. Since 1978 the brothers have also led great gatherings of young people in the cities of Europe each New Year, and meetings in Asia, Africa and Latin America, in places such as Kolkata and Nairobi. They call these meetings a "pilgrimage of trust on earth."
+
+### A song of ascents
+
+Psalm 133 is one of the songs of ascents. Many think that pilgrims sang these psalms as they climbed the hills to Jerusalem for the great feasts. They came from different towns, tribes and families. On the road they sang together, and this short psalm celebrates how good that is.
+
+Notice two pictures in the psalm. Unity is "like the fine anointing oil on the head that flows down the beard, down Aaron's beard" (Psalm 133:2). The oil starts at the head and flows down. And it is "like the dew of Hermon coming down on the hills of Zion" (Psalm 133:3). Dew falls from above, quietly, in the night. No one can make it. In the same way, true unity among Christians is not something we build by our cleverness. It comes down from God, from Christ our Head. And the psalm ends: "it is there that the LORD has decreed the blessing, life without end."
+
+So at Taizé, unity begins with prayer. Jesus Himself prayed for it on the night before He died: "Father, I ask that all of them may be one ... so that the world may come to believe that You sent Me" (John 17:21). When Christians who cannot yet agree on everything kneel together and sing the same short words to the same Lord, they are joining in Jesus' own prayer.
+
+Christians do not all agree on how far such unity can go, and some fear that truth may be lost along the way. Brother Roger's answer was to keep Christ, the Scriptures and prayer at the center, and to refuse to treat the divisions among Christians as normal. The Puritan pastor Thomas Watson, writing in the 1600s, saw why it matters:
+
+> "There is nothing that would render the true religion more lovely, or make more proselytes to it, than to see the professors of it tied together with the heart-strings of love."
+> Thomas Watson, *A Body of Divinity*
+
+One of the best-loved songs at Taizé comes from an old Latin hymn of the early Middle Ages: "Ubi caritas et amor, Deus ibi est," which means, "Where charity and love are, God is there." Another sets the words of the dying thief: "Jesus, remember me when You come in Your kingdom" (Luke 23:42). Each is a whole prayer in one line, easy to carry home.
+
+### Three key insights
+
+1. **Unity among Christians comes down from God, like dew, and we receive it first in prayer.** We cannot manufacture it. When believers from different churches pray to the same Lord, they are given a unity they could not create.
+2. **A short prayer, repeated slowly, can carry a whole heart to God.** The chants of Taizé are simple on purpose. Rich and poor, educated and not, young and old can pray them together in their own languages.
+3. **Shared silence before God is a prayer that needs no common language.** In the long silence at Taizé, thousands wait on God without words. Prayer is not only speaking but also listening, side by side.
+
+### For us today
+
+In many towns of Africa, Asia and Latin America there are several churches on one street, and sometimes they hardly speak to one another. In some places Christians of different churches have even been enemies. Psalm 133 invites us to pray across those lines. A Pentecostal and a Catholic in Lagos, an Orthodox and a Protestant in Addis Ababa, a Baptist and a Presbyterian in Seoul can pray the Lord's Prayer together without giving up their convictions.
+
+The way of Taizé also suits ordinary lives. A mother with little time can pray one short line of Scripture again and again while she works. A family can keep a few minutes of silence together before a meal. A group of young people can meet once a month to sing simple songs, read a passage, and pray for one another and for the world.
+
+### Try this
+
+This week, pray for and with the whole family of God.
+
+- **Pray one line.** Choose a short line, such as "Jesus, remember me," and pray it slowly many times during the day.
+- **Keep a silence.** Each day, sit quietly before God for five minutes without asking for anything.
+- **Pray for another church.** Pray by name for a church near you that is not your own, and for its pastor.
+- **Pray with someone different.** Invite a Christian from another church to pray the Lord's Prayer with you.
+
+### A closing prayer
+
+Lord Jesus Christ, You prayed that all who believe in You would be one, so that the world may believe. Thank You for Brother Roger and the brothers of Taizé, who welcomed the young of every nation and taught them to pray together. Forgive me for the walls I build between myself and other Christians. Let Your unity come down on Your church like the dew of Hermon. Teach me to pray simply, to wait in silence, and to love my brothers and sisters in every church. Where there is hatred, as there was on the night Brother Roger died, give us grace to forgive. Amen.
+
+### Questions for reflection
+
+- Why do you think unity is described as oil flowing down and dew falling, rather than something people build?
+- How might praying with Christians from another church change the way you think about them?
+- What short line of Scripture could you carry with you and pray through the day?
+
+### Read more on Ochorus
+
+- Thomas Watson, *A Body of Divinity*, especially "The Unity of God"
+- Francis de Sales, *Introduction to the Devout Life*, especially "Of Real Friendship"
+
+---
+
+## Prayer Gives a Clean Heart
+
+> "The King will answer them, 'Truly I tell you, each time you did it for one of these My brothers and sisters, even the least of them, you did it for Me.'" (Matthew 25:40)
+
+On 10 September 1946 a train climbed slowly from the hot plains of Bengal toward the hills of Darjeeling, in the north of India. Among the passengers was a nun of thirty-six in the black habit of the Sisters of Loreto. For many years she had taught girls at a convent school in Calcutta (today called Kolkata). She was going to her yearly retreat of prayer.
+
+She later called what happened on that journey "the call within the call." In prayer she became sure that God was asking something new of her. She was to leave the convent and serve the poorest of the poor, and she was to live among them. Letters she wrote in the following months, published long after her death, tell how in prayer she sensed Jesus asking her to be His light in the dark places of the poor. She took this to her archbishop, and he made her wait and pray for many months before he would agree.
+
+In August 1948 she took off the convent habit. In its place she put on a cheap white cotton sari, the dress worn by poor Indian women, with a blue border. After a few months learning basic nursing, she walked into one of the poorest neighborhoods of Calcutta with almost no money and began teaching slum children their letters in the open air.
+
+The nun's name was Teresa. The world came to know her as Mother Teresa of Calcutta.
+
+### Who she was
+
+She was born Anjezë Gonxhe Bojaxhiu on 26 August 1910 in Skopje, then part of the Ottoman Empire and today the capital of North Macedonia. Her family were Albanian Catholics, and her father died when she was about eight. At eighteen she left home to join the Sisters of Loreto. She never saw her mother again. When she made her first vows she took the name Teresa after Thérèse of Lisieux, the young French nun we met in Volume 8.
+
+In 1950 the Catholic Church approved her new community, the Missionaries of Charity. In 1952 city officials helped her take over an empty pilgrims' hostel beside the great Kali temple in the Kalighat district. She made it a home where people found dying in the streets could be washed, fed and cared for, and could die knowing that someone loved them. She called it Nirmal Hriday. In Bengali the name means "pure heart." Hindus, Muslims and Christians were all welcomed, and each was cared for according to his or her own faith.
+
+The work spread to homes for people with leprosy, for orphans and for the forgotten, first across India and then across the world. In 1979 she received the Nobel Peace Prize. When she died in Calcutta on 5 September 1997, there were about four thousand sisters in her community. Her work also had critics. In 1994 a doctor who visited the home for the dying wrote in the medical journal *The Lancet* that its medical care and relief of pain fell short, and some writers questioned how gifts to her community were used. Such questions deserve an honest hearing. But she and her sisters went to the people others stepped over.
+
+### The hours before the work
+
+The sisters rose before dawn for prayer and Mass. Only then did they go out to the streets. At the end of each day they prayed together again. In the chapels of the Missionaries of Charity, two words are written beside the cross: "I thirst." They are the old English wording of Jesus' cry from the cross, "I am thirsty" (John 19:28). Mother Teresa believed that Jesus still thirsts for love, both in the hidden hours of prayer and in the poor.
+
+In 1973 her community added a full hour of adoration to every day. For Catholics, adoration means kneeling in silent prayer before the bread of Holy Communion, which they believe to be Christ truly present. Not every reader shares that belief, but every believer can learn from her. She said later that her community began to grow and flourish after the daily hour began. Pope Benedict XVI, writing in 2005, pointed to her as a clear example that time given to God in prayer does not take away from loving service to others, but is its source.
+
+She often said that prayer gives a clean heart, and that a clean heart can see God. She was joining two sayings of Jesus. The first is a promise: "Blessed are the pure in heart: they will see God" (Matthew 5:8). The second is our key verse. In the story Jesus tells in Matthew 25, the King says that whatever was done for the hungry, the stranger, the sick and the prisoner was done for Him. A clean heart, in Mother Teresa's teaching, is a heart cleared of pride and self-interest, so that it can see Jesus in the face of a dying beggar.
+
+Thomas à Kempis, whose little book has been loved by Catholics and Protestants for centuries, taught the same:
+
+> "If inwardly you were good and pure, you would see all things clearly and understand them rightly, for a pure heart penetrates to heaven and hell, and as a man is within, so he judges what is without."
+> Thomas à Kempis, *The Imitation of Christ*
+
+### Praying in the dark
+
+In 2007, ten years after her death, a book of her private letters was published. Its title is *Come Be My Light*. Mother Teresa had asked that these letters be destroyed, but her advisers kept them. They surprised the world.
+
+The letters show that for nearly fifty years, from soon after she began her work until her death, she felt no sense of God's presence. She called it darkness. She wrote to her spiritual guides that when she tried to pray, heaven seemed empty, and that she longed for a God who seemed far away. There was one short break, in 1958, when the darkness lifted for about five weeks. Then it returned.
+
+She did not stop praying. She kept her hours before the altar and went on smiling at the sick. Around 1961 a priest who advised her helped her to see her darkness in a new way: as a share in the suffering of Jesus Himself, who cried out on the cross, "My God, My God, why did You abandon Me?" (Mark 15:34). After that, she wrote, she began to accept the darkness, and even to love it, as part of the work God had given her.
+
+The prophet Isaiah speaks to people like her:
+
+> "Let the one who walks in darkness, with no glimmer of light, trust in the name of the LORD and lean on his God." (Isaiah 50:10)
+
+Feelings of God's nearness are a gift, but they are not the measure of faith. A believer can walk in darkness and still trust, and still love.
+
+### Three key insights
+
+1. **Prayer clears the eyes of the heart, so that we can see Christ in the people the world passes by.** Mother Teresa did not find Jesus in the poor because she was naturally kind. She found Him there because she first met Him in long hours of prayer. A heart made clean by prayer can see His face in a stranger.
+2. **We can go on praying and loving when God feels far away, and that faithfulness is itself an offering to Him.** For almost fifty years she felt darkness when she prayed, yet she kept praying. Her life shows that faith does not depend on feeling God near.
+3. **Time given to God is never stolen from the needy, because it is where the strength to serve them is found.** When her community added an hour of prayer to a day already full of work, the work did not fail. Love that is renewed in prayer lasts longer than love that runs on its own strength.
+
+### For us today
+
+Most of us will never work in a home for the dying. But the hungry neighbor, the old man who lives alone, the migrant worker far from home, the prisoner no one visits: each one is someone Jesus calls "these My brothers and sisters." In Lagos or Lima, in Manila or Chicago, they live near us.
+
+Many of us pass such people every day without seeing them. Prayer is where that begins to change, as God shows us the people we have been passing by.
+
+Her darkness also comforts believers who pray and feel nothing, or who carry grief, illness or depression that makes heaven seem silent. Her life says to them: keep going. God has not left you because you cannot feel Him.
+
+### Try this
+
+This week, let prayer clean your eyes.
+
+- **Begin before the work.** Each morning, before you check your phone or start your tasks, give God a few minutes of quiet. Ask Him to clean your heart for the day.
+- **Pray Matthew 25.** Read Matthew 25:31-40 slowly. Ask God to show you one person near you who is hungry, lonely, sick or in prison.
+- **Visit someone.** Do not only send help. Go and see that person, and treat the visit as a meeting with Christ.
+- **Pray when you feel nothing.** If prayer feels empty this week, do not stop. Tell God honestly how it feels, and stay a little longer.
+
+### A closing prayer
+
+Lord Jesus, You said that whatever we do for the least of Your brothers and sisters, we do for You. Thank You for Your servant Teresa of Calcutta, who rose before dawn to be with You and then went out to find You in the poor. Make my heart clean, so that I can see You in the people I pass by. When I cannot feel You near, keep me faithful in the dark, as she was. Give me eyes to see the lonely, hands to serve them and love that does not run dry. For Your name's sake. Amen.
+
+### Questions for reflection
+
+- Why do you think Mother Teresa believed that more time in prayer would make her sisters better servants of the poor, not worse?
+- Who are "the least" of Jesus' brothers and sisters in your city or village? How could you see Christ in them?
+- Have you ever prayed when God felt far away? What helped you keep going?
+
+### Read more on Ochorus
+
+- Thomas à Kempis, *The Imitation of Christ*, especially "Purity of Mind and Unity of Purpose"
+- Brother Lawrence, *The Practice of the Presence of God*, especially "Fourth Conversation"
+
+---
+
+## I Look Up to the Mountains
+
+> "I look up to the mountains. Where will my help come from? My help is from the LORD, the one who made heaven and earth." (Psalm 121:1-2)
+
+It is night on a bare hillside near the village of Osanri, north of Seoul, in South Korea. The border with North Korea, one of the most heavily guarded borders in the world, is not far away. A woman in her fifties kneels alone among the graves and prays.
+
+She has spent the day at work in a busy church in the city. Now, when others are going to sleep, she has come out to this empty hill. She will come again the next night, and the next.
+
+Her name is Choi Ja-shil. The land belongs to her church, which had been given permission in 1968 to use it as a cemetery. But Choi believes God has shown her a different use for it. She believes it is to become a place where people come to fast and pray.
+
+Not everyone agrees. Church leaders point out that the hill is too close to the border to be safe if war comes again, and that it is barren, with nothing but graves. As she later told it, she is discouraged, but she keeps praying. During one night of prayer with a few church members, a verse lifts her heart: "Do not let your hearts be troubled. Believe in God" (John 14:1). She becomes sure that God will do what He has shown her.
+
+Before any building is put up, people begin to climb the hill to pray, many of them fasting. In March 1973 the church decides to make the place a prayer site for its people, and calls it Osanri Fasting Prayer Mountain.
+
+This account comes mainly from Choi's own books, as retold by the scholar Julie Ma in a careful study of her life, and from the prayer mountain's own record of its history. The scene on the hillside is drawn from those accounts.
+
+### Who she was
+
+Choi Ja-shil was born on 25 August 1915 in Hwanghae Province, in what is now North Korea. Her father died when she was young, and she helped her mother earn a living by sewing. When she was twelve, she and her mother went to a tent meeting led by the revival preacher Lee Sung-bong, and both became Christians.
+
+As an adult she trained as a nurse, moved to Seoul and built a successful business, but she drifted from God. Then everything fell apart. Her mother and her eldest daughter died within ten days of each other, she fell ill, and her business failed. In 1956, in despair, she tried to take her own life. She survived. Hearing that Lee Sung-bong was preaching again, she went to his meetings at a prayer mountain and came back to the Lord.
+
+She enrolled at a small Pentecostal Bible school in Seoul. There she met a young student named Cho Yonggi, who was weak with tuberculosis. Choi prayed for him with great earnestness. After they finished their studies in 1958, the two began a church in a tent on the edge of Seoul, among poor shacks and graves, with Choi's three children as the first congregation. Choi visited the sick and the poor, washed people no one else would touch, and prayed for them. Cho later married her daughter, so Choi became his mother-in-law as well as his partner in ministry.
+
+That tent church grew into the Yoido Full Gospel Church, which became one of the largest congregations in the world. Like every large movement, it has had critics. Some Christians have questioned its strong teaching on health and material blessing, and in 2014 a court in Seoul convicted Cho of breach of trust over church money. But Choi herself is remembered for one thing above all: prayer joined with fasting. Before she traveled to preach, Julie Ma writes, she often spent weeks in prayer and fasting. Korean believers came to call her the "Hallelujah lady," and she used that name for her own life story.
+
+She died of a heart attack on 8 November 1989 in Los Angeles, where she had gone to lead revival meetings. The prayer mountain now bears her name.
+
+### A mountain is not a god
+
+Psalm 121 belongs to the "songs of ascents." Many think these were sung by pilgrims climbing up to Jerusalem for the great feasts. As they walked, they saw hills on every side. Hills could hide robbers. Hills also held the shrines of other gods. So the pilgrim asks an honest question: "Where will my help come from?" And he answers: not from the hills, but from "the LORD, the one who made heaven and earth."
+
+This matters in Korea. For many centuries Korea's mountains were thought to be holy. Buddhist temples stood among them, and people offered gifts to spirits they believed lived on the peaks. The Christians who began going to the mountains to pray after 1945 did not go to worship the mountains. They went for the same reason Jesus did. Matthew tells us that after feeding the crowds, "He climbed up into the hills by Himself to pray" (Matthew 14:23). John Chrysostom, the great preacher of Antioch, explained why:
+
+> "For what purpose doth He go up into the mountain? To teach us, that loneliness and retirement is good, when we are to pray to God. With this view, you see, He is continually withdrawing into the wilderness, and there often spends the whole night in prayer, teaching us earnestly to seek such quietness in our prayers, as the time and place may confer. For the wilderness is the mother of quiet; it is a calm and a harbor, delivering us from all turmoils."
+> John Chrysostom, *Homilies on Matthew*
+
+### Prayer on the mountain
+
+After the Korean War ended in 1953, prayer houses spread across South Korea, many of them on hills outside the cities. People went there to fast and pray for a day, a week or longer, for a sick child or a broken family, or simply to be alone with God.
+
+At Osanri, small prayer rooms were dug into the hillside. Each one is just big enough for one person to kneel or sit. Today there are more than two hundred of them. A believer goes in, closes the door and prays in private, often for hours. Large halls were built too, where believers of many churches gather for worship and for nights of prayer.
+
+The prayer mountains grew from older Korean habits. In Volume 9 we stood with Kil Sun-ju in Pyongyang before dawn, and with the believers who prayed aloud together during the revival of 1907. Dawn prayer, loud united prayer and nights of prayer on the hills all come from the same hunger.
+
+Fasting runs through it all. Jesus did not say "if you fast" but "when you fast," and He told His followers to do it quietly: "But when you fast, put oil on your head and wash your face, so that no one but your Father, who is there in secret, will know that you are fasting" (Matthew 6:17-18). For Choi, fasting joined to prayer was a way of seeking God with the whole self, body as well as words.
+
+### Three key insights
+
+1. **Our help comes from the Lord who made the mountains, not from the mountains themselves.** A hill is only a place. The pilgrim of Psalm 121 lifts his eyes to the hills and then looks beyond them to their Maker.
+2. **Going apart to a quiet place helps us give God our whole attention.** Jesus climbed the hills to pray alone, and Korean believers followed Him. A prayer room, a field or a corner of a home can become a place set apart for God.
+3. **God can turn a place of graves and despair into a place of prayer and new life.** Choi once tried to end her own life. Years later she knelt among graves and asked God to make a place of prayer. Thousands have since found hope on that same hill.
+
+### For us today
+
+Most believers have no prayer mountain. A mother in a crowded room in Nairobi or a factory worker in Guangzhou may never find a hill to climb. But the lesson is not about height. It is about going apart. The inner room Jesus spoke of (Matthew 6:6) can be a bus seat early in the morning, a walk at the edge of the village or a corner behind a curtain.
+
+Some readers know despair like Choi's. If you have ever wanted to give up on life, her story says that God was not finished with her, and He is not finished with you. Please also tell someone you trust and ask for help.
+
+And for believers who live close to danger, as Choi did near a guarded border, Psalm 121 is a promise: "The LORD will guard you against every harm; He will guard your very life" (Psalm 121:7).
+
+### Try this
+
+This week, go apart to meet God.
+
+- **Find your mountain.** Choose a quiet place you can reach easily, indoors or out, and go there to pray at least twice this week.
+- **Pray Psalm 121.** Read it slowly aloud. At each verse, tell God one thing you need His help with.
+- **Try a simple fast.** If your health allows, skip one meal and spend that time in prayer. Ask a doctor first if you are ill, pregnant or on medicine.
+- **Pray for a divided land.** Choi prayed within sight of a closed border. Pray for a country or family that is divided, and for believers who live in danger there.
+
+### A closing prayer
+
+Lord God, maker of heaven and earth, I look up to the mountains, and I know that my help does not come from them but from You. Thank You for Your servant Choi Ja-shil, whom You lifted out of despair and taught to pray and fast, and who knelt among the graves until a hill became a house of prayer. Teach me to go apart and be alone with You. Guard my going out and my coming in. Turn the dead and broken places in my life into places of prayer and new life. In the name of Jesus, who climbed the hills to pray. Amen.
+
+### Questions for reflection
+
+- Why do you think the pilgrim in Psalm 121 asks where his help will come from, before he answers?
+- Where is your "mountain," the quiet place where you can be alone with God?
+- What place of loss or despair in your life could God turn into a place of prayer?
+
+### Read more on Ochorus
+
+- Andrew Murray, *With Christ in the School of Prayer*, especially "The Cure of Unbelief"
+- Ochorus Originals, *Revival Fires*, especially "At the Break of Dawn"
+
+---
+
+## Bless Those Who Persecute You
+
+> "Bless the people who persecute you. Bless them, and do not curse them." (Romans 12:14)
+
+On 10 February 1973 the people of Kabale, a town in the green hills of southwest Uganda, were ordered to come to the stadium. Three young men from the district were to be shot in public by a firing squad. By his account, about three thousand people stood in silence and waited.
+
+The bishop of the area had asked for permission to speak to the men before they died, and two other ministers came with him. His name was Festo Kivengere. He later told what happened in his own words, and we retell it here. As he walked out to the center of the field, he did not know what to say to men who were about to die and who, he thought, must be full of anger. The prisoners were brought in a truck, with their hands cuffed and their feet in chains. When they turned to look at him, he saw that their faces were shining.
+
+Before he could speak, one of them told him that in his prison cell he had asked Jesus into his heart, and that Jesus had forgiven him. He asked the bishop to tell his wife and children that he was going to be with Jesus, and to urge them to trust Him too. The other two men said the same.
+
+Kivengere realized that the people who needed to hear the gospel that day were not the prisoners but the soldiers. So he repeated what the men had said in a language the soldiers understood. The soldiers stood with their guns ready, confused. Then the three condemned men turned toward the crowd and waved, handcuffs and all, and the crowd waved back. The shots were fired.
+
+That day showed Kivengere what was coming to Uganda. It also showed him what the gospel could do in the face of death.
+
+### Two sons of the revival
+
+In Volume 9 we followed the East African Revival from two tired men on Namirembe Hill to the *balokole*, "the saved ones," who walked in the light and sang *Tukutendereza Yesu*. Festo Kivengere and Janani Luwum were both children of that revival.
+
+Kivengere was born around 1919 into a ruling family of cattle herders in Kigezi, in the southwest of Uganda. As a boy he herded calves and went to a mission school. He became a teacher, and he met Christ through the revival. He became one of Africa's best-known preachers, working with African Enterprise, an evangelistic team that served across the continent. In 1972 he became bishop of Kigezi.
+
+Janani Luwum was born in 1922 at Mucwini, among the Acholi people of the north. He too was a schoolteacher, and he gave his life to Christ in 1948 through the revival. He was ordained, became a bishop in 1969, and in 1974 was chosen archbishop of the Church of Uganda, Rwanda, Burundi and Boga-Zaire.
+
+In 1971 Idi Amin had seized power in Uganda. Under his rule many thousands of people were killed or disappeared. Luwum spoke to Amin privately again and again on behalf of the victims. Early in February 1977, soldiers searched his home at night, saying they were looking for weapons. Soon afterward the bishops sent the president a letter protesting against the killings.
+
+On 16 February the church leaders were summoned to a meeting in Kampala. Luwum was accused of plotting against the government. As the bishops were sent away one by one, he turned to Kivengere, who stood beside him, and said, as the account at Westminster Abbey records it: "They are going to kill me. I am not afraid." He was taken away and did not return. He was killed within hours, on the night of 16-17 February 1977. The next day the radio said he had died in a car accident, but when his body was returned to his family, it bore the wounds of bullets.
+
+Friends warned Kivengere that he would be next. That same week he and his wife Mera left their home by night. With the help of local believers they walked through the mountains until they crossed the border into Rwanda.
+
+### Bless, and do not curse
+
+In exile Kivengere wrote a short book. Its title shocked many readers: *I Love Idi Amin* (1977). He did not mean that Amin's evil was small. He named it plainly. He meant that, because Jesus prayed for those who crucified Him, Kivengere could not do less for the man who had killed his archbishop. He wrote that he had forgiven Amin and was praying for him to be set free from the spiritual prison he was in. As long as Amin was alive, Kivengere believed, he could still be saved.
+
+He also confessed that this love did not come easily. In London on Good Friday that year, he tells, he listened to a sermon on Jesus' prayer from the cross: "Father, forgive them. They do not know what they are doing" (Luke 23:34). He realized that bitterness was growing in his own heart and making it hard. He asked God's forgiveness and the grace to love. Afterward, he wrote, he had to come back to God for the same help again and again.
+
+Romans 12:14 asks for more than we usually notice. Paul does not only say, "do not curse them." He begins with "bless." To bless someone is to ask God to give them good. And what is the greatest good we can ask for a persecutor? That he would turn from his sin and find mercy. George Whitefield, the great preacher of the eighteenth century, said that we can pray for our enemies because we see the danger they are in:
+
+> "This, it must needs be confessed, is a difficult duty, yet not impracticable, to those who have renounced the things of this present life, (from an inordinate love of which all enmities arise) and who knowing the terrible woes denounced against those who offend Christ's little ones, can, out of real pity, and a sense of their danger, pray for those by whom such offenses come."
+> George Whitefield, *Selected Sermons of George Whitefield*
+
+Blessing a persecutor is not the same as staying silent. Luwum blessed his country by telling the truth to its ruler, and paid with his life. Kivengere fled, and from exile he blessed his enemy in prayer. Neither man was wrong. After Amin fell in 1979, Kivengere went home. In the 1980s he spoke out against new abuses under the next government and helped refugees whom others were afraid to help. He died of leukemia in 1988.
+
+Today Janani Luwum's statue stands with nine other martyrs of the twentieth century above the west door of Westminster Abbey in London, and since 2015 Uganda has kept 16 February as a public holiday in his honor.
+
+### Three key insights
+
+1. **To bless a persecutor is to ask God for their greatest good, and the greatest good of all is repentance.** Paul asks for more than holding back curses. Kivengere prayed that the man who killed his friend would be set free from his spiritual prison.
+2. **Bitterness can grow quietly in a wounded heart, so forgiveness must be asked for again and again.** Kivengere found hardness in himself only weeks after his flight. He brought it to God, and he had to keep bringing it.
+3. **Blessing those who persecute us does not mean keeping silent about the evil they do.** Luwum spoke the truth to Amin and paid with his life. Kivengere named Amin's evil and prayed for him. Love and truth stood together in both men.
+
+### For us today
+
+Many believers today live under rulers or neighbors who hate them. In northern Nigeria, in parts of India, in Eritrea, in North Korea and elsewhere, Christians are beaten, jailed or killed. For them, Romans 12:14 is not a theory. It is a daily choice.
+
+Most of us face smaller enemies: a boss who mocks our faith, a relative who will not speak to us, a neighbor who spreads lies. The same command applies. "Do not let evil defeat you; defeat evil with good" (Romans 12:21).
+
+And all of us can pray for the persecuted church, both for the believers who suffer and for those who make them suffer. Many persecutors in history, like Saul of Tarsus, became brothers.
+
+### Try this
+
+This week, practice blessing instead of cursing.
+
+- **Name one enemy.** Think of one person who has hurt you or opposes your faith. Write down his or her name.
+- **Bless by name.** Each day, ask God to give that person something good, and above all to know His mercy.
+- **Check for bitterness.** Ask God, as Kivengere did, to show you any hardness growing in your heart, and confess it.
+- **Pray for a persecuted land.** Choose one country where Christians suffer, and pray for both the believers and their persecutors.
+
+### A closing prayer
+
+Lord Jesus, on the cross You prayed for those who crucified You. Thank You for Your servants Janani Luwum, who told the truth and was not afraid to die, and Festo Kivengere, who blessed the man who hunted him. I confess that it is hard for me to bless those who hurt me. Show me the bitterness hidden in my heart, and wash it away. Teach me to ask good for my enemies, and above all that they may know Your mercy. Comfort Your persecuted people everywhere, and let them defeat evil with good. Amen.
+
+### Questions for reflection
+
+- Why do you think Kivengere chose such a shocking title for his book?
+- What is the difference between not cursing someone and blessing them?
+- Luwum stayed and Kivengere fled. What can we learn from each of them?
+
+### Read more on Ochorus
+
+- Ochorus Originals, *Brave for God: Book Two*, especially "Festo Kivengere: The Man Who Loved His Enemy"
+- George Whitefield, *Selected Sermons of George Whitefield*, especially "Intercession Every Christian's Duty"
+
+---
+
+## What Happens When Women Pray
+
+> "Call out to Me, and I will answer you. I will make known to you great things, things beyond your reach, which you have not known." (Jeremiah 33:3)
+
+It is a Sunday evening in a small American church in the early 1930s. In those days many churches held two services on Sunday. The morning service taught the believers. In the evening the believers brought their neighbors and relatives, and the preacher spoke about Jesus to those who did not yet know Him.
+
+A girl of nine sits among the pews. She has given her life to Christ only a short time before. Now she looks around the room, chooses one of the neighbors she has brought, and prays for that person with all her heart. She comes back the next Sunday evening and prays for the same person, and the next, and the next. At last that neighbor walks to the front of the church to receive Christ.
+
+The girl was Evelyn Christenson. Many years later, as an old woman, she told this story in a radio interview. By then a great many people had read her book *What Happens When Women Pray* (1975). But she said that her life of prayer began in those Sunday evening pews, and in the home of a mother who prayed.
+
+### Who she was
+
+Evelyn Christenson was born in 1922. She said that her mother was the greatest pray-er she had ever known. As Evelyn told it, her mother had been the only believer in her family, and she prayed for her relatives until, one by one, they came to Christ. She prayed twenty-five years for her husband and thirty years for her son, Evelyn's brother, before each of them turned to Christ.
+
+Evelyn married Harold Christenson, whom she called Chris, and he became a pastor. Their early years together brought deep sorrow. As she later told it, she lost four babies. Lying in a hospital bed after one of those losses, angry and grieving, she remembered Paul's words: "We know that, for people who love God, all things work together and lead to good" (Romans 8:28). She said she accepted that promise and lived by it for the rest of her life.
+
+She was a pastor's wife, raising children and serving in the local church. She had no seminary degree and no radio program. But in the late 1960s, at her church in St. Paul, Minnesota, something began that would carry her around the world.
+
+### The prayer experiment
+
+As she tells it in *What Happens When Women Pray*, her denomination asked her to lead an experiment. For six months, a group of women in her church would pray together and keep a record of what happened. Not of what they learned about prayer, but of what happened when they actually prayed.
+
+Many believers, then as now, felt shy about praying aloud, and prayer meetings were often stiff and slow. Over those months the women tried different ways of praying together and kept what helped. Out of them came the method her book made famous, often called the "six S's." In our own words:
+
+- **Subject by subject.** The group prays about one need at a time, and several people pray about it before moving on.
+- **Short prayers.** Each person prays a sentence or two, so that many can take part.
+- **Simple prayers.** No fine words are needed. God understands plain speech.
+- **Specific requests.** They name the need clearly, so that they can see when God answers.
+- **Silent periods.** They leave room for quiet, to listen to God as well as speak.
+- **Small groups.** They meet in groups of a few people, so that no one hides and no one is overwhelmed.
+
+None of this was new. Jesus said, "When you pray, do not keep piling up empty words" (Matthew 6:7). And He made a promise to those who agree together in prayer:
+
+> "And again, truly I tell you: if two of you here on earth are of one mind about anything they ask for, it will be done for them by My Father in heaven. For whenever two or three come together in My name, I am there among them." (Matthew 18:19-20)
+
+The women found that God answered, and she filled her book with stories of answered prayer. She also learned that very often the first thing God changes is the one who is praying. As the women prayed for others, God showed them sins in their own lives that needed to be confessed. Her next book was called *Lord, Change Me!* (1977).
+
+### Calling out to God
+
+Our key verse was spoken to a man in prison. Jeremiah was held in "the courtyard of the guard," while the army of Babylon surrounded Jerusalem (Jeremiah 32:2). Everything around him was falling. Yet God said to him, "Call out to Me, and I will answer you." Charles Spurgeon preached on this verse and noticed that when the prophet Daniel faced danger in Babylon, he did not pray alone:
+
+> "What did Daniel do? He set himself to prayer, and knowing that the prayer of a united body of men has more prevalence than the prayer of one, we find that Daniel called together his brethren and bade them unite with him in earnest prayer that God would be pleased in His infinite mercy to open up the vision."
+> Charles H. Spurgeon, *Mighty Power in Prayer*
+
+Spurgeon spoke of men, but the Bible has always shown women at prayer too. After Jesus rose and returned to heaven, His disciples "were devoted to prayer and of one mind in it. With them were the women, Mary the mother of Jesus, and His brothers" (Acts 1:14). Women prayed in that upper room before the Spirit came.
+
+After her book was published, Evelyn Christenson spent the rest of her life teaching prayer seminars in churches across the United States and in many other countries. Pastors invited her to teach whole churches, men and women together. Her book sold well over a million copies. She also helped to found the National Prayer Committee in the United States, which brought leaders of many churches together to encourage prayer. She died on 1 November 2011, at the age of eighty-nine.
+
+### Three key insights
+
+1. **God does not need long or polished prayers, and short, simple prayers from ordinary believers are welcome before Him.** The women in St. Paul learned to pray a sentence or two at a time. Shy believers who had never prayed aloud found that God heard them too.
+2. **When believers pray together one subject at a time, they learn to be of one mind with each other and with God.** Praying subject by subject kept the group from scattering. It helped them listen to one another and agree before the Father.
+3. **Often the first thing God changes when we pray is the one who is praying.** The women began by praying for others, and God showed them sins in their own lives. A humble heart is ready to see the great things God promises to show.
+
+### For us today
+
+Many churches have a prayer meeting where a few people pray long prayers and everyone else listens. Evelyn Christenson's simple steps can help any church change that, whether it meets in a cathedral, a schoolroom in Kenya or a living room in Brazil.
+
+Her story also speaks to women in places where they are not allowed to lead or preach. Every believer may pray. A group of mothers praying in a kitchen, or market women praying before their stalls open, can take part in God's great work as fully as anyone.
+
+And her mother's story speaks to every parent who has prayed for years for a child far from God. Thirty years is a long time. Keep praying.
+
+### Try this
+
+This week, try praying together the simple way.
+
+- **Find two or three.** Invite one or two other believers to pray with you for half an hour.
+- **Pray subject by subject.** Choose one need. Each person prays one or two sentences about it. Then move to the next need.
+- **Be specific, and keep a record.** Write down what you asked for and the date. Look back in a month and note how God answered.
+- **Pray "Lord, change me."** Before praying for others, let each person ask God quietly to show anything in his or her own heart that needs to change.
+
+### A closing prayer
+
+Lord God, You said, "Call out to Me, and I will answer you." Thank You for Your servant Evelyn Christenson, who learned to pray as a child, who held on to Your promises through great sorrow, and who taught many others to pray together. Teach me to pray simply and honestly, and to agree with my brothers and sisters before You. Change me first, Lord. Then show us great things, things beyond our reach, which we have not known. In the name of Jesus, who is among us when we gather. Amen.
+
+### Questions for reflection
+
+- Why do you think short, simple prayers helped shy believers begin to pray aloud?
+- Have you ever found that God changed you while you were praying for someone else?
+- Who could you invite to pray with you this week, and what need could you pray about together?
+
+### Read more on Ochorus
+
+- Charles H. Spurgeon, *Mighty Power in Prayer*, especially "The Golden Key of Prayer"
+- Andrew Murray, *With Christ in the School of Prayer*, especially "The Power of United Prayer"
+
+---
+
+## More Persecution, More Growth
+
+> "In every way we are under pressure, but not cornered; we are at a loss, but not utterly at a loss; we are hunted, but not deserted; we are thrown down, but not destroyed." (2 Corinthians 4:8-9)
+
+In 1978 a tired man came home to Guangzhou, the great port city of southern China. His name was Lin Xiangao, but Christians around the world would come to know him as Samuel Lamb. He was fifty-four years old. For most of the last twenty-three years he had been a prisoner, and much of that time he had worked in coal mines in labor camps.
+
+The city he came back to was not the city he had left. His church had been closed long before. His wife had died while he was in prison, and he had not been allowed to go to her funeral. He later told visitors that this loss felt like an arrow from the Almighty, until he learned that God allows pain and loss, but that we must grow through them. He said too that the years had taught him not to grumble, either against God or against those who had persecuted him.
+
+What would a man do after such years? Lamb did what he had been arrested for doing. In 1979 he began again to hold meetings for worship and prayer in his own home. A few people came, then more. Soon the rooms were too small, and the meetings had to move to a larger building in the city. In time thousands of people came each week, filling several services.
+
+The church had no permission from the government, and Lamb knew that he could be taken away again at any time. He told his people plainly that they must be ready to suffer. He said that before his own arrest he had packed a bag with clothes, shoes and a toothbrush, so that he would be ready when the police came. He prayed that God would give his people strength to stand firm, whatever tomorrow might bring.
+
+Visitors from other countries came to see him, and after the Sunday meeting he would often sit with them in his small office and tell the story of his life. He liked to sum it up in a few words, which became his best-known saying: "more persecution, more growth." He was not boasting. The harder the authorities had pressed on China's believers, the more the church had grown.
+
+### Who he was
+
+Samuel Lamb was born in October 1924, in a hilly area overlooking Macau, on the south coast of China. His father was the pastor of a small Baptist church, and Samuel grew up as a Christian. In the 1940s he worked with Wang Mingdao, a well-known Beijing pastor who was himself later imprisoned for many years.
+
+In 1949 the Communist Party came to power in China. In the early 1950s the government set up the Three-Self Patriotic Movement, an official body for the Protestant churches. Many pastors joined it, and many believers have worshiped faithfully in its churches ever since. But some pastors refused to join, because they believed that the government should not control the church's preaching. Samuel Lamb was one of them. He was arrested in 1955 and released in 1957. In 1958 he was arrested again, and this time he was not released until 1978.
+
+In Volume 9 we met Watchman Nee, who was arrested in 1952 and died in 1972 at a labor farm, still a prisoner. Lamb was in the labor camps during those same years, and he lived to see what came after. Through the Cultural Revolution, from 1966 to 1976, churches across China were closed, and many believers lost their jobs, their homes or their lives. Yet in that silence many Christians went on praying, often in small groups in their homes, often with no Bible at all but the verses they had learned by heart.
+
+When the doors began to open again in the late 1970s, the world was surprised. In 1949 there had been fewer than one million Protestant Christians in China. Today no one knows the exact number, and the estimates differ widely, but most observers believe there are tens of millions, in both registered churches and unregistered house churches.
+
+Lamb wrote many small booklets of Bible teaching, which were read far beyond his own city. He died in Guangzhou on 3 August 2013, aged eighty-eight. News reports said that nearly thirty thousand people came to his funeral. In 2018, five years after his death, the authorities closed the church he had led.
+
+### Under pressure, but not cornered
+
+Paul wrote the words at the top of this chapter to the church at Corinth. He had been beaten, imprisoned and driven from city to city. Just before these words he gives a picture: "we hold this treasure in pots made of clay, so that the power, great beyond measure, may be God's and may not come from us" (2 Corinthians 4:7). In Paul's day a clay pot was the cheapest and weakest container in the house. Yet people sometimes kept their treasure in such pots. The gospel is that treasure, and we are the clay pots.
+
+Notice Paul's four pairs. He does not pretend that he is not under pressure. He admits he is hunted and thrown down. But each time he adds a "but." Pressure, but not cornered. Hunted, but not deserted. The second half of each pair is not Paul's strength. It is God's faithfulness. A few verses later he says, "So we do not give up" (2 Corinthians 4:16).
+
+That is the prayer life of persecuted believers in many lands. They pray to be kept faithful one more day. They pray Scripture they have memorized. They pray for their families, their churches and even for those who arrest them. In Volume 4 we heard the African writer Tertullian tell the Roman rulers that the blood of Christians is seed. Samuel Lamb's saying is the same truth in plainer words.
+
+Prison has often opened the Bible to those who suffer for it. Three hundred years before Lamb, the English preacher John Bunyan spent about twelve years in Bedford jail because he would not stop preaching outside the official Church of England. He wrote of that time:
+
+> "I never had in all my life so great an inlet into the Word of God as now; Those scriptures that I saw nothing in before, were made in this place and state to shine upon me; Jesus Christ also was never more real and apparent than now; here I have seen and felt him indeed."
+> John Bunyan, *Grace Abounding to the Chief of Sinners*
+
+An *inlet* is an opening, like a gap in a coast where the sea flows into the land.
+
+We must also be honest. Persecution is never good in itself, and it does not always lead to growth. In some lands and some centuries the church has been almost destroyed. Growth is not a law of nature; it is a gift of God. Lamb did not praise his jailers. He praised the God who did not desert him in their hands.
+
+### Three key insights
+
+1. **Pressure on every side does not mean that God has deserted us.** Paul was hunted and thrown down, yet he could say he was not deserted. Lamb lost his freedom, his wife and twenty years of his life, yet he came out of prison praying.
+2. **God's word cannot be chained, even when His servants are.** Paul wrote from prison that "God's word is not chained" (2 Timothy 2:9). The Scripture that believers carry in their hearts goes with them into every cell and labor camp.
+3. **Persecution is never good in itself, but God can turn it to the growth of His church.** We do not ask for suffering or admire those who cause it. We trust the God who brings life out of death, as He did at the cross.
+
+### For us today
+
+Many readers of this book live where believers are watched, fined, beaten or imprisoned for their faith. To you, Samuel Lamb's life says that you are not forgotten, and that what is pressed down in the dark is not lost to God. Pray to be kept faithful one day at a time, and fill your heart with Scripture while you can.
+
+Others of us live in freedom. We may meet whenever we like, and we may own as many Bibles as we want. Yet our prayer meetings are often small and our Bibles often closed. The persecuted church asks us a hard question: if we were arrested tomorrow, how much of God's word would go with us?
+
+And all of us can stand with suffering believers. Scripture tells us to "keep in mind those in prison, as if you were in chains alongside them" (Hebrews 13:3). We do not need to know their names. God knows them.
+
+### Try this
+
+This week, let the persecuted church teach you to pray.
+
+- **Learn the four pairs.** Memorize 2 Corinthians 4:8-9, and say it to God whenever you feel pressed.
+- **Pack a small bag of Scripture.** Choose five verses you would want to carry into a prison cell, and begin to learn them by heart.
+- **Pray for the persecuted.** Each day, pray for believers in one country where Christians suffer, asking God to keep them faithful and to bless the church there.
+- **Pray for those in authority.** Pray for rulers and police in lands where believers are persecuted, that they may come to know Christ (1 Timothy 2:1-4).
+
+### A closing prayer
+
+Lord Jesus, You were pressed down and crushed for us, and You rose again. Thank You for Samuel Lamb, who lost so much and came out of prison praying, and for all Your children in China who kept faith in the dark years. We are only clay pots, but You have put Your treasure in us. When we are under pressure, keep us from being cornered. When we are hunted, do not desert us. When we are thrown down, do not let us be destroyed. Strengthen Your suffering church today, bless those who persecute it, and let Your word run free in every land. Amen.
+
+### Questions for reflection
+
+- Which of Paul's four pairs speaks most to your life right now, and why?
+- Why do you think the church in China grew during years when it seemed to have been silenced?
+- Lamb kept a bag packed so that he would be ready to go to prison. What would it mean for you to be ready in your heart?
+
+### Read more on Ochorus
+
+- Ochorus Originals, *Portraits of Courage – Watchman Nee*, especially "Twenty Years in Chains"
+- John Bunyan, *Grace Abounding to the Chief of Sinners*, especially "A Brief Account of the Author’s Imprisonment"
+
+---
+
+## The Fast God Chooses
+
+> "No, this is the fast I choose: loose the bonds that wickedness has tied, untie the ropes of the yoke, send the crushed away free, and tear every yoke in two." (Isaiah 58:6)
+
+In the spring and summer of 1994, an American evangelist in his seventies began to feel a growing burden. His name was Bill Bright. Forty-three years earlier he and his wife Vonette had started a ministry to university students called Campus Crusade for Christ, and by now it worked in many countries. Yet Bright was grieved by the sins of his own nation and of the church, and he longed to see the gospel reach every people on earth.
+
+As he prayed, he became convinced that God was calling him to do something he had never done before: to fast and pray for forty days. He would eat no solid food, but drink water and juices, and give the time to seeking God for revival in the United States and for the spread of the gospel around the world.
+
+Forty days is a long time to go without food, and he was seventy-two years old. In his own later account, he hesitated and asked whether this call was truly from God, and he was not sure at the start that he could finish. But the conviction grew stronger, and he began. Day by day, he wrote, he sensed the Lord's presence and was encouraged to go on.
+
+Bright did not keep the experience to himself. Before the year was out, he invited Christian leaders from across America to come to Orlando, Florida, to fast and pray together, and hundreds came. In 1995 he wrote a book called *The Coming Revival*, calling believers to fast, pray and seek God's face. In 1996 he received the Templeton Prize, a large international award for work in religion, and he gave the money to encourage fasting and prayer. In later years he kept more such fasts, and he went on urging others to fast and pray.
+
+Bright was not the first in his generation to call Christians back to fasting. Twenty years earlier, a quiet British Bible teacher had written a book on the same subject. His name was Derek Prince.
+
+### Who they were
+
+Derek Prince was born in 1915 in Bangalore, India, to a British army family. He studied at Eton and at King's College, Cambridge, where he became a teacher of philosophy. When the Second World War began he joined the army as a medical orderly and took a Bible with him, meaning to study it as a philosopher. In 1941, in a barrack room in Yorkshire, he met Christ, and he spent the rest of his life teaching the book he had once doubted. He served through the desert war in North Africa, married a Danish missionary named Lydia in Jerusalem, lived in London, worked in Kenya, and later lived in the United States and then Jerusalem. His radio teaching went around the world in many languages. He died in Jerusalem in September 2003.
+
+In 1973 he published *Shaping History Through Prayer and Fasting*. Its message was that ordinary Christians have been given a real share in the course of their nations. Paul tells the church to pray "first of all" for "kings and for all who hold high office" (1 Timothy 2:1-2). Prince believed that many churches complained about their governments more than they prayed for them. He called believers to humble themselves before God with fasting, as Daniel did, and to pray on the basis of God's promises. He told how, as a soldier in the desert, he had prayed for the war in North Africa, and he believed that God answered the prayers of His people there. He offered such stories as testimonies, and they may be received humbly in that way.
+
+Bill Bright was born in 1921 on a ranch near Coweta, Oklahoma. He went to California as a young businessman, came to faith there, and in 1951 began Campus Crusade at the University of California, Los Angeles. He wrote a small booklet, *The Four Spiritual Laws*, that explained the gospel simply, and he produced the film *Jesus* (1979), which has been translated into a great many languages. He died in July 2003, two months before Derek Prince.
+
+### The fast God chooses
+
+Isaiah 58 begins with a complaint. God's people had been fasting, and they asked Him, "We have fasted ... so why do You not see?" (Isaiah 58:3). God answered them plainly. On the very days they fasted, they were driving their workers hard and quarreling with one another. They bowed their heads and lay on rough cloth, but their hearts and their hands had not changed.
+
+Then God tells them what kind of fast He chooses. It is to set free those who are bound and crushed, "to break your bread with someone who is hungry, to take the wandering poor into your home, to clothe the naked person you meet" (Isaiah 58:7). And He gives a beautiful promise: "Then when you call, the LORD will answer; when you cry out for help, He will say, 'I am here'" (Isaiah 58:9).
+
+So fasting is not a hunger strike to force God's hand. It is not a way to earn His favor. Jesus warned against fasting to be seen by others: "When you fast, do not put on a sad face as the hypocrites do" (Matthew 6:16). A true fast humbles us before God and opens our hands to our neighbor. The food we do not eat can feed someone who is hungry. Two centuries before Prince and Bright, John Wesley preached a sermon on fasting that said the same:
+
+> "Fasting is only a way which God hath ordained, wherein we wait for his unmerited mercy; and wherein, without any desert of ours, he hath promised freely to give us his blessing."
+> John Wesley, *Sermons on Several Occasions*
+
+*Desert* here means "what we deserve." At the end of that sermon Wesley quoted Isaiah 58 at length, to show that fasting and mercy belong together.
+
+### A wise word about fasting and health
+
+Wesley also gave a warning that every believer should hear:
+
+> "Yea, the body may sometimes be afflicted too much, so as to be unfit for the works of our calling. This also we are diligently to guard against; for we ought to preserve our health, as a good gift of God. Therefore care is to be taken, whenever we fast, to proportion the fast to our strength. For we may not offer God murder for sacrifice, or destroy our bodies to help our souls."
+> John Wesley, *Sermons on Several Occasions*
+
+A forty-day fast is not a model for most people. Bright and Prince both gave careful practical advice and urged people to begin with short fasts. Some should not go without food at all: pregnant or nursing mothers, children, people with diabetes or heart or kidney disease, people who have struggled with eating disorders, and people who take certain medicines. If you are not sure, talk with a doctor or health worker first. Drink water. Begin with one meal, or one day. You can also fast from something other than food, such as television or your phone, and give that time to prayer.
+
+And remember that many people in the world go hungry every day without choosing to. God sees them. For those of us who have enough, Isaiah's word is clear: a fast that does not lead us to share our bread is not the fast God chooses.
+
+### Three key insights
+
+1. **The fast God chooses always opens our hands to the hungry and the oppressed.** In Isaiah 58, God rejected fasting that left workers crushed and neighbors hungry. A true fast turns us toward God and toward the people He loves.
+2. **Fasting does not earn God's answer; it humbles us so that we can seek Him with our whole heart.** Bright and Prince both taught fasting as a way of humbling ourselves before God. The blessing still comes from His mercy, not from our hunger.
+3. **A wise fast fits the body and the season of life that God has given us.** Our bodies are a gift from God. Caring for them is part of honoring Him, so we fast with wisdom, advice and moderation.
+
+### For us today
+
+In many churches in Africa, Asia and Latin America, fasting is a normal part of Christian life. Whole congregations fast before a mission, a decision or a time of national danger. In other places, especially in the comfortable West, many believers have never fasted at all.
+
+Wherever you are, Isaiah 58 speaks to you. If you fast often, ask whether your fasting has made you kinder, more generous and more just. If you have never fasted, ask whether God may be inviting you to make room for Him in this way. And with Prince, ask whether you have prayed for your nation's leaders as often as you have complained about them.
+
+### Try this
+
+This week, try a simple fast that God chooses.
+
+- **Check your health first.** If you have any medical condition, ask a doctor or health worker before you go without food. If fasting from food is not wise for you, fast from something else.
+- **Begin small.** Skip one meal and spend that time in prayer, perhaps for your nation and its leaders (1 Timothy 2:1-2).
+- **Share what you save.** Give the food or money you saved to someone who is hungry, as Isaiah 58:7 says.
+- **Keep it quiet.** Wash your face, go about your day, and tell no one, as Jesus taught.
+
+### A closing prayer
+
+Lord God, You see what is hidden, and You choose the fast that sets people free. Thank You for Derek Prince and Bill Bright, who called Your church to humble itself with fasting and prayer. Forgive me when I have fasted for show, or not at all, or without caring for the hungry. Teach me to fast with wisdom and to care for the body You have given me. Open my hands to the poor and the oppressed. Hear me when I call, and say to me, "I am here." Heal our land, and let Your gospel reach every nation. Amen.
+
+### Questions for reflection
+
+- Why do you think God connected fasting so closely with justice and mercy in Isaiah 58?
+- What is the difference between fasting to earn God's favor and fasting to humble ourselves before Him?
+- What would a wise and healthy fast look like for you in this season of your life?
+
+### Read more on Ochorus
+
+- Ochorus Originals, *The Key Teachings of Derek Prince*, especially "Shaping History Through Prayer and Fasting"
+- John Wesley, *Sermons on Several Occasions*, especially "Discourse 7"
+
+---
+
+## My Sheep Hear My Voice
+
+> "The sheep that belong to Me listen to My voice; I know them, and they follow Me." (John 10:27)
+
+In 1956 a young American named Loren Cunningham was traveling in the Bahamas, the islands that lie in the warm sea southeast of Florida. He was twenty years old, a Bible college student who sang in a gospel quartet. The four young men went from church to church, singing and preaching.
+
+One day, as he tells it in his book *Is That Really You, God?* (1984), he was resting in the guest room where he was staying. He opened his Bible and asked God to speak to him. What came next, he said, was like a picture moving in his mind. He saw a map of the world. Waves were rolling onto the shores of every continent, falling back, and rolling in again, each time reaching farther inland, until they covered the land. Then, as he looked more closely, the waves became young people: young people of his own age and younger, going out into every nation to tell others about Jesus.
+
+Cunningham grew up in California, and as a teenager he had loved the ocean waves. Years later he liked to say that God had spoken to him in a language he understood. But he did not understand the picture at first. He finished his studies and began to work with young people in his church. Only slowly did he come to believe that God was calling him to send young people out on short mission journeys, paying their own way, to every part of the world.
+
+In 1960 he began what became Youth With A Mission, now usually called YWAM. Leaders of his denomination, the Assemblies of God, had serious doubts about sending young, inexperienced people from many churches overseas. Cunningham believed that God had shown him something much larger, and much wider than one denomination. After much prayer, he left his position and went out on his own. For several years only a handful of young people went each summer. Then the waves began to come. By the time he died, YWAM was working, by its own count, in more than a thousand locations around the world, and a great many young people had gone out on its short-term teams.
+
+### Who he was
+
+Loren Cunningham was born in 1935 in Taft, California. His parents were both Pentecostal preachers. They taught their children to sacrifice comfort for the gospel and to listen to God for themselves. As a teenager, praying with his cousins in a revival meeting, he became sure that God was calling him to preach.
+
+In 1963 he married Darlene Scratch. She had her own call to mission, and she turned his vision into practical plans. He always called her the co-founder of YWAM. Together they opened a training school in Switzerland, and later the University of the Nations, based at Kona, in Hawaii. In 1978 YWAM also began Mercy Ships, hospital ships that bring free medical care to poor coastal nations, many of them in West Africa; it later became a separate organization. Cunningham traveled so widely that he was reported to have visited every nation in the world. He died at his home in Hawaii in October 2023, aged eighty-eight.
+
+YWAM's purpose is often summed up in its own words: "to know God and to make Him known." Among its basic values is hearing God's voice. YWAM teams are taught to listen to God together, in silence and prayer, before they make decisions, and then to share and test what each person believes God has shown them.
+
+### Listening, and testing what we hear
+
+In *Is That Really You, God?* Cunningham tells many stories of seeking God's guidance, some of them very ordinary, and he offers simple guidelines. In our own words, they include these: first surrender your own plans to Christ as Lord; ask God to quiet your own thoughts and desires; expect Him to answer, in whatever way He chooses; check what you think you have heard against the Bible; and look for confirmation through mature believers and through events.
+
+Christians of different traditions understand "hearing God" in different ways. Pentecostal and charismatic believers often expect God to speak through pictures, dreams, inner words or the gift of prophecy, as Cunningham did. Many Reformed and Baptist Christians believe that God speaks to us today chiefly through the Bible, applied to our hearts by the Holy Spirit, and that we should seek His will in everyday choices by wisdom and prayer. Catholic and Orthodox Christians have long practiced prayerful reading of Scripture and careful discernment with the help of a wise guide. Quakers wait on God in shared silence. All of them can say with Jesus that His sheep know His voice.
+
+The eighteenth-century preacher John Wesley gave a balanced word. He warned strongly against trusting every sudden impression, yet he did not close the door:
+
+> "I do not deny, that God has, of old times, manifested His will in this manner; or, that He can do so now: nay, I believe He does, in some very rare instances. But how frequently do men mistake herein!"
+> John Wesley, *Sermons on Several Occasions*
+
+There is a real danger here, and YWAM itself has faced it. Over the years some former members have publicly described spiritual abuse and other harm in parts of the movement, including leaders who used claims to hear from God to control those under them. No one's sense of God's voice gives them the right to rule over another person's conscience. John tells us, "test the spirits to find out whether they are from God" (1 John 4:1). God's voice never contradicts His written word, and it never makes us proud.
+
+Above all, the Shepherd speaks through the Scriptures. A. W. Tozer, writing in Chicago in the 1940s, ended a chapter called "The Speaking Voice" with this prayer:
+
+> "Lord, teach me to listen. The times are noisy and my ears are weary with the thousand raucous sounds which continuously assault them. Give me the spirit of the boy Samuel when he said to Thee, “Speak, for thy servant heareth.” Let me hear Thee speaking in my heart. Let me get used to the sound of Thy Voice, that its tones may be familiar when the sounds of earth die away and the only sound will be the music of Thy speaking Voice. Amen."
+> A. W. Tozer, *The Pursuit of God*
+
+*Raucous* means loud and harsh.
+
+### Three key insights
+
+1. **Hearing the Shepherd's voice begins with belonging to the Shepherd.** Jesus said that the sheep that belong to Him listen to His voice. Listening to God is not a technique for the gifted few. It grows out of a living relationship with Christ, and He knows each of His sheep.
+2. **What we believe we have heard from God must be tested by His written word and by His people.** Cunningham taught believers to check every sense of guidance against Scripture and with mature Christians. This keeps us humble and protects others from our mistakes.
+3. **Listening to God is meant to lead us into following Him, not only into knowing more.** Jesus said, "I know them, and they follow Me." Cunningham's picture of the waves mattered because he obeyed it, even when it meant leaving a secure position.
+
+### For us today
+
+Many believers in Africa, Asia and Latin America expect God to guide them in very practical ways: in choosing a marriage partner, a job, a place to live or a journey. That expectation is a gift. It is also a responsibility, because false voices are many. Test every guidance by the Bible, talk it over with mature believers, and be patient.
+
+Others of us hardly expect God to guide us at all. We plan and decide, and only then ask God to bless our plans. Cunningham's life invites us to stop first, open the Bible, and say with the boy Samuel, "Speak, for Your servant is listening" (1 Samuel 3:10).
+
+### Try this
+
+This week, practice listening before you act.
+
+- **Begin with surrender.** Before you pray about a decision, tell God honestly that you want His will more than your own.
+- **Be quiet.** Spend ten minutes in silence with an open Bible, asking God to speak to you through it, and write down anything that seems to stand out.
+- **Test it.** Compare what you sense with Scripture, and share it with a mature Christian before you act on anything important.
+- **Listen together.** If you lead a group or a family, try waiting on God in silence together before you make a decision.
+
+### A closing prayer
+
+Lord Jesus, good Shepherd, You know my name and You call me to follow You. Thank You for Loren and Darlene Cunningham, and for the many young people who listened to You and went out to the nations. Quiet the noise around me and within me, so that I can hear Your voice. Speak to me through Your word, and keep me from mistaking my own wishes for Your will. Keep me humble, and teach me to test what I hear. And when You speak, give me courage to follow You wherever You lead. Amen.
+
+### Questions for reflection
+
+- How has God most often guided you in the past: through Scripture, through other people, through circumstances or in other ways?
+- Why is it important to test what we believe God has said, and who could help you do that?
+- Cunningham's vision mattered because he obeyed it. Is there something you believe God has asked of you that you have not yet done?
+
+### Read more on Ochorus
+
+- A. W. Tozer, *The Pursuit of God*, especially "The Speaking Voice"
+- John Wesley, *Sermons on Several Occasions*, especially "The Nature of Enthusiasm"
+
+---
+
+## Fresh Wind, Fresh Fire
+
+> "I will lead them to My holy mountain and make them glad in My house of prayer. Their burnt offerings and sacrifices will find favor on My altar, for My house will be named a house of prayer for all peoples." (Isaiah 56:7)
+
+In 1971 a young man with no seminary training became the pastor of a small, struggling church in Brooklyn, one of the five boroughs, or large districts, of New York City. His name was Jim Cymbala. He had been a college basketball player. His wife Carol's father was a pastor, and he asked the young couple to take over a church that was close to closing. It met in a run-down building on Atlantic Avenue, in a poor part of the city. Only a few dozen people came on a Sunday.
+
+Cymbala tells the story in his 1997 book *Fresh Wind, Fresh Fire*. In those first months, he writes, he felt like a failure. The congregation was small and discouraged. The money was not enough to pay the bills. He did not know how to preach, and he did not know what to do.
+
+During a time away from the city to rest, he poured out his heart to God. As he tells it, he became deeply convinced that God was speaking to him: if he and Carol would lead their people to pray and to call on the name of the Lord, God would give them everything they needed. They would never lack a fresh message to preach, or the money to carry on, or people to fill the building.
+
+He went back to Brooklyn and told his people that from now on the prayer meeting would be the real measure of their church's health. They would judge themselves, not by the size of the Sunday crowd, but by how many came to pray on Tuesday night.
+
+At first very few came. But the little group kept meeting, Tuesday after Tuesday. They sang, read Scripture and cried out to God together. Slowly the meeting grew. People came off the buses and the subway after work: office workers and cleaners, students and grandmothers, men and women who had been addicts or homeless, people born in Brooklyn and people born in the Caribbean, Africa, Asia and Latin America. Some came because a friend had brought them. Some came because they had nowhere else to go.
+
+The church grew too. It moved to an old theater on Flatbush Avenue, and in 2002 to a much larger former theater in downtown Brooklyn. Today thousands of people worship there each week, and the Tuesday night prayer meeting is still at the center of its life.
+
+### Who he is
+
+Jim Cymbala was born in Brooklyn in 1943, into a family with roots in Eastern Europe. He played basketball for the United States Naval Academy and for the University of Rhode Island, and he married Carol Hutchins, a pastor's daughter. Carol became the director of the Brooklyn Tabernacle Choir. She had little formal training in music, yet the choir became famous around the world and won several Grammy awards, among the highest honors in American music.
+
+Cymbala has led the church since 1971. He has written several books, but *Fresh Wind, Fresh Fire* remains the best known. Its message is simple: a church is not powerful because of its preaching, its music or its programs, but because it calls on God. Cymbala points out that Jesus, quoting Isaiah, did not call God's house a house of preaching or of music, but "a house of prayer."
+
+In that book he also tells, as the family has told in public, how the church once prayed on a Tuesday night for the Cymbalas' own daughter, who had wandered far from God as a teenager, and how she came home soon afterward. He tells it, not as a formula, but as one of many answers that strengthened their faith.
+
+### A house of prayer for all peoples
+
+Isaiah 56 is one of the most welcoming chapters in the Old Testament. Under the law of Moses, foreigners and eunuchs, men who had been made unable to have children, could not fully belong to the assembly of Israel. They felt shut out. "The foreigner who has attached himself to the LORD must not say, 'The LORD is sure to set me apart from His people,'" says Isaiah 56:3. God promises them a place, a name and a welcome in His own house. His house will be "a house of prayer for all peoples."
+
+In Volume 2 we stood with Jesus in the temple, when He drove out the traders who had filled the court where people from other nations came to pray. He quoted this very verse: "My house will be known as a house of prayer for all the nations" (Mark 11:17). A house of prayer is not only a place where people pray. It is a place where outsiders are welcomed to pray.
+
+That is part of the story of the Brooklyn Tabernacle. Its Tuesday meeting brings together people of many races and languages, rich and poor, in a city where they often live apart. When they pray together, they show a little of what Isaiah saw.
+
+In Volume 8 we watched Jeremiah Lanphier open a room for noon prayer on Fulton Street in 1857, just across the river from Brooklyn, and we met E. M. Bounds, who woke his Brooklyn hosts in 1912 with his prayers before dawn. The American revivalist Charles Finney, who knew such meetings well, wrote this:
+
+> "A prayer meeting is an index to the state of religion in a church. If the church neglect the prayer meetings, or come and have not the spirit of prayer, you know of course that religion is low. Let me go into the prayer meeting, and I can always see the state of religion there."
+> Charles G. Finney, *Lectures on Revivals of Religion*
+
+An *index* here means a sign that shows how things really are. A church can fill its building on Sunday and still have an empty prayer meeting. Cymbala's conviction, learned in weakness, was that the prayer meeting tells the truth.
+
+### Three key insights
+
+1. **The prayer meeting shows the true health of a church more clearly than the Sunday crowd.** Cymbala told his small church to measure itself by its Tuesday night, not by its Sunday attendance. Finney said the same nearly a century and a half earlier.
+2. **God's house is meant to be a house of prayer where every people and every outsider is welcome.** Isaiah promised a place to foreigners and the excluded, and Jesus defended that promise in the temple. A praying church opens its doors to all.
+3. **When we are weak and out of answers, calling on God together is not our last resort but our first work.** Cymbala began to lead his church in prayer because he had nothing else left. God met them in their weakness.
+
+### For us today
+
+Your church may be large or small, rich or poor, in a great city or a village. Wherever it is, it can become a house of prayer. In many places in Africa, Asia and Latin America, believers already gather for prayer during the week, sometimes early in the morning or through the night. Their example is a gift to the whole church.
+
+In other places the prayer meeting has disappeared, or only a few faithful people come. Do not despise a small prayer meeting. The Brooklyn Tabernacle's began with a handful of discouraged people. And ask whether the outsider, the stranger, the poor and the person from another nation would feel welcome to pray beside you.
+
+### Try this
+
+This week, help your church become a house of prayer.
+
+- **Go to the prayer meeting.** If your church has a prayer meeting, go this week. If it has none, ask your pastor whether you may begin one, even with two or three.
+- **Call on the Lord together.** Pray aloud with others for one need you cannot meet yourselves, remembering that "all who call on the name of the Lord will be saved" (Romans 10:13).
+- **Bring a name.** Bring to God by name someone who has wandered far from Him, and keep praying for that person each week.
+- **Welcome a stranger.** Invite someone from another background or nation to pray with you.
+
+### A closing prayer
+
+Lord God, You promised that Your house will be a house of prayer for all peoples. Thank You for Jim and Carol Cymbala and the praying people of the Brooklyn Tabernacle, who called on You when they had nothing else. Forgive us for filling our churches with programs and leaving our prayer meetings empty. Make our churches houses of prayer, where the stranger and the outsider find a welcome. Bring home those who have wandered far from You. Send a fresh wind of Your Spirit and a fresh fire of love on Your people in every city and village. Amen.
+
+### Questions for reflection
+
+- If someone judged your church by its prayer meeting, what would they learn?
+- Why do you think God's house is called a house of prayer, and not a house of preaching or music?
+- Who is the outsider in your community, and how could your church welcome that person to pray?
+
+### Read more on Ochorus
+
+- Charles G. Finney, *Lectures on Revivals of Religion*, especially "Lecture VIII. Meetings for Prayer"
+- R. A. Torrey, *How to Succeed in the Christian Life*, especially "Prayer"
+
+---
+
+## The 10/40 Window
+
+> "After this I looked, and I saw a crowd so vast that no one could number it. They came from every nation and from all tribes and peoples and languages, and they stood before the throne and before the Lamb, dressed in white robes, with palm branches in their hands." (Revelation 7:9)
+
+In July 1989 Christian leaders from about 170 countries met in Manila, the capital of the Philippines, for a large congress on world evangelization. It is remembered as Lausanne II, because the first such congress had met in Lausanne, Switzerland, in 1974. One of the speakers in Manila was Luis Bush, a pastor and mission leader born in Argentina. He spoke about a wide band of the earth that missionaries sometimes called the "resistant belt": lands where the gospel had made little progress for centuries.
+
+Early the next year Bush looked at that band more closely. With a team that was using one of the first computer mapping programs, he studied figures for every country: poverty, health, reading, religion, and the number of Christians and churches. Then they drew a box on the map of the world between 10 and 40 degrees north of the equator. It ran from West Africa and North Africa, through the Middle East and India, to China and Japan. Inside that box lived most of the world's poorest people. Inside it were the homelands of Islam, Hinduism and Buddhism. And inside it lived most of the peoples who had little or no chance to hear about Jesus.
+
+At first they called it the "10/40 box." A few weeks later, as Bush has told it, he and his wife Doris began to call it a window instead. A box shuts people in. A window lets light through. They wanted Christians to see this part of the world as a window of opportunity: a place where God's light could shine. The name first appeared in print in 1990, in the magazine of the movement Bush led, AD2000 and Beyond.
+
+Then the window became a prayer list. In October 1993 Christians around the world were invited to join a month of prayer called Praying Through the Window. The prayer guide was simple: each day of the month it named two of the 62 countries in the window. Families and churches prayed for them. Small teams of believers traveled to the countries themselves, to walk their streets quietly and pray there. The organizers counted 257 of these prayer journeys. They also reported that about twenty-one million Christians took part that month, though such large numbers are always estimates.
+
+More months of prayer followed in 1995, 1997 and 1999. In 1995 the guide focused on about one hundred great cities, and in 1997 on the least-reached peoples of the window, one by one.
+
+### Who he is
+
+Luis Bush was born in Argentina and grew up in Brazil. He studied economics in the United States and worked for a business firm in Chicago. In 1973 he decided to give his life to Christian ministry. After seminary he and Doris went in 1978 to San Salvador, the capital of El Salvador in Central America, where he became pastor of a church called Iglesia Nazaret.
+
+In the 1980s he helped to lead COMIBAM, a movement of Latin American and Iberian churches. Its great congress in São Paulo, Brazil, in 1987 encouraged the churches of Latin America to see themselves no longer only as a mission field, but as senders of missionaries to the world. From 1989 to 2001 Bush was the international director of the AD2000 and Beyond Movement. Its aim was a church among every people and the gospel for every person by the year 2000. He has gone on to serve in other movements, including one for children between the ages of four and fourteen.
+
+### An honest word
+
+The goal of the movement was not reached by the year 2000. Many peoples in the window still have no church of their own today. The numbers of those who prayed came from the movement itself, and no one can measure prayer exactly.
+
+Some leaders in the wider prayer movement of those years also taught what they called spiritual mapping. They believed that particular evil spirits rule over particular cities or lands, and that Christians should find out their names and confront them in prayer. Many other Christians, including careful evangelical scholars, said that this went beyond what the Bible teaches. Others pointed out that the window was a broad picture with many exceptions: it includes ancient churches in Ethiopia and Egypt, and the strong church of South Korea. These cautions are worth hearing.
+
+But the heart of the idea was simple and good. A map helped millions of ordinary believers to pray for people they had never thought about before.
+
+### Praying with a map
+
+Our key verse is a picture of the end of the story. John does not see a crowd in which every face looks the same. He sees people "from every nation and from all tribes and peoples and languages." The differences between them have not been erased. A Tamil grandmother, a Berber farmer, a Japanese student and a Bengali fisherman each stand there as themselves, and together they cry out, "To our God, seated on the throne, and to the Lamb, salvation belongs!" (Revelation 7:10).
+
+If that is where history is going, then we may pray toward it. But a prayer for "the whole world" can stay vague. A map makes it specific. When we know the name of a people, their land and their language, our prayer can become as concrete as the crowd John saw.
+
+Ninety years before the window, John R. Mott, a leader of the student missionary movement, gave the churches a famous watchword: the evangelization of the world in this generation. He knew that such a goal would never be reached by plans alone:
+
+> "The Church has not yet touched the fringe of the possibilities of intercessory prayer. Her largest victories will be witnessed when individual Christians everywhere come to recognize their priesthood unto God and day by day give themselves unto prayer."
+> John R. Mott, *The Evangelization of the World in This Generation*
+
+In a sense, the AD2000 movement took up Mott's watchword a century later, and it gave ordinary believers a daily part in prayer for the world. A missionary in India in Mott's day, Amy Carmichael, said the same thing more briefly:
+
+> "Reinforcements of men and women are needed, but, far above all, reinforcements of prayer."
+> Amy Carmichael, *Things as They Are*
+
+### Three key insights
+
+1. **Prayer for the world becomes faithful when it learns the names of the peoples in it.** God does not love humanity in general. He loves Tamils and Bengalis and Berbers, each in their own language. A map, a prayer guide or a list of peoples helps our prayers to become as specific as His love.
+2. **The great crowd before the throne shows us where our prayers for the nations are going.** Revelation 7:9 is not a hope that may fail. It is a vision of what will be. We pray for the peoples of the window as people who already know how the story ends.
+3. **A prayer offered for the nations still counts when a plan for the nations falls short.** The movement did not reach its goal by the year 2000. But God was not working to a human timetable, and none of the prayers of those years were wasted.
+
+### For us today
+
+When the window was drawn, many people thought of it as a place to which Western Christians would send missionaries. Today the picture has changed. Some of the most praying churches in the world are inside the window or close to it. In Nepal there were almost no Christians in 1950. The national census of 2021 counted more than half a million. Believers in India, China and the Middle East pray for their own neighbors, often at great cost. Churches in Korea, Brazil, Nigeria and the Philippines now send many missionaries of their own, as COMIBAM hoped.
+
+So the call to pray through the window is for everyone. A grandmother in a village in Kenya can pray for a people in Pakistan. A student in Lima can pray for a city in Iran. A believer in a country where Christians are few can pray for the next town, where there may be no believers at all. And those who live inside the window and suffer for their faith can know that brothers and sisters far away are praying for them by name.
+
+### Try this
+
+This week, look through the window in prayer.
+
+- **Use a map.** Find the 10/40 Window on a map or a globe. Choose one country inside it each day, and pray for its people, its leaders and its Christians.
+- **Learn one people.** Find out the name of one people group in the window that has very few believers. Learn where they live and what language they speak, and pray for them every day this week.
+- **Pray for the church there.** Ask God to protect believers who live in the window and suffer for their faith, and to give them courage and joy.
+- **Pray with children.** Show a child a map, and pray together for one country.
+
+### A closing prayer
+
+Lord God, You will gather a crowd that no one can number, from every nation, tribe, people and language. Thank You for those who taught Your church to look through the window and pray: for Luis and Doris Bush, for the prayer teams who walked quietly through distant streets, and for the millions who prayed at home. Teach me the names of peoples I have never met, and give me Your love for them. Protect Your children who follow You where it is dangerous. Send workers to every people who has not yet heard. And let me one day stand with them all before Your throne and before the Lamb, to whom salvation belongs. Amen.
+
+### Questions for reflection
+
+- Why do you think a map or a list of names can change the way we pray for the world?
+- Which people or country inside the 10/40 Window could you pray for regularly? What would you like to learn about them first?
+- The movement did not reach its goal by the year 2000. How should we think about prayers whose answers we do not see?
+
+### Read more on Ochorus
+
+- John R. Mott, *The Evangelization of the World in This Generation*, especially "Factors Essential to the Evangelization of the World in This Generation"
+- Andrew Murray, *The Ministry of Intercession*, especially "God Seeks Intercessors"
+
+---
+
+## Pray for the Peace of the City
+
+> "Seek the peace of the city where I have sent you as exiles, and pray to the LORD for it, since your own peace depends on its peace." (Jeremiah 29:7)
+
+In the middle of 1982, Argentina was a wounded nation. Since 1976 it had been ruled by a military government. Thousands of people had disappeared, taken from their homes and never seen again. Prices rose so fast that money lost its value from one month to the next. Then, from April to June 1982, Argentina fought a short war with Britain over the Falkland Islands, which Argentines call the Malvinas. The war ended in defeat. Many families had lost sons. The military government fell, and in 1983 the country returned to democracy. But many people felt that everything they had trusted had failed them.
+
+In those years evangelical Christians were a small minority in Argentina, only a few people in every hundred. Most of their churches were small, and many of them did not work together.
+
+One of these believers was a businessman named Carlos Annacondia. He owned a factory that made nuts and bolts in Quilmes, on the edge of Buenos Aires. In 1979 he came to faith in Christ at an evangelistic meeting, and soon afterward he felt that God was calling him to preach in the *villas miseria*, the poor neighborhoods of shacks around the great city, where many families lived without clean water or proper roads. At first, he later said, he did not want to go. But he went.
+
+His first campaign was held in Bernal, a poor community in Greater Buenos Aires, in 1981 or 1982 (the accounts differ). He preached in open fields, night after night. He told the crowds that Jesus Christ had defeated the devil, and he prayed for the sick and for people who felt bound by evil. He would not join himself to any one denomination. Instead he invited every church in each area to work with him, to pray with him and to care for the new believers.
+
+In 1984 he held a campaign in La Plata, a large city southeast of Buenos Aires, that went on for months. According to the reports of the time, tens of thousands of people came forward to receive Christ. Pastors who had never prayed together found themselves side by side in the same field, praying for the same city. Many Argentine believers still divide the story of their churches into the years before Annacondia and the years after him.
+
+### Praying for a city before preaching to it
+
+Annacondia was not the only one. Omar Cabrera was a Pentecostal pastor who founded a movement called Visión de Futuro (Vision of the Future). Before he began meetings in a new town, it is told, he and his co-workers would first cover that town with prayer. He prayed for the sick, and he always insisted that the glory for any healing belonged to Jesus Christ alone.
+
+Ed Silvoso, born in San Nicolás in 1945, had worked for years with the evangelist Luis Palau, his brother-in-law. In 1980 he founded a ministry called Harvest Evangelism. Around 1990 he and the pastors of Resistencia, a city in the poor northern province of Chaco, began a plan to reach their whole city through prayer. As Silvoso tells it, pastors met to pray together and to repent of their divisions, and believers were encouraged to pray for their neighbors, street by street. He later wrote about this in *That None Should Perish* (1994) and *Prayer Evangelism* (2000). He drew much of his method from Luke 10, where Jesus tells His disciples, "Whatever house you go into, begin by saying, 'Peace be on this household'" (Luke 10:5). First bless people and pray for them, he taught, then care for their needs, and then tell them about the kingdom of God.
+
+### Questions worth asking
+
+These movements were not without problems. As we saw in the last chapter, some leaders of those years, in Argentina as elsewhere, taught a kind of spiritual mapping that many other Christians believe goes beyond Scripture. Some numbers from those years cannot be checked. But the growth of the evangelical church in Argentina is real: recent surveys count well over one Argentine in ten as evangelical.
+
+The town of Almolonga, Guatemala, needs a more careful word still. It lies in a green valley in the western highlands, near the city of Quetzaltenango, and most of its people are K'iche' Maya. It is famous for its vegetables, which are sold across Central America. In 1999 a video called *Transformations*, made by George Otis Jr. and the Sentinel Group, told the story of Almolonga alongside other cities. It said that most of the town had become evangelical believers, that drunkenness and crime had fallen so far that the jails had closed, and that God had blessed the fields with enormous vegetables. Many churches around the world watched it.
+
+Later visitors, scholars and even some Christian writers questioned these claims. Accounts disagree about when and how the jails closed. Scholars point out that Almolonga's farms also prosper because of rich volcanic soil, plentiful water, hard work and trade, and because of very heavy use of fertilizers and farm chemicals, which some fear may harm the farmers' health. Protestant faith had been growing in the region for decades before the video was made. What we can say is that many families in Almolonga did turn to Christ, and many of them say that their homes were changed. We may thank God for that without repeating claims we cannot check.
+
+### Seeking the city's peace
+
+Jeremiah wrote our key verse to Jews who had been carried away to Babylon. It was the city of the enemy who had burned their temple. Yet God told them to build houses, plant gardens and raise families there (Jeremiah 29:5-6), and to pray for that city. The word for "peace" in Hebrew, *shalom*, means far more than the absence of war. It means wholeness, safety and well-being for everyone. God's people were to want good things for their neighbors, and to ask God for them.
+
+Charles Finney, whom we heard on the prayer meeting in chapter 12, saw what can happen when the churches of a city agree to pray for it. On his second visit to England, preaching in the town of Bolton, he gave this advice:
+
+> "I then recommended to the brethren to canvass the whole city; to go two and two, and visit every house; and if permitted, to pray in every house in the city."
+> Charles G. Finney, *Memoirs of Rev. Charles G. Finney*
+
+He wrote that Congregationalists and Methodists took up the work together.
+
+### Three key insights
+
+1. **To pray for a city is to want good for all its people, not only growth for our own church.** God asked the exiles to seek the peace of Babylon itself. A church that prays only for its own success has not yet learned to pray for its city.
+2. **A city is blessed when its churches stop competing and begin to pray side by side.** In La Plata and Resistencia, pastors who had kept apart prayed together. In Bolton, Finney sent believers of different churches out two by two to pray in every home. Agreement in prayer grows from a shared love for God and for the lost.
+3. **We honor God most when we tell what He has done truthfully, without making it larger.** Some stories of transformed cities have grown in the telling. God's work does not need our exaggeration, and careful honesty helps others to trust the real answers He gives.
+
+### For us today
+
+Most of the world's people now live in cities: Lagos and Kinshasa, Dhaka and Manila, São Paulo and Mexico City. Many believers have moved to cities far from their villages, to find work or to escape war. Like the exiles in Babylon, they may feel like strangers there. Jeremiah's word is for them. The city where you live, even if it is not your home, is the place God has sent you to bless.
+
+Some Christians live in cities where they are a small and watched minority. They may not be able to preach in open fields. But they can still seek the peace of their city, pray for its leaders and its poor, and quietly bless their neighbors. No law can stop a prayer.
+
+### Try this
+
+This week, seek the peace of your city in prayer.
+
+- **Walk and bless.** Walk along your street or through your market, and silently pray, "Peace be on this household," for each home and shop you pass.
+- **Pray with another church.** Find believers from a church different from your own, and ask them to pray with you for your town.
+- **Pray for those who serve.** Pray by name for the leaders of your city, its police, its teachers and its health workers.
+- **Ask one neighbor.** Ask a neighbor, "How can I pray for you?" and then pray for that need every day this week.
+
+### A closing prayer
+
+Lord God, You sent Your people into a strange city and told them to pray for its peace. Thank You for the believers of Argentina who prayed for their wounded nation, for the pastors who learned to pray side by side, and for every family in Almolonga and in every town who has truly turned to You. Forgive me when I pray only for my own church and my own comfort. Give me love for my whole city: its leaders and its poor, its strangers and its children. Let Your peace rest on the homes of my street. Keep me honest when I tell of Your works, and let Jesus Christ have all the glory. Amen.
+
+### Questions for reflection
+
+- Why do you think God told the exiles to pray for Babylon, the city of their enemies?
+- What would change if the churches of your town prayed together for it regularly?
+- Why is it important to tell stories of answered prayer truthfully, even when the plain truth is less exciting?
+
+### Read more on Ochorus
+
+- D. L. Moody, *Prevailing Prayer*, especially "Unity"
+- Charles G. Finney, *Memoirs of Rev. Charles G. Finney*, especially "Labors in England and Scotland"
+
+---
+
+## The Fire Is Lit Again
+
+> "Fire is to burn on the altar at all times, never going out." (Leviticus 6:13)
+
+In the summer of 1999 a young church leader named Pete Greig was hungry for God. He lived in Chichester, a small cathedral city on the south coast of England, and he helped to lead a church there. As he has said in interviews since, he felt deeply frustrated with his own prayer life, and with the prayer of his church. They believed in prayer. They preached about it. But they were not very good at it.
+
+Around that time, on a journey in Europe, he came to Herrnhut, the village in eastern Germany where, in Volume 7, we watched the Moravian Brethren begin their watch of prayer in 1727. They had kept prayer rising day and night, hour by hour, for many years. Standing in that place, Greig has said, he felt that his own church should try to do the same. If the Moravians had prayed without stopping for so long, perhaps his church could manage a month.
+
+Back in Chichester, in September 1999, the church opened a prayer room in a warehouse. The plan was simple. The month was divided into hours. Each person signed up for an hour, and someone would be praying in the room at every hour of the day and night until the month was over.
+
+To the leaders' surprise, young people came, and they kept coming, even in the middle of the night. They prayed in words and in silence. They played music and sang. They covered the walls with written prayers, Bible verses, drawings and confessions, so that each person who came in could read what others had prayed before them. Greig himself wrote a poem on the wall, about the kind of people God was calling, and it was later known as "The Vision." Visitors copied it, and it spread to other countries.
+
+The month ended, but the prayer did not. Other churches and groups heard what was happening and asked if they could take a turn. Prayer rooms opened in other towns, and then in other countries. In his book *Red Moon Rising* (2003), written with Dave Roberts, Greig tells how the prayer passed from room to room and from country to country, so that it went on without a break for years. The movement became known as 24-7 Prayer. Today it says that prayer rooms have been held in well over a hundred nations, in churches and cathedrals, schools and student halls, and many other places.
+
+### Who he is
+
+Pete Greig is a British church leader and writer, and he is still serving today. He did not plan to start a worldwide movement, and he has often spoken of it as something God did almost by accident. From the first prayer room grew small communities committed to prayer, mission and justice, and resources such as *The Prayer Course*, which teaches people to pray through the Lord's Prayer.
+
+His life has not been free of unanswered prayer. In *God on Mute* (2007) he wrote about the serious illness of his wife, Samie, and about the hard questions that come when God seems silent. A movement of prayer, he learned, is not a way to make life easy. It is a way to stay close to God in every season.
+
+### Fire from heaven, wood from us
+
+In Volume 7 we saw how God Himself first lit the fire on the altar of the tabernacle: "Fire went out from before the LORD and devoured the burnt offering" (Leviticus 9:24). After that, the priests' task was to keep it burning: "Every morning the priest is to put more wood on it" (Leviticus 6:12). The fire did not depend on the strength of any one priest. Each morning one priest added wood, and the next morning another did the same. The prayer room in Chichester worked in the same way. No one person prayed all month. Each took an hour, and together they kept the fire burning.
+
+The story of Chichester adds something new. The fire at Herrnhut had burned long before. Over the years its flames had died down, and much of its story was forgotten. Then young people at the end of the twentieth century heard about it, and asked God to do it again. The same God who lit the fire once was willing to light it again.
+
+That is one reason we read stories of prayer from the past. They are not only history. They can become kindling for a new fire. Sadhu Sundar Singh of India described what happens when prayer is truly lit by God:
+
+> "Our real prayers likewise, kindled by the fire of the Holy Ghost, rise up to God, overcoming sin and evil, and come back to the earth filled with His blessings."
+> Sadhu Sundar Singh, *Reality and Religion*
+
+But there is also a danger. A prayer room can become fashionable. Music, art and late nights can produce excitement that is not from God at all. A century earlier, Charles Spurgeon warned the ministers and students of his college about exactly this:
+
+> "Let it be carefully remembered that our flame must be kindled from on high. Nothing is more to be despised than a mere painted fire, the simulation of earnestness."
+> Charles H. Spurgeon, *An All-Round Ministry*
+
+A painted fire looks like a fire, but it gives no heat. The test of a real fire is what it does. Many who prayed in those rooms have told how they were led to confess their sins, to love the poor and to carry the gospel into hard places. Teams from the movement went to pray and serve among young people on the party island of Ibiza, in Spain. Fire that God lights does not stay inside the room.
+
+### Three key insights
+
+1. **A new season of prayer often begins with the honest confession that we do not pray as we should.** The first prayer room did not begin with experts. It began with a church that admitted it was poor at prayer and wanted to learn.
+2. **Stories of past prayer can become kindling for a new generation's fire.** A visit to Herrnhut stirred a church in Chichester to try what the Moravians had done. The God who answered prayer in one century is willing to answer it in another.
+3. **The fire of prayer must be kindled from heaven, and its proof is the love it produces.** Excitement can be imitated, and a painted fire gives no heat. Real prayer leads us to repent, to serve and to carry Christ to others.
+
+### For us today
+
+A prayer room does not need a warehouse. It can be the corner of a crowded home, a classroom after school, a storeroom at a clinic or a bench under a tree. In many parts of Africa and Asia, believers already keep long times of prayer through the night, and young people often lead them. In some countries, Christians cannot gather openly at all, but they can still agree to pray at the same hours wherever they are, so that the fire keeps burning in their hearts.
+
+And this story speaks especially to the young. Many people think that young people find prayer boring. The prayer rooms showed that young people will come to pray, even at three in the morning, when they believe God is really there. Churches that make room for them may be surprised by what God does.
+
+### Try this
+
+This week, help to keep a fire burning.
+
+- **Make a prayer corner.** Choose one place in your home and set it aside for prayer, with a Bible, a pen and some paper.
+- **Share the hours.** With your church or a few friends, divide one day or one week into hours, and ask each person to take one.
+- **Write on the wall.** Put a large sheet of paper on a wall, and invite your family or group to write their prayers on it, so that each can pray for the others.
+- **Read an old story.** Read the story of a past prayer movement, such as the Moravians in Volume 7, and ask God to do something like it in your own time.
+
+### A closing prayer
+
+Lord God, You lit the fire on the altar, and You can light it again. Thank You for the Moravians of Herrnhut, and for the young people of Chichester who heard their story and prayed through the night. I confess that I do not pray as I should. Kindle my prayer with the fire of Your Holy Spirit, not with my own excitement. Make me faithful to add wood each day. Let the fire You light in my heart go out into my street, my school and my work, in love for the poor and in witness to Jesus Christ. Amen.
+
+### Questions for reflection
+
+- Why do you think an honest confession that a church was poor at prayer opened the way for something new?
+- What is the difference between a fire kindled from heaven and a painted fire? How can we tell them apart?
+- Is there a story from the history of the church that stirs you to pray? What would you ask God to do again?
+
+### Read more on Ochorus
+
+- Charles H. Spurgeon, *An All-Round Ministry*, especially "Light. Fire. Faith. Life. Love."
+- Sadhu Sundar Singh, *Reality and Religion*, especially "Prayer"
+- Ochorus Originals, *The Fire on the Altar*, especially "The Fire Shall Never Go Out"
+
+---
+
+## Your Kingdom Come
+
+> "May Your kingdom come. May Your will be done on earth, as it is done in heaven." (Matthew 6:10)
+
+On 21 March 2001 a crowd of Christians filled Newlands, the great rugby stadium of Cape Town, South Africa. The stadium holds about 45,000 people, and that day, by the reports of the time, it was full. They had not come to watch a match. They had come to pray.
+
+The date mattered. In South Africa, 21 March is Human Rights Day. It remembers the day in 1960 when police shot and killed protesters in the township of Sharpeville, during the years of apartheid, the system of laws that kept South Africans apart by race. In 2001 the country's first free elections were only seven years in the past. The wounds of the old system were still deep. Crime was high, and many families were suffering from HIV and AIDS. Yet in the stadium that day sat believers of every color and of many churches, side by side.
+
+The gathering had been called by a Cape Town businessman named Graham Power, the head of a large building company. As he has told the story, he believed that God had given him a picture of Christians filling the stadium for a day of repentance and prayer, and then of that prayer spreading across Africa and the world. He had no experience of organizing such a thing. But he hired the stadium, and churches across the city joined in. In the stadium, people confessed their sins and the sins of their nation, and asked God to heal their land.
+
+The next year the day of prayer was held in cities across South Africa. In 2004 it was held across the whole continent of Africa. In 2005 it became the Global Day of Prayer, held on Pentecost Sunday, and its organizers reported Christians taking part in most of the countries of the world. Believers were invited to pray for ten days before Pentecost, from the Ascension of Jesus to the coming of the Spirit, and then to gather on Pentecost Sunday to pray for their cities and nations. What began in one stadium at the southern tip of Africa had become a prayer for the whole earth.
+
+### Ten days in the upper room
+
+Fifteen years after the gathering in Cape Town, a call to the same days of prayer came from a very different place. In February 2016 the Archbishops of Canterbury and York at that time, Justin Welby and John Sentamu, wrote to every parish of the Church of England. They asked churches to pray in the days leading up to Pentecost that more people would come to know Jesus Christ. They called it Thy Kingdom Come, from the old English words of the Lord's Prayer.
+
+Cathedrals and village churches held services and prayer vigils. Some kept prayer going day and night. In later years believers were encouraged to choose five friends or relatives who did not yet follow Christ, and to pray for them by name. The invitation soon spread beyond the Church of England, to Baptists, Pentecostals, Catholics and others, and to churches in many other countries. It has been held every year since, from Ascension Day to Pentecost, and its organizers have reported believers taking part in well over a hundred countries.
+
+Neither movement invented these days. After Jesus ascended into heaven, His followers went back to Jerusalem and waited in an upper room, as He had told them: "All of these were devoted to prayer and of one mind in it. With them were the women, Mary the mother of Jesus, and His brothers" (Acts 1:14). About ten days later came Pentecost, and the Spirit fell. Christians of many traditions have kept those days ever since. Catholic believers, for example, have long prayed a novena, nine days of prayer, for the coming of the Holy Spirit before Pentecost, and in 1897 Pope Leo XIII asked the whole Catholic Church to keep it every year.
+
+E. M. Bounds saw in those ten days a lesson for every generation:
+
+> "The answer is found in the fact that the disciples, with the women, spent several days in that upper room, in earnest, specific, continued prayer. It was prayer that brought to pass the famous day of Pentecost. And as it was then, so it can be now."
+> E. M. Bounds, *The Possibilities of Prayer*
+
+### What we ask for when we pray "Your kingdom come"
+
+In Volume 2 we learned how Jesus taught His disciples the Lord's Prayer. Here we notice two of its words: "on earth." When we pray, "May Your will be done on earth, as it is done in heaven," we are not asking only for heaven one day. We are asking God to rule here: in Cape Town and in Canterbury, in our streets and in our homes.
+
+The two movements show two sides of that prayer. The Global Day of Prayer, born in a land with deep wounds, prayed for whole cities and nations to be healed, and began with repentance. Thy Kingdom Come, born in a land where many have drifted from faith, asked believers to pray for their friends and neighbors one by one. Both are true. God's kingdom comes over nations, and it comes in single hearts.
+
+The Puritan Thomas Watson explained that the kingdom we ask for begins quietly in the heart and is completed in glory:
+
+> "The kingdom of grace is nothing but the beginning of the kingdom of glory. The kingdom of grace is glory in the seed, and the kingdom of glory is grace in the flower."
+> Thomas Watson, *The Lord's Prayer*
+
+Every time a neighbor comes to Christ, a seed of the kingdom is planted. Every time we pray, "Your kingdom come," we also look forward to the day when the flower is fully open.
+
+### Three key insights
+
+1. **Prayer for God's kingdom to come over a land rightly begins with repentance among His own people.** In Cape Town, believers confessed their own sins and the sins of their nation before they asked God to heal it. The kingdom comes first to those who bow to the King.
+2. **The days between Ascension and Pentecost invite the whole church to wait and pray together for the Spirit.** The first disciples spent those days in prayer, and Christians of many traditions still keep them. When we join them, we pray with believers across the world and across the centuries.
+3. **God's kingdom comes into the world one heart at a time, so we may pray for it by name.** Choosing a few people and praying for them every day turns a great prayer into a personal one. Each person who turns to Christ is a seed of the coming kingdom.
+
+### For us today
+
+Pentecost is kept by churches in every part of the world: in Anglican cathedrals and Pentecostal tents, in Orthodox and Catholic parishes, in house churches that must meet quietly. The ten days before it are a gift to the whole church. Believers who cannot gather in a stadium can still pray in their homes, and know that they are praying with millions of others.
+
+The story of the Global Day of Prayer also reminds us where much of the world's praying now begins. A call to prayer that started in Africa went out to the whole earth. Churches in the North can learn from the faith of churches in the South, as the first churches learned from one another.
+
+And the simple practice of praying for a few friends by name is open to everyone: a child, a grandmother, a prisoner, a busy mother. You do not need a stadium to pray, "Your kingdom come." You need only a name and a heart that cares.
+
+### Try this
+
+This year, keep the days before Pentecost.
+
+- **Mark the ten days.** Find the date of Ascension Day and of Pentecost in your calendar, and plan to pray each day between them.
+- **Pray for five.** Write down the names of five people who do not yet follow Jesus, and pray for each of them every day.
+- **Pray for your land.** Spend one day confessing the sins of your nation before God, and asking Him to heal it.
+- **Join another church.** On Pentecost Sunday, pray with believers from a different tradition, and ask God to send His Spirit on you all.
+
+### A closing prayer
+
+Our Father in heaven, may Your kingdom come and Your will be done on earth, as it is done in heaven. Thank You for the believers who filled a stadium in Cape Town to repent and pray, for the churches that have kept the days before Pentecost in so many lands, and for the first disciples who waited for Your Spirit in the upper room. Forgive the sins of my people and heal our land. Let Your kingdom come in the hearts of the friends I name before You. Pour out Your Holy Spirit on Your church in every nation, until the seed of grace becomes the flower of glory. Amen.
+
+### Questions for reflection
+
+- What does it mean to you that Jesus taught us to pray for God's will to be done "on earth"?
+- Why do you think the Global Day of Prayer began with repentance? What might repentance look like for your church or nation?
+- Which five people will you pray for between Ascension and Pentecost?
+
+### Read more on Ochorus
+
+- E. M. Bounds, *The Possibilities of Prayer*, especially "Prayer and the Promises (Continued)"
+- Thomas Watson, *The Lord's Prayer*, especially "The Second Petition: Thy Kingdom Come"
+
+---
+
+## All Night Before God
+
+> "During those days Jesus went off to the mountain to pray, and He stayed up all night in prayer to God." (Luke 6:12)
+
+Picture a Friday night in a large city in West Africa. No two churches do it in quite the same way, so this is not the story of one night in one place. It is the kind of night that happens in thousands of places every week.
+
+The working day is over. The roads are full of buses and motorbikes. Some come straight from the market or the office. A mother arrives with her baby tied on her back in a wide cloth, the way mothers carry children across much of Africa. Students come in groups. Some carry a mat or a thin blanket, because they know they will be there until morning.
+
+The meeting begins with singing. The drums start, and soon the whole room is on its feet, clapping and dancing. Someone reads a psalm aloud. Then the leader calls the people to pray, and everyone prays at once, out loud, each in his own words and often in his own language. The sound rises like the sound of many waters, then falls, then rises again.
+
+The hours pass. There is preaching. There are times of confession, and times of thanksgiving, when someone stands to tell how God helped her family through a hard month. And there is a great deal of asking: for work, for healing, for children who have wandered from God, for husbands and wives, for the church and for the nation.
+
+Around two or three in the morning, the small children are asleep on mats at the side of the room, wrapped in their mothers' cloths. Some of the adults are tired, too. But the prayer goes on. Someone starts a new song, and the room wakes up again.
+
+When the first gray light comes through the windows, the people pray a final blessing and go out into the cool morning. They have spent the night before God.
+
+### A continent that stays awake
+
+All-night prayer is not new, and it is not only African. In the early centuries many Christians kept watch through the night before Easter, and many churches still keep an Easter Vigil today. But in the last hundred years, the night of prayer has become one of the marks of the African church.
+
+In western Nigeria, from about 1918, a movement of prayer began among Yoruba Christians during a time of sickness and fear, including the worldwide influenza epidemic. The churches that grew from it came to be called *Aladura*, a Yoruba word often translated "praying people." In East Africa, the revival we met in Volume 9 called a sleeping church to wake up. In Swahili, an all-night prayer meeting is often called a *kesha*, from a word that means "to stay awake." In Kenya and Tanzania, believers from many churches still gather for a *kesha* at the new year, before an important event, or in a time of need. In Ghana, Friday all-night services are common across many churches, old and new.
+
+In Nigeria the night vigil has grown into some of the largest prayer meetings in the world. The Redeemed Christian Church of God was founded in Lagos in 1952. Its present leader, Enoch Adeboye, a former mathematics lecturer, has led it since 1981. In 1986 the church began what it calls the Holy Ghost Service, a night of worship, preaching and prayer at its camp on the Lagos-Ibadan Expressway. It is now held on the first Friday of every month, and it goes on through the night. Reports of the crowds vary widely, but at times they are very large, and the church holds similar services in many other countries.
+
+Why the night? Some reasons are simple. In hot lands the night is cooler, and many people work long hours by day and have no other free time. But there is a deeper reason, too. In many parts of Africa, people grew up fearing the night as a time when evil powers are at work. When believers sing and pray through the dark hours, they are declaring that Jesus is Lord of the night as well as the day.
+
+### What Jesus did on the mountain
+
+Luke tells us when Jesus prayed all night. It was "during those days," just after the religious leaders were "filled with mindless rage" and "talked together about what they could do to Jesus" (Luke 6:11). The pressure on Him was growing, and a great decision lay ahead. In Volume 2 we saw how He gave that night to His Father before choosing His twelve apostles.
+
+Here we notice something else: the hour He chose. Charles Spurgeon, the London preacher, wrote about this verse in his evening readings:
+
+> "The time he chose was admirable, it was the hour of silence, when the crowd would not disturb him; the time of inaction, when all but himself had ceased to labour; and the season when slumber made men forget their woes, and cease their applications to him for relief. While others found rest in sleep, he refreshed himself with prayer."
+> Charles H. Spurgeon, *Evening by Evening*
+
+The crowds who pressed on Jesus all day went home at night. That was His chance to be alone with His Father. In the same way, the night is often the only quiet time for a mother in a crowded home or a trader who works from dawn to dark.
+
+Jesus went up the mountain alone. The African vigil is usually a crowd. Both have their place. The early church also knew the long night of prayer together. When Peter was in prison, the believers gathered in the home of Mary, John Mark's mother, and they were still praying deep into the night when Peter knocked at the gate (Acts 12:12). It is easier to stay awake together. When one person grows tired, another begins a song. When one runs out of words, another prays.
+
+But we should be honest about our weakness. On the night before the cross, Jesus asked His friends to pray with Him, and they fell asleep. "Did you not have the strength to stay awake a single hour?" He asked. "Stay awake and pray that you will not come into temptation. The spirit is eager, but the flesh is weak" (Mark 14:37-38). Spurgeon set our weakness beside the Lord's faithfulness:
+
+> "We cannot watch with him one hour, but he watched for us whole nights."
+> Charles H. Spurgeon, *Evening by Evening*
+
+This is the heart of the matter. A night of prayer does not earn anything from God. Jesus taught that we are not heard because we say so much (Matthew 6:7). So it is worth saying plainly: a vigil is not a payment to make God answer, and those who cannot come are not second-class believers. God also "gives sleep to the one He loves" (Psalm 127:2). Jesus Himself slept in the boat during the storm (Mark 4:38). The night of prayer is not a law. It is an invitation to spend time with the One who has always watched over us.
+
+### Three key insights
+
+1. **The hours we would give to sleep can become a gift we bring to God.** Jesus chose the night because it was quiet and free. For many busy and poor believers, the night is still the only time that is truly their own, and they give it to Him.
+2. **A long night of prayer is easier to keep together than alone.** The church in Mary's house prayed late into the night for Peter. When believers gather, one carries the prayer while another rests.
+3. **We do not pray all night to earn God's answer, but to stay near the One who answers.** God is not moved by the length of our prayers. The vigil is valuable because it gives us more time with Him, not because it puts Him in our debt.
+
+### For us today
+
+If you live in Nigeria, Ghana or Kenya, you may have spent many nights in prayer. Thank God for that gift, and keep it from becoming only a habit. Listen for what the Lord is saying, not only for what you are asking.
+
+If you live where Christians rarely pray at night, the African church has something to teach you. African congregations in London, Houston and many other cities now keep their vigils alive in a new land, and some of their neighbors are learning from them.
+
+Persecuted believers know long nights of another kind, in prison cells and in times of fear. The Lord who prayed through the night on the mountain is with them in theirs.
+
+And for those who cannot stay awake, because of age, sickness, small children or heavy work, there is freedom. Psalm 63:6 speaks of remembering God while lying in bed. A few minutes of prayer when you wake in the night are not wasted. The Lord who watched whole nights for us hears them.
+
+### Try this
+
+This month, make room for a longer time of prayer at night.
+
+- **Plan a half-night with others.** Ask two or three friends, or your small group, to pray together from evening until midnight or later.
+- **Give the night a shape.** Divide it into parts: praise, reading Scripture, confession, prayer for your families, and prayer for your nation and the nations.
+- **Take turns.** If the group is large enough, let people pray in shifts, so that no one carries the whole night alone.
+- **Rest afterward.** Plan your next day so that you can sleep. Prayer is not a test of how little sleep you need.
+
+### A closing prayer
+
+Lord Jesus, You went up the mountain and stayed awake all night in prayer to God. Thank You for the believers of Africa who spend whole nights before You, singing and praying for their families, their churches and their lands. I confess that I often cannot stay awake with You for one hour. Yet You watched over me through whole nights. Teach me to give You my quiet hours. Keep me from thinking that I can earn Your answers by my efforts. When I pray with others, make us one. And when I lie down to sleep, let me rest in Your care. Amen.
+
+### Questions for reflection
+
+- Why do you think Jesus chose the night to pray? What hours of your day or night are most free for prayer?
+- What is the difference between praying all night to earn something and praying all night to be near God?
+- Have you ever prayed for a long time with others? How did it help you to pray together?
+
+### Read more on Ochorus
+
+- Charles H. Spurgeon, *Evening by Evening*, especially "November"
+- Ochorus Originals, *Jesus, Teacher of Prayer*, especially "All Night on the Mountain"
+- R. A. Torrey, *How to Pray*, especially "When to Pray"
+
+---
+
+## Prayer in a Shipping Container
+
+> "Keep in mind those in prison, as if you were in chains alongside them, and those who are being ill-treated, since you also live in a body." (Hebrews 13:3)
+
+The prison was a row of metal shipping containers, the kind that carry goods on ships and trucks around the world. They stood at Mai Serwa, a military camp outside Asmara, the capital of Eritrea, in the Horn of Africa. Inside them there were no windows and no lights. By day the sun beat on the metal until the air inside was baking hot. At night the metal turned cold, and the prisoners shivered in the dark.
+
+One of the prisoners was a young woman named Helen Berhane. She was a gospel singer, and she had been arrested in May 2004, soon after she released a recording of Christian songs. Her church had been closed by the government. She had recorded the songs, she later said, so that believers who could no longer meet could at least listen to worship at home.
+
+Helen has told her story in public many times since then: in interviews with the BBC and others, in churches and conferences, and in her book *Song of the Nightingale* (2009). In this chapter we retell it in our own words, from what she herself has said.
+
+Life in the container was hard. There was little food, and what there was had little goodness in it. There was no toilet inside; the prisoners were taken out to a patch of ground in full view of the guards. Helen and the women held with her had no blankets for the cold nights.
+
+Again and again, she said, she was offered a way out. If she would sign a paper promising to give up her faith and her preaching, she could go home. Each time she refused.
+
+So what could the women do in the dark? Helen remembered telling the others that the one thing left to them was to sing. They would worship God, because He had given them life. So they sang. As she told it, they thanked God for the cold, for the toilet, for everything. The guards were shocked to hear singing coming from inside a metal box. They opened the container and beat the women for it.
+
+But Helen kept singing. She later told the BBC that when she sang, it was as if the Holy Spirit covered all her pain. She also prayed for her guards, and she began to write notes to them, urging them to follow Jesus. When this was discovered, she was beaten so badly that her body was covered with bruises. The guards ordered her to stop saying the name of Jesus. She told them she could not. He was her life.
+
+### Who she is
+
+Helen was born in Eritrea in the 1970s. She has said that she came to faith in Jesus as a girl of about eight, at a time when other members of her family were in prison for political reasons. She loved to sing, and as a teenager she began writing her own worship songs. As a young woman she preached in the streets.
+
+Eritrea became independent in 1993 after a long war. In 2002 the government declared that only four religious bodies were allowed: the Eritrean Orthodox Church, the Catholic Church, the Evangelical Lutheran Church and Sunni Islam. Other churches, including the small Pentecostal church Helen belonged to, were closed. Helen was arrested more than once for preaching before her long imprisonment began.
+
+She was held for about two and a half years, much of that time in the containers. By the fall of 2006 the beatings had damaged her legs so badly that she could not walk. She was taken to a hospital in Asmara, where she was seen in a wheelchair, and at the end of October 2006 she was released. She later said, in effect, that the prison authorities did not want her to die in their hands, so they sent her home to die.
+
+She did not die. When she was harassed again, she left for neighboring Sudan, and in 2007 she was granted asylum in Denmark. There she received medical care and made a new home, and she has gone on singing and telling her story. Many Christians around the world had prayed for her release for two years.
+
+### Singing in the dark
+
+Helen's songs in the container remind us of another prison long ago. Paul and Silas were beaten and locked in the stocks in Philippi. "At midnight, as Paul and Silas prayed, they sang praises to God, and the prisoners listened" (Acts 16:25).
+
+F. F. Bosworth, an American evangelist of the early twentieth century, put it boldly:
+
+> "Paul and Silas sang praises at midnight with their backs bleeding and their feet in the stocks, and God sang bass with an earthquake, which set them free."
+> F. F. Bosworth, *Christ the Healer*
+
+For Helen there was no earthquake. The doors of the container stayed locked. But her singing was not wasted. It was a prayer. It said to God, and to everyone listening in the dark, that He was still worthy of praise. And it kept her own soul alive.
+
+Helen has said that for her, singing is like going to war. It gives her strength. That is an old truth. Many of the psalms were written by people in danger, and they turn from fear to praise in the middle of the trouble. When we cannot find words to pray, a song we know by heart can carry our prayer for us.
+
+### Remember the prisoners
+
+The letter to the Hebrews was written to believers who knew about prison. Some of them had been jailed, and others had stood by them. "You shared in the suffering of those in prison," the writer reminds them (Hebrews 10:34). Now he tells them not to forget.
+
+Notice two phrases in our key verse. First, "as if you were in chains alongside them." We are to pray for prisoners as though their chains were on our own wrists. Second, "since you also live in a body." The writer is not speaking only of spiritual suffering. Prisoners feel hunger, cold, heat and blows in their bodies, just as we would. Helen's legs were badly damaged. When we pray for persecuted believers, we should pray for their bodies too: for food, for warmth, for healing, for medicine, and for release.
+
+Human rights groups report that many Christians are still held in Eritrea, some for many years, without charge or trial. Helen has often spoken for them in public.
+
+### Three key insights
+
+1. **Praise sung in a dark place can be the prayer that keeps a soul alive.** Helen and the other women had nothing left but their voices. Their songs did not open the container, but they lifted their hearts to God and declared that He was still good.
+2. **When we are pressed to deny Christ, prayer gives us strength to say no again tomorrow.** Helen was offered freedom more than once if she would sign away her faith. She did not refuse only once; she refused again and again, and prayer carried her through each day.
+3. **Remembering prisoners means praying as if their chains were on our own wrists.** Hebrews calls us to feel what persecuted believers feel, in body as well as in spirit, and to carry their needs to God as if they were our own.
+
+### For us today
+
+Helen has said, in effect, that if she could sing in prison, we should think how much we can do for God's glory with our freedom. That is a challenge to every believer who is free to pray, sing and read the Bible without fear.
+
+Some readers of this book live in countries where believers are in prison now. If you are one of them, Helen's story is for you. God has not forgotten you. Your songs in the dark are heard in heaven. Brothers and sisters around the world are praying for you, even if you never learn their names.
+
+For the rest of us, Hebrews 13:3 is a command, not a suggestion. A family in Nairobi can pray each evening for one prisoner. A church in São Paulo or Seoul can set aside one Sunday a year to pray for the persecuted church. A student in Manila can learn the name of one country where believers suffer and pray for it every week. Several Christian organizations publish lists of prisoners and simple prayer guides, so that ordinary believers can pray by name.
+
+And all of us can learn to sing in our own dark places: in sickness, in grief, in fear. Helen's advice, as she told the BBC, was to trust God and worship Him in the storm.
+
+### Try this
+
+This week, remember those in prison as if you were there with them.
+
+- **Pray for one country.** Choose one country where Christians are imprisoned for their faith, and pray for its believers each day.
+- **Pray for their bodies.** Ask God to give persecuted prisoners food, warmth, health and courage.
+- **Pray for the guards.** Like Helen, pray that those who hold believers in prison will come to know Jesus.
+- **Sing one song.** When you feel afraid or alone, sing or say a hymn or psalm you know by heart, as a prayer to God.
+
+### A closing prayer
+
+Lord Jesus, You were bound and beaten for us, and You know the suffering of every prisoner. Thank You for Helen Berhane, who sang Your praise in a metal container and would not stop saying Your name. Keep in Your care all who are in prison for You today. Give them warmth in the cold and strength in the heat, food for their bodies and courage for their hearts. Comfort their families. Soften the hearts of their guards and rulers. Teach me to remember them as if I were in chains with them. And when my own night comes, give me a song. Amen.
+
+### Questions for reflection
+
+- Why do you think singing gave Helen strength in the container? Has a song ever helped you to pray in a hard time?
+- What does it mean to remember prisoners "as if you were in chains alongside them"? How might it change the way you pray?
+- Helen asked what free believers will do with their freedom. What is one thing you could do this month for the persecuted church?
+
+### Read more on Ochorus
+
+- Ochorus Originals, *Devoted to Prayer*, especially "Songs at Midnight"
+- F. F. Bosworth, *Christ the Healer*, especially "How to Appropriate the Redemptive and Covenant Blessing of Bodily Healing"
+- Ochorus Originals, *Faithful unto Death*, especially "Prayer in a Prison Cell"
+
+---
+
+## Not Bowing to the Image
+
+> "If it comes to that, our God whom we serve is able to rescue us from the blazing furnace, and He will rescue us from your power, O king. But even if He does not, you must know, O king, that we will not serve your gods, nor will we worship the gold statue you have set up." (Daniel 3:17-18)
+
+In December 1993 a Christian prisoner stood trial before an Islamic court in Sari, a town in the north of Iran, near the Caspian Sea. His name was Mehdi Dibaj. He was nearly sixty years old. He had been in prison since 1983, and for two of those years he had been kept alone in a dark cell about one meter across. The charge against him was apostasy: he had been born into a Muslim family and had become a follower of Jesus Christ. Under the law as the court applied it, the punishment was death.
+
+Dibaj wrote out his defense for the court. Copies were carried out of the country, and on 18 January 1994 the London newspaper *The Times* printed it in place of a regular column. Here we retell what he said in our own words.
+
+He told the court plainly that he was a Christian: a sinner who believed that Jesus had died for his sins and had risen from the dead. The court wanted him to return to Islam. But from the arms of his God, he asked, where could he return to? He said he would rather have the whole world against him and know that Almighty God was with him.
+
+Then he spoke of his years in prison. The God of Daniel, he said, who protected His friends in the fiery furnace, had protected him for nine years. All the bad things that had happened had turned out for his good, and he was full of joy and thanks. God had freed him from all his other responsibilities, so that he could spend his time in prayer and in the study of God's word. He ended by saying that he was not only content to be in prison for the honor of Jesus' name, but ready to give his life for Him. And he blessed the court.
+
+The court sentenced him to death.
+
+Then something unexpected happened. Dibaj's friend, Bishop Haik Hovsepian-Mehr, told the world. Churches and Christians in many countries prayed and wrote letters. On 16 January 1994, Dibaj was released, though the sentence was never lifted. Three days later, Bishop Haik disappeared on the streets of Tehran. Eleven days later his family learned that he had been killed.
+
+At the bishop's funeral, Dibaj is reported to have said that he should have died, not his brother Haik. Five months later, on 24 June 1994, Dibaj himself disappeared. His body was found in a park in Tehran in early July.
+
+### Who they were
+
+Haik Hovsepian-Mehr was born in Tehran in 1945 into an Armenian family. Iran's Armenian churches are ancient and recognized by the state. As a teenager Haik joined a Pentecostal church, the Assemblies of God, and became a pastor while still young. For many years he led a church in Gorgan, in the north. Later he became the leader of the country's Assemblies of God churches and of the council of Iran's Protestant ministers.
+
+His churches worshiped in Persian, the language of most Iranians, and many of their members had come to Christ from Muslim families. This drew the anger of the authorities. In 1993 the Protestant leaders were pressed to sign a statement promising not to admit Muslims or converts from Islam to their churches. Haik was one of only two who refused. In accounts of his life he is remembered as saying that he and his pastors would never bow to such unjust demands, and that their churches were open to anyone who wanted to come in.
+
+Mehdi Dibaj was born in 1935. As a young man he came to faith in Christ, and he served for many years as an evangelist. He was arrested in 1983 and held for years without trial before the court in Sari finally heard his case.
+
+The government denied any part in the killings and blamed an opposition group, but many Iranian Christians and human rights observers did not believe it. Another pastor was killed that same year.
+
+### "Even if He does not"
+
+In the story of Shadrach, Meshach and Abednego, King Nebuchadnezzar of Babylon set up a huge gold statue and commanded everyone to bow down to it when the music played. "And what god is there who can rescue you from my power?" he asked the three young men (Daniel 3:15).
+
+Their answer had two parts. First, God is able to rescue us, and He will. Second, even if He does not, we will not bow.
+
+That second part is where faith is tested. It is easy to trust God when we expect Him to rescue us. It is harder to say, "Even if You do not, I am still Yours." Mehdi Dibaj said much the same before his judges. He believed the God of Daniel had kept him alive, and he was also ready to die.
+
+God did rescue the three young men. When the king looked into the furnace, he saw "four men, untied, walking around in the fire, and they are unharmed! And the fourth looks like a son of the gods" (Daniel 3:25). Many Christians have seen in that fourth figure a picture of Christ, who walks with His people in the fire. For Dibaj and Haik there was no rescue from death. But the One who walked in the furnace walked with them, too.
+
+The English bishop J. C. Ryle, writing in the 1800s, knew how such a fire tests us:
+
+> "We never perhaps know the weakness of our faith until we are placed in the furnace of trial and anxiety."
+> J. C. Ryle, *Expository Thoughts on Matthew*
+
+Ryle went on to call that believer blessed who finds that his faith can stand the fire, and who can say with Job that he will trust God even if God takes his life. That is the faith of "even if He does not."
+
+### The church that did not disappear
+
+Those who killed the two pastors may have hoped to silence the church. It did not happen. It is often said that in 1979 there were only a few hundred Iranian Christians from Muslim families. Today no one knows the true number, and estimates vary widely, but almost everyone who studies the matter agrees that it has grown greatly.
+
+It has not been easy. Many believers have been arrested and imprisoned, and many have had to leave the country. We will not name them or describe how they meet, because many of them still face danger. But we can say this much: the church in Iran is a praying church. Like the believers in Jerusalem after Peter and John were threatened, they ask God not for safety first, but for courage: "Let Your slaves speak Your word with complete boldness" (Acts 4:29).
+
+### Three key insights
+
+1. **Faith trusts that God is able to rescue, and stays faithful even if He does not.** The three young men were sure of God's power but not of His plan. Their loyalty did not depend on the outcome, and neither did Mehdi Dibaj's.
+2. **Years stolen by a prison cell can become years given to prayer and to God's word.** Dibaj's jailers took nine years from him. He said that God had used them to free him for prayer and for His word, and he came out full of thanks.
+3. **Standing with a suffering brother, in prayer and in public, is love that may cost us dearly.** Haik Hovsepian-Mehr spoke up for his friend and called the world to pray. It cost him his life, but his love helped to bring Dibaj out of prison.
+
+### For us today
+
+Some who read this chapter live in Iran or in nearby lands where turning to Christ can cost a person his family, his work or his freedom. If that is you, take heart. The God of Daniel has not changed. The fourth man is still in the fire. And you are not alone: believers around the world pray for you, even if they can never know your name.
+
+For the rest of us, this story asks how firmly we hold our faith when it costs us nothing. Each of us is asked, in small ways, to bow to smaller images: money, comfort, the approval of others.
+
+It also calls us to pray for Iran. Pray for believers who meet in secret, for those in prison, for grieving families, and for Iranian Christians who live as refugees in other lands. And pray for those who hold power in Iran, as the Bible tells us to pray for all rulers, that they may come to know the God of Daniel.
+
+### Try this
+
+This week, pray with the courage of Daniel's friends.
+
+- **Pray Daniel 3:17-18.** Read the verses aloud each day, and tell God honestly where you find "even if He does not" hard to say.
+- **Name your images.** Ask God to show you anything you are tempted to bow to in place of Him, and turn from it.
+- **Pray for Iran.** Each day pray for the house churches of Iran, for Christian prisoners there, and for their families.
+- **Pray for boldness.** Use the prayer of Acts 4:29 for yourself and for believers who are under threat.
+
+### A closing prayer
+
+God of Daniel, You are able to rescue Your people from the blazing furnace, and You walk with them in the fire. Thank You for Mehdi Dibaj and Haik Hovsepian-Mehr, who would not bow, and who loved one another to the end. Give courage to the believers of Iran. Keep them faithful in prison and in hiding, and let Your word run free. Comfort the families who mourn. Show me the images I am tempted to bow to, and give me grace to say, "Even if You do not rescue me, I will still serve You." In the name of Jesus Christ, who was faithful to death. Amen.
+
+### Questions for reflection
+
+- What is the difference between trusting that God will rescue us and trusting God even if He does not?
+- Mehdi Dibaj said that God used his years in prison for prayer and the study of His word. What hard season in your life could God use in the same way?
+- Haik Hovsepian-Mehr spoke up for his friend at great cost. Who needs you to stand with them in prayer, or in public, today?
+
+### Read more on Ochorus
+
+- J. C. Ryle, *Expository Thoughts on Matthew*, especially "Matthew 8"
+- E. M. Bounds, *Prayer and Praying Men*, especially "Daniel, the Praying Captive"
+- Ochorus Originals, *Faithful unto Death*, especially "A Prayer for Rulers Who Persecute"
+
+---
+
+## Awe and Intimacy
+
+> "Your loyal love is worth more than life, so my lips will sing Your praise." (Psalm 63:3)
+
+In the spring of 2020 New York City was almost silent. The COVID-19 pandemic had closed its offices, theaters and churches. That spring a sixty-nine-year-old pastor named Tim Keller learned that he had pancreatic cancer, and that it had already spread. It is one of the deadliest forms of cancer. His doctors told him there was no cure.
+
+Keller had spent most of his life helping people think about God and death. Now it was his turn. In the months that followed, he spoke about it openly, in interviews and articles, and what he said surprised many people.
+
+He did not say it was easy, and he spoke honestly about fear. But in a 2021 article in *The Atlantic* he wrote that he and Kathy would never want to go back to the spiritual life they had before the cancer. He had thought, he said, that he already had a good prayer life. Now he had broken through into something deeper, and he realized how thin his prayers had been before.
+
+He prayed regularly to be healed, he said, even though his doctors had told him there was no cure. God could do it, he believed, or He might not, and either way God knew best. He had walked with God long enough to see that things he once thought were terrible had turned out for his good.
+
+And he spoke often of one line in the Psalms. Moses prays in Psalm 90, "Fill us with Your loyal love at daybreak, and we will shout for joy and rejoice as long as we live" (Psalm 90:14). For years, Keller said, he had told people that God's love could satisfy them. Now, morning by morning, he and Kathy were finding it true.
+
+He lived for three more years, far longer than most people with his illness. He died at home in Manhattan on 19 May 2023, at the age of seventy-two.
+
+### Who he was
+
+Timothy Keller was born in 1950 in Allentown, Pennsylvania. He studied at Bucknell University and at two seminaries, and was ordained in the Presbyterian Church in America. For nine years he was the pastor of a small church in Hopewell, Virginia.
+
+In 1989 his denomination asked him to start a new church in the middle of Manhattan, a place many thought was too proud and too busy for the gospel. Redeemer Presbyterian Church began with a small group and grew to several thousand people every Sunday, many of them young professionals. Keller preached carefully and warmly, taking the doubts of his hearers seriously. Through a network called Redeemer City to City, he and his colleagues helped to train pastors and start churches in cities around the world, in Africa, Asia, Latin America and Europe. His books, including *The Reason for God* (2008), were read by believers and skeptics alike. In 2017 he stepped down as senior pastor to give more time to training others.
+
+### Discovering prayer
+
+In the opening pages of his book on prayer, Keller explains that he had to discover prayer in the second half of his adult life. In the fall of 1999 he taught a course on the Psalms, and he saw how far his own prayers fell short of what the Bible describes. Then came the dark weeks in New York after the attacks of 11 September 2001. Kathy was suffering from Crohn's disease, a painful illness of the gut. And in 2002 Keller himself was treated for thyroid cancer.
+
+In the middle of all this, Kathy asked him to do something they had never managed to do faithfully: to pray together every night. As he tells it, she gave him an illustration. Suppose a doctor told you that you would die unless you took a certain pill every night. Would you ever forget? Of course not. In the same way, she said, they could not survive what they were facing unless they prayed together. They both saw that she was right. From then on, he wrote, they prayed together almost every night, even if it meant praying by phone from opposite sides of the world.
+
+He also began to read the great teachers of prayer from the past: Augustine, Martin Luther, John Calvin and the English Puritan John Owen, among others. From Luther's letter to his barber, which we met in Volume 6, he learned to move from reading Scripture into meditation, and from meditation into prayer.
+
+### Awe and intimacy
+
+What Keller found in these old teachers became the subtitle of his 2014 book, *Prayer: Experiencing Awe and Intimacy with God*. Prayer, he taught, is our answer to the God who has spoken to us first in His word. And it needs two things that we often keep apart.
+
+The first is **awe**. God is holy, great and glorious. When Isaiah saw Him, he cried, "Woe to me! I am finished" (Isaiah 6:5). John Calvin made reverence the first rule of prayer:
+
+> "Let the first rule of right prayer then be, to have our heart and mind framed as becomes those who are entering into converse with God."
+> John Calvin, *Institutes of the Christian Religion*
+
+The second is **intimacy**. Through Jesus, this great God has become our Father. "You received the Spirit of adoption as children, and in the Spirit we call out, 'Abba, Father!'" (Romans 8:15). John Owen pictured a believer who has tasted the Father's love, speaking in the middle of trouble:
+
+> "I am poor in this world; but I have a rich inheritance in the love of my Father. I am straitened in all things; but there is bread enough in my Father's house. I mourn in secret under the power of my lusts and sin, where no eyes see me; but the Father sees me, and is full of compassion. With a sense of his kindness, which is better than life, I rejoice in tribulation, glory in affliction, triumph as a conqueror."
+> John Owen, *Communion with God*
+
+*Straitened* means pressed in, short of everything. Owen was echoing our key verse. In Volume 8 we saw Robert Murray M'Cheyne thirsting for God with the first verse of Psalm 63, in "a dry and worn-out land with no water" (Psalm 63:1). Two verses later David gives the reason for his thirst: "Your loyal love is worth more than life." The God he longs for is so great that David must praise Him, and so near that David can say, "God, You are my God."
+
+Awe without intimacy makes prayer cold and fearful. Intimacy without awe makes it small and casual. Keller believed that we need both, and that both come from knowing God as He shows Himself in Scripture.
+
+### Three key insights
+
+1. **True prayer holds together awe before a great King and the closeness of a child with a Father.** Isaiah trembled before the Holy One, and Paul taught us to cry "Abba." Keller learned from the old teachers that these are not two kinds of prayer but two sides of the same prayer.
+2. **It is never too late to discover prayer, and hard seasons are often where we find it.** Keller had been a pastor for decades when he began to learn to pray more deeply. Sickness, fear and a city in grief drove him to it, and a wife's simple request held him to it.
+3. **When life itself is slipping away, God's loyal love is still worth more than life.** David wrote Psalm 63 in the wilderness, and Keller prayed it in the shadow of death. Both found that God's love satisfies when everything else is being taken away.
+
+### For us today
+
+Keller learned to pray deeply only after decades of ministry. Few of us will lead a large church. But most of us know that we pray less than we should, and it is not too late to begin.
+
+A believer in Lagos or Lima, a nurse in Manila or a farmer in the hills of Ethiopia does not need Keller's learning to pray as he learned to pray. We need a Bible, a quiet few minutes and a heart that both bows before God and runs to Him as Father. A husband and wife in a small home can pray together each night, even briefly. A widow can pray alone, knowing the Father sees in secret. The sick can pray in a hospital bed, as Keller did, that God's loyal love would fill them at daybreak.
+
+This is the last chapter of this volume. We have followed the praying church through the last seventy years, from the forests of Ecuador to the prayer mountains of Korea, from Africa's all-night vigils to a shipping container in Eritrea and a courtroom in Iran. In Volume 11, *Golden Bowls*, we will step back to see the whole cloud of witnesses together, and to ask what your own place is in that great prayer meeting.
+
+### Try this
+
+This week, practice awe and intimacy in prayer.
+
+- **Pray Psalm 63:1-8.** Read it slowly each morning, and turn each line into your own prayer.
+- **Begin with awe.** Before you ask for anything, spend a few minutes praising God for who He is: holy, great, faithful.
+- **Then speak as a child.** Call Him Father, and tell Him honestly what you fear and what you need.
+- **Pray with someone.** Ask your husband or wife, or a friend, to pray with you each night this week, even for five minutes.
+
+### A closing prayer
+
+Holy God, You are high and lifted up, and I bow before You. And through Jesus You have made me Your child, so I come to You as my Father. Thank You for Tim Keller, who discovered prayer in hard years and found Your love sweeter as death came near. Forgive me for praying so little and so coldly. Give me awe before Your greatness and closeness to Your heart. Fill me with Your loyal love at daybreak. Teach me that Your love is worth more than life, and let my lips sing Your praise all my days. In Jesus' name. Amen.
+
+### Questions for reflection
+
+- Which comes more naturally to you in prayer: awe before God's greatness, or closeness to Him as Father? How could you grow in the other?
+- Keller learned to pray more deeply through sickness and fear. What hard season might God be using to teach you to pray?
+- What would it mean for you to say, "Your loyal love is worth more than life"?
+
+### Read more on Ochorus
+
+- John Owen, *Communion with God*, especially "Of particular communion with the Holy Ghost"
+- Ochorus Originals, *The Key Teachings of John Calvin*, especially "The Chief Exercise of Faith"
+- Ochorus Originals, *A Mighty Fortress*, especially "A Simple Way to Pray"
+
+---
+
+## Conclusion: Passing the Torch
+
+> "Tell the nations of His glory, and all the peoples of the wonders He has done." (Psalm 96:3)
+
+When this series began, we were listening to Abraham pleading for a city under the stars of Canaan. Now we have come to our own day: to Christians praying through the night in Lagos and Nairobi, on mountainsides in Korea, in prayer rooms in English towns, in a church in Brooklyn, in homes in China and Iran, and in a shipping container in the desert of Eritrea.
+
+The prayers in this book were prayed in more languages than any book before it. That is the great change of our time. The church that once lived mostly in one corner of the world now lives in every corner of it. The psalmist told God's people to "tell the nations of His glory." In our own day, the nations are telling it back, and praying it, in their own tongues.
+
+### What the witnesses taught us
+
+Here, in a few lines, is some of what the witnesses of this book taught us about prayer:
+
+- When we pray for the nations, God may ask us to be part of His answer (chapter 1, Jim and Elisabeth Elliot).
+- God often begins to answer our prayers before we pray them (chapter 2, Helen Roseveare).
+- The God who opens blind eyes can also close watching eyes, and we may ask Him to protect His word (chapter 3, Brother Andrew).
+- Unity among Christians comes down from God, like dew, and we receive it first in prayer (chapter 4, Brother Roger and Taizé).
+- Prayer clears the eyes of the heart, so that we can see Christ in the people the world passes by (chapter 5, Mother Teresa).
+- Our help comes from the Lord who made the mountains, not from the mountains themselves (chapter 6, Choi Ja-shil).
+- To bless a persecutor is to ask God for their greatest good, and the greatest good of all is repentance (chapter 7, Festo Kivengere and Janani Luwum).
+- God does not need long or polished prayers, and short, simple prayers from ordinary believers are welcome before Him (chapter 8, Evelyn Christenson).
+- Pressure on every side does not mean that God has deserted us (chapter 9, Samuel Lamb).
+- The fast God chooses always opens our hands to the hungry and the oppressed (chapter 10, Derek Prince and Bill Bright).
+- Hearing the Shepherd's voice begins with belonging to the Shepherd (chapter 11, Loren Cunningham).
+- The prayer meeting shows the true health of a church more clearly than the Sunday crowd (chapter 12, Jim Cymbala).
+- Prayer for the world becomes faithful when it learns the names of the peoples in it (chapter 13, Luis Bush and the 10/40 Window).
+- To pray for a city is to want good for all its people, not only growth for our own church (chapter 14, Argentina and Almolonga).
+- A new season of prayer often begins with the honest confession that we do not pray as we should (chapter 15, 24-7 Prayer).
+- Prayer for God's kingdom to come over a land rightly begins with repentance among His own people (chapter 16, the Global Day of Prayer and Thy Kingdom Come).
+- The hours we would give to sleep can become a gift we bring to God (chapter 17, Africa's all-night vigils).
+- Praise sung in a dark place can be the prayer that keeps a soul alive (chapter 18, Helen Berhane).
+- Faith trusts that God is able to rescue, and stays faithful even if He does not (chapter 19, Iran's house churches).
+- True prayer holds together awe before a great King and the closeness of a child with a Father (chapter 20, Tim Keller).
+
+You will find every one of these lessons gathered by theme in Appendix 1, and every Scripture in this book listed in Bible order in Appendix 2.
+
+### Every tribe and tongue
+
+The title of this book comes from the vision John saw of a crowd that no one could count, "from every nation and from all tribes and peoples and languages," standing before the throne of God and the Lamb (Revelation 7:9).
+
+We are closer to that vision than any generation before us. But the people in this book teach us not to be proud of numbers. Some of the most important prayers in this book were prayed by very few people: two church leaders in Uganda who knew they might be killed, an orphan girl in Congo praying with a missionary doctor for a newborn baby, a woman in a metal box in the desert, a small group of women in Minnesota trying out what it means to pray together. God's kingdom grows the way Jesus said it would, like a seed in the ground, quietly and often unseen.
+
+They also teach us that the church of every tribe and tongue is one family. A believer in Iran is your brother or sister. A pastor in prison in China is part of your own body. When one part suffers, the whole body suffers. When you pray for them, you are not doing them a favor. You are doing what members of one family do.
+
+### The torch is passed
+
+This is the last volume of the series that tells a story. There is one more volume to come, and it is about you.
+
+In **Volume 11, *Golden Bowls***, we will step back and look at the whole cloud of witnesses together, from Abraham to today. We will ask what they agree on, and what they teach about praying the Scriptures, about fasting, about praying alone and with others, about waiting, about unanswered prayer, about praying for the nations and for revival, about prayer in the home, and about building a rhythm of prayer for your own life. And we will end where the Bible ends, with the prayer of the whole church: "Come, Lord Jesus."
+
+The witnesses in this volume are still running their race. Some of them are reading the same Bible you read today, in a prison, a refugee camp or a crowded city. They are passing the torch to you even now.
+
+### Your turn
+
+The witnesses of this book now pass the torch to you.
+
+So ask God for the nations, and be willing to go if He sends you. Trust Him to answer before you call. Pray at closed doors. Pray with believers of other churches. Let prayer make your heart clean, and then serve the poor. Climb a hill, if you can, to be alone with God. Bless those who wrong you. Pray with a few other women or men, and expect God to answer. Remember those in prison as if you were in prison with them. Fast, wisely, when God calls you to it. Listen for His voice and test what you hear. Make your church a house of prayer. Pray for the least-reached peoples of the world, and for the peace of your own city. Keep a fire of prayer burning. Pray "Your kingdom come" with the whole church. Stay awake through a night of prayer at least once. Refuse to bow to anything but God. And let your prayer grow into both awe and intimacy with the God who calls you His child.
+
+### A closing prayer
+
+Lord of the nations, thank You for the praying church of our own time: for Jim and Elisabeth Elliot, Helen Roseveare and Brother Andrew, for the brothers of Taizé and the sisters of Calcutta, for the praying mountains of Korea, for Festo Kivengere and Janani Luwum, for Evelyn Christenson and the women who prayed with her, for Samuel Lamb and the house churches of China, for all who fast and listen and pray for their cities, for the prayer rooms that never close, for the all-night vigils of Africa, for Helen Berhane and the believers of Iran, and for Tim Keller. Remember Your people who are in prison and in danger today. Make me one with them. Let me tell the nations of Your glory. And gather people from every tribe and tongue around Your throne, until the whole earth sings Your praise. Amen.

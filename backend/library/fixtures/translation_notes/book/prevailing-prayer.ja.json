@@ -1,0 +1,1364 @@
+{
+    "kind": "book",
+    "slug": "prevailing-prayer",
+    "language": "ja",
+    "job_issue": 8107,
+    "pull_request": 8327,
+    "references": [
+        {
+            "reference": "James 5:17b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 1
+        },
+        {
+            "reference": "James 5:17b-18",
+            "status": "self_rendered",
+            "block_index": 0
+        },
+        {
+            "reference": "Ephesians 2:1",
+            "status": "self_rendered",
+            "block_index": 3
+        },
+        {
+            "reference": "Job 42:10",
+            "status": "self_rendered",
+            "block_index": 6
+        },
+        {
+            "reference": "Daniel 9:23",
+            "status": "self_rendered",
+            "block_index": 7
+        },
+        {
+            "reference": "Daniel 9:26",
+            "status": "self_rendered",
+            "block_index": 7
+        },
+        {
+            "reference": "Acts 11:14",
+            "status": "self_rendered",
+            "block_index": 7
+        },
+        {
+            "reference": "Acts 12:5",
+            "status": "self_rendered",
+            "block_index": 7
+        },
+        {
+            "reference": "Acts 16:30",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 9
+        },
+        {
+            "reference": "Acts 7:56",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "Luke 3:21-22",
+            "status": "self_rendered",
+            "block_index": 11
+        },
+        {
+            "reference": "Luke 9:29",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 11
+        },
+        {
+            "reference": "Luke 6:12",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 12
+        },
+        {
+            "reference": "John 11:41b-42",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 13
+        },
+        {
+            "reference": "John 11:41a",
+            "status": "self_rendered",
+            "block_index": 13
+        },
+        {
+            "reference": "John 12:27",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 14
+        },
+        {
+            "reference": "John 12:28a",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 14
+        },
+        {
+            "reference": "John 12:28b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 14
+        },
+        {
+            "reference": "Matthew 26:15",
+            "status": "self_rendered",
+            "block_index": 14
+        },
+        {
+            "reference": "Matthew 26:56",
+            "status": "self_rendered",
+            "block_index": 14
+        },
+        {
+            "reference": "Matthew 26:38",
+            "status": "self_rendered",
+            "block_index": 14
+        },
+        {
+            "reference": "Luke 22:43",
+            "status": "self_rendered",
+            "block_index": 14
+        },
+        {
+            "reference": "Luke 22:41",
+            "status": "self_rendered",
+            "block_index": 15
+        },
+        {
+            "reference": "Luke 11:1",
+            "status": "self_rendered",
+            "block_index": 16
+        },
+        {
+            "reference": "Luke 18:13",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 17
+        },
+        {
+            "reference": "Matthew 15:25",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 17
+        },
+        {
+            "reference": "Luke 23:42",
+            "status": "self_rendered",
+            "block_index": 17
+        },
+        {
+            "reference": "Matthew 14:30",
+            "status": "self_rendered",
+            "block_index": 17
+        },
+        {
+            "reference": "Luke 23:34a",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 19
+        },
+        {
+            "reference": "1 Samuel 17:37",
+            "status": "self_rendered",
+            "block_index": 20
+        },
+        {
+            "reference": "Acts 17:28",
+            "status": "self_rendered",
+            "block_index": 21
+        },
+        {
+            "reference": "Genesis 30:1",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 21
+        },
+        {
+            "reference": "Acts 16:25-26",
+            "status": "self_rendered",
+            "block_index": 9
+        },
+        {
+            "reference": "Exodus 34:29",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "Numbers 6:26",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "Genesis 28:20",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 1
+        },
+        {
+            "reference": "Daniel 9:3",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 2
+        },
+        {
+            "reference": "Daniel 9:4",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 2
+        },
+        {
+            "reference": "Isaiah 6:1",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 6
+        },
+        {
+            "reference": "Isaiah 6:2",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 6
+        },
+        {
+            "reference": "Isaiah 6:3",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 6
+        },
+        {
+            "reference": "Exodus 3:5",
+            "status": "self_rendered",
+            "block_index": 7
+        },
+        {
+            "reference": "Luke 5:8b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 7
+        },
+        {
+            "reference": "Job 40:3",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "Job 40:4",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "Job 29:15",
+            "status": "self_rendered",
+            "block_index": 9
+        },
+        {
+            "reference": "Job 38:3",
+            "status": "self_rendered",
+            "block_index": 9
+        },
+        {
+            "reference": "Job 42:5",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 9
+        },
+        {
+            "reference": "Job 42:6",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 9
+        },
+        {
+            "reference": "Matthew 8:8",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 10
+        },
+        {
+            "reference": "Matthew 9:18",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 10
+        },
+        {
+            "reference": "Mark 1:40",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 10
+        },
+        {
+            "reference": "Mark 7:25",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 10
+        },
+        {
+            "reference": "Luke 5:12",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 10
+        },
+        {
+            "reference": "John 1:14",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 10
+        },
+        {
+            "reference": "Ecclesiastes 5:1",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 13
+        },
+        {
+            "reference": "Ecclesiastes 5:2",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 13
+        },
+        {
+            "reference": "Matthew 6:9b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 14
+        },
+        {
+            "reference": "Hebrews 12:28b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 15
+        },
+        {
+            "reference": "Hebrews 12:29",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 15
+        },
+        {
+            "reference": "Exodus 15:11",
+            "status": "self_rendered",
+            "block_index": 4
+        },
+        {
+            "reference": "Daniel 9:5-6",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Isaiah 6:5a",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 2
+        },
+        {
+            "reference": "Daniel 9:20-22",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "Isaiah 6:5",
+            "status": "self_rendered",
+            "block_index": 2
+        },
+        {
+            "reference": "Isaiah 6:6-7",
+            "status": "self_rendered",
+            "block_index": 6
+        },
+        {
+            "reference": "2 Samuel 12:13a",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 7
+        },
+        {
+            "reference": "Psalms 32:5",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 7
+        },
+        {
+            "reference": "Psalms 51:3",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 7
+        },
+        {
+            "reference": "Psalms 51:4a",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 7
+        },
+        {
+            "reference": "Psalms 130:4",
+            "status": "self_rendered",
+            "block_index": 9
+        },
+        {
+            "reference": "Exodus 8:8",
+            "status": "self_rendered",
+            "block_index": 14
+        },
+        {
+            "reference": "Luke 18:11",
+            "status": "self_rendered",
+            "block_index": 14
+        },
+        {
+            "reference": "Luke 18:13b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 14
+        },
+        {
+            "reference": "Matthew 5:29-30",
+            "status": "self_rendered",
+            "block_index": 15
+        },
+        {
+            "reference": "Isaiah 59:1",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 16
+        },
+        {
+            "reference": "Isaiah 59:2-3",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 16
+        },
+        {
+            "reference": "Jeremiah 5:25b",
+            "status": "self_rendered",
+            "block_index": 16
+        },
+        {
+            "reference": "Psalms 66:18",
+            "status": "self_rendered",
+            "block_index": 17
+        },
+        {
+            "reference": "Isaiah 1:10-13",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 19
+        },
+        {
+            "reference": "Isaiah 1:13b",
+            "status": "self_rendered",
+            "block_index": 20
+        },
+        {
+            "reference": "Isaiah 1:14-18",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 21
+        },
+        {
+            "reference": "Proverbs 28:9",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 22
+        },
+        {
+            "reference": "Psalms 139:23-24",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 23
+        },
+        {
+            "reference": "Psalms 139:23",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Psalms 139:23-24",
+            "status": "self_rendered",
+            "block_index": 32
+        },
+        {
+            "reference": "Deuteronomy 32:29",
+            "status": "self_rendered",
+            "block_index": 26
+        },
+        {
+            "reference": "Psalms 4:4",
+            "status": "self_rendered",
+            "block_index": 26
+        },
+        {
+            "reference": "1 Kings 19:10",
+            "status": "self_rendered",
+            "block_index": 28
+        },
+        {
+            "reference": "Mark 9:33-37",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 29
+        },
+        {
+            "reference": "Mark 10:35-45",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 30
+        },
+        {
+            "reference": "1 John 3:20-22",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 34
+        },
+        {
+            "reference": "Luke 19:8b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 1
+        },
+        {
+            "reference": "Romans 12:2a",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 3
+        },
+        {
+            "reference": "1 Corinthians 10:24",
+            "status": "self_rendered",
+            "block_index": 3
+        },
+        {
+            "reference": "Exodus 22:1",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "Exodus 22:5",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "Exodus 22:6",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "Leviticus 6:2",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 7
+        },
+        {
+            "reference": "Leviticus 6:3",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 7
+        },
+        {
+            "reference": "Leviticus 6:4",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 7
+        },
+        {
+            "reference": "Leviticus 6:5",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 7
+        },
+        {
+            "reference": "Numbers 5:5",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "Numbers 5:7",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "Numbers 5:8",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "Numbers 5:6",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "Isaiah 58:4",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 10
+        },
+        {
+            "reference": "Isaiah 58:5",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 10
+        },
+        {
+            "reference": "Isaiah 58:6",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 10
+        },
+        {
+            "reference": "Isaiah 58:7",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 10
+        },
+        {
+            "reference": "Isaiah 58:8",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 10
+        },
+        {
+            "reference": "Isaiah 58:9a",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 10
+        },
+        {
+            "reference": "Isaiah 61:8",
+            "status": "self_rendered",
+            "block_index": 11
+        },
+        {
+            "reference": "Matthew 3:8",
+            "status": "self_rendered",
+            "block_index": 14
+        },
+        {
+            "reference": "Psalms 35:13",
+            "status": "self_rendered",
+            "block_index": 15
+        },
+        {
+            "reference": "2 Corinthians 12:2-3",
+            "status": "self_rendered",
+            "block_index": 16
+        },
+        {
+            "reference": "Luke 7:50",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "1 Thessalonians 5:18a",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 3
+        },
+        {
+            "reference": "Psalms 33:1b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 3
+        },
+        {
+            "reference": "Isaiah 63:8",
+            "status": "self_rendered",
+            "block_index": 3
+        },
+        {
+            "reference": "Psalms 36:8b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 4
+        },
+        {
+            "reference": "Psalms 149:1b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "Psalms 149:2b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "Psalms 149:5",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "Psalms 149:6a",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "Psalms 149:1a",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "2 Chronicles 5:11-14",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 6
+        },
+        {
+            "reference": "2 Chronicles 20:20-22",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "Job 1:21b",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "Psalms 50:15",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 10
+        },
+        {
+            "reference": "Romans 8:28",
+            "status": "self_rendered",
+            "block_index": 11
+        },
+        {
+            "reference": "Philippians 4:6",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 12
+        },
+        {
+            "reference": "Colossians 1:3",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 12
+        },
+        {
+            "reference": "Ephesians 5:2",
+            "status": "self_rendered",
+            "block_index": 13
+        },
+        {
+            "reference": "Hebrews 13:15",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 14
+        },
+        {
+            "reference": "Matthew 6:9",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 1
+        },
+        {
+            "reference": "Romans 8:14",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 1
+        },
+        {
+            "reference": "1 John 3:10a",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 1
+        },
+        {
+            "reference": "Matthew 6:10",
+            "status": "self_rendered",
+            "block_index": 3
+        },
+        {
+            "reference": "Matthew 6:12",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 4
+        },
+        {
+            "reference": "Matthew 6:14-15",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "Hebrews 12:15",
+            "status": "self_rendered",
+            "block_index": 6
+        },
+        {
+            "reference": "Matthew 5:23-24",
+            "status": "self_rendered",
+            "block_index": 7
+        },
+        {
+            "reference": "1 Corinthians 9:26",
+            "status": "self_rendered",
+            "block_index": 12
+        },
+        {
+            "reference": "Jeremiah 31:34",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 19
+        },
+        {
+            "reference": "Ezekiel 18:22",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "Hebrews 10:17",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 19
+        },
+        {
+            "reference": "2 Peter 2:7",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 19
+        },
+        {
+            "reference": "Jeremiah 50:20",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 20
+        },
+        {
+            "reference": "Matthew 18:15",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 21
+        },
+        {
+            "reference": "Matthew 18:21b",
+            "status": "self_rendered",
+            "block_index": 21
+        },
+        {
+            "reference": "Matthew 18:22",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 21
+        },
+        {
+            "reference": "Psalms 32:1-5",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 22
+        },
+        {
+            "reference": "1 Corinthians 12:4",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "1 Corinthians 12:5",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "John 13:35",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 6
+        },
+        {
+            "reference": "1 Corinthians 1:10",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "1 Corinthians 1:11",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "1 Corinthians 1:12",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "1 Corinthians 1:13",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "1 Corinthians 1:12",
+            "status": "self_rendered",
+            "block_index": 9
+        },
+        {
+            "reference": "Jude 1:3",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "John 13:34a",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 12
+        },
+        {
+            "reference": "Genesis 50:17",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "John 17:21",
+            "status": "self_rendered",
+            "block_index": 15
+        },
+        {
+            "reference": "Acts 2:1",
+            "status": "self_rendered",
+            "block_index": 0
+        },
+        {
+            "reference": "James 1:5",
+            "status": "self_rendered",
+            "block_index": 0
+        },
+        {
+            "reference": "James 1:6a",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Mark 11:24",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Matthew 15:26",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 18
+        },
+        {
+            "reference": "Matthew 15:27",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 18
+        },
+        {
+            "reference": "Matthew 15:28a",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 18
+        },
+        {
+            "reference": "Luke 7:6-7",
+            "status": "self_rendered",
+            "block_index": 21
+        },
+        {
+            "reference": "Luke 7:9b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 21
+        },
+        {
+            "reference": "John 4:49",
+            "status": "self_rendered",
+            "block_index": 22
+        },
+        {
+            "reference": "John 4:52",
+            "status": "self_rendered",
+            "block_index": 22
+        },
+        {
+            "reference": "James 5:16b",
+            "status": "self_rendered",
+            "block_index": 13
+        },
+        {
+            "reference": "Acts 7:59",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 24
+        },
+        {
+            "reference": "John 20:29b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 26
+        },
+        {
+            "reference": "Isaiah 9:6",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 26
+        },
+        {
+            "reference": "1 John 5:4",
+            "status": "self_rendered",
+            "block_index": 26
+        },
+        {
+            "reference": "Matthew 21:19-22",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 29
+        },
+        {
+            "reference": "John 14:12-14",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 30
+        },
+        {
+            "reference": "John 15:7",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 30
+        },
+        {
+            "reference": "John 16:23b-24",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 30
+        },
+        {
+            "reference": "Mark 11:22",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 31
+        },
+        {
+            "reference": "Matthew 6:33",
+            "status": "self_rendered",
+            "block_index": 32
+        },
+        {
+            "reference": "John 16:24b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Luke 11:9b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 1
+        },
+        {
+            "reference": "Matthew 7:7",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 1
+        },
+        {
+            "reference": "Matthew 7:7b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 1
+        },
+        {
+            "reference": "Luke 18:39b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 9
+        },
+        {
+            "reference": "2 Thessalonians 3:1",
+            "status": "self_rendered",
+            "block_index": 16
+        },
+        {
+            "reference": "2 Samuel 7:27b",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "Philippians 3:14",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "Isaiah 62:7",
+            "status": "self_rendered",
+            "block_index": 18
+        },
+        {
+            "reference": "Luke 18:6",
+            "status": "self_rendered",
+            "block_index": 8
+        },
+        {
+            "reference": "Psalms 121:1",
+            "status": "self_rendered",
+            "block_index": 3
+        },
+        {
+            "reference": "Deuteronomy 3:25",
+            "status": "self_rendered",
+            "block_index": 6
+        },
+        {
+            "reference": "Deuteronomy 34:6",
+            "status": "self_rendered",
+            "block_index": 6
+        },
+        {
+            "reference": "Mark 9:7",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 7
+        },
+        {
+            "reference": "Matthew 11:26",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "1 Kings 19:4",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "2 Corinthians 12:7",
+            "status": "self_rendered",
+            "block_index": 11
+        },
+        {
+            "reference": "2 Corinthians 12:9",
+            "status": "self_rendered",
+            "block_index": 11
+        },
+        {
+            "reference": "Lamentations 3:25",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 15
+        },
+        {
+            "reference": "Lamentations 3:26",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 15
+        },
+        {
+            "reference": "Lamentations 3:27",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 15
+        },
+        {
+            "reference": "Lamentations 3:28",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 15
+        },
+        {
+            "reference": "Lamentations 3:29",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 15
+        },
+        {
+            "reference": "Lamentations 3:30",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 15
+        },
+        {
+            "reference": "Lamentations 3:31",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 15
+        },
+        {
+            "reference": "Lamentations 3:32",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 15
+        },
+        {
+            "reference": "Lamentations 3:33",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 15
+        },
+        {
+            "reference": "Lamentations 3:37",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 15
+        },
+        {
+            "reference": "Lamentations 3:38",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 15
+        },
+        {
+            "reference": "Lamentations 3:39",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 15
+        },
+        {
+            "reference": "Lamentations 3:40",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 15
+        },
+        {
+            "reference": "Lamentations 3:41",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 15
+        },
+        {
+            "reference": "Psalms 51:17",
+            "status": "self_rendered",
+            "block_index": 17
+        },
+        {
+            "reference": "James 4:3",
+            "status": "self_rendered",
+            "block_index": 0
+        },
+        {
+            "reference": "Acts 22:10",
+            "status": "self_rendered",
+            "block_index": 3
+        },
+        {
+            "reference": "Luke 23:42",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 3
+        },
+        {
+            "reference": "Philippians 4:6",
+            "status": "self_rendered",
+            "block_index": 3
+        },
+        {
+            "reference": "Jeremiah 32:17",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 6
+        },
+        {
+            "reference": "Jeremiah 33:3",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 6
+        },
+        {
+            "reference": "1 John 5:19",
+            "status": "self_rendered",
+            "block_index": 8
+        },
+        {
+            "reference": "Jeremiah 18:6",
+            "status": "self_rendered",
+            "block_index": 9
+        },
+        {
+            "reference": "Jonah 3:8",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "Psalms 89:15",
+            "status": "self_rendered",
+            "block_index": 11
+        },
+        {
+            "reference": "Psalms 84:11b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 12
+        },
+        {
+            "reference": "Psalms 37:4b",
+            "status": "self_rendered",
+            "block_index": 14
+        },
+        {
+            "reference": "Hebrews 7:25",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Proverbs 12:1b",
+            "status": "self_rendered",
+            "block_index": 22
+        },
+        {
+            "reference": "Acts 26:28",
+            "status": "self_rendered",
+            "block_index": 36
+        },
+        {
+            "reference": "Matthew 19:26",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 31
+        },
+        {
+            "reference": "Matthew 19:26b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 31
+        },
+        {
+            "reference": "Proverbs 12:10b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 38
+        },
+        {
+            "reference": "Hebrews 7:25",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 39
+        },
+        {
+            "reference": "Matthew 1:21b",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 42
+        },
+        {
+            "reference": "Galatians 6:14",
+            "status": "self_rendered",
+            "block_index": 42
+        },
+        {
+            "reference": "Philippians 4:13",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 44
+        }
+    ]
+}

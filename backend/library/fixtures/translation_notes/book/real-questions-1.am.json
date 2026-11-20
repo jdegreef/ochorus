@@ -223,8 +223,7 @@
         },
         {
             "reference": "Psalm 56:8",
-            "status": "mined",
-            "source_file": "sons-of-the-king-1.am.json",
+            "status": "self_rendered",
             "block_index": 19
         },
         {
@@ -311,8 +310,7 @@
         },
         {
             "reference": "Isaiah 55:9",
-            "status": "mined",
-            "source_file": "a-retrospect.am.json",
+            "status": "self_rendered",
             "block_index": 9
         },
         {
@@ -1190,8 +1188,7 @@
         },
         {
             "reference": "1 Thessalonians 5:18",
-            "status": "mined",
-            "source_file": "christ-the-healer.am.json",
+            "status": "self_rendered",
             "block_index": 4
         },
         {
@@ -1220,8 +1217,7 @@
         },
         {
             "reference": "Proverbs 15:22",
-            "status": "mined",
-            "source_file": "watchman-nee-a-life.am.json",
+            "status": "self_rendered",
             "block_index": 12
         },
         {

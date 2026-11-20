@@ -988,9 +988,30 @@ class LocalizedAuthorBioTests(TestCase):
         res = self.client.get("/api/library/books/tomorrows/?language=lg")
         self.assertEqual(res.data["author"]["bio"], "Musumba atambulatambula.")
 
-    def test_book_list_bio_is_localized(self):
+    def test_book_list_cards_carry_no_bio(self):
+        # A card shows no bio, and every row repeated its author's: over half
+        # of the big lists (CardAuthorSerializer). The detail page keeps it.
         res = self.client.get("/api/library/books/?language=lg")
-        self.assertEqual(res.data[0]["author"]["bio"], "Musumba atambulatambula.")
+        self.assertNotIn("bio", res.data[0]["author"])
+        self.assertEqual(res.data[0]["author"]["name"], self.author.name)
+
+    def test_card_lists_never_load_long_biographies(self):
+        # Every card list used to load every author's long-form bio_html and
+        # Q&A, in every language, to show one short bio (AUTHOR_CARD_DEFER,
+        # card_author_translations): 55 MB peak for the topics list.
+        from django.db import connection
+        from django.test.utils import CaptureQueriesContext
+
+        for url in (
+            "/api/library/books/?language=lg",
+            "/api/library/sermons/?language=lg",
+            "/api/library/topics/?language=lg",
+        ):
+            with CaptureQueriesContext(connection) as ctx:
+                self.assertEqual(self.client.get(url).status_code, 200)
+            sql = " ".join(q["sql"] for q in ctx.captured_queries)
+            self.assertNotIn("bio_html", sql, url)
+            self.assertNotIn('"faq"', sql, url)
 
     def test_sermon_list_bio_is_localized(self):
         res = self.client.get("/api/library/sermons/?language=lg")

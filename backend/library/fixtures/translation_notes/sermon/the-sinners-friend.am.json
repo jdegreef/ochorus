@@ -100,8 +100,7 @@
         },
         {
             "reference": "John 17:20",
-            "status": "mined",
-            "source_file": "school-of-prayer.am.json",
+            "status": "self_rendered",
             "block_index": 11
         },
         {

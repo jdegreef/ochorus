@@ -20,6 +20,7 @@ from .leader_guides import guide_for
 from .localization import language_from_request
 from .meta_descriptions import meta_description
 from .models import (
+    AUTHOR_CARD_DEFER,
     SERMON_CARD_DEFER,
     Article,
     Author,
@@ -33,6 +34,7 @@ from .models import (
     Sermon,
     Topic,
     TopicBook,
+    card_author_translations,
 )
 from .opening import book_opening
 from .plan_seed import DAILY_PLANS
@@ -42,7 +44,9 @@ from .scripture_graph import (
     bible_book_of,
     bible_chapter_number,
     book_chapter_pages,
+    book_tally,
     classics_page,
+    quoted_verses,
     treated_passages,
 )
 from .text import word_count
@@ -136,7 +140,8 @@ def sibling_editions(book):
             is_published=True,
         )
         .select_related("author")
-        .prefetch_related("author__translations")
+        .defer(*AUTHOR_CARD_DEFER)
+        .prefetch_related(card_author_translations(book.language))
         .annotate(**BOOK_CARD_ANNOTATIONS)
     )
     return sorted(rows, key=lambda b: rank[b.slug])
@@ -457,7 +462,21 @@ class AuthorSerializer(LocalizedMixin, serializers.ModelSerializer):
         return obj.bio_for(self._language())
 
 
-class SermonAuthorSerializer(AuthorSerializer):
+class CardAuthorSerializer(AuthorSerializer):
+    """The author on a book or sermon CARD: everything but the bio.
+
+    A list repeats its author on every row, and the bio was over half of each
+    big list (2026-11-19: 148 KB of the English sermons list, 94 KB of the
+    books list, the same few bios over and over). No card shows it; the pages
+    that do (book detail, the author and biographies pages) get it from their
+    own serializers, so only the lists lose it.
+    """
+
+    class Meta(AuthorSerializer.Meta):
+        fields = [f for f in AuthorSerializer.Meta.fields if f != "bio"]
+
+
+class SermonAuthorSerializer(CardAuthorSerializer):
     """A sermon card's author: the card fields plus the one-line ``tagline``.
 
     Only the sermons shelf reads it (under each preacher heading), so it rides
@@ -467,11 +486,21 @@ class SermonAuthorSerializer(AuthorSerializer):
 
     tagline = serializers.SerializerMethodField()
 
-    class Meta(AuthorSerializer.Meta):
-        fields = AuthorSerializer.Meta.fields + ["tagline"]
+    class Meta(CardAuthorSerializer.Meta):
+        fields = CardAuthorSerializer.Meta.fields + ["tagline"]
 
     def get_tagline(self, obj):
         return obj.tagline_for(self._language())
+
+    def to_representation(self, instance):
+        # The sermons shelf's preacher heading reads ``tagline || bio``, so the
+        # bio rides along only where there is no tagline (any language but the
+        # author's own, or one not yet written). Where a tagline exists, which
+        # covers most English rows, the card stays bio-free.
+        data = super().to_representation(instance)
+        if not data.get("tagline"):
+            data["bio"] = instance.bio_for(self._language())
+        return data
 
 
 class AuthorListSerializer(LocalizedMixin, serializers.ModelSerializer):
@@ -522,7 +551,7 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
     different shapes depending on which view rendered it.
     """
 
-    author = AuthorSerializer(read_only=True)
+    author = CardAuthorSerializer(read_only=True)
     chapter_count = serializers.IntegerField(source="num_chapters", read_only=True)
     word_count = serializers.IntegerField(source="total_words", read_only=True)
     topics = serializers.SerializerMethodField()
@@ -1655,8 +1684,8 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
             lambda: list(
                 obj.sermons.filter(is_published=True, language=self._language())
                 .select_related("author")
-                .prefetch_related("author__translations")
-                .defer(*SERMON_CARD_DEFER)
+                .prefetch_related(card_author_translations(self._language()))
+                .defer(*SERMON_CARD_DEFER, *AUTHOR_CARD_DEFER)
                 .order_by("sort_order", "title")
             ),
         )
@@ -1668,7 +1697,8 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
             lambda: list(
                 obj.books.filter(is_published=True, language=self._language())
                 .select_related("author")
-                .prefetch_related("author__translations")
+                .defer(*AUTHOR_CARD_DEFER)
+                .prefetch_related(card_author_translations(self._language()))
                 # total_words too, not just the chapter count: without it these
                 # cards shipped without word_count while every other path had
                 # it, so reading-time estimates vanished on author pages alone.
@@ -1777,7 +1807,8 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
             Book.objects.filter(slug__in=roles.keys(), is_published=True, language=lang)
             .exclude(author=obj)
             .select_related("author")
-            .prefetch_related("author__translations")
+            .defer(*AUTHOR_CARD_DEFER)
+            .prefetch_related(card_author_translations(lang))
             .annotate(**BOOK_CARD_ANNOTATIONS)
         )
         # Empty book_topics so BookListSerializer doesn't scan the whole topic
@@ -1815,6 +1846,9 @@ class BookDetailSerializer(BookListSerializer):
     """Book detail — adds description, the chapter TOC, topic chips, and a
     "more like this" list of related books."""
 
+    # The full author, bio included: the book page's "About the author" reads
+    # it, where a card (BookListSerializer) does not.
+    author = AuthorSerializer(read_only=True)
     chapters = ChapterTocSerializer(many=True, read_only=True)
     topics = serializers.SerializerMethodField()
     related = serializers.SerializerMethodField()
@@ -2164,7 +2198,8 @@ class BookDetailSerializer(BookListSerializer):
                 slug__in=scores.keys(), language=obj.language, is_published=True
             )
             .select_related("author")
-            .prefetch_related("author__translations")
+            .defer(*AUTHOR_CARD_DEFER)
+            .prefetch_related(card_author_translations(obj.language))
             .annotate(**BOOK_CARD_ANNOTATIONS)
         )
         ranked = sorted(
@@ -2313,6 +2348,15 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
     def get_catena(self, obj):
         return self._batch(obj).catena(obj)
 
+    # A chapter of the Bible itself: its verses the classics quote most, each
+    # with the distinct chapters quoting it and its verse page — only verses
+    # whose page was built (scripture_graph.quoted_verses). [] for every other
+    # chapter, the introduction and the conclusion.
+    quoted_verses = serializers.SerializerMethodField()
+
+    def get_quoted_verses(self, obj):
+        return self._batch(obj).quoted_verses(obj)
+
     def get_available_languages(self, obj):
         return self._batch(obj).available_languages
 
@@ -2373,6 +2417,8 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "classics_page",
             # A Bible chapter's catena pointer — see above.
             "catena",
+            # A Bible chapter's most-quoted verses — see above.
+            "quoted_verses",
             # A Bible chapter's companion chapters and sermons — see above.
             "read_alongside", "chapter_sermons",
             # The chapter's answered questions (``Chapter``): a young-reader
@@ -2483,7 +2529,12 @@ class ChapterBatch:
         # A Bible book's chapters link the scripture page of the passage they
         # ARE ("what the classics say"); every other book has none.
         self._bible = bible_book_of(book)
-        self._bible_pages = book_chapter_pages(self._bible) if self._bible else {}
+        # Its citation tally, read once (one query) for both the chapter pages
+        # and each chapter's most-quoted verses.
+        self._bible_tally = book_tally(self._bible) if self._bible else ({}, {})
+        self._bible_pages = (
+            book_chapter_pages(self._bible, self._bible_tally) if self._bible else {}
+        )
 
         # A Bible book with a catena: its commentary on each chapter of the run,
         # read in one query (library/catena).
@@ -2518,6 +2569,10 @@ class ChapterBatch:
 
     def catena(self, chapter):
         return self._catena.summary(chapter)
+
+    def quoted_verses(self, chapter) -> list[dict]:
+        n = self._bible_chapter(chapter)
+        return quoted_verses(self._bible, n, self._bible_tally[0]) if n else []
 
     def _bible_chapter(self, chapter) -> int | None:
         return bible_chapter_number(chapter) if self._bible is not None else None
@@ -2963,7 +3018,8 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
                 slug__in=order, language=self._language(), is_published=True
             )
             .select_related("author")
-            .prefetch_related("author__translations")
+            .defer(*AUTHOR_CARD_DEFER)
+            .prefetch_related(card_author_translations(self._language()))
             .annotate(num_chapters=Count("chapters"), total_words=Sum("chapters__word_count"))
         }
         return [by_slug[s] for s in order if s in by_slug]
@@ -2985,8 +3041,8 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
             .select_related("author")
             # author__translations was missing here alone: AuthorSerializer.get_bio
             # reads them, so this fallback N+1'd one query per sermon.
-            .prefetch_related("author__translations")
-            .defer(*SERMON_CARD_DEFER)
+            .prefetch_related(card_author_translations(self._language()))
+            .defer(*SERMON_CARD_DEFER, *AUTHOR_CARD_DEFER)
         }
         return [by_slug[s] for s in order if s in by_slug]
 
@@ -3026,10 +3082,12 @@ class TopicDetailSerializer(TopicListSerializer):
     meta_description = serializers.SerializerMethodField()
     qa = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
+    bible_chapters = serializers.SerializerMethodField()
 
     class Meta(TopicListSerializer.Meta):
         fields = TopicListSerializer.Meta.fields + [
             "scripture_text",
+            "bible_chapters",
             "seo_title",
             "meta_description",
             "qa",
@@ -3069,6 +3127,17 @@ class TopicDetailSerializer(TopicListSerializer):
 
     def get_scripture_text(self, obj):
         return obj.scripture_text_for(self._language())
+
+    def get_bible_chapters(self, obj):
+        """The "In the Bible" row: the Bible chapters this shelf's own classics
+        return to most, each a link into the library's Bible
+        (``scripture_graph.topic_bible_chapters``). English only — the Bible
+        and the citation index are — so every other locale gets ``[]``."""
+        if self._language() != "en":
+            return []
+        from .scripture_graph import topic_bible_chapters
+
+        return topic_bible_chapters(obj)
 
     def get_seo_title(self, obj):
         return obj.seo_title_for(self._language())

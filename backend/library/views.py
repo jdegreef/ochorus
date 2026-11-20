@@ -37,6 +37,8 @@ from .languages import entry as language_entry
 from .leader_guides import chapter_extras, guide_editions, guide_for
 from .localization import language_from_request
 from .models import (
+    AUTHOR_CARD_DEFER,
+    BOOK_CARD_DEFER,
     QUOTE_SOURCE_UNSERVED,
     SERMON_CARD_DEFER,
     Article,
@@ -53,6 +55,7 @@ from .models import (
     Series,
     Sermon,
     Topic,
+    card_author_translations,
     fold_query,
 )
 from .opening import book_opening
@@ -132,6 +135,8 @@ def _language_entry(code: str) -> dict:
 # for <mark> tags, so no HTML ever crosses the boundary unescaped.
 class AuthorListView(PublicContentCacheMixin, generics.ListAPIView):
     """Authors for the Biographies page: anyone with a bio OR a book to read."""
+
+    response_cache = True
 
     serializer_class = AuthorListSerializer
 
@@ -238,7 +243,8 @@ def _book_shelf(language: str):
     return (
         Book.objects.filter(is_published=True, language=language)
         .select_related("author")
-        .prefetch_related("author__translations")
+        .defer(*AUTHOR_CARD_DEFER)
+        .prefetch_related(card_author_translations(language))
         .annotate(**BOOK_CARD_ANNOTATIONS)
         .order_by("sort_order", "title")
     )
@@ -256,6 +262,8 @@ class OriginalsView(PublicContentCacheMixin, APIView):
     rule ``Series.title_for`` keeps — so an unnamed one's volumes simply stand
     alone on the shelf rather than sitting under an English heading.
     """
+
+    response_cache = True
 
     def get(self, request):
         lang = _language(request)
@@ -307,10 +315,12 @@ class OriginalsView(PublicContentCacheMixin, APIView):
 class BookListView(PublicContentCacheMixin, generics.ListAPIView):
     """All published books for a language, ordered for the shelf."""
 
+    response_cache = True
+
     serializer_class = BookListSerializer
 
     def get_queryset(self):
-        return _book_shelf(_language(self.request))
+        return _book_shelf(_language(self.request)).defer(*BOOK_CARD_DEFER)
 
     def get_serializer_context(self):
         """Attach a ``book_slug -> [topic chip]`` map so each book's topics
@@ -341,7 +351,7 @@ class BookDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
                         "order", "title", "word_count", "book_id"
                     ),
                 ),
-                "author__translations",
+                card_author_translations(_language(self.request)),
             ),
             slug=self.kwargs["slug"],
             language=_language(self.request),
@@ -518,14 +528,16 @@ def _epub_etag(request) -> str:
 class SermonListView(PublicContentCacheMixin, generics.ListAPIView):
     """All published sermons for a language, ordered for the shelf."""
 
+    response_cache = True
+
     serializer_class = SermonListSerializer
 
     def get_queryset(self):
         return (
             Sermon.objects.filter(is_published=True, language=_language(self.request))
             .select_related("author")
-            .prefetch_related("author__translations")
-            .defer(*SERMON_CARD_DEFER)
+            .prefetch_related(card_author_translations(_language(self.request)))
+            .defer(*SERMON_CARD_DEFER, *AUTHOR_CARD_DEFER)
             .order_by("author__name", "sort_order", "title")
         )
 
@@ -552,6 +564,8 @@ class SermonDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
 
 class ArticleListView(PublicContentCacheMixin, generics.ListAPIView):
     """All published articles for a language, newest curation first."""
+
+    response_cache = True
 
     serializer_class = ArticleListSerializer
 
@@ -696,6 +710,8 @@ def _plan_card_context(plans, language: str) -> dict:
 class PlanListView(PublicContentCacheMixin, generics.ListAPIView):
     """Published reading plans for a language."""
 
+    response_cache = True
+
     serializer_class = PlanListSerializer
 
     def get_queryset(self):
@@ -755,7 +771,8 @@ def _attach_books(topics, language):
     books = (
         Book.objects.filter(slug__in=wanted, language=language, is_published=True)
         .select_related("author")
-        .prefetch_related("author__translations")
+        .defer(*AUTHOR_CARD_DEFER, *BOOK_CARD_DEFER)
+        .prefetch_related(card_author_translations(language))
         .annotate(**BOOK_CARD_ANNOTATIONS)
     )
     by_slug = {b.slug: b for b in books}
@@ -774,8 +791,8 @@ def _attach_sermons(topics, language):
     sermons = (
         Sermon.objects.filter(slug__in=wanted, language=language, is_published=True)
         .select_related("author")
-        .prefetch_related("author__translations")
-        .defer(*SERMON_CARD_DEFER)
+        .prefetch_related(card_author_translations(language))
+        .defer(*SERMON_CARD_DEFER, *AUTHOR_CARD_DEFER)
     )
     by_slug = {s.slug: s for s in sermons}
     for t in topics:
@@ -815,7 +832,8 @@ def _series_books(series, language: str) -> list:
     return list(
         Book.objects.filter(series=series, language=language, is_published=True)
         .select_related("author")
-        .prefetch_related("author__translations")
+        .defer(*AUTHOR_CARD_DEFER, *BOOK_CARD_DEFER)
+        .prefetch_related(card_author_translations(language))
         .annotate(**BOOK_CARD_ANNOTATIONS)
         .order_by(*SERIES_READING_ORDER)
     )
@@ -947,6 +965,8 @@ class SeriesListView(PublicContentCacheMixin, APIView):
     Both are read in bulk for the whole list rather than per series.
     """
 
+    response_cache = True
+
     def get(self, request):
         return Response(_series_rows(_language(request)))
 
@@ -1060,6 +1080,8 @@ def audience_book_slugs(audience: str) -> set[str]:
 class AudienceLanguagesView(PublicContentCacheMixin, APIView):
     """``{audience: [languages]}`` for both young-reader hubs — what the home
     page's hub links and the sitemap need, without building either shelf."""
+
+    response_cache = True
 
     def get(self, request):
         return Response(
@@ -1642,6 +1664,8 @@ class HubListView(PublicContentCacheMixin, APIView):
     ``library/hubs.py`` for the rule and the data. The list is small (a few
     dozen), so it is the one endpoint for both the index rows and a hub page."""
 
+    response_cache = True
+
     def get(self, request):
         return Response(Hubs().for_language(_language(request)))
 
@@ -1650,6 +1674,8 @@ class TopicListView(PublicContentCacheMixin, generics.ListAPIView):
     """Published topical shelves that have at least one member — book OR sermon —
     in the requested language, so a partially-translated library never shows an
     empty shelf. Localized titles/descriptions, with a few sample tiles each."""
+
+    response_cache = True
 
     serializer_class = TopicListSerializer
 
@@ -3085,50 +3111,17 @@ class ScriptureView(APIView):
         return Response({**data, "bible_chapter": _bible_reader_chapter(ref[:120])})
 
 
-#: A Bible book's reader chapter is titled with its Bible chapter ("Romans 8",
-#: "Psalm 23"); the introduction and conclusion carry no number.
-_TRAILING_NUMBER = re.compile(r"\s(\d+)$")
-
-
-def _bible_reader_chapters() -> dict[int, tuple[str, frozenset[int]]]:
-    """{canonical number: (slug, Bible chapters it prints)} for the library's
-    published English Bible books — once per content revision, not per tap.
-
-    A Bible book is built as an introduction, one reader chapter per English
-    Bible chapter, then a conclusion (``build_owb_book``): Bible chapter ``n``
-    is reader chapter ``n + 1``, and its title says so. A chapter counts only
-    when both agree, so a drifted layout drops the link rather than open the
-    wrong chapter.
-    """
-    from .management.commands.build_owb_book import SERIES_SLUG
-    from .models import ContentRevision
-
-    revision = ContentRevision.current()
-    cached = cache.get("bible-reader-chapters")
-    if cached is not None and cached[0] == revision:
-        return cached[1]
-    found: dict[int, tuple[str, set[int]]] = {}
-    for position, slug, order, title in Chapter.objects.filter(
-        book__series__slug=SERIES_SLUG, book__language="en", book__is_published=True
-    ).values_list("book__series_position", "book__slug", "order", "title"):
-        m = _TRAILING_NUMBER.search(title or "")
-        if position and m and int(m.group(1)) == order - 1:
-            found.setdefault(position, (slug, set()))[1].add(order - 1)
-    books = {pos: (slug, frozenset(chs)) for pos, (slug, chs) in found.items()}
-    cache.set("bible-reader-chapters", (revision, books), timeout=None)
-    return books
-
-
 def _bible_reader_chapter(ref: str) -> dict | None:
     """Where the library's own Bible prints the chapter ``ref`` is in:
     ``{"slug", "order"}`` of that reader chapter, or None when the library has
     no published English edition of the book (the apocrypha, or a book not yet
-    shipped) — see ``_bible_reader_chapters``."""
+    shipped) — see ``scripture_graph.bible_reader_chapters``."""
     from .scripture import chapter_of
+    from .scripture_graph import bible_reader_chapters
 
     found = chapter_of(ref)
     if found is None:
         return None
     book, chapter = found
-    slug, chapters = _bible_reader_chapters().get(book, (None, frozenset()))
+    slug, chapters = bible_reader_chapters().get(book, (None, frozenset()))
     return {"slug": slug, "order": chapter + 1} if chapter in chapters else None

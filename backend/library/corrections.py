@@ -3275,6 +3275,14 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # (pt “sim”/“não”, es «si»/«no», ar «نعم»/«لا»), which is what
             # settles the intended reading.
             ("positively, “yes, “or” no, &#x27; &#x27; to the question", "positively, “yes” or “no” to the question"),
+            # Found translating the book to Japanese (#8095): plain typos and
+            # one OCR misreading. "Raised in their heart" is Acts 2:37, which
+            # every English version reads "pricked"/"cut to the heart".
+            ("he would be suprised", "he would be surprised"),
+            ("secretaries, Sundayschool teachers", "secretaries, Sunday-school teachers"),
+            ("preparation for elective service", "preparation for effective service"),
+            ("“Raised in their heart” by this charge", "“Pricked in their heart” by this charge"),
+            ("The second steptoward the Baptism", "The second step toward the Baptism"),
         ],
     },
     "the-fundamental-doctrines-of-the-christian-faith": {
@@ -3652,6 +3660,25 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # Peter's "yet will I never be offended" is Matthew 26:33; 26:23 is
             # the sop.
             ("(Matt. xxvi. 23.)", "(Matt. xxvi. 33.)"),
+            # Found by the translators of job #8098 (ja). "The wind bloweth
+            # where it listeth" is John 3:8; the printed "(John 8.)" lost its
+            # chapter.
+            ("(John 8.)", "(John iii. 8.)"),
+            # Typesetting/OCR slips in Moody's own prose, each unambiguous.
+            ("so much us they do Love", "so much as they do Love"),
+            ("the height of the depth of God’s love",
+             "the height or the depth of God’s love"),
+            ("a dispatch ard sent", "a dispatch and sent"),
+            ("confess you sins", "confess your sins"),
+            ("pinacle of self-conceit", "pinnacle of self-conceit"),
+            ("went over to great Britain", "went over to Great Britain"),
+            ("“Young men,” he said “you", "“Young men,” he said, “you"),
+            ("“Yes. it is hard;", "“Yes, it is hard;"),
+            ("what I do with them. I say", "what I do with them, I say"),
+            # KJV pronouns: Paul's "in me" (Gal 1:16) and the angel's "he"
+            # (Rev 22:9) were capitalised as if divine.
+            ("reveal His Son in Me,", "reveal His Son in me,"),
+            ("Then saith He unto me, See", "Then saith he unto me, See"),
         ],
     },
     "a-call-to-the-unconverted": {
@@ -6390,6 +6417,10 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # Paragraph boundaries are preserved so the editions stay parallel.
         "replacements": [
             ("<p>umility is the blossom", "<p>Humility is the blossom"),
+            # ch08: the same lost drop-cap, here after the epigraph the import
+            # ran into the first paragraph ("1:15 umility is often"). Found by
+            # the ja translation (job #8094); en-modern already reads it right.
+            ("1 Timothy 1:15 umility is often", "1 Timothy 1:15. Humility is often"),
             # -- en
             ("The poor, who have given up everything for the sake of Christ, to"
              " them the kingdom comes. One might say: “But some Christians"
@@ -20791,6 +20822,21 @@ BODY_CORRECTIONS.setdefault("pensees-teens", {}).setdefault("replacements", []).
     ("taking holy water and attending Mass",
      "taking holy water and having Masses said"),
 ])
+# Found while translating Pensées to Portuguese (job #8035, 2026-11-18): five
+# plain typos in the Gutenberg Trotter text (B. 521, 229, 324, 171, 252). The
+# translations already render the intended words.
+BODY_CORRECTIONS.setdefault("pensees", {}).setdefault("replacements", []).extend([
+    # [en]
+    ("Grace gives what is imposes.", "Grace gives what it imposes."),
+    # [en]
+    ("I have a hundred time wished", "I have a hundred times wished"),
+    # [en]
+    ("offended at a blow, on in desiring glory", "offended at a blow, or in desiring glory"),
+    # [en]
+    ("and yet this it the greatest of our miseries", "and yet this is the greatest of our miseries"),
+    # [en]
+    ("so that out soul falls naturally into it", "so that our soul falls naturally into it"),
+])
 # Found while translating Brave for God: Book Four to French (2026-10-13):
 # three factual slips, fixed in every edition. Mary Paton and her baby died
 # some four months after the Patons landed on Tanna (Nov 1858 - Mar 1859),
@@ -24812,7 +24858,6 @@ BODY_CORRECTIONS.setdefault("separation-and-service", {}).setdefault("replacemen
 # 1 Samuel 18:14 is said of David, not Jonathan.
 BODY_CORRECTIONS.setdefault("rise-up-men-of-god-2", {}).setdefault("replacements", []).extend([
     ('In everything Jonathan did, he had great success', 'In everything David did, he had great success'),
-    ('«ዮናታን በሚያደርገው ነገር ሁሉ', '«ዳዊት በሚያደርገው ነገር ሁሉ'),
     ('«كان يوناثان ناجحا في كل ما فعله', '«كان داود ناجحا في كل ما فعله'),
     ('“योनातान अपने सब कामों में सफल', '“दाऊद अपने सब कामों में सफल'),
     ('“Katika kila jambo Yonathani alilolifanya', '“Katika kila jambo Daudi alilolifanya'),

@@ -27,6 +27,11 @@ export interface Author {
 	is_imprint?: boolean;
 }
 
+/** The author on a book or sermon CARD (list endpoints): no bio, which every
+ *  row used to repeat. Pages that show the bio read it from their own detail
+ *  endpoint (BookDetail.author, AuthorDetail, AuthorBio). */
+export type CardAuthor = Omit<Author, 'bio'>;
+
 export type SourceType = 'public_domain' | 'ai_reviewed' | 'ai_unreviewed';
 
 /**
@@ -63,7 +68,7 @@ export interface BookSummary {
 	 *  sound nice…"), in this edition's language; "" for most books. Optional:
 	 *  an API behind this build omits it, and the card shows no line. */
 	hook?: string;
-	author: Author;
+	author: CardAuthor;
 	source_type: SourceType;
 	cover_color: string;
 	cover_url: string;
@@ -262,7 +267,9 @@ export interface BookSeries {
 	next: SeriesVolume | null;
 }
 
-export interface BookDetail extends BookSummary {
+export interface BookDetail extends Omit<BookSummary, 'author'> {
+	/** The full author, bio included (the card's has none). */
+	author: Author;
 	description: string;
 	/** A hand-written search snippet (~90–125 chars), or "" when none has been
 	 *  written for this edition — the page then trims `description` instead.
@@ -513,6 +520,14 @@ export interface Chapter {
 	 */
 	catena?: CatenaPointer | null;
 	/**
+	 * A chapter of the Bible itself: its verses the library's classics quote
+	 * most ("Most quoted in the classics"), most-quoted first — `count` is the
+	 * distinct passages quoting it, the figure its verse page publishes. Only
+	 * verses whose /scripture/ page was built. [] for every other chapter;
+	 * optional: an API behind this build omits it.
+	 */
+	quoted_verses?: { verse: number; reference: string; count: number; page: ScripturePageRef }[];
+	/**
 	 * A chapter of the Bible itself: the chapters of the classics written on it
 	 * that treat it (library/bible_companions). `order` is null for a book on
 	 * this one passage (Watson's Beatitudes on Matthew 5), which opens at its
@@ -735,7 +750,9 @@ export interface SermonSummary {
 	summary: string;
 	preached_on: string | null;
 	word_count: number;
-	author: Author;
+	/** `bio` comes only when the author has no `tagline` (the shelf heading
+	 *  reads `tagline || bio`). */
+	author: CardAuthor & { bio?: string };
 	/** Published topics this sermon belongs to (for the shelf's topic filter). */
 	topics: TopicChip[];
 	/** When the sermon was added to Ochorus (ISO) — powers the "recent" feed. */
@@ -1600,6 +1617,26 @@ export interface TopicDetail extends TopicSummary {
 	authors?: TopicAuthor[];
 	/** Sibling shelves that share books, most-shared first — the lateral "see also". */
 	related_topics?: TopicChip[];
+	/**
+	 * "In the Bible": the Bible chapters this shelf's own classics return to
+	 * most, derived from their citations (`scripture_graph.topic_bible_chapters`),
+	 * each a chapter of the library's Bible (`/books/<slug>/<order>`). English
+	 * only — `[]` elsewhere. Optional for a rolling-deploy skew.
+	 */
+	bible_chapters?: TopicBibleChapter[];
+}
+
+/** One chapter of a topic's "In the Bible" row. */
+export interface TopicBibleChapter {
+	/** The reader chapter's own title: "Matthew 6", "Psalm 23". */
+	reference: string;
+	/** The Bible book's library slug and reader order (Bible chapter + 1). */
+	slug: string;
+	order: number;
+	/** That chapter's one-line summary; "" when it has none. */
+	summary: string;
+	/** Distinct citing chapters and sermons on the shelf. */
+	count: number;
 }
 
 /**

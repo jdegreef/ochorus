@@ -1,4 +1,4 @@
-"""Bundle the Open Word Bible's English Balanced text for the reader's Scripture.
+"""Bundle an Open Word Bible Balanced text (English by default) for Ochorus.
 
 The popover, the /scripture/ pages and the notebook's daily verse quote the
 Open Word Bible (OWB-B, CC0, openwordbible.org). The text ships in the repo as
@@ -10,6 +10,14 @@ verse numbering are the ones its own downloads carry:
 
     git clone https://github.com/jdegreef/open-word-bible /tmp/owb
     uv run python scripts/build_owb_bible.py /tmp/owb
+    uv run python scripts/build_owb_bible.py /tmp/owb --language am
+
+``--language`` builds another language's Balanced text to
+`library/data/bible/owb-<language>-b.json.gz`. Amharic, Swahili and Japanese
+are bundled this way (founder decisions, 2026-11-18 and 2026-11-19): every work
+in those languages quotes OWB, and the translation lookup resolves the Bible
+ids ``owb-am``, ``owb-sw`` and ``owb-ja`` from these files
+(`translation.fetch_chapter` / `fetch_verse_text`), offline.
 
 Run it when the OWB text changes, review the diff of the manifest it prints,
 commit. The output is byte-stable: the same OWB commit gives the same bytes.
@@ -25,17 +33,34 @@ import argparse
 import glob
 import gzip
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
 
-OUT = Path(__file__).resolve().parents[1] / "library" / "data" / "bible" / "owb-en-b.json.gz"
+BIBLE_DIR = Path(__file__).resolve().parents[1] / "library" / "data" / "bible"
+
+
+#: Languages written without spaces between words or sentences. OWB's exporter
+#: joins a verse's poetic lines with an ASCII space (right for English, Swahili,
+#: Amharic), which in Japanese leaves 8,577 verses reading 「主はわたしの羊飼い。
+#: わたしが…」 against the ja typography rule (no spaces after punctuation). The
+#: space is layout, not wording, so it is dropped here wherever no Latin letter
+#: or digit stands beside it; every character of the text is kept.
+NO_SPACE_LANGUAGES = frozenset({"ja"})
+_UNSPACED_JOIN = re.compile(r"(?<![A-Za-z0-9]) (?![A-Za-z0-9])")
+
+
+def out_path(language: str) -> Path:
+    return BIBLE_DIR / f"owb-{language}-b.json.gz"
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("owb", type=Path, help="a checkout of the open-word-bible repo")
+    parser.add_argument("--language", default="en", help="OWB language code (default: en)")
     args = parser.parse_args()
+    OUT = out_path(args.language)
     root = args.owb.resolve()
     sys.path.insert(0, str(root))
     from owb import export, refs  # the OWB repo's own exporter
@@ -48,7 +73,7 @@ def main() -> None:
     commit = subprocess.run(
         ["git", "-C", str(root), "rev-parse", "HEAD"], capture_output=True, text=True, check=True
     ).stdout.strip()
-    _, _, body, manifest = export.build(records, "en", "B", fmt="json", commit=commit)
+    _, _, body, manifest = export.build(records, args.language, "B", fmt="json", commit=commit)
 
     verses: dict[str, str] = {}
     joined: dict[str, str] = {}
@@ -57,7 +82,10 @@ def main() -> None:
         for chapter in book["chapters"]:
             for v in chapter["verses"]:
                 first = number * 1_000_000 + chapter["chapter"] * 1000 + v["verse"]
-                verses[str(first)] = v["text"]
+                text = v["text"]
+                if args.language in NO_SPACE_LANGUAGES:
+                    text = _UNSPACED_JOIN.sub("", text)
+                verses[str(first)] = text
                 if "to" in v:
                     others = [
                         number * 1_000_000 + chapter["chapter"] * 1000 + n

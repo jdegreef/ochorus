@@ -8,6 +8,7 @@ Take Root backend so the two projects stay operationally consistent.
 
 import os
 import sys
+import tempfile
 from pathlib import Path
 
 import dj_database_url
@@ -67,6 +68,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # Outermost, so its measurement covers every other layer (config/memory.py).
+    "config.memory.MemoryLogMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",  # must come before CommonMiddleware
@@ -474,6 +477,25 @@ CACHES = {
         ),
         "LOCATION": "throttle",
     },
+    # Rendered bodies of the big public lists (library.http_cache
+    # ``response_cache`` views), keyed on the content version. File-based so
+    # they outlive a worker recycle: the worker restarts every ~500 requests,
+    # and each fresh one used to rebuild the lists from rows. On the
+    # instance's own disk, so a deploy starts empty; entries are bytes, never
+    # loaded into memory until served. Stale keys simply stop being asked for.
+    "responses": {
+        "BACKEND": (
+            "django.core.cache.backends.dummy.DummyCache"
+            if _TESTING
+            else "django.core.cache.backends.filebased.FileBasedCache"
+        ),
+        "LOCATION": os.getenv(
+            "RESPONSE_CACHE_DIR",
+            os.path.join(tempfile.gettempdir(), "ochorus-response-cache"),
+        ),
+        "TIMEOUT": 7 * 24 * 3600,
+        "OPTIONS": {"MAX_ENTRIES": 3000},
+    },
     # Memoised search responses (library.search.memoized). Their own alias so a
     # burst of distinct queries evicts other searches, not the shelves and
     # rosters sharing "default" (LocMemCache culls at MAX_ENTRIES). An entry is
@@ -498,8 +520,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # content_version is here for the same reason collectstatic is: the image build
 # runs it (Dockerfile) to bake the content digest, long before DATABASE_URL or
-# SUPABASE_URL exist. It reads files and touches neither.
-_NO_CONFIG_COMMANDS = {"test", "collectstatic", "makemigrations", "content_version"}
+# SUPABASE_URL exist. It reads files and touches neither. build_bible_store is
+# the same: the Dockerfile bakes the on-disk Bible store from bundled files.
+_NO_CONFIG_COMMANDS = {
+    "test",
+    "collectstatic",
+    "makemigrations",
+    "content_version",
+    "build_bible_store",
+}
 _skip_config_checks = len(sys.argv) > 1 and sys.argv[1] in _NO_CONFIG_COMMANDS
 
 if not DEBUG and not _skip_config_checks:

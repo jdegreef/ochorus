@@ -46,10 +46,9 @@
   },
   {
    "reference": "Genesis 3:9",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 4,
-   "source_file": "rise-up-men-of-god-2.am.json"
+   "chapter_order": 4
   },
   {
    "reference": "1 John 3:8",
@@ -215,10 +214,9 @@
   },
   {
    "reference": "Genesis 39:21",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 19,
-   "source_file": "the-christians-secret-of-a-happy-life-4.am.json"
+   "chapter_order": 19
   },
   {
    "reference": "Genesis 39:2",
@@ -241,10 +239,9 @@
   },
   {
    "reference": "Genesis 50:20",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 22,
-   "source_file": "the-christians-secret-of-a-happy-life-4.am.json"
+   "chapter_order": 22
   }
  ]
 }

@@ -570,3 +570,135 @@ class OpensWithTextTests(SimpleTestCase):
         self.assertFalse(self._check(verse, ""))
         self.assertFalse(self._check(verse, "Not a reference"))
         self.assertFalse(self._check("", "John 3:16"))
+
+
+class BundledOwbBibleTests(SimpleTestCase):
+    """``owb-<language>`` Bible ids are served from the bundled OWB text.
+
+    Amharic quotes the Open Word Bible (founder decision, 2026-11-18): every
+    Amharic work's Scripture is OWB Amharic Balanced, bundled as
+    ``data/bible/owb-am-b.json.gz`` by ``scripts/build_owb_bible.py --language
+    am``. The lookup is offline, so a translation job never waits on, or is
+    stopped by, the Take Root API for it.
+    """
+
+    def test_each_bundle_holds_the_whole_bible(self):
+        from library import scripture
+
+        for lang in ("am", "sw", "ja"):
+            with self.subTest(lang=lang):
+                self.assertIn(lang, scripture.owb_languages())
+                verses, _joined = scripture._owb(lang)
+                self.assertGreater(len(verses), 31000)  # all 66 books, OT and NT
+                self.assertIn(1001001, verses)  # Genesis 1:1
+                self.assertIn(66022021, verses)  # Revelation 22:21
+
+    def test_fetch_verse_text_reads_the_bundle_without_the_network(self):
+        from library import translation as m
+
+        with mock.patch.object(m.requests, "get", side_effect=AssertionError("network")):
+            john = m.fetch_verse_text("owb-am", "John 3:16")
+        self.assertTrue(john.startswith("እግዚአብሔር ለዓለም ያለው ፍቅር"), john)
+
+    def test_a_joined_verse_answers_with_the_text_that_holds_it(self):
+        from library import translation as m
+
+        # OWB prints 1 Kings 18:33-34 as one verse, under 33.
+        self.assertEqual(
+            m.fetch_verse_text("owb-am", "1 Kings 18:34"),
+            m.fetch_verse_text("owb-am", "1 Kings 18:33"),
+        )
+
+    def test_a_passage_joins_every_verse_of_its_range(self):
+        from library import translation as m
+
+        verses = [m.fetch_verse_text("owb-am", f"Psalm 46:{v}") for v in (1, 2, 3)]
+        self.assertEqual(m.fetch_passage_text("owb-am", "Psalm 46:1-3"), " ".join(verses))
+        self.assertEqual(m.fetch_passage_text("owb-am", "Psalm 46:1\u20133"), " ".join(verses))
+        # A single verse, and a cross-chapter end, answer like fetch_verse_text.
+        self.assertEqual(m.fetch_passage_text("owb-am", "John 3:16"), m.fetch_verse_text("owb-am", "John 3:16"))
+        self.assertEqual(m.fetch_passage_text("owb-am", "John 3:16-4:2"), m.fetch_verse_text("owb-am", "John 3:16"))
+
+    def test_a_passage_prints_a_joined_verse_once(self):
+        from library import translation as m
+
+        self.assertEqual(
+            m.fetch_passage_text("owb-am", "1 Kings 18:33-34"),
+            m.fetch_verse_text("owb-am", "1 Kings 18:33"),
+        )
+
+    def test_a_passage_past_the_chapter_end_is_absent(self):
+        from library import translation as m
+
+        self.assertEqual(m.fetch_passage_text("owb-am", "Psalm 23:5-9"), "")
+
+    def test_a_chapter_comes_back_in_take_roots_shape(self):
+        from library import translation as m
+
+        psalm = m.fetch_chapter("owb-am", m.Ref("PSA", 23))
+        self.assertEqual([v["number"] for v in psalm["verses"]], [1, 2, 3, 4, 5, 6])
+
+    def test_an_unknown_owb_language_is_absent_not_a_paraphrase(self):
+        from library import translation as m
+
+        self.assertEqual(m.fetch_verse_text("owb-zz", "John 3:16"), "")
+        self.assertIsNone(m.fetch_chapter("owb-zz", m.Ref("JHN", 1)))
+        self.assertEqual(m.fetch_verse_text("owb-am", "John 99:1"), "")
+
+    def test_english_is_unchanged(self):
+        from library import scripture
+
+        self.assertEqual(scripture.owb_verse(43003016), scripture.owb_verse(43003016, "en"))
+        self.assertNotEqual(scripture.owb_verse(43003016)[1], scripture.owb_verse(43003016, "am")[1])
+
+
+    def test_the_canonical_book_order_matches_owbs_verse_ids(self):
+        from library import translation as m
+
+        self.assertEqual(len(m.USFM_ORDER), 66)
+        self.assertEqual((m.USFM_ORDER[0], m.USFM_ORDER[39], m.USFM_ORDER[-1]), ("GEN", "MAT", "REV"))
+
+
+class SwahiliAndJapaneseQuoteOwbTests(SimpleTestCase):
+    """Swahili and Japanese quote OWB too (founder decision, 2026-11-19).
+
+    Both are bundled like Amharic, both languages' Bible code in the seed is
+    their ``owb-`` id (so every translation job reads the bundle, offline), and
+    the Japanese bundle carries no ASCII space: OWB's exporter joins poetic
+    lines with one, and Japanese writes none.
+    """
+
+    def test_the_seed_points_both_languages_at_their_bundle(self):
+        from library import translation as m
+        from library.language_seed import SEED_LANGUAGES
+
+        for lang in ("sw", "ja"):
+            with self.subTest(lang=lang):
+                code = SEED_LANGUAGES[lang]["bible"]
+                self.assertEqual(code, f"owb-{lang}")
+                with mock.patch.object(m.requests, "get", side_effect=AssertionError("network")):
+                    self.assertTrue(m.fetch_verse_text(code, "John 3:16"))
+
+    def test_swahili_reads_the_owb_wording(self):
+        from library import translation as m
+
+        self.assertTrue(
+            m.fetch_verse_text("owb-sw", "John 3:16").startswith("Kwa maana Mungu aliupenda ulimwengu"),
+        )
+
+    def test_japanese_has_no_ascii_space(self):
+        from library import scripture
+
+        verses, _joined = scripture._owb("ja")
+        spaced = [vid for vid, text in verses.items() if " " in text]
+        self.assertEqual(spaced, [])
+        # Psalm 23:1 is poetry: its lines now join with nothing between them.
+        self.assertEqual(scripture.owb_verse(19023001, "ja")[1], "ダビデの賛歌。主はわたしの羊飼い。わたしが乏しくなることは決してない。")
+
+    def test_a_japanese_passage_joins_without_a_space(self):
+        from library import translation as m
+
+        passage = m.fetch_passage_text("owb-ja", "Lamentations 3:22-23")
+        self.assertTrue(passage)
+        self.assertNotIn(" ", passage)
+        self.assertIn(" ", m.fetch_passage_text("owb-sw", "Lamentations 3:22-23"))

@@ -1,8 +1,10 @@
 """Admin dashboard API, split by concern.
 
 Previously one 1,190-line module. The view classes are re-exported here so
-``from library.admin_views import AdminStatsView`` (config/urls.py) is unchanged
-— which is what lets a module be split again without touching the URL conf.
+``from library.admin_views import AdminStatsView`` keeps working wherever it is
+written. config/urls.py is the exception: it routes each view lazily by the
+submodule that DEFINES it (config/lazy_views.py), so moving a view to another
+submodule means updating its line there — config.tests_lazy_views names it.
 """
 
 from .activity import AdminActivityView

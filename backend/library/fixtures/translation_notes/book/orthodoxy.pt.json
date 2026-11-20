@@ -1,0 +1,379 @@
+{
+ "kind": "book",
+ "slug": "orthodoxy",
+ "language": "pt",
+ "job_issue": 8032,
+ "note": [
+  "Scripture is quoted from the Bíblia Livre (porbrbsl, ebible por_bpm) where Chesterton quotes a verse; 'mined' rows are verbatim Bíblia Livre substrings (checked by script, ≥3 words). Where he bends, re-persons or plays on a verse (Matt 5:29-30 'If thy head offend thee', Ps 85:10, Matt 5:5 'do inherit', Song 6:10 sun/moon reversed, Job 38:11, Ps 121:1) his wording is kept and the row is self-rendered. Two deliberate departures from the Bíblia Livre: Ezek 1:22 'o terrível cristal' (BL 'cristal deslumbrante' loses the shudder the sentence turns on) and Luke 4:12 cited in place of Matt 4:7 (BL Matthew reads 'não ponha à prova', which breaks the tempt/tentar chain).",
+  "Literary quotations (Swinburne, Yeats, Tennyson, Browning, Dryden, hymns, the Book of Common Prayer's 'Prevent us, O Lord') are translated, not given Bible text.",
+  "Possible slips in the English, kept as written: 'one particular management and proposition of these two things' (ch. 8; the argument is about proportion — es, fr and pt all read 'proportion'), 'Ragnorok' (Ragnarök), 'coup de théatre', 'Joanna Southcote'.",
+  "AI-translated (job #8032) in 19 block-range units, then reconciled for one form per term (o país das fadas = elfland, o reino das fadas = fairyland, Super-Homem, quacres, Tolstói, livre-pensamento, compaixão = pity). Brazilian spelling; reader addressed as você; curly quotes mirror the English. Awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Matthew 6:28",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 5:30",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Mark 9:47",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Luke 11:14",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 11:38",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Matthew 16:19",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "John 8:11",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Matthew 19:14",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Psalms 85:10",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Matthew 5:5",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Exodus 20:12",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "John 19:24",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "John 19:23",
+   "status": "mined",
+   "block_index": 55
+  },
+  {
+   "reference": "Mark 12:30",
+   "status": "mined",
+   "block_index": 68
+  },
+  {
+   "reference": "Luke 1:52",
+   "status": "self_rendered",
+   "block_index": 63
+  },
+  {
+   "reference": "Genesis 3:6",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Ezekiel 1:22",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Matthew 4:2",
+   "status": "mined",
+   "block_index": 76
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "mined",
+   "block_index": 82
+  },
+  {
+   "reference": "Psalms 121:1",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Job 3:16",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "Proverbs 23:26a",
+   "status": "mined",
+   "block_index": 100
+  },
+  {
+   "reference": "Job 39:25",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "Song of Songs 6:10",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "Psalms 104:21",
+   "status": "self_rendered",
+   "block_index": 115
+  },
+  {
+   "reference": "Acts 26:28",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "Exodus 20:15",
+   "status": "mined",
+   "block_index": 128
+  },
+  {
+   "reference": "Matthew 5:39",
+   "status": "self_rendered",
+   "block_index": 127
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "mined",
+   "block_index": 130
+  },
+  {
+   "reference": "Luke 9:24",
+   "status": "self_rendered",
+   "block_index": 135
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "self_rendered",
+   "block_index": 136
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "Ecclesiastes 3:19",
+   "status": "mined",
+   "block_index": 137
+  },
+  {
+   "reference": "Genesis 1:28",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "Matthew 10:34",
+   "status": "self_rendered",
+   "block_index": 138
+  },
+  {
+   "reference": "Matthew 18:22",
+   "status": "mined",
+   "block_index": 138
+  },
+  {
+   "reference": "Isaiah 11:6",
+   "status": "self_rendered",
+   "block_index": 142
+  },
+  {
+   "reference": "Luke 19:40",
+   "status": "mined",
+   "block_index": 147
+  },
+  {
+   "reference": "Luke 19:40",
+   "status": "self_rendered",
+   "block_index": 147
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "mined",
+   "block_index": 162
+  },
+  {
+   "reference": "Job 38:11",
+   "status": "self_rendered",
+   "block_index": 168
+  },
+  {
+   "reference": "Psalms 85:10",
+   "status": "self_rendered",
+   "block_index": 169
+  },
+  {
+   "reference": "Genesis 37:3",
+   "status": "mined",
+   "block_index": 169
+  },
+  {
+   "reference": "Psalms 14:4",
+   "status": "self_rendered",
+   "block_index": 171
+  },
+  {
+   "reference": "Psalms 146:3",
+   "status": "self_rendered",
+   "block_index": 172
+  },
+  {
+   "reference": "Matthew 19:24",
+   "status": "self_rendered",
+   "block_index": 175
+  },
+  {
+   "reference": "Luke 14:10",
+   "status": "mined",
+   "block_index": 177
+  },
+  {
+   "reference": "Matthew 14:29",
+   "status": "mined",
+   "block_index": 189
+  },
+  {
+   "reference": "Matthew 22:39",
+   "status": "self_rendered",
+   "block_index": 197
+  },
+  {
+   "reference": "John 13:34",
+   "status": "self_rendered",
+   "block_index": 198
+  },
+  {
+   "reference": "Matthew 10:34",
+   "status": "mined",
+   "block_index": 198
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "self_rendered",
+   "block_index": 201
+  },
+  {
+   "reference": "Genesis 2:18",
+   "status": "mined",
+   "block_index": 203
+  },
+  {
+   "reference": "Genesis 2:18",
+   "status": "self_rendered",
+   "block_index": 203
+  },
+  {
+   "reference": "Luke 4:12",
+   "status": "mined",
+   "block_index": 208
+  },
+  {
+   "reference": "Luke 4:12",
+   "status": "self_rendered",
+   "block_index": 208
+  },
+  {
+   "reference": "Matthew 27:46",
+   "status": "self_rendered",
+   "block_index": 208
+  },
+  {
+   "reference": "Daniel 5:27",
+   "status": "self_rendered",
+   "block_index": 217
+  },
+  {
+   "reference": "Matthew 7:11",
+   "status": "self_rendered",
+   "block_index": 218
+  },
+  {
+   "reference": "Matthew 19:24",
+   "status": "self_rendered",
+   "block_index": 218
+  },
+  {
+   "reference": "Matthew 21:21",
+   "status": "self_rendered",
+   "block_index": 218
+  },
+  {
+   "reference": "Matthew 10:34",
+   "status": "self_rendered",
+   "block_index": 218
+  },
+  {
+   "reference": "Luke 22:36",
+   "status": "self_rendered",
+   "block_index": 218
+  },
+  {
+   "reference": "Luke 1:53",
+   "status": "mined",
+   "block_index": 220
+  },
+  {
+   "reference": "1 Corinthians 15:31",
+   "status": "self_rendered",
+   "block_index": 221
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "block_index": 221
+  },
+  {
+   "reference": "Ecclesiastes 12:13",
+   "status": "mined",
+   "block_index": 234
+  },
+  {
+   "reference": "John 14:2",
+   "status": "self_rendered",
+   "block_index": 233
+  },
+  {
+   "reference": "Luke 19:41",
+   "status": "self_rendered",
+   "block_index": 237
+  },
+  {
+   "reference": "John 2:15",
+   "status": "self_rendered",
+   "block_index": 237
+  },
+  {
+   "reference": "Matthew 23:33",
+   "status": "self_rendered",
+   "block_index": 237
+  },
+  {
+   "reference": "Matthew 14:23",
+   "status": "self_rendered",
+   "block_index": 237
+  }
+ ]
+}

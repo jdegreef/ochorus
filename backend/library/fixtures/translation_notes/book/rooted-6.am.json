@@ -57,10 +57,9 @@
   },
   {
    "reference": "Proverbs 3:5-6",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 5,
-   "source_file": "school-of-prayer.am.json"
+   "chapter_order": 5
   },
   {
    "reference": "Proverbs 3:5",

@@ -2555,6 +2555,34 @@
 				</div>
 			{/if}
 
+			<!-- A chapter of the Bible itself: its verses the library's classics
+			     quote most (scripture_graph.quoted_verses), each opening its verse
+			     page, where the quoting passages are listed. The count is the one
+			     that page publishes. Only verses whose page was built, so never a
+			     404; unlocalized hrefs, as the classics line above — the scripture
+			     pages are English. The Read-alongside rows' quiet list. -->
+			{#if chapter.quoted_verses?.length}
+				{@const countTpl = t('scripture.passagesCount')}
+				<section class="mt-10 border-t border-border pt-6" aria-labelledby="quoted-verses-heading">
+					<h2 id="quoted-verses-heading" class="eyebrow text-muted">{t('bible.mostQuoted')}</h2>
+					<ul class="alongside mt-3" role="list">
+						{#each chapter.quoted_verses as q (q.verse)}
+							<li>
+								<a
+									class="alongside-link"
+									href={scripturePageHref(q.page.book, q.page.chapter, q.page.verse)}
+								>
+									<span class="alongside-title">{q.reference}</span>
+									<span class="text-small text-muted"
+										>{countTpl.replace('%count%', String(q.count))}</span
+									>
+								</a>
+							</li>
+						{/each}
+					</ul>
+				</section>
+			{/if}
+
 			<!-- A chapter of a Bible book with a catena: what the Church has said
 			     on its verses, a span at a time — the catena's own choice of two or
 			     three commentators, and a way into the catena at that block. Keyed,

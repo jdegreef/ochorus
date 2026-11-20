@@ -46,8 +46,8 @@ const PENDING_TRANSLATION: Record<string, readonly string[]> = {
 	//
 	// Amharic's Isaiah 55:11 waited here for an Old Testament source (the ebible
 	// mirror of the 1962 UBS text is NT-only); it is now verbatim from the
-	// language's own Bible, the Amharic ULB (Take Root `am-ulb`), which the
-	// footer credits (bibleCredit.ts).
+	// Open Word Bible, Amharic Balanced (bundled; CC0), which every Amharic
+	// work quotes since 2026-11-18. It was the Amharic ULB before that.
 };
 
 const toSnake = (key: string) =>

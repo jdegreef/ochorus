@@ -1,0 +1,735 @@
+{
+  "kind": "book",
+  "slug": "at-the-masters-feet",
+  "language": "pt",
+  "job_issue": 8038,
+  "pull_request": null,
+  "note": [
+    "Scripture source: Bíblia Livre para o Mundo (porbrbsl), from the ebible mirror por_bpm (scripts/bible_mirror.py); every cited verse's text was handed to its chapter's translator, and the whole Bible was on disk for uncited quotations.",
+    "Derived by measurement: a row is mined only when the translator reported the quotation verbatim AND its words (punctuation and quote marks stripped, ≥10 characters) are a substring of the porbrbsl verse and appear in the chapter. Two verbatim claims failed that (Matthew 11:29 spliced across an ellipsis; Matthew 21:9 'Hosana! Hosana!' doubled) and ship self_rendered. Citations of allusions (no quoted words) are listed self_rendered.",
+    "Conventions: curly “ ” mirrored from the English; citations converted to Arabic C:V with full pt book names; the Disciple addresses the Master with capitalised Tu/Te/Ti, the Master addresses the Disciple with lower-case tu (precedent: the shipped pt Imitação de Cristo dialogue), the Master's Me/Meu capitalised as the English capitalises them; parable characters and reader-address use você.",
+    "English source slips rendered as written (not fixed): (1 Sam. … v. 13-14) — 1 Samuel 5 has 12 verses; (Rev. ii. 7) for the hidden manna = Rev 2:17; (Luke ix.27,28) for 'blessed is the womb' = Luke 11:27-28; (2 Tim. iv.4, 5-8) — 4:4 is about fables."
+  ],
+  "references": [
+    {
+      "reference": "John 13:13",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 1,
+      "chapter_order": 2
+    },
+    {
+      "reference": "Matthew 11:29",
+      "status": "self_rendered",
+      "block_index": 2,
+      "chapter_order": 2
+    },
+    {
+      "reference": "2 Corinthians 8:9",
+      "status": "self_rendered",
+      "chapter_order": 3
+    },
+    {
+      "reference": "John 4:24",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "John 19:30",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "Acts 10:40-41",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "Revelation 2:7",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "John 9:17",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "John 9:35-37",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "John 14:21",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "Luke 17:21",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "Matthew 3:11",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "Matthew 3:14",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "Colossians 1:15",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "Colossians 2:9",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "John 14:9-10",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "Isaiah 9:6",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "John 1:9",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "John 8:12",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "John 6:63",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "Genesis 1:31",
+      "status": "self_rendered",
+      "block_index": 24,
+      "chapter_order": 4
+    },
+    {
+      "reference": "Isaiah 64:4",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "Isaiah 65:17",
+      "status": "self_rendered",
+      "chapter_order": 4
+    },
+    {
+      "reference": "John 10:28",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 28,
+      "chapter_order": 4
+    },
+    {
+      "reference": "Revelation 1:8",
+      "status": "self_rendered",
+      "block_index": 28,
+      "chapter_order": 4
+    },
+    {
+      "reference": "Mark 12:31",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 20,
+      "chapter_order": 4
+    },
+    {
+      "reference": "Revelation 21:23",
+      "status": "self_rendered",
+      "chapter_order": 5
+    },
+    {
+      "reference": "Revelation 22:5",
+      "status": "self_rendered",
+      "chapter_order": 5
+    },
+    {
+      "reference": "Matthew 6:23",
+      "status": "self_rendered",
+      "chapter_order": 5
+    },
+    {
+      "reference": "Matthew 11:28",
+      "status": "self_rendered",
+      "chapter_order": 5
+    },
+    {
+      "reference": "Luke 19:10",
+      "status": "self_rendered",
+      "chapter_order": 5
+    },
+    {
+      "reference": "Psalms 139:7-8",
+      "status": "self_rendered",
+      "chapter_order": 5
+    },
+    {
+      "reference": "Matthew 10:16",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 17,
+      "chapter_order": 5
+    },
+    {
+      "reference": "Numbers 21:9",
+      "status": "self_rendered",
+      "chapter_order": 5
+    },
+    {
+      "reference": "John 3:14-15",
+      "status": "self_rendered",
+      "chapter_order": 5
+    },
+    {
+      "reference": "John 10:10",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 19,
+      "chapter_order": 5
+    },
+    {
+      "reference": "John 6:55",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 20,
+      "chapter_order": 5
+    },
+    {
+      "reference": "Matthew 1:21",
+      "status": "self_rendered",
+      "chapter_order": 5
+    },
+    {
+      "reference": "John 16:22",
+      "status": "self_rendered",
+      "block_index": 23,
+      "chapter_order": 5
+    },
+    {
+      "reference": "Philippians 3:6-15",
+      "status": "self_rendered",
+      "chapter_order": 5
+    },
+    {
+      "reference": "Matthew 19:17",
+      "status": "self_rendered",
+      "block_index": 28,
+      "chapter_order": 5
+    },
+    {
+      "reference": "Matthew 19:17",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 28,
+      "chapter_order": 5
+    },
+    {
+      "reference": "Genesis 2:7",
+      "status": "self_rendered",
+      "block_index": 4,
+      "chapter_order": 6
+    },
+    {
+      "reference": "John 20:22",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "1 Samuel 9:3",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "1 Samuel 10:11",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "1 Samuel 5:13-14",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "1 Samuel 31:4",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "Psalms 42:1-2",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "John 4:14",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 20,
+      "chapter_order": 6
+    },
+    {
+      "reference": "Ecclesiastes 12:8",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 21,
+      "chapter_order": 6
+    },
+    {
+      "reference": "Isaiah 55:1",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "Jeremiah 2:13",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "Revelation 22:17",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "Matthew 17:1-5",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "John 17:24",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "James 1:17",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "Matthew 28:20",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "Zechariah 3:7-8",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "Luke 10:17",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "Luke 10:20",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "Ephesians 2:6",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "Matthew 25:1-13",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "Exodus 16:15",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "Exodus 16:27",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "Matthew 24:20",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 32,
+      "chapter_order": 6
+    },
+    {
+      "reference": "John 14:2-3",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "1 Corinthians 2:14",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 37,
+      "chapter_order": 6
+    },
+    {
+      "reference": "Matthew 12:10-13",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "Matthew 21:22",
+      "status": "self_rendered",
+      "chapter_order": 6
+    },
+    {
+      "reference": "Matthew 26:41",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 12,
+      "chapter_order": 6
+    },
+    {
+      "reference": "John 11:39",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "John 11:41",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "John 11:44",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "Acts 3:15",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "Revelation 19:16",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "Revelation 2:10",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "Matthew 5:13",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "Genesis 19:26",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "Luke 22:44",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "James 5:20",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "Revelation 3:21",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "Acts 4:13",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "2 Corinthians 12:9",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "John 13:35",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 13,
+      "chapter_order": 7
+    },
+    {
+      "reference": "1 Kings 3:16-28",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "John 14:19",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 13,
+      "chapter_order": 7
+    },
+    {
+      "reference": "John 15:8",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "Matthew 5:14",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "Matthew 25:14-30",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "1 Corinthians 1:26-30",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "John 6:9",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "John 5:12-13",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "Luke 21:2-4",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "2 Timothy 4:4-8",
+      "status": "self_rendered",
+      "chapter_order": 7
+    },
+    {
+      "reference": "John 10:9",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "2 Corinthians 5:1-2",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "2 Corinthians 5:6",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "Lamentations 3:31",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "Lamentations 3:33",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "Psalms 119:67",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "Psalms 119:71",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "1 Peter 1:12",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "Acts 9:4",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "Daniel 3:23-25",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "1 Peter 4:12-13",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "2 Corinthians 4:8-11",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "2 Corinthians 6:4-10",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "Luke 6:26",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "Matthew 21:9",
+      "status": "self_rendered",
+      "block_index": 17,
+      "chapter_order": 8
+    },
+    {
+      "reference": "Luke 23:21",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 17,
+      "chapter_order": 8
+    },
+    {
+      "reference": "Romans 8:23",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "1 Corinthians 15:31",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "John 16:20-22",
+      "status": "self_rendered",
+      "chapter_order": 8
+    },
+    {
+      "reference": "Revelation 3:20",
+      "status": "self_rendered",
+      "chapter_order": 9
+    },
+    {
+      "reference": "Luke 23:39-43",
+      "status": "self_rendered",
+      "chapter_order": 9
+    },
+    {
+      "reference": "Luke 17:21",
+      "status": "self_rendered",
+      "chapter_order": 9
+    },
+    {
+      "reference": "Luke 9:27-28",
+      "status": "self_rendered",
+      "chapter_order": 9
+    },
+    {
+      "reference": "Deuteronomy 30:14",
+      "status": "self_rendered",
+      "block_index": 10,
+      "chapter_order": 9
+    },
+    {
+      "reference": "Colossians 2:8",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 15,
+      "chapter_order": 9
+    },
+    {
+      "reference": "John 3:8",
+      "status": "self_rendered",
+      "chapter_order": 9
+    },
+    {
+      "reference": "Ezekiel 37:1-3",
+      "status": "self_rendered",
+      "chapter_order": 9
+    },
+    {
+      "reference": "Ezekiel 37:4",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 20,
+      "chapter_order": 9
+    },
+    {
+      "reference": "Ezekiel 37:5-14",
+      "status": "self_rendered",
+      "chapter_order": 9
+    },
+    {
+      "reference": "1 Timothy 3:6",
+      "status": "self_rendered",
+      "chapter_order": 9
+    },
+    {
+      "reference": "Jude 1:6",
+      "status": "self_rendered",
+      "chapter_order": 9
+    },
+    {
+      "reference": "Isaiah 14:12-17",
+      "status": "self_rendered",
+      "chapter_order": 9
+    },
+    {
+      "reference": "1 Corinthians 15:50",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 21,
+      "chapter_order": 9
+    },
+    {
+      "reference": "1 Corinthians 15:53",
+      "status": "self_rendered",
+      "chapter_order": 9
+    },
+    {
+      "reference": "Romans 8:19-22",
+      "status": "self_rendered",
+      "chapter_order": 9
+    },
+    {
+      "reference": "Romans 14:17",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 21,
+      "chapter_order": 9
+    },
+    {
+      "reference": "Revelation 21:4",
+      "status": "self_rendered",
+      "chapter_order": 9
+    },
+    {
+      "reference": "Revelation 22:5",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 21,
+      "chapter_order": 9
+    },
+    {
+      "reference": "Revelation 2:17",
+      "status": "mined",
+      "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+      "block_index": 8,
+      "chapter_order": 9
+    }
+  ]
+}

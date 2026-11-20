@@ -48,6 +48,11 @@ RUN DJANGO_SECRET_KEY=build-time-only uv run python manage.py collectstatic --no
 # the same immutable content the image ships, it cannot be stale.
 RUN DJANGO_SECRET_KEY=build-time-only uv run python manage.py content_version --write
 
+# Bake the on-disk copy of the bundled Bibles (library/bible_store.py) the API
+# reads verses from, so no request builds it. Held as dicts instead, OWB English
+# and the ASV cost the one worker ~26 MB of resident memory for its whole life.
+RUN DJANGO_SECRET_KEY=build-time-only uv run python manage.py build_bible_store
+
 EXPOSE 8000
 
 # Migrations run once per deploy via Render's preDeployCommand (see render.yaml),
@@ -65,9 +70,13 @@ EXPOSE 8000
 # nothing. Django gives each thread its own DB connection, so up to 4 persistent
 # ones.
 #
-# --max-requests recycles the worker after ~500 requests. CPython retains freed
-# memory pages, so occasional large allocations ratchet RSS toward the plan limit
-# over a process's lifetime; recycling resets the ratchet with a clean handover
+# --max-requests recycles the worker after ~500 requests. (Briefly ~200 on
+# 2026-11-19: with MALLOC_ARENA_MAX=2 the crawl then peaked at 335 MB, but each
+# recycle started a cold worker whose caches rebuilt on the next big lists, and
+# the web build took 68 minutes instead of ~21. config/memory.py logs requests
+# that grow memory, so creep toward the limit shows up before it bites.)
+# CPython retains freed memory pages, so occasional large allocations ratchet RSS
+# toward the plan limit over a process's lifetime; recycling resets the ratchet with a clean handover
 # instead of an OOM kill. With one worker, requests queue in the listen backlog
 # while its replacement boots (they wait, they don't fail).
 CMD ["sh", "-c", "uv run gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 1 --threads 4 --timeout 120 --max-requests 500 --max-requests-jitter 100"]

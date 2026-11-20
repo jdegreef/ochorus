@@ -53,8 +53,19 @@ SEED_LANGUAGES: dict[str, dict] = {
     "sw": {
         "name": "Swahili",
         "native": "Kiswahili",
-        "bible": "swhonen",
-        "bible_label": "Swahili Union-tradition (open)",
+        # The Open Word Bible, Swahili Balanced (CC0), bundled as
+        # data/bible/owb-sw-b.json.gz (scripts/build_owb_bible.py --language
+        # sw) and served offline by translation.fetch_chapter (founder
+        # decision, 2026-11-19: every Swahili work quotes OWB, as Amharic does).
+        # It replaced `swhonen`, a Take Root text that was never the Swahili
+        # Union wording the corpus actually quoted, and for which no
+        # public-domain Union text was reachable, so most verses had to be
+        # mined from earlier editions or self-rendered. OWB is complete (66
+        # books) and CC0, so no credit line is owed. The glossary below is for
+        # the translator's own prose; a quoted verse keeps OWB's words even
+        # where they differ (Rom 8 "flesh" is "asili ya dhambi" in OWB).
+        "bible": "owb-sw",
+        "bible_label": "Open Word Bible (OWB), Balanced",
         "glossary": {
             "justification": "kuhesabiwa haki",
             "sanctification": "utakaso",
@@ -399,33 +410,21 @@ SEED_LANGUAGES: dict[str, dict] = {
     "ja": {
         "name": "Japanese",
         "native": "日本語",
-        # 口語訳聖書 (Colloquial Japanese Bible: NT 1954, OT 1955), the Japan
-        # Bible Society's first modern-Japanese Bible and, through the 1980s, the
-        # standard text of Japanese Protestant churches. Under Japanese law a
-        # corporate-authored work's term ran 50 years from publication, so it
-        # entered the PUBLIC DOMAIN at the end of 2005 — no credit line is owed
-        # and no bibleCredit.ts entry. It is the full 66 books, in modern
-        # spelling, and the register (である調, formal) suits the 19th-century
-        # authors this library carries.
-        #
-        # Deliberately NOT 新共同訳 (1987), 新改訳 (1970/2017) or 聖書協会共同訳
-        # (2018) — the texts most churches read today — which are all licensed.
-        # And not 文語訳 (Meiji/Taishō): public domain too, but classical
-        # Japanese that a modern reader needs help to follow. The ebible mirror
-        # carries only a 1965 New Testament (bibles/jpn_loc), which cannot
-        # answer an Old Testament reference, so it is not an option either.
-        #
-        # `bible` is the Take Root translation code. Verified 2026-11-13 against
-        # api.takeroot.bible/api/bible/translations/: the 口語訳 is `japkougo`
-        # ("Japanese Kougo-yaku 口語訳「聖書」(1954/1955年版)", public domain) —
-        # not "japanese", which 404s. Its John 1:1 reads 初めに言があった。言は神と
-        # 共にあった。 and John 15:4 わたしにつながっていなさい, as expected. Re-check
-        # with CHECK_BIBLE_CODES=1 uv run python manage.py test \
-        #     library.tests_languages.LanguageSeedTableTests
-        "bible": "japkougo",
+        # The Open Word Bible, Japanese Balanced (CC0), bundled as
+        # data/bible/owb-ja-b.json.gz (scripts/build_owb_bible.py --language
+        # ja) and served offline by translation.fetch_chapter (founder
+        # decision, 2026-11-19: every Japanese work quotes OWB, as Amharic
+        # does). It replaced the 口語訳聖書 (Take Root `japkougo`, 1954/1955,
+        # public domain), which needed the network: api.takeroot.bible was
+        # often unreachable from worker sessions, so shelves shipped without a
+        # verse and books self-rendered. OWB is complete (66 books) and CC0, so
+        # no credit line is owed. The bundle drops the ASCII space OWB's
+        # exporter puts between poetic lines (Japanese takes none); every
+        # character of the wording is kept.
+        "bible": "owb-ja",
         # The NAME of the text, not a description: the translation prompt says
         # "use the supplied {bible_label} wording", so this is what it quotes.
-        "bible_label": "口語訳聖書",
+        "bible_label": "Open Word Bible (OWB), Balanced",
         # The reader cannot produce 「 」 (see Language.typography), so the
         # translation must set it. The convention every later ja book measures
         # from, until a shipped ja book exists to measure.
@@ -444,16 +443,16 @@ SEED_LANGUAGES: dict[str, dict] = {
             "(スポルジョン, アンドリュー・マーレー), never left in Latin letters."
         ),
         # Protestant register throughout: 神 (never the Catholic-leaning 天主),
-        # 聖霊, 主. "abide" is the 口語訳's own John 15:4 (わたしにつながって
-        # いなさい) and "the flesh" its Romans 8 肉. Prose is です・ます体; quoted
-        # verses keep the 口語訳's である調. A draft for native review.
+        # 聖霊, 主. "abide" is OWB's own John 15:4 (わたしのうちにとどまりなさい),
+        # with つながる kept for the shelf title キリストにつながる; and "the flesh" its Romans 8 肉. Prose is です・ます体; a quoted verse
+        # keeps OWB's own wording and register. A draft for native review.
         "glossary": {
             "justification": "義認",
             "sanctification": "聖化",
             "atonement": "贖い",
             "grace": "恵み",
             "the flesh": "肉",
-            "abide": "つながる / とどまる",
+            "abide": "とどまる / つながる",
             "the Holy Spirit": "聖霊",
             "the Lord": "主",
             "godliness": "敬虔",

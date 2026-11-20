@@ -14182,6 +14182,41 @@
 				427
 			]
 		},
+		"every-tribe-and-tongue": {
+			"ground": "be54717aa6976e0aa521fa54e5a16fec25c2a798e5a7a5a02f8764702988c07e",
+			"style": "originals",
+			"volume": "10",
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[279, 250, 321, 294],
+					[126, 328, 474, 404],
+					[125, 394, 475, 470]
+				],
+				"subtitle": [
+					[159, 528, 441, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
+		},
 		"exhortation-to-the-heathen": {
 			"ground": "c4962ad07ad941f50e1cb4d713bbcb8e8e24bb1cc33791f12fcb749a06d1d551",
 			"style": "inscriptional",
@@ -20102,6 +20137,40 @@
 				525
 			]
 		},
+		"golden-bowls": {
+			"ground": "222fe90a55bcfda150f97a72602a4e1578133b0efc2ef7341161507fd0effd4a",
+			"style": "originals",
+			"volume": "11",
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.85,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[283, 283, 317, 327],
+					[95, 361, 505, 437]
+				],
+				"subtitle": [
+					[130, 495, 470, 523]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				523
+			]
+		},
 		"gospel-of-john": {
 			"ground": "d6fc28dbb66e196887b195f658501a0a01617983fae50f9ecfbe77d7d250190c",
 			"style": "devotional",
@@ -23148,6 +23217,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/absolute-surrender": {
+			"ground": "b853091833fc38102dcdae98f733bff781a890b9eef1fbb784a03a1cea4360f0",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "0d1dfdf01c900d9b75ac8ff394f7794065067f764d3cab23676fed3a595d9244",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/all-of-grace": {
 			"ground": "ac729450372743669bed1cff78be7e34a6503a3086290262cb59e007853a81f9",
 			"style": "revival",
@@ -23160,6 +23244,21 @@
 			"medallion": null,
 			"layout": "band/oxblood",
 			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
+		"ja/baptism-with-the-holy-spirit": {
+			"ground": "57270c0bba1a09d8c29e2206bc3a5f22acdd695512a2797c942af6e59941d365",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "ebde6991ddf267bd6fc7d9e49848e28706cc80a24a9f8e4684546cc104b3ae8c",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0.085,
 			"caps": false,
 			"sitemark": null
 		},
@@ -23176,6 +23275,54 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null
+		},
+		"ja/growing-in-wisdom": {
+			"ground": "ffa92daed7a4734678353c0b11859181d06a501def9a81f4cbce2dc22b8b7967",
+			"style": "originals",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "4772b3778956943a1beb03ddf34dbc3bb739be6e190e2455f6be37916695d6ba",
+			"art": true,
+			"scrim": 0.9,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[149, 312, 451, 388]
+				],
+				"subtitle": [
+					[57, 450, 543, 478]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
+		},
+		"ja/he-holds-my-tomorrows": {
+			"ground": "9d4f01935aefb14ad300daab3903e11a093acbc763870f476e07ebe0b2eb9f6c",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "d3f17829d21379a019674013902347ddf4d75cefc1580d26fe4c47c9dd5211f4",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": true,
 			"sitemark": null
 		},
 		"ja/how-i-became-a-christian": {
@@ -23213,6 +23360,66 @@
 				603
 			]
 		},
+		"ja/humility-2": {
+			"ground": "ab8070b18dbfdbb83365757093735ef727752735dac588a9ed8680594aae3fbd",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "9b4f001a822ac8383d45bba4be35f1807678b12b26dfe2e65347a0fc12ef17aa",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[209, 307, 391, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
+		},
+		"ja/men-of-prayer-2": {
+			"ground": "2c3734aba7821f26edd01364fd8ba713575196582789fa1aa1ce43e901b9df1c",
+			"style": "originals",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "cc09ffa24e70127f94e727ab28a5c7a4639e11233c03c671a9447aed018e8335",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.2,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[149, 341, 451, 417]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				346,
+				449
+			]
+		},
 		"ja/pilgrims-progress": {
 			"ground": "d7aa3d996830d95b331d5efea0e1c516cfec332142c46eb9b5efb866fe870589",
 			"style": "press",
@@ -23225,6 +23432,72 @@
 			"medallion": null,
 			"layout": "band/teal",
 			"bar": 0.03,
+			"caps": false,
+			"sitemark": null
+		},
+		"ja/prayer-the-pulse-of-life": {
+			"ground": "47921fc7f4ef20a8c5dcf535f4a47e6cb268aeec85a86235d85bb2e8b21e4d4e",
+			"style": "house",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "1dd6807b1f01b11580af12bdbb52e6fbeb4f5eaa9f62fb60bde3cb8eba47eac0",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[
+						144,
+						102,
+						456,
+						131
+					]
+				],
+				"title": [
+					[
+						130,
+						325,
+						471,
+						415
+					],
+					[
+						118,
+						409,
+						483,
+						499
+					]
+				],
+				"mark": [
+					[
+						232,
+						664,
+						368,
+						746
+					]
+				]
+			},
+			"middle": [
+				298,
+				497
+			]
+		},
+		"ja/prevailing-prayer": {
+			"ground": "b59e14779d62fa71a8004c00767bf02abd105513d1dc4b45a036a30e06b5c2f3",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "be6ea20c4d69f8c77ee39627a38f95fca476655590f2961792d193b74f171b2b",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/ochre",
+			"bar": 0,
 			"caps": false,
 			"sitemark": null
 		},
@@ -23325,6 +23598,36 @@
 				253,
 				542
 			]
+		},
+		"ja/the-way-to-god": {
+			"ground": "613cd17b19a51451c3ef932bc83aa2cfdc89e8939c1f22067c85036f3f855089",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "cda6ac23a0dbd8c1483319b17b5e64a74b5f8a3c2a5504c2cb6fbb4522b1762c",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/ochre",
+			"bar": 0.015,
+			"caps": false,
+			"sitemark": null
+		},
+		"ja/waiting-on-god": {
+			"ground": "c709fc15fee9a6673c0534989e509573fb063032547434ba0eba7b50a194ecf7",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "627798cd47358050548c3b590146213b7bd3449618a14a3214c02d66e9250925",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null
 		},
 		"james": {
 			"ground": "063d330a75164dead466f10646bd7392fdfd7e4da3f18daabace1377db3b150c",
@@ -31710,6 +32013,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"pt/a-retrospect": {
+			"ground": "01664f4222edb30c798a0e8c6d299ac6e09bb570950c197a3e0325363c009b38",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/teal",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"pt/a-retrospect-children": {
 			"ground": "7459aa23e9b9cce4cb946e6e64c39d80dc7ada3eeb223400b51aa30d1c222447",
 			"style": "revival",
@@ -32055,6 +32373,40 @@
 			"bar": 0.025,
 			"caps": false,
 			"sitemark": null
+		},
+		"pt/at-the-masters-feet": {
+			"ground": "cdd5f88f3356cc2fdf4d4cd2c01456b47378ba22571135d66f4f3bf6431c2a2b",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[104, 102, 496, 131]
+				],
+				"title": [
+					[46, 324, 554, 406]
+				],
+				"subtitle": [
+					[113, 479, 487, 500],
+					[82, 500, 519, 521]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				274,
+				521
+			]
 		},
 		"pt/baptism-with-the-holy-spirit": {
 			"ground": "dd1ca172911e6482077dfdb3e5f2e02dfe726ad7d977f86d0f5d5e900cb05f52",
@@ -32596,6 +32948,37 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"pt/ever-increasing-faith": {
+			"ground": "bd80e3ad5e6960a5c3c45d335999e6b203a0958fee6c37c0527d906264cb03bc",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.55,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[96, 102, 504, 131]
+				],
+				"title": [
+					[152, 223, 448, 305],
+					[160, 294, 440, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				427
+			]
 		},
 		"pt/faithful-with-little": {
 			"ground": "e01f3bad37ef3e2c589e7888c794a5702b2bb02e46a00201e372cd5c1a2cccd5",
@@ -33545,6 +33928,36 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"pt/orthodoxy": {
+			"ground": "73ad0cdee7c57e2f91299844fa2ffcca568a9da0be7f4d8fa79c89e4d6a27f40",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.4,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[109, 342, 491, 452]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				294,
+				501
+			]
+		},
 		"pt/our-daily-walk": {
 			"ground": "c0b74e9227c022d75c6173165e5b3b2d662532b397c7aa12a9834b7a1fe99f05",
 			"style": "devotional",
@@ -33610,6 +34023,40 @@
 			"middle": [
 				327,
 				467
+			]
+		},
+		"pt/pensees": {
+			"ground": "fefb73f9387628ca6b5072552c1c09e47ab9039dee36cf00209f3b6247de33c9",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[106, 316, 494, 409]
+				],
+				"subtitle": [
+					[160, 461, 440, 482],
+					[144, 482, 456, 503]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				292,
+				503
 			]
 		},
 		"pt/pilgrims-progress": {
@@ -33849,6 +34296,40 @@
 			"middle": [
 				224,
 				570
+			]
+		},
+		"pt/religious-experience-and-journal": {
+			"ground": "0819cff871258f81c062c0fe1d6c0f5c32af02738e1d8e900181bd90236cc080",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[195, 102, 405, 131]
+				],
+				"title": [
+					[144, 172, 456, 235],
+					[83, 234, 517, 297]
+				],
+				"subtitle": [
+					[52, 361, 548, 389]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				389
 			]
 		},
 		"pt/revival-lectures": {
@@ -34667,6 +35148,40 @@
 			"middle": [
 				275,
 				519
+			]
+		},
+		"pt/the-practice-of-the-presence-of-god": {
+			"ground": "c3b8cf161f8a1660ade43267be89934616fa152ea3f18c1515d3de83cbbd1521",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[160, 307, 440, 380],
+					[96, 367, 504, 440]
+				],
+				"subtitle": [
+					[77, 492, 523, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				513
 			]
 		},
 		"pt/the-practice-of-the-presence-of-god-children": {
@@ -35575,6 +36090,40 @@
 			"middle": [
 				323,
 				472
+			]
+		},
+		"revival-fires": {
+			"ground": "ad822a05d225021eaf269f2aeb127064f755bf6a6358c639c7787e3045ae4856",
+			"style": "originals",
+			"volume": "9",
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.15,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 283, 311, 327],
+					[107, 361, 493, 437]
+				],
+				"subtitle": [
+					[182, 495, 418, 523]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				523
 			]
 		},
 		"revival-lectures": {

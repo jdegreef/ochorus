@@ -28,6 +28,7 @@ import re
 from functools import lru_cache
 
 import pythonbible as bible
+from django.db.models import Q
 
 from .models import Chapter, ChapterCitation
 from .scripture import reader_verse, reference_verse_ids
@@ -413,17 +414,29 @@ def bible_book_of(book) -> bible.Book | None:
     return bible.Book(pos)
 
 
-def book_chapter_pages(book: bible.Book) -> dict[int, int]:
-    """{Bible chapter: citing count} for each chapter of ``book`` with a page.
+def book_tally(book: bible.Book) -> tuple[dict[int, set[int]], dict[int, set[int]]]:
+    """`bucket` over every citation row touching ``book`` — ONE QUERY.
 
-    ONE QUERY over the book's own verse range, bucketed by the rule
-    ``qualifying_pages`` uses (`bucket`, the chapter floor, the text check), so
-    it names exactly the chapter pages the list builds — without the
-    full-corpus tally on a reader's request path.
+    Every row overlapping the book's verse range, which is every row that can
+    put a verse or chapter of it into `qualifying_pages`' tally — so the counts
+    read off this are the full-corpus counts for this book, without the
+    full-corpus tally on a reader's request path. The reader's chapter batch
+    reads it once and derives both its chapter pages and each chapter's most
+    quoted verses from it.
     """
     lo, hi = book.value * 1000000, book.value * 1000000 + 999999
-    rows = english_citation_rows().filter(start_verse_id__lte=hi, end_verse_id__gte=lo)
-    _, by_chapter = bucket(rows)
+    return bucket(english_citation_rows().filter(start_verse_id__lte=hi, end_verse_id__gte=lo))
+
+
+def book_chapter_pages(book: bible.Book, tally=None) -> dict[int, int]:
+    """{Bible chapter: citing count} for each chapter of ``book`` with a page.
+
+    Bucketed by the rule ``qualifying_pages`` uses (`bucket`, the chapter
+    floor, the text check), so it names exactly the chapter pages the list
+    builds. ``tally`` is a `book_tally(book)` already in hand; without one this
+    is that one query.
+    """
+    _, by_chapter = tally if tally is not None else book_tally(book)
     return {
         key % 1000: len(cids)
         for key, cids in by_chapter.items()
@@ -432,6 +445,78 @@ def book_chapter_pages(book: bible.Book) -> dict[int, int]:
         and len(cids) >= CHAPTER_FLOOR
         and verse_text(key * 1000 + 1)
     }
+
+
+def bible_reader_chapters() -> dict[int, tuple[str, frozenset[int]]]:
+    """{canonical number: (slug, Bible chapters it prints)} for the library's
+    published English Bible books — once per content revision, not per tap.
+
+    A Bible book is built as an introduction, one reader chapter per English
+    Bible chapter, then a conclusion (``build_owb_book``): Bible chapter ``n``
+    is reader chapter ``n + 1``, and its title says so. A chapter counts only
+    when both agree, so a drifted layout drops the link rather than open the
+    wrong chapter. The popover's "Read the whole chapter" and a topic's "In the
+    Bible" row both link through it.
+    """
+    from django.core.cache import cache
+
+    from .models import ContentRevision
+
+    revision = ContentRevision.current()
+    cached = cache.get("bible-reader-chapters")
+    if cached is not None and cached[0] == revision:
+        return cached[1]
+    found: dict[int, tuple[str, set[int]]] = {}
+    for position, slug, order, title in Chapter.objects.filter(
+        book__series__slug=BIBLE_SERIES, book__language="en", book__is_published=True
+    ).values_list("book__series_position", "book__slug", "order", "title"):
+        m = _TRAILING_NUMBER.search(title or "")
+        if position and m and int(m.group(1)) == order - 1:
+            found.setdefault(position, (slug, set()))[1].add(order - 1)
+    books = {pos: (slug, frozenset(chs)) for pos, (slug, chs) in found.items()}
+    cache.set("bible-reader-chapters", (revision, books), timeout=None)
+    return books
+
+
+#: How many of a Bible chapter's verses its "Most quoted in the classics" row
+#: lists. A handful: the row says where the library's attention falls in this
+#: chapter, and the scripture pages carry the rest.
+QUOTED_VERSES = 5
+
+
+def quoted_verses(book: bible.Book, chapter: int, by_verse: dict[int, set[int]]) -> list[dict]:
+    """The verses of Bible ``chapter`` the classics quote most — each one that
+    has its own scripture page, most-quoted first, at most `QUOTED_VERSES`.
+
+    ``by_verse`` is `book_tally(book)[0]`. The count is DISTINCT citing
+    chapters, the graph's own measure (`bucket`: one chapter returning to a
+    verse ten times is one voice), so it is the number the verse page itself
+    publishes as ``citing_count``. A verse is listed only when that page was
+    built — the verse floor and the text check `qualifying_pages` applies — so
+    the row never links a 404; a verse quoted under the floor is left out
+    rather than listed unlinked, because the row is a way onto those pages.
+    Ties fall to verse order, so the row reads down the chapter.
+    """
+    key = book.value * 1000 + chapter
+    found = [
+        (len(cids), vid)
+        for vid, cids in by_verse.items()
+        if vid // 1000 == key
+        and vid % 1000
+        and len(cids) >= VERSE_FLOOR
+        and verse_text(vid)
+    ]
+    found.sort(key=lambda f: (-f[0], f[1]))
+    slug = book_slug(book)
+    return [
+        {
+            "verse": vid % 1000,
+            "reference": reference_label(book, chapter, vid % 1000),
+            "count": count,
+            "page": {"book": slug, "chapter": chapter, "verse": vid % 1000},
+        }
+        for count, vid in found[:QUOTED_VERSES]
+    ]
 
 
 def bible_chapter_number(chapter) -> int | None:
@@ -573,3 +658,130 @@ def treated_passages(book_id: int) -> list[dict]:
             )
         out.append({"reference": label, "chapters": count, "page": page})
     return out
+
+
+#: How many distinct voices — citing chapters of the topic's books, plus its
+#: sermons — must treat a Bible chapter before the topic page names it. The
+#: corpus's own chapter floor (``CHAPTER_FLOOR``), for the same reason.
+TOPIC_BIBLE_FLOOR = 3
+
+#: ...and from how many different WORKS. Without it one long book that keeps
+#: returning to its favourite chapter fills the row alone; a chapter the
+#: TOPIC returns to is one at least two of its books or sermons treat.
+TOPIC_BIBLE_WORKS = 2
+
+#: A row, not a list — as ``BOOK_PASSAGES``.
+TOPIC_BIBLE_CHAPTERS = 6
+
+
+def _topic_bible_ranking(topic) -> list[dict]:
+    """The Bible chapters a topic's own classics return to most, uncached.
+
+    Voices are the topic's member works in English: each citing CHAPTER of a
+    member book (``ChapterCitation``, bucketed by ``bucket`` — distinct
+    chapters, never raw citation counts) and each member sermon, through its
+    own text (``Sermon.scripture_ref``, as ``bible_sermons`` reads a sermon: a
+    sermon on John 3 that quotes Genesis on the way is not a sermon on
+    Genesis). The Bible's own books are never voices. Ranked by distinct
+    voices, ties broken by total citations; only a chapter the library's Bible
+    prints (``bible_reader_chapters``) is named, since the row links into it.
+    """
+    from .models import Sermon
+
+    book_slugs = [e.book_slug for e in topic.entries.all()]
+    sermon_slugs = [e.sermon_slug for e in topic.sermon_entries.all()]
+
+    rows = list(
+        ChapterCitation.objects.filter(
+            chapter__book__slug__in=book_slugs,
+            chapter__book__language="en",
+            chapter__book__is_published=True,
+        )
+        .exclude(chapter__book__series__slug=BIBLE_SERIES)
+        .values_list("chapter_id", "start_verse_id", "end_verse_id", "count", "chapter__book_id")
+    )
+    _, by_chapter = bucket((cid, start, end) for cid, start, end, _n, _b in rows)
+    book_of_chapter = {cid: bid for cid, _s, _e, _n, bid in rows}
+    voices: dict[int, set[tuple[str, int]]] = {
+        key: {("c", cid) for cid in cids} for key, cids in by_chapter.items()
+    }
+    works: dict[int, set[tuple[str, int]]] = {
+        key: {("b", book_of_chapter[cid]) for cid in cids} for key, cids in by_chapter.items()
+    }
+    weight: dict[int, int] = {}
+    for _cid, start, _end, n, _bid in rows:
+        weight[start // 1000] = weight.get(start // 1000, 0) + n
+
+    for pk, ref in (
+        Sermon.objects.filter(slug__in=sermon_slugs, language="en", is_published=True)
+        .exclude(scripture_ref="")
+        .values_list("pk", "scripture_ref")
+    ):
+        for key in {vid // 1000 for vid in reference_verse_ids(ref)}:
+            voices.setdefault(key, set()).add(("s", pk))
+            works.setdefault(key, set()).add(("s", pk))
+            weight[key] = weight.get(key, 0) + 1
+
+    printed = bible_reader_chapters()
+    ranked = sorted(
+        (
+            key
+            for key, who in voices.items()
+            if len(who) >= TOPIC_BIBLE_FLOOR
+            and len(works[key]) >= TOPIC_BIBLE_WORKS
+            and key % 1000 in printed.get(key // 1000, (None, frozenset()))[1]
+        ),
+        key=lambda k: (-len(voices[k]), -weight.get(k, 0), k),
+    )[:TOPIC_BIBLE_CHAPTERS]
+    if not ranked:
+        return []
+
+    # The reader chapters themselves, for their titles ("Psalm 23", the
+    # reader's own label) and one-line summaries — one query for the row.
+    wanted = Q()
+    for key in ranked:
+        wanted |= Q(book__slug=printed[key // 1000][0], order=key % 1000 + 1)
+    found = {
+        (slug, order): (title, summary)
+        for slug, order, title, summary in Chapter.objects.filter(
+            wanted, book__language="en", book__is_published=True
+        ).values_list("book__slug", "order", "title", "summary")
+    }
+    out = []
+    for key in ranked:
+        slug, order = printed[key // 1000][0], key % 1000 + 1
+        title, summary = found.get((slug, order), ("", ""))
+        out.append(
+            {
+                "reference": title
+                or reference_label(bible.Book(key // 1000), key % 1000, None),
+                "slug": slug,
+                "order": order,
+                "summary": summary,
+                "count": len(voices[key]),
+            }
+        )
+    return out
+
+
+def topic_bible_chapters(topic) -> list[dict]:
+    """``_topic_bible_ranking(topic)``, once per content revision.
+
+    The topic detail payload asks on every (uncached) request; the citation
+    index and the shelves only change on a deploy or an admin edit, both of
+    which bump the revision, so the revision is the whole key — the pattern
+    ``current_pages`` and ``bible_reader_chapters`` use. English only: the
+    library's Bible and the citation index both are (see the module note).
+    """
+    from django.core.cache import cache
+
+    from .models import ContentRevision
+
+    key = f"topic-bible-chapters:{topic.pk}"
+    revision = ContentRevision.current()
+    cached = cache.get(key)
+    if cached is not None and cached[0] == revision:
+        return cached[1]
+    found = _topic_bible_ranking(topic)
+    cache.set(key, (revision, found), timeout=None)
+    return found
