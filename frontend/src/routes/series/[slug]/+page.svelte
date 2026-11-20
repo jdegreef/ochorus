@@ -29,6 +29,7 @@
 	import { seriesCardUrl } from '$lib/seriesCard';
 	import { localizeHref } from '$lib/href';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import TonightStory from '$lib/components/TonightStory.svelte';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import SeriesCard from '$lib/components/SeriesCard.svelte';
 	import SeriesVolumes from '$lib/components/SeriesVolumes.svelte';
@@ -301,6 +302,12 @@
 				</figcaption>
 			</figure>
 		</section>
+	{/if}
+
+	<!-- A series for children whose volumes tell real lives (Brave for God):
+	     one of them for tonight, above the volumes. -->
+	{#if series.audience === 'young_readers' && people.length}
+		<TonightStory {people} class="mt-12" />
 	{/if}
 
 	<section class="mt-12">
