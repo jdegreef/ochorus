@@ -2,9 +2,15 @@ name: Deploy train
 
 # Deploys main to Render in batches instead of on every merge. Render's
 # auto-deploy is off on ochorus-api and ochorus-web (render.yaml), so this
-# workflow is the only thing that ships them: every two hours it moves both
+# workflow is the only thing that ships them: three times a day it moves both
 # to the newest commit whose `test-and-build` passed, if anything
 # deployable changed since the last deploy.
+# Three, not every two hours (2026-11-20): each train runs the 20-70 minute
+# web prerender on Render's build pipeline, which is billed by the minute, and
+# at 50+ merges a day nearly every two-hourly train fired. Runs at 14:05,
+# 20:05 and 02:05 UTC (7 AM, 1 PM and 7 PM in Arizona / MST). A run that finds
+# a deploy still going skips, so the next chance is six hours later; run it
+# by hand (below) when something can't wait.
 # It never overlaps a deploy: if ochorus-api or ochorus-web still has one
 # running (the web build takes 20-70 min after the train exits), the run
 # deploys nothing and stays green; the next run picks the work up. If Render
@@ -21,10 +27,11 @@ name: Deploy train
 # Setup: a Render API key (Account Settings → API Keys) in the repo secret
 # RENDER_API_KEY. The service IDs below are not secrets. Deploy hooks are not
 # used: Render 500s on a hook carrying `ref=<sha>` (deploy_train.py has why).
-# The email cron is not on the train; it auto-deploys (render.yaml).
+# The email cron is not on the train; while email sending is off it is
+# suspended and does not deploy at all (render.yaml).
 on:
   schedule:
-    - cron: '5 */2 * * *'
+    - cron: '5 2,14,20 * * *'
   workflow_dispatch:
     inputs:
       force:
