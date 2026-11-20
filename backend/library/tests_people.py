@@ -86,6 +86,21 @@ class PeopleTests(SimpleTestCase):
         self.assertIsNone(rw("d l moody -prayer"))
         self.assertIsNone(rw('"d l moody"'))
 
+    def test_review_cases(self):
+        m = self.people.match
+        # A possessive is the name, not an initial "s".
+        self.assertEqual(m("d l moody's sermons")[0].name, "Dwight L. Moody")
+        # An excluded person is never asked for.
+        self.assertEqual([p.name for p in m("moody -torrey")], ["Dwight L. Moody"])
+        # A particle never makes a second name word.
+        self.assertFalse(m("augustine of")[0].named)
+        # An honorific after the name is something else asked for.
+        self.assertEqual(m("d l moody mother")[0].rest, ["mother"])
+        self.assertFalse(m("d l moody mother")[0].named)
+        self.assertTrue(m("st augustine")[0].whole)
+        # A first name inside a longer query names no one wholly.
+        self.assertFalse(any(p.whole for p in m("gospel of john")))
+
     def test_words_fold_accents_and_split_punctuation(self):
         self.assertEqual(words("Frédéric L. Godet"), ["frederic", "l", "godet"])
         self.assertEqual(words("D.L."), ["d", "l"])
@@ -155,6 +170,15 @@ class PersonSearchTests(TestCase):
         authors = [h for h in self.get("moody")["results"] if h["type"] == "author"]
         self.assertEqual(authors[0]["author_slug"], "dwight-l-moody")
         self.assertNotIn("named", authors[0])
+
+    def test_a_shared_first_name_in_a_longer_query_is_not_an_author_hit(self):
+        Author.objects.create(slug="john-wesley", name="John Wesley", bio="A preacher.")
+        Book.objects.create(
+            author=Author.objects.get(slug="john-wesley"), slug="journal", language="en",
+            title="Journal",
+        )
+        authors = [h for h in self.get("gospel of john")["results"] if h["type"] == "author"]
+        self.assertEqual(authors, [])
 
     def test_the_snippet_does_not_highlight_an_initial(self):
         hit = next(h for h in self.get("d l moody")["results"] if h["type"] == "author")

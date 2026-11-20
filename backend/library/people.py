@@ -58,9 +58,20 @@ def fold(text: str) -> str:
     return "".join(c for c in decomposed if not unicodedata.combining(c)).lower()
 
 
+_POSSESSIVE = re.compile(r"['’]s\b", re.IGNORECASE)
+
+
 def words(text: str) -> list[str]:
-    """``text`` as folded words; punctuation splits, so "D.L." is ``d``, ``l``."""
-    return _WORD.findall(fold(text))
+    """``text`` as folded words; punctuation splits, so "D.L." is ``d``, ``l``,
+    and a possessive goes ("Moody's" is ``moody``, not ``moody`` + ``s``)."""
+    return _WORD.findall(fold(_POSSESSIVE.sub("", text or "")))
+
+
+def asked_for(q: str) -> list[str]:
+    """The words of ``q`` a person could be named by: no ``-excluded`` word
+    (``moody -torrey`` asks for Moody, never Torrey) and no ``OR``."""
+    kept = [c for c in (q or "").split() if not c.startswith("-") and c != "OR"]
+    return words(" ".join(kept))
 
 
 @dataclass(frozen=True)
@@ -124,6 +135,8 @@ class PersonMatch:
     name: str
     #: The name's surname as folded ("moody"), for a snippet to centre on.
     surname: str
+    #: Found by the surname, not only by a first name ("john").
+    by_surname: bool
     score: float
     #: Every word of the query is part of the name (or a skippable honorific):
     #: the query is this person's name, not a name plus other words.
@@ -162,7 +175,7 @@ class People:
         every single-letter word of the query is one of their initials: "d l
         moody" names Dwight L. Moody, not every Moody.
         """
-        typed = words(q)
+        typed = asked_for(q)
         if not typed:
             return []
         found = [m for n in self._names if (m := self._match_one(typed, n))]
@@ -193,10 +206,15 @@ class People:
                     used.append(i)
                     score += INITIAL * len(run)
                 else:
-                    rest.append(t)
+                    rest.append((i, t))
                 continue
-            if t in PARTICLES and best != EXACT:
-                rest.append(t)
+            if t in PARTICLES:
+                # "of" in "catherine of siena" belongs to the name, but never
+                # counts as naming anyone: "the great" is not Gregory the Great.
+                if best == EXACT:
+                    free.remove(best_j)
+                else:
+                    rest.append((i, t))
                 continue
             free.remove(best_j)
             used.append(i)
@@ -211,7 +229,11 @@ class People:
         # A first name alone ("john") is a weak naming; a surname, a strong one.
         if surname_hit:
             score += EXACT
-        whole = all(t in OPTIONAL for t in rest)
+        # An honorific is skippable before the name ("st augustine", "rev
+        # spurgeon"); after it, it is something else asked for ("moody mother").
+        first = min(used)
+        rest = [t for i, t in rest if not (t in OPTIONAL and i < first)]
+        whole = not rest
         # Covering more of the name is a better match: "dwight l moody" over a
         # "dwight moody" that left the initial unread.
         score += len(used) / len(person.tokens)
@@ -219,10 +241,11 @@ class People:
             pk=person.pk,
             name=person.name,
             surname=person.surname,
+            by_surname=surname_hit,
             score=score,
             whole=whole,
             used=used,
-            rest=[t for t in rest if t not in OPTIONAL],
+            rest=rest,
         )
 
     def rewrite(self, q: str, found: list[PersonMatch] | None = None) -> str | None:

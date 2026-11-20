@@ -458,12 +458,18 @@ class _Ctx:
         if self._people is None:
             people = People(_author_names(self.language))
             matches = people.match(self.q)
-            self._people = (matches, people.rewrite(self.q, matches), strongest(matches))
+            person = strongest(matches)
+            # Who counts as found by name: anyone the query is wholly the name
+            # of ("john", "d l moody"), plus the one person a longer query
+            # names ("d l moody prayer"). Not everyone who merely shares a
+            # word with it — "gospel of john" is not a search for every John.
+            found = [m for m in matches if m.whole or m is person]
+            self._people = (found, people.rewrite(self.q, matches), person)
         return self._people
 
     @property
     def people(self) -> list:
-        """Every author the query names (PersonMatch), strongest first."""
+        """The authors found by name (PersonMatch), strongest first."""
         return self._read_people()[0]
 
     @property
@@ -627,7 +633,12 @@ def _search_postgres(ctx, qs):
         # The people the query names come first, whatever their bios rank: a
         # bio that MENTIONS "D. L. Moody" (R. A. Torrey's) is not Moody.
         by_pk = {m.pk: m for m in ctx.people}
-        named = list(ranked("author").filter(pk__in=list(by_pk))[: CAPS["author"]])
+        named = list(
+            ranked("author")
+            .filter(pk__in=list(by_pk))
+            .annotate(name_score=_name_order(ctx))
+            .order_by("-name_score", "-rank")[: CAPS["author"]]
+        )
         seen = {r.pk for r in named}
         others = [r for r in ranked("author")[: CAPS["author"]] if r.pk not in seen]
         scored = [
@@ -1056,7 +1067,8 @@ def _author_hit(a, ctx):
         # Found by name, the bio opens on the name rather than on the first
         # "d" of "d l moody".
         "snippet": fallback_snippet(
-            a.bio_for(ctx.language), person.surname if person else _snippet_term(ctx)
+            a.bio_for(ctx.language),
+            person.surname if person and person.by_surname else _snippet_term(ctx),
         ),
         "date": _date(a.created_at),
     }
