@@ -8,7 +8,7 @@
         {
             "reference": "1 Peter 2:7",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 0
         },
         {
@@ -18,7 +18,8 @@
         },
         {
             "reference": "Isaiah 60:22",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 1
         },
         {
@@ -28,7 +29,8 @@
         },
         {
             "reference": "Psalm 40:2-3",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 1
         },
         {
@@ -43,7 +45,8 @@
         },
         {
             "reference": "Psalm 116:18-19",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 2
         },
         {
@@ -53,17 +56,20 @@
         },
         {
             "reference": "Revelation 22:13",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 4
         },
         {
             "reference": "Hebrews 12:2",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 4
         },
         {
             "reference": "2 Samuel 23:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 4
         },
         {
@@ -87,8 +93,15 @@
             "block_index": 7
         },
         {
+            "reference": "Romans 8:37",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 7
+        },
+        {
             "reference": "Matthew 10:37-38",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 8
         },
         {
@@ -119,17 +132,18 @@
         {
             "reference": "John 20:13",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 11
-        },
-        {
-            "reference": "Ephesians 2:6",
-            "status": "self_rendered",
-            "block_index": 14
         },
         {
             "reference": "Romans 8:17",
             "status": "self_rendered",
+            "block_index": 14
+        },
+        {
+            "reference": "Ephesians 2:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 14
         },
         {
@@ -140,7 +154,7 @@
         {
             "reference": "Job 2:4",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 15
         },
         {
@@ -185,7 +199,8 @@
         },
         {
             "reference": "Ecclesiastes 11:7",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 21
         },
         {
@@ -195,30 +210,31 @@
         },
         {
             "reference": "Psalm 41:3",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 22
         },
         {
             "reference": "Romans 8:28",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 22
         },
         {
             "reference": "John 11:25",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "status": "self_rendered",
             "block_index": 22
         },
         {
             "reference": "Isaiah 46:4",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 22
         },
         {
             "reference": "Psalm 23:4",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 22
         },
         {
@@ -238,7 +254,8 @@
         },
         {
             "reference": "Psalm 119:9",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 25
         },
         {
@@ -249,13 +266,13 @@
         {
             "reference": "John 21:16-17",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 25
         },
         {
             "reference": "John 21:17",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 25
         },
         {
