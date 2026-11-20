@@ -125,3 +125,17 @@ export function shelveOriginals(books: BookSummary[], series: OriginalsSeries[])
 	})).filter((s) => s.books.length);
 	return { series: ordered, shelves };
 }
+
+/** "Just published": the imprint's newest books in this language, newest
+ * first, by when the edition was added. The first is shown large, the rest
+ * beside it as "Also new". */
+export const newestOriginals = (books: BookSummary[], n = 4): BookSummary[] =>
+	[...books]
+		.filter((b) => b.created_at)
+		.sort((a, b) => b.created_at.localeCompare(a.created_at))
+		.slice(0, n);
+
+/** The book being written now, teased under "Just published". `null` hides
+ * the line: set it (in English; the teaser is shown on the English shelf
+ * only) when the next Original is far enough along to name. */
+export const COMING_NEXT: { title: string; note: string } | null = null;
