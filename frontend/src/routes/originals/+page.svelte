@@ -12,6 +12,8 @@
 		SERIES_ROW_COVERS,
 		SHELF_META,
 		STARTERS,
+		COMING_NEXT,
+		newestOriginals,
 		shelveOriginals
 	} from '$lib/originals';
 	import { audienceName, groupByAudience } from '$lib/series';
@@ -70,6 +72,11 @@
 		}
 		return picks;
 	});
+	// "Just published": the newest Original large, the next three beside it.
+	const newest = $derived(newestOriginals(shelf.books));
+	const latest = $derived(newest[0]);
+	const alsoNew = $derived(newest.slice(1));
+	const comingNext = $derived(lang.current === 'en' ? COMING_NEXT : null);
 	const starters = $derived(
 		STARTERS.flatMap((s) => {
 			const book = bySlug.get(s.slug);
@@ -148,8 +155,63 @@
 			</div>
 		</section>
 
+		{#if latest && shelf.books.length > 4}
+			<section class="mt-4" aria-labelledby="new-heading">
+				<div class="news">
+					<a class="latest card-lift" href={localizeHref(`/books/${latest.slug}`)}>
+						<span class="latest-cover"><BookCover book={latest} /></span>
+						<span class="min-w-0">
+							<span id="new-heading" class="eyebrow block text-gold">{t('originals.justPublished')}</span>
+							<span class="mt-1 block font-display text-h2 font-semibold text-balance text-text" dir="auto">
+								{latest.title}
+							</span>
+							{#if latest.subtitle}
+								<span class="mt-1 block text-body text-muted" dir="auto">{latest.subtitle}</span>
+							{/if}
+							{#if latest.series}
+								<span class="mt-2 block text-small text-muted" dir="auto">
+									{latest.series.title}{#if latest.series.position}{` · ${t('originals.volume').replace('%n%', volumeNumeral(latest.series.position, lang.current) ?? '')}`}{/if}
+								</span>
+							{/if}
+							<span class="mt-3 inline-block text-small font-semibold text-accent">
+								{t('book.beginReading')} <Arrow />
+							</span>
+						</span>
+					</a>
+					{#if alsoNew.length}
+						<div class="also">
+							<p class="eyebrow text-muted">{t('originals.alsoNew')}</p>
+							<ul class="mt-3 flex flex-col gap-3">
+								{#each alsoNew as b (b.slug)}
+									<li>
+										<a class="also-row" href={localizeHref(`/books/${b.slug}`)}>
+											<span class="also-cover"><BookCover book={b} /></span>
+											<span class="min-w-0">
+												<span class="block font-display text-body font-semibold text-text" dir="auto">{b.title}</span>
+												{#if b.series}
+													<span class="block truncate text-small text-muted" dir="auto">{b.series.title}</span>
+												{:else if b.subtitle}
+													<span class="block truncate text-small text-muted" dir="auto">{b.subtitle}</span>
+												{/if}
+											</span>
+										</a>
+									</li>
+								{/each}
+							</ul>
+							{#if comingNext}
+								<p class="soon mt-4 text-small text-muted">
+									{t('originals.comingNext').replace('%title%', comingNext.title)}
+									{#if comingNext.note}<span class="block">{comingNext.note}</span>{/if}
+								</p>
+							{/if}
+						</div>
+					{/if}
+				</div>
+			</section>
+		{/if}
+
 		{#if starters.length >= 2}
-			<section class="mt-4" aria-labelledby="begin-heading">
+			<section class="mt-10" aria-labelledby="begin-heading">
 				<h2 id="begin-heading" class="text-h3 font-display font-semibold">{t('originals.begin')}</h2>
 				<ul class="starters mt-3">
 					{#each starters as s (s.slug)}
@@ -175,6 +237,15 @@
 				</ul>
 			</section>
 		{/if}
+
+		<!-- Why we write: the imprint is a ministry, and says so in its own voice
+		     before the shelves. -->
+		<section class="why mt-14" aria-labelledby="why-heading">
+			<p class="eyebrow text-gold">{t('originals.whyEyebrow')}</p>
+			<h2 id="why-heading" class="mt-1 text-h2 font-display font-semibold">{t('originals.whyTitle')}</h2>
+			<p class="why-note mt-3">{t('originals.whyNote')}</p>
+			<p class="mt-3 text-small text-muted">{t('originals.whySign')}</p>
+		</section>
 
 		<div id="shelves" class="jump-anchor">
 			{#if shelved.series.length}
@@ -282,13 +353,8 @@
 			{/each}
 		</div>
 
-		<section class="colophon mt-16">
-			<div>
-				<p class="eyebrow text-gold">{t('originals.whyEyebrow')}</p>
-				<h2 class="mt-1 text-h2 font-display font-semibold">{t('originals.whyTitle')}</h2>
-				<p class="mt-2 text-small text-muted">{t('originals.whyBody')}</p>
-			</div>
-			{#if otherLangs.length}
+		{#if otherLangs.length}
+			<section class="colophon mt-16">
 				<div>
 					<p class="eyebrow text-gold">{t('originals.langsEyebrow')}</p>
 					<p class="mt-2 text-small text-muted">{t('originals.langsBody')}</p>
@@ -308,8 +374,8 @@
 						{/each}
 					</ul>
 				</div>
-			{/if}
-		</section>
+			</section>
+		{/if}
 	{/if}
 </div>
 
@@ -331,6 +397,54 @@
 		flex-wrap: wrap;
 		gap: 0.25rem 0.6rem;
 		font-variant-numeric: tabular-nums;
+	}
+	.news {
+		display: grid;
+		grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+		gap: 1.5rem;
+		padding: 1.25rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+	}
+	.latest {
+		display: grid;
+		grid-template-columns: 9rem minmax(0, 1fr);
+		gap: 1.25rem;
+		align-items: center;
+		color: inherit;
+		text-decoration: none;
+	}
+	.also {
+		padding-inline-start: 1.5rem;
+		border-inline-start: 1px solid var(--border);
+	}
+	.also-row {
+		display: grid;
+		grid-template-columns: 2.75rem minmax(0, 1fr);
+		gap: 0.75rem;
+		align-items: center;
+		color: inherit;
+		text-decoration: none;
+	}
+	.also-row:hover .font-display {
+		color: var(--accent);
+	}
+	.soon {
+		font-style: italic;
+	}
+	/* The founder's note: a band, not a footnote, set in the reading face. */
+	.why {
+		padding: 1.75rem;
+		border-inline-start: 3px solid var(--gold);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+	}
+	.why-note {
+		max-width: 60ch;
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		line-height: 1.55;
 	}
 	.starters {
 		display: grid;
@@ -384,7 +498,6 @@
 	}
 	.colophon {
 		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 2rem;
 		padding: 1.75rem;
 		border: 1px solid var(--border);
@@ -401,6 +514,15 @@
 		.series-row {
 			grid-template-columns: minmax(0, 1fr);
 			gap: 0.75rem;
+		}
+		.news {
+			grid-template-columns: minmax(0, 1fr);
+		}
+		.also {
+			padding-inline-start: 0;
+			padding-block-start: 1.25rem;
+			border-inline-start: 0;
+			border-block-start: 1px solid var(--border);
 		}
 	}
 	@media (max-width: 639.98px) {
@@ -428,6 +550,12 @@
 		}
 		.colophon {
 			grid-template-columns: minmax(0, 1fr);
+			padding: 1.25rem;
+		}
+		.latest {
+			grid-template-columns: 6rem minmax(0, 1fr);
+		}
+		.why {
 			padding: 1.25rem;
 		}
 	}
