@@ -1,0 +1,35 @@
+{
+    "kind": "sermon",
+    "slug": "all-scripture-is-given-by-inspiration",
+    "language": "am",
+    "job_issue": 8240,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "2 Timothy 3:16-17",
+            "status": "self_rendered",
+            "block_index": 0
+        },
+        {
+            "reference": "2 Timothy 3:16",
+            "status": "self_rendered",
+            "block_index": 5
+        },
+        {
+            "reference": "1 Peter 4:11",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 13
+        },
+        {
+            "reference": "Titus 2:12",
+            "status": "self_rendered",
+            "block_index": 18
+        },
+        {
+            "reference": "2 Timothy 3:17",
+            "status": "self_rendered",
+            "block_index": 30
+        }
+    ]
+}
