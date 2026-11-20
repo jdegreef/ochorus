@@ -2299,14 +2299,30 @@ export interface WordPassage {
 	work: string;
 	/** The chapter's title; "" for a sermon. */
 	title: string;
-	author: { slug: string; name: string };
+	/** `photo_url` optional: an API behind this build sends name and slug only. */
+	author: { slug: string; name: string; photo_url?: string };
 	href: string;
 }
 
-/** Up to three passages using `word` (backend `library.word_passages`). Only
- *  sentences containing the word itself — an empty list is a real answer. */
+/** An Open Word Bible verse that uses a glossary word, split like a passage;
+ *  `href` opens its chapter in the library's Bible ("" when it isn't printed). */
+export interface WordVerse {
+	ref: string;
+	before: string;
+	match: string;
+	after: string;
+	href: string;
+}
+
+/** Up to three passages using `word` (backend `library.word_passages`), and
+ *  up to three OWB verses (`bible`; optional from an API behind this build).
+ *  Only sentences containing the word itself — an empty list is a real answer. */
 export const getWordPassages = (word: string, f?: Fetch) =>
-	apiFetch<{ word: string; passages: WordPassage[] }>(`/api/library/words/${word}/passages/`, {}, f);
+	apiFetch<{ word: string; passages: WordPassage[]; bible?: WordVerse[] }>(
+		`/api/library/words/${word}/passages/`,
+		{},
+		f
+	);
 
 /** A writer offered as an answer in "Whose words?" — always with a portrait. */
 export interface QuoteGameChoice {

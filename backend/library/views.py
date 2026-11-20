@@ -2507,9 +2507,10 @@ class _WordPassagesThrottle(ScopedCacheThrottle):
 
 class WordPassagesView(PublicContentCacheMixin, APIView):
     """Real passages from the English library that use ``word`` — the examples
-    on a /glossary/<term>/ page (``library.word_passages``). Only sentences
-    that contain the word itself are returned, each linked to its paragraph;
-    an empty list is an honest answer. Cached per word for a day.
+    on a /glossary/<term>/ page (``library.word_passages``) — and, apart, the
+    Open Word Bible's verses that use it (``bible``). Only sentences that
+    contain the word itself are returned, each linked to its paragraph or
+    chapter; an empty list is an honest answer. Cached per word for a day.
     """
 
     throttle_classes = [_WordPassagesThrottle]
@@ -2520,12 +2521,15 @@ class WordPassagesView(PublicContentCacheMixin, APIView):
         word = word.lower()
         if len(word) > word_passages.MAX_WORD or not word_passages.WORD_RE.match(word):
             raise Http404("Not a glossary word")
-        key = f"word-passages:{word}"
+        key = f"word-passages:v2:{word}"
         found = cache.get(key)
         if found is None:
-            found = word_passages.passages_for(word)
+            found = {
+                "passages": word_passages.passages_for(word),
+                "bible": word_passages.bible_verses_for(word),
+            }
             cache.set(key, found, 60 * 60 * 24)
-        return Response({"word": word, "passages": found})
+        return Response({"word": word, **found})
 
 
 class QuoteGameView(PublicContentCacheMixin, APIView):

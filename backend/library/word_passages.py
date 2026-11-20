@@ -18,6 +18,13 @@ A few glossary words are also ordinary modern words with another meaning
 ("art" the noun), so they match only in the archaic phrase (``PHRASES``) —
 an example of "art" that is about painting would teach the wrong thing.
 
+**The Bible apart.** The library's own Bible (the Open Word Bible, printed as
+the books of ``the-bible`` series) is not one of "the classics": its verses
+using the word come back on their own (``bible_verses_for``), read from the
+bundled OWB text, each linked to the chapter in the library's Bible. OWB is a
+modern translation, so an archaic word ("peradventure") has none — an empty
+list, honestly, rather than another Bible's wording.
+
 English only: the glossary is English, and so are the works it quotes.
 """
 
@@ -27,6 +34,12 @@ import hashlib
 import re
 
 from django.db import connection
+
+#: The library's printed Bible — its verses are the "In the Bible" list, not
+#: an example from the classics.
+BIBLE_SERIES = "the-bible"
+#: The Bible text the verses are read from (``bible_store``).
+BIBLE = "owb-en"
 
 #: Glossary words that are also an everyday word with another sense: match the
 #: archaic use only. The regex runs on the served text; the phrase feeds the
@@ -96,7 +109,9 @@ def _candidates(word: str):
     from .models import Chapter, Sermon
 
     regex_word = PHRASES.get(word, (None, word.replace("-", " ")))[1]
-    chapters = Chapter.objects.filter(book__is_published=True, book__language="en")
+    chapters = Chapter.objects.filter(book__is_published=True, book__language="en").exclude(
+        book__series__slug=BIBLE_SERIES
+    )
     sermons = Sermon.objects.filter(is_published=True, language="en")
     if connection.vendor == "postgresql":
         query = search_query(regex_word, "en")
@@ -144,7 +159,7 @@ def _passage(kind: str, pk: int, pattern: re.Pattern) -> dict | None:
             "kind": kind,
             "work": work,
             "title": title,
-            "author": {"slug": author.slug, "name": author.name},
+            "author": {"slug": author.slug, "name": author.name, "photo_url": author.photo_url},
             "href": href,
         }
     return None
@@ -174,4 +189,50 @@ def passages_for(word: str) -> list[dict]:
                 out.append(read[(kind, pk)])
                 works.add(work)
                 authors.add(author)
+    return out
+
+
+def bible_verses_for(word: str, limit: int = LIMIT) -> list[dict]:
+    """Up to ``limit`` OWB verses using ``word`` (the same whole-word rule as
+    the passages), from different books of the Bible, in a stable
+    word-specific order, then canonical order for reading. Each is
+    ``{ref, before, match, after, href}``; ``href`` opens the chapter in the
+    library's Bible ("" when the library doesn't print that book)."""
+    import pythonbible as bible
+
+    from . import bible_store
+    from .scripture_graph import bible_reader_chapters
+
+    pattern = pattern_for(word)
+    needle = PHRASES.get(word, (None, word))[1].split()[-1].split("-")[0]
+    try:
+        rows = bible_store.containing(BIBLE, needle)
+    except Exception:
+        return []
+    hits = [(vid, text, m) for vid, text in rows if (m := pattern.search(text))]
+    hits.sort(key=lambda h: _rank(word, str(h[0])))
+    picked, books = [], set()
+    for vid, text, m in hits:
+        book = vid // 1_000_000
+        if book in books:
+            continue
+        books.add(book)
+        picked.append((vid, text, m))
+        if len(picked) >= limit:
+            break
+    reader = bible_reader_chapters()
+    out = []
+    for vid, text, m in sorted(picked):
+        before, hit, after = sentence_around(text, m)
+        chapter = vid // 1000 % 1000
+        slug, printed = reader.get(vid // 1_000_000, ("", frozenset()))
+        out.append(
+            {
+                "ref": bible.format_scripture_references(bible.convert_verse_ids_to_references([vid])),
+                "before": before,
+                "match": hit,
+                "after": after,
+                "href": f"/books/{slug}/{chapter + 1}/" if slug and chapter in printed else "",
+            }
+        )
     return out

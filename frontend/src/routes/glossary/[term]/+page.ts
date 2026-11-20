@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { GLOSSARY_TERMS, isGlossaryTerm } from '$lib/glossary';
-import { getWordPassages, type WordPassage } from '$lib/library-public';
+import { getWordPassages, type WordPassage, type WordVerse } from '$lib/library-public';
 import type { EntryGenerator, PageLoad } from './$types';
 
 export const prerender = true;
@@ -16,10 +16,13 @@ export const load: PageLoad = async ({ params, fetch }) => {
 	// definition stand without them, so a failed fetch leaves the section out
 	// rather than failing the page (or the build).
 	let passages: WordPassage[] = [];
+	let verses: WordVerse[] = [];
 	try {
-		passages = (await getWordPassages(params.term, fetch)).passages;
+		const found = await getWordPassages(params.term, fetch);
+		passages = found.passages;
+		verses = found.bible ?? [];
 	} catch {
 		passages = [];
 	}
-	return { term: params.term, passages };
+	return { term: params.term, passages, verses };
 };

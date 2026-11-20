@@ -55,3 +55,22 @@ describe('glossary', () => {
 		expect(titleCase('wherefore')).toBe('Wherefore');
 	});
 });
+
+describe('dictionary heads and shelves', () => {
+	it('every term has a head, and the heads name only terms', async () => {
+		const { GLOSSARY_TERMS, headOf } = await import('./glossary');
+		const heads = (await import('./glossaryHeads.json')).default as Record<string, unknown>;
+		for (const term of GLOSSARY_TERMS) expect(headOf(term), term).not.toBeNull();
+		for (const k of Object.keys(heads)) if (!k.startsWith('_')) expect(GLOSSARY_TERMS).toContain(k);
+	});
+	it('the two shelves split the glossary between them', async () => {
+		const { GLOSSARY_TERMS, OLD_WORDS, FAITH_WORDS } = await import('./glossary');
+		expect(OLD_WORDS[0]).toBe('thou');
+		expect(FAITH_WORDS[0]).toBe('covenant');
+		expect(OLD_WORDS.length + FAITH_WORDS.length).toBe(GLOSSARY_TERMS.length);
+	});
+	it("a word's family", async () => {
+		const { wordFamily } = await import('./glossary');
+		expect(wordFamily('abase')).toEqual(['abasement']);
+	});
+});
