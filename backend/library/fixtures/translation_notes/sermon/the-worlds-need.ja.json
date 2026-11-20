@@ -1,0 +1,162 @@
+{
+    "kind": "sermon",
+    "slug": "the-worlds-need",
+    "language": "ja",
+    "job_issue": 8127,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Matthew 21:28",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Romans 16:4",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Philippians 2:30",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Acts 8:4",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "2 Timothy 4:2",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Acts 8:30",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 2
+        },
+        {
+            "reference": "Genesis 4:9",
+            "status": "self_rendered",
+            "block_index": 2
+        },
+        {
+            "reference": "Matthew 12:29",
+            "status": "self_rendered",
+            "block_index": 5
+        },
+        {
+            "reference": "Psalms 69:9",
+            "status": "self_rendered",
+            "block_index": 7
+        },
+        {
+            "reference": "Jeremiah 2:2-3",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 7
+        },
+        {
+            "reference": "Revelation 2:5",
+            "status": "self_rendered",
+            "block_index": 7
+        },
+        {
+            "reference": "Matthew 12:26",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "John 2:17",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 10
+        },
+        {
+            "reference": "Romans 8:15",
+            "status": "self_rendered",
+            "block_index": 15
+        },
+        {
+            "reference": "Ephesians 6:18",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 17
+        },
+        {
+            "reference": "Jude 1:20",
+            "status": "self_rendered",
+            "block_index": 17
+        },
+        {
+            "reference": "Colossians 1:24",
+            "status": "self_rendered",
+            "block_index": 18
+        },
+        {
+            "reference": "Hebrews 7:25",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "1 Peter 2:21",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "Isaiah 53:3",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "Matthew 8:20",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "Mark 10:45",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "Philippians 2:7",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "John 10:34",
+            "status": "self_rendered",
+            "block_index": 20
+        },
+        {
+            "reference": "John 10:35",
+            "status": "self_rendered",
+            "block_index": 20
+        },
+        {
+            "reference": "Luke 19:41",
+            "status": "self_rendered",
+            "block_index": 20
+        },
+        {
+            "reference": "1 John 2:2",
+            "status": "self_rendered",
+            "block_index": 21
+        },
+        {
+            "reference": "Matthew 6:6",
+            "status": "self_rendered",
+            "block_index": 22
+        },
+        {
+            "reference": "John 7:38",
+            "status": "self_rendered",
+            "block_index": 23
+        },
+        {
+            "reference": "Luke 9:62",
+            "status": "self_rendered",
+            "block_index": 24
+        }
+    ]
+}
