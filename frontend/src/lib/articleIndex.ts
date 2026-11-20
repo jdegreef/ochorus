@@ -35,12 +35,20 @@ export function matchesQuery(a: ArticleSummary, q: string): boolean {
 	return hay.some((s) => s?.toLocaleLowerCase().includes(needle));
 }
 
-/** Shelf orders. `featured` is the API's own curated order (sort_order). */
+/** Shelf orders. `featured` is the API's own curated order (sort_order), with
+ *  the questions ahead of the book guides: seventy-odd guides at the front of
+ *  the list buried the questions readers come with, and the guides have their
+ *  own rail and switch. */
 export const ARTICLE_SORTS = ['featured', 'newest', 'shortest', 'title'] as const;
 export type ArticleSort = (typeof ARTICLE_SORTS)[number];
 
 export function sortArticles(list: ArticleSummary[], sort: ArticleSort): ArticleSummary[] {
-	if (sort === 'featured') return list;
+	if (sort === 'featured') {
+		const guides = list.filter(isGuide);
+		return guides.length && guides.length < list.length
+			? [...list.filter((a) => !isGuide(a)), ...guides]
+			: list;
+	}
 	const arr = [...list];
 	switch (sort) {
 		case 'newest':
@@ -64,6 +72,92 @@ export const FEATURED_ARTICLES = [
 	'how-to-trust-god-in-suffering',
 	'can-i-be-a-christian-and-have-doubts'
 ] as const;
+
+/**
+ * "Questions people ask", by the situation a reader arrives in — when life
+ * hurts, when they doubt, when they are new. Editorial, so a list in code like
+ * the Start-here picks; slugs are shared across languages, so each locale
+ * shows the ones it has. A situation with fewer than two of its articles here
+ * is dropped, and the Start-here picks are skipped so no card repeats.
+ */
+export const SITUATIONS = [
+	{
+		k: 'articles.situationHurts',
+		slugs: [
+			'how-to-find-comfort-in-grief-and-loss',
+			'why-would-a-good-god-allow-suffering',
+			'how-to-overcome-fear-and-anxiety-with-faith',
+			'how-to-find-rest-for-your-soul',
+			'how-to-trust-god-in-suffering'
+		]
+	},
+	{
+		k: 'articles.situationDoubt',
+		slugs: [
+			'how-to-overcome-doubt',
+			'is-the-bible-reliable',
+			'how-do-we-know-jesus-rose',
+			'do-science-and-faith-contradict',
+			'can-i-be-a-christian-and-have-doubts'
+		]
+	},
+	{
+		k: 'articles.situationNew',
+		slugs: [
+			'what-is-the-gospel',
+			'how-to-be-born-again',
+			'how-to-have-assurance-of-salvation',
+			'how-to-read-the-bible-for-beginners',
+			'what-is-baptism'
+		]
+	},
+	{
+		k: 'articles.situationSin',
+		slugs: [
+			'how-to-overcome-sin-and-temptation',
+			'how-to-deal-with-guilt-and-shame',
+			'how-to-forgive-someone-who-hurt-you',
+			'how-to-overcome-anger',
+			'what-is-repentance'
+		]
+	},
+	{
+		k: 'articles.situationPray',
+		slugs: [
+			'what-is-intercessory-prayer',
+			'how-to-pray-the-psalms',
+			'the-power-of-persistent-prayer',
+			'the-morning-watch',
+			'how-to-pray-so-god-answers'
+		]
+	},
+	{
+		k: 'articles.situationDirection',
+		slugs: [
+			'how-to-find-gods-will-for-your-life',
+			'how-to-hear-gods-voice',
+			'how-to-wait-on-god',
+			'how-to-know-if-god-is-calling-you-to-ministry',
+			'how-to-be-content'
+		]
+	}
+] as const;
+
+export function situationGroups(
+	articles: ArticleSummary[],
+	skip: ArticleSummary[] = [],
+	per = 4
+): { k: string; items: ArticleSummary[] }[] {
+	const bySlug = new Map(articles.map((a) => [a.slug, a]));
+	const skipped = new Set(skip.map((a) => a.slug));
+	return SITUATIONS.map(({ k, slugs }) => ({
+		k,
+		items: slugs
+			.filter((s) => !skipped.has(s))
+			.flatMap((s) => bySlug.get(s) ?? [])
+			.slice(0, per)
+	})).filter((g) => g.items.length >= 2);
+}
 
 export function featuredArticles(articles: ArticleSummary[], count = 3): ArticleSummary[] {
 	const bySlug = new Map(articles.map((a) => [a.slug, a]));
