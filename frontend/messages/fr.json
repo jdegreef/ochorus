@@ -1142,6 +1142,7 @@
   "articles_showing": "%shown% articles affichés sur %total%",
   "articles_no_matches": "Aucun article ne correspond — essayez d’effacer les filtres.",
   "articles_start_here": "Commencer ici",
+  "articles_book_behind": "Le livre derrière cet article",
   "articles_see_all": "Voir les %n%",
   "articles_leads_to": "Mène à %title%",
   "articles_all_guides": "Les %n% guides de lecture",

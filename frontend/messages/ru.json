@@ -1142,6 +1142,7 @@
   "articles_showing": "Показано статей: %shown% из %total%",
   "articles_no_matches": "Нет подходящих статей — попробуйте сбросить фильтры.",
   "articles_start_here": "Начните здесь",
+  "articles_book_behind": "Книга, стоящая за этой статьёй",
   "articles_see_all": "Все (%n%)",
   "articles_leads_to": "Ведёт к книге «%title%»",
   "articles_all_guides": "Все путеводители по книгам (%n%)",

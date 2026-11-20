@@ -1142,6 +1142,7 @@
   "articles_showing": "%total% में से %shown% लेख दिखाए जा रहे हैं",
   "articles_no_matches": "कोई लेख मेल नहीं खाता — फ़िल्टर हटाकर देखें।",
   "articles_start_here": "यहाँ से शुरू करें",
+  "articles_book_behind": "इस लेख के पीछे की पुस्तक",
   "articles_see_all": "सभी %n% देखें",
   "articles_leads_to": "%title% की ओर ले जाता है",
   "articles_all_guides": "सभी %n% पुस्तक मार्गदर्शिकाएँ",

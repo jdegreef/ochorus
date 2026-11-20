@@ -1,5 +1,6 @@
 import { getArticle, listArticles } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
+import { articleExtras } from '$lib/articleExtras';
 import { ApiError } from '$lib/api';
 import { error } from '@sveltejs/kit';
 import type { EntryGenerator, PageLoad } from './$types';
@@ -42,7 +43,9 @@ export const load: PageLoad = async ({ params, fetch }) => {
 	// original rather than 404ing.
 	try {
 		const article = await getArticle(params.slug, getLang(), fetch);
-		return { kind: 'article' as const, article };
+		// The key verse and a line from the classic: decoration, never a failure.
+		const extras = await articleExtras(article, fetch);
+		return { kind: 'article' as const, article, ...extras };
 	} catch (e) {
 		// ONLY a 404 means "not an article, maybe a topic". Any other failure (a
 		// 5xx, a malformed payload) propagates — a transient API error must not be

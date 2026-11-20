@@ -1142,6 +1142,7 @@
   "articles_showing": "ከ%total% ጽሑፎች %shown% በማሳየት ላይ",
   "articles_no_matches": "የሚዛመድ ጽሑፍ የለም — ማጣሪያዎቹን ለማጽዳት ይሞክሩ።",
   "articles_start_here": "እዚህ ይጀምሩ",
+  "articles_book_behind": "ከዚህ ጽሑፍ ጀርባ ያለው መጽሐፍ",
   "articles_see_all": "ሁሉንም %n% ይመልከቱ",
   "articles_leads_to": "ወደ %title% ይመራል",
   "articles_all_guides": "ሁሉም %n% የመጽሐፍ መመሪያዎች",

@@ -1142,6 +1142,7 @@
   "articles_showing": "Đang hiển thị %shown% / %total% bài viết",
   "articles_no_matches": "Không có bài viết nào phù hợp — hãy thử xóa bộ lọc.",
   "articles_start_here": "Bắt đầu từ đây",
+  "articles_book_behind": "Cuốn sách đằng sau bài viết này",
   "articles_see_all": "Xem tất cả %n%",
   "articles_leads_to": "Dẫn đến %title%",
   "articles_all_guides": "Tất cả %n% hướng dẫn đọc sách",
