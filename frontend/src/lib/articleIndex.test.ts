@@ -8,6 +8,7 @@ import {
 	isGuide,
 	matchesQuery,
 	ofKind,
+	situationGroups,
 	sortArticles,
 	topicGroups
 } from './articleIndex';
@@ -79,11 +80,32 @@ describe('sortArticles', () => {
 	it('featured keeps the curated (API) order without copying', () => {
 		expect(sortArticles(shelf, 'featured')).toBe(shelf);
 	});
+	it('featured puts the questions ahead of the guides, each in curated order', () => {
+		const mixed = [art('g1-guide', { kind: 'guide' }), a, art('g2-guide', { kind: 'guide' }), b];
+		expect(slugs(sortArticles(mixed, 'featured'))).toEqual(['a', 'b', 'g1-guide', 'g2-guide']);
+	});
 	it('orders newest, shortest and A–Z without mutating the shelf', () => {
 		expect(slugs(sortArticles(shelf, 'newest'))).toEqual(['b', 'c', 'a']);
 		expect(slugs(sortArticles(shelf, 'shortest'))).toEqual(['b', 'a', 'c']);
 		expect(slugs(sortArticles(shelf, 'title'))).toEqual(['b', 'a', 'c']);
 		expect(slugs(shelf)).toEqual(['a', 'b', 'c']);
+	});
+});
+
+describe('situationGroups', () => {
+	it('keeps the situations a locale has two of, skipping the Start-here picks', () => {
+		const shelf = [
+			art('how-to-overcome-doubt'),
+			art('is-the-bible-reliable'),
+			art('can-i-be-a-christian-and-have-doubts'),
+			art('what-is-the-gospel')
+		];
+		const groups = situationGroups(shelf, [art('is-the-bible-reliable')]);
+		expect(groups.map((g) => g.k)).toEqual(['articles.situationDoubt']);
+		expect(groups[0].items.map((a) => a.slug)).toEqual([
+			'how-to-overcome-doubt',
+			'can-i-be-a-christian-and-have-doubts'
+		]);
 	});
 });
 

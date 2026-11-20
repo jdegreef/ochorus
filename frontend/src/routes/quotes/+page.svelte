@@ -16,6 +16,7 @@
 	import TopicPill from '$lib/components/TopicPill.svelte';
 	import FeaturedQuote from '$lib/components/FeaturedQuote.svelte';
 	import { chapterSuffix } from '$lib/quoteSource';
+	import { quoteHref } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 
 	// English literals, as on the author pages and /scripture: this index is not
@@ -107,6 +108,31 @@
 		</span>
 	</nav>
 
+	<!-- The wall of lines: a few themes, each as its shortest lines, one per
+	     writer — what the topic pages hold, shown rather than counted. -->
+	{#if data.wall.length}
+		<section class="mb-10" aria-labelledby="wall-heading">
+			<h2 id="wall-heading" class="section-label">{t('quotes.byTopic')}</h2>
+			<div class="wall">
+				{#each data.wall as w (w.slug)}
+					<div class="wall-topic">
+						<h3 class="font-display text-h3 font-semibold">
+							<a href={quoteTopicHref(w.slug)} class="text-text hover:text-accent">{w.title}</a>
+						</h3>
+						<ul class="mt-2 flex flex-col gap-3">
+							{#each w.lines as l (l.quote.slug)}
+								<li>
+									<a href={quoteHref(l.quote)} class="wall-line">“<QuoteText text={l.quote.text} />”</a>
+									<span class="block text-eyebrow text-muted">— {l.author}</span>
+								</li>
+							{/each}
+						</ul>
+					</div>
+				{/each}
+			</div>
+		</section>
+	{/if}
+
 	<!-- A card per author. The accent bar wears the author's era hue, the same
 	     colour their row carries on the Biographies shelf and their quote page's
 	     groups — one consistent visual key for "when". -->
@@ -195,6 +221,25 @@
 	}
 	.browse:hover {
 		text-decoration: underline;
+	}
+	.wall {
+		display: grid;
+		gap: 1.5rem 2rem;
+		grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+	}
+	.wall-topic {
+		border-block-start: 2px solid var(--color-gold);
+		padding-block-start: 0.75rem;
+	}
+	.wall-line {
+		font-family: var(--font-display);
+		font-style: italic;
+		line-height: 1.45;
+		color: var(--color-text);
+		text-decoration: none;
+	}
+	.wall-line:hover {
+		color: var(--color-accent);
 	}
 	.era-bar {
 		width: 0.375rem;
