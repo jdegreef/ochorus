@@ -1147,6 +1147,7 @@
   "articles_showing": "全%total%編中 %shown%編を表示",
   "articles_no_matches": "該当する記事はありません。絞り込みを解除してみてください。",
   "articles_start_here": "ここから始める",
+  "articles_book_behind": "この記事のもとになった本",
   "articles_questions_asked": "よくある問い",
   "articles_situation_hurts": "人生がつらいとき",
   "articles_situation_doubt": "疑いがあるとき",

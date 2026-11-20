@@ -15,5 +15,5 @@
 {#if data.kind === 'topic'}
 	<ArticleTopicShelf bind:this={shelf} slug={data.topicSlug} title={data.topicTitle} articles={data.articles} />
 {:else}
-	<ArticleDetail article={data.article} />
+	<ArticleDetail article={data.article} keyVerse={data.keyVerse} bookQuote={data.bookQuote} />
 {/if}
