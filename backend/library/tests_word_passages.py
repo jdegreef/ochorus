@@ -85,7 +85,7 @@ class WordPassagesApiTests(TestCase):
         )
         self.assertEqual(chapter["work"], "Pilgrim")
         self.assertEqual(chapter["title"], "The Gate")
-        self.assertEqual(chapter["author"], {"slug": "bunyan", "name": "John Bunyan"})
+        self.assertEqual(chapter["author"], {"slug": "bunyan", "name": "John Bunyan", "photo_url": ""})
 
     def test_one_passage_per_work(self):
         Chapter.objects.create(
@@ -96,9 +96,35 @@ class WordPassagesApiTests(TestCase):
         self.assertEqual(sum(h.startswith("/books/pp/") for h in hrefs), 1)
 
     def test_no_match_is_an_empty_list(self):
-        self.assertEqual(self.get("peradventure").data, {"word": "peradventure", "passages": []})
+        self.assertEqual(
+            self.get("peradventure").data, {"word": "peradventure", "passages": [], "bible": []}
+        )
 
     def test_not_a_word(self):
         for bad in ("thou%20art", "x1", "a" * 31):
             with self.subTest(bad=bad):
                 self.assertEqual(self.get(bad).status_code, 404)
+
+
+class BibleVersesTests(TestCase):
+    """The OWB verses using a word — read from the bundled text."""
+
+    def setUp(self):
+        cache.clear()
+
+    def test_whole_word_verses_from_different_books(self):
+        from .word_passages import bible_verses_for
+
+        verses = bible_verses_for("atonement")
+        self.assertTrue(verses)
+        books = [v["ref"].rsplit(" ", 1)[0] for v in verses]
+        self.assertEqual(len(books), len(set(books)))
+        for v in verses:
+            self.assertEqual(v["match"].lower(), "atonement")
+            # No Bible book printed in this test DB: no chapter to link.
+            self.assertEqual(v["href"], "")
+
+    def test_an_archaic_word_has_none_in_a_modern_translation(self):
+        from .word_passages import bible_verses_for
+
+        self.assertEqual(bible_verses_for("peradventure"), [])

@@ -3,8 +3,33 @@
 	import { jsonLd, breadcrumbLd, hreflangFor, absUrl } from '$lib/seo';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
-	import { GLOSSARY_TERMS, byLetter, definitionOf, glossaryHref } from '$lib/glossary';
+	import {
+		FAITH_WORDS,
+		GLOSSARY_TERMS,
+		OLD_WORDS,
+		byLetter,
+		definitionOf,
+		glossaryHref,
+		headOf,
+		wordOfTheDay
+	} from '$lib/glossary';
+	import { dayIndex } from '$lib/quoteText';
 	import { i18n } from '$lib/i18n.svelte';
+	import { onMount } from 'svelte';
+	import Arrow from '$lib/components/Arrow.svelte';
+
+	// The word of the day: the build day's in the prerendered page, re-taken
+	// for the reader's own day after mount (the featured quote's rule).
+	let day = $state(dayIndex(new Date(), GLOSSARY_TERMS.length));
+	onMount(() => {
+		day = dayIndex(new Date(), GLOSSARY_TERMS.length);
+	});
+	const today = $derived(wordOfTheDay(day));
+	const todayHead = $derived(headOf(today));
+	const shelves = [
+		{ id: 'old', k: 'glossary.oldWords', note: 'glossary.oldWordsNote', terms: OLD_WORDS },
+		{ id: 'faith', k: 'glossary.faithWords', note: 'glossary.faithWordsNote', terms: FAITH_WORDS }
+	];
 
 	const t = i18n.t;
 	const path = '/glossary/';
@@ -59,6 +84,37 @@
 	/>
 	{#snippet count()}{t('glossary.count').replace('%count%', String(GLOSSARY_TERMS.length))}{/snippet}
 
+	<!-- One word first, set as a dictionary entry: the page's promise. -->
+	<section class="wotd mb-10" aria-labelledby="wotd-label">
+		<p id="wotd-label" class="eyebrow wotd-label">{t('glossary.wordOfDay')}</p>
+		<p class="mt-2" lang="en">
+			<a class="wotd-term font-display" href={glossaryHref(today)}>{today}</a>
+			{#if todayHead}<span class="wotd-say">/{todayHead.say}/</span>
+				<span class="wotd-pos">{todayHead.pos}</span>{/if}
+		</p>
+		<p class="wotd-def mt-2 max-w-2xl" lang="en">{definitionOf(today)}</p>
+		<a class="mt-3 inline-block text-small font-semibold" href={glossaryHref(today)}
+			>{t('glossary.seeWord')} <Arrow /></a
+		>
+	</section>
+
+	<!-- The two kinds of word the glossary holds, each a shelf of its own. -->
+	{#if OLD_WORDS.length && FAITH_WORDS.length}
+		<div class="shelves mb-12">
+			{#each shelves as sh (sh.id)}
+				<section class="shelf" aria-labelledby="shelf-{sh.id}">
+					<h2 id="shelf-{sh.id}" class="font-display text-h3 font-semibold">{t(sh.k)}</h2>
+					<p class="mt-0.5 text-small text-muted">{t(sh.note)}</p>
+					<ul class="shelf-words mt-3" lang="en">
+						{#each sh.terms as w (w)}
+							<li><a href={glossaryHref(w)}>{w}</a></li>
+						{/each}
+					</ul>
+				</section>
+			{/each}
+		</div>
+	{/if}
+
 	<nav class="mb-8" aria-label={t('glossary.jump')}>
 		<ul class="flex flex-wrap gap-1.5">
 			{#each groups as g (g.letter)}
@@ -83,6 +139,74 @@
 </div>
 
 <style>
+	.wotd {
+		padding: 1.5rem 1.75rem;
+		border: 1px solid var(--color-border);
+		border-block-start: 3px solid var(--color-gold);
+		border-radius: var(--radius-card);
+		background: var(--color-surface);
+	}
+	.wotd-label {
+		color: var(--color-gold);
+	}
+	.wotd-term {
+		font-size: var(--fs-display);
+		font-weight: 600;
+		line-height: 1.05;
+		color: var(--color-text);
+		text-decoration: none;
+	}
+	.wotd-term:hover {
+		color: var(--color-accent);
+	}
+	.wotd-say {
+		margin-inline-start: 0.75rem;
+		font-size: var(--fs-h3);
+		color: var(--color-muted);
+	}
+	.wotd-pos {
+		margin-inline-start: 0.5rem;
+		font-family: var(--font-display, Georgia, serif);
+		font-style: italic;
+		color: var(--color-accent);
+	}
+	.wotd-def {
+		font-family: var(--font-display, Georgia, serif);
+		font-size: var(--fs-h3);
+		line-height: 1.45;
+	}
+	.shelves {
+		display: grid;
+		gap: 1.25rem;
+	}
+	@media (min-width: 768px) {
+		.shelves {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+	.shelf {
+		padding: 1.1rem 1.25rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-card);
+		background: var(--color-surface);
+	}
+	.shelf-words {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.2rem 0.8rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		font-family: var(--font-display, Georgia, serif);
+	}
+	.shelf-words a {
+		color: var(--color-text);
+		text-decoration: none;
+	}
+	.shelf-words a:hover {
+		color: var(--color-accent);
+		text-decoration: underline;
+	}
 	.letter {
 		margin-bottom: 2rem;
 		scroll-margin-top: calc(var(--appnav-h, 0px) + 1rem);

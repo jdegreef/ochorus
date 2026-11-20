@@ -193,6 +193,17 @@ def text(bible: str, verse_id: int) -> str | None:
     return row[0] if row else None
 
 
+def containing(bible: str, needle: str, limit: int = 5000) -> list[tuple[int, str]]:
+    """(id, text) of verses whose text contains ``needle`` (ASCII
+    case-insensitive, SQLite's LIKE), in canonical order — a prefilter: the
+    caller decides what really matches."""
+    escaped = needle.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+    return _db().execute(
+        "SELECT id, text FROM verse WHERE bible = ? AND text LIKE ? ESCAPE '\\' ORDER BY id LIMIT ?",
+        (bible, f"%{escaped}%", limit),
+    ).fetchall()
+
+
 def joined_to(bible: str, verse_id: int) -> int | None:
     """The id an OWB joined verse is printed under, or None when it isn't joined."""
     row = _db().execute("SELECT target FROM joined WHERE bible = ? AND id = ?", (bible, verse_id)).fetchone()
