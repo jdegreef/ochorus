@@ -1354,6 +1354,16 @@ export const getArticle = async (slug: string, language = 'en', f?: Fetch) =>
 		ARTICLE_FIELDS
 	);
 
+/**
+ * Suggestions as you type: the people, books, topics and plans the letters so
+ * far already name ("mo" → Dwight L. Moody). Same hit shape as `search`;
+ * navigational kinds only, and never logged server-side.
+ */
+export const searchComplete = (q: string, language = 'en') =>
+	apiFetch<SearchResponse>(
+		`/api/library/search/complete/?${new URLSearchParams({ q, language })}`
+	);
+
 export const search = (q: string, language = 'en', scope = '') => {
 	const params = new URLSearchParams({ q, language });
 	if (scope) params.set('in', scope);

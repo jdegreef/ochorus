@@ -1922,6 +1922,27 @@ class SearchView(APIView):
         }
 
 
+class SearchCompleteView(APIView):
+    """Suggestions as you type (``library.search_complete``): the people,
+    books, topics and plans the letters typed so far already name.
+
+    Not logged — a keystroke is not a search, and logging prefixes would fill
+    the zero-result report with "mo" and "spur". Throttled with search, whose
+    bucket is sized for typing.
+    """
+
+    throttle_classes = [_SearchThrottle]
+
+    def get(self, request):
+        from .search_complete import complete
+
+        q = (request.query_params.get("q") or "").strip()[:100]
+        language = _language(request)
+        if len(q) < min_query_len(language):
+            return Response({"query": q, "results": []})
+        return Response({"query": q, "results": complete(q, language)})
+
+
 class PopularSearchesView(APIView):
     """The queries readers search most — for the search page's empty state.
 

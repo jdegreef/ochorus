@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { search, scripturePageHref, type SearchHit } from '$lib/library-public';
+	import { search, searchComplete, scripturePageHref, type SearchHit } from '$lib/library-public';
 	import { authorPath } from '$lib/originals';
 	import {
 		primaryNav,
@@ -27,10 +27,13 @@
 
 	let q = $state('');
 	let hits = $state<SearchHit[]>([]);
+	/** Suggestions as you type: what the letters so far already name. */
+	let suggested = $state<SearchHit[]>([]);
 	let loading = $state(false);
 	let activeIndex = $state(0);
 	let inputEl = $state<HTMLInputElement>();
 	let timer: ReturnType<typeof setTimeout> | undefined;
+	let suggestTimer: ReturnType<typeof setTimeout> | undefined;
 	/** Monotonic token so only the newest in-flight search may write `hits`. */
 	let searchSeq = 0;
 
@@ -132,7 +135,13 @@
 		const list = all ? adminCommands : adminCommands.filter((c) => c.label.toLowerCase().includes(term));
 		return list.map((c) => ({ key: 'admin:' + c.href, kind: 'cmd', label: 'Admin', title: c.label, meta: '', href: c.href }));
 	});
-	const hitItems = $derived<Item[]>(hits.map(hitItem));
+	// Suggestions lead the instant hits: after two letters of "moody" the full
+	// search (whole words only) has nothing yet, but the person is already clear.
+	const suggestItems = $derived<Item[]>(suggested.map(hitItem));
+	const hitItems = $derived.by<Item[]>(() => {
+		const seen = new Set(suggestItems.map((i) => i.key));
+		return hits.map(hitItem).filter((i) => !seen.has(i.key));
+	});
 
 	/**
 	 * The FIRST row, which always hands the query to the full search page.
@@ -165,7 +174,13 @@
 		];
 	});
 
-	const items = $derived<Item[]>([...searchItem, ...cmdItems, ...adminItems, ...hitItems]);
+	const items = $derived<Item[]>([
+		...searchItem,
+		...suggestItems,
+		...cmdItems,
+		...adminItems,
+		...hitItems
+	]);
 	const activeKey = $derived(items[activeIndex]?.key ?? '');
 
 	// Keep the selection valid as the list changes; keep the active row in view.
@@ -182,6 +197,7 @@
 
 	function runSearch() {
 		clearTimeout(timer);
+		clearTimeout(suggestTimer);
 		const term = q.trim();
 		if (term.length < minQueryLength(getLang())) {
 			// Bump the token too. `clearTimeout` only helps while the debounce
@@ -191,6 +207,7 @@
 			// exists to prevent.
 			searchSeq++;
 			hits = [];
+			suggested = [];
 			return;
 		}
 		// A sequence token, as the full /search page uses. Without it a slow older
@@ -199,6 +216,17 @@
 		// results for "pray" arrive last and win. The 200 ms debounce narrows
 		// that window but does not close it.
 		const token = ++searchSeq;
+		// Suggestions first, on a shorter fuse: a prefix match over a few hundred
+		// names is quick, and it is what answers "where am I heading".
+		clearTimeout(suggestTimer);
+		suggestTimer = setTimeout(async () => {
+			try {
+				const res = await searchComplete(term, getLang());
+				if (token === searchSeq) suggested = res.results;
+			} catch {
+				if (token === searchSeq) suggested = [];
+			}
+		}, 80);
 		timer = setTimeout(async () => {
 			loading = true;
 			try {
@@ -233,9 +261,11 @@
 			// its token as well, or Esc-then-⌘K reopens blank and then fills with
 			// the previous query's results, which Enter will happily navigate to.
 			clearTimeout(timer);
+			clearTimeout(suggestTimer);
 			searchSeq++;
 			q = '';
 			hits = [];
+			suggested = [];
 			activeIndex = 0;
 		}
 	});
