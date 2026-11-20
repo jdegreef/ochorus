@@ -66,7 +66,7 @@ from .models import (
 from .people import People, strongest
 from .people import words as name_words
 from .scripture import reference_verse_ids
-from .search_aliases import AUTHOR_ALIASES, books_named
+from .search_aliases import books_named, other_names
 
 MAX_RESULTS = 30
 
@@ -499,11 +499,12 @@ def _author_names(language: str) -> list[tuple[int, str]]:
     def compute():
         rows = list(_base_querysets(language)["author"].values_list("pk", "name", "slug"))
         names = [(pk, name) for pk, name, _ in rows]
-        # And the other names each is known by (library/search_aliases.py).
+        # And the other names each is known by, and how each language writes
+        # it (library/search_aliases.py).
         names += [
             (pk, other, name)
             for pk, name, slug in rows
-            for other in AUTHOR_ALIASES.get(slug, ())
+            for other in other_names(slug)
         ]
         return names
 
