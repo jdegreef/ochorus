@@ -1,0 +1,142 @@
+{
+    "kind": "sermon",
+    "slug": "free-grace",
+    "language": "ja",
+    "job_issue": 8148,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Ezekiel 36:32",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Galatians 4:30",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 1
+        },
+        {
+            "reference": "Ezekiel 36:24",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 1
+        },
+        {
+            "reference": "Ezekiel 36:25",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Ezekiel 36:26",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Ezekiel 36:27",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 1
+        },
+        {
+            "reference": "Galatians 1:1",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 20
+        },
+        {
+            "reference": "Matthew 11:26",
+            "status": "self_rendered",
+            "block_index": 8
+        },
+        {
+            "reference": "1 Peter 2:9",
+            "status": "self_rendered",
+            "block_index": 12
+        },
+        {
+            "reference": "John 11:43",
+            "status": "self_rendered",
+            "block_index": 12
+        },
+        {
+            "reference": "1 Peter 1:5",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 13
+        },
+        {
+            "reference": "Psalms 115:1",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "Romans 3:4",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 20
+        },
+        {
+            "reference": "John 1:13",
+            "status": "self_rendered",
+            "block_index": 20
+        },
+        {
+            "reference": "Romans 13:4",
+            "status": "self_rendered",
+            "block_index": 22
+        },
+        {
+            "reference": "Isaiah 1:18",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 22
+        },
+        {
+            "reference": "Acts 16:31",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 22
+        },
+        {
+            "reference": "Ezekiel 33:11",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 22
+        },
+        {
+            "reference": "Song of Solomon 5:2",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 26
+        },
+        {
+            "reference": "1 Timothy 1:15",
+            "status": "self_rendered",
+            "block_index": 27
+        },
+        {
+            "reference": "Luke 18:13",
+            "status": "self_rendered",
+            "block_index": 29
+        },
+        {
+            "reference": "Luke 5:32",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 29
+        },
+        {
+            "reference": "Luke 5:31",
+            "status": "self_rendered",
+            "block_index": 29
+        },
+        {
+            "reference": "Revelation 1:5-6",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 34
+        }
+    ]
+}
