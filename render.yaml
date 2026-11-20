@@ -291,6 +291,9 @@ services:
         # prose readers see — and, until this entry existed, changed nothing
         # about whether the reader rebuilt to show it.
         - backend/library/corrections.py
+        # Its drop-in directory: new replacement pairs land here, one file
+        # per work and job, so parallel PRs stop colliding at the module's end.
+        - backend/library/data/body_corrections/**
         # `credit()` reads this module and the book detail serializer emits it as
         # `artwork_credit`, so a curated entry is prose on a prerendered page —
         # the same shape as corrections.py above. Adding a painting happens to

@@ -298,6 +298,188 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "am",
+  "title": "የሚጸልዩ ምስክሮች ደመና",
+  "description": "በቤተ ክርስቲያን ታሪክ ሁሉ ውስጥ ያለው ጸሎት፣ ለእያንዳንዱ ዘመን አንድ ቅጽ፦ የብሉይ ኪዳን ጸሎቶች፣ የጸሎት መምህር የሆነው ኢየሱስ፣ ሐዋርያት፣ እንዲሁም እስከ ዛሬ ድረስ በየዘመኑና በየአገሩ የኖሩ የሚጸልዩ ወንዶችና ሴቶች። እያንዳንዱ አጭር ምዕራፍ ቁልፍ ጥቅስ ያስቀምጣል፣ ታሪክ ይተርካል፣ ከቀደሙት ዘመናት አንድ ድምፅ ያሰማል፣ በእውነቶች፣ በልምምድና በጸሎትም ይፈጸማል።",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "ar",
+  "title": "سحابة من الشهود المصلّين",
+  "description": "الصلاة عبر قصة الكنيسة كلها، مجلد لكل حقبة: صلوات العهد القديم، ويسوع معلّم الصلاة، والرسل، والرجال والنساء المصلّون في كل قرن وكل أرض حتى اليوم. كل فصل قصير يضع آية محورية، ويروي قصة، ويُسمعنا صوتًا من الماضي، ويختم بأفكار رئيسية وتمرين وصلاة.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "es",
+  "title": "Una nube de testigos en oración",
+  "description": "La oración a lo largo de toda la historia de la iglesia, un volumen por época: las oraciones del Antiguo Testamento, Jesús, Maestro de oración, los apóstoles, y los hombres y mujeres de oración de cada siglo y de cada tierra hasta hoy. Cada capítulo breve presenta un versículo clave, cuenta una historia, escucha una voz del pasado y termina con ideas clave, una práctica y una oración.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "fr",
+  "title": "Une nuée de témoins en prière",
+  "description": "La prière à travers toute l’histoire de l’Église, un volume par époque : les prières de l’Ancien Testament, Jésus maître de prière, les apôtres, et les hommes et les femmes de prière de chaque siècle et de chaque pays jusqu’à aujourd’hui. Chaque court chapitre pose un verset clé, raconte une histoire, fait entendre une voix du passé et se termine par des idées clés, un exercice et une prière.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "hi",
+  "title": "प्रार्थना करनेवाले गवाहों का बादल",
+  "description": "कलीसिया की पूरी कहानी में प्रार्थना, हर युग के लिये एक खण्ड: पुराने नियम की प्रार्थनाएँ, प्रार्थना के शिक्षक यीशु, प्रेरित, और हर सदी तथा हर देश के प्रार्थना करनेवाले स्त्री-पुरुष, आज तक। हर छोटा अध्याय एक मुख्य वचन रखता है, एक कहानी सुनाता है, अतीत की एक आवाज़ सुनाता है, और अन्तर्दृष्टियों, एक अभ्यास और एक प्रार्थना के साथ समाप्त होता है।",
+  "created_at": "2026-11-09T12:00:00Z",
+  "updated_at": "2026-11-09T12:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "ko",
+  "title": "구름같이 둘러싼 기도의 증인들",
+  "description": "교회의 전체 역사 속 기도를 한 시대에 한 권씩 따라갑니다. 구약의 기도, 기도의 스승 예수님, 사도들, 그리고 오늘에 이르기까지 모든 세기와 모든 땅의 기도하는 사람들. 각 장은 핵심 구절을 세우고, 이야기를 들려주고, 옛 성도의 목소리를 듣고, 깨달음과 실천과 기도로 끝납니다.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "lg",
+  "title": "Ekibiina ky’Abajulirwa Abasaba",
+  "description": "Okusaba mu byafaayo byonna eby’ekkanisa, ekitabo kimu ku buli mulembe: essaala ez’omu Ndagaano Enkadde, Yesu Omuyigiriza w’Okusaba, abatume, n’abasajja n’abakazi abaasabanga ab’omu buli kyasa ne mu buli nsi okutuusa leero. Buli ssuula ennyimpi eteekawo olunyiriri olukulu, enyumya olugero, ewuliriza eddoboozi okuva mu biseera eby’edda, era ekoma n’amagezi, eky’okukola n’essaala.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "pt",
+  "title": "Uma Nuvem de Testemunhas em Oração",
+  "description": "A oração ao longo de toda a história da igreja, um volume para cada época: as orações do Antigo Testamento, Jesus, o Mestre de Oração, os apóstolos e os homens e mulheres de oração de todos os séculos e de todas as terras até hoje. Cada capítulo curto apresenta um versículo-chave, conta uma história, ouve uma voz do passado e termina com lições, uma prática e uma oração.",
+  "created_at": "2026-11-09T12:00:00Z",
+  "updated_at": "2026-11-09T12:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "sw",
+  "title": "Wingu la Mashahidi Wanaoomba",
+  "description": "Maombi katika historia yote ya kanisa, juzuu moja kwa kila kipindi: maombi ya Agano la Kale, Yesu Mwalimu wa Maombi, mitume, na wanaume na wanawake waombaji wa kila karne na kila nchi hadi leo. Kila sura fupi inaweka mstari mkuu, inasimulia kisa, inasikiliza sauti kutoka zamani, na inamalizika kwa mafunzo, zoezi na maombi.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "uk",
+  "title": "Хмара молитовних свідків",
+  "description": "Молитва впродовж усієї історії церкви, по тому на кожну добу: молитви Старого Заповіту, Ісус — Учитель молитви, апостоли, а також чоловіки й жінки молитви кожного століття і кожного краю аж до сьогодні. Кожен короткий розділ подає ключовий вірш, розповідає історію, дає почути голос із минулого й завершується думками, практикою та молитвою.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "vi",
+  "title": "Đám Mây Nhân Chứng Cầu Nguyện",
+  "description": "Sự cầu nguyện xuyên suốt toàn bộ câu chuyện của Hội Thánh, mỗi quyển một thời kỳ: những lời cầu nguyện trong Cựu Ước, Chúa Giê-xu là Thầy Dạy Cầu Nguyện, các sứ đồ, và những người nam người nữ cầu nguyện của mọi thế kỷ, mọi xứ sở cho đến ngày nay. Mỗi chương ngắn đặt ra một câu Kinh Thánh then chốt, kể một câu chuyện, lắng nghe một tiếng nói từ quá khứ, và kết thúc bằng những điều then chốt, một việc thực hành và một lời cầu nguyện.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "anchored"
+  ],
+  "language": "fr",
+  "title": "Ancré – 30 jours avec Dieu pour les ados",
+  "description": "Des méditations sur trente jours pour les lecteurs de 13 à 17 ans, qui prennent au sérieux les questions difficiles : un passage de la Bible, un enseignement honnête, une question, une chose à essayer, une prière, et un classique pour aller plus loin.",
+  "created_at": "2026-10-14T00:00:00Z",
+  "updated_at": "2026-10-14T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "anchored"
+  ],
+  "language": "pt",
+  "title": "Ancorados – 30 Dias com Deus para Adolescentes",
+  "description": "Devocionais de trinta dias para leitores de 13 a 17 anos que levam a sério as perguntas difíceis: uma passagem da Bíblia, um ensino sincero, uma pergunta, uma coisa para experimentar, uma oração e um clássico para ir mais fundo.",
+  "created_at": "2026-11-06T00:00:00Z",
+  "updated_at": "2026-11-06T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
+  "language": "am",
+  "title": "ለእግዚአብሔር ደፋር",
+  "description": "",
+  "created_at": "2026-09-28T00:00:00Z",
+  "updated_at": "2026-09-28T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "brave-for-god"
   ],
   "language": "ar",
@@ -313,11 +495,76 @@
   "series": [
    "brave-for-god"
   ],
+  "language": "es",
+  "title": "Valientes por Dios",
+  "description": "Historias verdaderas de fe para lectores jóvenes: gente común de todas partes del mundo que confió en Dios y fue hecha valiente.",
+  "created_at": "2026-09-28T00:00:00Z",
+  "updated_at": "2026-09-28T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
+  "language": "fr",
+  "title": "Courageux pour Dieu",
+  "description": "Des histoires vraies de foi pour les jeunes lecteurs : des gens ordinaires, venus de tous les coins du monde, qui se confièrent en Dieu et furent rendus courageux.",
+  "created_at": "2026-09-28T00:00:00Z",
+  "updated_at": "2026-09-28T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
+  "language": "hi",
+  "title": "परमेश्वर के लिये साहसी",
+  "description": "युवा पाठकों के लिये विश्वास की सच्ची कहानियाँ: संसार के हर कोने के साधारण लोग जिन्होंने परमेश्वर पर भरोसा रखा और साहसी बनाए गए।",
+  "created_at": "2026-09-25T00:00:00Z",
+  "updated_at": "2026-09-25T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
+  "language": "ko",
+  "title": "하나님을 위해 용감하게",
+  "description": "어린 독자들을 위한 믿음의 실화예요. 세계 곳곳에서 하나님을 신뢰하고 용감해진 평범한 사람들의 이야기를 담았어요.",
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
   "language": "lg",
   "title": "Abavumu ku lwa Katonda",
   "description": "Emboozi ez’amazima ez’okukkiriza eri abasomi abato: abantu ba bulijjo okuva mu buli kitundu ky’ensi abeesiga Katonda, n’abafuula abavumu.",
   "created_at": "2026-09-23T00:00:00Z",
   "updated_at": "2026-09-23T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
+  "language": "pt",
+  "title": "Corajosos por Deus",
+  "description": "Histórias verdadeiras de fé para leitores jovens: gente comum de todas as partes do mundo que confiou em Deus e foi feita corajosa.",
+  "created_at": "2026-09-28T00:00:00Z",
+  "updated_at": "2026-09-28T00:00:00Z"
  }
 },
 {
@@ -352,37 +599,315 @@
   "series": [
    "brave-for-god"
   ],
-  "language": "hi",
-  "title": "परमेश्वर के लिये साहसी",
-  "description": "युवा पाठकों के लिये विश्वास की सच्ची कहानियाँ: संसार के हर कोने के साधारण लोग जिन्होंने परमेश्वर पर भरोसा रखा और साहसी बनाए गए।",
-  "created_at": "2026-09-25T00:00:00Z",
-  "updated_at": "2026-09-25T00:00:00Z"
+  "language": "vi",
+  "title": "Can Đảm Vì Đức Chúa Trời",
+  "description": "Những câu chuyện có thật về đức tin dành cho bạn đọc nhỏ tuổi: những con người bình thường từ khắp nơi trên thế giới đã tin cậy Đức Chúa Trời và được Ngài làm cho can đảm.",
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
  }
 },
 {
  "model": "library.seriestranslation",
  "fields": {
   "series": [
-   "rooted"
+   "daughters-of-the-king"
   ],
-  "language": "hi",
-  "title": "जड़ें जमाए — युवाओं के लिये परमेश्वर के साथ 30 दिन",
-  "description": "9 से 12 वर्ष के पाठकों के लिये तीस-दिवसीय भक्ति-वार्ताएँ, एक बार में एक पुस्तक: एक वचन, उसका अर्थ, सोचने के लिये एक प्रश्न, करने के लिये एक बात, और एक प्रार्थना।",
-  "created_at": "2026-09-26T00:00:00Z",
-  "updated_at": "2026-09-26T00:00:00Z"
+  "language": "am",
+  "title": "የንጉሡ ሴት ልጆች – ከእግዚአብሔር ጋር 30 ቀናት ለልጃገረዶች",
+  "description": "",
+  "created_at": "2026-09-28T00:00:00Z",
+  "updated_at": "2026-09-28T00:00:00Z"
  }
 },
 {
  "model": "library.seriestranslation",
  "fields": {
   "series": [
-   "rooted"
+   "daughters-of-the-king"
   ],
   "language": "ar",
-  "title": "متأصّلون – 30 يومًا مع الله للناشئين",
-  "description": "تأمّلات يومية على مدى ثلاثين يومًا للقرّاء من سنّ التاسعة إلى الثانية عشرة، كتابًا بعد كتاب: آية، وما تعنيه، وسؤال للتفكير، وأمر للتجربة، وصلاة.",
-  "created_at": "2026-09-26T00:00:00Z",
-  "updated_at": "2026-09-26T00:00:00Z"
+  "title": "بنات الملك – 30 يومًا مع الله للفتيات",
+  "description": "تأملات يومية على مدى 30 يومًا للفتيات من سن 9 إلى 12: من تكونين بصفتك ابنة الملك، والنساء الشجاعات في الكتاب المقدس وعبر التاريخ اللواتي وثقن به.",
+  "verse_text": "وَأَكُونَ لَكُمْ أَبًا، وَأَنْتُمْ تَكُونُونَ لِي بَنِينَ وَبَنَاتٍ",
+  "verse_ref": "2 كورنثوس 6:18",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "es",
+  "title": "Hijas del Rey – 30 días con Dios para chicas",
+  "description": "Devocionales de treinta días para chicas de 9 a 12 años: quién eres como hija del Rey, y las mujeres valientes de la Biblia y de la historia que confiaron en él.",
+  "verse_text": "Y seré para vosotros por Padre, y vosotros me seréis hijos e hijas",
+  "verse_ref": "2 Corintios 6:18",
+  "created_at": "2026-10-15T00:00:00Z",
+  "updated_at": "2026-10-15T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "fr",
+  "title": "Filles du Roi – 30 jours avec Dieu pour les filles",
+  "description": "Des méditations sur trente jours pour les filles de 9 à 12 ans: qui tu es en tant que fille du Roi, et les femmes courageuses de la Bible et de l’histoire qui lui ont fait confiance.",
+  "verse_text": "Je serai pour vous un père, Et vous serez pour moi des fils et des filles",
+  "verse_ref": "2 Corinthiens 6:18",
+  "created_at": "2026-10-09T00:00:00Z",
+  "updated_at": "2026-10-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "hi",
+  "title": "राजा की बेटियाँ — लड़कियों के लिये परमेश्वर के साथ 30 दिन",
+  "description": "9 से 12 वर्ष की लड़कियों के लिये 30 दिनों की भक्ति-वार्ताएँ: राजा की बेटी के रूप में तुम कौन हो, और बाइबल तथा इतिहास की वे साहसी स्त्रियाँ जिन्होंने उस पर भरोसा रखा।",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "ko",
+  "title": "왕의 딸들 – 소녀를 위한 하나님과 함께하는 30일",
+  "description": "9세에서 12세 소녀들을 위한 30일 묵상집입니다. 왕의 딸로서 나는 누구인지, 그리고 하나님을 신뢰한 성경과 역사 속 용감한 여성들을 다룹니다.",
+  "verse_text": "너희에게 아버지가 되고 너희는 내게 자녀가 되리라 전능하신 주의 말씀이니라 하셨느니라",
+  "verse_ref": "고린도후서 6:18",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "lg",
+  "title": "Abawala ba Kabaka – Ennaku 30 ne Katonda eri Abawala",
+  "description": "Ebyokufumiitiriza by’ennaku 30 eri abawala ab’emyaka 9 okutuuka ku 12: oli ani ng’omuwala wa Kabaka, n’abakazi abavumu ab’omu Bayibuli n’ab’omu byafaayo abaamwesiga.",
+  "verse_text": "Nnaabeeranga Kitammwe, nammwe ne mubeeranga batabani bange ne bawala bange",
+  "verse_ref": "2 Abakkolinso 6:18",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "pt",
+  "title": "Filhas do Rei – 30 Dias com Deus para Meninas",
+  "description": "Devocionais de 30 dias para meninas de 9 a 12 anos: quem você é como filha do Rei, e as mulheres corajosas da Bíblia e da história que confiaram nele.",
+  "verse_text": "Serei para vocês um Pai. Vocês serão para mim filhos e filhas",
+  "verse_ref": "2 Coríntios 6:18",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "sw",
+  "title": "Binti za Mfalme – Siku 30 na Mungu kwa Wasichana",
+  "description": "Tafakari za siku 30 kwa wasichana wenye umri wa miaka 9 hadi 12: wewe ni nani kama binti wa Mfalme, na wanawake jasiri wa Biblia na wa historia waliomtumaini Yeye.",
+  "verse_text": "Nami nitakuwa Baba kwenu, nanyi mtakuwa kwangu wana na binti, asema Bwana Mwenyezi",
+  "verse_ref": "2 Wakorintho 6:18",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "uk",
+  "title": "Доньки Царя – 30 днів з Богом для дівчат",
+  "description": "Роздуми на 30 днів для дівчат від 9 до 12 років: хто ти як донька Царя, і відважні жінки Біблії та історії, які довіряли Йому.",
+  "verse_text": "І буду вам за отця, а ви будете менї за синів і дочок",
+  "verse_ref": "2 Коринтян 6:18",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "vi",
+  "title": "Con Gái Của Vua – 30 Ngày Với Đức Chúa Trời Dành Cho Các Bạn Gái",
+  "description": "Sách tĩnh nguyện 30 ngày dành cho các bạn gái từ 9 đến 12 tuổi: em là ai với tư cách là con gái của Vua, và những người phụ nữ can đảm trong Kinh Thánh và trong lịch sử đã tin cậy Ngài.",
+  "verse_text": "Ta sẽ làm Cha các ngươi, Các ngươi làm con trai con gái ta",
+  "verse_ref": "2 Cô-rinh-tô 6:18",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "am",
+  "title": "ዋና ዋና ትምህርቶች",
+  "description": "Ochorus ያዘጋጃቸው፣ የአንድን ጥንታዊ ጸሐፊ ትምህርት እምብርት በአጭሩና በታማኝነት የሚያቀርቡ መመሪያዎች — እያንዳንዱ ምዕራፍ በጥያቄዎችና በጸሎት ይደመደማል፤ አንባቢውንም ወደ ጸሐፊው የራሱ መጻሕፍት ይመራል።",
+  "created_at": "2026-11-11T00:00:00Z",
+  "updated_at": "2026-11-11T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "ar",
+  "title": "التعاليم الأساسية",
+  "description": "أدلة موجزة وأمينة من Ochorus إلى لب تعليم كاتب كلاسيكي واحد، ينتهي كل فصل فيها بأسئلة وصلاة، ويقود القارئ إلى كتب المؤلف نفسه.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "es",
+  "title": "Las enseñanzas clave",
+  "description": "Guías breves y fieles de Ochorus al corazón de la enseñanza de un autor clásico: cada capítulo termina con preguntas y una oración, y remite al lector a los propios libros del autor.",
+  "created_at": "2026-10-10T00:00:00Z",
+  "updated_at": "2026-10-10T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "fr",
+  "title": "Les enseignements clés",
+  "description": "De courts guides fidèles, écrits par Ochorus, au cœur de l’enseignement d’un auteur classique — chaque chapitre s’achève par des questions et une prière, et renvoie le lecteur aux livres de l’auteur lui-même.",
+  "created_at": "2026-10-09T00:00:00Z",
+  "updated_at": "2026-10-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "hi",
+  "title": "मुख्य शिक्षाएँ",
+  "description": "Ochorus की छोटी और विश्वसनीय मार्गदर्शिकाएँ, जो किसी एक क्लासिक लेखक की शिक्षा के मूल तक ले जाती हैं — हर अध्याय प्रश्नों और एक प्रार्थना के साथ समाप्त होता है, और पाठक को स्वयं लेखक की पुस्तकों की ओर ले जाता है।",
+  "created_at": "2026-10-25T00:00:00Z",
+  "updated_at": "2026-10-25T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "ko",
+  "title": "핵심 가르침",
+  "description": "Ochorus가 펴내는 짧고 충실한 안내서로, 고전 작가 한 사람의 가르침의 핵심으로 독자를 이끕니다. 각 장은 질문과 기도로 끝나며, 독자를 그 작가가 직접 쓴 책들로 안내합니다.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "lg",
+  "title": "Enjigiriza Enkulu",
+  "description": "Obulagirizi obumpi era obwesigwa obwa Ochorus eri omutima gw’enjigiriza y’omuwandiisi omu ow’edda — buli ssuula ekomekkerezebwa n’ebibuuzo n’essaala, era esindika omusomi eri ebitabo by’omuwandiisi oyo yennyini.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "pt",
+  "title": "Os ensinamentos essenciais",
+  "description": "Guias breves e fiéis da Ochorus ao coração do ensino de um autor clássico: cada capítulo termina com perguntas e uma oração, e conduz o leitor aos próprios livros do autor.",
+  "created_at": "2026-10-25T00:00:00Z",
+  "updated_at": "2026-10-25T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "sw",
+  "title": "Mafundisho Makuu",
+  "description": "Miongozo mifupi na yenye uaminifu ya Ochorus kuhusu kiini cha mafundisho ya mwandishi mmoja wa kale — kila sura inamalizika kwa maswali na sala, na kumwelekeza msomaji kwenye vitabu vya mwandishi mwenyewe.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "uk",
+  "title": "Ключові вчення",
+  "description": "Короткі й вірні путівники від Ochorus до серця вчення одного класичного автора — кожен розділ завершується запитаннями й молитвою та скеровує читача до власних книжок автора.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "vi",
+  "title": "Những Lời Dạy Cốt Lõi",
+  "description": "Những quyển hướng dẫn ngắn gọn và trung thực của Ochorus, đi vào cốt lõi sự dạy dỗ của một tác giả kinh điển — mỗi chương kết thúc bằng các câu hỏi và một lời cầu nguyện, rồi dẫn người đọc đến chính các sách của tác giả ấy.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
  }
 },
 {
@@ -456,6 +981,19 @@
   "series": [
    "portraits-of-courage"
   ],
+  "language": "lg",
+  "title": "Ebifaananyi by’Obuvumu",
+  "description": "Ebyafaayo by’Ekikristaayo ebijjuvu eby’abasajja n’abakazi abaabalirira omuwendo ne bagoberera Kristo wadde kyali kityo — buli bulamu bunyumizibwa wamu n’okuyigiriza kwabwo, ne bupimibwa n’Ebyawandiikibwa, era ne buwandiikibwa n’okwebaza naye awatali kubugulumiza ng’obutalina kamogo.",
+  "created_at": "2026-10-09T00:00:00Z",
+  "updated_at": "2026-10-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "portraits-of-courage"
+  ],
   "language": "pt",
   "title": "Retratos de Coragem",
   "description": "Biografias cristãs completas de homens e mulheres que calcularam o custo e, mesmo assim, seguiram a Cristo — cada vida narrada ao lado do seu ensino, pesada à luz das Escrituras e escrita com gratidão, mas sem hagiografia.",
@@ -495,19 +1033,6 @@
   "series": [
    "portraits-of-courage"
   ],
-  "language": "lg",
-  "title": "Ebifaananyi by’Obuvumu",
-  "description": "Ebyafaayo by’Ekikristaayo ebijjuvu eby’abasajja n’abakazi abaabalirira omuwendo ne bagoberera Kristo wadde kyali kityo — buli bulamu bunyumizibwa wamu n’okuyigiriza kwabwo, ne bupimibwa n’Ebyawandiikibwa, era ne buwandiikibwa n’okwebaza naye awatali kubugulumiza ng’obutalina kamogo.",
-  "created_at": "2026-10-09T00:00:00Z",
-  "updated_at": "2026-10-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "portraits-of-courage"
-  ],
   "language": "vi",
   "title": "Chân Dung Lòng Can Đảm",
   "description": "Những cuốn tiểu sử Cơ Đốc trọn vẹn về những người nam và người nữ đã tính cái giá phải trả mà vẫn theo Đấng Christ — mỗi cuộc đời được kể cùng với sự dạy dỗ của mình, được cân nhắc dưới ánh sáng Kinh Thánh, và được viết với lòng biết ơn nhưng không tôn sùng thái quá.",
@@ -519,882 +1044,13 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
-   "brave-for-god"
+   "real-questions"
   ],
   "language": "am",
-  "title": "ለእግዚአብሔር ደፋር",
-  "description": "",
-  "created_at": "2026-09-28T00:00:00Z",
-  "updated_at": "2026-09-28T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "brave-for-god"
-  ],
-  "language": "es",
-  "title": "Valientes por Dios",
-  "description": "Historias verdaderas de fe para lectores jóvenes: gente común de todas partes del mundo que confió en Dios y fue hecha valiente.",
-  "created_at": "2026-09-28T00:00:00Z",
-  "updated_at": "2026-09-28T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "brave-for-god"
-  ],
-  "language": "fr",
-  "title": "Courageux pour Dieu",
-  "description": "Des histoires vraies de foi pour les jeunes lecteurs : des gens ordinaires, venus de tous les coins du monde, qui se confièrent en Dieu et furent rendus courageux.",
-  "created_at": "2026-09-28T00:00:00Z",
-  "updated_at": "2026-09-28T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "brave-for-god"
-  ],
-  "language": "pt",
-  "title": "Corajosos por Deus",
-  "description": "Histórias verdadeiras de fé para leitores jovens: gente comum de todas as partes do mundo que confiou em Deus e foi feita corajosa.",
-  "created_at": "2026-09-28T00:00:00Z",
-  "updated_at": "2026-09-28T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "rooted"
-  ],
-  "language": "am",
-  "title": "ሥር የሰደደ – ከእግዚአብሔር ጋር 30 ቀናት ለወጣቶች",
-  "description": "",
-  "created_at": "2026-09-28T00:00:00Z",
-  "updated_at": "2026-09-28T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "daughters-of-the-king"
-  ],
-  "language": "am",
-  "title": "የንጉሡ ሴት ልጆች – ከእግዚአብሔር ጋር 30 ቀናት ለልጃገረዶች",
-  "description": "",
-  "created_at": "2026-09-28T00:00:00Z",
-  "updated_at": "2026-09-28T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "sons-of-the-king"
-  ],
-  "language": "am",
-  "title": "የንጉሡ ወንዶች ልጆች – ከእግዚአብሔር ጋር 30 ቀናት ለወንዶች ልጆች",
-  "description": "",
-  "created_at": "2026-11-02T00:00:00Z",
-  "updated_at": "2026-11-02T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "sons-of-the-king"
-  ],
-  "language": "es",
-  "title": "Hijos del Rey – 30 días con Dios para chicos",
-  "description": "Devocionales de treinta días para chicos de 9 a 12 años: quién eres como hijo del Rey, la fuerza bajo control, y los hombres valientes de la Biblia y de la historia que confiaron en él.",
-  "created_at": "2026-11-03T00:00:00Z",
-  "updated_at": "2026-11-03T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "daughters-of-the-king"
-  ],
-  "language": "fr",
-  "title": "Filles du Roi – 30 jours avec Dieu pour les filles",
-  "description": "Des méditations sur trente jours pour les filles de 9 à 12 ans: qui tu es en tant que fille du Roi, et les femmes courageuses de la Bible et de l’histoire qui lui ont fait confiance.",
-  "verse_text": "Je serai pour vous un père, Et vous serez pour moi des fils et des filles",
-  "verse_ref": "2 Corinthiens 6:18",
-  "created_at": "2026-10-09T00:00:00Z",
-  "updated_at": "2026-10-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "rooted"
-  ],
-  "language": "fr",
-  "title": "Enracinés – 30 jours avec Dieu pour les jeunes",
-  "description": "Des méditations sur trente jours pour les lecteurs de 9 à 12 ans, un livre à la fois: un verset, ce qu’il veut dire, une question pour réfléchir, une chose à faire et une prière.",
-  "created_at": "2026-09-28T00:00:00Z",
-  "updated_at": "2026-09-28T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "rooted"
-  ],
-  "language": "sw",
-  "title": "Wenye Mizizi – Siku 30 na Mungu kwa Vijana",
-  "description": "Tafakari za siku thelathini kwa wasomaji wenye umri wa miaka 9 hadi 12, kitabu kimoja baada ya kingine: mstari wa Biblia, maana yake, swali la kufikiria, jambo la kujaribu, na sala.",
-  "created_at": "2026-10-04T00:00:00Z",
-  "updated_at": "2026-10-04T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "straight-talk"
-  ],
-  "language": "fr",
-  "title": "Franc-parler",
-  "description": "Des classiques chrétiens et des vies vraies racontés pour les adolescents, avec franchise et en mots simples : le pèlerin de Bunyan sur la route de la Cité céleste, le franc-parler de Spurgeon depuis la ferme, et les hommes et les femmes qui ont tout misé sur Dieu.",
-  "created_at": "2026-10-08T00:00:00Z",
-  "updated_at": "2026-10-08T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "straight-talk"
-  ],
-  "language": "pt",
-  "title": "Papo Reto",
-  "description": "Clássicos cristãos e vidas verdadeiras recontados para leitores adolescentes, com sinceridade e em palavras simples: o peregrino de Bunyan a caminho da Cidade Celestial, a conversa franca de Spurgeon vinda do campo, e os homens e mulheres que apostaram tudo em Deus.",
-  "created_at": "2026-10-08T00:00:00Z",
-  "updated_at": "2026-10-08T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "key-teachings"
-  ],
-  "language": "fr",
-  "title": "Les enseignements clés",
-  "description": "De courts guides fidèles, écrits par Ochorus, au cœur de l’enseignement d’un auteur classique — chaque chapitre s’achève par des questions et une prière, et renvoie le lecteur aux livres de l’auteur lui-même.",
-  "created_at": "2026-10-09T00:00:00Z",
-  "updated_at": "2026-10-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "key-teachings"
-  ],
-  "language": "es",
-  "title": "Las enseñanzas clave",
-  "description": "Guías breves y fieles de Ochorus al corazón de la enseñanza de un autor clásico: cada capítulo termina con preguntas y una oración, y remite al lector a los propios libros del autor.",
-  "created_at": "2026-10-10T00:00:00Z",
-  "updated_at": "2026-10-10T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "key-teachings"
-  ],
-  "language": "pt",
-  "title": "Os ensinamentos essenciais",
-  "description": "Guias breves e fiéis da Ochorus ao coração do ensino de um autor clássico: cada capítulo termina com perguntas e uma oração, e conduz o leitor aos próprios livros do autor.",
-  "created_at": "2026-10-25T00:00:00Z",
-  "updated_at": "2026-10-25T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "key-teachings"
-  ],
-  "language": "hi",
-  "title": "मुख्य शिक्षाएँ",
-  "description": "Ochorus की छोटी और विश्वसनीय मार्गदर्शिकाएँ, जो किसी एक क्लासिक लेखक की शिक्षा के मूल तक ले जाती हैं — हर अध्याय प्रश्नों और एक प्रार्थना के साथ समाप्त होता है, और पाठक को स्वयं लेखक की पुस्तकों की ओर ले जाता है।",
-  "created_at": "2026-10-25T00:00:00Z",
-  "updated_at": "2026-10-25T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "anchored"
-  ],
-  "language": "fr",
-  "title": "Ancré – 30 jours avec Dieu pour les ados",
-  "description": "Des méditations sur trente jours pour les lecteurs de 13 à 17 ans, qui prennent au sérieux les questions difficiles : un passage de la Bible, un enseignement honnête, une question, une chose à essayer, une prière, et un classique pour aller plus loin.",
-  "created_at": "2026-10-14T00:00:00Z",
-  "updated_at": "2026-10-14T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "anchored"
-  ],
-  "language": "pt",
-  "title": "Ancorados – 30 Dias com Deus para Adolescentes",
-  "description": "Devocionais de trinta dias para leitores de 13 a 17 anos que levam a sério as perguntas difíceis: uma passagem da Bíblia, um ensino sincero, uma pergunta, uma coisa para experimentar, uma oração e um clássico para ir mais fundo.",
-  "created_at": "2026-11-06T00:00:00Z",
-  "updated_at": "2026-11-06T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "they-were-young"
-  ],
-  "language": "fr",
-  "title": "Ils étaient jeunes",
-  "description": "Des histoires vraies, pour les lecteurs de 13 à 17 ans, de personnes dont la foi est née, ou a été mise à l’épreuve, avant l’âge adulte — racontées en entier, avec leurs propres mots quand nous les avons, et des questions pour réfléchir.",
-  "verse_text": "Que personne ne méprise ta jeunesse",
-  "verse_ref": "1 Timothée 4:12",
-  "created_at": "2026-10-14T00:00:00Z",
-  "updated_at": "2026-10-14T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "tell-me-the-story"
-  ],
-  "language": "fr",
-  "title": "Raconte-moi l’histoire",
-  "description": "Les histoires de la Bible elle-même, racontées pour les enfants, en trois parties : Histoires de l’Ancien Testament, La vie de Jésus et Histoires du Nouveau Testament. Chaque histoire est assez courte pour être lue à voix haute au moment du coucher et se termine par une prière et des questions pour en parler ensemble.",
-  "created_at": "2026-11-05T00:00:00Z",
-  "updated_at": "2026-11-05T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "daughters-of-the-king"
-  ],
-  "language": "es",
-  "title": "Hijas del Rey – 30 días con Dios para chicas",
-  "description": "Devocionales de treinta días para chicas de 9 a 12 años: quién eres como hija del Rey, y las mujeres valientes de la Biblia y de la historia que confiaron en él.",
-  "verse_text": "Y seré para vosotros por Padre, y vosotros me seréis hijos e hijas",
-  "verse_ref": "2 Corintios 6:18",
-  "created_at": "2026-10-15T00:00:00Z",
-  "updated_at": "2026-10-15T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "rooted"
-  ],
-  "language": "es",
-  "title": "Enraizados – 30 días con Dios para jóvenes",
-  "description": "Devocionales de treinta días para lectores de 9 a 12 años, un libro a la vez: un versículo, lo que significa, una pregunta para pensar, algo que hacer y una oración.",
-  "created_at": "2026-10-15T00:00:00Z",
-  "updated_at": "2026-10-15T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "rooted"
-  ],
-  "language": "uk",
-  "title": "Вкорінені – 30 днів з Богом для юних",
-  "description": "Роздуми на тридцять днів для читачів від 9 до 12 років, книжка за книжкою: вірш, що він означає, питання, над яким подумати, справа, яку спробувати, і молитва.",
-  "created_at": "2026-10-23T00:00:00Z",
-  "updated_at": "2026-10-23T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "rooted"
-  ],
-  "language": "lg",
-  "title": "Emirandira – Ennaku 30 ne Katonda eri Abavubuka",
-  "description": "Ebyokufumiitiriza eby’ennaku amakumi asatu eri abasomi ab’emyaka 9 okutuuka ku 12, ekitabo kimu oluvannyuma lw’ekirala: olunyiriri lwa Bayibuli, amakulu gaalwo, ekibuuzo eky’okulowoozaako, ekintu eky’okugezaako, n’essaala.",
-  "created_at": "2026-10-23T00:00:00Z",
-  "updated_at": "2026-10-23T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "rooted"
-  ],
-  "language": "pt",
-  "title": "Enraizados – 30 Dias com Deus para Jovens",
-  "description": "Devocionais de trinta dias para leitores de 9 a 12 anos, um livro de cada vez: um versículo, o que ele significa, uma pergunta para pensar, uma coisa para experimentar e uma oração.",
-  "created_at": "2026-10-24T00:00:00Z",
-  "updated_at": "2026-10-24T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "rooted"
-  ],
-  "language": "vi",
-  "title": "Bám Rễ – 30 Ngày Với Đức Chúa Trời Dành Cho Thiếu Nhi",
-  "description": "Sách tĩnh nguyện ba mươi ngày cho các em từ 9 đến 12 tuổi, mỗi lần một quyển: một câu Kinh Thánh, ý nghĩa của câu ấy, một câu hỏi để suy nghĩ, một việc để thực hành và một lời cầu nguyện.",
-  "created_at": "2026-10-26T00:00:00Z",
-  "updated_at": "2026-10-26T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "rooted"
-  ],
-  "language": "ko",
-  "title": "뿌리내림 – 어린이를 위한 하나님과 함께하는 30일",
-  "description": "9세에서 12세 독자를 위한 30일 묵상집으로, 한 권씩 읽습니다. 성경 구절 하나, 그 뜻, 생각해 볼 질문, 실천해 볼 일, 그리고 기도가 담겨 있습니다.",
-  "created_at": "2026-10-26T00:00:00Z",
-  "updated_at": "2026-10-26T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "brave-for-god"
-  ],
-  "language": "vi",
-  "title": "Can Đảm Vì Đức Chúa Trời",
-  "description": "Những câu chuyện có thật về đức tin dành cho bạn đọc nhỏ tuổi: những con người bình thường từ khắp nơi trên thế giới đã tin cậy Đức Chúa Trời và được Ngài làm cho can đảm.",
-  "created_at": "2026-10-24T00:00:00Z",
-  "updated_at": "2026-10-24T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "brave-for-god"
-  ],
-  "language": "ko",
-  "title": "하나님을 위해 용감하게",
-  "description": "어린 독자들을 위한 믿음의 실화예요. 세계 곳곳에서 하나님을 신뢰하고 용감해진 평범한 사람들의 이야기를 담았어요.",
-  "created_at": "2026-10-24T00:00:00Z",
-  "updated_at": "2026-10-24T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "straight-talk"
-  ],
-  "language": "vi",
-  "title": "Nói Thẳng Nói Thật",
-  "description": "Những tác phẩm kinh điển Cơ Đốc và những cuộc đời có thật được kể lại cho bạn đọc tuổi thiếu niên, thẳng thắn và bằng lời lẽ giản dị: người hành hương của Bunyan trên đường đến Thành Thiên Thượng, những lời nói thẳng của Spurgeon từ nông trại, và những người nam người nữ đã đặt cược tất cả nơi Đức Chúa Trời.",
-  "created_at": "2026-10-24T00:00:00Z",
-  "updated_at": "2026-10-24T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "straight-talk"
-  ],
-  "language": "ko",
-  "title": "솔직한 이야기",
-  "description": "청소년 독자를 위해 솔직하고 쉬운 말로 다시 들려주는 기독교 고전과 실제 인물의 삶입니다. 천성을 향해 가는 존 번연의 순례자, 농장에서 들려주는 찰스 스펄전의 솔직한 이야기, 그리고 모든 것을 하나님께 건 남자와 여자들의 이야기를 담았습니다.",
-  "created_at": "2026-10-24T00:00:00Z",
-  "updated_at": "2026-10-24T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "they-were-young"
-  ],
-  "language": "pt",
-  "title": "Eles Eram Jovens",
-  "description": "Histórias verdadeiras, para leitores de 13 a 17 anos, de pessoas cuja fé começou, ou foi provada, antes de se tornarem adultas — contadas por inteiro, com as próprias palavras delas quando as temos, e com perguntas para refletir.",
-  "created_at": "2026-11-01T00:00:00Z",
-  "updated_at": "2026-11-01T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "they-were-young"
-  ],
-  "language": "am",
-  "title": "ወጣቶች ነበሩ",
-  "description": "ዕድሜያቸው ከ13 እስከ 17 ለሆኑ አንባቢዎች፣ እምነታቸው ገና ሳያድጉ ስለ ጀመረ ወይም ስለ ተፈተነ ሰዎች የተጻፉ እውነተኛ ታሪኮች — ሙሉ በሙሉ የተተረኩ፣ ባሉን ቦታ በራሳቸው ቃል፣ ለማሰላሰል በሚረዱ ጥያቄዎች የታጀቡ።",
-  "verse_text": "ማንም ታናሽነትህን አይናቀው",
-  "verse_ref": "1 ጢሞቴዎስ 4:12",
-  "created_at": "2026-11-12T00:00:00Z",
-  "updated_at": "2026-11-12T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "tell-me-the-story"
-  ],
-  "language": "es",
-  "title": "Cuéntame la historia",
-  "description": "Las historias de la propia Biblia contadas para niños, en tres partes: Historias del Antiguo Testamento, La vida de Jesús e Historias del Nuevo Testamento. Cada historia es lo bastante corta para leerla en voz alta a la hora de dormir y termina con una oración y preguntas para conversar juntos.",
-  "created_at": "2026-11-05T00:00:00Z",
-  "updated_at": "2026-11-05T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "tell-me-the-story"
-  ],
-  "language": "uk",
-  "title": "Розкажи мені історію",
-  "description": "Біблійні історії, переказані для дітей, у трьох частинах: старозавітні історії, життя Ісуса та новозавітні історії. Кожна історія досить коротка, щоб прочитати її вголос перед сном, і закінчується молитвою та запитаннями для спільної розмови.",
-  "created_at": "2026-11-08T00:00:00Z",
-  "updated_at": "2026-11-08T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "tell-me-the-story"
-  ],
-  "language": "pt",
-  "title": "Conte-me a história",
-  "description": "As histórias da própria Bíblia recontadas para crianças, em três partes: Histórias do Antigo Testamento, A vida de Jesus e Histórias do Novo Testamento. Cada história é curta o bastante para ser lida em voz alta na hora de dormir e termina com uma oração e perguntas para conversar juntos.",
-  "created_at": "2026-11-08T00:00:00Z",
-  "updated_at": "2026-11-08T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "tell-me-the-story"
-  ],
-  "language": "sw",
-  "title": "Nisimulie Hadithi",
-  "description": "Hadithi za Biblia yenyewe zimesimuliwa upya kwa ajili ya watoto, katika sehemu tatu: Hadithi za Agano la Kale, Maisha ya Yesu na Hadithi za Agano Jipya. Kila hadithi ni fupi ya kutosha kusomwa kwa sauti wakati wa kulala, na inamalizika kwa sala na maswali ya kuzungumza pamoja.",
-  "created_at": "2026-11-08T00:00:00Z",
-  "updated_at": "2026-11-08T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "straight-talk"
-  ],
-  "language": "es",
-  "title": "Hablando claro",
-  "description": "Clásicos cristianos y vidas verdaderas contados de nuevo para lectores adolescentes, con honestidad y en palabras sencillas: el peregrino de Bunyan camino a la Ciudad Celestial, las charlas francas de Spurgeon desde la granja, y los hombres y mujeres que lo apostaron todo por Dios.",
-  "created_at": "2026-11-08T00:00:00Z",
-  "updated_at": "2026-11-08T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "straight-talk"
-  ],
-  "language": "uk",
-  "title": "Відверта розмова",
-  "description": "Християнська класика та правдиві життєві історії, переказані для підлітків — чесно й простими словами: Беньянів прочанин на шляху до Небесного міста, відверті бесіди Сперджена з ферми, а також чоловіки й жінки, які поставили все на Бога.",
-  "created_at": "2026-11-08T00:00:00Z",
-  "updated_at": "2026-11-08T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "straight-talk"
-  ],
-  "language": "ar",
-  "title": "حديث صريح",
-  "description": "كلاسيكيات مسيحية وسِيَر حقيقية تُروى من جديد للقرّاء اليافعين، بصدق وبكلمات بسيطة: حاجّ بنيان في طريقه إلى المدينة السماوية، وأحاديث سبرجن الصريحة من المزرعة، والرجال والنساء الذين راهنوا بكل شيء على الله.",
-  "created_at": "2026-11-08T00:00:00Z",
-  "updated_at": "2026-11-08T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "straight-talk"
-  ],
-  "language": "hi",
-  "title": "सीधी बात",
-  "description": "किशोर पाठकों के लिए ईमानदारी और सरल शब्दों में फिर से सुनाई गई मसीही क्लासिक पुस्तकें और सच्चे जीवन: स्वर्गीय नगर की ओर जाता बनयन का तीर्थयात्री, खेत से स्पर्जन की सीधी बातें, और वे स्त्री-पुरुष जिन्होंने परमेश्वर पर सब कुछ दाँव पर लगा दिया।",
-  "created_at": "2026-11-08T00:00:00Z",
-  "updated_at": "2026-11-08T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "straight-talk"
-  ],
-  "language": "lg",
-  "title": "Okwogera Obutereevu",
-  "description": "Ebitabo by'Ekikristaayo eby'edda n'obulamu obw'amazima ebiddamu okunyumizibwa eri abavubuka, mu bwesimbu ne mu bigambo ebyangu: omutambuze wa Bunyan ku kkubo erigenda mu Kibuga eky'omu Ggulu, ebigambo bya Spurgeon ebitereevu ebiva mu nnimiro, n'abasajja n'abakazi abaawaayo byonna eri Katonda.",
-  "created_at": "2026-11-08T00:00:00Z",
-  "updated_at": "2026-11-08T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "straight-talk"
-  ],
-  "language": "am",
-  "title": "ግልጽ ንግግር",
-  "description": "ለወጣት አንባቢዎች በቅንነትና በቀላል ቃላት እንደገና የተነገሩ የክርስትና ጥንታውያን መጻሕፍትና እውነተኛ የሕይወት ታሪኮች፦ ወደ ሰማያዊቱ ከተማ የሚጓዘው የቡኒያን መንገደኛ፣ ስፐርጀን ከእርሻ ቦታ የሚናገረው ግልጽ ንግግር፣ ሁሉንም ነገር በእግዚአብሔር ላይ የጣሉ ወንዶችና ሴቶችም።",
+  "title": "እውነተኛ ጥያቄዎች",
+  "description": "ከ13 እስከ 17 ዓመት ለሆኑ አንባቢዎች፣ ወጣቶች ስለ እግዚአብሔር፣ ስለ መጽሐፍ ቅዱስ፣ ስለ ኢየሱስና ስለ ሕይወት በእውነት ለሚጠይቋቸው ጥያቄዎች የተሰጡ ቅንና አጭር መልሶች፤ ክርስቲያኖች በሚስማሙበት ግልጽ፣ በሚለያዩበት ሚዛናዊ፣ ወደ ጥንታውያን መጻሕፍትም የሚመሩ።",
   "created_at": "2026-11-13T00:00:00Z",
   "updated_at": "2026-11-13T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "daughters-of-the-king"
-  ],
-  "language": "uk",
-  "title": "Доньки Царя – 30 днів з Богом для дівчат",
-  "description": "Роздуми на 30 днів для дівчат від 9 до 12 років: хто ти як донька Царя, і відважні жінки Біблії та історії, які довіряли Йому.",
-  "verse_text": "І буду вам за отця, а ви будете менї за синів і дочок",
-  "verse_ref": "2 Коринтян 6:18",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "daughters-of-the-king"
-  ],
-  "language": "pt",
-  "title": "Filhas do Rei – 30 Dias com Deus para Meninas",
-  "description": "Devocionais de 30 dias para meninas de 9 a 12 anos: quem você é como filha do Rei, e as mulheres corajosas da Bíblia e da história que confiaram nele.",
-  "verse_text": "Serei para vocês um Pai. Vocês serão para mim filhos e filhas",
-  "verse_ref": "2 Coríntios 6:18",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "daughters-of-the-king"
-  ],
-  "language": "sw",
-  "title": "Binti za Mfalme – Siku 30 na Mungu kwa Wasichana",
-  "description": "Tafakari za siku 30 kwa wasichana wenye umri wa miaka 9 hadi 12: wewe ni nani kama binti wa Mfalme, na wanawake jasiri wa Biblia na wa historia waliomtumaini Yeye.",
-  "verse_text": "Nami nitakuwa Baba kwenu, nanyi mtakuwa kwangu wana na binti, asema Bwana Mwenyezi",
-  "verse_ref": "2 Wakorintho 6:18",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "daughters-of-the-king"
-  ],
-  "language": "ar",
-  "title": "بنات الملك – 30 يومًا مع الله للفتيات",
-  "description": "تأملات يومية على مدى 30 يومًا للفتيات من سن 9 إلى 12: من تكونين بصفتك ابنة الملك، والنساء الشجاعات في الكتاب المقدس وعبر التاريخ اللواتي وثقن به.",
-  "verse_text": "وَأَكُونَ لَكُمْ أَبًا، وَأَنْتُمْ تَكُونُونَ لِي بَنِينَ وَبَنَاتٍ",
-  "verse_ref": "2 كورنثوس 6:18",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "daughters-of-the-king"
-  ],
-  "language": "hi",
-  "title": "राजा की बेटियाँ — लड़कियों के लिये परमेश्वर के साथ 30 दिन",
-  "description": "9 से 12 वर्ष की लड़कियों के लिये 30 दिनों की भक्ति-वार्ताएँ: राजा की बेटी के रूप में तुम कौन हो, और बाइबल तथा इतिहास की वे साहसी स्त्रियाँ जिन्होंने उस पर भरोसा रखा।",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "daughters-of-the-king"
-  ],
-  "language": "ko",
-  "title": "왕의 딸들 – 소녀를 위한 하나님과 함께하는 30일",
-  "description": "9세에서 12세 소녀들을 위한 30일 묵상집입니다. 왕의 딸로서 나는 누구인지, 그리고 하나님을 신뢰한 성경과 역사 속 용감한 여성들을 다룹니다.",
-  "verse_text": "너희에게 아버지가 되고 너희는 내게 자녀가 되리라 전능하신 주의 말씀이니라 하셨느니라",
-  "verse_ref": "고린도후서 6:18",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "daughters-of-the-king"
-  ],
-  "language": "lg",
-  "title": "Abawala ba Kabaka – Ennaku 30 ne Katonda eri Abawala",
-  "description": "Ebyokufumiitiriza by’ennaku 30 eri abawala ab’emyaka 9 okutuuka ku 12: oli ani ng’omuwala wa Kabaka, n’abakazi abavumu ab’omu Bayibuli n’ab’omu byafaayo abaamwesiga.",
-  "verse_text": "Nnaabeeranga Kitammwe, nammwe ne mubeeranga batabani bange ne bawala bange",
-  "verse_ref": "2 Abakkolinso 6:18",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "daughters-of-the-king"
-  ],
-  "language": "vi",
-  "title": "Con Gái Của Vua – 30 Ngày Với Đức Chúa Trời Dành Cho Các Bạn Gái",
-  "description": "Sách tĩnh nguyện 30 ngày dành cho các bạn gái từ 9 đến 12 tuổi: em là ai với tư cách là con gái của Vua, và những người phụ nữ can đảm trong Kinh Thánh và trong lịch sử đã tin cậy Ngài.",
-  "verse_text": "Ta sẽ làm Cha các ngươi, Các ngươi làm con trai con gái ta",
-  "verse_ref": "2 Cô-rinh-tô 6:18",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "key-teachings"
-  ],
-  "language": "uk",
-  "title": "Ключові вчення",
-  "description": "Короткі й вірні путівники від Ochorus до серця вчення одного класичного автора — кожен розділ завершується запитаннями й молитвою та скеровує читача до власних книжок автора.",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "key-teachings"
-  ],
-  "language": "sw",
-  "title": "Mafundisho Makuu",
-  "description": "Miongozo mifupi na yenye uaminifu ya Ochorus kuhusu kiini cha mafundisho ya mwandishi mmoja wa kale — kila sura inamalizika kwa maswali na sala, na kumwelekeza msomaji kwenye vitabu vya mwandishi mwenyewe.",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "key-teachings"
-  ],
-  "language": "ar",
-  "title": "التعاليم الأساسية",
-  "description": "أدلة موجزة وأمينة من Ochorus إلى لب تعليم كاتب كلاسيكي واحد، ينتهي كل فصل فيها بأسئلة وصلاة، ويقود القارئ إلى كتب المؤلف نفسه.",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "key-teachings"
-  ],
-  "language": "ko",
-  "title": "핵심 가르침",
-  "description": "Ochorus가 펴내는 짧고 충실한 안내서로, 고전 작가 한 사람의 가르침의 핵심으로 독자를 이끕니다. 각 장은 질문과 기도로 끝나며, 독자를 그 작가가 직접 쓴 책들로 안내합니다.",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "key-teachings"
-  ],
-  "language": "lg",
-  "title": "Enjigiriza Enkulu",
-  "description": "Obulagirizi obumpi era obwesigwa obwa Ochorus eri omutima gw’enjigiriza y’omuwandiisi omu ow’edda — buli ssuula ekomekkerezebwa n’ebibuuzo n’essaala, era esindika omusomi eri ebitabo by’omuwandiisi oyo yennyini.",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "key-teachings"
-  ],
-  "language": "vi",
-  "title": "Những Lời Dạy Cốt Lõi",
-  "description": "Những quyển hướng dẫn ngắn gọn và trung thực của Ochorus, đi vào cốt lõi sự dạy dỗ của một tác giả kinh điển — mỗi chương kết thúc bằng các câu hỏi và một lời cầu nguyện, rồi dẫn người đọc đến chính các sách của tác giả ấy.",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "key-teachings"
-  ],
-  "language": "am",
-  "title": "ዋና ዋና ትምህርቶች",
-  "description": "Ochorus ያዘጋጃቸው፣ የአንድን ጥንታዊ ጸሐፊ ትምህርት እምብርት በአጭሩና በታማኝነት የሚያቀርቡ መመሪያዎች — እያንዳንዱ ምዕራፍ በጥያቄዎችና በጸሎት ይደመደማል፤ አንባቢውንም ወደ ጸሐፊው የራሱ መጻሕፍት ይመራል።",
-  "created_at": "2026-11-11T00:00:00Z",
-  "updated_at": "2026-11-11T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "tell-me-the-story"
-  ],
-  "language": "hi",
-  "title": "मुझे कहानी सुनाओ",
-  "description": "बच्चों के लिए फिर से सुनाई गई बाइबल की अपनी कहानियाँ, तीन भागों में: पुराने नियम की कहानियाँ, यीशु का जीवन और नये नियम की कहानियाँ। हर कहानी इतनी छोटी है कि सोने से पहले पढ़कर सुनाई जा सके, और एक प्रार्थना तथा मिलकर बात करने के लिए प्रश्नों पर समाप्त होती है।",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "tell-me-the-story"
-  ],
-  "language": "ar",
-  "title": "احكِ لي القصة",
-  "description": "قصص الكتاب المقدس نفسه تروى للأطفال في ثلاثة أجزاء: قصص من العهد القديم، وحياة يسوع، وقصص من العهد الجديد. كل قصة قصيرة بما يكفي لتقرأ بصوت مرتفع قبل النوم، وتنتهي بصلاة وأسئلة للحديث عنها معًا.",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "tell-me-the-story"
-  ],
-  "language": "ko",
-  "title": "이야기를 들려주세요",
-  "description": "어린이를 위해 다시 들려주는 성경 속 이야기로, 구약 이야기, 예수님의 생애, 신약 이야기의 세 부분으로 되어 있습니다. 한 편 한 편이 잠자리에서 소리 내어 읽어 주기 좋을 만큼 짧으며, 기도와 함께 이야기 나눌 질문으로 끝납니다.",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "tell-me-the-story"
-  ],
-  "language": "lg",
-  "title": "Nnyumiza Olugero",
-  "description": "Engero za Bayibuli yennyini eziddamu okunyumizibwa eri abaana, mu bitundu bisatu: Engero z’Endagaano Enkadde, Obulamu bwa Yesu, n’Engero z’Endagaano Empya. Buli lugero lumpi ekimala okusomerwa waggulu mu kiseera eky’okwebaka, era luggwa n’okusaba n’ebibuuzo eby’okwogerako awamu.",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "tell-me-the-story"
-  ],
-  "language": "vi",
-  "title": "Kể Cho Con Nghe",
-  "description": "Những câu chuyện của chính Kinh Thánh được kể lại cho trẻ em, gồm ba phần: Những Câu Chuyện Cựu Ước, Cuộc Đời Chúa Giê-xu và Những Câu Chuyện Tân Ước. Mỗi câu chuyện đủ ngắn để đọc to trước giờ đi ngủ và kết thúc bằng một lời cầu nguyện cùng những câu hỏi để cùng nhau trò chuyện.",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "tell-me-the-story"
-  ],
-  "language": "am",
-  "title": "ታሪኩን ንገረኝ",
-  "description": "ለልጆች እንደ ገና የተነገሩ የመጽሐፍ ቅዱስ የራሱ ታሪኮች፣ በሦስት ክፍሎች፦ የብሉይ ኪዳን ታሪኮች፣ የኢየሱስ ሕይወት፣ እና የአዲስ ኪዳን ታሪኮች። እያንዳንዱ ታሪክ በመኝታ ሰዓት ጮክ ብሎ ለማንበብ የሚበቃ አጭር ነው፤ በጸሎትና አብራችሁ በምትነጋገሩባቸው ጥያቄዎችም ይፈጸማል።",
-  "created_at": "2026-11-12T00:00:00Z",
-  "updated_at": "2026-11-12T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "they-were-young"
-  ],
-  "language": "es",
-  "title": "Eran jóvenes",
-  "description": "Historias verdaderas, para lectores de 13 a 17 años, de personas cuya fe comenzó, o fue puesta a prueba, antes de llegar a la edad adulta: contadas completas, con sus propias palabras cuando las tenemos, y con preguntas para pensar.",
-  "verse_text": "Ninguno tenga en poco tu juventud",
-  "verse_ref": "1 Timoteo 4:12",
-  "created_at": "2026-11-09T00:00:00Z",
-  "updated_at": "2026-11-09T00:00:00Z"
  }
 },
 {
@@ -1440,11 +1096,180 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
-   "real-questions"
+   "rooted"
   ],
   "language": "am",
-  "title": "እውነተኛ ጥያቄዎች",
-  "description": "ከ13 እስከ 17 ዓመት ለሆኑ አንባቢዎች፣ ወጣቶች ስለ እግዚአብሔር፣ ስለ መጽሐፍ ቅዱስ፣ ስለ ኢየሱስና ስለ ሕይወት በእውነት ለሚጠይቋቸው ጥያቄዎች የተሰጡ ቅንና አጭር መልሶች፤ ክርስቲያኖች በሚስማሙበት ግልጽ፣ በሚለያዩበት ሚዛናዊ፣ ወደ ጥንታውያን መጻሕፍትም የሚመሩ።",
+  "title": "ሥር የሰደደ – ከእግዚአብሔር ጋር 30 ቀናት ለወጣቶች",
+  "description": "",
+  "created_at": "2026-09-28T00:00:00Z",
+  "updated_at": "2026-09-28T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "ar",
+  "title": "متأصّلون – 30 يومًا مع الله للناشئين",
+  "description": "تأمّلات يومية على مدى ثلاثين يومًا للقرّاء من سنّ التاسعة إلى الثانية عشرة، كتابًا بعد كتاب: آية، وما تعنيه، وسؤال للتفكير، وأمر للتجربة، وصلاة.",
+  "created_at": "2026-09-26T00:00:00Z",
+  "updated_at": "2026-09-26T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "es",
+  "title": "Enraizados – 30 días con Dios para jóvenes",
+  "description": "Devocionales de treinta días para lectores de 9 a 12 años, un libro a la vez: un versículo, lo que significa, una pregunta para pensar, algo que hacer y una oración.",
+  "created_at": "2026-10-15T00:00:00Z",
+  "updated_at": "2026-10-15T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "fr",
+  "title": "Enracinés – 30 jours avec Dieu pour les jeunes",
+  "description": "Des méditations sur trente jours pour les lecteurs de 9 à 12 ans, un livre à la fois: un verset, ce qu’il veut dire, une question pour réfléchir, une chose à faire et une prière.",
+  "created_at": "2026-09-28T00:00:00Z",
+  "updated_at": "2026-09-28T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "hi",
+  "title": "जड़ें जमाए — युवाओं के लिये परमेश्वर के साथ 30 दिन",
+  "description": "9 से 12 वर्ष के पाठकों के लिये तीस-दिवसीय भक्ति-वार्ताएँ, एक बार में एक पुस्तक: एक वचन, उसका अर्थ, सोचने के लिये एक प्रश्न, करने के लिये एक बात, और एक प्रार्थना।",
+  "created_at": "2026-09-26T00:00:00Z",
+  "updated_at": "2026-09-26T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "ko",
+  "title": "뿌리내림 – 어린이를 위한 하나님과 함께하는 30일",
+  "description": "9세에서 12세 독자를 위한 30일 묵상집으로, 한 권씩 읽습니다. 성경 구절 하나, 그 뜻, 생각해 볼 질문, 실천해 볼 일, 그리고 기도가 담겨 있습니다.",
+  "created_at": "2026-10-26T00:00:00Z",
+  "updated_at": "2026-10-26T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "lg",
+  "title": "Emirandira – Ennaku 30 ne Katonda eri Abavubuka",
+  "description": "Ebyokufumiitiriza eby’ennaku amakumi asatu eri abasomi ab’emyaka 9 okutuuka ku 12, ekitabo kimu oluvannyuma lw’ekirala: olunyiriri lwa Bayibuli, amakulu gaalwo, ekibuuzo eky’okulowoozaako, ekintu eky’okugezaako, n’essaala.",
+  "created_at": "2026-10-23T00:00:00Z",
+  "updated_at": "2026-10-23T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "pt",
+  "title": "Enraizados – 30 Dias com Deus para Jovens",
+  "description": "Devocionais de trinta dias para leitores de 9 a 12 anos, um livro de cada vez: um versículo, o que ele significa, uma pergunta para pensar, uma coisa para experimentar e uma oração.",
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "sw",
+  "title": "Wenye Mizizi – Siku 30 na Mungu kwa Vijana",
+  "description": "Tafakari za siku thelathini kwa wasomaji wenye umri wa miaka 9 hadi 12, kitabu kimoja baada ya kingine: mstari wa Biblia, maana yake, swali la kufikiria, jambo la kujaribu, na sala.",
+  "created_at": "2026-10-04T00:00:00Z",
+  "updated_at": "2026-10-04T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "uk",
+  "title": "Вкорінені – 30 днів з Богом для юних",
+  "description": "Роздуми на тридцять днів для читачів від 9 до 12 років, книжка за книжкою: вірш, що він означає, питання, над яким подумати, справа, яку спробувати, і молитва.",
+  "created_at": "2026-10-23T00:00:00Z",
+  "updated_at": "2026-10-23T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "vi",
+  "title": "Bám Rễ – 30 Ngày Với Đức Chúa Trời Dành Cho Thiếu Nhi",
+  "description": "Sách tĩnh nguyện ba mươi ngày cho các em từ 9 đến 12 tuổi, mỗi lần một quyển: một câu Kinh Thánh, ý nghĩa của câu ấy, một câu hỏi để suy nghĩ, một việc để thực hành và một lời cầu nguyện.",
+  "created_at": "2026-10-26T00:00:00Z",
+  "updated_at": "2026-10-26T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "sons-of-the-king"
+  ],
+  "language": "am",
+  "title": "የንጉሡ ወንዶች ልጆች – ከእግዚአብሔር ጋር 30 ቀናት ለወንዶች ልጆች",
+  "description": "",
+  "created_at": "2026-11-02T00:00:00Z",
+  "updated_at": "2026-11-02T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "sons-of-the-king"
+  ],
+  "language": "es",
+  "title": "Hijos del Rey – 30 días con Dios para chicos",
+  "description": "Devocionales de treinta días para chicos de 9 a 12 años: quién eres como hijo del Rey, la fuerza bajo control, y los hombres valientes de la Biblia y de la historia que confiaron en él.",
+  "created_at": "2026-11-03T00:00:00Z",
+  "updated_at": "2026-11-03T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
+  "language": "am",
+  "title": "ግልጽ ንግግር",
+  "description": "ለወጣት አንባቢዎች በቅንነትና በቀላል ቃላት እንደገና የተነገሩ የክርስትና ጥንታውያን መጻሕፍትና እውነተኛ የሕይወት ታሪኮች፦ ወደ ሰማያዊቱ ከተማ የሚጓዘው የቡኒያን መንገደኛ፣ ስፐርጀን ከእርሻ ቦታ የሚናገረው ግልጽ ንግግር፣ ሁሉንም ነገር በእግዚአብሔር ላይ የጣሉ ወንዶችና ሴቶችም።",
   "created_at": "2026-11-13T00:00:00Z",
   "updated_at": "2026-11-13T00:00:00Z"
  }
@@ -1453,89 +1278,128 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
-   "a-cloud-of-praying-witnesses"
-  ],
-  "language": "hi",
-  "title": "प्रार्थना करनेवाले गवाहों का बादल",
-  "description": "कलीसिया की पूरी कहानी में प्रार्थना, हर युग के लिये एक खण्ड: पुराने नियम की प्रार्थनाएँ, प्रार्थना के शिक्षक यीशु, प्रेरित, और हर सदी तथा हर देश के प्रार्थना करनेवाले स्त्री-पुरुष, आज तक। हर छोटा अध्याय एक मुख्य वचन रखता है, एक कहानी सुनाता है, अतीत की एक आवाज़ सुनाता है, और अन्तर्दृष्टियों, एक अभ्यास और एक प्रार्थना के साथ समाप्त होता है।",
-  "created_at": "2026-11-09T12:00:00Z",
-  "updated_at": "2026-11-09T12:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "a-cloud-of-praying-witnesses"
-  ],
-  "language": "sw",
-  "title": "Wingu la Mashahidi Wanaoomba",
-  "description": "Maombi katika historia yote ya kanisa, juzuu moja kwa kila kipindi: maombi ya Agano la Kale, Yesu Mwalimu wa Maombi, mitume, na wanaume na wanawake waombaji wa kila karne na kila nchi hadi leo. Kila sura fupi inaweka mstari mkuu, inasimulia kisa, inasikiliza sauti kutoka zamani, na inamalizika kwa mafunzo, zoezi na maombi.",
-  "created_at": "2026-11-12T00:00:00Z",
-  "updated_at": "2026-11-12T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "a-cloud-of-praying-witnesses"
-  ],
-  "language": "lg",
-  "title": "Ekibiina ky’Abajulirwa Abasaba",
-  "description": "Okusaba mu byafaayo byonna eby’ekkanisa, ekitabo kimu ku buli mulembe: essaala ez’omu Ndagaano Enkadde, Yesu Omuyigiriza w’Okusaba, abatume, n’abasajja n’abakazi abaasabanga ab’omu buli kyasa ne mu buli nsi okutuusa leero. Buli ssuula ennyimpi eteekawo olunyiriri olukulu, enyumya olugero, ewuliriza eddoboozi okuva mu biseera eby’edda, era ekoma n’amagezi, eky’okukola n’essaala.",
-  "created_at": "2026-11-12T00:00:00Z",
-  "updated_at": "2026-11-12T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "a-cloud-of-praying-witnesses"
-  ],
-  "language": "uk",
-  "title": "Хмара молитовних свідків",
-  "description": "Молитва впродовж усієї історії церкви, по тому на кожну добу: молитви Старого Заповіту, Ісус — Учитель молитви, апостоли, а також чоловіки й жінки молитви кожного століття і кожного краю аж до сьогодні. Кожен короткий розділ подає ключовий вірш, розповідає історію, дає почути голос із минулого й завершується думками, практикою та молитвою.",
-  "created_at": "2026-11-12T00:00:00Z",
-  "updated_at": "2026-11-12T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "a-cloud-of-praying-witnesses"
+   "straight-talk"
   ],
   "language": "ar",
-  "title": "سحابة من الشهود المصلّين",
-  "description": "الصلاة عبر قصة الكنيسة كلها، مجلد لكل حقبة: صلوات العهد القديم، ويسوع معلّم الصلاة، والرسل، والرجال والنساء المصلّون في كل قرن وكل أرض حتى اليوم. كل فصل قصير يضع آية محورية، ويروي قصة، ويُسمعنا صوتًا من الماضي، ويختم بأفكار رئيسية وتمرين وصلاة.",
-  "created_at": "2026-11-12T00:00:00Z",
-  "updated_at": "2026-11-12T00:00:00Z"
+  "title": "حديث صريح",
+  "description": "كلاسيكيات مسيحية وسِيَر حقيقية تُروى من جديد للقرّاء اليافعين، بصدق وبكلمات بسيطة: حاجّ بنيان في طريقه إلى المدينة السماوية، وأحاديث سبرجن الصريحة من المزرعة، والرجال والنساء الذين راهنوا بكل شيء على الله.",
+  "created_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-08T00:00:00Z"
  }
 },
 {
  "model": "library.seriestranslation",
  "fields": {
   "series": [
-   "a-cloud-of-praying-witnesses"
+   "straight-talk"
+  ],
+  "language": "es",
+  "title": "Hablando claro",
+  "description": "Clásicos cristianos y vidas verdaderas contados de nuevo para lectores adolescentes, con honestidad y en palabras sencillas: el peregrino de Bunyan camino a la Ciudad Celestial, las charlas francas de Spurgeon desde la granja, y los hombres y mujeres que lo apostaron todo por Dios.",
+  "created_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
   ],
   "language": "fr",
-  "title": "Une nuée de témoins en prière",
-  "description": "La prière à travers toute l’histoire de l’Église, un volume par époque : les prières de l’Ancien Testament, Jésus maître de prière, les apôtres, et les hommes et les femmes de prière de chaque siècle et de chaque pays jusqu’à aujourd’hui. Chaque court chapitre pose un verset clé, raconte une histoire, fait entendre une voix du passé et se termine par des idées clés, un exercice et une prière.",
-  "created_at": "2026-11-12T00:00:00Z",
-  "updated_at": "2026-11-12T00:00:00Z"
+  "title": "Franc-parler",
+  "description": "Des classiques chrétiens et des vies vraies racontés pour les adolescents, avec franchise et en mots simples : le pèlerin de Bunyan sur la route de la Cité céleste, le franc-parler de Spurgeon depuis la ferme, et les hommes et les femmes qui ont tout misé sur Dieu.",
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
  }
 },
 {
  "model": "library.seriestranslation",
  "fields": {
   "series": [
-   "a-cloud-of-praying-witnesses"
+   "straight-talk"
+  ],
+  "language": "hi",
+  "title": "सीधी बात",
+  "description": "किशोर पाठकों के लिए ईमानदारी और सरल शब्दों में फिर से सुनाई गई मसीही क्लासिक पुस्तकें और सच्चे जीवन: स्वर्गीय नगर की ओर जाता बनयन का तीर्थयात्री, खेत से स्पर्जन की सीधी बातें, और वे स्त्री-पुरुष जिन्होंने परमेश्वर पर सब कुछ दाँव पर लगा दिया।",
+  "created_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
+  "language": "ko",
+  "title": "솔직한 이야기",
+  "description": "청소년 독자를 위해 솔직하고 쉬운 말로 다시 들려주는 기독교 고전과 실제 인물의 삶입니다. 천성을 향해 가는 존 번연의 순례자, 농장에서 들려주는 찰스 스펄전의 솔직한 이야기, 그리고 모든 것을 하나님께 건 남자와 여자들의 이야기를 담았습니다.",
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
+  "language": "lg",
+  "title": "Okwogera Obutereevu",
+  "description": "Ebitabo by'Ekikristaayo eby'edda n'obulamu obw'amazima ebiddamu okunyumizibwa eri abavubuka, mu bwesimbu ne mu bigambo ebyangu: omutambuze wa Bunyan ku kkubo erigenda mu Kibuga eky'omu Ggulu, ebigambo bya Spurgeon ebitereevu ebiva mu nnimiro, n'abasajja n'abakazi abaawaayo byonna eri Katonda.",
+  "created_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
+  "language": "pt",
+  "title": "Papo Reto",
+  "description": "Clássicos cristãos e vidas verdadeiras recontados para leitores adolescentes, com sinceridade e em palavras simples: o peregrino de Bunyan a caminho da Cidade Celestial, a conversa franca de Spurgeon vinda do campo, e os homens e mulheres que apostaram tudo em Deus.",
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
+  "language": "uk",
+  "title": "Відверта розмова",
+  "description": "Християнська класика та правдиві життєві історії, переказані для підлітків — чесно й простими словами: Беньянів прочанин на шляху до Небесного міста, відверті бесіди Сперджена з ферми, а також чоловіки й жінки, які поставили все на Бога.",
+  "created_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
   ],
   "language": "vi",
-  "title": "Đám Mây Nhân Chứng Cầu Nguyện",
-  "description": "Sự cầu nguyện xuyên suốt toàn bộ câu chuyện của Hội Thánh, mỗi quyển một thời kỳ: những lời cầu nguyện trong Cựu Ước, Chúa Giê-xu là Thầy Dạy Cầu Nguyện, các sứ đồ, và những người nam người nữ cầu nguyện của mọi thế kỷ, mọi xứ sở cho đến ngày nay. Mỗi chương ngắn đặt ra một câu Kinh Thánh then chốt, kể một câu chuyện, lắng nghe một tiếng nói từ quá khứ, và kết thúc bằng những điều then chốt, một việc thực hành và một lời cầu nguyện.",
+  "title": "Nói Thẳng Nói Thật",
+  "description": "Những tác phẩm kinh điển Cơ Đốc và những cuộc đời có thật được kể lại cho bạn đọc tuổi thiếu niên, thẳng thắn và bằng lời lẽ giản dị: người hành hương của Bunyan trên đường đến Thành Thiên Thượng, những lời nói thẳng của Spurgeon từ nông trại, và những người nam người nữ đã đặt cược tất cả nơi Đức Chúa Trời.",
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "am",
+  "title": "ታሪኩን ንገረኝ",
+  "description": "ለልጆች እንደ ገና የተነገሩ የመጽሐፍ ቅዱስ የራሱ ታሪኮች፣ በሦስት ክፍሎች፦ የብሉይ ኪዳን ታሪኮች፣ የኢየሱስ ሕይወት፣ እና የአዲስ ኪዳን ታሪኮች። እያንዳንዱ ታሪክ በመኝታ ሰዓት ጮክ ብሎ ለማንበብ የሚበቃ አጭር ነው፤ በጸሎትና አብራችሁ በምትነጋገሩባቸው ጥያቄዎችም ይፈጸማል።",
   "created_at": "2026-11-12T00:00:00Z",
   "updated_at": "2026-11-12T00:00:00Z"
  }
@@ -1544,13 +1408,130 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
-   "a-cloud-of-praying-witnesses"
+   "tell-me-the-story"
   ],
-  "language": "am",
-  "title": "የሚጸልዩ ምስክሮች ደመና",
-  "description": "በቤተ ክርስቲያን ታሪክ ሁሉ ውስጥ ያለው ጸሎት፣ ለእያንዳንዱ ዘመን አንድ ቅጽ፦ የብሉይ ኪዳን ጸሎቶች፣ የጸሎት መምህር የሆነው ኢየሱስ፣ ሐዋርያት፣ እንዲሁም እስከ ዛሬ ድረስ በየዘመኑና በየአገሩ የኖሩ የሚጸልዩ ወንዶችና ሴቶች። እያንዳንዱ አጭር ምዕራፍ ቁልፍ ጥቅስ ያስቀምጣል፣ ታሪክ ይተርካል፣ ከቀደሙት ዘመናት አንድ ድምፅ ያሰማል፣ በእውነቶች፣ በልምምድና በጸሎትም ይፈጸማል።",
-  "created_at": "2026-11-12T00:00:00Z",
-  "updated_at": "2026-11-12T00:00:00Z"
+  "language": "ar",
+  "title": "احكِ لي القصة",
+  "description": "قصص الكتاب المقدس نفسه تروى للأطفال في ثلاثة أجزاء: قصص من العهد القديم، وحياة يسوع، وقصص من العهد الجديد. كل قصة قصيرة بما يكفي لتقرأ بصوت مرتفع قبل النوم، وتنتهي بصلاة وأسئلة للحديث عنها معًا.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "es",
+  "title": "Cuéntame la historia",
+  "description": "Las historias de la propia Biblia contadas para niños, en tres partes: Historias del Antiguo Testamento, La vida de Jesús e Historias del Nuevo Testamento. Cada historia es lo bastante corta para leerla en voz alta a la hora de dormir y termina con una oración y preguntas para conversar juntos.",
+  "created_at": "2026-11-05T00:00:00Z",
+  "updated_at": "2026-11-05T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "fr",
+  "title": "Raconte-moi l’histoire",
+  "description": "Les histoires de la Bible elle-même, racontées pour les enfants, en trois parties : Histoires de l’Ancien Testament, La vie de Jésus et Histoires du Nouveau Testament. Chaque histoire est assez courte pour être lue à voix haute au moment du coucher et se termine par une prière et des questions pour en parler ensemble.",
+  "created_at": "2026-11-05T00:00:00Z",
+  "updated_at": "2026-11-05T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "hi",
+  "title": "मुझे कहानी सुनाओ",
+  "description": "बच्चों के लिए फिर से सुनाई गई बाइबल की अपनी कहानियाँ, तीन भागों में: पुराने नियम की कहानियाँ, यीशु का जीवन और नये नियम की कहानियाँ। हर कहानी इतनी छोटी है कि सोने से पहले पढ़कर सुनाई जा सके, और एक प्रार्थना तथा मिलकर बात करने के लिए प्रश्नों पर समाप्त होती है।",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "ko",
+  "title": "이야기를 들려주세요",
+  "description": "어린이를 위해 다시 들려주는 성경 속 이야기로, 구약 이야기, 예수님의 생애, 신약 이야기의 세 부분으로 되어 있습니다. 한 편 한 편이 잠자리에서 소리 내어 읽어 주기 좋을 만큼 짧으며, 기도와 함께 이야기 나눌 질문으로 끝납니다.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "lg",
+  "title": "Nnyumiza Olugero",
+  "description": "Engero za Bayibuli yennyini eziddamu okunyumizibwa eri abaana, mu bitundu bisatu: Engero z’Endagaano Enkadde, Obulamu bwa Yesu, n’Engero z’Endagaano Empya. Buli lugero lumpi ekimala okusomerwa waggulu mu kiseera eky’okwebaka, era luggwa n’okusaba n’ebibuuzo eby’okwogerako awamu.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "pt",
+  "title": "Conte-me a história",
+  "description": "As histórias da própria Bíblia recontadas para crianças, em três partes: Histórias do Antigo Testamento, A vida de Jesus e Histórias do Novo Testamento. Cada história é curta o bastante para ser lida em voz alta na hora de dormir e termina com uma oração e perguntas para conversar juntos.",
+  "created_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "sw",
+  "title": "Nisimulie Hadithi",
+  "description": "Hadithi za Biblia yenyewe zimesimuliwa upya kwa ajili ya watoto, katika sehemu tatu: Hadithi za Agano la Kale, Maisha ya Yesu na Hadithi za Agano Jipya. Kila hadithi ni fupi ya kutosha kusomwa kwa sauti wakati wa kulala, na inamalizika kwa sala na maswali ya kuzungumza pamoja.",
+  "created_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "uk",
+  "title": "Розкажи мені історію",
+  "description": "Біблійні історії, переказані для дітей, у трьох частинах: старозавітні історії, життя Ісуса та новозавітні історії. Кожна історія досить коротка, щоб прочитати її вголос перед сном, і закінчується молитвою та запитаннями для спільної розмови.",
+  "created_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "vi",
+  "title": "Kể Cho Con Nghe",
+  "description": "Những câu chuyện của chính Kinh Thánh được kể lại cho trẻ em, gồm ba phần: Những Câu Chuyện Cựu Ước, Cuộc Đời Chúa Giê-xu và Những Câu Chuyện Tân Ước. Mỗi câu chuyện đủ ngắn để đọc to trước giờ đi ngủ và kết thúc bằng một lời cầu nguyện cùng những câu hỏi để cùng nhau trò chuyện.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
  }
 },
 {
@@ -1559,11 +1540,11 @@
   "series": [
    "the-lamplighters-of-gloamhaven"
   ],
-  "language": "fr",
-  "title": "Les Allumeurs de Gloamhaven",
-  "description": "Une série d’aventures pour les jeunes lecteurs, dans un pays sous un soleil maudit. Deux enfants, une lampe qu’on ne peut ni acheter ni voler, et la longue route vers la montagne où la Flamme a commencé : une histoire de lumière, de courage et de la grâce que nul ne peut mériter.",
-  "created_at": "2026-11-11T00:00:00Z",
-  "updated_at": "2026-11-11T00:00:00Z"
+  "language": "am",
+  "title": "የግሎምሄቨን ፋኖስ አብሪዎች",
+  "description": "በተረገመ ፀሐይ ሥር ባለች ምድር ውስጥ የሚፈጸም፣ ለወጣት አንባቢዎች የተዘጋጀ የጀብዱ ተከታታይ መጽሐፍ። ሁለት ልጆች፣ ሊገዛም ሊሰረቅም የማይችል ፋኖስ፣ ነበልባሉ ወደ ጀመረበት ተራራ የሚወስደውም ረጅም መንገድ፦ ስለ ብርሃን፣ ስለ ድፍረትና ማንም በሥራው ሊያገኘው ስለማይችል ጸጋ የሚናገር ታሪክ።",
+  "created_at": "2026-11-13T00:00:00Z",
+  "updated_at": "2026-11-13T00:00:00Z"
  }
 },
 {
@@ -1585,6 +1566,19 @@
   "series": [
    "the-lamplighters-of-gloamhaven"
   ],
+  "language": "fr",
+  "title": "Les Allumeurs de Gloamhaven",
+  "description": "Une série d’aventures pour les jeunes lecteurs, dans un pays sous un soleil maudit. Deux enfants, une lampe qu’on ne peut ni acheter ni voler, et la longue route vers la montagne où la Flamme a commencé : une histoire de lumière, de courage et de la grâce que nul ne peut mériter.",
+  "created_at": "2026-11-11T00:00:00Z",
+  "updated_at": "2026-11-11T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "the-lamplighters-of-gloamhaven"
+  ],
   "language": "pt",
   "title": "Os Acendedores de Lampiões de Gloamhaven",
   "description": "Uma série de aventuras para jovens leitores, numa terra sob um sol amaldiçoado. Duas crianças, uma lamparina que não se pode comprar nem roubar, e o longo caminho até a montanha onde a Chama começou: uma história de luz, de coragem e da graça que ninguém pode merecer.",
@@ -1596,24 +1590,13 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
-   "the-lamplighters-of-gloamhaven"
+   "they-were-young"
   ],
   "language": "am",
-  "title": "የግሎምሄቨን ፋኖስ አብሪዎች",
-  "description": "በተረገመ ፀሐይ ሥር ባለች ምድር ውስጥ የሚፈጸም፣ ለወጣት አንባቢዎች የተዘጋጀ የጀብዱ ተከታታይ መጽሐፍ። ሁለት ልጆች፣ ሊገዛም ሊሰረቅም የማይችል ፋኖስ፣ ነበልባሉ ወደ ጀመረበት ተራራ የሚወስደውም ረጅም መንገድ፦ ስለ ብርሃን፣ ስለ ድፍረትና ማንም በሥራው ሊያገኘው ስለማይችል ጸጋ የሚናገር ታሪክ።",
-  "created_at": "2026-11-13T00:00:00Z",
-  "updated_at": "2026-11-13T00:00:00Z"
- }
-},
-{
- "model": "library.seriestranslation",
- "fields": {
-  "series": [
-   "a-cloud-of-praying-witnesses"
-  ],
-  "language": "ko",
-  "title": "구름같이 둘러싼 기도의 증인들",
-  "description": "교회의 전체 역사 속 기도를 한 시대에 한 권씩 따라갑니다. 구약의 기도, 기도의 스승 예수님, 사도들, 그리고 오늘에 이르기까지 모든 세기와 모든 땅의 기도하는 사람들. 각 장은 핵심 구절을 세우고, 이야기를 들려주고, 옛 성도의 목소리를 듣고, 깨달음과 실천과 기도로 끝납니다.",
+  "title": "ወጣቶች ነበሩ",
+  "description": "ዕድሜያቸው ከ13 እስከ 17 ለሆኑ አንባቢዎች፣ እምነታቸው ገና ሳያድጉ ስለ ጀመረ ወይም ስለ ተፈተነ ሰዎች የተጻፉ እውነተኛ ታሪኮች — ሙሉ በሙሉ የተተረኩ፣ ባሉን ቦታ በራሳቸው ቃል፣ ለማሰላሰል በሚረዱ ጥያቄዎች የታጀቡ።",
+  "verse_text": "ማንም ታናሽነትህን አይናቀው",
+  "verse_ref": "1 ጢሞቴዎስ 4:12",
   "created_at": "2026-11-12T00:00:00Z",
   "updated_at": "2026-11-12T00:00:00Z"
  }
@@ -1622,26 +1605,43 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
-   "a-cloud-of-praying-witnesses"
+   "they-were-young"
   ],
   "language": "es",
-  "title": "Una nube de testigos en oración",
-  "description": "La oración a lo largo de toda la historia de la iglesia, un volumen por época: las oraciones del Antiguo Testamento, Jesús, Maestro de oración, los apóstoles, y los hombres y mujeres de oración de cada siglo y de cada tierra hasta hoy. Cada capítulo breve presenta un versículo clave, cuenta una historia, escucha una voz del pasado y termina con ideas clave, una práctica y una oración.",
-  "created_at": "2026-11-12T00:00:00Z",
-  "updated_at": "2026-11-12T00:00:00Z"
+  "title": "Eran jóvenes",
+  "description": "Historias verdaderas, para lectores de 13 a 17 años, de personas cuya fe comenzó, o fue puesta a prueba, antes de llegar a la edad adulta: contadas completas, con sus propias palabras cuando las tenemos, y con preguntas para pensar.",
+  "verse_text": "Ninguno tenga en poco tu juventud",
+  "verse_ref": "1 Timoteo 4:12",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
  }
 },
 {
  "model": "library.seriestranslation",
  "fields": {
   "series": [
-   "a-cloud-of-praying-witnesses"
+   "they-were-young"
+  ],
+  "language": "fr",
+  "title": "Ils étaient jeunes",
+  "description": "Des histoires vraies, pour les lecteurs de 13 à 17 ans, de personnes dont la foi est née, ou a été mise à l’épreuve, avant l’âge adulte — racontées en entier, avec leurs propres mots quand nous les avons, et des questions pour réfléchir.",
+  "verse_text": "Que personne ne méprise ta jeunesse",
+  "verse_ref": "1 Timothée 4:12",
+  "created_at": "2026-10-14T00:00:00Z",
+  "updated_at": "2026-10-14T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "they-were-young"
   ],
   "language": "pt",
-  "title": "Uma Nuvem de Testemunhas em Oração",
-  "description": "A oração ao longo de toda a história da igreja, um volume para cada época: as orações do Antigo Testamento, Jesus, o Mestre de Oração, os apóstolos e os homens e mulheres de oração de todos os séculos e de todas as terras até hoje. Cada capítulo curto apresenta um versículo-chave, conta uma história, ouve uma voz do passado e termina com lições, uma prática e uma oração.",
-  "created_at": "2026-11-09T12:00:00Z",
-  "updated_at": "2026-11-09T12:00:00Z"
+  "title": "Eles Eram Jovens",
+  "description": "Histórias verdadeiras, para leitores de 13 a 17 anos, de pessoas cuja fé começou, ou foi provada, antes de se tornarem adultas — contadas por inteiro, com as próprias palavras delas quando as temos, e com perguntas para refletir.",
+  "created_at": "2026-11-01T00:00:00Z",
+  "updated_at": "2026-11-01T00:00:00Z"
  }
 }
 ]

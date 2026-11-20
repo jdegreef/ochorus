@@ -339,7 +339,10 @@ Reported, not fixed
   the LAST one silently wins and the first is dead. `feasting-at-the-table`
   already carried a 3-pair ch7 drop-cap entry, and a fresh 66-pair entry added
   above it did nothing until the two were folded into one. `grep -n '"<slug>"'
-  library/corrections.py` before adding; if it's there, MERGE into it. The tell
+  library/corrections.py` before adding; if it's there, MERGE into it. (Plain
+  `replacements` pairs need neither step: a NEW file under
+  `library/data/body_corrections/<slug>.<tag>.json` extends the slug's list
+  rather than replacing it, and cannot conflict with a parallel PR.) The tell
   is `normalize_english_fixture` reporting "0 fields" when you expected edits.
   **And the entry `grep` finds may be the WRONG dict.** `CORRECTIONS` (metadata:
   `chapter_titles`, importer-only) and `BODY_CORRECTIONS` (body, deploy chain) are

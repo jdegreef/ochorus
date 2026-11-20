@@ -214,8 +214,14 @@ def split_layout(rows: list[dict]) -> dict[Path, list[dict]]:
 
     files: dict[Path, list[dict]] = {
         AUTHORS_FILE: by_model.get("library.author", []),
+        # Translations sorted by (series, language), not in pk order: each row
+        # then has its own place, and parallel jobs stop meeting at EOF
+        # (tests_fixture.SeriesFileOrderTests).
         SERIES_FILE: by_model.get("library.series", [])
-        + by_model.get("library.seriestranslation", []),
+        + sorted(
+            by_model.get("library.seriestranslation", []),
+            key=lambda r: (r["fields"]["series"][0], r["fields"]["language"]),
+        ),
     }
 
     chapters_by_book: dict[tuple, list[dict]] = {}
