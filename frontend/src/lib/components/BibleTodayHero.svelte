@@ -108,11 +108,10 @@
 	.art {
 		flex: none;
 		inline-size: 7.5rem;
-		transform: rotate(2deg);
 		transition: transform 0.2s;
 	}
 	.art:hover {
-		transform: rotate(0deg) translateY(-2px);
+		transform: translateY(-2px);
 	}
 	@media (max-width: 639.98px) {
 		.today {
