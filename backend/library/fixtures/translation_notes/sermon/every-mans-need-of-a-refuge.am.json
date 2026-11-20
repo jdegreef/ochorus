@@ -7,19 +7,20 @@
     "references": [
         {
             "reference": "Isaiah 32:2",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 0
         },
         {
             "reference": "1 Peter 5:8",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 32
         },
         {
             "reference": "Ephesians 6:11-12",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 32
         },
         {
@@ -30,7 +31,7 @@
         {
             "reference": "Acts 17:31",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 33
         },
         {
@@ -44,8 +45,14 @@
             "block_index": 34
         },
         {
-            "reference": "Isaiah 53:6",
+            "reference": "Hebrews 10:29",
             "status": "self_rendered",
+            "block_index": 34
+        },
+        {
+            "reference": "Isaiah 53:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 35
         }
     ]
