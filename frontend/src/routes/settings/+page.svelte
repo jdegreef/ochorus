@@ -9,20 +9,19 @@
 	import { loginHref } from '$lib/loginHref';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { theme, THEME_OPTIONS, DEFAULT_PREF } from '$lib/theme.svelte';
+	import { theme, DEFAULT_PREF } from '$lib/theme.svelte';
 	import { lang, localeName } from '$lib/lang.svelte';
 	import {
 		readerPrefs,
-		fontLabel,
-		FONT_STACK,
 		MEASURE,
-		READER_FONTS,
-		type ReaderFont,
 		type Measure
 	} from '$lib/readerPrefs.svelte';
 	import { siteFont, SITE_FONTS, SITE_FONT_LABEL_KEY } from '$lib/siteFont.svelte';
 	import { palette } from '$lib/palette.svelte';
 	import PalettePicker from '$lib/components/PalettePicker.svelte';
+	import ThemePicker from '$lib/components/ThemePicker.svelte';
+	import FontPicker from '$lib/components/FontPicker.svelte';
+	import ReadingPreview from '$lib/components/ReadingPreview.svelte';
 	import { listen, RATE_MIN, RATE_MAX } from '$lib/listen.svelte';
 	import { readingSync } from '$lib/readingSync';
 	import { SITE_URL } from '$lib/config';
@@ -64,15 +63,9 @@
 		goto(url, { replaceState: true, keepFocus: true, noScroll: true });
 	}
 
-	const FONTS = READER_FONTS.map((id) => ({
-		id,
-		label: fontLabel(id, {
-			serif: t('settings.fontSerif'),
-			sans: t('settings.fontSans'),
-			dyslexic: t('settings.fontDyslexic')
-		})
-	}));
 	const WIDTHS = Object.keys(MEASURE) as Measure[];
+	/** The width glyph's line length per measure, in px. */
+	const WIDTH_GLYPH: Record<Measure, string> = { narrow: '10px', normal: '14px', wide: '18px', xwide: '22px' };
 
 	// Export my data — assemble the bundle (fetches catalogs for titles) then hand
 	// the reader a JSON or Markdown file. Device-local; works signed in or out.
@@ -396,6 +389,9 @@
 				<h2 class="text-h2 mb-1">{t('settings.navReading')}</h2>
 				<p class="mb-6 text-small text-muted">{t('settings.readingSubtitle')}</p>
 
+				<!-- The width and size chosen below, drawn as a real page as they change. -->
+				<ReadingPreview />
+
 				<!-- Language -->
 				{#if lang.available.length > 1}
 					<div class="setting-row">
@@ -424,7 +420,14 @@
 					</div>
 					<div class="seg">
 						{#each WIDTHS as w (w)}
-							<button class:active={readerPrefs.measure === w} onclick={() => readerPrefs.setMeasure(w)}>
+							<button
+								class="width-opt"
+								class:active={readerPrefs.measure === w}
+								aria-pressed={readerPrefs.measure === w}
+								onclick={() => readerPrefs.setMeasure(w)}
+							>
+								<!-- A column of three lines, wider for each step: the width drawn. -->
+								<span class="width-glyph" style:--w={WIDTH_GLYPH[w]} aria-hidden="true"><i></i><i></i><i></i></span>
 								{t(`settings.width_${w}`)}
 							</button>
 						{/each}
@@ -561,17 +564,17 @@
 				<h2 class="text-h2 mb-1">{t('settings.navAppearance')}</h2>
 				<p class="mb-6 text-small text-muted">{t('settings.appearanceSubtitle')}</p>
 
-				<!-- Theme — preference (not the resolved theme): 'System' follows the OS. -->
-				<div class="setting-row">
-					<div>
+				<!-- Every choice in this section is visual, so a real page shows it. -->
+				<ReadingPreview />
+
+				<!-- Theme — preference (not the resolved theme): 'System' follows the OS.
+				     Little pages, not a segmented row: a look is chosen by sight. -->
+				<div class="setting-row stacked">
+					<div class="mb-3">
 						<div class="setting-label">{t('nav.theme')}</div>
 						<div class="setting-sub">{t('settings.themeSub')}</div>
 					</div>
-					<div class="seg">
-						{#each THEME_OPTIONS as o (o.v)}
-							<button class:active={theme.preference === o.v} onclick={() => theme.set(o.v)}>{t(o.k)}</button>
-						{/each}
-					</div>
+					<ThemePicker label={t('nav.theme')} />
 				</div>
 
 				<!-- Candlelight — a reader pref (readerPrefs), shown on reading pages in
@@ -621,26 +624,15 @@
 					</div>
 				</div>
 
-				<!-- Reading font -->
-				<div class="setting-row">
-					<div>
+				<!-- Reading font — each card set in its own face (the preview above
+				     shows the chosen one at reading size). -->
+				<div class="setting-row stacked">
+					<div class="mb-3">
 						<div class="setting-label">{t('settings.font')}</div>
 						<div class="setting-sub">{t('settings.fontSub')}</div>
 					</div>
-					<select
-						class="field max-w-48"
-						aria-label={t('settings.font')}
-						value={readerPrefs.font}
-						onchange={(e) => readerPrefs.setFont((e.currentTarget as HTMLSelectElement).value as ReaderFont)}
-					>
-						{#each FONTS as f (f.id)}
-							<option value={f.id}>{f.label}</option>
-						{/each}
-					</select>
+					<FontPicker label={t('settings.font')} />
 				</div>
-				<p class="pt-1 text-body text-text" style="font-family: {FONT_STACK[readerPrefs.font]}">
-					{t('settings.fontSample')}
-				</p>
 
 				<!-- Reset preferences (theme + reader comfort; not reading data). -->
 				<div class="mt-8 border-t border-border pt-6">
@@ -827,6 +819,29 @@
 	}
 	/* Native range, themed via accent-color — thumb and filled track pick up the
 	   brand accent in both light and dark with no per-browser pseudo-elements. */
+	.width-opt {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		justify-content: center;
+	}
+	.width-glyph {
+		display: inline-grid;
+		gap: 2px;
+		justify-items: center;
+		inline-size: 22px;
+	}
+	.width-glyph i {
+		display: block;
+		block-size: 2px;
+		inline-size: var(--w);
+		border-radius: 1px;
+		background: currentColor;
+		opacity: 0.7;
+	}
+	.width-glyph i:last-child {
+		inline-size: calc(var(--w) * 0.7);
+	}
 	.speed-range {
 		accent-color: var(--color-accent);
 		inline-size: 9rem;
