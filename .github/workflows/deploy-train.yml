@@ -7,8 +7,9 @@ name: Deploy train
 # deployable changed since the last deploy.
 # Three, not every two hours (2026-11-20): each train runs the 20-70 minute
 # web prerender on Render's build pipeline, which is billed by the minute, and
-# at 50+ merges a day nearly every two-hourly train fired. Runs at 14:05,
-# 20:05 and 02:05 UTC (7 AM, 1 PM and 7 PM in Arizona / MST). A run that finds
+# at 50+ merges a day nearly every two-hourly train fired. Runs at 15:05,
+# 21:05 and 03:05 UTC: 7 AM, 1 PM and 7 PM Pacific in winter (PST), an hour
+# later in summer (PDT; cron is UTC and doesn't follow DST). A run that finds
 # a deploy still going skips, so the next chance is six hours later; run it
 # by hand (below) when something can't wait.
 # It never overlaps a deploy: if ochorus-api or ochorus-web still has one
@@ -31,7 +32,7 @@ name: Deploy train
 # suspended and does not deploy at all (render.yaml).
 on:
   schedule:
-    - cron: '5 2,14,20 * * *'
+    - cron: '5 3,15,21 * * *'
   workflow_dispatch:
     inputs:
       force:

@@ -181,7 +181,7 @@ makes it quick.
 
 Re-run the importers locally, regenerate the fixture, commit, and push. The
 **deploy train** ships it: `.github/workflows/deploy-train.yml` runs three times
-a day (14:05, 20:05 and 02:05 UTC) and moves `ochorus-api` and `ochorus-web`
+a day (15:05, 21:05 and 03:05 UTC: 7 AM, 1 PM and 7 PM Pacific in winter) and moves `ochorus-api` and `ochorus-web`
 together to the newest commit whose `test-and-build` passed (Render's own
 auto-deploy is off on both; the email cron is suspended while sending is off,
 and render.yaml says how to bring it back). To ship
