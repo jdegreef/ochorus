@@ -204,8 +204,13 @@ jobs:
       # ~400 backend files predate `ruff format`; a repo-wide sweep would conflict
       # with every parallel session, so files converge as they are touched. PR
       # only: on main/merge_group there is no "this PR's files" to check.
+      # ADVISORY for now (continue-on-error): with ~400 unformatted files, a
+      # blocking check would make any routine edit reformat a whole shared file
+      # (serializers.py, views.py) and collide with parallel sessions. It flags
+      # the file in the run; make it blocking once the backlog is small.
       - name: Format (ruff format, changed files only)
         if: github.event_name == 'pull_request'
+        continue-on-error: true
         run: scripts/format-changed.sh --check --base HEAD^1 backend
 
       - name: Check for missing migrations
@@ -363,6 +368,7 @@ jobs:
       # prettier). Config: frontend/.prettierrc + .prettierignore.
       - name: Format (prettier, changed files only)
         if: github.event_name == 'pull_request'
+        continue-on-error: true  # advisory, as the backend's (see there)
         run: scripts/format-changed.sh --check --base HEAD^1 frontend
 
       - name: Type-check

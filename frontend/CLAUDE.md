@@ -63,11 +63,14 @@ API. Public content routes are prerendered for SEO (`prerender = true` + an
 
 ## Formatting
 
-- **Format the files you change; never reformat a file you didn't change.**
+- **Keep clean files clean; never reformat a file you didn't change.**
   ~680 source files predate prettier, and a repo-wide sweep would conflict with
   every parallel session — so CI checks only the files a PR changes, and they
   converge as they're touched. Run `scripts/format-changed.sh frontend` (or
   `npm run format:changed`); never `prettier --write .` or a directory.
+  CI's check is ADVISORY for now (it flags, doesn't fail): if a file you edit
+  is already formatted, keep it that way; if it isn't, don't reformat a whole
+  shared file inside a feature PR. Do it as its own small PR, or leave it.
 - Config is `.prettierrc` (tabs, single quotes, no trailing commas, width 100,
   `prettier-plugin-svelte`) with prettier pinned in devDependencies — so use
   the local `npx prettier` after `npm ci`. A bare `npx prettier` outside this
