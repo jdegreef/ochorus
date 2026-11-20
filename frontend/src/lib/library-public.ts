@@ -706,6 +706,8 @@ export interface SearchResponse {
 	suggestion?: string;
 	/** The word actually searched, when an admin's synonym replaced the query. */
 	searched_for?: string;
+	/** The query with a misspelt word corrected, searched alongside it. */
+	also_searched_for?: string;
 	/**
 	 * How many matches EXIST per type, which is not how many `results` holds:
 	 * the merged list is capped per type so no one kind crowds out the others.

@@ -175,6 +175,7 @@
   "search_did_you_mean": "이것을 찾으셨나요?",
   "search_best_match": "가장 일치하는 결과",
   "search_showing_for": "다음 검색 결과 표시:",
+  "search_also_showing": "다음 검색 결과도 함께 표시:",
   "search_palette_placeholder": "검색하거나 페이지로 이동…",
   "search_palette_pages": "페이지",
   "search_palette_navigate": "이동",

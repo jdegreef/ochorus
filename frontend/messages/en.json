@@ -175,6 +175,7 @@
   "search_did_you_mean": "Did you mean",
   "search_best_match": "Best match",
   "search_showing_for": "Showing results for",
+  "search_also_showing": "Also showing results for",
   "search_palette_placeholder": "Search or jump to a page…",
   "search_palette_pages": "Page",
   "search_palette_navigate": "navigate",

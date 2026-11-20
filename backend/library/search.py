@@ -41,6 +41,7 @@ from django.db.models.functions import Coalesce
 # query config always matches what the row was indexed with.
 from .cover_face import cover_face
 from .fts import (
+    PREFIX_LANGUAGES,
     STORED_KINDS,
     SUBSTRING_LANGUAGES,
     config_for,
@@ -63,7 +64,7 @@ from .models import (
     TopicSermon,
     TopicTranslation,
 )
-from .people import People, strongest
+from .people import People, fold, strongest
 from .people import words as name_words
 from .scripture import reference_verse_ids
 from .search_aliases import books_named, other_names
@@ -456,6 +457,7 @@ class _Ctx:
         self.language = language
         self._people = None
         self._books = None
+        self._corrected = None
 
     def _read_people(self):
         if self._people is None:
@@ -479,6 +481,13 @@ class _Ctx:
     def rewritten(self) -> str | None:
         """The query with its person spelt the library's way, if that differs."""
         return self._read_people()[1]
+
+    @property
+    def corrected(self) -> str | None:
+        """The query with its typos corrected (``correction``), if any."""
+        if self._corrected is None:
+            self._corrected = correction(self.q, self.language) or ""
+        return self._corrected or None
 
     @property
     def aliased_books(self) -> list[tuple[str, str]]:
@@ -554,6 +563,8 @@ def _query(ctx):
     query = search_query(ctx.q, ctx.language)
     if ctx.rewritten:
         query = query | search_query(ctx.rewritten, ctx.language)
+    if ctx.corrected:
+        query = query | search_query(ctx.corrected, ctx.language)
     for _, title in ctx.aliased_books:
         query = query | search_query('"' + title.replace('"', " ") + '"', ctx.language)
     return query
@@ -922,6 +933,8 @@ def _match(kind: str, ctx, qs):
     named = Q(pk__in=[m.pk for m in ctx.people]) if kind == "author" else Q(pk__in=[])
     if not uses_fts(ctx.language):
         predicate = _lite_match(kind, ctx.q, ctx.language) | named
+        if ctx.corrected:
+            predicate |= _lite_match(kind, ctx.corrected, ctx.language)
         person = ctx.person
         if person and kind in _AUTHOR_FIELD:
             # Their works, narrowed by whatever else was typed ("moody prayer").
@@ -1354,6 +1367,124 @@ def _scripture_chapter_hits(q, chapters):
         for w in winners
         if w["chapter_id"] in chapters
     ]
+
+
+# --- Typo forgiveness ----------------------------------------------------------
+# A did-you-mean only helps once a search has come back EMPTY, and only after
+# the reader taps it. "humilty prayer" found the prayer passages and never said
+# that Murray's Humility was one letter away. So a misspelt word is corrected in
+# the search itself: the query runs as typed OR as corrected, and the response
+# says what else it searched for.
+
+#: Words shorter than this are left alone: too many real words sit one letter
+#: from each other ("hope"/"hops"), and short typos are rarely the problem.
+CORRECT_MIN_LEN = 4
+#: difflib ratio a correction must reach ("humilty" -> "humility" is 0.93,
+#: "sorry" -> "worry" 0.8 — so the bar sits just above that).
+CORRECT_CUTOFF = 0.82
+_TITLE_WORD = re.compile(rf"[^\W\d_]{{{CORRECT_MIN_LEN},}}", re.UNICODE)
+
+
+def _title_vocabulary(language: str) -> list[str]:
+    """The words a correction may correct TO: those of this language's book,
+    plan, article and topic titles (and book subtitles). Titles, not bodies:
+    they are what a reader is usually trying to name, and a vocabulary of a few
+    thousand words keeps difflib fast."""
+
+    def compute():
+        vocab: set[str] = set()
+
+        def add(text):
+            vocab.update(w.lower() for w in _TITLE_WORD.findall(text or ""))
+
+        for title, subtitle in Book.objects.filter(
+            is_published=True, language=language
+        ).values_list("title", "subtitle"):
+            add(title)
+            add(subtitle)
+        for title in Plan.objects.filter(is_published=True, language=language).values_list(
+            "title", flat=True
+        ):
+            add(title)
+        for h1 in Article.objects.filter(is_published=True, language=language).values_list(
+            "h1", flat=True
+        ):
+            add(h1)
+        if language == "en":
+            topics = Topic.objects.filter(is_published=True).values_list("title", flat=True)
+        else:
+            topics = TopicTranslation.objects.filter(
+                language=language, topic__is_published=True
+            ).values_list("title", flat=True)
+        for title in topics:
+            add(title)
+        return sorted(vocab)
+
+    return memoized("title-vocabulary", compute, language)
+
+
+def _in_library(word: str, language: str) -> bool:
+    """Whether ``word`` occurs anywhere in this language's text — then it is a
+    real word the reader meant, not a typo, however far from any title."""
+    if uses_fts(language):
+        query = search_query(word, language)
+        return (
+            Chapter.objects.filter(
+                book__is_published=True, book__language=language, search_vector=query
+            ).exists()
+            or Sermon.objects.filter(
+                is_published=True, language=language, search_vector=query
+            ).exists()
+        )
+    return Chapter.objects.filter(
+        book__is_published=True, book__language=language, body_text__icontains=word
+    ).exists()
+
+
+def correction(q: str, language: str) -> str | None:
+    """``q`` with its misspelt words corrected to title words, or None.
+
+    A word is corrected only when it is long enough, isn't a title word, occurs
+    nowhere in the library, and lies close to exactly-ish one title word. Not in
+    the substring and prefix languages (Japanese, Korean), where a "word" is not
+    a unit difflib can judge. Exclusions and OR stay as typed.
+    """
+    if language in SUBSTRING_LANGUAGES or language in PREFIX_LANGUAGES:
+        return None
+
+    def compute():
+        vocab = _title_vocabulary(language)
+        known = set(vocab)
+        # A title word typed without its accents ("oracion", "priere") is the
+        # word itself, whatever else the library holds.
+        unaccented = {fold(w): w for w in vocab if fold(w) != w}
+        fixed: dict[str, str] = {}
+        for negated, word in query_tokens(q):
+            low = word.lower()
+            if (
+                negated
+                or word == "OR"
+                or len(low) < CORRECT_MIN_LEN
+                or not low.isalpha()
+                or low in known
+                or low in fixed
+            ):
+                continue
+            if low in unaccented:
+                fixed[low] = unaccented[low]
+                continue
+            close = difflib.get_close_matches(low, vocab, n=1, cutoff=CORRECT_CUTOFF)
+            if close and not _in_library(word, language):
+                fixed[low] = close[0]
+        if not fixed:
+            return None
+        return re.sub(
+            r"\w+",
+            lambda m: fixed.get(m.group(0).lower(), m.group(0)),
+            q,
+        )
+
+    return memoized("correction", compute, q, language)
 
 
 # --- Did-you-mean -------------------------------------------------------------

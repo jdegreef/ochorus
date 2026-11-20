@@ -175,6 +175,7 @@
   "search_did_you_mean": "もしかして",
   "search_best_match": "最も一致する結果",
   "search_showing_for": "次の検索結果を表示しています：",
+  "search_also_showing": "次の検索結果も表示しています:",
   "search_palette_placeholder": "検索、またはページへ移動…",
   "search_palette_pages": "ページ",
   "search_palette_navigate": "移動",

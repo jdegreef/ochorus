@@ -64,6 +64,7 @@ from .search import (
     MAX_RESULTS,
     PAGE_SIZE,
     SORTS,
+    correction,
     count_by_type,
     memoized,
     min_query_len,
@@ -1847,6 +1848,11 @@ class SearchView(APIView):
             # Said out loud, so a reader isn't left wondering why their word
             # isn't in any of the results.
             payload["searched_for"] = searched
+        also = correction(searched, language) if results else None
+        if also:
+            # A misspelt word was searched as typed AND corrected
+            # (search.correction); say so, as for a synonym.
+            payload["also_searched_for"] = also
         if scope:
             # Resolved (or dropped) here so the page can name the shelf without a
             # second request. None means the place doesn't exist in this

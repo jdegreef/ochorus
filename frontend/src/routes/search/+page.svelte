@@ -78,6 +78,8 @@
 	let suggestion = $state('');
 	// The word actually searched when an admin's synonym replaced the reader's.
 	let searchedFor = $state('');
+	/** A misspelt word also searched as corrected ("humilty" → "humility"). */
+	let alsoSearchedFor = $state('');
 	let timer: ReturnType<typeof setTimeout> | undefined;
 	// The view currently reflected in the URL — query, type facet and sort, as one
 	// string. Plain (non-reactive): it exists only to tell "the reader navigated"
@@ -309,6 +311,7 @@
 		ran = '';
 		suggestion = '';
 		searchedFor = '';
+		alsoSearchedFor = '';
 		scriptureAnswer = null;
 		totals = {};
 		totalsCapped = {};
@@ -448,6 +451,7 @@
 			ran = res.query;
 			suggestion = res.suggestion ?? '';
 			searchedFor = res.searched_for ?? '';
+			alsoSearchedFor = res.also_searched_for ?? '';
 			totals = res.totals ?? {};
 			totalsCapped = res.totals_capped ?? {};
 			pageSize = res.page_size ?? pageSize;
@@ -460,6 +464,7 @@
 			ran = '';
 			suggestion = '';
 			searchedFor = '';
+			alsoSearchedFor = '';
 			totals = {};
 			totalsCapped = {};
 			searchError = true;
@@ -1049,6 +1054,12 @@
 				     the reader isn't left wondering why theirs is in none of the results. -->
 				<p class="mb-4 text-small text-muted">
 					{t('search.showingFor')} “<span class="font-semibold text-text">{searchedFor}</span>”
+				</p>
+			{:else if alsoSearchedFor}
+				<!-- A misspelt word was searched as typed and as corrected; say so, so
+				     a passage matching the correction doesn't look like a stray. -->
+				<p class="mb-4 text-small text-muted">
+					{t('search.alsoShowing')} “<span class="font-semibold text-text">{alsoSearchedFor}</span>”
 				</p>
 			{/if}
 			<!-- The running count and, once a tab owns the list, the sort. One quiet
