@@ -38,6 +38,7 @@
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import BibleCanonStrip from '$lib/components/BibleCanonStrip.svelte';
+	import BibleTodayHero from '$lib/components/BibleTodayHero.svelte';
 	import BibleBookList from '$lib/components/BibleBookList.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
@@ -104,7 +105,14 @@
 		return (book: BookSummary) => biblePlace(book, bySlug.get(book.slug));
 	});
 
+	// Covers where there is room for them: the painted grounds are finished
+	// art, and on a wide screen six to a row keep the page a sensible length.
+	// A phone keeps the compact index (66 covers there ran ~14,000px). Chosen
+	// after mount, so the prerender — and a phone — draw the list.
 	let asCovers = $state(false);
+	onMount(() => {
+		if (matchMedia('(min-width: 1024px)').matches) asCovers = true;
+	});
 	// The one book whose chapters are open, across the whole index.
 	let openBook = $state<string | null>(null);
 
@@ -218,6 +226,9 @@
 		     page's own split between a failure and an empty shelf). -->
 		<EmptyState message={t('bible.none')} />
 	{:else}
+		<!-- Scripture first: the day's verse, and today's chapter on its art. -->
+		<BibleTodayHero books={series?.books ?? []} />
+
 		<!-- Straight to a passage: method/action make it a site search before
 		     hydration (and for anything not a passage), `jump` opens the chapter. -->
 		<form class="jump" method="get" action={localizeHref('/search')} role="search" onsubmit={jump}>
