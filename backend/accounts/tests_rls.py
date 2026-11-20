@@ -104,9 +104,11 @@ class RowLevelSecurityCoverageTests(TestCase):
 class DataApiGrantTests(TestCase):
     """The second lock: the Data API roles hold no privileges on public.
 
-    RLS gates the rows; this gates the reach. Skips on a plain Postgres (CI,
-    and any non-Supabase deployment) where the roles do not exist — there it
-    would assert nothing, and a vacuous pass is worse than an honest skip.
+    RLS gates the rows; this gates the reach. Skips on a plain Postgres where
+    the roles do not exist — there it would assert nothing, and a vacuous pass
+    is worse than an honest skip. CI is NOT such a database: ci.yml creates the
+    two roles and Supabase's default grants to them in template1 before the
+    suite runs, so every table is born granted and this proves 0004 revoked it.
     """
 
     def test_data_api_roles_have_no_table_privileges(self):
