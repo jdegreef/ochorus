@@ -24,6 +24,7 @@
 	import FilterBar from '$lib/components/FilterBar.svelte';
 	import AzRail from '$lib/components/AzRail.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
+	import AuthorsFaceWall from '$lib/components/AuthorsFaceWall.svelte';
 
 	// The library A–Z: every writer and, under each, every book of theirs in
 	// this language — see $lib/authorIndex for why this page exists. It used to
@@ -42,11 +43,43 @@
 	const rowGroups = $derived(indexRows(groups));
 	const writerCount = $derived(groups.reduce((n, g) => n + g.entries.length, 0));
 
+	// The face wall: the writers with the most books in this language who have a
+	// real portrait, then laid out earliest-born first so the centuries run
+	// across it. 34 is two full rows on a laptop (a phone shows the first 30,
+	// five rows of six), and stays a picture, not a second index.
+	const FACES = 34;
+	const faces = $derived(
+		groups
+			.flatMap((g) => g.entries)
+			.filter((e) => e.author.photo_url)
+			.sort((a, b) => b.books.length - a.books.length || a.author.name.localeCompare(b.author.name))
+			.slice(0, FACES)
+			.map((e) => e.author)
+			.sort((a, b) => (a.birth_year ?? 9999) - (b.birth_year ?? 9999))
+	);
+
 	// The filter only narrows what is SHOWN, after hydration: the prerendered
 	// HTML is always the full, unfiltered index (the query starts blank).
 	let query = $state('');
-	const shownGroups = $derived(filterIndex(rowGroups, query));
-	const filtering = $derived(query.trim() !== '');
+	// A tradition or region chip (the Biographies hubs: "Puritans", "East
+	// Africa"), narrowing the list to that hub's writers. Same rule as the query:
+	// the prerendered HTML is always the whole index.
+	let hub = $state<string | null>(null);
+	const hubMembers = $derived(
+		hub ? new Set(data.hubs.find((h) => h.slug === hub)?.members ?? []) : null
+	);
+	const shownGroups = $derived.by(() => {
+		const byQuery = filterIndex(rowGroups, query);
+		if (!hubMembers) return byQuery;
+		return byQuery
+			.map((g) => ({ ...g, entries: g.entries.filter((e) => hubMembers.has(e.author.slug)) }))
+			.filter((g) => g.entries.length);
+	});
+	const filtering = $derived(query.trim() !== '' || hub !== null);
+	const clearFilters = () => {
+		query = '';
+		hub = null;
+	};
 	const shownWriters = $derived(shownGroups.reduce((n, g) => n + g.entries.length, 0));
 
 	// The Bible: its books have no writer here (the translation is skipped, like
@@ -58,7 +91,7 @@
 	const biblePin = $derived.by(() => {
 		const name = t('nav.bible');
 		const q = foldText(query.trim());
-		if (!bibleCount || (q && !foldText(name).includes(q))) return null;
+		if (!bibleCount || hub || (q && !foldText(name).includes(q))) return null;
 		return { key: filingKey(name), name, count: bibleCount };
 	});
 	const listedGroups = $derived(
@@ -161,7 +194,7 @@
 />
 
 {#snippet clearAction()}
-	<button class="btn btn-ghost" onclick={() => (query = '')}>{t('common.clearFilters')}</button>
+	<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
 {/snippet}
 
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {pinnedH}px)">
@@ -182,11 +215,29 @@
 	{#if data.loadError || groups.length === 0}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else}
+		<AuthorsFaceWall {faces} />
+
 		<!-- The other index of the same writers: their lives, by era, tradition
 		     and place. -->
 		<p class="mb-6 text-small">
 			<a href={localizeHref('/biographies')}>{t('authors.biosLink')} <Arrow /></a>
 		</p>
+
+		<!-- Traditions and regions, above the pinned bar rather than in it: two
+		     wrapped rows of chips would have followed the reader down the page. -->
+		{#if data.hubs.length}
+			<div class="chip-scroller mb-4" role="group" aria-label={t('authors.byTradition')}>
+				{#each data.hubs as h (h.slug)}
+					<button
+						type="button"
+						class="chip"
+						class:active={hub === h.slug}
+						aria-pressed={hub === h.slug}
+						onclick={() => (hub = hub === h.slug ? null : h.slug)}>{h.label}</button
+					>
+				{/each}
+			</div>
+		{/if}
 
 		<!-- Filter + A–Z, pinned under the app nav — the Biographies controls bar.
 		     At one column on a phone this page is ~25 screens long, so the letter
@@ -207,7 +258,7 @@
 					shown={shownWriters}
 					total={writerCount}
 					template={t('bios.showing')}
-					onClear={() => (query = '')}
+					onClear={clearFilters}
 					class="mt-1.5"
 				/>
 			{/if}
