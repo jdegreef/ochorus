@@ -14,7 +14,7 @@
 	import BookCover from '$lib/components/BookCover.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { articleHasTopic, articleCollectionLd } from '$lib/articleTopics';
-	import { featuredArticles, isGuide, topicGroups } from '$lib/articleIndex';
+	import { featuredArticles, isGuide, situationGroups, topicGroups } from '$lib/articleIndex';
 	import { readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { page } from '$app/stores';
@@ -59,6 +59,7 @@
 	const guides = $derived(articles.filter(isGuide));
 	const featured = $derived(featuredArticles(articles));
 	const groups = $derived(topicGroups(articles));
+	const situations = $derived(situationGroups(articles, featured));
 	/** The guides rail: the first few, in curated order, that have a cover. */
 	const guideRail = $derived(
 		guides.flatMap((g) => (g.lead_book ? [{ slug: g.slug, book: g.lead_book }] : [])).slice(0, 10)
@@ -172,6 +173,28 @@
 				</section>
 			{/if}
 
+			<!-- The questions readers arrive with, by the situation they are in —
+			     the doors after Start here, before the topics' filing. -->
+			{#if situations.length > 1}
+				<section class="mb-10" aria-labelledby="questions-asked">
+					<h2 id="questions-asked" class="section-label">{t('articles.questionsAsked')}</h2>
+					<div class="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+						{#each situations as s (s.k)}
+							<div class="situation">
+								<h3 class="font-display text-h3 font-semibold">{t(s.k)}</h3>
+								<ul class="mt-2 flex flex-col gap-1.5">
+									{#each s.items as a (a.slug)}
+										<li>
+											<a href={localizeHref(`/articles/${a.slug}/`)} class="text-body">{a.h1}</a>
+										</li>
+									{/each}
+								</ul>
+							</div>
+						{/each}
+					</div>
+				</section>
+			{/if}
+
 			{#if groups.length > 1}
 				<section class="mb-10" aria-labelledby="by-topic">
 					<h2 id="by-topic" class="section-label">{t('home.browseTopic')}</h2>
@@ -248,6 +271,12 @@
 </div>
 
 <style>
+	/* A rule over each situation, in the accent: a heading and its questions,
+	   not another boxed card beside the topic cards below. */
+	.situation {
+		border-block-start: 2px solid var(--accent);
+		padding-block-start: 0.75rem;
+	}
 	#all-articles {
 		scroll-margin-top: calc(var(--appnav-h, 0px) + 1rem);
 	}
