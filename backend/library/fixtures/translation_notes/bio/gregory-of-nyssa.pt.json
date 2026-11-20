@@ -1,0 +1,15 @@
+{
+    "kind": "bio",
+    "slug": "gregory-of-nyssa",
+    "language": "pt",
+    "job_issue": 8694,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "1 Thessalonians 4:13",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 18
+        }
+    ]
+}
