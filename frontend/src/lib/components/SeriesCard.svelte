@@ -87,6 +87,20 @@
 	// payload (for hreflang). Only drawn when there is more than one, and capped
 	// so a ten-language series stays one line.
 	const langs = $derived(cardLanguages(series.languages ?? [], getLang()));
+	const langCount = $derived(compact ? 0 : langs.shown.length + langs.hidden.length);
+	type Fact = { key: string; text: string; title?: string };
+	const facts = $derived.by(() => {
+		const out: Fact[] = [];
+		if (orderLabel) out.push({ key: 'order', text: orderLabel });
+		if (perDay) out.push({ key: 'time', text: m.series_chapter_minutes({ minutes: perDay }) });
+		if (langCount)
+			out.push({
+				key: 'langs',
+				text: m.series_card_languages({ count: langCount }),
+				title: [...langs.shown, ...langs.hidden].map(localeName).join(', ')
+			});
+		return out;
+	});
 	// The card's own way in (the full card only; the rail stays compact): the
 	// book to open next, as the series page's button picks it — the first book
 	// until mount, then the book in progress or the first unfinished — or, once
@@ -151,27 +165,15 @@
 		     inside it read as a second one that went nowhere. -->
 		<p class="mt-0.5 text-small font-medium text-text">{ages}</p>
 	{/if}
-	{#if orderLabel || perDay}
+	{#if orderLabel || perDay || langCount}
+		<!-- One quiet line of facts. The languages are a count, named in its
+		     tooltip — a row of five code tags under every card was the loudest
+		     thing on the shelf (page-design "quieter cards"). -->
 		<p class="series-facts mt-1 text-small text-muted">
-			{#if orderLabel}<span class="whitespace-nowrap">{orderLabel}</span>{/if}
-			{#if orderLabel && perDay}{' '}<span class="sep">·</span>{' '}{/if}
-			{#if perDay}<span class="whitespace-nowrap"
-					>{m.series_chapter_minutes({ minutes: perDay })}</span
-				>{/if}
-		</p>
-	{/if}
-	{#if !compact && langs.shown.length}
-		<p class="mt-1.5 flex flex-wrap items-center gap-1" dir="ltr">
-			<span class="sr-only">{t('footer.languages')}:</span>
-			{#each langs.shown as code (code)}
-				<abbr class="lang-code" title={localeName(code)}>{code.toUpperCase()}</abbr>
-			{/each}
-			{#if langs.hidden.length}
-				{@const names = langs.hidden.map(localeName).join(', ')}
-				<abbr class="lang-code" title={names}
-					>+{langs.hidden.length}<span class="sr-only">: {names}</span></abbr
-				>
-			{/if}
+			{#each facts as f, i (f.key)}{#if i}{' '}<span class="sep">·</span>{' '}{/if}<span
+					class="whitespace-nowrap"
+					title={f.title}>{f.text}</span
+				>{/each}
 		</p>
 	{/if}
 	{#if !compact && series.description}
@@ -302,16 +304,5 @@
 		.book-list li {
 			align-items: center;
 		}
-	}
-	/* A language code: a quiet bordered tag, not a link (the card is one). */
-	.lang-code {
-		border: 1px solid var(--border);
-		border-radius: 0.25rem;
-		padding: 0 0.3rem;
-		font-size: var(--fs-micro);
-		font-weight: 600;
-		letter-spacing: 0.04em;
-		color: var(--muted);
-		text-decoration: none;
 	}
 </style>
