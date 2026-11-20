@@ -29,6 +29,8 @@
 	import { seriesCardUrl } from '$lib/seriesCard';
 	import { localizeHref } from '$lib/href';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import SubjectFaces from '$lib/components/SubjectFaces.svelte';
+	import { subjectSlug } from '$lib/keyTeachings';
 	import TonightStory from '$lib/components/TonightStory.svelte';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import SeriesCard from '$lib/components/SeriesCard.svelte';
@@ -331,6 +333,11 @@
 					</div>
 				</div>
 			{/if}
+		{:else if data.subjects.length}
+			<!-- The Key Teachings: every volume is about a person, so the shelf
+			     is the people (SubjectFaces), not thirty-six covers that all
+			     read "Key Teachings". Only when the writers list arrived. -->
+			<SubjectFaces books={series.books} authors={data.subjects} subjectOf={(b) => subjectSlug(b.slug)} />
 		{:else}
 			<!-- The cover grid the shelves use. The author rides the card only when
 			     the books have more than one — The Key Teachings is a collection,
