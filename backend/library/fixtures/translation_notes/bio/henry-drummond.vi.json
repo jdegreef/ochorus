@@ -7,14 +7,12 @@
  "references": [
   {
    "reference": "Romans 14:8b",
-   "status": "mined",
-   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "status": "self_rendered",
    "block_index": 23
   },
   {
    "reference": "1 John 4:8",
-   "status": "mined",
-   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "status": "self_rendered",
    "block_index": 22
   }
  ]
