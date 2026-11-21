@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "charles-h-spurgeon",
+ "language": "ru",
+ "job_issue": 9143,
+ "references": [
+  {
+   "reference": "Isaiah 45:22a",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}

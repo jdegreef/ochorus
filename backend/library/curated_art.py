@@ -1661,6 +1661,16 @@ class Original(NamedTuple):
 
 # slug -> the ground we drew. Slugs match Book.slug (shared across languages).
 ORIGINAL_GROUND: dict[str, Original] = {
+    # After His Heart: Spiritual Leadership in the Way of Jesus (Ochorus
+    # Original, 2026-11-20): a shepherd leading his flock over a ridge at dusk.
+    # Generator: scripts/original_grounds/after_his_heart.py.
+    "after-his-heart": Original(
+        "fd02d26eb27b2c2bd7b6a436eb9d1b8b8490217f0416dd28c21f44c7d3d430e6",
+        "Jeremiah 3:15, 'shepherds who are after my own heart', and John 10:4, 'he "
+        "walks on ahead, and the sheep follow him': dusk over low hills, the last light behind the far "
+        "ridge, and a robed shepherd with a crook walking ahead of his flock along "
+        "the near ridge. No likeness.",
+    ),
     # Coram Deo (Ochorus Original): a doorway of light standing alone under a
     # night sky, one figure on the path toward it. Chosen by the founder
     # 2026-11-16 from twenty open-door variations, replacing Gifford's Haverstraw
