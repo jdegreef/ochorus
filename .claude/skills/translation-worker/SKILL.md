@@ -768,10 +768,11 @@ So when the English does not say what it should:
    `source_file: "Open Word Bible (OWB), Balanced edition, <Language>"`.
    Arabic (85 verses drafted) and Luganda (no text) have none yet: there the
    Original quotes the language's registry Bible (`arb-vd`, `lug`), as before.
-   This rule is for Originals only; a classic in es/fr/pt/hi/uk/vi/ko/ru keeps
-   its registry Bible (am, sw and ja quote OWB for every work, below).
-   **Amharic, Swahili and Japanese are OWB for EVERY work** (founder decisions:
-   Amharic 2026-11-18; Swahili and Japanese 2026-11-19): an Original or a
+   This rule is for Originals only; a classic in es/fr/pt/hi/uk/ko/ru keeps
+   its registry Bible (am, sw, ja and vi quote OWB for every work, below).
+   **Amharic, Swahili, Japanese and Vietnamese are OWB for EVERY work** (founder
+   decisions: Amharic 2026-11-18; Swahili and Japanese 2026-11-19; Vietnamese
+   2026-11-21): an Original or a
    classic alike quotes that language's OWB Balanced text verbatim. Each is
    bundled, so fetch it with `fetch_verse_text("owb-sw", "John 3:16")` (or
    `fetch_chapter("owb-ja", Ref(...))`), with no network and no crib. For a
@@ -791,6 +792,17 @@ So when the English does not say what it should:
    - **Swahili's 2026-11-18 split is superseded.** Originals and classics both
      quote OWB now, and the Union-quoting works shipped before the switch,
      including the 33 Originals, are re-quoted to OWB.
+   - **Vietnamese quotes `owb-vi`, not Cadman 1925** (`vie_kt` / Take Root
+     `vietnamese`). The ~176 vi works shipped before 2026-11-21 still quote
+     Cadman and are candidates for re-quoting. Citations keep the library's
+     book names (Giăng, Rô-ma, Thi-thiên, Công Vụ Các Sứ Đồ). OWB's own words win
+     inside a quotation even where the prose glossary differs: it has
+     "tâm linh" (Ps 51:10, Mt 5:3, Is 57:15), "Đức Giê-xu", "bệnh ngoài da" for
+     leprosy, and "vương quốc của Đức Chúa Trời". OWB's verse numbering can
+     differ from the English: "I have been crucified with Christ" is Gal 2:19,
+     "times of refreshing" Acts 3:20. Keep the English citation and record the
+     OWB verse in the notes. The Cadman entries further down describe the
+     pre-OWB world.
    - **Japanese wording and register follow OWB**, which mixes である and
      です・ます by book; the translator's own prose stays です・ます. The bundle
      already drops the space OWB's exporter puts between poetic lines.
@@ -2761,7 +2773,8 @@ archaic spelling and period punctuation are the text, not defects in it.
   **The prerender touch in step 5 is RETIRED** (deploy skill, #3433): the web
   `buildFilter` rebuilds every content root and waits for the API release, so a content PR
   needs no `+page.ts` touch and no follow-up PR.
-- **Vietnamese (vi) Bible is `vie_kt` — Cadman's *Kinh Thánh* (1925), PD — in the
+- **(Pre-OWB, superseded 2026-11-21: Vietnamese now quotes `owb-vi` for every work.)
+  Vietnamese (vi) Bible was `vie_kt` — Cadman's *Kinh Thánh* (1925), PD — in the
   ebible mirror, and vi is PROTESTANT register throughout** (locale added 2026-10-09,
   no content yet). URL: `bibles/vie_kt/usfm/<code>.usfm`; plain `\v N text` lines
   (no `\w` Strong's markup in the verses checked). Its Take Root code is

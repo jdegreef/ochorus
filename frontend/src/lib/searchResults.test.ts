@@ -267,6 +267,13 @@ describe('topResult', () => {
 		expect(topResult(rowsOf([author()]), 'a murray')).toBeNull();
 	});
 
+	it('promotes the result readers keep choosing, after an exact title and a named writer', () => {
+		const other = { ...(book('absolute-surrender') as object), book_title: 'Absolute Surrender' } as SearchHit;
+		const rows = rowsOf([book(), other]).map((r) => ({ ...r, chosen: r.key === 'book:absolute-surrender' }));
+		expect(topResult(rows, 'surrender to god')?.key).toBe('book:absolute-surrender');
+		expect(topResult(rows, 'humility')?.key).toBe('book:humility');
+	});
+
 	it('prefers the book when a book and a writer share the name', () => {
 		const same = { ...(author() as object), author_name: 'Humility' } as SearchHit;
 		expect(topResult(rowsOf([same, book()]), 'humility')?.type).toBe('book');
@@ -313,6 +320,14 @@ describe('leadWithPinned', () => {
 		rows
 	});
 
+	it('leads with the group readers keep choosing from when nothing is pinned', () => {
+		const chosen = { ...row('chapter'), chosen: true } as ResultRow;
+		const groups = [group('book', [row('book')]), group('chapter', [chosen])];
+		expect(leadWithPinned(groups).map((g) => g.type)).toEqual(['chapter', 'book']);
+		const pinned = [group('author', [row('author', true)]), ...groups];
+		expect(leadWithPinned(pinned).map((g) => g.type)[0]).toBe('author');
+	});
+
 	it('moves the group holding a pinned best match to the front', () => {
 		const groups = [
 			group('book', [row('book')]),
@@ -327,5 +342,69 @@ describe('leadWithPinned', () => {
 		expect(leadWithPinned(groups)).toBe(groups);
 		const plain = [group('book', [row('book')])];
 		expect(leadWithPinned(plain)).toBe(plain);
+	});
+});
+
+describe('quotes', () => {
+	const quote = (phrase = false, kind: 'chapter' | 'sermon' = 'chapter') =>
+		({
+			type: 'quote',
+			quote_slug: 'andrew-murray-1a2b3c4d',
+			text: 'A heart full of God has power for the prayer of faith.',
+			author_slug: 'andrew-murray',
+			author_name: 'Andrew Murray',
+			paragraph: 7,
+			source:
+				kind === 'chapter'
+					? { kind, slug: 'with-christ', title: 'Lesson 1', work: 'With Christ', order: 3 }
+					: { kind, slug: 'faith', title: 'Faith', work: 'Faith', order: null },
+			snippet: 'A heart full of God has power for the ⟦prayer⟧ of faith.',
+			date: '',
+			...(phrase ? { phrase } : {})
+		}) as unknown as SearchHit;
+
+	it('links to the paragraph the line was taken from, and reads like a passage', () => {
+		const r = toRow(quote(), ctx);
+		expect(r.key).toBe('quote:andrew-murray-1a2b3c4d');
+		expect(r.href).toBe('/books/with-christ/3/?p=7');
+		expect(r.location).toBe('Andrew Murray · With Christ');
+		expect(r.snippet).toContain('⟦prayer⟧');
+		expect(toRow(quote(false, 'sermon'), ctx).href).toBe('/sermons/faith/?p=7');
+	});
+
+	it('sit after articles and before passages, and lead when quoted word for word', () => {
+		const rows = rowsOf([chapter('humility', 1), quote(), book()]);
+		expect(groupRows(rows).map((g) => g.type)).toEqual(['book', 'quote', 'chapter']);
+		const quoting = rows.map((r) => (r.type === 'quote' ? { ...r, phrase: true } : r));
+		expect(leadWithPinned(groupRows(quoting)).map((g) => g.type)[0]).toBe('quote');
+	});
+});
+
+describe('answers', () => {
+	const answer = (work_kind: string, work_slug = 'humility') =>
+		({
+			type: 'answer',
+			question: 'Why is humility the root of every virtue?',
+			answer: 'Murray says pride put man in his own place, and humility gives God His.',
+			work_kind,
+			work_slug,
+			work_title: 'Humility',
+			snippet: 'Why is ⟦humility⟧ the root of every virtue?',
+			date: ''
+		}) as unknown as SearchHit;
+
+	it('reads the question, then the answer, and links to where it is answered', () => {
+		const r = toRow(answer('book'), ctx);
+		expect(r.key).toBe('answer:book-humility');
+		expect(r.location).toBe('Why is humility the root of every virtue?');
+		expect(r.snippet).toContain('pride put man');
+		expect(r.href).toBe('/books/humility#questions');
+		expect(toRow(answer('author', 'andrew-murray'), ctx).href).toBe('/authors/andrew-murray#faq');
+		expect(toRow(answer('sermon', 'himself'), ctx).href).toBe('/sermons/himself#questions-heading');
+	});
+
+	it('lead the page, after only a scripture page', () => {
+		const rows = rowsOf([chapter('humility', 1), scripture(), answer('book')]);
+		expect(groupRows(rows).map((g) => g.type)).toEqual(['scripture', 'answer', 'chapter']);
 	});
 });
