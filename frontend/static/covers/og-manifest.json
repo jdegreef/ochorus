@@ -46899,6 +46899,39 @@
 				536
 			]
 		},
+		"vi/mary-slessor-a-life-children": {
+			"ground": "4515e976e7ed5b33b1cbad126c6c9e62611a75534a62ca3122180b857a650f12",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[170, 102, 430, 131]
+				],
+				"title": [
+					[133, 320, 467, 395]
+				],
+				"edition": [
+					[189, 404, 411, 429]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				327,
+				467
+			]
+		},
 		"vi/men-and-women-who-gave-everything-2": {
 			"ground": "b820c4fe0163bdf93df5abc2ce31cbeb3707cbb37e5e08665583d2d5646e44a1",
 			"style": "originals",
