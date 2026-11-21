@@ -23610,6 +23610,21 @@
 				501
 			]
 		},
+		"ja/purpose-in-prayer": {
+			"ground": "003fb36db8de2d639e2871de530ff2d67c170c0213ca5dc18623089626a9ebb1",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "b36eafb754e7e639edcfa766494d36ec943e526b688570c771cd678fb069b95c",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/school-of-prayer": {
 			"ground": "ca319df79b35e2c1ba2a3c5152fb600a889505ae2acda130f0b29ccdeefb648a",
 			"style": "devotional",
