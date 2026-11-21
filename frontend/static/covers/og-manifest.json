@@ -28033,6 +28033,41 @@
 				538
 			]
 		},
+		"ko/rooted-5": {
+			"ground": "2800140bd0e23e311bb830f3a502a7dcb42276ac7e15dae4d0708f64f4fd049e",
+			"style": "young",
+			"volume": "5",
+			"script": "korean",
+			"fonts": "7a9aab8858402565097f7e7726b0b64d7957399fd6c1039ec05dcc61358a1cdf",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 269, 311, 313],
+					[196, 344, 404, 419]
+				],
+				"subtitle": [
+					[156, 478, 444, 506],
+					[148, 510, 452, 538]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				538
+			]
+		},
 		"ko/samuel-ajayi-crowther-a-life-teens": {
 			"ground": "5e5f91ed808e4e3ee9d7e313d7b8fffa595a28fa6a3ef5dba0402b757397f52b",
 			"style": "originals",
