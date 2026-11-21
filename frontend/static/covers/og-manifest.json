@@ -25734,6 +25734,40 @@
 				528
 			]
 		},
+		"ko/a-brand-plucked-from-the-fire": {
+			"ground": "43ee75d21ac1e272fb50c11aa69895be740fb14aa8de2e5237f95e95a6be5388",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "8da966092620662ab5e7b8d0b17a123089ea6e9a39b99a87d5c3411702336e2e",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[142, 102, 458, 131]
+				],
+				"title": [
+					[115, 283, 485, 380],
+					[115, 367, 485, 464]
+				],
+				"subtitle": [
+					[237, 539, 363, 560]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				234,
+				561
+			]
+		},
 		"ko/a-call-to-the-unconverted": {
 			"ground": "c1352c78ff42925aa1d6e245ea0d003d0c9b4a0672ff0fe1f3de35502b031501",
 			"style": "press",
@@ -26684,6 +26718,21 @@
 				318,
 				477
 			]
+		},
+		"ko/essentials-of-prayer": {
+			"ground": "d64ff0a89555fe42cf297f8f705e97184596064d6bb68a566b97dab7178cb46c",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "bd5e6ec1e505ea06a19a3d1298287db93d7070caf1e4bfc374e2b2ae7d99ba49",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.04,
+			"caps": false,
+			"sitemark": null
 		},
 		"ko/ever-increasing-faith": {
 			"ground": "b5f8b14e5843f64653eede08c63d2ad9a1b0cd40c9388fd7851885a39ce9fdf3",
@@ -27999,6 +28048,40 @@
 				538
 			]
 		},
+		"ko/samuel-ajayi-crowther-a-life-teens": {
+			"ground": "5e5f91ed808e4e3ee9d7e313d7b8fffa595a28fa6a3ef5dba0402b757397f52b",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "d8cb0c3f6a59026fd2097c999d1736bacfd88570553c4254d24419b10bc188ec",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[142, 106, 458, 135]
+				],
+				"title": [
+					[148, 288, 452, 364],
+					[148, 354, 452, 430]
+				],
+				"edition": [
+					[252, 444, 348, 469]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				293,
+				507
+			]
+		},
 		"ko/school-of-prayer": {
 			"ground": "06d0d9789cc78677648d024e6d2350469e922c3ab3193e275ae01d262f401b94",
 			"style": "devotional",
@@ -28609,6 +28692,41 @@
 				469
 			]
 		},
+		"ko/the-prayers-jesus-learned": {
+			"ground": "526742bc4d6247a1053ff3494563415bf82166d27b7b084b81456a0ca3a8f541",
+			"style": "originals",
+			"volume": "1",
+			"script": "korean",
+			"fonts": "bd5e6ec1e505ea06a19a3d1298287db93d7070caf1e4bfc374e2b2ae7d99ba49",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 248, 308, 292],
+					[148, 326, 452, 402],
+					[177, 392, 423, 468]
+				],
+				"subtitle": [
+					[244, 530, 356, 558]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				236,
+				558
+			]
+		},
 		"ko/the-pursuit-of-god": {
 			"ground": "191fffe72c50359319a7e22dd1bd233f0da4a69fc8c916a93f3f8a46953fdbac",
 			"style": "revival",
@@ -28763,6 +28881,40 @@
 			"middle": [
 				323,
 				471
+			]
+		},
+		"ko/they-were-young-1": {
+			"ground": "7482d9096b02dcc9f0fa21c07e6707ffbfc471d59db573413c78d846a3a23527",
+			"style": "originals",
+			"volume": "1",
+			"script": "korean",
+			"fonts": "6afe849a15321b44d75d38fddeb6221cf0ce313c31552e222be9a4706049a208",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 281, 308, 325],
+					[83, 359, 517, 435]
+				],
+				"subtitle": [
+					[151, 497, 449, 525]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				269,
+				525
 			]
 		},
 		"ko/true-vine": {
@@ -37778,6 +37930,40 @@
 				534
 			]
 		},
+		"ru/a-retrospect-children": {
+			"ground": "fc7ed67d9d4eac9109302135f3bf95556e8ba5b154aa569b7e092cda810902ce",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[154, 102, 446, 131]
+				],
+				"title": [
+					[105, 299, 495, 381],
+					[218, 370, 382, 452]
+				],
+				"edition": [
+					[225, 464, 375, 489]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				249,
+				546
+			]
+		},
 		"ru/amanda-smith-autobiography-children": {
 			"ground": "11a56206fff72ed878bb79d299949601dfe7ea2edec6e92a6f2434a93aa59fa0",
 			"style": "revival",
@@ -37810,6 +37996,40 @@
 			"middle": [
 				249,
 				546
+			]
+		},
+		"ru/talks-to-the-farmer-children": {
+			"ground": "2314c64bbc523d74d38e2b7f6ee50388e99a0be03b6aa6392c856ac3583b5c3d",
+			"style": "young",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[190, 289, 410, 364],
+					[120, 350, 480, 425]
+				],
+				"edition": [
+					[225, 435, 375, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				296,
+				499
 			]
 		},
 		"ruth": {
