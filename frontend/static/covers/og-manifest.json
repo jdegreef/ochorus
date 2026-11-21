@@ -26323,6 +26323,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/daughters-of-the-king-2": {
+			"ground": "fe4666a49198fcd6b7189c445384c2024529e5ea2ba88dacdffd61fba95de7b1",
+			"style": "young",
+			"volume": "2",
+			"script": "korean",
+			"fonts": "d9d7fb90ef30c00b2876ae1bb37530d1d9891fb2f95f26aa152c5268aff6051a",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/david-livingstone-a-life-children": {
 			"ground": "6ed4fb31d53b541b20238371d43377616e6027248dedf7a45639b892073695f9",
 			"style": "young",
