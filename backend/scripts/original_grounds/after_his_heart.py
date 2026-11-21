@@ -76,7 +76,7 @@ RIDGE = "M0 650 C80 640 150 628 230 626 C320 624 420 634 600 648 V800H0Z"
 def crest(x):
     # Close enough to RIDGE's top edge for placing feet (piecewise linear).
     pts = [(0, 650), (80, 637), (150, 629), (230, 626), (320, 626), (420, 632), (520, 640), (600, 648)]
-    for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
+    for (x0, y0), (x1, y1) in zip(pts, pts[1:], strict=False):
         if x0 <= x <= x1:
             return y0 + (y1 - y0) * (x - x0) / (x1 - x0)
     return pts[-1][1]
