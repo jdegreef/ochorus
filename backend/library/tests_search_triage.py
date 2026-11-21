@@ -270,6 +270,13 @@ class SearchRulesTests(TestCase):
         self.assertTrue(res.data["results"])
         self.assertFalse(SearchQueryLog.all_rows.exists())
 
+    def test_the_preview_offers_the_nearest_word_for_a_miss(self):
+        self.client.force_authenticate(user=self.super, token=VERIFIED)
+        res = self.client.get("/api/admin/search-preview/", {"q": "humiltee", "language": "en"})
+        self.assertEqual((res.data["results"], res.data["suggestion"]), ([], "Humility"))
+        res = self.client.get("/api/admin/search-preview/", {"q": "humility", "language": "en"})
+        self.assertNotIn("suggestion", res.data)
+
     def test_a_pin_leads_its_facet_page_and_counts_in_its_total(self):
         from .models import Author, Book
 

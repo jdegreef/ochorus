@@ -49,9 +49,15 @@ describe('the command palette leads with the way out', () => {
 		// Last, it sat under however many instant hits the query drew — so the one
 		// row that reaches the whole library was the one you had to scroll for.
 		// First, it is also what Enter runs by default.
-		const items = source.split('\n').find((line) => line.includes('const items = $derived'));
-		expect(items).toBeTruthy();
-		const order = ['searchItem', 'cmdItems', 'hitItems'].map((name) => items!.indexOf(name));
+		// The whole statement, however the formatter wraps it.
+		const start = source.indexOf('const items = $derived');
+		expect(start).toBeGreaterThanOrEqual(0);
+		const items = source.slice(start, source.indexOf(']);', start));
+		// Suggestions (the people and books the letters already name) come
+		// straight after it: they are the next most likely thing Enter-able.
+		const order = ['searchItem', 'suggestItems', 'cmdItems', 'hitItems'].map((name) =>
+			items.indexOf(name)
+		);
 		expect(order.every((i) => i >= 0)).toBe(true);
 		expect(order).toEqual([...order].sort((a, b) => a - b));
 	});
