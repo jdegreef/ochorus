@@ -3,7 +3,7 @@
  "slug": "after-his-heart",
  "language": "es",
  "job_issue": 9508,
- "pull_request": null,
+ "pull_request": 9566,
  "note": [
   "Scripture authority is the Open Word Bible (OWB), Spanish, Balanced edition (CC0), bundled as library/data/bible/owb-es-b.json.gz and read offline (owb-es), at the founder's request for this book's translations. Every cited quotation was taken verbatim from it; the English often quotes part of a verse, so the matching part of the OWB-es verse is quoted, with \"...\" between exact pieces.",
   "Places where the OWB-es wording differs in sense from the English the author quoted, and the surrounding sentence was adjusted: Mark 1:17 / John 21:19 (ch 3); Matthew 5:9 «los que construyen la paz» (ch 25); Romans 16:1-2 and 16:7, Phoebe and Junia (ch 26, 43); Genesis 12:3 «Por medio de ti» and Nehemiah 2:4 (ch 27); James 2:1 (ch 36). Ch 38 and 43 quote other Bible versions' wording on purpose, uncited, because the sentence is about how versions differ (1 Kings 19:12; Psalm 34:22 in the King James Version).",
