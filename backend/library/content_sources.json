@@ -26,6 +26,7 @@
     "library/book_people_seed.py",
     "library/plan_seed.py",
     "library/corrections.py",
+    "library/data/body_corrections",
     "library/quote_seed.py",
     "library/curated_art.py",
     "library/alternate_titles.py",

@@ -1,0 +1,21 @@
+{
+    "kind": "bio",
+    "slug": "phillips-brooks",
+    "language": "pt",
+    "job_issue": 8689,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Psalm 78:72a",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 17
+        },
+        {
+            "reference": "Luke 2:8",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 19
+        }
+    ]
+}

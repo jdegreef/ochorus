@@ -23,14 +23,17 @@ from contextlib import contextmanager, nullcontext
 
 from django.db import connection, transaction
 from django.db.models import (
+    Case,
     Exists,
     F,
+    FloatField,
     Func,
     OuterRef,
     Q,
     Subquery,
     TextField,
     Value,
+    When,
 )
 from django.db.models.functions import Coalesce
 
@@ -60,6 +63,7 @@ from .models import (
     TopicSermon,
     TopicTranslation,
 )
+from .people import People, strongest
 from .scripture import reference_verse_ids
 
 MAX_RESULTS = 30
@@ -438,11 +442,87 @@ def search_library(q: str, language: str, scope=None) -> list[dict]:
 
 
 class _Ctx:
-    """Small carrier so the per-type builders stay readable."""
+    """Small carrier so the per-type builders stay readable.
+
+    Also where the query is read as a person's name (library/people.py), once
+    per search: ``people`` is who it names, strongest first, and ``person`` the
+    one it names unambiguously enough to search that person's works by.
+    """
 
     def __init__(self, q: str, language: str):
         self.q = q
         self.language = language
+        self._people = None
+
+    def _read_people(self):
+        if self._people is None:
+            people = People(_author_names(self.language))
+            matches = people.match(self.q)
+            person = strongest(matches)
+            # Who counts as found by name: anyone the query is wholly the name
+            # of ("john", "d l moody"), plus the one person a longer query
+            # names ("d l moody prayer"). Not everyone who merely shares a
+            # word with it — "gospel of john" is not a search for every John.
+            found = [m for m in matches if m.whole or m is person]
+            self._people = (found, people.rewrite(self.q, matches), person)
+        return self._people
+
+    @property
+    def people(self) -> list:
+        """The authors found by name (PersonMatch), strongest first."""
+        return self._read_people()[0]
+
+    @property
+    def rewritten(self) -> str | None:
+        """The query with its person spelt the library's way, if that differs."""
+        return self._read_people()[1]
+
+    @property
+    def person(self):
+        """The one person the query names by two or more words, or None."""
+        return self._read_people()[2]
+
+
+def _author_names(language: str) -> list[tuple[int, str]]:
+    """(pk, name) of every author findable in ``language`` — the whole library,
+    never a scope, so "d l moody" reads the same inside a shelf as outside."""
+    return memoized(
+        "people",
+        lambda: list(_base_querysets(language)["author"].values_list("pk", "name")),
+        language,
+    )
+
+
+#: A name match's weight in the merged list. One the query unmistakably IS
+#: ("d l moody") leads everything; a looser one ("moody", "john") is lifted
+#: within its type by its strength, without outranking a strong text match.
+NAMED_SCORE = 100.0
+NAME_WEIGHT = 0.1
+
+
+def _name_score(match) -> float:
+    if match is None:
+        return 0.0
+    return NAMED_SCORE + match.score if match.named else NAME_WEIGHT * match.score
+
+
+def _name_order(ctx):
+    """An author's name-match strength, as an annotation to order pages by."""
+    whens = [When(pk=m.pk, then=Value(_name_score(m))) for m in ctx.people]
+    return Case(*whens, default=Value(0.0), output_field=FloatField())
+
+
+#: The field naming a work's author, for the types a person's name finds.
+_AUTHOR_FIELD = {"book": "author", "chapter": "book__author", "sermon": "author"}
+
+
+def _query(ctx):
+    """The SearchQuery for ``ctx``: the query as typed, OR'd with its person
+    spelt the library's way ("d l moody" also asks for "dwight l moody")."""
+    query = search_query(ctx.q, ctx.language)
+    if ctx.rewritten:
+        query = query | search_query(ctx.rewritten, ctx.language)
+    return query
 
 
 # --- Postgres -----------------------------------------------------------------
@@ -531,7 +611,7 @@ def _search_postgres(ctx, qs):
     from django.contrib.postgres.search import SearchRank
 
     config = config_for(ctx.language)
-    query = search_query(ctx.q, ctx.language)
+    query = _query(ctx)
 
     # One definition of what each type matches against, shared with
     # count_by_type and page_by_type through _match and _pg_vector. These were
@@ -549,6 +629,25 @@ def _search_postgres(ctx, qs):
         rows = ranked(kind)[: CAPS[kind]]
         return [(float(r.rank) * ENTITY_BOOST, builder(r, ctx)) for r in rows]
 
+    def authors():
+        # The people the query names come first, whatever their bios rank: a
+        # bio that MENTIONS "D. L. Moody" (R. A. Torrey's) is not Moody.
+        by_pk = {m.pk: m for m in ctx.people}
+        named = list(
+            ranked("author")
+            .filter(pk__in=list(by_pk))
+            .annotate(name_score=_name_order(ctx))
+            .order_by("-name_score", "-rank")[: CAPS["author"]]
+        )
+        seen = {r.pk for r in named}
+        others = [r for r in ranked("author")[: CAPS["author"]] if r.pk not in seen]
+        scored = [
+            (float(r.rank) * ENTITY_BOOST + _name_score(by_pk.get(r.pk)), r)
+            for r in named + others
+        ]
+        scored.sort(key=lambda pair: pair[0], reverse=True)
+        return [(score, _author_hit(r, ctx)) for score, r in scored[: CAPS["author"]]]
+
     snippet = _Snippet(
         F("body_text"), query, config, positive_words(ctx.q, ctx.language)
     )
@@ -563,7 +662,7 @@ def _search_postgres(ctx, qs):
         return [(float(r.rank), builder(r, snippet=r.headline)) for r in rows]
 
     pairs: list[tuple[float, dict]] = []
-    pairs += entity("author", _author_hit)
+    pairs += authors()
     pairs += entity("book", _book_hit)
     pairs += entity("topic", _topic_hit)
     pairs += entity("plan", _plan_hit)
@@ -587,7 +686,12 @@ def _search_fallback(ctx, qs):
     # The snippet centres on the first word; every word is in the row somewhere.
     lead = _snippet_term(ctx)
     results = (
-        [_author_hit(a, ctx) for a in rows("author", "name")]
+        [
+            _author_hit(a, ctx)
+            for a in _match("author", ctx, qs["author"])
+            .annotate(name_score=_name_order(ctx))
+            .order_by("-name_score", "name")[: CAPS["author"]]
+        ]
         + [_book_hit(b, ctx) for b in rows("book", "sort_order", "title")]
         + [_topic_hit(tp, ctx) for tp in rows("topic", "title")]
         + [_plan_hit(p, ctx) for p in rows("plan", "sort_order", "title")]
@@ -779,15 +883,26 @@ def _pg_vector(kind: str, config: str, language: str):
 
 def _match(kind: str, ctx, qs):
     """Rows of ``kind`` matching the query — unordered, un-paged."""
+    # A person the query names is found by name, not only by the words of it
+    # that full-text search can read (library/people.py).
+    named = Q(pk__in=[m.pk for m in ctx.people]) if kind == "author" else Q(pk__in=[])
     if not uses_fts(ctx.language):
-        matched = qs.filter(_lite_match(kind, ctx.q, ctx.language))
+        predicate = _lite_match(kind, ctx.q, ctx.language) | named
+        person = ctx.person
+        if person and kind in _AUTHOR_FIELD:
+            # Their works, narrowed by whatever else was typed ("moody prayer").
+            works = Q(**{_AUTHOR_FIELD[kind]: person.pk})
+            if person.rest:
+                works &= _lite_match(kind, " ".join(person.rest), ctx.language)
+            predicate |= works
+        matched = qs.filter(predicate)
         return matched.distinct() if kind == "topic" else matched
 
-    query = search_query(ctx.q, ctx.language)
+    query = _query(ctx)
     if kind in STORED:
         return qs.filter(search_vector=query)
     vector = _pg_vector(kind, config_for(ctx.language), ctx.language)
-    return qs.annotate(search=vector).filter(search=query)
+    return qs.annotate(search=vector).filter(Q(search=query) | named)
 
 
 #: Ordering per type per sort mode. "relevance" isn't here: on Postgres it is the
@@ -863,11 +978,13 @@ def _pg_rank_order(kind, ctx, qs):
     from django.contrib.postgres.search import SearchRank
 
     config = config_for(ctx.language)
-    query = search_query(ctx.q, ctx.language)
     vector = _pg_vector(kind, config, ctx.language)
-    return qs.annotate(rank=SearchRank(vector, query)).order_by(
-        "-rank", *_ORDER[kind]["natural"]
-    )
+    qs = qs.annotate(rank=SearchRank(vector, _query(ctx)))
+    if kind == "author":
+        return qs.annotate(name_score=_name_order(ctx)).order_by(
+            "-name_score", "-rank", *_ORDER[kind]["natural"]
+        )
+    return qs.order_by("-rank", *_ORDER[kind]["natural"])
 
 
 def page_by_type(
@@ -903,7 +1020,9 @@ def page_by_type(
     elif uses_fts(language):
         qs = _pg_rank_order(kind, ctx, qs)
     else:
-        qs = qs.order_by(*_ORDER[kind]["natural"])
+        if kind == "author":
+            qs = qs.annotate(name_score=_name_order(ctx))
+        qs = qs.order_by(*(("-name_score",) if kind == "author" else ()), *_ORDER[kind]["natural"])
 
     with _index_scans(language) if kind in TOASTED else nullcontext():
         return [_hit_for(kind, row, ctx) for row in qs[offset : offset + limit]]
@@ -936,7 +1055,8 @@ def _date(dt) -> str:
 
 
 def _author_hit(a, ctx):
-    return {
+    person = next((m for m in ctx.people if m.pk == a.pk), None)
+    hit = {
         "type": "author",
         "author_slug": a.slug,
         "author_name": a.name,
@@ -944,9 +1064,19 @@ def _author_hit(a, ctx):
         # and the client renders text-only when they are — no placeholder, which
         # would only add noise to a row that reads fine without one.
         "photo_url": a.photo_url,
-        "snippet": fallback_snippet(a.bio_for(ctx.language), _snippet_term(ctx)),
+        # Found by name, the bio opens on the name rather than on the first
+        # "d" of "d l moody".
+        "snippet": fallback_snippet(
+            a.bio_for(ctx.language),
+            person.surname if person and person.by_surname else _snippet_term(ctx),
+        ),
         "date": _date(a.created_at),
     }
+    if person and person.named:
+        # The query IS this person's name, however it was spelt — the client
+        # leads with them as it would with an exact title (topResult).
+        hit["named"] = True
+    return hit
 
 
 def _book_hit(b, ctx):

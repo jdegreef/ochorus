@@ -44,6 +44,10 @@ from ..models import (
     VerseReview,
 )
 from ..qa import translation_flags
+from ..review_impact import EXPLANATION as IMPACT_EXPLANATION
+from ..review_impact import RECENT_DAYS as IMPACT_RECENT_DAYS
+from ..review_impact import WINDOW_DAYS as IMPACT_WINDOW_DAYS
+from ..review_impact import edition_impact
 
 
 # No `language_arg`: POST is a batch whose language is per item, so the view-level
@@ -74,6 +78,9 @@ class AdminReviewQueueView(AdminAudited, APIView):
 
     KINDS = ("book", "sermon", "bio")
     PAGE_SIZE = 25
+    # `?next=N`: the N to review next — the top of the impact order, capped so
+    # the shortcut stays a short list rather than a second way to page.
+    NEXT_MAX = 50
     # Why the bulk gate holds back an item in each non-ready lane.
     _GATE_REASON = {
         "unexamined": "no scripture notes recorded — review individually.",
@@ -122,13 +129,25 @@ class AdminReviewQueueView(AdminAudited, APIView):
         slug = q.get("slug") or ""
         # Which of the four lanes (see `_lane`).
         lane = q.get("lane") or ""
-        sort = q.get("sort") or "oldest"
+        sort = q.get("sort") or "impact"
+        try:
+            next_n = min(self.NEXT_MAX, max(0, int(q.get("next") or 0)))
+        except (TypeError, ValueError):
+            next_n = 0
+        if next_n:
+            # "What should I review next?" is the impact order by definition.
+            sort = "impact"
 
         rows = self._rows()
         decided = self._outcomes()
         notes = self._note_summary()
         noted = set(notes)
         settled = self._settled_counts()
+        # Reader impact for every row (two grouped queries, whatever the size):
+        # the default order, so reviewers start with what readers open most.
+        impact, language_share = edition_impact(
+            (r["kind"], r["slug"], r["language"]) for r in rows
+        )
 
         # A row is "flagged" when the pipeline recorded a verse it had to render
         # itself. That list is the actual review task, and it is the one thing a
@@ -147,6 +166,7 @@ class AdminReviewQueueView(AdminAudited, APIView):
             # Distinguish "examined and clean" from "never examined" — the UI
             # must not render an absence of notes as an absence of problems.
             r["notes_recorded"] = k in noted
+            r["impact"] = impact[k]
             # A row sent back sits in its own lane whatever its notes say, so a
             # needs-work item can never be offered as "ready".
             r["lane"] = (
@@ -239,8 +259,20 @@ class AdminReviewQueueView(AdminAudited, APIView):
             sel.sort(key=lambda r: (-r["notes"]["self_rendered"], r["language"], r["title"]))
         elif sort == "largest":
             sel.sort(key=lambda r: -(r.get("words") or 0))
-        else:  # oldest — the fairest proxy for neglect
+        elif sort == "oldest":  # the fairest proxy for neglect
             sel.sort(key=lambda r: (r.get("created_at") or "", r["language"], r["title"]))
+        else:  # impact (the default) — most-read first; see library.review_impact
+            sel.sort(
+                key=lambda r: (
+                    -r["impact"]["score"],
+                    -r["impact"]["en_score"],
+                    r.get("created_at") or "",
+                    r["language"],
+                    r["title"],
+                )
+            )
+        if next_n:
+            sel = sel[:next_n]
 
         try:
             page = max(1, int(q.get("page", 1)))
@@ -273,6 +305,20 @@ class AdminReviewQueueView(AdminAudited, APIView):
                 "page_size": self.PAGE_SIZE,
                 "facets": facets,
                 "language_names": language_names,
+                "next": next_n,
+                # How the impact score is made, for the page's explanation.
+                "impact": {
+                    "window_days": IMPACT_WINDOW_DAYS,
+                    "recent_days": IMPACT_RECENT_DAYS,
+                    "explanation": IMPACT_EXPLANATION,
+                    # Each language's share of active readers, rounded — the
+                    # estimate's multiplier, shown so an estimate can be checked.
+                    "language_share": {
+                        c: round(v, 4)
+                        for c, v in language_share.items()
+                        if c in language_names and (allowed is None or c in allowed)
+                    },
+                },
             }
         )
 

@@ -238,7 +238,25 @@ def baseline_counts(found: dict[tuple[str, str], list[Rendering]]) -> dict[str, 
 def read_baseline() -> dict[str, int]:
     if not BASELINE_PATH.exists():
         return {}
-    return json.loads(BASELINE_PATH.read_text(encoding="utf-8"))["conflicts"]
+    text = BASELINE_PATH.read_text(encoding="utf-8")
+    if "\n<<<<<<< " in text or text.startswith("<<<<<<< "):
+        # Never hand-merge this file: it is derived from the corpus, so the
+        # resolution is mechanical — and a JSON traceback says none of that.
+        raise ValueError(
+            f"{BASELINE_PATH.name} has merge-conflict markers. Take main's copy "
+            f"(`git checkout origin/main -- backend/library/data/{BASELINE_PATH.name}`), "
+            "then re-pin from the merged corpus with `manage.py audit_verse_consistency "
+            "--update-baseline --language <yours>` (plus --absorb only if your PR "
+            "absorbed conflicts on purpose)."
+        )
+    return json.loads(text)["conflicts"]
+
+
+def in_language(counts: dict[str, int], language: str | None) -> dict[str, int]:
+    """The pins for one language (all of them when ``language`` is None)."""
+    if language is None:
+        return dict(counts)
+    return {k: n for k, n in counts.items() if k.split("\t", 1)[0] == language}
 
 
 def baseline_regressions(
@@ -271,7 +289,21 @@ def baseline_regressions(
     )
 
 
-def write_baseline(counts: dict[str, int]) -> None:
+def write_baseline(counts: dict[str, int], language: str | None = None) -> None:
+    """Write the pin. With ``language``, re-pin ONLY that language's entries.
+
+    Scoped is the normal case for a translation job, and it is what keeps
+    parallel jobs off each other's lines: a whole-corpus re-pin on a branch
+    also rewrites every OTHER language's entries to whatever that branch
+    happens to hold, so two jobs in two languages could still touch the same
+    lines. Scoped, the diff is your language's entries and nothing else, by
+    construction — no set-diff check needed.
+    """
+    if language is not None:
+        counts = {
+            **{k: n for k, n in read_baseline().items() if k.split("\t", 1)[0] != language},
+            **in_language(counts, language),
+        }
     BASELINE_PATH.parent.mkdir(parents=True, exist_ok=True)
     BASELINE_PATH.write_text(
         json.dumps(
@@ -281,7 +313,9 @@ def write_baseline(counts: dict[str, int]) -> None:
                     "reference to HOW MANY distinct ways its language renders it; a "
                     "count may fall or a reference may leave, neither may grow. "
                     "Regenerate with `manage.py audit_verse_consistency "
-                    "--update-baseline` and say in the commit message which renderings "
+                    "--update-baseline --language <lang>` (never by hand, and never by "
+                    "hand-merging a conflict here: take main's copy and re-run) and say "
+                    "in the commit message which renderings "
                     "you reconciled. That command REFUSES a re-pin that would loosen "
                     "the ratchet — absorbing a new or widened conflict needs --absorb "
                     "said out loud, because a silent re-pin is how this file went from "

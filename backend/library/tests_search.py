@@ -280,9 +280,12 @@ class SearchTests(TestCase):
         self.assertEqual(data["results"], [])
         self.assertEqual(data.get("suggestion", "").lower(), "humility")
 
-    def test_suggests_misspelled_author_surname(self):
+    def test_misspelled_author_surname_finds_the_author(self):
+        # Once a did-you-mean; a misspelt surname now finds the person outright
+        # (library/people.py), so there is nothing to suggest.
         data = self._raw("Spurgen")
-        self.assertEqual(data.get("suggestion", "").lower(), "spurgeon")
+        authors = [h for h in data["results"] if h["type"] == "author"]
+        self.assertEqual([a["author_slug"] for a in authors], ["charles-h-spurgeon"])
 
     def test_suggests_word_from_article_title(self):
         # Article h1 words feed the did-you-mean vocabulary, so a misspelt one

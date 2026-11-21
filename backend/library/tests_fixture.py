@@ -4373,6 +4373,94 @@ class EditionSeriesRuleTests(SimpleTestCase):
         self.assertEqual(_series_with_two_forms(bad), ["young"])
 
 
+class BodyCorrectionDropInTests(SimpleTestCase):
+    """The shape of ``library/data/body_corrections/<work>.<tag>.json``.
+
+    New replacement pairs go in a file of their own instead of a block appended
+    to ``corrections.py``, because parallel jobs appending to the same end of
+    that module was the repo's most frequent merge conflict (see the loader at
+    the bottom of ``corrections.py``). The CONTENT of the pairs is already held
+    by the gates that read ``BODY_CORRECTIONS`` — dead pairs, typewriter dashes,
+    settled-body idempotence. This only holds the container: a malformed file
+    would otherwise fail at import time in every process, with a traceback that
+    names no file.
+    """
+
+    NAME = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*\.[A-Za-z0-9_-]+\.json$")
+
+    def _files(self):
+        from library.corrections import BODY_CORRECTIONS_DIR
+
+        return sorted(BODY_CORRECTIONS_DIR.glob("*"))
+
+    def test_every_file_is_named_for_a_shipped_work(self):
+        works = {p.name.split(".", 1)[0] for d in (BOOKS_DIR, SERMONS_DIR) for p in d.glob("*.json")}
+        for path in self._files():
+            with self.subTest(path.name):
+                self.assertRegex(
+                    path.name,
+                    self.NAME,
+                    "Name a drop-in `<work-slug>.<tag>.json` — the slug is what the "
+                    "loader keys the pairs by, the tag only keeps your file unique.",
+                )
+                self.assertIn(path.name.split(".", 1)[0], works, "no book or sermon has this slug")
+
+    def test_every_file_is_a_reason_and_a_list_of_pairs(self):
+        for path in self._files():
+            with self.subTest(path.name):
+                doc = json.loads(path.read_text(encoding="utf-8"))
+                self.assertEqual(set(doc), {"why", "replacements"})
+                self.assertTrue(doc["why"].strip(), "say what the slips are and where they were found")
+                self.assertTrue(doc["replacements"], "an empty drop-in is a file nobody needs")
+                for pair in doc["replacements"]:
+                    self.assertTrue(
+                        isinstance(pair, list)
+                        and len(pair) == 2
+                        and all(isinstance(s, str) for s in pair)
+                        and pair[0]
+                        and pair[0] != pair[1],
+                        f"not an [old, new] pair of differing strings: {pair!r}",
+                    )
+
+    def test_the_loader_applies_every_pair(self):
+        from library.corrections import BODY_CORRECTIONS
+
+        for path in self._files():
+            work = path.name.split(".", 1)[0]
+            applied = BODY_CORRECTIONS.get(work, {}).get("replacements", [])
+            for old, new in json.loads(path.read_text(encoding="utf-8"))["replacements"]:
+                self.assertIn((old, new), applied, path.name)
+
+
+class SeriesFileOrderTests(SimpleTestCase):
+    """``series.json`` keeps its translations sorted by (series, language).
+
+    Every translation job that is the first in its language for a series adds a
+    SeriesTranslation row, and they all used to add it at the END of the file —
+    so two of them in flight at once conflicted on the same closing lines (7 of
+    27 consecutive commits to this file in the 14 days to 2026-11-20, e.g. ar
+    and vi of *A Cloud of Praying Witnesses*). Sorted, each row has its own
+    place and two jobs only meet when their rows are neighbours: replaying the
+    same history sorted, 4 of the 7 merge cleanly.
+    """
+
+    def test_series_rows_first_then_translations_in_order(self):
+        rows = json.loads(SERIES_FILE.read_text(encoding="utf-8"))
+        models = [r["model"] for r in rows]
+        n_series = models.count("library.series")
+        self.assertEqual(
+            models[:n_series], ["library.series"] * n_series, "every Series row precedes every translation"
+        )
+        keys = [(r["fields"]["series"][0], r["fields"]["language"]) for r in rows[n_series:]]
+        self.assertEqual(
+            keys,
+            sorted(keys),
+            "Insert a SeriesTranslation row at its sorted (series, language) place, "
+            "not at the end of series.json — parallel jobs' end-of-file appends "
+            "are what conflicted.",
+        )
+
+
 class BookSortOrderTests(SimpleTestCase):
     """A build command's `sort_order` comes from the committed fixtures."""
 

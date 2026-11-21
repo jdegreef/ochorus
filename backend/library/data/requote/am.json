@@ -1,0 +1,189 @@
+{
+ "language": "am",
+ "owb_source": "Open Word Bible (OWB), Balanced edition, Amharic",
+ "about": [
+  "Read by library.requote (manage.py requote_inventory). Three things live here, all language data rather than code:",
+  "book_names: how the Amharic library cites each book, mapped to USFM. A numbered book is keyed with its ordinal ('1ኛ ቆሮንቶስ'); a citation written '1 ቆሮንቶስ' or '1ኛ ቆሮ.' is normalised to that key before lookup. Abbreviations are listed as their own keys, without the trailing dot.",
+  "fold: pairs of Ethiopic syllable rows that spell the same sound (ሐ/ኀ/ሀ, ሠ/ሰ, ዐ/አ, ፀ/ጸ). The 1962 text and OWB often spell one word with different rows, so the fuzzy 'is this the same verse' match folds them; the verbatim-OWB check never does.",
+  "decisions: the recurring-verse and recurring-word calls wave 1 settled (amowb/_TEMPLATE-wave2.md, 'Wave-1 recurring words'). The inventory flags every row whose reference matches one, or whose aligned English block holds one of its `english` phrases, or whose Amharic block holds one of its `old` words — so the worker reuses the decision instead of re-deciding it. Keep `english` phrases specific: a bare common word ('might', 'repent') flags half a book. A decision marked `detect` goes further: each of its `old` wordings becomes a row of its own (kind `recurring`, under its first reference) wherever it stands — for refrains too short for any detector to call Scripture by themselves."
+ ],
+ "cv_separators": ":፥",
+ "ordinal_suffix": "ኛ",
+ "sentence_final": ["።", "?", "!", "፧"],
+ "fold": [["ሐ", "ሀ"], ["ኀ", "ሀ"], ["ሠ", "ሰ"], ["ዐ", "አ"], ["ፀ", "ጸ"]],
+ "book_names": {
+  "ዘፍጥረት": "GEN", "ዘፍ": "GEN",
+  "ዘጸአት": "EXO", "ዘጸ": "EXO",
+  "ዘሌዋውያን": "LEV", "ዘሌ": "LEV",
+  "ዘኍልቍ": "NUM", "ዘኁልቁ": "NUM", "ዘኍ": "NUM", "ዘኁ": "NUM",
+  "ዘዳግም": "DEU", "ዘዳ": "DEU",
+  "ኢያሱ": "JOS",
+  "መሳፍንት": "JDG",
+  "ሩት": "RUT",
+  "1ኛ ሳሙኤል": "1SA", "2ኛ ሳሙኤል": "2SA",
+  "1ኛ ነገሥት": "1KI", "2ኛ ነገሥት": "2KI",
+  "1ኛ ዜና መዋዕል": "1CH", "2ኛ ዜና መዋዕል": "2CH",
+  "ዕዝራ": "EZR",
+  "ነህምያ": "NEH",
+  "አስቴር": "EST",
+  "ኢዮብ": "JOB",
+  "መዝሙር": "PSA", "መዝሙረ ዳዊት": "PSA", "መዝ": "PSA",
+  "ምሳሌ": "PRO", "ምሳ": "PRO",
+  "መክብብ": "ECC",
+  "መኃልየ መኃልይ": "SNG", "መኃልይ": "SNG",
+  "ኢሳይያስ": "ISA", "ኢሳ": "ISA",
+  "ኤርምያስ": "JER", "ኤር": "JER",
+  "ሰቆቃው ኤርምያስ": "LAM", "ሰቆቃወ ኤርምያስ": "LAM",
+  "ሕዝቅኤል": "EZK", "ሕዝ": "EZK",
+  "ዳንኤል": "DAN", "ዳን": "DAN",
+  "ሆሴዕ": "HOS",
+  "ኢዩኤል": "JOL", "ኢዮኤል": "JOL",
+  "አሞጽ": "AMO",
+  "አብድዩ": "OBA",
+  "ዮናስ": "JON",
+  "ሚክያስ": "MIC",
+  "ናሆም": "NAM",
+  "ዕንባቆም": "HAB",
+  "ሶፎንያስ": "ZEP",
+  "ሐጌ": "HAG",
+  "ዘካርያስ": "ZEC",
+  "ሚልክያስ": "MAL",
+  "ማቴዎስ": "MAT", "ማቴ": "MAT",
+  "ማርቆስ": "MRK", "ማር": "MRK",
+  "ሉቃስ": "LUK", "ሉቃ": "LUK",
+  "ዮሐንስ": "JHN", "ዮሐ": "JHN",
+  "የሐዋርያት ሥራ": "ACT", "ሐዋርያት ሥራ": "ACT", "ሐዋ": "ACT",
+  "ሮሜ": "ROM",
+  "1ኛ ቆሮንቶስ": "1CO", "2ኛ ቆሮንቶስ": "2CO", "1ኛ ቆሮ": "1CO", "2ኛ ቆሮ": "2CO",
+  "ገላትያ": "GAL", "ገላ": "GAL",
+  "ኤፌሶን": "EPH", "ኤፌ": "EPH",
+  "ፊልጵስዩስ": "PHP", "ፊል": "PHP",
+  "ቆላስይስ": "COL", "ቈላስይስ": "COL", "ቆላ": "COL",
+  "1ኛ ተሰሎንቄ": "1TH", "2ኛ ተሰሎንቄ": "2TH", "1ኛ ተሰ": "1TH", "2ኛ ተሰ": "2TH",
+  "1ኛ ጢሞቴዎስ": "1TI", "2ኛ ጢሞቴዎስ": "2TI", "1ኛ ጢሞ": "1TI", "2ኛ ጢሞ": "2TI",
+  "ቲቶ": "TIT",
+  "ፊልሞና": "PHM",
+  "ዕብራውያን": "HEB", "ዕብ": "HEB",
+  "ያዕቆብ": "JAS", "ያዕ": "JAS",
+  "1ኛ ጴጥሮስ": "1PE", "2ኛ ጴጥሮስ": "2PE", "1ኛ ጴጥ": "1PE", "2ኛ ጴጥ": "2PE",
+  "1ኛ ዮሐንስ": "1JN", "2ኛ ዮሐንስ": "2JN", "3ኛ ዮሐንስ": "3JN", "1ኛ ዮሐ": "1JN",
+  "ይሁዳ": "JUD",
+  "ራእይ": "REV", "የዮሐንስ ራእይ": "REV", "ራእ": "REV"
+ },
+ "decisions": [
+  {
+   "id": "comforter",
+   "references": ["John 14:16", "John 14:26", "John 15:26", "John 16:7"],
+   "english": ["Comforter"],
+   "old": ["አጽናኝ"],
+   "decision": "OWB calls the Spirit ጠበቃ (Advocate). Quote OWB; where the author argues from 'Comforter', add a one-time bridging gloss rather than rewriting his image."
+  },
+  {
+   "id": "jehovah",
+   "references": [],
+   "english": ["Jehovah"],
+   "old": ["ይሖዋ"],
+   "decision": "OWB renders the divine name እግዚአብሔር. A quoted verse keeps OWB; the author's own 'Jehovah' in prose follows the same word."
+  },
+  {
+   "id": "convict",
+   "references": ["John 16:8"],
+   "english": ["convict the world", "convince the world", "reprove the world"],
+   "old": ["ይወቅሰዋል", "ይወቅሳል"],
+   "decision": "OWB John 16:8 reads መሳሳቱን ያረጋግጣል; reuse that gloss where the author argues from 'convict'."
+  },
+  {
+   "id": "might",
+   "references": ["Isaiah 11:2"],
+   "english": ["spirit of might", "counsel and might"],
+   "old": [],
+   "decision": "Isa 11:2 'might' is OWB ብርታት (የምክርና የብርታት መንፈስ)."
+  },
+  {
+   "id": "the-promise",
+   "references": ["Acts 1:4", "Acts 2:33", "Acts 2:39", "Galatians 3:14", "Ephesians 1:13", "Luke 24:49"],
+   "english": ["the promise of the Father", "the promise of the Spirit"],
+   "old": [],
+   "decision": "'The promise' is ተስፋ, as OWB words it."
+  },
+  {
+   "id": "repent-god",
+   "references": ["Genesis 6:6", "Numbers 23:19", "1 Samuel 15:29"],
+   "english": ["it repented the Lord", "repented the Lord", "God is not a man, that he should lie"],
+   "old": ["ተጸጸተ", "ይጸጸት"],
+   "decision": "OWB gives three different verbs for God 'repenting' (ተጸጸተ, አቋሙንም የሚለውጥ, ሐሳቡንም አይለውጥም). Quote each verbatim; one gloss in the author's prose covers all three."
+  },
+  {
+   "id": "pray-without-ceasing",
+   "references": ["1 Thessalonians 5:17", "Colossians 4:2"],
+   "english": ["pray without ceasing"],
+   "old": ["ሳታቋርጡ ጸልዩ"],
+   "decision": "1 Thess 5:17 is OWB «መጸለይን አታቋርጡ». The old «ሳታቋርጡ ጸልዩ» is OWB Colossians 4:2, so a block holding it under a 1 Thess 5:17 citation is NOT already OWB."
+  },
+  {
+   "id": "teach-us-to-pray",
+   "references": ["Luke 11:1"],
+   "english": ["teach us to pray"],
+   "old": ["እንድንጸልይ አስተምረን", "መጸለይ አስተምረን"],
+   "detect": true,
+   "decision": "Murray's refrain 'Lord, teach us to pray' is OWB Luke 11:1's span «ጌታ ሆይ፣ … እንዴት መጸለይ እንዳለብን አስተምረን»; headings and body quote it identically."
+  },
+  {
+   "id": "thy-will-be-done",
+   "references": ["Matthew 26:42"],
+   "english": ["Thy will be done", "Your will be done"],
+   "old": ["ፈቃድህ ትሁን"],
+   "detect": true,
+   "decision": "The refrain «ፈቃድህ ትሁን» is the old wording. OWB Matt 26:42 ends «ፈቃድህ ይሁን»; Matt 6:10 has «ፈቃድህ በምድርም ይደረግ»; Luke 22:42 «የአንተ ፈቃድ ይሁን». Quote the span of the verse the author means, and keep a refrain identical everywhere it recurs."
+  },
+  {
+   "id": "compel",
+   "references": ["Luke 14:23"],
+   "english": ["compel"],
+   "old": ["ግድ በላቸው"],
+   "decision": "OWB Luke 14:23 has አጥብቀህ ለምናቸው ('press them'). Where the author argues from 'compel', add a one-time gloss."
+  },
+  {
+   "id": "ps-141-5",
+   "references": ["Psalm 141:5"],
+   "english": [],
+   "old": [],
+   "decision": "OWB Ps 141:5 says the opposite of the AV the author follows; Spurgeon's quotation stays self_rendered."
+  },
+  {
+   "id": "acts-9-6",
+   "references": ["Acts 9:6"],
+   "english": ["what wilt thou have me to do"],
+   "old": [],
+   "decision": "OWB Acts 9:6 lacks the KJV question. Quote OWB Acts 22:10 and cite Acts 22:10."
+  },
+  {
+   "id": "ps-68-31",
+   "references": ["Psalm 68:31"],
+   "english": ["Ethiopia"],
+   "old": [],
+   "decision": "OWB reads ኩሽ. Where the author argues from 'Ethiopia', keep ኢትዮጵያ and mark the row self_rendered."
+  },
+  {
+   "id": "good-gift",
+   "references": ["James 1:17"],
+   "english": ["good gift"],
+   "old": [],
+   "decision": "OWB reorders: 'good gift' becomes 'perfect gift'. Read the paragraph after the quote and adjust prose that argues from the old word."
+  },
+  {
+   "id": "bruised-reed",
+   "references": ["Isaiah 42:3", "Matthew 12:20"],
+   "english": ["bruised reed", "smoking flax"],
+   "old": [],
+   "decision": "OWB has 'bent reed / wick about to go out'. A one-time bridging gloss beats rewriting a recurring image."
+  },
+  {
+   "id": "critical-text",
+   "references": ["Matthew 5:44", "Matthew 6:13", "Matthew 17:21", "Matthew 18:11", "Matthew 23:14", "Mark 9:44", "Mark 9:46", "Mark 11:26", "Mark 15:28", "Luke 17:36", "Luke 23:17", "John 5:4", "Acts 8:37", "Acts 15:34", "Acts 24:7", "Acts 28:29", "Romans 16:24", "1 John 5:7"],
+   "english": [],
+   "old": [],
+   "decision": "OWB follows the critical text and lacks some or all of these words. Quote what OWB has; render the missing words from the English yourself and mark the row self_rendered (never keep the 1962 wording)."
+  }
+ ]
+}

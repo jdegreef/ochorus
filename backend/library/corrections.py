@@ -16,9 +16,11 @@ Shape:
 
 from __future__ import annotations
 
+import json
 import re as _re
 from collections.abc import Sequence
 from html import escape as _escape
+from pathlib import Path
 
 from library import dashes
 from library.text import html_to_text
@@ -2508,6 +2510,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # pt
             ("<p>Poderíamos naturalmente pensar",
              '<blockquote><em>"Se alguém deseja vir após mim, negue-se a si mesmo, tome a sua cruz cada dia, e siga-me.</em>—LUCAS 9:23.</blockquote>'),
+            # ko
+            ('<p>주 예수 그리스도의 ',
+             '<blockquote><em>“아무든지 나를 따라 오려거든 자기를 부인하고 날마다 제 십자가를 지고 나를 좇을 것이니라”</em>—누가복음 9:23.</blockquote>'),
         ],
     },
     "all-sufficiency": {
@@ -25217,17 +25222,38 @@ BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements"
     ('or what is forgiveness of sin’?, how many', 'or what is forgiveness of sin?’ how many'),
 ])
 
-# OCR slips in Crombie's De Principiis (CCEL scan), found while translating it to
-# French (job #7204). Each is a one-letter misread forced by grammar or sense;
-# the French edition already renders the corrected word.
-BODY_CORRECTIONS.setdefault("on-first-principles", {}).setdefault("replacements", []).extend([
-    ("Enoch, Noe, Sere, Abraham", "Enoch, Noe, Sem, Abraham"),
-    ("mortal yet clothed with immorality", "mortal yet clothed with immortality"),
-    ("a matter requiting examination", "a matter requiring examination"),
-    ("understood that them is no dissimilarity", "understood that there is no dissimilarity"),
-    ("knowledge to be confined from the sacred Scriptures", "knowledge to be confirmed from the sacred Scriptures"),
-    ("Creator and Legislator of the word is not called good", "Creator and Legislator of the world is not called good"),
-    ("bodies would nor possess a desire", "bodies would not possess a desire"),
-    ("is shown by Eccelesiastes", "is shown by Ecclesiastes"),
-    ("an uncertain event, council is taken", "an uncertain event, counsel is taken"),
-])
+
+# --- Drop-in corrections: one file per work and job, so parallel PRs never meet --
+#
+# Everything above is appended to by hand, and appending is what collided: over
+# 14 days to 2026-11-20 this module had more merge conflicts than any other file
+# — 9 of 42 consecutive commits that touched it would have conflicted had
+# they been written in parallel, nearly all of them two translation jobs adding a
+# block at the same end of the file (Brainerd -> ar and -> hi, batch 4 and batch
+# 5). So NEW replacement pairs go in a NEW file instead:
+#
+#     library/data/body_corrections/<work-slug>.<tag>.json
+#     {"why": "<what the slips are and where they were found>",
+#      "replacements": [["<exact old>", "<exact new>"], ...]}
+#
+# `<tag>` is anything that makes the name unique to your job (`fr-7204`,
+# `ko-batch-3`). Files load in sorted-name order AFTER every block above, so a
+# drop-in behaves exactly like a block appended at the end of this module — the
+# placement those PRs were fighting over. `tests_fixture.BodyCorrectionDropInTests`
+# holds the shape; the dead-pair, dash and idempotence gates read
+# BODY_CORRECTIONS and so cover these entries like any other. Only `replacements`
+# is supported here: the structural keys (back_matter, paragraph_breaks, ...)
+# are rare and stay in Python above.
+BODY_CORRECTIONS_DIR = Path(__file__).resolve().parent / "data" / "body_corrections"
+
+
+def _load_body_correction_drop_ins() -> None:
+    for path in sorted(BODY_CORRECTIONS_DIR.glob("*.json")):
+        work = path.name.split(".", 1)[0]
+        pairs = json.loads(path.read_text(encoding="utf-8"))["replacements"]
+        BODY_CORRECTIONS.setdefault(work, {}).setdefault("replacements", []).extend(
+            (old, new) for old, new in pairs
+        )
+
+
+_load_body_correction_drop_ins()

@@ -12,12 +12,15 @@ What it does, in order:
    CI, or red, is passed over for an older green one.
 2. LAST: the commit ochorus-web last deployed successfully, read from the
    GitHub deployments Render reports ("main - ochorus-web").
-3. Deploy if a file in LAST..TARGET matches any service's render.yaml
+3. CHECK (read-only): go red if the last finished ochorus-web deploy failed
+   or LAST lags TARGET by more than MAX_WEB_LAG_HOURS, and carry on (see
+   "WHY THE TRAIN CHECKS THE LAST WEB DEPLOY").
+4. Deploy if a file in LAST..TARGET matches any service's render.yaml
    buildFilter (or rootDir), or if FORCE is set.
-4. Unless a deploy is still RUNNING on ochorus-api or ochorus-web: then
-   deploy nothing, say which deploy (id + status) in one line, and exit green;
-   the next train picks the work up. FORCE does not override this.
-5. Ask Render's REST API to deploy TARGET (`commitId`) on the API, WAIT for
+5. Unless a deploy is still RUNNING on ochorus-api or ochorus-web: then
+   deploy nothing, say which deploy (id + status) in one line, and exit green
+   (unless step 3 found a problem); the next train picks the work up. FORCE does not override this.
+6. Ask Render's REST API to deploy TARGET (`commitId`) on the API, WAIT for
    that deploy to finish, then deploy the web service at the same commit, so
    both move together and the web build's prebuild gate finds the API serving
    exactly the content it checks out.
@@ -59,6 +62,27 @@ re-run. If Render cannot be asked (after BUSY_CHECK_ATTEMPTS tries), the run
 deploys nothing and goes RED: deploying blind could restart the API under a
 running crawl, and a run that silently skipped would hide a broken key.
 DRY_RUN still asks (it is read-only) and reports what it found.
+
+WHY THE TRAIN CHECKS THE LAST WEB DEPLOY. Because the train only STARTS the
+web build, a run is green the moment Render accepts the deploy; whether the
+build then went live was nobody's job. From 2026-11-16 to 11-19 ochorus-web
+sat on an old commit for ~2 days behind green runs. So every run (dry runs
+too) first checks production, read-only, and goes RED if either:
+  * the newest FINISHED ochorus-web deploy on Render ended in FAILED
+    (build_failed, update_failed, canceled, pre_deploy_failed), or
+  * the live web commit (LAST) lags TARGET: the oldest deployable
+    first-parent commit in LAST..TARGET reached main more than
+    MAX_WEB_LAG_HOURS ago (env, default 6: three trains, room for a busy
+    skip and a 70-minute build).
+Each finding is one line at the top of the summary (deploy id, commit,
+status), also printed as an ::error:: annotation. Red here does NOT mean
+frozen: the run still deploys exactly as it otherwise would, which is
+usually the retry that fixes it, and the next run is green once a web
+deploy has gone live. (A deploy cancelled by hand in Render's dashboard
+reads as `canceled` too, so the run after it goes red once; that is the
+price of not missing a real cancel.) If Render cannot be asked for the
+check, the summary says so and the run is not turned red for it; the lag
+check needs only git and still runs.
 
 Needs the RENDER_API_KEY secret and the two service IDs (plain env in the
 workflow). Until the key is set the train deploys nothing and fails the run,
@@ -115,6 +139,10 @@ DONE = {
 # DEPLOY STOPS THE TRAIN"). Asking Render is retried this many times,
 # POLL_SECONDS apart, before the run gives up and goes red.
 BUSY_CHECK_ATTEMPTS = 5
+# A finished web deploy in one of these failed (see "WHY THE TRAIN CHECKS").
+FAILED = DONE - {"live", "deactivated"}
+# How long a deployable commit may wait on main before the run goes red.
+DEFAULT_MAX_WEB_LAG_HOURS = 6.0
 
 
 def sh(*args: str) -> str:
@@ -286,15 +314,112 @@ def wait_for(service_id: str, deploy_id: str, sha: str, api_key: str) -> str:
     return "timeout"
 
 
+def failed_web_deploy(service_id: str, api_key: str) -> str | None:
+    """One line naming the newest FINISHED deploy on a service if it failed,
+    or None (it went live, or nothing has finished). Raises if Render's answer
+    is not a list, so a garbled answer is never read as "fine"."""
+    items = render_get(f"/services/{service_id}/deploys?limit=20", api_key)
+    if not isinstance(items, list):
+        raise TypeError(f"unexpected deploy list from Render: {str(items)[:200]}")
+    for item in items:  # newest first
+        d = item.get("deploy", item) if isinstance(item, dict) else None
+        status = d.get("status") if isinstance(d, dict) else None
+        if status not in DONE:
+            continue  # still running (or junk): look at the one before it
+        if status not in FAILED:
+            return None
+        sha = str((d.get("commit") or {}).get("id") or "?")
+        when = d.get("finishedAt") or d.get("updatedAt") or d.get("createdAt")
+        return (
+            f"last {ANCHOR} deploy `{d.get('id') or '?'}` of `{sha[:8]}`"
+            f" ended **{status}**" + (f" at {when}" if when else "")
+        )
+    return None
+
+
+def commit_exists(sha: str) -> bool:
+    return not subprocess.run(
+        ["git", "cat-file", "-e", f"{sha}^{{commit}}"],
+        check=False,
+        capture_output=True,
+    ).returncode
+
+
+def pending_since(last: str, target: str) -> tuple[str, int] | None:
+    """(sha, commit time) of the oldest first-parent commit in last..target
+    that touches a deployable file of any train service, or None."""
+    globs = service_globs(sh("git", "show", f"{target}:render.yaml"))
+    log = sh(
+        "git",
+        "log",
+        "--first-parent",
+        "--reverse",
+        "--format=%H %ct",
+        f"{last}..{target}",
+    )
+    for line in log.splitlines():
+        sha, ct = line.split()
+        files = sh("git", "diff", "--name-only", f"{sha}^", sha).splitlines()
+        if any(
+            deployable(p, paths, ignored)
+            for p in files
+            for paths, ignored in globs.values()
+        ):
+            return sha, int(ct)
+    return None
+
+
+def max_web_lag_hours() -> float:
+    raw = os.environ.get("MAX_WEB_LAG_HOURS", "").strip()
+    try:
+        hours = float(raw) if raw else DEFAULT_MAX_WEB_LAG_HOURS
+    except ValueError:
+        hours = DEFAULT_MAX_WEB_LAG_HOURS
+    return hours if hours > 0 else DEFAULT_MAX_WEB_LAG_HOURS
+
+
+def web_lag(target: str, last: str | None, max_hours: float, now: float) -> str | None:
+    """One line if the live web commit lags TARGET by more than max_hours."""
+    if last is None or not commit_exists(last) or is_ancestor(target, last):
+        return None  # unknown, or production already holds the target
+    pending = pending_since(last, target)
+    if pending is None:
+        return None
+    sha, since = pending
+    hours = (now - since) / 3600
+    if hours <= max_hours:
+        return None
+    return (
+        f"live {ANCHOR} `{last[:8]}` lags main's green `{target[:8]}`:"
+        f" deployable `{sha[:8]}` has waited **{hours:.1f}h**"
+        f" (limit {max_hours:g}h)"
+    )
+
+
+def web_health(
+    target: str, last: str | None, web_id: str, api_key: str
+) -> tuple[list[str], list[str]]:
+    """(problems that turn the run red, notes). Read-only."""
+    problems, notes = [], []
+    if web_id and api_key:
+        try:
+            if hit := failed_web_deploy(web_id, api_key):
+                problems.append(hit)
+        except Exception as e:  # noqa: BLE001 — HTTPError / URLError / bad JSON
+            notes.append(f"Could not check the last {ANCHOR} deploy on Render ({e}).")
+    try:
+        if hit := web_lag(target, last, max_web_lag_hours(), time.time()):
+            problems.append(hit)
+    except Exception as e:  # noqa: BLE001 — a check must never stop the deploy
+        notes.append(f"Could not measure the {ANCHOR} lag ({e}).")
+    return problems, notes
+
+
 def why_deploy(target: str, last: str | None) -> tuple[str | None, str]:
     """(reason to deploy or None, a note for the summary)."""
     if last is None:
         return "no recorded deploy to compare against", ""
-    if subprocess.run(
-        ["git", "cat-file", "-e", f"{last}^{{commit}}"],
-        check=False,
-        capture_output=True,
-    ).returncode:
+    if not commit_exists(last):
         return f"last deploy {last[:8]} is not on main any more", ""
     if is_ancestor(target, last):
         return None, "Production already holds the target."
@@ -318,9 +443,19 @@ def main() -> int:
         )
         return 0
     last = last_deployed(ANCHOR)
-    summary = [
+    api_key = os.environ.get("RENDER_API_KEY", "").strip()
+    ids = {svc: os.environ.get(var, "").strip() for svc, var in SERVICE_ID_VARS.items()}
+
+    # Is production healthy? Red if not, but deploy all the same (see "WHY THE
+    # TRAIN CHECKS THE LAST WEB DEPLOY").
+    problems, health_notes = web_health(target, last, ids[ANCHOR], api_key)
+    summary = [f"**RED: {p}.**" for p in problems]
+    for p in problems:
+        print(f"::error title=Deploy train::{p}", flush=True)
+    summary.append(
         f"target `{target[:8]}` · last {ANCHOR} deploy `{(last or 'unknown')[:8]}`"
-    ]
+    )
+    summary.extend(health_notes)
 
     reason, note = why_deploy(target, last)
     # Force redeploys the target, but never moves production BACK: an older
@@ -335,12 +470,10 @@ def main() -> int:
     if note:
         summary.append(note)
 
-    api_key = os.environ.get("RENDER_API_KEY", "").strip()
-    ids = {svc: os.environ.get(var, "").strip() for svc, var in SERVICE_ID_VARS.items()}
     missing = [var for svc, var in SERVICE_ID_VARS.items() if not ids[svc]]
     if not api_key:
         missing.insert(0, "RENDER_API_KEY")
-    failed = False
+    failed = bool(problems)
     busy = None
     if reason and not missing:
         # Never overlap a deploy that is still running (see "WHY A RUNNING
