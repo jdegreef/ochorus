@@ -32434,6 +32434,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"pt/after-his-heart": {
+			"ground": "d7824a783a7d17d9a1049cdb535e1c52e80e9e1a7ac060cee944af461fa12168",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[124, 314, 476, 390],
+					[121, 385, 479, 461]
+				],
+				"subtitle": [
+					[96, 481, 504, 509]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
+		},
 		"pt/all-of-grace": {
 			"ground": "21179941fa311850e8b8cf29e4c28f959cb0b3c05ff869161d44a551d263ea4e",
 			"style": "revival",
