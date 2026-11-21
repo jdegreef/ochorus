@@ -27162,6 +27162,40 @@
 				380
 			]
 		},
+		"ko/life-experience-gospel-labours": {
+			"ground": "53cf12e6fe7804a2f83e3826fdff72960e1e2efb48b69259c8b937ffcedf70fc",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "korean",
+			"fonts": "d8cb0c3f6a59026fd2097c999d1736bacfd88570553c4254d24419b10bc188ec",
+			"art": true,
+			"scrim": 0.7,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[159, 102, 441, 131]
+				],
+				"title": [
+					[134, 270, 466, 349],
+					[124, 350, 476, 429]
+				],
+				"subtitle": [
+					[183, 497, 417, 525]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				270,
+				525
+			]
+		},
 		"ko/lord-teach-us-to-pray-2": {
 			"ground": "783e47b80ee6d44ef7b21b23a53a88817e53b4cf7e33200e88a71fa8ab397ca7",
 			"style": "devotional",
