@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "hudson-taylor"
+  ],
+  "slug": "a-retrospect-teens",
+  "language": "vi",
+  "title": "Hồi Tưởng (Cho thiếu niên)",
+  "subtitle": "",
+  "description": "Hudson Taylor từng là một thiếu niên thật sự hay nghi ngờ, sợ hãi và lo lắng chuyện tiền bạc — rồi đặt cược cả cuộc đời mình vào một Đức Chúa Trời mà cậu quyết định sẽ thật sự đem ra thử. Ấn bản dành cho thiếu niên này kể lại câu chuyện có thật đằng sau Hội Truyền Giáo Nội Địa Trung Hoa: đồng tiền cuối cùng được cho đi, vết kim đâm chết người, cơn bão sát ghềnh đá, một đêm bị trộm rình trên bậc thềm đền, và một lời cầu nguyện viết bên lề cuốn Kinh Thánh.",
+  "hook": "Một thiếu niên hay nghi ngờ và lo lắng chuyện tiền bạc đã quyết định thật sự thử Đức Chúa Trời. Kết quả là Trung Hoa.",
+  "qa": [
+   {
+    "question": "Hudson Taylor là ai?",
+    "answer": "Ông là một chàng trai người Anh, vào thập niên 1850, đã từ bỏ một sự nghiệp bình thường để mang tin lành về Chúa Giê-xu vào nội địa Trung Hoa, tin cậy Đức Chúa Trời cung ứng mọi điều ông cần. Về sau ông sáng lập Hội Truyền Giáo Nội Địa Trung Hoa."
+   },
+   {
+    "question": "“Công việc đã hoàn tất của Đấng Christ” nghĩa là gì?",
+    "answer": "Nghĩa là sự chết của Chúa Giê-xu đã trả trọn món nợ tội lỗi, nên chẳng còn gì để bạn phải tự giành lấy hay thêm vào. Taylor được cải đạo ngay khoảnh khắc cậu hiểu rằng mình chỉ cần đón nhận, chứ không phải đạt được."
+   },
+   {
+    "question": "Vì sao Taylor cứ cố ý để mình hết tiền?",
+    "answer": "Trước khi lên đường đến một đất nước nơi ông chẳng có ai để nhờ cậy ngoài Đức Chúa Trời, ông muốn biết đức tin của mình có thật sự làm thay đổi được sự việc chỉ bằng sự cầu nguyện hay không. Ông tập tin cậy Đức Chúa Trời trong những nhu cầu nhỏ để có thể tin cậy Ngài trong những nhu cầu lớn."
+   },
+   {
+    "question": "Điều gì đã xảy ra vào cái đêm ông cho đi đồng nửa crown cuối cùng?",
+    "answer": "Ông trao đồng tiền duy nhất của mình cho một gia đình đang đói, chẳng giữ lại gì cho mình. Sáng hôm sau, một phong bì không đề tên gửi đến, bên trong có mười shilling — gấp bốn lần số ông đã cho đi."
+   },
+   {
+    "question": "Taylor có bao giờ thật sự sợ hãi không?",
+    "answer": "Có — sợ chết đuối trong cơn bão sát ghềnh đá xứ Wales, sợ chết vì ngón tay bị nhiễm trùng, và sợ bị cướp khi một mình trên bậc thềm đền lúc nửa đêm. Ông thành thật rằng đức tin của chính ông thường thất bại, nhưng Đức Chúa Trời vẫn luôn thành tín."
+   },
+   {
+    "question": "Lời cầu nguyện ông viết bên lề cuốn Kinh Thánh là gì?",
+    "answer": "Trên một bãi biển ở Brighton năm 1865, ông cầu xin Đức Chúa Trời ban hai mươi bốn bạn đồng lao cho nội địa Trung Hoa và viết lời cầu xin ấy bên lề cuốn Kinh Thánh ông mang theo. Lời cầu nguyện đó trở thành khởi đầu của Hội Truyền Giáo Nội Địa Trung Hoa."
+   },
+   {
+    "question": "Vì sao ông mặc trang phục Trung Hoa?",
+    "answer": "Ông muốn người ta lắng nghe sứ điệp thay vì bị phân tâm bởi một người ngoại quốc, nên ông từ bỏ sự thoải mái và lòng kiêu hãnh của mình, ăn mặc như những người ông phục vụ. Người bạn của ông là William Burns ấn tượng trước sự khác biệt ấy đến mức cũng làm theo."
+   },
+   {
+    "question": "Một thiếu niên ngày nay có thể học được gì từ câu chuyện của Taylor?",
+    "answer": "Rằng có thể thử và tin cậy Đức Chúa Trời trong những nhu cầu thật, cụ thể — tiền bạc, nỗi sợ, hướng đi — và rằng vâng lời Ngài thường phải trả giá trước khi chứng tỏ là xứng đáng. Taylor khởi đầu là một thiếu niên hay nghi ngờ, chứ không phải một vị thánh hoàn hảo."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại của Ochorus dành cho bạn đọc nhỏ tuổi, dựa trên tác phẩm Hồi Tưởng (A Retrospect) của Hudson Taylor, thuộc phạm vi công cộng. Lời kể là của chúng tôi, được tự do đọc và chia sẻ. Các câu Kinh Thánh được trích từ bản Open Word Bible (OWB) tiếng Việt, ấn bản Balanced (CC0).",
+  "cover_url": "/covers/art/a-retrospect-teens.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 26,
+  "is_published": true,
+  "created_at": "2026-11-21T00:00:00Z",
+  "updated_at": "2026-11-21T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-teens",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Đã Hoàn Tất",
+  "body_html": "<blockquote>“Khi Đức Giê-xu đã nhận rượu chua, Ngài nói: ‘Đã hoàn tất.’ Rồi Ngài cúi đầu và trao thần linh mình.” — Giăng 19:30</blockquote> <p>Trước khi Hudson Taylor tin bất cứ điều gì, cậu đã nghi ngờ gần như mọi thứ. Cậu lớn lên trong một gia đình Cơ Đốc, thấy cha mẹ cầu nguyện, nghe đọc Kinh Thánh — vậy mà lòng cậu vẫn lạnh tanh. Đã hơn một lần cậu cố tự biến mình thành Cơ Đốc nhân bằng sức riêng, lần nào cũng thất bại, rồi lặng lẽ kết luận rằng sự cứu rỗi đơn giản là không dành cho người như mình. Thế là cậu đi tìm lối thoát. Cậu kết thân với những người mang tư tưởng hoài nghi, vô tín, và hăm hở theo họ, vì nếu Kinh Thánh không thật thì tương lai mà Kinh Thánh cảnh báo cũng chẳng thật.</p> <p>Nhưng ngay cả khi còn là người hoài nghi, Taylor vẫn trung thực, và sự trung thực ấy đáng để bạn học theo. Cậu nhận ra rằng lý lẽ phản bác Cơ Đốc giáo mạnh nhất lại đến từ chính các Cơ Đốc nhân — những người nói mình tin Kinh Thánh mà sống y hệt như thể Kinh Thánh chỉ là chuyện bịa. Và cậu lập một lời hứa riêng: nếu có ngày cậu nói mình tin cuốn sách này, cậu sẽ thật sự đem nó ra thử. Cậu sẽ sống theo nó, và nếu nó làm cậu thất vọng, cậu sẽ vứt bỏ nó hoàn toàn. Hãy nhớ điều đó. Cậu mang tinh thần dám thử Đức Chúa Trời ấy theo suốt phần đời còn lại.</p> <p>Bước ngoặt đến vào một buổi chiều bình thường, khi cậu chừng mười lăm tuổi. Mẹ đi vắng, cậu chẳng có gì làm, nên rút đại một cuốn sách nhỏ về Phúc Âm trong giỏ ra đọc cho qua thời gian. Cậu định chỉ đọc câu chuyện hấp dẫn ở đầu sách và bỏ qua bài giảng ở cuối. Nhưng có một cụm từ níu cậu lại: <em>công việc đã hoàn tất của Đấng Christ.</em> Tại sao lại là <em>hoàn tất</em>, cậu thắc mắc? Và lời của Chúa Giê-xu trên thập tự giá chợt hiện lên trong trí cậu — “Đã hoàn tất.” Nếu toàn bộ món nợ tội lỗi đã được một Người khác trả xong, trả đủ, thì Hudson còn phải làm gì nữa? Không gì cả. Không gì ngoài việc quỳ xuống và đón nhận.</p> <p>Thế là xong. Một mình trong nhà kho yên tĩnh, cậu dâng đời mình cho Chúa Giê-xu — không phải vì cuối cùng cậu đã đủ tốt, nhưng vì cậu thấy mình chưa bao giờ cần phải đủ tốt.</p> <p>Đây là lý do điều này quan trọng với bạn, nhất là nếu bạn thuộc kiểu hay nghi ngờ. Taylor không bị ai tranh luận cho đến khi tin, cũng không bị dọa cho sợ mà tin. Cậu bị choáng ngợp bởi một ý tưởng: công việc quan trọng nhất trong vũ trụ đã được <em>làm xong</em>, và do một Người khác làm, chứ không phải cậu. Phần lớn người ta dành cả đời cố gắng giành lấy cảm giác “ổn” — ổn với cha mẹ, ổn với bạn bè, ổn với chính mình, ổn với Đức Chúa Trời. Lời “Đã hoàn tất” cắt thẳng qua tất cả những điều đó. Chúa Giê-xu không nói “Mới bắt đầu thôi” hay “Giờ đến lượt con.” Ngài nói đã hoàn tất. Bạn không thể thêm gì vào một khoản đã thanh toán xong. Bạn chỉ đón nhận nó.</p> <p>Và hãy để ý điều này: những nghi ngờ của bạn không loại bạn ra. Sự hoài nghi của Taylor không cần phải bị đập tan trước thì Đức Chúa Trời mới chạm đến cậu được. Thật ra, chính việc cậu không chịu giả vờ tin lại là điều giữ cho cậu đủ trung thực để chân lý nắm lấy cậu khi nó đến. Đức Chúa Trời không sợ những câu hỏi hóc búa của bạn. Điều duy nhất ngăn Ngài ở ngoài là sự giả vờ — hoặc giả vờ tin khi bạn không tin, hoặc giả vờ mình ổn khi bạn không ổn.</p> <p><strong>Một việc để làm hôm nay:</strong> thôi cố gắng giành lấy điều đã được trả giá xong rồi. Hãy dành năm phút ở một mình, và thay vì hứa với Đức Chúa Trời rằng bạn sẽ cố gắng hơn, hãy nói thật với Ngài bạn đang thật sự ở đâu — những nghi ngờ thật, tình trạng thật của bạn — rồi nói rõ ràng rằng bạn đón nhận công việc đã hoàn tất của Đấng Christ như một món quà, chứ không phải tiền công. Hãy thử xem. Taylor đã thử, và cả đời ông chưa bao giờ đi đến tận cùng của nó.</p>",
+  "study_questions": [
+   {
+    "question": "Cụm từ nào trong cuốn sách nhỏ về Phúc Âm đã níu Hudson lại, và nó dẫn cậu đến nhận thức gì?",
+    "answer": "“Công việc đã hoàn tất của Đấng Christ.” Nhớ lại lời Chúa Giê-xu “Đã hoàn tất,” cậu nhận ra rằng nếu toàn bộ món nợ đã được một Người khác trả, thì cậu chẳng còn gì phải làm ngoài việc đón nhận."
+   },
+   {
+    "question": "Khi còn hoài nghi, Taylor đã lập lời hứa riêng nào, và vì sao chương này nói điều đó quan trọng?",
+    "answer": "Nếu có ngày cậu nói mình tin Kinh Thánh, cậu sẽ thật sự sống theo và thử nó. Sự trung thực ấy, cùng việc không chịu giả vờ tin, đã giữ cậu đủ cởi mở để chân lý nắm lấy cậu."
+   },
+   {
+    "question": "Bạn đang cố gắng giành lấy cảm giác “ổn” với người khác, với chính mình hay với Đức Chúa Trời ở chỗ nào?",
+    "answer": "Điều chương này muốn nói: lời “Đã hoàn tất” cắt thẳng qua điều đó. Bạn không thêm gì vào một khoản đã thanh toán xong; bạn đón nhận nó. Nghi ngờ không loại bạn ra; chỉ sự giả vờ mới ngăn Đức Chúa Trời ở ngoài. Hãy thành thật với Ngài về chỗ bạn đang đứng."
+   }
+  ],
+  "word_count": 811
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-teens",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Căn Phòng Khóa Cửa",
+  "body_html": "<blockquote>“Đức Giê-xu kể cho họ một ngụ ngôn để dạy rằng họ phải cầu nguyện luôn và đừng nản lòng.” — Lu-ca 18:1</blockquote> <p>Đúng vào buổi chiều Hudson Taylor ngồi đọc cuốn sách nhỏ ấy, mẹ cậu đang ở cách xa bảy, tám mươi dặm, và bà không thể thôi nghĩ về cậu. Bà rời bữa trưa với điều mà về sau bà gọi là một niềm khao khát mãnh liệt mong con trai mình được cải đạo, và bà nhận ra rằng việc đi xa nhà, không việc vặt, không ai làm phiền, đã cho bà một khoảng thời gian rảnh hiếm có. Thế là bà vào phòng, vặn khóa cửa, và tự hứa: bà sẽ không rời chỗ ấy cho đến khi Đức Chúa Trời trả lời.</p> <p>Hết giờ này đến giờ khác, bà cầu nguyện cho con. Rồi một điều lạ xảy ra. Đến một lúc, bà thấy mình không thể tiếp tục cầu xin nữa — thay vào đó, bà được thôi thúc bắt đầu cảm tạ Đức Chúa Trời, vì bằng cách nào đó bà chắc chắn rằng việc ấy đã xong. Con trai bà đã được cải đạo. Bà không biết vì sao mình biết; bà chỉ ngợi khen Đức Chúa Trời về điều đó rồi đứng dậy.</p> <p>Hai tuần sau, khi bà về nhà, Hudson chạy ra tận cửa đón mẹ, nóng lòng muốn kể tin vui. Chưa kịp nói ra, bà đã ôm lấy cậu và nói: “Mẹ biết rồi, con trai. Mẹ đã vui mừng suốt hai tuần nay về tin lành con sắp kể cho mẹ đây.” Cậu sững sờ — cậu chỉ kể với em gái, và đã bắt em hứa giữ kín. Mẹ cậu quả quyết rằng bà không nghe điều đó từ bất kỳ người nào cả, rồi kể cho cậu về căn phòng khóa cửa.</p> <p>Còn nữa. Một thời gian sau, Hudson cầm lên một cuốn sổ tay nhỏ mà cậu tưởng là của mình, mở ra, và thấy đó là nhật ký của em gái cậu, Amelia. Một dòng khiến cậu khựng lại: cô bé đã quyết tâm cầu nguyện cho anh trai được cải đạo mỗi ngày cho đến khi Đức Chúa Trời trả lời. Cậu tính ngày. Đúng một tháng trước buổi chiều cậu quỳ xuống trong nhà kho.</p> <p>Giờ thì hãy cẩn thận khi đọc chuyện này. Ý chính không phải là mẹ Taylor đã ép được Đức Chúa Trời phải làm theo bằng cách ngồi lì trong phòng, như thể cầu nguyện là một cái máy, cứ bỏ đủ số giờ vào đầu này thì kết quả sẽ rơi ra ở đầu kia. Nếu bạn từng cầu nguyện thiết tha cho ai đó mà chẳng thấy gì thay đổi, bạn biết nó không vận hành như vậy, và giả vờ ngược lại chỉ làm bạn tan nát lòng. Câu chuyện này cho thấy một điều lặng lẽ hơn và bền bỉ hơn: hai con người cứ tiếp tục cầu nguyện cho một người cụ thể, qua nhiều tuần nhiều tháng, không hề thấy dấu hiệu nào cho thấy điều đó có tác dụng — và không bỏ cuộc.</p> <p>Đó chính là điều lời Chúa Giê-xu trong sách Lu-ca muốn nói. Ngài không bảo “hãy cầu nguyện cho đến khi con thấy muốn dừng.” Ngài nói hãy cầu nguyện “và đừng nản lòng.” Cám dỗ thật ra hiếm khi là bỏ hẳn việc cầu nguyện; mà là lặng lẽ kết luận rằng nó vô ích rồi trôi dạt đi. Mẹ Taylor không chịu trôi dạt. Em gái ông viết điều đó ra và giữ mình làm theo mỗi ngày. Không ai trong hai người nhìn thấy nhà kho, cuốn sách nhỏ, hay cụm từ sẽ làm cậu gục ngã. Họ chỉ cứ tiếp tục cầu xin.</p> <p>Nếu bạn là Cơ Đốc nhân, gần như chắc chắn có một cái tên thuộc về bạn giống như tên Hudson thuộc về mẹ cậu — một người bạn, anh chị em, hay cha mẹ chẳng muốn dính dáng gì đến Đức Chúa Trời. Bạn không thể tranh luận để kéo họ vào vương quốc, bạn không thể tạo ra khoảnh khắc chân lý chạm đến họ, và thường thì bạn sẽ chẳng nhận được chút phản hồi nào. Điều bạn có thể làm là không chịu nản lòng.</p> <p><strong>Một việc để làm tuần này:</strong> hãy chọn một người bạn mong mỏi được thấy đến với Đức Chúa Trời, và viết tên họ ở chỗ bạn thật sự nhìn thấy — mặt sau cuốn sổ, một ghi chú trên điện thoại. Rồi cam kết cầu nguyện cho họ, gọi đích danh, mỗi ngày một lần trong một khoảng thời gian định sẵn, dù có chuyện gì xảy ra hay không. Taylor là bằng chứng sống rằng người được cầu nguyện cho thường chẳng hề biết điều đó đang diễn ra.</p>",
+  "study_questions": [
+   {
+    "question": "Mẹ của Hudson và em gái cậu là Amelia mỗi người đã làm gì cho cậu?",
+    "answer": "Mẹ cậu khóa cửa phòng và cầu nguyện hàng giờ cho đến khi được thôi thúc cảm tạ Đức Chúa Trời. Amelia viết trong nhật ký rằng cô sẽ cầu nguyện mỗi ngày cho anh được cải đạo cho đến khi Đức Chúa Trời trả lời."
+   },
+   {
+    "question": "Vì sao chương này cảnh báo đừng hiểu chuyện này như thể cầu nguyện là “một cái máy”?",
+    "answer": "Hàng giờ cầu nguyện không ép được Đức Chúa Trời. Bài học thật là hai con người cứ cầu nguyện cho một người qua nhiều tuần nhiều tháng mà không thấy dấu hiệu nào, và không nản lòng."
+   },
+   {
+    "question": "Có ai mà bạn đã lặng lẽ thôi cầu nguyện cho vì thấy nó vô ích không?",
+    "answer": "Chương này gợi ý viết tên một người ở chỗ bạn sẽ nhìn thấy và cầu nguyện cho họ, gọi đích danh, mỗi ngày trong một thời gian định sẵn, dù có vẻ chẳng có gì xảy ra. Người được cầu nguyện cho thường không hề biết."
+   }
+  ],
+  "word_count": 814
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-teens",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Đồng Nửa Crown Cuối Cùng",
+  "body_html": "<blockquote>“Ai tử tế với người nghèo là cho CHÚA vay mượn, và Ngài sẽ đền đáp cho việc họ đã làm.” — Châm Ngôn 19:17</blockquote> <p>Hudson Taylor đang học để làm bác sĩ ở Hull, và đồng thời, một cách có chủ ý, cậu cũng đang luyện tập đức tin. Cậu đã quyết định rằng trước khi lên tàu sang Trung Hoa — nơi cậu sẽ chẳng có ai trên đời để xin tiền — cậu cần học cách chỉ nương cậy một mình Đức Chúa Trời. Thế là cậu sống gần như không có gì, cho đi nhiều nhất có thể, và cố tin cậy Đức Chúa Trời cho phần còn lại.</p> <p>Một tối thứ Bảy, cuộc thử nghiệm ấy trở nên thật sự nghiêm túc. Sau khi thanh toán hết các khoản, cậu chỉ còn đúng một đồng xu — một đồng nửa crown — và chẳng còn gì khác trên đời. Cậu chưa lo lắng gì; Chúa Nhật là một ngày vui với việc giảng đạo ở những nhà trọ nghèo nhất thành phố. Nhưng khuya hôm đó, gần mười giờ, một người đàn ông nghèo xin cậu đến cầu nguyện cho người vợ đang hấp hối. Trên đường đi, Taylor hỏi sao ông không mời linh mục. Ông đã mời rồi; linh mục đòi mười tám xu mới chịu đến, mà cả nhà thì đang đói.</p> <p>Và đó là lúc vấn đề lộ ra. Taylor có đúng một đồng, và đó là đồng nửa crown — hai shilling sáu xu — không thể đổi lẻ. Leo lên những bậc thang bẩn thỉu, cậu gặp một cảnh khiến lòng cậu quặn thắt: những đứa trẻ đói lả, má hóp lại, và một người mẹ nằm trên chiếc giường tồi tàn với đứa bé mới chào đời được một ngày rưỡi, yếu đến mức khóc cũng không nổi. Taylor bắt đầu nói với họ về một Người Cha nhân từ và yêu thương ở trên trời — và một tiếng nói bên trong cậu vang lên: <em>Đồ đạo đức giả. Mày bảo những người này tin cậy một Người Cha mà chính mày không chịu tin cậy, vì mày đang nắm chặt đồng nửa crown.</em></p> <p>Nhiều năm sau, ông hoàn toàn thành thật về điều thật sự đang diễn ra lúc ấy. “Tôi có thể tin cậy Đức Chúa Trời cộng thêm một shilling sáu xu,” ông viết, “nhưng tôi chưa sẵn sàng tin cậy chỉ một mình Ngài.” Nếu có tiền lẻ — một đồng florin và một đồng sáu xu — hẳn cậu đã vui vẻ cho một phần và giữ lại phần kia. Chính việc cho đi <em>tất cả</em> là điều cậu không dám đối diện. Rồi người cha nói: “Nếu cậu có thể giúp chúng tôi, vì Chúa, xin hãy giúp.” Và một câu Kinh Thánh lóe lên trong trí cậu: Ai xin gì, hãy cho. Cậu rút đồng xu ra, trao cho họ, và nói rằng khi cho đồng này, cậu đang cho họ tất cả những gì mình có — và điều cậu vừa nói là thật: Đức Chúa Trời thật sự là một Người Cha, và có thể tin cậy được. Ngay lập tức, niềm vui ùa trở lại.</p> <p>Cậu đi bộ về nhà với bữa tối là bát cháo loãng, vừa đi vừa hát trên những con phố vắng, túi nhẹ tênh như lòng cậu. Sáng hôm sau, trước khi ăn xong bát cháo, bưu phẩm đến — điều hiếm thấy vào sáng thứ Hai. Bên trong một tờ giấy trắng, gói trong một đôi găng tay, là nửa đồng sovereign: mười shilling. Gấp bốn lần số tiền cậu đã cho đi, trở về chỉ sau mười hai giờ.</p> <p>Đừng hiểu lầm đây là một công thức: cứ dâng tiền cho Đức Chúa Trời là Ngài sẽ trả lại kèm lãi, bảo đảm, trước bữa sáng. Đó không phải là bài học, và đối xử với Đức Chúa Trời như một ứng dụng đầu tư sẽ phá nát đức tin của bạn ngay lần đầu tiên phong bì không đến. Thay vào đó, hãy nhìn vào điều Taylor thật sự đang chiến đấu. Trong đầu cậu có một con số chính xác — một shilling sáu xu — đánh dấu ranh giới của lòng tin cậy. Đến sát vạch đó, cậu sẽ vâng lời. Vượt qua nó, cậu muốn có một khoản dự phòng. Và cậu nhìn thấy, rõ ràng đến đau lòng, rằng “Đức Chúa Trời cộng một phương án dự phòng” chẳng hề thật sự là tin cậy Đức Chúa Trời.</p> <p>Bạn cũng có vạch ranh giới đó. Đó là số tiền, sự thoải mái, hay quyền kiểm soát mà bạn sẵn sàng liều vì Đức Chúa Trời — cho đến đúng điểm nó không còn thấy an toàn nữa. Toàn bộ đời sống Cơ Đốc diễn ra ở phía bên kia vạch ấy.</p> <p><strong>Một việc để làm tuần này:</strong> hãy tìm “một shilling sáu xu” của bạn — điều cụ thể bạn chỉ chịu cho, chia sẻ hay liều nếu được giữ lại một khoản dự phòng — và hãy cho vượt qua nó, một lần, có chủ ý. Không liều lĩnh, nhưng thật lòng. Bạn không thể khám phá ra Đức Chúa Trời đáng tin cậy chừng nào bạn vẫn còn nắm chặt một phương án dự phòng.</p>",
+  "study_questions": [
+   {
+    "question": "Đồng nửa crown cuối cùng của Taylor đã đi đâu, và sáng hôm sau điều gì đến?",
+    "answer": "Cậu đã cho nó một gia đình đang đói có đứa bé mới sinh. Sáng hôm sau, bưu phẩm mang đến nửa đồng sovereign gói trong một đôi găng tay, gấp bốn lần số cậu đã cho."
+   },
+   {
+    "question": "Taylor muốn nói gì qua câu “Tôi có thể tin cậy Đức Chúa Trời cộng thêm một shilling sáu xu”?",
+    "answer": "Cậu sẵn sàng vâng lời đến một mức nhất định nhưng muốn có khoản dự phòng. Cậu nhận ra rằng “Đức Chúa Trời cộng một phương án dự phòng” chẳng hề thật sự là tin cậy Đức Chúa Trời."
+   },
+   {
+    "question": "“Một shilling sáu xu” của riêng bạn là gì, điểm mà việc tin cậy Đức Chúa Trời không còn thấy an toàn?",
+    "answer": "Chương này cảnh báo đây không phải công thức để được trả lại. Lời thách thức của nó là: hãy tìm điều bạn chỉ chịu cho hay liều nếu giữ được khoản dự phòng, rồi cho vượt qua nó một lần, có chủ ý, không liều lĩnh nhưng thật lòng."
+   }
+  ],
+  "word_count": 892
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-teens",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Khoản Lương Không Ai Nhắc",
+  "body_html": "<blockquote>“Và Đức Chúa Trời của tôi sẽ đáp ứng mọi nhu cầu của anh chị em, tương xứng với sự giàu có vinh quang của Ngài trong Đức Giê-xu Christ.” — Phi-líp 4:19</blockquote> <p>Taylor cứ tự đặt cho mình những bài thử có chủ ý, và có một bài nghe gần như bướng bỉnh. Ông chủ của cậu, một bác sĩ tốt bụng và bận rộn, đã dặn Taylor cứ nhắc ông mỗi khi đến kỳ trả lương. Thế là hợp lý. Nhưng Taylor quyết định sẽ không nhắc. Thay vào đó cậu sẽ cầu nguyện — xin Đức Chúa Trời khiến ông bác sĩ tự nhớ ra. Lý lẽ của cậu rất thẳng thắn: “Khi sang Trung Hoa, tôi sẽ chẳng có quyền đòi hỏi ai bất cứ điều gì; quyền duy nhất của tôi là nơi Đức Chúa Trời. Vì thế, điều hết sức quan trọng là trước khi rời nước Anh, tôi phải học cách tác động đến con người, qua Đức Chúa Trời, chỉ bằng sự cầu nguyện.”</p> <p>Thế là đến kỳ lương, Taylor chẳng nói gì, và cầu nguyện. Ngày này qua ngày khác. Ông bác sĩ quên mất. Rồi Taylor chỉ còn lại đồng nửa crown nổi tiếng kia, và sau khi mười shilling đến, cậu lại gần như cạn sạch — trong khi còn nợ tiền nhà bà chủ trọ, một phụ nữ Cơ Đốc nghèo đang trông vào khoản ấy. Giờ đây bài thử đã kéo theo cả một người thứ hai. Cậu có nên lên tiếng vì bà không? Cậu dành gần hai ngày trọn vẹn vật lộn trong cầu nguyện, và theo những gì cậu cảm nhận được, câu trả lời là: hãy chờ.</p> <p>Một chiều thứ Bảy muộn, ông bác sĩ, đang thư giãn sau giờ làm, bỗng nói: “À này, Taylor, chẳng phải lại đến kỳ lương của cậu rồi sao?” Tim Taylor nhảy lên — Đức Chúa Trời đã làm rồi, đã nhắc ông mà Taylor chẳng hề gợi ý chút nào. Cậu giữ giọng bình tĩnh và nói vâng, đã quá hạn rồi. Và rồi ông bác sĩ nói điều tệ nhất có thể: “Ôi, tôi xin lỗi quá — ngay chiều nay tôi vừa gửi hết tiền vào ngân hàng. Giá mà tôi nhớ ra sớm hơn.” Niềm nhẹ nhõm sụp đổ. Taylor phải chộp lấy một cái nồi đang sôi làm cớ để vội chạy ra khỏi phòng trước khi nét mặt để lộ ra tất cả.</p> <p>Tối đó cậu về nhà tay trắng, vẫn tin cậy, mong rằng đến thứ Hai Đức Chúa Trời sẽ ra tay. Nhưng khoảng mười giờ, ông bác sĩ bước vào phòng khám, vừa đi vừa cười một mình. Một trong những bệnh nhân giàu nhất của ông vừa ghé đến — lúc hơn mười giờ đêm — để trả tiền khám bệnh bằng tiền mặt. Ai lại làm thế? Ông ta có thể gửi ngân phiếu bất cứ ngày nào; vậy mà ông lại cảm thấy không thể yên lòng cho đến khi đến tận nơi vào cái giờ vô lý ấy để thanh toán. Ông bác sĩ bỏ xấp tiền vào túi, rồi quay lại nói: “À này, Taylor, cậu cầm luôn mấy tờ này đi; tôi không có tiền lẻ, nhưng tuần sau tôi sẽ đưa phần còn lại.”</p> <p>Đây là phần dễ bị lướt qua: Đức Chúa Trời không trả lời theo cách Taylor mong đợi. Cậu mong ông bác sĩ nhớ ra và trả lương — và ông quả có nhớ ra, nhưng không trả được. Nếu Taylor chỉ chăm chăm vào một giải pháp duy nhất cậu tưởng tượng, hẳn tối thứ Bảy ấy cậu đã đi ngủ với niềm tin chắc rằng Đức Chúa Trời đã bỏ rơi mình. Lời nhắc và khoản tiền đến qua hai con người hoàn toàn khác nhau, vào hai thời điểm khác nhau, theo một trình tự chẳng có nghĩa lý gì cho đến khi mọi chuyện kết thúc.</p> <p>Bạn sẽ làm điều này hoài. Bạn sẽ cầu nguyện cho một điều gì đó và, chẳng hề để ý, quyết định sẵn Đức Chúa Trời được phép trả lời chính xác ra sao — người này xin lỗi, cơ hội kia mở ra, tiền đến từ chỗ này. Và khi kịch bản cụ thể của bạn không diễn ra, bạn cảm thấy như bị từ chối. Ngày thứ Bảy của Taylor là lời cảnh báo về điều đó. Nhu cầu là thật, câu trả lời đang đến, và nó trông như thất bại cho đến tận giờ chót.</p> <p>Đức Chúa Trời hứa sẽ đáp ứng nhu cầu của bạn. Ngài không hứa sẽ đáp ứng qua đúng cánh cửa bạn đang dán mắt vào.</p> <p><strong>Một việc để làm:</strong> hãy lấy một điều bạn đang cầu nguyện, và để ý — thật lòng — kết quả chính xác mà bạn đã ngầm quyết định là mới tính là Đức Chúa Trời trả lời. Hãy viết nó ra. Rồi chủ động cho phép Ngài trả lời theo một cách khác, và bắt đầu để mắt đến những cánh cửa bạn <em>không</em> hề nhìn tới. Sự giúp đỡ dành cho Taylor bước vào lúc mười giờ đêm, từ một hướng cậu chưa bao giờ nghĩ đến.</p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Taylor không chịu nhắc ông bác sĩ về khoản lương?",
+    "answer": "Ở Trung Hoa, cậu sẽ chẳng có quyền đòi hỏi ai ngoài Đức Chúa Trời, nên cậu muốn học trước cách “tác động đến con người, qua Đức Chúa Trời, chỉ bằng sự cầu nguyện.”"
+   },
+   {
+    "question": "Vì sao chương này nói ngày thứ Bảy ấy suýt nữa trông như Đức Chúa Trời đã thất bại?",
+    "answer": "Ông bác sĩ nhớ ra nhưng vừa gửi hết tiền vào ngân hàng. Rồi khoản tiền đến qua một bệnh nhân giàu lúc mười giờ đêm. Đức Chúa Trời đã trả lời, nhưng không theo cách Taylor mong đợi."
+   },
+   {
+    "question": "Khi cầu nguyện, bạn có ngầm quyết định Đức Chúa Trời được phép trả lời ra sao không?",
+    "answer": "Điều chương này muốn nói: Đức Chúa Trời hứa đáp ứng nhu cầu của bạn, chứ không hứa đáp ứng qua đúng cánh cửa bạn đang dán mắt vào. Hãy thử viết ra kết quả bạn mong đợi, rồi cho phép Ngài trả lời theo cách khác."
+   }
+  ],
+  "word_count": 878
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-teens",
+   "vi"
+  ],
+  "order": 5,
+  "title": "“Cậu Là Người Chết Rồi”",
+  "body_html": "<blockquote>“Tôi sẽ không chết đâu; tôi sẽ sống và kể lại những việc CHÚA đã làm.” — Thi-thiên 118:17</blockquote> <p>Taylor đã chuyển đến London để hoàn tất việc học y khoa, sống bằng bánh mì đen, nước lã và vài quả táo, mỗi ngày đi bộ tám, chín dặm để tiết kiệm tiền. Một buổi tối, khi đang khâu mấy tờ giấy lại với nhau để ghi bài giảng, cậu bị kim đâm vào ngón trỏ bàn tay phải. Chẳng có gì to tát. Chỉ một lát sau cậu đã quên mất.</p> <p>Hôm sau ở bệnh viện, cậu mổ xẻ một thi thể — và không phải một thi thể bình thường. Người này chết vì một cơn sốt nguy hiểm đến mức ai làm việc với thi thể cũng hết sức cẩn thận, vì biết rằng một vết xước nhỏ nhất cũng có thể gây chết người. Chưa hết buổi sáng, Taylor đã thấy mệt lả lạ thường, rồi buồn nôn dữ dội, rồi không cầm nổi bút chì. Đến chiều, cả cánh tay và bên sườn phải của cậu đau dữ dội. Cậu kể các triệu chứng cho người hướng dẫn mổ xẻ, một bác sĩ phẫu thuật giỏi, và ông hiểu ngay: Taylor có vết đứt tay, và đây là một ca sốt ác tính. Taylor khăng khăng mình không có vết đứt nào — rồi chợt nhớ đến vết kim đâm tối hôm trước. Vị bác sĩ khám tay cậu, đồng ý rằng gần như chắc chắn chất độc đã vào qua đó, và nói thẳng với cậu rằng hãy gọi xe ngựa về nhà và thu xếp mọi việc cho xong. “Vì,” ông nói, “cậu là người chết rồi.”</p> <p>Phản ứng đầu tiên của Taylor là đau buồn — không phải sợ chết, mà là buồn vì mình sẽ không bao giờ đến được Trung Hoa. Rồi gần như ngay lập tức, một niềm tin chắc chắn lắng xuống: <em>Trừ khi tôi lầm to, tôi còn có việc phải làm ở Trung Hoa, và tôi sẽ không chết.</em> Cậu còn nói thẳng điều đó với vị bác sĩ đầy hoài nghi, và nhân lúc ấy nói với ông về niềm vui được có thể sắp ở với Chủ mình. Vị bác sĩ chỉ bảo cậu mau về nhà trước khi không còn đủ sức thu xếp mọi việc.</p> <p>Taylor không có tiền thuê xe ngựa. Ngày càng yếu đi, cậu đi bộ và đi xe buýt ngựa được đến đâu hay đến đó, về đến nhà trong đau đớn tột cùng, tự rạch ngón tay để cố cho chất độc thoát ra, rồi ngất đi. Một người chú cho mời bác sĩ phẫu thuật đến, và ông nói Taylor có thể qua khỏi chỉ vì cậu đã sống quá đạm bạc — hóa ra bánh mì và nước lã lại là sự chuẩn bị tốt nhất. Ông kê rượu vang port và thịt sườn mà Taylor chẳng có tiền mua; người chú lặng lẽ trả tiền. Nhiều tuần đau đớn tiếp theo. Rồi Taylor được biết hai người khác bị thương khi mổ xẻ cùng thời điểm đều đã chết. Còn cậu thì sống.</p> <p>Hãy cẩn thận với điều bạn rút ra từ chuyện này. Taylor không hề tuyên bố một phép lạ gạt y học sang một bên — cậu rạch vết thương, chịu điều trị, và về sau viết rằng đức tin không bao giờ được khiến chúng ta coi thường những phương tiện Đức Chúa Trời ban cho. Điều cậu có là một niềm tin chắc về <em>mục đích</em> đời mình, giữ cho cậu vững vàng khi một chuyên gia bảo rằng cậu đã hết đường. Cậu tin rằng Đức Chúa Trời vẫn còn muốn cậu làm một việc gì đó, và niềm tin ấy không làm cậu liều lĩnh; nó làm cậu bình tĩnh.</p> <p>Bạn sẽ gặp những khoảnh khắc — có thể không phải bản án tử, nhưng là một lần bị từ chối, một chẩn đoán, một thất bại, một giai đoạn mà mọi thứ bạn đang xây dựng dường như sụp đổ — khi thông điệp bạn nhận được, về cơ bản, là “bạn tiêu rồi.” Câu trả lời của Taylor không phải là chối bỏ hiểm nguy. Cậu xử lý vết thương nghiêm túc. Câu trả lời của cậu là đời cậu thuộc về Đức Chúa Trời, và chừng nào mục đích của Ngài cho đời ấy chưa hoàn tất, nó sẽ không bị cắt ngắn dù chỉ một khoảnh khắc. Điều đó không giống với việc cho rằng sẽ chẳng có điều gì xấu xảy đến với bạn. Đó là không chịu để một ngày tồi tệ có tiếng nói sau cùng về cuộc đời bạn.</p> <p><strong>Một việc để làm khi ai đó bảo bạn đã tiêu rồi:</strong> hãy tách riêng hai câu hỏi mà bạn thường trộn lẫn — “điều này có nguy hiểm không?” và “đây có phải là dấu chấm hết của tôi không?” Hãy xem trọng hiểm nguy và hành động, như Taylor rạch vết thương. Nhưng đừng giao phán quyết về tương lai mình cho một phút hoảng loạn. Đời bạn chưa kết thúc cho đến khi Đức Chúa Trời, Đấng làm chủ nó, phán rằng công việc đã xong.</p>",
+  "study_questions": [
+   {
+    "question": "Taylor đã lâm bệnh nguy hiểm thế nào, và vị bác sĩ phẫu thuật đã nói gì với cậu?",
+    "answer": "Một vết kim đâm ở ngón tay đã để chất độc lọt vào khi cậu mổ xẻ thi thể một người chết vì sốt. Vị bác sĩ bảo cậu về nhà thu xếp mọi việc: “cậu là người chết rồi.”"
+   },
+   {
+    "question": "Taylor đã kết hợp đức tin và y học thế nào trong lúc bệnh?",
+    "answer": "Cậu tin chắc mình còn việc phải làm ở Trung Hoa và sẽ không chết, nhưng vẫn rạch vết thương và chịu điều trị. Đức tin làm cậu bình tĩnh, chứ không liều lĩnh."
+   },
+   {
+    "question": "Khi có điều gì khiến bạn cảm thấy mình “tiêu rồi,” làm sao bạn phân biệt hiểm nguy với thất bại?",
+    "answer": "Chương này gợi ý tách “điều này có nguy hiểm không?” khỏi “đây có phải dấu chấm hết của tôi không?” Hãy xem trọng hiểm nguy và hành động, nhưng đừng để một phút hoảng loạn quyết định tương lai bạn; đời bạn thuộc về Đức Chúa Trời."
+   }
+  ],
+  "word_count": 879
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-teens",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Chỉ Cách Một Tầm Ném Đá",
+  "body_html": "<blockquote>“Ngài biến trận cuồng phong thành làn gió nhẹ, và sóng quanh họ lặng im.” — Thi-thiên 107:29</blockquote> <p>Ngày 19 tháng 9 năm 1853, cuối cùng Taylor cũng lên đường sang Trung Hoa trên con tàu <em>Dumfries</em>. Mẹ cậu đã đến tiễn, tự tay vuốt phẳng chiếc giường nhỏ trong cabin, cầu nguyện với cậu lần cuối, rồi lên bờ. Khi con tàu đi qua cửa âu tàu và cuộc chia ly thật sự bắt đầu, Taylor nghe thấy một tiếng kêu đau đớn bật ra từ lòng bà. Về sau cậu nói rằng mình chưa bao giờ hiểu “tình yêu của Đức Chúa Trời đối với thế gian” cho đến khoảnh khắc ấy — khi nhìn thấy cái giá của tình yêu lúc bạn buông tay một người vì cớ những người khác.</p> <p>Chuyến đi suýt kết thúc gần như trước khi kịp bắt đầu. Tàu vừa rời cảng thì một trận bão dữ dội ập đến, và suốt mười hai ngày họ bị quăng qua quật lại trong biển Ireland, không thể ra được biển khơi. Cơn bão cứ mạnh dần. Đến tối Chúa Nhật, con tàu bị đẩy thẳng về phía những ghềnh đá của vịnh Carnarvon, mỗi lần chuyển hướng lại tiến gần hơn, cho đến khi họ chỉ còn cách bờ một tầm ném đá. Vị thuyền trưởng, một Cơ Đốc nhân, quay sang người giáo sĩ trẻ và nói ra điều ai cũng đang nghĩ: “Giờ chúng ta không sống nổi nửa tiếng nữa đâu. Thế còn sự kêu gọi đi làm việc cho Chúa ở Trung Hoa của cậu thì sao?”</p> <p>Đó là một câu hỏi tàn nhẫn — cả đức tin, cả tương lai của bạn, bị đem ra thử trước một bức tường đá trong bóng tối. Và câu trả lời của Taylor không phải là sự can đảm phô trương. Cậu nói dù thế nào cậu cũng không muốn ở vào bất kỳ hoàn cảnh nào khác; rằng cậu vẫn mong sẽ đến được Trung Hoa, nhưng nếu không, ít ra Chủ cũng sẽ nói rằng thật tốt khi cậu đã chết trong lúc cố gắng vâng lời. Vài phút sau, khi con tàu đã được xoay hướng, thuyền trưởng quay lại chỗ la bàn và nói: “Gió đã chuyển thuận hai khấc la bàn; chúng ta có thể chạy vát ra khỏi vịnh.” Và họ đã làm được. Con tàu bị căng nứt và hư hại, nhưng nó sống sót.</p> <p>Giờ đây là phần thật thà, khó chịu mà Taylor nhất quyết kể ra — và đó là lý do chương này không chỉ là một câu chuyện phiêu lưu. Trước chuyến đi, để mẹ vui lòng, cậu đã mua một chiếc phao bơi đeo người. Nhưng cậu đã tự thuyết phục mình bằng một ý nghĩ kỳ lạ: rằng cậu không thể thật sự tin cậy Đức Chúa Trời khi còn sở hữu một dụng cụ cứu sinh. Vì thế vào đêm khủng khiếp ấy, khi mọi hy vọng dường như đã tắt, cậu đem chiếc phao cho người khác — rồi, lạ thay, lại gom vài món đồ nhẹ có thể nổi được, mà chẳng nhận ra mình đang mâu thuẫn. Về sau, khi nghiên cứu Kinh Thánh kỹ lưỡng, cậu kết luận rằng toàn bộ chuyện đó là một sai lầm. Đức tin thật không có nghĩa là vứt bỏ sự giúp đỡ Đức Chúa Trời ban cho. Nhiều năm sau đó, ông vẫn mang theo phao bơi mà chẳng chút băn khoăn.</p> <p>Hãy đọc lại đoạn đó, vì rất nhiều Cơ Đốc nhân trẻ chân thành hiểu sai hoàn toàn điều này. Taylor từng nghĩ thuộc linh nghĩa là từ chối những phương tiện an toàn bình thường — như thể tin cậy Đức Chúa Trời và dùng phao cứu sinh là hai đối thủ. Không phải vậy. Dùng những phương tiện Đức Chúa Trời ban không phải là thiếu đức tin; bỏ mặc chúng cũng không phải là bằng chứng của đức tin. Chính Đức Chúa Trời làm yên cơn bão cũng là Đức Chúa Trời đã nghĩ ra chiếc phao bơi.</p> <p>Bạn sẽ gặp một phiên bản của chuyện này. Nó xuất hiện dưới dạng ý nghĩ rằng “thật sự tin cậy Đức Chúa Trời” nghĩa là không ôn thi, không đi khám bác sĩ, không lập kế hoạch — chỉ cầu nguyện rồi để đó. Đó không phải đức tin; đó là một thứ mê tín khoác áo đức tin, rồi đổ lỗi cho Đức Chúa Trời khi nó thất bại. Taylor đã học được sự khác biệt ấy một cách khó khăn, trong bóng tối, ngoài những ghềnh đá. Hãy tin cậy Đức Chúa Trời trọn vẹn <em>và</em> dùng mọi thứ Ngài đã đặt trong tay bạn. Hai điều ấy chưa bao giờ là kẻ thù của nhau.</p> <p><strong>Một việc để làm:</strong> hãy tìm chỗ mà bạn đang coi đức tin và nỗ lực là hai điều đối nghịch — môn học bạn đang “phó thác cho Chúa” thay vì chuẩn bị, vấn đề bạn đang cầu nguyện thay vì hành động — và tuần này hãy làm cả hai cùng lúc. Cầu nguyện thật thiết tha, và cầm lấy chiếc phao bơi. Cuối cùng Taylor đã thấy rằng chưa bao giờ có xung đột nào cả.</p>",
+  "study_questions": [
+   {
+    "question": "Taylor đã nói gì với thuyền trưởng khi con tàu chỉ còn cách ghềnh đá một tầm ném đá?",
+    "answer": "Rằng cậu không muốn ở bất cứ nơi nào khác; cậu vẫn mong đến được Trung Hoa, và nếu không, Chủ sẽ nói rằng thật tốt khi cậu chết trong lúc cố gắng vâng lời."
+   },
+   {
+    "question": "Về sau Taylor kết luận gì về việc đem chiếc phao bơi cho đi?",
+    "answer": "Rằng đó là một sai lầm. Đức tin thật không có nghĩa là vứt bỏ sự giúp đỡ Đức Chúa Trời ban cho; tin cậy Đức Chúa Trời và dùng phao cứu sinh không phải là hai đối thủ."
+   },
+   {
+    "question": "Có lĩnh vực nào mà bạn đang coi cầu nguyện và chuẩn bị là hai điều đối nghịch không?",
+    "answer": "Điều chương này muốn nói: hãy tin cậy Đức Chúa Trời trọn vẹn và dùng mọi thứ Ngài đặt trong tay bạn. Tuần này, hãy cầu nguyện thiết tha và cũng hành động, dù là ôn bài hay lập kế hoạch. “Cầm lấy chiếc phao bơi.”"
+   }
+  ],
+  "word_count": 887
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-teens",
+   "vi"
+  ],
+  "order": 7,
+  "title": "Cầu Xin Một Ngọn Gió",
+  "body_html": "<blockquote>“Thật vậy, Ta cũng nói với các con: nếu ở dưới đất này có hai người trong các con đồng lòng cầu xin bất cứ điều gì, thì Cha Ta ở trên trời sẽ làm điều ấy cho họ.” — Ma-thi-ơ 18:19</blockquote> <p>Cũng chính chuyến hải trình dài suýt kết thúc trên ghềnh đá ấy lại suýt kết thúc thêm một lần nữa — lần này không phải vì quá nhiều gió, mà vì chẳng có chút gió nào. Khi tàu <em>Dumfries</em> đến gần bờ biển phía bắc New Guinea, gió tắt hẳn và một dòng hải lưu mạnh nắm quyền, kéo con tàu đều đặn về phía một dãy rạn san hô ngầm. Thủy thủ hạ xuồng lớn xuống và chèo hết sức, cố kéo mũi tàu quay lại. Vô ích. Họ trôi gần hơn. Trên bờ, Taylor thấy người ta chạy qua chạy lại trên bãi cát, nhóm lửa — và sách hướng dẫn của thuyền trưởng cảnh báo rằng dân đảo ở đây ăn thịt người. Như Taylor nói một cách khô khan, chuyện đó “không ít đáng lo ngại.”</p> <p>Một lúc sau, thuyền trưởng và Taylor đứng lặng trên boong. Cuối cùng thuyền trưởng nói: “Thôi, chúng ta đã làm mọi điều có thể làm; giờ chỉ còn chờ kết quả.” Và Taylor đáp: “Không, còn một điều chúng ta chưa làm.” “Điều gì?” “Trên tàu có bốn người chúng ta là Cơ Đốc nhân. Mỗi người hãy về cabin của mình và cùng đồng lòng cầu xin một làn gió. Đức Chúa Trời có thể ban gió ngay bây giờ dễ dàng như lúc hoàng hôn.”</p> <p>Thuyền trưởng đồng ý. Taylor tìm hai tín hữu kia — người thợ mộc Thụy Điển và người quản lý trên tàu — và cả bốn người đi cầu nguyện. Taylor vừa mới bắt đầu thì đã cảm thấy chắc chắn rằng lời cầu xin được nhậm đến nỗi cậu không thể tiếp tục cầu xin nữa, và cậu đi thẳng lên boong. Viên sĩ quan thứ nhất, một người cứng rắn, chẳng kính sợ Đức Chúa Trời, đang trực. Taylor nhờ anh ta hạ các góc của cánh buồm chính xuống, vốn đã được kéo lên để khỏi đập phần phật vô ích. “Làm thế thì được ích gì?” anh ta mỉa mai. Taylor nói họ đã cầu xin Đức Chúa Trời cho gió, gió sắp đến ngay, và rạn san hô quá gần để có thể phí dù chỉ một phút. Viên sĩ quan chửi thề rằng anh ta thà thấy gió còn hơn nghe nói về gió. Nhưng ngay khi anh ta nói, Taylor thấy mắt anh ta trôi dần lên — và kìa, trên đỉnh cột buồm, góc của cánh buồm cao nhất đã bắt đầu rung rinh. “Anh không thấy gió đang đến sao? Nhìn cánh buồm royal kìa!” Viên sĩ quan gạt đi, bảo đó chỉ là một làn gió thoảng. “Gió thoảng hay không,” Taylor hét lên, “cứ hạ buồm chính xuống để tận dụng nó!”</p> <p>Anh ta làm theo. Chỉ trong vài phút, làn gió căng đầy cánh buồm, con tàu rẽ nước với tốc độ sáu, bảy hải lý một giờ, và rạn san hô — cùng đám đông đang chờ trên bãi biển — lùi lại phía sau an toàn.</p> <p>Hãy để ý lời cầu nguyện này cụ thể đến mức nào. Không phải “Lạy Chúa, xin giữ chúng con an toàn” một cách chung chung, mà là “xin ban gió, ngay bây giờ, từ hướng này, trước khi đến rạn san hô kia.” Taylor đã xin đúng điều hoàn cảnh cần, và cậu xin cùng với người khác, trong sự đồng lòng, chính là điều Chúa Giê-xu chỉ ra trong Ma-thi-ơ 18. Có điều gì đó trong việc cùng các tín hữu khác cầu xin một điều cụ thể mà Đức Chúa Trời tôn trọng hết lần này đến lần khác trong Kinh Thánh.</p> <p>Rất nhiều lời cầu nguyện cố tình mơ hồ, và nếu thành thật, bạn biết vì sao: một lời cầu nguyện mơ hồ thì chẳng bao giờ rõ ràng là không được nhậm. “Xin ban phước cho mọi người, xin ở cùng con hôm nay” thì chẳng thể nào thất bại — nhưng nó cũng chẳng bao giờ thật sự thử nghiệm điều gì, và chẳng bao giờ làm đức tin bạn lớn lên, vì bạn không bao giờ chỉ ra được khoảnh khắc Đức Chúa Trời hành động. Taylor cầu những lời cầu nguyện có thể thành công thấy rõ hoặc thất bại thấy rõ, và chính vì thế, cả đời ông đã gom góp được bằng chứng rằng Đức Chúa Trời đáp lời.</p> <p>Điều đó cần can đảm. Một lời cầu nguyện cụ thể là một sự liều lĩnh. Nó đặt sự thành tín của Đức Chúa Trời ở chỗ bạn có thể thật sự nhìn thấy, nghĩa là nó cũng đặt nỗi thất vọng của bạn ở chỗ bạn có thể thật sự cảm nhận. Nhưng đó là kiểu cầu nguyện duy nhất từng dạy cho ai đó biết Đức Chúa Trời có thể làm gì.</p> <p><strong>Một việc để làm tuần này:</strong> hãy biến một lời cầu nguyện mơ hồ của bạn thành một lời cầu nguyện cụ thể, và nếu có thể, hãy nhờ một người bạn Cơ Đốc đồng lòng với bạn về điều đó. Không phải “xin giúp con việc học,” mà là chính điều thật sự — cuộc nói chuyện ấy, nhu cầu cụ thể ấy, nỗi sợ thật sự ấy. Rồi hãy quan sát. Taylor đã xây dựng cả một cuộc đời trên những lời cầu nguyện cụ thể đến mức có thể được nhậm ngay trước mắt nhiều người làm chứng.</p>",
+  "study_questions": [
+   {
+    "question": "Taylor đã đề nghị gì khi thuyền trưởng nói họ chỉ còn biết chờ kết quả?",
+    "answer": "Rằng bốn Cơ Đốc nhân trên tàu mỗi người hãy đi và cùng đồng lòng cầu xin một làn gió. Ít lâu sau, cánh buồm trên đỉnh bắt đầu rung và gió đến."
+   },
+   {
+    "question": "Vì sao chương này coi trọng những lời cầu nguyện cụ thể hơn những lời mơ hồ?",
+    "answer": "Lời cầu nguyện mơ hồ chẳng bao giờ thất bại rõ ràng, nhưng cũng chẳng thử nghiệm điều gì hay làm đức tin lớn lên. Lời cầu nguyện cụ thể có thể thành công hoặc thất bại thấy rõ, nên Taylor đã gom góp được bằng chứng rằng Đức Chúa Trời đáp lời."
+   },
+   {
+    "question": "Lời cầu nguyện mơ hồ nào của bạn có thể được làm cho cụ thể?",
+    "answer": "Chương này thừa nhận lời cầu nguyện cụ thể là một sự liều lĩnh. Nó gợi ý biến một lời cầu nguyện mơ hồ thành nhu cầu thật sự, nhờ một người bạn Cơ Đốc đồng lòng với bạn, rồi quan sát."
+   }
+  ],
+  "word_count": 956
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-teens",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Trở Nên Như Họ",
+  "body_html": "<blockquote>“Với những người yếu đuối, tôi trở nên yếu đuối, để chinh phục những người yếu đuối. Với mọi người, tôi đã trở nên mọi sự, để bằng cách này hay cách khác tôi có thể cứu được một số người.” — 1 Cô-rinh-tô 9:22</blockquote> <p>Khi mới đến Trung Hoa, Taylor làm điều mà gần như mọi người ngoại quốc đều làm: ông vẫn là người ngoại quốc. Ông mặc quần áo kiểu Anh, giữ kiểu tóc Anh, và trông đúng như con người thật của mình — một kẻ xa lạ đến từ bên kia trái đất. Và hậu quả thì chẳng lúc nào ngớt. Ở một số nơi, ông và các bạn đồng hành bị đuổi theo khắp phố với những tiếng la “quỷ ngoại quốc,” “chó ngoại quốc,” “lợn ngoại quốc.” Đi đến đâu, bộ quần áo cũng báo trước về ông trước khi ông kịp mở miệng, và người ta phản ứng với gã người Anh kỳ lạ thay vì lắng nghe điều ông đến để nói.</p> <p>Theo lời khuyên của một giáo sĩ lớn tuổi giàu kinh nghiệm, Taylor đưa ra một quyết định mà phần lớn đồng hương cho là mất thể diện, thậm chí đáng xấu hổ: ông mặc trang phục Trung Hoa. Ông khoác chiếc áo dài, và để tóc theo kiểu của những người xung quanh. Với một chàng trai người Anh đầy tự hào vào thập niên 1850, điều này giống như thật sự mất đi địa vị — cố tình làm cho mình trông giống những người mà kẻ khác vẫn khinh miệt.</p> <p>Nhưng kết quả thì không ai cãi được, và bằng chứng rõ ràng nhất đến qua người bạn của ông, William Burns, một nhà truyền đạo lớn tuổi hơn, giàu kinh nghiệm hơn, người mà Taylor hết lòng ngưỡng mộ. Hai người cùng đi đường và giảng đạo, Burns vẫn mặc đồ Anh, còn Taylor giờ mặc trang phục Trung Hoa. Và Burns không thể không nhận ra sự khác biệt. Taylor, trong trang phục bản xứ, thu hút những người nghe trầm lặng, chăm chú; ông được mời vào nhà người ta. Burns, trong bộ đồ ngoại quốc, kéo theo những đám trẻ con hỗn hào và kẻ hiếu kỳ, và lúc nào cũng được từ chối khéo, chẳng ai mời đi đâu, vì tiếp một người ngoại quốc đồng nghĩa với tiếp luôn cả đám đông bám theo ông. Sau vài tuần quan sát, Burns — người đàn anh — đã hạ mình mặc trang phục Trung Hoa, và thấy những cánh cửa ấy cũng mở ra cho mình.</p> <p>Hãy nghĩ xem Taylor thật sự đã từ bỏ điều gì ở đây. Chủ yếu không phải sự thoải mái — mà là lòng kiêu hãnh. Ông buông bỏ quyền được nhận ra, được kính trọng, được đối xử như vị khách quan trọng mà về danh nghĩa ông đúng là như vậy. Ông làm cho mình trông bình thường, thậm chí thấp kém, trước những người vốn đã coi thường dân tộc ông, để không điều gì nơi vẻ ngoài của ông cản trở điều duy nhất ông đến để trao cho họ. Ông quyết định rằng sứ điệp quan trọng hơn hình ảnh của mình.</p> <p>Bản năng ấy đi ngược hoàn toàn với mọi điều bạn được dạy để khao khát. Gần như mọi thông điệp nhắm đến bạn đều nói điều ngược lại: hãy nổi bật, xây dựng thương hiệu cá nhân, chăm chút vẻ ngoài, giữ gìn hình ảnh, bảo đảm người ta thấy bạn thú vị và khác biệt thế nào. Taylor cố tình làm điều ngược lại. Ông nhận ra rằng chính nét riêng của mình — điều khiến ông nổi bật — lại là thứ đứng chắn giữa người ta và Chúa Giê-xu, nên ông đặt nó xuống.</p> <p>Phao-lô cũng nói như vậy về chính mình: ông trở nên bất cứ điều gì cần thiết để chinh phục người ta, hy sinh sở thích và địa vị của mình “để bằng cách này hay cách khác tôi có thể cứu được một số người.” Đây không phải là chuyện giả tạo hay không có lập trường — niềm tin của Taylor chưa bao giờ lay chuyển chút nào. Đây là chuyện sẵn lòng kém ấn tượng hơn, ít được chú ý hơn, ít được chiều chuộng hơn, để một người khác thật sự nghe được bạn.</p> <p>Bạn sẽ cảm nhận điều này rõ nhất với những người khác biệt với bạn — một bạn mới chẳng ai nói chuyện cùng, một người đến từ hoàn cảnh khác, một người mà cả nhóm đã ngầm quyết định là thấp kém hơn mình. Yêu thương họ hầu như luôn khiến bạn mất đi chút vị thế. Bạn phải bước xuống khỏi thứ hạng của mình để gặp họ ở chỗ họ đang đứng, và người ta sẽ để ý bạn đã làm thế, và một số người sẽ coi thường bạn vì điều đó. Taylor nghĩ đó là một món hời.</p> <p><strong>Một việc để làm:</strong> hãy tìm người hay nhóm mà bạn đang giữ khoảng cách, một phần để bảo vệ hình ảnh của mình, và hãy rút ngắn khoảng cách ấy theo cách khiến bạn mất đi điều gì đó mà người khác nhìn thấy được — ngồi cùng họ, đứng về phía họ, để người ta thấy bạn ở bên họ. Taylor đã thay đổi cả vẻ ngoài của mình để không điều gì nơi <em>ông</em> ngăn cản người ta đến với Chúa Giê-xu. Hãy bắt đầu với một điều nhỏ hơn thế rất nhiều.</p>",
+  "study_questions": [
+   {
+    "question": "Điều gì đã xảy ra khi Taylor và William Burns giảng đạo trong hai kiểu trang phục khác nhau?",
+    "answer": "Taylor, trong trang phục Trung Hoa, thu hút những người nghe trầm lặng và được mời vào nhà; Burns thì kéo theo những đám đông hỗn hào. Sau vài tuần, Burns hạ mình mặc trang phục Trung Hoa."
+   },
+   {
+    "question": "Theo chương này, Taylor thật sự đã từ bỏ điều gì khi thay đổi trang phục?",
+    "answer": "Chủ yếu là lòng kiêu hãnh: quyền được nhận ra và được kính trọng. Ông quyết định sứ điệp quan trọng hơn hình ảnh của mình, trong khi niềm tin của ông không hề lay chuyển."
+   },
+   {
+    "question": "Bạn đang giữ khoảng cách với ai, một phần để bảo vệ hình ảnh của mình?",
+    "answer": "Điều chương này muốn nói: yêu thương những người khác biệt với bạn thường khiến bạn mất đi chút vị thế. Hãy rút ngắn khoảng cách theo cách người khác thấy được, như ngồi cùng họ hay để người ta thấy bạn ở bên họ."
+   }
+  ],
+  "word_count": 937
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-teens",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Những Bậc Thềm Đền Miếu",
+  "body_html": "<blockquote>“Đức Giê-xu bảo ông: ‘Chồn có hang, chim trời có tổ, nhưng Con Người không có chỗ để gối đầu.’” — Ma-thi-ơ 8:20</blockquote> <p>Taylor đang đi đường bộ đến thành Ninh Ba, mang theo gần như mọi thứ ông có ở Trung Hoa — đồng hồ, dụng cụ phẫu thuật, sách vở, chăn đệm — với một người đầy tớ thuê theo trông coi hành lý. Đi được nửa đường, hai người lạc nhau. Taylor đi trước, nghĩ rằng người đầy tớ sẽ theo sau cùng những phu khuân vác hành lý. Người đầy tớ không bao giờ đến. Ngày dần trôi, Taylor từ từ nhận ra sự thật: gã đã lấy hết đồ đạc của ông và biến mất về phía một thành khác. Taylor chỉ còn một mình, xa mọi người bạn, gần như không có tiền, và chẳng có gì ngoài bộ quần áo trên người.</p> <p>Màn đêm buông xuống ở thành Hải Ninh, và ông không tìm được chỗ ngủ. Ông thử hết quán trọ này đến quán trọ khác; có chỗ đuổi ông đi, có chỗ hứa cho ông một chiếc giường rồi, vì sợ một viên chức cứ bám theo ông, lại đẩy ông ra đường. Một thanh niên dẫn ông đi vòng vòng hàng giờ liền, có vẻ như để giúp, rồi bỏ mặc ông giữa một và hai giờ sáng để tự xoay xở. Kiệt sức, chân phồng rộp, lạnh cóng, Taylor thấy mình đứng trước một ngôi đền đã đóng cửa, nằm xuống những bậc thềm đá, và đặt chút tiền ít ỏi còn lại dưới đầu làm gối.</p> <p>Rồi mọi chuyện còn tệ hơn. Một bóng người rón rén tiến về phía ông trong bóng tối — một trong vô số kẻ ăn xin ở vùng ấy, rõ ràng định cướp của ông khi ông ngủ. Taylor không nhúc nhích. Ông quan sát, và cầu nguyện, và khi gã đưa tay ra lặng lẽ mò tìm túi tiền, Taylor cất giọng bình tĩnh, vừa đủ cho thấy ông hoàn toàn tỉnh táo: “Anh muốn gì?” Gã lẩn đi. Nhưng gã quay lại, lần này có một kẻ đồng bọn, rồi sau đó thêm kẻ thứ ba, tất cả ngồi xuống gần chân Taylor, rõ ràng đang chờ ông ngủ thiếp đi để lấy hết những gì ông có. Để giữ mình tỉnh — và để giữ chúng tránh xa — Taylor dành suốt phần còn lại của đêm để hát thánh ca, đọc to Kinh Thánh và cầu nguyện thành tiếng bằng tiếng Anh, điều làm bọn trộm bực bội đến mức cuối cùng chúng bỏ cuộc và rời đi ngay trước bình minh.</p> <p>Đây là điều khiến câu chuyện này không chỉ là một đêm đáng sợ. Trên đường đi sau đó, ngẫm nghĩ lại, Taylor sững sờ trước chính tấm lòng mình. Ông đã cuống cuồng vì mất vài món đồ — mà lại ít bận lòng hơn nhiều về đám đông quanh mình chưa biết Đấng Christ. Ông nghĩ đến Chúa Giê-xu, Đấng “bị mọi người khinh bỉ và xa lánh,” không có chỗ để gối đầu, mệt mỏi và đói khát bên bờ giếng, và ông đem tình yêu nhỏ bé của mình ra so sánh với điều đó. Ông ra về không cay đắng vì vụ trộm, mà xấu hổ vì những điều đời đời đã nắm giữ lòng ông ít ỏi biết bao so với hành lý của mình.</p> <p>Điều đó đáng để bạn dừng lại suy ngẫm, vì bản năng của bạn cũng chạy theo hướng như ông. Khi bạn mất một thứ gì đó — tiền bạc, điện thoại, vị thế, một mối quan hệ, một kế hoạch — nỗi hoảng loạn đến tức thì và trọn vẹn. Nó nuốt chửng mọi thứ. Còn những điều thật sự tồn tại đời đời, kể cả những người quanh bạn và mối quan hệ của họ với Đức Chúa Trời, thì hầu như chẳng được để ý so với nó. Taylor không tự trách mình vì cảm thấy mất mát; mất hết mọi thứ trên những bậc đá lạnh thật sự rất đau. Ông nhận ra <em>tỉ lệ</em> đã bị lệch: mất mát nhỏ thì ồn ào biết bao, còn mất mát khổng lồ thì lặng lẽ biết bao.</p> <p>Chúa Giê-xu không có chỗ để gối đầu — Ngài đã chọn như thế, vì bạn. Ngài đã từ bỏ nhiều hơn vô hạn so với một túi dụng cụ, và Ngài làm điều đó có chủ ý, vì những người phần lớn chẳng hề quan tâm. Khi điều đó thấm vào lòng, một chiếc va-li bị đánh cắp sẽ co lại gần đúng với kích thước thật của nó.</p> <p><strong>Một việc để làm lần tới khi bạn mất thứ gì đó:</strong> trước khi bạn rơi vào vòng xoáy, hãy thành thật gọi tên nỗi hoảng loạn mà mất mát ấy đang gây ra lớn đến đâu — rồi tự hỏi lần cuối bạn cảm thấy dù chỉ một phần nhỏ cường độ ấy về linh hồn của một ai đó, kể cả của chính bạn, là khi nào. Bạn không cố thôi quan tâm đến đồ đạc của mình. Bạn đang cố, như Taylor, đặt mọi thứ vào đúng tỉ lệ.</p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Taylor phải ngủ trên những bậc thềm đền, và ông đã vượt qua đêm ấy thế nào?",
+    "answer": "Người đầy tớ biến mất cùng toàn bộ đồ đạc của ông và không quán trọ nào chịu giữ ông lại. Ông thức suốt đêm hát thánh ca, đọc Kinh Thánh và cầu nguyện thành tiếng cho đến khi bọn trộm bỏ cuộc."
+   },
+   {
+    "question": "Sau đó Taylor đã nhận ra điều gì về tấm lòng mình?",
+    "answer": "Ông đã cuống cuồng vì mất đồ đạc nhưng lại ít bận lòng hơn nhiều về những người chưa biết Đấng Christ. Nghĩ đến Chúa Giê-xu, Đấng không có chỗ để gối đầu, ông thấy tỉ lệ của mình đã bị lệch."
+   },
+   {
+    "question": "Khi bạn mất một thứ gì đó, nỗi hoảng loạn của bạn so với sự quan tâm của bạn đến linh hồn người khác thì thế nào?",
+    "answer": "Chương này không bảo bạn thôi quan tâm đến đồ đạc. Nó mời bạn để ý mất mát nhỏ ồn ào biết bao còn những điều đời đời thì lặng lẽ biết bao, và đặt mọi thứ vào đúng tỉ lệ."
+   }
+  ],
+  "word_count": 877
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-teens",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Kẻ Đã Cướp Của Ông",
+  "body_html": "<blockquote>“Đừng để điều ác thắng bạn, nhưng hãy lấy điều thiện mà thắng điều ác.” — Rô-ma 12:21</blockquote> <p>Khi mọi chuyện lắng xuống, không còn nghi ngờ gì về điều đã xảy ra. Người đầy tớ mà Taylor tin cậy không chỉ đơn giản đi lạc — gã đã cố ý lấy cắp mọi thứ Taylor có ở Trung Hoa, trị giá khoảng bốn mươi bảng Anh, một số tiền khổng lồ với một người sống lần hồi qua ngày, rồi mang tất cả trốn sang một thành khác. Và Taylor phải đưa ra một quyết định. Truy cứu gã theo pháp luật chẳng có gì khó. Ông có thể báo quan để gã bị trừng phạt.</p> <p>Nhưng có hai điều ngăn ông lại. Điều thứ nhất mang tính thực tế và hơi chua chát: cho dù gã có bị bắt và bị trừng phạt, Taylor cũng khó lòng thấy lại đồ đạc của mình, nên việc kiện cáo phần lớn chỉ thỏa mãn mong muốn thấy kẻ trộm phải chịu khổ. Điều thứ hai quan trọng hơn nhiều. Kẻ trộm này là người mà chính Taylor đã dày công làm việc và cầu nguyện cho — một người ông mong được thấy đến với Đấng Christ. Và Taylor đã từng cùng chính người này đọc Bài Giảng Trên Núi, nơi Chúa Giê-xu phán “đừng chống trả người làm điều ác” và dạy các môn đồ đáp lại điều sai trái theo một cách mà thế gian thấy khó hiểu. Taylor quyết định rằng ông không thể giảng những lời ấy vào thứ Hai rồi phớt lờ chúng ngay khi chúng khiến ông phải trả giá.</p> <p>Vì vậy ông công khai đưa ra lựa chọn của mình: linh hồn của gã đáng giá hơn bốn mươi bảng hành lý. Thay vì một lệnh bắt, Taylor gửi cho kẻ trộm một lá thư. Trong thư, ông khuyên gã hãy suy nghĩ về điều mình đã làm, cảnh báo gã về tình trạng linh hồn mình, và tha thiết nài xin gã ăn năn và đặt đức tin nơi Chúa Giê-xu. Ông đáp lại vụ cướp bằng một lời kêu gọi Phúc Âm gửi cho kẻ cướp.</p> <p>Taylor không hề ghi lại rằng gã đã viết thư trả lời hay được cải đạo; ông thành thật về điều đó. Điều ông ghi lại là những gì đã xảy ra ở phía mình. Khi các bạn hữu Cơ Đốc ở Anh nghe ông đã phản ứng thế nào, một người cảm động đến mức gửi cho Taylor một tấm ngân phiếu bốn mươi bảng — đúng bằng giá trị số đồ bị lấy cắp. Và người ấy trở thành một người ủng hộ thường xuyên, khoản dâng đầu tiên trong rất nhiều khoản đến từ cùng một nguồn. Taylor cẩn thận không trình bày điều này như một cuộc trao đổi phần thưởng, như thể sự tha thứ chắc chắn sẽ hoàn lại những gì bạn mất. Ông chỉ ghi nhận rằng khi chọn linh hồn của người kia thay vì đòi bồi hoàn cho mình, rốt cuộc ông chẳng mất điều gì thật sự quan trọng.</p> <p>Giờ thì hãy thành thật xem điều này xa lạ đến mức nào. Mọi thứ trong bạn, khi ai đó thật sự đối xử sai với bạn — lấy cắp của bạn, nói dối về bạn, phản bội lòng tin — đều muốn họ phải trả giá. Không phải được giúp. Không phải được cầu nguyện cho. Mà là phải trả giá. Và văn hóa xung quanh sẽ ủng hộ bạn hết mình: họ đáng bị như thế, hãy đứng lên bảo vệ mình, đừng để ai chà đạp bạn. Taylor cảm nhận tất cả những điều đó. Ông nói rõ rằng việc khiến gã bị trừng phạt hẳn là dễ dàng. Ông chọn điều khó hơn không phải vì ông nhu nhược, mà vì ông thật lòng muốn cho người kia một điều tốt hơn công lý — ông muốn gã được cứu.</p> <p>Đó là điều Phao-lô muốn nói khi bảo đừng để điều ác thắng mình. Khi ai đó đối xử sai với bạn, tấm lòng bạn có hai kết cục có thể xảy ra: hoặc điều ác của họ biến bạn thành người cay đắng, thù hằn và chai cứng — khi ấy điều ác của họ đã thắng hai lần, một lần trên bạn và một lần <em>trong</em> bạn — hoặc bạn không cho phép điều đó, và bạn đáp lại bằng một điều thiện mà nó không thể làm hư hỏng. Taylor không để một kẻ trộm biến ông thành người quan tâm đến chuyện được bồi hoàn hơn là đến một con người đang hư mất.</p> <p>Bạn không cần giả vờ rằng điều sai trái ấy chưa từng xảy ra; Taylor chưa bao giờ giả vờ. Bạn không cần phải cảm thấy ấm áp với người đó. Bạn phải quyết định mình sẽ trở thành người như thế nào sau những gì họ đã làm.</p> <p><strong>Một việc để làm:</strong> hãy nghĩ đến một người đã thật sự đối xử sai với bạn và là người bạn đang lặng lẽ chờ thấy nhận lấy điều họ đáng phải chịu. Tuần này, hãy làm một việc tốt cụ thể cho họ — cầu nguyện cho họ, gọi đích danh, nói tốt về họ, hoặc chủ động liên lạc — được chọn chính vì nó không cho phép điều sai trái của họ nhào nặn bạn thành một con người chai cứng. Taylor đã gửi một lá thư đầy quan tâm cho kẻ đã cướp sạch của ông.</p>",
+  "study_questions": [
+   {
+    "question": "Taylor đã gửi gì cho người đầy tớ đã cướp của ông?",
+    "answer": "Không phải lệnh bắt mà là một lá thư, khuyên gã suy nghĩ về điều mình đã làm, ăn năn và tin cậy Chúa Giê-xu. Taylor không hề ghi lại một lời hồi âm nào."
+   },
+   {
+    "question": "Chương này muốn nói gì khi bảo điều ác thắng “hai lần”?",
+    "answer": "Nếu điều sai trái của ai đó biến bạn thành người cay đắng và thù hằn, điều ác của họ đã thắng một lần trên bạn và một lần trong bạn. Đáp lại bằng điều thiện là không cho phép nó nhào nặn bạn."
+   },
+   {
+    "question": "Có ai mà bạn đang lặng lẽ chờ thấy “nhận lấy điều họ đáng phải chịu” không?",
+    "answer": "Chương này không bảo bạn giả vờ điều sai trái chưa xảy ra hay phải cảm thấy ấm áp. Hãy quyết định bạn sẽ trở thành người thế nào, và làm một việc tốt cụ thể cho họ, như cầu nguyện cho họ, gọi đích danh."
+   }
+  ],
+  "word_count": 935
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-teens",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Còn Đúng Một Đồng Tiền",
+  "body_html": "<blockquote>“Ngay cả sư tử tơ cũng có lúc thiếu thốn và đói khát, nhưng những người tìm kiếm CHÚA sẽ chẳng bao giờ thiếu điều tốt lành nào.” — Thi-thiên 34:10</blockquote> <p>Đến lúc này Taylor đã định cư ở Ninh Ba và đã làm một việc khiến vấn đề tiền bạc càng trở nên gay gắt: ông rút khỏi hội truyền giáo trả lương cho mình, vì hội ấy đã lâm vào nợ nần, mà Taylor thì tin chắc từ Kinh Thánh rằng mình phải sống theo lời “đừng để mình còn mắc nợ ai.” Ông sẽ nương cậy trực tiếp nơi Đức Chúa Trời — không lương, không kêu gọi quyên góp, không vay mượn. Phía trên lò sưởi trong căn nhà ông ở chung với bạn đồng lao là ông Jones, treo hai bức thư pháp chữ Hán: <em>Ê-bên-Ê-xe</em> — “Đến nay CHÚA đã giúp đỡ chúng ta” — và <em>Giê-hô-va Di-rê</em> — “CHÚA Sẽ Lo Liệu.” Hai câu ấy sắp bị đem ra thử đến đồng tiền cuối cùng.</p> <p>Hai người còn nuôi ăn người nghèo — có khi mỗi ngày có tới bảy mươi người cùng khổ đến ăn sáng. Và tiền cạn. Cạn hoàn toàn đến mức ngày 6 tháng 1 năm 1858, cả hai chỉ còn đúng một đồng tiền đồng — một đồng xu trị giá chừng một phần hai mươi của một penny. Trong nhà chỉ còn đủ cho một bữa sáng đạm bạc, và sau đó thì chẳng còn gì: không thức ăn, cũng không có tiền để mua.</p> <p>Họ miễn cưỡng quyết định bán một món đồ. Thứ duy nhất người Trung Hoa sẵn lòng mua là chiếc lò sưởi bằng sắt của họ, dù họ chẳng muốn rời bỏ nó chút nào. Thế là họ đi bộ đến xưởng đúc. Để đến đó, họ phải qua sông bằng một cây cầu phao kết bằng thuyền — nhưng khi họ đến nơi, cây cầu đã không còn. Nó đã bị cuốn trôi trong đêm. Lối qua duy nhất giờ là đò ngang, mà đò thì lấy hai đồng mỗi người. Họ chỉ có một đồng. Con đường, theo đúng nghĩa đen, đã bị chặn. Chẳng còn cách nào khác ngoài quay về nhà, và chờ đợi Đức Chúa Trời.</p> <p>Về đến nhà, họ lục khắp tủ mà chẳng thấy thức ăn — chỉ có một gói ca cao nhỏ, họ pha với nước nóng và thấy khỏe lại phần nào. Ông Jones được mời đến dùng bữa ở nhà một người bạn hôm ấy, nhưng ông từ chối, không chịu đi để Taylor một mình chịu đói. Rồi hai người cùng quỳ xuống và cầu nguyện lời cầu nguyện giản dị nhất: Xin cho chúng con hôm nay đủ bánh ăn. Ngay khi họ còn đang quỳ, một lá thư từ Anh đến. Bên trong là một khoản tiền gửi — đủ không chỉ cho hôm ấy, mà cho cả những ngày sau. Hóa ra đám cưới của Taylor đã được định vào đúng mười bốn ngày sau đó. Đức Chúa Trời đã để mọi việc sát nút đến thế, và không hơn.</p> <p>Đừng biến chuyện này thành một lời hứa rằng Đức Chúa Trời luôn xuất hiện vào giây cuối cùng với tiền mặt. Chính Taylor đã thành thật đến từng chi tiết rằng đức tin của ông “thường, rất thường thất bại,” rằng khó khăn là thật, và cái đói hôm ấy là thật. Điều câu chuyện cho thấy không phải là theo Đức Chúa Trời thì an toàn về tài chính — rõ ràng là không — mà là Đức Chúa Trời đáng để nương cậy cho đến tận đồng tiền cuối cùng, và Ngài thường để bạn đi đến tận đó.</p> <p>Đó là phần người ta hay bỏ sót. Taylor không có một khoản dư thoải mái khiến việc tin cậy trở nên dễ dàng. Ông đi đến tận một đồng tiền, một cây cầu bị cuốn trôi, và một tách ca cao. Đức Chúa Trời không miễn cho ông sự trống rỗng; Ngài gặp ông ở tận đáy của nó. Và Taylor bước ra, nói rằng dù thế nào ông cũng không muốn bỏ lỡ thử thách ấy, vì nó dạy ông biết Đức Chúa Trời theo cách mà sự sung túc không bao giờ có thể dạy.</p> <p>Có lẽ bạn sẽ không bị dồn đến mức chỉ còn một phần hai mươi penny. Nhưng bạn sẽ chạm đến những giới hạn thật — về tiền bạc, về khả năng, về lựa chọn — khi bạn thật sự không thấy mọi chuyện sẽ ra sao, và mọi lối thoát đều là một cây cầu bị cuốn trôi. Bài học của tách ca cao không phải là Đức Chúa Trời cất bỏ những khoảnh khắc ấy. Mà là Ngài đáng tin cậy ngay ở bên trong chúng, và tận đáy thường chính là nơi cuối cùng bạn gặp được Ngài.</p> <p><strong>Một việc để làm khi bạn chạm phải bức tường không nhìn qua được:</strong> thay vì vội vàng tự tạo lối thoát hay lặng lẽ hoảng loạn, hãy gọi tên nhu cầu thật rõ ràng như Taylor đã làm — “Xin cho chúng con hôm nay đủ bánh ăn” — và đem nó đến cụ thể với Đức Chúa Trời trước khi đem nó đi bất cứ đâu khác. Ngài đã để hai người đàn ông trưởng thành bị dồn đến chỉ còn một đồng tiền và một gói ca cao, và Ngài đã không để họ ngã.</p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Taylor và ông Jones không bán được chiếc lò sưởi khi hết tiền?",
+    "answer": "Cây cầu phao kết bằng thuyền đã bị cuốn trôi trong đêm, và đò ngang lấy hai đồng mỗi người. Họ chỉ có một đồng, nên họ về nhà và cầu nguyện."
+   },
+   {
+    "question": "Vì sao chương này cảnh báo đừng coi chuyện này như một lời hứa có tiền vào giây cuối cùng?",
+    "answer": "Taylor thừa nhận đức tin của ông thường thất bại và cái đói là thật. Điều muốn nói là Đức Chúa Trời đáng nương cậy đến tận đồng tiền cuối cùng và thường để bạn đi đến tận đó, rồi gặp bạn ở tận đáy."
+   },
+   {
+    "question": "Khi chạm phải bức tường không nhìn qua được, bạn thường làm gì đầu tiên?",
+    "answer": "Chương này gợi ý hãy gọi tên nhu cầu thật rõ ràng, như “Xin cho chúng con hôm nay đủ bánh ăn,” và đem nó đến cụ thể với Đức Chúa Trời trước khi vội vàng tự tìm lối thoát hay hoảng loạn."
+   }
+  ],
+  "word_count": 922
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-teens",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Viết Bên Lề Trang Sách",
+  "body_html": "<blockquote>“Bấy giờ Ngài nói với các môn đồ: ‘Mùa gặt thật lớn, nhưng thợ gặt lại ít. Vậy các con hãy cầu xin Chủ mùa gặt, để Ngài sai thợ gặt đến mùa gặt của Ngài.’” — Ma-thi-ơ 9:37-38</blockquote> <p>Sức khỏe suy sụp cuối cùng buộc Taylor phải trở về Anh, và ông nghĩ đó là một tai họa. Công việc của ông ở Trung Hoa chưa bao giờ kết quả như thế; ra đi giống như bỏ rơi nó. Nhưng những năm ở nhà, ngày ngày nhìn tấm bản đồ Trung Hoa khổng lồ trên tường phòng làm việc, đã làm được điều mà những năm bận rộn ngoài cánh đồng truyền giáo không bao giờ làm được. Ở ngoài cánh đồng, ông chỉ thấy được vùng ngay quanh mình. Từ nước Anh, ông có thể thấy cả đất nước mênh mông — mười một tỉnh nội địa không có lấy một giáo sĩ, mỗi ngày hàng chục nghìn người chết đi mà chưa bao giờ nghe về Đấng Christ. Và điều đó bắt đầu đè nặng lên ông.</p> <p>Ông tin chắc rằng để đến được với nội địa Trung Hoa sẽ cần một kiểu hội truyền giáo hoàn toàn mới. Dần dần, ông cũng tin chắc rằng Đức Chúa Trời muốn chính <em>ông</em> dẫn dắt nó — cầu xin Đức Chúa Trời ban người làm việc rồi cùng đi với họ. Và suốt một thời gian dài, ông từ chối. Không phải vì ông nghi ngờ Đức Chúa Trời sẽ ban người hay ban tiền; ông chắc chắn về điều đó. Ông từ chối vì ông sợ. Nếu ông tuyển những Cơ Đốc nhân trẻ, thiếu kinh nghiệm và dẫn họ vào hiểm nguy và gian khổ thật sự, có thể một số người sẽ gục ngã — và đổ lỗi cho ông. Vì thế ông chẳng nói gì, và chẳng cầu xin ai cả.</p> <p>Nhưng chính sự từ chối lại là một nỗi thống khổ riêng. Ông diễn tả nó bằng những lời gay gắt: vì ông không chịu cầu xin, người làm việc không đến; vì người làm việc không đến, người ta cứ chết đi. Ông gọi cảm giác ấy là “mắc tội đổ huyết,” và nó lớn dần đến mức ông không ngủ được và sức khỏe lại suy sụp. Một người bạn mời ông đến Brighton nghỉ ngơi. Và vào Chúa Nhật, ngày 25 tháng 6 năm 1865, Taylor ngồi trong một nhà thờ giữa hơn một nghìn Cơ Đốc nhân sung sướng đang “vui mừng trong sự an toàn của chính mình,” và ông không chịu nổi. Ông bước ra ngoài, một mình, ra bãi biển, trong điều ông gọi là nỗi thống khổ thuộc linh tột cùng.</p> <p>Ở đó, trên bãi cát, ông đã đầu phục. Ông thưa với Đức Chúa Trời rằng toàn bộ trách nhiệm về những gì xảy ra — mọi hậu quả, mọi hiểm nguy cho từng người làm việc — sẽ đặt trên Đức Chúa Trời, chứ không phải trên ông; rằng phần việc của ông chỉ đơn giản là vâng lời và đi theo, còn phần việc của Đức Chúa Trời là dẫn dắt, chu cấp và bảo vệ. Và ngay khoảnh khắc ông dâng nó lên, sự bình an tràn ngập. Rồi ông làm một việc cụ thể. Ông cầu xin Đức Chúa Trời, một cách rõ ràng, hai mươi bốn bạn đồng lao: hai người cho mỗi tỉnh trong mười một tỉnh nội địa chưa được truyền giáo, và hai người cho Mông Cổ. Và ông lấy cuốn Kinh Thánh đang mang theo, viết lời cầu xin ấy bên lề trang sách. Một con số. Một ngày tháng. Bằng mực.</p> <p>Lời cầu nguyện trên bãi biển ấy đã trở thành Hội Truyền Giáo Nội Địa Trung Hoa. Chưa đầy một năm sau, ngày 26 tháng 5 năm 1866, Taylor lại lên đường sang Trung Hoa trên tàu <em>Lammermuir</em> cùng một đoàn giáo sĩ — khởi đầu của một công việc mà trong những thập niên sau đó sẽ đưa người làm việc đến khắp nội địa Trung Hoa, đúng như những dòng viết bằng bút chì bên lề trang sách ấy đã cầu xin.</p> <p>Hãy nhìn kỹ điều thật sự đã giải phóng ông, vì nó ngược hẳn với điều bạn sẽ đoán. Taylor không bị tê liệt vì đức tin yếu nơi <em>Đức Chúa Trời</em>; ông chắc chắn Đức Chúa Trời sẽ ban người và ban tiền. Ông bị tê liệt vì sợ bị <em>đổ lỗi</em> — sợ trách nhiệm đổ lên đầu mình nếu mọi việc hỏng bét. Điều phá vỡ sự tê liệt ấy là trao trả trách nhiệm cho Đức Chúa Trời: kết quả là của Ngài, không phải của con; con chỉ cần vâng lời. Chính điều đó đã cho ông viết một lời cầu xin cụ thể đến đáng sợ bên lề cuốn Kinh Thánh của mình.</p> <p>Bạn bị kìm hãm bởi chính điều ấy thường xuyên hơn bạn chịu thừa nhận. Thường không phải vì nghi ngờ Đức Chúa Trời có thể làm được điều gì, mà vì sợ hãi chuyện nó sẽ đổ lên đầu <em>bạn</em> ra sao nếu bạn bước ra và thất bại. Bãi biển của Taylor là câu trả lời: kết quả chưa bao giờ là thứ bạn phải gánh. Phần của bạn là vâng lời. Mọi thứ còn lại là phần của Ngài.</p> <p><strong>Một việc để làm:</strong> hãy bước bước mà bạn vẫn né tránh vì sợ nó sẽ ảnh hưởng đến hình ảnh của mình, và làm cho nó trở nên thật như Taylor đã làm — hãy viết nó ra. Một lời cầu xin cụ thể, một ngày tháng, ở chỗ bạn sẽ nhìn thấy. Rồi trao kết quả cho Đức Chúa Trời bằng chính lời nói: phần vâng lời là của con, phần kết quả là của Chúa. Đó chính là bước đi đã biến một người đàn ông sợ hãi, mang nặng mặc cảm tội lỗi trên bãi biển thành người sáng lập một hội truyền giáo.</p>",
+  "study_questions": [
+   {
+    "question": "Taylor đã cầu xin Đức Chúa Trời điều gì trên bãi biển Brighton, và điều đó dẫn đến đâu?",
+    "answer": "Hai mươi bốn người làm việc, hai người cho mỗi tỉnh trong mười một tỉnh nội địa chưa được truyền giáo và hai người cho Mông Cổ, được viết bên lề cuốn Kinh Thánh của ông. Điều đó đã trở thành Hội Truyền Giáo Nội Địa Trung Hoa."
+   },
+   {
+    "question": "Theo chương này, điều gì thật sự đã kìm hãm Taylor, và điều gì đã giải phóng ông?",
+    "answer": "Không phải đức tin yếu mà là nỗi sợ bị đổ lỗi nếu những người làm việc gục ngã. Ông được giải phóng khi trao trách nhiệm cho Đức Chúa Trời: phần của ông là vâng lời; phần của Đức Chúa Trời là dẫn dắt, chu cấp và bảo vệ."
+   },
+   {
+    "question": "Bạn đang né tránh bước nào vì sợ thất bại sẽ ảnh hưởng đến hình ảnh của mình?",
+    "answer": "Điều chương này muốn nói: kết quả chưa bao giờ là thứ bạn phải gánh. Hãy viết bước cụ thể ấy ra cùng một ngày tháng, và thưa với Đức Chúa Trời: “phần vâng lời là của con, phần kết quả là của Chúa.”"
+   }
+  ],
+  "word_count": 1011
+ }
+}
+]
