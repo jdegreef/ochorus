@@ -47933,6 +47933,40 @@
 				558
 			]
 		},
+		"vi/the-life-of-trust-teens": {
+			"ground": "069114cb16932306ce9e83e95b44608e3cf4f7a29649c32a92d85c68b9721565",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.45,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[155, 102, 445, 131]
+				],
+				"title": [
+					[149, 286, 451, 383],
+					[172, 370, 428, 467]
+				],
+				"edition": [
+					[181, 477, 419, 502]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				237,
+				558
+			]
+		},
 		"vi/the-masters-indwelling": {
 			"ground": "9b1942de887d5b3198972360264bbde39caa6be21bcc0e2d77d1f5fb313e528c",
 			"style": "devotional",
