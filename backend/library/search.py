@@ -66,7 +66,7 @@ from .models import (
 )
 from .people import People, fold, strongest
 from .people import words as name_words
-from .scripture import reference_verse_ids
+from .scripture import quoted_reference, reference_verse_ids
 from .search_aliases import books_named, other_names
 from .search_quotes import QUOTE_CAP, quote_hits
 
@@ -425,9 +425,12 @@ def search_library(q: str, language: str, scope=None) -> list[dict]:
     # the hub that gathers everything treating the passage, above the individual
     # sermons and chapters that do. English-only and never inside a scope (it is
     # a global hub, not something that lives under an author/book).
-    extra = _scripture_page_hits(q, language, scope)
-    extra += _scripture_sermon_hits(q, sermons, base)
-    cite_hits = _scripture_chapter_hits(q, chapters)
+    # A verse quoted by its words ("for god so loved the world") is read as
+    # its reference, so it draws the same hub, sermons and citing chapters.
+    ref = verse_quoted(q, language) or q
+    extra = _scripture_page_hits(ref, language, scope)
+    extra += _scripture_sermon_hits(ref, sermons, base)
+    cite_hits = _scripture_chapter_hits(ref, chapters)
     if cite_hits:
         # A chapter found by BOTH citation and plain text keeps its citation
         # hit (ranked by specificity, snippet centred on the reference) and
@@ -447,6 +450,12 @@ def search_library(q: str, language: str, scope=None) -> list[dict]:
     # Readers' choices last, over the finished list: they reorder what matched,
     # never add to it. Not inside a scope, where clicks aren't recorded.
     return merged if scope else apply_choices(merged, q, language)
+
+
+def verse_quoted(q: str, language: str) -> str | None:
+    """The verse ``q`` quotes by its words, as a reference, or None. English:
+    the indexed Bibles are the English OWB and the ASV (bible_store.SEARCHABLE)."""
+    return quoted_reference(q) if language == "en" else None
 
 
 # --- Readers' choices ------------------------------------------------------------
@@ -1163,7 +1172,8 @@ def page_by_type(
     # is at most one page per query, so paging is trivial — this exists only so
     # the type facet's "show this kind" fetch returns the hit rather than blank.
     if kind == "scripture":
-        return _scripture_page_hits(q, language, scope)[offset : offset + limit]
+        ref = verse_quoted(q, language) or q
+        return _scripture_page_hits(ref, language, scope)[offset : offset + limit]
     if kind == "quote":
         ctx = _Ctx(q=q, language=language)
         hits = quote_hits(q, language, ctx.writer, scope)

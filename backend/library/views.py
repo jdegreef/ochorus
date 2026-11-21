@@ -73,6 +73,7 @@ from .search import (
     scope_entry,
     search_library,
     suggest,
+    verse_quoted,
 )
 from .search_triage import hit_key, pinned_hit, rules
 from .serializers import (
@@ -1844,6 +1845,10 @@ class SearchView(APIView):
             "totals_capped": capped,
             "page_size": PAGE_SIZE,
         }
+        if verse := verse_quoted(searched, language):
+            # The verse the words quote, so the page can show it (the instant
+            # scripture answer a reference query gets).
+            payload["verse"] = verse
         if searched != q:
             # Said out loud, so a reader isn't left wondering why their word
             # isn't in any of the results.

@@ -455,6 +455,9 @@
 			suggestion = res.suggestion ?? '';
 			searchedFor = res.searched_for ?? '';
 			alsoSearchedFor = res.also_searched_for ?? '';
+			// Words that quote a verse ("for god so loved the world") get the
+			// passage card a typed reference gets.
+			if (res.verse) void maybeScripture(res.verse, token);
 			totals = res.totals ?? {};
 			totalsCapped = res.totals_capped ?? {};
 			pageSize = res.page_size ?? pageSize;

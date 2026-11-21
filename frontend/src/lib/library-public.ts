@@ -731,6 +731,8 @@ export interface SearchResponse {
 	searched_for?: string;
 	/** The query with a misspelt word corrected, searched alongside it. */
 	also_searched_for?: string;
+	/** The verse the query quotes by its words ("John 3:16"). */
+	verse?: string;
 	/**
 	 * How many matches EXIST per type, which is not how many `results` holds:
 	 * the merged list is capped per type so no one kind crowds out the others.
