@@ -2555,6 +2555,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # ko
             ('<p>주 예수 그리스도의 ',
              '<blockquote><em>“아무든지 나를 따라 오려거든 자기를 부인하고 날마다 제 십자가를 지고 나를 좇을 것이니라”</em>—누가복음 9:23.</blockquote>'),
+            # vi
+            ('<p>Có lẽ chúng ta sẽ tự nhiên ',
+             '<blockquote><em>“Ai muốn đi theo Ta, người ấy phải từ bỏ chính mình, mỗi ngày vác thập tự giá của mình, và cứ theo Ta.</em>—Lu-ca 9:23.</blockquote>'),
         ],
     },
     "all-sufficiency": {
