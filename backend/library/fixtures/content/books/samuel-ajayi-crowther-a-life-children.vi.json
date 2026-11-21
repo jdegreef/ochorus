@@ -1,0 +1,377 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "samuel-ajayi-crowther-a-life-children",
+  "language": "vi",
+  "title": "Samuel Ajayi Crowther (Cho thiếu nhi)",
+  "subtitle": "",
+  "cover_byline": "Samuel Ajayi Crowther",
+  "description": "Câu chuyện có thật về Ajayi, một cậu bé người Yoruba bị quân cướp bắt đi, bị bán hết lần này đến lần khác, rồi được các thủy thủ Anh giải thoát khỏi một con tàu buôn nô lệ, và khi lớn lên đã đem Kinh Thánh bằng tiếng mẹ đẻ đến cho dân tộc mình, đồng thời trở thành vị giám mục người châu Phi đầu tiên của Giáo hội Anh giáo. Ấn bản dành cho thiếu nhi này kể lại cuộc đời ông qua những chương ngắn để đọc to cho các em nghe: một câu Kinh Thánh, một đoạn trong câu chuyện của ông, một điều câu chuyện ấy muốn nói với con, và một lời cầu nguyện ngắn, kèm theo những câu hỏi để cùng nhau trò chuyện.",
+  "qa": [
+   {
+    "question": "Sách Samuel Ajayi Crowther (Cho thiếu nhi) nói về điều gì?",
+    "answer": "Đây là ấn bản dành cho thiếu nhi của cuốn tiểu sử đầy đủ về Samuel Ajayi Crowther. Sách kể về một cậu bé tên Ajayi bị bắt khỏi quê nhà ở vùng đất nay là Nigeria và bị bán làm nô lệ, rồi cậu được giải thoát và nhận biết Chúa Giê-xu như thế nào, và cậu đã dành cả đời để mang Tin Lành trở về cho chính dân tộc mình bằng tiếng nói của họ ra sao."
+   },
+   {
+    "question": "Samuel Ajayi Crowther là ai?",
+    "answer": "Một người Yoruba sống cách đây khoảng hai trăm năm. Khi còn bé, ông bị bán làm nô lệ rồi được hải quân Anh giải thoát. Ông trở thành thầy giáo, nhà thám hiểm dòng sông Niger hùng vĩ, người dẫn dắt nhóm dịch Kinh Thánh sang tiếng Yoruba, và vào năm 1864 trở thành vị giám mục người châu Phi đầu tiên của Giáo hội Anh giáo."
+   },
+   {
+    "question": "Mỗi chương được sắp xếp như thế nào?",
+    "answer": "Chương nào cũng ngắn và được viết để đọc to. Mỗi chương mở đầu bằng một câu Kinh Thánh, kể một đoạn trong câu chuyện của Ajayi, cho thấy một điều đơn giản mà câu chuyện ấy muốn nói với con, và kết thúc bằng một lời cầu nguyện ngắn. Sau đó là ba câu hỏi để cùng nhau trò chuyện."
+   },
+   {
+    "question": "Sách này có quá buồn đối với trẻ em không?",
+    "answer": "Có những đoạn buồn, vì bị bắt và bị bán là một điều khủng khiếp, và sách không giả vờ rằng không phải vậy. Nhưng câu chuyện được kể nhẹ nhàng, dành cho trẻ em, và trên hết đó là câu chuyện về việc Đức Chúa Trời đã chăm sóc Ajayi, cho cậu gặp lại mẹ, và dùng cuộc đời cậu để làm nên những điều tốt đẹp lớn lao."
+   },
+   {
+    "question": "Những câu chuyện này có thật không?",
+    "answer": "Có. Chúng được lấy từ chính những lá thư và nhật ký của Samuel Crowther và từ những người đã quen biết ông. Có vài câu chuyện được gia đình ông nhớ lại rất lâu về sau, và khi kể những chuyện ấy, sách đều nói rõ như vậy."
+   },
+   {
+    "question": "Sách này dành cho ai?",
+    "answer": "Sách dành cho thiếu nhi, để người lớn đọc to cho các em nghe, hoặc để các em lớn hơn tự đọc. Ngoài ra còn có một ấn bản dành cho thiếu niên, và cuốn tiểu sử đầy đủ dành cho bạn đọc lớn tuổi hơn."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại của Ochorus dành cho bạn đọc nhỏ tuổi, dựa trên cuốn tiểu sử Samuel Ajayi Crowther của Ochorus, thuộc bộ sách Chân Dung Lòng Can Đảm. Lời kể là của chúng tôi, được tự do đọc và chia sẻ.",
+  "cover_url": "/covers/art/samuel-ajayi-crowther-a-life-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 138,
+  "is_published": true,
+  "created_at": "2026-11-21T00:00:00Z",
+  "updated_at": "2026-11-21T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Cậu bé làng Osogun",
+  "body_html": "<blockquote>“Mắt Ngài đã thấy tôi khi tôi còn chưa thành hình; trong sách của Ngài tất cả đều đã được ghi chép” — trích Thi-thiên 139</blockquote> <p>Ngày xưa, ngày xưa, vào khoảng năm 1807, có một em bé trai chào đời ở một thị trấn tên là Osogun. Osogun nằm trong xứ của người Yoruba, trên vùng đất mà ngày nay chúng ta gọi là Nigeria. Gia đình đặt tên cho em là Ajayi.</p> <p>Osogun là một thị trấn lớn và nhộn nhịp. Quanh thị trấn có một hàng rào gỗ cao, với sáu cổng ra vào. Nhà cửa làm bằng đất, mái cao vút, và các gia đình sống sát bên nhau quanh những khoảng sân rộng. Cha của Ajayi là thợ dệt vải và cũng là nông dân. Ajayi có một người anh trai và mấy chị em gái, lại có rất nhiều cô dì và anh chị em họ sống gần đó.</p> <p>Gia đình cậu còn nhớ rằng cậu là thủ lĩnh của một nhóm chừng bốn mươi cậu bé cùng nhau làm việc ngoài đồng. Nhiều năm sau, ông rất thích kể cho các con mình nghe về chuyện ấy: cuốc đất vun thành từng ụ để trồng khoai mỡ, rồi ngồi dưới bóng mát cười đùa những cậu bé làm chậm hơn mình!</p> <p>Ajayi chưa từng thấy biển, chưa từng thấy một con sông lớn, cũng chưa từng thấy một người da trắng. Cậu chưa biết gì về Chúa Giê-xu. Gia đình cậu cầu khấn các thần xưa của người Yoruba. Cậu không thể nào đoán được cuộc đời mình rồi sẽ ra sao.</p> <p>Nhưng Đức Chúa Trời biết. Kinh Thánh nói rằng Đức Chúa Trời đã thấy mỗi người chúng ta trước khi chúng ta được sinh ra, và mọi ngày trong đời chúng ta đều đã được ghi trong sách của Ngài. Đức Chúa Trời thấy Ajayi đang chơi đùa ở Osogun. Và Đức Chúa Trời cũng thấy con nữa, dù con đang ở bất cứ nơi đâu.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài đã biết con từ trước khi con được sinh ra. Cảm ơn Ngài vì mọi ngày trong đời con đều ở trong tay Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ajayi được sinh ra ở đâu?",
+    "answer": "Ở thị trấn Osogun, trong xứ của người Yoruba, thuộc nước Nigeria ngày nay, vào khoảng năm 1807."
+   },
+   {
+    "question": "Ajayi thích làm gì cùng các cậu bé khác?",
+    "answer": "Gia đình cậu còn nhớ rằng cậu dẫn đầu một nhóm chừng bốn mươi cậu bé cùng làm việc ngoài đồng, cuốc đất vun thành ụ để trồng khoai mỡ."
+   },
+   {
+    "question": "Câu Kinh Thánh nói Đức Chúa Trời biết gì về con?",
+    "answer": "Rằng Đức Chúa Trời đã thấy con trước khi con được sinh ra, và mọi ngày trong đời con đều được ghi trong sách của Ngài. Ngài biết con và chăm sóc con."
+   }
+  ],
+  "word_count": 367
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Ngày quân cướp kéo đến",
+  "body_html": "<blockquote>“Các anh đã toan tính điều ác hại em, nhưng Đức Chúa Trời đã tính cho điều đó thành ra điều lành” — trích Sáng Thế Ký 50</blockquote> <p>Khi Ajayi khoảng mười ba tuổi, chiến tranh nổ ra khắp xứ Yoruba. Những toán quân cướp đi từ thị trấn này sang thị trấn khác, bắt người đem bán làm nô lệ.</p> <p>Vào một buổi sáng đẹp trời năm 1821, gia đình Ajayi đang chuẩn bị bữa sáng. Bỗng nhiên tin dữ lan khắp Osogun: quân thù đang đến! Quân cướp bao vây thị trấn. Sau mấy giờ giao chiến, chúng phá được vào trong.</p> <p>Mọi người đều bỏ chạy. Các bà mẹ bế con nhỏ và kéo các con lớn chạy qua những bụi gai. Ajayi có một cây cung và năm mũi tên, nhưng cậu đánh rơi cây cung trong bụi gai. Cha cậu chạy đến bảo cả nhà phải chạy đi. Đó là lần cuối cùng Ajayi được nhìn thấy cha mình.</p> <p>Quân cướp bắt được Ajayi, mẹ cậu, hai chị em gái và một người anh em họ. Chúng tròng dây thừng vào cổ từng người rồi dắt đi, ai nấy bị buộc dính vào nhau. Khi đi ra khỏi thị trấn đang bốc cháy, Ajayi thấy bà nội mình trong đám đông, chỉ trong vài phút thôi. Rồi bà khuất mất.</p> <p>Nhiều năm sau, khi Ajayi đã lớn, ông gọi ngày ấy là “ngày bất hạnh, nhưng phước hạnh.” Bất hạnh, vì ông mất nhà cửa và gia đình. Nhưng ông cũng gọi đó là ngày phước hạnh, vì đó là bước đầu tiên trên một con đường dài sẽ dẫn ông đến với Chúa Giê-xu.</p> <p>Đôi khi có những chuyện rất buồn xảy ra. Đức Chúa Trời không nói rằng những chuyện ấy là tốt. Nhưng Đức Chúa Trời vẫn có thể hành động ngay cả trong ngày buồn nhất, đem điều tốt ra từ đó theo những cách mà bây giờ chúng ta chưa thấy được.</p> <p><em>Lạy Đức Chúa Trời, khi có chuyện buồn xảy ra, xin giúp con nhớ rằng Ngài vẫn ở với con. Cảm ơn Ngài vì Ngài có thể đem điều tốt ra từ những ngày khó khăn. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Chuyện gì đã xảy ra với Osogun khi Ajayi khoảng mười ba tuổi?",
+    "answer": "Quân cướp bao vây thị trấn, phá vào trong và bắt nhiều người đem bán làm nô lệ, trong đó có Ajayi, mẹ cậu và các chị em gái của cậu."
+   },
+   {
+    "question": "Vì sao Ajayi gọi đó là “ngày bất hạnh, nhưng phước hạnh”?",
+    "answer": "Bất hạnh vì ông mất nhà cửa và gia đình. Phước hạnh vì ngày ấy mở đầu con đường dài dẫn ông đến với Chúa Giê-xu."
+   },
+   {
+    "question": "Con có nhớ một lúc khó khăn mà Đức Chúa Trời vẫn ở với con không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là Đức Chúa Trời không gọi chuyện buồn là tốt, nhưng Ngài ở bên chúng ta và có thể đem điều tốt ra từ đó."
+   }
+  ],
+  "word_count": 369
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Bị bán hết lần này đến lần khác",
+  "body_html": "<blockquote>“Xin đừng để chúng con sa vào thử thách, nhưng xin giải cứu chúng con khỏi kẻ ác.” — trích Ma-thi-ơ 6</blockquote> <p>Sáng hôm sau, quân cướp chia nhau những người bị bắt. Ajayi được giao cho viên tù trưởng, rồi bị đem đổi lấy một con ngựa! Nhưng con ngựa ấy chẳng ra gì, nên cậu bị trả về. Có một thời gian cậu ở cùng thị trấn với mẹ và em gái nhỏ, và cậu được đến thăm họ.</p> <p>Rồi một buổi tối, Ajayi bị xích chung với những người bị bắt khác, để sáng hôm sau đem ra chợ. Cậu thức trắng cả đêm. Lúc rạng đông, họ lên đường, và cậu nghĩ họ đi ngang qua đúng căn nhà nơi mẹ cậu đang ở. Cậu không dám kêu lên. Cậu nghĩ mình sẽ không bao giờ gặp lại mẹ nữa.</p> <p>Ajayi lại bị bán, rồi bị bán nữa, bị bán mãi. Tính tất cả, cậu bị bán hoặc bị đổi chác khoảng sáu lần, để lấy những thứ như vải, thuốc lá và rượu rum. Mỗi lần như vậy, cậu lại bị đưa đi xa nhà hơn, đến sống giữa những người nói thứ tiếng khác với cậu.</p> <p>Cậu buồn đến nỗi bỏ ăn và lâm bệnh. Cuối cùng cậu đến bờ một cái đầm phá rộng mênh mông. Cậu chưa từng thấy nhiều nước đến thế! Cậu sợ hãi vô cùng. Người ta chở cậu qua đầm bằng xuồng vào ban đêm, đến một thị trấn tên là Lagos, nơi các tàu buôn nô lệ ghé đến.</p> <p>Nhiều năm sau, Ajayi nhìn lại những tháng ngày tăm tối ấy. Ông thấy rằng Đức Chúa Trời đã luôn trông chừng mình suốt thời gian đó, ngay cả trước khi ông biết danh Ngài. Ông nói rằng Đức Chúa Trời đã “giải cứu tôi khỏi điều ác,” giống như lời cầu nguyện Chúa Giê-xu dạy chúng ta, từ rất lâu trước khi ông biết cầu nguyện như vậy.</p> <p>Đức Chúa Trời cũng trông chừng con nữa, ngay cả trong những ngày con cảm thấy mình cô đơn một mình.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài đã trông chừng con ngay cả khi con thấy cô đơn. Xin gìn giữ con an toàn và giải cứu con khỏi điều ác. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ajayi đã bị bán hoặc bị đổi chác bao nhiêu lần?",
+    "answer": "Khoảng sáu lần. Có lần cậu còn bị đem đổi lấy một con ngựa, nhưng con ngựa bị trả lại vì nó chẳng ra gì."
+   },
+   {
+    "question": "Vì sao Ajayi sợ hãi khi đến bên đầm phá?",
+    "answer": "Cậu chưa từng thấy nhiều nước như thế, và cậu biết mình đang bị đưa đến nơi các tàu buôn nô lệ ghé đến."
+   },
+   {
+    "question": "Về sau Ajayi nhận ra điều gì về những tháng ngày tăm tối ấy?",
+    "answer": "Rằng Đức Chúa Trời đã luôn trông chừng cậu và giải cứu cậu khỏi điều ác suốt thời gian đó, ngay cả trước khi cậu biết Ngài."
+   }
+  ],
+  "word_count": 384
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Con tàu bị chặn lại",
+  "body_html": "<blockquote>“Chúng ta đã vụt thoát như con chim khỏi bẫy của người bắt chim; bẫy đã gãy, và chúng ta được tự do!” — trích Thi-thiên 124</blockquote> <p>Ở Lagos, Ajayi bị những người buôn nô lệ Bồ Đào Nha mua lại. Cậu bị nhốt chung với những cậu bé và những người đàn ông khác trong một căn phòng tối om không có cửa sổ, cổ bị xích vào nhau. Họ phải chờ ở đó gần bốn tháng.</p> <p>Cuối cùng, vào một đêm, họ bị đưa ra một con tàu. Có 187 người bị dồn chật trong tàu. Con tàu sắp vượt đại dương sang châu Mỹ, nơi người nô lệ bị bắt làm việc trên những đồn điền rộng lớn.</p> <p>Nhưng ngay trong buổi tối hôm đó, hai chiến hạm của Anh đến và chặn con tàu buôn nô lệ lại! Thời ấy, hải quân Anh đi tuần dọc bờ biển châu Phi để chặn các tàu buôn nô lệ và trả tự do cho những người bị bắt. Hai con tàu ấy tên là Myrmidon và Iphigenia. Hôm đó là ngày 7 tháng 4 năm 1822.</p> <p>Ajayi và năm người bạn được đưa sang tàu Myrmidon. Ở đó, các cậu thấy một cảnh thật đáng sợ: những tảng thịt da trắng treo lủng lẳng, và từng hàng quả cầu sắt tròn trên boong tàu. Các cậu bé tưởng các thủy thủ đã ăn thịt những người bị bắt khác, còn những quả cầu kia là đầu của họ! Nhưng khi nhìn kỹ, thịt ấy là thịt heo, còn những quả cầu chỉ là đạn đại bác. Suốt cả đời mình, Ajayi vẫn bật cười mỗi khi nhớ lại chuyện này.</p> <p>Các thủy thủ rất tử tế. Họ cho các cậu bé đồ ăn và quần áo. Sau khoảng hai tháng rưỡi lênh đênh trên biển, con tàu đưa các cậu đến Sierra Leone, nơi những người được giải cứu có thể sống tự do. Người ở đó bảo các cậu: “Các cháu được tự do rồi!” Và chẳng bao lâu sau, các cậu tin như vậy.</p> <p>Chúa Giê-xu cũng đến để giải phóng con người. Ngài nói Ngài đến để “loan báo tự do cho những người bị giam cầm.” Ajayi đã được giải thoát khỏi một con tàu buôn nô lệ. Rồi một ngày kia, cậu sẽ được biết về một sự tự do còn lớn hơn thế nữa.</p> <p><em>Lạy Chúa Giê-xu, cảm ơn Ngài đã đến để giải phóng con người. Cảm ơn Ngài vì những người giúp đỡ người khác đang gặp hoạn nạn. Xin giúp con trở thành một người như vậy. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ai đã chặn con tàu buôn nô lệ lại?",
+    "answer": "Hai chiến hạm của Anh, tàu Myrmidon và tàu Iphigenia, vào ngày 7 tháng 4 năm 1822."
+   },
+   {
+    "question": "Các cậu bé nghĩ gì khi thấy thịt heo và đạn đại bác?",
+    "answer": "Các cậu sợ rằng các thủy thủ đã ăn thịt những người bị bắt khác và những quả đạn là đầu của họ. Rồi các cậu mới biết đó chỉ là thịt heo, còn những quả cầu là sắt."
+   },
+   {
+    "question": "Tuần này con có thể giúp đỡ ai?",
+    "answer": "Câu trả lời nào cũng tốt. Các thủy thủ đã giúp những người không tự cứu mình được, và Chúa Giê-xu đến để giải phóng con người. Chúng ta cũng có thể giúp đỡ người khác."
+   }
+  ],
+  "word_count": 439
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Một cái tên mới",
+  "body_html": "<blockquote>“Vậy nếu ai ở trong Đấng Christ, thì người ấy thuộc về một cuộc tạo dựng mới. Những điều cũ đã qua đi, và kìa, những điều mới đã đến.” — trích 2 Cô-rinh-tô 5</blockquote> <p>Ở Sierra Leone, Ajayi được gửi đến một ngôi làng tên là Bathurst. Cậu sống trong nhà của một nhà truyền giáo là ông Davey và vợ ông. Tối nào bà Davey cũng dạy cậu học nửa tiếng.</p> <p>Ajayi học rất nhanh. Chỉ sau sáu tháng, cậu đã đọc được sách Tân Ước! Chẳng bao lâu cậu được làm trưởng lớp, nghĩa là cậu giúp dạy các em nhỏ hơn. Mỗi tháng cậu được trả bảy xu rưỡi. Hễ học được điều gì, cậu lại muốn dạy cho người khác.</p> <p>Ở trường và ở nhà thờ, Ajayi được nghe về Chúa Giê-xu. Về sau ông kể rằng “Chúa đã vui lòng mở lòng tôi ra.” Cậu hiểu rằng mình đã làm những điều sai trái và cần được Đức Chúa Trời tha thứ, và cậu muốn nhận sự tha thứ mà Chúa Giê-xu ban cho. Ngày 11 tháng 12 năm 1825, cậu chịu báp-têm.</p> <p>Khi chịu báp-têm, cậu nhận một cái tên mới: Samuel Crowther. Đó là tên của một vị mục sư ở Luân Đôn. Bà Davey từng là giáo viên trường Chúa Nhật trong nhà thờ của vị mục sư ấy, và chính bà đã chọn tên ông đặt cho cậu bé. Nhưng Samuel không bao giờ quên tên Yoruba của mình. Suốt đời, ông luôn ký tên là Samuel Ajayi Crowther.</p> <p>Ở Bathurst còn có một cô bé tên là Asano. Cô cũng đã được giải cứu từ một con tàu buôn nô lệ khác, và cô học cùng trường. Nhiều năm sau, vào năm 1829, Samuel và Asano kết hôn. Hai người sống với nhau năm mươi mốt năm và có sáu người con.</p> <p>Khi con thuộc về Chúa Giê-xu, con được trở nên mới ở bên trong. Nhưng con vẫn là con! Đức Chúa Trời không vứt bỏ con người mà Ngài đã tạo nên. Ngài làm cho con trở nên mới.</p> <p><em>Lạy Chúa Giê-xu, xin mở lòng con để con nghe tiếng Ngài, như Ngài đã mở lòng Samuel. Cảm ơn Ngài đã tha thứ cho con và làm cho con trở nên mới. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ajayi học đọc nhanh như thế nào?",
+    "answer": "Chỉ sau sáu tháng ở Sierra Leone, cậu đã đọc được sách Tân Ước, và chẳng bao lâu cậu đã giúp dạy các em nhỏ hơn."
+   },
+   {
+    "question": "Khi chịu báp-têm, Ajayi nhận cái tên mới nào?",
+    "answer": "Samuel Crowther, tên của một vị mục sư ở Luân Đôn. Nhưng ông vẫn giữ tên Yoruba của mình, và ký tên là Samuel Ajayi Crowther."
+   },
+   {
+    "question": "Trở nên “mới” trong Chúa Giê-xu nghĩa là gì?",
+    "answer": "Chúa Giê-xu tha thứ cho chúng ta và thay đổi chúng ta ở bên trong, nhưng chúng ta vẫn là con người mà Đức Chúa Trời đã tạo nên. Samuel được làm mới, nhưng ông vẫn là Ajayi."
+   }
+  ],
+  "word_count": 386
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Những người con của chính châu Phi",
+  "body_html": "<blockquote>“…sẽ làm chứng về Ta tại Giê-ru-sa-lem, khắp miền Giu-đê và Sa-ma-ri, cho đến tận cùng trái đất.” — trích Công Vụ Các Sứ Đồ 1</blockquote> <p>Samuel lớn lên và trở thành thầy giáo. Ông là học viên đầu tiên của một trường cao đẳng mới ở Sierra Leone tên là Fourah Bay. Ông bắt đầu ghi chép lại các từ ngữ tiếng Yoruba, thứ tiếng của thời thơ ấu ông.</p> <p>Năm 1841, chính phủ Anh gửi ba chiếc tàu hơi nước ngược dòng sông Niger hùng vĩ, tiến sâu vào lòng châu Phi. Họ muốn chấm dứt việc buôn bán nô lệ và chia sẻ Tin Lành về Chúa Giê-xu. Samuel cùng đi với họ với tư cách một nhà truyền giáo.</p> <p>Trên sông, một trận sốt khủng khiếp bùng phát. Gần như tất cả người châu Âu đều ngã bệnh, và nhiều người đã chết. Nhưng phần lớn người châu Phi trên tàu vẫn khỏe mạnh.</p> <p>Samuel viết thư cho các nhà truyền giáo ở Luân Đôn. Ông nói rằng châu Phi sẽ được giúp đỡ nhiều nhất bởi chính “những người con của mình.” Ý ông là người châu Phi có thể sống ở những nơi mà người châu Âu dễ ngã bệnh, và họ nói được tiếng của dân địa phương. Họ nên được đào tạo và được sai đi để kể cho chính dân tộc mình nghe về Chúa Giê-xu.</p> <p>Hai năm sau, vào năm 1843, Samuel được phong làm mục sư của Giáo hội Anh tại Luân Đôn. Khi trở về Sierra Leone, ông giảng trong một nhà thờ chật kín người. Nhiều người chưa từng thấy một mục sư người châu Phi bao giờ! Rồi ông làm một việc mới: ông tổ chức một buổi thờ phượng bằng tiếng Yoruba. Ông kể rằng khi đứng đó, ông thấy mình như một em bé đang tập nói tiếng mẹ đẻ của mình.</p> <p>Chúa Giê-xu dặn các bạn hữu của Ngài hãy kể cho mọi người nghe về Ngài, bắt đầu từ nơi mình đang sống. Con không cần phải đi đâu xa mới làm được điều đó. Con có thể bắt đầu với những người ở quanh con.</p> <p><em>Lạy Chúa Giê-xu, xin giúp con kể về Ngài cho những người quanh con, bắt đầu ngay tại nơi con đang ở. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Chuyện gì đã xảy ra trên sông Niger năm 1841?",
+    "answer": "Một trận sốt khủng khiếp bùng phát và nhiều người châu Âu đã chết, nhưng phần lớn người châu Phi vẫn khỏe mạnh."
+   },
+   {
+    "question": "Samuel muốn nói gì khi bảo rằng châu Phi sẽ được giúp đỡ bởi “những người con của mình”?",
+    "answer": "Rằng người châu Phi nên được đào tạo và được sai đi để kể cho chính dân tộc mình nghe về Chúa Giê-xu, bằng tiếng nói của họ."
+   },
+   {
+    "question": "Có ai ở gần con mà con có thể kể cho nghe về Chúa Giê-xu không?",
+    "answer": "Câu trả lời nào cũng tốt. Chúa Giê-xu dặn các bạn hữu của Ngài bắt đầu kể về Ngài từ nơi mình đang sống, và chúng ta cũng có thể làm như vậy."
+   }
+  ],
+  "word_count": 387
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "vi"
+  ],
+  "order": 7,
+  "title": "“Mẹ ơi!”",
+  "body_html": "<blockquote>“Ngài luôn giúp đỡ kẻ mồ côi.” — trích Thi-thiên 10</blockquote> <p>Năm 1846, Samuel đến sống ở Abeokuta, một thành phố mới trong xứ Yoruba. Ông đến đó để lập một hội thánh và một trường học. Đây là lần đầu tiên ông sống giữa chính dân tộc mình kể từ khi còn là một cậu bé.</p> <p>Ông đến đó chưa được ba tuần thì có người mang đến một tin thật bất ngờ. Mẹ ông vẫn còn sống! Bà đang sống với các chị em gái của ông ở một thị trấn gần đó. Samuel lập tức cho người đi đón bà.</p> <p>Ngày 21 tháng 8 năm 1846, mẹ ông đến. Sáng hôm ấy, Samuel đã đọc một câu Kinh Thánh: “Ngài luôn giúp đỡ kẻ mồ côi.” Ông nói chưa bao giờ ông cảm nhận lời ấy thật đến thế như trong ngày hôm đó.</p> <p>Khi thấy ông, bà run lên. Bà không tin vào mắt mình. Hai mẹ con ôm chặt lấy nhau và lặng lẽ nhìn nhau, trong khi những giọt nước mắt lớn lăn dài trên đôi má gầy của bà. Bà gọi ông bằng những tên thân mật mà bà nội ông vẫn gọi khi ông còn bé. Đã hai mươi lăm năm trôi qua kể từ ngày hai mẹ con bị chia lìa.</p> <p>Mẹ của Samuel đã trải qua một cuộc đời rất cực khổ. Bà đã làm nô lệ trong nhiều năm. Giờ đây bà đến sống với con trai mình. Bà đi nhà thờ và được học biết về Chúa Giê-xu. Năm 1848, bà chịu báp-têm và nhận tên là Hannah. Khi Samuel nói với bà rằng công việc của ông sẽ thường đưa ông đi xa, bà nói: “Con không còn là con trai của mẹ nữa, nhưng là đầy tớ của Đức Chúa Trời.” Bà muốn ông cứ đi phục vụ Đức Chúa Trời mà không phải lo lắng cho bà.</p> <p>Đức Chúa Trời đã không quên Samuel, và Ngài cũng không quên mẹ của Samuel. Ngài cũng không bao giờ quên con.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì gia đình con. Cảm ơn Ngài vì Ngài không bao giờ quên con, và Ngài giúp đỡ những người cô đơn hay đã mất đi người mình yêu thương. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Samuel và mẹ ông đã xa nhau bao lâu?",
+    "answer": "Khoảng hai mươi lăm năm. Hai mẹ con bị chia lìa khi Samuel bị bán đi, và tìm lại được nhau vào năm 1846."
+   },
+   {
+    "question": "Samuel đã đọc câu Kinh Thánh nào vào ngày mẹ ông đến?",
+    "answer": "“Ngài luôn giúp đỡ kẻ mồ côi,” trong Thi-thiên 10. Ông nói chưa bao giờ ông cảm nhận lời ấy thật đến thế như trong ngày hôm đó."
+   },
+   {
+    "question": "Mẹ ông đã nói gì khi ông cho bà biết ông sẽ thường đi xa?",
+    "answer": "“Con không còn là con trai của mẹ nữa, nhưng là đầy tớ của Đức Chúa Trời.” Bà muốn ông làm công việc của Đức Chúa Trời mà không phải lo lắng cho bà."
+   }
+  ],
+  "word_count": 382
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Lời Cầu Nguyện Chung dưới ánh nến",
+  "body_html": "<blockquote>“Vậy sao mỗi người chúng ta lại nghe họ nói bằng tiếng mẹ đẻ của mình?” — trích Công Vụ Các Sứ Đồ 2</blockquote> <p>Khi Samuel ra đời, hầu như chưa có ai từng viết tiếng Yoruba ra giấy. Người ta biết những câu tục ngữ, những câu chuyện và những bài hát tuyệt vời, nhưng họ chỉ giữ tất cả trong trí nhớ.</p> <p>Samuel muốn dân tộc mình có thể đọc Lời Đức Chúa Trời bằng chính tiếng nói của họ. Vì vậy ông ghi chép các từ ngữ Yoruba và soạn một cuốn sách dạy tiếng ấy. Ông cùng các nhà truyền giáo khác tìm ra cách viết chữ cho tiếng Yoruba. Và ông bắt đầu dịch Kinh Thánh sang tiếng Yoruba.</p> <p>Cả một nhóm người đã làm việc hơn bốn mươi năm. Samuel làm phần lớn nhất. Đến năm 1884, cuối cùng trọn bộ Kinh Thánh tiếng Yoruba đã ra đời! Người ta có thể đọc về Chúa Giê-xu bằng thứ tiếng họ nói ở nhà.</p> <p>Năm 1851, Samuel sang thăm nước Anh. Một buổi tối, ông đến lâu đài Windsor để trò chuyện với Hoàng thân Albert về châu Phi. Trong lúc họ đang xem bản đồ, một phu nhân lặng lẽ bước vào phòng, ăn mặc rất giản dị. Lúc đầu Samuel không biết bà là ai. Đó chính là Nữ hoàng Victoria!</p> <p>Khi ngọn đèn tắt, chính Nữ hoàng tự tay thắp nến. Rồi có người nhờ Samuel nói một điều gì đó bằng tiếng Yoruba. Ông đọc một câu tục ngữ Yoruba, rồi cầu nguyện Lời Cầu Nguyện Chung bằng tiếng Yoruba. Nữ hoàng nói tiếng ấy nghe “êm dịu và du dương.”</p> <p>Vào ngày Lễ Ngũ Tuần, người từ nhiều nước đã được nghe về Đức Chúa Trời bằng chính tiếng nói của mình. Đức Chúa Trời yêu mọi ngôn ngữ. Ngài muốn mọi dân tộc được nghe về Chúa Giê-xu bằng những lời họ hiểu rõ nhất.</p> <p><em>Lạy Cha chúng con ở trên trời, cảm ơn Cha vì Cha hiểu mọi ngôn ngữ trên thế giới. Cảm ơn Cha vì những người giúp người khác đọc được Kinh Thánh bằng tiếng nói của chính mình. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Samuel muốn viết tiếng Yoruba ra thành chữ?",
+    "answer": "Để dân tộc ông có thể đọc Lời Đức Chúa Trời bằng thứ tiếng họ nói ở nhà."
+   },
+   {
+    "question": "Samuel đã nói gì bằng tiếng Yoruba với Nữ hoàng Victoria?",
+    "answer": "Một câu tục ngữ Yoruba, rồi đến Lời Cầu Nguyện Chung. Nữ hoàng nói tiếng ấy nghe “êm dịu và du dương.”"
+   },
+   {
+    "question": "Vì sao Đức Chúa Trời muốn người ta được nghe về Ngài bằng tiếng nói của chính mình?",
+    "answer": "Vì Đức Chúa Trời yêu mọi ngôn ngữ và mọi dân tộc, và chúng ta hiểu rõ nhất bằng những lời mình đã lớn lên cùng."
+   }
+  ],
+  "word_count": 365
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Một năm bên xác tàu",
+  "body_html": "<blockquote>“Chúng tôi bị ép bức mọi bề, nhưng không bị dồn vào đường cùng; … chúng tôi bị quật ngã, nhưng không bị hủy diệt.” — trích 2 Cô-rinh-tô 4</blockquote> <p>Samuel ngược dòng sông Niger hết lần này đến lần khác, để kể cho những người sống dọc hai bên bờ sông nghe về Chúa Giê-xu. Năm 1854, ông đi trên một chiếc tàu hơi nước nhỏ tên là Pleiad. Sau hơn một trăm ngày trên sông, không một ai chết cả! Samuel nói: “Không phải cho chúng tôi, nhưng cho Đức Chúa Trời, chúng tôi dâng lời ngợi khen.”</p> <p>Năm 1857, ông lại ngược dòng sông một lần nữa, trên một con tàu tên là Dayspring. Dọc đường, ông để lại hai người cộng sự người châu Phi ở thị trấn Onitsha để lập một hội thánh tại đó. Rồi tàu Dayspring đi tiếp lên rất xa về phía thượng nguồn.</p> <p>Ngày 7 tháng 10 năm 1857, gần một thị trấn tên là Jebba, con tàu đâm vào đá và bị lật nghiêng! Người dân chèo xuồng đến giúp, và mọi người đều vào bờ an toàn. Không ai bị thương cả. Nhưng con tàu thì không cứu được nữa.</p> <p>Năm mươi người phải cắm trại bên bờ sông suốt một năm trời, chờ một con tàu khác đến. Sáng nào tối nào Samuel cũng tổ chức giờ cầu nguyện trong căn lều làm bằng chiếu của ông, và ông để người bệnh nằm nghỉ trong đó. Có một đêm, một con báo mò vào khu trại! Samuel bật cười và thú nhận: “Tôi đâu phải tay súng giỏi.”</p> <p>Ông không để năm ấy trôi qua vô ích. Ông kết bạn với những người sống gần đó. Ông học tiếng của họ, gọi là tiếng Nupe, và bắt đầu viết tiếng ấy thành chữ. Người dân vô cùng ngạc nhiên khi thấy chính lời nói của mình được viết ra trên giấy.</p> <p>Khi mọi việc trở nên tồi tệ, rất dễ bỏ cuộc. Nhưng Samuel vẫn tiếp tục tin cậy Đức Chúa Trời và tiếp tục làm việc. Đức Chúa Trời có thể dùng ngay cả những ngày tệ nhất của chúng ta.</p> <p><em>Lạy Đức Chúa Trời, khi mọi việc trở nên tồi tệ, xin giúp con đừng bỏ cuộc. Xin giúp con tin cậy Ngài và tiếp tục làm điều tốt. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Chuyện gì đã xảy ra với con tàu tên là Dayspring?",
+    "answer": "Nó đâm vào đá gần Jebba và bị lật nghiêng. Mọi người đều vào bờ an toàn, nhưng con tàu thì không cứu được."
+   },
+   {
+    "question": "Samuel đã làm gì trong suốt một năm bên bờ sông?",
+    "answer": "Ông tổ chức giờ cầu nguyện, chăm sóc người bệnh, kết bạn với những người sống gần đó, và bắt đầu viết tiếng nói của họ, tiếng Nupe, thành chữ."
+   },
+   {
+    "question": "Có việc gì khó mà con có thể kiên trì tiếp tục, như Samuel đã làm?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Samuel vẫn tiếp tục tin cậy Đức Chúa Trời và tiếp tục làm việc ngay cả khi mọi thứ đều hỏng cả."
+   }
+  ],
+  "word_count": 394
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "vi"
+  ],
+  "order": 10,
+  "title": "“Tôi không xứng đáng”",
+  "body_html": "<blockquote>“Ngài nâng người nghèo lên khỏi bụi đất … cho họ ngồi chung với các bậc quyền quý” — trích 1 Sa-mu-ên 2</blockquote> <p>Các nhà truyền giáo ở Luân Đôn quyết định rằng các hội thánh dọc sông Niger cần có một giám mục, tức là một người lãnh đạo cho tất cả các hội thánh và các mục sư. Họ quyết định vị giám mục ấy phải là một người châu Phi. Và họ đã chọn Samuel.</p> <p>Gia đình ông còn nhớ rằng Samuel hoàn toàn không muốn làm giám mục. Ông nói: “Tôi không xứng đáng.” Ông muốn mãi là một đầy tớ khiêm nhường. Nhưng cuối cùng ông đồng ý, và nói: “Ngài là CHÚA. Nguyện Ngài làm điều Ngài thấy là tốt.”</p> <p>Ngày 29 tháng 6 năm 1864, trong ngôi thánh đường lớn ở Canterbury nước Anh, Samuel Ajayi Crowther được tấn phong làm vị giám mục người châu Phi đầu tiên của Giáo hội Anh giáo. Cậu bé từng bị bán làm nô lệ giờ đây đã trở thành một giám mục!</p> <p>Có một bà cụ đến dự buổi lễ. Người ta kể rằng khi thấy có người khác ngồi vào chỗ của mình, bà nhất định không chịu dời đi. Bà nói bà có mọi quyền ngồi ở chỗ đó, vì chính bà đã dạy vị giám mục mới học bảng chữ cái! Đó là bà Davey, cô giáo của ông ở Bathurst, giờ mang tên bà Weeks.</p> <p>Làm giám mục không khiến Samuel kiêu ngạo. Ông xin mọi người đừng gọi ông là “Đức Ngài.” Nếu trong phòng chỉ có một chiếc ghế mà có một thầy giáo bước vào, vị giám mục sẽ đứng dậy nhường ghế cho thầy giáo.</p> <p>Đức Chúa Trời thích nâng đỡ những người khiêm nhường. Con không cần phải là người quan trọng mới được Đức Chúa Trời dùng. Con chỉ cần nói “vâng” với Ngài.</p> <p><em>Lạy Đức Chúa Trời, xin làm cho con khiêm nhường như Samuel. Xin giúp con đặt người khác lên trước và nói “vâng” với bất cứ điều gì Ngài muốn con làm. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Samuel đã nói gì khi được mời làm giám mục?",
+    "answer": "“Tôi không xứng đáng.” Ông muốn mãi là một đầy tớ khiêm nhường, nhưng cuối cùng ông đồng ý làm điều Đức Chúa Trời muốn."
+   },
+   {
+    "question": "Bà cụ ở thánh đường là ai?",
+    "answer": "Bà Weeks, trước kia là bà Davey, cô giáo của ông ở Bathurst. Bà nói bà có quyền ngồi ở chỗ của mình vì bà đã dạy ông học bảng chữ cái."
+   },
+   {
+    "question": "Samuel đã cho thấy việc làm giám mục không khiến ông kiêu ngạo như thế nào?",
+    "answer": "Ông xin mọi người đừng gọi ông là “Đức Ngài,” và ông sẵn lòng nhường ghế của mình cho một thầy giáo."
+   }
+  ],
+  "word_count": 352
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Lòng tốt của những người nô lệ",
+  "body_html": "<blockquote>“Mỗi sáng mỗi chiều, bầy quạ đem bánh và thịt đến cho ông” — trích 1 Các Vua 17</blockquote> <p>Năm 1867, Giám mục Crowther đang đi ngược dòng sông trên chiếc thuyền nhỏ của mình cùng với con trai là Dandeson. Hai cha con dừng lại thăm một tù trưởng tên là Abokko, người mà Samuel đã quen biết nhiều năm.</p> <p>Nhưng Abokko tưởng vị giám mục là chủ của những chiếc tàu buôn lớn và rất giàu có. Ông ta chiếm lấy chiếc thuyền, giật hết đồ đạc của họ và giam họ lại. Ông ta không chịu thả họ ra trừ khi người ta trả cho ông ta một đống hàng hóa khổng lồ.</p> <p>Đêm đầu tiên, hai cha con phải ngủ trên nền đất ẩm ướt, không có gì để ăn. Một người nô lệ của tù trưởng thấy thương họ, đã đưa tấm vải của chính mình cho Samuel làm chăn. Một người chèo thuyền đưa áo choàng của mình cho ông làm gối, và Samuel đưa nó cho Dandeson. Nhiều ngày liền, viên tù trưởng hầu như không cho họ ăn gì. Nhưng những người nô lệ trong nhà đã lén chia phần ăn của chính mình cho họ. Samuel bảo Dandeson rằng những người nô lệ tốt bụng này giống như bầy quạ mà Đức Chúa Trời đã sai đến nuôi Ê-li.</p> <p>Đến Chúa Nhật, Samuel không có Kinh Thánh, vì Abokko đã lấy hết đồ đạc của ông. Vậy nên ông và Dandeson cùng nhau đọc thuộc lòng các câu Kinh Thánh. Rồi Samuel can đảm đến gặp viên tù trưởng và xin lại cuốn Kinh Thánh của mình, vì đó là ngày dân sự của Đức Chúa Trời nhóm lại cầu nguyện. Viên tù trưởng đã trả lại cho ông!</p> <p>Người ta cho Dandeson cơ hội được thả tự do một mình, nhưng cậu không chịu bỏ cha lại. Sau nhiều ngày, một chiếc tàu hơi nước đến, và những người bị giam đã trốn thoát lên tàu. Nhưng một người can đảm tên là ông Fell, người đã đến để giúp họ, bị trúng tên và qua đời. Samuel vô cùng đau buồn. Ông nói ông thà chính mình chết còn hơn.</p> <p>Đức Chúa Trời đã chăm sóc Samuel qua lòng tốt của những người nô lệ nghèo khó. Ngay cả một việc tốt nhỏ bé cũng có thể là câu trả lời của Đức Chúa Trời cho lời cầu nguyện của một ai đó.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài chăm sóc dân sự Ngài, ngay cả ở những nơi khó khăn. Xin giúp con tử tế với những người đang gặp hoạn nạn, như những người nô lệ đã cho Samuel ăn. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao tù trưởng Abokko giam giữ vị giám mục?",
+    "answer": "Ông ta tưởng vị giám mục là chủ những chiếc tàu buôn và rất giàu có, nên muốn được trả một món tiền chuộc khổng lồ rồi mới thả ông ra."
+   },
+   {
+    "question": "Ai đã cho Samuel và Dandeson ăn khi họ bị giam?",
+    "answer": "Những người nô lệ của viên tù trưởng đã lén chia phần ăn của chính mình cho họ. Samuel nói họ giống như bầy quạ mà Đức Chúa Trời đã sai đến nuôi Ê-li."
+   },
+   {
+    "question": "Tuần này con có thể làm một việc tốt nhỏ nào cho ai đó?",
+    "answer": "Câu trả lời nào cũng tốt. Một việc tốt nhỏ, như chia sẻ đồ ăn hay một tấm chăn, có thể là câu trả lời của Đức Chúa Trời cho lời cầu nguyện của một ai đó."
+   }
+  ],
+  "word_count": 457
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Chúc ngủ ngon",
+  "body_html": "<blockquote>“Tôi sẽ nằm xuống trong bình an và ngủ ngay, vì chính Ngài, lạy CHÚA, chỉ một mình Ngài cho tôi được sống an toàn.” — trích Thi-thiên 4</blockquote> <p>Buổi tối, các con của Samuel rất thích ngồi quây quanh ông nghe kể chuyện. Chuyện các con thích nhất là chuyện đôi giày đầu tiên của ông. Khi còn là học trò, ông được cho một đôi ủng lính nặng trịch, nhưng ông chưa từng đi giày bao giờ! Ông không bước nổi một bước. Vậy nên ông bám vào tường và đi vòng quanh căn phòng hết vòng này đến vòng khác cho đến khi có thể buông tay ra. Suốt mấy tháng trời, ông xách giày đến nhà thờ và chỉ xỏ vào khi đến cửa. Mỗi lần kể chuyện này, ông lại diễn lại, và các con vỗ tay reo hò.</p> <p>Khi Samuel về già, nhiều chuyện buồn đã xảy ra. Năm 1880, người vợ yêu dấu của ông là Asano qua đời. Rồi có mấy nhà truyền giáo trẻ từ nước Anh đến vùng sông Niger. Họ không tin tưởng các mục sư người châu Phi, và họ đã cất chức một số người trong số đó, kể cả chính con trai của Samuel, mà không lắng nghe vị giám mục già. Điều đó thật bất công, và nó làm Samuel đau lòng lắm. Nhiều năm sau, Giáo hội Anh đã nói: “Việc ấy là sai.” Nhưng Samuel không la hét hay đánh trả. Ông vẫn tiếp tục yêu thương và phục vụ.</p> <p>Năm 1891, ông lâm bệnh và đến ở với con gái là Abigail tại Lagos. Vào đêm cuối cùng của năm, lúc nửa đêm, Abigail đắp chăn cho ông và nói: “Cha ngủ ngon nhé.” Ông đáp: “Ngủ ngon.” Một lúc sau, ông về nhà ở với Chúa Giê-xu.</p> <p>Cậu bé từng bị bán làm nô lệ đã góp phần mang Tin Lành về Chúa Giê-xu đến cho dân tộc mình. Ngày nay ở Nigeria có hàng triệu Cơ Đốc nhân, và họ đọc Kinh Thánh bằng tiếng Yoruba, tiếng Igbo và nhiều thứ tiếng khác.</p> <p>Samuel đã tin cậy Đức Chúa Trời suốt cả cuộc đời, trong những ngày vui cũng như những ngày buồn. Đến giây phút cuối cùng, ông có thể nói “Ngủ ngon” trong bình an, vì ông biết mình được an toàn bên Đức Chúa Trời.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Samuel Ajayi Crowther và mọi điều Ngài đã làm qua cuộc đời ông. Xin giúp con tin cậy Ngài trong những ngày vui và những ngày buồn, và biết rằng con luôn được an toàn bên Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Chuyện vui về đôi giày đầu tiên của Samuel là gì?",
+    "answer": "Ông chưa từng đi giày, nên khi được cho một đôi ủng nặng, ông không bước đi được. Ông bám vào tường và đi vòng quanh căn phòng cho đến khi có thể buông tay ra."
+   },
+   {
+    "question": "Samuel đã làm gì khi bị người ta đối xử bất công?",
+    "answer": "Ông không la hét hay đánh trả. Ông vẫn tiếp tục yêu thương và phục vụ. Nhiều năm sau, Giáo hội Anh đã nói rằng điều xảy ra với ông là sai."
+   },
+   {
+    "question": "Những lời cuối cùng của Samuel là gì?",
+    "answer": "“Ngủ ngon.” Ông nói lời ấy với con gái mình là Abigail, trong bình an, vì ông biết mình được an toàn bên Đức Chúa Trời."
+   }
+  ],
+  "word_count": 444
+ }
+}
+]

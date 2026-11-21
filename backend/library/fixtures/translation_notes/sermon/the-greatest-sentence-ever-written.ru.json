@@ -1,0 +1,73 @@
+{
+ "kind": "sermon",
+ "slug": "the-greatest-sentence-ever-written",
+ "language": "ru",
+ "job_issue": 9132,
+ "references": [
+  {
+   "reference": "1 John 4:8b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Isaiah 55:7",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Hebrews 12:6",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Hebrews 12:6a",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Isaiah 63:9a",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "1 John 3:1a",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 3:16a",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 27:46b",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Philippians 1:23b",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}

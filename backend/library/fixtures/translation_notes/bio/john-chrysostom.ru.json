@@ -1,0 +1,25 @@
+{
+ "kind": "bio",
+ "slug": "john-chrysostom",
+ "language": "ru",
+ "job_issue": 9155,
+ "references": [
+  {
+   "reference": "Psalm 24:1a",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Job 1:21a",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Job 1:21b",
+   "status": "self_rendered",
+   "block_index": 18
+  }
+ ]
+}
