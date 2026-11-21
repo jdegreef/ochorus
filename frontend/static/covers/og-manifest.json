@@ -46405,6 +46405,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"vi/elisabeth-elliot-a-life-children": {
+			"ground": "f6a944280a89ac473e8313f154865556183f2f42340b81df2b40f203c06b4766",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1.25,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[112, 320, 488, 395]
+				],
+				"edition": [
+					[189, 404, 411, 429]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				327,
+				467
+			]
+		},
 		"vi/epistles-of-ignatius": {
 			"ground": "49ce0606db0311d90fb64ee466e5d3f8384c34699c088d969f0d3a4ffaf43bbe",
 			"style": "inscriptional",
