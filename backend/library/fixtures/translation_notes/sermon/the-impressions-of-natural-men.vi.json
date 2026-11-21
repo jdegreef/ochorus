@@ -1,0 +1,149 @@
+{
+ "kind": "sermon",
+ "slug": "the-impressions-of-natural-men",
+ "language": "vi",
+ "job_issue": 9047,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Hosea 6:4",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0
+  },
+  {
+   "reference": "Hosea 6:5",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Genesis 19:26",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 5
+  },
+  {
+   "reference": "Exodus 15:2a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 6
+  },
+  {
+   "reference": "Mark 10:17",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 19:22",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 7
+  },
+  {
+   "reference": "Acts 24:25",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 24:25",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 26:28",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 7:14",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Corinthians 1:21",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 20
+  },
+  {
+   "reference": "Jeremiah 50:4-5",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 21
+  },
+  {
+   "reference": "Song of Solomon 3:3",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 21
+  },
+  {
+   "reference": "Malachi 2:7",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 21
+  },
+  {
+   "reference": "Matthew 12:44",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 22
+  },
+  {
+   "reference": "Isaiah 6:5",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 26
+  },
+  {
+   "reference": "Job 40:4",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Jeremiah 32:40",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 27
+  },
+  {
+   "reference": "Philippians 1:6",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 27
+  },
+  {
+   "reference": "Mark 3:5",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 29
+  },
+  {
+   "reference": "Hebrews 10:26",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 30
+  },
+  {
+   "reference": "Jeremiah 8:20",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Luke 17:32",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 36
+  },
+  {
+   "reference": "Genesis 19:17",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 36
+  }
+ ]
+}

@@ -41,6 +41,7 @@ from django.db.models.functions import Coalesce
 # query config always matches what the row was indexed with.
 from .cover_face import cover_face
 from .fts import (
+    PREFIX_LANGUAGES,
     STORED_KINDS,
     SUBSTRING_LANGUAGES,
     config_for,
@@ -63,10 +64,12 @@ from .models import (
     TopicSermon,
     TopicTranslation,
 )
-from .people import People, strongest
+from .people import People, fold, strongest
 from .people import words as name_words
-from .scripture import reference_verse_ids
-from .search_aliases import AUTHOR_ALIASES, books_named
+from .scripture import quoted_reference, reference_verse_ids
+from .search_aliases import books_named, other_names
+from .search_answers import ANSWER_CAP, answer_hits
+from .search_quotes import QUOTE_CAP, quote_hits
 
 MAX_RESULTS = 30
 
@@ -423,9 +426,12 @@ def search_library(q: str, language: str, scope=None) -> list[dict]:
     # the hub that gathers everything treating the passage, above the individual
     # sermons and chapters that do. English-only and never inside a scope (it is
     # a global hub, not something that lives under an author/book).
-    extra = _scripture_page_hits(q, language, scope)
-    extra += _scripture_sermon_hits(q, sermons, base)
-    cite_hits = _scripture_chapter_hits(q, chapters)
+    # A verse quoted by its words ("for god so loved the world") is read as
+    # its reference, so it draws the same hub, sermons and citing chapters.
+    ref = verse_quoted(q, language) or q
+    extra = _scripture_page_hits(ref, language, scope)
+    extra += _scripture_sermon_hits(ref, sermons, base)
+    cite_hits = _scripture_chapter_hits(ref, chapters)
     if cite_hits:
         # A chapter found by BOTH citation and plain text keeps its citation
         # hit (ranked by specificity, snippet centred on the reference) and
@@ -438,9 +444,103 @@ def search_library(q: str, language: str, scope=None) -> list[dict]:
             or (h["book_slug"], h["chapter_order"]) not in cited
         ]
     extra += cite_hits
-    if extra:
-        return (extra + base)[:MAX_RESULTS]
-    return base
+    merged = (extra + base)[:MAX_RESULTS] if extra else base
+    # Quotations ride beside the capped list rather than inside it: they are
+    # their own section, and a few of them should never cost a passage its place.
+    merged += quote_hits(q, language, ctx.writer, scope)[:QUOTE_CAP]
+    # And the library's own answers, when the query asks a question.
+    merged += answer_hits(q, language, scope)[:ANSWER_CAP]
+    # Readers' choices last, over the finished list: they reorder what matched,
+    # never add to it. Not inside a scope, where clicks aren't recorded.
+    return merged if scope else apply_choices(merged, q, language)
+
+
+def verse_quoted(q: str, language: str) -> str | None:
+    """The verse ``q`` quotes by its words, as a reference, or None. English:
+    the indexed Bibles are the English OWB and the ASV (bible_store.SEARCHABLE)."""
+    return quoted_reference(q) if language == "en" else None
+
+
+# --- Readers' choices ------------------------------------------------------------
+# The click log (SearchClickLog) says which result readers actually opened for a
+# query. A result opened again and again for the same words is the answer to
+# them, whatever the text ranking thought — so it rises to the top of its kind,
+# and one opened by most readers who opened anything leads the page.
+
+#: How far back clicks count: long enough to gather a few for a steady query,
+#: short enough that a change in the library (a new edition) shows within weeks.
+CHOICE_DAYS = 90
+#: Opens before a result moves at all. Several, so one reader (or one script —
+#: the click endpoint is public, if throttled) can't reorder a query alone.
+CHOICE_MIN_CLICKS = 3
+#: Opens, and share of all opens for the query, before a result leads the page.
+CHOSEN_MIN_CLICKS = 5
+CHOSEN_SHARE = 0.5
+
+
+def hit_row_key(hit: dict) -> str:
+    """A hit's key as the search page keys its rows (searchResults.ts toRow)."""
+    kind = hit.get("type", "")
+    if kind == "chapter":
+        return f"chapter:{hit.get('book_slug', '')}:{hit.get('chapter_order', '')}"
+    if kind == "scripture":
+        verse = hit.get("verse")
+        return f"scripture:{hit.get('book_slug', '')}:{hit.get('chapter', '')}:{'' if verse is None else verse}"
+    if kind == "quote":
+        return f"quote:{hit.get('quote_slug', '')}"
+    if kind == "answer":
+        return f"answer:{hit.get('work_kind', '')}-{hit.get('work_slug', '')}"
+    spec = HIT_WORK.get(kind)
+    return f"{kind}:{hit.get(spec[1], '')}" if spec else ""
+
+
+def click_choices(q: str, language: str) -> dict[str, int]:
+    """Opens per result key for this query in the last CHOICE_DAYS days."""
+    from datetime import timedelta
+
+    from django.db.models import Count
+    from django.utils import timezone
+
+    from .models import SearchClickLog
+
+    def compute():
+        since = timezone.now() - timedelta(days=CHOICE_DAYS)
+        rows = (
+            SearchClickLog.objects.filter(
+                language=language, query__iexact=" ".join(q.split()), created_at__gte=since
+            )
+            .exclude(result_key="")
+            .values("result_key")
+            .annotate(n=Count("id"))
+        )
+        return {r["result_key"]: r["n"] for r in rows}
+
+    return memoized("choices", compute, " ".join(q.lower().split()), language)
+
+
+def apply_choices(hits: list[dict], q: str, language: str) -> list[dict]:
+    """``hits`` with readers' choices lifted: a result opened at least
+    CHOICE_MIN_CLICKS times rises, most-opened first, ahead of the rest of its
+    kind; one with CHOSEN_MIN_CLICKS opens and CHOSEN_SHARE of all of them is
+    marked ``chosen`` (the page leads with it). Order is otherwise unchanged."""
+    choices = click_choices(q, language)
+    if not choices:
+        return hits
+    total = sum(choices.values())
+
+    def opens(hit):
+        n = choices.get(hit_row_key(hit), 0)
+        return n if n >= CHOICE_MIN_CLICKS else 0
+
+    lifted = sorted(hits, key=lambda h: -opens(h))  # stable: ties keep text order
+    for hit in lifted:
+        n = opens(hit)
+        if n >= CHOSEN_MIN_CLICKS and n >= CHOSEN_SHARE * total:
+            lifted = [hit, *[h for h in lifted if h is not hit]]
+            hit = {**hit, "chosen": True}
+            lifted[0] = hit
+            break
+    return lifted
 
 
 class _Ctx:
@@ -456,6 +556,7 @@ class _Ctx:
         self.language = language
         self._people = None
         self._books = None
+        self._corrected = None
 
     def _read_people(self):
         if self._people is None:
@@ -467,7 +568,7 @@ class _Ctx:
             # names ("d l moody prayer"). Not everyone who merely shares a
             # word with it — "gospel of john" is not a search for every John.
             found = [m for m in matches if m.whole or m is person]
-            self._people = (found, people.rewrite(self.q, matches), person)
+            self._people = (found, people.rewrite(self.q, matches), person, matches)
         return self._people
 
     @property
@@ -481,6 +582,13 @@ class _Ctx:
         return self._read_people()[1]
 
     @property
+    def corrected(self) -> str | None:
+        """The query with its typos corrected (``correction``), if any."""
+        if self._corrected is None:
+            self._corrected = correction(self.q, self.language) or ""
+        return self._corrected or None
+
+    @property
     def aliased_books(self) -> list[tuple[str, str]]:
         """Books the query names by another title: (slug, title)."""
         if self._books is None:
@@ -492,6 +600,20 @@ class _Ctx:
         """The one person the query names by two or more words, or None."""
         return self._read_people()[2]
 
+    @property
+    def writer(self):
+        """Whose words the query asks for: ``person``, or failing that the one
+        writer it names by surname ("spurgeon prayer"). For quotes, where a
+        surname is never what a sentence says, so one word is enough."""
+        if self.person is not None:
+            return self.person
+        by_surname = [m for m in self._read_people()[3] if m.by_surname]
+        if len(by_surname) == 1 or (
+            len(by_surname) > 1 and by_surname[0].score > by_surname[1].score
+        ):
+            return by_surname[0]
+        return None
+
 
 def _author_names(language: str) -> list[tuple[int, str]]:
     """(pk, name) of every author findable in ``language`` — the whole library,
@@ -499,11 +621,12 @@ def _author_names(language: str) -> list[tuple[int, str]]:
     def compute():
         rows = list(_base_querysets(language)["author"].values_list("pk", "name", "slug"))
         names = [(pk, name) for pk, name, _ in rows]
-        # And the other names each is known by (library/search_aliases.py).
+        # And the other names each is known by, and how each language writes
+        # it (library/search_aliases.py).
         names += [
             (pk, other, name)
             for pk, name, slug in rows
-            for other in AUTHOR_ALIASES.get(slug, ())
+            for other in other_names(slug)
         ]
         return names
 
@@ -553,6 +676,8 @@ def _query(ctx):
     query = search_query(ctx.q, ctx.language)
     if ctx.rewritten:
         query = query | search_query(ctx.rewritten, ctx.language)
+    if ctx.corrected:
+        query = query | search_query(ctx.corrected, ctx.language)
     for _, title in ctx.aliased_books:
         query = query | search_query('"' + title.replace('"', " ") + '"', ctx.language)
     return query
@@ -921,6 +1046,8 @@ def _match(kind: str, ctx, qs):
     named = Q(pk__in=[m.pk for m in ctx.people]) if kind == "author" else Q(pk__in=[])
     if not uses_fts(ctx.language):
         predicate = _lite_match(kind, ctx.q, ctx.language) | named
+        if ctx.corrected:
+            predicate |= _lite_match(kind, ctx.corrected, ctx.language)
         person = ctx.person
         if person and kind in _AUTHOR_FIELD:
             # Their works, narrowed by whatever else was typed ("moody prayer").
@@ -1004,6 +1131,13 @@ def count_by_type(q: str, language: str, scope=None) -> tuple[dict, dict]:
         for kind in querysets:
             if kind in TOASTED:
                 tally(kind)
+    for kind, n in (
+        ("quote", len(quote_hits(q, language, ctx.writer, scope))),
+        ("answer", len(answer_hits(q, language, scope))),
+    ):
+        if n:
+            counts[kind] = n
+            capped[kind] = False
     # "scripture" is intentionally uncounted: it has no queryset, and a reference
     # resolves to 0-or-1 page, so the frontend's `totals[type] ?? loaded` fallback
     # lands on the single loaded row exactly. Counting it would mean re-running
@@ -1046,7 +1180,16 @@ def page_by_type(
     # is at most one page per query, so paging is trivial — this exists only so
     # the type facet's "show this kind" fetch returns the hit rather than blank.
     if kind == "scripture":
-        return _scripture_page_hits(q, language, scope)[offset : offset + limit]
+        ref = verse_quoted(q, language) or q
+        return _scripture_page_hits(ref, language, scope)[offset : offset + limit]
+    if kind == "answer":
+        return answer_hits(q, language, scope)[offset : offset + limit]
+    if kind == "quote":
+        ctx = _Ctx(q=q, language=language)
+        hits = quote_hits(q, language, ctx.writer, scope)
+        if sort == "title":
+            hits.sort(key=lambda h: h["text"].casefold())
+        return hits[offset : offset + limit]
     if kind not in CAPS:
         return []
     ctx = _Ctx(q=q, language=language)
@@ -1353,6 +1496,124 @@ def _scripture_chapter_hits(q, chapters):
         for w in winners
         if w["chapter_id"] in chapters
     ]
+
+
+# --- Typo forgiveness ----------------------------------------------------------
+# A did-you-mean only helps once a search has come back EMPTY, and only after
+# the reader taps it. "humilty prayer" found the prayer passages and never said
+# that Murray's Humility was one letter away. So a misspelt word is corrected in
+# the search itself: the query runs as typed OR as corrected, and the response
+# says what else it searched for.
+
+#: Words shorter than this are left alone: too many real words sit one letter
+#: from each other ("hope"/"hops"), and short typos are rarely the problem.
+CORRECT_MIN_LEN = 4
+#: difflib ratio a correction must reach ("humilty" -> "humility" is 0.93,
+#: "sorry" -> "worry" 0.8 — so the bar sits just above that).
+CORRECT_CUTOFF = 0.82
+_TITLE_WORD = re.compile(rf"[^\W\d_]{{{CORRECT_MIN_LEN},}}", re.UNICODE)
+
+
+def _title_vocabulary(language: str) -> list[str]:
+    """The words a correction may correct TO: those of this language's book,
+    plan, article and topic titles (and book subtitles). Titles, not bodies:
+    they are what a reader is usually trying to name, and a vocabulary of a few
+    thousand words keeps difflib fast."""
+
+    def compute():
+        vocab: set[str] = set()
+
+        def add(text):
+            vocab.update(w.lower() for w in _TITLE_WORD.findall(text or ""))
+
+        for title, subtitle in Book.objects.filter(
+            is_published=True, language=language
+        ).values_list("title", "subtitle"):
+            add(title)
+            add(subtitle)
+        for title in Plan.objects.filter(is_published=True, language=language).values_list(
+            "title", flat=True
+        ):
+            add(title)
+        for h1 in Article.objects.filter(is_published=True, language=language).values_list(
+            "h1", flat=True
+        ):
+            add(h1)
+        if language == "en":
+            topics = Topic.objects.filter(is_published=True).values_list("title", flat=True)
+        else:
+            topics = TopicTranslation.objects.filter(
+                language=language, topic__is_published=True
+            ).values_list("title", flat=True)
+        for title in topics:
+            add(title)
+        return sorted(vocab)
+
+    return memoized("title-vocabulary", compute, language)
+
+
+def _in_library(word: str, language: str) -> bool:
+    """Whether ``word`` occurs anywhere in this language's text — then it is a
+    real word the reader meant, not a typo, however far from any title."""
+    if uses_fts(language):
+        query = search_query(word, language)
+        return (
+            Chapter.objects.filter(
+                book__is_published=True, book__language=language, search_vector=query
+            ).exists()
+            or Sermon.objects.filter(
+                is_published=True, language=language, search_vector=query
+            ).exists()
+        )
+    return Chapter.objects.filter(
+        book__is_published=True, book__language=language, body_text__icontains=word
+    ).exists()
+
+
+def correction(q: str, language: str) -> str | None:
+    """``q`` with its misspelt words corrected to title words, or None.
+
+    A word is corrected only when it is long enough, isn't a title word, occurs
+    nowhere in the library, and lies close to exactly-ish one title word. Not in
+    the substring and prefix languages (Japanese, Korean), where a "word" is not
+    a unit difflib can judge. Exclusions and OR stay as typed.
+    """
+    if language in SUBSTRING_LANGUAGES or language in PREFIX_LANGUAGES:
+        return None
+
+    def compute():
+        vocab = _title_vocabulary(language)
+        known = set(vocab)
+        # A title word typed without its accents ("oracion", "priere") is the
+        # word itself, whatever else the library holds.
+        unaccented = {fold(w): w for w in vocab if fold(w) != w}
+        fixed: dict[str, str] = {}
+        for negated, word in query_tokens(q):
+            low = word.lower()
+            if (
+                negated
+                or word == "OR"
+                or len(low) < CORRECT_MIN_LEN
+                or not low.isalpha()
+                or low in known
+                or low in fixed
+            ):
+                continue
+            if low in unaccented:
+                fixed[low] = unaccented[low]
+                continue
+            close = difflib.get_close_matches(low, vocab, n=1, cutoff=CORRECT_CUTOFF)
+            if close and not _in_library(word, language):
+                fixed[low] = close[0]
+        if not fixed:
+            return None
+        return re.sub(
+            r"\w+",
+            lambda m: fixed.get(m.group(0).lower(), m.group(0)),
+            q,
+        )
+
+    return memoized("correction", compute, q, language)
 
 
 # --- Did-you-mean -------------------------------------------------------------
