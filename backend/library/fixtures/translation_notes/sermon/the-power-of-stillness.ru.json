@@ -1,0 +1,57 @@
+{
+ "kind": "sermon",
+ "slug": "the-power-of-stillness",
+ "language": "ru",
+ "job_issue": 9112,
+ "references": [
+  {
+   "reference": "1 Kings 19:12",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 119:165",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Psalm 46:10",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 4:10",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Psalm 91:1",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "self_rendered",
+   "block_index": 15
+  }
+ ]
+}

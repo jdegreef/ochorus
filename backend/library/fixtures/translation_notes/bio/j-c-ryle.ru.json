@@ -1,0 +1,19 @@
+{
+ "kind": "bio",
+ "slug": "j-c-ryle",
+ "language": "ru",
+ "job_issue": 9152,
+ "references": [
+  {
+   "reference": "Ephesians 2:8",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Ephesians 2:8a",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}
