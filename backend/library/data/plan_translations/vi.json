@@ -56,11 +56,25 @@
    "Plan backed by the vi editions of the-life-of-trust-children («Cuộc Đời Tin Cậy (Cho thiếu nhi)»), a-retrospect-children («Hồi Tưởng (Cho thiếu nhi)») and amanda-smith-autobiography-children («Câu Chuyện Của Amanda Smith (Cho thiếu nhi)»); ships with the Level 1 books batch (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card names people, not book titles; Trung Quốc, trẻ mồ côi, sinh ra trong cảnh nô lệ and đôi giày follow those editions' wording."
   ]
  },
+ "family-devotions-brave-and-faithful": {
+  "title": "Tĩnh nguyện gia đình: Can đảm và trung tín",
+  "description": "Năm tuần tĩnh nguyện gia đình, mỗi tối năm phút: những câu chuyện có thật về ba người phụ nữ can đảm, mỗi tối đọc to một chương ngắn — Mary Slessor, cô gái nhà máy dệt người Tô Cách Lan đã cứu những em bé sinh đôi ở Nigeria; Pandita Ramabai, người đã dựng một mái nhà cho các góa phụ và các bé gái Ấn Độ; và Corrie ten Boom, người đã giấu những người hàng xóm Do Thái trong chiến tranh và học cách tha thứ. Mỗi chương khép lại bằng một lời cầu nguyện và ba câu hỏi để cả nhà cùng trò chuyện.",
+  "note": [
+   "Plan backed by the vi editions of mary-slessor-a-life-children («Mary Slessor (Cho thiếu nhi)»), pandita-ramabai-a-life-children («Pandita Ramabai (Cho thiếu nhi)») and corrie-ten-boom-a-life-children («Corrie ten Boom (Cho thiếu nhi)»), Vietnamese 100-item batch (2026-11-21), job #9421. seed_plans creates the vi row only once all three books exist. The framing follows the shipped vi family plans («Tĩnh nguyện gia đình: …», «Mỗi chương khép lại bằng…»). AI-drafted; awaiting native review."
+  ]
+ },
  "family-devotions-talking-with-god": {
   "title": "Tĩnh nguyện gia đình: Nói chuyện với Đức Chúa Trời suốt ngày",
   "description": "Mười hai buổi tối tĩnh nguyện gia đình, mỗi tối năm phút, cùng Thầy Lawrence, người phụ bếp vụng về đã học cách nói chuyện với Đức Chúa Trời giữa nồi niêu xoong chảo. Hãy đọc to một chương ngắn: một cái cây trơ trụi giữa mùa đông đã đưa anh đến với Đức Chúa Trời ra sao, anh đã làm mọi việc vì tình yêu dành cho Đức Chúa Trời thế nào, và anh đã làm gì khi mắc lỗi. Mỗi chương khép lại bằng một lời cầu nguyện và ba câu hỏi để cả nhà cùng trò chuyện.",
   "note": [
    "Single-book plan backed by the vi edition of the-practice-of-the-presence-of-god-children («Thực Hành Sự Hiện Diện Của Đức Chúa Trời (Cho thiếu nhi)»); ships with the Level 1 books batch (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card names no book title; “Thầy Lawrence”, “nói chuyện với Đức Chúa Trời”, the bare winter tree (“Cái cây giữa mùa đông”, ch. 2) and the pronoun “anh” for the young Lawrence all follow that edition."
+  ]
+ },
+ "family-devotions-boy-from-osogun": {
+  "title": "Tĩnh nguyện gia đình: Cậu bé làng Osogun",
+  "description": "Mười hai buổi tối tĩnh nguyện gia đình, mỗi tối năm phút, cùng Samuel Ajayi Crowther, cậu bé người Yoruba bị bán làm nô lệ, rồi lớn lên đã đem Kinh Thánh đến cho dân tộc mình bằng chính tiếng mẹ đẻ. Hãy đọc to một chương ngắn: con tàu nô lệ bị chặn lại giữa biển, ngày cậu tìm lại được mẹ mình, Lời Cầu Nguyện Chung bằng tiếng Yoruba trước mặt Nữ hoàng, và những người nô lệ tốt bụng đã cho ông ăn khi ông bị bắt làm tù binh. Mỗi chương khép lại bằng một lời cầu nguyện và ba câu hỏi để cả nhà cùng trò chuyện.",
+  "note": [
+   "Single-book plan backed by the vi edition of samuel-ajayi-crowther-a-life-children («Samuel Ajayi Crowther (Cho thiếu nhi)»), shipped in the same PR, Vietnamese 100-item batch (2026-11-21), job #9422. The title quotes the edition's first chapter, «Cậu bé làng Osogun», as the English plan quotes “The Boy from Osogun”. AI-drafted; awaiting native review."
   ]
  },
  "school-of-prayer": {

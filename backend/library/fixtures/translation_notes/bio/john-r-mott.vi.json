@@ -1,0 +1,30 @@
+{
+ "kind": "bio",
+ "slug": "john-r-mott",
+ "language": "vi",
+ "job_issue": 9227,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Jeremiah 45:5",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "John 20:28",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 8
+  },
+  {
+   "reference": "Mark 10:44",
+   "status": "self_rendered",
+   "block_index": 28
+  }
+ ]
+}
