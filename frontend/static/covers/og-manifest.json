@@ -27234,6 +27234,39 @@
 				524
 			]
 		},
+		"ko/the-life-of-trust-teens": {
+			"ground": "20f4adcad82d15b90ecad300ee521807271624c50fe9b5ab5c1c73d1f3af5824",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "ab0e09dab9a93698a3ba6ea7b0aaf2eba2b23ab899f659850891c1c3f8a4f0c8",
+			"art": true,
+			"scrim": 0.45,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[155, 102, 445, 131]
+				],
+				"title": [
+					[130, 320, 470, 430]
+				],
+				"edition": [
+					[252, 441, 348, 466]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
+		},
 		"ko/the-masters-indwelling": {
 			"ground": "9cc17ac51441ab87ade44e0d92c3212d04397db1aeb113c6a046114e9a2187a5",
 			"style": "devotional",
