@@ -38447,6 +38447,42 @@
 				520
 			]
 		},
+		"ru/brave-for-god-2": {
+			"ground": "88864c20ed93d2cbb36feed00e22af46f479fc805fe8267a65282522dbff995f",
+			"style": "young",
+			"volume": "2",
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 242, 311, 286],
+					[106, 317, 494, 392],
+					[69, 378, 531, 453]
+				],
+				"subtitle": [
+					[161, 508, 439, 536],
+					[173, 537, 427, 565]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				230,
+				565
+			]
+		},
 		"ru/talks-to-the-farmer-children": {
 			"ground": "2314c64bbc523d74d38e2b7f6ee50388e99a0be03b6aa6392c856ac3583b5c3d",
 			"style": "young",
@@ -38479,6 +38515,40 @@
 			"middle": [
 				296,
 				499
+			]
+		},
+		"ru/the-life-of-trust-children": {
+			"ground": "31c97a01aaedc59341bce5bcf889e44be60c2654ef951155104d45ce15b9157e",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[155, 102, 445, 131]
+				],
+				"title": [
+					[179, 285, 421, 382],
+					[132, 369, 468, 466]
+				],
+				"edition": [
+					[225, 477, 375, 502]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				236,
+				559
 			]
 		},
 		"ruth": {
