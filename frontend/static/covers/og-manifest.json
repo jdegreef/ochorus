@@ -37915,6 +37915,21 @@
 				546
 			]
 		},
+		"ru/around-the-wicket-gate": {
+			"ground": "e34ea149853e6681f9ae8b6611ef37fdb38d9e6ac231d3324c5bca295bf9a3c3",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0.025,
+			"caps": false,
+			"sitemark": null
+		},
 		"ru/talks-to-the-farmer-children": {
 			"ground": "2314c64bbc523d74d38e2b7f6ee50388e99a0be03b6aa6392c856ac3583b5c3d",
 			"style": "young",
