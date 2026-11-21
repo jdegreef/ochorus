@@ -700,6 +700,24 @@ export interface QuoteHit {
 	phrase?: boolean;
 }
 
+/**
+ * A question the library has already answered on one of its pages, matched to
+ * the question the reader typed (search_answers.py).
+ */
+export interface AnswerHit {
+	type: 'answer';
+	/** The library's question, and its answer (plain text). */
+	question: string;
+	answer: string;
+	/** The page it is answered on. */
+	work_kind: 'book' | 'sermon' | 'topic' | 'article' | 'author';
+	work_slug: string;
+	work_title: string;
+	/** The question with the words that matched marked. */
+	snippet: string;
+	date: string;
+}
+
 export type SearchHit = (
 	| ChapterHit
 	| SermonHit
@@ -710,6 +728,7 @@ export type SearchHit = (
 	| ArticleHit
 	| ScriptureHit
 	| QuoteHit
+	| AnswerHit
 ) & {
 	/** An admin pinned this as the best match for the query; it leads the list. */
 	pinned?: boolean;

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { search, searchComplete, scripturePageHref, quoteHitHref, type SearchHit } from '$lib/library-public';
 	import { authorPath } from '$lib/originals';
+	import { answerHref } from '$lib/searchResults';
 	import {
 		primaryNav,
 		SERIES_DEST,
@@ -114,6 +115,8 @@
 				return { key: 'article:' + h.article_slug, kind: 'hit', label: t('search.typeArticle'), title: h.article_title, meta: '', href: `/articles/${h.article_slug}` };
 			case 'scripture':
 				return { key: `scripture:${h.book_slug}:${h.chapter}:${h.verse ?? ''}`, kind: 'hit', label: t('search.typeScripture'), title: h.reference, meta: '', href: scripturePageHref(h.book_slug, h.chapter, h.verse) };
+			case 'answer':
+				return { key: `answer:${h.work_kind}-${h.work_slug}`, kind: 'hit', label: t('search.typeAnswer'), title: h.question, meta: h.work_title, href: answerHref(h) };
 			case 'quote':
 				return { key: 'quote:' + h.quote_slug, kind: 'hit', label: t('nav.quotes'), title: h.text, meta: h.author_name, href: quoteHitHref(h) };
 			case 'sermon':

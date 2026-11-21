@@ -124,6 +124,7 @@
 		article: () => t('search.typeArticle'),
 		scripture: () => t('search.typeScripture'),
 		quote: () => t('nav.quotes'),
+		answer: () => t('search.typeAnswer'),
 		sermon: () => t('search.typeSermon'),
 		chapter: () => t('search.typeChapter')
 	};
@@ -1177,7 +1178,7 @@
 						<ul class="divide-y divide-border">
 							{#each g.rows as row (row.key)}
 								<li>
-									{#if row.type === 'chapter' || row.type === 'quote'}
+									{#if row.type === 'chapter' || row.type === 'quote' || row.type === 'answer'}
 										<!-- A passage: where it is, then the words that matched.
 										     The snippet is the result — it is why the row is here. -->
 										<a

@@ -68,6 +68,7 @@ from .people import People, fold, strongest
 from .people import words as name_words
 from .scripture import quoted_reference, reference_verse_ids
 from .search_aliases import books_named, other_names
+from .search_answers import ANSWER_CAP, answer_hits
 from .search_quotes import QUOTE_CAP, quote_hits
 
 MAX_RESULTS = 30
@@ -447,6 +448,8 @@ def search_library(q: str, language: str, scope=None) -> list[dict]:
     # Quotations ride beside the capped list rather than inside it: they are
     # their own section, and a few of them should never cost a passage its place.
     merged += quote_hits(q, language, ctx.writer, scope)[:QUOTE_CAP]
+    # And the library's own answers, when the query asks a question.
+    merged += answer_hits(q, language, scope)[:ANSWER_CAP]
     # Readers' choices last, over the finished list: they reorder what matched,
     # never add to it. Not inside a scope, where clicks aren't recorded.
     return merged if scope else apply_choices(merged, q, language)
@@ -485,6 +488,8 @@ def hit_row_key(hit: dict) -> str:
         return f"scripture:{hit.get('book_slug', '')}:{hit.get('chapter', '')}:{'' if verse is None else verse}"
     if kind == "quote":
         return f"quote:{hit.get('quote_slug', '')}"
+    if kind == "answer":
+        return f"answer:{hit.get('work_kind', '')}-{hit.get('work_slug', '')}"
     spec = HIT_WORK.get(kind)
     return f"{kind}:{hit.get(spec[1], '')}" if spec else ""
 
@@ -1126,10 +1131,13 @@ def count_by_type(q: str, language: str, scope=None) -> tuple[dict, dict]:
         for kind in querysets:
             if kind in TOASTED:
                 tally(kind)
-    quotes = len(quote_hits(q, language, ctx.writer, scope))
-    if quotes:
-        counts["quote"] = quotes
-        capped["quote"] = False
+    for kind, n in (
+        ("quote", len(quote_hits(q, language, ctx.writer, scope))),
+        ("answer", len(answer_hits(q, language, scope))),
+    ):
+        if n:
+            counts[kind] = n
+            capped[kind] = False
     # "scripture" is intentionally uncounted: it has no queryset, and a reference
     # resolves to 0-or-1 page, so the frontend's `totals[type] ?? loaded` fallback
     # lands on the single loaded row exactly. Counting it would mean re-running
@@ -1174,6 +1182,8 @@ def page_by_type(
     if kind == "scripture":
         ref = verse_quoted(q, language) or q
         return _scripture_page_hits(ref, language, scope)[offset : offset + limit]
+    if kind == "answer":
+        return answer_hits(q, language, scope)[offset : offset + limit]
     if kind == "quote":
         ctx = _Ctx(q=q, language=language)
         hits = quote_hits(q, language, ctx.writer, scope)

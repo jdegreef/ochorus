@@ -379,3 +379,32 @@ describe('quotes', () => {
 		expect(leadWithPinned(groupRows(quoting)).map((g) => g.type)[0]).toBe('quote');
 	});
 });
+
+describe('answers', () => {
+	const answer = (work_kind: string, work_slug = 'humility') =>
+		({
+			type: 'answer',
+			question: 'Why is humility the root of every virtue?',
+			answer: 'Murray says pride put man in his own place, and humility gives God His.',
+			work_kind,
+			work_slug,
+			work_title: 'Humility',
+			snippet: 'Why is ⟦humility⟧ the root of every virtue?',
+			date: ''
+		}) as unknown as SearchHit;
+
+	it('reads the question, then the answer, and links to where it is answered', () => {
+		const r = toRow(answer('book'), ctx);
+		expect(r.key).toBe('answer:book-humility');
+		expect(r.location).toBe('Why is humility the root of every virtue?');
+		expect(r.snippet).toContain('pride put man');
+		expect(r.href).toBe('/books/humility#questions');
+		expect(toRow(answer('author', 'andrew-murray'), ctx).href).toBe('/authors/andrew-murray#faq');
+		expect(toRow(answer('sermon', 'himself'), ctx).href).toBe('/sermons/himself#questions-heading');
+	});
+
+	it('lead the page, after only a scripture page', () => {
+		const rows = rowsOf([chapter('humility', 1), scripture(), answer('book')]);
+		expect(groupRows(rows).map((g) => g.type)).toEqual(['scripture', 'answer', 'chapter']);
+	});
+});

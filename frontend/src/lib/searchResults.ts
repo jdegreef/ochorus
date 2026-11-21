@@ -16,7 +16,7 @@
 import { portraitPosition } from '$lib/portraits';
 import { authorPath } from './originals';
 import { quoteHitHref, scripturePageHref } from '$lib/library-public';
-import type { CoverFace, SearchHit, SearchType } from '$lib/library-public';
+import type { AnswerHit, CoverFace, SearchHit, SearchType } from '$lib/library-public';
 import { chapterName } from './reading';
 import { foldText } from './searchNormalize';
 import { sermonArt } from './sermonArt';
@@ -164,6 +164,21 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
 				color: '',
 				round: false
 			};
+		case 'answer':
+			return {
+				key: `answer:${hit.work_kind}-${hit.work_slug}`,
+				label: ctx.label('answer'),
+				href: answerHref(hit),
+				title: hit.question,
+				meta: hit.work_title,
+				// Read like a passage: the question, then the answer itself.
+				location: hit.question,
+				snippet: hit.answer,
+				date: hit.date,
+				image: '',
+				color: '',
+				round: false
+			};
 		case 'quote':
 			return {
 				key: 'quote:' + hit.quote_slug,
@@ -226,6 +241,8 @@ export const GROUP_ORDER: { type: SearchHit['type']; labelKey: string }[] = [
 	// Scripture leads: it only appears for a reference query, where the passage
 	// hub is the most direct answer, above the books/passages that treat it.
 	{ type: 'scripture', labelKey: 'search.groupScripture' },
+	// Answers come only for a question, and they are the most direct reply to one.
+	{ type: 'answer', labelKey: 'search.groupAnswers' },
 	{ type: 'book', labelKey: 'search.groupBooks' },
 	{ type: 'author', labelKey: 'search.groupAuthors' },
 	{ type: 'topic', labelKey: 'search.groupTopics' },
@@ -242,6 +259,22 @@ export interface ResultGroup {
 	type: SearchHit['type'];
 	labelKey: string;
 	rows: ResultRow[];
+}
+
+/** Where an answer is read in full: its page's questions section. */
+export function answerHref(hit: AnswerHit): string {
+	switch (hit.work_kind) {
+		case 'author':
+			return `${authorPath(hit.work_slug)}#faq`;
+		case 'sermon':
+			return `/sermons/${hit.work_slug}#questions-heading`;
+		case 'book':
+			return `/books/${hit.work_slug}#questions`;
+		case 'topic':
+			return `/topics/${hit.work_slug}#questions`;
+		default:
+			return `/articles/${hit.work_slug}#questions`;
+	}
 }
 
 /** Cluster rows into type sections, keeping only the sections present. */
