@@ -220,6 +220,34 @@ jobs:
               c.execute("SELECT pg_reload_conf()")
           EOF
 
+      # Give the test server Supabase's Data API roles and the grants Supabase
+      # hands them, so the "second lock" is tested rather than skipped.
+      # accounts.tests_rls.DataApiGrantTests skips when `anon`/`authenticated`
+      # don't exist — which on a plain Postgres was every run, so
+      # accounts/0004_revoke_anon_public_schema.py (the migration that strips
+      # those grants) had never once been exercised by CI. Supabase grants both
+      # roles everything on new public tables via DEFAULT PRIVILEGES; set the
+      # same in template1, which Django's test DB (and each --parallel clone of
+      # it) is created from, so every table the migrations create is born
+      # granted and the test proves the migration revoked it.
+      - name: Emulate Supabase's Data API roles on the test Postgres
+        working-directory: backend
+        run: |
+          uv run python - <<'EOF'
+          import psycopg
+          base = "postgres://postgres:postgres@localhost:5432/"
+          with psycopg.connect(base + "postgres", autocommit=True) as c:
+              c.execute("CREATE ROLE anon NOLOGIN")
+              c.execute("CREATE ROLE authenticated NOLOGIN")
+          with psycopg.connect(base + "template1", autocommit=True) as c:
+              c.execute("GRANT USAGE ON SCHEMA public TO anon, authenticated")
+              for kind in ("TABLES", "SEQUENCES"):
+                  c.execute(
+                      f"ALTER DEFAULT PRIVILEGES IN SCHEMA public "
+                      f"GRANT ALL ON {kind} TO anon, authenticated"
+                  )
+          EOF
+
       # --parallel auto: one worker per core (4 on ubuntu-latest), each with its
       # own cloned test DB. This suite is the workflow's long pole — ~19m serial
       # — and it is the whole reason the four-job split did not move the needle
