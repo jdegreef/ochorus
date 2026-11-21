@@ -12,7 +12,8 @@
   },
   {
    "reference": "Daniel 3:25",
-   "status": "self_rendered"
+   "status": "self_rendered",
+   "block_index": 1
   },
   {
    "reference": "Hebrews 2:10",
@@ -103,8 +104,9 @@
   },
   {
    "reference": "Mark 16:20",
-   "status": "self_rendered",
-   "block_index": 10
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Acts 2:22",
@@ -227,7 +229,8 @@
   },
   {
    "reference": "John 14:19b",
-   "status": "self_rendered"
+   "status": "self_rendered",
+   "block_index": 27
   },
   {
    "reference": "Philippians 3:21a",
@@ -308,7 +311,8 @@
   },
   {
    "reference": "Isaiah 33:17b",
-   "status": "self_rendered"
+   "status": "self_rendered",
+   "block_index": 30
   },
   {
    "reference": "1 John 3:2b",
@@ -318,8 +322,9 @@
   },
   {
    "reference": "Matthew 17:2",
-   "status": "self_rendered",
-   "block_index": 32
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Daniel 12:3",
