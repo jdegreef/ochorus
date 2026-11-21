@@ -1,0 +1,31 @@
+{
+ "kind": "sermon",
+ "slug": "self-denial-versus-self-assertion",
+ "language": "vi",
+ "job_issue": 9054,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 6:19-20",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "2 Corinthians 11:23",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 27:14",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese"
+  }
+ ]
+}
