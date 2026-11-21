@@ -27821,6 +27821,21 @@
 				520
 			]
 		},
+		"ko/the-gospel-of-healing": {
+			"ground": "8e202d3efb1f398c442bc238f6e9abe3c84e7d561eb11933d17c42760da5caeb",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "c18e06efeccf0e4a25c0c8ae32d29105c9c3c1940a7d24448d9007416ecd6f0f",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/teal",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/the-imitation-of-christ": {
 			"ground": "71eee575c9620c34ae56e335104233f970a85b2dfba0094bc911aa6f953f0b01",
 			"style": "devotional",
