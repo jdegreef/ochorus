@@ -23380,6 +23380,21 @@
 				552
 			]
 		},
+		"ja/confessions": {
+			"ground": "77c7e93adb46ca9fe20c500f16d6f7f2d32bfffc1d4294adbeb7a4ec366e2466",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "483f46895109f5606ce82162e8d5e25d7f82746aa04087b41f06ad43879d7507",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/rust",
+			"bar": 0.015,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/divine-healing": {
 			"ground": "c0c274469c0d3e0235bbb970116b380b6f9519867cbd8e9865e83e903aba312f",
 			"style": "devotional",
