@@ -26304,6 +26304,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/divine-songs-for-children": {
+			"ground": "c60907e24df63ad7ea78cc95c0c430c6dcd660cf890b9e6092825a2c78bdd31c",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1d8d59e944d9ac5d336ada3791e5ef5aaf4fa2d8298fd691497781dde8fa7b92",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[183, 102, 417, 131]
+				],
+				"title": [
+					[163, 283, 437, 358],
+					[130, 344, 470, 419]
+				],
+				"subtitle": [
+					[66, 477, 534, 505]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
+		},
 		"ko/elisabeth-elliot-a-life-children": {
 			"ground": "a1c064b22e319b24b55193bc8521dc988727ea647b916878b1a4332de97c2df4",
 			"style": "young",
