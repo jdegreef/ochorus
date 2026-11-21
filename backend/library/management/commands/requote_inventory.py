@@ -126,6 +126,12 @@ class Command(BaseCommand):
             self.stdout.write(
                 f"  {where}b{r['block_index']} {r['reference']} {r.get('kind', '')}/{r['status']}{flags}: {r['text'][:120]}"
             )
+        for ch, shift in result["notes_diff"]["chapter_offsets"].items():
+            if chapter is None or str(chapter) == ch:
+                self.stdout.write(
+                    f"  ch{ch}: the notes sit {abs(shift)} block(s) "
+                    f"{'after' if shift < 0 else 'before'} the quotations they mean"
+                )
         if show == "missing":
             for w in result["notes_diff"]["wrong_block"]:
                 if chapter is None or w["chapter"] == chapter:

@@ -224,6 +224,15 @@ class NotesDiffTests(SimpleTestCase):
         )
 
 
+class OffsetTests(SimpleTestCase):
+    def test_a_chapter_shifted_by_one_is_named_once(self):
+        wrong = [
+            {"chapter": 3, "found_chapter": 3, "notes_block": b + 1, "found_block": b}
+            for b in (2, 6, 9)
+        ] + [{"chapter": 4, "found_chapter": 4, "notes_block": 1, "found_block": 7}]
+        self.assertEqual(rq._offsets(wrong), {"3": -1})
+
+
 class ValidatorTests(SimpleTestCase):
     def setUp(self):
         self.verse = owb("John 3:16")

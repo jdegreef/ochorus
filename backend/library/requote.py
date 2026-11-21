@@ -1373,8 +1373,26 @@ def notes_diff(rows: list[Row], notes: list[dict], work: Work) -> dict:
         "missing": quotations,
         "english_only_unnoted": [m for m in missing if m["kind"] == "english_only"],
         "wrong_block": wrong,
+        "chapter_offsets": _offsets(wrong),
         "unlocated_notes": unlocated,
     }
+
+
+def _offsets(wrong: list[dict]) -> dict[str, int]:
+    """A chapter whose notes all sit N blocks off (a title or heading counted,
+    or not): the brief's "indexes drift" case, named once instead of row by
+    row. Reported where one shift explains at least three rows and half the
+    chapter's misplaced ones."""
+    by_chapter: dict = defaultdict(list)
+    for w in wrong:
+        if w["chapter"] == w["found_chapter"] and w["notes_block"] is not None:
+            by_chapter[w["chapter"]].append(w["found_block"] - w["notes_block"])
+    out = {}
+    for chapter, shifts in by_chapter.items():
+        shift = max(set(shifts), key=shifts.count)
+        if shifts.count(shift) >= 3 and shifts.count(shift) * 2 >= len(shifts):
+            out[str(chapter)] = shift
+    return out
 
 
 def summary(rows: list[Row], diff: dict | None = None) -> dict:
