@@ -2521,6 +2521,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # es
             ("<p>¡Qué grato es al corazón",
              '<blockquote><em>"El SEÑOR DIOS es Sol y Escudo;<br/> gracia y gloria dará el SEÑOR:<br/> ninguna cosa buena negará<br/> a los que andan en integridad."<br/></em>—SALMO 84:11.</blockquote>'),
+            # ko
+            ('<p>참된 자녀라면 자기 ',
+             '<blockquote><em>“여호와 하나님은 해요 방패시라<br/> 여호와께서 은혜와 영화를 주시며<br/> 정직히 행하는 자에게<br/> 좋은 것을 아끼지 아니하실 것임이니이다”<br/></em>—시편 84:11</blockquote>'),
         ],
     },
     "under-the-shepherds-care": {
