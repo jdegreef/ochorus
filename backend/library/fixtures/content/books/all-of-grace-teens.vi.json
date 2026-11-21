@@ -1,0 +1,385 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "charles-h-spurgeon"
+  ],
+  "slug": "all-of-grace-teens",
+  "language": "vi",
+  "title": "Tất Cả Bởi Ân Điển (Cho thiếu niên)",
+  "subtitle": "",
+  "description": "Charles Spurgeon viết cuốn sách ngắn này cho những người bình thường vẫn đinh ninh rằng Đức Chúa Trời chỉ dành cho người tốt — và nói thẳng với họ rằng sự cứu rỗi là “tất cả bởi ân điển”: nhưng không, không xứng đáng, chẳng tốn gì cả. Bản kể lại dành cho thiếu niên này giữ lại những hình ảnh khó quên của ông — bà cụ trốn người đòi tiền nhà, sợi dây thừng phía trên thác Niagara, con sò bám chặt trên tảng đá — và đặt câu hỏi: ân điển thật sự thay đổi điều gì trong đời sống bạn?",
+  "hook": "Bạn nghĩ Đức Chúa Trời chỉ dành cho người tốt? Spurgeon nói ân điển là nhưng không, và bạn chẳng cần phải tự kiếm lấy.",
+  "qa": [
+   {
+    "question": "Đây chẳng phải chỉ là một bài giảng cũ bảo tôi phải cố gắng hơn và ngoan hơn sao?",
+    "answer": "Gần như ngược lại. Spurgeon mở đầu bằng câu ông “không đến đòi tiền nhà”: cuốn sách không đặt ra đòi hỏi, mà mang đến một món quà nhưng không. Toàn bộ sứ điệp của nó là Đức Chúa Trời cứu những người không thể tự cứu mình."
+   },
+   {
+    "question": "“Được xưng công bình” rốt cuộc nghĩa là gì?",
+    "answer": "Nghĩa là được kể là ngay thẳng — vô tội — trước mặt Đức Chúa Trời. Spurgeon giải thích rằng Đức Chúa Trời có thể làm điều này một cách công bình vì Chúa Giê-xu đã chịu hình phạt thay chỗ chúng ta, và một khi vị Thẩm Phán tối cao đã tha bổng bạn, thì không ai có thể kết tội bạn được."
+   },
+   {
+    "question": "Vì sao Đức Chúa Trời lại xưng công bình cho người không tin kính thay vì cho người tốt?",
+    "answer": "Vì, như Kinh Thánh nói, “Không có ai công chính, dù chỉ một người.” Thầy thuốc là để chữa người bệnh, và sự tha thứ là dành cho kẻ có tội, nên Spurgeon nói việc là tội nhân không phải là điều ngăn bạn lại — mà chính là lý do Tin Lành dành cho bạn."
+   },
+   {
+    "question": "Tôi có phải tự dọn dẹp bản thân cho sạch sẽ trước khi đến với Đức Chúa Trời không?",
+    "answer": "Không. Spurgeon kể về một anh quét đường rách rưới bị cho về khỏi xưởng vẽ của một họa sĩ vì anh đến nơi sạch sẽ, mặc bộ đồ đi mượn — người ta cần anh đúng như con người vốn có của anh. Ân điển của Đức Chúa Trời gặp bạn ngay trong tình trạng tệ nhất của bạn."
+   },
+   {
+    "question": "Nếu tất cả là bởi ân điển, thì tôi sống thế nào có quan trọng không?",
+    "answer": "Rất quan trọng. Spurgeon khẳng định rằng Đức Chúa Trời ban một tấm lòng mới cùng với sự tha thứ, rằng sự ăn năn và sự tha thứ luôn đi đôi với nhau, và rằng đức tin từ chối vâng lời Chúa Giê-xu chỉ là giả vờ. Ân điển không để bạn y như cũ — nó thay đổi hướng đi của cả đời bạn."
+   },
+   {
+    "question": "Nếu tôi chẳng cảm thấy gì thì sao?",
+    "answer": "Đức tin là tin cậy Đấng Christ, chứ không phải là có một cảm xúc nào đó. Spurgeon thừa nhận có lúc ông đã khóc vì không khóc được, và ông ví đức tin trưởng thành như một thủy thủ lái tàu theo la bàn và các vì sao mà chẳng thấy đất liền — tin cậy lời Đức Chúa Trời hơn là cảm xúc của chính mình."
+   },
+   {
+    "question": "Nếu tôi bắt đầu theo Chúa Giê-xu rồi lại sa ngã thì sao?",
+    "answer": "Spurgeon nói người ta quay lui khi họ tin cậy Chúa Giê-xu cho sự khởi đầu nhưng lại tin cậy chính mình cho sự kết thúc. Câu trả lời là “Đức Chúa Trời là Đấng thành tín”: Ngài làm trọn điều Ngài đã bắt đầu, và vì các tín hữu được nối liền với Đấng Christ, nên “trừ khi Chúa Giê-xu chìm, người tin sẽ chẳng bao giờ chết đuối.”"
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại của Ochorus dành cho bạn đọc nhỏ tuổi, dựa trên cuốn All of Grace (Tất Cả Bởi Ân Điển) của Charles H. Spurgeon, một tác phẩm thuộc phạm vi công cộng. Lời kể là của chúng tôi, được tự do đọc và chia sẻ.",
+  "cover_url": "/covers/art/all-of-grace-teens.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 137,
+  "is_published": true,
+  "created_at": "2026-11-21T00:00:00Z",
+  "updated_at": "2026-11-21T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "all-of-grace-teens",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Không Phải Đến Đòi Tiền Nhà",
+  "body_html": "<blockquote>“Hãy đến, chúng ta hãy cùng nhau phân xử, CHÚA phán. Dù tội các ngươi đỏ như điều, cũng sẽ trắng như tuyết; dù đỏ thắm như thuốc nhuộm đỏ thẫm, cũng sẽ như lông chiên chưa nhuộm.” — Ê-sai 1:18</blockquote> <p>Spurgeon mở đầu cuốn sách bằng một bức tranh. Có một người dựng một vòi nước uống bên một con đường đông người qua lại, rồi treo một cái ca bên cạnh bằng một sợi xích nhỏ. Ít lâu sau, người ta kể với ông rằng một nhà phê bình nghệ thuật nổi tiếng đã chê bai thiết kế của nó đủ điều. Ông chỉ hỏi một câu: có nhiều người khát đến uống ở đó không? Hàng ngàn người, họ đáp — những người đàn ông, đàn bà và trẻ em nghèo khó, ngày nào cũng vậy. Ông mỉm cười. Ông chẳng bận tâm đến nhà phê bình; ông chỉ mong vào một ngày hè oi ả nào đó, chính nhà phê bình ấy cũng sẽ múc đầy cái ca và được mát lòng. Rồi Spurgeon quay sang bạn: “Đây là vòi nước của tôi, và đây là cái ca của tôi: bạn cứ chê nếu muốn; nhưng xin hãy uống nước sự sống.” Ông cố tình viết bằng những lời đơn sơ nhất có thể, và nói thẳng với bạn cuốn sách này để làm gì — không gì khác hơn là để bạn tìm gặp Đấng Christ.</p> <p>Rồi ông kể một câu chuyện ông nghe được từ miền bắc nước Anh. Một mục sư biết có một bà trong vùng rất nghèo, nên một hôm ông cầm sẵn tiền trong tay đến nhà bà để giúp. Ông gõ cửa. Không ai trả lời. Ông gõ thêm mấy lần nữa, rồi cuối cùng đành nghĩ chắc bà đi vắng. Ít lâu sau, ông gặp bà ở nhà thờ và kể rằng ông đã ghé nhà bà vào khoảng giữa trưa. “Ôi trời,” bà nói. “Tôi có nghe thấy ông, thưa ông, và tôi thật tiếc vì đã không ra mở cửa; nhưng tôi tưởng đó là người đến đòi tiền nhà.”</p> <p>Spurgeon nói, đó chính xác là cách phần đông người ta nghe bất cứ điều gì về Đức Chúa Trời. Họ nghe tiếng gõ và đinh ninh rằng có ai đó đến đòi nợ — bổn phận, đòi hỏi, một hóa đơn mà họ biết mình không thể trả nổi. Thế là họ im thin thít sau cánh cửa và giả vờ như không có nhà. Ông muốn được lắng nghe, nên ông nói thật rõ ràng: “Tôi không đến đòi tiền nhà.” Cuốn sách này không ở đây để đòi hỏi gì nơi bạn. Nó ở đây để nói với bạn rằng “sự cứu rỗi hoàn toàn bởi ân điển, nghĩa là nhưng không, miễn phí, chẳng tốn gì cả.” Nó sẽ không nói về luật pháp và hình phạt, mà về tình yêu, lòng nhân từ, sự tha thứ, lòng thương xót và sự sống đời đời. Và ông nói, Đấng thật sự đang gõ cửa là Chúa Giê-xu, Đấng “gõ cửa bằng bàn tay đã bị đóng đinh trên cây gỗ vì những người như bạn.” Đức Chúa Trời sẽ không mời bạn trò chuyện nếu Ngài không có ý tốt dành cho bạn. Vì vậy, Spurgeon nói, “Hãy mở cửa, và để những lời nài xin của tôi được bước vào.”</p> <p>Vậy — rốt cuộc chuyện này nói về điều gì? <strong>Có thể bạn đang trốn tránh một món quà vì tưởng đó là một hóa đơn.</strong> Rất nhiều người mang trong đầu hình ảnh Đức Chúa Trời như một kiểu chủ nhà: một người chỉ xuất hiện để nói bạn còn nợ bao nhiêu và bạn đã thiếu sót ở đâu. Thế nên hễ có điều gì về Đức Chúa Trời đến gần — một cuộc trò chuyện, một câu Kinh Thánh, một ý nghĩ lúc hai giờ sáng — bạn lại im lặng nấp sau tấm rèm và chờ nó đi qua. Nước đi đầu tiên của Spurgeon là nói rằng: bạn đã hiểu sai tiếng gõ cửa rồi.</p> <p>Hãy để ý vì sao bà ấy trốn. Không phải vì bà gian ác; mà vì bà nghèo và biết mình không thể trả nổi. Nếu bạn cũng vậy — nếu bạn vẫn giữ Đức Chúa Trời ở khoảng cách một cánh tay vì chắc mẩm mình chẳng bao giờ đủ tốt — thì tiếng gõ ấy chính là dành cho bạn. Spurgeon không giả vờ rằng bạn sống thế nào cũng chẳng sao; cuốn sách rồi sẽ nói đến điều đó. Ông đang nói rằng lời đầu tiên từ Đức Chúa Trời không phải là một đòi hỏi. Đó là một lời mời. Ông thậm chí còn chỉ ra rằng đọc cũng là một cách nghe, và “đức tin có thể đến với bạn ngay trong lúc bạn đang đọc cuốn sách này.” Vậy nên đừng đọc các chương tiếp theo với đôi vai gồng lên chờ bị giảng một bài.</p> <p><strong>Một việc để làm trong tuần này:</strong> hãy bắt quả tang phản xạ của mình. Mỗi lần Đức Chúa Trời, nhà thờ hay Kinh Thánh được nhắc đến trong tuần này, hãy để ý xem bạn lập tức chờ đợi điều gì — một luật lệ, một cảm giác tội lỗi bị gán lên, một đòi hỏi? Rồi viết ra một câu thật lòng: “Mình nghĩ điều Đức Chúa Trời muốn ở mình là ___.” Giữ nó lại, và đọc lại khi bạn đọc xong cuốn sách này. Hãy tự hỏi xem cánh cửa bạn vẫn đóng chặt bấy lâu có bao giờ thật sự là người đòi tiền nhà không.</p>",
+  "study_questions": [
+   {
+    "question": "Vì sao bà cụ nghèo không mở cửa khi vị mục sư gõ cửa?",
+    "answer": "Bà có nghe thấy ông nhưng tưởng đó là người đến đòi tiền nhà, nên giả vờ không có nhà — dù ông đến để cho bà tiền."
+   },
+   {
+    "question": "Spurgeon muốn nói gì khi ông bảo “Tôi không đến đòi tiền nhà”?",
+    "answer": "Ông muốn nói rằng cuốn sách không đặt ra đòi hỏi nào cho người đọc, mà mang đến một món quà nhưng không: sự cứu rỗi “hoàn toàn bởi ân điển” — miễn phí, chẳng tốn gì cả."
+   },
+   {
+    "question": "Bạn thường nghĩ Đức Chúa Trời muốn gì ở mình? Mọi chuyện có thể thay đổi ra sao nếu lời đầu tiên của Ngài là một lời mời, chứ không phải một hóa đơn?",
+    "answer": "Ý chính của chương: nhiều người trốn tránh Đức Chúa Trời vì nghĩ Ngài đến để đòi điều họ không thể trả. Nếu tiếng gõ cửa là một món quà, thì việc cần làm là thôi trốn và mở cửa ra."
+   }
+  ],
+  "word_count": 952
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "all-of-grace-teens",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Tin Lành Cho Người Không Tin Kính",
+  "body_html": "<blockquote>“Nhưng người nào không làm việc, mà tin Đức Chúa Trời, Đấng xưng công chính người không tin kính, thì đức tin ấy được kể là sự công chính.” — Rô-ma 4:5</blockquote> <p>Spurgeon xây cả chương này trên mấy chữ trong thư Rô-ma: Đức Chúa Trời là “Đấng xưng công chính người không tin kính.” Ông thừa nhận những chữ ấy đã làm ông sửng sốt, và cứ làm ông sửng sốt mãi. Những người ghét sứ điệp Cơ Đốc từng ném nó vào Đức Chúa Trời như một lời buộc tội — Ngài nhận cả những kẻ tồi tệ nhất! — và Spurgeon chỉ ra rằng Kinh Thánh không hề chối điều đó. Kinh Thánh nhận lấy nó. Chính Đức Chúa Trời tự xưng mình như vậy. Phần đông chúng ta cho rằng sự cứu rỗi là dành cho người tốt, và nếu mình tốt hơn thì Đức Chúa Trời sẽ ban thưởng. Nhưng Đức Chúa Trời, Đấng thấu suốt mọi sự, biết rằng “Không có ai công chính, dù chỉ một người.” Vì vậy Chúa Giê-xu không đến để tìm sự tốt lành mà ban thưởng. “Ngài đến, không phải vì chúng ta công bình, nhưng để làm cho chúng ta trở nên công bình.”</p> <p>Hãy nghĩ xem điều đó lạ lùng biết bao. Một luật sư giỏi bào chữa cho người vô tội; ông không được phép giúp kẻ có tội thoát tội. Làm cho một người có tội thật sự trở nên ngay thẳng trước tòa là việc vượt quá sức của bất cứ con người nào. “Xưng công bình cho kẻ không tin kính — đó là một phép lạ xứng với một Đức Chúa Trời.” Và Spurgeon nói rằng nó buộc phải như vậy. Một thầy thuốc có phương thuốc chắc chắn sẽ không được sai đến một thị trấn không ai đau ốm. Một người rộng lượng quyết định xóa nợ thì chỉ có thể xóa cho những người thật sự mắc nợ mình. Sự tha thứ chỉ dành cho kẻ có tội. Vì vậy, nếu bạn nghĩ mình chắc phải hư mất vì mình là tội nhân, ông lật ngược lại: đó chính là lý do bạn có thể được cứu. “Tội nhân là lý do để Phúc Âm tồn tại.”</p> <p>Ông mô tả hai kiểu người không tin kính. Một người sống như thể chẳng hề có Đức Chúa Trời. Người kia đi dự mọi buổi nhóm, có khi còn hát trong ban hát, mà chưa một lần tự mình gặp Đức Chúa Trời. Ông nói, cả hai đều chính là những người mà sứ điệp này dành cho. Những người duy nhất nó không thể giúp là những người nghĩ mình không cần đến nó — những người mà sự tốt lành của họ, ông cảnh báo, “chẳng vững chắc bằng một nửa mạng nhện.” Rồi một câu chuyện. Một họa sĩ đang vẽ một cảnh trong thành phố của mình, muốn đưa vào bức tranh một anh quét đường rách rưới mà ai cũng biết, nên trả tiền mời anh đến xưởng vẽ. Sáng hôm sau, anh ta đến nơi mặt mũi sạch sẽ, tóc chải gọn gàng, mặc một bộ đồ đi mượn — và bị cho về. Người ta cần anh đúng như con người vốn có của anh. “Đừng chờ sửa đổi mình, nhưng hãy đến ngay để được cứu.”</p> <p>Ông kể thêm một chuyện nữa. Có lần một nhà truyền đạo giảng về sự phán xét dữ dội đến nỗi một người nghe bảo ông rằng bài giảng ấy đáng lẽ phải giảng trong nhà tù của quận, cho bọn tội phạm nghe. “Ồ, không đâu,” nhà truyền đạo nói — trong nhà tù, ông sẽ giảng một câu Kinh Thánh khác: “Đấng Christ Giê-xu đã đến thế gian để cứu tội nhân.” Lời bình của Spurgeon tóm gọn cả chương: “Luật pháp dành cho kẻ tự cho mình là công bình, để hạ sự kiêu ngạo của họ xuống: Phúc Âm dành cho kẻ hư mất, để cất đi sự tuyệt vọng của họ.”</p> <p>Vậy — rốt cuộc chuyện này nói về điều gì? <strong>Ân điển của Đức Chúa Trời bắt đầu từ chỗ bạn thật sự đang đứng, chứ không phải chỗ bạn nghĩ mình phải đứng.</strong> Phần đông chúng ta có một luật ngầm chạy âm thầm trong đầu: tự lo cho mình ổn thỏa trước, rồi mới đến với Đức Chúa Trời. Bỏ cái điều mình xấu hổ, sắp xếp lại đầu óc, trở thành kiểu người “xứng đáng thuộc về” — rồi thì may ra. Spurgeon nói luật ấy bị lộn ngược. Phúc Âm không phải là giải thưởng cho những người đã tự dọn dẹp mình. Đó là một cuộc giải cứu cho những người không thể làm được.</p> <p>Điều đó đau cho lòng kiêu ngạo của bạn, nhưng tuyệt vời cho nỗi tuyệt vọng của bạn. Đau cho lòng kiêu ngạo, vì làm “một đứa ngoan” hay “một người tử tế” chẳng mua được gì ở đây cả. Tuyệt vời cho nỗi tuyệt vọng, vì điều tệ nhất bạn biết về chính mình không loại bạn ra; nó lại chính là loại người mà Đức Chúa Trời nói Ngài làm việc với. Spurgeon nói, Đức Chúa Trời tha thứ “không phải vì họ tốt, nhưng vì Ngài tốt.”</p> <p><strong>Một việc để làm trong tuần này:</strong> hãy để ý khoảnh khắc bạn muốn “rửa mặt” trước khi cầu nguyện — muốn đợi đến khi bớt thấy có lỗi, bớt bề bộn, thuộc linh hơn một chút. Đừng đợi. Tuần này, hãy cầu nguyện một lần đúng như con người bạn lúc này, bằng những lời đơn sơ, không tô vẽ gì cả: “Lạy Đức Chúa Trời, con là người không tin kính. Ngài phán rằng Ngài xưng công bình cho người không tin kính. Con xin Ngài làm điều đó cho con.”</p>",
+  "study_questions": [
+   {
+    "question": "Vì sao anh quét đường bị cho về khỏi xưởng vẽ của họa sĩ?",
+    "answer": "Anh đã rửa mặt, chải tóc và mặc một bộ đồ tươm tất, nhưng họa sĩ muốn vẽ anh đúng là anh quét đường rách rưới mà mọi người vẫn biết. Người ta cần anh đúng như con người vốn có của anh."
+   },
+   {
+    "question": "Vì sao Spurgeon nói sự tha thứ chỉ có thể dành cho kẻ có tội?",
+    "answer": "Thầy thuốc là để chữa người bệnh, và món nợ chỉ có thể được xóa cho người đang mắc nợ. Cũng vậy, sự tha thứ của Đức Chúa Trời chỉ dành cho những người thật sự đã phạm tội — nên việc là tội nhân chính là lý do bạn có thể được cứu, chứ không phải lý do bạn không thể."
+   },
+   {
+    "question": "Có điều gì bạn cảm thấy mình phải sửa trước thì Đức Chúa Trời mới muốn nhận bạn không? Chương này nói gì với bạn về điều đó?",
+    "answer": "Ý chính của chương: Đức Chúa Trời xưng công bình cho người không tin kính, và ân điển của Ngài gặp bạn ngay trong tình trạng tệ nhất của bạn. Chờ tự dọn dẹp mình trước chính là sai lầm của anh quét đường — hãy đến như bạn đang là."
+   }
+  ],
+  "word_count": 983
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "all-of-grace-teens",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Làm Sao Một Đức Chúa Trời Công Bình Có Thể Tha Thứ",
+  "body_html": "<blockquote>“Ngài làm vậy để chứng tỏ sự công chính của Ngài trong thời hiện tại, hầu cho Ngài vừa là công chính, vừa là Đấng xưng công chính bất cứ ai có đức tin nơi Đức Giê-xu.” — Rô-ma 3:26</blockquote> <p>Được “xưng công bình” nghĩa là được kể là ngay thẳng — vô tội — trước mặt Đức Chúa Trời. Spurgeon chỉ ra rằng bạn không thể tự làm điều đó cho mình (bạn chỉ đang tự lừa mình thôi), và người khác cũng không thể làm thay bạn: có người sẽ khen bạn vì những ơn nhỏ, có người lại chê bai bạn vì những chuyện còn nhỏ hơn. Chỉ có một ý kiến là đáng kể. “Đức Chúa Trời là Đấng xưng họ là công chính.” Và chỉ Đức Chúa Trời mới làm được, vì tội của bạn là phạm đến Ngài. Nếu ai đó làm bạn tổn thương, chỉ bạn mới có thể tha thứ cho họ; một người lạ không thể tha thay cho bạn. Ông nói, đó là lý do không thầy tế lễ hay người trung gian nào có thể đứng thay chỗ bạn — “tốt hơn hết là bạn hãy tự lo liệu việc linh hồn mình.” Hãy nhìn Sau-lơ, người đã săn đuổi các Cơ Đốc nhân như sói giữa bầy chiên, rồi trở thành nhà truyền đạo vĩ đại nhất của chính sứ điệp này. Hoặc hãy nghĩ đến người con hoang đàng trong câu chuyện của Chúa Giê-xu: cha cậu chạy ra đón cậu về nhà với tình thương trọn vẹn như thể cậu chưa từng bỏ đi — nhiều đến nỗi người anh cả phải cằn nhằn. Spurgeon áp dụng thẳng vào bạn: nếu bạn trở về cùng Đức Chúa Trời, “Ngài sẽ đối xử với bạn như thể bạn chưa từng làm điều sai!”</p> <p>Và khi Đức Chúa Trời đã làm điều đó, thì mọi sự được định đoạt. “Nếu Thẩm Phán đã tha bổng tôi, ai có thể kết tội tôi?” Ở đây Spurgeon kể câu chuyện của chính ông. Hồi còn là thiếu niên, ông bị mặc cảm tội lỗi đè bẹp; cuộc sống là một nỗi khổ sở. Rồi ông nghe những lời này: “Hãy hướng về Ta và được cứu, hỡi mọi nơi tận cùng mặt đất!” “Tôi nhìn lên, và trong khoảnh khắc Chúa đã xưng công bình cho tôi.” Ông nói ông trở nên chắc chắn rằng mình được tha thứ cũng như trước đó ông từng chắc chắn rằng mình bị kết án — dựa trên cùng một bằng chứng, là lời của Đức Chúa Trời.</p> <p>Nhưng điều đó lại đặt ra một câu hỏi khó, một câu hỏi ông không sao gạt đi được. Trong những tháng u tối ấy, ông thật sự đã cảm thấy rằng Đức Chúa Trời <em>phải</em> trừng phạt ông. Một sự tha thứ chỉ nhún vai bỏ qua tội lỗi sẽ không làm lương tâm ông yên được. Vậy làm sao Đức Chúa Trời vừa công bình mà vẫn để kẻ có tội ra đi? Ông nói, câu trả lời là điều không ai có thể nghĩ ra nổi: chính Con của vị Thẩm Phán đã gánh lấy bản án. Chúa Giê-xu “đã gánh tội lỗi tôi trong thân thể Ngài lên thập tự giá.” Đức Chúa Trời không hạ thấp tiêu chuẩn, cũng không mài cùn lưỡi gươm; hình phạt đã thật sự được trả, bởi Đấng có thể trả nổi. “Đức Chúa Trời sẽ tha cho tội nhân vì Ngài đã không tiếc chính Con Ngài.” Và nếu Chúa Giê-xu đã chết thay chỗ bạn, thì cớ sao bạn cũng phải chết nữa?</p> <p>Rồi đến bức tranh: một con tàu đắm, và một chiếc xuồng cứu sinh cập bên cạnh. “Tôi chẳng có gì mang theo cả,” bạn nói. Có ai bảo bạn mang gì đâu. Người ta chạy thoát thân thì bỏ lại cả quần áo. “Hãy nhảy xuống, cứ như bạn đang là.” Và Spurgeon đặt chính mình vào chiếc xuồng bên cạnh bạn: hy vọng duy nhất của ông là thập tự giá, và “nếu bạn hư mất trong khi tin cậy Ngài, thì tôi cũng phải hư mất.”</p> <p>Vậy — rốt cuộc chuyện này nói về điều gì? <strong>Sự tha thứ thật không giả vờ rằng tội lỗi chẳng quan trọng; nó có nghĩa là đã có người trả giá cho tội lỗi ấy.</strong> Có lẽ bạn biết sự khác biệt. Khi ai đó nói “ừ, không sao, kệ đi” về một chuyện rõ ràng là có sao, thì nó chẳng giống sự tha thứ chút nào — nó giống như họ không coi bạn ra gì. Sâu thẳm bên trong, chúng ta biết điều sai trái luôn có cái giá của nó. Toàn bộ ý của Spurgeon là: tại thập tự giá, Đức Chúa Trời coi điều sai trái của bạn là hoàn toàn nghiêm trọng <em>và</em> vẫn cho bạn được tự do, vì chính Chúa Giê-xu đã gánh lấy cái giá ấy.</p> <p>Đó là lý do được Đức Chúa Trời xưng công bình vững chắc hơn bất cứ việc được người ta quý mến, được khen là người tốt, hay cố gắng cảm thấy ổn về bản thân. Những phán quyết ấy đổi thay như thời tiết. Phán quyết của Đức Chúa Trời thì không — nó dựa trên một việc đã được làm xong. Spurgeon còn nói một tội nhân được tha thứ đứng trên nền vững chắc hơn người đang cố gắng cho đủ tốt, vì người cố gắng chẳng bao giờ chắc được mình đã làm đủ chưa. Ân điển không chỉ nhân hậu hơn nỗ lực; nó còn chắc chắn hơn.</p> <p><strong>Một việc để làm trong tuần này:</strong> hãy đọc chậm rãi một trong những phần ký thuật về sự chết của Chúa Giê-xu — Lu-ca 23 là một chỗ hay. Khi đọc đến thập tự giá, hãy dừng lại và tự nói với mình, thành thật và cho riêng mình: “Đó là cái giá cho những gì mình đã làm, và Ngài đã trả nó.” Rồi hãy làm như Spurgeon đã làm. Đừng mổ xẻ nó đến kiệt sức. Hãy nhìn lên.</p>",
+  "study_questions": [
+   {
+    "question": "Khi bị mặc cảm tội lỗi đè bẹp, Spurgeon đã nghe được lời nào, và điều gì đã xảy ra?",
+    "answer": "Ông nghe lời: “Hãy hướng về Ta và được cứu, hỡi mọi nơi tận cùng mặt đất!” Ông nhìn lên Đấng Christ, và ông kể rằng trong khoảnh khắc Chúa đã xưng công bình cho ông và ban cho ông sự bình an."
+   },
+   {
+    "question": "Làm sao Đức Chúa Trời vừa hoàn toàn công bình mà vẫn tha thứ cho kẻ có tội?",
+    "answer": "Vì Chúa Giê-xu, chính Con của Đức Chúa Trời, đã chịu hình phạt thay chỗ chúng ta. Hình phạt đã thật sự được trả, nên Đức Chúa Trời có thể tha thứ mà không cần giả vờ rằng tội lỗi chẳng quan trọng."
+   },
+   {
+    "question": "Bạn dựa nhiều nhất vào phán xét của ai về mình — bạn bè, gia đình, hay cảm xúc của chính bạn? Phán quyết của Đức Chúa Trời khác ở chỗ nào?",
+    "answer": "Ý chính của chương: ý kiến của người khác luôn thay đổi, còn tự xưng công bình cho mình chỉ là tự lừa dối. Khi Đức Chúa Trời xưng công bình cho ai đó nhờ sự hy sinh của Đấng Christ, thì mọi sự đã được định đoạt — “Nếu Thẩm Phán đã tha bổng tôi, ai có thể kết tội tôi?”"
+   }
+  ],
+  "word_count": 1030
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "all-of-grace-teens",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Một Tấm Lòng Mới",
+  "body_html": "<blockquote>“Ta sẽ ban cho các ngươi một tấm lòng mới và đặt một tâm linh mới bên trong các ngươi. Ta sẽ lấy lòng bằng đá ra khỏi thân thể các ngươi và ban cho các ngươi lòng bằng thịt.” — Ê-xê-chi-ên 36:26</blockquote> <p>Spurgeon nói, có những người hiểu được chuyện được tha thứ, nhưng vấn đề của họ lại nằm ở chỗ khác: họ không thể ngừng phạm tội. Họ cố thuần hóa bản chất của mình mà nó không chịu thuần. Ý nghĩ của họ chạy lung tung, ham muốn của họ hoang dại, cơn giận của họ bùng lên, và họ cảm thấy như mình đang chứa bên trong “một hang thú dữ.” Giống như một hòn đá ném lên không trung, họ được một bài giảng hay nâng lên rồi lại rơi thẳng xuống. Ông nói, nếu bạn đang như vậy, thì tốt — vì một sự cứu rỗi không giải quyết được điều này thì chẳng phải là sự cứu rỗi chút nào. “Chúng ta muốn được tẩy sạch cũng như được tha thứ.” Tha thứ mà không thay đổi thì giống như tuyên bố một người phung đã sạch rồi bỏ mặc ông ta chết vì căn bệnh ấy.</p> <p>Ông giải thích, Chúa Giê-xu đến để xử lý tội lỗi theo ba cách: hình phạt của nó, quyền lực của nó, và một ngày kia, cả sự hiện diện của nó. Hình phạt đã được giải quyết tại thập tự giá. Quyền lực của nó có thể bị bẻ gãy ngay bây giờ. Và để làm điều đó, Đức Chúa Trời đưa ra một lời hứa trong sách Ê-xê-chi-ên — hãy để ý rằng tất cả đều là “Ta sẽ”: <em>Ta sẽ</em> ban cho các ngươi một tấm lòng mới, <em>Ta sẽ</em> cất lòng bằng đá đi. Bạn không thể tự thay đổi lòng mình. Đức Chúa Trời biết điều đó. Ngài cũng biết rằng Ngài thì có thể. Spurgeon ví điều này như đứng dưới chân thác Niagara mà phán một lời khiến cả dòng sông chảy ngược lên vách đá. Sự thay đổi lớn đến mức ấy khi Đức Chúa Trời xoay ngược hướng đi của một đời người.</p> <p>Rồi đến một bức tranh giản dị mà ông mượn của một nhà truyền đạo khác. Hãy nhìn một con mèo: nó cẩn thận dùng chân và lưỡi để tự tắm rửa. Bạn đã bao giờ thấy một con heo làm thế chưa? Bạn có thể kỳ cọ một con heo, nhưng nó sẽ chạy thẳng trở lại vũng bùn — ở cho sạch là trái với bản chất của nó. “Cách duy nhất để khiến một con heo tự tắm rửa là biến nó thành một con mèo.” Chúng ta cũng vậy. Bạn có thể dạy ai đó những thói quen tốt và nêu một gương tốt, nhưng cho đến khi họ có một bản chất mới, sự thánh khiết vẫn giống như bơi ngược dòng. Một khi Đức Chúa Trời thay đổi tấm lòng, nó bắt đầu tự nhiên đi theo hướng ngược lại. Một người mới tin Chúa từng nói với Spurgeon: “Hoặc là cả thế giới đã thay đổi, hoặc là chính tôi.” Ông đã tận mắt thấy điều đó — kẻ trộm trở nên lương thiện, kẻ say sưa trở nên tỉnh táo, kẻ nói dối trở nên chân thật.</p> <p>Ông mô tả sự thay đổi bằng những hình ảnh: “Con sư tử giận dữ sẽ nhường chỗ cho chiên con hiền lành.” Nơi mọi thứ từng cứng cỏi, giờ trở nên mềm mại. “Tôi không thể tạo ra sự thay đổi này,” có người nói. Spurgeon đáp: “Ai bảo là bạn có thể?” Lời hứa không nói về điều bạn sẽ làm. Nó nói về điều Đức Chúa Trời sẽ làm. Và nếu bạn hỏi chính xác Đức Chúa Trời sẽ làm điều đó <em>như thế nào</em>, ông lại thẳng thừng: “Chuyện đó thì liên quan gì đến bạn?” Đấng đã hứa chịu trách nhiệm giữ lời hứa.</p> <p>Vậy — rốt cuộc chuyện này nói về điều gì? <strong>Cơ Đốc giáo không phải là một kế hoạch tự hoàn thiện bản thân; đó là Đức Chúa Trời ban cho bạn một tấm lòng mới.</strong> Phần đông chúng ta đối phó với những thói xấu tệ nhất của mình bằng ý chí: một luật lệ mới, một lời hứa, một ứng dụng, một khởi đầu mới vào sáng thứ Hai. Có khi điều đó giúp được một thời gian. Nhưng Spurgeon thành thật rằng bạn không thể nghiến răng gồng mình mà biến thành một bản chất khác. Con heo có thể được xịt nước cho sạch; nó vẫn là con heo.</p> <p>Đó không phải là cái cớ để bỏ cuộc chiến đấu. Đó là sự thay đổi chỗ đặt hy vọng của bạn. Thay vì “mình phải trở thành một người khác thì Đức Chúa Trời mới chấp nhận mình,” thì là “Đức Chúa Trời chấp nhận mình trong Đấng Christ và đã hứa làm cho mình trở nên người mới.” Sự thay đổi có thể có vẻ chậm. Nhưng nếu tấm lòng đã mới, thì hướng đi cũng mới — và ông nói, một tấm lòng mà Đức Chúa Trời đã làm cho mềm, Ngài sẽ không để nó cứng lại thành đá.</p> <p><strong>Một việc để làm trong tuần này:</strong> hãy chọn một tội mà bạn mệt mỏi nhất vì cứ thua nó. Thay vì chỉ hứa thêm một lần nữa với chính mình, hãy cầu nguyện với Ê-xê-chi-ên 36:26 về nó, gọi đúng tên nó, mỗi ngày trong tuần này: “Ngài đã phán rằng Ngài sẽ ban cho con một tấm lòng mới. Xin Ngài làm điều đó ngay ở đây.” Rồi hãy để ý những thay đổi nhỏ trong điều bạn thật sự muốn, chứ không chỉ trong điều bạn làm.</p>",
+  "study_questions": [
+   {
+    "question": "Spurgeon muốn nói gì qua hình ảnh con mèo và con heo?",
+    "answer": "Một con heo có thể được tắm rửa nhưng sẽ chạy trở lại vũng bùn, vì ở cho sạch là trái với bản chất của nó. Cách duy nhất để nó tự tắm rửa là biến nó thành một con mèo — cũng như con người cần một bản chất mới, chứ không chỉ là những thói quen tốt hơn."
+   },
+   {
+    "question": "Theo Spurgeon, Chúa Giê-xu đến để cất bỏ ba điều nào?",
+    "answer": "Hình phạt của tội lỗi, quyền lực của tội lỗi, và cuối cùng là sự hiện diện của tội lỗi. Quyền lực của tội có thể bị bẻ gãy ngay bây giờ, khi Đức Chúa Trời ban cho một tấm lòng mới."
+   },
+   {
+    "question": "Bạn đang chỉ dựa vào ý chí để thay đổi ở chỗ nào? Tin cậy vào lời “Ta sẽ” của Đức Chúa Trời thay vào đó sẽ trông như thế nào?",
+    "answer": "Ý chính của chương: bạn không thể tự thay đổi lòng mình, nhưng Đức Chúa Trời đã hứa sẽ làm. Hãy tiếp tục chiến đấu với tội lỗi, nhưng đặt hy vọng vào điều Ngài đã phán Ngài sẽ làm, chứ không vào sức riêng của bạn."
+   }
+  ],
+  "word_count": 978
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "all-of-grace-teens",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Ân Điển Là Nguồn Nước",
+  "body_html": "<blockquote>“Vì chính bởi ân điển này mà anh chị em đã được cứu, qua đức tin. Không điều gì trong đó đến từ anh chị em; đó là món quà của Đức Chúa Trời.” — Ê-phê-sô 2:8</blockquote> <p>Trước khi giải thích đức tin, Spurgeon muốn bạn đứng ngay tại nguồn. “Anh chị em đã được cứu là bởi ân điển.” Người ta được tha thứ và được thay đổi không phải vì điều gì nơi họ, mà vì Đức Chúa Trời đầy ân điển — đầy tình yêu, lòng trắc ẩn và sự thương xót không bao giờ cạn. Đức tin là quan trọng, nhưng nó không phải là mạch nguồn nơi nước chảy ra. Đức tin là đường ống. Ông nghĩ đến những cầu dẫn nước cổ vĩ đại quanh thành La Mã, những dãy vòm đổ nát không còn dẫn nước vào thành nữa. Đức tin là cầu dẫn nước đưa nước xuống cho những người đang khát — nhưng nó không phải là nước. Vì vậy ông cảnh báo: “Đừng bao giờ biến đức tin của bạn thành một đấng Christ.” Quyền năng không nằm trong việc bạn tin; nó nằm nơi Đức Chúa Trời mà bạn tin.</p> <p>Đó là tin vui nếu đức tin của bạn có vẻ yếu ớt. “Một bàn tay run rẩy vẫn có thể nhận lấy một món quà bằng vàng.” Một sợi dây điện mảnh vẫn có thể chuyển đi một bức điện quan trọng. Vì vậy ông nói: “Hãy nghĩ về Đấng mà bạn nhìn lên nhiều hơn là về chính cái nhìn của bạn.”</p> <p>Rồi ông cố nói đức tin thật sự là gì, trong khi thừa nhận rằng phần lớn các định nghĩa lại khiến ông hiểu nó <em>kém</em> đi. Ông nói, đức tin có ba phần. Thứ nhất là <strong>hiểu biết</strong>: bạn không thể tin cậy một người mà bạn chưa từng nghe đến, vậy hãy tìm hiểu xem Chúa Giê-xu là ai và Ngài đã làm gì — nhất là việc Ngài đã chết thay chỗ cho tội nhân. Thứ hai là <strong>tin nhận</strong>: tin chắc rằng điều đó thật sự là đúng, như cách bạn tin lời cha mình hay một người bạn mà bạn tin cậy. Thứ ba, và thiết yếu, là <strong>tin cậy</strong>. Những người Thanh giáo xưa có một chữ để gọi đức tin: “sự tựa nương” — dựa hẳn vào một điều gì đó. “Hãy dồn hết sức nặng của bạn mà tựa vào Đấng Christ.” Hay hơn nữa, ông nói, “hãy ngã dài cả người ra, và nằm trên Vầng Đá Muôn Đời.”</p> <p>Nói cách khác: đức tin tin rằng Chúa Giê-xu đúng là Đấng Ngài tự xưng, tin rằng Ngài sẽ làm điều Ngài đã hứa — Ngài đã phán Ngài sẽ không đuổi ai đến với Ngài đi — và rồi trông đợi điều đó nơi Ngài. Và nỗi sợ của Spurgeon là bạn sẽ hiểu hết những điều này mà chẳng bao giờ làm. Một người đói không cần hiểu cơ chế tiêu hóa mới ăn được; anh ta ăn và được sống. Một nhà khoa học thực phẩm mà không bao giờ ăn thì sẽ chết đói cùng với mọi hiểu biết của mình. “Thà có một đức tin thật dù nghèo nàn nhất mà đang thật sự hành động, còn hơn có một lý tưởng đẹp nhất về đức tin mà cứ bị bỏ lại trong cõi suy đoán.” Ông nói điều này một cách tỉnh táo: rất nhiều người đã hiểu giáo lý về đức tin một cách hoàn hảo mà chưa bao giờ tin cậy. Nhưng chưa có một người nào đã tin cậy Chúa Giê-xu mà từng bị khước từ — dù họ có thể chẳng bao giờ giải thích được đức tin của mình bằng lời.</p> <p>Cũng hãy để ý đức tin <em>không</em> phải là gì. Nó không mù quáng, vì nó bắt đầu từ việc hiểu biết một điều gì đó. Nó không phải là một sự phỏng đoán, vì nó tin những sự thật mà nó chắc chắn. Và nó không phải là một giấc mơ giữa ban ngày, vì nó đặt cược tất cả vào điều Đức Chúa Trời đã phán.</p> <p>Vậy — rốt cuộc chuyện này nói về điều gì? <strong>Đức tin không phải là một cảm xúc hay một màn trình diễn; đó là dồn hết sức nặng của bạn lên Chúa Giê-xu.</strong> Nhiều người nghĩ đức tin là cảm thấy thật chắc chắn, hay thật thuộc linh, hay không có chút nghi ngờ nào. Thế là họ dồn sức nhìn chằm chằm vào đức tin của mình, kiểm tra xem nó đã đủ mạnh chưa. Spurgeon nói, như thế cũng giống như nhìn chằm chằm vào đường ống rồi thắc mắc sao mình vẫn còn khát. Hãy nhìn vào nguồn nước.</p> <p>Hãy nghĩ đến việc ngồi xuống một cái ghế. Bạn không cần cảm thấy tự tin về ghế; bạn chỉ việc ngồi, và cái ghế đỡ lấy bạn. Việc đỡ là việc của cái ghế. Đức tin là việc ngồi xuống. Nó có thể run rẩy mà vẫn là thật, vì điều cứu bạn không phải là bạn tựa mạnh đến đâu, mà là bạn đang tựa vào ai. Có ngày bạn sẽ thấy chắc chắn, có ngày thì không. Cái ghế chẳng thay đổi gì, và Chúa Giê-xu cũng vậy.</p> <p><strong>Một việc để làm trong tuần này:</strong> hãy cố ý thực hành cả ba phần. <em>Hiểu biết:</em> đọc Giăng 3:14–18 và ghi lại những gì Chúa Giê-xu nói về chính Ngài. <em>Tin nhận:</em> thành thật tự hỏi mình: “Mình có nghĩ điều này là thật không?” <em>Tin cậy:</em> nếu câu trả lời là có, hãy nói với Ngài bằng lời của chính bạn rằng bạn đang dồn hết sức nặng của mình tựa vào Ngài — chứ không vào cảm xúc của bạn về chuyện đó.</p>",
+  "study_questions": [
+   {
+    "question": "Spurgeon nói đức tin gồm ba phần nào?",
+    "answer": "Hiểu biết (biết Chúa Giê-xu là ai và Ngài đã làm gì), tin nhận (tin chắc rằng điều đó là thật), và tin cậy (dồn hết sức nặng của mình tựa vào Đấng Christ)."
+   },
+   {
+    "question": "Vì sao Spurgeon cảnh báo: “Đừng bao giờ biến đức tin của bạn thành một đấng Christ”?",
+    "answer": "Vì đức tin chỉ là đường dẫn — là cầu dẫn nước — còn ân điển mới là nguồn nước. Quyền năng cứu rỗi ở nơi Đức Chúa Trời, chứ không ở chỗ chúng ta tin mạnh đến đâu, nên chúng ta hãy nhìn lên Chúa Giê-xu thay vì nhìn vào đức tin của mình."
+   },
+   {
+    "question": "Bạn có hay kiểm tra xem đức tin của mình cảm thấy mạnh đến đâu không? Nhìn lên Chúa Giê-xu thay vào đó nghĩa là gì?",
+    "answer": "Ý chính của chương: một bàn tay run rẩy vẫn có thể nhận lấy món quà bằng vàng. Điều cứu bạn không phải là sức mạnh của đức tin bạn mà là Đấng bạn đang tin cậy — vậy hãy tựa vào Ngài và thôi đo xem mình tựa mạnh đến đâu."
+   }
+  ],
+  "word_count": 986
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "all-of-grace-teens",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Những Hình Ảnh Về Đức Tin",
+  "body_html": "<blockquote>“vì chúng tôi bước đi bởi đức tin, không phải bởi mắt thấy.” — 2 Cô-rinh-tô 5:7</blockquote> <p>Vì đức tin thì đơn sơ nhưng lại khó giải thích, nên Spurgeon đưa ra cả một loạt hình ảnh. Đức tin giống như <strong>con mắt</strong>: chỉ một cái liếc là bạn thu vào cả mặt trời lẫn những vì sao xa xăm, và cũng vậy, lòng tin cậy đem Chúa Giê-xu đến gần, dù Ngài ở trên trời. Đức tin giống như <strong>bàn tay</strong>: nó nắm lấy và nói, “Cái này là của tôi.” Bạn không ăn cắp đâu; bạn đã được cho phép — “ai muốn thì hãy nhận lấy nước sự sống mà không phải trả tiền.” Và đức tin giống như <strong>cái miệng</strong>: thức ăn chỉ có ích cho bạn khi bạn ăn nó vào, và một người đói thì chẳng cần ai dạy cách ăn.</p> <p>Rồi đến đời sống thường ngày. Một người nông dân vùi hạt giống xuống đất và trông đợi mùa gặt. Một doanh nhân gửi tiền vào ngân hàng và ngủ ngon hơn là khi khóa nó trong két sắt nhà mình. Một người thợ kim hoàn bỏ kim loại quý vào ngọn lửa trông như sắp thiêu rụi nó, rồi lấy lại nó tinh ròng hơn. Spurgeon nói, bạn quay đi đâu cũng thấy người ta tin cậy. Một người bơi phải nhấc chân khỏi đáy và để nước nâng mình lên; không thì chẳng bơi được. Và rồi con sò bám đá — một loài sò nhỏ bám trên tảng đá bên bờ biển. Gõ mạnh vào con đầu tiên, bạn có thể làm nó bật ra. Nhưng con kế bên đã nghe thấy tiếng gõ, và giờ nó bám chặt bằng tất cả sức mình; bạn có đập vỡ tảng đá cũng chẳng gỡ nó ra được. Nó chẳng biết gì về địa chất học. Nó chỉ bám chặt. “Bám vào đá là sự sống của con sò, và bám vào Chúa Giê-xu là sự sống của tội nhân.” Ông nói, hàng ngàn Cơ Đốc nhân chẳng có đức tin nào hơn thế — và chừng ấy là đủ.</p> <p>Đức tin có thể lớn lên thành điều gì đó hơn nữa. Một người mù nắm lấy cánh tay một người bạn sáng mắt, vì anh biết bạn mình có điều anh không có. Một học trò tin lời thầy về những đất nước cậu chưa từng đặt chân đến. Sâu hơn nữa là đức tin lớn lên từ tình yêu: Spurgeon vẽ ra hình ảnh người vợ của một bác sĩ tài giỏi, bà lâm bệnh nặng nhưng vẫn bình tĩnh, vì chồng bà đã chữa lành cho hàng ngàn người mắc đúng căn bệnh ấy và bà biết ông yêu bà. Và đức tin thì vâng lời — một thuyền trưởng tin cậy người hoa tiêu sẽ lái tàu theo đúng hướng người hoa tiêu chỉ. “Đức tin nào từ chối vâng theo các mệnh lệnh của Đấng Cứu Thế thì chỉ là giả vờ.”</p> <p>Sau cùng là đức tin trưởng thành. Một bà cụ Cơ Đốc nhân viết chữ “T” và “P” bên lề cuốn Kinh Thánh của bà, cạnh mỗi lời hứa mà bà đã <em>thử</em> và đã <em>chứng nghiệm</em>. Và Spurgeon kinh ngạc trước một thuyền trưởng đi biển hàng tuần liền chẳng thấy đất liền, lái tàu theo la bàn và các vì sao, rồi đến đúng bến cảng. Ông nói, đó là ý nghĩa của việc từ giã những bờ biển của “mắt thấy và cảm xúc” để lái theo lời của Đức Chúa Trời.</p> <p>Vậy — rốt cuộc chuyện này nói về điều gì? <strong>Đức tin thật có thể nhỏ bé và đơn sơ mà vẫn bám chặt lấy Chúa Giê-xu.</strong> Có thể bạn nghĩ mình cần hiểu hết mọi điều, trả lời được mọi phản bác, hay cảm nhận thật sâu sắc thì đức tin của mình mới được tính. Con sò chẳng hiểu gì cả mà vẫn bám, và nó an toàn. Đức tin có lớn lên — từ bám víu, đến tin cậy một người dẫn đường, đến tình yêu, đến thứ đức tin đã thử nghiệm các lời hứa của Đức Chúa Trời suốt nhiều năm — nhưng nó bắt đầu từ cái nhỏ, và cái nhỏ vẫn là thật.</p> <p>Dù vậy, hãy để ý rằng mọi hình ảnh đều có một điểm chung: người ấy thôi dựa vào chính mình. Người bơi nhấc chân lên. Người mù nắm lấy một cánh tay. Người bệnh làm theo lời bác sĩ. Đức tin không chỉ là một quan điểm trong đầu bạn; nó lộ ra qua điều bạn tựa vào và lời chỉ dẫn của ai mà bạn làm theo. Bạn vốn đã tin cậy suốt cả ngày — người tài xế xe buýt, bác sĩ, người bạn nói rằng họ sẽ có mặt. Câu hỏi không phải là bạn có thể tin cậy hay không. Mà là bạn có chịu tin cậy Chúa Giê-xu như cách bạn tin cậy họ hay không.</p> <p><strong>Một việc để làm trong tuần này:</strong> hãy bắt đầu “T và P” của riêng bạn. Chọn một lời hứa — chẳng hạn lời của Chúa Giê-xu trong Giăng 6:37, “ai đến với Ta, Ta sẽ không bao giờ đuổi đi” — và viết nó ở chỗ bạn sẽ nhìn thấy. Hãy hành động dựa trên nó trong tuần này. Rồi khi bạn đã thấy nó đứng vững, hãy viết hai chữ cái ấy bên cạnh. Đó là cách đức tin bám víu trở thành đức tin hiểu biết.</p>",
+  "study_questions": [
+   {
+    "question": "Con sò làm gì khi nghe tiếng gõ vào con bên cạnh, và Spurgeon so sánh điều đó với gì?",
+    "answer": "Nó bám chặt vào tảng đá bằng tất cả sức mình để không bị gõ bật ra. Ông nói bám vào đá là sự sống của con sò, và bám vào Chúa Giê-xu là sự sống của tội nhân."
+   },
+   {
+    "question": "Vì sao Spurgeon đưa sự vâng lời vào trong những hình ảnh về đức tin?",
+    "answer": "Vì lòng tin cậy thể hiện ra bằng hành động: một thuyền trưởng tin cậy hoa tiêu thì làm theo chỉ dẫn của người ấy. Đức tin mà từ chối làm điều Chúa Giê-xu phán thì chỉ là giả vờ."
+   },
+   {
+    "question": "Hình ảnh đức tin nào hợp với bạn nhất lúc này — con sò, người mù, người vợ bác sĩ, hay người thủy thủ? Vì sao?",
+    "answer": "Ý chính của chương: đức tin có nhiều cỡ khác nhau và lớn lên theo thời gian, nhưng ngay cả sự bám víu nhỏ bé nhất mà thật vào Chúa Giê-xu cũng đủ để được an toàn. Hãy bắt đầu từ chỗ bạn đang đứng và để nó lớn lên."
+   }
+  ],
+  "word_count": 935
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "all-of-grace-teens",
+   "vi"
+  ],
+  "order": 7,
+  "title": "Vì Sao Lại Là Đức Tin? Sợi Dây Và Khúc Gỗ",
+  "body_html": "<blockquote>“Vì chính bởi ân điển này mà anh chị em đã được cứu, qua đức tin. Không điều gì trong đó đến từ anh chị em; đó là món quà của Đức Chúa Trời. Đó không phải là kết quả của những gì người ta đã làm, nên không ai có cớ để khoe khoang.” — Ê-phê-sô 2:8–9</blockquote> <p>Vì sao Đức Chúa Trời chọn đức tin, chứ không phải tình yêu, sự kiên nhẫn hay cách cư xử tốt, làm con đường để chúng ta nhận lấy sự cứu rỗi? Spurgeon rất thận trọng — Đức Chúa Trời không nợ chúng ta lời giải thích nào — nhưng ông đưa ra vài lý do. Lý do thứ nhất rất đơn giản: đức tin được tạo ra để nhận lãnh. Nếu bạn cho một người nghèo một đồng tiền, bạn đặt nó vào tay ông ta, chứ không phải vào tai hay lên bàn chân ông. Hoặc hãy hình dung bạn chìa một quả táo ra cho một đứa bé. “Bàn tay đứa bé không làm ra quả táo, không làm quả táo ngon hơn, cũng chẳng xứng đáng với quả táo; nó chỉ cầm lấy mà thôi.” Đức tin là như vậy. Ông trích một câu nói xưa: đức tin là “cái lưỡi xin sự tha thứ, bàn tay nhận lấy sự tha thứ, và con mắt nhìn thấy sự tha thứ; nhưng nó không phải là cái giá mua được sự tha thứ.”</p> <p>Thứ hai, đức tin dâng hết vinh hiển cho Đức Chúa Trời. Đức Chúa Trời không chịu nổi sự kiêu ngạo, và Ngài sẽ không cứu người ta theo cách để họ được vênh vang. Một bàn tay nhận quà thì chẳng mong được cảm ơn vì đã nhận. Vì vậy Spurgeon nói, đức tin “đội mão miện lên đúng cái đầu.”</p> <p>Thứ ba, đức tin thật sự nối bạn với Đức Chúa Trời. Đây là bức tranh mà ông nói ông không thể nghĩ ra cái nào hay hơn. Nhiều năm trước, một chiếc thuyền bị lật phía trên thác Niagara, và hai người đàn ông bị dòng nước cuốn về phía mép thác. Những người trên bờ thả một sợi dây thừng ra, và cả hai đều chộp lấy. Một người giữ chặt và được kéo vào nơi an toàn. Người kia thấy một khúc gỗ khổng lồ trôi ngang qua và buông dây để ôm lấy khúc gỗ, vì nó to hơn và trông có vẻ an toàn hơn. Khúc gỗ trôi qua mép thác cùng với anh ta trên đó. Nó to thật, nhưng nó không nối với bờ. Spurgeon nói, tin cậy vào việc làm của chính mình hay vào các nghi lễ tôn giáo là như thế — trông thật ấn tượng, nhưng chẳng nối với điều gì cả. Đức tin có thể trông như một sợi dây mảnh, nhưng đầu kia nằm trong tay Đức Chúa Trời, và chính Ngài là Đấng đang kéo.</p> <p>Thứ tư, đức tin là dây cót chính của mọi việc chúng ta làm. Spurgeon nhận xét rằng ông chỉ bước qua phòng làm việc của mình vì ông tin đôi chân sẽ đưa ông đi; người ta đi làm vì tin rằng sẽ được trả lương. Vì vậy, khi Đức Chúa Trời tạo nên đức tin trong chúng ta, Ngài nắm lấy chính cái điều làm cho chúng ta chuyển động — và từ đó tình yêu, sự cầu nguyện, sự thánh khiết và lòng can đảm theo sau. Ông trích một câu xưa: “Dầu đối với bánh xe ra sao, quả lắc đối với đồng hồ ra sao, đôi cánh đối với con chim ra sao, cánh buồm đối với con tàu ra sao, thì đức tin đối với mọi bổn phận và sự phục vụ thánh cũng như vậy.” Đức tin cũng hành động bởi tình yêu, và nó đem lại bình an cùng niềm vui. Và ông kết thúc bằng bức tranh của một nhà truyền đạo xưa. Một người đầy tớ ghé vai vào một cánh cửa khóa và đẩy bằng hết sức mình, mà nó chẳng nhúc nhích. Một người khác đến với chiếc chìa khóa và bước thẳng vào. Cố gắng được cứu bởi việc làm là đẩy vào cổng thiên đàng. Nhà truyền đạo xưa ấy nói, đức tin “là chiếc chìa khóa mở cổng ra ngay lập tức.”</p> <p>Vậy — rốt cuộc chuyện này nói về điều gì? <strong>Đức tin cứu không phải vì nó ấn tượng, mà vì nó nối bạn với Đấng thật sự vĩ đại.</strong> Khúc gỗ là mọi thứ chúng ta bị cám dỗ bám vào vì chúng có vẻ to lớn hơn: là một người tốt, làm nhiều hơn người khác, đi nhà thờ, giữ luật lệ, luôn đúng. Những điều đó không phải vô giá trị, nhưng chúng không được buộc vào bờ. Điều kéo bạn ra khỏi dòng nước xiết là được nối liền với Chúa Giê-xu.</p> <p>Điều này cũng tiêu diệt hai vấn đề trái ngược nhau. Nếu bạn từng tự hào về sự tốt lành của mình, đức tin chẳng cho bạn điều gì để khoe khoang — bạn chỉ nhận lấy điều được trao cho mình. Nếu bạn từng cảm thấy mình chẳng có gì để dâng, đức tin cũng không đòi bạn dâng gì cả. Một bàn tay trống không chính là có hình dạng vừa vặn nhất.</p> <p><strong>Một việc để làm trong tuần này:</strong> hãy lập hai danh sách. Một bên, viết ra những “khúc gỗ” mà bạn hay dựa vào để thấy mình ổn trước mặt Đức Chúa Trời — điểm số, danh tiếng, việc đi nhà thờ đều đặn, sự dễ thương của bạn. Bên kia, viết một câu về sợi dây: điều Chúa Giê-xu đã làm cho bạn. Rồi hãy cầu nguyện, một cách cụ thể, buông danh sách thứ nhất ra và nắm chặt lấy danh sách thứ hai.</p>",
+  "study_questions": [
+   {
+    "question": "Điều gì đã xảy ra với hai người đàn ông bị cuốn về phía thác Niagara?",
+    "answer": "Cả hai đều chộp lấy sợi dây được ném ra từ bờ. Một người giữ chặt và được kéo vào nơi an toàn; người kia buông dây để ôm một khúc gỗ lớn, và khúc gỗ trôi qua mép thác cùng với anh ta vì nó không nối với bờ."
+   },
+   {
+    "question": "Vì sao Spurgeon nói đức tin vừa vặn để nhận lấy sự cứu rỗi mà không giành chút công lao nào?",
+    "answer": "Như bàn tay đứa bé cầm quả táo, đức tin không làm ra, không làm tốt hơn, cũng không xứng đáng với món quà — nó chỉ nhận lấy. Vì vậy nó dâng hết vinh hiển cho Đức Chúa Trời và chẳng chừa chỗ nào cho sự khoe khoang."
+   },
+   {
+    "question": "Những “khúc gỗ” nào bạn bị cám dỗ bám vào thay vì sợi dây? Buông chúng ra sẽ trông như thế nào?",
+    "answer": "Ý chính của chương: việc làm và thói quen tôn giáo của chúng ta có thể trông to lớn và an toàn hơn, nhưng chúng không nối với bờ. Chỉ có đức tin nối bạn với Đấng Christ, Đấng đang kéo bạn vào."
+   }
+  ],
+  "word_count": 989
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "all-of-grace-teens",
+   "vi"
+  ],
+  "order": 8,
+  "title": "“Tôi Chẳng Làm Được Gì Cả”",
+  "body_html": "<blockquote>“Khi chúng ta còn bất lực, vào đúng thời điểm Đức Chúa Trời đã định, Đấng Christ đã chết vì những người không tin kính.” — Rô-ma 5:6</blockquote> <p>Có những người tin hết mọi điều từ đầu đến giờ mà vẫn rên rỉ: “Tôi chẳng làm được gì cả.” Đó không phải là một cái cớ; nếu làm được thì họ đã làm rồi. Spurgeon ví điều này như một bác sĩ bảo một bà góa đang đói khổ rằng đứa con trai đau ốm của bà cần rượu ngon và một kỳ nghỉ ở khu nghỉ dưỡng suối khoáng — lời khuyên hay, nhưng không thể nào làm theo. Nhưng ông nói, Phúc Âm “bắt đầu từ chỗ chúng ta đang ở.” Khi người Sa-ma-ri nhân lành gặp người lữ khách bị đánh đập, ông không bảo người ấy đứng dậy mà đi bộ đến quán trọ. Ông “đến chỗ người ấy nằm” và đỡ người ấy đi. Và Spurgeon giơ một câu Kinh Thánh lên đối diện với mọi kiểu bất lực: khi chúng ta còn “bất lực,” Đấng Christ đã chết vì những người không tin kính. Không phải khi chúng ta hơi yếu một chút — mà khi chúng ta chẳng còn chút sức nào.</p> <p>Rồi ông đi qua từng cái cớ một. <em>Tôi không thể suy nghĩ đủ sâu.</em> Bạn không cần phải thế. Sự cứu rỗi cần “một sự tựa nương đơn sơ vào Chúa Giê-xu,” chứ không cần những lập luận dài dòng. Hãy để câu Kinh Thánh ấy nằm trên đầu lưỡi bạn như một viên kẹo ngọt. <em>Tôi không thể ăn năn cho đủ.</em> Spurgeon thừa nhận chính ông đã trải qua đúng điều này: “Tôi từng ngồi vào một góc mà khóc, vì tôi không khóc được.” Lòng ông tan nát vì ông nghĩ nó sẽ chẳng chịu tan nát. Ông giải thích, ăn năn là xoay tâm trí bạn khỏi tội lỗi mà hướng về Đấng Christ, và chẳng ai bao giờ hài lòng với sự ăn năn của chính mình. Và bạn không đến được đó bằng cách cố vắt ra cảm xúc: “Sự ăn năn sẽ không làm cho bạn thấy Đấng Christ; nhưng thấy Đấng Christ sẽ ban cho bạn sự ăn năn.”</p> <p><em>Tôi bị dằn vặt bởi những ý nghĩ khủng khiếp.</em> Ông nói chính ông cũng từng bị con sói ấy săn đuổi. Dùng sức mà chống lại những ý nghĩ đó thì giống như một lữ khách quơ tay đập loạn vào một đàn ong đang giận dữ. Nhưng “những ý nghĩ này, nếu bạn ghét chúng, thì chẳng phải là của bạn”; chúng là của ma quỷ, và nó đang tìm cách đẩy bạn vào tuyệt vọng. Hãy làm như người đàn bà bệnh tật không sao chen qua đám đông để đến với Chúa Giê-xu: cứ vươn tay ra mà chạm vào gấu áo Ngài. Hãy làm như Luther. Khi ma quỷ nói: “Ngươi là một tội nhân,” Luther đáp: “Đấng Christ đã chết để cứu tội nhân” — và chặt đầu ma quỷ bằng chính thanh gươm của nó. <em>Tôi không thể tin.</em> Nhưng “tin không đến bởi cố gắng.” Nếu một người bạn đáng tin cậy nói với bạn điều gì, bạn đâu cần cố gắng để tin anh ấy; bạn cứ thế mà tin. “Không phải đức tin lớn, nhưng là đức tin thật, mới cứu được.”</p> <p><em>Tôi không thể từ bỏ tội lỗi của mình.</em> Spurgeon nhớ lại câu hỏi đã làm cậu John Bunyan trẻ tuổi khựng lại giữa một trò chơi trên bãi cỏ làng: “Ngươi muốn giữ tội lỗi mình mà xuống địa ngục, hay muốn bỏ tội lỗi mình mà lên thiên đàng?” Bạn không thể giữ cả hai. Ông kể ông đã cố gắng đánh bại tội lỗi của chính mình mà thất bại, cho đến khi ông tin rằng Đấng Christ đã chết vì ông — và rồi tình yêu ban cho ông một sức mạnh ông chưa bao giờ có: “Tôi không thể đùa giỡn với điều ác đã giết chết Người Bạn tốt nhất của tôi.” <em>Tôi không thể đứng vững khi ở giữa người khác.</em> Câu trả lời của Spurgeon rất thẳng: làm vài điều để làm vui lòng bạn bè thì có thể chẳng sao, nhưng “xuống địa ngục để làm vui lòng họ thì là điều tôi chẳng dám liều.” Phi-e-rơ đã gục ngã trước một cô đầy tớ gái, và Chúa Giê-xu cũng đã chết vì ông. Hãy để câu “Đấng Christ đã chết vì tôi” thấm vào linh hồn bạn, và bạn sẽ thấy mình không thể nào xấu hổ về Ngài.</p> <p>Vậy — rốt cuộc chuyện này nói về điều gì? <strong>Sự yếu đuối của bạn không phải là rào cản đối với ân điển; đó là nơi ân điển bắt đầu.</strong> Mọi cái cớ trong chương này đều có thật. Người ta thật sự thấy khó tập trung, khó cảm thấy hối hận, khó làm cho tâm trí lắng xuống, khó tin, khó bỏ, khó đứng lên trước bạn bè. Spurgeon không bao giờ nói: “Cố gắng hơn nữa đi.” Lần nào ông cũng nói cùng một điều: Đấng Christ đã chết vì chính những người như thế. Rồi ông để sự thật ấy làm phần việc của nó.</p> <p><strong>Một việc để làm trong tuần này:</strong> hãy tìm trong chương này cái cớ nghe giống bạn nhất — và viết Rô-ma 5:6 ngay bên dưới. Mỗi lần câu “mình không thể” ấy trỗi lên trong tuần này, hãy trả lời nó thành tiếng, như Luther đã làm: “Đúng vậy. Và khi tôi còn bất lực, Đấng Christ đã chết vì những người không tin kính.”</p>",
+  "study_questions": [
+   {
+    "question": "Martin Luther đã trả lời ma quỷ thế nào khi nó nói: “Ngươi là một tội nhân”?",
+    "answer": "Luther nói: “Đấng Christ đã chết để cứu tội nhân,” biến chính lời buộc tội thành lý do cho niềm hy vọng của ông — chặt đầu ma quỷ bằng chính thanh gươm của nó."
+   },
+   {
+    "question": "Vì sao Spurgeon nói bạn sẽ không tạo ra được sự ăn năn bằng cách cố vắt ra cảm xúc?",
+    "answer": "Vì sự ăn năn đến từ việc nhìn lên Đấng Christ, chứ không phải ngược lại. Thấy được những gì Chúa Giê-xu đã chịu vì kẻ thù của Ngài là điều làm tan chảy một tấm lòng cứng cỏi."
+   },
+   {
+    "question": "Câu “mình không thể” nào trong chương này nghe giống bạn nhất? Rô-ma 5:6 trả lời nó thế nào?",
+    "answer": "Ý chính của chương: Đấng Christ đã chết vì chúng ta khi chúng ta còn bất lực. Mọi kiểu bất lực đều được trả lời không phải bằng cố gắng hơn nữa, mà bằng việc tin cậy điều Ngài đã làm xong."
+   }
+  ],
+  "word_count": 953
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "all-of-grace-teens",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Đức Tin Lớn Lên Thế Nào",
+  "body_html": "<blockquote>“Vậy, đức tin đến từ việc nghe sứ điệp, và sứ điệp được nghe qua lời về Đấng Christ.” — Rô-ma 10:17</blockquote> <p>“Làm sao để tôi có thêm đức tin?” Spurgeon nói người ta bàn về chuyện này nhiều điều vô lý lắm, nên ông đi vào thực tế. Câu trả lời đầu tiên gần như cộc lốc: “Cách ngắn nhất để tin là tin.” Nhưng nếu bạn đang bị mắc kẹt, hãy đem nó đến với Đức Chúa Trời — nói với Ngài chính xác điều gì làm bạn bối rối, như cách bạn hỏi một tác giả xem ông ấy muốn nói gì. Hãy nghe Phúc Âm thường xuyên; chúng ta dần tin những điều mình nghe đi nghe lại. Hãy lắng nghe những người đã được thay đổi; bạn sẽ tìm thấy một người giống hệt như bạn. Ông kể về một người đến từ một xứ nóng, không chịu tin rằng nước có thể trở nên cứng đến mức đi trên đó được. Đến khi cuối cùng tận mắt thấy một dòng sông đóng băng, ông vẫn không chịu bước lên — cho đến khi ông nhìn thấy người khác đi qua an toàn. Bấy giờ ông cũng tin cậy nó.</p> <p>Hay hơn nữa, hãy nhìn xem <em>ai</em> đang bảo bạn tin. Một người đốc công trong xưởng sợ rằng mình không có quyền đến với Đấng Christ. Ông chủ của anh gửi xuống một tấm thiệp: “Hãy đến nhà tôi ngay sau giờ làm.” Khi John đến, ông chủ giả vờ bực bội — anh có quyền gì mà đến vào giờ này? “Vì ông đã cho gọi tôi,” John nói, “nên tôi có quyền đến.” Rồi ông chủ đọc cho anh nghe lời của Chúa Giê-xu: “Hỡi tất cả những ai làm lụng mệt nhọc và mang gánh nặng nề, hãy đến với Ta, Ta sẽ cho các con được nghỉ ngơi.” John hiểu ra ngay. Nếu Chúa Giê-xu đã mời bạn, thì bạn không thể sai khi đến. Và nếu bạn vẫn không thể tin cậy Ngài, hãy hỏi vì sao. Ngài chưa từng làm điều gì đáng để bạn ngờ vực. “Họ đã biến Ngài thành một người tử đạo; còn bạn thì biến Ngài thành kẻ nói dối.” Vì vậy Spurgeon lật ngược câu hỏi: “Đừng hỏi làm sao tôi có thể tin? Nhưng hãy trả lời một câu hỏi khác — Làm sao bạn có thể không tin?” Ông nói, đôi khi chướng ngại thật sự là sự kiêu ngạo — một mối bất hòa với Đức Chúa Trời mà bạn chưa chịu buông bỏ, một ước muốn được giữ đường lối riêng của mình. Lời khuyên của ông là hãy đầu phục, và ông nói ông tin rằng chưa từng có ai giơ tay lên mà kêu: “Lạy Chúa, con xin đầu hàng,” mà chẳng bao lâu sau lại không thấy đức tin đã trở nên dễ dàng.</p> <p>Rồi có người phản bác: Chúa Giê-xu phán rằng ta “phải được sinh ra từ trên cao,” và đó là việc chỉ Đức Chúa Trời mới làm được. Đúng vậy, Spurgeon nói — nhưng cũng chính chương ấy trong sách Giăng nói rằng “mọi người tin vào Con ấy sẽ không bị hư mất.” Cả hai lời đều ra từ cùng một miệng. “Phần chúng ta là tin, phần Chúa là tạo dựng chúng ta nên mới.” Chúa Giê-xu phán rằng công việc của Đức Thánh Linh giống như gió: bạn không thể thấy nó từ đâu đến, chỉ thấy điều nó làm. Người nông dân cũng chẳng thể làm cho hạt giống mọc lên, nhưng đó không phải là cớ để không gieo. Và chính việc bạn tin đã là bằng chứng cho thấy Đức Thánh Linh đang làm việc rồi.</p> <p>Sau cùng, hãy nhớ rằng bạn không tin cậy một người anh hùng đã chết. Chúa Giê-xu đã sống lại và đang sống, cầu thay cho tội nhân bên hữu Đức Chúa Trời, có trọn quyền trên trời và dưới đất. “Chúng ta có một Người Bạn trong triều đình; phải, một Người Bạn trên ngai.” Hãy đặt vụ việc của bạn vào tay Ngài: “Chưa từng có vụ kiện nào thất bại khi được giao cho Đấng Biện Hộ vĩ đại này.”</p> <p>Vậy — rốt cuộc chuyện này nói về điều gì? <strong>Đức tin lớn lên nhờ nhìn lên Chúa Giê-xu, chứ không nhờ nhìn vào đức tin của bạn.</strong> Khi người ta muốn “có thêm đức tin,” họ thường cố tạo ra một cảm xúc. Lời khuyên của Spurgeon thì ngược lại: hãy đến gần hơn với bằng chứng. Hãy nghe sứ điệp nhiều hơn. Hãy ở gần những người đã được nó thay đổi. Hãy để ý rằng Chúa Giê-xu thật sự đã mời bạn. Hãy suy nghĩ về việc Ngài là ai. Đức tin là sự đáp lại một điều ở bên ngoài bạn; hãy nuôi nó bằng chính điều ấy.</p> <p>Và đừng để những câu hỏi sâu xa — Sự tái sinh diễn ra thế nào? Phần của Đức Chúa Trời khớp với phần của tôi ra sao? — trở thành lý do để bạn cứ đứng mãi trên bờ. Chẳng ai từ chối một chiếc xuồng cứu sinh chỉ vì không hiểu lực đẩy của nước.</p> <p><strong>Một việc để làm trong tuần này:</strong> hãy nhờ một Cơ Đốc nhân mà bạn kính trọng kể cho bạn nghe, trong mười phút, họ đã đến chỗ tin cậy Chúa Giê-xu như thế nào — và trước đó họ ra sao. Rồi hãy đọc Ma-thi-ơ 11:28 và đối xử với nó như John đã đối xử với tấm thiệp của ông chủ: một lời mời có ghi tên bạn trên đó.</p>",
+  "study_questions": [
+   {
+    "question": "Vì sao người đốc công John cảm thấy mình có quyền đến nhà ông chủ sau giờ làm?",
+    "answer": "Vì ông chủ đã gửi cho anh một tấm thiệp bảo anh đến. Rồi ông chủ chỉ cho anh thấy rằng lời mời của Chúa Giê-xu, “hãy đến với Ta,” cũng cho anh quyền như thế để đến với Đấng Christ."
+   },
+   {
+    "question": "Spurgeon ghép hai lời “phải được sinh ra từ trên cao” và “mọi người tin vào Con ấy sẽ không bị hư mất” lại với nhau thế nào?",
+    "answer": "Cả hai đều đúng và đều ra từ Chúa Giê-xu. Phần chúng ta là tin, phần Đức Chúa Trời là làm cho chúng ta nên mới; Đức Chúa Trời ban sự tái sinh cho mọi người tin, và việc tin chính là bằng chứng Đức Thánh Linh đang làm việc rồi."
+   },
+   {
+    "question": "Tuần này bạn có thể làm một việc gì để “nghe” nhiều hơn — và bạn có thể lắng nghe câu chuyện của ai?",
+    "answer": "Ý chính của chương: đức tin đến bởi sự nghe, bởi lời chứng của người khác, và trên hết bởi thấy được ai là Đấng mời bạn. Cách ngắn nhất để tin là tin — và một Đấng Cứu Thế hằng sống đang ở đó để tiếp nhận bạn."
+   }
+  ],
+  "word_count": 955
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "all-of-grace-teens",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Quay Đầu Lại",
+  "body_html": "<blockquote>“Chính Ngài là Đấng Đức Chúa Trời đã tôn lên bên phải Ngài làm Đấng Lãnh Đạo và Cứu Chúa, để ban cho Y-sơ-ra-ên sự ăn năn và sự tha tội.” — Công Vụ Các Sứ Đồ 5:31</blockquote> <p>Spurgeon để ý rằng trong câu Kinh Thánh này, sự ăn năn và sự tha thứ đến từ cùng một bàn tay — bàn tay từng bị đóng đinh trên thập tự giá, nay được tôn cao trong vinh hiển. Và chúng luôn đi đôi với nhau. Tha thứ cho một người vẫn yêu tội lỗi mình và chẳng hề có ý định từ bỏ nó thì chẳng khác nào cấp giấy phép cho anh ta tiếp tục làm điều sai. Đó cũng sẽ là một lòng thương xót què quặt, làm dở dang. Ông hỏi, được tắm rửa rồi lại bị bỏ nằm trong bùn thì có ích gì? Đưa một người ra khỏi mồ mà để anh ta vẫn chết thì có ích gì? Bất cứ ai mà tấm lòng đã thật sự được đánh thức thì không chỉ muốn thoát khỏi hình phạt. Họ muốn được tự do khỏi chính tội lỗi.</p> <p>Vì vậy, hai điều ấy cùng đến và cùng ở lại với nhau. Sự tha thứ dẫn đến sự ăn năn — biết mình được yêu thương và được tha thứ là điều khiến bạn ghét cái đã làm tổn thương Chúa Giê-xu. Và sự ăn năn là một dấu hiệu của sự tha thứ. “Đức tin và sự ăn năn chỉ là hai nan hoa của cùng một bánh xe, hai tay cầm của cùng một cái cày.” Sự ăn năn không phải là vài ngày khổ sở hành xác cho xong chuyện; nó là “ân điển của cả một đời.” Ông mô tả nó là “một tấm lòng tan vỡ vì tội lỗi, và rời khỏi tội lỗi” — hối tiếc về quá khứ và quyết hướng về một tương lai khác. Nhưng hãy đặt mọi thứ vào đúng chỗ của nó: “Đừng xem sự ăn năn của bạn là nguyên nhân khiến bạn được tha, nhưng là người bạn đồng hành của sự tha thứ.” Bạn không được tha thứ <em>vì</em> bạn đã hối hận cho đủ.</p> <p>Vậy làm sao để có được sự ăn năn? Từ cùng một nơi với sự tha thứ. “Chúa Giê-xu Christ của chúng ta đã đi lên để ân điển có thể đi xuống.” Ngài sai Đức Thánh Linh đến làm mềm những tấm lòng cứng cỏi. Spurgeon nói, nếu không có Chúa Giê-xu, sự hối hận chẳng có giá trị gì trước mặt Đức Chúa Trời; luật pháp chỉ nói rằng “Người nào phạm tội, chính người ấy sẽ chết.” “Chúng ta có thể cảm thấy sự cắn rứt với mọi nỗi kinh hoàng của nó, nhưng không bao giờ có sự ăn năn với mọi niềm hy vọng của nó.” Sự chết và sự sống lại của Chúa Giê-xu là điều làm cho việc quay về với Đức Chúa Trời trở nên khả thi. Giờ đây Ngài dùng mọi điều xảy đến với bạn — một tiếng gà gáy, như với Phi-e-rơ, hay một trận động đất làm rung chuyển nhà tù, như với người cai ngục ở Phi-líp. “Lòng thương xót của Chúa thường cưỡi con ngựa đen của hoạn nạn mà đến trước cửa lòng chúng ta.” Và hãy để ý xem Phi-e-rơ nói Chúa Giê-xu ban sự ăn năn cho ai: cho chính những người đã từng gào lên đòi giết Ngài. Không ai quá cứng lòng đối với Ngài. Spurgeon trích một bài thánh ca do William Hone viết, một người hoài nghi nổi tiếng đã được Chúa chinh phục: “Tấm lòng kiêu ngạo nhất từng đập / Đã bị khuất phục trong tôi.”</p> <p>Vì vậy, ông nói, đừng ngồi lì trong phòng mà cố vắt ra nước mắt nữa. “Đừng ngồi xuống mà cố bơm sự ăn năn lên từ cái giếng cạn của bản chất hư hoại.” Hãy đi và nhìn Chúa Giê-xu trên thập tự giá, và để Ngài nhìn bạn, như Ngài đã nhìn Phi-e-rơ. “Đừng tìm lửa bên dưới lớp băng.”</p> <p>Vậy — rốt cuộc chuyện này nói về điều gì? <strong>Ăn năn không phải là kiếm lấy sự tha thứ; đó là quay đầu lại vì bạn đã được yêu thương.</strong> Có người nghĩ ăn năn là cảm thấy tồi tệ đủ lâu cho đến khi Đức Chúa Trời hài lòng. Có người lại nghĩ được tha thứ nghĩa là họ chẳng bao giờ phải thay đổi. Spurgeon bác bỏ cả hai. Quay khỏi tội lỗi không phải là cái giá của ân điển — nhưng chẳng có thứ ân điển nào để bạn vẫn quay mặt về cùng một hướng cũ.</p> <p>Sự ăn năn thật thường trông ít kịch tính hơn người ta tưởng. Nó trông như việc thừa nhận mình sai mà không bào chữa. Nó trông như xóa đi một thứ, chấm dứt một điều, xin lỗi một người, và ngày mai lại làm như thế khi bạn vấp ngã. Và bạn càng chắc chắn mình được tha thứ bao nhiêu, bạn càng muốn quay đầu bấy nhiêu. Nếu bạn vẫn đang đợi đến khi thấy mình đủ tan nát rồi mới đến với Đức Chúa Trời, thì đừng đợi nữa: hãy đến và nhận sự tha thứ, rồi sự quay đầu sẽ lớn lên từ đó.</p> <p><strong>Một việc để làm trong tuần này:</strong> hãy dành mười lăm phút với Lu-ca 22:54–62, đêm Phi-e-rơ chối Chúa Giê-xu và “Chúa quay lại nhìn thẳng vào Phi-e-rơ.” Rồi hãy xin Đức Chúa Trời chỉ cho bạn thấy một điều bạn cần quay lưng lại — và bước một bước cụ thể rời xa nó trước khi tuần này kết thúc. Đừng đợi thấy mình đủ hối hận rồi mới làm.</p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Spurgeon nói sự tha thứ mà không có ăn năn sẽ là một lòng thương xót “què quặt”?",
+    "answer": "Vì nó sẽ để con người vẫn yêu tội lỗi — giống như tắm rửa cho ai đó rồi bỏ họ nằm trong bùn. Lòng thương xót thật giải phóng chúng ta khỏi quyền lực của tội lỗi, chứ không chỉ khỏi hình phạt của nó."
+   },
+   {
+    "question": "Spurgeon muốn nói gì qua câu “đừng tìm lửa bên dưới lớp băng”?",
+    "answer": "Ông muốn nói rằng bạn sẽ không tìm thấy sự ăn năn bằng cách đào bới tấm lòng lạnh lẽo của chính mình. Nó đến như một món quà từ Chúa Giê-xu, nhất là khi bạn nhìn lên sự chết của Ngài vì bạn."
+   },
+   {
+    "question": "Có điều gì bạn vẫn đang đợi đến khi thấy đủ hối hận rồi mới quay lưng lại không? Một bước cụ thể sẽ trông như thế nào?",
+    "answer": "Ý chính của chương: sự ăn năn là bạn đồng hành của sự tha thứ, không phải nguyên nhân của nó, và Chúa Giê-xu ban cả hai. Hãy nhìn lên Ngài và quay đầu lại — bạn không cần phải tự tạo ra nước mắt trước."
+   }
+  ],
+  "word_count": 975
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "all-of-grace-teens",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Liệu Tôi Có Sa Ngã Không?",
+  "body_html": "<blockquote>“Đức Chúa Trời là Đấng thành tín. Chính Ngài đã kêu gọi anh chị em để dự phần trong sự sống của Con Ngài, là Đức Giê-xu Christ, Chúa chúng ta.” — 1 Cô-rinh-tô 1:9</blockquote> <p>Nhiều người khi đến với Đấng Christ bị một nỗi sợ ám ảnh: nhỡ mình bắt đầu rồi lại trôi tuột đi thì sao? Họ nói họ từng có những cảm xúc tốt đẹp trước đây, và những cảm xúc ấy tan biến như sương sớm. Spurgeon coi trọng nỗi sợ ấy — rồi chỉ ra cái bẫy nằm bên trong nó. Ông nói, có những người đã thật sự quay lui, vì họ tin cậy Chúa Giê-xu để bắt đầu nhưng lại tin cậy chính mình để tiếp tục đi. “Nếu chúng ta trông cậy vào chính mình để bám trụ, thì chúng ta sẽ không bám trụ được.” Một sợi xích chỉ chắc bằng mắt xích yếu nhất của nó; nếu Chúa Giê-xu là hy vọng của bạn trong mọi điều trừ một điều, thì chính điều đó sẽ đứt. “Nếu bạn nhìn lên Đấng Christ cho sự khởi đầu của mình, hãy coi chừng việc nhìn vào chính mình cho sự kết thúc.”</p> <p>Và ông không giả vờ rằng bám trụ là dễ. Một pho tượng cẩm thạch chẳng cần ăn, nhưng một người sống thì ngày nào cũng đói; một đức tin sống cũng cần ân điển mới mỗi ngày. Có người vốn tính bồn chồn, cứ bay chuyền như bướm từ thứ này sang thứ khác. Ông nói, tất cả chúng ta đều đã tỏ ra đủ dại dột “trước khi bát đĩa bữa sáng được dọn khỏi bàn” để mà xấu hổ. Cuộc đời thì dài và mỏi mệt. Spurgeon mượn tấm bản đồ của Bunyan: con đường Cơ Đốc có Đồi Gian Nan và Thung Lũng Khiêm Hạ, có Hội Chợ Phù Hoa và những Lâu Đài Tuyệt Vọng, cũng như có những Rặng Núi Vui Thú. Thế gian có thể thù nghịch. Nhưng hãy nghĩ thế này: Đức Chúa Trời chẳng bao giờ chu cấp điều gì mà chúng ta sẽ không cần, nên chính việc Ngài hứa gìn giữ chúng ta cho thấy chúng ta sẽ cần được gìn giữ. Cơ Đốc giáo thật là “siêu nhiên khi bắt đầu, siêu nhiên khi tiếp diễn, và siêu nhiên khi kết thúc.”</p> <p>Vì vậy, lời hứa của Phao-lô thật quan trọng: Ngài “sẽ giữ anh chị em vững vàng đến cuối cùng, để anh chị em không bị ai buộc tội điều gì.” Đức Chúa Trời củng cố điều Ngài đã khởi sự. Một cây non được giúp để đâm rễ “nhờ cả những cơn mưa dịu dàng lẫn những trận gió dữ” — những ngày êm đẹp và cả những ngày khó khăn. Và Đức Chúa Trời không chỉ muốn giữ bạn an toàn; Ngài muốn giữ bạn thánh khiết. “Được giữ cho thánh khiết thì tốt hơn là chỉ được giữ cho an toàn.” Spurgeon buồn lòng về những Cơ Đốc nhân mà đời sống là một chuỗi những lần vấp ngã — “chẳng bao giờ ngã hẳn, nhưng cũng hiếm khi đứng vững.” Đó không phải là kế hoạch. Chúa Giê-xu phán về chiên của Ngài: “Ta ban cho chúng sự sống đời đời, và chúng sẽ không bao giờ hư mất.”</p> <p>Vậy vì sao Phao-lô chắc chắn đến thế? Không phải vì người Cô-rinh-tô trung tín. “Đức Chúa Trời là Đấng thành tín.” Chúng ta thì “hay đổi thay như gió, mong manh như mạng nhện, yếu ớt như nước,” nhưng Đức Chúa Trời chẳng bao giờ bắt đầu một việc rồi bỏ dở nửa chừng. “Các thánh đồ sẽ bền đỗ trong sự thánh khiết, vì Đức Chúa Trời bền đỗ trong ân điển.” Ngài đã kêu gọi bạn vào mối liên hiệp với Con Ngài. Hãy hình dung một công ty có hai người hùn vốn — một người hoàn toàn trắng tay, người kia giàu có không sao tưởng tượng nổi. Hoặc, theo lời lẽ đơn sơ nhất của Spurgeon: “Đấng Christ và tội nhân đã tin ở trên cùng một con thuyền: trừ khi Chúa Giê-xu chìm, người tin sẽ chẳng bao giờ chết đuối.”</p> <p>Vậy — rốt cuộc chuyện này nói về điều gì? <strong>Không phải bạn tự giữ mình được cứu; chính Đức Chúa Trời gìn giữ bạn, và đó là lý do bạn tiếp tục bước đi.</strong> Nỗi sợ sa ngã thường là nỗi sợ về chính mình: mình biết mình thất thường đến mức nào. Spurgeon đồng ý rằng bạn thất thường. Chính vì thế mà hy vọng của bạn không thể đặt nơi bạn. Nó đặt nơi một Đức Chúa Trời thành tín, Đấng làm trọn điều Ngài đã bắt đầu.</p> <p>Nhưng hãy để ý rằng ông chẳng bao giờ nói: “Vậy thì sống thế nào cũng chẳng sao.” Được Đức Chúa Trời gìn giữ thì trông giống như thật sự được gìn giữ — ngày càng vững vàng hơn, đâm rễ sâu hơn, ngã rồi lại đứng dậy. Sự an toàn là mảnh đất; sự thánh khiết là sự tăng trưởng. Và Spurgeon có một lời cho những người mới bắt đầu, nhìn những Cơ Đốc nhân lớn tuổi, vững vàng hơn mà nghĩ rằng mình sẽ chẳng bao giờ được như thế: bạn, người bây giờ còn là một “em bé” trong Đấng Christ, một ngày kia có thể trở thành một “người cha” trong Hội Thánh — điều được trông đợi như một món quà của ân điển, chứ không phải kiếm được bằng nỗ lực.</p> <p><strong>Một việc để làm trong tuần này:</strong> hãy viết ra điều bạn sợ nhất sẽ kéo bạn xa khỏi Đức Chúa Trời — một tình bạn, một mối nghi ngờ, một thói quen, hay việc cảm xúc của bạn cứ phai nhạt dần. Bên dưới, hãy viết: “Đức Chúa Trời là Đấng thành tín” (1 Cô-rinh-tô 1:9). Mỗi tối trong tuần này, hãy cầu nguyện về nỗi sợ ấy, gọi đúng tên nó, và xin Ngài ban ân điển cho hôm nay, chứ không phải cho năm sau.</p>",
+  "study_questions": [
+   {
+    "question": "Spurgeon nói sai lầm nào đã khiến một số người quay lui?",
+    "answer": "Họ tin cậy Chúa Giê-xu cho sự khởi đầu của sự cứu rỗi, nhưng lại tin cậy chính mình để tiếp tục bước đi. Nếu chúng ta trông cậy vào chính mình để bám trụ, chúng ta sẽ không bám trụ được."
+   },
+   {
+    "question": "Theo Spurgeon, vì sao Phao-lô trông đợi các tín hữu sẽ được gìn giữ đến cuối cùng?",
+    "answer": "Không phải vì họ trung tín, mà vì “Đức Chúa Trời là Đấng thành tín.” Ngài đã kêu gọi họ vào mối liên hiệp với Con Ngài, và Ngài làm trọn điều Ngài đã bắt đầu — nên trừ khi Chúa Giê-xu chìm, người tin sẽ không chết đuối."
+   },
+   {
+    "question": "Điều gì bạn sợ nhất có thể kéo bạn xa khỏi Đức Chúa Trời? Sự thành tín của Đức Chúa Trời nói gì với nỗi sợ ấy?",
+    "answer": "Ý chính của chương: các thánh đồ bền đỗ vì Đức Chúa Trời bền đỗ trong ân điển. Hãy nhìn lên Đấng Christ cho cả sự kết thúc lẫn sự khởi đầu của bạn, và mỗi ngày xin Ngài ban ân điển để bám trụ."
+   }
+  ],
+  "word_count": 1023
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "all-of-grace-teens",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Bây Giờ",
+  "body_html": "<blockquote>“Này, thời kỳ ân huệ là ngay bây giờ. Này, ngày cứu rỗi là ngay bây giờ.” — 2 Cô-rinh-tô 6:2</blockquote> <p>Spurgeon kết thúc cuốn sách theo cách ông đã mở đầu — nói thẳng với bạn. Ông nói, đọc một cuốn sách như thế này chẳng có ích gì, trừ khi bạn thật sự nắm lấy điều nó nói. “Điều đó giống như một người thấy đầy thức ăn trong cửa hàng mà vẫn cứ đói, chỉ vì chẳng tự mình ăn lấy chút nào.” Ông kể với bạn rằng ông đã dừng viết ngay tại trang này, đặt bút xuống và quỳ gối cầu nguyện cho bất cứ ai sẽ đọc nó. Rồi, theo lời ông, ông nắm lấy tay bạn — một cái nắm thật chặt — và với nước mắt trong mắt, ông hỏi: “Sao bạn lại muốn chết?” Đừng trôi dạt ra ngoài tầm với chỉ vì sự lơ là, ông nài nỉ. Đừng quay lưng lại với Đấng yêu thương bạn. Và nếu bạn có quay lưng, ông nói, thì ít ra hãy thừa nhận rằng ông đã làm hết sức mình cho bạn: “Đức Chúa Trời biết tôi đã viết từng dòng vì lợi ích đời đời của bạn.”</p> <p>Nhưng ông cũng nói với người đọc <em>đã</em> tin cậy Chúa Giê-xu. Hãy ở lại với điều này. Hãy để ân điển nhưng không trở thành cách bạn sống, chứ không chỉ là cách bạn đã bắt đầu. Sống nhờ một món quà nhưng không tạo nên một điều khác thường nơi con người: “Nhận lấy mọi sự như một món quà nhưng không sẽ giữ tâm trí khỏi sự kiêu ngạo của kẻ tự cho mình là công bình, và khỏi sự tuyệt vọng của kẻ tự kết án mình.” Nó làm cho bạn ấm áp và biết ơn, thay vì lo âu và bị thúc ép. Ông nói, những người cố tự cứu mình bằng cách làm hết sức chẳng bao giờ biết đến niềm vui như thế. Một người nô lệ có thể vâng lời vì sợ hãi; một đứa con được cha yêu thương thì vâng lời vì một điều tốt đẹp hơn. Spurgeon cảnh báo rằng nhiều năm làm theo các nghi thức tôn giáo có thể chẳng có nghĩa lý gì với Đức Chúa Trời, trong khi “một cái nhìn từ con mắt của đức tin thật là thuộc linh, và vì thế nó quý giá đối với Ngài.” Hãy bắt đầu từ bên trong, rồi bên ngoài sẽ theo sau.</p> <p>Và rồi: hãy kể cho người khác. Linh hồn bạn sẽ không khỏe mạnh lâu được nếu bạn không quan tâm đến việc người khác tìm thấy điều bạn đã tìm thấy. “Sự sống của linh hồn bạn nằm ở đức tin; sức khỏe của nó nằm ở tình yêu.” Ông còn nói sắc bén hơn nữa: ai chẳng có khát khao dẫn người khác đến với Chúa Giê-xu thì “chính mình chưa bao giờ bị tình yêu chinh phục.” Hãy bắt đầu từ trong nhà. Rồi đến hàng xóm. Rồi đến con phố của bạn. Hãy loan truyền sứ điệp đến bất cứ đâu tay bạn có thể vươn tới.</p> <p>Những lời cuối cùng của ông là một lời nài xin khẩn thiết đừng trì hoãn. “Bạn đã quyết tâm đủ rồi, hãy hành động đi.” Hãy tin cậy Chúa Giê-xu ngay bây giờ, dứt khoát, ngay hôm nay. Có thể là bây giờ hoặc không bao giờ. “Hãy để nó là BÂY GIỜ; thật kinh khủng nếu nó là không bao giờ.” Và dòng cuối cùng của cuốn sách vừa là lời từ biệt vừa là lời mời: “hãy gặp tôi trên thiên đàng.”</p> <p>Vậy — rốt cuộc chuyện này nói về điều gì? <strong>Ân điển không phải là điều để suy nghĩ mãi; đó là điều để nhận lấy rồi sống nhờ nó.</strong> Bạn hoàn toàn có thể đọc hết cả một cuốn sách về ân điển, đồng ý với từng trang, mà vẫn chẳng bao giờ thật sự tin cậy Chúa Giê-xu — như đứng trong một cửa hàng thức ăn rồi bước ra mà vẫn đói. “Một ngày nào đó” nghe có vẻ an toàn, nhưng Spurgeon thành thật nói rằng bạn không nắm trong tay “một ngày nào đó.” Hôm nay là ngày duy nhất chắc chắn bạn có.</p> <p>Và nếu bạn đã nhận lấy ân điển, thì phần đời còn lại của bạn được định để mang hình dạng của nó. Không kiêu ngạo, vì chẳng điều gì trong đó là do bạn kiếm được. Không gục ngã, vì chẳng điều gì trong đó có thể mất đi bởi thất bại của bạn. Biết ơn. Ấm áp. Bận rộn với tình yêu dành cho những người xung quanh. Đó là một đời sống “tất cả bởi ân điển” trông như thế nào từ bên ngoài. Nó bắt đầu bằng một tiếng gõ cửa ở chương một. Câu hỏi duy nhất còn lại là bạn có mở cửa không — và Spurgeon sẽ nói: sao không phải là hôm nay?</p> <p><strong>Một việc để làm trong tuần này:</strong> hãy quyết định. Nếu bạn chưa bao giờ thật sự tin cậy Chúa Giê-xu, đừng đặt thêm một quyết tâm nữa là để sau sẽ làm — hãy nói với Ngài ngay hôm nay, bằng lời của chính bạn, rằng bạn đang nhận lấy món quà nhưng không và dồn hết sức nặng của mình tựa vào Ngài. Nếu bạn đã tin cậy Ngài rồi, hãy nghĩ đến một người mà bạn quan tâm, và trong tuần này, hãy kể với họ bằng một hai câu rằng ân điển có ý nghĩa thế nào đối với bạn.</p>",
+  "study_questions": [
+   {
+    "question": "Spurgeon kể rằng ông đã làm gì khi viết đến trang cuối cùng của cuốn sách?",
+    "answer": "Ông đặt bút xuống và quỳ gối cầu nguyện cho tất cả những ai sẽ đọc nó, rồi hình dung mình nắm lấy tay người đọc mà nài xin họ đừng quay lưng lại với Chúa Giê-xu."
+   },
+   {
+    "question": "Nhận lấy mọi sự như một món quà nhưng không bảo vệ một người khỏi cả sự kiêu ngạo lẫn sự tuyệt vọng như thế nào?",
+    "answer": "Vì chẳng có gì là do mình kiếm được, nên chẳng có gì để kiêu ngạo; và vì mọi sự dựa trên ân điển của Đức Chúa Trời chứ không dựa trên thành tích của chúng ta, nên những thất bại của chúng ta không thể làm chúng ta mất hết hy vọng. Thay vào đó, nó sinh ra tình yêu đầy biết ơn."
+   },
+   {
+    "question": "Có điều gì về Đức Chúa Trời mà bạn cứ “quyết tâm” làm mà chưa làm không? Hành động ngay hôm nay sẽ trông như thế nào?",
+    "answer": "Ý chính của chương: đọc sách chẳng ích gì trừ khi chân lý được nắm lấy. Ân điển phải được nhận lấy ngay bây giờ — “Hãy để nó là BÂY GIỜ” — rồi được sống ra bằng tình yêu dành cho người khác."
+   }
+  ],
+  "word_count": 953
+ }
+}
+]
