@@ -1,0 +1,98 @@
+{
+ "kind": "book",
+ "slug": "david-livingstone-a-life-children",
+ "language": "ko",
+ "job_issue": 8759,
+ "references": [
+  {
+   "reference": "Ecclesiastes 9:10a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 19:1",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Timothy 4:17",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 121:2",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Acts 8:31",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Isaiah 35:1",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 15:4b",
+   "status": "mined",
+   "block_index": 47,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Isaiah 61:1",
+   "status": "mined",
+   "block_index": 66,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 34:18a",
+   "status": "mined",
+   "block_index": 75,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "mined",
+   "block_index": 84,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Proverbs 25:25",
+   "status": "mined",
+   "block_index": 93,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 116:15",
+   "status": "mined",
+   "block_index": 103,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered"
+  }
+ ]
+}
