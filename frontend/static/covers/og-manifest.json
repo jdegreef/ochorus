@@ -48391,6 +48391,41 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"vi/the-way-to-god-teens": {
+			"ground": "f0fd473e8be29d1022a43d49d852e92cd787834df76b65f98c440c5487fc122f",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[135, 254, 465, 330],
+					[122, 320, 478, 396],
+					[153, 387, 447, 463]
+				],
+				"edition": [
+					[181, 473, 419, 498]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				259,
+				535
+			]
+		},
 		"vi/true-vine": {
 			"ground": "128b8534466b56fce047270220f3ae596ad269dae0ee99cec7accf7a3b29a752",
 			"style": "devotional",
