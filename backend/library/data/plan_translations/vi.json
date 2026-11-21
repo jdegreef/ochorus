@@ -63,6 +63,13 @@
    "Single-book plan backed by the vi edition of the-practice-of-the-presence-of-god-children («Thực Hành Sự Hiện Diện Của Đức Chúa Trời (Cho thiếu nhi)»); ships with the Level 1 books batch (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card names no book title; “Thầy Lawrence”, “nói chuyện với Đức Chúa Trời”, the bare winter tree (“Cái cây giữa mùa đông”, ch. 2) and the pronoun “anh” for the young Lawrence all follow that edition."
   ]
  },
+ "family-devotions-boy-from-osogun": {
+  "title": "Tĩnh nguyện gia đình: Cậu bé làng Osogun",
+  "description": "Mười hai buổi tối tĩnh nguyện gia đình, mỗi tối năm phút, cùng Samuel Ajayi Crowther, cậu bé người Yoruba bị bán làm nô lệ, rồi lớn lên đã đem Kinh Thánh đến cho dân tộc mình bằng chính tiếng mẹ đẻ. Hãy đọc to một chương ngắn: con tàu nô lệ bị chặn lại giữa biển, ngày cậu tìm lại được mẹ mình, Lời Cầu Nguyện Chung bằng tiếng Yoruba trước mặt Nữ hoàng, và những người nô lệ tốt bụng đã cho ông ăn khi ông bị bắt làm tù binh. Mỗi chương khép lại bằng một lời cầu nguyện và ba câu hỏi để cả nhà cùng trò chuyện.",
+  "note": [
+   "Single-book plan backed by the vi edition of samuel-ajayi-crowther-a-life-children («Samuel Ajayi Crowther (Cho thiếu nhi)»), shipped in the same PR, Vietnamese 100-item batch (2026-11-21), job #9422. The title quotes the edition's first chapter, «Cậu bé làng Osogun», as the English plan quotes “The Boy from Osogun”. AI-drafted; awaiting native review."
+  ]
+ },
  "school-of-prayer": {
   "title": "Nền tảng của sự cầu nguyện",
   "description": "Bốn tuần đặt nền tảng cho sự cầu nguyện cùng ba người dẫn đường: Andrew Murray về cách chính Chúa dạy chúng ta cầu nguyện, D. L. Moody về sự cầu nguyện đắc thắng, và Hannah Buyinza về sự cầu nguyện như nhịp đập hằng ngày của đời sống Cơ Đốc.",
