@@ -439,9 +439,88 @@ def search_library(q: str, language: str, scope=None) -> list[dict]:
             or (h["book_slug"], h["chapter_order"]) not in cited
         ]
     extra += cite_hits
-    if extra:
-        return (extra + base)[:MAX_RESULTS]
-    return base
+    merged = (extra + base)[:MAX_RESULTS] if extra else base
+    # Readers' choices last, over the finished list: they reorder what matched,
+    # never add to it. Not inside a scope, where clicks aren't recorded.
+    return merged if scope else apply_choices(merged, q, language)
+
+
+# --- Readers' choices ------------------------------------------------------------
+# The click log (SearchClickLog) says which result readers actually opened for a
+# query. A result opened again and again for the same words is the answer to
+# them, whatever the text ranking thought — so it rises to the top of its kind,
+# and one opened by most readers who opened anything leads the page.
+
+#: How far back clicks count: long enough to gather a few for a steady query,
+#: short enough that a change in the library (a new edition) shows within weeks.
+CHOICE_DAYS = 90
+#: Opens before a result moves at all. Several, so one reader (or one script —
+#: the click endpoint is public, if throttled) can't reorder a query alone.
+CHOICE_MIN_CLICKS = 3
+#: Opens, and share of all opens for the query, before a result leads the page.
+CHOSEN_MIN_CLICKS = 5
+CHOSEN_SHARE = 0.5
+
+
+def hit_row_key(hit: dict) -> str:
+    """A hit's key as the search page keys its rows (searchResults.ts toRow)."""
+    kind = hit.get("type", "")
+    if kind == "chapter":
+        return f"chapter:{hit.get('book_slug', '')}:{hit.get('chapter_order', '')}"
+    if kind == "scripture":
+        verse = hit.get("verse")
+        return f"scripture:{hit.get('book_slug', '')}:{hit.get('chapter', '')}:{'' if verse is None else verse}"
+    spec = HIT_WORK.get(kind)
+    return f"{kind}:{hit.get(spec[1], '')}" if spec else ""
+
+
+def click_choices(q: str, language: str) -> dict[str, int]:
+    """Opens per result key for this query in the last CHOICE_DAYS days."""
+    from datetime import timedelta
+
+    from django.db.models import Count
+    from django.utils import timezone
+
+    from .models import SearchClickLog
+
+    def compute():
+        since = timezone.now() - timedelta(days=CHOICE_DAYS)
+        rows = (
+            SearchClickLog.objects.filter(
+                language=language, query__iexact=" ".join(q.split()), created_at__gte=since
+            )
+            .exclude(result_key="")
+            .values("result_key")
+            .annotate(n=Count("id"))
+        )
+        return {r["result_key"]: r["n"] for r in rows}
+
+    return memoized("choices", compute, " ".join(q.lower().split()), language)
+
+
+def apply_choices(hits: list[dict], q: str, language: str) -> list[dict]:
+    """``hits`` with readers' choices lifted: a result opened at least
+    CHOICE_MIN_CLICKS times rises, most-opened first, ahead of the rest of its
+    kind; one with CHOSEN_MIN_CLICKS opens and CHOSEN_SHARE of all of them is
+    marked ``chosen`` (the page leads with it). Order is otherwise unchanged."""
+    choices = click_choices(q, language)
+    if not choices:
+        return hits
+    total = sum(choices.values())
+
+    def opens(hit):
+        n = choices.get(hit_row_key(hit), 0)
+        return n if n >= CHOICE_MIN_CLICKS else 0
+
+    lifted = sorted(hits, key=lambda h: -opens(h))  # stable: ties keep text order
+    for hit in lifted:
+        n = opens(hit)
+        if n >= CHOSEN_MIN_CLICKS and n >= CHOSEN_SHARE * total:
+            lifted = [hit, *[h for h in lifted if h is not hit]]
+            hit = {**hit, "chosen": True}
+            lifted[0] = hit
+            break
+    return lifted
 
 
 class _Ctx:

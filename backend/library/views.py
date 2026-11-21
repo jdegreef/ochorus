@@ -2020,6 +2020,11 @@ class _SearchClickThrottle(ScopedCacheThrottle):
     scope = "search-click"
 
 
+#: A search row's key: "<type>:<slug>", plus ":<n>" parts for a chapter
+#: ("chapter:humility:3") or a scripture page ("scripture:john:3:16").
+_CLICK_KEY = re.compile(r"[a-z]+:[a-z0-9][a-z0-9-]*(?::\d*){0,2}")
+
+
 class SearchClickView(APIView):
     """Record that a search result was opened. Anonymous, fire-and-forget.
 
@@ -2062,6 +2067,12 @@ class SearchClickView(APIView):
             position = int(data.get("position"))
         except (TypeError, ValueError):
             position = 0
+        # Which result, as the page keys it — kept only when it is shaped like
+        # one of this type's keys, so the column can't carry free text.
+        raw_key = data.get("key")
+        key = raw_key.strip() if isinstance(raw_key, str) else ""
+        if not (len(key) <= 200 and _CLICK_KEY.fullmatch(key) and key.split(":")[0] == result_type):
+            key = ""
 
         if (
             min_query_len(_language(request)) <= len(q) <= 200
@@ -2077,6 +2088,7 @@ class SearchClickView(APIView):
                     language=_language(request)[:10],
                     result_type=result_type,
                     position=position,
+                    result_key=key,
                 )
             except Exception:
                 logger.warning("search click logging failed", exc_info=True)

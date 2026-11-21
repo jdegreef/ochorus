@@ -267,6 +267,13 @@ describe('topResult', () => {
 		expect(topResult(rowsOf([author()]), 'a murray')).toBeNull();
 	});
 
+	it('promotes the result readers keep choosing, after an exact title and a named writer', () => {
+		const other = { ...(book('absolute-surrender') as object), book_title: 'Absolute Surrender' } as SearchHit;
+		const rows = rowsOf([book(), other]).map((r) => ({ ...r, chosen: r.key === 'book:absolute-surrender' }));
+		expect(topResult(rows, 'surrender to god')?.key).toBe('book:absolute-surrender');
+		expect(topResult(rows, 'humility')?.key).toBe('book:humility');
+	});
+
 	it('prefers the book when a book and a writer share the name', () => {
 		const same = { ...(author() as object), author_name: 'Humility' } as SearchHit;
 		expect(topResult(rowsOf([same, book()]), 'humility')?.type).toBe('book');
@@ -311,6 +318,14 @@ describe('leadWithPinned', () => {
 		type,
 		labelKey: type,
 		rows
+	});
+
+	it('leads with the group readers keep choosing from when nothing is pinned', () => {
+		const chosen = { ...row('chapter'), chosen: true } as ResultRow;
+		const groups = [group('book', [row('book')]), group('chapter', [chosen])];
+		expect(leadWithPinned(groups).map((g) => g.type)).toEqual(['chapter', 'book']);
+		const pinned = [group('author', [row('author', true)]), ...groups];
+		expect(leadWithPinned(pinned).map((g) => g.type)[0]).toBe('author');
 	});
 
 	it('moves the group holding a pinned best match to the front', () => {

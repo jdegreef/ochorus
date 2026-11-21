@@ -694,6 +694,8 @@ export type SearchHit = (
 	pinned?: boolean;
 	/** An author the query names, however spelt ("d l moody" → Dwight L. Moody). */
 	named?: boolean;
+	/** The result most readers open for this query (search.py apply_choices). */
+	chosen?: boolean;
 };
 
 export type SearchType = SearchHit['type'];
@@ -1381,7 +1383,8 @@ export const recordSearchClick = (
 	query: string,
 	type: SearchType,
 	position: number,
-	language = 'en'
+	language = 'en',
+	key = ''
 ) =>
 	// The language rides in the query string because that is the only place the
 	// server reads it from (`language_from_request`). Posting without it recorded
@@ -1389,7 +1392,9 @@ export const recordSearchClick = (
 	// click-through report read as "nobody but English readers finds anything".
 	apiFetch<void>(`/api/library/search-click/?language=${encodeURIComponent(language)}`, {
 		method: 'POST',
-		body: JSON.stringify({ query, type, position })
+		// `key` names WHICH result was opened, so readers' choices can shape the
+		// ranking (library/search.py apply_choices).
+		body: JSON.stringify({ query, type, position, key })
 	});
 
 /**

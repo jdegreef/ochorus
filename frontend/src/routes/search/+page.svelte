@@ -135,7 +135,8 @@
 			...toRow(h, rowCtx),
 			type: h.type,
 			pinned: h.pinned,
-			named: h.named
+			named: h.named,
+			chosen: h.chosen
 		}))
 	);
 	const groups = $derived<ResultGroup[]>(leadWithPinned(groupRows(rows)));
@@ -255,7 +256,7 @@
 		const position = nav.keys.indexOf(key) + 1;
 		const query = ran || q.trim();
 		if (!type || position < 1 || query.length < minQueryLength(getLang())) return;
-		void recordSearchClick(query, type, position, getLang()).catch(() => {});
+		void recordSearchClick(query, type, position, getLang(), key).catch(() => {});
 	}
 	const activeKey = $derived(
 		activeIndex >= 0 && activeIndex < nav.keys.length ? nav.keys[activeIndex] : ''

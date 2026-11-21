@@ -62,6 +62,8 @@ export type ResultRow = Row & {
 	pinned?: boolean;
 	/** A writer the query names however it was spelt ("d l moody"); see `topResult`. */
 	named?: boolean;
+	/** The result most readers open for this query; see `leadWithPinned`, `topResult`. */
+	chosen?: boolean;
 };
 
 /** What `toRow` needs from the page: the type chip's wording, and the query. */
@@ -244,7 +246,9 @@ export function groupRows(rows: ResultRow[]): ResultGroup[] {
  * list, so within its group it is already the top row.
  */
 export function leadWithPinned(groups: ResultGroup[]): ResultGroup[] {
-	const i = groups.findIndex((g) => g.rows.some((r) => r.pinned));
+	// An admin's pin first; failing that, the result readers keep choosing.
+	let i = groups.findIndex((g) => g.rows.some((r) => r.pinned));
+	if (i < 0) i = groups.findIndex((g) => g.rows.some((r) => r.chosen));
 	return i > 0 ? [groups[i], ...groups.slice(0, i), ...groups.slice(i + 1)] : groups;
 }
 
@@ -326,7 +330,8 @@ function fold(s: string): string {
  * query names exactly ("all of grace", "spurgeon" does not; "Charles Spurgeon"
  * does), or an admin's pinned best match when that is a book or a writer. A
  * writer the server says the query names (`named`: "d l moody", "C.H.
- * Spurgeon", "Dwight Moody") counts as exact, after an exactly-titled book.
+ * Spurgeon", "Dwight Moody") counts as exact, after an exactly-titled book;
+ * then the book or writer most readers open for this query (`chosen`).
  *
  * Exact, not "first": a top card over a fuzzy match claims an answer the
  * reader didn't ask for. Books win a tie with writers because the reader came
@@ -343,6 +348,7 @@ export function topResult(rows: ResultRow[], query: string): ResultRow | null {
 		exact.find((r) => r.type === 'book') ??
 		exact[0] ??
 		named.find((r) => r.type === 'author' && r.named) ??
+		named.find((r) => r.chosen) ??
 		null
 	);
 }
