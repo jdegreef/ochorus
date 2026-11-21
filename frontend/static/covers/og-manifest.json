@@ -23277,6 +23277,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/gleanings-among-the-sheaves": {
+			"ground": "da7927acffe441d90d5e14eff6168cd050bcdd08c71f265c66c56e7a0eebe1f8",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "eb90dc908b4b38a0a6439348522b74079753903d4af47f4267e0ac28b50ee402",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/growing-in-wisdom": {
 			"ground": "ffa92daed7a4734678353c0b11859181d06a501def9a81f4cbce2dc22b8b7967",
 			"style": "originals",
@@ -25643,6 +25658,39 @@
 				552
 			]
 		},
+		"ko/c-s-lewis-a-life-children": {
+			"ground": "8696e18f0e08f427b94ee2c7c0d59d8b12d5acd8b3ad7a40adadaca78e483c93",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "966de8a9892d74668c23a5205bbc69579588fe7505e78df32aed847bc89f7cc5",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[211, 106, 389, 135]
+				],
+				"title": [
+					[158, 321, 442, 396]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				328,
+				472
+			]
+		},
 		"ko/cheque-book": {
 			"ground": "bb3c7c304511d9092162357b6bb24271e29768f07334371296f0fbd64dee2360",
 			"style": "revival",
@@ -25719,6 +25767,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/david-livingstone-a-life-children": {
+			"ground": "6ed4fb31d53b541b20238371d43377616e6027248dedf7a45639b892073695f9",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "e304717d004c617256b1f6bbe02a5264c308d72d1ed739e3bc2c672902e94410",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[178, 106, 422, 135]
+				],
+				"title": [
+					[84, 321, 516, 396]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				328,
+				472
+			]
+		},
 		"ko/divine-healing": {
 			"ground": "7f55a8a937c6491b798118d5320b1187c31022f4f72665060d9378254527a649",
 			"style": "devotional",
@@ -25733,6 +25814,39 @@
 			"bar": 0.05,
 			"caps": false,
 			"sitemark": null
+		},
+		"ko/elisabeth-elliot-a-life-children": {
+			"ground": "a1c064b22e319b24b55193bc8521dc988727ea647b916878b1a4332de97c2df4",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1c3a4b0733f93b3a31821155821969776a4d1bc44785b58f722eab43ddb7a3c8",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1.25,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[178, 106, 422, 135]
+				],
+				"title": [
+					[84, 321, 516, 396]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				328,
+				472
+			]
 		},
 		"ko/enchiridion": {
 			"ground": "9530ae4c5b15cb1a92eb314c749bd679a65949254b9584beacd4392cb1f7de2f",
@@ -26123,6 +26237,39 @@
 			"middle": [
 				269,
 				525
+			]
+		},
+		"ko/john-hyde-a-life-children": {
+			"ground": "bda9d5a04992546f217aac79f5c5aa3b050e7909744ab5efc9a7f9d6767c7535",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "2059e6007e359e0cc6eed1395937d9f706334ba61836bbe3fccc3217749cb466",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[236, 106, 364, 135]
+				],
+				"title": [
+					[111, 321, 489, 396]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				328,
+				472
 			]
 		},
 		"ko/key-teachings-of-a-b-simpson": {

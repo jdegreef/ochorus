@@ -161,11 +161,15 @@ class People:
     """The author names one search matches against (built once per request)."""
 
     def __init__(self, rows):
+        """``rows``: ``(pk, name)``, or ``(pk, other_name, name)`` for a name the
+        person is also known by (library/search_aliases.py), matched like any
+        other but reported — and rewritten — as ``name``."""
         self._names = []
-        for pk, name in rows:
-            tokens = words(name)
+        for pk, spelt, *display in rows:
+            tokens = words(spelt)
             if tokens:
-                self._names.append(_Name(pk, name, tuple(tokens), _surname(name, tokens)))
+                name = display[0] if display else spelt
+                self._names.append(_Name(pk, name, tuple(tokens), _surname(spelt, tokens)))
 
     def match(self, q: str) -> list[PersonMatch]:
         """Everyone the query names, strongest first.
@@ -180,7 +184,9 @@ class People:
             return []
         found = [m for n in self._names if (m := self._match_one(typed, n))]
         found.sort(key=lambda m: (-m.whole, -m.score, m.name))
-        return found
+        # One answer per person: the best of their names.
+        seen: set = set()
+        return [m for m in found if not (m.pk in seen or seen.add(m.pk))]
 
     def _match_one(self, typed: list[str], person: _Name) -> PersonMatch | None:
         free = list(range(len(person.tokens)))  # name words not yet used
