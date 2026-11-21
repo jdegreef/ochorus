@@ -26837,6 +26837,39 @@
 				501
 			]
 		},
+		"ko/pandita-ramabai-a-life-children": {
+			"ground": "b3abe52615cb8c57276bbcfb0b366e716870fc0c482788fa8b01d20d2c0ce1d5",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "bd5e6ec1e505ea06a19a3d1298287db93d7070caf1e4bfc374e2b2ae7d99ba49",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.3,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[192, 106, 408, 135]
+				],
+				"title": [
+					[111, 321, 489, 396]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				328,
+				472
+			]
+		},
 		"ko/pensees": {
 			"ground": "75e48bed8ad5d6652911436bd6cf9b2310bbac88fe6dd7ed536d6f02516a6b50",
 			"style": "press",
