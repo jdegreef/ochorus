@@ -1,0 +1,106 @@
+{
+ "kind": "book",
+ "slug": "john-hyde-a-life-children",
+ "language": "ko",
+ "job_issue": 8753,
+ "references": [
+  {
+   "reference": "Matthew 9:38",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 11:13b",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 51:10a",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Exodus 4:12b",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Mark 1:35",
+   "status": "mined",
+   "block_index": 47,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Zechariah 4:6b",
+   "status": "mined",
+   "block_index": 56,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 81:10b",
+   "status": "mined",
+   "block_index": 65,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 81:10b",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "block_index": 75,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "mined",
+   "block_index": 85,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Zechariah 2:8",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "Revelation 12:10",
+   "status": "self_rendered",
+   "block_index": 88
+  },
+  {
+   "reference": "Luke 15:20b",
+   "status": "mined",
+   "block_index": 95,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "mined",
+   "block_index": 104,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}
