@@ -5,7 +5,7 @@
   "Read by library.requote (manage.py requote_inventory). Three things live here, all language data rather than code:",
   "book_names: how the Amharic library cites each book, mapped to USFM. A numbered book is keyed with its ordinal ('1ኛ ቆሮንቶስ'); a citation written '1 ቆሮንቶስ' or '1ኛ ቆሮ.' is normalised to that key before lookup. Abbreviations are listed as their own keys, without the trailing dot.",
   "fold: pairs of Ethiopic syllable rows that spell the same sound (ሐ/ኀ/ሀ, ሠ/ሰ, ዐ/አ, ፀ/ጸ). The 1962 text and OWB often spell one word with different rows, so the fuzzy 'is this the same verse' match folds them; the verbatim-OWB check never does.",
-  "decisions: the recurring-verse and recurring-word calls wave 1 settled (amowb/_TEMPLATE-wave2.md, 'Wave-1 recurring words'). The inventory flags every row whose reference matches one, or whose aligned English block holds one of its `english` phrases, or whose Amharic block holds one of its `old` words — so the worker reuses the decision instead of re-deciding it. Keep `english` phrases specific: a bare common word ('might', 'repent') flags half a book."
+  "decisions: the recurring-verse and recurring-word calls wave 1 settled (amowb/_TEMPLATE-wave2.md, 'Wave-1 recurring words'). The inventory flags every row whose reference matches one, or whose aligned English block holds one of its `english` phrases, or whose Amharic block holds one of its `old` words — so the worker reuses the decision instead of re-deciding it. Keep `english` phrases specific: a bare common word ('might', 'repent') flags half a book. A decision marked `detect` goes further: each of its `old` wordings becomes a row of its own (kind `recurring`, under its first reference) wherever it stands — for refrains too short for any detector to call Scripture by themselves."
  ],
  "cv_separators": ":፥",
  "ordinal_suffix": "ኛ",
@@ -125,7 +125,16 @@
    "references": ["Luke 11:1"],
    "english": ["teach us to pray"],
    "old": ["እንድንጸልይ አስተምረን", "መጸለይ አስተምረን"],
+   "detect": true,
    "decision": "Murray's refrain 'Lord, teach us to pray' is OWB Luke 11:1's span «ጌታ ሆይ፣ … እንዴት መጸለይ እንዳለብን አስተምረን»; headings and body quote it identically."
+  },
+  {
+   "id": "thy-will-be-done",
+   "references": ["Matthew 26:42"],
+   "english": ["Thy will be done", "Your will be done"],
+   "old": ["ፈቃድህ ትሁን"],
+   "detect": true,
+   "decision": "The refrain «ፈቃድህ ትሁን» is the old wording. OWB Matt 26:42 ends «ፈቃድህ ይሁን»; Matt 6:10 has «ፈቃድህ በምድርም ይደረግ»; Luke 22:42 «የአንተ ፈቃድ ይሁን». Quote the span of the verse the author means, and keep a refrain identical everywhere it recurs."
   },
   {
    "id": "compel",

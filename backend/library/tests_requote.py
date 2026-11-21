@@ -88,7 +88,7 @@ class BlockTests(SimpleTestCase):
     def test_a_bio_aside_is_one_block(self):
         body = '<p>a</p><aside class="prayer"><p>b</p><p><cite>c</cite></p></aside><p>d</p>'
         self.assertEqual(len(rq.block_spans(body)), 4)
-        self.assertEqual(len(rq.block_spans(body, merge_asides=True)), 3)
+        self.assertEqual(len(rq.block_spans(body, top_level=True)), 3)
 
 
 class InventoryTests(SimpleTestCase):
@@ -155,6 +155,15 @@ class InventoryTests(SimpleTestCase):
         self.assertEqual(
             [(r.kind, r.reference, r.status) for r in rows],
             [("english_only", "John 3:16", rq.ALLUSION)],
+        )
+
+    def test_detect_decision_finds_a_short_refrain(self):
+        # «ፈቃድህ ትሁን» is two words: no detector calls it Scripture alone, so
+        # the word list names it and every occurrence becomes a row.
+        rows = rq.inventory(work_of("<p>ልባችን ሁልጊዜ «ፈቃድህ ትሁን» ይላል።</p>"), None)
+        self.assertEqual(
+            [(r.kind, r.reference, r.status, r.flags) for r in rows],
+            [("recurring", "Matthew 26:42", rq.NEEDS_REQUOTE, ["thy-will-be-done"])],
         )
 
     def test_recurring_decision_is_flagged(self):

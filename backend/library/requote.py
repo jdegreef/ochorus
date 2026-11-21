@@ -8,7 +8,7 @@ block before re-quoting anything — the bulk of each book's cost — and then
 wrote its own throwaway validator. This module does both once.
 
 INVENTORY (``inventory``)
-    Four detectors, each a row per quotation, all keyed to the same
+    Five detectors, each a row per quotation, all keyed to the same
     ``(chapter, block_index)`` the notes use:
 
     * ``cited`` — a quotation with a citation right after it: ``«…» (ዮሐንስ 3:16)``.
@@ -21,6 +21,8 @@ INVENTORY (``inventory``)
     * ``recited`` — an unquoted verbatim run of a vicinity verse: OWB's words,
       or a wording the language's corpus quotes that verse with elsewhere (the
       only "1962 text" the repo holds, and the one a worker has to replace).
+    * ``recurring`` — a refrain too short for any of the above («ፈቃድህ ትሁን»),
+      named once in the word list with ``detect`` and found wherever it stands.
     * ``english_only`` — the aligned English block quotes or recites a verse
       and nothing in the Amharic block was matched to it: the translator
       paraphrased it, or recited it in wording no detector knows. A human
@@ -63,7 +65,7 @@ import unicodedata
 from collections import defaultdict
 from collections.abc import Callable
 from dataclasses import asdict, dataclass, field
-from functools import cache
+from functools import cache, lru_cache
 from pathlib import Path
 
 from . import mined_verification as mv
@@ -288,6 +290,7 @@ def span_from_id(verse_id: int, last_id: int | None = None) -> Span:
     )
 
 
+@lru_cache(maxsize=65536)
 def owb_text(span: Span, language: str, slack: int = 0) -> str:
     """The bundled OWB wording of a span (``slack`` verses either side)."""
     from . import scripture
@@ -387,7 +390,7 @@ def cited_quotations(text: str, language: str):
 
 # ── Blocks ──────────────────────────────────────────────────────────────────
 _BLOCK_END = re.compile(r"</(?:p|li|blockquote|h[1-6])>", re.I)
-_ASIDE = re.compile(r"<aside\b.*?</aside>", re.I | re.S)
+_CONTAINER = re.compile(r"<(aside|blockquote)\b.*?</\1>", re.I | re.S)
 _TAG = re.compile(r"<[^>]+>")
 
 
@@ -395,17 +398,19 @@ def render(fragment: str) -> str:
     return re.sub(r"\s+", " ", htmllib.unescape(_TAG.sub("", fragment))).strip()
 
 
-def block_spans(body: str, merge_asides: bool = False) -> list[tuple[int, int]]:
+def block_spans(body: str, top_level: bool = False) -> list[tuple[int, int]]:
     """Raw ``(start, end)`` of each block holding text, in document order.
 
-    The same blocks ``admin_views.quality._blocks`` shows a reviewer; with
-    ``merge_asides`` an ``<aside>`` callout is one block (the bio convention).
+    The same blocks ``admin_views.quality._blocks`` shows a reviewer. With
+    ``top_level`` an ``<aside>`` callout or a ``<blockquote>`` (a pull-quote
+    and its attribution) is one block: the bio notes count top-level
+    elements, then the Q&A answers ("blocks 0-18, then the FAQ from 19").
     """
     cuts = [m.end() for m in _BLOCK_END.finditer(body)] + [len(body)]
-    if merge_asides:
-        asides = [(m.start(), m.end()) for m in _ASIDE.finditer(body)]
-        cuts = [c for c in cuts if not any(a < c < b for a, b in asides)]
-        cuts = sorted(set(cuts) | {b for _, b in asides})
+    if top_level:
+        boxes = [(m.start(), m.end()) for m in _CONTAINER.finditer(body)]
+        cuts = [c for c in cuts if not any(a < c < b for a, b in boxes)]
+        cuts = sorted(set(cuts) | {b for _, b in boxes})
     spans, start = [], 0
     for end in cuts:
         if render(body[start:end]):
@@ -451,11 +456,11 @@ class Work:
 
 
 def _blocks_of(
-    body: str, container: str, chapter: int | None, first: int = 0, merge_asides=False
+    body: str, container: str, chapter: int | None, first: int = 0, top_level=False
 ) -> list[Block]:
     return [
         Block(chapter, first + i, container, s, e, render(body[s:e]))
-        for i, (s, e) in enumerate(block_spans(body, merge_asides))
+        for i, (s, e) in enumerate(block_spans(body, top_level))
     ]
 
 
@@ -514,7 +519,7 @@ def _load_bio(slug: str, language: str, read: Reader) -> Work:
             raise FileNotFoundError(paths["html"])
         faq = json.loads(read(paths["faq"]) or "[]")
     containers["html"] = body
-    blocks = _blocks_of(body, "html", None, merge_asides=True)
+    blocks = _blocks_of(body, "html", None, top_level=True)
     for k, item in enumerate(faq):
         key = f"faq:{k}"
         containers[key] = str(item.get("a") or "")
@@ -614,7 +619,7 @@ class Row:
     chapter: int | None
     block_index: int
     reference: str
-    kind: str  # cited | quoted | recited | english_only
+    kind: str  # cited | quoted | recited | recurring | english_only
     status: str
     text: str  # the translated quotation (or the whole block, for english_only)
     owb: str
@@ -875,6 +880,46 @@ def _align(a_sets: list[set[int]], e_sets: list[set[int]]) -> list[int | None]:
     return out
 
 
+def _recurring_rows(
+    b: Block, chapter, j, e_text: str, rows: list[Row], language: str
+) -> list[Row]:
+    """Rows for a ``detect`` decision's old wording wherever it stands.
+
+    A two-word refrain («ፈቃድህ ትሁን», "Thy will be done") is too short for
+    any detector to call Scripture on its own, and wave 1 found it again and
+    again by hand. The word list names it once; this finds every one.
+    """
+    out = []
+    for d in language_data(language).get("decisions", []):
+        if not d.get("detect"):
+            continue
+        span = parse_reference(d["references"][0])
+        for old in d.get("old", []):
+            if old not in b.text:
+                continue
+            if any(
+                r.chapter == chapter and r.block_index == b.index and old in r.text
+                for r in rows
+            ):
+                continue
+            out.append(
+                Row(
+                    chapter,
+                    b.index,
+                    span.label,
+                    "recurring",
+                    NEEDS_REQUOTE,
+                    old,
+                    owb_text(span, language),
+                    j,
+                    e_text,
+                    [d["id"]],
+                    span,
+                )
+            )
+    return out
+
+
 def _decision_flags(
     row: Row, english_text: str, block_text: str, language: str
 ) -> list[str]:
@@ -1118,14 +1163,9 @@ def _inventory_chapter(
                 _english_excerpt(e_text, j, e_found, first, last),
                 span=span,
             )
-            if (
-                kind == "recited"
-                and row.status == NEEDS_REQUOTE
-                and _only_owb_run(text, span, language)
-            ):
-                row.status = ALREADY_OWB
             row.flags = _decision_flags(row, e_text, b.text, language)
             rows.append(row)
+        rows += _recurring_rows(b, chapter, j, e_text, rows, language)
     # English quotations nothing in the translation answered.
     for j, found in enumerate(e_found):
         for first, last, _kind, etext in found:
@@ -1162,10 +1202,6 @@ def _inventory_chapter(
     return rows
 
 
-def _only_owb_run(text: str, span: Span, language: str) -> bool:
-    return is_owb(text, span, language)
-
-
 def _english_excerpt(e_text: str, j, e_found, first: int, last: int) -> str:
     if j is None or j >= len(e_found):
         return ""
@@ -1188,7 +1224,8 @@ def load_notes(
 
 
 def _note_location(note: dict, work: Work) -> tuple[int | None, int | None]:
-    """(chapter, per-chapter block) a note points at, whichever convention it uses."""
+    """(chapter, per-chapter block) a note points at, reading a book note
+    with no ``chapter_order`` as the admin view does: a work-level index."""
     i = note.get("block_index")
     if work.kind != "book":
         return None, i
@@ -1196,7 +1233,6 @@ def _note_location(note: dict, work: Work) -> tuple[int | None, int | None]:
         return note["chapter_order"], i
     if i is None:
         return None, None
-    # Work-level index (the admin view's reading): count through the chapters.
     for chapter in work.chapters:
         n = len(work.chapter_blocks(chapter))
         if i < n:
@@ -1218,16 +1254,24 @@ def notes_diff(rows: list[Row], notes: list[dict], work: Work) -> dict:
     groups: dict[tuple, list[Row]] = defaultdict(list)
     for r in rows:
         groups[(r.chapter, r.block_index, r.span)].append(r)
+    # A book note with no chapter_order is ambiguous: the admin view reads its
+    # index work-wide, but most such files count per chapter and simply never
+    # said which chapter (religious-affections: 26 chapters, indexes to 111).
+    # So it may sit in any chapter, and either reading counts as its block.
     parsed = []
     for n in notes:
-        chapter, block = _note_location(n, work)
-        parsed.append((n, chapter, block, parse_reference(n.get("reference", ""))))
+        if work.kind == "book" and "chapter_order" not in n:
+            chapter, block, alt = None, n.get("block_index"), _note_location(n, work)
+        else:
+            (chapter, block), alt = _note_location(n, work), None
+        parsed.append((n, chapter, block, alt, parse_reference(n.get("reference", ""))))
     used_groups: set = set()
     matched_notes: set[int] = set()
 
     def same_chapter(nch, gch):
         return work.kind != "book" or nch is None or nch == gch
 
+    @cache
     def quotes(key, span: Span) -> bool:
         """Does this quotation group answer a note on ``span``? By reference,
         or — a note can carry a sibling reference (Heb 5:6 quoting Ps 110:4,
@@ -1240,9 +1284,14 @@ def notes_diff(rows: list[Row], notes: list[dict], work: Work) -> dict:
             for r in groups[key]
         )
 
+    def at(key, nch, nblock, alt) -> bool:
+        return (key[1] == nblock and same_chapter(nch, key[0])) or (
+            alt is not None and key[:2] == alt
+        )
+
     # Exact block first, then nearest block in the chapter.
     for exact in (True, False):
-        for k, (n, nch, nblock, span) in enumerate(parsed):
+        for k, (n, nch, nblock, alt, span) in enumerate(parsed):
             if k in matched_notes or span is None:
                 continue
             options = [
@@ -1250,8 +1299,8 @@ def notes_diff(rows: list[Row], notes: list[dict], work: Work) -> dict:
                 for key in groups
                 if key not in used_groups
                 and same_chapter(nch, key[0])
+                and (not exact or at(key, nch, nblock, alt))
                 and quotes(key, span)
-                and (not exact or key[1] == nblock)
             ]
             if not options:
                 continue
@@ -1265,14 +1314,11 @@ def notes_diff(rows: list[Row], notes: list[dict], work: Work) -> dict:
                 n["_found_block"] = key[1]
                 n["_found_chapter"] = key[0]
     # A second note on an already-matched group (a range split in two rows).
-    for k, (_n, nch, nblock, span) in enumerate(parsed):
+    for k, (_n, nch, nblock, alt, span) in enumerate(parsed):
         if (
             k not in matched_notes
             and span
-            and any(
-                same_chapter(nch, key[0]) and key[1] == nblock and quotes(key, span)
-                for key in groups
-            )
+            and any(at(key, nch, nblock, alt) and quotes(key, span) for key in groups)
         ):
             matched_notes.add(k)
 
@@ -1300,7 +1346,7 @@ def notes_diff(rows: list[Row], notes: list[dict], work: Work) -> dict:
             "found_chapter": n.pop("_found_chapter"),
             "found_block": n.pop("_found_block"),
         }
-        for k, (n, nch, nblock, _) in enumerate(parsed)
+        for (n, nch, nblock, _alt, _span) in parsed
         if "_found_block" in n
     ]
     unlocated = [
@@ -1310,7 +1356,7 @@ def notes_diff(rows: list[Row], notes: list[dict], work: Work) -> dict:
             "block_index": nblock,
             "status": n.get("status"),
         }
-        for k, (n, nch, nblock, _) in enumerate(parsed)
+        for k, (n, nch, nblock, _alt, _span) in enumerate(parsed)
         if k not in matched_notes
     ]
     quotations = [m for m in missing if m["kind"] != "english_only"]
@@ -1503,7 +1549,7 @@ def _shifted(work: Work, state: dict[str, str], b: Block) -> tuple[int, int]:
     """Where block ``b`` sits in the container's CURRENT text."""
     if b.index == TITLE or b.container.startswith("faq:"):
         return 0, len(state[b.container])
-    spans = block_spans(state[b.container], merge_asides=work.kind == "bio")
+    spans = block_spans(state[b.container], top_level=work.kind == "bio")
     return spans[b.index]
 
 
