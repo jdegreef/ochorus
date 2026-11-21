@@ -1,0 +1,15 @@
+{
+ "kind": "bio",
+ "slug": "derek-prince",
+ "language": "vi",
+ "job_issue": 9226,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Galatians 3:3",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 26
+  }
+ ]
+}
