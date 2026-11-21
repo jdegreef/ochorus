@@ -25730,6 +25730,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/after-his-heart": {
+			"ground": "5c75a12ac821ea5731f6d3e9a33b7e7028398a7f313a44a04d3ef55e057c9f1d",
+			"style": "house",
+			"volume": null,
+			"script": "korean",
+			"fonts": "d8cb0c3f6a59026fd2097c999d1736bacfd88570553c4254d24419b10bc188ec",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[116, 298, 484, 388],
+					[108, 382, 492, 472]
+				],
+				"subtitle": [
+					[140, 496, 460, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
+		},
 		"ko/all-of-grace": {
 			"ground": "8fadfd0408f390a83e96639188b9429ef51d21b280f55aa41e523aa57856fb23",
 			"style": "revival",
