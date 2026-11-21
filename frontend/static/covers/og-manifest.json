@@ -38448,6 +38448,40 @@
 				546
 			]
 		},
+		"ru/brave-for-god": {
+			"ground": "17d7ee27180d92309a0bfb81972edb8f9ffe76b1b3b82411eefc442d6f223fb2",
+			"style": "young",
+			"volume": "1",
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 287, 308, 331],
+					[43, 362, 557, 437]
+				],
+				"subtitle": [
+					[54, 492, 546, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
+		},
 		"ru/brave-for-god-2": {
 			"ground": "88864c20ed93d2cbb36feed00e22af46f479fc805fe8267a65282522dbff995f",
 			"style": "young",
