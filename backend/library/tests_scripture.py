@@ -585,7 +585,7 @@ class BundledOwbBibleTests(SimpleTestCase):
     def test_each_bundle_holds_the_whole_bible(self):
         from library import scripture
 
-        for lang in ("am", "sw", "ja"):
+        for lang in ("am", "sw", "ja", "es", "fr", "pt", "hi", "uk", "vi", "ko", "ru"):
             with self.subTest(lang=lang):
                 self.assertIn(lang, scripture.owb_languages())
                 verses, _joined = scripture._owb(lang)
