@@ -25534,6 +25534,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/all-of-grace-teens": {
+			"ground": "ae508072523018b0b0e32af8a6e2eb474fd63406b01aa634c3ec6ef6634c646f",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "d104baf2f48972c85053fd8e84531c46d3669f329acee772efa5dbc99e23ac04",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[83, 318, 517, 394]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				471
+			]
+		},
 		"ko/all-things-for-good": {
 			"ground": "7206579a2d5372275a94ca12d0dbcd845e7f821563bc32a0a632c8cc3a3d4297",
 			"style": "press",
