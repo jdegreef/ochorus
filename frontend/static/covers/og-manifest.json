@@ -25311,6 +25311,39 @@
 				524
 			]
 		},
+		"ko/a-retrospect-teens": {
+			"ground": "1f9eb741566414699478b6b6643fd1961a356024a024830dad0849133e5ff35c",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "c18e06efeccf0e4a25c0c8ae32d29105c9c3c1940a7d24448d9007416ecd6f0f",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[154, 102, 446, 131]
+				],
+				"title": [
+					[220, 320, 380, 430]
+				],
+				"edition": [
+					[252, 441, 348, 466]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
+		},
 		"ko/a-short-and-easy-method-of-prayer": {
 			"ground": "d94134d627ec94141ec59650147f5c3dd399d82f7a3e0a904365c995f24fa21d",
 			"style": "devotional",
