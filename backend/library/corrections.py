@@ -2565,6 +2565,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # fr
             ('<blockquote>« Car vous étiez comme',
              '<h3>ALLOCUTION DU NOUVEL AN.</h3>'),
+            # ko
+            ('<blockquote>“너희가 전에는 양과 같이',
+             '<h3>신년 설교.</h3>'),
         ],
     },
     # --- Gutenberg #65066, "The Life and Diary of David Brainerd" ------------
