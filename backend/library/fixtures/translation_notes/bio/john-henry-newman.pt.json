@@ -1,0 +1,14 @@
+{
+    "kind": "bio",
+    "slug": "john-henry-newman",
+    "language": "pt",
+    "job_issue": 8686,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "John 10:16",
+            "status": "self_rendered",
+            "block_index": 32
+        }
+    ]
+}
