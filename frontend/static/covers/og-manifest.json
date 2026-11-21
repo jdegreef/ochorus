@@ -23516,6 +23516,36 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/purity-of-heart": {
+			"ground": "e71351d516f0f3636762a85700c3d8849690773387edef5200c2ac62c6d7b3ba",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "38c7536f77577124ab4ec70832acf408a2f5b5d95ff9c272342c1b739b929ddb",
+			"art": true,
+			"scrim": 0.4,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[135, 342, 465, 452]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				294,
+				501
+			]
+		},
 		"ja/school-of-prayer": {
 			"ground": "ca319df79b35e2c1ba2a3c5152fb600a889505ae2acda130f0b29ccdeefb648a",
 			"style": "devotional",
