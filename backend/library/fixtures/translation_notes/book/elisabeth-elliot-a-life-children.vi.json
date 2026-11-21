@@ -1,0 +1,93 @@
+{
+ "kind": "book",
+ "slug": "elisabeth-elliot-a-life-children",
+ "language": "vi",
+ "job_issue": 9413,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Deuteronomy 6:6-7",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Hebrews 12:11",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "2 Timothy 2:15",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Isaiah 55:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Ecclesiastes 4:9",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Romans 10:14b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 43:2a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 42:16",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 46:4a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}
