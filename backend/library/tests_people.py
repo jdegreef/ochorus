@@ -183,3 +183,53 @@ class PersonSearchTests(TestCase):
     def test_the_snippet_does_not_highlight_an_initial(self):
         hit = next(h for h in self.get("d l moody")["results"] if h["type"] == "author")
         self.assertNotIn("⟦d⟧", hit["snippet"].lower())
+
+
+class AliasSearchTests(TestCase):
+    """Other names (library/search_aliases.py): a person's full or by-name, a
+    work's Latin title."""
+
+    def setUp(self):
+        self.client = APIClient()
+        spurgeon = Author.objects.create(slug="charles-h-spurgeon", name="Charles H. Spurgeon")
+        Sermon.objects.create(
+            author=spurgeon, slug="the-ravens-cry", language="en", title="The Ravens' Cry",
+            body_html="<p>He gives to the young ravens which cry.</p>",
+        )
+        augustine = Author.objects.create(slug="augustine-of-hippo", name="Augustine of Hippo")
+        city = Book.objects.create(
+            author=augustine, slug="the-city-of-god", language="en", title="The City of God"
+        )
+        Chapter.objects.create(
+            book=city, order=1, title="Book I", body_html="<p>The glorious city of God.</p>"
+        )
+
+    def results(self, q):
+        res = self.client.get("/api/library/search/", {"q": q, "language": "en"})
+        self.assertEqual(res.status_code, 200)
+        return res.data["results"]
+
+    def test_a_full_or_by_name_finds_the_person(self):
+        for q in ("Charles Haddon Spurgeon", "prince of preachers"):
+            with self.subTest(q=q):
+                hits = self.results(q)
+                self.assertEqual(hits[0]["author_slug"], "charles-h-spurgeon")
+                self.assertTrue(hits[0].get("named"))
+        sermons = [h for h in self.results("Charles Haddon Spurgeon") if h["type"] == "sermon"]
+        self.assertEqual([h["sermon_slug"] for h in sermons], ["the-ravens-cry"])
+
+    def test_a_latin_title_finds_the_book(self):
+        books = [h for h in self.results("De Civitate Dei") if h["type"] == "book"]
+        self.assertEqual([b["book_slug"] for b in books], ["the-city-of-god"])
+
+    def test_every_alias_names_a_real_slug(self):
+        import json
+        from pathlib import Path
+
+        from .search_aliases import AUTHOR_ALIASES, BOOK_ALIASES
+
+        content = Path(__file__).parent / "fixtures" / "content"
+        authors = {r["fields"]["slug"] for r in json.loads((content / "authors.json").read_text())}
+        self.assertEqual(set(AUTHOR_ALIASES) - authors, set())
+        books = {p.name.split(".")[0] for p in (content / "books").glob("*.json")}
+        self.assertEqual(set(BOOK_ALIASES) - books, set())
