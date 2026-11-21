@@ -1,0 +1,113 @@
+{
+ "kind": "sermon",
+ "slug": "unfailing-springs",
+ "language": "ru",
+ "job_issue": 9119,
+ "references": [
+  {
+   "reference": "John 4:10",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Revelation 22:17b",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 4:17a",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 4:10",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 3:16a",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 18:30a",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 4:13",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 4:14a",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 4:14b",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 6:35",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 6:35b",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "John 1:18a",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 7:37b",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 7:38",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 7:39a",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 14
+  }
+ ]
+}
