@@ -37915,6 +37915,21 @@
 				546
 			]
 		},
+		"ru/how-to-succeed-in-the-christian-life": {
+			"ground": "90b3c786fc857ebce42c4b0a2ce7fbbda11ba4b9b1b7aa563ec490bd32718d9e",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ru/talks-to-the-farmer-children": {
 			"ground": "2314c64bbc523d74d38e2b7f6ee50388e99a0be03b6aa6392c856ac3583b5c3d",
 			"style": "young",
