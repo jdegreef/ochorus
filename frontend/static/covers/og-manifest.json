@@ -589,6 +589,40 @@
 			"caps": false,
 			"sitemark": "OpenWordBible.org"
 		},
+		"after-his-heart": {
+			"ground": "4b49dd40e6687ad5d87d1c47e4c57950b2ac38580817105496978d9030bf668b",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[139, 300, 461, 390],
+					[197, 384, 403, 474]
+				],
+				"subtitle": [
+					[93, 494, 507, 522]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				273,
+				522
+			]
+		},
 		"against-heresies": {
 			"ground": "c88800c83694865ba8e484d2f96c3fa3352fe692cfed46ff4987193cb5af72e2",
 			"style": "inscriptional",
@@ -23247,6 +23281,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/around-the-wicket-gate": {
+			"ground": "6fed75e7956231a282f14ee5d37ae08d4b1148d433dfc496531dd5e3c65d0853",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "397eee7de1d0d3cebe05f168f08d4aa820767cf39f87df5ed64075b54fc54d98",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0.025,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/baptism-with-the-holy-spirit": {
 			"ground": "57270c0bba1a09d8c29e2206bc3a5f22acdd695512a2797c942af6e59941d365",
 			"style": "revival",
@@ -23259,6 +23308,21 @@
 			"medallion": null,
 			"layout": "diagonal/ochre",
 			"bar": 0.085,
+			"caps": false,
+			"sitemark": null
+		},
+		"ja/divine-healing": {
+			"ground": "c0c274469c0d3e0235bbb970116b380b6f9519867cbd8e9865e83e903aba312f",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "cbe0e23326d859fa3f65066bc41648041b02b0948248690d72f65534d9af074f",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0.05,
 			"caps": false,
 			"sitemark": null
 		},
@@ -23580,6 +23644,37 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/the-person-and-work-of-the-holy-spirit": {
+			"ground": "833c27f63a3ad47abc531ed665af7b847104eb6f96947f563c702709c7fc23fe",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "cdf81ca0f6bc076a8bc279e56c72a250e2947d2f1ccd60c078187e4e2df30bf0",
+			"art": true,
+			"scrim": 0.85,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[135, 294, 465, 404],
+					[135, 389, 465, 499]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				246,
+				549
+			]
+		},
 		"ja/the-practice-of-the-presence-of-god": {
 			"ground": "a9c2bdc774f77bc5ba3fd13bd4ab77b44a08c0c18d70aa6d34d86afd98fb4a7e",
 			"style": "press",
@@ -23612,6 +23707,37 @@
 			"middle": [
 				253,
 				542
+			]
+		},
+		"ja/the-pursuit-of-god": {
+			"ground": "9f722701a5df2a99b2b7ac6292fe3946f1b1ed44933bc6313805a75d9908e493",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "0ef1d60148bcced1a52266567ca2ec5306fc73266725ae8716491c10b0f8481d",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[176, 221, 424, 331],
+					[135, 316, 465, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				476
 			]
 		},
 		"ja/the-way-to-god": {
@@ -25326,6 +25452,39 @@
 				524
 			]
 		},
+		"ko/a-retrospect-teens": {
+			"ground": "1f9eb741566414699478b6b6643fd1961a356024a024830dad0849133e5ff35c",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "c18e06efeccf0e4a25c0c8ae32d29105c9c3c1940a7d24448d9007416ecd6f0f",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[154, 102, 446, 131]
+				],
+				"title": [
+					[220, 320, 380, 430]
+				],
+				"edition": [
+					[252, 441, 348, 466]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
+		},
 		"ko/a-short-and-easy-method-of-prayer": {
 			"ground": "d94134d627ec94141ec59650147f5c3dd399d82f7a3e0a904365c995f24fa21d",
 			"style": "devotional",
@@ -25390,6 +25549,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/all-of-grace-teens": {
+			"ground": "ae508072523018b0b0e32af8a6e2eb474fd63406b01aa634c3ec6ef6634c646f",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "d104baf2f48972c85053fd8e84531c46d3669f329acee772efa5dbc99e23ac04",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[83, 318, 517, 394]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				471
+			]
+		},
 		"ko/all-things-for-good": {
 			"ground": "7206579a2d5372275a94ca12d0dbcd845e7f821563bc32a0a632c8cc3a3d4297",
 			"style": "press",
@@ -25411,6 +25603,40 @@
 			"volume": null,
 			"script": "korean",
 			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[115, 284, 485, 381],
+					[150, 368, 450, 465]
+				],
+				"edition": [
+					[252, 478, 348, 503]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				235,
+				560
+			]
+		},
+		"ko/amanda-smith-autobiography-teens": {
+			"ground": "3cfa9f8df4a79f4b042e124ec99e7284b839b711394c4ed420f79a40c042d59d",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "c18e06efeccf0e4a25c0c8ae32d29105c9c3c1940a7d24448d9007416ecd6f0f",
 			"art": true,
 			"scrim": 0.1,
 			"lift": 1.05,
@@ -25751,6 +25977,39 @@
 			"bar": 0.015,
 			"caps": false,
 			"sitemark": null
+		},
+		"ko/corrie-ten-boom-a-life-children": {
+			"ground": "1be797474d9b479d89ed89276b7370bd12f0f5892cc695689bc8cd29e894f089",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "b56cbdf64222d33321bd6be4ce8923a7a662a4238390241dc2f245ab5e54696a",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[230, 106, 370, 135]
+				],
+				"title": [
+					[182, 321, 418, 396]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				328,
+				472
+			]
 		},
 		"ko/daughters-of-the-king-1": {
 			"ground": "d4d8d8c7eb49e7d0f8620ada171b2e6d837af7df04e650745d956484034eb28f",
@@ -26391,6 +26650,39 @@
 				544
 			]
 		},
+		"ko/mary-slessor-a-life-children": {
+			"ground": "b40dfecfc8636bff75e7aa08613f9b529284e2c07a485f1fa8bffa75311d98fc",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "d104baf2f48972c85053fd8e84531c46d3669f329acee772efa5dbc99e23ac04",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[221, 106, 379, 135]
+				],
+				"title": [
+					[163, 321, 437, 396]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				328,
+				472
+			]
+		},
 		"ko/men-and-women-who-gave-everything-2": {
 			"ground": "9153ead741e95a71656d43dff688f7d14af6ee7a38580927227d58d691e48e42",
 			"style": "originals",
@@ -26624,6 +26916,39 @@
 			"middle": [
 				294,
 				501
+			]
+		},
+		"ko/pandita-ramabai-a-life-children": {
+			"ground": "b3abe52615cb8c57276bbcfb0b366e716870fc0c482788fa8b01d20d2c0ce1d5",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "bd5e6ec1e505ea06a19a3d1298287db93d7070caf1e4bfc374e2b2ae7d99ba49",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.3,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[192, 106, 408, 135]
+				],
+				"title": [
+					[111, 321, 489, 396]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				328,
+				472
 			]
 		},
 		"ko/pensees": {
@@ -26961,6 +27286,41 @@
 			"middle": [
 				196,
 				599
+			]
+		},
+		"ko/rooted-2": {
+			"ground": "e7737831663fad0c20ae503d82a8b21d0fdd5f061a90329ff2ea620735944e6b",
+			"style": "young",
+			"volume": "2",
+			"script": "korean",
+			"fonts": "4f006ecc21e77b14a1ace7ede6f7f2a0423436751d03f5eccd4d06a239109c8b",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 269, 311, 313],
+					[196, 344, 404, 419]
+				],
+				"subtitle": [
+					[148, 478, 452, 506],
+					[175, 510, 425, 538]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				538
 			]
 		},
 		"ko/rooted-5": {
@@ -27416,6 +27776,39 @@
 				524
 			]
 		},
+		"ko/the-life-of-trust-teens": {
+			"ground": "20f4adcad82d15b90ecad300ee521807271624c50fe9b5ab5c1c73d1f3af5824",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "ab0e09dab9a93698a3ba6ea7b0aaf2eba2b23ab899f659850891c1c3f8a4f0c8",
+			"art": true,
+			"scrim": 0.45,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[155, 102, 445, 131]
+				],
+				"title": [
+					[130, 320, 470, 430]
+				],
+				"edition": [
+					[252, 441, 348, 466]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
+		},
 		"ko/the-masters-indwelling": {
 			"ground": "9cc17ac51441ab87ade44e0d92c3212d04397db1aeb113c6a046114e9a2187a5",
 			"style": "devotional",
@@ -27668,6 +28061,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/the-way-to-god-teens": {
+			"ground": "d8d48a528fe1df901f10f681dc24269437a7d44cb666a833aaaf5efcc7460410",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "bd5e6ec1e505ea06a19a3d1298287db93d7070caf1e4bfc374e2b2ae7d99ba49",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[54, 318, 546, 394]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				471
+			]
+		},
 		"ko/true-vine": {
 			"ground": "b7875842ddd499da63400547c79f267ea1402c059e9b58eb89ee18e19d2bab38",
 			"style": "devotional",
@@ -27715,6 +28141,21 @@
 				317,
 				478
 			]
+		},
+		"ko/union-and-communion": {
+			"ground": "58aefba38aff6cc22efd189d3cb035ced00617dd348fc89f37c0af58cdc60397",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "593043494b0df3d4ef1a4e76a0155d87ac405b40f1cd297ff87c757ff4bf2a80",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/teal",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null
 		},
 		"ko/waiting-on-god": {
 			"ground": "54b00b6b194c0762b341256892c7869cdd2dd68ba2369ea7de34618853560196",

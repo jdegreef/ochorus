@@ -1,0 +1,44 @@
+{
+ "kind": "sermon",
+ "slug": "burdens-and-gifts",
+ "language": "vi",
+ "job_issue": 9045,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Isaiah 40:28-31",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 11:29-30",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 9
+  },
+  {
+   "reference": "Romans 8:9b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 15
+  },
+  {
+   "reference": "Ephesians 4:12a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 19
+  },
+  {
+   "reference": "Judges 21:25",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 40
+  },
+  {
+   "reference": "Numbers 4:15",
+   "status": "self_rendered",
+   "block_index": 48
+  }
+ ]
+}
