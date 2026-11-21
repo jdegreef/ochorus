@@ -2550,6 +2550,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # ko
             ('<p>참된 자녀라면 자기 ',
              '<blockquote><em>“여호와 하나님은 해요 방패시라<br/> 여호와께서 은혜와 영화를 주시며<br/> 정직히 행하는 자에게<br/> 좋은 것을 아끼지 아니하실 것임이니이다”<br/></em>—시편 84:11</blockquote>'),
+            # vi
+            ('<p>Lòng một người con thật vui',
+             '<blockquote><em>“CHÚA Đức Chúa Trời vừa là mặt trời vừa là cái khiên;<br/> CHÚA ban ơn và vinh dự;<br/> Ngài chẳng tiếc điều tốt lành nào<br/> với những người sống trọn vẹn.”<br/></em>—THI-THIÊN 84:11.</blockquote>'),
         ],
     },
     "under-the-shepherds-care": {
