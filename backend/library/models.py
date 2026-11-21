@@ -2024,10 +2024,16 @@ class SearchClickLog(models.Model):
     #: same column becomes the rank within that one type. The signal this table
     #: exists for is whether a result was opened at all — that part is exact.
     position = models.PositiveSmallIntegerField()
+    #: WHICH result was opened, as the search page keys its rows ("book:humility",
+    #: "chapter:humility:3"). What lets readers' choices shape the ranking
+    #: (search.click_choices): the result most often opened for a query rises
+    #: within its kind. Blank on rows from before it was recorded.
+    result_key = models.CharField(max_length=200, blank=True, default="")
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
 
     class Meta:
         ordering = ["-created_at"]
+        indexes = [models.Index(fields=["language", "query"], name="searchclick_lang_query")]
 
     def __str__(self) -> str:
         return f"{self.query!r} [{self.language}] → {self.result_type} #{self.position}"

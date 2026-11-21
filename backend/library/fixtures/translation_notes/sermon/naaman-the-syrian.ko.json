@@ -1,0 +1,114 @@
+{
+ "kind": "sermon",
+ "slug": "naaman-the-syrian",
+ "language": "ko",
+ "job_issue": 8743,
+ "references": [
+  {
+   "reference": "Romans 3:23",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Kings 5:3",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Kings 5:7",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Kings 5:10",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "2 Kings 5:12a",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Kings 5:12b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Kings 5:11",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Isaiah 55:8",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "2 Kings 5:13",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Samuel 15:22b",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Kings 5:15",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Hebrews 2:3a",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Kings 5:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Esther 6:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremiah 8:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 51:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 2:1",
+   "status": "self_rendered"
+  }
+ ]
+}
