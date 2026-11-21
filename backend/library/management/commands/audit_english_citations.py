@@ -19,7 +19,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 
 from library import english_citations as ec
 
@@ -44,9 +44,11 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **opts):
-        pairs, findings = ec.audit(opts["slugs"])
-        if opts["tier"]:
-            findings = [f for f in findings if f.record.tier == opts["tier"]]
+        if opts["slugs"]:
+            known = {r.work for r in ec.records(opts["slugs"])}
+            if missing := sorted(set(opts["slugs"]) - known):
+                raise CommandError(f"No English edition of: {', '.join(missing)}")
+        pairs, findings = ec.audit(opts["slugs"], opts["tier"])
         if opts["fixable"]:
             findings = [f for f in findings if f.fixable]
 

@@ -84,6 +84,25 @@ class MiscitationTests(SimpleTestCase):
             )
         )
 
+    def test_a_numbered_book_later_in_the_list_counts(self):
+        # "2 Cor. 4:5" is its own reference, not "1 Cor. 2 Cor. 4:5".
+        self.assertIsNone(
+            _check(
+                "For we preach not ourselves, but Christ Jesus the Lord; "
+                "and ourselves your servants for Jesus' sake",
+                "1 Cor. 2:3; 2 Cor. 4:5",
+            )
+        )
+
+    def test_a_verse_no_bundled_bible_prints_is_not_judged(self):
+        # Matt 18:11 is KJV-only; the originals quote it correctly.
+        self.assertIsNone(
+            _check(
+                "For the Son of man is come to save that which was lost",
+                "Matthew 18:11",
+            )
+        )
+
 
 class RangeTests(SimpleTestCase):
     def test_quotation_running_past_the_cited_verse(self):
@@ -124,6 +143,13 @@ class ParsingTests(SimpleTestCase):
         self.assertIs(ec.parse_ref("Psalm 23:9"), False)
         self.assertIsNone(ec.parse_ref("Chapter 3:2"))
 
+    def test_a_dash_reference_belongs_to_the_quotation_before_it(self):
+        text = (
+            "“For God so loved the world, that he gave his only begotten Son” — John 3:16, "
+            "“Being justified by faith, we have peace with God” — Romans 5:1."
+        )
+        self.assertEqual([r for _, r in ec.pairs_in(text)], ["John 3:16", "Romans 5:1"])
+
     def test_pairs_read_both_layouts(self):
         text = (
             "“Peace I leave with you, my peace I give unto you”</p><p>(John 14:27). "
@@ -154,6 +180,9 @@ class BookSpellingTests(SimpleTestCase):
         self.assertEqual(ec.misspelled_book("Mathew"), "Matthew")
         self.assertEqual(ec.misspelled_book("Revelations"), "Revelation")
         self.assertEqual(ec.misspelled_book("Hebrew"), "Hebrews")
+        # The I of Isaiah is not a Roman "1".
+        self.assertEqual(ec.misspelled_book("Isiah"), "Isaiah")
+        self.assertEqual(ec.misspelled_book("1 Corinthans"), "Corinthians")
 
     def test_old_abbreviations_and_real_names_are_not_misspellings(self):
         for name in (

@@ -69,14 +69,29 @@ from pathlib import Path
 import pythonbible as bible
 
 from library import bible_store, scripture
-from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
+from library.contemporize import MODERN_LANGUAGE
+from library.content_fixtures import (
+    ARTICLES_DIR,
+    BOOKS_DIR,
+    SERMONS_DIR,
+    authors_by_slug,
+)
 
-ARTICLES_DIR = BOOKS_DIR.parent / "articles"
-
-#: Authors whose books we wrote. Everything they carry is house text.
-HOUSE_AUTHORS = frozenset({"ochorus-originals", "james-degreef-and-ochorus"})
 #: The bundled Bible itself: its books ARE the verse text, nothing to audit.
 SKIP_AUTHORS = frozenset({"open-word-bible"})
+
+
+@cache
+def house_authors() -> frozenset[str]:
+    """Authors whose books we wrote — the imprint rows (`Author.is_imprint`):
+    the Ochorus Originals and its co-authored line. Read from the fixture, so a
+    new imprint is held to the house rules without an edit here."""
+    return (
+        frozenset(slug for slug, f in authors_by_slug().items() if f.get("is_imprint"))
+        - SKIP_AUTHORS
+    )
+
+
 #: Young-reader adaptations are house-written (see the project CLAUDE.md).
 ADAPTATION_SUFFIXES = ("-children", "-teens")
 
@@ -154,7 +169,7 @@ PAIR = re.compile(
 )
 # Reference first: "Joel 2:28–29 — “Your sons…”", "Rom. 12:11, “Be ye…”".
 # Never a full stop between, which would read "…” (John 3:16). “Next…" backwards.
-LEAD = re.compile(rf"(?<![\w(]){_REF}{_MORE}{_VERSION}\s?[—–,:-]\s?" + _QUOTE)
+LEAD = re.compile(rf"(?<![\w(]){_REF}{_MORE}{_VERSION}\s?(?P<sep>[—–,:-])\s?" + _QUOTE)
 # Any reference-shaped run, for the book-spelling scan.
 ANY_REF = re.compile(
     rf"(?<![\w-])(?P<book>{_BOOK})\s(?P<chapter>\d{{1,3}}):(?P<verse>\d{{1,3}})"
@@ -209,7 +224,11 @@ def parse_ref(printed: str) -> Ref | None | bool:
         ids = list(first.verse_ids)
         name = re.fullmatch(_REF, head).group("book")
         for part in rest:
-            more = parse_ref(part if not part[:1].isdigit() else f"{name} {part}")
+            # "2 Cor. 4:5" is a reference of its own; "15:11" or "x. 3"
+            # borrows the book before it.
+            more = parse_ref(part)
+            if more is None:
+                more = parse_ref(f"{name} {part}")
             if more:
                 ids.extend(more.verse_ids)
         return Ref(printed, first.book, tuple(dict.fromkeys(ids)), False)
@@ -512,11 +531,11 @@ class Record:
 
 
 def _tier(path: Path, language: str, author: str | None, work: str) -> str:
-    if language == "en-modern":
+    if language == MODERN_LANGUAGE:
         return "modern"
     if (
         path.parent.name == "articles"
-        or author in HOUSE_AUTHORS
+        or author in house_authors()
         or work.endswith(ADAPTATION_SUFFIXES)
     ):
         return "house"
@@ -524,7 +543,11 @@ def _tier(path: Path, language: str, author: str | None, work: str) -> str:
 
 
 def records(slugs=None) -> Iterator[Record]:
-    """Every English and Modern English body in the committed fixture."""
+    """Every English and Modern English body in the committed fixture.
+
+    Bodies only (`body_html`): a chapter, a sermon, an article. A sermon's
+    study questions and an author's biography quote Scripture too and are not
+    read here yet."""
     wanted = set(slugs or ())
     paths = []
     for d in (BOOKS_DIR, SERMONS_DIR, ARTICLES_DIR):
@@ -643,6 +666,10 @@ def check_pair(rec: Record, quote: str, printed: str) -> Finding | None:
         )
     )
     cited_ids = () if ref is False else ref.verse_ids
+    # A real verse neither bundled Bible prints — Matt 18:11, Acts 8:37, the
+    # KJV-only verses the originals quote — cannot be scored, only misjudged.
+    if cited_ids and not _union(cited_ids):
+        return None
     cited = _lenient(q, cited_ids) if cited_ids else 0.0
 
     # A quotation that runs on past its verse scores low against it, so the
@@ -838,10 +865,15 @@ def _distance(a: str, b: str) -> int:
     return prev[-1]
 
 
+# A numbered book's prefix. A Roman one needs its space, or the I of "Isiah"
+# is read as "1".
+_NUMBER = re.compile(r"^(?:[1-3]\s*|I{1,3}\s+|(?:First|Second|Third)\s+)")
+
+
 @cache
 def misspelled_book(name: str) -> str | None:
     """The real book name a printed one is a near-miss of, if exactly one."""
-    bare = re.sub(r"^(?:[1-3]|I{1,3})\s*", "", name.rstrip(".")).strip()
+    bare = _NUMBER.sub("", name.rstrip(".")).strip()
     if bare in _NOT_BOOKS or _book_of_name(name) is not None or len(bare) < 4:
         return None
     # A PREFIX of a real name is an abbreviation, and the old ones are the
@@ -903,6 +935,9 @@ def _carried(rec: Record, printed: str) -> bool:
     )
 
 
+_CLOSES_PRIOR = re.compile(r"[”\"’][\s,.;:!?]{0,4}[(—–]\s?$")
+
+
 def pairs_in(text: str) -> list[tuple[str, str]]:
     """(quotation, reference as printed) for every pair in plain text.
 
@@ -912,7 +947,14 @@ def pairs_in(text: str) -> list[tuple[str, str]]:
     out: list[tuple[str, str]] = []
     claimed: list[tuple[int, int]] = []
     for m in LEAD.finditer(text):
-        if m.group("verses") is None:
+        # “…” — John 3:16, “…” — a reference after a closed quotation and
+        # before a COMMA closes the quotation before it; read reference-first,
+        # the next quotation would be pinned to it. Before a colon it opens the
+        # next one: Baxter's modern edition lists “…”—Col. 3:9, 10: “…”.
+        if m.group("verses") is None or (
+            m.group("sep") == ","
+            and _CLOSES_PRIOR.search(text[max(0, m.start() - 8) : m.start()])
+        ):
             continue
         out.append((_quote_of(m), (m.group("ref") + m.group("more")).strip()))
         claimed.append(m.span())
@@ -945,7 +987,7 @@ def audit_record(rec: Record) -> tuple[int, list[Finding]]:
         if not right or name in seen:
             continue
         seen.add(name)
-        prefix = re.match(r"^(?:[1-3]|I{1,3})\s*", name)
+        prefix = _NUMBER.match(name)
         fixed = (prefix.group(0) if prefix and not right[:1].isdigit() else "") + right
         # "Judy 18:84" is a near-miss of Jude, which has one chapter: the
         # suggestion must make the printed reference a real verse to be sure.
@@ -963,11 +1005,13 @@ def audit_record(rec: Record) -> tuple[int, list[Finding]]:
     return len(pairs), out
 
 
-def audit(slugs=None) -> tuple[int, list[Finding]]:
-    """(pairs read, findings) across the English corpus."""
+def audit(slugs=None, tier: str | None = None) -> tuple[int, list[Finding]]:
+    """(pairs read, findings) across the English corpus, or one tier of it."""
     findings: list[Finding] = []
     n = 0
     for rec in records(slugs):
+        if tier and rec.tier != tier:
+            continue
         read, found = audit_record(rec)
         n += read
         findings.extend(found)
