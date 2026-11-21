@@ -5125,6 +5125,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("¡Gloria a su bendito nombre!</p>", "<p>FIN</p>"),  # es
             ("Gloire soit à son nom béni !</p>", "<p>FIN</p>"),  # fr
             ("उसके धन्य नाम की महिमा हो!</p>", "<p>समाप्त</p>"),  # hi
+            ("主の祝福された御名に栄光がありますように！</p>", "<p>終わり</p>"),  # ja
             ("복되신 주님의 이름에 영광을 돌립니다!</p>", "<p>끝</p>"),  # ko
             ("Ekitiibwa kibe eri erinnya lye ery’omukisa!</p>", "<p>ENKOMERERO</p>"),  # lg
             ("Glória ao seu bendito nome!</p>", "<p>FIM</p>"),  # pt
