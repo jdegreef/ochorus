@@ -1,0 +1,312 @@
+{
+ "kind": "sermon",
+ "slug": "comfort-for-the-desponding",
+ "language": "ko",
+ "job_issue": 8735,
+ "references": [
+  {
+   "reference": "Job 29:2",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 23:2",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 23:2",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Job 19:25",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 16:23",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Proverbs 14:4",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "2 Peter 3:1",
+   "status": "mined",
+   "block_index": 47,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Lamentations 3:15",
+   "status": "mined",
+   "block_index": 48,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Jonah 2:2",
+   "status": "mined",
+   "block_index": 50,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Joel 2:31",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 25:29",
+   "status": "mined",
+   "block_index": 57,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Job 29:2a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Psalm 4:6",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Psalm 57:1",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "John 6:37",
+   "status": "self_rendered",
+   "block_index": 46
+  }
+ ]
+}

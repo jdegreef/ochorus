@@ -20,8 +20,9 @@ describe('audit-runtime allowlist (scripts/audit-runtime.mjs)', () => {
 				evil: { via: [advisory('evil', 'GHSA-aaaa-bbbb-cccc', 'critical')] }
 			}
 		};
+		// A literal entry, not ALLOWED's: the real allowlist changes as advisories retire.
 		const { blocking, allowed } = evaluate(report, {
-			'GHSA-fc5q-39xc-vjpf': ALLOWED['GHSA-fc5q-39xc-vjpf']
+			'GHSA-fc5q-39xc-vjpf': { package: 'picomatch', reason: 'test', retire: 'test' }
 		});
 		expect(ids(allowed)).toEqual(['GHSA-fc5q-39xc-vjpf']);
 		expect(ids(blocking)).toEqual(['GHSA-aaaa-bbbb-cccc']);

@@ -17,6 +17,7 @@
 		"prepare": "npm run paraglide && svelte-kit sync || echo ''",
 		"check": "npm run paraglide && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"lint": "npm run paraglide && eslint .",
+		"format:changed": "bash ../scripts/format-changed.sh frontend",
 		"check:slashes": "node scripts/check-slashes.mjs",
 		"check:prerendered": "node scripts/check-content-prerendered.mjs",
 		"check:budget": "node scripts/check-bundle-budget.mjs",
@@ -36,8 +37,8 @@
 		"locales": "node scripts/fetch-live-locales.mjs",
 		"await-api": "node scripts/await-api-release.mjs",
 		"sync:catalogues": "node scripts/sync-ui-catalogues.mjs",
-		"prebuild": "npm run await-api && npm run locales",
-		"postbuild": "node scripts/build-404.mjs && node scripts/build-cards.mjs && node scripts/sentry-sourcemaps.mjs && node scripts/build-tombstones.mjs"
+		"prebuild": "node scripts/local-api.mjs start && npm run await-api && npm run locales",
+		"postbuild": "node scripts/local-api.mjs stop && node scripts/build-404.mjs && node scripts/build-cards.mjs && node scripts/sentry-sourcemaps.mjs && node scripts/build-tombstones.mjs"
 	},
 	"devDependencies": {
 		"@capacitor/cli": "8.6.2",
@@ -55,6 +56,8 @@
 		"eslint-plugin-svelte": "^3.24.1",
 		"globals": "^17.14.0",
 		"jsdom": "^31.0.1",
+		"prettier": "^3.10.1",
+		"prettier-plugin-svelte": "^3.5.2",
 		"satori": "^0.63.2",
 		"sharp": "^0.35.5",
 		"svelte": "^5.57.3",

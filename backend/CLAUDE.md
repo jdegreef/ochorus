@@ -157,6 +157,23 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
   `tests_english_audit.py` also ratchets the per-class counts, so an import
   can't quietly add defects. See the `english-qa` skill for the repair channels.
 
+## Formatting
+
+- **Keep clean files clean; never reformat a file you didn't change.**
+  ~400 modules predate `ruff format`, and a repo-wide sweep would conflict with
+  every parallel session — so CI checks only the `.py` files a PR changes, and
+  they converge as they're touched. Run `scripts/format-changed.sh backend`;
+  never `ruff format .`. If you call ruff on paths yourself, pass
+  `--force-exclude`, or the excludes below are ignored for named files.
+  CI's check is ADVISORY for now (it flags, doesn't fail): if a file you edit
+  is already formatted, keep it that way; if it isn't, don't reformat a whole
+  shared file inside a feature PR. Do it as its own small PR, or leave it.
+- `pyproject.toml` keeps out migrations (`[tool.ruff] extend-exclude`) and,
+  via `[tool.ruff.format] exclude`, GENERATED modules and `corrections.py` (25k lines, the hottest file in the
+  repo: formatting it rewrites ~44k lines). Add to it only with a reason.
+- If a file you touch wasn't formatted yet, commit its reformat **on its own**
+  first ("Format X"), then your change, so the real diff stays readable.
+
 ## Dev
 
 - `cd backend && DJANGO_DEBUG=true uv run python manage.py <cmd>`; tests:

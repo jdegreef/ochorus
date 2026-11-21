@@ -33,17 +33,6 @@ export const ALLOWED = {
 		retire:
 			'Fixed only in @sveltejs/kit 3.x — the planned Kit 3 migration (#5329, #5330; ' +
 			'see .github/dependabot.yml). Remove this entry in that PR.'
-	},
-	'GHSA-fc5q-39xc-vjpf': {
-		package: 'picomatch',
-		reason:
-			'ReDoS through an attacker-supplied single-branch repeated extglob (e.g. +(*)). ' +
-			'picomatch reaches the runtime tree only through vite/tinyglobby/fdir, which run ' +
-			'at build time on glob patterns written in this repo; no visitor input is ever ' +
-			'compiled as a glob.',
-		retire:
-			'No patched release exists (4.0.7 is the latest and is affected). Remove this ' +
-			'entry once a fixed picomatch lands in package-lock.json.'
 	}
 };
 
