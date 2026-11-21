@@ -2472,6 +2472,27 @@ BODY_CORRECTIONS: dict[str, dict] = {
              '<h3>대조</h3>'),
             ('<p>이 대조에 대해서는 ',
              '<p><em>“악인은 그렇지 않음이여.”</em></p>'),
+            # vi
+            ('<p>Có một thứ thịnh vượng kh',
+             '<p>Suy gẫm về Thi Thiên Thứ Nhất.</p>'),
+            ('<p>Có một thứ thịnh vượng kh',
+             '<h3>LỜI MỞ ĐẦU.</h3>'),
+            ('<p>Nói sát nghĩa hơn: Ôi, ph',
+             '<h3>NHỮNG ĐIỀU KIỆN TIÊU CỰC CỦA PHƯỚC HẠNH</h3>'),
+            ('<p>Nói sát nghĩa hơn: Ôi, ph',
+             '<p><em>“Phước hạnh thay người không bước theo lời khuyên của kẻ ác.”</em></p>'),
+            ('<p>Ngưu tầm ngưu, mã tầm mã;',
+             '<p><em>không đứng trên con đường kẻ tội lỗi đi.</em></p>'),
+            ('<p>Chỗ ngồi của kẻ nhạo báng',
+             '<p><em>“Cũng không ngồi giữa đám người nhạo báng.”</em></p>'),
+            ('<p>Chúng ta đã xem xét những',
+             '<h3>NHỮNG ĐIỀU KIỆN TÍCH CỰC CỦA PHƯỚC HẠNH.</h3>'),
+            ('<p>Tiếp theo, chúng ta để ý ',
+             '<h3>KẾT QUẢ TRONG PHƯỚC HẠNH.</h3>'),
+            ('<p>Không cần phải bàn dài về',
+             '<h3>SỰ TƯƠNG PHẢN.</h3>'),
+            ('<p>Không cần phải bàn dài về',
+             '<p><em>“Kẻ ác thì không như thế.”</em></p>'),
         ],
     },
     "a-full-reward": {
@@ -2534,6 +2555,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # ko
             ('<p>주 예수 그리스도의 ',
              '<blockquote><em>“아무든지 나를 따라 오려거든 자기를 부인하고 날마다 제 십자가를 지고 나를 좇을 것이니라”</em>—누가복음 9:23.</blockquote>'),
+            # vi
+            ('<p>Có lẽ chúng ta sẽ tự nhiên ',
+             '<blockquote><em>“Ai muốn đi theo Ta, người ấy phải từ bỏ chính mình, mỗi ngày vác thập tự giá của mình, và cứ theo Ta.</em>—Lu-ca 9:23.</blockquote>'),
         ],
     },
     "all-sufficiency": {
@@ -2553,6 +2577,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # ko
             ('<p>참된 자녀라면 자기 ',
              '<blockquote><em>“여호와 하나님은 해요 방패시라<br/> 여호와께서 은혜와 영화를 주시며<br/> 정직히 행하는 자에게<br/> 좋은 것을 아끼지 아니하실 것임이니이다”<br/></em>—시편 84:11</blockquote>'),
+            # vi
+            ('<p>Lòng một người con thật vui',
+             '<blockquote><em>“CHÚA Đức Chúa Trời vừa là mặt trời vừa là cái khiên;<br/> CHÚA ban ơn và vinh dự;<br/> Ngài chẳng tiếc điều tốt lành nào<br/> với những người sống trọn vẹn.”<br/></em>—THI-THIÊN 84:11.</blockquote>'),
         ],
     },
     "under-the-shepherds-care": {
@@ -2565,6 +2592,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # fr
             ('<blockquote>« Car vous étiez comme',
              '<h3>ALLOCUTION DU NOUVEL AN.</h3>'),
+            # vi
+            ('<blockquote>“Vì trước kia anh ',
+             '<h3>BÀI GIẢNG ĐẦU NĂM MỚI.</h3>'),
         ],
     },
     # --- Gutenberg #65066, "The Life and Diary of David Brainerd" ------------

@@ -1,0 +1,377 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "elisabeth-elliot-a-life-children",
+  "language": "vi",
+  "title": "Elisabeth Elliot (Cho thiếu nhi)",
+  "subtitle": "",
+  "cover_byline": "Elisabeth Elliot",
+  "description": "Câu chuyện có thật về Betty Howard, một cô bé nhút nhát đã học tiếng Hy Lạp để có thể trao Kinh Thánh cho mọi người, đã mất người chồng là Jim trong rừng mưa nhiệt đới ở Ecuador, rồi sau đó bế con gái nhỏ của mình vào rừng để sống giữa chính những người đã giết anh. Ấn bản dành cho thiếu nhi này kể lại cuộc đời bà qua những chương ngắn để đọc to: một câu Kinh Thánh, một phần câu chuyện của bà, một điều câu chuyện ấy muốn nói với con, và một lời cầu nguyện ngắn, kèm những câu hỏi để cùng nhau trò chuyện.",
+  "qa": [
+   {
+    "question": "Sách Elisabeth Elliot (Cho thiếu nhi) nói về điều gì?",
+    "answer": "Đây là ấn bản dành cho thiếu nhi của cuốn tiểu sử đầy đủ về Elisabeth Elliot. Sách kể một cô bé nhút nhát tên Betty đã lớn lên trở thành giáo sĩ ở Ecuador như thế nào, chồng cô là Jim cùng bốn người bạn đã qua đời ra sao khi tìm cách đến với người Waorani, và cô đã đến sống giữa người Waorani cùng con gái nhỏ để kể cho họ nghe về Đức Chúa Trời như thế nào."
+   },
+   {
+    "question": "Elisabeth Elliot là ai?",
+    "answer": "Một nữ giáo sĩ và nhà văn người Mỹ, sống từ năm 1926 đến năm 2015. Bà học tiếng Hy Lạp để dịch Kinh Thánh, ghi chép thành chữ viết những ngôn ngữ chưa có chữ viết ở Ecuador, và vào năm 1958 đã đến sống giữa người Waorani. Về sau bà viết nhiều sách và nói chuyện với hàng triệu người qua radio về việc tin cậy Đức Chúa Trời."
+   },
+   {
+    "question": "Mỗi chương được sắp xếp như thế nào?",
+    "answer": "Chương nào cũng ngắn và được viết để đọc to. Mỗi chương bắt đầu bằng một câu Kinh Thánh, kể một phần câu chuyện của Betty, chỉ ra một điều đơn giản câu chuyện ấy muốn nói với con, và kết thúc bằng một lời cầu nguyện ngắn. Tiếp theo là ba câu hỏi để cùng nhau trò chuyện."
+   },
+   {
+    "question": "Sách này có quá buồn đối với trẻ em không?",
+    "answer": "Có những phần buồn, vì Jim, chồng của Betty, cùng bốn người bạn của anh đã bị giết, và sách không giả vờ như chuyện ấy không có. Nhưng câu chuyện được kể nhẹ nhàng, không có những chi tiết làm các em sợ hãi, và trên hết, đây là câu chuyện về việc Đức Chúa Trời đã ở với Betty trong nỗi buồn của cô và giúp cô tha thứ, yêu thương những người đã làm hại mình."
+   },
+   {
+    "question": "Những câu chuyện này có thật không?",
+    "answer": "Có. Các câu chuyện được lấy từ chính những cuốn sách của Elisabeth Elliot, từ thư từ và nhật ký của gia đình bà, và từ những người đã biết bà và viết về cuộc đời bà. Ở chỗ nào người ta nhớ khác nhau, sách theo điều được biết đến nhiều nhất."
+   },
+   {
+    "question": "Sách này dành cho ai?",
+    "answer": "Sách dành cho thiếu nhi, để người lớn đọc to cho các em nghe, hoặc để các em lớn hơn tự đọc một mình. Ngoài ra còn có ấn bản dành cho thiếu niên, và cuốn tiểu sử đầy đủ dành cho bạn đọc lớn tuổi hơn."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại của Ochorus dành cho bạn đọc nhỏ tuổi, dựa trên cuốn tiểu sử Elisabeth Elliot của Ochorus, thuộc bộ sách Chân Dung Lòng Can Đảm. Lời kể là của chúng tôi, được tự do đọc và chia sẻ.",
+  "cover_url": "/covers/art/elisabeth-elliot-a-life-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 154,
+  "is_published": true,
+  "created_at": "2026-11-21T00:00:00Z",
+  "updated_at": "2026-11-21T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Một cô bé tên Betty",
+  "body_html": "<blockquote>“Những lời tôi truyền cho anh em hôm nay phải ghi khắc trong lòng anh em. Hãy ân cần dạy những lời ấy cho con cái anh em, và hãy nói về chúng khi ngồi trong nhà cũng như khi đi đường” — trích Phục Truyền Luật Lệ Ký 6</blockquote> <p>Ngày 21 tháng 12 năm 1926, một bé gái chào đời ở Brussels, thủ đô của nước Bỉ. Tên em là Elisabeth Howard, nhưng cả nhà gọi em là Betty. Cha mẹ em là người Mỹ. Họ đã sang Bỉ làm giáo sĩ, để kể cho người dân ở đó nghe về Chúa Giê-xu.</p> <p>Khi Betty còn là một em bé xíu, cả nhà trở về Mỹ. Cha em làm việc cho một tờ báo Cơ Đốc ở thành phố Philadelphia tên là <em>Sunday School Times</em>, và về sau ông trở thành chủ bút của tờ báo ấy. Gia đình sống ở Germantown, một khu phố cổ của thành phố. Khi Betty lên chín, họ dọn đến một ngôi nhà lớn hơn ở Moorestown, bang New Jersey.</p> <p>Nhà có sáu người con: bốn trai và hai gái. Betty là con thứ hai. Nhà không bao giờ dư dả tiền bạc, nên chẳng có gì bị bỏ phí, và ai cũng có việc phải làm.</p> <p>Ngày nào cũng vậy, mỗi ngày hai lần, gia đình Howard cùng ngồi lại thờ phượng Đức Chúa Trời. Buổi sáng sau bữa điểm tâm, và buổi tối thêm một lần nữa, họ hát một bài thánh ca, hát hết mọi câu. Người cha đọc Kinh Thánh và cầu nguyện cho từng đứa con, gọi đích danh từng đứa, và cầu nguyện cho các giáo sĩ khắp thế giới. Nhiều giáo sĩ ấy đã đến ở lại nhà Howard và kể chuyện về những miền đất xa xôi. Các con trong nhà thuộc lòng rất nhiều câu Kinh Thánh và bài thánh ca.</p> <p>Betty là một cô bé cao, ít nói, nhút nhát và rất mê đọc sách. Mùa hè nào cả nhà cũng lên vùng núi ở bang New Hampshire, đến một ngôi làng tên là Franconia. Ở đó Betty leo đồi, hái quả mọng, bơi trong làn nước lạnh và học tên các loài cây, loài hoa và loài chim. Cô bé yêu nơi ấy hơn bất cứ nơi nào khác trên đời.</p> <p>Cha mẹ Betty không thể bắt cô bé yêu mến Đức Chúa Trời. Nhưng ngày nào họ cũng trao cho cô lời của Đức Chúa Trời, và những lời ấy ở lại trong lòng cô suốt cả cuộc đời. Những câu Kinh Thánh con học bây giờ cũng có thể ở lại với con như vậy.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Chúa vì những người dạy con về Chúa. Xin đặt lời Chúa thật sâu trong lòng con, để con nhớ lời ấy suốt đời. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Betty sinh ra ở đâu, và vì sao gia đình cô bé ở đó?",
+    "answer": "Ở Brussels, nước Bỉ, vào năm 1926. Cha mẹ cô là giáo sĩ người Mỹ, đã sang đó để kể cho người ta nghe về Chúa Giê-xu."
+   },
+   {
+    "question": "Gia đình Howard cùng nhau làm gì mỗi ngày hai lần?",
+    "answer": "Họ cùng thờ phượng Đức Chúa Trời. Họ hát một bài thánh ca, người cha đọc Kinh Thánh, rồi cầu nguyện cho từng đứa con, gọi đích danh từng đứa, và cho các giáo sĩ khắp thế giới."
+   },
+   {
+    "question": "Con có thuộc lòng câu Kinh Thánh hay bài hát nào về Đức Chúa Trời không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Betty học lời Đức Chúa Trời từ khi còn nhỏ, và những lời ấy ở lại trong lòng cô suốt đời. Những lời con học cũng có thể như vậy."
+   }
+  ],
+  "word_count": 477
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Học cách can đảm",
+  "body_html": "<blockquote>“Trong lúc đang chịu, không có sự sửa dạy nào có vẻ là điều vui mừng; nó có vẻ là điều buồn khổ. Nhưng về sau nó đem lại cho những người đã được rèn luyện bởi nó một mùa gặt bình an, là sự công chính.” — trích Hê-bơ-rơ 12</blockquote> <p>Năm 1941, khi Betty mười bốn tuổi, cô đi thật xa nhà để học ở một trường nội trú Cơ Đốc tại bang Florida. Trường ấy tên là Học viện Hampden DuBose. Mỗi việc trong ngày đều có giờ riêng: giờ nhóm lễ, giờ học, giờ ăn, giờ làm việc, giờ chơi và giờ cầu nguyện buổi tối.</p> <p>Bà hiệu trưởng là bà DuBose, và bà rất nghiêm khắc. Khi gặp Betty, bà thấy một cô gái cao lêu nghêu, vụng về, nhút nhát đến nỗi gần như không dám nói chuyện với ai mình không quen. Betty còn nhớ mình được bảo thẳng rằng nhút nhát chẳng có gì đáng tự hào cả. Cô phải học cách hướng ra bên ngoài, và nghĩ đến người khác thay vì chỉ nghĩ đến mình.</p> <p>Betty sợ bà DuBose lắm! Nhưng cô nghiêm túc đón nhận bài học ấy. Từng chút một, cô học cách đứng thẳng, nhìn thẳng vào mắt người khác, trò chuyện với người lạ và nói trước đám đông. Việc ấy không dễ, và cũng chẳng tự nhiên mà có. Nhưng cô cứ kiên trì tập luyện.</p> <p>Buổi tối, bà DuBose thường đọc to cho cả trường nghe những cuốn sách của Amy Carmichael, một nữ giáo sĩ ở Ấn Độ đã cứu rất nhiều trẻ em và cho các em một mái nhà. Betty rất yêu những cuốn sách ấy. Amy Carmichael viết thật lòng về những khó khăn trong đời sống của một giáo sĩ, và về việc yêu Chúa Giê-xu bằng tất cả những gì mình có. Về sau Betty gọi bà là người mẹ thuộc linh đầu tiên của mình, và nhiều năm sau đó Betty đã viết hẳn một cuốn sách về cuộc đời bà.</p> <p>Đến khi học xong trung học vào năm 1944, Betty đã biết mình muốn làm gì. Cô muốn dịch Kinh Thánh ra những ngôn ngữ chưa từng có Kinh Thánh, để người ta có thể đọc lời Đức Chúa Trời lần đầu tiên.</p> <p>Đôi khi Đức Chúa Trời giúp chúng ta lớn lên qua những điều có vẻ khó khăn, như một cô giáo nghiêm khắc hay một nơi mới lạ đáng sợ. Can đảm không có nghĩa là con không bao giờ thấy sợ. Can đảm nghĩa là vẫn làm điều tử tế ngay cả khi con thấy ngại ngùng.</p> <p><em>Lạy Đức Chúa Trời, khi con thấy nhút nhát hay sợ hãi, xin giúp con can đảm. Xin giúp con để ý đến người khác và đối xử tử tế với họ. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Bà DuBose đã dạy Betty điều gì về tính nhút nhát?",
+    "answer": "Rằng cô không được cứ thu mình trong sự nhút nhát, nhưng phải học cách hướng ra bên ngoài, để ý đến người khác và giúp họ thấy thoải mái."
+   },
+   {
+    "question": "Ở trường, Betty được nghe đọc to sách của ai?",
+    "answer": "Sách của Amy Carmichael, một nữ giáo sĩ ở Ấn Độ. Về sau Betty gọi bà là người mẹ thuộc linh đầu tiên của mình, và đã viết một cuốn sách về cuộc đời bà."
+   },
+   {
+    "question": "Lúc này có điều gì làm con thấy khó khăn không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Betty thấy trường học của mình thật khó, nhưng Đức Chúa Trời đã dùng nơi ấy để giúp cô lớn lên. Ngài cũng có thể dùng những điều khó khăn trong đời con."
+   }
+  ],
+  "word_count": 477
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Tiếng Hy Lạp và chàng trai tên Jim",
+  "body_html": "<blockquote>“Hãy hết sức cố gắng để đứng trước Đức Chúa Trời như một người đã được thử nghiệm và chấp nhận, một người làm công không có gì phải hổ thẹn, là người dùng sứ điệp chân lý cách đúng đắn.” — trích 2 Ti-mô-thê 2</blockquote> <p>Mùa thu năm 1944, Betty vào học Đại học Wheaton, gần thành phố Chicago. Cô chọn học tiếng Hy Lạp. Thời ấy, chuyện một cô gái trẻ học tiếng Hy Lạp là điều hiếm thấy, nhưng Betty có lý do chính đáng. Tân Ước lúc đầu được viết bằng tiếng Hy Lạp. Nếu một ngày kia cô sẽ dịch Kinh Thánh, cô muốn đọc được Kinh Thánh bằng chính ngôn ngữ đầu tiên của nó.</p> <p>Học tiếng Hy Lạp vất vả lắm. Betty phải học thuộc những danh sách dài các từ ngữ và ngữ pháp, học đi học lại. Nhưng cô có đầu óc cẩn thận và đôi tai tinh, nên cô dần dần yêu thích môn học này. Suốt đời, cô luôn giữ cuốn Tân Ước tiếng Hy Lạp bên mình.</p> <p>Một năm sau, có một sinh viên mới từ thành phố Portland, bang Oregon, đến Wheaton. Tên anh là Jim Elliot. Jim khỏe mạnh, thẳng thắn và rất hài hước. Anh ở trong đội vật của trường, và anh yêu Chúa Giê-xu hết lòng. Anh cũng học tiếng Hy Lạp nữa! Người bạn thân nhất của Jim ở trường lại chính là em trai của Betty, tên là Dave.</p> <p>Dịp Giáng Sinh năm 1947, Dave mời Jim về nhà mình ở Moorestown. Jim cùng hát thánh ca và cầu nguyện với gia đình Howard, và anh thấy như đang ở nhà mình vậy. Từ đó, anh bắt đầu để ý theo một cách mới đến người chị ít nói, nghiêm trang của Dave.</p> <p>Khi trường học lại vào tháng 1 năm 1948, Betty và Jim thấy mình học chung những lớp tiếng Hy Lạp, nên họ cùng nhau học bài. Họ nói chuyện về tiếng Hy Lạp, về Kinh Thánh, về công việc truyền giáo và về điều Đức Chúa Trời muốn họ làm. Cả hai đều muốn vâng lời Đức Chúa Trời hơn bất cứ điều gì khác.</p> <p>Betty chăm chỉ học tiếng Hy Lạp vì cô muốn trao lời Đức Chúa Trời cho người khác. Việc học ở trường của con cũng có thể là một cách phục vụ Đức Chúa Trời, khi con làm thật cẩn thận và thật tốt.</p> <p><em>Lạy Đức Chúa Trời, xin giúp con chăm chỉ với những điều con học, và làm thật tốt vì Chúa. Cảm ơn Chúa vì những người bạn tốt yêu mến Chúa. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Betty chọn học tiếng Hy Lạp?",
+    "answer": "Vì Tân Ước lúc đầu được viết bằng tiếng Hy Lạp, và cô muốn đọc Tân Ước bằng ngôn ngữ đầu tiên của nó để một ngày kia có thể dịch Kinh Thánh."
+   },
+   {
+    "question": "Betty đã quen biết Jim Elliot như thế nào?",
+    "answer": "Jim là bạn thân nhất của Dave, em trai cô. Anh đến nhà Howard dịp Giáng Sinh năm 1947, rồi sau đó anh và Betty cùng nhau học tiếng Hy Lạp."
+   },
+   {
+    "question": "Tuần này con có thể làm thật cẩn thận và thật tốt việc gì vì Đức Chúa Trời?",
+    "answer": "Câu trả lời nào cũng tốt. Việc Betty chăm chỉ học tiếng Hy Lạp là một cách phục vụ Đức Chúa Trời, và công việc của chúng ta cũng vậy, kể cả bài tập về nhà."
+   }
+  ],
+  "word_count": 444
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Bóng hình thập tự",
+  "body_html": "<blockquote>“hãy dâng thân thể mình cho Đức Chúa Trời làm của lễ sống, thánh và đẹp lòng Ngài.” — trích Rô-ma 12</blockquote> <p>Khi mùa xuân năm 1948 đến, Betty và Jim bắt đầu yêu nhau. Nhưng họ không biết phải làm gì với tình cảm ấy. Jim nghĩ có lẽ Đức Chúa Trời muốn anh sống độc thân, để anh có thể đến những nơi khó khăn và nguy hiểm mà kể cho người ta nghe về Chúa Giê-xu. Anh chưa chắc chắn, và anh không muốn hứa hẹn điều gì khi chưa biết rõ.</p> <p>Ngày 9 tháng 6 năm 1948, ngay trước khi Betty tốt nghiệp đại học, hai người đi dạo buổi tối. Lần đầu tiên, họ nói cho nhau biết tình cảm của mình. Và Jim nói với Betty rằng anh không thể xin cô điều gì, cũng không thể hứa với cô điều gì.</p> <p>Vì thế họ quyết định dâng tình yêu của mình lại cho Đức Chúa Trời. Họ nghĩ đến câu chuyện trong Kinh Thánh, khi Áp-ra-ham sẵn lòng dâng con trai mình là Y-sác trên bàn thờ, và Đức Chúa Trời đã ban một con chiên đực để thay thế. Tình yêu của họ là một món quà quý giá, vì vậy họ sẽ dâng món quà ấy trở lại cho Đức Chúa Trời. Nếu Đức Chúa Trời trao nó lại cho họ, thì thật tuyệt vời. Nếu không, họ sẽ tin rằng Ngài có điều tốt hơn dành cho họ.</p> <p>Khi họ ngồi trò chuyện, mặt trăng mọc lên phía sau lưng họ. Ánh trăng in bóng một cây thập tự lớn bằng đá xuống mặt đất, ngay giữa hai người. Cả hai đều nhớ mãi hình ảnh ấy. Nó giống như một bức tranh về điều họ vừa quyết định: dù chuyện gì xảy ra với tình yêu của họ, mọi sự sẽ diễn ra dưới thập tự giá của Chúa Giê-xu.</p> <p>Rồi đến những năm dài chờ đợi. Betty đi học một trường Kinh Thánh ở vùng đồng cỏ lạnh giá, đầy tuyết của nước Canada. Jim học xong đại học và về nhà ở Oregon. Họ viết thư cho nhau, nhưng không có lời hứa nào. Betty thường thấy cô đơn, và sự chờ đợi thật khó khăn. Nhưng cô vẫn cứ cầu nguyện, và mỗi ngày vẫn làm công việc ở ngay trước mặt mình.</p> <p>Đôi khi chúng ta rất muốn một điều gì đó, mà lại phải chờ đợi. Dâng điều ấy cho Đức Chúa Trời không có nghĩa là chúng ta thôi quan tâm. Mà có nghĩa là chúng ta tin cậy Ngài biết điều gì là tốt nhất, và Ngài sẽ lo liệu cho chúng ta.</p> <p><em>Lạy Đức Chúa Trời, khi con phải chờ đợi một điều con mong muốn, xin giúp con tin cậy Chúa. Con dâng cho Chúa những điều con quý nhất. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Betty và Jim quyết định làm gì với tình yêu họ dành cho nhau?",
+    "answer": "Họ quyết định dâng tình yêu ấy lại cho Đức Chúa Trời, giống như Áp-ra-ham dâng Y-sác, và tin cậy Đức Chúa Trời về những gì sẽ xảy ra sau đó."
+   },
+   {
+    "question": "Trong lúc đi dạo, họ thấy gì trên mặt đất giữa hai người?",
+    "answer": "Bóng của một cây thập tự lớn bằng đá, do mặt trăng mọc phía sau họ in xuống. Hình ảnh ấy nhắc họ rằng tình yêu của họ ở dưới thập tự giá của Chúa Giê-xu."
+   },
+   {
+    "question": "Lúc này con có đang chờ đợi điều gì không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Betty đã phải chờ đợi rất lâu. Dâng điều mình mong muốn cho Đức Chúa Trời nghĩa là tin cậy Ngài biết điều gì là tốt nhất."
+   }
+  ],
+  "word_count": 481
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Chiếc vali bị mất",
+  "body_html": "<blockquote>“Điều Ta hoạch định không phải là điều các ngươi hoạch định, và những con đường các ngươi đi không phải là đường của Ta, CHÚA phán vậy.” — trích Ê-sai 55</blockquote> <p>Jim tin rằng Đức Chúa Trời đang sai anh đến Ecuador, một đất nước ở Nam Mỹ, và vào tháng 2 năm 1952, anh đi tàu sang đó cùng một người bạn tên là Pete Fleming. Đến tháng 4, Betty cũng đi tàu sang Ecuador. Cô đi với tư cách một giáo sĩ độc lập, chẳng có lời hứa nào từ Jim. Cô đã được huấn luyện để ghi chép lại những ngôn ngữ chưa bao giờ có chữ viết.</p> <p>Trước hết cô học tiếng Tây Ban Nha ở Quito, một thành phố nằm cao trên vùng núi. Rồi cô xuống khu rừng ấm áp, ẩm ướt ở sườn phía tây của dãy núi. Người dân ở đó được gọi là người Colorado, vì đàn ông của họ nhuộm tóc màu đỏ tươi bằng một thứ bột nhão làm từ hạt cây. Ngôn ngữ của họ chưa bao giờ được viết ra. Công việc của Betty là học ngôn ngữ ấy từ con số không.</p> <p>Cô cần một người giúp biết nói cả tiếng Colorado lẫn tiếng Tây Ban Nha. Đức Chúa Trời đã ban cho cô một người giúp tuyệt vời: một người đàn ông tên là Macario, người yêu mến Chúa Giê-xu. Ngày này qua ngày khác, hai người ngồi bên nhau. Ông nói từng từ, còn cô ghi chúng lên những tấm thẻ. Chầm chậm, hình dáng của ngôn ngữ ấy bắt đầu hiện ra.</p> <p>Rồi một chuyện khủng khiếp xảy ra. Macario bị mấy người đàn ông giết chết trong một cuộc cãi vã về một mảnh đất. Betty đau lòng vô cùng. Cô đã mất một người bạn và một người anh em trong Đấng Christ, và không còn ai khác có thể giúp cô được như ông.</p> <p>Ít lâu sau, Betty xếp tất cả những ghi chép về ngôn ngữ vào một chiếc vali, để gửi cho các giáo sĩ sẽ tiếp tục công việc. Chiếc vali bị lấy cắp khỏi thùng sau một chiếc xe tải, và không bao giờ tìm lại được. Cô không có bản sao nào. Gần như toàn bộ công sức của cô đã mất hết. Betty hỏi Đức Chúa Trời tại sao. Ngài không cho cô biết. Vì thế cô quyết định sẽ cứ tiếp tục tin cậy Ngài, dù không có câu trả lời.</p> <p>Đôi khi chúng ta cầu nguyện và cố gắng hết sức, mà mọi việc vẫn trục trặc. Đức Chúa Trời không phải lúc nào cũng cho chúng ta biết tại sao. Nhưng chúng ta có thể thật lòng nói với Ngài mình cảm thấy thế nào, và cứ tiếp tục tin cậy Ngài, vì Ngài vẫn tốt lành ngay cả khi chúng ta không hiểu.</p> <p><em>Lạy Đức Chúa Trời, khi mọi việc trục trặc và con không hiểu tại sao, xin giúp con cứ tiếp tục tin cậy Chúa. Cảm ơn Chúa vì đường lối Chúa cao hơn đường lối con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Macario là ai?",
+    "answer": "Một người đàn ông yêu mến Chúa Giê-xu và biết nói cả tiếng Colorado lẫn tiếng Tây Ban Nha. Ông đã giúp Betty học và ghi chép lại tiếng Colorado."
+   },
+   {
+    "question": "Chuyện gì đã xảy ra với chiếc vali của Betty?",
+    "answer": "Trong vali có gần như toàn bộ những ghi chép về ngôn ngữ của cô, và nó bị lấy cắp khỏi thùng sau một chiếc xe tải. Nó không bao giờ được tìm thấy, và cô không có bản sao nào."
+   },
+   {
+    "question": "Con có thể làm gì khi không hiểu vì sao một chuyện buồn lại xảy ra?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Betty đã nói với Đức Chúa Trời cô cảm thấy thế nào và quyết định cứ tiếp tục tin cậy Ngài, dù không có câu trả lời."
+   }
+  ],
+  "word_count": 521
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Đám cưới và chiếc lều",
+  "body_html": "<blockquote>“Hai người hơn một người, vì cùng nhau họ được công xá xứng đáng cho công việc vất vả của mình.” — trích Truyền Đạo 4</blockquote> <p>Tháng 1 năm 1953, Jim và Betty gặp nhau ở Quito. Cuối cùng, sau năm năm chờ đợi, Jim hỏi cưới Betty, và cô nhận lời! Nhưng Jim còn xin thêm một điều. Anh làm việc giữa người Quichua ở vùng rừng phía đông. Anh muốn Betty học ngôn ngữ của họ, tiếng Quichua, trước khi cưới, để cô có thể trò chuyện với họ và cùng chia sẻ công việc.</p> <p>Thế là Betty lại bắt tay vào việc, học một ngôn ngữ hoàn toàn mới. Cô lắng nghe, ghi lại những gì mình nghe được, rồi tập đi tập lại. Đến mùa thu, cô đã học đủ.</p> <p>Betty và Jim cưới nhau ở Quito vào ngày 8 tháng 10 năm 1953. Hôm ấy lại đúng sinh nhật lần thứ hai mươi sáu của Jim! Đó là một đám cưới ngắn gọn, đơn sơ trong một văn phòng của chính quyền, chỉ có vài người bạn. Không có nhạc, cũng không có hoa, nhưng họ chẳng bận tâm. Sau một chuyến đi ngắn sang Panama, họ trở về rừng.</p> <p>Ngôi nhà đầu tiên của họ là một chiếc lều! Một người lãnh đạo người Quichua tên là Atanasio, ở một nơi gọi là Puyupungu, đã xin một giáo sĩ đến dạy dỗ dân làng và mở một trường học. Vì thế Jim và Betty sống trong lều trong khi một căn nhà đơn sơ đang được dựng lên. Trời mưa, côn trùng cắn suốt không ngừng, và họ nấu ăn trên bếp lửa. Nhưng dường như họ lại rất vui thích.</p> <p>Năm 1954, họ dọn đến một trạm truyền giáo tên là Shandia, vào ở một ngôi nhà do chính Jim xây. Jim giảng đạo và dạy các cậu bé trong trường. Betty lo việc nhà, chăm sóc những người bệnh tìm đến tận cửa, và nghiên cứu tiếng Quichua. Jim là người giảng đạo, còn Betty là người cầm cuốn sổ ghi chép. Ngày 27 tháng 2 năm 1955, con gái bé bỏng của họ là Valerie chào đời.</p> <p>Đức Chúa Trời làm cho Jim và Betty khác nhau, và chính vì thế mà họ cùng làm việc với nhau thật ăn ý. Đức Chúa Trời ban cho mỗi chúng ta những ân tứ khác nhau, để chúng ta có thể giúp đỡ lẫn nhau.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Chúa vì gia đình và bạn bè của con. Cảm ơn Chúa vì những ân tứ Chúa đã ban cho mỗi người chúng con. Xin giúp chúng con dùng những ân tứ ấy để giúp đỡ lẫn nhau. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Jim đã xin Betty làm gì trước khi cưới?",
+    "answer": "Học tiếng Quichua, ngôn ngữ của những người anh đang làm việc giữa họ, để cô có thể trò chuyện với họ và cùng chia sẻ công việc."
+   },
+   {
+    "question": "Ngôi nhà đầu tiên của Jim và Betty như thế nào?",
+    "answer": "Đó là một chiếc lều ở Puyupungu, giữa khu rừng mưa nhiều, đầy côn trùng, nơi họ nấu ăn trên bếp lửa trong khi một căn nhà đang được dựng lên."
+   },
+   {
+    "question": "Đức Chúa Trời đã ban cho con ân tứ nào mà con có thể dùng để giúp đỡ ai đó?",
+    "answer": "Câu trả lời nào cũng tốt. Jim là người giảng đạo, còn Betty là người ghi chép cẩn thận. Đức Chúa Trời ban cho mỗi chúng ta những ân tứ khác nhau để chúng ta giúp đỡ lẫn nhau."
+   }
+  ],
+  "word_count": 457
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "vi"
+  ],
+  "order": 7,
+  "title": "Những món quà từ trên trời",
+  "body_html": "<blockquote>“Và nếu chưa bao giờ nghe Ngài, làm sao họ tin vào Ngài? Và nếu không có người rao giảng, làm sao họ nghe?” — trích Rô-ma 10</blockquote> <p>Sâu trong rừng, ở phía bên kia các làng Quichua, có một dân tộc gọi là người Waorani. Tên của họ có nghĩa là “con người.” Từ xưa đến nay họ luôn sống tách biệt, và rất sợ người ngoài. Suốt nhiều năm, bất cứ ai đi vào vùng đất của họ đều gặp nguy hiểm, và các dân tộc láng giềng cũng sợ họ. Chưa từng có ai đến thăm họ như một người bạn.</p> <p>Jim tha thiết mong người Waorani được nghe về Chúa Giê-xu. Bốn người bạn của anh cũng có cùng ước mong ấy: Pete Fleming, Ed McCully, Roger Youderian, và Nate Saint, một phi công giáo sĩ có chiếc máy bay nhỏ màu vàng. Tháng 9 năm 1955, Nate và Ed bay trên khu rừng và phát hiện ra mấy ngôi nhà của người Waorani.</p> <p>Nate nghĩ ra một ý rất hay. Anh thả một chiếc xô xuống bằng một sợi dây thật dài, trong khi máy bay bay vòng tròn thật hẹp, cứ thế mà lượn mãi, nhờ vậy chiếc xô gần như treo đứng yên trên một chỗ. Tuần này qua tuần khác, các anh gửi quà xuống: nồi nấu ăn, vải, chuỗi hạt và những con dao lớn, rồi gọi to những lời thân thiện qua loa phóng thanh. Ít lâu sau, người Waorani bắt đầu buộc quà của chính họ vào sợi dây, chẳng hạn như một chiếc băng đội đầu làm bằng lông chim! Trông như tình bạn đang bắt đầu.</p> <p>Ngày 3 tháng 1 năm 1956, Nate cho máy bay đáp xuống một bãi cát bên bờ sông Curaray, không xa những ngôi nhà của người Waorani. Các anh dựng một căn nhà nhỏ trên cây và gọi nơi ấy là Palm Beach, nghĩa là “Bãi Cọ.” Họ chờ đợi, và gọi to những lời chào hướng về phía rừng.</p> <p>Thứ Sáu, ngày 6 tháng 1, có ba người Waorani từ trong rừng bước ra: một chàng trai, một cô gái và một bà lớn tuổi. Họ ở lại gần hết ngày, ăn thức ăn của các giáo sĩ, và chàng trai còn được đi một vòng trên máy bay nữa! Năm người giáo sĩ tràn đầy niềm vui và hy vọng.</p> <p>Jim và các bạn của anh muốn người Waorani được nghe về Chúa Giê-xu, vì chưa từng có ai kể cho họ nghe. Ngày nay vẫn còn những người chưa bao giờ được nghe. Chúng ta có thể cầu nguyện cho họ, và chúng ta cũng có thể kể cho người khác nghe.</p> <p><em>Lạy Chúa Giê-xu, cảm ơn Chúa vì những người đã đi thật xa để kể cho người khác nghe về Chúa. Xin giúp mọi người trên thế giới được nghe về tình yêu của Chúa. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Nate Saint đã gửi quà cho người Waorani bằng cách nào?",
+    "answer": "Anh thả một chiếc xô bằng sợi dây dài trong khi máy bay bay vòng tròn thật hẹp, nhờ vậy chiếc xô gần như treo đứng yên phía trên những ngôi nhà của người Waorani."
+   },
+   {
+    "question": "Ai đã từ trong rừng bước ra vào thứ Sáu, ngày 6 tháng 1 năm 1956?",
+    "answer": "Ba người Waorani: một chàng trai, một cô gái và một bà lớn tuổi. Họ ở với các giáo sĩ gần hết ngày, và chàng trai còn được đi máy bay."
+   },
+   {
+    "question": "Con có thể cầu nguyện cho ai chưa từng được nghe về Chúa Giê-xu?",
+    "answer": "Câu trả lời nào cũng tốt. Jim và các bạn anh muốn những người chưa từng được nghe biết về Chúa Giê-xu, và chúng ta cũng có thể cầu nguyện cho họ."
+   }
+  ],
+  "word_count": 490
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Ngày chiếc radio im lặng",
+  "body_html": "<blockquote>“Khi con đi qua nước sâu, Ta sẽ ở bên con; khi qua các sông, nước sẽ không cuốn ngập con.” — trích Ê-sai 43</blockquote> <p>Chúa Nhật, ngày 8 tháng 1 năm 1956, Nate nói chuyện qua radio với vợ mình là chị Marj. Anh nói các anh hy vọng chiều hôm ấy sẽ có khách đến thăm, và anh hứa sẽ gọi lại lúc bốn giờ rưỡi. Nhưng khi bốn giờ rưỡi đến, chiếc radio vẫn im lặng. Nó không bao giờ cất tiếng nữa.</p> <p>Hôm sau, một phi công khác nhìn thấy máy bay của Nate trên bãi cát, nhưng không thấy bóng dáng các anh đâu. Sau mấy ngày tìm kiếm, tin buồn đã chắc chắn. Những người đàn ông Waorani đã đến bãi cát, và cả năm giáo sĩ đều bị giết. Người Waorani đã được nghe kể rằng những người lạ ấy đã tấn công chính dân tộc mình, nên họ rất sợ hãi. Jim và các bạn anh đã đồng ý với nhau từ trước rằng họ sẽ không dùng súng để chống lại người Waorani.</p> <p>Lúc ấy Betty hai mươi chín tuổi. Valerie mới được mười tháng. Betty rất buồn, và suốt một thời gian dài cô nhớ Jim khôn nguôi. Nhưng cô không thôi tin cậy Đức Chúa Trời. Cô bám chặt lấy lời hứa của Ngài rằng Ngài sẽ ở với cô, ngay cả khi cô đi qua những dòng nước sâu nhất.</p> <p>Nhiều năm trước, Jim đã viết trong nhật ký rằng một người không dại dột khi cho đi điều mình không thể giữ mãi, để nhận lấy điều mình không bao giờ có thể mất. Bây giờ những lời ấy được đọc khắp thế giới.</p> <p>Hầu hết mọi người đều nghĩ Betty sẽ về Mỹ. Nhưng không, cô đưa Valerie trở về ngôi nhà ở Shandia và tiếp tục công việc của Jim giữa người Quichua. Đó đơn giản là việc kế tiếp cần làm. Suốt đời, cô yêu thích một bài thơ cổ có bốn chữ, viết theo lối chính tả xưa: “Doe the nexte thynge,” nghĩa là “Hãy làm việc kế tiếp.” Cô viết một cuốn sách về năm người ấy, và hàng ngàn người đọc sách đã quyết định phục vụ Đức Chúa Trời làm giáo sĩ.</p> <p>Khi một chuyện rất buồn xảy ra, chúng ta không cần phải hiểu hết mọi điều ngay lập tức. Chúng ta có thể nắm tay Đức Chúa Trời và làm việc kế tiếp, từng ngày một. Ngài ở với chúng ta trong những ngày buồn.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Chúa vì Chúa ở với con ngay cả khi con rất buồn. Khi con không biết phải làm gì, xin giúp con tin cậy Chúa và làm việc kế tiếp. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Sau khi Jim qua đời, Betty đã làm gì thay vì về nhà?",
+    "answer": "Cô đưa bé Valerie trở về Shandia và tiếp tục công việc của Jim giữa người Quichua."
+   },
+   {
+    "question": "Bốn chữ trong bài thơ cổ mà Betty yêu thích là gì?",
+    "answer": "“Doe the nexte thynge,” viết theo lối chính tả xưa. Câu ấy có nghĩa là: hãy làm việc kế tiếp ở ngay trước mặt mình, còn mọi điều khác thì để Đức Chúa Trời lo."
+   },
+   {
+    "question": "Một “việc kế tiếp” con có thể làm khi thấy buồn hay lo lắng là gì?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Betty không cần phải hiểu hết mọi điều. Cô tin cậy Đức Chúa Trời và làm việc kế tiếp, từng ngày một."
+   }
+  ],
+  "word_count": 464
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Hai người phụ nữ từ trong rừng",
+  "body_html": "<blockquote>“Ta sẽ dẫn người mù đi trên con đường xa lạ với họ ... Trước mặt họ, Ta sẽ đổi bóng tối thành ánh sáng” — trích Ê-sai 42</blockquote> <p>Gần hai năm sau, vào tháng 11 năm 1957, Betty đang ở một trạm truyền giáo tên là Arajuno. Có hai người đàn ông Quichua đến báo một tin thật bất ngờ. Hai người phụ nữ Waorani đã từ trong rừng đi ra và đang ở tại nhà họ! Betty lập tức lên đường.</p> <p>Hai người phụ nữ ấy tên là Mankamu và Mintaka. Mintaka chính là bà lớn tuổi đã đến thăm năm người giáo sĩ trên bãi cát, chỉ vài ngày trước khi họ qua đời.</p> <p>Betty đưa cả hai người về nhà mình ở Shandia. Suốt mười tháng, họ sống trong nhà cô, cùng với cô và bé Valerie. Betty cho họ thức ăn, chỗ ngủ và mọi thứ họ cần. Và ngày này qua ngày khác, cô lắng nghe họ nói chuyện rồi ghi lại từng lời. Tiếng Waorani chẳng giống bất cứ ngôn ngữ nào khác trên thế giới. Không có cuốn sách nào giúp cô cả. Đó là ngôn ngữ khó nhất cô từng học.</p> <p>Còn một người phụ nữ Waorani khác tên là Dayuma. Nhiều năm trước, bà đã bỏ trốn khỏi dân tộc mình và đến sống giữa người Quichua. Chị gái của Nate Saint là Rachel Saint đã học tiếng Waorani từ bà. Năm 1958, Rachel và Dayuma trở lại Ecuador. Dayuma gặp Mintaka và Mankamu, và ba người phụ nữ quyết định cùng nhau trở về với dân tộc mình.</p> <p>Ngày 3 tháng 9 năm 1958, ba người phụ nữ đi vào rừng. Không ai biết họ có trở lại hay không. Nhưng khoảng ba tuần sau, họ đã trở lại, cùng với một nhóm đàn ông và phụ nữ Waorani! Họ mang theo một lời mời. Betty và Rachel được mời đến sống giữa người Waorani.</p> <p>Không ai có thể sắp đặt được chuyện này. Con đường đến với người Waorani đã được mở ra nhờ ba người phụ nữ đi ra khỏi rừng rồi lại trở vào. Đức Chúa Trời có thể mở những cánh cửa mà tự chúng ta không thể mở được.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Chúa vì Chúa có thể mở những cánh cửa mà không ai khác mở được. Xin giúp con đối xử tử tế với người lạ, như Betty đã làm. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mintaka là ai?",
+    "answer": "Một trong hai người phụ nữ Waorani từ trong rừng đi ra. Bà chính là người phụ nữ lớn tuổi đã đến thăm năm người giáo sĩ trên bãi cát."
+   },
+   {
+    "question": "Người Waorani đã mang về lời mời nào?",
+    "answer": "Họ mời Betty và Rachel Saint đến sống giữa họ."
+   },
+   {
+    "question": "Con có thể đối xử tử tế với một người mới đến hay một người lạ như thế nào?",
+    "answer": "Câu trả lời nào cũng tốt. Betty đã mở rộng cửa nhà mình cho hai người phụ nữ từ trong rừng, và Đức Chúa Trời đã dùng lòng tử tế của cô để mở ra một cánh cửa."
+   }
+  ],
+  "word_count": 411
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Cùng Valerie vào rừng",
+  "body_html": "<blockquote>“Đừng để điều ác thắng bạn, nhưng hãy lấy điều thiện mà thắng điều ác.” — trích Rô-ma 12</blockquote> <p>Một vài người bạn của Betty nghĩ rằng cô không nên đi. Có vẻ quá nguy hiểm khi một người mẹ trẻ đưa con gái nhỏ của mình đến sống giữa chính những người đã giết chồng mình. Betty biết điều nguy hiểm ấy. Nhưng người Waorani đã mời cô đến, và cô tin rằng Đức Chúa Trời muốn họ được nghe về Ngài. Vì vậy cô đã đi.</p> <p>Tháng 10 năm 1958, Betty, Valerie và Rachel Saint đi bộ xuyên rừng cùng với Dayuma và những người Waorani đã đến đón họ. Bé Valerie mới ba tuổi nên phải được bế đi. Ngày 8 tháng 10, họ đến một khoảng rừng thưa của người Waorani bên một con sông nhỏ tên là Tiwaeno. Hôm ấy lẽ ra là sinh nhật lần thứ ba mươi mốt của Jim.</p> <p>Người Waorani sống trong những ngôi nhà lớn lợp lá cọ, ngủ trên võng, và săn bắn bằng ống thổi tên. Betty và Valerie sống trong một túp lều đơn sơ có mái lợp lá. Người Waorani đặt cho Betty một cái tên mới: Gikari, nghĩa là “chim gõ kiến.” Valerie chơi với các bạn nhỏ Waorani, chạy chân trần, và chẳng bao lâu đã nói tiếng của họ thật trôi chảy.</p> <p>Một số người đàn ông có mặt trên bãi cát hôm ấy sống ngay tại khoảng rừng thưa này. Betty đã gặp họ. Cô thấy họ không phải là quái vật. Họ cũng cười đùa, chăm sóc con cái và đi săn. Họ đã hành động vì sợ hãi. Betty không giả vờ như việc họ làm chẳng có gì quan trọng. Nhưng trước khi đến, cô đã quyết định sẽ tha thứ cho họ, và cô không hề ghét họ.</p> <p>Betty sống giữa người Waorani khoảng ba năm. Cô phát thuốc cho người bệnh và miệt mài học ngôn ngữ của họ, trong khi Dayuma kể cho dân tộc mình nghe về Đức Chúa Trời. Qua nhiều năm, một vài người trong chính những người đàn ông có mặt trên bãi cát hôm ấy đã đến với Chúa Giê-xu và đi theo Ngài. Về sau, hai người trong số họ đã làm phép báp-têm cho con trai và con gái của Nate Saint, ở dòng sông gần bãi cát nơi cha của hai người con ấy đã qua đời.</p> <p>Chúa Giê-xu dạy chúng ta phải yêu thương ngay cả những người đã làm mình đau. Điều đó rất khó. Nhưng Đức Chúa Trời có thể giúp chúng ta tha thứ, và lòng tử tế của chúng ta có thể bày tỏ tình yêu của Ngài cho người khác.</p> <p><em>Lạy Chúa Giê-xu, thật khó để yêu thương những người đã làm con đau. Xin giúp con tha thứ, và làm điều tốt cho họ, như Betty đã làm. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Người Waorani đã đặt cho Betty tên gì?",
+    "answer": "Gikari, nghĩa là “chim gõ kiến.”"
+   },
+   {
+    "question": "Chuyện gì đã xảy ra với một số người đàn ông có mặt trên bãi cát hôm ấy?",
+    "answer": "Qua nhiều năm, một vài người trong số họ đã đến với Chúa Giê-xu và đi theo Ngài. Về sau, hai người trong số họ đã làm phép báp-têm cho con trai và con gái của Nate Saint ở dòng sông gần bãi cát."
+   },
+   {
+    "question": "Có ai mà con cần Đức Chúa Trời giúp để tha thứ không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Tha thứ thì khó, nhưng Đức Chúa Trời có thể giúp chúng ta, và làm điều tốt cho người khác sẽ bày tỏ tình yêu của Ngài cho họ."
+   }
+  ],
+  "word_count": 488
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Những câu hỏi thật lòng, những cuộc chia tay khó khăn",
+  "body_html": "<blockquote>“Hỡi dân chúng, hãy nương cậy Ngài trong mọi hoàn cảnh; hãy trút hết lòng mình ra trước mặt Ngài. Đức Chúa Trời là nơi ẩn náu của chúng ta.” — trích Thi-thiên 62</blockquote> <p>Cuối năm 1961, Betty rời người Waorani. Cô và Rachel Saint thấy rất khó làm việc chung với nhau, và Valerie cũng sắp đến tuổi đi học. Rachel ở lại giữa người Waorani gần như suốt phần đời còn lại của mình. Betty làm việc giữa người Quichua thêm khoảng hai năm nữa. Rồi vào năm 1963, khi Valerie lên tám, hai mẹ con trở về Mỹ. Họ sống ở Franconia, bang New Hampshire, giữa những ngọn núi mà Betty đã yêu từ thuở bé.</p> <p>Lúc này Betty đã nổi tiếng. Ai cũng muốn nghe câu chuyện về Jim và người Waorani. Người ta muốn một câu chuyện vui, nơi mọi việc đều kết thúc thật hoàn hảo. Nhưng ở Ecuador, Betty đã học được rằng đời sống với Đức Chúa Trời không phải lúc nào cũng gọn gàng, ngăn nắp. Cô không chịu giả vờ. Trong các cuốn sách của mình, cô viết thật lòng về những câu hỏi của cô, và về những điều cô không hiểu. Một số độc giả không vui. Nhưng nhiều người cũng có những câu chuyện buồn của riêng mình đã được giúp đỡ nhờ sự thành thật của cô.</p> <p>Năm 1969, Betty tái hôn. Người chồng mới của cô là Addison Leitch, một giáo sư thần học, một người vui tính, hóm hỉnh và rất mê sách. Betty và Valerie cùng ông dọn đến Hamilton, bang Massachusetts. Đó là những năm tháng hạnh phúc.</p> <p>Nhưng rồi Addison mắc bệnh ung thư rất nặng. Betty chăm sóc ông ở nhà, suốt những tháng dài vất vả. Ông qua đời ngày 17 tháng 9 năm 1973. Lần thứ hai, Betty trở thành góa phụ. Lần này không có báo chí, cũng không có ảnh chụp. Cô buồn, và cô cô đơn. Nhưng cô mang nỗi buồn của mình đến với Đức Chúa Trời, và Đức Chúa Trời lại nâng đỡ cô đứng dậy.</p> <p>Đức Chúa Trời không muốn chúng ta giấu đi những câu hỏi của mình, hay giả vờ vui vẻ khi trong lòng không vui. Chúng ta có thể nói với Ngài mọi điều ở trong lòng mình. Ngài là nơi ẩn náu an toàn của chúng ta.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Chúa vì con có thể nói với Chúa mọi điều, kể cả những câu hỏi và những cảm xúc buồn bã của con. Cảm ơn Chúa vì Chúa là nơi ẩn náu an toàn của con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Khi trở về Mỹ, Betty và Valerie sống ở đâu?",
+    "answer": "Ở Franconia, bang New Hampshire, giữa những ngọn núi nơi Betty đã trải qua các mùa hè thuở bé."
+   },
+   {
+    "question": "Vì sao một số độc giả không vui với những cuốn sách sau này của Betty?",
+    "answer": "Vì cô viết thật lòng về những câu hỏi của mình và những điều cô không hiểu, thay vì kể một câu chuyện mà mọi việc đều kết thúc thật hoàn hảo."
+   },
+   {
+    "question": "Hôm nay con muốn thật lòng nói với Đức Chúa Trời điều gì?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Đức Chúa Trời muốn chúng ta trút hết lòng mình ra trước mặt Ngài, kể cả những câu hỏi, vì Ngài là nơi ẩn náu an toàn của chúng ta."
+   }
+  ],
+  "word_count": 443
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Những cánh tay đời đời",
+  "body_html": "<blockquote>“Cho đến khi các ngươi già, Ta vẫn là Đấng ấy, cho đến khi tóc các ngươi bạc, chính Ta sẽ mang các ngươi.” — trích Ê-sai 46</blockquote> <p>Năm 1977, Betty kết hôn lần thứ ba. Chồng cô là Lars Gren. Họ sống ở Magnolia, một ngôi làng bên bờ biển ở bang Massachusetts. Valerie lớn lên và kết hôn với một mục sư tên là Walter Shepard, và họ có tám người con. Người góa phụ trẻ trong rừng rậm năm nào giờ đã là bà ngoại của cả một đại gia đình!</p> <p>Betty vẫn tiếp tục viết sách. Và từ năm 1988, bà có một chương trình phát thanh dành cho phụ nữ tên là <em>Gateway to Joy</em> (Cánh Cửa Dẫn Đến Niềm Vui), được nghe khắp nước Mỹ và ở nhiều nước khác. Chương trình nào cũng bắt đầu giống nhau. Bà nhắc thính giả nhớ hai lời hứa trong Kinh Thánh: rằng Đức Chúa Trời yêu họ bằng một tình yêu đời đời, và rằng bên dưới họ là những cánh tay đời đời của Ngài.</p> <p>Trên radio, bà nói về sự cầu nguyện, về nỗi buồn và về việc tin cậy Đức Chúa Trời. Nhưng bà cũng nói về những điều bình thường, như rửa chén bát, đi đúng giờ, trả lời thư từ và thức dậy vào buổi sáng. Bà tin rằng làm tốt những việc nhỏ vì Đức Chúa Trời là một cách để yêu mến Ngài.</p> <p>Khi Betty về già, bà mắc một căn bệnh gọi là sa sút trí tuệ. Từng chút một, bà không còn nhớ được mọi việc, rồi gần như không thể nói được nữa. Người đã từng yêu ngôn từ biết bao giờ không còn dùng được ngôn từ nữa. Ông Lars chăm sóc bà ở nhà suốt nhiều năm. Giờ đây có người khác phải bồng bế bà, như bà đã từng bế bé Valerie băng qua khu rừng năm xưa.</p> <p>Betty qua đời tại nhà ở Magnolia ngày 15 tháng 6 năm 2015, hưởng thọ tám mươi tám tuổi. Bà đã tin cậy Đức Chúa Trời qua những ngày vui và cả những ngày rất buồn, và đến cuối đời, bà an nghỉ trong những cánh tay đời đời của Ngài.</p> <p>Vào cuối đời, Betty không thể làm gì cho Đức Chúa Trời được nữa, nhưng Đức Chúa Trời vẫn yêu bà y như trước. Con cũng quý giá đối với Đức Chúa Trời, không phải vì những gì con làm được, nhưng vì con thuộc về Ngài.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Chúa vì Betty Elliot và mọi điều Chúa đã làm qua cuộc đời bà. Cảm ơn Chúa vì Chúa yêu con bằng một tình yêu đời đời, và cánh tay Chúa luôn ở bên dưới nâng đỡ con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mỗi chương trình phát thanh Gateway to Joy bắt đầu như thế nào?",
+    "answer": "Betty nhắc thính giả nhớ rằng Đức Chúa Trời yêu họ bằng một tình yêu đời đời, và bên dưới họ là những cánh tay đời đời của Ngài."
+   },
+   {
+    "question": "Betty đã nói về những điều bình thường nào trên radio?",
+    "answer": "Những việc như rửa chén bát, đi đúng giờ, trả lời thư từ và thức dậy vào buổi sáng. Bà tin rằng làm tốt những việc nhỏ vì Đức Chúa Trời là một cách để yêu mến Ngài."
+   },
+   {
+    "question": "Vì sao con quý giá đối với Đức Chúa Trời?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Đức Chúa Trời yêu con không phải vì những gì con làm được, nhưng vì con thuộc về Ngài, và những cánh tay đời đời của Ngài ôm giữ con."
+   }
+  ],
+  "word_count": 468
+ }
+}
+]
