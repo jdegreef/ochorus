@@ -2451,6 +2451,27 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<p>Tekyetaagisa kulwawo ku n", "<h3>ENJAWULO.</h3>"),
             ("<p>Tekyetaagisa kulwawo ku n",
              '<p><em>"Abakola ebibi tebakola bwe batyo."</em></p>'),
+            # ko
+            ('<p>복이 되지 않는 형통',
+             '<p>첫째 시편에 대한 묵상.</p>'),
+            ('<p>복이 되지 않는 형통',
+             '<h3>들어가는 말</h3>'),
+            ('<p>더 문자적으로 옮기면',
+             '<h3>복의 소극적 조건</h3>'),
+            ('<p>더 문자적으로 옮기면',
+             '<p><em>“복 있는 사람은 악인의 꾀를 좇지 아니하며.”</em></p>'),
+            ('<p>유유상종입니다. 신자',
+             '<p><em>죄인의 길에 서지 아니하며.</em></p>'),
+            ('<p>오만한 자의 자리는 ',
+             '<p><em>“오만한 자의 자리에 앉지 아니하고.”</em></p>'),
+            ('<p>우리는 참으로 복 있',
+             '<h3>복의 적극적 조건</h3>'),
+            ('<p>다음으로 이 시편 3',
+             '<h3>복의 결과</h3>'),
+            ('<p>이 대조에 대해서는 ',
+             '<h3>대조</h3>'),
+            ('<p>이 대조에 대해서는 ',
+             '<p><em>“악인은 그렇지 않음이여.”</em></p>'),
         ],
     },
     "a-full-reward": {
@@ -2507,6 +2528,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # es
             ("<p>Con toda naturalidad podríamos",
              "<blockquote><em>«Si alguno quiere venir en pos de mí, niéguese a sí mismo, y tome su cruz cada día, y sígame.</em>—Lucas 9:23.</blockquote>"),
+            # ko
+            ('<p>주 예수 그리스도의 ',
+             '<blockquote><em>“아무든지 나를 따라 오려거든 자기를 부인하고 날마다 제 십자가를 지고 나를 좇을 것이니라”</em>—누가복음 9:23.</blockquote>'),
         ],
     },
     "all-sufficiency": {
@@ -2523,6 +2547,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # es
             ("<p>¡Qué grato es al corazón",
              '<blockquote><em>"El SEÑOR DIOS es Sol y Escudo;<br/> gracia y gloria dará el SEÑOR:<br/> ninguna cosa buena negará<br/> a los que andan en integridad."<br/></em>—SALMO 84:11.</blockquote>'),
+            # ko
+            ('<p>참된 자녀라면 자기 ',
+             '<blockquote><em>“여호와 하나님은 해요 방패시라<br/> 여호와께서 은혜와 영화를 주시며<br/> 정직히 행하는 자에게<br/> 좋은 것을 아끼지 아니하실 것임이니이다”<br/></em>—시편 84:11</blockquote>'),
         ],
     },
     "under-the-shepherds-care": {

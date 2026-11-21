@@ -172,6 +172,14 @@
    "NOTE this row cannot appear yet: seed_plans only creates a plan in a language where EVERY source book is published in it, and union-and-communion has no ko edition. The prose waits for that book, as the sw entry did."
   ]
  },
+ "family-devotions-brave-and-faithful": {
+  "title": "가정 예배: 용감하고 신실하게",
+  "description": "5주 동안의 5분 가정 예배입니다. 용감했던 세 여성의 실제 이야기를 밤마다 짧은 장 하나씩 소리 내어 읽습니다 — 나이지리아에서 쌍둥이 아기들을 구해 낸 스코틀랜드 방직 공장 소녀 메리 슬레서, 인도의 과부들과 소녀들을 위해 집을 세운 판디타 라마바이, 그리고 전쟁 중에 유대인 이웃들을 숨겨 주고 용서를 배운 코리 텐 붐. 장마다 기도와 함께 이야기 나눌 질문 세 가지로 마칩니다.",
+  "note": [
+   "Backed by the ko editions mary-slessor-a-life-children (『메리 슬레서 (어린이용)』), pandita-ramabai-a-life-children (『판디타 라마바이 (어린이용)』) and corrie-ten-boom-a-life-children (『코리 텐 붐 (어린이용)』), all from the Korean batch of 2026-11-20; the card names the three women, not the titles. Ships with mary-slessor-a-life-children.ko, the last of the three, so seed_plans does not publish an English-titled card in Korean and PlanTranslationCoverageTests passes.",
+   "Structure and closing sentence follow family-devotions-heroes-who-trusted-god.ko; names as the three books spell them."
+  ]
+ },
  "christ-our-healer": {
   "title": "우리를 치유하시는 그리스도",
   "description": "구주, 성결케 하시는 분, 치유자, 다시 오실 왕이신 그리스도와 함께하는 여섯 주입니다. A. B. 심프슨이 『사중복음』과 『치유의 복음』에서 사중복음과 그 치유의 사역을 펼쳐 보이고, 앤드류 머레이가 『신유』에서 장차 올 생명의 보증으로 지금도 몸을 고치시는 주님에 대한 한 달의 묵상으로 마무리합니다.",
