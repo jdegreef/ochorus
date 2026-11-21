@@ -1,0 +1,38 @@
+{
+ "kind": "sermon",
+ "slug": "what-is-revival",
+ "language": "ru",
+ "job_issue": 9118,
+ "references": [
+  {
+   "reference": "Isaiah 6:5a",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Luke 18:13b",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Acts 2:12b",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Acts 2:2",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}

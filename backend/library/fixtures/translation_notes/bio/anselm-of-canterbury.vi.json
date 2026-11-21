@@ -1,0 +1,15 @@
+{
+ "kind": "bio",
+ "slug": "anselm-of-canterbury",
+ "language": "vi",
+ "job_issue": 9224,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Psalm 14:1",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 22
+  }
+ ]
+}
