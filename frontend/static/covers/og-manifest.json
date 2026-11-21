@@ -14955,6 +14955,40 @@
 				502
 			]
 		},
+		"fr/after-his-heart": {
+			"ground": "cf08a5325e1661d710bc4650e43a6463f3f436ec54956f45004db0a7fd1b2b2c",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[202, 300, 398, 390],
+					[132, 384, 468, 474]
+				],
+				"subtitle": [
+					[73, 494, 527, 522]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				273,
+				522
+			]
+		},
 		"fr/all-of-grace": {
 			"ground": "1c9bdb35d02ae3c9fa0d528a870e445629a55f39a200014464be0effca918144",
 			"style": "revival",
@@ -23315,6 +23349,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/around-the-wicket-gate": {
+			"ground": "6fed75e7956231a282f14ee5d37ae08d4b1148d433dfc496531dd5e3c65d0853",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "397eee7de1d0d3cebe05f168f08d4aa820767cf39f87df5ed64075b54fc54d98",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0.025,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/baptism-with-the-holy-spirit": {
 			"ground": "57270c0bba1a09d8c29e2206bc3a5f22acdd695512a2797c942af6e59941d365",
 			"style": "revival",
@@ -23599,6 +23648,36 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/purity-of-heart": {
+			"ground": "e71351d516f0f3636762a85700c3d8849690773387edef5200c2ac62c6d7b3ba",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "38c7536f77577124ab4ec70832acf408a2f5b5d95ff9c272342c1b739b929ddb",
+			"art": true,
+			"scrim": 0.4,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[135, 342, 465, 452]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				294,
+				501
+			]
+		},
 		"ja/school-of-prayer": {
 			"ground": "ca319df79b35e2c1ba2a3c5152fb600a889505ae2acda130f0b29ccdeefb648a",
 			"style": "devotional",
@@ -23774,6 +23853,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/tukutendereza": {
+			"ground": "69db5d2704e943972238406d41e78e965b464af26e1d8cc08c51d41c6c65ad55",
+			"style": "originals",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "9b11929914fbaaa8837664f4940a32dbb07b70a773a6aea738d7e4e555bcdcb7",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[61, 312, 539, 388]
+				],
+				"subtitle": [
+					[113, 450, 487, 478]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
+		},
 		"ja/waiting-on-god": {
 			"ground": "c709fc15fee9a6673c0534989e509573fb063032547434ba0eba7b50a194ecf7",
 			"style": "devotional",
@@ -23788,6 +23900,37 @@
 			"bar": 0.02,
 			"caps": false,
 			"sitemark": null
+		},
+		"ja/women-who-moved-heaven-2": {
+			"ground": "d6d62c96d363eeef004a9e57309373198125ddd05994eef1179ee153108ab52c",
+			"style": "originals",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "8e652c8c6d03fd10f5aa3f872746e49d2d485a499524f33b0c81ed88bc490d01",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[149, 308, 451, 384],
+					[149, 374, 451, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"james": {
 			"ground": "063d330a75164dead466f10646bd7392fdfd7e4da3f18daabace1377db3b150c",
@@ -25568,6 +25711,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/all-of-grace-teens": {
+			"ground": "ae508072523018b0b0e32af8a6e2eb474fd63406b01aa634c3ec6ef6634c646f",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "d104baf2f48972c85053fd8e84531c46d3669f329acee772efa5dbc99e23ac04",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[83, 318, 517, 394]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				471
+			]
+		},
 		"ko/all-things-for-good": {
 			"ground": "7206579a2d5372275a94ca12d0dbcd845e7f821563bc32a0a632c8cc3a3d4297",
 			"style": "press",
@@ -25964,6 +26140,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/corrie-ten-boom-a-life-children": {
+			"ground": "1be797474d9b479d89ed89276b7370bd12f0f5892cc695689bc8cd29e894f089",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "b56cbdf64222d33321bd6be4ce8923a7a662a4238390241dc2f245ab5e54696a",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[230, 106, 370, 135]
+				],
+				"title": [
+					[182, 321, 418, 396]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				328,
+				472
+			]
+		},
 		"ko/daughters-of-the-king-1": {
 			"ground": "d4d8d8c7eb49e7d0f8620ada171b2e6d837af7df04e650745d956484034eb28f",
 			"style": "young",
@@ -26059,6 +26268,21 @@
 				328,
 				472
 			]
+		},
+		"ko/enchiridion": {
+			"ground": "9530ae4c5b15cb1a92eb314c749bd679a65949254b9584beacd4392cb1f7de2f",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "14dcf59a72bc4dfc5b31e698cd87855994b38b93f95d43c26599d33161f20c30",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/rust",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
 		},
 		"ko/epistles-of-ignatius": {
 			"ground": "38805cd48c502d737fd745b0063a31066ef440c61fca9c3605ef9b07758d02d9",
@@ -26503,6 +26727,40 @@
 				380
 			]
 		},
+		"ko/key-teachings-of-andrew-murray": {
+			"ground": "f8da39220a9f8834d0100df0c2fad640d6190ac5ae1d444753e65c304d7efcba",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "e6f392fbf3ceca94aa69d72d3a98537287225884fa7e7f9b68cc6718489035d9",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[147, 169, 453, 232],
+					[142, 225, 458, 288]
+				],
+				"subtitle": [
+					[61, 352, 539, 380]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				380
+			]
+		},
 		"ko/key-teachings-of-gareth-evans": {
 			"ground": "d1a874b0ad6eb54cbdc2f1e7438c16f06dd312b8c9610461c5e4ab01996c456b",
 			"style": "originals",
@@ -26871,6 +27129,39 @@
 				501
 			]
 		},
+		"ko/pandita-ramabai-a-life-children": {
+			"ground": "b3abe52615cb8c57276bbcfb0b366e716870fc0c482788fa8b01d20d2c0ce1d5",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "bd5e6ec1e505ea06a19a3d1298287db93d7070caf1e4bfc374e2b2ae7d99ba49",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.3,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[192, 106, 408, 135]
+				],
+				"title": [
+					[111, 321, 489, 396]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				328,
+				472
+			]
+		},
 		"ko/pensees": {
 			"ground": "75e48bed8ad5d6652911436bd6cf9b2310bbac88fe6dd7ed536d6f02516a6b50",
 			"style": "press",
@@ -27208,6 +27499,41 @@
 				599
 			]
 		},
+		"ko/rooted-2": {
+			"ground": "e7737831663fad0c20ae503d82a8b21d0fdd5f061a90329ff2ea620735944e6b",
+			"style": "young",
+			"volume": "2",
+			"script": "korean",
+			"fonts": "4f006ecc21e77b14a1ace7ede6f7f2a0423436751d03f5eccd4d06a239109c8b",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 269, 311, 313],
+					[196, 344, 404, 419]
+				],
+				"subtitle": [
+					[148, 478, 452, 506],
+					[175, 510, 425, 538]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				538
+			]
+		},
 		"ko/school-of-prayer": {
 			"ground": "06d0d9789cc78677648d024e6d2350469e922c3ab3193e275ae01d262f401b94",
 			"style": "devotional",
@@ -27528,6 +27854,21 @@
 				275,
 				520
 			]
+		},
+		"ko/the-gospel-of-healing": {
+			"ground": "8e202d3efb1f398c442bc238f6e9abe3c84e7d561eb11933d17c42760da5caeb",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "c18e06efeccf0e4a25c0c8ae32d29105c9c3c1940a7d24448d9007416ecd6f0f",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/teal",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
 		},
 		"ko/the-imitation-of-christ": {
 			"ground": "71eee575c9620c34ae56e335104233f970a85b2dfba0094bc911aa6f953f0b01",
@@ -27910,6 +28251,39 @@
 			"bar": 0.015,
 			"caps": false,
 			"sitemark": null
+		},
+		"ko/the-way-to-god-teens": {
+			"ground": "d8d48a528fe1df901f10f681dc24269437a7d44cb666a833aaaf5efcc7460410",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "bd5e6ec1e505ea06a19a3d1298287db93d7070caf1e4bfc374e2b2ae7d99ba49",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[54, 318, 546, 394]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				471
+			]
 		},
 		"ko/true-vine": {
 			"ground": "b7875842ddd499da63400547c79f267ea1402c059e9b58eb89ee18e19d2bab38",
@@ -32583,6 +32957,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"pt/after-his-heart": {
+			"ground": "d7824a783a7d17d9a1049cdb535e1c52e80e9e1a7ac060cee944af461fa12168",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[124, 314, 476, 390],
+					[121, 385, 479, 461]
+				],
+				"subtitle": [
+					[96, 481, 504, 509]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
+		},
 		"pt/all-of-grace": {
 			"ground": "21179941fa311850e8b8cf29e4c28f959cb0b3c05ff869161d44a551d263ea4e",
 			"style": "revival",
@@ -36854,6 +37262,40 @@
 			"middle": [
 				261,
 				534
+			]
+		},
+		"ru/amanda-smith-autobiography-children": {
+			"ground": "11a56206fff72ed878bb79d299949601dfe7ea2edec6e92a6f2434a93aa59fa0",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[170, 299, 430, 381],
+					[92, 370, 508, 452]
+				],
+				"edition": [
+					[225, 464, 375, 489]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				249,
+				546
 			]
 		},
 		"ruth": {
@@ -45615,6 +46057,39 @@
 				522
 			]
 		},
+		"vi/a-retrospect-teens": {
+			"ground": "212385929769c4e221d379fc46249af8fa27b9eab06293e9c4223799405d1aa3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[154, 102, 446, 131]
+				],
+				"title": [
+					[103, 322, 497, 432]
+				],
+				"edition": [
+					[181, 440, 419, 465]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				273,
+				522
+			]
+		},
 		"vi/a-short-and-easy-method-of-prayer": {
 			"ground": "240ce36a8e9e734496e05e41625fda28a0abc3e5a38112ccd319f916efe4a926",
 			"style": "devotional",
@@ -45680,6 +46155,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"vi/all-of-grace-teens": {
+			"ground": "e7b91b84575d364b5ef18fdf4946dc808003f11396ff6d92cf3460229b9ef30e",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[153, 287, 447, 363],
+					[183, 354, 417, 430]
+				],
+				"edition": [
+					[181, 440, 419, 465]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				292,
+				502
+			]
+		},
 		"vi/all-things-for-good": {
 			"ground": "5601b0ae310f59647235d4e2be93d1681238d9cc1d0c7fd9e1641f23ec074ceb",
 			"style": "press",
@@ -45727,6 +46236,40 @@
 			"middle": [
 				255,
 				540
+			]
+		},
+		"vi/amanda-smith-autobiography-teens": {
+			"ground": "5f69b8f486d4bfb05fad49d498effdd403375135ab9f9931411e2a16b764bfc8",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[84, 300, 516, 382],
+					[154, 371, 446, 453]
+				],
+				"edition": [
+					[181, 464, 419, 489]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				250,
+				545
 			]
 		},
 		"vi/answers-to-prayer": {
@@ -45956,6 +46499,39 @@
 				595
 			]
 		},
+		"vi/c-s-lewis-a-life-children": {
+			"ground": "f900995639c690a4ba06e6de687187f78e391448dc4c77ec575213b5c342e3d8",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[166, 320, 434, 395]
+				],
+				"edition": [
+					[189, 404, 411, 429]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				327,
+				467
+			]
+		},
 		"vi/cheque-book": {
 			"ground": "63f2ae3f6f803e61d8b69f0d93dc74f333935b8f1bad050727555d51aa0c64b9",
 			"style": "revival",
@@ -46017,6 +46593,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"vi/corrie-ten-boom-a-life-children": {
+			"ground": "bd69da6537d7ec8ae0a0792acd6650bd6ebc3f8418e63aaed2aed4bed6f46ffc",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[89, 320, 511, 395]
+				],
+				"edition": [
+					[189, 404, 411, 429]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				327,
+				467
+			]
+		},
 		"vi/daughters-of-the-king-1": {
 			"ground": "f4578689b51dd2c9628970321e27c8ceb65893c777145f582c6ffcebc7ff4e44",
 			"style": "young",
@@ -46032,6 +46641,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"vi/david-livingstone-a-life-children": {
+			"ground": "8f26db4e2ea46f7544ea26e40af4d8c69cafdc301f39338e3dec8dad7c0082a1",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[120, 102, 480, 131]
+				],
+				"title": [
+					[78, 320, 522, 395]
+				],
+				"edition": [
+					[189, 404, 411, 429]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				327,
+				467
+			]
+		},
 		"vi/divine-healing": {
 			"ground": "e7cfde1dd6f0f093a5a5554b0282e6a0fc296579fb3b1af394c233e595e4c6ea",
 			"style": "devotional",
@@ -46046,6 +46688,39 @@
 			"bar": 0.05,
 			"caps": false,
 			"sitemark": null
+		},
+		"vi/elisabeth-elliot-a-life-children": {
+			"ground": "f6a944280a89ac473e8313f154865556183f2f42340b81df2b40f203c06b4766",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1.25,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[112, 320, 488, 395]
+				],
+				"edition": [
+					[189, 404, 411, 429]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				327,
+				467
+			]
 		},
 		"vi/epistles-of-ignatius": {
 			"ground": "49ce0606db0311d90fb64ee466e5d3f8384c34699c088d969f0d3a4ffaf43bbe",
@@ -46435,6 +47110,39 @@
 				590
 			]
 		},
+		"vi/john-hyde-a-life-children": {
+			"ground": "0e6a51f698a799f1f1f3f7ac85556c9e26875779b5667bb27cb0ec1fbf8d96de",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[132, 320, 468, 395]
+				],
+				"edition": [
+					[189, 404, 411, 429]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				327,
+				467
+			]
+		},
 		"vi/key-teachings-of-a-b-simpson": {
 			"ground": "9fa6669eaf7d78970687d556d0574e79a16c0ab14dad1d841fff626815de8f48",
 			"style": "originals",
@@ -46573,6 +47281,39 @@
 			"middle": [
 				259,
 				536
+			]
+		},
+		"vi/mary-slessor-a-life-children": {
+			"ground": "4515e976e7ed5b33b1cbad126c6c9e62611a75534a62ca3122180b857a650f12",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[170, 102, 430, 131]
+				],
+				"title": [
+					[133, 320, 467, 395]
+				],
+				"edition": [
+					[189, 404, 411, 429]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				327,
+				467
 			]
 		},
 		"vi/men-and-women-who-gave-everything-2": {
@@ -46812,6 +47553,39 @@
 			"middle": [
 				299,
 				496
+			]
+		},
+		"vi/pandita-ramabai-a-life-children": {
+			"ground": "8b8876bacb7a888c86ba4390f20f5fca8e3cde369a3c5d0c08161ec88c9633f6",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.3,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[87, 320, 513, 395]
+				],
+				"edition": [
+					[189, 404, 411, 429]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				327,
+				467
 			]
 		},
 		"vi/pensees": {
@@ -47155,6 +47929,40 @@
 			"middle": [
 				190,
 				605
+			]
+		},
+		"vi/samuel-ajayi-crowther-a-life-children": {
+			"ground": "c34b3a2ab472f00d10a6b4d8eddc724902464903cf26f05dd530b2bc21db7882",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1.3,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[136, 290, 464, 365],
+					[178, 351, 422, 426]
+				],
+				"edition": [
+					[189, 435, 411, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				297,
+				498
 			]
 		},
 		"vi/school-of-prayer": {
@@ -47576,6 +48384,40 @@
 				558
 			]
 		},
+		"vi/the-life-of-trust-teens": {
+			"ground": "069114cb16932306ce9e83e95b44608e3cf4f7a29649c32a92d85c68b9721565",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.45,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[155, 102, 445, 131]
+				],
+				"title": [
+					[149, 286, 451, 383],
+					[172, 370, 428, 467]
+				],
+				"edition": [
+					[181, 477, 419, 502]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				237,
+				558
+			]
+		},
 		"vi/the-masters-indwelling": {
 			"ground": "9b1942de887d5b3198972360264bbde39caa6be21bcc0e2d77d1f5fb313e528c",
 			"style": "devotional",
@@ -47832,6 +48674,41 @@
 			"bar": 0.015,
 			"caps": false,
 			"sitemark": null
+		},
+		"vi/the-way-to-god-teens": {
+			"ground": "f0fd473e8be29d1022a43d49d852e92cd787834df76b65f98c440c5487fc122f",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[135, 254, 465, 330],
+					[122, 320, 478, 396],
+					[153, 387, 447, 463]
+				],
+				"edition": [
+					[181, 473, 419, 498]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				259,
+				535
+			]
 		},
 		"vi/true-vine": {
 			"ground": "128b8534466b56fce047270220f3ae596ad269dae0ee99cec7accf7a3b29a752",

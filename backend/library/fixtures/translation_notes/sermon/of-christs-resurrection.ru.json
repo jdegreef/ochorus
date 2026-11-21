@@ -1,0 +1,86 @@
+{
+ "kind": "sermon",
+ "slug": "of-christs-resurrection",
+ "language": "ru",
+ "job_issue": 9128,
+ "references": [
+  {
+   "reference": "Mark 16:1a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Genesis 1:5b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Genesis 1:8b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Genesis 1:13b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Romans 4:25b",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 1:29b",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Genesis 3:15a",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Genesis 22:18a",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 15:54b",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 15:55",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 15:56b",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}

@@ -1,0 +1,133 @@
+{
+ "kind": "sermon",
+ "slug": "guard-the-fire",
+ "language": "ko",
+ "job_issue": 8953,
+ "references": [
+  {
+   "reference": "Luke 24:49",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 20:25",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 24:39",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 24:39a",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "John 20:21b",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 20:22",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 20:22b",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Exodus 3:5b",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Exodus 3:7a",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Exodus 14:13a",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Exodus 33:2a",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Exodus 32:10b",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Exodus 33:15",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Exodus 33:20a",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Exodus 33:17b",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Acts 6:3a",
+   "status": "mined",
+   "block_index": 57,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Acts 6:4",
+   "status": "mined",
+   "block_index": 57,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Acts 6:4",
+   "status": "mined",
+   "block_index": 57,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "mined",
+   "block_index": 67,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 1:4",
+   "status": "self_rendered"
+  }
+ ]
+}

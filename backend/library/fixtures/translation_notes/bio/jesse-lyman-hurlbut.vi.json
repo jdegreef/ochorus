@@ -1,0 +1,15 @@
+{
+ "kind": "bio",
+ "slug": "jesse-lyman-hurlbut",
+ "language": "vi",
+ "job_issue": 9218,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 27
+  }
+ ]
+}
