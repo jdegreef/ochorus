@@ -1,0 +1,150 @@
+{
+ "kind": "book",
+ "slug": "separation-and-service",
+ "language": "ko",
+ "job_issue": 9038,
+ "references": [
+  {
+   "reference": "Song 1:2",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Jude 1:24",
+   "status": "mined",
+   "block_index": 67,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 15:13",
+   "status": "mined",
+   "block_index": 87,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 8:12",
+   "status": "mined",
+   "block_index": 117,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:2",
+   "status": "mined",
+   "block_index": 128,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Acts 22:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 22:10",
+   "status": "mined",
+   "block_index": 129,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 14:17",
+   "status": "mined",
+   "block_index": 132,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 14:27",
+   "status": "mined",
+   "block_index": 140,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "block_index": 142,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "block_index": 143,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "block_index": 144,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "block_index": 144,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "block_index": 144,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "block_index": 144,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "block_index": 142,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 7:38",
+   "status": "mined",
+   "block_index": 144,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 7:39",
+   "status": "mined",
+   "block_index": 144,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Mark 14:8",
+   "status": "mined",
+   "block_index": 162,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}
