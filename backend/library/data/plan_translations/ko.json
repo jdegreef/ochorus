@@ -171,5 +171,12 @@
    "Written with the-masters-indwelling.ko (queue job #7009), the plan's second source book in Korean. Book titles are quoted as shipped or already coined: 『예수님 자신』 (jesus-himself-2.ko), 『내주하시는 주님』 (this job), 『연합과 교제』 (the title a-retrospect.ko and the ko Hudson Taylor FAQ already use). '너희 안에 계신 그리스도' is Colossians 1:27 in the 개역; names follow the ko shelf (앤드류 머레이, 허드슨 테일러).",
    "NOTE this row cannot appear yet: seed_plans only creates a plan in a language where EVERY source book is published in it, and union-and-communion has no ko edition. The prose waits for that book, as the sw entry did."
   ]
+ },
+ "rooted-three-months-books-4-6": {
+  "title": "뿌리내림: 하나님과 함께하는 석 달 — 제4–6권",
+  "description": "9세에서 12세 어린이를 위한 하나님과 함께하는 또 석 달입니다. 『뿌리내림』의 마지막 세 권, 『폭풍 속에서도 굳게』, 『가지 뻗기』, 『열매 맺는 삶』을 하루에 짧은 묵상 하나씩 읽습니다. 삶이 힘들 때 굳게 서는 법, 곁에 있는 사람들을 사랑하는 법, 그리고 내 삶을 향한 하나님의 목적을 배웁니다.",
+  "note": [
+   "Backed by the ko editions rooted-4, rooted-5 and rooted-6 (Korean batch of 2026-11-21); ships with rooted-6.ko so seed_plans never publishes this plan with an English title in Korean. Volume names are the subtitles' heads: 폭풍 속에서도 굳게 (rooted-4), 가지 뻗기 (rooted-5), 열매 맺는 삶 (rooted-6); title and wording follow rooted-three-months-books-1-3.ko. 합니다체, the ko plan-card register."
+  ]
  }
 }
