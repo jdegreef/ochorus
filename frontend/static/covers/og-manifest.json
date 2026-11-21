@@ -23599,6 +23599,37 @@
 				542
 			]
 		},
+		"ja/the-pursuit-of-god": {
+			"ground": "9f722701a5df2a99b2b7ac6292fe3946f1b1ed44933bc6313805a75d9908e493",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "0ef1d60148bcced1a52266567ca2ec5306fc73266725ae8716491c10b0f8481d",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[176, 221, 424, 331],
+					[135, 316, 465, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				476
+			]
+		},
 		"ja/the-way-to-god": {
 			"ground": "613cd17b19a51451c3ef932bc83aa2cfdc89e8939c1f22067c85036f3f855089",
 			"style": "revival",
