@@ -1,0 +1,21 @@
+{
+ "kind": "bio",
+ "slug": "george-macdonald",
+ "language": "vi",
+ "job_issue": 9221,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Matthew 5:26",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 17
+  },
+  {
+   "reference": "1 John 1:5",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 33
+  }
+ ]
+}
