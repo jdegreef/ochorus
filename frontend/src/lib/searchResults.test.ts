@@ -344,3 +344,38 @@ describe('leadWithPinned', () => {
 		expect(leadWithPinned(plain)).toBe(plain);
 	});
 });
+
+describe('quotes', () => {
+	const quote = (phrase = false, kind: 'chapter' | 'sermon' = 'chapter') =>
+		({
+			type: 'quote',
+			quote_slug: 'andrew-murray-1a2b3c4d',
+			text: 'A heart full of God has power for the prayer of faith.',
+			author_slug: 'andrew-murray',
+			author_name: 'Andrew Murray',
+			paragraph: 7,
+			source:
+				kind === 'chapter'
+					? { kind, slug: 'with-christ', title: 'Lesson 1', work: 'With Christ', order: 3 }
+					: { kind, slug: 'faith', title: 'Faith', work: 'Faith', order: null },
+			snippet: 'A heart full of God has power for the ⟦prayer⟧ of faith.',
+			date: '',
+			...(phrase ? { phrase } : {})
+		}) as unknown as SearchHit;
+
+	it('links to the paragraph the line was taken from, and reads like a passage', () => {
+		const r = toRow(quote(), ctx);
+		expect(r.key).toBe('quote:andrew-murray-1a2b3c4d');
+		expect(r.href).toBe('/books/with-christ/3/?p=7');
+		expect(r.location).toBe('Andrew Murray · With Christ');
+		expect(r.snippet).toContain('⟦prayer⟧');
+		expect(toRow(quote(false, 'sermon'), ctx).href).toBe('/sermons/faith/?p=7');
+	});
+
+	it('sit after articles and before passages, and lead when quoted word for word', () => {
+		const rows = rowsOf([chapter('humility', 1), quote(), book()]);
+		expect(groupRows(rows).map((g) => g.type)).toEqual(['book', 'quote', 'chapter']);
+		const quoting = rows.map((r) => (r.type === 'quote' ? { ...r, phrase: true } : r));
+		expect(leadWithPinned(groupRows(quoting)).map((g) => g.type)[0]).toBe('quote');
+	});
+});

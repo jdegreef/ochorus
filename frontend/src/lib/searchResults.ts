@@ -15,7 +15,7 @@
  */
 import { portraitPosition } from '$lib/portraits';
 import { authorPath } from './originals';
-import { scripturePageHref } from '$lib/library-public';
+import { quoteHitHref, scripturePageHref } from '$lib/library-public';
 import type { CoverFace, SearchHit, SearchType } from '$lib/library-public';
 import { chapterName } from './reading';
 import { foldText } from './searchNormalize';
@@ -64,6 +64,8 @@ export type ResultRow = Row & {
 	named?: boolean;
 	/** The result most readers open for this query; see `leadWithPinned`, `topResult`. */
 	chosen?: boolean;
+	/** A quotation the query is quoting word for word; see `leadWithPinned`. */
+	phrase?: boolean;
 };
 
 /** What `toRow` needs from the page: the type chip's wording, and the query. */
@@ -162,6 +164,21 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
 				color: '',
 				round: false
 			};
+		case 'quote':
+			return {
+				key: 'quote:' + hit.quote_slug,
+				label: ctx.label('quote'),
+				href: quoteHitHref(hit),
+				title: hit.text,
+				meta: `${hit.author_name} · ${hit.source.work}`,
+				// Read like a passage: who said it and where, then the words.
+				location: `${hit.author_name} · ${hit.source.work}`,
+				snippet: hit.snippet,
+				date: hit.date,
+				image: '',
+				color: '',
+				round: false
+			};
 		case 'sermon':
 			return {
 				key: 'sermon:' + hit.sermon_slug,
@@ -214,6 +231,9 @@ export const GROUP_ORDER: { type: SearchHit['type']; labelKey: string }[] = [
 	{ type: 'topic', labelKey: 'search.groupTopics' },
 	{ type: 'plan', labelKey: 'search.groupPlans' },
 	{ type: 'article', labelKey: 'search.groupArticles' },
+	// Quotations are English-only, so this section never shows elsewhere. It
+	// leads when the reader is quoting one (see `leadWithPinned`).
+	{ type: 'quote', labelKey: 'nav.quotes' },
 	{ type: 'chapter', labelKey: 'search.groupPassages' },
 	{ type: 'sermon', labelKey: 'search.groupSermons' }
 ];
@@ -246,8 +266,10 @@ export function groupRows(rows: ResultRow[]): ResultGroup[] {
  * list, so within its group it is already the top row.
  */
 export function leadWithPinned(groups: ResultGroup[]): ResultGroup[] {
-	// An admin's pin first; failing that, the result readers keep choosing.
+	// An admin's pin first; then a quotation the reader is quoting word for
+	// word; failing those, the result readers keep choosing.
 	let i = groups.findIndex((g) => g.rows.some((r) => r.pinned));
+	if (i < 0) i = groups.findIndex((g) => g.rows.some((r) => r.phrase));
 	if (i < 0) i = groups.findIndex((g) => g.rows.some((r) => r.chosen));
 	return i > 0 ? [groups[i], ...groups.slice(0, i), ...groups.slice(i + 1)] : groups;
 }

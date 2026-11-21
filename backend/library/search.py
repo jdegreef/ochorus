@@ -68,6 +68,7 @@ from .people import People, fold, strongest
 from .people import words as name_words
 from .scripture import reference_verse_ids
 from .search_aliases import books_named, other_names
+from .search_quotes import QUOTE_CAP, quote_hits
 
 MAX_RESULTS = 30
 
@@ -440,6 +441,9 @@ def search_library(q: str, language: str, scope=None) -> list[dict]:
         ]
     extra += cite_hits
     merged = (extra + base)[:MAX_RESULTS] if extra else base
+    # Quotations ride beside the capped list rather than inside it: they are
+    # their own section, and a few of them should never cost a passage its place.
+    merged += quote_hits(q, language, ctx.writer, scope)[:QUOTE_CAP]
     # Readers' choices last, over the finished list: they reorder what matched,
     # never add to it. Not inside a scope, where clicks aren't recorded.
     return merged if scope else apply_choices(merged, q, language)
@@ -470,6 +474,8 @@ def hit_row_key(hit: dict) -> str:
     if kind == "scripture":
         verse = hit.get("verse")
         return f"scripture:{hit.get('book_slug', '')}:{hit.get('chapter', '')}:{'' if verse is None else verse}"
+    if kind == "quote":
+        return f"quote:{hit.get('quote_slug', '')}"
     spec = HIT_WORK.get(kind)
     return f"{kind}:{hit.get(spec[1], '')}" if spec else ""
 
@@ -548,7 +554,7 @@ class _Ctx:
             # names ("d l moody prayer"). Not everyone who merely shares a
             # word with it — "gospel of john" is not a search for every John.
             found = [m for m in matches if m.whole or m is person]
-            self._people = (found, people.rewrite(self.q, matches), person)
+            self._people = (found, people.rewrite(self.q, matches), person, matches)
         return self._people
 
     @property
@@ -579,6 +585,20 @@ class _Ctx:
     def person(self):
         """The one person the query names by two or more words, or None."""
         return self._read_people()[2]
+
+    @property
+    def writer(self):
+        """Whose words the query asks for: ``person``, or failing that the one
+        writer it names by surname ("spurgeon prayer"). For quotes, where a
+        surname is never what a sentence says, so one word is enough."""
+        if self.person is not None:
+            return self.person
+        by_surname = [m for m in self._read_people()[3] if m.by_surname]
+        if len(by_surname) == 1 or (
+            len(by_surname) > 1 and by_surname[0].score > by_surname[1].score
+        ):
+            return by_surname[0]
+        return None
 
 
 def _author_names(language: str) -> list[tuple[int, str]]:
@@ -1097,6 +1117,10 @@ def count_by_type(q: str, language: str, scope=None) -> tuple[dict, dict]:
         for kind in querysets:
             if kind in TOASTED:
                 tally(kind)
+    quotes = len(quote_hits(q, language, ctx.writer, scope))
+    if quotes:
+        counts["quote"] = quotes
+        capped["quote"] = False
     # "scripture" is intentionally uncounted: it has no queryset, and a reference
     # resolves to 0-or-1 page, so the frontend's `totals[type] ?? loaded` fallback
     # lands on the single loaded row exactly. Counting it would mean re-running
@@ -1140,6 +1164,12 @@ def page_by_type(
     # the type facet's "show this kind" fetch returns the hit rather than blank.
     if kind == "scripture":
         return _scripture_page_hits(q, language, scope)[offset : offset + limit]
+    if kind == "quote":
+        ctx = _Ctx(q=q, language=language)
+        hits = quote_hits(q, language, ctx.writer, scope)
+        if sort == "title":
+            hits.sort(key=lambda h: h["text"].casefold())
+        return hits[offset : offset + limit]
     if kind not in CAPS:
         return []
     ctx = _Ctx(q=q, language=language)

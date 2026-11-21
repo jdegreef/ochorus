@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { search, searchComplete, scripturePageHref, type SearchHit } from '$lib/library-public';
+	import { search, searchComplete, scripturePageHref, quoteHitHref, type SearchHit } from '$lib/library-public';
 	import { authorPath } from '$lib/originals';
 	import {
 		primaryNav,
@@ -114,6 +114,8 @@
 				return { key: 'article:' + h.article_slug, kind: 'hit', label: t('search.typeArticle'), title: h.article_title, meta: '', href: `/articles/${h.article_slug}` };
 			case 'scripture':
 				return { key: `scripture:${h.book_slug}:${h.chapter}:${h.verse ?? ''}`, kind: 'hit', label: t('search.typeScripture'), title: h.reference, meta: '', href: scripturePageHref(h.book_slug, h.chapter, h.verse) };
+			case 'quote':
+				return { key: 'quote:' + h.quote_slug, kind: 'hit', label: t('nav.quotes'), title: h.text, meta: h.author_name, href: quoteHitHref(h) };
 			case 'sermon':
 				return { key: 'sermon:' + h.sermon_slug, kind: 'hit', label: t('search.typeSermon'), title: h.sermon_title, meta: h.author_name, href: `/sermons/${h.sermon_slug}`, admin: adminHref('sermon', h.sermon_slug) };
 			default:

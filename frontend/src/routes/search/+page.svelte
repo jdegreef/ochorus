@@ -123,6 +123,7 @@
 		plan: () => t('search.typePlan'),
 		article: () => t('search.typeArticle'),
 		scripture: () => t('search.typeScripture'),
+		quote: () => t('nav.quotes'),
 		sermon: () => t('search.typeSermon'),
 		chapter: () => t('search.typeChapter')
 	};
@@ -136,7 +137,8 @@
 			type: h.type,
 			pinned: h.pinned,
 			named: h.named,
-			chosen: h.chosen
+			chosen: h.chosen,
+			phrase: h.type === 'quote' ? h.phrase : undefined
 		}))
 	);
 	const groups = $derived<ResultGroup[]>(leadWithPinned(groupRows(rows)));
@@ -1172,7 +1174,7 @@
 						<ul class="divide-y divide-border">
 							{#each g.rows as row (row.key)}
 								<li>
-									{#if row.type === 'chapter'}
+									{#if row.type === 'chapter' || row.type === 'quote'}
 										<!-- A passage: where it is, then the words that matched.
 										     The snippet is the result — it is why the row is here. -->
 										<a

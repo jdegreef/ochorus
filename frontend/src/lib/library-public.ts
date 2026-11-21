@@ -680,6 +680,26 @@ export interface ScriptureHit {
 	date: string;
 }
 
+/**
+ * A reviewed quotation whose words the query holds (search_quotes.py).
+ * English-only, as the quotes are; links to the paragraph it was taken from.
+ */
+export interface QuoteHit {
+	type: 'quote';
+	quote_slug: string;
+	text: string;
+	author_slug: string;
+	author_name: string;
+	paragraph: number;
+	source: Pick<QuoteSource, 'kind' | 'slug' | 'title' | 'work' | 'order'>;
+	/** The quotation with the words that matched marked. */
+	snippet: string;
+	/** Always "" — a quote has no date of its own. */
+	date: string;
+	/** The query is a run of the quote's own words: the reader is quoting it. */
+	phrase?: boolean;
+}
+
 export type SearchHit = (
 	| ChapterHit
 	| SermonHit
@@ -689,6 +709,7 @@ export type SearchHit = (
 	| PlanHit
 	| ArticleHit
 	| ScriptureHit
+	| QuoteHit
 ) & {
 	/** An admin pinned this as the best match for the query; it leads the list. */
 	pinned?: boolean;
@@ -2408,6 +2429,15 @@ export const quoteHref = (q: Quote): string =>
 	q.source.kind === 'sermon'
 		? `/sermons/${q.source.slug}/?p=${q.paragraph}`
 		: `/books/${q.source.slug}/${q.source.order}/?p=${q.paragraph}`;
+
+/** A quote search hit's link: the same paragraph its card links to. */
+export const quoteHitHref = (h: QuoteHit): string =>
+	quoteHref({
+		slug: h.quote_slug,
+		text: h.text,
+		paragraph: h.paragraph,
+		source: { ...h.source, cover_color: '' }
+	});
 
 /**
  * The landing page of the WORK a quote sits in (not the paragraph) — its title

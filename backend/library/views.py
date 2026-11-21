@@ -2076,7 +2076,7 @@ class SearchClickView(APIView):
 
         if (
             min_query_len(_language(request)) <= len(q) <= 200
-            and result_type in CAPS
+            and (result_type in CAPS or result_type == "quote")
             and 1 <= position <= self.MAX_POSITION
         ):
             # Fail-open like the query log: analytics must never be the reason a
