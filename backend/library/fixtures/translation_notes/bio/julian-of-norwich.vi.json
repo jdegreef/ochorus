@@ -1,0 +1,15 @@
+{
+ "kind": "bio",
+ "slug": "julian-of-norwich",
+ "language": "vi",
+ "job_issue": 9230,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "1 John 4:8b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 26
+  }
+ ]
+}
