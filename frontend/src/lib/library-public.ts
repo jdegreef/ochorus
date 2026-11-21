@@ -692,6 +692,8 @@ export type SearchHit = (
 ) & {
 	/** An admin pinned this as the best match for the query; it leads the list. */
 	pinned?: boolean;
+	/** An author the query names, however spelt ("d l moody" → Dwight L. Moody). */
+	named?: boolean;
 };
 
 export type SearchType = SearchHit['type'];

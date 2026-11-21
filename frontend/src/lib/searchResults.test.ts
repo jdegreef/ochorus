@@ -258,6 +258,15 @@ describe('topResult', () => {
 		expect(topResult(rowsOf([hi]), 'हिम')?.key).toBe('book:him');
 	});
 
+	it('promotes a writer the server says the query names, however it was spelt', () => {
+		const rows = rowsOf([book(), author()]).map((r) => ({ ...r, named: r.type === 'author' }));
+		expect(topResult(rows, 'a murray')?.key).toBe('author:andrew-murray');
+		// …but an exactly-titled book still comes first.
+		expect(topResult(rows, 'humility')?.key).toBe('book:humility');
+		// Without the server's word, a partial name promotes nothing.
+		expect(topResult(rowsOf([author()]), 'a murray')).toBeNull();
+	});
+
 	it('prefers the book when a book and a writer share the name', () => {
 		const same = { ...(author() as object), author_name: 'Humility' } as SearchHit;
 		expect(topResult(rowsOf([same, book()]), 'humility')?.type).toBe('book');

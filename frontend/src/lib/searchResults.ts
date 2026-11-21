@@ -60,6 +60,8 @@ export type ResultRow = Row & {
 	type: SearchHit['type'];
 	/** An admin's pinned best match for this query (see `leadWithPinned`). */
 	pinned?: boolean;
+	/** A writer the query names however it was spelt ("d l moody"); see `topResult`. */
+	named?: boolean;
 };
 
 /** What `toRow` needs from the page: the type chip's wording, and the query. */
@@ -322,7 +324,9 @@ function fold(s: string): string {
 /**
  * The one result worth a larger card above the list: a book or a writer the
  * query names exactly ("all of grace", "spurgeon" does not; "Charles Spurgeon"
- * does), or an admin's pinned best match when that is a book or a writer.
+ * does), or an admin's pinned best match when that is a book or a writer. A
+ * writer the server says the query names (`named`: "d l moody", "C.H.
+ * Spurgeon", "Dwight Moody") counts as exact, after an exactly-titled book.
  *
  * Exact, not "first": a top card over a fuzzy match claims an answer the
  * reader didn't ask for. Books win a tie with writers because the reader came
@@ -335,5 +339,10 @@ export function topResult(rows: ResultRow[], query: string): ResultRow | null {
 	const q = fold(query);
 	if (q.length < 2) return null;
 	const exact = named.filter((r) => fold(r.title) === q);
-	return exact.find((r) => r.type === 'book') ?? exact[0] ?? null;
+	return (
+		exact.find((r) => r.type === 'book') ??
+		exact[0] ??
+		named.find((r) => r.type === 'author' && r.named) ??
+		null
+	);
 }
