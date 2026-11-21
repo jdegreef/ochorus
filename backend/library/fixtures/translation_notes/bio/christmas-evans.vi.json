@@ -1,0 +1,21 @@
+{
+ "kind": "bio",
+ "slug": "christmas-evans",
+ "language": "vi",
+ "job_issue": 9203,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Revelation 1:16",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 4
+  },
+  {
+   "reference": "1 Timothy 6:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 16
+  }
+ ]
+}
