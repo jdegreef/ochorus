@@ -38518,6 +38518,43 @@
 				565
 			]
 		},
+		"ru/brave-for-god-4": {
+			"ground": "449393ec9022238d7476e50448587a841e9b3d75e0b561e5f7a6200382d281ab",
+			"style": "young",
+			"volume": "4",
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 211, 311, 255],
+					[173, 286, 427, 361],
+					[171, 347, 429, 422],
+					[98, 409, 502, 484]
+				],
+				"subtitle": [
+					[161, 539, 439, 567],
+					[173, 568, 427, 596]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				199,
+				596
+			]
+		},
 		"ru/pilgrims-progress-children": {
 			"ground": "0f50574b6128cc994efd9ba279393fbe2560a6cb136e88d1bb61fc10070a970b",
 			"style": "press",
