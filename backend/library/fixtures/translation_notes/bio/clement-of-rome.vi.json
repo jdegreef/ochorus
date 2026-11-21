@@ -1,0 +1,15 @@
+{
+ "kind": "bio",
+ "slug": "clement-of-rome",
+ "language": "vi",
+ "job_issue": 9206,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "1 Peter 4:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 10
+  }
+ ]
+}

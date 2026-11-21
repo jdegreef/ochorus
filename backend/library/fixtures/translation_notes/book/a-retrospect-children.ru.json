@@ -1,0 +1,86 @@
+{
+ "kind": "book",
+ "slug": "a-retrospect-children",
+ "language": "ru",
+ "job_issue": 9082,
+ "references": [
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 5:42a",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 6:8",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 118:17",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 107:29-30",
+   "status": "mined",
+   "block_index": 41,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Jeremiah 33:3a",
+   "status": "mined",
+   "block_index": 49,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 9:22b",
+   "status": "mined",
+   "block_index": 57,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Hebrews 13:5b",
+   "status": "mined",
+   "block_index": 65,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Luke 6:37c",
+   "status": "mined",
+   "block_index": 73,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Genesis 22:8a",
+   "status": "mined",
+   "block_index": 81,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 Samuel 7:12b",
+   "status": "mined",
+   "block_index": 82,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "mined",
+   "block_index": 89,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}
