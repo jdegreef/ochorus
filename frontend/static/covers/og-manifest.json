@@ -45758,6 +45758,39 @@
 				595
 			]
 		},
+		"vi/c-s-lewis-a-life-children": {
+			"ground": "f900995639c690a4ba06e6de687187f78e391448dc4c77ec575213b5c342e3d8",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[166, 320, 434, 395]
+				],
+				"edition": [
+					[189, 404, 411, 429]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				327,
+				467
+			]
+		},
 		"vi/cheque-book": {
 			"ground": "63f2ae3f6f803e61d8b69f0d93dc74f333935b8f1bad050727555d51aa0c64b9",
 			"style": "revival",
