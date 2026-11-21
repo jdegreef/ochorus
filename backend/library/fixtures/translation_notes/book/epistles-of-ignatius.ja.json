@@ -1,0 +1,58 @@
+{
+    "kind": "book",
+    "slug": "epistles-of-ignatius",
+    "language": "ja",
+    "job_issue": 8143,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "James 4:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Matthew 12:33",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Psalm 33:9",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "1 Corinthians 6:9-10",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "1 Corinthians 1:20",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Proverbs 18:17",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Isaiah 52:5",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "1 Corinthians 4:4",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Matthew 3:15",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Matthew 19:12",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Matthew 10:16",
+            "status": "self_rendered"
+        }
+    ]
+}
