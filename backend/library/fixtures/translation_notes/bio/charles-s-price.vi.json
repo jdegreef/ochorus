@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "charles-s-price",
+ "language": "vi",
+ "job_issue": 9229,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "1 Corinthians 2:2b",
+   "status": "self_rendered",
+   "block_index": 16
+  }
+ ]
+}
