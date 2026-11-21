@@ -100,8 +100,9 @@
   },
   {
    "reference": "Luke 17:26",
-   "status": "self_rendered",
-   "block_index": 5
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   }
  ]
 }
