@@ -19,6 +19,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'a-serious-call': 0.55,
 	'a-short-and-easy-method-of-prayer': 0.90,
 	'absolute-surrender-teens': 0.10,
+	'after-his-heart': 0.10,
 	'against-heresies': 0.75,
 	'against-marcion': 0.90,
 	'all-of-grace-teens': 0.80,
