@@ -1197,7 +1197,9 @@ dropped; chapters under 120 words are dropped as stubs.
   two files. The resolution is always **keep BOTH entries** (`git merge
   origin/main`, un-nest the two blocks, close each). To avoid it, merge each
   book's PR before starting the next, or anchor new entries at distinct
-  neighbours. *(#1238 Guyon vs #1239 Bernard, 2026-08)*
+  neighbours. Body `replacements` pairs no longer need a slot at all: write them
+  as a new file, `library/data/body_corrections/<slug>.<tag>.json` (see the
+  loader at the end of `corrections.py`). *(#1238 Guyon vs #1239 Bernard, 2026-08)*
 - **Text OUTSIDE any block ("loose runs") — four shapes, four repairs.** Find
   them with `[x for x in BeautifulSoup(html,'html.parser').children if
   isinstance(x, NavigableString) and x.strip()]`, and ALSO list top-level

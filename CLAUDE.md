@@ -135,6 +135,13 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
   merging; expect fixture / migration conflicts. Squash-merge when CI is green
   ("merge when CI passes" is a standing instruction; where the user is steering,
   wait for their go-ahead).
+- **Shared files have conflict-free channels; use them.** English body slips →
+  a NEW `backend/library/data/body_corrections/<slug>.<tag>.json`, not a block at
+  the end of `corrections.py`. A `series.json` translation row → its sorted
+  (series, language) place. The verse baseline → `audit_verse_consistency
+  --update-baseline --language <lang>`, and on a conflict take main's copy and
+  re-run it (never hand-merge a derived file). `og-manifest.json` → splice only
+  your own entry. Divergent migration leaves → a merge migration.
 - Run `/simplify`, then `/code-review high` for logic-bearing changes, before
   requesting merge — and fold the findings in.
 

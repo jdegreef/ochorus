@@ -35,6 +35,7 @@ import { createHash } from 'node:crypto';
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { localBuildApiOrigin } from '../src/lib/buildApi.ts';
 
 const API = (process.env.PUBLIC_API_BASE_URL || '').replace(/\/+$/, '');
 const ON_RENDER = Boolean((process.env.RENDER_GIT_COMMIT || '').trim());
@@ -114,6 +115,9 @@ function localDigest() {
 	return seen ? h.digest('hex').slice(0, 16) : null;
 }
 
+// The local build API (scripts/local-api.mjs) was seeded from this very
+// checkout, so it holds this build's content by construction.
+if (localBuildApiOrigin(process.env)) skip('OCHORUS_BUILD_API=local (seeded from this checkout)');
 if (!ON_RENDER) skip('RENDER_GIT_COMMIT unset (not a Render build)');
 if (!API) skip('PUBLIC_API_BASE_URL unset');
 

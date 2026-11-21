@@ -5,7 +5,8 @@ natural-key format (no integer pks — see Stage 1 / ``tests_fixture``):
 
     content/
       authors.json                    all Author rows (low churn, shared)
-      series.json                     all Series rows (books join by natural key)
+      series.json                     all Series rows (books join by natural key),
+                                      then SeriesTranslations sorted by (series, language)
       books/<slug>.<language>.json    one Book row followed by its Chapters
       sermons/<slug>.<language>.json  one Sermon row
       articles/<slug>.<language>.json one Article row (no author, no chapters)

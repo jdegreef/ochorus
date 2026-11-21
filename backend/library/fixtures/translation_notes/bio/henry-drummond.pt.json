@@ -1,0 +1,31 @@
+{
+    "kind": "bio",
+    "slug": "henry-drummond",
+    "language": "pt",
+    "job_issue": 8688,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "2 Corinthians 5:20",
+            "status": "self_rendered",
+            "block_index": 6
+        },
+        {
+            "reference": "Psalm 4:6",
+            "status": "self_rendered",
+            "block_index": 6
+        },
+        {
+            "reference": "Romans 14:8",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 23
+        },
+        {
+            "reference": "1 John 4:8",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 22
+        }
+    ]
+}

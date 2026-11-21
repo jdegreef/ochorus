@@ -1,0 +1,165 @@
+{
+ "kind": "sermon",
+ "slug": "sweet-comfort-for-feeble-saints",
+ "language": "ko",
+ "job_issue": 8731,
+ "references": [
+  {
+   "reference": "Matthew 12:20",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 12:20b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Kings 19:12",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 11:28a",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 12:20",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 12:20",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Job 9:30-31",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "1 Corinthians 10:31",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 8:11",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 5:14",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 23:42b",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 12:20",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Jeremiah 3:22",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Psalm 1:3",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 12:20",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Romans 3:22b",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Mark 8:24",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:8",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Isaiah 35:10",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Jeremiah 31:8",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 12:20",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 73:26",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Romans 12:11",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 12:11",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 12:20",
+   "status": "self_rendered",
+   "block_index": 35
+  }
+ ]
+}

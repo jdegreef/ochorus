@@ -339,7 +339,10 @@ Reported, not fixed
   the LAST one silently wins and the first is dead. `feasting-at-the-table`
   already carried a 3-pair ch7 drop-cap entry, and a fresh 66-pair entry added
   above it did nothing until the two were folded into one. `grep -n '"<slug>"'
-  library/corrections.py` before adding; if it's there, MERGE into it. The tell
+  library/corrections.py` before adding; if it's there, MERGE into it. (Plain
+  `replacements` pairs need neither step: a NEW file under
+  `library/data/body_corrections/<slug>.<tag>.json` extends the slug's list
+  rather than replacing it, and cannot conflict with a parallel PR.) The tell
   is `normalize_english_fixture` reporting "0 fields" when you expected edits.
   **And the entry `grep` finds may be the WRONG dict.** `CORRECTIONS` (metadata:
   `chapter_titles`, importer-only) and `BODY_CORRECTIONS` (body, deploy chain) are
@@ -670,6 +673,26 @@ Reported, not fixed
   mismatch, rule out edition spellings ("unmoveable", "Jehovahjireh") and the
   API's own typos ("havethem", Mark 11:24). Repair with blockquote-anchored
   `BODY_CORRECTIONS` pairs. If the extractor caused it, fix the extractor.
+- **Miscitations in the EDITIONS WE WROTE: `manage.py audit_english_citations`**
+  (2026-11-21, `library/english_citations.py`). Translators reproduce a printed
+  reference verbatim, so one wrong citation becomes one per language. This
+  reads every English body — originals, `en-modern`, Ochorus Originals,
+  `-children`/`-teens`, articles — scores each quotation against the OWB and
+  ASV together, and reports `miscited` / `range` (quote runs past the cited
+  verse) / `no-such-verse` / `book-spelling`, tagged by who owns the mistake:
+  `pd` is report-only (the author's citation is the text); `modern` and
+  `house` findings marked FIX are ours. A Modern English edition that prints
+  the same reference as its original is the AUTHOR'S citation carried over
+  (Bunyan's "(Matt. 5.11)" over 5:11-12) — never "fix" it there alone.
+  `tests_english_citations.OwnEditionsTests` holds our editions at zero FIX
+  findings. First sweep: 0 in our editions; ~300 `pd` findings, the worst in
+  the ESV-swapped books listed above (`the-christians-secret-of-a-happy-life-4`:
+  "Mathew" ×7, "2Corinthians 2:14" over 3:14, "(James 1:2)" over 1:2-4),
+  which need the re-import, not patches. Blind spot: a reference
+  with NO quotation beside it (Torrey's "(Hebrews 3:18)" for 2:18, "(Acts 4)"
+  for 1:4) has nothing to score and is not seen. House books quote the BSB,
+  which is not bundled, so a correct BSB citation can score low — the rival
+  must win on word ORDER too before anything is reported.
 - **An audit that calls a book clean can be describing its own blind spots.**
   `the-bruised-reed` (re-imported from Pickering's 1838 scan, #1943) passed
   `english_audit` at every stage while shipping ~180 stray opening quote marks

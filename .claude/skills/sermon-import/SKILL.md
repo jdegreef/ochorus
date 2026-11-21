@@ -293,11 +293,14 @@ The audit only sees some defect classes. Run all four passes:
    trailers, publisher notices ("…the only authorized edition"), letters from
    Mentone and bracketed notes all sit there.
 
-Repairs go in `BODY_CORRECTIONS` as `(old, new)` pairs (one block per batch at
-the end of `corrections.py`, a `{slug: [pairs]}` dict looped into
-`BODY_CORRECTIONS`). When you add a second round to that dict, merge it into the
-existing slug's list: a repeated key silently drops the first list (ruff
-`F601` catches it). Each pair must be **unique in the body and idempotent** — the
+Repairs go in `BODY_CORRECTIONS` as `(old, new)` pairs. Since 2026-11-20 each
+sermon gets ONE NEW FILE per batch, `backend/library/data/body_corrections/<slug>.<batch>.json`
+(`{"why": "...", "replacements": [["old", "new"], ...]}`), which loads after every
+block in `corrections.py`. Older batches are blocks at the end of
+`corrections.py` (a `{slug: [pairs]}` dict looped into `BODY_CORRECTIONS`).
+Appending another block there is what made parallel PRs conflict. If you do edit
+one of those dicts, merge a second round into the existing slug's list: a
+repeated key silently drops the first list (ruff `F601` catches it). Each pair must be **unique in the body and idempotent** — the
 new text must not contain the old. Match the stored HTML, not the plain text:
 `he feel himself <i>utterly` needed its tag. Re-import, rewrite the fixtures,
 and confirm every pair applied (`old not in body and new in body`) and

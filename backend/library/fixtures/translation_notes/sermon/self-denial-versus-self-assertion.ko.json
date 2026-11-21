@@ -1,0 +1,76 @@
+{
+ "kind": "sermon",
+ "slug": "self-denial-versus-self-assertion",
+ "language": "ko",
+ "job_issue": 8740,
+ "references": [
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 9:23a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:19b",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "1 Corinthians 6:20a",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Galatians 2:20a",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Galatians 6:14b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "1 Corinthians 15:31b",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 11:23b",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 18:36a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 27:14a",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 18:23-35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:14-15",
+   "status": "self_rendered"
+  }
+ ]
+}

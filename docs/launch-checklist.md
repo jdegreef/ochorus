@@ -92,6 +92,11 @@ path (drip, broadcast, tests). Everyone else is recorded as skipped.
 1. Render dashboard: is there a cron service named **`ochorus-lifecycle-email`**?
    If not, **Blueprints → ochorus → Sync** (render.yaml changes need a manual
    sync). Its env should show the values above as linked from `ochorus-api`.
+   **It is suspended while email is off (since 2026-11-20, to save Render
+   minutes).** Wake it first: in `render.yaml` set its `autoDeployTrigger` back
+   to `checksPass` and sync, then Render → `ochorus-lifecycle-email` →
+   **Manual Deploy → Deploy latest commit** (its image is stale) and
+   **Resume** the job.
 2. Admin → Emails: open a broadcast (or a starter template), run the pre-send
    checks, and **Send test** to yourself. Check:
    - it arrives in the inbox, not spam (Gmail: "Show original" → SPF, DKIM and
