@@ -23380,6 +23380,37 @@
 				552
 			]
 		},
+		"ja/clothed-with-strength-and-dignity": {
+			"ground": "524e6353d318b45927eb1e23562a0352f0ba5630d1f6b0f0130cf210443a9d99",
+			"style": "originals",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "f67ebcfd55f158d338820071f7ab8ab27c44ad5ece8e8ba0cece0021551d5fe1",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[149, 308, 451, 384],
+					[118, 374, 482, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"ja/divine-healing": {
 			"ground": "c0c274469c0d3e0235bbb970116b380b6f9519867cbd8e9865e83e903aba312f",
 			"style": "devotional",
