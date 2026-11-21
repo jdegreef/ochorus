@@ -1,0 +1,737 @@
+{
+ "kind": "book",
+ "slug": "rooted-5",
+ "language": "ko",
+ "job_issue": 9019,
+ "references": [
+  {
+   "reference": "Joshua 24:15",
+   "status": "mined",
+   "block_index": 124,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 John 4:11",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 22:37-40",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 22:36",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 22:37",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 22:39",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 22:40",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Exodus 20:12",
+   "status": "mined",
+   "block_index": 46,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Exodus 20:12",
+   "status": "mined",
+   "block_index": 46,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:2",
+   "status": "mined",
+   "block_index": 59,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 133:1",
+   "status": "mined",
+   "block_index": 68,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 133:1",
+   "status": "mined",
+   "block_index": 68,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Galatians 5:13",
+   "status": "mined",
+   "block_index": 87,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Galatians 5:13",
+   "status": "mined",
+   "block_index": 87,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Galatians 5:13",
+   "status": "mined",
+   "block_index": 87,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Galatians 5:13",
+   "status": "mined",
+   "block_index": 87,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Mark 10:45",
+   "status": "mined",
+   "block_index": 103,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Proverbs 1:8-9",
+   "status": "mined",
+   "block_index": 109,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Proverbs 1:8",
+   "status": "mined",
+   "block_index": 109,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Proverbs 1:9",
+   "status": "mined",
+   "block_index": 109,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Joshua 24:15",
+   "status": "mined",
+   "block_index": 124,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Joshua 24:15",
+   "status": "mined",
+   "block_index": 124,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Joshua 24:15",
+   "status": "mined",
+   "block_index": 124,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Joshua 24:15",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "Proverbs 17:17",
+   "status": "mined",
+   "block_index": 142,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Proverbs 17:17",
+   "status": "mined",
+   "block_index": 142,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Proverbs 17:17",
+   "status": "mined",
+   "block_index": 142,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Samuel 18:1",
+   "status": "mined",
+   "block_index": 163,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Samuel 18:1",
+   "status": "mined",
+   "block_index": 163,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Proverbs 13:20",
+   "status": "mined",
+   "block_index": 181,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Proverbs 13:20",
+   "status": "mined",
+   "block_index": 181,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Proverbs 13:20",
+   "status": "mined",
+   "block_index": 181,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 15:33",
+   "status": "mined",
+   "block_index": 187,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 12:10",
+   "status": "mined",
+   "block_index": 200,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 12:10",
+   "status": "mined",
+   "block_index": 200,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 12:10",
+   "status": "mined",
+   "block_index": 200,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 6:31",
+   "status": "mined",
+   "block_index": 214,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Genesis 16:13",
+   "status": "mined",
+   "block_index": 220,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Genesis 16:13",
+   "status": "mined",
+   "block_index": 220,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Genesis 16:13",
+   "status": "mined",
+   "block_index": 220,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 15:7",
+   "status": "mined",
+   "block_index": 237,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 15:2",
+   "status": "mined",
+   "block_index": 242,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 15:7",
+   "status": "mined",
+   "block_index": 237,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 15:7",
+   "status": "mined",
+   "block_index": 237,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 18:21-22",
+   "status": "mined",
+   "block_index": 257,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 18:21",
+   "status": "mined",
+   "block_index": 257,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 18:22",
+   "status": "mined",
+   "block_index": 257,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 18:33",
+   "status": "mined",
+   "block_index": 265,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Colossians 3:13",
+   "status": "mined",
+   "block_index": 274,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Colossians 3:13",
+   "status": "mined",
+   "block_index": 274,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 103:12",
+   "status": "mined",
+   "block_index": 279,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "mined",
+   "block_index": 280,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "block_index": 283,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Colossians 3:13",
+   "status": "mined",
+   "block_index": 274,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 5:23-24",
+   "status": "mined",
+   "block_index": 297,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 5:23",
+   "status": "mined",
+   "block_index": 297,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 12:18",
+   "status": "mined",
+   "block_index": 317,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Genesis 13:8",
+   "status": "mined",
+   "block_index": 321,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Genesis 13:9",
+   "status": "mined",
+   "block_index": 321,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 12:18",
+   "status": "mined",
+   "block_index": 317,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "mined",
+   "block_index": 332,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 6:27-28",
+   "status": "mined",
+   "block_index": 337,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 6:27",
+   "status": "mined",
+   "block_index": 337,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 6:27",
+   "status": "mined",
+   "block_index": 337,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 6:28",
+   "status": "mined",
+   "block_index": 337,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 6:28",
+   "status": "mined",
+   "block_index": 337,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 12:17",
+   "status": "mined",
+   "block_index": 357,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Kings 6:21",
+   "status": "mined",
+   "block_index": 362,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Kings 6:22",
+   "status": "mined",
+   "block_index": 363,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "mined",
+   "block_index": 357,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "mined",
+   "block_index": 357,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 12:20",
+   "status": "mined",
+   "block_index": 368,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 12:12",
+   "status": "mined",
+   "block_index": 374,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 12:21",
+   "status": "mined",
+   "block_index": 379,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 12:26",
+   "status": "mined",
+   "block_index": 384,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 4:10",
+   "status": "mined",
+   "block_index": 390,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 4:10",
+   "status": "mined",
+   "block_index": 390,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 4:10",
+   "status": "mined",
+   "block_index": 390,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 4:10",
+   "status": "mined",
+   "block_index": 390,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Leviticus 19:32",
+   "status": "mined",
+   "block_index": 413,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 2:29-30",
+   "status": "self_rendered",
+   "block_index": 417
+  },
+  {
+   "reference": "Leviticus 19:32",
+   "status": "mined",
+   "block_index": 413,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Mark 9:35-37",
+   "status": "mined",
+   "block_index": 434,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Mark 9:33",
+   "status": "mined",
+   "block_index": 437,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Mark 9:35",
+   "status": "mined",
+   "block_index": 434,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Mark 9:37",
+   "status": "mined",
+   "block_index": 434,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Galatians 6:2",
+   "status": "mined",
+   "block_index": 454,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Galatians 6:2",
+   "status": "mined",
+   "block_index": 454,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Galatians 6:2",
+   "status": "mined",
+   "block_index": 454,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 12:15",
+   "status": "mined",
+   "block_index": 477,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 12:15",
+   "status": "mined",
+   "block_index": 477,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 12:15",
+   "status": "mined",
+   "block_index": 477,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "mined",
+   "block_index": 494,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "mined",
+   "block_index": 494,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "mined",
+   "block_index": 494,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 25:35-36",
+   "status": "mined",
+   "block_index": 511,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 25:35-36",
+   "status": "self_rendered",
+   "block_index": 514
+  },
+  {
+   "reference": "Matthew 25:37",
+   "status": "mined",
+   "block_index": 515,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "mined",
+   "block_index": 511,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "mined",
+   "block_index": 511,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "mined",
+   "block_index": 511,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "mined",
+   "block_index": 511,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 3:15",
+   "status": "mined",
+   "block_index": 533,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 3:15",
+   "status": "mined",
+   "block_index": 533,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 3:15",
+   "status": "mined",
+   "block_index": 533,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 3:15",
+   "status": "mined",
+   "block_index": 533,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 3:15",
+   "status": "mined",
+   "block_index": 533,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Mark 5:19-20",
+   "status": "mined",
+   "block_index": 554,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Mark 5:19",
+   "status": "mined",
+   "block_index": 554,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Mark 5:20",
+   "status": "mined",
+   "block_index": 554,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Mark 5:19",
+   "status": "mined",
+   "block_index": 554,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Mark 5:19",
+   "status": "mined",
+   "block_index": 554,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Timothy 2:1-4",
+   "status": "mined",
+   "block_index": 575,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Timothy 2:1",
+   "status": "mined",
+   "block_index": 575,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Timothy 2:2",
+   "status": "mined",
+   "block_index": 575,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Timothy 2:4",
+   "status": "mined",
+   "block_index": 575,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 13:34-35",
+   "status": "mined",
+   "block_index": 596,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 13:34",
+   "status": "mined",
+   "block_index": 596,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 13:34",
+   "status": "mined",
+   "block_index": 596,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 13:35",
+   "status": "mined",
+   "block_index": 596,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 13:34",
+   "status": "mined",
+   "block_index": 596,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 3:12",
+   "status": "mined",
+   "block_index": 627,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}
