@@ -1,0 +1,85 @@
+{
+ "kind": "sermon",
+ "slug": "naaman-the-syrian",
+ "language": "vi",
+ "job_issue": 9056,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Romans 3:23",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 2
+  },
+  {
+   "reference": "2 Kings 5:3",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Kings 5:7",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 17
+  },
+  {
+   "reference": "2 Kings 5:12",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 20
+  },
+  {
+   "reference": "2 Kings 5:11",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 22
+  },
+  {
+   "reference": "Isaiah 55:8",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "2 Kings 5:13",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 28
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 33
+  },
+  {
+   "reference": "1 Samuel 15:22",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 36
+  },
+  {
+   "reference": "2 Kings 5:15",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 42
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 52
+  },
+  {
+   "reference": "Hebrews 2:3",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 52
+  }
+ ]
+}

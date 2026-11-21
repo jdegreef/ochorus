@@ -680,6 +680,44 @@ export interface ScriptureHit {
 	date: string;
 }
 
+/**
+ * A reviewed quotation whose words the query holds (search_quotes.py).
+ * English-only, as the quotes are; links to the paragraph it was taken from.
+ */
+export interface QuoteHit {
+	type: 'quote';
+	quote_slug: string;
+	text: string;
+	author_slug: string;
+	author_name: string;
+	paragraph: number;
+	source: Pick<QuoteSource, 'kind' | 'slug' | 'title' | 'work' | 'order'>;
+	/** The quotation with the words that matched marked. */
+	snippet: string;
+	/** Always "" — a quote has no date of its own. */
+	date: string;
+	/** The query is a run of the quote's own words: the reader is quoting it. */
+	phrase?: boolean;
+}
+
+/**
+ * A question the library has already answered on one of its pages, matched to
+ * the question the reader typed (search_answers.py).
+ */
+export interface AnswerHit {
+	type: 'answer';
+	/** The library's question, and its answer (plain text). */
+	question: string;
+	answer: string;
+	/** The page it is answered on. */
+	work_kind: 'book' | 'sermon' | 'topic' | 'article' | 'author';
+	work_slug: string;
+	work_title: string;
+	/** The question with the words that matched marked. */
+	snippet: string;
+	date: string;
+}
+
 export type SearchHit = (
 	| ChapterHit
 	| SermonHit
@@ -689,11 +727,15 @@ export type SearchHit = (
 	| PlanHit
 	| ArticleHit
 	| ScriptureHit
+	| QuoteHit
+	| AnswerHit
 ) & {
 	/** An admin pinned this as the best match for the query; it leads the list. */
 	pinned?: boolean;
 	/** An author the query names, however spelt ("d l moody" → Dwight L. Moody). */
 	named?: boolean;
+	/** The result most readers open for this query (search.py apply_choices). */
+	chosen?: boolean;
 };
 
 export type SearchType = SearchHit['type'];
@@ -706,6 +748,10 @@ export interface SearchResponse {
 	suggestion?: string;
 	/** The word actually searched, when an admin's synonym replaced the query. */
 	searched_for?: string;
+	/** The query with a misspelt word corrected, searched alongside it. */
+	also_searched_for?: string;
+	/** The verse the query quotes by its words ("John 3:16"). */
+	verse?: string;
 	/**
 	 * How many matches EXIST per type, which is not how many `results` holds:
 	 * the merged list is capped per type so no one kind crowds out the others.
@@ -1352,6 +1398,16 @@ export const getArticle = async (slug: string, language = 'en', f?: Fetch) =>
 		ARTICLE_FIELDS
 	);
 
+/**
+ * Suggestions as you type: the people, books, topics and plans the letters so
+ * far already name ("mo" → Dwight L. Moody). Same hit shape as `search`;
+ * navigational kinds only, and never logged server-side.
+ */
+export const searchComplete = (q: string, language = 'en') =>
+	apiFetch<SearchResponse>(
+		`/api/library/search/complete/?${new URLSearchParams({ q, language })}`
+	);
+
 export const search = (q: string, language = 'en', scope = '') => {
 	const params = new URLSearchParams({ q, language });
 	if (scope) params.set('in', scope);
@@ -1369,7 +1425,8 @@ export const recordSearchClick = (
 	query: string,
 	type: SearchType,
 	position: number,
-	language = 'en'
+	language = 'en',
+	key = ''
 ) =>
 	// The language rides in the query string because that is the only place the
 	// server reads it from (`language_from_request`). Posting without it recorded
@@ -1377,7 +1434,9 @@ export const recordSearchClick = (
 	// click-through report read as "nobody but English readers finds anything".
 	apiFetch<void>(`/api/library/search-click/?language=${encodeURIComponent(language)}`, {
 		method: 'POST',
-		body: JSON.stringify({ query, type, position })
+		// `key` names WHICH result was opened, so readers' choices can shape the
+		// ranking (library/search.py apply_choices).
+		body: JSON.stringify({ query, type, position, key })
 	});
 
 /**
@@ -2391,6 +2450,15 @@ export const quoteHref = (q: Quote): string =>
 	q.source.kind === 'sermon'
 		? `/sermons/${q.source.slug}/?p=${q.paragraph}`
 		: `/books/${q.source.slug}/${q.source.order}/?p=${q.paragraph}`;
+
+/** A quote search hit's link: the same paragraph its card links to. */
+export const quoteHitHref = (h: QuoteHit): string =>
+	quoteHref({
+		slug: h.quote_slug,
+		text: h.text,
+		paragraph: h.paragraph,
+		source: { ...h.source, cover_color: '' }
+	});
 
 /**
  * The landing page of the WORK a quote sits in (not the paragraph) — its title
