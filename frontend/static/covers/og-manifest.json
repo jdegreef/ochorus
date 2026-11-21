@@ -23247,6 +23247,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/around-the-wicket-gate": {
+			"ground": "6fed75e7956231a282f14ee5d37ae08d4b1148d433dfc496531dd5e3c65d0853",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "397eee7de1d0d3cebe05f168f08d4aa820767cf39f87df5ed64075b54fc54d98",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0.025,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/baptism-with-the-holy-spirit": {
 			"ground": "57270c0bba1a09d8c29e2206bc3a5f22acdd695512a2797c942af6e59941d365",
 			"style": "revival",
