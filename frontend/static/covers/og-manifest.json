@@ -36530,6 +36530,40 @@
 				534
 			]
 		},
+		"ru/amanda-smith-autobiography-children": {
+			"ground": "11a56206fff72ed878bb79d299949601dfe7ea2edec6e92a6f2434a93aa59fa0",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[170, 299, 430, 381],
+					[92, 370, 508, 452]
+				],
+				"edition": [
+					[225, 464, 375, 489]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				249,
+				546
+			]
+		},
 		"ruth": {
 			"ground": "23135b404dc48238d9ea87fab02e4d9881db76ae2c61c75e93f05832eacb2c19",
 			"style": "devotional",
