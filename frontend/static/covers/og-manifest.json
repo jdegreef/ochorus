@@ -23565,6 +23565,37 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/the-person-and-work-of-the-holy-spirit": {
+			"ground": "833c27f63a3ad47abc531ed665af7b847104eb6f96947f563c702709c7fc23fe",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "cdf81ca0f6bc076a8bc279e56c72a250e2947d2f1ccd60c078187e4e2df30bf0",
+			"art": true,
+			"scrim": 0.85,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[135, 294, 465, 404],
+					[135, 389, 465, 499]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				246,
+				549
+			]
+		},
 		"ja/the-practice-of-the-presence-of-god": {
 			"ground": "a9c2bdc774f77bc5ba3fd13bd4ab77b44a08c0c18d70aa6d34d86afd98fb4a7e",
 			"style": "press",
