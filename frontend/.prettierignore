@@ -1,0 +1,26 @@
+# Prettier checks only the files a PR changes (scripts/format-changed.sh, CI).
+# Everything below is never hand-edited, so its format belongs to whatever
+# writes it.
+
+# Build output and the generated i18n runtime
+.svelte-kit/
+build/
+build-app/
+src/lib/paraglide/
+node_modules/
+package-lock.json
+
+# Native shells and static assets
+android/
+ios/
+static/
+
+# GENERATED source ("do not edit by hand"): re-running a generator must not
+# fail the format check. To make one pretty, change its generator.
+src/lib/benediction.generated.ts
+src/lib/live-locales.generated.ts
+src/lib/coverLift.ts
+src/lib/coverScrim.ts
+src/lib/coverMedallions.ts
+src/lib/emblemHues.ts
+src/lib/groundBars.ts

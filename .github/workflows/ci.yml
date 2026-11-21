@@ -10,10 +10,10 @@ name: CI
 # (autoDeploy ships main to production.)
 #
 # Structure: four jobs that run in PARALLEL instead of one serial job.
-#   backend-tests   — ruff, migration check, SQLite + Postgres suites
+#   backend-tests   — ruff (lint; format on changed files), migration check, suites
 #   backend-image   — production Docker image builds (layer-cached), runs
 #                     unprivileged, and serves
-#   frontend-checks — eslint, svelte-check, unit tests (no API needed)
+#   frontend-checks — eslint, prettier (changed files), svelte-check, unit tests
 #   integration     — seed a local API, build the frontend against it, assert
 #                     the built output, run the real-browser smoke
 # The four are independent of each other. On a PR they gate on `changes` (a
@@ -129,7 +129,7 @@ jobs:
             native:
               - 'frontend/{android/**,ios/**,resources/**,capacitor.config.ts,package.json,package-lock.json}'
             ci:
-              - '{.github/workflows/**,.github/scripts/**,render.yaml}'
+              - '{.github/workflows/**,.github/scripts/**,scripts/**,render.yaml}'
 
   # --- Backend gate -------------------------------------------------------
   backend-tests:
@@ -182,6 +182,10 @@ jobs:
           --health-retries 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # 2: the PR merge commit AND its first parent (the base), which the
+          # changed-files format check diffs against.
+          fetch-depth: 2
 
       - name: Install uv
         uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
@@ -195,6 +199,19 @@ jobs:
       - name: Lint (ruff)
         working-directory: backend
         run: uv run ruff check .
+
+      # Format check on the files THIS PR changes only (scripts/format-changed.sh).
+      # ~400 backend files predate `ruff format`; a repo-wide sweep would conflict
+      # with every parallel session, so files converge as they are touched. PR
+      # only: on main/merge_group there is no "this PR's files" to check.
+      # ADVISORY for now (continue-on-error): with ~400 unformatted files, a
+      # blocking check would make any routine edit reformat a whole shared file
+      # (serializers.py, views.py) and collide with parallel sessions. It flags
+      # the file in the run; make it blocking once the backlog is small.
+      - name: Format (ruff format, changed files only)
+        if: github.event_name == 'pull_request'
+        continue-on-error: true
+        run: scripts/format-changed.sh --check --base HEAD^1 backend
 
       - name: Check for missing migrations
         working-directory: backend
@@ -345,6 +362,10 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # 2: the PR merge commit AND its first parent (the base), which the
+          # changed-files format check diffs against.
+          fetch-depth: 2
 
       - name: Setup Node
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
@@ -370,6 +391,13 @@ jobs:
       - name: Lint (eslint)
         working-directory: frontend
         run: npx eslint .
+
+      # Same rule as the backend's: only the files this PR changes (~680 predate
+      # prettier). Config: frontend/.prettierrc + .prettierignore.
+      - name: Format (prettier, changed files only)
+        if: github.event_name == 'pull_request'
+        continue-on-error: true  # advisory, as the backend's (see there)
+        run: scripts/format-changed.sh --check --base HEAD^1 frontend
 
       - name: Type-check
         working-directory: frontend
