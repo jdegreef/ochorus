@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "a-b-simpson",
+ "language": "ru",
+ "job_issue": 9151,
+ "references": [
+  {
+   "reference": "Matthew 28:18b",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 28:19a",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}

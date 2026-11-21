@@ -1,0 +1,18 @@
+{
+ "kind": "bio",
+ "slug": "elisabeth-elliot",
+ "language": "ru",
+ "job_issue": 9167,
+ "references": [
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Deuteronomy 33:27",
+   "status": "self_rendered",
+   "block_index": 7
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "kind": "bio",
+ "slug": "george-whitefield",
+ "language": "ru",
+ "job_issue": 9162,
+ "references": [
+  {
+   "reference": "1 Peter 1:8b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Galatians 1:10b",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 11:19",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Matthew 9:13b",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 3:7b",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "John 3:7b",
+   "status": "self_rendered",
+   "block_index": 38
+  }
+ ]
+}

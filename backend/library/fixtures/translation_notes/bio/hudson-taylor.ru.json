@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "hudson-taylor",
+ "language": "ru",
+ "job_issue": 9146,
+ "references": [
+  {
+   "reference": "John 19:30b",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}
