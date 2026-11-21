@@ -1,0 +1,26 @@
+{
+ "kind": "bio",
+ "slug": "augustine-of-hippo",
+ "language": "ru",
+ "job_issue": 9172,
+ "references": [
+  {
+   "reference": "Romans 13:13b",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Romans 13:14",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Romans 14:1a",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}

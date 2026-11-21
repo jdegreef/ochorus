@@ -2472,6 +2472,27 @@ BODY_CORRECTIONS: dict[str, dict] = {
              '<h3>대조</h3>'),
             ('<p>이 대조에 대해서는 ',
              '<p><em>“악인은 그렇지 않음이여.”</em></p>'),
+            # vi
+            ('<p>Có một thứ thịnh vượng kh',
+             '<p>Suy gẫm về Thi Thiên Thứ Nhất.</p>'),
+            ('<p>Có một thứ thịnh vượng kh',
+             '<h3>LỜI MỞ ĐẦU.</h3>'),
+            ('<p>Nói sát nghĩa hơn: Ôi, ph',
+             '<h3>NHỮNG ĐIỀU KIỆN TIÊU CỰC CỦA PHƯỚC HẠNH</h3>'),
+            ('<p>Nói sát nghĩa hơn: Ôi, ph',
+             '<p><em>“Phước hạnh thay người không bước theo lời khuyên của kẻ ác.”</em></p>'),
+            ('<p>Ngưu tầm ngưu, mã tầm mã;',
+             '<p><em>không đứng trên con đường kẻ tội lỗi đi.</em></p>'),
+            ('<p>Chỗ ngồi của kẻ nhạo báng',
+             '<p><em>“Cũng không ngồi giữa đám người nhạo báng.”</em></p>'),
+            ('<p>Chúng ta đã xem xét những',
+             '<h3>NHỮNG ĐIỀU KIỆN TÍCH CỰC CỦA PHƯỚC HẠNH.</h3>'),
+            ('<p>Tiếp theo, chúng ta để ý ',
+             '<h3>KẾT QUẢ TRONG PHƯỚC HẠNH.</h3>'),
+            ('<p>Không cần phải bàn dài về',
+             '<h3>SỰ TƯƠNG PHẢN.</h3>'),
+            ('<p>Không cần phải bàn dài về',
+             '<p><em>“Kẻ ác thì không như thế.”</em></p>'),
         ],
     },
     "a-full-reward": {
@@ -2512,6 +2533,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # ja
             ('<p>この興味深い物語にも、聖霊が予型的な生涯を通して',
              '<blockquote><em>「……あなたがしゅうとめにつくしたこと、また自分の父母と生れた国を離れて、かつて知らなかった民のところにきたことは皆わたしに聞えました。どうぞ、主があなたのしたことに報いられるように。どうぞ、イスラエルの神、主、すなわちあなたがその翼の下に身を寄せようとしてきた主からじゅうぶんの報いを得られるように」（ルツ記2:11-12）</em></blockquote>'),
+            # ru
+            ('<p>В этом занимательном повествовании перед',
+             '<blockquote><em>«Мне сказано все, что сделала ты … что ты оставила твоего отца и твою мать и твою родину и пришла к народу, которого ты не знала вчера и третьего дня; да воздаст Господь за это дело твое, и да будет тебе полная награда от Господа Бога Израилева, к Которому ты пришла, чтоб успокоиться под Его крылами!» (Руфь 2:11, 12).</em></blockquote>'),
         ],
     },
     "self-denial-versus-self-assertion": {
@@ -2534,6 +2558,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # ko
             ('<p>주 예수 그리스도의 ',
              '<blockquote><em>“아무든지 나를 따라 오려거든 자기를 부인하고 날마다 제 십자가를 지고 나를 좇을 것이니라”</em>—누가복음 9:23.</blockquote>'),
+            # vi
+            ('<p>Có lẽ chúng ta sẽ tự nhiên ',
+             '<blockquote><em>“Ai muốn đi theo Ta, người ấy phải từ bỏ chính mình, mỗi ngày vác thập tự giá của mình, và cứ theo Ta.</em>—Lu-ca 9:23.</blockquote>'),
         ],
     },
     "all-sufficiency": {
@@ -2553,6 +2580,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # ko
             ('<p>참된 자녀라면 자기 ',
              '<blockquote><em>“여호와 하나님은 해요 방패시라<br/> 여호와께서 은혜와 영화를 주시며<br/> 정직히 행하는 자에게<br/> 좋은 것을 아끼지 아니하실 것임이니이다”<br/></em>—시편 84:11</blockquote>'),
+            # vi
+            ('<p>Lòng một người con thật vui',
+             '<blockquote><em>“CHÚA Đức Chúa Trời vừa là mặt trời vừa là cái khiên;<br/> CHÚA ban ơn và vinh dự;<br/> Ngài chẳng tiếc điều tốt lành nào<br/> với những người sống trọn vẹn.”<br/></em>—THI-THIÊN 84:11.</blockquote>'),
         ],
     },
     "under-the-shepherds-care": {
@@ -2565,6 +2595,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # fr
             ('<blockquote>« Car vous étiez comme',
              '<h3>ALLOCUTION DU NOUVEL AN.</h3>'),
+            # vi
+            ('<blockquote>“Vì trước kia anh ',
+             '<h3>BÀI GIẢNG ĐẦU NĂM MỚI.</h3>'),
         ],
     },
     # --- Gutenberg #65066, "The Life and Diary of David Brainerd" ------------
@@ -2765,6 +2798,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # vi
             ('<p>BẰNG chứng tốt nhất của Cơ Đốc giáo l',
              '<p>“Kẻ nào muốn, khá nhận lấy nước sự sống cách nhưng không”<br/> (Khải Huyền 22:17)</p>'),
+            # ru
+            ("<p>Лучшее свидетельство истинности христианства",
+             "<p>«Желающий пусть берет воду жизни даром»<br/> (Откровение 22:17)</p>"),
         ],
     },
     "essentials-of-prayer": {
@@ -6038,6 +6074,25 @@ BODY_CORRECTIONS: dict[str, dict] = {
              '<h3>더 깊은 시련</h3>'),
             ('<p>하나님께서 자기 종에게 주신 복은 결코 작은 것이 아니었습니다. 어',
              '<h3>여호와의 인자하심</h3>'),
+            # ru
+            ('<p>Размышляя над первым псалмом, мы говорил',
+             '<h3>ВСТУПЛЕНИЕ.</h3>'),
+            ('<p><em>«Господь дал, Господь и взял; да будет и',
+             '<h3>СВИДЕТЕЛЬСТВО И ВЫЗОВ БОЖИЙ.</h3>'),
+            ('<p>В 8-м стихе 1-й главы Сам Бог свидетельс',
+             '<p><em>«Господь дал, Господь и взял; да будет имя Господне благословенно!</em>» — Иов 1:21.</p>'),
+            ('<p>Ответ сатаны примечателен. Ему не нужно ',
+             '<h3>НЕВИДИМАЯ ОГРАДА.</h3>'),
+            ('<p>Вернемся к истории Иова. Великий клеветн',
+             '<h3>ИСПЫТАНИЕ ИОВА</h3>'),
+            ('<p>И вскоре сатана показал злобу своего нра',
+             '<h3>ЗЛОБА САТАНЫ.</h3>'),
+            ('<p>Но Тот, Кто послал испытание, дал и нужн',
+             '<h3>ДОВОЛЬНО БЛАГОДАТИ.</h3>'),
+            ('<p>Однако испытание Иова, как мы видели, не',
+             '<h3>ИСПЫТАНИЯ ГЛУБЖЕ.</h3>'),
+            ('<p>И благословение, которое Бог дал Своему ',
+             '<h3>МИЛОСЕРДИЕ ГОСПОДНЕ.</h3>'),
         ],
     },
     # --- Drop caps that lost the space after them -----------------------------
