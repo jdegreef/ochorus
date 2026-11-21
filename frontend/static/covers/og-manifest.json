@@ -23345,6 +23345,41 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/brave-for-god": {
+			"ground": "d2adfccbd65655c9e34962fbadd41b5640ad447bbb4e0c188c7d89e758febc64",
+			"style": "young",
+			"volume": "1",
+			"script": "japanese",
+			"fonts": "d90bb65ead280346a2754b8b9ce7b14af17fb99d4f4a0d92994e6c34c1f33b10",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 255, 308, 299],
+					[158, 330, 442, 405],
+					[158, 391, 442, 466]
+				],
+				"subtitle": [
+					[67, 524, 533, 552]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
+			]
+		},
 		"ja/divine-healing": {
 			"ground": "c0c274469c0d3e0235bbb970116b380b6f9519867cbd8e9865e83e903aba312f",
 			"style": "devotional",
