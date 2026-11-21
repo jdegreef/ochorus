@@ -13,6 +13,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'a-mighty-fortress': 0.110,
 	'abide-in-christ': 0.040,
 	'absolute-surrender-teens': 0.110,
+	'after-his-heart': 0.110,
 	'against-the-arians': 0.025,
 	'all-of-grace-teens': 0.110,
 	'amy-carmichael-a-life-children': 0.110,
