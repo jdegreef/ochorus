@@ -45417,6 +45417,39 @@
 				522
 			]
 		},
+		"vi/a-retrospect-teens": {
+			"ground": "212385929769c4e221d379fc46249af8fa27b9eab06293e9c4223799405d1aa3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[154, 102, 446, 131]
+				],
+				"title": [
+					[103, 322, 497, 432]
+				],
+				"edition": [
+					[181, 440, 419, 465]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				273,
+				522
+			]
+		},
 		"vi/a-short-and-easy-method-of-prayer": {
 			"ground": "240ce36a8e9e734496e05e41625fda28a0abc3e5a38112ccd319f916efe4a926",
 			"style": "devotional",
