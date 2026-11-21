@@ -25930,6 +25930,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/corrie-ten-boom-a-life-children": {
+			"ground": "1be797474d9b479d89ed89276b7370bd12f0f5892cc695689bc8cd29e894f089",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "b56cbdf64222d33321bd6be4ce8923a7a662a4238390241dc2f245ab5e54696a",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[230, 106, 370, 135]
+				],
+				"title": [
+					[182, 321, 418, 396]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				328,
+				472
+			]
+		},
 		"ko/daughters-of-the-king-1": {
 			"ground": "d4d8d8c7eb49e7d0f8620ada171b2e6d837af7df04e650745d956484034eb28f",
 			"style": "young",

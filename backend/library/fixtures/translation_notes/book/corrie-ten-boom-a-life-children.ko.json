@@ -1,0 +1,92 @@
+{
+ "kind": "book",
+ "slug": "corrie-ten-boom-a-life-children",
+ "language": "ko",
+ "job_issue": 8754,
+ "references": [
+  {
+   "reference": "Psalm 122:6",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 68:6a",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 16:10a",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Esther 4:14b",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 32:7",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 91:1",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 91:2a",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "mined",
+   "block_index": 54,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "mined",
+   "block_index": 56,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Isaiah 43:2a",
+   "status": "mined",
+   "block_index": 63,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:18a",
+   "status": "mined",
+   "block_index": 72,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 139:8",
+   "status": "mined",
+   "block_index": 81,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 124:7",
+   "status": "mined",
+   "block_index": 90,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 5:44b",
+   "status": "mined",
+   "block_index": 99,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}
