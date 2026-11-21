@@ -26816,6 +26816,41 @@
 				599
 			]
 		},
+		"ko/rooted-3": {
+			"ground": "af3421439178e3e9ec9f2c7387a5b23863890bb0ab09370caa7ac55723926bbd",
+			"style": "young",
+			"volume": "3",
+			"script": "korean",
+			"fonts": "4f7434666bf18f1b1992d29804febbbded97ce5cf3fa6ca7df3b5dc095009eeb",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 269, 310, 313],
+					[196, 344, 404, 419]
+				],
+				"subtitle": [
+					[167, 478, 433, 506],
+					[156, 510, 444, 538]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				538
+			]
+		},
 		"ko/school-of-prayer": {
 			"ground": "06d0d9789cc78677648d024e6d2350469e922c3ab3193e275ae01d262f401b94",
 			"style": "devotional",
