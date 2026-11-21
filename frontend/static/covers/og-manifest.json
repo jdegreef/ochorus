@@ -25802,6 +25802,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/christ-the-healer": {
+			"ground": "83805482c169967d8d02e2d6890dcd402bed1b3261b92e77b19cf8e4a7a2a250",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "c18e06efeccf0e4a25c0c8ae32d29105c9c3c1940a7d24448d9007416ecd6f0f",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0.03,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[130, 221, 470, 331],
+					[180, 316, 420, 426]
+				],
+				"subtitle": [
+					[223, 500, 377, 521]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				522
+			]
+		},
 		"ko/clothed-with-strength-and-dignity": {
 			"ground": "2529ca642e4205357235bfc13f56ebe31245b91d4d1e27269c3e000d7aaa65d9",
 			"style": "originals",
