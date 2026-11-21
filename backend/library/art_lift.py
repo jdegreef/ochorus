@@ -15,6 +15,7 @@ ART_LIFT: dict[str, float] = {
     "a-mighty-fortress": 1.35,
     "a-short-and-easy-method-of-prayer": 1.30,
     "absolute-surrender-teens": 1.45,
+    "after-his-heart": 1.45,
     "against-marcion": 1.25,
     "all-of-grace-teens": 1.45,
     "amanda-smith-autobiography": 1.15,
