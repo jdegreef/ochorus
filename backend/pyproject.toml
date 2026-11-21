@@ -38,6 +38,23 @@ target-version = "py312"
 # Auto-generated / immutable migrations aren't ours to lint.
 extend-exclude = ["**/migrations/**"]
 
+[tool.ruff.format]
+# `ruff format` is checked only on the files a PR changes (scripts/format-changed.sh,
+# CI), so files converge as they are touched — never reformat one you didn't change.
+# Kept out of it:
+#   * GENERATED modules: re-running the generator must not fail a format check.
+#   * corrections.py: the hottest file in the repo (~50 commits a month) and a
+#     25k-line data table; formatting it rewrites ~44k lines, which would bury
+#     the edit that touched it and conflict with every parallel session.
+# Excludes only apply to a path named on the command line with --force-exclude.
+exclude = [
+    "library/corrections.py",
+    "library/art_sources.py",
+    "library/art_scrim.py",
+    "library/art_lift.py",
+    "library/cover_halo.py",
+]
+
 [tool.ruff.lint]
 # Line length (E5xx) is intentionally NOT enforced: the codebase has many
 # long-form prose comments and no single target width, so E501 would be pure

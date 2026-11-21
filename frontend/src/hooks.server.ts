@@ -1,5 +1,7 @@
 import type { Handle, HandleFetch } from '@sveltejs/kit';
 import { building } from '$app/environment';
+import { env as privateEnv } from '$env/dynamic/private';
+import { localBuildApiOrigin, retarget } from '$lib/buildApi';
 import { createBuildFetch } from '$lib/buildFetch';
 import { markFallbackNoindex } from '$lib/fallbackShell';
 import { markUnadvertisedNoindex } from '$lib/advertised-locales';
@@ -62,7 +64,17 @@ const apiOrigin = API_BASE_URL ? new URL(API_BASE_URL).origin : null;
 // batched runs, repeated lists from the first identical request ($lib/buildFetch).
 const buildFetch = building && apiOrigin ? createBuildFetch(apiOrigin) : null;
 
-export const handleFetch: HandleFetch = async ({ event, request, fetch }) => {
+// OCHORUS_BUILD_API=local (docs/build-without-prod-api.md): the build reads a
+// throwaway API seeded from this checkout instead of crawling production. Only
+// the network hop moves — `request.url`, the key SvelteKit inlines the response
+// under, still names PUBLIC_API_BASE_URL, so hydration finds it. Null (and
+// inert) unless the flag is set.
+const localApi = building && apiOrigin ? localBuildApiOrigin(privateEnv) : null;
+
+export const handleFetch: HandleFetch = async ({ event, request, fetch: kitFetch }) => {
+	const fetch: typeof kitFetch = localApi
+		? (input, init) => kitFetch(retarget(input, apiOrigin!, localApi), init)
+		: kitFetch;
 	const response = buildFetch ? await buildFetch(request, fetch) : await fetch(request);
 	if (!apiOrigin || new URL(request.url).origin !== apiOrigin) return response;
 	const headers = new Headers(response.headers);

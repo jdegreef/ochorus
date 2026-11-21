@@ -1,0 +1,15 @@
+{
+    "kind": "bio",
+    "slug": "basil-of-caesarea",
+    "language": "pt",
+    "job_issue": 8692,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Luke 23:46",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 35
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "kind": "bio",
+    "slug": "jeremy-taylor",
+    "language": "pt",
+    "job_issue": 8695,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Titus 2:12",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 22
+        }
+    ]
+}

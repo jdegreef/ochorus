@@ -3,7 +3,9 @@
     manage.py audit_verse_consistency                      # whole corpus
     manage.py audit_verse_consistency --language lg        # one language
     manage.py audit_verse_consistency --json out.json      # machine-readable
-    manage.py audit_verse_consistency --update-baseline    # after reconciling
+    manage.py audit_verse_consistency --update-baseline --language sw
+                                                           # re-pin ONE language
+    manage.py audit_verse_consistency --update-baseline    # re-pin every language
 
 Reads the committed fixture, not the database — the fixture is what ships and
 what the CI ratchet measures, so a drifted local DB cannot make this lie. Same
@@ -29,7 +31,12 @@ class Command(BaseCommand):
         parser.add_argument(
             "--update-baseline",
             action="store_true",
-            help="Re-pin the CI ratchet from this run (whole corpus only).",
+            help=(
+                "Re-pin the CI ratchet from this run. With --language, only that "
+                "language's entries are rewritten — the normal case for a "
+                "translation job, and the one that keeps parallel jobs in other "
+                "languages off your lines."
+            ),
         )
         parser.add_argument(
             "--absorb",
@@ -45,8 +52,6 @@ class Command(BaseCommand):
         # Checked before the scan, and as a CommandError so the exit code is
         # non-zero — a guard that reports after doing the work, and returns 0,
         # is one CI reads as success.
-        if opts["update_baseline"] and opts["language"]:
-            raise CommandError("--update-baseline needs the whole corpus; drop --language.")
         if opts["absorb"] and not opts["update_baseline"]:
             raise CommandError("--absorb only means anything with --update-baseline.")
 
@@ -73,7 +78,12 @@ class Command(BaseCommand):
             )
 
         if opts["update_baseline"]:
-            counts = verse_consistency.baseline_counts(found)
+            # The scan is always whole-corpus (a conflict is between works, and
+            # the report above needs them all); --language only narrows which
+            # pins are compared and rewritten.
+            counts = verse_consistency.in_language(
+                verse_consistency.baseline_counts(found), opts["language"]
+            )
             # A re-pin may TIGHTEN freely; loosening is a decision someone has to
             # make on purpose. Refused as a CommandError so the exit code is
             # non-zero and nothing is written — see baseline_regressions for what
@@ -89,7 +99,7 @@ class Command(BaseCommand):
                     "rendering) — or, if they must ship as they are, re-run with "
                     "--absorb and say in the commit message why."
                 )
-            verse_consistency.write_baseline(counts)
+            verse_consistency.write_baseline(counts, opts["language"])
             if loosened:
                 self.stdout.write(
                     self.style.WARNING(
