@@ -1,0 +1,182 @@
+{
+    "kind": "sermon",
+    "slug": "the-impressions-of-natural-men",
+    "language": "pt",
+    "job_issue": 8719,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Hosea 6:4",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Hosea 6:4a",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Hosea 6:5",
+            "status": "self_rendered",
+            "block_index": 2
+        },
+        {
+            "reference": "Genesis 19:26",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "Exodus 15:2",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 6
+        },
+        {
+            "reference": "Mark 10:17",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 7
+        },
+        {
+            "reference": "Mark 10:22",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 7
+        },
+        {
+            "reference": "Acts 24:25",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "Acts 26:28",
+            "status": "self_rendered",
+            "block_index": 9
+        },
+        {
+            "reference": "Matthew 7:14",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 11
+        },
+        {
+            "reference": "1 Corinthians 1:21",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 20
+        },
+        {
+            "reference": "Jeremiah 50:4",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 21
+        },
+        {
+            "reference": "Jeremiah 50:5",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 21
+        },
+        {
+            "reference": "Song of Songs 3:3",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 21
+        },
+        {
+            "reference": "Malachi 2:7",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 21
+        },
+        {
+            "reference": "Matthew 12:44",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 22
+        },
+        {
+            "reference": "2 Peter 2:22",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 22
+        },
+        {
+            "reference": "Matthew 12:45",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 22
+        },
+        {
+            "reference": "Zechariah 12:10",
+            "status": "self_rendered",
+            "block_index": 25
+        },
+        {
+            "reference": "Song of Songs 3:2",
+            "status": "self_rendered",
+            "block_index": 25
+        },
+        {
+            "reference": "Isaiah 6:5",
+            "status": "self_rendered",
+            "block_index": 26
+        },
+        {
+            "reference": "Job 40:4",
+            "status": "self_rendered",
+            "block_index": 26
+        },
+        {
+            "reference": "Jeremiah 32:40",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 27
+        },
+        {
+            "reference": "Philippians 1:6",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 27
+        },
+        {
+            "reference": "Mark 3:5",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 29
+        },
+        {
+            "reference": "Hebrews 10:26",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 30
+        },
+        {
+            "reference": "Jeremiah 8:20",
+            "status": "self_rendered",
+            "block_index": 30
+        },
+        {
+            "reference": "Romans 9:18",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 33
+        },
+        {
+            "reference": "Luke 17:32",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 36
+        },
+        {
+            "reference": "Genesis 19:17",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 36
+        }
+    ]
+}
