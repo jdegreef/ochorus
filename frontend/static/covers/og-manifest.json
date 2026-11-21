@@ -27840,6 +27840,21 @@
 				497
 			]
 		},
+		"ko/pilgrims-progress-words-of-one-syllable": {
+			"ground": "99f5bfe5f2967ead50223124acd39ccf28e9cff88d4d0990ed22965f9bbce513",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1238c8a7b14eda0e244d45f1a70d9391a533cb678363a361f7c2d6278e0d96d2",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/teal",
+			"bar": 0.025,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/plain-account-christian-perfection": {
 			"ground": "9ef8462e91ec8dbdbad845bbb1e05351fadce5c8b731c5fa3ff0f7cb60723a7a",
 			"style": "enlightenment",
@@ -28147,6 +28162,41 @@
 				538
 			]
 		},
+		"ko/rooted-6": {
+			"ground": "e53a53e210558c2b830270c60ed0d4e5ba5915d769910dd7399d7639450bbc57",
+			"style": "young",
+			"volume": "6",
+			"script": "korean",
+			"fonts": "358b8be17a53909412028bfd414b03f9dfecc07e11376b7aec67a777abe3bb1b",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 269, 311, 313],
+					[196, 344, 404, 419]
+				],
+				"subtitle": [
+					[159, 478, 441, 506],
+					[156, 510, 444, 538]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				538
+			]
+		},
 		"ko/samuel-ajayi-crowther-a-life-children": {
 			"ground": "f369c5456acdd737a7c9defc487d2af6042aee01fcd4aa5980126cfcb6843a65",
 			"style": "young",
@@ -28227,6 +28277,21 @@
 			"medallion": null,
 			"layout": "wash/sage",
 			"bar": 0.04,
+			"caps": false,
+			"sitemark": null
+		},
+		"ko/separation-and-service": {
+			"ground": "b2a6f138b01f8cf0b2c6b92ba8e09d637370f43b1264e94fe88242adde2cfaec",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "5a8051fa8b10a8ac54b25dd44e8f750b06789f785c0ee34c9456cc94dbd3017f",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/teal",
+			"bar": 0,
 			"caps": false,
 			"sitemark": null
 		},
@@ -38097,6 +38162,39 @@
 				546
 			]
 		},
+		"ru/after-his-heart": {
+			"ground": "45a6b80d09640a0231201209aa153a04e7ed124facc3261c1e8cdd4ad1906cb3",
+			"style": "house",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[51, 342, 549, 432]
+				],
+				"subtitle": [
+					[114, 452, 486, 480]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
+		},
 		"ru/amanda-smith-autobiography-children": {
 			"ground": "11a56206fff72ed878bb79d299949601dfe7ea2edec6e92a6f2434a93aa59fa0",
 			"style": "revival",
@@ -47074,6 +47172,41 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"vi/after-his-heart": {
+			"ground": "0cc73f9fa7e54a8ff7042dff78d65ea18911b3560b87027af29ae033b3f99bd9",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[210, 286, 390, 376],
+					[122, 370, 479, 460]
+				],
+				"subtitle": [
+					[172, 480, 428, 508],
+					[166, 508, 434, 536]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				259,
+				536
+			]
 		},
 		"vi/all-of-grace": {
 			"ground": "1bf0833cffe0cbd33cca408baad357186151113c2dc3aec0c882ba94b2dda85b",
