@@ -1,0 +1,37 @@
+{
+    "kind": "sermon",
+    "slug": "self-denial-versus-self-assertion",
+    "language": "pt",
+    "job_issue": 8717,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Luke 9:23",
+            "status": "self_rendered",
+            "block_index": 0
+        },
+        {
+            "reference": "1 Corinthians 6:20",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 2
+        },
+        {
+            "reference": "2 Corinthians 11:23",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 4
+        },
+        {
+            "reference": "John 18:36",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 7
+        },
+        {
+            "reference": "Matthew 27:14",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+        }
+    ]
+}
