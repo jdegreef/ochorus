@@ -837,3 +837,32 @@ def _quote_is_text(quote_html: str, ref_text: str) -> bool:
         return True
     # Uncited: most of the quote is the text, and it carries a fair share of it.
     return share >= TEXT_OVERLAP and shared / len(verse_words) >= TEXT_COVERAGE
+
+
+#: A verse is found by its words only from this many words typed: "for God so
+#: loved", not "prayer" (every verse with the word) or "the lord" (thousands).
+QUOTED_MIN_WORDS = 3
+#: More verses than this holding the words in a row, and they are a common
+#: phrase ("the love of god"), not a verse being quoted.
+QUOTED_MAX_VERSES = 3
+
+
+@lru_cache(maxsize=4096)
+def quoted_reference(text: str) -> str | None:
+    """The verse ``text`` quotes, as a reference ("John 3:16"), or None.
+
+    Search's way in for a reader who remembers the words and not the address:
+    "for god so loved the world", "be still and know", "love is patient". The
+    words must stand in a row in the OWB or the ASV (bible_store.phrase); a
+    reference typed outright is left to ``reference_verse_ids``.
+    """
+    words = re.findall(r"[A-Za-z]+", text or "")
+    if len(words) < QUOTED_MIN_WORDS or reference_verse_ids(text):
+        return None
+    found = bible_store.phrase(words, limit=QUOTED_MAX_VERSES + 1)
+    if not found or len(found) > QUOTED_MAX_VERSES:
+        return None
+    try:
+        return bible.format_scripture_references(bible.convert_verse_ids_to_references([found[0]]))
+    except Exception:
+        return None

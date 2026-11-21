@@ -1,0 +1,145 @@
+{
+ "kind": "sermon",
+ "slug": "christ-lives-in-me",
+ "language": "vi",
+ "job_issue": 9064,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Ephesians 4:24",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 13:5",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 4
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Ezekiel 18:2",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 31
+  },
+  {
+   "reference": "Galatians 2:19",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 34
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 35
+  },
+  {
+   "reference": "Luke 15:20",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 40
+  },
+  {
+   "reference": "Matthew 6:15",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 43
+  },
+  {
+   "reference": "Hebrews 12:5-6",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 46
+  },
+  {
+   "reference": "Hebrews 12:7",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 47
+  },
+  {
+   "reference": "Isaiah 61:3",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Luke 14:33",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 59
+  },
+  {
+   "reference": "John 10:18",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 74
+  },
+  {
+   "reference": "Matthew 27:42",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 75
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 77
+  },
+  {
+   "reference": "Matthew 26:39b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 78
+  },
+  {
+   "reference": "Matthew 10:39b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 78
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 81
+  },
+  {
+   "reference": "2 Corinthians 13:4",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 85
+  },
+  {
+   "reference": "2 Corinthians 13:4b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 91
+  },
+  {
+   "reference": "Hebrews 13:6",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 88
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 92
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 92
+  }
+ ]
+}
