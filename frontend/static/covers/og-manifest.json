@@ -1051,6 +1051,39 @@
 				471
 			]
 		},
+		"am/after-his-heart": {
+			"ground": "f7e417d6a3d7883d8bfec52484b1db1e3eea816cfcb4b7c5e01f00ff82850259",
+			"style": "house",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[148, 335, 452, 437]
+				],
+				"subtitle": [
+					[156, 458, 444, 486]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				308,
+				487
+			]
+		},
 		"am/all-of-grace": {
 			"ground": "ec39b51a2f1a809ace85ede328399c971d1501015f5da0beb73fc5876978ed32",
 			"style": "revival",
@@ -23345,6 +23378,41 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/brave-for-god": {
+			"ground": "d2adfccbd65655c9e34962fbadd41b5640ad447bbb4e0c188c7d89e758febc64",
+			"style": "young",
+			"volume": "1",
+			"script": "japanese",
+			"fonts": "d90bb65ead280346a2754b8b9ce7b14af17fb99d4f4a0d92994e6c34c1f33b10",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 255, 308, 299],
+					[158, 330, 442, 405],
+					[158, 391, 442, 466]
+				],
+				"subtitle": [
+					[67, 524, 533, 552]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
+			]
+		},
 		"ja/divine-healing": {
 			"ground": "c0c274469c0d3e0235bbb970116b380b6f9519867cbd8e9865e83e903aba312f",
 			"style": "devotional",
@@ -25532,6 +25600,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/a-hidden-fire": {
+			"ground": "1cfd25e79c8766e84a865f9425dfe0022d5e88d0d4343a1c5bf8cabc26123dc0",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "ebe1a5d135d7e1b2d2e4bc4a51b26a6178493b17bb40c4c4f056f129b407b4cb",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[206, 312, 394, 388]
+				],
+				"subtitle": [
+					[170, 450, 430, 478]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
+		},
 		"ko/a-retrospect": {
 			"ground": "dc0b111003c52427d82593fb243aa8a4513ccf8cd41e1ab58cafbffa8d4264a7",
 			"style": "revival",
@@ -25661,6 +25762,40 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"ko/after-his-heart": {
+			"ground": "5c75a12ac821ea5731f6d3e9a33b7e7028398a7f313a44a04d3ef55e057c9f1d",
+			"style": "house",
+			"volume": null,
+			"script": "korean",
+			"fonts": "d8cb0c3f6a59026fd2097c999d1736bacfd88570553c4254d24419b10bc188ec",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[116, 298, 484, 388],
+					[108, 382, 492, 472]
+				],
+				"subtitle": [
+					[140, 496, 460, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
 		},
 		"ko/all-of-grace": {
 			"ground": "8fadfd0408f390a83e96639188b9429ef51d21b280f55aa41e523aa57856fb23",
@@ -26201,6 +26336,40 @@
 			"bar": 0.05,
 			"caps": false,
 			"sitemark": null
+		},
+		"ko/divine-songs-for-children": {
+			"ground": "c60907e24df63ad7ea78cc95c0c430c6dcd660cf890b9e6092825a2c78bdd31c",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1d8d59e944d9ac5d336ada3791e5ef5aaf4fa2d8298fd691497781dde8fa7b92",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[183, 102, 417, 131]
+				],
+				"title": [
+					[163, 283, 437, 358],
+					[130, 344, 470, 419]
+				],
+				"subtitle": [
+					[66, 477, 534, 505]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
 		},
 		"ko/elisabeth-elliot-a-life-children": {
 			"ground": "a1c064b22e319b24b55193bc8521dc988727ea647b916878b1a4332de97c2df4",
@@ -26781,6 +26950,40 @@
 				],
 				"title": [
 					[122, 169, 478, 232],
+					[142, 225, 458, 288]
+				],
+				"subtitle": [
+					[61, 352, 539, 380]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				380
+			]
+		},
+		"ko/key-teachings-of-r-a-torrey": {
+			"ground": "95670c73a8e0b9db5559809ac748ec8aa0df394d9420f0f305ac218fda9f3641",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "14dcf59a72bc4dfc5b31e698cd87855994b38b93f95d43c26599d33161f20c30",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[161, 169, 439, 232],
 					[142, 225, 458, 288]
 				],
 				"subtitle": [
@@ -27917,6 +28120,21 @@
 			"layout": "wash/sage",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null
+		},
+		"ko/the-key-in-my-hand": {
+			"ground": "1721febcb0d63ee33020366139ae50f283b7c737ccdb58fe88c94c80e255277f",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1ca0a61e3da0e7523d834953d0fdc6478bb9f4fb71beef0b14f8ce5a49c1c59e",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": true,
 			"sitemark": null
 		},
 		"ko/the-life-of-trust": {
@@ -43885,6 +44103,40 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"uk/after-his-heart": {
+			"ground": "3ff5c990eeaf0ef4c60fc2c7a13f64aad5fb98eb1b4df5ed7345f53cd1d603fe",
+			"style": "house",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[122, 314, 478, 390],
+					[122, 385, 478, 461]
+				],
+				"subtitle": [
+					[120, 481, 480, 509]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
 		},
 		"uk/all-of-grace": {
 			"ground": "45b917a0c4bba682a226c7b1681534ea1066fd315455d7c8022fd1d10681023d",
