@@ -1,0 +1,107 @@
+{
+ "kind": "book",
+ "slug": "pilgrims-progress-children",
+ "language": "ru",
+ "job_issue": 9079,
+ "references": [
+  {
+   "reference": "Acts 16:30b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 40:2a",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 7:7c",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 119:18a",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:11a",
+   "status": "mined",
+   "block_index": 44,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "James 4:7b",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Micah 7:8a",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "block_index": 56,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 23:4a",
+   "status": "mined",
+   "block_index": 60,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 116:4",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "Revelation 2:10b",
+   "status": "mined",
+   "block_index": 68,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Proverbs 23:23a",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "2 Peter 1:4a",
+   "status": "mined",
+   "block_index": 76,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 23:1",
+   "status": "mined",
+   "block_index": 85,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Isaiah 43:2a",
+   "status": "mined",
+   "block_index": 93,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 25:21b",
+   "status": "mined",
+   "block_index": 97,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}
