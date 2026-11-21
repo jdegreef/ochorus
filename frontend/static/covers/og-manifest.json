@@ -27291,6 +27291,40 @@
 				380
 			]
 		},
+		"ko/key-teachings-of-jonathan-edwards": {
+			"ground": "b7d3695148adee9b98dd3fdc51731eecbba6bf7da8124fbd326f50f19b03c116",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "14dcf59a72bc4dfc5b31e698cd87855994b38b93f95d43c26599d33161f20c30",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[117, 102, 483, 131]
+				],
+				"title": [
+					[122, 169, 478, 232],
+					[142, 225, 458, 288]
+				],
+				"subtitle": [
+					[61, 352, 539, 380]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				380
+			]
+		},
 		"ko/key-teachings-of-r-a-torrey": {
 			"ground": "95670c73a8e0b9db5559809ac748ec8aa0df394d9420f0f305ac218fda9f3641",
 			"style": "originals",
@@ -27392,6 +27426,21 @@
 				270,
 				525
 			]
+		},
+		"ko/life-of-antony": {
+			"ground": "83ef29cea54443563e0425f58a1c90bb6a16871aef2f4a552b4a76811e0283a7",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "bd5e6ec1e505ea06a19a3d1298287db93d7070caf1e4bfc374e2b2ae7d99ba49",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/indigo",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
 		},
 		"ko/lord-teach-us-to-pray-2": {
 			"ground": "783e47b80ee6d44ef7b21b23a53a88817e53b4cf7e33200e88a71fa8ab397ca7",
@@ -28024,6 +28073,21 @@
 				269,
 				525
 			]
+		},
+		"ko/reality-of-prayer": {
+			"ground": "29132c0740841d9fdbfb3c85cc01f80700929290a3f15b1ab1ae6740ce1ae50b",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "b6e818ec319835c480e6aef910bd69b86196000cf317ad988d0450d076cb6b76",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.015,
+			"caps": false,
+			"sitemark": null
 		},
 		"ko/religious-experience-and-journal": {
 			"ground": "60f997bc2e03b3cf983902867bc2adb98898dd45e0f216745b0ae1c06077417d",
