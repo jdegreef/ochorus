@@ -28834,6 +28834,40 @@
 				471
 			]
 		},
+		"ko/they-were-young-1": {
+			"ground": "7482d9096b02dcc9f0fa21c07e6707ffbfc471d59db573413c78d846a3a23527",
+			"style": "originals",
+			"volume": "1",
+			"script": "korean",
+			"fonts": "6afe849a15321b44d75d38fddeb6221cf0ce313c31552e222be9a4706049a208",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 281, 308, 325],
+					[83, 359, 517, 435]
+				],
+				"subtitle": [
+					[151, 497, 449, 525]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				269,
+				525
+			]
+		},
 		"ko/true-vine": {
 			"ground": "b7875842ddd499da63400547c79f267ea1402c059e9b58eb89ee18e19d2bab38",
 			"style": "devotional",
