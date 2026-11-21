@@ -561,6 +561,7 @@ TOPICS = [
         "A charge to shepherds and soul-winners \u2014 the pastor's care, the "
         "preacher's power in prayer, and how to bring men to Christ.",
         [
+            "after-his-heart",
             "the-reformed-pastor",
             "on-the-priesthood",
             "the-book-of-pastoral-rule",
