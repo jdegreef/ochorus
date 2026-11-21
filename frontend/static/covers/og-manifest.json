@@ -36530,6 +36530,36 @@
 				534
 			]
 		},
+		"ru/men-and-women-who-gave-everything-2": {
+			"ground": "f2785f95fac6e5d5d0d7ff420e98a3391f2e36e7267556dbd1d91bacd5f3d6c4",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.4,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[93, 341, 507, 417]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				346,
+				449
+			]
+		},
 		"ruth": {
 			"ground": "23135b404dc48238d9ea87fab02e4d9881db76ae2c61c75e93f05832eacb2c19",
 			"style": "devotional",
