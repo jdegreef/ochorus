@@ -19,6 +19,10 @@ whatever else is typed around them.
 
 from __future__ import annotations
 
+import json
+from functools import cache
+from pathlib import Path
+
 #: author slug -> other names for that person.
 AUTHOR_ALIASES: dict[str, tuple[str, ...]] = {
     "a-b-simpson": ("Albert Benjamin Simpson",),
@@ -87,3 +91,24 @@ def books_named(words: list[str]) -> list[str]:
                 found.append(slug)
                 break
     return found
+
+
+#: How each author's name is written in each language (data/author_names.json).
+AUTHOR_NAMES_FILE = Path(__file__).parent / "data" / "author_names.json"
+
+
+@cache
+def author_names_by_language() -> dict[str, dict[str, list[str]]]:
+    """slug -> language -> the forms that language writes the name in."""
+    data = json.loads(AUTHOR_NAMES_FILE.read_text(encoding="utf-8"))
+    return {slug: names for slug, names in data.items() if not slug.startswith("_")}
+
+
+def other_names(slug: str) -> list[str]:
+    """Every other name ``slug`` is searched by: its aliases, and its name as
+    written in every language. Every language, not only the reader's: a
+    Ukrainian reading the English site still types Муді."""
+    names = list(AUTHOR_ALIASES.get(slug, ()))
+    for forms in author_names_by_language().get(slug, {}).values():
+        names.extend(forms)
+    return names

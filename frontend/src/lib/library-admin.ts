@@ -2745,9 +2745,10 @@ export const decideSearch = (d: {
 	});
 
 /** What a search returns in one language, unlogged and without synonyms or
- *  pins — the preview behind the synonym and pin dialogs. */
+ *  pins — the preview behind the synonym and pin dialogs. `suggestion` is the
+ *  library's nearest word when the query finds nothing. */
 export const getAdminSearchPreview = (q: string, language: string) =>
-	apiFetch<{ query: string; results: SearchHit[] }>(
+	apiFetch<{ query: string; results: SearchHit[]; suggestion?: string }>(
 		`/api/admin/search-preview/?${new URLSearchParams({ q, language })}`
 	);
 
