@@ -28311,6 +28311,41 @@
 				538
 			]
 		},
+		"ko/rooted-4": {
+			"ground": "8fee5264576369614cc62131bc72d34cc52e12d6083829e4b5aebaa6fc9156fe",
+			"style": "young",
+			"volume": "4",
+			"script": "korean",
+			"fonts": "10488a99e7d76d90bc662b82f20bd60de51564faf445acadf5820d478f20c944",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1.2,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 269, 311, 313],
+					[196, 344, 404, 419]
+				],
+				"subtitle": [
+					[103, 478, 497, 506],
+					[98, 510, 502, 538]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				538
+			]
+		},
 		"ko/rooted-5": {
 			"ground": "2800140bd0e23e311bb830f3a502a7dcb42276ac7e15dae4d0708f64f4fd049e",
 			"style": "young",
