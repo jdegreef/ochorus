@@ -171,5 +171,12 @@
    "Written with the-masters-indwelling.ko (queue job #7009), the plan's second source book in Korean. Book titles are quoted as shipped or already coined: 『예수님 자신』 (jesus-himself-2.ko), 『내주하시는 주님』 (this job), 『연합과 교제』 (the title a-retrospect.ko and the ko Hudson Taylor FAQ already use). '너희 안에 계신 그리스도' is Colossians 1:27 in the 개역; names follow the ko shelf (앤드류 머레이, 허드슨 테일러).",
    "NOTE this row cannot appear yet: seed_plans only creates a plan in a language where EVERY source book is published in it, and union-and-communion has no ko edition. The prose waits for that book, as the sw entry did."
   ]
+ },
+ "family-devotions-boy-from-osogun": {
+  "title": "가정 예배: 오소군에서 온 소년",
+  "description": "새뮤얼 아자이 크라우더와 함께하는 열두 밤의 5분 가정 예배입니다. 그는 노예로 팔려 갔던 요루바 소년이었지만, 자라서 자기 백성에게 그들의 말로 된 성경을 전해 주었습니다. 짧은 장 하나를 소리 내어 읽으십시오. 바다 한가운데서 멈춰 선 노예선, 어머니를 다시 만난 날, 여왕 앞에서 요루바 말로 드린 주기도문, 그리고 그가 포로였을 때 먹을 것을 나누어 준 친절한 노예들의 이야기입니다. 장마다 기도와 함께 이야기 나눌 질문 세 가지로 마칩니다.",
+  "note": [
+   "Single-book plan backed by the ko edition samuel-ajayi-crowther-a-life-children (『새뮤얼 아자이 크라우더 (어린이용)』, Korean batch of 2026-11-20), shipping in the same PR so seed_plans does not publish an English-titled card in Korean. Names (오소군, 요루바, 새뮤얼 아자이 크라우더) as the book spells them; structure follows family-devotions-talking-with-god.ko."
+  ]
  }
 }
