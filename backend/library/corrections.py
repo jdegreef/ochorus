@@ -2798,6 +2798,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # vi
             ('<p>BẰNG chứng tốt nhất của Cơ Đốc giáo l',
              '<p>“Kẻ nào muốn, khá nhận lấy nước sự sống cách nhưng không”<br/> (Khải Huyền 22:17)</p>'),
+            # ru
+            ("<p>Лучшее свидетельство истинности христианства",
+             "<p>«Желающий пусть берет воду жизни даром»<br/> (Откровение 22:17)</p>"),
         ],
     },
     "essentials-of-prayer": {
