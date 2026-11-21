@@ -1,0 +1,104 @@
+{
+ "kind": "sermon",
+ "slug": "faith-and-assurance",
+ "language": "vi",
+ "job_issue": 9061,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Matthew 12:20",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 11
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 10:11",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 13
+  },
+  {
+   "reference": "Acts 7:56",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 23:42",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 19
+  },
+  {
+   "reference": "Job 19:25",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 20
+  },
+  {
+   "reference": "Job 13:15",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 14:30",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 21
+  },
+  {
+   "reference": "Acts 4:11-12",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 22
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 23
+  },
+  {
+   "reference": "Romans 8:33-34",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 24
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 26
+  },
+  {
+   "reference": "2 Timothy 4:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 26
+  },
+  {
+   "reference": "Deuteronomy 11:21",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 33
+  },
+  {
+   "reference": "Habakkuk 2:3",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 34
+  }
+ ]
+}

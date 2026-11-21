@@ -2595,6 +2595,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # fr
             ('<blockquote>« Car vous étiez comme',
              '<h3>ALLOCUTION DU NOUVEL AN.</h3>'),
+            # ko
+            ('<blockquote>“너희가 전에는 양과 같이',
+             '<h3>신년 설교.</h3>'),
             # vi
             ('<blockquote>“Vì trước kia anh ',
              '<h3>BÀI GIẢNG ĐẦU NĂM MỚI.</h3>'),
@@ -24958,6 +24961,9 @@ BODY_CORRECTIONS.setdefault("key-teachings-of-richard-baxter", {}).setdefault("r
 # The fr edition ends on "FIN." like the es one; its seam for the transcriber's note.
 BODY_CORRECTIONS["separation-and-service"]["back_matter"].append(
     ("crucifié pour nous.</p> <p>FIN.</p>", "<p>Note du transcripteur :<br/>"),
+)
+BODY_CORRECTIONS["separation-and-service"]["back_matter"].append(
+    ("실제로 보여 줍니다.</p> <p>끝</p>", "<p>필사자 주:<br/>"),
 )
 
 # --- English defects found while translating (queue batch 5) ---
