@@ -1,0 +1,377 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "pandita-ramabai-a-life-children",
+  "language": "vi",
+  "title": "Pandita Ramabai (Cho thiếu nhi)",
+  "subtitle": "",
+  "cover_byline": "Pandita Ramabai",
+  "description": "Câu chuyện có thật về Ramabai, một cô bé người Ấn Độ được khiêng xuống núi trong một chiếc hộp mây, mất cả gia đình trong một nạn đói, đi bộ bốn ngàn dặm, và lớn lên đã lập một mái nhà cho hàng ngàn góa phụ và bé gái mồ côi, đồng thời trao cho dân tộc mình cuốn Kinh Thánh bằng lời ăn tiếng nói hằng ngày. Ấn bản dành cho thiếu nhi này kể lại cuộc đời bà qua những chương ngắn, để đọc to cho các con nghe: một câu Kinh Thánh, một phần câu chuyện của bà, một điều câu chuyện ấy muốn nói với con, và một lời cầu nguyện ngắn, kèm theo những câu hỏi để cùng nhau trò chuyện.",
+  "qa": [
+   {
+    "question": "Sách Pandita Ramabai (Cho thiếu nhi) nói về điều gì?",
+    "answer": "Đây là bản dành cho thiếu nhi của cuốn tiểu sử đầy đủ về Pandita Ramabai. Sách kể về một cô bé được dạy đọc các sách tiếng Phạn cổ, đã mất cả gia đình trong một nạn đói, rồi được biết Chúa Giê-xu, và dành cả đời giải cứu các góa phụ và các bé gái đói khổ, đồng thời trao cho phụ nữ Ấn Độ một cuốn Kinh Thánh họ có thể hiểu được."
+   },
+   {
+    "question": "Pandita Ramabai là ai?",
+    "answer": "Một phụ nữ Ấn Độ sống từ năm 1858 đến năm 1922. Bà là một học giả lỗi lạc đến nỗi các bậc thông thái ở Calcutta đã tôn vinh bà bằng một danh hiệu, và bà trở thành một trong những phụ nữ Ấn Độ đầu tiên lên tiếng trước công chúng cho các bé gái và các góa phụ. Bà trở thành Cơ Đốc nhân, mở một trường học cho các góa phụ trẻ, lập nên Mukti, mái nhà của hàng ngàn bé gái và phụ nữ, và dịch Kinh Thánh sang tiếng Marathi thông dụng hằng ngày."
+   },
+   {
+    "question": "Mỗi chương được sắp xếp thế nào?",
+    "answer": "Chương nào cũng ngắn và được viết để đọc to. Mỗi chương mở đầu bằng một câu Kinh Thánh, kể một phần câu chuyện của Ramabai, chỉ ra một điều đơn giản mà câu chuyện ấy muốn nói với con, và kết thúc bằng một lời cầu nguyện ngắn. Sau đó là ba câu hỏi để cùng nhau trò chuyện."
+   },
+   {
+    "question": "Sách này có quá buồn đối với trẻ em không?",
+    "answer": "Có những đoạn buồn. Gia đình Ramabai chết trong một nạn đói, chồng bà mất sớm, và bà làm việc giữa những góa phụ nhỏ tuổi và những bé gái đói khổ. Sách không giả vờ rằng những điều ấy không có, nhưng kể lại một cách nhẹ nhàng, dành cho trẻ em, và trên hết, đây là câu chuyện về việc Đức Chúa Trời đã chăm sóc Ramabai và dùng bà để chăm sóc hàng ngàn người khác."
+   },
+   {
+    "question": "Những câu chuyện này có thật không?",
+    "answer": "Có. Phần lớn lấy từ chính các bài viết và thư từ của Ramabai, và từ những người biết bà. Những lời trong ngoặc kép là lời của chính bà, hoặc lời của những người đã có mặt lúc ấy."
+   },
+   {
+    "question": "Sách này dành cho ai?",
+    "answer": "Sách dành cho thiếu nhi, để người lớn đọc to cho các con nghe, hoặc để các con lớn hơn tự đọc. Ngoài ra còn có một ấn bản dành cho thiếu niên, và cuốn tiểu sử đầy đủ dành cho bạn đọc lớn tuổi hơn."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại của Ochorus dành cho bạn đọc nhỏ tuổi, dựa trên cuốn tiểu sử Pandita Ramabai của Ochorus, thuộc bộ sách Chân Dung Lòng Can Đảm. Lời kể là của chúng tôi, được tự do đọc và chia sẻ.",
+  "cover_url": "/covers/art/pandita-ramabai-a-life-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 150,
+  "is_published": true,
+  "created_at": "2026-11-21T00:00:00Z",
+  "updated_at": "2026-11-21T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Em bé trong chiếc hộp mây",
+  "body_html": "<blockquote>“Hãy ân cần dạy những lời ấy cho con cái anh em, và hãy nói về chúng khi ngồi trong nhà cũng như khi đi đường” — trích Phục Truyền Luật Lệ Ký 6</blockquote> <p>Ngày xưa, ở nước Ấn Độ, có một chàng trai tên là Anant Shastri đến thành phố Poona để học tiếng Phạn. Tiếng Phạn là thứ tiếng cổ xưa và thiêng liêng của các sách Ấn Độ giáo, và người ta nói rằng con gái không được học thứ tiếng ấy. Nhưng một hôm, trong một cung điện, Anant nghe một bà hoàng hậu đọc thuộc lòng những bài thơ tiếng Phạn. Bà thuộc làu làu! Anant rất ngạc nhiên, và ông quyết định: sau này, ông cũng sẽ dạy cho vợ mình.</p> <p>Nhiều năm sau, ông cưới một cô gái trẻ tên là Lakshmibai, và ông bắt đầu dạy cho bà. Gia đình ông không thích chuyện đó chút nào. Vì vậy ông đưa vợ đi thật xa, lên một ngọn núi cao phủ đầy rừng rậm, và dựng nhà ở đó. Bà Lakshmibai còn nhớ mãi đêm đầu tiên trên núi. Họ chẳng có chỗ nào để trú, và suốt đêm cho đến sáng, có một con cọp gầm vang bên kia thung lũng!</p> <p>Bà Lakshmibai là một học trò tuyệt vời. Ban ngày bà làm hết mọi việc trong nhà, còn ban đêm bà học các sách thiêng.</p> <p>Vào tháng 4 năm 1858, một bé gái chào đời trong ngôi nhà giữa rừng ấy. Cha mẹ đặt tên cho bé là Rama. Người ta gọi bé là Ramabai, một cách gọi tên lịch sự và kính trọng.</p> <p>Ông Anant cho ăn mọi người hành hương lên núi, và sau nhiều năm, tiền bạc của ông cạn sạch. Khi Ramabai mới chừng sáu tháng tuổi, cả nhà phải rời đi. Mẹ đặt bé nằm trong một chiếc hộp lớn đan bằng mây, và một người đàn ông đội chiếc hộp trên đầu, đi suốt quãng đường xuống núi. Sau này Ramabai kể: “Cuộc đời lữ khách của tôi bắt đầu như thế, khi tôi còn là một em bé.”</p> <p>Khi Ramabai chừng tám tuổi, mẹ bắt đầu dạy cô bé học. Ramabai thuộc lòng những bài thơ tiếng Phạn rất dài. Trên những chặng đường đi, cô bé còn học được mấy thứ tiếng khác, chỉ nhờ lắng nghe người ta nói chuyện dọc đường!</p> <p>Cha mẹ Ramabai dạy cô bé ở nhà và trên đường đi. Đức Chúa Trời ban cho chúng ta cha mẹ và thầy cô để giúp chúng ta học biết về thế giới và về Ngài. Được học hành là một món quà tốt lành, cho con gái cũng như cho con trai.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì những người dạy dỗ con. Xin giúp con yêu thích việc học, và trên hết là học biết về Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao cha của Ramabai đưa vợ lên núi?",
+    "answer": "Vì gia đình ông không muốn ông dạy tiếng Phạn cho vợ, mà ông vẫn muốn dạy, ở một nơi yên tĩnh."
+   },
+   {
+    "question": "Bé Ramabai đã xuống núi bằng cách nào?",
+    "answer": "Mẹ đặt bé nằm trong một chiếc hộp mây lớn, và một người đàn ông đội chiếc hộp trên đầu mang xuống thung lũng."
+   },
+   {
+    "question": "Ai là những người dạy dỗ con?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Đức Chúa Trời ban cho chúng ta cha mẹ và thầy cô, và được học hành là một món quà tốt lành cho mọi trẻ em."
+   }
+  ],
+  "word_count": 483
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Chẳng có thành vàng nào",
+  "body_html": "<blockquote>“Các người sẽ biết chân lý, và chân lý sẽ làm cho các người được tự do.” — trích Giăng 8</blockquote> <p>Từ đó, gia đình Ramabai không bao giờ có một mái nhà riêng nữa. Suốt chừng mười lăm năm, họ đi từ nơi thánh này đến nơi thánh khác. Họ đọc to các sách tiếng Phạn cổ trong đền thờ và dưới những tán cây, và người nghe cho họ gạo, tiền hay hoa. Vì vậy, ngay từ bé, Ramabai đã quen đọc sách trước đám đông.</p> <p>Khi Ramabai chừng mười ba tuổi, cả nhà ở một năm tại thị trấn Dwarka, bên bờ biển. Người ở đó kể một câu chuyện xưa. Họ bảo rằng ngày xưa có một thành phố bằng vàng đã chìm xuống dưới sóng biển. Cứ sáu mươi năm một lần, vào một ngày đặc biệt, vị thần sẽ cho những người không có tội được nhìn thấy thành phố ấy.</p> <p>Ngày đặc biệt ấy đến đúng lúc Ramabai đang ở đó. Hàng ngàn người đứng chờ trên bờ biển suốt cả ngày. Lúc hoàng hôn, những đám mây trên biển ánh lên màu vàng. Nhiều người không dám nói rằng họ chẳng thấy thành phố nào cả, vì như thế mọi người sẽ biết họ là người có tội. Ramabai và gia đình cũng im lặng. Nhưng trong lòng, họ biết mình chỉ thấy những đám mây bình thường mà thôi.</p> <p>Trên đường đi, Ramabai đã thấy nhiều cảnh buồn. Khi cô bé chừng chín tuổi, cô nghe tiếng một người vợ trẻ khóc vì bị đánh. Nhiều năm sau, cô viết: “Tiếng khóc của chị ấy xuyên thẳng vào tim tôi.” Cô nói đó là lần đầu tiên cô cảm thấy mình được kêu gọi để giúp đỡ những bé gái và phụ nữ khác.</p> <p>Cha mẹ còn cho cô bé thêm một món quà nữa. Thời đó, phần lớn các bé gái bị gả chồng khi còn rất nhỏ. Cha mẹ Ramabai nói không. Họ muốn con gái mình được tiếp tục học. Vì thế, có những người quay lưng với gia đình cô, nhưng cô kể rằng cha cô “đã làm điều ông cho là đúng.”</p> <p>Ramabai không chịu giả vờ thấy một điều không có thật. Chúa Giê-xu phán rằng chân lý làm cho chúng ta được tự do. Đức Chúa Trời cũng muốn con sống thật thà, ngay cả khi mọi người xung quanh đều im lặng.</p> <p><em>Lạy Đức Chúa Trời, xin giúp con yêu mến điều thật. Xin ban cho con lòng can đảm để sống thật thà, ngay cả khi điều đó khó khăn. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Người ta mong được thấy gì ở Dwarka?",
+    "answer": "Một thành phố bằng vàng mà theo câu chuyện xưa đã chìm dưới biển, cứ sáu mươi năm lại hiện ra một lần cho những người không có tội."
+   },
+   {
+    "question": "Cha mẹ Ramabai đã cho cô món quà gì về chuyện lấy chồng?",
+    "answer": "Họ không gả cô đi khi còn bé như phần lớn các gia đình khác, để cô được tiếp tục học."
+   },
+   {
+    "question": "Con có nhớ lần nào thấy khó nói thật không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là chân lý làm cho chúng ta được tự do, và Đức Chúa Trời ban cho chúng ta lòng can đảm để sống thật thà."
+   }
+  ],
+  "word_count": 439
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Đường và nước",
+  "body_html": "<blockquote>“Dù cha mẹ tôi có bỏ tôi, CHÚA vẫn sẽ đón nhận tôi.” — trích Thi-thiên 27</blockquote> <p>Khi Ramabai chừng mười sáu tuổi, một nạn đói khủng khiếp ập đến miền nam Ấn Độ. Nạn đói là lúc không có đủ thức ăn. Lúc ấy cha của Ramabai đã già và bị mù. Cả nhà tiêu hết tiền vào việc dâng lễ vật cho các thầy tư tế, mong các thần sẽ giúp họ. Nhưng chẳng có sự giúp đỡ nào đến. Chẳng bao lâu họ không còn gì cả, ngay cả nồi niêu để nấu ăn cũng không.</p> <p>Suốt mười một ngày, họ sống trong rừng, ăn lá cây và vài quả chà là dại. Cha của Ramabai nghĩ rằng ông sắp chết. Ông ôm chặt Ramabai và vuốt ve khuôn mặt cô. Ông nói: “Con ơi, hãy nhớ rằng con là đứa con út của cha, đứa con cha thương nhất. Cha đã giao con vào tay Thượng Đế của chúng ta rồi.”</p> <p>Anh trai cô là Srinivas dìu cả nhà xuống một ngôi làng. Ở đó, cha cô ngã bệnh. Ông xin một chút nước đường. Họ đưa nước cho ông, nhưng chẳng có chút đường nào để cho. Vài ngày sau, ông qua đời.</p> <p>Rồi đến lượt mẹ cô cũng ngã bệnh. Một hôm bà đói quá, nên sai Ramabai sang nhà hàng xóm xin một mẩu bánh. Ramabai vừa ngại ngùng vừa buồn đến nỗi không thốt nên lời. Cô cố hết sức để không khóc, vậy mà nước mắt lại chảy ra đằng mũi! Người phụ nữ tốt bụng hiểu ra và cho cô mẩu bánh. Ramabai chạy vội về nhà, nhưng mẹ cô đã yếu quá, không ăn được nữa. Chẳng bao lâu mẹ cô qua đời, rồi không lâu sau, chị gái cô cũng qua đời.</p> <p>Cha của Ramabai không biết Chúa Giê-xu. Nhưng nhiều năm sau, khi đã biết Đức Chúa Trời qua Chúa Giê-xu, Ramabai tin rằng Đức Chúa Trời đã nghe lời cầu nguyện của cha cho cô hôm ấy, trong khu rừng.</p> <p>Đây là một phần rất buồn của câu chuyện. Đức Chúa Trời không nói rằng những điều buồn là điều tốt. Nhưng ngay cả khi những người chúng ta yêu thương không còn nữa, Đức Chúa Trời vẫn không bỏ chúng ta. Ngài đã giữ Ramabai trong tay Ngài, và Ngài cũng đang giữ con nữa.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài không bao giờ bỏ con. Xin Ngài ở gần những bạn nhỏ đang đói hoặc đang cô đơn hôm nay, và chăm sóc các bạn ấy. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Khi ngã bệnh, cha của Ramabai đã xin gì?",
+    "answer": "Một chút nước đường. Họ đưa nước cho ông, nhưng không có đường."
+   },
+   {
+    "question": "Chuyện gì xảy ra khi Ramabai đi xin bánh?",
+    "answer": "Cô ngại ngùng và buồn đến nỗi không nói được, nước mắt chảy ra đằng mũi, nhưng người hàng xóm tốt bụng hiểu ra và cho cô mẩu bánh."
+   },
+   {
+    "question": "Ai chăm sóc con khi con buồn hay sợ hãi?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Đức Chúa Trời không bao giờ bỏ chúng ta, ngay cả khi những người chúng ta yêu thương không còn nữa."
+   }
+  ],
+  "word_count": 436
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Bốn ngàn dặm",
+  "body_html": "<blockquote>“Ta sẽ lấy lòng bằng đá ra khỏi thân thể các ngươi và ban cho các ngươi lòng bằng thịt.” — trích Ê-xê-chi-ên 36</blockquote> <p>Bây giờ chỉ còn lại Ramabai và anh trai Srinivas. Họ không có nhà, cũng chẳng có tiền. Suốt hơn ba năm, hai anh em đi bộ khắp Ấn Độ, từ miền nam lên tận Kashmir ở miền bắc, rồi sang phía đông đến thành phố lớn Calcutta. Sau này Ramabai tính lại: họ đã đi bộ hơn bốn ngàn dặm, tức là hơn sáu ngàn cây số!</p> <p>Họ không có giày, không có chăn, cũng không có ô. Thỉnh thoảng Srinivas tìm được việc làm, nhưng tiền công chỉ được chút xíu. Nhiều khi họ chẳng có gì ăn ngoài một nắm hạt ngâm nước. Một đêm lạnh buốt, bên một dòng sông ở tận miền bắc xa xôi, hai anh em đào hai cái hố dài trên cát, nằm xuống đó, rồi lấp cát lên người cho đến tận cổ để giữ ấm.</p> <p>Sau này Ramabai nói một điều khiến người ta ngạc nhiên. Cô nói rằng đói khổ và buồn bã không làm cho cô tốt bụng hơn. Chúng làm cho lòng cô trở nên cứng cỏi, như một hòn đá. Cô tin rằng chỉ có Đức Chúa Trời mới có thể ban lại cho cô một tấm lòng mềm mại và biết yêu thương.</p> <p>Năm 1878, hai anh em đến Calcutta. Các bậc thông thái ở đó vô cùng kinh ngạc trước người thiếu nữ thuộc lòng biết bao bài thơ tiếng Phạn. Họ ban cho cô một danh hiệu rất cao quý. Từ đó, người ta gọi cô là Pandita Ramabai, nghĩa là “Ramabai, người nữ học giả.”</p> <p>Tại Calcutta, lần đầu tiên cô gặp những Cơ Đốc nhân. Họ tặng cô một cuốn Kinh Thánh bằng tiếng Phạn. Cô thử đọc, nhưng không hiểu, nên cất đi. Nhưng cô giữ cuốn sách ấy suốt cả đời.</p> <p>Cô cũng đọc rất kỹ những sách luật cổ của dân tộc mình. Cô bàng hoàng. Các sách ấy nói rằng phụ nữ là xấu xa, và không một người phụ nữ nào có thể được cứu khi vẫn còn là phụ nữ. Ramabai cảm thấy mình chẳng còn hy vọng gì. Cô khao khát một điều gì đó hơn thế, nhưng không biết đó là gì.</p> <p>Những lúc khó khăn có thể làm cho lòng chúng ta trở nên cứng cỏi. Nhưng Đức Chúa Trời rất vui lòng ban cho chúng ta tấm lòng mềm mại, biết quan tâm đến người khác. Hôm nay con có thể xin Ngài một tấm lòng như thế.</p> <p><em>Lạy Đức Chúa Trời, xin cất khỏi lòng con mọi sự cứng cỏi. Xin ban cho con một tấm lòng nhân hậu và biết yêu thương người khác. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ramabai và anh trai đã giữ ấm bên dòng sông lạnh giá bằng cách nào?",
+    "answer": "Họ đào hai cái hố trên cát, nằm xuống đó, rồi lấp cát lên người đến tận cổ."
+   },
+   {
+    "question": "Các Cơ Đốc nhân ở Calcutta đã tặng cô món quà gì?",
+    "answer": "Một cuốn Kinh Thánh bằng tiếng Phạn. Lúc ấy cô không hiểu, nhưng cô giữ nó suốt cả đời."
+   },
+   {
+    "question": "Theo con, vì sao chúng ta cần Đức Chúa Trời ban cho mình tấm lòng nhân hậu?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là những lúc khó khăn có thể làm lòng chúng ta cứng cỏi, nhưng Đức Chúa Trời có thể ban cho chúng ta tấm lòng mềm mại và biết yêu thương."
+   }
+  ],
+  "word_count": 470
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Niềm vui của lòng",
+  "body_html": "<blockquote>“Đức Chúa Trời làm cha cho kẻ mồ côi và bênh vực người góa bụa.” — trích Thi-thiên 68</blockquote> <p>Năm 1880, anh trai Srinivas của Ramabai lâm bệnh nặng. Anh lo lắng cho em gái mình. Khi anh không còn nữa, ai sẽ chăm sóc em? Ramabai nói với anh: “Ngoài Đức Chúa Trời ra, chẳng còn ai chăm sóc anh và em nữa.” Anh trả lời: “Vậy nếu Đức Chúa Trời chăm sóc chúng ta, thì anh chẳng sợ gì cả.” Ít lâu sau, anh qua đời. Ramabai mới hai mươi hai tuổi, và giờ đây cả gia đình cô đều đã ra đi.</p> <p>Vài tháng sau, cô kết hôn với một luật sư tên là Bipin, vốn là bạn của anh trai cô. Ông thuộc một đẳng cấp khác, tức là một nhóm gia đình khác. Nhiều người tức giận, vì họ cho rằng người thuộc các đẳng cấp khác nhau không bao giờ được lấy nhau. Nhưng Ramabai và Bipin sống với nhau rất hạnh phúc. Họ làm nhà ở một thị trấn nhỏ tên là Silchar, và năm 1881, Đức Chúa Trời ban cho họ một bé gái. Họ đặt tên bé là Manorama, nghĩa là “niềm vui của lòng.”</p> <p>Một hôm, trên kệ sách của chính mình, Ramabai tìm thấy một cuốn sách nhỏ. Chẳng ai biết nó từ đâu đến. Đó là sách Phúc Âm Lu-ca, câu chuyện về Chúa Giê-xu! Cô bắt đầu đọc một cách say mê. Một nhà truyền giáo trong thị trấn đến giải thích Kinh Thánh cho cô.</p> <p>Rồi một chuyện rất buồn xảy ra. Đầu năm 1882, Bipin mắc bệnh dịch tả và qua đời. Bé Manorama còn chưa được một tuổi. Giờ đây Ramabai là một góa phụ, tức là người phụ nữ có chồng đã qua đời, và cô chỉ còn một mình với đứa con nhỏ.</p> <p>Nhưng Ramabai không bỏ cuộc. Cô nói rằng nỗi buồn lớn lao ấy đã kéo cô đến gần Đức Chúa Trời hơn. Cô chưa biết rõ Ngài, nhưng cô cảm thấy Ngài đang dạy dỗ cô. Cô nói, nếu cô đến được với Đức Chúa Trời, thì “chính Ngài phải kéo tôi đến.”</p> <p>Khi Ramabai cô đơn nhất, Đức Chúa Trời đang kéo cô lại gần Ngài. Kinh Thánh nói Đức Chúa Trời làm cha cho những người không có cha. Khi con cảm thấy cô đơn, Đức Chúa Trời cũng đang ở gần con.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài ở gần những người cô đơn và buồn bã. Xin kéo con lại gần Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Khi Ramabai nói Đức Chúa Trời sẽ chăm sóc hai anh em, anh trai cô đã nói gì?",
+    "answer": "Anh nói: “Vậy nếu Đức Chúa Trời chăm sóc chúng ta, thì anh chẳng sợ gì cả.”"
+   },
+   {
+    "question": "Ramabai đã tìm thấy gì trên kệ sách ở Silchar?",
+    "answer": "Một cuốn sách nhỏ là sách Phúc Âm Lu-ca, câu chuyện về Chúa Giê-xu, bằng tiếng Bengal."
+   },
+   {
+    "question": "Khi nào con cảm thấy cô đơn, và lúc ấy Đức Chúa Trời có thể giúp con thế nào?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Đức Chúa Trời ở gần những người cô đơn và kéo họ đến với Ngài."
+   }
+  ],
+  "word_count": 431
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Tiếng nói cho các bé gái",
+  "body_html": "<blockquote>“Hãy lên tiếng cho những người không có tiếng nói” — trích Châm Ngôn 31</blockquote> <p>Ramabai đưa bé Manorama đến thành phố Poona, nơi ngày xưa cha cô từng theo học. Ở đó có mấy người đàn ông tốt bụng và khôn ngoan giúp đỡ cô. Chẳng bao lâu, Ramabai lập một hội phụ nữ. Hội họp vào các ngày thứ Bảy, và lo giúp các bé gái được đi học, cũng như giúp đỡ các góa phụ.</p> <p>Thời ấy, nhiều bé gái ở Ấn Độ bị gả chồng khi còn rất nhỏ, và có em đã thành góa phụ khi vẫn còn là một đứa trẻ. Một góa phụ nhỏ tuổi phải sống rất khổ. Em bị cắt hết tóc, phải mặc quần áo đơn sơ, và người ta thường đối xử tệ với em, như thể em có lỗi trong cái chết của chồng mình.</p> <p>Năm 1882, mấy người quan trọng của chính phủ Anh đến Poona để tìm hiểu về các trường học ở Ấn Độ. Ramabai đứng lên trước mặt họ và nói thay cho phụ nữ Ấn Độ. Cô xin cho người ta đào tạo các cô giáo, và cả các nữ bác sĩ nữa, vì nhiều phụ nữ ngại không dám đến khám với bác sĩ nam, nên họ chẳng bao giờ được chữa bệnh. Trước đó hầu như chưa có người phụ nữ Ấn Độ nào từng lên tiếng như thế!</p> <p>Cũng năm ấy, người ta đưa đến cho Ramabai một góa phụ nhỏ chừng mười hai tuổi. Em bị gả chồng năm lên năm, và chồng em chết chỉ vài ngày sau đám cưới. Mẹ chồng đổ lỗi cho cô bé và thậm chí chẳng thèm nhìn mặt em. Ramabai đưa em về sống cùng mình.</p> <p>Khi Ramabai nhìn cô bé ấy, một kế hoạch bắt đầu nảy nở trong lòng cô. Cô sẽ lập một mái nhà cho các góa phụ! Nhưng trước hết, cô muốn học làm bác sĩ. Vì vậy, năm 1883, cô đi tàu sang nước Anh cùng với bé Manorama lúc ấy mới hai tuổi, và một người bạn. Sau này cô kể rằng cô ra đi “như Áp-ra-ham, không biết mình sẽ đi đâu.”</p> <p>Ramabai đã can đảm lên tiếng cho những bé gái không có tiếng nói. Đức Chúa Trời muốn chúng ta lên tiếng cho những người đang bị làm tổn thương hay bị bỏ rơi. Con cũng có thể làm điều đó, ngay ở trường hay ở khu phố nơi con sống.</p> <p><em>Lạy Đức Chúa Trời, xin giúp con nhìn thấy những người bị bỏ rơi. Xin ban cho con lòng can đảm để lên tiếng cho họ, và làm bạn với họ. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ramabai đã xin những người của chính phủ điều gì?",
+    "answer": "Cô xin cho người ta đào tạo các cô giáo và các nữ bác sĩ, vì nhiều phụ nữ không chịu đến khám với bác sĩ nam."
+   },
+   {
+    "question": "Ramabai đã làm gì cho cô bé góa phụ được đưa đến với mình?",
+    "answer": "Cô đưa em về sống cùng mình, và điều đó cho cô ý tưởng lập một mái nhà cho các góa phụ."
+   },
+   {
+    "question": "Con có biết ai đang cần một người bạn lên tiếng cho mình không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Đức Chúa Trời muốn chúng ta lên tiếng cho những người bị tổn thương hay bị bỏ rơi."
+   }
+  ],
+  "word_count": 451
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "vi"
+  ],
+  "order": 7,
+  "title": "Người phụ nữ bên giếng nước",
+  "body_html": "<blockquote>“Nhưng ai uống nước Ta ban sẽ không bao giờ khát nữa.” — trích Giăng 4</blockquote> <p>Ở nước Anh, một nhóm phụ nữ Cơ Đốc gọi là các Nữ Tu đã chăm sóc Ramabai và bé Manorama. Họ dạy Ramabai tiếng Anh. Nhưng rồi có một tin buồn. Ramabai bị điếc một phần, và các bác sĩ nói rằng cô không thể học làm bác sĩ được. Đó là một cú sốc lớn.</p> <p>Sau đó, các Nữ Tu đưa cô đến thăm một mái nhà đặc biệt ở London. Nơi ấy dành cho những phụ nữ mà cuộc đời đã đi sai đường rất xa, những người mà hầu hết mọi người đều khinh khi. Ramabai thấy các Cơ Đốc nhân ở đó đối xử tử tế với họ. Có những người trong số các phụ nữ ấy đã yêu mến Chúa Giê-xu đến nỗi giờ đây họ dành cả đời để chăm sóc người bệnh.</p> <p>Ramabai vô cùng kinh ngạc. Ở Ấn Độ, cô chưa từng thấy ai cố gắng giúp đỡ những phụ nữ như thế. Cô hỏi Nữ Tu điều gì khiến các Cơ Đốc nhân quan tâm đến họ.</p> <p>Nữ Tu đang dạy cô mở Kinh Thánh ra sách Giăng chương 4. Chương này kể về việc Chúa Giê-xu gặp một người phụ nữ bên giếng nước. Người khác đều tránh xa bà. Nhưng Chúa Giê-xu ân cần trò chuyện với bà, và ban cho bà “nước sống” không bao giờ cạn.</p> <p>Ramabai đã đọc những sách luật cổ nói rằng phụ nữ là xấu xa và chẳng có hy vọng gì. Giờ đây cô nghe về Chúa Giê-xu, Đấng không khinh khi phụ nữ mà đến để cứu họ. Cô tin chắc rằng Ngài thật là Đấng Cứu Thế. Cô viết: “Thế là lòng tôi được kéo về với đạo của Đấng Christ.” Một cuốn sách của một Cơ Đốc nhân Ấn Độ khôn ngoan tên là Cha Goreh cũng giúp cô thấy rằng điều đó là thật.</p> <p>Ngày 29 tháng 9 năm 1883, Ramabai và bé Manorama chịu báp-têm. Cô lấy tên là Mary. Cô biết nhiều người trong dân tộc mình sẽ buồn giận, nhưng cô nói rằng mình chưa bao giờ hối tiếc.</p> <p>Chúa Giê-xu không khinh khi bất cứ ai. Ngài chịu khó tìm đến để tử tế với những người bị người khác bỏ rơi. Chúa Giê-xu cũng yêu con nhiều như thế, và Ngài muốn ban cho con nước sống của Ngài nữa.</p> <p><em>Lạy Chúa Giê-xu, cảm ơn Ngài vì Ngài không bao giờ khinh khi ai cả. Cảm ơn Ngài vì đã yêu con. Xin giúp con biết tử tế giống như Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ramabai đã thấy điều gì ở mái nhà tại London khiến cô ngạc nhiên?",
+    "answer": "Các Cơ Đốc nhân đối xử tử tế với những phụ nữ mà mọi người khác đều khinh khi, và có những phụ nữ ấy giờ đây lại chăm sóc người bệnh."
+   },
+   {
+    "question": "Nữ Tu đã đọc cho cô nghe câu chuyện nào trong Kinh Thánh?",
+    "answer": "Câu chuyện trong Giăng chương 4, kể về Chúa Giê-xu ân cần trò chuyện với một người phụ nữ bên giếng nước và ban cho bà nước sống."
+   },
+   {
+    "question": "Con có thể tử tế với một người bị người khác bỏ rơi bằng cách nào?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Chúa Giê-xu không bao giờ khinh khi ai cả, và Ngài giúp chúng ta biết tử tế giống như Ngài."
+   }
+  ],
+  "word_count": 446
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Ngôi nhà Khôn Ngoan",
+  "body_html": "<blockquote>“Hãy học làm điều tốt. Hãy theo đuổi công lý. Hãy sửa trị kẻ áp bức. Hãy bênh vực quyền lợi của trẻ mồ côi; hãy đứng ra bào chữa cho người góa bụa.” — trích Ê-sai 1</blockquote> <p>Năm 1886, Ramabai đi tàu sang nước Mỹ. Cô ở đó gần ba năm. Cô viết một cuốn sách về phụ nữ Ấn Độ, kể lại câu chuyện buồn của các góa phụ nhỏ tuổi. Cô xin người Mỹ giúp mình mở một trường học cho các góa phụ ở Ấn Độ. Nhiều người tốt bụng ở Boston hứa sẽ giúp. Ramabai kể rằng đêm hôm ấy cô đã “khóc vì vui mừng.”</p> <p>Ngày 11 tháng 3 năm 1889, khi đã trở về Ấn Độ, Ramabai mở trường. Cô gọi trường là Sharada Sadan, nghĩa là “Ngôi nhà Khôn Ngoan.” Ngày đầu tiên chỉ có hai học trò! Nhưng chẳng bao lâu số học trò tăng lên. Các góa phụ trẻ học đọc, học viết, và nhiều người được đào tạo để làm cô giáo, nhờ đó họ có thể tự kiếm sống.</p> <p>Buổi tối, tất cả các cô gái kéo vào phòng của Ramabai để hát. Nhiều người cho rằng con gái hoàn toàn không nên ca hát. Nhưng Ramabai và các cô gái vui vẻ hát cùng nhau, và cô nói rằng họ sẽ “xoay chuyển dòng nước.”</p> <p>Ramabai đã hứa rằng nhà trường sẽ không tìm cách biến các cô gái thành Cơ Đốc nhân. Các cô vẫn có thể giữ tôn giáo của mình. Nhưng mỗi buổi sáng, Ramabai đọc Kinh Thánh và cầu nguyện với Manorama trong phòng riêng, và cô để cửa mở.</p> <p>Lúc đầu, có vài cô gái chỉ ghé mắt nhìn vào. Rồi từng người một tiến lại gần hơn một chút. Chẳng bao lâu, nhiều cô đã ngồi yên lặng nghe Kinh Thánh và quỳ xuống cầu nguyện cùng cô. Ramabai nói: “Không cô gái nào bị ép phải vào cả.” Các cô đến vì chính các cô muốn đến.</p> <p>Một vài người đàn ông theo Ấn Độ giáo, là những người cố vấn cho nhà trường, rất không hài lòng về cánh cửa mở ấy. Nhưng Ramabai không chịu giấu điều mình tin, và cô cũng không ép buộc ai cả.</p> <p>Ramabai không ép người khác theo đức tin của mình, nhưng cô cũng không giấu đức tin ấy. Con không cần phải nài ép ai về Chúa Giê-xu. Con chỉ cần để cánh cửa của mình mở ra, bằng cách sống tử tế và thật lòng về điều con tin.</p> <p><em>Lạy Đức Chúa Trời, xin giúp con làm một người bạn tốt với mọi người. Xin giúp con đừng giấu việc con yêu Ngài, và biết chia sẻ tình yêu của Ngài một cách dịu dàng. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Sharada Sadan nghĩa là gì, và trường ấy dành cho ai?",
+    "answer": "Nghĩa là “Ngôi nhà Khôn Ngoan,” và đó là một trường học dành cho các góa phụ trẻ."
+   },
+   {
+    "question": "Chuyện gì xảy ra khi Ramabai để cửa phòng mở mỗi buổi sáng?",
+    "answer": "Các cô gái ghé mắt nhìn vào, rồi tiến lại gần hơn, và nhiều cô bắt đầu nghe Kinh Thánh và cầu nguyện cùng cô, vì các cô muốn thế."
+   },
+   {
+    "question": "Con có thể cho người khác thấy con yêu Chúa Giê-xu mà không nài ép họ bằng cách nào?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là chúng ta có thể chia sẻ đức tin của mình một cách dịu dàng và thật lòng, như một cánh cửa mở."
+   }
+  ],
+  "word_count": 466
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Gánh nặng được cất đi",
+  "body_html": "<blockquote>“dân đang ngồi trong bóng tối đã thấy một ánh sáng lớn” — trích Ma-thi-ơ 4</blockquote> <p>Ramabai đã chịu báp-têm. Cô dạy về Chúa Giê-xu và điều hành một trường học. Nhưng sâu thẳm trong lòng, cô cảm thấy vẫn còn thiếu một điều gì đó. Cô đã đọc nhiều sách nói về Kinh Thánh, nhưng chính Kinh Thánh thì cô lại chưa đọc nhiều. Vì vậy cô bắt đầu đọc Kinh Thánh mỗi ngày.</p> <p>Lúc đầu, việc đọc Kinh Thánh không làm cô vui. Nó khiến cô thấy mình chưa sẵn sàng để gặp Đức Chúa Trời. Cô biết mình có những tội lỗi mà tự mình không thể nào gỡ bỏ được. Cô viết rằng cô cần “Đấng Christ, chứ không chỉ cần đạo của Ngài.” Cô không chỉ cần biết về Chúa Giê-xu. Cô cần chính Chúa Giê-xu.</p> <p>Vì thế, vào khoảng năm 1891, cô dâng mình trọn vẹn cho Chúa Giê-xu. Cô xin Ngài cất đi mọi tội lỗi của cô. Cô nói rằng cô cảm thấy như có một gánh nặng thật lớn được lăn khỏi lòng mình. Giống như đang ở trong một căn phòng tối, bỗng nhiên thấy một ánh sáng lớn.</p> <p>Điều làm cô vui nhất là tình yêu của Đức Chúa Trời là một món quà ban không. Hồi còn nhỏ, cô được dạy rằng phải làm việc mới được Đức Chúa Trời đoái thương, và phụ nữ thì không thể được cứu khi vẫn là phụ nữ. Giờ đây cô đọc thấy rằng Chúa Giê-xu đã chết vì chúng ta khi chúng ta còn là tội nhân. Cô viết: “Thật là tin mừng cho tôi, một người phụ nữ!”</p> <p>Hai năm sau, vào năm 1893, một cơn bão lớn ập xuống trường học của cô. Một vài người quan trọng từng giúp đỡ cô nổi giận vì các cô gái cầu nguyện cùng cô. Họ bỏ đi, và nhiều gia đình đưa con gái mình về. Người ta viết những lời độc ác trên báo, có người còn gửi thư dọa giết cô. Ramabai sợ hãi. Nhưng cô tin cậy Đức Chúa Trời, và cô vượt qua mọi chuyện, can đảm hơn trước. Cô nói Đức Chúa Trời đã giải phóng cô khỏi nỗi sợ người ta nghĩ gì về mình.</p> <p>Biết về Chúa Giê-xu là điều tốt. Nhưng Chúa Giê-xu muốn con biết chính Ngài, và tự mình tin cậy Ngài. Tình yêu của Ngài là một món quà ban không, cho các bé trai và bé gái ở khắp mọi nơi.</p> <p><em>Lạy Chúa Giê-xu, con không chỉ muốn biết về Ngài. Con muốn biết chính Ngài. Xin cất đi tội lỗi của con và đổ đầy ánh sáng của Ngài trong con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ramabai nói cô cần điều gì?",
+    "answer": "Cô nói cô cần chính Đấng Christ, chứ không chỉ cần đạo của Ngài."
+   },
+   {
+    "question": "Chuyện gì đã xảy ra ở trường của cô vào năm 1893?",
+    "answer": "Một vài người quan trọng từng giúp cô giận dữ bỏ đi, nhiều cô gái bị đưa về nhà, và người ta viết những lời độc ác, nhưng cô vẫn tin cậy Đức Chúa Trời."
+   },
+   {
+    "question": "Biết về Chúa Giê-xu và biết chính Chúa Giê-xu khác nhau thế nào?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Chúa Giê-xu muốn chính chúng ta tin cậy Ngài, và tình yêu của Ngài là một món quà ban không."
+   }
+  ],
+  "word_count": 455
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Cô bé bên bờ sông",
+  "body_html": "<blockquote>“Nhưng Đức Chúa Trời chứng tỏ Ngài yêu thương chúng ta biết bao: Đấng Christ đã chết vì chúng ta khi chúng ta còn là tội nhân.” — trích Rô-ma 5</blockquote> <p>Năm 1896, lại có một nạn đói khủng khiếp nữa ở Ấn Độ. Ramabai không muốn đi. Cô mệt mỏi, và cô có rất ít tiền. Nhưng cô nghe Đức Chúa Trời phán trong lòng mình: “Hãy nhớ lại những ngày xa xưa.” Cô nhớ đến cha mẹ mình. Chính cô cũng từng là một đứa trẻ đói khát. Cô không thể ở yên trong nhà được.</p> <p>Vậy Ramabai lên đường đến những nơi người ta đang chết đói. Cô gặp nhiều bé gái không có thức ăn, không có gia đình, và có cả những kẻ gian ác muốn bắt cóc các bé gái để làm hại các em. Cô đưa được bao nhiêu em thì đưa bấy nhiêu về với mình. Chẳng bao lâu, cô quyết định giải cứu ba trăm em! Tiền ở đâu ra? Cô viết: “Tôi không biết, nhưng Chúa biết tôi cần gì.”</p> <p>Trong một chuyến đi về, các cô gái ngồi trên một đoàn xe bò nối đuôi nhau. Đoàn xe dừng lại bên một dòng sông. Một cô bé đang đói hái đậu trong ruộng của một bác nông dân, và Ramabai bắt em phải trả lại. Sau đó cô bé bỏ trốn. Khi em được đưa về, Ramabai rất giận. Cô nói cô bé muốn đi đâu thì đi, rồi ra lệnh cho đoàn xe lên đường mà không có em.</p> <p>Cô bé nói em xin lỗi và van xin được đi theo, nhưng Ramabai không tin em. Đoàn xe bắt đầu lăn bánh. Cô bé ngồi bệt xuống đất, một mình, trong khi trời tối dần.</p> <p>Ramabai không chịu nổi. Cô bảo người đánh xe dừng lại. Ngồi đó, cô nhớ lại biết bao lần chính cô đã chạy trốn khỏi Đức Chúa Trời, và Đức Chúa Trời vẫn yêu thương cô và gọi cô trở về, ngay cả khi cô còn là một tội nhân. Cô vẫy tay gọi cô bé. Cô bé vùng dậy và chạy đến với cô nhanh hết sức! Tên em là Girija.</p> <p>Đức Chúa Trời đã không chờ cho Ramabai trở nên tốt rồi mới yêu cô, và Ngài cũng không chờ con như thế. Ngài yêu con trước. Và Ngài giúp chúng ta yêu thương người khác, ngay cả khi họ đã làm điều sai.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì đã yêu con trước khi con trở nên tốt. Xin giúp con biết tha thứ cho người khác và đón họ trở về, như Ngài đã đón con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Ramabai quyết định đi giúp các trẻ em trong nạn đói?",
+    "answer": "Đức Chúa Trời nhắc cô “hãy nhớ lại những ngày xa xưa,” và cô nhớ rằng chính mình cũng từng là một đứa trẻ đói khát."
+   },
+   {
+    "question": "Điều gì khiến Ramabai cho dừng xe và gọi Girija trở lại?",
+    "answer": "Cô nhớ lại biết bao lần mình đã chạy trốn khỏi Đức Chúa Trời, và Đức Chúa Trời vẫn yêu thương cô và gọi cô trở về khi cô còn là một tội nhân."
+   },
+   {
+    "question": "Có ai mà con thấy khó tha thứ không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Đức Chúa Trời yêu chúng ta trước, trước khi chúng ta trở nên tốt, và Ngài giúp chúng ta yêu thương và tha thứ cho người khác."
+   }
+  ],
+  "word_count": 450
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Người quét dọn",
+  "body_html": "<blockquote>“Hãy thử Ta trong việc này, CHÚA Vạn Quân phán, xem Ta có mở các cửa sổ trên trời cho các ngươi và đổ phước lành xuống cho các ngươi dư dật không.” — trích Ma-la-chi 3</blockquote> <p>Năm 1897, một bệnh dịch nguy hiểm gọi là dịch hạch tràn đến Poona, và người ta bảo Ramabai phải đưa các cô gái trong nạn đói ra khỏi thành phố. Vì vậy cô đưa các em về một nông trại ở miền quê, tại một nơi gọi là Kedgaon. Lúc đầu, họ sống trong những lán trại có bụi gai bao quanh, dưới cái nắng rất gay gắt.</p> <p>Nhưng Ramabai đặt cho nơi ấy một cái tên thật đẹp: Mukti. Tên ấy nghĩa là “sự cứu rỗi,” hay “được giải phóng.” Hồi còn nhỏ, cô được dạy rằng phụ nữ không bao giờ có thể được giải phóng. Giờ đây hàng trăm cô gái sẽ tìm được tự do trong Chúa Giê-xu tại nơi này. Một ngày năm ấy, mười bảy chiếc xe bò chở đầy các cô gái đi xuống bờ sông, vừa đi vừa hát suốt dọc đường, và nhiều em đã chịu báp-têm.</p> <p>Ramabai từng đọc về George Müller, người đã nuôi hàng ngàn trẻ mồ côi ở nước Anh bằng cách tin cậy Đức Chúa Trời trong mọi sự. Cô ước gì có ai đó làm như thế ở Ấn Độ. Rồi cô cảm thấy Đức Chúa Trời hỏi cô: “Sao con không tự mình bắt đầu làm điều đó?” Và cô đã làm. Mukti không có tài khoản ngân hàng, cũng chẳng có khoản tiết kiệm lớn nào. Cô kể cho mọi người nghe những gì Đức Chúa Trời đang làm, cầu nguyện, và tin cậy Ngài. Cô nói: “Chúa là kho báu vô tận của chúng tôi.” Nghĩa là một kho báu không bao giờ cạn.</p> <p>Mukti cứ lớn mãi lên. Đến năm 1901, có khoảng hai ngàn phụ nữ và bé gái sống ở đó. Một người khách đến thăm viết rằng năm năm trước, nơi này chỉ là một cánh đồng trống! Các cô gái học đọc, học làm ruộng, học dệt vải, và thậm chí còn học in sách.</p> <p>Ramabai từng được tôn vinh là một nữ học giả. Nhưng cô tự gọi mình là một người quét dọn, mà ở Ấn Độ đó là một trong những công việc thấp kém nhất. Cô nói: “Tôi quét vào khuôn viên này được bao nhiêu người thì quét bấy nhiêu.” Cô gom về những cô gái mà chẳng ai muốn nhận, và cho các em một mái nhà.</p> <p>Ramabai tin cậy Đức Chúa Trời cho từng bữa ăn, và Đức Chúa Trời đã chăm sóc tất cả các em. Con cũng có thể tin cậy Đức Chúa Trời về những gì con cần. Và con có thể làm một “người quét dọn” bằng cách đón nhận những người bị người khác bỏ rơi.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài chăm sóc con mỗi ngày. Xin giúp con tin cậy Ngài, và biết đón nhận những người đang cần một người bạn. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Cái tên Mukti nghĩa là gì?",
+    "answer": "Nghĩa là sự cứu rỗi, hay được giải phóng."
+   },
+   {
+    "question": "Vì sao Ramabai tự gọi mình là một người quét dọn?",
+    "answer": "Vì cô gom về, hay “quét vào,” những cô gái và phụ nữ mà chẳng ai muốn nhận, và cho họ một mái nhà."
+   },
+   {
+    "question": "Có điều gì con có thể tin cậy Đức Chúa Trời giúp con không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Đức Chúa Trời chăm sóc chúng ta, và chúng ta có thể tin cậy Ngài về những gì mình cần."
+   }
+  ],
+  "word_count": 521
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Kinh Thánh cho mọi người",
+  "body_html": "<blockquote>“Các con đã nhận không phải trả gì, thì hãy cho đi mà không đòi gì.” — trích Ma-thi-ơ 10</blockquote> <p>Năm 1905, Ramabai mời các cô gái ở Mukti mỗi sáng cầu nguyện xin Đức Chúa Trời kéo nhiều người ở Ấn Độ đến gần Ngài, “kể cả chính chúng ta.” Khoảng bảy mươi cô gái đến. Chẳng bao lâu đã có hàng trăm cô cầu nguyện! Một ngày tháng Sáu, Đức Chúa Trời nhậm lời một cách thật kỳ diệu. Các cô gái bắt đầu khóc, cầu nguyện và xin lỗi về những điều sai trái mình đã làm. Có cô trả lại những thứ mình đã lấy. Các cô tràn đầy niềm vui. Từng nhóm cô gái đi ra cầu nguyện cho người ta khắp Ấn Độ. Ramabai dạy các em rằng dấu hiệu quan trọng nhất của Thánh Linh Đức Chúa Trời là tình yêu thương.</p> <p>Ramabai còn một công việc lớn nữa. Cuốn Kinh Thánh bằng tiếng mẹ đẻ của cô, tiếng Marathi, dùng những từ dài và khó. Nhiều phụ nữ ở các làng quê không hiểu được. Vì vậy Ramabai bắt đầu làm một cuốn Kinh Thánh mới, bằng những lời đơn giản mà người bình thường vẫn nói. Cô học tiếng Hê-bơ-rơ và tiếng Hy Lạp, là những thứ tiếng mà Kinh Thánh được viết ra lúc ban đầu. Các cô gái ở Mukti tự sắp chữ trên chiếc máy in của chính mình. Cô không bao giờ cho phép bán cuốn Kinh Thánh của mình. Cô nói nó phải được tặng không, cũng như nó đã được tặng không cho cô.</p> <p>Năm 1921, một chuyện rất buồn xảy ra. Manorama, con gái của cô, người đã làm việc bên cạnh cô suốt nhiều năm, ngã bệnh và qua đời. Ramabai nói: “CHÚA đã ban cho, và CHÚA đã lấy lại; nguyện danh CHÚA được chúc tụng.”</p> <p>Ramabai hoàn thành cuốn Kinh Thánh của mình ít lâu trước khi qua đời. Sáng sớm ngày 5 tháng 4 năm 1922, cô qua đời êm ả trong giấc ngủ. Cô được sáu mươi ba tuổi. Một ngàn cô gái đi theo khi các thiếu nữ ở Mukti khiêng quan tài của cô. Người thuộc mọi đẳng cấp đứng bên nhau, và một bà góa già khóc lên: “Ôi, Mẹ Vĩ Đại, Mẹ Vĩ Đại!” Ngày nay Mukti vẫn còn đó, vẫn chăm sóc phụ nữ và trẻ em.</p> <p>Ramabai đã nhận tình yêu của Đức Chúa Trời một cách ban không, nên cô cũng ban tình yêu ấy cho mọi người một cách ban không. Con cũng đã nhận được những món quà tốt lành. Hôm nay con có thể chia sẻ tình yêu của Đức Chúa Trời với ai?</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Kinh Thánh, và vì những người như Ramabai đã chia sẻ Kinh Thánh. Xin giúp con biết rộng rãi chia sẻ tình yêu của Ngài với người khác. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Ramabai làm một cuốn Kinh Thánh mới bằng tiếng Marathi?",
+    "answer": "Vì cuốn cũ dùng những từ dài và khó, và cô muốn phụ nữ ở làng quê hiểu được Kinh Thánh bằng lời lẽ đơn giản hằng ngày."
+   },
+   {
+    "question": "Ramabai dạy rằng dấu hiệu quan trọng nhất của Thánh Linh Đức Chúa Trời là gì?",
+    "answer": "Tình yêu thương."
+   },
+   {
+    "question": "Tuần này con có thể chia sẻ tình yêu của Đức Chúa Trời với ai đó bằng cách nào?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Đức Chúa Trời ban cho chúng ta cách rộng rãi, nên chúng ta cũng có thể rộng rãi ban tình yêu của Ngài cho người khác."
+   }
+  ],
+  "word_count": 492
+ }
+}
+]
