@@ -36530,6 +36530,21 @@
 				534
 			]
 		},
+		"ru/how-to-succeed-in-the-christian-life": {
+			"ground": "90b3c786fc857ebce42c4b0a2ce7fbbda11ba4b9b1b7aa563ec490bd32718d9e",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ruth": {
 			"ground": "23135b404dc48238d9ea87fab02e4d9881db76ae2c61c75e93f05832eacb2c19",
 			"style": "devotional",
