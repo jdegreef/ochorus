@@ -747,6 +747,14 @@ So when the English does not say what it should:
    editions of those works (a voices crib) instead of re-translated.
    **Their Scripture is OWB, never the language's classic Bible, when that
    language has an OWB rendering.**
+   **Bundled OWB languages (2026-11-20): am, sw, ja, es, fr, pt, hi, uk, vi,
+   ko, ru** (`library/data/bible/owb-<lang>-b.json.gz`). An Original's edition
+   in any of these quotes `owb-<lang>` (fetched offline as below), with notes
+   `source_file: "Open Word Bible (OWB), Balanced edition, <Language>"`.
+   Arabic (85 verses drafted) and Luganda (no text) have none yet: there the
+   Original quotes the language's registry Bible (`arb-vd`, `lug`), as before.
+   This rule is for Originals only; a classic in es/fr/pt/hi/uk/vi/ko/ru keeps
+   its registry Bible (am, sw and ja quote OWB for every work, below).
    **Amharic, Swahili and Japanese are OWB for EVERY work** (founder decisions:
    Amharic 2026-11-18; Swahili and Japanese 2026-11-19): an Original or a
    classic alike quotes that language's OWB Balanced text verbatim. Each is

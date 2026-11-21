@@ -1,0 +1,126 @@
+{
+    "kind": "sermon",
+    "slug": "i-am-crucified-with-christ",
+    "language": "pt",
+    "job_issue": 8583,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Galatians 2:20a",
+            "status": "self_rendered",
+            "block_index": 0
+        },
+        {
+            "reference": "Galatians 2:20a",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 4
+        },
+        {
+            "reference": "Galatians 2:20b",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 1
+        },
+        {
+            "reference": "Matthew 12:30",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "John 8:24",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 21
+        },
+        {
+            "reference": "Mark 16:15",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 45
+        },
+        {
+            "reference": "Romans 6:11",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 49
+        },
+        {
+            "reference": "Colossians 1:27",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 63
+        },
+        {
+            "reference": "Ephesians 1:6",
+            "status": "self_rendered",
+            "block_index": 63
+        },
+        {
+            "reference": "Colossians 2:10",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 64
+        },
+        {
+            "reference": "1 Corinthians 1:30",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 64
+        },
+        {
+            "reference": "Hebrews 13:21",
+            "status": "self_rendered",
+            "block_index": 65
+        },
+        {
+            "reference": "Hebrews 2:5",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 66
+        },
+        {
+            "reference": "Hebrews 12:23",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 66
+        },
+        {
+            "reference": "Hebrews 12:22",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 66
+        },
+        {
+            "reference": "Revelation 22:4",
+            "status": "self_rendered",
+            "block_index": 70
+        },
+        {
+            "reference": "1 John 3:2",
+            "status": "self_rendered",
+            "block_index": 70
+        },
+        {
+            "reference": "John 3:30",
+            "status": "self_rendered",
+            "block_index": 79
+        },
+        {
+            "reference": "James 1:23-24",
+            "status": "self_rendered",
+            "block_index": 84
+        },
+        {
+            "reference": "Psalm 90:17",
+            "status": "self_rendered",
+            "block_index": 88
+        },
+        {
+            "reference": "Matthew 6:10",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 95
+        }
+    ]
+}

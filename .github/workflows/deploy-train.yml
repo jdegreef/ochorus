@@ -9,10 +9,16 @@ name: Deploy train
 # running (the web build takes 20-70 min after the train exits), the run
 # deploys nothing and stays green; the next run picks the work up. If Render
 # cannot be asked, it deploys nothing and goes red.
+# Every run also checks the web site it shipped last time: it goes RED if the
+# last finished ochorus-web deploy failed or the live site lags main's newest
+# green deployable commit by more than MAX_WEB_LAG_HOURS, and still deploys.
+# (Nov 16–19, 2026: the web sat on an old commit for ~2 days behind green runs,
+# because a run went green as soon as it had STARTED the web build.)
 # .github/scripts/deploy_train.py has the rules and the why.
 #
-# A RED RUN MEANS PRODUCTION IS FROZEN: nothing else deploys. Fix it the same
-# day. (Oct 5–8, 2026: the hook secrets were missing and main went undeployed.)
+# A RED RUN MEANS PRODUCTION IS FROZEN OR BROKEN; the first line of the run
+# summary says which. Fix it the same day. (Oct 5–8, 2026: the hook secrets
+# were missing and main went undeployed.)
 #
 # Need it live now? Actions → Deploy train → Run workflow (tick "force" to
 # redeploy even when nothing deployable changed), or:
@@ -61,6 +67,8 @@ jobs:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
           RENDER_SERVICE_ID_API: srv-d948c44vikkc73brci60 # ochorus-api
           RENDER_SERVICE_ID_WEB: srv-d948c44vikkc73brci5g # ochorus-web
+          # Red when a deployable commit has waited longer than this on main.
+          MAX_WEB_LAG_HOURS: '6'
         run: |
           pip install --quiet pyyaml
           python3 .github/scripts/deploy_train.py
