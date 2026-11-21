@@ -1,0 +1,93 @@
+{
+ "kind": "book",
+ "slug": "david-livingstone-a-life-children",
+ "language": "vi",
+ "job_issue": 9415,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Ecclesiastes 9:10a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 19:1",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "2 Timothy 4:17",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Acts 8:31",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Isaiah 35:1",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 15:4b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 61:1",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalm 34:18a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Proverbs 25:25",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalm 116:15",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}

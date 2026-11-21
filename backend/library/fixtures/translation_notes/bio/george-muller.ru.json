@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "george-muller",
+ "language": "ru",
+ "job_issue": 9145,
+ "references": [
+  {
+   "reference": "Psalm 119:68a",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}

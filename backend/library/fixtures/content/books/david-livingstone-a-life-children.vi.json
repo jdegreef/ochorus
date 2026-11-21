@@ -1,0 +1,377 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "david-livingstone-a-life-children",
+  "language": "vi",
+  "title": "David Livingstone (Cho thiếu nhi)",
+  "subtitle": "",
+  "cover_byline": "David Livingstone",
+  "description": "Câu chuyện có thật về David, một cậu bé người Scotland phải vào làm trong xưởng dệt bông từ năm mười tuổi, rồi trở thành bác sĩ và nhà truyền giáo, đi bộ băng ngang cả châu Phi, và dành cả cuộc đời để chống lại nạn buôn bán nô lệ, cùng với những người bạn châu Phi can đảm đã ở bên ông cho đến phút cuối. Ấn bản dành cho thiếu nhi này kể lại cuộc đời ông qua những chương ngắn để đọc to: một câu Kinh Thánh, một phần câu chuyện của ông, một điều câu chuyện ấy có ý nghĩa cho con, và một lời cầu nguyện ngắn, cùng với những câu hỏi để cùng nhau trò chuyện.",
+  "qa": [
+   {
+    "question": "Sách David Livingstone (Cho thiếu nhi) nói về điều gì?",
+    "answer": "Đây là phiên bản dành cho thiếu nhi của cuốn tiểu sử đầy đủ về David Livingstone. Sách kể về một cậu bé làm việc trong một xưởng dệt bông ở Scotland đã trở thành bác sĩ và nhà truyền giáo ở châu Phi, cùng học đọc Kinh Thánh với một tù trưởng tên là Sechele, đi bộ từ bờ bên này sang bờ bên kia châu Phi, và làm việc vất vả để chấm dứt việc người ta bị bắt và bị bán làm nô lệ, và về việc hai người bạn châu Phi của ông là Susi và Chuma đã đưa ông về nhà vào lúc cuối đời."
+   },
+   {
+    "question": "David Livingstone là ai?",
+    "answer": "Một bác sĩ và nhà truyền giáo người Scotland, sống từ năm 1813 đến năm 1873. Ông đến miền nam châu Phi năm 1841, sống giữa người Bakwena, và là người châu Âu đầu tiên được biết đến đã băng ngang châu Phi từ bờ biển này sang bờ biển kia. Ông dành những năm cuối đời để thám hiểm và nói cho cả thế giới biết sự thật về nạn buôn bán nô lệ. Ông qua đời tại vùng đất nay là Zambia và được an táng tại Tu viện Westminster ở London."
+   },
+   {
+    "question": "Mỗi chương được sắp xếp như thế nào?",
+    "answer": "Chương nào cũng ngắn và được viết để đọc to. Mỗi chương bắt đầu bằng một câu Kinh Thánh, kể một phần câu chuyện của David, chỉ ra một điều đơn giản mà câu chuyện ấy có ý nghĩa cho con, và kết thúc bằng một lời cầu nguyện ngắn. Sau đó là ba câu hỏi để cùng nhau trò chuyện."
+   },
+   {
+    "question": "Cuốn sách này có quá buồn hay quá đáng sợ đối với trẻ em không?",
+    "answer": "Có vài phần buồn hoặc hồi hộp: một con sư tử tấn công, người ta bị bắt và bị bán làm nô lệ, và cái chết của bé gái nhỏ của David, của vợ ông là Mary, và của chính David. Sách không giả vờ rằng những điều ấy đã không xảy ra, nhưng kể lại một cách nhẹ nhàng, không có những chi tiết đáng sợ. Trên hết, đây là câu chuyện về đức tin, về những lời hứa được giữ trọn, và về những người bạn không bao giờ bỏ cuộc."
+   },
+   {
+    "question": "Những câu chuyện này có thật không?",
+    "answer": "Có. Chúng được lấy từ chính những cuốn sách và nhật ký của David Livingstone, từ những người quen biết ông, và từ lời kể của hai người bạn Susi và Chuma sau khi ông qua đời. Một vài điều, như câu nói nổi tiếng “Có phải ngài là bác sĩ Livingstone?” và cách người ta tìm thấy David vào lúc cuối đời, chỉ đến từ trí nhớ của một hai người, và sách có nói rõ điều đó khi kể lại. Sách cũng nói thẳng rằng những nơi ông “khám phá” thì người châu Phi sống ở đó đã biết đến từ lâu."
+   },
+   {
+    "question": "Cuốn sách này dành cho ai?",
+    "answer": "Sách dành cho thiếu nhi, để người lớn đọc to cho các em nghe, hoặc để các em lớn hơn tự đọc. Ngoài ra còn có một ấn bản dành cho thiếu niên, và cuốn tiểu sử đầy đủ dành cho bạn đọc lớn tuổi hơn."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại của Ochorus dành cho bạn đọc nhỏ tuổi, dựa trên cuốn tiểu sử David Livingstone của Ochorus, thuộc bộ sách Chân Dung Lòng Can Đảm. Lời kể là của chúng tôi, được tự do đọc và chia sẻ.",
+  "cover_url": "/covers/art/david-livingstone-a-life-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 166,
+  "is_published": true,
+  "created_at": "2026-11-21T00:00:00Z",
+  "updated_at": "2026-11-21T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Cuốn sách trên máy kéo sợi",
+  "body_html": "<blockquote>“Việc gì tay con tìm được để làm, hãy dốc hết sức mà làm.” — trích Truyền Đạo 9</blockquote> <p>Ngày xửa ngày xưa, vào ngày 19 tháng 3 năm 1813, một em bé trai chào đời ở Scotland, tại một ngôi làng tên là Blantyre, bên bờ sông Clyde. Em tên là David Livingstone. Hầu như mọi người ở đó đều làm việc trong xưởng dệt bông lớn.</p> <p>Gia đình David sống chỉ trong một căn phòng, trong một tòa nhà cao tên là Shuttle Row. Trong căn phòng duy nhất ấy, cha mẹ cậu nấu ăn, ăn uống, đọc sách, cầu nguyện, ngủ nghỉ và nuôi năm người con. Căn phòng chật chội, nhưng sạch sẽ, gọn gàng, và ngày nào cả nhà cũng đọc Kinh Thánh.</p> <p>Cha cậu, ông Neil, đi bán trà từ nhà này sang nhà khác, và để lại những cuốn sách nhỏ nói về Chúa ở những nhà ông ghé qua. Mẹ cậu, bà Agnes, nhỏ nhắn, gọn gàng và vui vẻ. David rất thích một câu chuyện xưa của gia đình. Ngày xưa, trên hòn đảo Ulva, có một người ông cố khôn ngoan, lúc cuối đời đã gọi các con lại và cho họ một lời dặn duy nhất: hãy sống thật thà. David đã giữ lời dặn ấy suốt cả cuộc đời.</p> <p>Khi David lên mười, cậu vào làm trong xưởng dệt, làm thợ nối sợi, vì gia đình cần tiền công của cậu. Thợ nối sợi phải canh các máy kéo sợi và nhanh tay nối lại mỗi khi sợi bị đứt. Công việc kéo dài từ sáu giờ sáng đến tám giờ tối, trong một căn phòng nóng nực, đầy bụi và tiếng ồn.</p> <p>Nhưng David rất thích học. Với một phần tiền lương tuần đầu tiên, cậu mua một cuốn sách để học tiếng La-tinh. Sau giờ làm, cậu đi học lớp buổi tối, rồi về nhà học tiếp đến nửa đêm, cho đến khi mẹ cậu phải bật dậy giành lấy sách khỏi tay cậu để cậu chịu đi ngủ! Ở xưởng, cậu đặt một cuốn sách lên máy, và mỗi lần đi ngang qua lại đọc một câu.</p> <p>Kinh Thánh dạy chúng ta hãy dốc hết sức mà làm công việc của mình. David đã làm việc chăm chỉ trong một công việc nhỏ bé, nhàm chán, và Đức Chúa Trời đang chuẩn bị cậu cho những việc lớn. Đức Chúa Trời cũng có thể dùng công việc con làm hôm nay nữa.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì mái nhà của con và vì những người yêu thương con. Xin giúp con sống thật thà và làm tốt công việc của mình, ngay cả khi việc ấy khó khăn. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Khi lên mười tuổi, David làm công việc gì?",
+    "answer": "Cậu làm thợ nối sợi trong xưởng dệt bông, nối lại những sợi bị đứt trên máy kéo sợi, từ sáu giờ sáng đến tám giờ tối."
+   },
+   {
+    "question": "David đã làm cách nào để vừa làm việc vừa học?",
+    "answer": "Cậu đi học lớp buổi tối sau giờ làm, về nhà học đến khuya, và đặt một cuốn sách lên máy để mỗi lần đi ngang qua có thể đọc một câu."
+   },
+   {
+    "question": "Tuần này có việc nhỏ nào con có thể dốc hết sức mà làm không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là Đức Chúa Trời có thể dùng công việc của chúng ta, ngay cả những việc nhỏ bé và nhàm chán, để chuẩn bị chúng ta cho điều Ngài đã định."
+   }
+  ],
+  "word_count": 457
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Nhìn thấy sắc màu",
+  "body_html": "<blockquote>“Các tầng trời không ngừng kể lại Đức Chúa Trời vinh hiển dường nào; vòm trời bày tỏ những gì tay Ngài đã làm nên.” — trích Thi-thiên 19</blockquote> <p>Vào những ngày nghỉ, David đi sưu tầm cây cỏ, đá và vỏ sò. Có lần cậu hỏi một bác thợ đá vì sao vỏ sò lại nằm bên trong đá. Bác ấy chỉ nhìn cậu với vẻ thương hại! Nhưng David không bao giờ thôi đặt câu hỏi.</p> <p>David lớn lên và được nghe về Chúa Giê-xu, và cậu biết rằng Chúa Giê-xu đã chết để cứu chúng ta. Nhưng có một thời gian cậu rất băn khoăn. Cậu yêu khoa học, mà có người lại nói rằng một Cơ Đốc nhân không nên nghiên cứu đá và các vì sao. Rồi cậu đọc một cuốn sách của một mục sư người Scotland tên là Thomas Dick, người dạy rằng cả thế giới này đều là công việc của tay Đức Chúa Trời. David hiểu ra rằng mình không phải chọn một trong hai. Đức Chúa Trời của Kinh Thánh cũng chính là Đức Chúa Trời của đá và của các vì sao.</p> <p>Khi gần hai mươi tuổi, David bắt đầu tự mình cảm nhận mình cần Chúa Giê-xu biết bao, và cậu đã tin cậy Ngài. Về sau cậu nói rằng điều đó giống như một người mù màu bỗng nhiên nhìn thấy sắc màu. Không có gì mới xuất hiện cả, nhưng mọi thứ trông đều khác hẳn. Lòng tràn đầy tình yêu của Đức Chúa Trời, cậu quyết định dành cả đời mình để giúp đỡ những người đang đau khổ.</p> <p>Rồi một nhà truyền giáo ở Trung Quốc kêu gọi các bác sĩ đến đó chữa bệnh cho người ốm. David quyết định: cậu sẽ trở thành bác sĩ và đi Trung Quốc! Mùa hè, cậu làm việc ở xưởng dệt để kiếm tiền, còn mùa đông thì cậu học y khoa ở Glasgow.</p> <p>Nhưng chiến tranh nổ ra giữa nước Anh và Trung Quốc, và con đường sang Trung Quốc bị đóng lại. Đúng lúc ấy, David gặp Robert Moffat, một nhà truyền giáo nổi tiếng ở miền nam châu Phi. Nhiều năm sau, ông Moffat còn nhớ mình đã bảo David hãy đi lên phía bắc, đến những vùng đất chưa từng có nhà truyền giáo nào đặt chân tới. David đồng ý ngay. Năm 1840, cậu trở thành bác sĩ, và cậu đã sẵn sàng lên đường.</p> <p>Đức Chúa Trời đã tạo nên các vì sao và đá, và Ngài cũng tạo nên con. Khi học về thế giới của Ngài, con có thể cảm ơn Ngài vì thế giới ấy. Và khi một cánh cửa đóng lại, Đức Chúa Trời vẫn biết đường đi.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì các vì sao, đá, cây cỏ và muông thú mà Ngài đã dựng nên. Xin giúp con nhìn thấy tình yêu của Ngài ở khắp mọi nơi, và dùng cuộc đời con để giúp đỡ người khác. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Cuốn sách nào đã giúp David hiểu rằng cậu có thể vừa yêu khoa học vừa yêu Đức Chúa Trời?",
+    "answer": "Một cuốn sách của mục sư người Scotland tên là Thomas Dick, người dạy rằng cả thế giới này đều là công việc của tay Đức Chúa Trời."
+   },
+   {
+    "question": "Vì sao David đi châu Phi thay vì đi Trung Quốc?",
+    "answer": "Chiến tranh đã đóng con đường sang Trung Quốc. Rồi cậu gặp Robert Moffat, người bảo cậu hãy đi lên phía bắc ở châu Phi, đến những vùng đất chưa có nhà truyền giáo nào đặt chân tới."
+   },
+   {
+    "question": "Trong thế giới của Đức Chúa Trời, có điều gì làm con muốn cảm ơn Ngài?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là Đức Chúa Trời đã tạo nên muôn vật, và việc học về thế giới của Ngài có thể giúp chúng ta ngợi khen Ngài."
+   }
+  ],
+  "word_count": 508
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Con sư tử ở Mabotsa",
+  "body_html": "<blockquote>“Chúa đã đứng bên ta và ban sức mạnh cho ta … Và ta đã được giải cứu khỏi miệng sư tử.” — trích 2 Ti-mô-thê 4</blockquote> <p>Vào buổi sáng cuối cùng David ở nhà, cả gia đình dậy từ năm giờ. David đọc to Thi-thiên 121, là bài thơ nói rằng sự giúp đỡ của chúng ta đến từ Chúa, Đấng đã tạo nên trời và đất. Rồi cha ông cùng ông đi bộ đến Glasgow, và hai cha con chào từ biệt nhau. Từ đó, họ không bao giờ gặp lại nhau nữa.</p> <p>Tháng 12 năm 1840, David lên tàu đi châu Phi. Trên đường đi, người thuyền trưởng dạy ông cách tìm đường nhờ mặt trăng và các vì sao. Tháng 7 năm 1841, ông đến Kuruman, trạm truyền giáo của ông Robert Moffat.</p> <p>Để học tiếng Setswana, David đến sống khoảng sáu tháng giữa người Bakwena, suốt thời gian đó chỉ nghe và nói tiếng ấy mà thôi. Rồi vào năm 1843, ông giúp lập một trạm truyền giáo mới ở một nơi tên là Mabotsa.</p> <p>Tháng 2 năm 1844, khi sư tử đang tấn công đàn gia súc, David cùng những người đàn ông ở Mabotsa đi săn chúng. Ông bắn vào một con sư tử đang ngồi trên tảng đá. Ông đang nạp đạn lại thì nghe có tiếng hét. “Tôi giật mình, quay nửa người lại,” ông viết, “và thấy con sư tử đang vồ tới tôi.” Con sư tử ngoạm vào vai ông và quật ông ngã xuống. Lạ thay, ông không thấy đau, cũng không thấy sợ, chỉ thấy lơ mơ như đang mơ.</p> <p>Lúc ấy, một thầy giáo Cơ Đốc can đảm tên là Mebalwe giơ súng lên bắn con sư tử. Nhưng súng không nổ! Con sư tử bỏ David và nhảy xổ vào Mebalwe, làm chân ông bị thương. Một người khác cầm giáo lao vào con sư tử, và ông cũng bị thương. Rồi cuối cùng, con sư tử ngã xuống chết. Theo những gì chúng ta biết, cả hai người can đảm ấy đều đã bình phục.</p> <p>Cánh tay của David bị gãy rất nặng. Suốt phần đời còn lại, ông không thể giơ tay trái lên cao quá vai. Nhưng ông vẫn còn sống, vì có hai người đàn ông châu Phi đã liều mạng vì ông.</p> <p>Khi chúng ta gặp nguy hiểm, Đức Chúa Trời ở cùng chúng ta, và nhiều khi Ngài giúp chúng ta qua những người can đảm ở quanh mình.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài đã giữ con được an toàn. Cảm ơn Ngài vì những người giúp đỡ con khi con gặp khó khăn. Xin giúp con can đảm và tốt bụng như chú Mebalwe. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao David đến sống giữa người Bakwena trong sáu tháng?",
+    "answer": "Để ông chỉ nghe và nói tiếng Setswana mà thôi, và học được cách trò chuyện với người ta bằng chính ngôn ngữ của họ."
+   },
+   {
+    "question": "Ai đã cứu David khỏi con sư tử?",
+    "answer": "Mebalwe, một thầy giáo Cơ Đốc, người đã cố bắn con sư tử, và một người khác đã cầm giáo lao vào nó. Cả hai đều bị thương, nhưng theo những gì chúng ta biết, họ đã bình phục."
+   },
+   {
+    "question": "Đức Chúa Trời đã ban cho con những ai để giúp đỡ con?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là Đức Chúa Trời ở cùng chúng ta khi gặp nguy hiểm, và nhiều khi Ngài giúp chúng ta qua những người can đảm và tốt bụng."
+   }
+  ],
+  "word_count": 459
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Vị tù trưởng thích đọc sách",
+  "body_html": "<blockquote>“Làm sao tôi hiểu được, nếu không có ai hướng dẫn?” — trích Công Vụ Các Sứ Đồ 8</blockquote> <p>Trong thời gian chờ cánh tay lành lại, David làm quen với Mary, con gái của ông Robert Moffat, một cô gái lớn lên ở châu Phi. Hai người kết hôn vào ngày 9 tháng 1 năm 1845. Chẳng bao lâu sau, họ chuyển đến thị trấn của một tù trưởng tên là Sechele, người đã mời David đến.</p> <p>Sechele, tù trưởng của người Bakwena, trạc tuổi David. David kể rằng Sechele học thuộc bảng chữ cái ngay trong ngày đầu tiên! Chẳng bao lâu ông đã đọc được Kinh Thánh, và sách ông thích nhất là sách Ê-sai. Ông nói Ê-sai là một người tuyệt vời, biết cách ăn nói.</p> <p>Sechele hay hỏi những câu hỏi khó. Khi nghe rằng một ngày kia Đức Chúa Trời sẽ phán xét thế gian, ông nói: “Ông làm tôi giật mình: những lời này khiến xương cốt tôi run rẩy cả.” Rồi ông hỏi vì sao không ai đến sớm hơn để nói cho dân của ông biết, vì tổ tiên của ông đã qua đời mà chưa từng được nghe về Chúa Giê-xu.</p> <p>Sechele thậm chí còn đề nghị sai các trưởng làng cầm roi đi bắt cả dân phải tin! David nói không. Không ai có thể bị ép buộc tin Chúa Giê-xu.</p> <p>Thời ấy, các nhà truyền giáo không làm báp-têm cho người đàn ông có nhiều vợ, mà Sechele, cũng như những tù trưởng khác, có mấy người vợ. Việc ấy rất khó, nhưng ông chỉ giữ lại người vợ đầu tiên, và cho những người kia về nhà với quần áo mới cùng đồ đạc riêng của họ. Ông chịu báp-têm vào ngày 1 tháng 10 năm 1848. Vài tháng sau, Sechele phạm lỗi, và David buồn bã nói với ông rằng ông không thể dự Tiệc Thánh nữa.</p> <p>Nhưng Sechele không bỏ Đức Chúa Trời. Suốt phần đời còn lại, ông đọc Kinh Thánh, cầu nguyện và dạy dân mình về Chúa Giê-xu. Năm 1852, những người có vũ khí tấn công dân của ông và đốt cháy thị trấn. Sechele lên đường đi xin Nữ hoàng Victoria giúp đỡ. Khi không ai đến giúp, ông xây lại thị trấn và trở thành một tù trưởng đầy quyền thế. Nhờ ông, nhiều người Bakwena đã trở thành Cơ Đốc nhân.</p> <p>Sechele là một người anh hùng đức tin thật sự. Ai cũng có lúc làm điều sai. Nhưng Đức Chúa Trời không bỏ chúng ta, và chúng ta cũng không cần phải bỏ Ngài.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài đã ban cho con lời của Ngài để đọc. Khi con làm điều sai, xin giúp con quay về với Ngài, và tiếp tục theo Ngài suốt cả đời con, như ông Sechele. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Sách nào trong Kinh Thánh là sách Sechele thích nhất?",
+    "answer": "Sách Ê-sai. Ông nói Ê-sai là một người tuyệt vời, biết cách ăn nói."
+   },
+   {
+    "question": "Vì sao David nói không khi Sechele đề nghị bắt dân mình phải tin?",
+    "answer": "Vì không ai có thể bị ép buộc tin Chúa Giê-xu. Đức tin phải đến từ tấm lòng tự nguyện."
+   },
+   {
+    "question": "Con có thể làm gì khi con đã làm điều sai?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là Đức Chúa Trời không bỏ chúng ta; chúng ta có thể nói lời xin lỗi, quay về với Ngài, và tiếp tục theo Ngài, như ông Sechele."
+   }
+  ],
+  "word_count": 478
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Bốn ngày không có nước",
+  "body_html": "<blockquote>“Hoang mạc và đất khô khát sẽ vui mừng; đồng hoang sẽ hớn hở và nở hoa như hoa nghệ tây.” — trích Ê-sai 35</blockquote> <p>Ở phía bắc thị trấn của Sechele là Kalahari, một vùng đất rộng lớn và khô cằn, toàn cát và bụi cây, và đâu đó phía bên kia có một cái hồ. Năm 1849, David băng qua hoang mạc cùng hai nhà du hành người Anh, có Ramotobi dẫn đường, là người được Sechele sai đi chỉ lối cho họ. Ngày 1 tháng 8 năm 1849, họ đến hồ Ngami. Những người sống bên hồ thì đã biết hồ từ lâu, nhưng trước đó chưa có ai từ châu Âu nhìn thấy nó.</p> <p>Năm sau, David đưa Mary và ba đứa con nhỏ, Robert, Agnes và Thomas, cùng đi. Sechele cũng đi theo. Nhưng bọn trẻ bị sốt, và họ phải quay về. Ít lâu sau, một bé gái tên là Elizabeth ra đời. Bé chỉ sống được khoảng sáu tuần, và cha mẹ bé vô cùng đau buồn.</p> <p>Mẹ của Mary viết thư nói rằng chuyến đi quá nguy hiểm, nhưng năm 1851 David lại đưa cả gia đình đi một lần nữa. Lần này, người dẫn đường của họ, một người tên là Shobo, bị lạc đường, và suốt bốn ngày họ không có nước. Bọn trẻ có nguy cơ chết khát. Mary không nói một lời trách móc nào, nhưng David thấy nước mắt trong mắt bà. Đến ngày thứ năm, mấy người đàn ông tìm được nước. Bọn trẻ đã được cứu sống!</p> <p>Cuối cùng, họ đến với người Makololo. Vị tù trưởng vĩ đại của họ là Sebetwane vui mừng đón tiếp họ, nhưng chẳng bao lâu ông bị bệnh rồi qua đời, và David rất thương tiếc ông. Rồi bên một con sông lớn tên là Zambezi, David thấy một điều khủng khiếp: những kẻ buôn người đang mua người để bán làm nô lệ, đổi lấy súng và vải. Ông quyết tâm góp sức chấm dứt việc ấy.</p> <p>David muốn tìm một con đường từ giữa lòng châu Phi ra đến biển. Chuyến đi quá nguy hiểm cho gia đình, nên tháng 4 năm 1852, ông gửi Mary và bốn đứa con về nước Anh. Suốt bốn năm rưỡi, ông không gặp lại họ. Mary thường cô đơn và nghèo túng.</p> <p>David rất can đảm, nhưng không phải lúc nào ông cũng nghĩ đủ về cái giá mà những lựa chọn của mình bắt gia đình phải trả. Can đảm vì Đức Chúa Trời không bao giờ có nghĩa là quên đi những người chúng ta yêu thương.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì gia đình của con. Xin giúp con can đảm vì Ngài, và cũng biết tử tế, quan tâm đến những người gần gũi nhất với con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Chuyện gì đã xảy ra khi Shobo bị lạc đường trong hoang mạc?",
+    "answer": "Cả gia đình không có nước suốt bốn ngày, và bọn trẻ suýt chết khát. Đến ngày thứ năm, mấy người đàn ông tìm được nước."
+   },
+   {
+    "question": "David đã thấy điều khủng khiếp gì bên sông Zambezi?",
+    "answer": "Những kẻ buôn người đang mua người để bán làm nô lệ, đổi lấy súng và vải. Ông quyết tâm góp sức chấm dứt việc ấy."
+   },
+   {
+    "question": "Tuần này con có thể bày tỏ tình yêu với gia đình mình bằng cách nào?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là can đảm vì Đức Chúa Trời không bao giờ có nghĩa là quên đi những người chúng ta yêu thương."
+   }
+  ],
+  "word_count": 475
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Hai mươi bảy người đàn ông",
+  "body_html": "<blockquote>“… giữ lời thề dù phải chịu thiệt, không bao giờ rút lời.” — trích Thi-thiên 15</blockquote> <p>Tháng 11 năm 1853, David rời thị trấn Linyanti để tìm một con đường đi về phía tây, ra Đại Tây Dương. Đi cùng ông có hai mươi bảy người đàn ông do Sekeletu chọn. Sekeletu là con trai của Sebetwane, vị tù trưởng trẻ của người Makololo. Người dẫn đầu nhóm là một người tên là Pitsane. Đó là chuyến đi của họ cũng như của David. Không có họ, ông không thể đi nổi một trăm dặm.</p> <p>David mang theo rất ít đồ, nhưng ông có mang một chiếc đèn chiếu, chiếu lên những bức tranh Kinh Thánh vẽ trên kính. Có lần, khi ông chiếu bức tranh Áp-ra-ham sắp dâng con trai mình là Y-sác làm của lễ, những người phụ nữ đang xem tưởng con dao từ trong tranh đang lao ra phía họ, nên bỏ chạy! Về sau ai nấy đều bật cười khi nhắc lại chuyện ấy.</p> <p>Một nữ tù trưởng trẻ tên là Manenko đích thân dẫn họ đến thị trấn của chú cô, đi đầu đoàn dưới cơn mưa như trút, nhanh đến nỗi những người đàn ông theo không kịp! Về sau, có những người đòi David giao một người trong nhóm cho họ, để đem bán làm nô lệ. David ngồi đặt khẩu súng ngang đầu gối và từ chối. Ông không chịu giao dù chỉ một người. Cuối cùng, ông cho họ một con bò thay vào đó, và không ai bị hại cả.</p> <p>Ngày 31 tháng 5 năm 1854, họ đến Luanda, một thành phố bên bờ biển. Những người đàn ông ấy chưa bao giờ thấy biển. Họ nói rằng xưa nay họ vẫn tin thế giới không có điểm tận cùng, nhưng giờ đây chính thế giới đã bảo họ rằng nó đã đến chỗ kết thúc!</p> <p>David bị bệnh rất nặng, và một người Anh tên là ông Gabriel đã chăm sóc ông. Rồi mấy sĩ quan hải quân đề nghị đưa David về nước Anh trên tàu của họ. Nhưng ông từ chối. Ông đã hứa với Sekeletu sẽ đưa những người đàn ông ấy về nhà, mà họ lại không biết đường về qua vùng đất đầy nguy hiểm. Vì vậy ông ở lại. Và con tàu ấy đã chìm trên đường về nước Anh, cùng với những lá thư và bản đồ ông đã gửi theo!</p> <p>Đức Chúa Trời luôn giữ lời hứa của Ngài, và Ngài muốn chúng ta cũng giữ lời hứa của mình, ngay cả khi phải chịu thiệt một điều gì đó.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài luôn giữ lời hứa. Xin giúp con giữ lời hứa của mình, ngay cả khi việc ấy khó khăn. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ai đã chọn hai mươi bảy người đàn ông, và ai là người dẫn đầu họ?",
+    "answer": "Sekeletu, vị tù trưởng trẻ của người Makololo, đã chọn họ, và người dẫn đầu là một người tên là Pitsane."
+   },
+   {
+    "question": "Vì sao David từ chối lên tàu về nhà từ Luanda?",
+    "answer": "Ông đã hứa với Sekeletu sẽ đưa những người đàn ông ấy về nhà, mà họ lại không biết đường về qua vùng đất đầy nguy hiểm."
+   },
+   {
+    "question": "Có lời hứa nào con cần giữ, dù việc ấy khó khăn không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là Đức Chúa Trời luôn giữ lời hứa của Ngài, và Ngài muốn chúng ta cũng giữ lời hứa của mình, ngay cả khi phải chịu thiệt một điều gì đó."
+   }
+  ],
+  "word_count": 470
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "vi"
+  ],
+  "order": 7,
+  "title": "“Làn khói sấm rền”",
+  "body_html": "<blockquote>“Và hãy nhớ rằng: chính Ta luôn ở cùng các con mỗi ngày, cho đến lúc kết thúc của đời này.” — trích Ma-thi-ơ 28</blockquote> <p>Sau một năm đi bộ, vào tháng 9 năm 1855, hai mươi bảy người đàn ông lại tiến vào Linyanti. Họ là những người anh hùng! Suốt mấy ngày liền, họ kể cho mọi người nghe về biển cả và những con tàu.</p> <p>Bây giờ David lên đường đi về phía đông, men theo sông Zambezi xuôi xuống Ấn Độ Dương. Hơn một trăm người của Sekeletu đi cùng ông, với một người dẫn đường tên là Sekwebu. David đã nghe nói về một ngọn thác lớn mà dân ở đó gọi là Mosi-oa-Tunya, “làn khói sấm rền,” vì những đám bụi nước của nó. Tháng 11 năm 1855, người của Sekeletu chèo xuồng đưa ông đến một hòn đảo nằm ngay sát mép thác. Ông nằm xuống và nhìn qua mép vực, xuống hẻm núi sâu nơi cả dòng sông đổ ầm xuống.</p> <p>David đặt tên thác theo tên Nữ hoàng Victoria. Nhưng những người sống ở đó đã biết đến thác này hàng trăm năm, và chính họ đã đưa ông đến đó. Ngày nay, cái tên xưa Mosi-oa-Tunya được dùng song song với cái tên mới.</p> <p>Ngày 14 tháng 1 năm 1856, cả đoàn đến một con sông mà họ phải vượt qua. Bên kia sông có rất nhiều người cầm vũ khí tụ tập, và người của David sợ bị tấn công. Đêm ấy, David rất lo lắng. Rồi ông đọc lời hứa của Chúa Giê-xu: “Và hãy nhớ rằng: chính Ta luôn ở cùng các con mỗi ngày, cho đến lúc kết thúc của đời này.” Ông viết rằng đó là lời của một Đấng hoàn toàn đáng tin cậy, Đấng sẽ không bao giờ thất hứa. Ông cảm thấy bình an, và quyết định không lén bỏ đi trong đêm tối.</p> <p>Sáng hôm sau, ông đưa người của mình qua sông bằng xuồng, mỗi lần vài người, còn chính ông thì ở lại trên bờ cho đến khi người cuối cùng đã qua sông. Dân ở đó đứng nhìn, và không ai tấn công cả.</p> <p>Ngày 20 tháng 5 năm 1856, David đến Ấn Độ Dương. Ông là người châu Âu đầu tiên được biết đến đã băng ngang châu Phi từ bờ bên này sang bờ bên kia. Nhưng Sekwebu, người đi tiếp cùng ông trên tàu, đã chết đuối trong chuyến hải trình, và David rất thương tiếc người dẫn đường can đảm của mình.</p> <p>Chúa Giê-xu đã hứa sẽ luôn ở cùng các bạn hữu của Ngài. Khi con sợ hãi, con có thể bám chặt lấy lời hứa của Ngài, giống như David đã làm.</p> <p><em>Lạy Chúa Giê-xu, cảm ơn Ngài đã hứa luôn ở cùng con. Khi con sợ hãi, xin giúp con nhớ lời hứa của Ngài và tin cậy Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Cái tên Mosi-oa-Tunya có nghĩa là gì?",
+    "answer": "“Làn khói sấm rền,” vì những đám bụi nước lớn bốc lên từ ngọn thác."
+   },
+   {
+    "question": "Điều gì đã giúp David cảm thấy bình an vào đêm trước khi vượt sông?",
+    "answer": "Lời hứa của Chúa Giê-xu: “Và hãy nhớ rằng: chính Ta luôn ở cùng các con mỗi ngày, cho đến lúc kết thúc của đời này.” David tin rằng Chúa Giê-xu sẽ giữ lời Ngài."
+   },
+   {
+    "question": "Khi sợ hãi, con có thể nhớ đến điều gì?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là Chúa Giê-xu đã hứa luôn ở cùng chúng ta, và chúng ta có thể bám chặt lấy lời hứa ấy."
+   }
+  ],
+  "word_count": 489
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Giải phóng những người bị bắt",
+  "body_html": "<blockquote>“Ngài đã sai tôi đến … để loan báo tự do cho người bị bắt.” — trích Ê-sai 61</blockquote> <p>Tháng 12 năm 1856, David trở về nước Anh. Các con ông hầu như không còn nhận ra ông, còn cha ông đã qua đời ngay trong năm ấy, trước khi David kịp kể cho cha nghe về chuyến đi của mình.</p> <p>Giờ đây David đã nổi tiếng. Năm 1857, tại Đại học Cambridge, ông nói với các sinh viên rằng người ta hay nói về sự hy sinh mà ông đã làm. “Đó tuyệt đối không phải là hy sinh,” ông nói. “Hãy nói đó là một đặc ân thì đúng hơn.” Và ông nói: “Tôi chưa bao giờ hy sinh điều gì cả.” Nhưng Mary và các con, những người đã chờ đợi quá lâu, thì đã phải chịu mất mát rất nhiều. David kêu gọi các sinh viên tiếp tục công việc ở châu Phi.</p> <p>Năm 1858, David trở lại để dẫn đầu một đoàn thám hiểm lớn ngược dòng sông Zambezi. Nhưng những ghềnh thác mà trước kia ông đã đi bộ vòng qua đã chặn ngang dòng sông, và không con thuyền nào qua được. Vì vậy ông đi ngược lên một con sông khác, và năm 1859 ông đến một cái hồ khổng lồ, hồ Nyasa, nay gọi là hồ Malawi. Ông phát hiện rằng quanh hồ có một trong những con đường chính của nạn buôn bán nô lệ.</p> <p>Một ngày tháng 7 năm 1861, tại làng của một tù trưởng tên là Mbame, một hàng dài những người bị bắt đi vào làng. Những người đàn ông bị đeo quanh cổ những chiếc gông gỗ nặng có chạc, còn phụ nữ và trẻ em thì bị trói dính vào nhau bằng dây thừng. Khi những kẻ áp giải họ nhìn thấy David và các bạn của ông, chúng bỏ chạy.</p> <p>David và các bạn cắt đứt dây thừng và cưa đứt những chiếc gông nặng. Những người ấy quỳ xuống và vỗ tay để nói lời cảm ơn. Có tám mươi bốn người, phần lớn là phụ nữ và trẻ em, và giờ đây họ đã được tự do! Theo như câu chuyện thường được kể lại, trong số những đứa trẻ được giải thoát trong mấy tuần ấy có một cậu bé khoảng mười hay mười một tuổi tên là Chuma. Cậu sẽ là một trong những người anh hùng lớn của câu chuyện này.</p> <p>Chúa Giê-xu đã đến để giải phóng con người. Đức Chúa Trời quan tâm đến những người bị đối xử tàn nhẫn, và Ngài muốn chúng ta cũng quan tâm đến họ, và đứng ra bênh vực họ.</p> <p><em>Lạy Chúa Giê-xu, cảm ơn Ngài đã đến để giải phóng con người. Xin giúp đỡ tất cả những ai đang bị đối xử tàn nhẫn hôm nay, và chỉ cho con biết con có thể giúp đỡ như thế nào. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Tại Cambridge, David đã nói gì về sự hy sinh mà ông đã làm?",
+    "answer": "Ông nói: “Đó tuyệt đối không phải là hy sinh. Hãy nói đó là một đặc ân thì đúng hơn,” và “Tôi chưa bao giờ hy sinh điều gì cả.”"
+   },
+   {
+    "question": "Chuyện gì đã xảy ra tại làng của Mbame vào tháng 7 năm 1861?",
+    "answer": "Một hàng người bị bắt được dẫn vào làng. Những kẻ áp giải họ bỏ chạy, và David cùng các bạn đã giải thoát tám mươi bốn người, phần lớn là phụ nữ và trẻ em."
+   },
+   {
+    "question": "Con có thể bênh vực một người đang bị đối xử tệ bằng cách nào?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là Đức Chúa Trời quan tâm đến những người bị đối xử tàn nhẫn, và Ngài muốn chúng ta cũng quan tâm và giúp đỡ họ."
+   }
+  ],
+  "word_count": 493
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Lời từ biệt dưới gốc cây bao báp",
+  "body_html": "<blockquote>“CHÚA ở gần những người có lòng tan vỡ.” — trích Thi-thiên 34</blockquote> <p>Bản thân Mary Livingstone cũng là một nhà truyền giáo can đảm. Bà lớn lên ở châu Phi và nói tiếng Setswana từ nhỏ. Bà mở trường cho các em nhỏ, làm xà phòng, nến và quần áo, và chăm sóc người bệnh. Dân ở đó gọi bà là Ma-Robert, nghĩa là “mẹ của Robert,” theo tên người con trai cả của bà.</p> <p>Nhưng Mary đã phải sống xa chồng nhiều năm. Năm 1858, bà cùng ông lên đường đến sông Zambezi, nhưng bà đang mang thai nên phải ở lại với cha mẹ ở Kuruman. Ở đó, con gái bà là Anna Mary ra đời. Về sau Mary trở về Scotland, nơi bà sống cô đơn và buồn bã khi không có David. Cuối cùng, bà quyết định mình phải ở bên ông. Bà để các con lại với họ hàng và bạn bè, rồi lên tàu đi châu Phi.</p> <p>Bà đến nơi vào cuối tháng 1 năm 1862. Trong vài tuần, tại một nơi tên là Shupanga bên bờ sông Zambezi, Mary và David lại được sống bên nhau, trong khi những người đàn ông đóng một chiếc tàu hơi nước mới. Sau bao nhiêu năm xa cách, họ có được một chút thời gian bên nhau.</p> <p>Rồi vào tháng 4, Mary bị sốt. Lần này thuốc không giúp được. Tối ngày 27 tháng 4 năm 1862, bà qua đời, có David ở bên cạnh. Bà mới bốn mươi mốt tuổi. Hôm sau, bà được chôn cất dưới một gốc cây bao báp lớn gần nhà.</p> <p>David vô cùng đau đớn. Ông viết trong nhật ký rằng đó là cú đánh nặng nề đầu tiên trong đời ông, và nó lấy đi hết sức lực của ông. Ông viết rằng ông đã yêu bà khi cưới bà, và càng sống với bà lâu, ông càng yêu bà nhiều hơn. Ông khóc thương bà, và cầu nguyện cho các con. Ông tin rằng bà đã về ở với Đức Chúa Trời, đi trước ông một chút. Và ông bắt đầu nhận ra những chuyến đi dài của mình đã khiến bà phải trả giá đắt biết bao.</p> <p>Khi một người chúng ta yêu thương qua đời, khóc là điều đúng, và Đức Chúa Trời không hối thúc chúng ta. Ngài ở thật gần những người có tấm lòng tan vỡ.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì những người con yêu thương. Khi con buồn, xin Ngài đến gần và an ủi con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Người ta gọi Mary là gì, và tên ấy có nghĩa là gì?",
+    "answer": "Ma-Robert, nghĩa là “mẹ của Robert,” theo tên người con trai cả của bà."
+   },
+   {
+    "question": "Mary được chôn cất ở đâu?",
+    "answer": "Dưới một gốc cây bao báp lớn gần ngôi nhà ở Shupanga, bên bờ sông Zambezi."
+   },
+   {
+    "question": "Khi con thấy rất buồn, con có thể nói chuyện với ai?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là khóc khi mất đi một người thân yêu là điều đúng, và Đức Chúa Trời ở thật gần những người có tấm lòng tan vỡ."
+   }
+  ],
+  "word_count": 429
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Susi và Chuma",
+  "body_html": "<blockquote>“Bởi đức tin, Áp-ra-ham đã vâng theo tiếng Đức Chúa Trời gọi mà ra đi … và ông đã lên đường mà không biết mình sẽ đi đâu.” — trích Hê-bơ-rơ 11</blockquote> <p>Năm 1863, chính phủ gọi đoàn thám hiểm về nước, và David trở về nước Anh. Ở đó ông lại nhận thêm tin buồn. Con trai cả của ông là Robert đã sang Mỹ và gia nhập quân đội trong một cuộc chiến ở đó, và năm 1864 Robert qua đời khi đang là tù binh.</p> <p>Tháng 8 năm 1865, David rời nước Anh lần cuối cùng. Ông muốn tìm nơi bắt nguồn của sông Nile vĩ đại, và tận mắt nhìn thấy những con đường của nạn buôn bán nô lệ, để có thể kể cho cả thế giới biết. Ông nói ông sẽ đi với tư cách một nhà truyền giáo, và vẽ bản đồ dọc đường đi.</p> <p>Đi cùng ông có Chuma và Wikatani, giờ đã là những chàng thanh niên, và một người tên là Susi, người đã từng làm việc trong đoàn thám hiểm sông Zambezi. Con đường họ đi là một con đường của bọn buôn nô lệ, và đi đến đâu họ cũng thấy những dấu vết đau lòng cho thấy những người bị bắt đã bị đối xử tàn nhẫn ra sao. David ghi chép lại tất cả, để người ở quê nhà được biết. Dọc đường, Wikatani tìm lại được chính gia đình mình, những người cậu tưởng đã mất mãi mãi, và David để cậu ở lại với họ.</p> <p>Rồi vào tháng 1 năm 1867, hai người khuân vác bỏ trốn trong đêm và mang theo hộp thuốc của David. Ông viết rằng không có thuốc, ông cảm thấy như mình vừa bị tuyên án tử. Từ đó trở đi ông thường xuyên bị bệnh nặng. Nhưng ông không quay lại.</p> <p>Tháng 3 năm 1869, tại thị trấn Ujiji, ông gần như sắp chết, và Susi cùng Chuma đã chăm sóc cho ông khỏe lại. Về sau, chân ông đau nhức đến nỗi suốt mấy tháng ông không thể đi được. Hầu hết những người giúp việc đã bỏ đi, nhưng có ba người ở lại với ông: Susi, Chuma và một chàng trai trẻ tên là Gardner. Họ tìm thức ăn và chăm sóc ông. Nằm trong một túp lều, không có gì khác để đọc, David đã đọc trọn cả cuốn Kinh Thánh bốn lần.</p> <p>Susi và Chuma là những người anh hùng thật sự. Ở lại bên một người bạn đang yếu đuối và bệnh tật, khi bỏ đi thì dễ dàng hơn, là một cách tuyệt đẹp để yêu Đức Chúa Trời và yêu mọi người.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì những người bạn trung tín như Susi và Chuma. Xin giúp con trở thành một người bạn trung tín, và ở gần bên những người cần được giúp đỡ. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Tháng 1 năm 1867, David bị lấy mất thứ gì, và vì sao điều đó quan trọng?",
+    "answer": "Hộp thuốc của ông. Không có thuốc, ông không có cách nào chống lại những cơn sốt làm ông bị bệnh."
+   },
+   {
+    "question": "Ai đã ở lại và chăm sóc David khi chân ông đau đến nỗi không đi được?",
+    "answer": "Susi, Chuma và một chàng trai trẻ tên là Gardner. Họ tìm thức ăn cho ông và chăm sóc ông."
+   },
+   {
+    "question": "Con có thể trở thành người bạn trung tín của ai?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là ở lại bên một người đang yếu đuối hay bệnh tật là một cách tuyệt đẹp để yêu Đức Chúa Trời và yêu mọi người."
+   }
+  ],
+  "word_count": 490
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "vi"
+  ],
+  "order": 11,
+  "title": "“Có phải ngài là bác sĩ Livingstone?”",
+  "body_html": "<blockquote>“Như nước mát cho người mệt lả vì khát là tin vui từ phương xa.” — trích Châm Ngôn 25</blockquote> <p>Năm 1871, David đến một thị trấn có chợ lớn tên là Nyangwe, bên một dòng sông rộng. Vào những ngày phiên chợ, hàng trăm người, phần đông là phụ nữ, đến đó mua bán. Ngày 15 tháng 7 năm 1871, một chuyện khủng khiếp đã xảy ra ở đó. Những người làm việc cho một tên buôn nô lệ bắt đầu nổ súng vào đám đông, và rất nhiều người bị giết. Đó là điều đau lòng nhất mà David từng chứng kiến.</p> <p>Ông không thể ngăn chặn được. Tất cả những gì ông có thể làm là cầu nguyện, ghi lại những gì mình đã thấy và gửi về quê nhà. Người dân ở nước Anh bàng hoàng khi đọc những dòng ấy, và điều đó đã góp phần đóng cửa khu chợ nô lệ lớn ở Zanzibar.</p> <p>David trở lại Ujiji, ốm yếu và gầy rộc. Rồi một ngày kia, Susi chạy đến nhanh hết sức mình. Anh đã nhìn thấy một người Anh! Một nhà báo trẻ tên là Henry Morton Stanley đã đi bộ từ bờ biển vào để tìm David, vì nhiều người nghĩ rằng ông đã chết.</p> <p>Về sau Stanley kể lại rằng ông bước đến gần người đàn ông xanh xao, râu bạc ấy, ngả mũ và nói: “Có phải ngài là bác sĩ Livingstone?” Và David đáp phải, với một nụ cười hiền hậu. Chỉ có Stanley ghi lại những lời ấy, và ông kể lại theo những cách hơi khác nhau, nhưng hai người quả thật đã gặp nhau ở Ujiji, vào cuối năm 1871.</p> <p>Stanley mang đến thức ăn, thuốc men và những lá thư của các con David, và David bắt đầu khỏe lại. Stanley kể rằng ông lão cứ nói đi nói lại rằng Stanley đã mang lại cho ông một sự sống mới. Họ ở bên nhau khoảng bốn tháng, và Stanley thấy đức tin của David thật lặng lẽ và chân thật.</p> <p>Stanley nài nỉ David về nước, nhưng David không chịu rời đi cho đến khi hoàn thành công việc của mình. Khi họ chia tay vào tháng 3 năm 1872, Stanley quay đi mà khóc. Năm ngày sau, vào ngày sinh nhật của mình, David viết: “Lạy Chúa Giê-xu của con, Vua của con, sự sống của con, tất cả của con; một lần nữa con dâng trọn cả con người con cho Ngài.”</p> <p>Đức Chúa Trời đã gửi sự giúp đỡ đến đúng lúc. Và David, dù đã già và mệt mỏi, lại một lần nữa dâng trọn cả con người mình cho Chúa Giê-xu. Mỗi ngày, con cũng có thể dâng mình cho Chúa Giê-xu một lần nữa.</p> <p><em>Lạy Chúa Giê-xu, Ngài là Vua của con và là tất cả của con. Cảm ơn Ngài đã gửi sự giúp đỡ đến khi con cần. Hôm nay con lại dâng trọn cả con người con cho Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ai đã chạy đến báo cho David biết có một người Anh vừa tới?",
+    "answer": "Susi. Người khách ấy là Henry Morton Stanley, người đã đến để tìm David."
+   },
+   {
+    "question": "Theo lời Stanley kể, ông đã nói gì khi gặp David?",
+    "answer": "“Có phải ngài là bác sĩ Livingstone?” David đáp phải, với một nụ cười hiền hậu."
+   },
+   {
+    "question": "Hôm nay con có thể nói gì với Chúa Giê-xu để dâng mình cho Ngài?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là, giống như David vào ngày sinh nhật của ông, mỗi ngày chúng ta có thể lại dâng trọn cả con người mình cho Chúa Giê-xu."
+   }
+  ],
+  "word_count": 506
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Được những bàn tay trung tín đưa về nhà",
+  "body_html": "<blockquote>“Cái chết của những người trung tín với Ngài là điều hệ trọng trước mắt CHÚA.” — trích Thi-thiên 116</blockquote> <p>Tháng 8 năm 1872, David lại lên đường cùng Susi, Chuma, một cậu bé tên là Majwara, và những người giúp việc mới như Jacob Wainwright, người đã được giải thoát khỏi ách nô lệ từ khi còn là một cậu bé. Suốt nhiều tuần, họ lội qua những đầm lầy, có khi nước ngập đến ngực. David yếu đến nỗi các bạn phải khiêng ông trên một chiếc giường làm bằng sào.</p> <p>Cuối tháng 4 năm 1873, họ đến làng của Chitambo. Khoảng nửa đêm, ông gọi Susi, và Susi giúp ông tìm thuốc. Rồi theo như Susi nhớ lại, David bảo anh rằng mọi việc đều ổn, và anh có thể đi được rồi.</p> <p>Trước lúc trời sáng, cậu bé Majwara, người luôn ngủ trước cửa phòng David, thấy ông đang quỳ bên giường, hai tay ôm đầu, như thể đang cầu nguyện. Một lúc sau, cậu thấy ông vẫn chưa hề cử động, nên đi gọi những người khác. David đã qua đời trong đêm, có lẽ vào ngày 1 tháng 5 năm 1873. Các bạn của ông tin rằng ông qua đời khi đang cầu nguyện, như ông đã cầu nguyện mỗi ngày trong đời.</p> <p>Các bạn của ông chọn Susi và Chuma làm người dẫn đầu, và quyết định đưa David về nhà để chính người dân quê hương ông chôn cất ông. Họ chôn trái tim ông ở châu Phi, dưới một gốc cây lớn, và Jacob khắc tên David lên thân cây. Rồi họ khiêng thi hài ông, được bọc cẩn thận, đi khoảng một nghìn dặm ra đến bờ biển. Khi một sĩ quan người Anh bảo họ hãy chôn ông ngay tại chỗ, họ đã từ chối.</p> <p>Tháng 4 năm 1874, David được an táng tại Tu viện Westminster. Jacob Wainwright đã giúp khiêng quan tài. Trên mộ có ghi rằng David đã được “những bàn tay trung tín đưa về qua bao miền đất và biển cả.” Năm 1886, Susi chịu báp-têm và lấy tên là David.</p> <p>Một tháng sau khi David qua đời, khu chợ nô lệ lớn ở Zanzibar bị đóng cửa, và một nhà thờ được xây ngay tại nơi người ta từng bị mua bán. Ngày nay, trên những vùng đất ông từng đi qua có những Hội Thánh lớn do chính người châu Phi dẫn dắt.</p> <p>Chúa Giê-xu phán rằng hạt giống phải rơi xuống đất thì mới có thể mọc lên. David đã không sống để thấy kết quả của cuộc đời mình, nhưng Đức Chúa Trời thì đã thấy.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì David Livingstone và tất cả những người bạn trung tín của ông. Xin giúp con trung tín với Ngài và với những người Ngài ban cho con, suốt cả cuộc đời con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Trước lúc trời sáng ở làng của Chitambo, Majwara đã thấy gì?",
+    "answer": "Cậu thấy David đang quỳ bên giường, hai tay ôm đầu, như thể đang cầu nguyện. Một lúc sau, cậu thấy ông vẫn chưa hề cử động, nên đi gọi những người khác."
+   },
+   {
+    "question": "Sau khi David qua đời, các bạn của ông đã quyết định làm gì?",
+    "answer": "Với Susi và Chuma dẫn đầu, họ chôn trái tim ông ở châu Phi và khiêng thi hài ông đi khoảng một nghìn dặm ra đến bờ biển, để chính người dân quê hương ông có thể chôn cất ông."
+   },
+   {
+    "question": "Trung tín như Susi và Chuma nghĩa là gì?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là những người bạn trung tín luôn bước tiếp và giữ lòng trung thành ngay cả khi khó khăn, và Đức Chúa Trời dùng sự trung tín của họ để làm nên những điều lớn lao."
+   }
+  ],
+  "word_count": 487
+ }
+}
+]

@@ -1,0 +1,377 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "corrie-ten-boom-a-life-children",
+  "language": "vi",
+  "title": "Corrie ten Boom (Cho thiếu nhi)",
+  "subtitle": "",
+  "cover_byline": "Corrie ten Boom",
+  "description": "Câu chuyện có thật về Corrie ten Boom, một người thợ đồng hồ Hà Lan mà gia đình đã giấu người Do Thái khỏi Đức Quốc Xã trong một căn phòng bí mật sau bức tường phòng ngủ của cô. Sau khi cả nhà bị bắt, cô mất cha và chị Betsie, và cô dành phần đời còn lại để kể cho cả thế giới nghe về tình yêu và sự tha thứ của Đức Chúa Trời. Ấn bản dành cho thiếu nhi này kể lại cuộc đời cô qua những chương ngắn để đọc to: một câu Kinh Thánh, một phần câu chuyện của cô, một điều câu chuyện ấy có ý nghĩa cho con, và một lời cầu nguyện ngắn, cùng với những câu hỏi để cùng nhau trò chuyện.",
+  "qa": [
+   {
+    "question": "Sách Corrie ten Boom (Cho thiếu nhi) nói về điều gì?",
+    "answer": "Đây là phiên bản dành cho thiếu nhi của cuốn tiểu sử đầy đủ về Corrie ten Boom. Sách kể về một gia đình thợ đồng hồ ở Haarlem đã giấu người Do Thái khỏi Đức Quốc Xã trong một căn phòng bí mật, về việc họ bị bắt và bị đưa vào tù, về việc Corrie và chị Betsie vẫn tiếp tục tin cậy Đức Chúa Trời trong trại tù, và về việc Corrie dành phần đời còn lại để kể cho mọi người nghe về tình yêu và sự tha thứ của Đức Chúa Trời."
+   },
+   {
+    "question": "Corrie ten Boom là ai?",
+    "answer": "Một Cơ Đốc nhân người Hà Lan, sống từ năm 1892 đến năm 1983. Bà là người phụ nữ đầu tiên ở Hà Lan có bằng thợ đồng hồ. Trong Chiến tranh Thế giới thứ hai, bà và gia đình đã giấu người Do Thái trong nhà mình. Sau chiến tranh, bà đi đến hơn sáu mươi quốc gia để kể lại câu chuyện của mình, và nước Israel đã tôn vinh bà là một trong những Người Công Chính giữa các Dân Tộc."
+   },
+   {
+    "question": "Mỗi chương được sắp xếp như thế nào?",
+    "answer": "Chương nào cũng ngắn và được viết để đọc to. Mỗi chương bắt đầu bằng một câu Kinh Thánh, kể một phần câu chuyện của Corrie, chỉ ra một điều đơn giản mà câu chuyện ấy có ý nghĩa cho con, và kết thúc bằng một lời cầu nguyện ngắn. Tiếp theo là ba câu hỏi để cùng nhau trò chuyện."
+   },
+   {
+    "question": "Cuốn sách này có quá buồn hay quá đáng sợ đối với trẻ em không?",
+    "answer": "Có những phần buồn, vì chiến tranh, các trại tù và cái chết của cha và chị Corrie là những điều khủng khiếp, và cuốn sách không giả vờ rằng chúng không như thế. Nhưng sách kể những điều ấy một cách nhẹ nhàng, không có những chi tiết đáng sợ, và trên hết, đây là câu chuyện về việc Đức Chúa Trời đã ở thật gần Corrie và Betsie, và đã giúp Corrie tha thứ."
+   },
+   {
+    "question": "Những câu chuyện này có thật không?",
+    "answer": "Có. Chúng được lấy từ các tư liệu lịch sử và từ chính những lời Corrie kể về cuộc đời mình. Có vài câu chuyện chỉ do chính Corrie kể lại nhiều năm sau, hoặc do gia đình bà nhớ lại, và khi kể những chuyện ấy, cuốn sách đều nói rõ như vậy."
+   },
+   {
+    "question": "Cuốn sách này dành cho ai?",
+    "answer": "Sách dành cho thiếu nhi, để người lớn đọc to cho các em nghe, hoặc để các em lớn hơn tự đọc. Ngoài ra còn có một ấn bản dành cho thiếu niên, và cuốn tiểu sử đầy đủ dành cho bạn đọc lớn tuổi hơn."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại của Ochorus dành cho bạn đọc nhỏ tuổi, dựa trên cuốn tiểu sử Corrie ten Boom của Ochorus, thuộc bộ sách Chân Dung Lòng Can Đảm. Lời kể là của chúng tôi, được tự do đọc và chia sẻ.",
+  "cover_url": "/covers/art/corrie-ten-boom-a-life-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 152,
+  "is_published": true,
+  "created_at": "2026-11-21T00:00:00Z",
+  "updated_at": "2026-11-21T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Ngôi nhà đầy đồng hồ",
+  "body_html": "<blockquote>“Hãy cầu nguyện cho Giê-ru-sa-lem được bình an: ‘Nguyện mọi người yêu mến ngươi được sống yên ổn.’” — trích Thi-thiên 122</blockquote> <p>Ở thành phố Haarlem cổ kính của nước Hà Lan, trên một con phố nhỏ đầy cửa hàng và lúc nào cũng tấp nập, có một ngôi nhà cao và hẹp. Bên trong, cầu thang dốc và ngoằn ngoèo, còn các phòng thì nằm ở những tầng cao thấp khác nhau trông thật ngộ nghĩnh. Gia đình sống ở đó hơn một trăm năm gọi ngôi nhà là Beje. (Con đọc là “bây-dây.”)</p> <p>Tầng dưới là một tiệm đồng hồ. Ông nội của Corrie, ông Willem ten Boom, mở tiệm vào năm 1837. Suốt một trăm năm, gia đình ten Boom sửa đồng hồ treo tường và đồng hồ đeo tay trong căn phòng nhỏ phía trước ấy. Mọi người tin tưởng giao cho họ những chiếc đồng hồ quý giá của mình, và nhà ten Boom bao giờ cũng trả lại đồng hồ đã được sửa một cách thật thà, cẩn thận.</p> <p>Gia đình còn nhớ một điều khác về ông nội Willem. Họ kể rằng vào năm 1844, ông nghe một bài giảng về việc cầu nguyện cho Giê-ru-sa-lem. Từ đó trở đi, mỗi tuần một lần, ông họp vài người bạn lại để cùng cầu nguyện cho người Do Thái. Các con và các cháu của ông lớn lên cùng với lời cầu nguyện ấy.</p> <p>Corrie chào đời ngày 15 tháng 4 năm 1892, tại thành phố Amsterdam, nơi lúc ấy cha cô có một cửa tiệm. Gia đình nhớ rằng cô bé sinh sớm một tháng và nhỏ xíu đến nỗi không ai nghĩ cô sẽ sống được lâu. Vậy mà cô sống đến chín mươi mốt tuổi! Ít lâu sau, cả nhà dọn về Haarlem, về ngôi nhà Beje, và nơi ấy là nhà của Corrie suốt hơn năm mươi năm.</p> <p>Corrie là con út. Cô có một anh trai tên là Willem, và hai chị gái là Betsie và Nollie. (Còn một em bé trai nữa đã mất khi còn rất nhỏ.) Ba người chị em của mẹ, tức là các dì của Corrie, cũng đến sống ở nhà Beje. Ngôi nhà hẹp lúc nào cũng đông người, nhưng bên bàn ăn bao giờ cũng còn chỗ cho thêm một người nữa.</p> <p>Lúc ấy nhà ten Boom chưa biết, nhưng bao nhiêu năm cầu nguyện và nhường chỗ cho người khác đang chuẩn bị họ cho một việc rất lớn. Đức Chúa Trời cũng dùng những việc nhỏ bé, bình thường mỗi ngày mà chúng ta làm: lời cầu nguyện, lòng tử tế, và chỗ mà chúng ta dành cho người khác.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì ngôi nhà và gia đình của con. Xin giúp con biết cầu nguyện cho người khác, và luôn dành chỗ cho thêm một người nữa. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Beje là gì?",
+    "answer": "Là ngôi nhà cao và hẹp ở Haarlem, nơi gia đình ten Boom sinh sống, với tiệm đồng hồ ở tầng dưới."
+   },
+   {
+    "question": "Mỗi tuần ông nội Willem bắt đầu làm việc gì?",
+    "answer": "Gia đình nhớ rằng mỗi tuần một lần ông họp bạn bè lại để cầu nguyện cho người Do Thái và cho Giê-ru-sa-lem được bình an."
+   },
+   {
+    "question": "Con có thể dành chỗ cho ai, bên bàn ăn hay trong trò chơi của con?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là những việc tử tế nhỏ bé hằng ngày và lời cầu nguyện đều quý giá với Đức Chúa Trời, và Ngài có thể dùng chúng để làm những việc lớn."
+   }
+  ],
+  "word_count": 484
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Cuốn Kinh Thánh lớn của Ba",
+  "body_html": "<blockquote>“Đức Chúa Trời ban cho người cô độc một mái nhà để ở” — trích Thi-thiên 68</blockquote> <p>Cha của Corrie tên là Casper. Ông là thợ đồng hồ, giống như cha ông trước kia. Ông hiền lành, vui tính, và cầu nguyện rất nhiều. Ngày nào cả nhà cũng quây quần đọc Kinh Thánh và cầu nguyện, và vào giờ ăn, Ba đọc to từ cuốn Kinh Thánh lớn của gia đình.</p> <p>Ba tử tế với tất cả mọi người. Với những đứa trẻ vào tiệm, và với những người nghèo gõ cửa sau, ông cũng lễ phép y như với những người giàu nhất trong thành phố. Có khi ông dành thời gian nói với khách hàng về Đức Chúa Trời còn nhiều hơn thời gian sửa đồng hồ cho họ! Ông cũng yêu thương người Do Thái. Ông tin rằng họ là dân được Đức Chúa Trời chọn, được Ngài yêu thương từ thời Áp-ra-ham. Một trong những câu ông thích nói nhất là: “Điều tốt đẹp nhất vẫn còn ở phía trước.”</p> <p>Mẹ của Corrie tên là Cor, trước kia từng là cô giáo. Bà ấm áp và rộng rãi. Bà chuẩn bị những giỏ thức ăn cho hàng xóm nghèo và nhớ ngày sinh nhật của mọi người. Nhưng sức khỏe bà yếu. Khi Corrie hai mươi chín tuổi, mẹ cô bị bệnh nặng rồi qua đời.</p> <p>Khi Corrie còn là một thiếu nữ, cô mong được lấy một chàng trai tên là Karel, bạn của anh Willem. Nhưng gia đình Karel muốn anh cưới một người giàu có, và cuối cùng anh cưới một cô gái khác. Corrie đau lòng lắm. Cô đi lên phòng mình, buồn vô cùng.</p> <p>Corrie nhớ rằng Ba đã leo cầu thang lên với cô. Ông không bảo cô thôi yêu thương. Trái lại, ông nói rằng cô có thể dâng tình yêu của mình cho Đức Chúa Trời, và để Đức Chúa Trời chỉ cho cô biết nên trao tình yêu ấy cho ai.</p> <p>Và mọi việc đã xảy ra đúng như thế. Corrie không bao giờ lập gia đình, nhưng Đức Chúa Trời ban cho cô một gia đình lớn hơn cô có thể tưởng tượng: trẻ em, bạn bè, và rất nhiều người ở khắp nơi trên thế giới. Khi lòng chúng ta buồn, chúng ta cũng có thể dâng tình yêu của mình cho Đức Chúa Trời, và Ngài sẽ chỉ cho chúng ta biết nên yêu thương ai.</p> <p><em>Lạy Đức Chúa Trời, khi con buồn hay thất vọng, xin giúp con mang lòng mình đến với Ngài. Xin chỉ cho con biết hôm nay con có thể yêu thương ai. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ngày nào gia đình Corrie cũng làm gì?",
+    "answer": "Cả nhà quây quần đọc Kinh Thánh và cầu nguyện, và vào giờ ăn, Ba đọc to từ cuốn Kinh Thánh lớn của gia đình."
+   },
+   {
+    "question": "Ba đã nói gì với Corrie khi cô đau lòng?",
+    "answer": "Ông bảo cô đừng thôi yêu thương, nhưng hãy dâng tình yêu của mình cho Đức Chúa Trời và để Ngài chỉ cho cô nên trao tình yêu ấy cho ai."
+   },
+   {
+    "question": "Con có nhớ một lần con thất vọng không? Con có thể nói gì với Đức Chúa Trời về chuyện đó?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là chúng ta có thể mang tấm lòng buồn bã đến với Đức Chúa Trời, và Ngài có thể hướng tình yêu của chúng ta đến với người khác."
+   }
+  ],
+  "word_count": 446
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Những bánh xe tí hon và những cánh cửa rộng mở",
+  "body_html": "<blockquote>“Ai trung tín trong việc nhỏ nhất thì cũng trung tín trong việc lớn” — trích Lu-ca 16</blockquote> <p>Nhiều năm liền, Betsie phụ Ba trong tiệm, còn Corrie lo nấu nướng và dọn dẹp. Rồi khoảng năm 1920, Betsie bị bệnh một thời gian, và hai chị em đổi việc cho nhau. Betsie nhận ra mình rất thích làm cho căn nhà ấm cúng và xinh đẹp. Còn Corrie nhận ra mình yêu tiệm đồng hồ, và nhất là chiếc bàn thợ.</p> <p>Ba dạy Corrie sửa đồng hồ, và cô còn đi tận sang Thụy Sĩ, xứ sở của những người thợ đồng hồ, để học thêm. Một chiếc đồng hồ đầy những bộ phận tí hon: những chiếc lò xo mảnh như sợi tóc, và những con ốc nhỏ đến nỗi phải dùng nhíp và kính lúp mới cầm được. Chỉ một hạt bụi thôi cũng có thể làm cả chiếc đồng hồ ngừng chạy! Corrie tập làm việc thật chậm rãi, cẩn thận và kiên nhẫn. Bảo tàng ở Haarlem cho biết rằng vào năm 1924, cô trở thành người phụ nữ đầu tiên ở Hà Lan có bằng thợ đồng hồ.</p> <p>Corrie rất năng nổ, và cô dùng sức lực ấy để giúp người khác. Cô lập ra những câu lạc bộ cho các bạn gái, có thể thao, âm nhạc, thủ công, cắm trại và học Kinh Thánh. Huy hiệu của các câu lạc bộ là một hình tam giác. Ba cạnh của nó tượng trưng cho thân thể, hồn và linh, vì Đức Chúa Trời quan tâm đến mọi phần trong con người chúng ta.</p> <p>Cô cũng mở những lớp học đặc biệt về Chúa Giê-xu cho những người bị khuyết tật trí tuệ. Thời ấy, nhiều người nghĩ rằng họ không thể hiểu được Tin Lành, và giấu họ đi không cho ai thấy. Corrie không đồng ý. Cô kiên nhẫn dạy dỗ họ, và giúp họ chuẩn bị để gia nhập Hội Thánh.</p> <p>Nhà ten Boom còn nhận nuôi những đứa trẻ cần một mái nhà. Một số em là con của các giáo sĩ đang làm việc ở nơi xa. Ngôi nhà hẹp lại chen thêm chỗ cho các em, và các em trở thành người trong gia đình.</p> <p>Không việc nào trong những việc ấy nổi tiếng cả. Nhưng Chúa Giê-xu phán rằng ai trung tín trong việc nhỏ thì cũng sẽ trung tín trong việc lớn. Những việc nhỏ con làm cẩn thận, và lòng tử tế con dành cho những người bị người khác quên lãng, đều rất quý giá với Đức Chúa Trời.</p> <p><em>Lạy Đức Chúa Trời, xin giúp con làm cả những việc nhỏ một cách cẩn thận và chu đáo. Xin giúp con để ý đến những người bị người khác quên lãng, và đối xử tử tế với họ. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Tại sao Corrie cần nhíp và kính lúp?",
+    "answer": "Vì các bộ phận bên trong đồng hồ rất nhỏ: những chiếc lò xo mảnh như sợi tóc, và những con ốc tí xíu."
+   },
+   {
+    "question": "Corrie dạy ai trong những lớp học đặc biệt của cô?",
+    "answer": "Những người bị khuyết tật trí tuệ, những người mà thời ấy nhiều người giấu đi không cho ai thấy. Cô giúp họ chuẩn bị để gia nhập Hội Thánh."
+   },
+   {
+    "question": "Tuần này con có thể làm cẩn thận một việc nhỏ nào?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Đức Chúa Trời thấy sự trung tín của chúng ta trong những việc nhỏ và dùng nó để chuẩn bị chúng ta cho những việc lớn hơn."
+   }
+  ],
+  "word_count": 475
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Một em bé lúc đi ngủ",
+  "body_html": "<blockquote>“Ai biết được? Có lẽ con được làm hoàng hậu chính là vì một lúc như thế này.” — trích Ê-xơ-tê 4</blockquote> <p>Ngày 10 tháng 5 năm 1940, khi Corrie bốn mươi tám tuổi, quân đội Đức tiến vào Hà Lan. Sau năm ngày chiến đấu, quân đội Hà Lan phải đầu hàng, và lính Đức đi lại trên các đường phố Haarlem.</p> <p>Nước Đức lúc ấy do Đức Quốc Xã cai trị, và họ căm ghét người Do Thái. Từng bước một, họ đặt ra những luật lệ mới thật độc ác. Người Do Thái không được vào công viên, rạp chiếu phim, hay các trường học bình thường. Năm 1942, họ phải đeo một ngôi sao màu vàng trên áo. Ba, lúc ấy đã ngoài tám mươi tuổi, muốn đi xin một ngôi sao về đeo, để đứng chung với những người hàng xóm Do Thái của mình. Cả nhà phải khuyên mãi ông mới thôi! Rồi Đức Quốc Xã bắt đầu đưa các gia đình Do Thái đi trên những chuyến tàu hỏa, và họ không bao giờ trở về nữa.</p> <p>Một buổi tối, Corrie đến thăm một bác sĩ người Do Thái tại nhà ông. Khi họ đang trò chuyện, cô con gái nhỏ của ông gọi vọng xuống cầu thang. Ba quên lên đắp chăn cho con rồi! Ông bác sĩ vội vàng đi lên, và Corrie nghe ông chơi đùa với các con trước khi chúng đi ngủ.</p> <p>Ngồi chờ ở dưới, Corrie nghĩ: cảnh sát mật có thể đến bắt gia đình này bất cứ đêm nào. Và cô quyết định. Cô sẽ giúp người Do Thái bằng mọi cách cô có thể.</p> <p>Chẳng bao lâu, những người đang sợ hãi bắt đầu đến gõ cửa nhà Beje. Họ nghe nói gia đình ông thợ đồng hồ sẽ giúp đỡ họ. Nhà ten Boom cho họ ở lại một hai đêm và cho họ ăn, trong khi đi tìm những nơi an toàn hơn cho họ ở. Ba rất giỏi an ủi những người đang hoảng sợ.</p> <p>Đức Chúa Trời không cần đến nhà ten Boom mới cứu được dân Ngài. Nhưng Ngài đã đặt họ vào ngôi nhà ấy, trong thành phố ấy, vào thời điểm ấy. Đức Chúa Trời cũng đã đặt con vào chỗ của con, và Ngài có thể dùng con để giúp một người đang cần giúp đỡ.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài đã đặt con vào nơi con đang sống. Xin mở mắt con để thấy ai đang cần giúp đỡ, và ban cho con lòng can đảm để giúp họ. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ba muốn làm gì khi người Do Thái bị buộc phải đeo ngôi sao màu vàng?",
+    "answer": "Ông muốn tự mình đeo một ngôi sao, để đứng chung với những người hàng xóm Do Thái, nhưng cả nhà đã khuyên ông thôi."
+   },
+   {
+    "question": "Điều gì khiến Corrie quyết định giúp người Do Thái?",
+    "answer": "Cô nghe một bác sĩ người Do Thái lên đắp chăn cho con gái nhỏ đi ngủ, và nhận ra rằng cảnh sát mật có thể đến bắt gia đình ấy bất cứ đêm nào."
+   },
+   {
+    "question": "Ở gần con có ai có thể đang cần giúp đỡ không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Đức Chúa Trời đã đặt mỗi người chúng ta vào chỗ của mình, vào thời điểm của mình, để giúp đỡ những người xung quanh."
+   }
+  ],
+  "word_count": 437
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Chiếc nôi của các thiên sứ",
+  "body_html": "<blockquote>“Ngài là nơi trú ẩn cho tôi náu mình; Ngài giữ tôi an toàn khỏi cơn quẫn bách và cho tiếng reo vui vì được giải cứu vang lên quanh tôi.” — trích Thi-thiên 32</blockquote> <p>Đến năm 1943, lúc nào trong nhà Beje cũng có người đang ẩn náu. Người đầu tiên đến ở là một sinh viên tên là Hans. Những người khác có một ca trưởng Do Thái, tức là người hát trong nhà hội, mà ai cũng gọi là Eusie, và một bà tên là Mary. Qua nhiều tháng, hơn tám mươi người đã ở lại đó, người ở ngắn, người ở lâu.</p> <p>Ai đang ẩn náu cũng cần thức ăn, mà trong thời chiến, thức ăn chỉ mua được bằng những tấm phiếu đặc biệt gọi là tem phiếu. Corrie tìm cách lấy được phiếu cho những người đang trốn ở khắp thành phố. Cô cất chúng trong một ngăn bí mật nằm bên trong bậc thang trên cùng!</p> <p>Gia đình cũng cần một chỗ để giấu khách nếu cảnh sát đến. Một kiến trúc sư làm việc cho nhóm kháng chiến bí mật đã đến giúp. Chúng ta chỉ biết ông qua một cái tên giả là ông Smit. Trong phòng ngủ của Corrie, ở tận tầng trên cùng của ngôi nhà, ông xây thêm một bức tường gạch thứ hai, làm cho trông như tường cũ, với một khoảng trống hẹp phía sau. Muốn vào, người ta phải bò qua một cánh cửa trượt nhỏ ở dưới ngăn cuối cùng của một chiếc tủ. Gia đình gọi chỗ ấy là Chiếc nôi của các thiên sứ.</p> <p>Rồi họ tập luyện. Corrie bấm chuông báo động mà không báo trước, thường là vào ban đêm, rồi dùng đồng hồ bấm giờ tính thời gian mọi người chạy lên lầu và bò qua cánh cửa nhỏ. Lần nhanh nhất của họ là bảy mươi giây. Tập xong, ai cũng được ăn bánh su kem!</p> <p>Nhà Beje không phải là một ngôi nhà u ám. Ở đó có âm nhạc, và Eusie hát to đến nỗi Corrie phải nhắc ông rằng cả con phố sẽ nghe thấy. Buổi tối, Mary dạy tiếng Ý, Eusie dạy tiếng Hê-bơ-rơ, Hans dạy về các vì sao, và cả Ba già cũng đến học. Ngay cả con mèo của nhà cũng có một cái tên rất dài lấy từ Kinh Thánh: Ma-he-Sa-la-Hát-Bát!</p> <p>Căn phòng bí mật là một chỗ trốn tốt. Nhưng nhà ten Boom biết rằng nơi ẩn náu thật sự của họ chính là Đức Chúa Trời. Vì Đức Chúa Trời đang chăm sóc họ, nên họ vẫn có thể cười và hát, ngay cả trong thời buổi nguy hiểm. Đức Chúa Trời cũng có thể là nơi ẩn náu của con.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài là nơi ẩn náu của con. Khi con sợ hãi, xin giúp con nhớ rằng Ngài đang chăm sóc con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Căn phòng bí mật ở đâu, và làm sao để vào được?",
+    "answer": "Ở phía sau một bức tường gạch giả trong phòng ngủ của Corrie, trên tầng cao nhất của ngôi nhà. Người ta bò vào qua một cánh cửa trượt nhỏ dưới ngăn cuối cùng của một chiếc tủ."
+   },
+   {
+    "question": "Sau mỗi lần tập trốn thì có chuyện gì?",
+    "answer": "Corrie cho mọi người ăn bánh su kem. Lần nhanh nhất của họ là bảy mươi giây."
+   },
+   {
+    "question": "Điều gì giúp con thấy an toàn khi con sợ hãi?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là chính Đức Chúa Trời là nơi ẩn náu an toàn nhất của chúng ta, nên chúng ta có thể tin cậy Ngài ngay cả trong những lúc đáng sợ."
+   }
+  ],
+  "word_count": 493
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Ngày cảnh sát ập đến",
+  "body_html": "<blockquote>“Ai lấy nơi che chở của Đấng Chí Cao làm chỗ ở sẽ được nghỉ đêm dưới bóng mát của Đấng Toàn Năng. Đây là điều tôi nói về CHÚA: Ngài là nơi ẩn náu và đồn lũy của tôi.” — trích Thi-thiên 91</blockquote> <p>Thứ Hai, ngày 28 tháng 2 năm 1944, Corrie đang nằm trên giường vì bị cúm. Ở tầng dưới, anh Willem đang hướng dẫn một buổi học Kinh Thánh. Bỗng nhiên chuông báo động reo lên. Sáu người chạy vụt qua giường Corrie vào căn phòng bí mật: bốn người khách Do Thái và hai người giúp việc trẻ tuổi. Corrie giấu cánh cửa nhỏ đi rồi nằm lại lên giường.</p> <p>Chỉ một lát sau, cảnh sát đi lên cầu thang. Họ bắt Corrie và lục soát ngôi nhà, nhưng họ không bao giờ tìm ra căn phòng bí mật. Viên sĩ quan tức giận đánh Corrie và Betsie. Sau đó, Betsie nói rằng chị thấy thương hại ông ta.</p> <p>Cạnh lò sưởi có treo một tấm bảng gỗ nhỏ ghi dòng chữ “Chúa Giê-xu là Đấng Chiến Thắng.” Betsie chỉ vào tấm bảng, và Ba nói rằng điều đó là thật. Trông thì có vẻ như cảnh sát đã thắng. Nhưng Chúa Giê-xu vẫn đang nắm quyền tể trị.</p> <p>Đêm ấy, ở đồn cảnh sát, cả gia đình nằm sát bên nhau trên một tấm nệm dưới sàn: Ba ở giữa, xung quanh là Betsie, Corrie, Nollie, Willem và Peter, con trai của Nollie. Willem đọc Thi-thiên 91, và Ba cầu nguyện cho tất cả mọi người. Đó là lần cuối cùng Corrie được nghe cha mình cầu nguyện. Ngày hôm sau, khi các tù nhân bị chở đi, người dân Haarlem đứng lặng lẽ trên đường phố, nhiều người khóc.</p> <p>Còn ở nhà Beje, sáu người đứng trong bóng tối sau bức tường suốt hai ngày rưỡi, trong khi lính canh chờ sẵn trong nhà. Rồi có mấy người cảnh sát tốt bụng, vốn bí mật đứng về phía họ, đến phiên trực và thả họ ra. Eusie vui mừng đến nỗi giơ hai tay lên ngay giữa phố và hát một bài cầu nguyện của người Do Thái. Buồn thay, vài ngày sau Mary lại bị bắt, và bà qua đời trước khi chiến tranh kết thúc. Nhưng Eusie còn sống, và trở thành một ca trưởng nổi tiếng.</p> <p>Căn phòng bí mật đã làm tròn nhiệm vụ của nó, nhưng nó không thể giữ cho mọi người được an toàn. Chỉ có Đức Chúa Trời mới có thể đi cùng nhà ten Boom đến bất cứ nơi nào họ bị đưa đến. Đức Chúa Trời cũng ở với con, ngay cả khi những chuyện tồi tệ xảy ra.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài luôn ở với con, ngay cả trong những ngày đáng sợ. Xin Ngài ở thật gần những người đang gặp nguy hiểm hôm nay. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Cảnh sát có tìm thấy sáu người trong căn phòng bí mật không?",
+    "answer": "Không. Họ lục soát ngôi nhà, nhưng không bao giờ tìm ra căn phòng bí mật. Sau hai ngày rưỡi, những người cảnh sát tốt bụng đã thả sáu người ấy ra."
+   },
+   {
+    "question": "Đêm ấy ở đồn cảnh sát, gia đình đã làm gì?",
+    "answer": "Họ nằm sát bên nhau trên một tấm nệm, Willem đọc Thi-thiên 91, và Ba cầu nguyện cho tất cả mọi người."
+   },
+   {
+    "question": "Theo con, tại sao tấm bảng “Chúa Giê-xu là Đấng Chiến Thắng” lại giúp gia đình ấy?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là ngay cả khi trông như điều ác đã thắng, Chúa Giê-xu vẫn đang nắm quyền tể trị, và Đức Chúa Trời vẫn ở với chúng ta."
+   }
+  ],
+  "word_count": 490
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "vi"
+  ],
+  "order": 7,
+  "title": "Một mình, nhưng không cô đơn",
+  "body_html": "<blockquote>“Dù cha mẹ tôi có bỏ tôi, CHÚA vẫn sẽ đón nhận tôi.” — trích Thi-thiên 27</blockquote> <p>Các tù nhân bị đưa đến một nhà tù lớn ở Scheveningen, bên bờ biển. Ba yếu đến nỗi người ta phải khiêng ông. Đến cổng, ông và Corrie chúc phước cho nhau, và cô ngoái lại nhìn ông một lần. Cô không bao giờ gặp lại ông nữa.</p> <p>Corrie vẫn còn đang bệnh. Một cô y tá tốt bụng lén đưa cho cô mấy cuốn sách Phúc Âm nhỏ. Rồi Corrie bị nhốt vào một phòng giam chỉ có một mình, và cô ở một mình trong đó suốt nhiều tuần. Phòng giam lạnh lẽo và xám xịt, và cô thấy rất cô đơn. Lính canh mắng cô vì cô hát, nhưng cô vẫn cứ hát. Có một hàng kiến bò ngang qua sàn nhà, và cô kết bạn với chúng, cho chúng ăn những mẩu bánh vụn. Cô nhớ rằng Hê-nóc đã “đồng đi với Đức Chúa Trời,” và cô biết mình cũng không bước đi một mình.</p> <p>Cuối cùng, có một lá thư đến từ chị Nollie, người đã được thả ra khỏi tù. Lá thư nhẹ nhàng báo cho Corrie biết rằng Ba đã qua đời. Ông chỉ sống được chín ngày sau khi bị bắt. Corrie khóc mãi không thôi. Ba từng nói rằng được hy sinh mạng sống vì người Do Thái là một vinh dự, và giờ đây ông đã làm như thế. Điều tốt đẹp nhất đã đến với ông: ông đang ở với Chúa Giê-xu.</p> <p>Một hôm, có một sĩ quan tra hỏi Corrie. Ông hỏi có phải dạy dỗ những người khuyết tật trí tuệ là phí thời gian không. Corrie nói với ông rằng Đức Chúa Trời yêu thương những người yếu đuối, và một người như thế có thể còn quý giá với Đức Chúa Trời hơn cả hai người họ.</p> <p>Rồi ngày 6 tháng 6 năm 1944, các tù nhân bị chuyển đi. Tại một nhà ga nhỏ, giữa đám đông, Corrie thấy chị Betsie lần đầu tiên sau hơn ba tháng! Hai chị em chen lên cùng một toa tàu, ngồi cạnh nhau và nắm tay nhau. Một người phụ nữ khác trêu rằng hai chị em giống như một đôi chim uyên ương.</p> <p>Về sau Corrie kể rằng trong phòng giam cô đơn ấy, cô thấy Đức Chúa Trời ở gần mình hơn bao giờ hết. Khi con cảm thấy chỉ có một mình, thật ra con không hề một mình đâu. Đức Chúa Trời đang ở ngay bên con.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài không bao giờ bỏ con. Xin Ngài ở gần bất cứ ai đang cảm thấy cô đơn hay buồn bã hôm nay. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Những người bạn nhỏ của Corrie trong phòng giam là ai?",
+    "answer": "Một hàng kiến, mà cô cho ăn những mẩu bánh vụn."
+   },
+   {
+    "question": "Corrie đã nói gì với viên sĩ quan về những người khuyết tật trí tuệ?",
+    "answer": "Rằng Đức Chúa Trời yêu thương những người yếu đuối, và một người như thế có thể còn quý giá với Đức Chúa Trời hơn cả hai người họ."
+   },
+   {
+    "question": "Có lúc nào con cảm thấy cô đơn không? Con có thể nói chuyện với Đức Chúa Trời về điều đó thế nào?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Đức Chúa Trời đến gần chúng ta khi chúng ta cô đơn, giống như Ngài đã ở gần Corrie."
+   }
+  ],
+  "word_count": 464
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Mặt trái của bức tranh thêu",
+  "body_html": "<blockquote>“Khi con đi qua nước sâu, Ta sẽ ở bên con” — trích Ê-sai 43</blockquote> <p>Corrie và Betsie bị đưa đến một trại tù tên là Vught, ở miền nam Hà Lan. Những người phụ nữ ở đó ngồi cả ngày chẳng có việc gì làm, và chẳng bao lâu họ bắt đầu càu nhàu và cãi cọ nhau. Thế là Betsie lập ra một câu lạc bộ! Các thành viên hứa sẽ cố gắng không càu nhàu, không nói điều gì không tử tế về bất cứ ai, và nói những lời khích lệ người khác.</p> <p>Sau đó Corrie được đưa đến làm việc ở một chiếc bàn, kiểm tra những công tắc nhỏ dùng cho máy thu thanh, mỗi ngày mười một tiếng. Việc này không thú vị bằng sửa đồng hồ, nhưng cô làm rất giỏi. Betsie làm việc trong phòng may. Vào các chiều Chúa Nhật, những người phụ nữ họp nhau trên một khoảnh cỏ giữa các dãy lán để thờ phượng Đức Chúa Trời, và chẳng bao lâu Corrie đã hướng dẫn các buổi nhóm.</p> <p>Dù vậy, Vught vẫn là một nơi khắc nghiệt và đáng sợ. Một hôm, khi quân đội đang đánh Đức Quốc Xã tiến đến gần hơn, lính canh đem nhiều tù nhân đàn ông đi và giết họ. Corrie gục đầu lên vai Betsie và hỏi Đức Chúa Trời tại sao Ngài lại để chuyện ấy xảy ra.</p> <p>Rồi Corrie cảm thấy Đức Chúa Trời đang chỉ cho cô thấy rằng cô không phải một mình mang hết mọi nỗi buồn của thế giới. Cô có thể mang chúng đến với Ngài và để chúng lại đó. Và cô nghĩ đến một bức tranh thêu. Ở mặt sau, nó trông như một mớ chỉ rối tung. Nhưng lật mặt kia lên, con sẽ thấy một bức tranh thật đẹp! Cô tin rằng một ngày kia, chúng ta sẽ được thấy mặt phải của cuộc đời mình, và sẽ hiểu.</p> <p>Vào tháng 9, hai chị em bị dồn lên một toa chở hàng cùng với khoảng tám mươi người phụ nữ khác. Suốt ba ngày ba đêm, đoàn tàu ầm ầm chạy vào nước Đức. Cuối cùng tàu dừng lại gần một cái hồ, và những người phụ nữ đi bộ đến cổng một trại lớn tên là Ravensbrück.</p> <p>Bây giờ, nhiều khi chúng ta chỉ thấy mặt sau rối rắm của bức tranh thêu. Nhưng Đức Chúa Trời thấy cả bức tranh, và Ngài đang dệt nên một điều tốt đẹp. Con có thể mang những cảm xúc buồn bã và lo lắng của mình đến với Ngài, và để chúng lại trong tay Ngài.</p> <p><em>Lạy Đức Chúa Trời, khi con không hiểu chuyện gì đang xảy ra, xin giúp con tin cậy Ngài. Bây giờ con dâng cho Ngài những nỗi lo của con, và con để chúng lại với Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Betsie đã lập ra câu lạc bộ gì ở Vught?",
+    "answer": "Một câu lạc bộ mà các thành viên hứa sẽ cố gắng không càu nhàu, không nói điều gì không tử tế về bất cứ ai, và khích lệ nhau."
+   },
+   {
+    "question": "Mặt sau của một bức tranh thêu trông như thế nào?",
+    "answer": "Như một mớ chỉ rối tung. Nhưng ở mặt phải lại là một bức tranh thật đẹp."
+   },
+   {
+    "question": "Hôm nay con muốn dâng nỗi lo nào cho Đức Chúa Trời?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là chúng ta không phải một mình gánh mọi nỗi buồn, vì Đức Chúa Trời thấy cả bức tranh."
+   }
+  ],
+  "word_count": 484
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Cuốn Kinh Thánh ở Lán 28",
+  "body_html": "<blockquote>“Dù có chuyện gì xảy ra, hãy tạ ơn” — trích 1 Tê-sa-lô-ni-ca 5</blockquote> <p>Ravensbrück là một trại rất lớn dành cho phụ nữ. Trại chật chội, lạnh lẽo và bẩn thỉu, và không bao giờ có đủ thức ăn. Khi các tù nhân mới đến, gần như mọi thứ họ có đều bị lấy đi, và họ được phát một chiếc áo mỏng để mặc. Nhưng Corrie giấu cuốn Kinh Thánh nhỏ của mình dưới áo. Lính canh khám xét từng người, nhưng họ không khám cô. Corrie tin rằng chính Đức Chúa Trời đã che giấu cô.</p> <p>Hai chị em bị đưa vào ở Lán 28, một dãy nhà dài với những chiếc giường tầng cao ba tầng. Về sau Corrie viết rằng đến cuối cùng có khoảng một nghìn bốn trăm người phụ nữ bị dồn vào đó. Mỗi chiếc giường hẹp phải có hai người hoặc nhiều hơn nằm chung.</p> <p>Ngày nào Corrie và Betsie cũng đọc Kinh Thánh cho những người phụ nữ xung quanh nghe, có khi mỗi ngày hai lần. Phụ nữ từ Hà Lan, Pháp, Ba Lan, Nga và nhiều nơi khác đều lắng nghe. Khi không nói cùng một thứ tiếng, hai chị em chỉ cần nói danh Chúa Giê-xu, và gương mặt những người phụ nữ ấy sáng bừng lên.</p> <p>Nhiều năm sau, Corrie kể một câu chuyện về thời gian này. Lán đầy bọ chét, và Corrie ghét chúng lắm. Nhưng Betsie nói rằng họ phải tạ ơn Đức Chúa Trời trong mọi sự, kể cả bọ chét! Về sau họ mới biết rằng lính canh tránh xa khu vực của họ trong lán, nhờ vậy các buổi đọc Kinh Thánh vẫn có thể tiếp tục. Corrie nói, lý do chính là vì bọ chét.</p> <p>Corrie còn có một lọ nhỏ thuốc nhỏ vitamin. Mỗi ngày cô nhỏ vài giọt cho những người phụ nữ xung quanh. Corrie viết rằng chiếc lọ cứ tiếp tục cho ra từng giọt suốt nhiều tuần, lâu hơn rất nhiều so với lẽ thường, cho đến khi một người bạn mang thêm vitamin từ bệnh xá của trại về. Lúc ấy lọ mới cạn.</p> <p>Ngay cả ở nơi tồi tệ nhất, Corrie và Betsie vẫn chia sẻ những gì mình có và tạ ơn Đức Chúa Trời. Khi con gặp chuyện khó khăn, con vẫn có thể tìm một điều để tạ ơn Đức Chúa Trời, và một điều để chia sẻ với người khác.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Lời của Ngài là Kinh Thánh. Xin giúp con tạ ơn Ngài ngay cả trong những ngày khó khăn, và chia sẻ những gì con có với người khác. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Corrie đã giữ cuốn Kinh Thánh của mình ở Ravensbrück bằng cách nào?",
+    "answer": "Cô giấu nó dưới áo. Lính canh khám xét từng người, nhưng họ không khám cô."
+   },
+   {
+    "question": "Tại sao Betsie muốn tạ ơn Đức Chúa Trời vì bọ chét?",
+    "answer": "Vì Kinh Thánh dạy phải tạ ơn trong mọi sự. Về sau hai chị em mới biết rằng lính canh tránh xa chỗ họ, nên các buổi đọc Kinh Thánh vẫn có thể tiếp tục."
+   },
+   {
+    "question": "Hôm nay con có thể tạ ơn Đức Chúa Trời về điều gì, dù ngày hôm nay có khó khăn?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là chúng ta có thể tìm thấy sự tốt lành của Đức Chúa Trời và tạ ơn Ngài trong mọi hoàn cảnh."
+   }
+  ],
+  "word_count": 450
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Betsie về nhà Chúa",
+  "body_html": "<blockquote>“Nếu tôi lên đến các tầng trời, Ngài ở đó; nếu tôi nằm xuống nơi Âm Phủ, Ngài cũng ở đó.” — trích Thi-thiên 139</blockquote> <p>Betsie là người hiền dịu nhất trong Lán 28. Chị yếu hơn Corrie, nhưng xét về một mặt nào đó, chị lại là người mạnh mẽ hơn, vì đức tin của chị thật sâu sắc và bình an. Chị còn thấy thương xót cả những người đã đối xử tàn ác với hai chị em.</p> <p>Buổi tối, hai chị em cùng nhau lên kế hoạch. Khi được về nhà, họ sẽ mở một ngôi nhà cho những người ra khỏi các trại tù mà không còn nơi nào để đi. Và họ sẽ sang nước Mỹ để kể cho mọi người nghe những gì Đức Chúa Trời đã làm cho họ.</p> <p>Nhưng Betsie mỗi ngày một yếu đi. Chị bị bệnh nặng, sốt rất cao, và cuối cùng chị không còn đi được nữa. Người ta khiêng chị trên cáng đến bệnh xá của trại. Khi chị được khiêng đi, một người phụ nữ Ba Lan quỳ xuống bên cạnh chị và cầu nguyện. Chiều hôm ấy, Corrie được vào thăm chị thêm một lần nữa.</p> <p>Sáng hôm sau, ngày 16 tháng 12 năm 1944, Corrie nhìn vào qua cửa sổ bệnh xá. Betsie đã qua đời. Chị năm mươi chín tuổi. Khi Corrie vào thăm chị, cô thấy gương mặt Betsie trông bình an và trẻ lại, như thể Đức Chúa Trời đã cho chị được nhìn thoáng qua thiên đàng.</p> <p>Trong một cuốn sách viết nhiều năm sau, Corrie nhớ lại rằng Betsie từng nói họ phải nói cho mọi người biết rằng tình yêu của Đức Chúa Trời còn sâu hơn cả cái hố sâu nhất. Đêm hôm ấy, có một người phụ nữ Nga không có chỗ ngủ. Corrie nhường cho bà chỗ mà Betsie vẫn thường nằm, và hai người phụ nữ ôm nhau.</p> <p>Thật buồn khi một người chúng ta thương yêu qua đời. Nhưng với mọi người thuộc về Chúa Giê-xu, sự chết không phải là kết thúc. Không có nơi nào sâu thẳm hay tối tăm đến nỗi Đức Chúa Trời chưa có mặt ở đó, và Ngài không bao giờ thôi yêu thương chúng ta.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì tình yêu của Ngài còn sâu hơn cả nơi sâu thẳm nhất. Xin an ủi tất cả những ai đang nhớ thương một người thân yêu. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Corrie và Betsie đã cùng nhau lên những kế hoạch gì?",
+    "answer": "Mở một ngôi nhà cho những người ra khỏi các trại tù mà không còn nơi nào để đi, và sang nước Mỹ để kể lại những gì Đức Chúa Trời đã làm cho họ."
+   },
+   {
+    "question": "Corrie đã làm gì cho người phụ nữ Nga không có chỗ ngủ?",
+    "answer": "Cô nhường cho bà chỗ mà Betsie vẫn thường nằm."
+   },
+   {
+    "question": "Biết rằng tình yêu của Đức Chúa Trời sâu hơn mọi nơi tối tăm giúp con như thế nào?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là không điều gì, kể cả sự chết, có thể tách chúng ta khỏi tình yêu của Đức Chúa Trời."
+   }
+  ],
+  "word_count": 414
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Tự do!",
+  "body_html": "<blockquote>“Chúng ta đã vụt thoát như con chim khỏi bẫy của người bắt chim; bẫy đã gãy, và chúng ta được tự do!” — trích Thi-thiên 124</blockquote> <p>Ba ngày sau khi Betsie qua đời, lúc các tù nhân xếp hàng để điểm danh, Corrie nghe tên mình được gọi. Cô được thả ra! Nhưng trước hết, cô phải chờ ở bệnh xá của trại cho đến khi đôi chân sưng phù của cô đỡ hơn.</p> <p>Trong bệnh xá có một cô bé tên là Oelie, bị khuyết tật trí tuệ. Em bệnh rất nặng và cứ khóc gọi mẹ. Đêm này qua đêm khác, Corrie kể cho em nghe về Chúa Giê-xu. Vào đêm cuối cùng, Oelie đã có thể nói, bằng chính lời của em, rằng Chúa Giê-xu yêu em và đang chuẩn bị một chỗ cho em. Lúc ấy Corrie mới hiểu vì sao mình phải chờ. Bao nhiêu năm dạy những lớp học đặc biệt ở Haarlem đã dẫn đến giây phút này.</p> <p>Cuối cùng Corrie bước ra khỏi cổng trại. Chuyến đi về nhà xuyên qua nước Đức mất nhiều ngày. Cô gần như không có gì để ăn, và có những người đối xử không tử tế với cô, nhưng cũng có những người khác giúp đỡ và cho cô ăn.</p> <p>Tại thành phố Groningen của Hà Lan, cô đến một bệnh viện. Một trong những cô y tá ở đó trước kia từng là trưởng nhóm trong các câu lạc bộ bạn gái của Corrie! Họ cho cô ăn, cho cô tắm rửa và thay quần áo sạch, và cô được ngủ trên một chiếc giường thật sự. Khi được nghe lại tiếng nhạc, cô bật khóc. Cô cảm thấy cuộc đời mình đã được trao trả lại cho mình như một món quà.</p> <p>Nhiều năm sau, có người nói với Corrie rằng cô được thả ra là do nhầm lẫn. Không ai biết chắc. Nhưng Corrie chưa bao giờ nghi ngờ ai là Đấng đã giải thoát cô. Đó chính là Đức Chúa Trời.</p> <p>Như con chim được thả ra khỏi bẫy, Corrie đã được tự do. Đôi khi chúng ta không biết chính xác Đức Chúa Trời giúp đỡ mình bằng cách nào, nhưng chúng ta luôn có thể cảm ơn Ngài về điều đó.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì mọi lần Ngài đã giúp đỡ con, ngay cả khi con không biết Ngài giúp bằng cách nào. Xin giúp con dùng cuộc đời mình để giúp đỡ người khác. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Oelie là ai, và Corrie đã làm gì cho em?",
+    "answer": "Một cô bé bị khuyết tật trí tuệ đang bệnh rất nặng. Đêm nào Corrie cũng kể cho em nghe về Chúa Giê-xu, cho đến khi Oelie có thể nói rằng Chúa Giê-xu yêu em."
+   },
+   {
+    "question": "Corrie đã gặp ai ở bệnh viện tại Groningen?",
+    "answer": "Một cô y tá trước kia từng là trưởng nhóm trong các câu lạc bộ bạn gái của Corrie."
+   },
+   {
+    "question": "Đức Chúa Trời đã giúp con điều gì mà con có thể cảm ơn Ngài?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Đức Chúa Trời giải thoát và giúp đỡ chúng ta, ngay cả khi chúng ta không hiểu Ngài làm bằng cách nào."
+   }
+  ],
+  "word_count": 422
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Bàn tay chìa ra",
+  "body_html": "<blockquote>“Hãy yêu thương kẻ thù mình và cầu nguyện cho những người bắt bớ các con” — trích Ma-thi-ơ 5</blockquote> <p>Khi chiến tranh kết thúc vào tháng 5 năm 1945, cuối cùng nước Hà Lan cũng được tự do. Chỉ vài tuần sau, Corrie đã làm một việc vô cùng can đảm. Cô viết thư cho người đàn ông mà người ta nói với cô là đã chỉ điểm gia đình cô cho cảnh sát. Cô nói với ông rằng cô tha thứ cho ông, rằng cô đang cầu nguyện cho ông, và rằng Chúa Giê-xu có thể làm cho ông trở nên mới.</p> <p>Corrie nhớ lại những kế hoạch cô đã cùng Betsie vạch ra. Cô mở một ngôi nhà cho những người trở về sau chiến tranh với nhiều thương tổn và không còn nơi nào để đi. Vài năm sau, cô còn mở một ngôi nhà ở nước Đức, cho những người ở đó đã mất nhà cửa.</p> <p>Corrie kể lại một câu chuyện về một ngày năm 1947 tại Munich, nước Đức. Sau khi cô giảng về sự tha thứ của Đức Chúa Trời, một người đàn ông đến gặp cô. Cô nhận ra ông: ông từng là lính canh ở Ravensbrück. Ông nói rằng ông đã trở thành Cơ Đốc nhân, và ông chìa tay ra. Corrie thấy mình không thể nắm lấy bàn tay ấy. Vì vậy cô cầu nguyện thầm và xin Chúa Giê-xu giúp cô. Rồi cô chìa tay ra, và khi họ bắt tay nhau, cô cảm thấy tình yêu của Đức Chúa Trời tràn đầy trong lòng mình. Cô đã có thể tha thứ cho ông.</p> <p>Suốt hơn ba mươi năm, Corrie đi khắp thế giới, nói chuyện ở hơn sáu mươi quốc gia. Câu chuyện của cô trở thành một cuốn sách và một bộ phim nổi tiếng, và người ta trồng một cái cây để vinh danh cô tại Giê-ru-sa-lem. Đi đến đâu, cô cũng nói với mọi người rằng tình yêu của Đức Chúa Trời mạnh hơn cả nơi tối tăm nhất.</p> <p>Khi đã rất già, Corrie sống ở California. Cô bị đột quỵ nhiều lần và gần như không nói được trong năm năm cuối đời, và những người bạn tốt bụng đã chăm sóc cô. Cô qua đời ngày 15 tháng 4 năm 1983, đúng vào sinh nhật lần thứ chín mươi mốt của mình.</p> <p>Tha thứ cho những người đã làm tổn thương mình có thể rất khó. Corrie nhận ra rằng tự sức mình, cô không thể làm được, nhưng Đức Chúa Trời đã ban cho cô tình yêu mà cô cần. Ngài cũng sẽ giúp con tha thứ, nếu con xin Ngài.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Corrie và Betsie ten Boom, và vì mọi điều Ngài đã làm qua hai chị em. Khi con thấy khó tha thứ, xin ban cho con tình yêu của Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Corrie đã viết gì trong lá thư gửi người đàn ông đã chỉ điểm gia đình cô?",
+    "answer": "Rằng cô tha thứ cho ông, rằng cô đang cầu nguyện cho ông, và rằng Chúa Giê-xu có thể làm cho ông trở nên mới."
+   },
+   {
+    "question": "Chuyện gì đã xảy ra khi Corrie xin Chúa Giê-xu giúp cô bắt tay người lính canh?",
+    "answer": "Khi cô chìa tay ra, cô cảm thấy tình yêu của Đức Chúa Trời tràn đầy trong lòng mình, và cô đã có thể tha thứ cho ông."
+   },
+   {
+    "question": "Có ai mà con cần Đức Chúa Trời giúp để tha thứ không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là tha thứ có thể rất khó, nhưng Đức Chúa Trời ban cho chúng ta tình yêu của Ngài để chúng ta có thể tha thứ."
+   }
+  ],
+  "word_count": 489
+ }
+}
+]

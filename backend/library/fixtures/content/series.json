@@ -534,6 +534,19 @@
   "series": [
    "brave-for-god"
   ],
+  "language": "ja",
+  "title": "神さまのために勇敢に",
+  "description": "若い読者のための、信仰の実話。神さまを信頼し、勇敢にされた、世界のあらゆる場所のふつうの人々の物語です。",
+  "created_at": "2026-11-21T00:00:00Z",
+  "updated_at": "2026-11-21T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
   "language": "ko",
   "title": "하나님을 위해 용감하게",
   "description": "어린 독자들을 위한 믿음의 실화예요. 세계 곳곳에서 하나님을 신뢰하고 용감해진 평범한 사람들의 이야기를 담았어요.",
@@ -1642,6 +1655,21 @@
   "verse_ref": "1 Timothée 4:12",
   "created_at": "2026-10-14T00:00:00Z",
   "updated_at": "2026-10-14T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "they-were-young"
+  ],
+  "language": "ko",
+  "title": "그들이 젊었을 때",
+  "description": "13세에서 17세 독자들을 위한 실화예요. 어른이 되기 전에 믿음이 시작되었거나 시험을 받은 사람들의 이야기를, 가능한 한 그들 자신의 말로 온전히 들려주고, 함께 생각해 볼 질문도 담았어요.",
+  "verse_text": "누구든지 네 연소함을 업신여기지 못하게 하고",
+  "verse_ref": "디모데전서 4:12",
+  "created_at": "2026-11-21T00:00:00Z",
+  "updated_at": "2026-11-21T00:00:00Z"
  }
 },
 {
