@@ -179,5 +179,12 @@
    "Backed by the ko editions mary-slessor-a-life-children (『메리 슬레서 (어린이용)』), pandita-ramabai-a-life-children (『판디타 라마바이 (어린이용)』) and corrie-ten-boom-a-life-children (『코리 텐 붐 (어린이용)』), all from the Korean batch of 2026-11-20; the card names the three women, not the titles. Ships with mary-slessor-a-life-children.ko, the last of the three, so seed_plans does not publish an English-titled card in Korean and PlanTranslationCoverageTests passes.",
    "Structure and closing sentence follow family-devotions-heroes-who-trusted-god.ko; names as the three books spell them."
   ]
+ },
+ "key-teachings-four-teachers": {
+  "title": "핵심 가르침: 네 명의 스승",
+  "description": "네 명의 스승과 함께하는 열두 주입니다. 하루에 짧은 장 하나씩 읽고, 장마다 질문과 기도로 마칩니다. 리처드 백스터는 성도의 영원한 안식을, 조나단 에드워즈는 하나님의 아름다움과 참된 신앙을, A. B. 심프슨은 구주, 성결케 하시는 분, 치유자, 다시 오실 왕이신 그리스도를, 워치만 니는 정상적인 그리스도인의 생활을 가르칩니다.",
+  "note": [
+   "Backed by the ko editions key-teachings-of-richard-baxter (리처드 백스터의 핵심 가르침) and key-teachings-of-a-b-simpson (shipped), key-teachings-of-watchman-nee and key-teachings-of-jonathan-edwards (Korean batch of 2026-11-21); ships with key-teachings-of-jonathan-edwards.ko so seed_plans never publishes this plan with an English title in Korean. The fourfold names follow christ-our-healer.ko and 『사중복음』; 정상적인 그리스도인의 생활 as the Nee edition has it. 합니다체."
+  ]
  }
 }
