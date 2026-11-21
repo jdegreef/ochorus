@@ -37949,6 +37949,39 @@
 				546
 			]
 		},
+		"ru/after-his-heart": {
+			"ground": "45a6b80d09640a0231201209aa153a04e7ed124facc3261c1e8cdd4ad1906cb3",
+			"style": "house",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[51, 342, 549, 432]
+				],
+				"subtitle": [
+					[114, 452, 486, 480]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
+		},
 		"ru/amanda-smith-autobiography-children": {
 			"ground": "11a56206fff72ed878bb79d299949601dfe7ea2edec6e92a6f2434a93aa59fa0",
 			"style": "revival",
