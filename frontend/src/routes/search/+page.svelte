@@ -78,6 +78,8 @@
 	let suggestion = $state('');
 	// The word actually searched when an admin's synonym replaced the reader's.
 	let searchedFor = $state('');
+	/** A misspelt word also searched as corrected ("humilty" → "humility"). */
+	let alsoSearchedFor = $state('');
 	let timer: ReturnType<typeof setTimeout> | undefined;
 	// The view currently reflected in the URL — query, type facet and sort, as one
 	// string. Plain (non-reactive): it exists only to tell "the reader navigated"
@@ -121,6 +123,8 @@
 		plan: () => t('search.typePlan'),
 		article: () => t('search.typeArticle'),
 		scripture: () => t('search.typeScripture'),
+		quote: () => t('nav.quotes'),
+		answer: () => t('search.typeAnswer'),
 		sermon: () => t('search.typeSermon'),
 		chapter: () => t('search.typeChapter')
 	};
@@ -133,7 +137,9 @@
 			...toRow(h, rowCtx),
 			type: h.type,
 			pinned: h.pinned,
-			named: h.named
+			named: h.named,
+			chosen: h.chosen,
+			phrase: h.type === 'quote' ? h.phrase : undefined
 		}))
 	);
 	const groups = $derived<ResultGroup[]>(leadWithPinned(groupRows(rows)));
@@ -253,7 +259,7 @@
 		const position = nav.keys.indexOf(key) + 1;
 		const query = ran || q.trim();
 		if (!type || position < 1 || query.length < minQueryLength(getLang())) return;
-		void recordSearchClick(query, type, position, getLang()).catch(() => {});
+		void recordSearchClick(query, type, position, getLang(), key).catch(() => {});
 	}
 	const activeKey = $derived(
 		activeIndex >= 0 && activeIndex < nav.keys.length ? nav.keys[activeIndex] : ''
@@ -309,6 +315,7 @@
 		ran = '';
 		suggestion = '';
 		searchedFor = '';
+		alsoSearchedFor = '';
 		scriptureAnswer = null;
 		totals = {};
 		totalsCapped = {};
@@ -448,6 +455,10 @@
 			ran = res.query;
 			suggestion = res.suggestion ?? '';
 			searchedFor = res.searched_for ?? '';
+			alsoSearchedFor = res.also_searched_for ?? '';
+			// Words that quote a verse ("for god so loved the world") get the
+			// passage card a typed reference gets.
+			if (res.verse) void maybeScripture(res.verse, token);
 			totals = res.totals ?? {};
 			totalsCapped = res.totals_capped ?? {};
 			pageSize = res.page_size ?? pageSize;
@@ -460,6 +471,7 @@
 			ran = '';
 			suggestion = '';
 			searchedFor = '';
+			alsoSearchedFor = '';
 			totals = {};
 			totalsCapped = {};
 			searchError = true;
@@ -1050,6 +1062,12 @@
 				<p class="mb-4 text-small text-muted">
 					{t('search.showingFor')} “<span class="font-semibold text-text">{searchedFor}</span>”
 				</p>
+			{:else if alsoSearchedFor}
+				<!-- A misspelt word was searched as typed and as corrected; say so, so
+				     a passage matching the correction doesn't look like a stray. -->
+				<p class="mb-4 text-small text-muted">
+					{t('search.alsoShowing')} “<span class="font-semibold text-text">{alsoSearchedFor}</span>”
+				</p>
 			{/if}
 			<!-- The running count and, once a tab owns the list, the sort. One quiet
 			     line under the tabs; rendered only when it holds something. -->
@@ -1160,7 +1178,7 @@
 						<ul class="divide-y divide-border">
 							{#each g.rows as row (row.key)}
 								<li>
-									{#if row.type === 'chapter'}
+									{#if row.type === 'chapter' || row.type === 'quote' || row.type === 'answer'}
 										<!-- A passage: where it is, then the words that matched.
 										     The snippet is the result — it is why the row is here. -->
 										<a
