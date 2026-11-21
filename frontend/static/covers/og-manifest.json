@@ -37915,6 +37915,42 @@
 				546
 			]
 		},
+		"ru/brave-for-god-3": {
+			"ground": "219c5aa3bee8985044530b9bebedfba2490dc4826fb5feca6f6c3a54f6b6fbf7",
+			"style": "young",
+			"volume": "3",
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 242, 310, 286],
+					[106, 317, 494, 392],
+					[72, 378, 528, 453]
+				],
+				"subtitle": [
+					[161, 508, 439, 536],
+					[173, 537, 427, 565]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				230,
+				565
+			]
+		},
 		"ru/talks-to-the-farmer-children": {
 			"ground": "2314c64bbc523d74d38e2b7f6ee50388e99a0be03b6aa6392c856ac3583b5c3d",
 			"style": "young",
