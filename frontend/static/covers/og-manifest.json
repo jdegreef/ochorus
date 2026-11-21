@@ -27776,6 +27776,21 @@
 				478
 			]
 		},
+		"ko/union-and-communion": {
+			"ground": "58aefba38aff6cc22efd189d3cb035ced00617dd348fc89f37c0af58cdc60397",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "593043494b0df3d4ef1a4e76a0155d87ac405b40f1cd297ff87c757ff4bf2a80",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/teal",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/waiting-on-god": {
 			"ground": "54b00b6b194c0762b341256892c7869cdd2dd68ba2369ea7de34618853560196",
 			"style": "devotional",
