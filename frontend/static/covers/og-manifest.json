@@ -26171,6 +26171,21 @@
 				472
 			]
 		},
+		"ko/enchiridion": {
+			"ground": "9530ae4c5b15cb1a92eb314c749bd679a65949254b9584beacd4392cb1f7de2f",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "14dcf59a72bc4dfc5b31e698cd87855994b38b93f95d43c26599d33161f20c30",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/rust",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/epistles-of-ignatius": {
 			"ground": "38805cd48c502d737fd745b0063a31066ef440c61fca9c3605ef9b07758d02d9",
 			"style": "inscriptional",
