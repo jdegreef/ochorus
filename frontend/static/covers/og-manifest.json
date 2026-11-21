@@ -27333,6 +27333,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/the-key-in-my-hand": {
+			"ground": "1721febcb0d63ee33020366139ae50f283b7c737ccdb58fe88c94c80e255277f",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1ca0a61e3da0e7523d834953d0fdc6478bb9f4fb71beef0b14f8ce5a49c1c59e",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": true,
+			"sitemark": null
+		},
 		"ko/the-life-of-trust": {
 			"ground": "c5b88256523f8c9e31732303a140f40f4aa199db1f9e4e9b95b84e5fc2c3db83",
 			"style": "revival",
