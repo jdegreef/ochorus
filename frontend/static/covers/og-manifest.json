@@ -26244,6 +26244,39 @@
 				544
 			]
 		},
+		"ko/mary-slessor-a-life-children": {
+			"ground": "b40dfecfc8636bff75e7aa08613f9b529284e2c07a485f1fa8bffa75311d98fc",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "d104baf2f48972c85053fd8e84531c46d3669f329acee772efa5dbc99e23ac04",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[221, 106, 379, 135]
+				],
+				"title": [
+					[163, 321, 437, 396]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				328,
+				472
+			]
+		},
 		"ko/men-and-women-who-gave-everything-2": {
 			"ground": "9153ead741e95a71656d43dff688f7d14af6ee7a38580927227d58d691e48e42",
 			"style": "originals",
