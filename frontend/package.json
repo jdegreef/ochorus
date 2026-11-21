@@ -37,8 +37,8 @@
 		"locales": "node scripts/fetch-live-locales.mjs",
 		"await-api": "node scripts/await-api-release.mjs",
 		"sync:catalogues": "node scripts/sync-ui-catalogues.mjs",
-		"prebuild": "npm run await-api && npm run locales",
-		"postbuild": "node scripts/build-404.mjs && node scripts/build-cards.mjs && node scripts/sentry-sourcemaps.mjs && node scripts/build-tombstones.mjs"
+		"prebuild": "node scripts/local-api.mjs start && npm run await-api && npm run locales",
+		"postbuild": "node scripts/local-api.mjs stop && node scripts/build-404.mjs && node scripts/build-cards.mjs && node scripts/sentry-sourcemaps.mjs && node scripts/build-tombstones.mjs"
 	},
 	"devDependencies": {
 		"@capacitor/cli": "8.6.2",

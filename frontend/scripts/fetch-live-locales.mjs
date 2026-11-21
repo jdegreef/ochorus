@@ -21,12 +21,14 @@
 import { writeFileSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildApiBase } from '../src/lib/buildApi.ts';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT = join(HERE, '..', 'src', 'lib', 'live-locales.generated.ts');
 const INLANG = join(HERE, '..', 'project.inlang', 'settings.json');
 
-const API = (process.env.PUBLIC_API_BASE_URL || '').replace(/\/+$/, '');
+// The local build API when OCHORUS_BUILD_API=local, else PUBLIC_API_BASE_URL.
+const API = buildApiBase(process.env);
 const ENDPOINT = `${API}/api/library/languages/?all=1`;
 
 /** Exit with a message that says what broke and what to do about it. */
