@@ -26930,6 +26930,40 @@
 				380
 			]
 		},
+		"ko/key-teachings-of-r-a-torrey": {
+			"ground": "95670c73a8e0b9db5559809ac748ec8aa0df394d9420f0f305ac218fda9f3641",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "14dcf59a72bc4dfc5b31e698cd87855994b38b93f95d43c26599d33161f20c30",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[161, 169, 439, 232],
+					[142, 225, 458, 288]
+				],
+				"subtitle": [
+					[61, 352, 539, 380]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				380
+			]
+		},
 		"ko/key-teachings-of-richard-baxter": {
 			"ground": "ad35ad10ebfd988a196c54c5b86f28338b2d178d87da398e3c66b7ddf694130f",
 			"style": "originals",
