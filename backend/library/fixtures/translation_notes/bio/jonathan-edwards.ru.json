@@ -1,0 +1,26 @@
+{
+ "kind": "bio",
+ "slug": "jonathan-edwards",
+ "language": "ru",
+ "job_issue": 9164,
+ "references": [
+  {
+   "reference": "1 Timothy 1:17",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Deuteronomy 32:35b",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Acts 16:30b",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}

@@ -1,0 +1,300 @@
+{
+    "kind": "sermon",
+    "slug": "songs-in-the-night",
+    "language": "am",
+    "job_issue": 8226,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Job 35:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 0
+        },
+        {
+            "reference": "Job 35:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 1
+        },
+        {
+            "reference": "Job 35:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 2
+        },
+        {
+            "reference": "Psalm 91:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 2
+        },
+        {
+            "reference": "Psalm 91:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 2
+        },
+        {
+            "reference": "Job 35:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 8
+        },
+        {
+            "reference": "Psalm 103:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 9
+        },
+        {
+            "reference": "Habakkuk 3:17",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 9
+        },
+        {
+            "reference": "Habakkuk 3:18",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 9
+        },
+        {
+            "reference": "Exodus 15:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 9
+        },
+        {
+            "reference": "Psalm 102:9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 11
+        },
+        {
+            "reference": "Job 35:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 14
+        },
+        {
+            "reference": "Job 19:25",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 17
+        },
+        {
+            "reference": "1 Kings 20:31",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 25
+        },
+        {
+            "reference": "1 Kings 20:32a",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 25
+        },
+        {
+            "reference": "1 Kings 20:32b",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 25
+        },
+        {
+            "reference": "Lamentations 3:22",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 27
+        },
+        {
+            "reference": "Psalm 103:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 27
+        },
+        {
+            "reference": "Revelation 11:15",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 29
+        },
+        {
+            "reference": "Revelation 19:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 29
+        },
+        {
+            "reference": "Revelation 22:12",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 29
+        },
+        {
+            "reference": "Job 13:15",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 34
+        },
+        {
+            "reference": "1 Samuel 16:23",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 39
+        },
+        {
+            "reference": "Psalm 23:4",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 42
+        },
+        {
+            "reference": "Matthew 6:17",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 42
+        },
+        {
+            "reference": "Acts 13:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 43
+        },
+        {
+            "reference": "John 8:11",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 46
+        },
+        {
+            "reference": "Acts 16:30",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 47
+        },
+        {
+            "reference": "Acts 16:31",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 47
+        },
+        {
+            "reference": "Mark 16:16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 47
+        },
+        {
+            "reference": "Hebrews 7:25",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 50
+        },
+        {
+            "reference": "Psalm 121:1",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Job 35:10",
+            "status": "self_rendered",
+            "block_index": 6
+        },
+        {
+            "reference": "Psalm 58:4-5",
+            "status": "self_rendered",
+            "block_index": 11
+        },
+        {
+            "reference": "Lamentations 3:19",
+            "status": "self_rendered",
+            "block_index": 11
+        },
+        {
+            "reference": "Jeremiah 2:13",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "Psalm 77:10",
+            "status": "self_rendered",
+            "block_index": 17
+        },
+        {
+            "reference": "Proverbs 3:17",
+            "status": "self_rendered",
+            "block_index": 17
+        },
+        {
+            "reference": "Micah 2:13",
+            "status": "self_rendered",
+            "block_index": 21
+        },
+        {
+            "reference": "Psalm 42:6",
+            "status": "self_rendered",
+            "block_index": 22
+        },
+        {
+            "reference": "1 Samuel 17:37",
+            "status": "self_rendered",
+            "block_index": 22
+        },
+        {
+            "reference": "Jonah 2:6",
+            "status": "self_rendered",
+            "block_index": 24
+        },
+        {
+            "reference": "Matthew 8:20",
+            "status": "self_rendered",
+            "block_index": 24
+        },
+        {
+            "reference": "Job 2:8",
+            "status": "self_rendered",
+            "block_index": 24
+        },
+        {
+            "reference": "Psalm 121:1",
+            "status": "self_rendered",
+            "block_index": 25
+        },
+        {
+            "reference": "Isaiah 55:1",
+            "status": "self_rendered",
+            "block_index": 26
+        },
+        {
+            "reference": "Isaiah 49:4",
+            "status": "self_rendered",
+            "block_index": 29
+        },
+        {
+            "reference": "Malachi 4:2",
+            "status": "self_rendered",
+            "block_index": 29
+        },
+        {
+            "reference": "Romans 8:21",
+            "status": "self_rendered",
+            "block_index": 29
+        },
+        {
+            "reference": "Romans 8:37",
+            "status": "self_rendered",
+            "block_index": 45
+        },
+        {
+            "reference": "Matthew 8:12",
+            "status": "self_rendered",
+            "block_index": 46
+        },
+        {
+            "reference": "Matthew 6:16",
+            "status": "self_rendered",
+            "block_index": 42
+        }
+    ]
+}
