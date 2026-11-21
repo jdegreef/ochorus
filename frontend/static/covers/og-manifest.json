@@ -23755,6 +23755,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/tukutendereza": {
+			"ground": "69db5d2704e943972238406d41e78e965b464af26e1d8cc08c51d41c6c65ad55",
+			"style": "originals",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "9b11929914fbaaa8837664f4940a32dbb07b70a773a6aea738d7e4e555bcdcb7",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[61, 312, 539, 388]
+				],
+				"subtitle": [
+					[113, 450, 487, 478]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
+		},
 		"ja/waiting-on-god": {
 			"ground": "c709fc15fee9a6673c0534989e509573fb063032547434ba0eba7b50a194ecf7",
 			"style": "devotional",
