@@ -26520,6 +26520,40 @@
 				472
 			]
 		},
+		"ko/devoted-to-prayer": {
+			"ground": "990bab79ca1e693566e65c0ae168ef7bf8eff5cdadc0b08e9a0b82309e34556a",
+			"style": "originals",
+			"volume": "3",
+			"script": "korean",
+			"fonts": "d104baf2f48972c85053fd8e84531c46d3669f329acee772efa5dbc99e23ac04",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 281, 310, 325],
+					[89, 359, 511, 435]
+				],
+				"subtitle": [
+					[209, 497, 391, 525]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				269,
+				525
+			]
+		},
 		"ko/divine-healing": {
 			"ground": "7f55a8a937c6491b798118d5320b1187c31022f4f72665060d9378254527a649",
 			"style": "devotional",
