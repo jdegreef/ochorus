@@ -38483,6 +38483,40 @@
 				499
 			]
 		},
+		"ru/the-life-of-trust-children": {
+			"ground": "31c97a01aaedc59341bce5bcf889e44be60c2654ef951155104d45ce15b9157e",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[155, 102, 445, 131]
+				],
+				"title": [
+					[179, 285, 421, 382],
+					[132, 369, 468, 466]
+				],
+				"edition": [
+					[225, 477, 375, 502]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				236,
+				559
+			]
+		},
 		"ruth": {
 			"ground": "23135b404dc48238d9ea87fab02e4d9881db76ae2c61c75e93f05832eacb2c19",
 			"style": "devotional",
