@@ -27499,6 +27499,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/reality-of-prayer": {
+			"ground": "29132c0740841d9fdbfb3c85cc01f80700929290a3f15b1ab1ae6740ce1ae50b",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "b6e818ec319835c480e6aef910bd69b86196000cf317ad988d0450d076cb6b76",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.015,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/religious-experience-and-journal": {
 			"ground": "60f997bc2e03b3cf983902867bc2adb98898dd45e0f216745b0ae1c06077417d",
 			"style": "enlightenment",
