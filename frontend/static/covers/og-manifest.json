@@ -23435,6 +23435,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/power-through-prayer": {
+			"ground": "775cca2f885d8c3e64e97ea9a9063ac07f527485fa77cd179bd88a90cfa5f74b",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "9e8b174c39326ffcb32470f428493defacdd9dc3dd83ee993285b85e310e7a4b",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.04,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/prayer-the-pulse-of-life": {
 			"ground": "47921fc7f4ef20a8c5dcf535f4a47e6cb268aeec85a86235d85bb2e8b21e4d4e",
 			"style": "house",
