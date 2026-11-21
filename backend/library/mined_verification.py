@@ -108,7 +108,11 @@ OWB_SOURCE = re.compile(r"^Open Word Bible \(OWB\), Balanced edition, (?P<name>.
 # Japanese resolves too, but its quotations are not extracted yet (「…」 and no
 # spaces defeat the «…» (Ref c:v) / word-count readers), so its rows count as
 # ``owb_not_quoted_in_translation``: visible in the census, not verified.
-OWB_LANGUAGE_NAMES = {"Amharic": "am", "Swahili": "sw", "Japanese": "ja", "English": "en"}
+OWB_LANGUAGE_NAMES = {
+    "Amharic": "am", "Swahili": "sw", "Japanese": "ja", "English": "en",
+    "Spanish": "es", "French": "fr", "Portuguese": "pt", "Hindi": "hi",
+    "Ukrainian": "uk", "Vietnamese": "vi", "Korean": "ko", "Russian": "ru",
+}
 _OWB_REF = re.compile(
     r"^(?P<book>(?:[1-3]\s)?[A-Za-z][A-Za-z ]*?)\s+(?P<ch>\d{1,3})\s*:\s*(?P<v1>\d{1,3})[ab]?"
     r"(?:\s*[-–]\s*(?P<v2>\d{1,3})[ab]?)?$"

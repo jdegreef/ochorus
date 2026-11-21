@@ -17,7 +17,11 @@ verse numbering are the ones its own downloads carry:
 are bundled this way (founder decisions, 2026-11-18 and 2026-11-19): every work
 in those languages quotes OWB, and the translation lookup resolves the Bible
 ids ``owb-am``, ``owb-sw`` and ``owb-ja`` from these files
-(`translation.fetch_chapter` / `fetch_verse_text`), offline.
+(`translation.fetch_chapter` / `fetch_verse_text`), offline. Spanish, French,
+Portuguese, Hindi, Ukrainian, Vietnamese, Korean and Russian are bundled too
+(2026-11-20) so a new Ochorus Original's translations quote OWB in those
+languages; their classics keep the language's own Bible. Arabic (85 verses
+drafted) and Luganda (none) have no OWB text yet.
 
 Run it when the OWB text changes, review the diff of the manifest it prints,
 commit. The output is byte-stable: the same OWB commit gives the same bytes.
