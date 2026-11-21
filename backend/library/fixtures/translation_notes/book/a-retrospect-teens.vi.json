@@ -1,0 +1,149 @@
+{
+ "kind": "book",
+ "slug": "a-retrospect-teens",
+ "language": "vi",
+ "job_issue": 9418,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Proverbs 19:17",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Matthew 5:42a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 4,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 118:17",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 107:29",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "John 3:16a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 1,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Matthew 18:19",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 Corinthians 9:22",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Matthew 8:20",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Isaiah 53:3a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 4,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 5:39a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 2,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalm 34:10",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Romans 13:8a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "1 Samuel 7:12b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Genesis 22:14a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 4,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 9:37-38",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}
