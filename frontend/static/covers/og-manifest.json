@@ -45531,6 +45531,40 @@
 				540
 			]
 		},
+		"vi/amanda-smith-autobiography-teens": {
+			"ground": "5f69b8f486d4bfb05fad49d498effdd403375135ab9f9931411e2a16b764bfc8",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[84, 300, 516, 382],
+					[154, 371, 446, 453]
+				],
+				"edition": [
+					[181, 464, 419, 489]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				250,
+				545
+			]
+		},
 		"vi/answers-to-prayer": {
 			"ground": "4871e5b79c40de5beac700011b5c2df335610b9d464ace0b6af81b48f30fcbc9",
 			"style": "revival",
