@@ -1,0 +1,144 @@
+{
+ "kind": "sermon",
+ "slug": "the-new-birth",
+ "language": "ru",
+ "job_issue": 9138,
+ "references": [
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 3:3b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Mark 8:24",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "John 3:6a",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 3:6b",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 5:24b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "John 10:1",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Revelation 7:14",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 3:4",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "John 3:5",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 3:8",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "2 Corinthians 5:17b",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Jeremiah 13:23a",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Luke 7:14b",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:1",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Romans 6:23a",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 3:14",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 3:15",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 1:29b",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 1:29c",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}

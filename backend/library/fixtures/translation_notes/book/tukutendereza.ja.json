@@ -1,0 +1,91 @@
+{
+    "kind": "book",
+    "slug": "tukutendereza",
+    "language": "ja",
+    "job_issue": 8142,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "1 John 1:7",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Ephesians 5:18",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 15
+        },
+        {
+            "reference": "Galatians 3:28",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 15
+        },
+        {
+            "reference": "Ephesians 5:14",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 17
+        },
+        {
+            "reference": "Romans 1:16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 18
+        },
+        {
+            "reference": "James 5:16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 25
+        },
+        {
+            "reference": "Philippians 1:21",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 19
+        },
+        {
+            "reference": "Matthew 5:44",
+            "status": "self_rendered",
+            "block_index": 20
+        },
+        {
+            "reference": "Revelation 12:11",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 20
+        },
+        {
+            "reference": "1 Timothy 4:12",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 20
+        },
+        {
+            "reference": "Galatians 3:28",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 18
+        },
+        {
+            "reference": "John 1:29",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 20
+        },
+        {
+            "reference": "1 John 1:7",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 20
+        },
+        {
+            "reference": "1 John 1:7",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 23
+        }
+    ]
+}
