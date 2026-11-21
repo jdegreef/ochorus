@@ -26869,6 +26869,21 @@
 				497
 			]
 		},
+		"ko/pilgrims-progress-words-of-one-syllable": {
+			"ground": "99f5bfe5f2967ead50223124acd39ccf28e9cff88d4d0990ed22965f9bbce513",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1238c8a7b14eda0e244d45f1a70d9391a533cb678363a361f7c2d6278e0d96d2",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/teal",
+			"bar": 0.025,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/power-through-prayer": {
 			"ground": "b8c62f0bf7415c337df6443dd4783aa6c889553e2e75cfbaae91193377cabce7",
 			"style": "devotional",
