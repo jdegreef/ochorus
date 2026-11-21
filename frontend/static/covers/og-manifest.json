@@ -25978,6 +25978,21 @@
 				477
 			]
 		},
+		"ko/essentials-of-prayer": {
+			"ground": "d64ff0a89555fe42cf297f8f705e97184596064d6bb68a566b97dab7178cb46c",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "bd5e6ec1e505ea06a19a3d1298287db93d7070caf1e4bfc374e2b2ae7d99ba49",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.04,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/ever-increasing-faith": {
 			"ground": "b5f8b14e5843f64653eede08c63d2ad9a1b0cd40c9388fd7851885a39ce9fdf3",
 			"style": "revival",
