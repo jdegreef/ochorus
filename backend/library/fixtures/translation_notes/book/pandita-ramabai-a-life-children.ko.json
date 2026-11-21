@@ -42,7 +42,8 @@
   },
   {
    "reference": "Hebrews 11:8",
-   "status": "self_rendered"
+   "status": "self_rendered",
+   "block_index": 52
   },
   {
    "reference": "John 4:14a",
@@ -79,7 +80,9 @@
   },
   {
    "reference": "Deuteronomy 32:7a",
-   "status": "self_rendered"
+   "status": "mined",
+   "block_index": 86,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Malachi 3:10",
