@@ -1,0 +1,377 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "john-hyde-a-life-children",
+  "language": "vi",
+  "title": "Praying Hyde (Cho thiếu nhi)",
+  "subtitle": "",
+  "cover_byline": "John Hyde",
+  "description": "Câu chuyện có thật về John Hyde, một chàng trai người Mỹ nhút nhát, nói chậm và hơi bị điếc, đã đến những ngôi làng ở vùng Punjab của Ấn Độ và dành phần lớn cuộc đời mình để cầu nguyện cho người khác, đến nỗi người dân ở đó gọi ông là “người không bao giờ ngủ,” còn các Cơ Đốc nhân khắp nơi gọi ông là “Hyde Cầu Nguyện.” Ấn bản dành cho thiếu nhi này kể lại cuộc đời ông qua những chương ngắn để đọc to: một câu Kinh Thánh, một phần câu chuyện của ông, một điều câu chuyện ấy có ý nghĩa cho con, và một lời cầu nguyện ngắn, cùng với những câu hỏi để cùng nhau trò chuyện.",
+  "qa": [
+   {
+    "question": "Sách Praying Hyde (Cho thiếu nhi) nói về điều gì?",
+    "answer": "Đây là phiên bản dành cho thiếu nhi của cuốn tiểu sử đầy đủ về John Hyde. Sách kể về việc con trai của một mục sư ở bang Illinois đã đến những ngôi làng ở vùng Punjab của Ấn Độ, học cầu nguyện hết lòng, yêu thương những người nghèo nhất ở đó, và giúp nhiều người trong số họ bước theo Chúa Giê-xu."
+   },
+   {
+    "question": "John Hyde là ai?",
+    "answer": "Một giáo sĩ truyền giáo người Mỹ, sống từ năm 1865 đến năm 1912. Ông nhút nhát, nói chậm và hơi bị điếc, nhưng ông dâng mình cho sự cầu nguyện nhiều đến nỗi người dân vùng Punjab gọi ông là “người không bao giờ ngủ,” còn các Cơ Đốc nhân khắp thế giới gọi ông là “Hyde Cầu Nguyện.”"
+   },
+   {
+    "question": "Mỗi chương được sắp xếp thế nào?",
+    "answer": "Chương nào cũng ngắn và được viết để đọc to. Mỗi chương mở đầu bằng một câu Kinh Thánh, kể một phần câu chuyện của John, chỉ ra một điều đơn giản mà câu chuyện ấy có ý nghĩa cho con, và kết thúc bằng một lời cầu nguyện ngắn. Sau đó là ba câu hỏi để cùng nhau trò chuyện."
+   },
+   {
+    "question": "Sách này có quá buồn đối với trẻ em không?",
+    "answer": "Có vài đoạn buồn: anh trai của John qua đời khi còn trẻ, và cuối sách John bị bệnh nặng rồi qua đời. Sách kể những đoạn ấy một cách thật thà nhưng nhẹ nhàng, không có những chi tiết làm các em sợ hãi. Trên hết, đây là một câu chuyện vui về tình yêu của Đức Chúa Trời, về những lời cầu nguyện được nhậm, và về một người đã qua đời mà miệng vẫn nói: “Chỉ là chiến thắng, chiến thắng, chiến thắng.”"
+   },
+   {
+    "question": "Những câu chuyện này có thật không?",
+    "answer": "Có. Chúng được lấy từ các hồ sơ của Hội Thánh và từ những người bạn đã quen biết John Hyde và ghi lại những gì họ nhớ. Vài câu chuyện được kể lại hơi khác nhau, và một số con số trong những cuốn sách cũ không thể kiểm chứng được, nên khi cần, sách nhẹ nhàng nói rõ điều đó."
+   },
+   {
+    "question": "Sách này dành cho ai?",
+    "answer": "Sách dành cho thiếu nhi, để người lớn đọc to cho các em nghe hoặc để các em lớn hơn tự đọc. Ngoài ra còn có một ấn bản dành cho thiếu niên, và cuốn tiểu sử đầy đủ cho bạn đọc lớn tuổi hơn."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại của Ochorus dành cho bạn đọc nhỏ tuổi, dựa trên cuốn tiểu sử John Hyde của Ochorus, thuộc bộ sách Chân Dung Lòng Can Đảm. Lời kể là của chúng tôi, được tự do đọc và chia sẻ.",
+  "cover_url": "/covers/art/john-hyde-a-life-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 151,
+  "is_published": true,
+  "created_at": "2026-11-21T00:00:00Z",
+  "updated_at": "2026-11-21T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Lời Cầu Nguyện Của Người Cha",
+  "body_html": "<blockquote>“Vậy các con hãy cầu xin Chủ mùa gặt, để Ngài sai thợ gặt đến mùa gặt của Ngài.” — trích Ma-thi-ơ 9</blockquote> <p>Cách đây đã lâu lắm, vào ngày 9 tháng 11 năm 1865, một bé trai chào đời ở bang Illinois, nước Mỹ. Cậu bé tên là John Nelson Hyde. Nhiều năm sau, các Cơ Đốc nhân khắp thế giới gọi ông bằng một cái tên đặc biệt: “Hyde Cầu Nguyện.” Đây là câu chuyện của ông.</p> <p>John lớn lên ở một thị trấn nhỏ giữa vùng đồng cỏ, tên là Carthage. Cha cậu, ông Smith Harris Hyde, là mục sư của Hội Thánh Trưởng Lão ở đó. John có hai anh em trai và ba chị em gái. Anh Edmund lớn hơn cậu hai tuổi.</p> <p>Mẹ của John rất yêu âm nhạc. Nhiều năm sau, John kể với một người bạn rằng bà là người hát hay nhất mà ông từng nghe, và là “một người phụ nữ thật thánh khiết.” Bà cẩn thận dạy cậu về Chúa Giê-xu.</p> <p>Cả nhà thường cầu nguyện chung với nhau, và lần này qua lần khác, John nghe cha mình cầu nguyện cùng một lời cầu nguyện. Đó là lời cầu nguyện mà Chúa Giê-xu đã bảo các bạn của Ngài cầu xin: xin Đức Chúa Trời sai thợ gặt đến mùa gặt của Ngài. Chúa Giê-xu muốn nói rằng thế giới giống như một cánh đồng lớn, đầy những người cần được nghe về Ngài, nhưng lại không có đủ thợ gặt để nói cho họ biết. Cha của John vui lòng cầu nguyện như thế, dù điều đó có thể có nghĩa là Đức Chúa Trời sẽ sai chính các con của ông đi thật xa.</p> <p>John lớn lên và vào học trường Đại học Carthage. Cậu quyết định mình muốn làm giáo sĩ truyền giáo. Nhưng nói thật, cậu muốn làm một giáo sĩ nổi tiếng. Sau này ông kể: “Tôi muốn tỏa sáng như một giáo sĩ vĩ đại.” Cậu thật lòng yêu mến Đức Chúa Trời. Nhưng cậu cũng muốn người ta nghĩ mình thật tuyệt vời, và Đức Chúa Trời sẽ phải nhẹ nhàng thay đổi điều đó.</p> <p>Đức Chúa Trời nghe mọi lời cầu nguyện, kể cả những lời cầu nguyện nhỏ bé, kể cả những lời ta cầu đi cầu lại nhiều lần. Cha của John không biết Đức Chúa Trời sẽ trả lời lời cầu nguyện của ông ra sao. Nhưng Đức Chúa Trời đang lắng nghe, và Ngài cũng lắng nghe con nữa.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì những người cầu nguyện cho con. Xin Ngài sai thợ gặt đi nói cho mọi người biết về Chúa Giê-xu, và xin giúp con trở thành một người trong số họ. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Cha của John đã cầu nguyện lời cầu nguyện nào hết lần này đến lần khác?",
+    "answer": "Ông cầu nguyện lời cầu nguyện Chúa Giê-xu đã dạy, xin Chủ mùa gặt sai thợ gặt đến mùa gặt của Ngài, để có thêm nhiều người được nghe về Chúa Giê-xu."
+   },
+   {
+    "question": "Khi quyết định làm giáo sĩ, cậu John muốn điều gì?",
+    "answer": "Cậu yêu mến Đức Chúa Trời, nhưng cậu cũng muốn làm một giáo sĩ nổi tiếng. Cậu nói: “Tôi muốn tỏa sáng như một giáo sĩ vĩ đại.”"
+   },
+   {
+    "question": "Ai cầu nguyện cho con? Con có thể cầu nguyện cho ai?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Đức Chúa Trời nghe mọi lời cầu nguyện, kể cả những lời nhỏ bé được cầu đi cầu lại nhiều lần, và Ngài đang lắng nghe con."
+   }
+  ],
+  "word_count": 463
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "vi"
+  ],
+  "order": 2,
+  "title": "“Đã Quyết Định Rồi”",
+  "body_html": "<blockquote>“Bấy giờ tôi nghe tiếng Chúa hỏi: ‘Ta sẽ sai ai? Ai sẽ đi thay mặt Chúng ta?’ Tôi thưa: ‘Có con đây. Xin hãy sai con.’” — trích Ê-sai 6</blockquote> <p>Khi còn là một chàng trai trẻ, John lên thành phố lớn Chicago để học làm mục sư. Một năm sau, anh Edmund cũng đến đó học. Edmund đã hứa với Đức Chúa Trời rằng anh sẽ đi làm giáo sĩ ở một đất nước xa xôi, nếu Đức Chúa Trời cho phép.</p> <p>Một mùa hè nọ, Edmund đi về miền tây, đến bang Montana để giúp công việc trường Chúa Nhật. Ở đó anh bị một cơn sốt nặng. Anh bệnh nặng đến nỗi người ta phải ghim vé tàu lên áo khoác của anh để anh có thể về được đến nhà. Anh về tới nhà, nhưng vài ngày sau, vào tháng 8 năm 1891, anh qua đời. John buồn lắm.</p> <p>Bấy giờ John bắt đầu suy nghĩ. Edmund đã muốn làm giáo sĩ, mà giờ anh không thể đi được nữa. Có phải Đức Chúa Trời muốn John đi thay anh không? John không vội quyết định. Ông suy nghĩ về điều đó gần trọn một năm.</p> <p>Một tối thứ Bảy, đã khuya, John đến phòng của một người bạn. Ông nhờ bạn nói cho mình nghe hết mọi lý do nên đi và mọi lý do nên ở lại. Nhưng người bạn không chịu tranh luận. Anh bảo John hãy về phòng mình, quỳ xuống trước mặt Đức Chúa Trời, và cứ ở đó cho đến khi câu hỏi ấy được giải quyết.</p> <p>John làm đúng như vậy. Không ai biết đêm đó ông đã cầu nguyện bao lâu. Nhưng sáng hôm sau, ở buổi nhóm cầu nguyện trong nhà nguyện, ông tìm gặp người bạn và nói: “Đã quyết định rồi.” Gương mặt ông sáng rỡ. Ông sẽ đi.</p> <p>Năm 1892, John trở thành mục sư, và Hội Thánh của ông sai ông đến vùng Punjab, ở miền bắc Ấn Độ. Ngày 15 tháng 10 năm 1892, ông lên tàu rời New York. Lúc ấy ông hai mươi sáu tuổi.</p> <p>Đôi khi chúng ta có một câu hỏi lớn và không biết phải làm gì. Nhờ những người khôn ngoan giúp đỡ là điều tốt. Nhưng có những câu hỏi tốt nhất là đem đến cho Đức Chúa Trời. Con có thể kể cho Ngài nghe mọi điều, yên lặng chờ đợi, và tin cậy Ngài sẽ chỉ đường cho con.</p> <p><em>Lạy Đức Chúa Trời, khi con không biết phải làm gì, xin giúp con đến và trò chuyện với Ngài. Con muốn thưa như John: “Có con đây. Xin hãy sai con.” A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Chuyện gì đã xảy ra với anh Edmund của John?",
+    "answer": "Anh bị một cơn sốt nặng khi đang giúp công việc trường Chúa Nhật ở bang Montana, về nhà trong tình trạng bệnh rất nặng, và qua đời vào tháng 8 năm 1891."
+   },
+   {
+    "question": "Thay vì tranh luận, người bạn của John đã bảo ông làm gì?",
+    "answer": "Hãy về phòng mình, quỳ xuống trước mặt Đức Chúa Trời, và cứ ở đó cho đến khi câu hỏi ấy được giải quyết. Sáng hôm sau John nói: “Đã quyết định rồi.”"
+   },
+   {
+    "question": "Con có câu hỏi nào muốn đem đến cho Đức Chúa Trời không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là chúng ta có thể đem những câu hỏi lớn của mình đến cho Đức Chúa Trời, chờ đợi, và tin cậy Ngài sẽ chỉ đường cho chúng ta."
+   }
+  ],
+  "word_count": 450
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Lá Thư Bị Vò Nát",
+  "body_html": "<blockquote>“Vậy Cha ở trên trời lại càng ban Đức Thánh Linh cho những người cầu xin Ngài biết bao!” — trích Lu-ca 11</blockquote> <p>Khi John lên tàu ở New York, có một lá thư đang chờ ông. Thư ấy của một người bạn của cha ông, một Cơ Đốc nhân lớn tuổi, người đã từng muốn đi làm giáo sĩ nhưng không thể đi được.</p> <p>Lá thư rất ngắn. Thư viết đại khái như thế này: “John thân mến, tôi sẽ không ngừng cầu nguyện cho anh cho đến khi anh được đầy dẫy Đức Thánh Linh.”</p> <p>John giận lắm! Ông này nghĩ mình chưa sẵn sàng sao? Mình sắp trở thành một giáo sĩ vĩ đại cơ mà! Ông vò nát lá thư, ném đi, rồi bực bội đi lên boong tàu.</p> <p>Nhưng khi ông đi tới đi lui, sâu trong lòng, ông biết người ấy nói đúng. Bạn của cha ông là một người tốt và thánh khiết. Vì thế John quay trở lại, quỳ xuống, tìm lá thư bị vò nát, vuốt cho phẳng, rồi đọc lại. Đọc lại thêm lần nữa.</p> <p>Suốt hai ba ngày, John cảm thấy khổ sở vô cùng. Cuối cùng ông xin Đức Chúa Trời đổ đầy Đức Thánh Linh cho mình. Rồi ông bắt đầu nhận ra rằng mình muốn làm giáo sĩ chủ yếu là để được người ta ngưỡng mộ. Ông thưa với Đức Chúa Trời rằng ông sẵn lòng thi rớt ở Ấn Độ, và sẵn lòng làm việc “âm thầm, khuất mắt mọi người,” miễn là Đức Chúa Trời đổ đầy Thánh Linh của Ngài cho ông.</p> <p>John đã kể câu chuyện này với bạn bè nhiều lần, và vài chi tiết nhỏ mỗi lần kể lại không hoàn toàn giống nhau. Nhưng phần quan trọng thì lúc nào cũng vậy: John thôi kiêu ngạo, và xin Đức Chúa Trời giúp đỡ.</p> <p>Đôi khi một người yêu thương con nói với con một điều con không muốn nghe. Bực bội thì dễ lắm. Nhưng khôn ngoan là dừng lại, suy nghĩ, và hỏi Đức Chúa Trời xem có phải người ấy nói đúng không.</p> <p><em>Lạy Đức Chúa Trời, khi có người yêu thương con nói với con một điều khó nghe, xin giúp con lắng nghe và đừng kiêu ngạo. Xin Ngài đổ đầy Đức Thánh Linh cho con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lá thư trên tàu viết gì?",
+    "answer": "Thư nói rằng bạn của cha John sẽ không ngừng cầu nguyện cho ông cho đến khi John được đầy dẫy Đức Thánh Linh."
+   },
+   {
+    "question": "John đã làm gì sau khi ném lá thư đi?",
+    "answer": "Ông quay lại, tìm lá thư, vuốt cho phẳng và đọc lại. Sau vài ngày khổ sở, ông xin Đức Chúa Trời đổ đầy Đức Thánh Linh cho mình và thưa với Ngài rằng ông sẵn lòng làm việc âm thầm, khuất mắt mọi người."
+   },
+   {
+    "question": "Đã bao giờ có ai nói với con một điều khó nghe mà sau đó hóa ra là đúng chưa?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là khi một người yêu thương chúng ta nói một điều khó nghe, khôn ngoan là lắng nghe và hỏi Đức Chúa Trời xem họ có nói đúng không."
+   }
+  ],
+  "word_count": 393
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Một Câu Hỏi Giữa Đường Phố",
+  "body_html": "<blockquote>“Lạy Đức Chúa Trời, xin tạo nên cho tôi một tấm lòng trong sạch” — trích Thi-thiên 51</blockquote> <p>Cuối năm 1892, John đến Ấn Độ. Ông đi tàu hỏa đến vùng Punjab, miền đất của năm con sông. Đó là miền đất của những cánh đồng lúa mì và những ngôi làng tường đất, của lạc đà và xe bò. Người dân ở đó nói tiếng Urdu và tiếng Punjab, mà John thì chưa nói được một chữ nào của cả hai thứ tiếng.</p> <p>Trong mấy ngày đầu, một giáo sĩ lớn tuổi dẫn ông đi dự một buổi nhóm ngoài đường phố. Vị giáo sĩ nói với đám đông rằng Chúa Giê-xu thật sự có thể cứu người ta khỏi tội lỗi. John không hiểu được những lời ấy, nhưng có người cho ông biết họ đang nói về điều gì.</p> <p>Khi bài nói chuyện kết thúc, một người đàn ông ăn mặc chỉnh tề bước tới. Ông ta nói tiếng Anh rất giỏi. Ông hỏi vị giáo sĩ rằng chính ông có được Chúa Giê-xu cứu khỏi tội lỗi như ông vừa mô tả không.</p> <p>Câu hỏi ấy đâm thẳng vào lòng John. Ông biết trong đời mình có một tội cứ làm ông vấp ngã hết lần này đến lần khác. Ông không bao giờ nói cho ai biết đó là tội gì. Nhưng ông biết rằng nếu người kia hỏi chính mình, thì ông không thể thật lòng trả lời là có.</p> <p>John trở về phòng và đóng cửa lại. Ông thưa với Đức Chúa Trời rằng ông không thể nói với người khác về quyền năng của Chúa Giê-xu khi chính mình chưa để Chúa Giê-xu giúp đỡ trước. Ông ở đó cầu nguyện rất lâu, và Đức Chúa Trời cho ông được chắc chắn rằng Ngài có thể và sẵn lòng giải phóng ông. Nhiều năm sau, John nói: “Ngài đã thật sự giải cứu tôi.” Bạn của ông không bao giờ quên gương mặt buồn bã của John khi ông nói về tội lỗi mình, và nụ cười tuyệt vời của ông khi ông nói về sự thành tín của Chúa Giê-xu.</p> <p>Ai cũng có những tội cứ làm mình vấp ngã. Có thể là hay nổi nóng, hay nói dối, hay đối xử không tử tế. Con không cần phải giấu chúng khỏi Đức Chúa Trời. Con có thể thưa với Ngài, và Ngài là Đấng thành tín, sẽ tha thứ cho con, làm cho lòng con trong sạch, và giúp đỡ con.</p> <p><em>Lạy Đức Chúa Trời, Ngài biết những điều con cứ làm sai mãi. Xin Ngài tha thứ cho con, làm cho lòng con trong sạch, và giúp con làm điều đúng. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Người đàn ông trên đường phố đã hỏi vị giáo sĩ điều gì?",
+    "answer": "Ông hỏi có phải Chúa Giê-xu đã thật sự cứu chính vị giáo sĩ khỏi tội lỗi, như ông vừa nói với đám đông không."
+   },
+   {
+    "question": "John đã làm gì khi câu hỏi ấy đâm vào lòng ông?",
+    "answer": "Ông về phòng, đóng cửa lại và cầu nguyện rất lâu, cho đến khi Đức Chúa Trời cho ông được chắc chắn rằng Ngài có thể giải phóng ông. John nói: “Ngài đã thật sự giải cứu tôi.”"
+   },
+   {
+    "question": "Có điều gì con cứ làm sai mãi mà con có thể thưa với Đức Chúa Trời không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Con không cần phải nói ra thành tiếng. Điều chương này muốn nói là chúng ta không bao giờ cần giấu tội lỗi mình khỏi Đức Chúa Trời: Ngài tha thứ và giúp đỡ chúng ta."
+   }
+  ],
+  "word_count": 453
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Người Nói Chậm",
+  "body_html": "<blockquote>“Ta sẽ ở với miệng con và dạy con những gì con phải nói.” — trích Xuất Hành Ký 4</blockquote> <p>John không phải là người dễ làm quen. Ông nhút nhát và ít nói. Ông cũng hơi bị điếc, và năm tháng trôi qua, tai ông càng nghe kém hơn. Khi có người nói chuyện với ông, ông thường có vẻ như không nghe thấy, hoặc phải một lúc lâu mới trả lời.</p> <p>Nhưng ai cũng để ý đến đôi mắt của ông. Một người bạn nói ông có “một đôi mắt xanh tuyệt đẹp” dường như nhìn thấu tận lòng mình.</p> <p>Các giáo sĩ mới đến phải dành phần lớn thời gian để học tiếng. John cũng có học tiếng. Nhưng ông còn dành nhiều giờ để học Kinh Thánh, và các vị lãnh đạo hội truyền giáo đã rầy la ông. John trả lời: “Việc quan trọng phải làm trước.” Ông đến Ấn Độ để dạy Kinh Thánh, nên ông cần phải biết Kinh Thánh thật rõ.</p> <p>Suốt một thời gian dài, người ta nghĩ John sẽ không bao giờ nói giỏi tiếng Urdu hay tiếng Punjab. Mười năm đầu của ông ở Ấn Độ trôi qua chậm chạp, và không có nhiều người đến với Chúa Giê-xu. Vài giáo sĩ khác thấy ông kỳ lạ, vì ông dành quá nhiều thời gian để cầu nguyện. Nhiều năm sau, một người bạn hỏi John có biết là họ không hài lòng về ông không. John mỉm cười và nói: “Ồ, có chứ, tôi biết, nhưng chỉ là họ không hiểu tôi thôi, họ chưa bao giờ có ý đối xử không tốt với tôi.” Ông không hề cay đắng chút nào.</p> <p>Dần dần, Đức Chúa Trời làm cho lưỡi của John được mở ra. Cuối cùng ông có thể giảng bằng tiếng Urdu, tiếng Punjab và tiếng Anh, và nhiều đám đông đến nghe ông. Những người nói tiếng Urdu bảo rằng ông nói tiếng ấy rất hay, dù nghe hơi giống như đang đọc sách!</p> <p>Có lẽ có một điều gì đó con thấy khó. Có lẽ con nhút nhát, hoặc con thấy khó đọc, khó nghe, hay khó nói. Đức Chúa Trời đã tạo nên con, và Ngài biết hết mọi điều về con. Ngài có thể dùng con đúng như con hiện có.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài đã tạo nên con. Khi con thấy mình nhút nhát hay chậm chạp, xin giúp con nhớ rằng Ngài ở cùng con và Ngài có thể dùng con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao các vị lãnh đạo hội truyền giáo rầy la John?",
+    "answer": "Vì ông dành quá nhiều giờ để học Kinh Thánh thay vì chỉ học tiếng. Ông trả lời: “Việc quan trọng phải làm trước.”"
+   },
+   {
+    "question": "John đã nói gì khi biết vài giáo sĩ không hài lòng về mình?",
+    "answer": "Ông mỉm cười và nói rằng họ không hiểu ông, và họ chưa bao giờ có ý đối xử không tốt với ông. Ông không hề cay đắng."
+   },
+   {
+    "question": "Có điều gì con thấy khó không? Đức Chúa Trời có thể giúp con thế nào?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Đức Chúa Trời đã tạo nên con, biết những điều con thấy khó, và có thể dùng con đúng như con hiện có."
+   }
+  ],
+  "word_count": 424
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Người Không Bao Giờ Ngủ",
+  "body_html": "<blockquote>“Sáng sớm, lúc trời còn tối, Ngài thức dậy và ra đi. Ngài đến một nơi hoang vắng và cầu nguyện ở đó.” — trích Mác 1</blockquote> <p>Công việc của John là ở những ngôi làng vùng Punjab. Ông đi bằng tàu hỏa, cưỡi ngựa và ngồi những chiếc xe nhỏ, còn hành lý của ông thì chở bằng xe bò. Nhiều người đến với Chúa Giê-xu ở đó rất nghèo. Người khác coi thường họ, thậm chí không chịu chạm vào họ.</p> <p>Nhưng John yêu thương họ. Ông chào họ bằng một cái ôm, đặt tay lên vai bên này rồi lên vai bên kia. Ông sống chung với những nhà truyền đạo người Ấn Độ cùng làm việc với mình, ăn chung và ngủ chung với họ. Một người nói: “Tình yêu đã đem lại cho ông những chiến thắng.”</p> <p>Có một đêm, John phải thức trắng để chuẩn bị một bài giảng Kinh Thánh. Bài giảng rất tốt đẹp. Nhưng sau đó, một ý nghĩ đến với ông. Ông đã dành cả một đêm để chuẩn bị sứ điệp. Chẳng lẽ ông lại không nên dành một đêm để chuẩn bị chính mình, bằng cách cầu nguyện sao? Thế là ông làm như vậy. Ông thấy vui thích đến nỗi đêm hôm sau ông lại làm nữa, và có những người khác đến cùng cầu nguyện với ông.</p> <p>John vẫn chuẩn bị các bài giảng của mình thật cẩn thận. Nhưng ông thường nói rằng chuẩn bị người đưa tin cũng quan trọng y như chuẩn bị sứ điệp.</p> <p>John dậy thật sớm để cầu nguyện và đọc Kinh Thánh. Khi ông quỳ xuống, quyển Kinh Thánh nằm mở ra trước mặt, hai tay ông đặt lên đó. Ban đêm, ông thắp đèn lên để đọc một câu Kinh Thánh và trò chuyện với Đức Chúa Trời. Vì thế người dân vùng Punjab đặt cho ông một cái tên: “người không bao giờ ngủ.” Thật ra không đúng hẳn đâu. Ông có ngủ chứ! Nhưng không nhiều lắm.</p> <p>Con thì cần ngủ đủ giấc nhé! Nhưng con có thể bắt đầu mỗi ngày giống như John, bằng cách chào buổi sáng với Đức Chúa Trời và xin Ngài chuẩn bị cho con sẵn sàng cho ngày mới.</p> <p><em>Lạy Đức Chúa Trời, chào buổi sáng Ngài! Xin Ngài chuẩn bị cho con sẵn sàng cho hôm nay, và giúp con yêu thương mọi người con gặp, giống như Ngài yêu thương họ. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "John đã đối xử với những người nghèo trong các làng như thế nào?",
+    "answer": "Ông yêu thương họ. Ông chào họ bằng một cái ôm, và ông sống, ăn và ngủ chung với những nhà truyền đạo người Ấn Độ cùng làm việc với mình."
+   },
+   {
+    "question": "Vì sao người ta gọi John là “người không bao giờ ngủ”?",
+    "answer": "Vì ông dành rất nhiều thời gian ban đêm để cầu nguyện và đọc Kinh Thánh. Ông có ngủ, nhưng không nhiều lắm."
+   },
+   {
+    "question": "Con có thể thưa gì với Đức Chúa Trời lúc bắt đầu một ngày?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là, giống như John, chúng ta có thể bắt đầu mỗi ngày với Đức Chúa Trời và xin Ngài chuẩn bị cho chúng ta sẵn sàng."
+   }
+  ],
+  "word_count": 415
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "vi"
+  ],
+  "order": 7,
+  "title": "“Ngài Không Ban Cho Tôi Sứ Điệp Nào”",
+  "body_html": "<blockquote>“Không phải bởi năng lực, cũng không phải bởi sức mạnh, nhưng bởi Thần Linh của Ta, CHÚA Vạn Quân phán.” — trích Xa-cha-ri 4</blockquote> <p>Năm 1904, John và vài người bạn bắt đầu khao khát Đức Chúa Trời đánh thức các Hội Thánh ở vùng Punjab. Họ cùng nhau hứa một điều. Mỗi ngày, ngay sau giữa trưa, họ sẽ cầu nguyện nửa tiếng, và họ sẽ cứ tiếp tục cầu nguyện “cho đến khi sự thức tỉnh đến.” Họ tự gọi mình là Liên Hiệp Cầu Nguyện Punjab.</p> <p>Cũng trong năm ấy, các Cơ Đốc nhân bắt đầu họp lại mỗi năm một lần trong một kỳ nhóm lớn ở thị trấn Sialkot. Họ đến để học Kinh Thánh, để cầu nguyện, và để xin Đức Chúa Trời làm cho họ ngày càng giống Chúa Giê-xu hơn. Năm nào John cũng đi.</p> <p>Năm 1905, có gần ba trăm người đến, và John được mời giảng các buổi sáng về Đức Thánh Linh. Ông hỏi các mục sư một câu hỏi khó: “Đức Thánh Linh có đứng hàng đầu không?” Ông hỏi: khi các anh giảng, các anh có đặt Thánh Linh của Đức Chúa Trời lên trước, còn chính mình thì lùi lại phía sau Ngài không?</p> <p>Sáng hôm sau, mọi người chờ nghe bài giảng tiếp theo. Diễn giả bước vào và nói nhỏ nhẹ: “Tôi cảm tạ Đức Chúa Trời, hôm nay Ngài không ban cho tôi sứ điệp nào cho anh em cả.” Mọi người ngạc nhiên lắm! Rồi người điều khiển buổi nhóm lui sang một bên và nói: “Đức Thánh Linh là Đấng điều khiển buổi nhóm này.” Bản báo cáo của hội truyền giáo không ghi tên diễn giả, nhưng các bạn của John chắc chắn đó là John. Ông đã dạy mọi người đặt Đức Chúa Trời lên hàng đầu, và giờ chính ông làm điều đó.</p> <p>Những gì xảy ra sau đó thật tuyệt vời. Mọi người bắt đầu thưa với Đức Chúa Trời rằng họ hối hận về những điều sai trái mình đã làm. Rồi niềm vui lớn tràn đến, và họ hát những bài Thi-thiên ngợi khen hết lần này đến lần khác. Một căn phòng được dành riêng để cầu nguyện, và sau một hai ngày đầu, phòng ấy không bao giờ vắng người, cả ngày lẫn đêm.</p> <p>Làm việc chăm chỉ và chuẩn bị kỹ là điều tốt. Nhưng điều quan trọng nhất là để Đức Chúa Trời dẫn dắt. Mỗi ngày con có thể hỏi Ngài: “Ngài muốn con làm gì?”</p> <p><em>Lạy Đức Chúa Trời, xin Ngài đứng hàng đầu trong đời sống con. Xin giúp con lắng nghe Ngài và đi theo nơi Ngài dẫn dắt. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Liên Hiệp Cầu Nguyện Punjab đã hứa điều gì?",
+    "answer": "Mỗi ngày, ngay sau giữa trưa, họ sẽ cầu nguyện nửa tiếng, và cứ tiếp tục cầu nguyện cho đến khi Đức Chúa Trời đánh thức các Hội Thánh."
+   },
+   {
+    "question": "Vào buổi sáng thứ hai ở Sialkot năm 1905, diễn giả đã nói gì?",
+    "answer": "Ông nói: “Tôi cảm tạ Đức Chúa Trời, hôm nay Ngài không ban cho tôi sứ điệp nào cho anh em cả,” và người điều khiển nói rằng Đức Thánh Linh là Đấng điều khiển buổi nhóm."
+   },
+   {
+    "question": "Con có thể để Đức Chúa Trời đứng hàng đầu trong ngày của con bằng cách nào?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là điều quan trọng nhất là để Đức Chúa Trời dẫn dắt, và chúng ta có thể hỏi Ngài muốn chúng ta làm gì."
+   }
+  ],
+  "word_count": 454
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Phòng Cầu Nguyện",
+  "body_html": "<blockquote>“Hãy há miệng con ra thật rộng, Ta sẽ làm cho đầy.” — trích Thi-thiên 81</blockquote> <p>Một ngày nọ, một giáo sĩ người xứ Wales tên là Pengwern Jones đến giảng tại một buổi nhóm ở thị trấn Ludhiana. Ông đã đi tàu hỏa suốt đêm. Ông mệt mỏi, và lo lắng về bài giảng mình phải nói chiều hôm đó.</p> <p>Trong lúc uống trà buổi sáng, một người Mỹ ít nói bảo ông: “Tôi muốn gặp anh, tôi sẽ đợi anh ở cửa.” Đó là John. Ở cửa, John nói: “Hãy đi với tôi đến Phòng Cầu Nguyện.” Họ vào phòng lúc khoảng tám giờ sáng, và họ cầu nguyện cho đến ba giờ rưỡi chiều! Ông Jones quên mất mình đang mệt, và cũng quên cả lo lắng.</p> <p>Rồi John đưa ông đến hội trường, nắm tay ông và nói: “Anh hãy vào giảng đi, đó là công việc của anh. Tôi sẽ trở lại Phòng Cầu Nguyện để cầu nguyện cho anh, đó là công việc của tôi.” Và hôm ấy Đức Chúa Trời đã phán với rất nhiều người.</p> <p>Ở các kỳ nhóm Sialkot, John thích nằm sấp mặt trên tấm thảm trong phòng cầu nguyện mà cầu nguyện. Có lần ông cầu nguyện bằng câu Kinh Thánh ở đầu chương này, cứ lặp đi lặp lại chữ “rộng”: “Rộng nữa, lạy Chúa. Rộng nữa.” Ông đang xin Đức Chúa Trời làm cho dân sự Ngài dám trông mong những điều lớn lao.</p> <p>Phòng cầu nguyện không phải là một nơi buồn bã. Khi có ai đó tìm được sự bình an với Đức Chúa Trời, đôi khi John vui mừng đến nỗi ông vỗ tay và thậm chí nhảy múa, và những người khác cũng cùng ông ngợi khen Đức Chúa Trời!</p> <p>John thường quên ăn quên ngủ, và cậu thiếu niên phụ giúp ông hay khóc vì chuyện đó. Nhưng có một lần, khi chuông báo giờ ăn trưa reo lên, một người bạn nghe ông thì thầm: “Thưa Cha, có phải ý Cha muốn con đi không?” Rồi ông nói: “Cảm ơn Cha,” và mỉm cười đi ăn trưa.</p> <p>Có người đứng ra giảng, và có người cầu nguyện cho họ. Cả hai đều là công việc của Đức Chúa Trời. Khi con cầu nguyện cho thầy cô, cho Hội Thánh hay cho bạn bè mình, con cũng đang làm công việc của Đức Chúa Trời đó.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì con có thể giúp người khác bằng cách cầu nguyện cho họ. Xin Ngài ban phước cho tất cả những người dạy con về Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "John đã nói gì với ông Jones ở cửa hội trường?",
+    "answer": "“Anh hãy vào giảng đi, đó là công việc của anh. Tôi sẽ trở lại Phòng Cầu Nguyện để cầu nguyện cho anh, đó là công việc của tôi.”"
+   },
+   {
+    "question": "Đôi khi John đã làm gì khi có người tìm được sự bình an với Đức Chúa Trời?",
+    "answer": "Ông vui mừng đến nỗi vỗ tay và thậm chí nhảy múa, và những người khác cùng ông ngợi khen Đức Chúa Trời."
+   },
+   {
+    "question": "Tuần này con có thể cầu nguyện cho ai?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là cầu nguyện cho người khác là một công việc thật sự cho Đức Chúa Trời, và ai cũng có thể làm được."
+   }
+  ],
+  "word_count": 438
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "vi"
+  ],
+  "order": 9,
+  "title": "“Còn Người Kia Thì Sao?”",
+  "body_html": "<blockquote>“Con Người đã đến để tìm kiếm và cứu những gì đã lạc mất.” — trích Lu-ca 19</blockquote> <p>Năm 1908, John cảm thấy một nỗi buồn sâu xa cho những người trong các làng chưa biết Chúa Giê-xu. Bạn bè nghe ông cầu nguyện: “Thưa Cha, xin ban cho con những linh hồn này, nếu không con chết mất!” Ông xin Đức Chúa Trời mỗi ngày ban cho một người tin Chúa Giê-xu và chịu báp-têm.</p> <p>Một số con số lớn trong những cuốn sách cũ viết về John ngày nay không thể kiểm chứng được. Nhưng hồ sơ của hội truyền giáo cho thấy trong những năm ấy, hàng trăm hàng trăm người đã chịu báp-têm trong vùng ông phụ trách. John nói đó là công việc của “chúng tôi”: chính ông và những người cộng sự người Ấn Độ cùng làm với nhau.</p> <p>Một buổi sáng, John và hai nhà truyền đạo người Ấn Độ cầu nguyện, và họ cảm thấy chắc chắn rằng hôm ấy Đức Chúa Trời sẽ ban cho họ mười người. Họ ngồi xe đến một ngôi làng xa xôi. Họ hát và giảng suốt cả ngày, nhưng chẳng ai quan tâm. Hai nhà truyền đạo đói và khát, và muốn về nhà. John thì không chịu đi.</p> <p>Cuối cùng họ dừng lại ở một căn nhà nhỏ để xin nước uống. Người đàn ông ở đó cho họ cả sữa lẫn nước, và mời họ vào nhà. Ông đã biết rất nhiều về Chúa Giê-xu rồi! Ông gọi vợ con ra, và cả gia đình quyết định bước theo Chúa Giê-xu. John làm báp-têm cho tất cả họ. Vậy là được chín người.</p> <p>Lúc ấy trời đã sắp tối, và con đường về nhà chạy dọc theo một bờ sông nguy hiểm. Hai nhà truyền đạo cố mời John lên xe, nhưng ông cứ hỏi mãi: “Còn người kia thì sao?”</p> <p>Rồi người cha bước ra. Ông nói: “Kìa, nó đây rồi!” Đứa cháu trai của ông, một cậu bé sống chung với gia đình, nãy giờ đi chơi bên ngoài! Cậu bé rõ ràng đã tin Chúa Giê-xu, nên cậu cũng được báp-têm. John nói: “Vậy là đủ mười,” rồi trèo lên xe. Họ về đến nhà bình an trong bóng tối.</p> <p>Chúa Giê-xu giống như một người chăn chiên đi tìm một con chiên bị lạc. Mỗi một người đều quý giá đối với Ngài. Điều đó có nghĩa là con cũng quý giá đối với Ngài nữa.</p> <p><em>Lạy Chúa Giê-xu, cảm ơn Ngài đã đến tìm con. Xin giúp những người bạn của con chưa biết Ngài cũng đến với Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Hôm ấy John và những người cộng sự đã cầu xin bao nhiêu người?",
+    "answer": "Mười người. Đến chiều tối, một gia đình chín người đã chịu báp-têm, và John không chịu về cho đến khi tìm được người thứ mười."
+   },
+   {
+    "question": "Người thứ mười là ai?",
+    "answer": "Đứa cháu trai của người cha, một cậu bé sống chung với gia đình và đã đi chơi bên ngoài. Cậu tin Chúa Giê-xu và cũng được báp-têm."
+   },
+   {
+    "question": "Con nghĩ vì sao John lại quan tâm nhiều đến thêm một người nữa như vậy?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là mỗi một người đều quý giá đối với Chúa Giê-xu, Người Chăn Hiền Lành, và trong đó có cả con nữa."
+   }
+  ],
+  "word_count": 442
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Xin Chỉ Cho Con Những Điều Đáng Mến",
+  "body_html": "<blockquote>“… những gì đáng mến, những gì được người ta khen ngợi ... thì hãy để tâm trí anh chị em suy nghĩ về những điều ấy.” — trích Phi-líp 4</blockquote> <p>Một ngày nọ, John lo lắng cho một mục sư người Ấn Độ. Vị mục sư ấy dường như đã trở nên nguội lạnh với Đức Chúa Trời, và Hội Thánh của ông cũng trở nên nguội lạnh. Vì thế John vào phòng để cầu nguyện cho ông.</p> <p>Ông quỳ xuống và bắt đầu: “Lạy Cha, Cha biết ông ấy nguội lạnh đến thế nào —” Nhưng ông không bao giờ nói hết câu. Ông cảm thấy như có một ngón tay đặt lên môi mình. Và trong lòng, ông nghe Đức Chúa Trời phán: “Ai đụng đến người ấy là đụng đến con ngươi mắt Ta.” Con ngươi là phần chính giữa của con mắt, là phần chúng ta che chở cẩn thận nhất. Đức Chúa Trời đang phán: “Người này vô cùng quý báu đối với Ta.”</p> <p>John sững sờ. Ông đến để cầu nguyện cho vị mục sư, nhưng thay vào đó ông lại bắt đầu than phiền với Đức Chúa Trời về ông ấy. Ông kêu lên: “Lạy Cha, xin tha thứ cho con, vì con đã làm kẻ tố cáo anh em mình trước mặt Cha!”</p> <p>Rồi ông nhớ đến câu Kinh Thánh ở đầu chương này, và ông cầu nguyện một lời cầu nguyện mới: “Lạy Cha, xin chỉ cho con những điều đáng mến và đáng khen trong đời sống của anh em con.”</p> <p>Ngay lập tức, John bắt đầu nhớ ra những điều tốt đẹp. Vị mục sư ấy đã từ bỏ mọi sự để theo Chúa Giê-xu, và chính gia đình ông đã đối xử tệ với ông vì điều đó. Ông đã làm việc chăm chỉ suốt nhiều năm. Ông đã giúp những người trong Hội Thánh mình thôi cãi cọ nhau. Ông là một người chồng tốt. John dành trọn giờ cầu nguyện của mình để cảm tạ Đức Chúa Trời về ông.</p> <p>Không lâu sau, John nghe tin Đức Chúa Trời đã ban phước dồi dào cho vị mục sư, và ông lại đang giảng “đầy lửa.” Bạn của John tin rằng điều đó đã xảy ra đúng vào lúc John đang cảm tạ Đức Chúa Trời về ông.</p> <p>Khi có ai đó làm chúng ta bực mình, thật dễ để cằn nhằn về họ, ngay cả với Đức Chúa Trời. Lần tới, con hãy thử xin Đức Chúa Trời chỉ cho con thấy một điều tốt nơi người ấy, rồi cảm tạ Ngài về điều đó.</p> <p><em>Lạy Đức Chúa Trời, xin giúp con đừng cằn nhằn về người khác. Xin chỉ cho con những điều tốt đẹp nơi họ, và giúp con cảm tạ Ngài về họ. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Điều gì đã làm John dừng lại giữa lúc đang cầu nguyện?",
+    "answer": "Ông cảm thấy như có một ngón tay đặt lên môi mình, và ông nghe Đức Chúa Trời phán rằng vị mục sư quý báu đối với Ngài như con ngươi mắt Ngài."
+   },
+   {
+    "question": "John đã cầu nguyện lời cầu nguyện mới nào?",
+    "answer": "“Lạy Cha, xin chỉ cho con những điều đáng mến và đáng khen trong đời sống của anh em con.” Rồi ông dành giờ cầu nguyện để cảm tạ Đức Chúa Trời về vị mục sư."
+   },
+   {
+    "question": "Con có thể nghĩ ra một điều tốt nơi một người đôi khi làm con bực mình không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Đức Chúa Trời cũng yêu thương người ấy, và chúng ta có thể cảm tạ Ngài về những điều tốt Ngài đã đặt trong họ."
+   }
+  ],
+  "word_count": 472
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Nước Mắt Bên Cửa Sổ Toa Tàu",
+  "body_html": "<blockquote>“Anh còn ở đằng xa thì cha anh đã trông thấy, và ông động lòng thương xót. Ông chạy đến ôm chầm lấy anh và hôn anh thắm thiết.” — trích Lu-ca 15</blockquote> <p>Có một chàng trai trẻ mà sau này bạn bè gọi là “J. N.” Anh xuất thân từ một gia đình Ấn Độ giáo thuộc đẳng cấp cao, đi học ở một trường của hội truyền giáo, và đã tin Chúa Giê-xu. Lúc đầu gia đình anh rất giận. Rồi họ lại đối xử rất tử tế với anh, và anh trở về nhà. Ở đó anh kết bạn với những người lôi kéo anh vào việc uống rượu quá nhiều, và anh quay lưng lại với Chúa Giê-xu.</p> <p>Nhưng anh không vui, nên anh tìm đến John. John đón tiếp anh giống như người cha trong câu chuyện Chúa Giê-xu kể về người con trai đi hoang, và J. N. đến sống với ông. Nhưng hết lần này đến lần khác, anh lại quay về với rượu chè. Đã hơn một lần anh còn lấy trộm quần áo của John đem bán! John chỉ mỉm cười, và nói với một người bạn rằng mùa hè năm ấy ông sẽ phải ở lại vùng đồng bằng nóng nực, vì ông không còn bộ quần áo ấm nào cả.</p> <p>Một hôm, J. N. ngồi trên chuyến tàu đi thành phố Lahore. Anh nói một cách hỗn hào rằng anh sẽ quay về với đám bạn cũ. John nghiêng người vào cửa sổ toa tàu, nài nỉ anh đừng đi. Một bà làm việc ở nhà ga thấy nước mắt chảy dài trên mặt John. Nhưng chàng trai không chịu nghe, và đoàn tàu chuyển bánh.</p> <p>Ngay ngày hôm sau, bà ấy thấy J. N. quay trở lại. Trông anh xanh xao. Anh nói: “Tôi sẽ về lại với ông ấy. Tôi không thể quên được những giọt nước mắt của ông.” Khi anh tìm thấy John, John đang cầu nguyện. John ôm lấy anh và nói: “Tôi vừa mới cầu xin Đức Chúa Trời đưa anh về lại với tôi, và anh xem, Ngài đã nhậm lời tôi rồi!”</p> <p>Câu chuyện của J. N. không có một kết thúc gọn gàng. Nhiều năm sau, anh vẫn còn đang vật lộn. Nhưng anh không bao giờ quên John đã yêu thương anh nhiều đến dường nào.</p> <p>Chúa Giê-xu cứ tiếp tục yêu thương người ta ngay cả khi họ làm sai hết lần này đến lần khác. Ngài cũng yêu thương con như thế. Và Ngài có thể giúp con yêu thương người khác theo cách ấy.</p> <p><em>Lạy Chúa Giê-xu, cảm ơn Ngài vì Ngài không bao giờ thôi yêu thương con, ngay cả khi con làm sai. Xin giúp con yêu thương những người khó thương. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "J. N. đã làm gì với quần áo của John?",
+    "answer": "Đã hơn một lần anh lấy trộm đem bán. John không nổi giận; ông chỉ mỉm cười và tiếp tục yêu thương anh."
+   },
+   {
+    "question": "Vì sao J. N. quay trở lại vào ngày hôm sau khi đã lên tàu bỏ đi?",
+    "answer": "Anh nói: “Tôi không thể quên được những giọt nước mắt của ông.” Anh đã thấy John yêu thương mình nhiều đến dường nào."
+   },
+   {
+    "question": "Có người nào khó thương mà con có thể cầu nguyện cho không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là Chúa Giê-xu không bao giờ thôi yêu thương chúng ta, và Ngài có thể giúp chúng ta yêu thương người khác như vậy."
+   }
+  ],
+  "word_count": 469
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Chiến Thắng, Chiến Thắng, Chiến Thắng",
+  "body_html": "<blockquote>“Nhưng tạ ơn Đức Chúa Trời, vì qua Chúa chúng ta là Đức Giê-xu Christ, Ngài ban cho chúng ta sự chiến thắng.” — trích 1 Cô-rinh-tô 15</blockquote> <p>Ngần ấy năm làm việc vất vả và ngủ rất ít đã làm John kiệt sức. Năm 1910, một bác sĩ ở Calcutta nói với ông rằng tim ông đang rất yếu, và ông cần được nghỉ ngơi yên tĩnh trong nhiều tháng trời. John chỉ mỉm cười. Tháng 3 năm 1911, ông rời Ấn Độ lần cuối cùng, trong lúc bệnh rất nặng.</p> <p>Trên đường về nhà, ông ghé lại xứ Wales ở với người bạn của mình là ông Jones. Ở đó ông gặp một bà cụ bị điếc nặng. Bà buồn vì ở nhà thờ bà chẳng nghe được gì cả. John nói: “Bà nên ngợi khen Đức Chúa Trời về điều đó chứ!” Ông kể với bà rằng ở nhà thờ chính ông cũng hầu như không nghe được gì. Vì thế ông nhìn người giảng và cầu nguyện cho người ấy, rồi nhìn từng người và cầu nguyện cho họ, từng người một. Bà cụ bật cười và nói bà sẽ thử làm như vậy. Sau này bà viết rằng điều đó đã thay đổi đời sống bà một cách tuyệt vời.</p> <p>Về đến nước Mỹ, các bác sĩ phát hiện John mắc một căn bệnh mà họ không thể chữa được. Ông đến ở nhà người chị em gái của mình tại Northampton, bang Massachusetts. Ông thường rất đau đớn, nhưng ông không than phiền. Sau những cơn đau dữ dội nhất, ông lại nói: “Ngợi khen Chúa.” Không lâu trước khi qua đời, ông nói với người chị em gái: “Chỉ là chiến thắng, chiến thắng, chiến thắng.”</p> <p>John qua đời ngày 17 tháng 2 năm 1912. Ông được bốn mươi sáu tuổi. Những lời cuối cùng của ông là tiếng Punjab, ngôn ngữ của những ngôi làng ông yêu thương. Bạn bè ông nhớ những lời ấy là: “Bol, Yisu Masih, ki jai!” Nghĩa là: “Hãy reo lên chiến thắng của Chúa Giê-xu Christ!” Ông được an táng ở Carthage, bên cạnh cha, mẹ và anh Edmund của ông.</p> <p>Ngày nay, người ta khắp thế giới nhớ đến ông với tên gọi “Hyde Cầu Nguyện.” Nhưng John không bao giờ muốn người ta nhìn vào mình. Ông muốn họ nhìn lên Chúa Giê-xu, và cầu nguyện.</p> <p>Khi con thuộc về Chúa Giê-xu, thì ngay cả cái chết cũng không phải là kết thúc. Chúa Giê-xu đã giành được chiến thắng rồi, và mọi người tin cậy Ngài sẽ được ở với Ngài đời đời.</p> <p><em>Lạy Chúa Giê-xu, cảm ơn Ngài đã giành được chiến thắng. Xin dạy con cầu nguyện, và giúp con tin cậy Ngài suốt cả cuộc đời con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "John đã bảo bà cụ bị điếc ở xứ Wales làm gì khi ở nhà thờ?",
+    "answer": "Hãy ngợi khen Đức Chúa Trời, và dùng thời gian ấy để cầu nguyện: trước hết cho người giảng, rồi cho từng người mà bà nhìn thấy."
+   },
+   {
+    "question": "Những lời cuối cùng của John là gì, và có nghĩa là gì?",
+    "answer": "Đó là tiếng Punjab: “Bol, Yisu Masih, ki jai!” Nghĩa là: “Hãy reo lên chiến thắng của Chúa Giê-xu Christ!”"
+   },
+   {
+    "question": "Con muốn xin Đức Chúa Trời dạy con điều gì về sự cầu nguyện?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chương này muốn nói là John muốn mọi người nhìn lên Chúa Giê-xu và cầu nguyện, và Chúa Giê-xu đã giành được chiến thắng cho tất cả những ai tin cậy Ngài."
+   }
+  ],
+  "word_count": 468
+ }
+}
+]

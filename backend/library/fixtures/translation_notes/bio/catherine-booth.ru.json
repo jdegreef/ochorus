@@ -1,0 +1,25 @@
+{
+ "kind": "bio",
+ "slug": "catherine-booth",
+ "language": "ru",
+ "job_issue": 9161,
+ "references": [
+  {
+   "reference": "2 Corinthians 6:14a",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 4:10a",
+   "status": "self_rendered",
+   "block_index": 11
+  }
+ ]
+}

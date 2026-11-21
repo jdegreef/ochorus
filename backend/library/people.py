@@ -49,13 +49,23 @@ EXACT, PREFIX, FUZZY, INITIAL = 3.0, 2.0, 1.5, 1.0
 
 _FUZZY_MIN_LEN = 5
 _FUZZY_RATIO = 0.84
-_WORD = re.compile(r"[^\W_]+", re.UNICODE)
+
+
+#: Letters written more than one way in names: Arabic alef forms, tā' marbūṭa
+#: and alef maqṣūra, the tatweel, and the katakana long-vowel mark (ムーディー,
+#: ムーディ and ムディ are one name).
+_VARIANTS = str.maketrans({"أ": "ا", "إ": "ا", "آ": "ا", "ٱ": "ا", "ة": "ه", "ى": "ي", "ـ": None, "ー": None})
 
 
 def fold(text: str) -> str:
-    """Lowercase with Latin accents removed ("Frères" → "freres")."""
+    """Lowercase with accents and spelling variants removed ("Frères" →
+    "freres", "أوغسطينوس" → "اوغسطينوس"). Combining marks go — Latin accents,
+    Arabic vowel points, the Devanagari nukta — the same on both sides of a
+    match, so "ज़" and "ज" spellings meet."""
     decomposed = unicodedata.normalize("NFKD", text or "")
-    return "".join(c for c in decomposed if not unicodedata.combining(c)).lower()
+    bare = "".join(c for c in decomposed if not unicodedata.combining(c))
+    # Recomposed, or Hangul stays as loose jamo and no Korean word is whole.
+    return unicodedata.normalize("NFC", bare).translate(_VARIANTS).lower()
 
 
 _POSSESSIVE = re.compile(r"['’]s\b", re.IGNORECASE)
@@ -63,8 +73,16 @@ _POSSESSIVE = re.compile(r"['’]s\b", re.IGNORECASE)
 
 def words(text: str) -> list[str]:
     """``text`` as folded words; punctuation splits, so "D.L." is ``d``, ``l``,
-    and a possessive goes ("Moody's" is ``moody``, not ``moody`` + ``s``)."""
-    return _WORD.findall(fold(_POSSESSIVE.sub("", text or "")))
+    and a possessive goes ("Moody's" is ``moody``, not ``moody`` + ``s``).
+
+    A word is letters, digits and the marks written on them (Devanagari vowel
+    signs are marks, and must not split "मार्टिन"); a Korean word loses a
+    trailing particle ("무디의" is 무디), as the Korean query does in fts."""
+    from .fts import strip_particle
+
+    folded = fold(_POSSESSIVE.sub("", text or ""))
+    spaced = "".join(c if unicodedata.category(c)[0] in "LNM" else " " for c in folded)
+    return [strip_particle(w) for w in spaced.split()]
 
 
 def asked_for(q: str) -> list[str]:
@@ -80,6 +98,9 @@ class _Name:
     name: str
     tokens: tuple[str, ...]
     surname: str
+    #: Matched by another name than the library's own (an alias, or the name
+    #: as another language writes it).
+    other: bool = False
 
 
 def _surname(name: str, tokens: list[str]) -> str:
@@ -137,6 +158,8 @@ class PersonMatch:
     surname: str
     #: Found by the surname, not only by a first name ("john").
     by_surname: bool
+    #: Found through another name (an alias, or another language's spelling).
+    other: bool
     score: float
     #: Every word of the query is part of the name (or a skippable honorific):
     #: the query is this person's name, not a name plus other words.
@@ -169,7 +192,9 @@ class People:
             tokens = words(spelt)
             if tokens:
                 name = display[0] if display else spelt
-                self._names.append(_Name(pk, name, tuple(tokens), _surname(spelt, tokens)))
+                self._names.append(
+                    _Name(pk, name, tuple(tokens), _surname(spelt, tokens), bool(display))
+                )
 
     def match(self, q: str) -> list[PersonMatch]:
         """Everyone the query names, strongest first.
@@ -248,6 +273,7 @@ class People:
             name=person.name,
             surname=person.surname,
             by_surname=surname_hit,
+            other=person.other,
             score=score,
             whole=whole,
             used=used,
@@ -273,9 +299,10 @@ class People:
 
 
 def strongest(found: list[PersonMatch]) -> PersonMatch | None:
-    """The person a query names by two or more words, when nobody ties —
-    "john w…" between two Johns names no one."""
-    strong = [m for m in found if len(m.used) >= 2]
+    """The person a query names by two or more words — or by one word of
+    another name of theirs ("Муді", "Lutero"), which no text of the library's
+    spells — when nobody ties: "john w…" between two Johns names no one."""
+    strong = [m for m in found if len(m.used) >= 2 or (m.other and m.by_surname)]
     if not strong:
         return None
     top = strong[0]
