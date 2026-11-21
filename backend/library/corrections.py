@@ -2451,6 +2451,27 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<p>Tekyetaagisa kulwawo ku n", "<h3>ENJAWULO.</h3>"),
             ("<p>Tekyetaagisa kulwawo ku n",
              '<p><em>"Abakola ebibi tebakola bwe batyo."</em></p>'),
+            # ko
+            ('<p>복이 되지 않는 형통',
+             '<p>첫째 시편에 대한 묵상.</p>'),
+            ('<p>복이 되지 않는 형통',
+             '<h3>들어가는 말</h3>'),
+            ('<p>더 문자적으로 옮기면',
+             '<h3>복의 소극적 조건</h3>'),
+            ('<p>더 문자적으로 옮기면',
+             '<p><em>“복 있는 사람은 악인의 꾀를 좇지 아니하며.”</em></p>'),
+            ('<p>유유상종입니다. 신자',
+             '<p><em>죄인의 길에 서지 아니하며.</em></p>'),
+            ('<p>오만한 자의 자리는 ',
+             '<p><em>“오만한 자의 자리에 앉지 아니하고.”</em></p>'),
+            ('<p>우리는 참으로 복 있',
+             '<h3>복의 적극적 조건</h3>'),
+            ('<p>다음으로 이 시편 3',
+             '<h3>복의 결과</h3>'),
+            ('<p>이 대조에 대해서는 ',
+             '<h3>대조</h3>'),
+            ('<p>이 대조에 대해서는 ',
+             '<p><em>“악인은 그렇지 않음이여.”</em></p>'),
         ],
     },
     "a-full-reward": {
@@ -2507,6 +2528,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # es
             ("<p>Con toda naturalidad podríamos",
              "<blockquote><em>«Si alguno quiere venir en pos de mí, niéguese a sí mismo, y tome su cruz cada día, y sígame.</em>—Lucas 9:23.</blockquote>"),
+            # pt
+            ("<p>Poderíamos naturalmente pensar",
+             '<blockquote><em>"Se alguém deseja vir após mim, negue-se a si mesmo, tome a sua cruz cada dia, e siga-me.</em>—LUCAS 9:23.</blockquote>'),
             # ko
             ('<p>주 예수 그리스도의 ',
              '<blockquote><em>“아무든지 나를 따라 오려거든 자기를 부인하고 날마다 제 십자가를 지고 나를 좇을 것이니라”</em>—누가복음 9:23.</blockquote>'),
@@ -5128,6 +5152,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("¡Gloria a su bendito nombre!</p>", "<p>FIN</p>"),  # es
             ("Gloire soit à son nom béni !</p>", "<p>FIN</p>"),  # fr
             ("उसके धन्य नाम की महिमा हो!</p>", "<p>समाप्त</p>"),  # hi
+            ("主の祝福された御名に栄光がありますように！</p>", "<p>終わり</p>"),  # ja
             ("복되신 주님의 이름에 영광을 돌립니다!</p>", "<p>끝</p>"),  # ko
             ("Ekitiibwa kibe eri erinnya lye ery’omukisa!</p>", "<p>ENKOMERERO</p>"),  # lg
             ("Glória ao seu bendito nome!</p>", "<p>FIM</p>"),  # pt
