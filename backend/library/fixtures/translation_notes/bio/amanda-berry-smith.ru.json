@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "amanda-berry-smith",
+ "language": "ru",
+ "job_issue": 9147,
+ "references": [
+  {
+   "reference": "Isaiah 41:13",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}
