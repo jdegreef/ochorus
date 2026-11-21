@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "martin-luther",
+ "language": "ru",
+ "job_issue": 9159,
+ "references": [
+  {
+   "reference": "Romans 1:17b",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}

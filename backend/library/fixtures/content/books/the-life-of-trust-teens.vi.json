@@ -1,0 +1,385 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "george-muller"
+  ],
+  "slug": "the-life-of-trust-teens",
+  "language": "vi",
+  "title": "Cuộc Đời Tin Cậy (Cho thiếu niên)",
+  "subtitle": "",
+  "description": "George Müller nói dối, ăn cắp và ngồi tù trước khi tròn mười bảy tuổi — rồi đặt cược cả cuộc đời mình vào một Đức Chúa Trời mà ông không nhìn thấy. Ông nuôi hàng nghìn trẻ mồ côi ở Bristol mà không xin tiền ai ngoài Đức Chúa Trời, và ghi lại từng lời đáp. Ấn bản dành cho thiếu niên này kể chuyện một cách thẳng thắn: những nỗi lo tiền bạc, khao khát có bằng chứng, và sự chờ đợi những lời đáp đến muộn.",
+  "hook": "Ông nói dối, ăn cắp và vào tù trước tuổi mười bảy. Rồi ông nuôi hàng nghìn trẻ mồ côi chỉ bằng sự cầu nguyện.",
+  "qa": [
+   {
+    "question": "George Müller có phải lúc nào cũng sùng đạo không?",
+    "answer": "Hoàn toàn không. Đến năm mười sáu tuổi, ông đã là một kẻ quen thói nói dối và ăn cắp, từng lấy trộm tiền của chính cha mình và phải vào tù. Ông không tự sửa mình cho tử tế trước — Đức Chúa Trời đã gặp ông ngay khi ông vẫn còn đang sống như thế."
+   },
+   {
+    "question": "Tại sao Müller không chịu xin tiền bất cứ ai?",
+    "answer": "Ông muốn có một bằng chứng hữu hình rằng Đức Chúa Trời vẫn đáp lời cầu nguyện trong đời sống thật. Nếu ông chỉ xin Đức Chúa Trời — không bao giờ xin con người — thì từng đồng bảng đến tay đều sẽ chỉ về Đức Chúa Trời, chứ không phải về tài gây quỹ của ông."
+   },
+   {
+    "question": "Tiền có luôn đến đúng lúc không?",
+    "answer": "Tiền đến khi cần, không sớm hơn một ngày. Suốt nhiều tuần trong năm 1838, Đức Chúa Trời chu cấp cho các trại mồ côi gần như theo từng giờ, và Müller học được rằng một lời đáp có vẻ đến muộn vẫn là một lời đáp."
+   },
+   {
+    "question": "Câu chuyện nổi tiếng về người giao sữa đến gõ cửa có thật không?",
+    "answer": "Chính lời kể của Müller ghi lại những lời cầu nguyện được đáp bằng một tiếng gõ cửa — một bà cụ nghèo mang đến một phần bữa ăn của chính mình và một ổ bánh mì. Truyền thuyết phổ biến về chiếc xe chở sữa không có trong những gì ông viết, nên bản kể lại này chỉ bám vào những gì có thật."
+   },
+   {
+    "question": "Việc tin cậy Đức Chúa Trời có bao giờ khiến Müller phải trả giá không?",
+    "answer": "Có. Cha ông khóc lóc và dọa từ con, và Müller vẫn từ chối nhận tiền của cha thêm lần nào nữa. Đi theo Đức Chúa Trời đã khiến ông mất đi sự êm ấm trong gia đình, một đồng lương, và sự an toàn của một tài khoản tiết kiệm."
+   },
+   {
+    "question": "Ông đã chăm sóc bao nhiêu trẻ mồ côi?",
+    "answer": "Công việc bắt đầu với mười bảy đứa trẻ trong một ngôi nhà thuê năm 1836 và lớn dần, trong suốt cuộc đời ông, lên đến hàng nghìn em — tất cả đều được chu cấp bằng sự cầu nguyện, không có một lời kêu gọi gây quỹ nào."
+   },
+   {
+    "question": "Thói quen nào Müller cho là quan trọng nhất?",
+    "answer": "Dậy sớm để dâng phần đầu tiên, tươi mới nhất của ngày cho sự cầu nguyện và Kinh Thánh, trước khi bất cứ điều gì khác kịp chen vào."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại của Ochorus dành cho bạn đọc nhỏ tuổi, dựa trên cuốn Cuộc Đời Tin Cậy của George Müller, là tác phẩm thuộc phạm vi công cộng. Lời kể là của chúng tôi, được tự do đọc và chia sẻ. Các câu Kinh Thánh được trích từ bản Open Word Bible (OWB) tiếng Việt.",
+  "cover_url": "/covers/art/the-life-of-trust-teens.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 27,
+  "is_published": true,
+  "created_at": "2026-11-21T00:00:00Z",
+  "updated_at": "2026-11-21T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-teens",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Con Đường Gập Ghềnh",
+  "body_html": "<blockquote>“Sự sáng suốt tốt đẹp được lòng người, còn con đường của kẻ phản trắc thì gập ghềnh.” — Châm Ngôn 13:15</blockquote> <p>Trước khi trở thành một người được ai đó ngưỡng mộ, George Müller là một kẻ nói dối và một tên trộm, và ông muốn bạn biết điều đó. Trong cuốn sách này, ông không tô vẽ lại quá khứ của mình. Ông bày hết ra.</p> <p>Cha ông, một viên chức ở nước Phổ, cho các con trai rất nhiều tiền và rất ít giới hạn. Vấn đề nằm ở chính chỗ đó. Chưa đến mười tuổi, George đã ăn cắp tiền của cha — kể cả tiền công quỹ mà cha ông chịu trách nhiệm giữ. Cha ông bắt đầu nghi ngờ, nên một hôm ông đếm sẵn một khoản tiền, để trong phòng rồi bước ra ngoài. George lấy một ít và giấu dưới bàn chân, trong chiếc giày. Khi cha quay lại đếm, tiền bị thiếu. Ông lục soát con trai, và tiền nằm ngay đó.</p> <p>Lẽ ra đó phải là một hồi chuông cảnh tỉnh. Nhưng không. Ăn cắp sinh ra nói dối, và nói dối trở thành một lối sống. Cái đêm mẹ cậu hấp hối, George mười bốn tuổi còn mải đánh bài đến hai giờ sáng, rồi hôm sau lang thang ngoài phố với bạn bè trong cơn say lảo đảo. Cậu được làm lễ thêm sức ở nhà thờ, dự Tiệc Thánh, thề với Đức Chúa Trời rằng mình sẽ thay đổi — và lần nào cũng quên sạch chỉ sau vài ngày.</p> <p>Năm mười sáu tuổi, mọi chuyện quật lại cậu. Cậu sống trong những khách sạn đắt tiền bằng số tiền mình không có, cạn túi trước khi hóa đơn đến, để lại bộ quần áo đẹp nhất làm vật thế chấp. Ở một thị trấn, cậu lặng lẽ lẻn ra khỏi sân quán trọ rồi bỏ chạy — và bị nhìn thấy, bị đuổi theo, bị bắt, rồi bị nhốt chung xà lim với bọn trộm cướp và sát nhân. Cậu ngồi tù từ ngày 18 tháng 12 đến ngày 12 tháng 1, cho đến khi cha gửi tiền trả hết nợ. Và đây là chi tiết cho thấy cậu đã sa ngã đến mức nào: hai tiếng sau khi được thả, trên đường về nhà gặp người cha đang giận dữ, cậu cố tình chọn một kẻ nổi tiếng gây rối làm bạn đồng hành. Cậu chẳng học được gì cả.</p> <p>Xét theo mọi thước đo bên ngoài, cậu vẫn ổn — đứng đầu lớp, được thầy cô quý mến, sắp vào đại học. Bên trong, cậu trống rỗng. Cậu có khoảng ba trăm cuốn sách mà không có lấy một cuốn Kinh Thánh. Trong những phút thành thật, cậu biết một cuộc đời như thế sẽ kết thúc tồi tệ. Chỉ là cậu không dừng lại được, và việc giả vờ sửa mình chỉ khiến cậu giả vờ giỏi hơn.</p> <p>Có lẽ bạn không ăn cắp tiền của bố mẹ hay tỉnh dậy trong xà lim. Nhưng bạn có thể biết phiên bản lặng lẽ hơn: khoảng cách giữa con người mà mọi người nghĩ là bạn và những gì bạn thật sự làm khi không ai nhìn thấy. Cái danh tiếng chạy trước bạn trong khi con người thật của bạn tụt lại phía sau. Cuộc đời Müller nói lên hai điều khó nghe và một điều đầy hy vọng. Thứ nhất, bạn có thể vừa được kính trọng vừa mục ruỗng cùng một lúc. Thứ hai, những ý định tốt — những lời thề, những câu “Thứ Hai tới mình sẽ thay đổi” — tự chúng chẳng có giá trị gì cả; George đã hứa như vậy liên tục. Và thứ ba, điều đầy hy vọng: chính con người này, tên trộm này, là người mà Đức Chúa Trời sắp xoay chuyển hoàn toàn. Quá khứ của bạn không phải là lời cuối cùng về bạn.</p> <p><strong>Một điều để làm trong tuần này:</strong> hãy thôi diễn kịch một phút và nói với Đức Chúa Trời một điều thật về chính mình — điều bạn thật sự làm khi không ai nhìn thấy, gọi đúng tên, không bào chữa. Toàn bộ sự thay đổi của Müller bắt đầu khi ông thôi trang điểm cho hình ảnh của chính mình. Bạn không thể được gặp gỡ ở nơi bạn đang giả vờ. Chỉ ở nơi bạn thật sự đang đứng.</p>",
+  "study_questions": [
+   {
+    "question": "Cha George đã bắt quả tang cậu ăn cắp như thế nào, và chuyện gì xảy ra khi George mười sáu tuổi?",
+    "answer": "Cha cậu để tiền đã đếm sẵn trong phòng và tìm thấy một đồng xu giấu trong giày của George. Năm mười sáu tuổi, George bỏ trốn để khỏi trả tiền khách sạn, bị bắt và phải ngồi tù nhiều tuần."
+   },
+   {
+    "question": "Tại sao chương này nói những ý định tốt như “Thứ Hai tới mình sẽ thay đổi” tự chúng chẳng có giá trị gì?",
+    "answer": "George liên tục thề với Đức Chúa Trời rằng mình sẽ thay đổi, khi làm lễ thêm sức và khi dự Tiệc Thánh, rồi quên sạch chỉ sau vài ngày. Giả vờ sửa mình chỉ khiến cậu giả vờ giỏi hơn."
+   },
+   {
+    "question": "Có khoảng cách nào giữa con người mà mọi người nghĩ là bạn và những gì bạn làm khi không ai nhìn thấy không?",
+    "answer": "Chương này gợi ý hãy nói với Đức Chúa Trời một điều thật về chính mình, rõ ràng, không bào chữa. Bạn không thể được gặp gỡ ở nơi bạn đang giả vờ, và quá khứ của bạn không phải là lời cuối cùng về bạn."
+   }
+  ],
+  "word_count": 745
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-teens",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Nhà và Lòng Luôn Mở Cửa Cho Anh",
+  "body_html": "<blockquote>“Vậy anh lên đường trở về với cha. Anh còn ở đằng xa thì cha anh đã trông thấy, và ông động lòng thương xót. Ông chạy đến ôm chầm lấy anh và hôn anh thắm thiết.” — Lu-ca 15:20</blockquote> <p>Chẳng có gì kịch tính dọn đường cho nó cả. Một chiều thứ Bảy tháng 11 năm 1825, George đang đi dạo với một bạn sinh viên tên là Beta, và Beta tình cờ nhắc rằng tối thứ Bảy anh thỉnh thoảng đến nhà một Cơ Đốc nhân, nơi vài người cùng đọc Kinh Thánh, hát và cầu nguyện. Chỉ có thế. Nhưng sau này Müller viết rằng ngay khi nghe điều đó, ông thấy “như thể tôi đã tìm được điều mà tôi đã kiếm tìm suốt cả cuộc đời mình.” Ông xin đi cùng.</p> <p>Không biết các tín hữu cư xử ra sao, ông lúng túng xin lỗi vì đã đến. Chủ nhà đáp lại ông một câu mà ông không bao giờ quên: “Anh cứ đến bao nhiêu lần tùy thích; nhà và lòng chúng tôi luôn mở cửa cho anh.” Họ hát một bài thánh ca. Rồi một người quỳ xuống sàn để cầu nguyện — và chỉ riêng điều đó đã khiến George sững người. Cả đời ông chưa từng thấy ai quỳ xuống cầu nguyện, và chính ông cũng chưa từng quỳ cầu nguyện bao giờ. Có người đọc một chương Kinh Thánh và một bài giảng in sẵn. Họ lại hát. Chủ nhà cầu nguyện.</p> <p>Hãy để ý điều Müller thừa nhận về lòng mình trong căn phòng đó. Trong khi người kia cầu nguyện, ý nghĩ kiêu ngạo đầu tiên của George là: “Tôi không thể cầu nguyện hay được như thế, dù tôi học rộng hơn người ít chữ này nhiều.” Ngay cả ở bước ngoặt của cuộc đời, ông vẫn còn đem mình ra so đo với người khác. Vậy mà có điều gì đó vẫn chạm được đến ông. Ông không thể giải thích tại sao, nhưng trên đường về, ông nói với Beta rằng mọi thứ — tiệc tùng, những chuyến đi, tất cả thú vui cũ của họ — chẳng là gì so với buổi tối hôm ấy. Ông kể rằng đêm đó ông nằm xuống “bình an và vui sướng.”</p> <p>Đây là phần thành thật, và nó quan trọng nếu có lúc bạn cảm thấy câu chuyện đức tin của mình quá bình thường để được tính. Müller không có những dòng nước mắt tuôn trào, không có cơn khủng hoảng như sét đánh. Ông viết thẳng: “Tôi nhận được niềm vui mà không trải qua nỗi buồn sâu xa trong lòng, và hầu như chẳng hiểu biết gì.” Ông gần như không hiểu chuyện gì đã xảy ra với mình. Trong mấy tuần sau đó, ông vẫn còn nói dối vài lần. Nhưng ông gọi buổi tối bình thường ấy là “bước ngoặt của đời tôi,” và quả đúng như vậy. Đám bạn ăn chơi dần rời xa. Những lần la cà quán rượu chấm dứt. Ông bắt đầu thật sự đọc cuốn Kinh Thánh mà trước đây ông chưa từng mở ra.</p> <p>Hãy để ý điều Đức Chúa Trời đã dùng: không phải một nhà truyền đạo nổi tiếng, không phải một sự kiện lớn. Chỉ là một lời mời buột miệng của một người bạn và cánh cửa rộng mở của một người lạ. Chẳng ai trong căn phòng ấy gây ấn tượng cả. Họ chỉ dành chỗ cho một sinh viên tò mò, kiêu ngạo, chưa thuộc về nơi đó — “Anh cứ đến bao nhiêu lần tùy thích” — và để Đức Chúa Trời làm phần còn lại.</p> <p>Có thể bạn đang chờ đợi một kiểu đức tin đủ choáng ngợp thì mới là “thật.” Câu chuyện của Müller cho thấy có lẽ bạn đang chờ sai điều. Sự thay đổi có thể bắt đầu lặng lẽ, trong một căn phòng bình thường, vào một ngày thứ Bảy bình thường, và chỉ nhiều năm sau, khi bạn thấy nó dẫn đến đâu, nó mới hiện ra như một bước ngoặt.</p> <p><strong>Một điều để làm:</strong> hãy nhận lời mời mà bạn cứ tìm lý do để né — nhóm nhỏ, nhà thờ, người bạn cứ rủ mãi. Đừng đợi đến khi bạn thấy mình xứng đáng bước vào căn phòng đó, hay đến khi mọi câu hỏi của bạn đã được giải đáp. Müller bước vào trong sự bối rối, kiêu ngạo, và mới chỉ được biến đổi một nửa. Ông chỉ đơn giản bước vào. Đó là toàn bộ bước đầu tiên.</p>",
+  "study_questions": [
+   {
+    "question": "Điều gì đã xảy ra trong buổi nhóm tối thứ Bảy khiến George sững người?",
+    "answer": "Một người quỳ xuống sàn để cầu nguyện. George chưa từng thấy ai quỳ xuống cầu nguyện và chính ông cũng chưa bao giờ quỳ."
+   },
+   {
+    "question": "Câu nói của Müller “Tôi nhận được niềm vui mà không trải qua nỗi buồn sâu xa trong lòng” cho thấy đức tin có thể bắt đầu như thế nào?",
+    "answer": "Bước ngoặt của ông không hề kịch tính: không nước mắt, không khủng hoảng, và ông gần như không hiểu chuyện gì xảy ra. Vậy mà buổi tối bình thường ấy lại trở thành bước ngoặt của cả cuộc đời ông."
+   },
+   {
+    "question": "Có lời mời nào (một nhóm, một nhà thờ hay một người bạn) mà bạn cứ tìm lý do để né không?",
+    "answer": "Lời khuyên của chương này: hãy nhận lời mà không cần đợi đến khi thấy mình xứng đáng hay đã giải đáp xong mọi thắc mắc. Müller bước vào trong sự bối rối và kiêu ngạo. Chỉ cần bước vào đã là bước đầu tiên của ông."
+   }
+  ],
+  "word_count": 771
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-teens",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Tính Cái Giá Với Chính Cha Mình",
+  "body_html": "<blockquote>“Ai yêu cha mẹ hơn Ta thì không xứng đáng với Ta. Ai yêu con trai hay con gái hơn Ta thì không xứng đáng với Ta.” — Ma-thi-ơ 10:37</blockquote> <p>Khi có điều gì lớn lao xảy đến với bạn, phản xạ đầu tiên là kể cho những người bạn thương và đinh ninh rằng họ sẽ mừng rỡ. George Müller đã phải học một bài học đau đớn rằng không phải lúc nào mọi chuyện cũng diễn ra như thế.</p> <p>Vừa mới có đức tin thật và tràn đầy niềm vui, ông viết thư cho cha và anh trai, nài nỉ họ tìm kiếm Đức Chúa Trời và kể rằng cuối cùng ông đã hạnh phúc biết bao. Ông thật lòng nghĩ rằng chỉ cần bày con đường dẫn đến hạnh phúc ra trước mặt họ, họ sẽ chộp lấy ngay. Thay vào đó, một lá thư giận dữ được gửi lại. Tin vui của ông chẳng phải là tin vui gì đối với họ cả.</p> <p>Mọi chuyện còn khó hơn nữa. Müller muốn dâng đời mình cho công tác truyền giáo, mà ở Đức điều đó có nghĩa là ông cần cha cho phép. Cha ông nổi giận đùng đùng. Ông đã tốn rất nhiều tiền cho George ăn học chính là để con trai trở thành một mục sư sống sung túc và lo cho ông một tuổi già thoải mái trong một tòa nhà xứ đẹp đẽ — và giờ mọi thứ đang sụp đổ. Ông tuyên bố sẽ không còn xem George là con nữa. Rồi khi cơn giận không có tác dụng, ông chuyển sang một cách còn khó chống cự hơn: ông van nài, và khóc trước mặt con. Müller viết rằng áp lực mềm mỏng, đầy nước mắt này là “thử thách khó hơn rất nhiều.” Cha mẹ quát mắng bạn là một chuyện. Cha mẹ khóc vì bạn lại là chuyện khác.</p> <p>George vẫn đứng vững. Rồi ông làm một việc nghe gần như liều lĩnh. Dù vẫn còn hai năm đại học và sẽ cần tiền hơn bao giờ hết, ông quyết định sẽ không bao giờ nhận thêm một xu nào từ cha nữa. Ông thấy thật sai trái khi sống nhờ một người chỉ chu cấp cho mình với hy vọng được đền đáp — một cậu con trai làm mục sư với đồng lương hậu hĩnh — điều mà giờ đây George biết mình sẽ không bao giờ đáp ứng. Vì nguyên tắc, ông tự cắt nguồn tiếp tế của chính mình.</p> <p>Đây là lúc nên chậm lại, vì chính tại đây, phần còn lại của cả cuộc đời ông lặng lẽ bắt đầu. Ông có một nhu cầu thật và không thấy cách nào để đáp ứng. Và đây chính xác là điều xảy ra tiếp theo, theo lời ông ghi lại: vài giáo sư người Mỹ đến trường đại học, không biết tiếng Đức và cần một gia sư. George được giới thiệu. Họ trả công rất hậu cho việc dạy học và chép lại các bài giảng, đến nỗi ông viết: “Tôi có đủ và còn dư.” Ông ghi lại điều đó như một bài toán cho ra đáp số đúng: “Như vậy Chúa đã bù đắp dư dật cho tôi chút ít mà tôi đã từ bỏ vì Ngài.”</p> <p>Đừng lãng mạn hóa chuyện này. Nó thật sự khiến ông phải trả giá. Nước mắt của cha ông là thật; mối quan hệ rạn vỡ là thật. Đi theo Đức Chúa Trời không phải lúc nào cũng là một cuộc trao đổi gọn gàng mà ai cũng vui vẻ. Đôi khi chính những người thương bạn nhất lại là những người buồn bực nhất khi bạn không chịu đi con đường an toàn, hợp lý mà họ đã vạch sẵn cho bạn.</p> <p>Bạn sẽ cảm nhận điều này. Có thể không phải vì đức tin — có thể là chuyện bạn sẽ học ngành gì, bạn sẽ trở thành người như thế nào, điều gì bạn sẽ không chịu nói dối nữa. Có một thứ áp lực quát tháo và một thứ áp lực khóc lóc, và thứ hai thì tệ hơn. Câu trả lời của Müller không phải là thôi yêu thương cha mình. Mà là yêu Đức Chúa Trời trước hết, và tin rằng Đức Chúa Trời có thể chu cấp cho cái giá của việc vâng lời Ngài.</p> <p><strong>Một điều để làm:</strong> hãy gọi tên một lĩnh vực mà việc làm điều đúng sẽ khiến người bạn thương thất vọng, và quyết định trước, trước khi áp lực ập đến, bạn sẽ thật sự làm gì. Quyết định trước chính là bí quyết. Müller không ứng biến câu trả lời trong lúc cha ông đang khóc. Ông đã tính cái giá từ trước rồi.</p>",
+  "study_questions": [
+   {
+    "question": "Cha George phản ứng thế nào trước dự định trở thành giáo sĩ truyền giáo của ông?",
+    "answer": "Ông nổi giận, tuyên bố không còn xem George là con nữa, rồi van nài và khóc lóc. Müller gọi áp lực đầy nước mắt đó là “thử thách khó hơn rất nhiều.”"
+   },
+   {
+    "question": "Tại sao George từ chối nhận thêm tiền của cha, và điều gì đã xảy ra sau đó?",
+    "answer": "Cha ông chu cấp với hy vọng có một cậu con trai làm mục sư sung túc, điều mà George sẽ không bao giờ trở thành. Ít lâu sau, các giáo sư người Mỹ thuê ông làm gia sư, và ông có “đủ và còn dư.”"
+   },
+   {
+    "question": "Ở đâu việc làm điều đúng có thể khiến người bạn thương thất vọng?",
+    "answer": "Chương này gợi ý hãy gọi tên nó và quyết định trước điều mình sẽ làm. Müller vẫn yêu thương cha, nhưng yêu Đức Chúa Trời trước hết, và tin rằng Đức Chúa Trời sẽ chu cấp cho cái giá của sự vâng lời."
+   }
+  ],
+  "word_count": 804
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-teens",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Từ Bỏ Đồng Lương",
+  "body_html": "<blockquote>“Và Đức Chúa Trời của tôi sẽ đáp ứng mọi nhu cầu của anh chị em, tương xứng với sự giàu có vinh quang của Ngài trong Đức Giê-xu Christ.” — Phi-líp 4:19</blockquote> <p>Đến năm 1830, George Müller là một mục sư trẻ ở thị trấn nhỏ Teignmouth bên Anh. Một hội thánh mười tám người mời ông làm mục sư của họ và đề nghị trả ông năm mươi lăm bảng mỗi năm. Công việc ổn định. Một đồng lương thật sự. Rồi ông làm một việc chẳng có chút hợp lý nào về mặt tài chính: ông từ bỏ nó.</p> <p>Lý do của ông đáng để nghe, vì đó không phải là những cảm xúc thuộc linh mơ hồ — chúng sắc bén và cụ thể. Đồng lương được trả từ tiền thuê ghế: người ta trả tiền để giữ những chỗ ngồi tốt trong nhà thờ. Müller đã đọc Gia-cơ chương 2, nơi việc đối xử với người giàu tốt hơn người nghèo bị lên án thẳng thừng, và ông không thể chịu nổi một hệ thống mà những người có trả tiền thì được ngồi chỗ tốt nhất, còn người nghèo thì ngồi đâu cũng được. Thứ hai, ông nhận thấy rằng khi đến hạn đóng tiền vào lúc không thuận tiện, người ta có thể đóng một cách miễn cưỡng, vì bổn phận — trong khi Kinh Thánh nói “Đức Chúa Trời yêu thương người cho với lòng vui vẻ,” chứ không phải người bị dồn vào thế bí. Chính ông đã thấy điều đó: có những người thấy “không tiện” để trả khi người thu tiền ghé đến.</p> <p>Và còn một lý do nữa, thành thật nhất trong tất cả. Ông thừa nhận rằng đồng lương đang lặng lẽ bẻ cong lương tâm mình. Khi tin chắc rằng Kinh Thánh dạy về phép báp-têm bằng cách dìm mình, ông nhận ra rằng ba mươi bảng trong lương của ông sẽ bị đe dọa nếu ông hành động theo niềm tin đó — vì một số thành viên sẽ phản đối. Trong vài phút, đồng tiền thật sự đã cám dỗ ông im lặng về điều mình tin. Điều đó khiến ông kinh hãi. Một đồng lương có thể mua được sự im lặng của ông là đồng lương mà ông không dám tin mình có thể giữ.</p> <p>Vì thế, vào cuối tháng 10 năm 1830, ông nói với hội thánh rằng ông sẽ thôi nhận lương cố định. Ông đọc cho họ nghe Phi-líp chương 4. Ông nói nếu có ai vẫn muốn giúp đỡ ông bằng một món quà tự nguyện, nhiều hay ít, bằng tiền hay thức ăn, họ cứ làm — và một chiếc hộp được đặt trong nhà nguyện cho việc đó. Nhưng ông sẽ không bao giờ xin bất cứ ai bất cứ thứ gì nữa. Ông sẽ chỉ đem nhu cầu của mình đến với một mình Đức Chúa Trời.</p> <p>Ông cẩn thận kể cho bạn sự thật về cảm giác lúc ấy: từ bỏ đồng lương thì khó, nhưng quyết định khó hơn là không được bóng gió. Ông nhận ra rằng ngay cả việc gián tiếp nhờ bạn bè giúp đỡ, theo lời ông, cũng là dựa vào “cánh tay xác thịt” — lặng lẽ tin cậy con người thay vì Đức Chúa Trời. Cắt bỏ điều đó cần nhiều ân điển hơn cả việc từ bỏ đồng lương.</p> <p>Bạn có thể nghĩ đây chỉ là một thói kỳ quặc của một nhà truyền đạo thời xưa. Nhưng hãy nhìn điều ông thật sự đang bảo vệ: khả năng nói ra sự thật mà không phải kiểm tra trước xem nó có khiến ông mất gì không. Hầu như ai cũng có một phiên bản của áp lực đó. Điều bạn không dám đăng, không dám thừa nhận, không dám đứng ra bênh vực, vì cái giá nó có thể khiến bạn phải trả về mặt quan hệ hay tiền bạc. Tiền bạc và sự tán thưởng là những ông chủ thầm lặng, và chúng cai trị bạn chủ yếu bằng cách khiến bạn sợ mất mát.</p> <p>Müller quyết định thà nghèo mà tự do còn hơn được trả lương mà bị bịt miệng. Ông không làm quá; ông đang tháo sợi dây xích trước khi nó kịp siết chặt.</p> <p><strong>Một điều để làm:</strong> hãy tìm ra một chỗ mà nỗi sợ mất đi điều gì đó — tiền bạc, người theo dõi, một nhóm bạn — đang lặng lẽ quyết định điều bạn nói hay không nói. Hãy gọi tên cái giá bạn đang phải trả để giữ nó. Bạn không cần phải đảo lộn cả cuộc đời như Müller. Nhưng bạn cần biết sợi dây xích của mình nằm ở đâu, vì bạn không thể cưỡng lại sự lôi kéo của một sợi dây xích mà bạn không chịu thừa nhận là có.</p>",
+  "study_questions": [
+   {
+    "question": "Müller đưa ra những lý do nào để từ bỏ đồng lương ở Teignmouth?",
+    "answer": "Tiền thuê ghế thiên vị người giàu hơn người nghèo, điều mà Gia-cơ 2 lên án. Những khoản tiền đến hạn có thể khiến việc dâng hiến trở nên miễn cưỡng. Và đồng lương cám dỗ ông im lặng về những điều mình xác tín."
+   },
+   {
+    "question": "Câu “thà nghèo mà tự do còn hơn được trả lương mà bị bịt miệng” ở đây có nghĩa là gì?",
+    "answer": "Một đồng lương có thể mua được sự im lặng của ông là đồng lương ông không dám tin mình có thể giữ. Từ bỏ nó là tháo sợi dây xích trước khi nó kịp siết chặt."
+   },
+   {
+    "question": "Ở đâu nỗi sợ mất đi điều gì đó có thể đang quyết định điều bạn nói hay không nói?",
+    "answer": "Chương này không bảo bạn phải đảo lộn cả cuộc đời. Nó bảo bạn hãy gọi tên sợi dây xích của mình nằm ở đâu, vì bạn không thể cưỡng lại sự lôi kéo của một sợi dây mà bạn không chịu thừa nhận là có."
+   }
+  ],
+  "word_count": 819
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-teens",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Bánh Cho Bữa Tối",
+  "body_html": "<blockquote>“Xin cho chúng con hôm nay đủ bánh ăn.” — Ma-thi-ơ 6:11</blockquote> <p>Khi Müller quyết định không xin tiền ai ngoài Đức Chúa Trời, câu hỏi hiển nhiên ập đến rất nhanh: liệu cách này có thật sự hiệu quả không? Không phải trên lý thuyết — mà vào một ngày Chúa Nhật khi trong nhà không còn gì cho bữa tối và có một người vợ đang ở nhà. Đây là chỗ cuốn sách thôi nói về ý tưởng và bắt đầu trở thành một cuốn sổ ghi chép những ngày có thật.</p> <p>Lấy ví dụ ngày 27 tháng 11 năm 1831. Hôm đó là Chúa Nhật. Vợ chồng Müller chỉ còn hai xu rưỡi — vài đồng tiền lẻ — và bánh mì trong nhà chỉ vừa đủ cho đúng ngày hôm ấy. Ông đã đem nhu cầu này đến với Đức Chúa Trời mấy lần rồi. Sau bữa trưa, khi cầu nguyện tạ ơn, ông xin Đức Chúa Trời thẳng thắn ban cho họ bánh ăn hằng ngày — theo đúng nghĩa đen: xin gửi cho chúng con bánh cho bữa tối nay.</p> <p>Ông còn đang cầu nguyện thì có tiếng gõ cửa. Khi ông cầu nguyện xong, một bà cụ nghèo bước vào. Bà mang theo một phần bữa ăn của chính mình để chia sẻ, cùng năm si-linh của một người phụ nữ nghèo khác. Chiều hôm đó bà lại quay lại, lần này mang theo một ổ bánh mì lớn. Müller ghi lại đúng như thế: ông đã cầu xin bánh, và bánh đã đến — kèm theo cả tiền mà ông thậm chí chưa hề xin.</p> <p>Giờ thì có một lời cảnh báo, vì câu chuyện này hay bị thổi phồng. Có thể bạn đã nghe một truyền thuyết đầy kịch tính về Müller và chiếc xe chở sữa bị hỏng ngay trước cửa trại mồ côi, hay một người thợ làm bánh xuất hiện lúc bình minh nhờ một sự mách bảo thiêng liêng. Những lời kể ấy hoành tráng và gọn gàng hơn những gì ông thật sự ghi lại. Lời đáp thật cho lời cầu nguyện này không phải là một phép lạ như trong phim. Đó là một bà cụ nghèo với một đĩa thức ăn của chính mình và một ổ bánh mì, được thúc giục gõ cửa đúng lúc. Điều đó đáng để ý: những lời đáp của Đức Chúa Trời trong cuốn sách này thường nhỏ bé và gần gũi hơn những gì truyền thuyết kể, và không vì thế mà kém thật chút nào.</p> <p>Điều khiến bạn ấn tượng khi đọc hết trang này đến trang khác những dòng ghi chép ấy là cơ chế bình thường đến mức nào. Đức Chúa Trời hầu như không bao giờ làm mưa tiền từ trời xuống. Ngài thúc giục một con người. Có người mất ngủ vì cứ nghĩ gia đình Müller có thể đang thiếu thốn. Có người cảm thấy “được giục giã” để dâng và đã chần chừ quá lâu. Sự chu cấp là thật, và nó luôn đến qua sự vâng lời của một ai đó. Müller không cầu nguyện xin phép màu. Ông cầu xin Đức Chúa Trời lay động lòng người — và Đức Chúa Trời đã làm thế.</p> <p>Ông cũng thành thật rằng trong lòng ông không phải lúc nào cũng bình yên. Ông ghi lại những ngày ông “bị cám dỗ nghi ngờ Chúa,” khi ông bắt gặp mình nghĩ rằng có lẽ mình đã đi quá xa khi sống theo cách này. Đức tin trong cuốn sách này không phải là không có lo lắng. Đó là đem nỗi lo đến với Đức Chúa Trời thay vì đến với một tài khoản tiết kiệm, hết lần này đến lần khác, và nhìn thấy Ngài ra tay — thường vào giây phút cuối cùng, đôi khi ngay lúc Müller vừa đứng dậy sau khi quỳ gối.</p> <p>Bạn sống trong một thế giới coi số dư tài khoản đầy ắp là sự an toàn thật duy nhất, còn cầu nguyện chỉ là một thứ thêm vào cho đẹp. Müller đã làm thí nghiệm theo chiều ngược lại suốt mấy chục năm và viết đầy một cuốn sách về kết quả. Ông không bảo bạn hãy liều lĩnh. Ông không mắc nợ và chẳng phung phí gì. Ông đang nói với bạn rằng Đức Chúa Trời, Đấng dạy chúng ta cầu xin “Xin cho chúng con hôm nay đủ bánh ăn,” thật sự có ý muốn đó là một lời cầu xin mà bạn có thể dâng lên và thật sự thấy được đáp lời.</p> <p><strong>Một điều để làm:</strong> hãy chọn một nhu cầu thật, cụ thể trong tuần này — không phải một mong ước, mà một nhu cầu — và xin Đức Chúa Trời một cách thẳng thắn, thành tiếng, với đầy đủ chi tiết. Rồi hãy quan sát, như Müller đã làm, xem nó có thể đến bằng con đường bình thường nào: một con người, một tin nhắn, một lời đề nghị bất ngờ. Đức tin không mơ hồ. Nó gọi đúng tên điều cần xin rồi chú tâm quan sát.</p>",
+  "study_questions": [
+   {
+    "question": "Điều gì đã xảy ra vào Chúa Nhật ngày 27 tháng 11 năm 1831, sau khi Müller cầu xin bánh?",
+    "answer": "Ông còn đang cầu nguyện thì một bà cụ nghèo gõ cửa. Bà mang đến một phần bữa ăn của mình cùng năm si-linh, rồi sau đó quay lại với một ổ bánh mì lớn."
+   },
+   {
+    "question": "Tại sao chương này cảnh báo về những truyền thuyết đầy kịch tính về Müller?",
+    "answer": "Vì những gì ông thật sự ghi lại nhỏ bé và gần gũi hơn: Đức Chúa Trời thường lay động những con người bình thường để dâng hiến. Những lời đáp ấy không vì bình thường mà kém thật."
+   },
+   {
+    "question": "Bạn có thể xin Đức Chúa Trời nhu cầu cụ thể nào một cách thẳng thắn trong tuần này?",
+    "answer": "Chương này gợi ý hãy gọi tên một nhu cầu thật, không phải một mong ước, nói thành tiếng và đầy đủ chi tiết, rồi để ý những lời đáp bình thường như một con người hay một lời đề nghị. Đức tin gọi đúng tên điều cần xin và chú tâm quan sát."
+   }
+  ],
+  "word_count": 863
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-teens",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Hãy Há Miệng Thật Rộng",
+  "body_html": "<blockquote>“Ta là CHÚA, Đức Chúa Trời của con, là Đấng đã dẫn con lên khỏi đất Ai Cập. Hãy há miệng con ra thật rộng, Ta sẽ làm cho đầy.” — Thi-thiên 81:10</blockquote> <p>Đến giữa thập niên 1830, Müller sống ở Bristol, một thành phố công nghiệp lớn, và ông cứ gặp đi gặp lại cùng một điều đáng buồn. Nhìn đâu ông cũng thấy những Cơ Đốc nhân quen biết kiệt sức và sợ hãi vì chuyện tiền bạc. Một người làm việc mười sáu tiếng mỗi ngày, mệt đến không còn sức cầu nguyện. Những tín hữu lớn tuổi khiếp sợ cảnh phải vào trại tế bần. Những người mắc kẹt trong công việc mà họ không thể làm với lương tâm trong sạch, nhưng quá sợ mất thu nhập nên không dám bỏ. Về lý thuyết, ai cũng tin Đức Chúa Trời sẽ chu cấp. Nhưng chẳng ai sống như thế cả.</p> <p>Müller muốn trao cho họ một bằng chứng. Không phải thêm một bài giảng — mà là bằng chứng họ có thể tận mắt nhìn thấy. Và ông đã có ý tưởng về bằng chứng đó: ông sẽ chăm sóc trẻ mồ côi, một trong những nhu cầu bức thiết nhất ở thành phố ấy, và ông sẽ làm việc đó hoàn toàn bằng sự cầu nguyện, không xin bất cứ con người nào một xu. Nếu một người nghèo như ông có thể nuôi ăn và cho những đứa trẻ không cha không mẹ chỗ ở chỉ bằng sự cầu nguyện và đức tin, thì mọi tín hữu đang nghi ngờ sẽ có một điều hữu hình để chỉ vào và nói: Đức Chúa Trời thật vẫn còn đáp lời.</p> <p>Ở đây ông thành thật đến từng chi tiết về động cơ của chính mình, và thật đáng để xem ông tự kiểm tra bản thân ra sao. Ông cầu nguyện nhiều ngày, xin rằng nếu ý tưởng này thật ra chỉ là cái tôi của ông khoác áo mục vụ, thì Đức Chúa Trời hãy cất hẳn ý nghĩ ấy đi. Ông xét lòng mình hết lần này đến lần khác. Ông đến gặp một người bạn và thẳng thắn nhờ người ấy dò xét xem có sự kiêu ngạo hay động cơ sai trái nào đang ẩn giấu không. Ông muốn chắc chắn đây là ý tưởng của Đức Chúa Trời chứ không phải tham vọng của George Müller. Chỉ khi nó đứng vững qua tất cả những chất vấn ấy, ông mới tiến bước.</p> <p>Đằng sau kế hoạch ấy cũng có một gương mặt. Müller từng nghe về một cậu bé mồ côi nghèo vẫn đến học ở một trong các trường của ông và dường như thật sự đang hướng về Đức Chúa Trời — rồi cậu bị đưa đến một trại tế bần ở xa, và buồn bã vì không thể đến trường được nữa. Cậu bé ấy cứ ám ảnh ông. Đó không chỉ là một luận điểm thần học lớn lao về đức tin; đó là những đứa trẻ không có nơi nào để đi.</p> <p>Rồi đến khoảnh khắc mà ông xây dựng mọi thứ trên đó. Khi đọc Kinh Thánh vào tháng 12 năm 1835, ông bị đánh động bởi một câu: “Hãy há miệng con ra thật rộng, Ta sẽ làm cho đầy.” Ông tin lời Đức Chúa Trời đúng như Ngài phán. Ông không xin nhỏ. Ông xin một tòa nhà, xin một nghìn bảng, và xin những người phù hợp đến chăm sóc bọn trẻ. Một nghìn bảng, trong khi bản thân ông gần như chẳng có gì.</p> <p>Hai ngày sau, đồng si-linh đầu tiên đến. Một si-linh, so với lời cầu nguyện một nghìn bảng. Hầu hết mọi người sẽ nản lòng. Müller thì không, vì điều quan trọng chưa bao giờ là món quà đầu tiên lớn hay nhỏ. Điều quan trọng là Đức Chúa Trời có phán hãy há miệng thật rộng hay không — và ông chắc chắn Ngài đã phán.</p> <p>Đây là điều dành cho bạn. Hai bản năng của Müller trông như trái ngược nhau nhưng thật ra không phải. Ông xin Đức Chúa Trời một điều khổng lồ — và ông tra xét lòng mình không khoan nhượng để chắc chắn mình không chỉ đang chạy theo vinh quang của bản thân. Đức tin lớn và sự thành thật triệt để về động cơ luôn đi đôi với nhau. Có rất nhiều người mơ những giấc mơ thật lớn mà chẳng bao giờ hỏi xem giấc mơ ấy có thật ra chỉ xoay quanh chính mình hay không. Cũng có rất nhiều người khác sợ kiêu ngạo đến mức chẳng bao giờ dám xin Đức Chúa Trời điều gì đáng kể.</p> <p><strong>Một điều để làm:</strong> hãy viết ra một điều bạn thật lòng sẽ xin Đức Chúa Trời nếu bạn tin Ngài có thể làm được — một điều lớn hơn mức bạn thường dám xin. Rồi hãy làm bài kiểm tra của Müller: ngồi lặng với nó và thành thật hỏi xem nó là vì Đức Chúa Trời và người khác, hay chủ yếu là vì bạn. Chỉ giữ lại nếu nó vượt qua được câu hỏi đó. Rồi hãy bắt đầu cầu xin.</p>",
+  "study_questions": [
+   {
+    "question": "Müller đã thử nghiệm thế nào để biết ý tưởng lập trại mồ côi có thật sự đến từ Đức Chúa Trời không?",
+    "answer": "Ông cầu nguyện nhiều ngày, xin Đức Chúa Trời cất ý tưởng đó đi nếu nó chỉ xuất phát từ cái tôi, xét lòng mình nhiều lần, và nhờ một người bạn dò xét xem có sự kiêu ngạo ẩn giấu nào không."
+   },
+   {
+    "question": "Tại sao Müller không nản lòng khi món quà đầu tiên chỉ là một si-linh?",
+    "answer": "Điều quan trọng chưa bao giờ là món quà đầu tiên lớn hay nhỏ. Điều quan trọng là Đức Chúa Trời có phán “Hãy há miệng con ra thật rộng” hay không, và ông chắc chắn Ngài đã phán."
+   },
+   {
+    "question": "Bạn sẽ xin Đức Chúa Trời điều gì nếu bạn tin Ngài có thể làm được, và điều đó là vì Ngài hay vì bạn?",
+    "answer": "Chương này nói đức tin lớn và sự thành thật về động cơ luôn đi đôi với nhau. Hãy viết lời cầu xin ra, thành thật kiểm tra nó, giữ lại nếu nó vượt qua được, rồi bắt đầu cầu xin."
+   }
+  ],
+  "word_count": 879
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-teens",
+   "vi"
+  ],
+  "order": 7,
+  "title": "Xây Trên Mười Si-linh",
+  "body_html": "<blockquote>“Không phải bởi năng lực, cũng không phải bởi sức mạnh, nhưng bởi Thần Linh của Ta, CHÚA Vạn Quân phán.” — Xa-cha-ri 4:6</blockquote> <p>Vào tháng 12 năm 1835, khi cuối cùng Müller triệu tập một buổi họp công khai để trình bày kế hoạch lập trại mồ côi, ông đã làm một việc mà gần như không ai khởi động một tổ chức từ thiện lại làm: ông bảo đảm rằng không có gì trong buổi họp đó có thể gây áp lực buộc ai phải dâng tiền.</p> <p>Hãy nghĩ xem điều đó ngược đời đến mức nào. Nếu bạn khởi động một dự án cần một nghìn bảng, buổi ra mắt chính là lúc bạn dồn sức kêu gọi — những câu chuyện cảm động, một lời kêu gọi mạnh mẽ, một chiếc đĩa quyên góp được chuyền đi đúng lúc cao trào. Müller từ chối tất cả. Ông cố ý ghi rằng buổi họp “cố tình không có quyên góp,” và không ai phát biểu ngoài ông. Ông không muốn “tác động vào cảm xúc.” Ông muốn chắc chắn rằng bất cứ điều gì đến đều là do Đức Chúa Trời lay động lòng người, chứ không phải George Müller vắt ép cả hội trường.</p> <p>Kết quả của sự kiềm chế ấy? Sau buổi họp, có mười si-linh được dâng. Mười si-linh — cho mục tiêu một nghìn bảng. Và một phụ nữ xin đến làm việc.</p> <p>Giờ đây là câu cho thấy Müller là người như thế nào. Ông kể rằng ông rời buổi họp ấy về nhà “vui mừng trong Chúa, và đầy tin tưởng rằng việc này sẽ thành, dù mới chỉ có mười si-linh được dâng.” Lẽ ra mười si-linh phải giống như một trò đùa so với những gì ông cần. Với ông, đó lại là một khởi đầu, vì sự tin tưởng của ông chưa bao giờ đặt vào số tiền quyên được. Mà đặt vào việc Đức Chúa Trời có ở trong việc này hay không.</p> <p>Rồi bắt đầu có những điều xảy ra mà ông không hề dàn dựng, vì ông đã từ chối dàn dựng bất cứ điều gì. Quà tặng bắt đầu tự tìm đến. Không phải một cơn lũ tiền mặt — mà là một dòng chảy nhỏ lạ lùng, cảm động của những đồ dùng gia đình bình thường, đúng những thứ một trại mồ côi cần. Một chiếc tủ quần áo lớn. Rồi bát đĩa, chậu, một chiếc bình, cốc, lọ đựng muối, dao và nĩa. Nhiều thước vải. Chăn mền. Một anh một em gái viết thư xin đến điều hành ngôi nhà mà không nhận lương, dâng cả đồ đạc của mình để trang bị cho nó, tin cậy Đức Chúa Trời chu cấp cho nhu cầu của họ. Rồi năm mươi bảng từ một người mà Müller chẳng bao giờ ngờ tới. Rồi một trăm bảng. Mọi thứ đến theo cách mà bánh ăn hằng ngày luôn đến trong cuốn sách này: qua con người, từng người một, được lay động từ bên trong.</p> <p>Ngày 21 tháng 4 năm 1836, trại mồ côi đầu tiên mở cửa. Mười bảy đứa trẻ dọn vào. Nó nhỏ bé, chẳng hào nhoáng gì, và hoàn toàn có thật — và nó được dựng lên gần như hoàn toàn từ sự cầu nguyện và sự vâng lời của người khác, không có lấy một lời kêu gọi gây quỹ nào. Từ mười bảy đứa trẻ ấy, công việc sẽ lớn dần, trong suốt cuộc đời Müller, đến mức che chở cho hàng nghìn em.</p> <p>Câu Kinh Thánh ông nương dựa nói thẳng điều đó: “Không phải bởi năng lực, cũng không phải bởi sức mạnh, nhưng bởi Thần Linh của Ta.” Müller lẽ ra có thể có được ngôi nhà đầu tiên nhanh hơn bằng cách khéo léo khuấy động đám đông. Ông cố ý chọn con đường chậm hơn, mạo hiểm hơn, vì một ngôi nhà được xây bằng sự thao túng sẽ chẳng chứng minh được gì. Một ngôi nhà được xây bằng sự cầu nguyện chứng minh được mọi điều ông đã định chứng minh.</p> <p>Xung quanh bạn toàn là bản năng ngược lại. Cả bộ kỹ năng hiện đại đều xoay quanh việc thúc đẩy — cách thuyết phục, quảng bá, gây áp lực, làm cho viral, tạo ra phản ứng. Một số điều trong đó cũng có chỗ đứng của nó. Nhưng Müller đang lặng lẽ đặt ra một câu hỏi khó hơn: bạn có sẵn lòng làm một việc theo cách thành thật, không thúc ép, ngay cả khi nó bắt đầu với mười si-linh thay vì một nghìn bảng không? Ngay cả khi điều đó có nghĩa là tin cậy Đức Chúa Trời về kết quả thay vì cố ép cho bằng được?</p> <p><strong>Một điều để làm:</strong> trong tuần này, hãy làm một việc mà không tô vẽ — không phóng đại, không khiến người khác thấy tội lỗi, không đánh vào cảm xúc người ta để đạt được điều mình muốn. Hãy xin một cách thẳng thắn hoặc đừng xin gì cả, và để kết quả đúng như nó thật sự là. Hãy để ý cảm giác bị phơi bày ấy, và nó buộc bạn phải thật sự tin cậy Đức Chúa Trời về kết quả nhiều đến mức nào, thay vì dựa vào áp lực của chính mình.</p>",
+  "study_questions": [
+   {
+    "question": "Buổi họp công khai mà Müller tổ chức vào tháng 12 năm 1835 có gì khác thường?",
+    "answer": "Buổi họp cố tình không có quyên góp, và ông từ chối “tác động vào cảm xúc.” Sau đó chỉ có mười si-linh được dâng, và một phụ nữ xin đến làm việc."
+   },
+   {
+    "question": "Tại sao Müller về nhà “đầy tin tưởng” khi chỉ có mười si-linh được dâng?",
+    "answer": "Sự tin tưởng của ông chưa bao giờ đặt vào số tiền quyên được, mà vào việc Đức Chúa Trời có ở trong việc này hay không. Một ngôi nhà xây bằng sự thao túng sẽ chẳng chứng minh được gì."
+   },
+   {
+    "question": "Ở đâu bạn bị cám dỗ thúc ép, tô vẽ hay khiến người khác thấy tội lỗi để đạt được kết quả?",
+    "answer": "Chương này thách thức bạn làm một việc mà không tô vẽ: xin một cách thẳng thắn hoặc đừng xin gì cả, và tin cậy Đức Chúa Trời về kết quả thay vì dựa vào áp lực của chính mình."
+   }
+  ],
+  "word_count": 902
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-teens",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Cô Thợ May Đã Dâng Tất Cả",
+  "body_html": "<blockquote>“Thật vậy, Ta nói với các con, bà góa nghèo này đã dâng nhiều hơn tất cả những người khác đang dâng vào các thùng dâng hiến. Mọi người khác đều dâng từ phần dư thừa của mình. Còn bà, dù túng thiếu, đã dâng hết mọi thứ mình có, tất cả số tiền bà cần để sống.” — Mác 12:43–44</blockquote> <p>Một trong những món quà lớn nhất trong những ngày đầu của công việc chăm sóc trẻ mồ côi lại đến từ một trong những người nghèo nhất mà Müller quen biết, và câu chuyện của cô đáng được kể thẳng thắn, vì nó không phải là một câu chuyện gọn gàng như người ta vẫn mong đợi.</p> <p>Müller gọi cô là A. L. Cô kiếm sống bằng cây kim, bằng nghề may vá, và nghề ấy đem lại cho cô có lẽ chừng ba si-linh sáu xu mỗi tuần — gần như chẳng là bao, lại còn ít hơn khi cô quá yếu không làm được, mà chuyện đó thì thường xuyên. Nhiều năm nay Müller chỉ biết cô đơn giản là một phụ nữ nghèo. Ông không hề biết có điều gì đã thay đổi.</p> <p>Nhưng đã có điều thay đổi. Cha cô qua đời, và qua người bà, cô được thừa hưởng bốn trăm tám mươi bảng — một gia tài thật sự đối với người ở hoàn cảnh như cô. Đây là chỗ câu chuyện trở nên khó nghe và rất thật. Cha cô từng là một người nghiện rượu nặng, và ông chết trong nợ nần. Về mặt pháp lý, các con ông không nợ các chủ nợ đồng nào. Anh trai và các chị em gái của cô đề nghị trả cho các chủ nợ một phần — một phần tư số nợ — và các chủ nợ, vốn chẳng có quyền đòi gì, vui vẻ nhận lấy. Nhưng A. L. không thể sống yên với điều đó. Cô nói: “Dù cha tôi có tội lỗi đến đâu, ông vẫn là cha tôi.” Cô lặng lẽ đến gặp từng chủ nợ và trả đủ toàn bộ nợ của cha, bằng chính phần của mình — nhiều hơn những người kia bốn mươi bảng. Cô dọn dẹp mớ hỗn độn mà người cha say xỉn để lại, một cách âm thầm, vì cô nghĩ một con cái của Đức Chúa Trời nên làm như vậy.</p> <p>Rồi cô cho mẹ một trăm bảng — gấp đôi số tiền các anh chị em cô cho. Và rồi cô gửi một trăm bảng cho Müller để lo cho trại mồ côi.</p> <p>Phải công nhận rằng Müller không chỉ đơn giản nhận lấy. Ông mời cô ngồi xuống và phản đối kịch liệt, cố bảo đảm rằng cô không dâng trong một phút xúc động bồng bột để rồi hối tiếc. Ông chất vấn động cơ của cô. Cô không hề lay chuyển. Câu trả lời của cô là một trong những câu sắc bén nhất trong cả cuốn sách: “Chúa Giê-xu đã đổ giọt máu cuối cùng của Ngài vì tôi, lẽ nào tôi lại không dâng cho Ngài một trăm bảng này?” Rồi cô bắt ông nhận thêm năm bảng nữa, cho người nghèo.</p> <p>Điều khiến câu chuyện gần như không thể tin nổi là những gì cô làm sau đó: chẳng có gì thay đổi cả. Cô không nâng cấp cuộc sống của mình. Quần áo của cô vẫn là những bộ đồ giản dị, rẻ tiền như cũ. Cô vẫn may vá kiếm ba si-linh mỗi tuần trong khi trao đi hàng trăm bảng bằng những tờ giấy bạc năm bảng. Cô hầu như không kể với ai — chỉ chừng sáu người biết cô từng có số tiền đó. Nhiều tháng sau, khi phần lớn số tiền đã hết, cô quay lại dâng thêm năm bảng, và kèm thêm năm si-linh nữa “để làm bằng chứng rằng tôi dâng năm bảng này với lòng vui vẻ.” Cuối cùng, từng xu một đều đã hết, nhiều năm trước khi cô qua đời. Và rồi, khi cô nghèo hơn bao giờ hết, Đức Chúa Trời đã chăm lo cho cô: một tín hữu khác gửi bánh mì cho cô suốt nhiều tháng, và Müller kể rằng miệng cô “đầy lời tạ ơn” ngay cả trong những đau đớn thật sự.</p> <p>Hãy thành thật về những gì câu chuyện này khuấy động trong bạn, vì nó được kể ra là để làm vậy. Hầu hết chúng ta dâng những gì mình sẽ không thấy thiếu. A. L. dâng những gì cô thật sự sẽ cần đến. Và cô làm thế mà không để ai khen ngợi mình, đó là phần mà hầu như không ai làm được. Sự rộng rãi mà ai cũng thấy thì dễ; nó trả công cho bạn bằng sự ngưỡng mộ. Còn sự rộng rãi của cô chẳng trả lại gì có thể thấy được cả.</p> <p>Cô là bằng chứng sống cho chính điều mà Müller lập trại mồ côi để chứng minh: rằng Đức Chúa Trời đáng tin cậy trọn vẹn đến mức bạn có thể cho đi tấm lưới an toàn của mình mà không hoảng sợ.</p> <p><strong>Một điều để làm:</strong> trong tuần này, hãy dâng một thứ mà bạn sẽ thật sự cảm thấy — tiền bạc, thời gian, hay công sức khiến bạn mất đi một sự thoải mái thật — và đừng kể với ai là bạn đã làm thế. Sự âm thầm chính là bài kiểm tra. Nếu bạn cần được ghi công, thì đó chưa hẳn là một món quà. Hãy thử xem bạn có thể dâng như A. L. không: lặng lẽ, và cho Đức Chúa Trời.</p>",
+  "study_questions": [
+   {
+    "question": "A. L. đã làm gì với bốn trăm tám mươi bảng được thừa hưởng?",
+    "answer": "Cô trả đủ toàn bộ nợ của cha dù về pháp lý cô không nợ gì, cho mẹ một trăm bảng, và gửi một trăm bảng cho trại mồ côi."
+   },
+   {
+    "question": "Theo chương này, điều gì khiến sự rộng rãi của A. L. nổi bật?",
+    "answer": "Cô dâng những gì mình thật sự sẽ cần đến, vẫn giữ những bộ quần áo giản dị và nghề may vá, và hầu như không kể với ai. Sự dâng hiến của cô chẳng đem lại cho cô chút ngưỡng mộ nào."
+   },
+   {
+    "question": "Bạn có chủ yếu dâng những gì mình sẽ không thấy thiếu không? Sự dâng hiến thật sự, âm thầm có thể trông như thế nào với bạn?",
+    "answer": "Chương này gợi ý hãy dâng một thứ bạn sẽ cảm thấy, như tiền bạc, thời gian hay công sức, và đừng kể với ai. Nếu bạn cần được ghi công, thì đó chưa hẳn là một món quà."
+   }
+  ],
+  "word_count": 953
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-teens",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Gần Như Từng Giờ",
+  "body_html": "<blockquote>“Từ nơi ngự thánh của Ngài, Đức Chúa Trời làm cha cho kẻ mồ côi và bênh vực người góa bụa.” — Thi-thiên 68:5</blockquote> <p>Người ta thích những khoảnh khắc nổi bật trong cuộc đời Müller — những lời cầu nguyện được nhậm, những khoản tiền xuất hiện. Họ bỏ qua đoạn mùa thu năm 1838, mà đó lại là đoạn bạn cần nhất nếu đã từng cầu nguyện hết lòng mà chẳng nghe thấy gì đáp lại. Bởi vì suốt nhiều tuần trong năm ấy, những lời đáp đến chậm đến mức gần như khiến ông gục ngã.</p> <p>Lúc đó có khoảng một trăm người cần được nuôi ăn trong ba trại mồ côi. Và tiền bạc đơn giản là không còn theo kịp nhu cầu. Müller viết thẳng: Đức Chúa Trời “giờ đây ban cho theo từng ngày, và gần như theo từng giờ.” Không có khoản dự phòng, không có quỹ để dành. Mỗi sáng, ông thật sự không biết tối hôm đó bọn trẻ sẽ ăn gì. Có những ngày chẳng có gì đến cả.</p> <p>Đây là một quyết định trong những tuần ấy cho thấy ông nghiêm túc với các nguyên tắc của mình đến mức nào. Ông và các cộng sự thống nhất rằng họ sẽ không bao giờ mua bất cứ thứ gì mà họ không thể trả tiền ngay — không ghi sổ nợ với tiệm bánh, không “cứ ghi vào tài khoản của chúng tôi.” Kinh Thánh nói “Đừng để mình còn mắc nợ ai,” và ông từ chối bảo vệ bọn trẻ khỏi cái đói bằng cách lặng lẽ mắc nợ. Ông thà nghèo một cách công khai, thành thật, còn hơn âm thầm vay mượn. Vì thế họ trả tiền mặt cho từng ổ bánh, hoặc không mua.</p> <p>Ông đã làm gì trong lúc chờ đợi? Ông không giả vờ thanh thản, và cũng không bỏ cuộc. Vào một trong những ngày tồi tệ nhất, ông ngồi xuống và viết ra mười một lý do cụ thể mà ông trình dâng lên Đức Chúa Trời, vì sao Ngài nên gửi sự giúp đỡ đến. Đọc chúng, bạn sẽ thấy một tâm trí không chịu trôi vào nỗi tuyệt vọng mơ hồ. Ông lập luận rằng ông đã bắt đầu toàn bộ công việc này để chứng minh Đức Chúa Trời đáp lời cầu nguyện, nên nếu thất bại thì Đức Chúa Trời sẽ trông như vắng mặt. Ông lập luận rằng Đức Chúa Trời tự xưng là Cha của kẻ mồ côi — vậy theo một nghĩa nào đó, đây chính là những đứa con của Đức Chúa Trời đang chịu đói. Ông lập luận rằng những tín hữu yếu đuối đang dõi theo sẽ bị gục ngã, còn những kẻ hoài nghi sẽ cười nhạo và nói rằng họ đã biết trước nó sẽ sụp đổ. Ông còn thừa nhận cả lý do rất riêng tư, rất trần trụi: rằng chính ông không thể nào gánh nổi gánh nặng này, và cần Đức Chúa Trời đừng để nó đè trên vai ông quá lâu. Đó không phải là một người giả vờ rằng mọi chuyện dễ dàng. Đó là một người đang vật lộn.</p> <p>Và ông thành thật rằng các cộng sự của ông cũng gánh nó cùng ông theo những cách mà đến giờ vẫn khiến người ta xúc động. Khi tiền cạn, họ dâng tiền của chính mình. Một người bán chiếc đồng hồ và những chiếc ghim vàng của mình. Một phụ nữ dâng mười sáu si-linh cuối cùng mà cô có, nói rằng sẽ không đúng nếu cầu xin sự chu cấp mà mình lại không sẵn lòng dâng những gì đang có trong tay. Một người khác nói đừng lo về lương của cô trong suốt một năm. Những người ở gần nhu cầu nhất là những người dâng hiến nhiều nhất.</p> <p>Bạn sẽ có những mùa giống như mùa thu ấy — khi bạn đang làm điều đúng mà sự giúp đỡ cứ không đến, hoặc đến muộn và ít ỏi đến mức bạn bắt đầu tự hỏi liệu mình có sai hết từ đầu không. Hãy để ý điều Müller đã làm trong khoảng trống ấy. Ông không từ bỏ những xác tín của mình để cơn đau dừng lại. Ông không giả vờ có sự bình an mà mình không cảm thấy. Ông đem đến trước Đức Chúa Trời những lập luận thật, cụ thể, gần như bướng bỉnh, và ông tiếp tục nuôi bọn trẻ, từng ngày một cách thành thật.</p> <p>Một lời đáp chậm không giống như không có lời đáp. Nhưng bạn chỉ học được điều đó bằng cách ở lại trong sự chậm trễ mà không bỏ cuộc hay gian lận để thoát ra.</p> <p><strong>Một điều để làm:</strong> hãy lấy lời cầu nguyện mà bạn đã gần như bỏ cuộc và, như Müller, viết ra những lý do thật sự khiến bạn cầu xin — những “vì sao” thật, cụ thể, chứ không phải một mong ước lịch sự. Rồi hãy tiếp tục làm điều thành thật tiếp theo trước mặt bạn trong lúc chờ đợi. Đức tin trong khoảng trống không phải là một cảm xúc. Đó là không chịu bỏ cuộc và không chịu gian lận, trong cùng một ngày.</p>",
+  "study_questions": [
+   {
+    "question": "Müller và các cộng sự đã giữ nguyên tắc nào trong mùa thu khó khăn năm 1838?",
+    "answer": "Họ sẽ không bao giờ mua thứ gì mà không thể trả tiền ngay, vì Kinh Thánh nói “Đừng để mình còn mắc nợ ai.” Họ trả tiền mặt hoặc chịu thiếu."
+   },
+   {
+    "question": "Tại sao Müller viết ra mười một lý do để Đức Chúa Trời gửi sự giúp đỡ?",
+    "answer": "Việc đó giữ ông khỏi trôi vào nỗi tuyệt vọng mơ hồ. Ông đem đến trước Đức Chúa Trời những lập luận cụ thể: danh dự của Đức Chúa Trời, trẻ mồ côi là con cái của Ngài, những tín hữu yếu đuối, và việc chính ông không thể gánh nổi gánh nặng."
+   },
+   {
+    "question": "Khi bạn đang làm điều đúng mà sự giúp đỡ không đến, bạn phản ứng thế nào?",
+    "answer": "Chương này nói một lời đáp chậm không phải là không có lời đáp. Müller không từ bỏ xác tín cũng không giả vờ bình an: ông cầu nguyện thành thật và làm điều đúng tiếp theo, không chịu bỏ cuộc hay gian lận."
+   }
+  ],
+  "word_count": 886
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-teens",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Khoản Tiền Ở Ngay Nhà Bên",
+  "body_html": "<blockquote>“Sẽ có lúc Ta đáp lời họ trước khi họ kêu cầu, và nghe họ khi lời họ còn trên môi.” — Ê-sai 65:24</blockquote> <p>Cơn khủng hoảng kéo dài năm 1838 cuối cùng cũng chấm dứt, và cách nó chấm dứt là một trong những trang ghi chép kỳ lạ nhất, lặng lẽ mà gây sững sờ nhất trong cả cuốn sách — vì nơi mà sự giải cứu đã nằm sẵn suốt từ đầu đến cuối.</p> <p>Đến ngày 18 tháng 9, họ đã đến tận cùng. Quỹ đã cạn. Những cộng sự còn chút tiền đã dâng hết. Müller sắp phải bán đồ đạc chỉ để mua thức ăn, và sáng hôm đó ông đã cầu nguyện xin Đức Chúa Trời đừng để họ phải làm thế. Rồi chiều hôm ấy, một phụ nữ đến gõ cửa nhà ông. Bà đã đi từ gần London đến từ mấy hôm trước, mang theo số tiền con gái bà gửi cho trẻ mồ côi, và — đây là chi tiết đáng chú ý — bà đã thuê chỗ trọ ngay sát vách trại mồ côi dành cho các bé trai. Bà đã ở đó, tiền trong tay, suốt bốn năm ngày. Chiều hôm ấy cuối cùng bà mới mang nó sang: ba bảng, hai si-linh, sáu xu. Đúng vào lúc họ chẳng còn gì.</p> <p>Giờ hãy đọc xem Müller hiểu điều đó thế nào, vì đây là toàn bộ ý nghĩa của câu chuyện. Ông viết rằng việc số tiền nằm gần đến thế suốt bao nhiêu ngày mà không được trao là “một bằng chứng rõ ràng rằng ngay từ đầu, Đức Chúa Trời đã có lòng muốn giúp đỡ chúng tôi.” Sự giải cứu đã đậu sẵn cách đó hai mươi thước suốt thời gian ông cầu nguyện, toát mồ hôi và suýt phải bán đồ đạc. Đức Chúa Trời không cuống cuồng tìm sự giúp đỡ vào giây phút chót. Sự giúp đỡ đã đến Bristol trước cả khi cơn khủng hoảng lên đến đỉnh điểm. Vậy mà — theo lời Müller — “vì Ngài vui thích những lời cầu nguyện của con cái Ngài, nên Ngài đã để chúng tôi cầu nguyện lâu như thế; cũng là để thử đức tin chúng tôi, và làm cho lời đáp ngọt ngào hơn nhiều.”</p> <p>Hãy ngẫm xem điều đó thay đổi cách nhìn về sự chờ đợi nhiều đến mức nào. Müller không nói rằng Đức Chúa Trời chậm chạp hay xa cách. Ông nói rằng Đức Chúa Trời đã có sẵn lời đáp từ sớm và cố ý để sự chờ đợi kéo dài, có chủ đích, vì những lý do tốt lành dù chúng thật khó khăn. Sự chậm trễ không phải là Đức Chúa Trời vắng mặt. Nó là một phần của món quà.</p> <p>Đây không phải là chuyện chỉ xảy ra một lần. Vài tuần sau, vào một ngày tuyệt vọng khác, các cộng sự đang cùng nhau cầu nguyện thì có người gõ cửa giữa lúc cầu nguyện. Họ tiếp tục cầu nguyện, lặng lẽ, và khi đứng dậy, Müller nhận thấy có một lá thư đã được đặt trên bàn trong lúc họ đang quỳ gối — mười bảng cho trẻ mồ côi, do một người đàn ông gửi, người chỉ đơn giản được lay động để dâng từ mấy hôm trước. Một lần nữa: lời đáp đã trên đường đến trước khi họ cầu xin xong.</p> <p>Bạn biết cảm giác mà câu chuyện này nói đến. Bạn cầu nguyện, và sự im lặng sau đó giống như bằng chứng rằng chẳng ai lắng nghe cả. Cuốn sổ ghi chép của Müller nói: hãy cẩn thận khi đọc sự im lặng. Sự giúp đỡ có thể đã ở gần hơn bạn nghĩ, đang di chuyển qua những con người, qua bưu điện và những phòng trọ ngay nhà bên, được sắp đặt để đến không sớm một giây — không phải vì Đức Chúa Trời thờ ơ, mà vì Ngài đang làm một điều gì đó trong bạn suốt thời gian chờ đợi, điều mà một lời đáp tức thì sẽ bỏ qua.</p> <p>Bạn không được nhìn thấy “khoản tiền ở ngay nhà bên” trong lúc mình đang cầu nguyện. Bạn chỉ thấy nó sau này, khi nhìn lại và nhận ra nó đã ở gần đến thế nào suốt từ đầu. Điều đó có nghĩa là cách duy nhất để học được bài học này là tiếp tục cầu nguyện qua một sự chờ đợi mà dường như chẳng có gì đang xảy ra.</p> <p><strong>Một điều để làm:</strong> hãy nhìn lại năm vừa qua và tìm một lần lời đáp đến muộn — một tình bạn, một cơ hội, một vấn đề được giải quyết sau khi bạn gần như đã bỏ cuộc. Hãy lần theo xem nó có thể đã ở gần đến mức nào trong lúc bạn vẫn còn đang chờ. Hãy làm điều đó một lần, thật thành thật, và lần im lặng tiếp theo sẽ dễ ngồi lại hơn.</p>",
+  "study_questions": [
+   {
+    "question": "Số tiền giải cứu trại mồ côi vào ngày 18 tháng 9 đã nằm chờ ở đâu?",
+    "answer": "Một phụ nữ mang món quà của con gái mình đã thuê chỗ trọ ngay sát vách trại mồ côi dành cho các bé trai suốt bốn năm ngày trước khi mang nó sang."
+   },
+   {
+    "question": "Müller giải thích thế nào về việc Đức Chúa Trời để họ cầu nguyện lâu như thế trong khi sự giúp đỡ đã ở gần?",
+    "answer": "Ông nói điều đó chứng tỏ sự giúp đỡ đã ở trong lòng Đức Chúa Trời ngay từ đầu. Đức Chúa Trời vui thích những lời cầu nguyện của con cái Ngài, và để họ chờ đợi để thử đức tin họ và làm cho lời đáp ngọt ngào hơn."
+   },
+   {
+    "question": "Bạn thường đọc sự im lặng sau khi cầu nguyện như thế nào?",
+    "answer": "Chương này gợi ý hãy nhìn lại một lần lời đáp đến muộn và lần theo xem nó có thể đã ở gần đến mức nào. Sự chậm trễ có thể là một phần của món quà, không phải Đức Chúa Trời vắng mặt."
+   }
+  ],
+  "word_count": 841
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-teens",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Ngân Hàng Không Thể Vỡ Nợ",
+  "body_html": "<blockquote>“Nhưng hãy tích trữ của cải cho mình ở trên trời, là nơi mối mọt và gỉ sét không làm hư hỏng được, và kẻ trộm cũng không đào tường khoét vách lấy đi được.” — Ma-thi-ơ 6:20</blockquote> <p>Vào tháng 2 năm 1839, vài vị khách ăn mặc sang trọng đến tham quan trại mồ côi dành cho các bé trai — kiểu người khá giả luôn cho rằng một cơ sở như thế này hẳn phải có một khoản tiền lớn đứng phía sau. Một bà trong nhóm nói với người phụ nữ quản lý, đại ý: “Dĩ nhiên là chị không thể điều hành tất cả những việc này nếu không có một quỹ dự trữ kha khá.” Ông đi cùng bà quay sang bà quản lý và hỏi thẳng: “Chị có quỹ dự trữ kha khá không?”</p> <p>Câu trả lời của bà quản lý là một trong những câu hay nhất trong cả cuốn sách. Bà nói: “Quỹ của chúng tôi được gửi trong một ngân hàng không thể vỡ nợ.”</p> <p>Hãy nghĩ xem bà thật sự biết gì khi nói câu đó. Müller ghi lại rằng chính ngày hôm ấy, trong tay họ không có lấy một xu. “Quỹ dự trữ kha khá” mà các vị khách tưởng tượng không hề tồn tại. Ngân hàng bà nói đến không phải là một tòa nhà chứa tiền. Đó là Đức Chúa Trời. Và bà nói điều đó không phải như một khẩu hiệu hay ho, mà như sự thật theo đúng nghĩa đen về hoàn cảnh của mình: chúng tôi chẳng để dành được gì, và chúng tôi chưa từng một lần cạn kiệt, vì tài khoản của chúng tôi ở nơi Đấng không bao giờ có thể phá sản.</p> <p>Mắt bà khách rưng rưng nước mắt. Và khi ra về, ông khách trao cho người phụ trách các bé trai năm bảng — số tiền đến, như Müller ghi chép chính xác, “khi trong tay tôi không có lấy một xu.” Ngân hàng không thể vỡ nợ vừa thực hiện thêm một khoản gửi nữa, qua chính người đã nghi ngờ rằng nó có thật.</p> <p>Cụm từ ấy đáng được nhìn kỹ, vì cả đời bạn đang được huấn luyện để tin cậy một ngân hàng khác. Không hẳn là một ngân hàng theo nghĩa đen — mà là cả cái ý tưởng cho rằng an toàn nghĩa là tích trữ cho đủ. Đủ tiền, đủ phương án dự phòng, đủ người theo dõi, đủ khoảng an toàn, để dù có chuyện gì xảy ra, bạn vẫn được bảo đảm. Đó không phải là một bản năng điên rồ. Nhưng Müller và bà quản lý ấy đang chỉ vào điều mà câu Kinh Thánh nói thẳng ra: mọi ngân hàng trên đất đều có thể sụp đổ. Tiền bạc bị lạm phát và những chuyện khẩn cấp ăn mòn. Danh tiếng sụp đổ chỉ sau một đêm. Những tấm lưới an toàn mà bạn được dạy phải đan đều có lỗ thủng, và một số sẽ hỏng đúng vào lúc bạn cần chúng nhất.</p> <p>Müller không chống lại sự cẩn trọng — hãy nhớ rằng ông từ chối mắc nợ và chưa từng phung phí một xu. Ý của ông hẹp hơn và sắc bén hơn: đừng đặt sự tin cậy tối hậu của bạn vào một thứ có thể thất bại. Bạn cứ giữ những gì mình giữ, nhưng hãy để điều mà lòng bạn thật sự nương tựa là tài khoản duy nhất không thể sụp đổ.</p> <p>Và hãy để ý cách bà quản lý mang lấy điều đó. Bà không lo lắng trước mặt những vị khách ấy. Bà không ngượng ngùng khi thực chất thừa nhận rằng họ chẳng có đồng tiết kiệm nào. Bà bình tĩnh, gần như vui vẻ, đứng trong một ngôi nhà không có đồng nào, vì bà thật lòng tin quỹ thật của họ ở đâu. Sự bình tĩnh ấy chính là dấu hiệu nói lên tất cả. Bạn không thể giả vờ có nó, và bạn không thể mượn nó. Nó chỉ đến khi bạn thật sự đã chuyển sự tin cậy của mình từ ngân hàng có thể vỡ nợ sang ngân hàng không bao giờ vỡ nợ.</p> <p>Hầu hết mọi người dành cả đời cố cảm thấy sự an toàn ấy bằng cách dồn thêm vào cái tài khoản có thể thất bại. Müller dành cả đời mình để chứng minh rằng có một tài khoản hoàn toàn khác, và bạn có thể sống — thật sự sống, với cả trăm đứa trẻ trông cậy vào bạn — với kho báu của mình đặt ở đó.</p> <p><strong>Một điều để làm:</strong> hãy thành thật tự hỏi câu hỏi của ông khách kia — quỹ dự trữ của bạn ở đâu? Hãy gọi tên điều mà bạn thầm trông cậy để cảm thấy an toàn. Bạn không cần phải vứt bỏ nó. Nhưng hãy bắt đầu cố ý đặt một phần sự tin cậy vào nơi nó không thể đổ vỡ: cho đi một phần “sự an toàn” ấy, hoặc nương cậy Đức Chúa Trời về một điều mà bình thường bạn sẽ giải quyết bằng cách tích trữ. Hãy chuyển một chút kho báu của bạn sang ngân hàng tồn tại mãi mãi.</p>",
+  "study_questions": [
+   {
+    "question": "Bà quản lý đã trả lời thế nào khi một vị khách hỏi: “Chị có quỹ dự trữ kha khá không?”",
+    "answer": "Bà nói: “Quỹ của chúng tôi được gửi trong một ngân hàng không thể vỡ nợ,” dù hôm đó trong tay không có lấy một xu. Sau đó ông khách đã dâng năm bảng."
+   },
+   {
+    "question": "Tại sao chương này gọi sự bình tĩnh của bà quản lý là “dấu hiệu nói lên tất cả”?",
+    "answer": "Bạn không thể giả vờ có hay mượn được sự bình tĩnh ấy. Nó chỉ đến khi bạn thật sự chuyển sự tin cậy của mình từ ngân hàng có thể vỡ nợ sang Đức Chúa Trời, Đấng không bao giờ vỡ nợ."
+   },
+   {
+    "question": "Bạn đang thầm trông cậy vào điều gì để cảm thấy an toàn?",
+    "answer": "Chương này không nói bạn phải vứt bỏ nó, vì chính Müller cũng cẩn trọng. Nó bảo bạn đừng đặt sự tin cậy tối hậu vào điều có thể thất bại, và hãy chuyển một phần sự tin cậy sang Đức Chúa Trời."
+   }
+  ],
+  "word_count": 888
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-teens",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Phần Tốt Nhất Trong Ngày",
+  "body_html": "<blockquote>“Sáng sớm, lúc trời còn tối, Ngài thức dậy và ra đi. Ngài đến một nơi hoang vắng và cầu nguyện ở đó.” — Mác 1:35</blockquote> <p>Sau tất cả — nhà tù, sự cải đạo, việc từ bỏ đồng lương, những trại mồ côi được nuôi bằng sự cầu nguyện suốt nhiều năm — một trong những điều hữu ích nhất mà Müller từng học được lại bình thường đến mức gần như đáng ngượng. Ông học cách dậy sớm hơn.</p> <p>Chuyện xảy ra thế này. Müller có sức khỏe yếu và thần kinh căng thẳng, và ông đã lý luận, nghe cũng khá hợp lý, rằng nghỉ ngơi nhiều hơn sẽ giúp ích — nên ông ngủ dậy muộn hơn và ngủ trưa sau bữa ăn để đầu óc mệt mỏi được nghỉ. Điều đó có vẻ như là biết chăm sóc bản thân. Nhưng ông nhận ra linh hồn mình đang chịu thiệt. Hết lần này đến lần khác, những đòi hỏi của một ngày ập đến trước khi ông kịp có thời gian thật sự để cầu nguyện hay đọc Kinh Thánh, và ông trải qua cả những ngày “gầy guộc” về thuộc linh, chạy trong tình trạng cạn kiệt.</p> <p>Rồi khi ở nhà một người bạn tại Plymouth năm 1839, ông nghe một nhận xét đã thay đổi thói quen của ông suốt phần đời còn lại. Chủ nhà đang nói về các của lễ trong sách Lê-vi Ký — rằng Đức Chúa Trời muốn phần tốt nhất của con vật, chứ không phải phần thừa — và nói rằng cũng vậy, “phần thời gian tốt nhất của chúng ta nên được dành riêng cho sự tương giao với Chúa.” Müller nghe câu đó như thể một cánh cửa vừa mở ra. Lâu nay ông vẫn dâng cho Đức Chúa Trời phần thừa thãi, mơ hồ của sự chú tâm, bất cứ điều gì còn tỉnh táo sau khi một ngày đã lấy đi phần của nó. Vì thế ông quyết định: “dù thân thể tôi có phải chịu gì đi nữa,” ông sẽ không để phần quý báu nhất trong ngày trôi qua trong lúc mình nằm trên giường nữa.</p> <p>Ông bắt đầu dậy sớm — cho phép mình ngủ chừng bảy tiếng, không hơn — và dành khoảng thời gian buổi sáng đầu tiên, tươi mới và yên tĩnh ấy cho sự cầu nguyện và Kinh Thánh trước khi bất cứ điều gì khác kịp chạm đến. Ông cũng bỏ luôn những giấc ngủ sau bữa ăn. Và đây là điều bất ngờ mà ông không hề lường trước: sức khỏe của ông trở nên <em>tốt hơn</em>, chứ không tệ đi. Ông đi đến chỗ tin rằng điều tệ hại nhất cho thần kinh yếu ớt của mình lại chính là nằm trên giường lâu hơn — rằng giấc ngủ thêm đã khiến ông yếu đi, chứ không chữa lành ông. Cả thân thể lẫn linh hồn đều khá lên khi Đức Chúa Trời nhận được phần tốt nhất của ngày thay vì phần cặn bã.</p> <p>Giờ thì Müller rất cẩn thận, và bạn cũng nên như vậy: ông không trao cho bạn một quy tắc cứng nhắc. Ông nói mỗi người cần lượng giấc ngủ khác nhau, rằng ngủ quá ít cũng là một sai lầm, rằng bạn không nên vắt kiệt bản thân. Đây không phải chuyện khoe khoang mình có thể sống sót với ít giờ ngủ đến mức nào. Đây là về một câu hỏi thành thật: ai, hay điều gì, đang nhận được phần tốt nhất trong ngày của bạn?</p> <p>Hãy thật lòng về phiên bản của chính bạn. Với hầu hết mọi người ngày nay, việc đầu tiên khi thức dậy không phải là cầu nguyện hay suy nghĩ — mà là cầm điện thoại. Trước khi chân bạn chạm đất, những thông báo, những bảng tin, tiếng ồn của cả trăm người lạ đã chiếm lấy những phút giây tươi tỉnh, minh mẫn nhất của bạn. Đến lúc bạn định làm điều gì sâu sắc hơn, bạn đã tản mát, đã phản ứng theo quán tính, đã chạy bằng phần cảm xúc thừa thãi. Kẻ thù của Müller là một chiếc giường ấm; kẻ thù của bạn là một màn hình sáng. Nguyên tắc thì y hệt.</p> <p>Điều ông khám phá ra là hình dạng của cả một ngày thường được định đoạt trong nửa giờ đầu tiên của nó. Hãy dâng nửa giờ ấy cho Đức Chúa Trời — yên lặng, Kinh Thánh, cầu nguyện, trước khi thế giới kịp móc vào bạn — và bạn sẽ đối diện những thử thách trong ngày với một điều gì đó bên trong thay vì trống rỗng. Còn nếu dâng nó cho tiếng ồn, bạn sẽ dành phần còn lại của ngày để cố đuổi kịp chính mình.</p> <p>Đây là nơi một cuộc đời như của Müller thật sự được xây dựng. Không chủ yếu ở những cuộc giải cứu đầy kịch tính, mà ở quyết định nhàm chán, lặp đi lặp lại: dâng cho Đức Chúa Trời phần thời gian tốt nhất của bạn trước khi bất cứ điều gì khác kịp tiêu xài nó.</p> <p><strong>Một điều để làm vào sáng mai:</strong> trước khi chạm vào điện thoại, hãy dành mười phút đầu tiên cho Đức Chúa Trời — mở Kinh Thánh ra, hoặc chỉ cầu nguyện, trong yên lặng. Không phải sau khi lướt mạng. Mà là trước. Hãy làm một lần và cảm nhận sự khác biệt trong ngày; rồi hãy làm lại. Chỉ nửa giờ được sắp xếp lại ấy, nếu được duy trì, chính là động cơ thầm lặng bên dưới mọi điều khác mà bạn đã đọc trong cuốn sách này.</p>",
+  "study_questions": [
+   {
+    "question": "Điều gì đã thay đổi thói quen buổi sáng của Müller trong lần ông ở Plymouth năm 1839?",
+    "answer": "Chủ nhà nói rằng phần thời gian tốt nhất của chúng ta nên được dành cho sự tương giao với Chúa. Müller bắt đầu dậy sớm để cầu nguyện và đọc Kinh Thánh, và bỏ những giấc ngủ trưa."
+   },
+   {
+    "question": "Điều gì khiến Müller ngạc nhiên về sức khỏe của mình sau khi bắt đầu dậy sớm hơn?",
+    "answer": "Sức khỏe của ông khá lên. Ông đi đến chỗ tin rằng giấc ngủ thêm đã khiến ông yếu đi, và cả thân thể lẫn linh hồn đều tốt hơn khi Đức Chúa Trời nhận được phần tốt nhất của ngày."
+   },
+   {
+    "question": "Điều gì đang nhận được phần đầu tiên và tốt nhất trong ngày của bạn?",
+    "answer": "Chương này gọi tên chiếc điện thoại là phiên bản ngày nay của chiếc giường ấm của Müller. Nó gợi ý hãy dành mười phút đầu tiên cho Đức Chúa Trời trước khi chạm vào điện thoại, nhưng không biến điều đó thành một quy tắc cứng nhắc."
+   }
+  ],
+  "word_count": 960
+ }
+}
+]
