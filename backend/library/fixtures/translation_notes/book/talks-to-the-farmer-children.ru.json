@@ -1,0 +1,114 @@
+{
+ "kind": "book",
+ "slug": "talks-to-the-farmer-children",
+ "language": "ru",
+ "job_issue": 9080,
+ "references": [
+  {
+   "reference": "Proverbs 24:30a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Proverbs 24:31a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Proverbs 24:30a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Proverbs 24:31",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 147:16a",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 147:18a",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 12:24b",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Luke 8:5a",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 65:9a",
+   "status": "mined",
+   "block_index": 48,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 65:10d",
+   "status": "mined",
+   "block_index": 48,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:7c",
+   "status": "mined",
+   "block_index": 56,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 104:14a",
+   "status": "mined",
+   "block_index": 67,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Isaiah 9:3b",
+   "status": "mined",
+   "block_index": 76,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ruth 2:15b",
+   "status": "mined",
+   "block_index": 85,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ruth 2:15c",
+   "status": "mined",
+   "block_index": 85,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ruth 2:16",
+   "status": "self_rendered",
+   "block_index": 88
+  },
+  {
+   "reference": "Isaiah 28:28a",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Matthew 13:30c",
+   "status": "mined",
+   "block_index": 101,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}
