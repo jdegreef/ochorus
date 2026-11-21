@@ -26143,6 +26143,39 @@
 				525
 			]
 		},
+		"ko/john-hyde-a-life-children": {
+			"ground": "bda9d5a04992546f217aac79f5c5aa3b050e7909744ab5efc9a7f9d6767c7535",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "2059e6007e359e0cc6eed1395937d9f706334ba61836bbe3fccc3217749cb466",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[236, 106, 364, 135]
+				],
+				"title": [
+					[111, 321, 489, 396]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				328,
+				472
+			]
+		},
 		"ko/key-teachings-of-a-b-simpson": {
 			"ground": "e9334223c6ea230598f1c68a76d906ea8821135dd4bf9b4e8493767d933a44f0",
 			"style": "originals",
