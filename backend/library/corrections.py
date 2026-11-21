@@ -24904,6 +24904,9 @@ BODY_CORRECTIONS.setdefault("key-teachings-of-richard-baxter", {}).setdefault("r
 BODY_CORRECTIONS["separation-and-service"]["back_matter"].append(
     ("crucifié pour nous.</p> <p>FIN.</p>", "<p>Note du transcripteur :<br/>"),
 )
+BODY_CORRECTIONS["separation-and-service"]["back_matter"].append(
+    ("실제로 보여 줍니다.</p> <p>끝</p>", "<p>필사자 주:<br/>"),
+)
 
 # --- English defects found while translating (queue batch 5) ---
 # OCR slips in the source scan, and miscited chapter headings: Hezekiah's healing is 2 Kings 20, the blind man John 9, Paul stoned at Lystra Acts 14:19, the temptation Matthew 4.
