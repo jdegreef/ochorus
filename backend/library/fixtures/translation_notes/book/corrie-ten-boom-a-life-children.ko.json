@@ -30,8 +30,9 @@
   },
   {
    "reference": "Psalm 32:7",
-   "status": "self_rendered",
-   "block_index": 36
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Psalm 91:1",
@@ -41,17 +42,21 @@
   },
   {
    "reference": "Psalm 91:2a",
-   "status": "self_rendered",
-   "block_index": 45
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Psalm 27:10",
-   "status": "self_rendered",
-   "block_index": 54
+   "status": "mined",
+   "block_index": 54,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Genesis 5:24",
-   "status": "self_rendered"
+   "status": "mined",
+   "block_index": 56,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Isaiah 43:2a",
