@@ -81,18 +81,20 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
   Questions, The Big Story, They Were Young) **keep the BSB on purpose**, and so
   does a further volume of one of those series: their teaching is written
   around the BSB's wording. Don't re-quote them. (Founder decision, 2026-10-25.)
-- **Amharic, Swahili and Japanese quote OWB everywhere**: Originals and classics
+- **Amharic, Swahili, Japanese and Vietnamese quote OWB everywhere**: Originals and classics
   alike, plus the site's own Scripture in those languages (footer blessings,
-  About verses, topic-shelf verses). The text is the language's **OWB
+  About verses, topic-shelf verses; for Vietnamese the site's own Scripture is
+  not switched yet). The text is the language's **OWB
   Balanced** (CC0), bundled as `backend/library/data/bible/owb-<lang>-b.json.gz`
   (`scripts/build_owb_bible.py --language <lang>`); the Bible codes are
-  `owb-am`, `owb-sw` and `owb-ja`, and `translation.fetch_verse_text("owb-sw",
+  `owb-am`, `owb-sw`, `owb-ja` and `owb-vi`, and `translation.fetch_verse_text("owb-sw",
   ref)` reads one offline. The works shipped before the switch (Amharic's 1962
   quotes, © UBS; Swahili's Union wording; Japanese's 口語訳) are being re-quoted
-  to OWB, and the Amharic credit line goes once the last Amharic book is.
+  to OWB (Vietnamese's Cadman 1925 quotes too), and the Amharic credit line
+  goes once the last Amharic book is.
   Swahili's earlier split (Originals OWB, classics Union, 33 Originals left on
   Union) is superseded. (Founder decisions: Amharic 2026-11-18; Swahili and
-  Japanese 2026-11-19.)
+  Japanese 2026-11-19; Vietnamese 2026-11-21.)
 
 ## The fixture (now a friendly edge)
 

@@ -1,0 +1,111 @@
+{
+ "kind": "sermon",
+ "slug": "how-to-contemplate-christs-holy-sufferings",
+ "language": "ko",
+ "job_issue": 8954,
+ "references": [
+  {
+   "reference": "Luke 23:28b",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:8b",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Acts 2:36",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Acts 2:37",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 23:31",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Zechariah 12:10-12",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 23:27",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Lamentations 3:20",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Isaiah 53:6b",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 2:24a",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 3:16a",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Galatians 5:24",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Hebrews 12:3",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 4:1a",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Hebrews 5:7",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John 6:44",
+   "status": "self_rendered",
+   "block_index": 16
+  }
+ ]
+}

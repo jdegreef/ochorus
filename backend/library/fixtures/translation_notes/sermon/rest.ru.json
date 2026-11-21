@@ -1,0 +1,115 @@
+{
+ "kind": "sermon",
+ "slug": "rest",
+ "language": "ru",
+ "job_issue": 9135,
+ "references": [
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 66:18",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 84:11",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Joshua 23:14",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Luke 12:19",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ecclesiastes 12:12",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Isaiah 57:20",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 11:28a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:4a",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "John 5:40",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 6:37b",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}
