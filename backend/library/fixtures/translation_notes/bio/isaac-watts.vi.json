@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "isaac-watts",
+ "language": "vi",
+ "job_issue": 9212,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Jeremiah 12:1",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Hebrews 11:4",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 41
+  }
+ ]
+}

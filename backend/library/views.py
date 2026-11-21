@@ -64,6 +64,7 @@ from .search import (
     MAX_RESULTS,
     PAGE_SIZE,
     SORTS,
+    correction,
     count_by_type,
     memoized,
     min_query_len,
@@ -72,6 +73,7 @@ from .search import (
     scope_entry,
     search_library,
     suggest,
+    verse_quoted,
 )
 from .search_triage import hit_key, pinned_hit, rules
 from .serializers import (
@@ -1843,10 +1845,19 @@ class SearchView(APIView):
             "totals_capped": capped,
             "page_size": PAGE_SIZE,
         }
+        if verse := verse_quoted(searched, language):
+            # The verse the words quote, so the page can show it (the instant
+            # scripture answer a reference query gets).
+            payload["verse"] = verse
         if searched != q:
             # Said out loud, so a reader isn't left wondering why their word
             # isn't in any of the results.
             payload["searched_for"] = searched
+        also = correction(searched, language) if results else None
+        if also:
+            # A misspelt word was searched as typed AND corrected
+            # (search.correction); say so, as for a synonym.
+            payload["also_searched_for"] = also
         if scope:
             # Resolved (or dropped) here so the page can name the shelf without a
             # second request. None means the place doesn't exist in this
@@ -1914,6 +1925,27 @@ class SearchView(APIView):
                 scope,
             ),
         }
+
+
+class SearchCompleteView(APIView):
+    """Suggestions as you type (``library.search_complete``): the people,
+    books, topics and plans the letters typed so far already name.
+
+    Not logged — a keystroke is not a search, and logging prefixes would fill
+    the zero-result report with "mo" and "spur". Throttled with search, whose
+    bucket is sized for typing.
+    """
+
+    throttle_classes = [_SearchThrottle]
+
+    def get(self, request):
+        from .search_complete import complete
+
+        q = (request.query_params.get("q") or "").strip()[:100]
+        language = _language(request)
+        if len(q) < min_query_len(language):
+            return Response({"query": q, "results": []})
+        return Response({"query": q, "results": complete(q, language)})
 
 
 class PopularSearchesView(APIView):
@@ -1993,6 +2025,11 @@ class _SearchClickThrottle(ScopedCacheThrottle):
     scope = "search-click"
 
 
+#: A search row's key: "<type>:<slug>", plus ":<n>" parts for a chapter
+#: ("chapter:humility:3") or a scripture page ("scripture:john:3:16").
+_CLICK_KEY = re.compile(r"[a-z]+:[a-z0-9][a-z0-9-]*(?::\d*){0,2}")
+
+
 class SearchClickView(APIView):
     """Record that a search result was opened. Anonymous, fire-and-forget.
 
@@ -2035,10 +2072,16 @@ class SearchClickView(APIView):
             position = int(data.get("position"))
         except (TypeError, ValueError):
             position = 0
+        # Which result, as the page keys it — kept only when it is shaped like
+        # one of this type's keys, so the column can't carry free text.
+        raw_key = data.get("key")
+        key = raw_key.strip() if isinstance(raw_key, str) else ""
+        if not (len(key) <= 200 and _CLICK_KEY.fullmatch(key) and key.split(":")[0] == result_type):
+            key = ""
 
         if (
             min_query_len(_language(request)) <= len(q) <= 200
-            and result_type in CAPS
+            and (result_type in CAPS or result_type in ("quote", "answer"))
             and 1 <= position <= self.MAX_POSITION
         ):
             # Fail-open like the query log: analytics must never be the reason a
@@ -2050,6 +2093,7 @@ class SearchClickView(APIView):
                     language=_language(request)[:10],
                     result_type=result_type,
                     position=position,
+                    result_key=key,
                 )
             except Exception:
                 logger.warning("search click logging failed", exc_info=True)

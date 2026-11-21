@@ -1,0 +1,99 @@
+{
+ "kind": "book",
+ "slug": "john-hyde-a-life-children",
+ "language": "vi",
+ "job_issue": 9412,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Matthew 9:38",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Luke 11:13b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalm 51:10a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Exodus 4:12b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Mark 1:35",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Zechariah 4:6b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 81:10b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Zechariah 2:8",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Luke 15:20b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}
