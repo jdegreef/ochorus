@@ -1595,7 +1595,7 @@ class AdminSearchPreviewView(APIView):
     """
 
     def get(self, request):
-        from ..search import min_query_len, search_library
+        from ..search import min_query_len, search_library, suggest
 
         q = (request.query_params.get("q") or "").strip()
         language = (request.query_params.get("language") or "").strip().lower()
@@ -1604,4 +1604,10 @@ class AdminSearchPreviewView(APIView):
                 {"detail": f"q ({min_query_len(language)}+ chars) and language are required."},
                 status=status.HTTP_400_BAD_REQUEST,
             )
-        return Response({"query": q, "results": search_library(q, language)})
+        results = search_library(q, language)
+        payload = {"query": q, "results": results}
+        if not results and (word := suggest(q, language)):
+            # The library's nearest word, which the synonym dialog offers ready
+            # to save: the weekly pass over the unanswered list is mostly this.
+            payload["suggestion"] = word
+        return Response(payload)

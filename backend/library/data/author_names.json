@@ -1,0 +1,249 @@
+{
+  "_about": "How each author's name is written in each site language, for SEARCH ONLY (library/people.py): a reader in Korean types 무디, not Moody. Keyed by author slug, then language; each list is the forms readers use (the usual transliteration first, then a common variant). Only where the language writes the name differently from the English row. Nominative forms; Korean particles, Arabic letter variants, Japanese long-vowel marks and Devanagari nukta are folded at match time. Not shown to readers.",
+  "a-b-simpson": {
+    "am": ["ኤ. ቢ. ሲምፕሰን"], "ar": ["أ. ب. سمبسون"], "hi": ["ए. बी. सिम्पसन"],
+    "ja": ["A・B・シンプソン"], "ko": ["A. B. 심프슨"], "uk": ["А. Б. Сімпсон"]
+  },
+  "a-w-tozer": {
+    "am": ["ኤ. ደብሊው. ቶዘር"], "ar": ["أ. و. توزر"], "hi": ["ए. डब्ल्यू. टोज़र"],
+    "ja": ["A・W・トウザー"], "ko": ["A. W. 토저"], "uk": ["А. В. Тозер"]
+  },
+  "absalom-jones": {"am": ["አብሳሎም ጆንስ"], "ko": ["압살롬 존스"]},
+  "amanda-berry-smith": {
+    "am": ["አማንዳ ቤሪ ስሚዝ"], "ar": ["أماندا بيري سميث"], "hi": ["अमांडा बेरी स्मिथ"],
+    "ja": ["アマンダ・ベリー・スミス"], "ko": ["아만다 베리 스미스"], "uk": ["Аманда Беррі Сміт"]
+  },
+  "amy-carmichael": {
+    "am": ["ኤሚ ካርማይክል"], "ar": ["إيمي كارمايكل"], "hi": ["एमी कारमाइकल"],
+    "ja": ["エイミー・カーマイケル"], "ko": ["에이미 카마이클"], "uk": ["Емі Кармайкл"]
+  },
+  "andrew-murray": {
+    "am": ["አንድሪው መሪ"], "ar": ["أندرو موري"], "hi": ["एंड्रयू मरे"],
+    "ja": ["アンドリュー・マーレー"], "ko": ["앤드류 머레이"], "uk": ["Ендрю Мюррей"]
+  },
+  "anselm-of-canterbury": {
+    "es": ["Anselmo de Canterbury"], "fr": ["Anselme de Cantorbéry"], "pt": ["Anselmo da Cantuária"]
+  },
+  "arthur-t-pierson": {"am": ["አርተር ቲ. ፒርሰን"]},
+  "athanasius-of-alexandria": {
+    "am": ["አትናቴዎስ"], "ar": ["أثناسيوس الرسولي"], "hi": ["अथानासियस"],
+    "ko": ["알렉산드리아의 아타나시우스"], "uk": ["Афанасій Великий"],
+    "es": ["Atanasio de Alejandría"], "fr": ["Athanase d'Alexandrie"], "pt": ["Atanásio de Alexandria"]
+  },
+  "augustine-of-hippo": {
+    "am": ["የሂፖው አውግስጢኖስ", "ቅዱስ አውግስጢኖስ"], "ar": ["أوغسطينوس", "أغسطينوس"],
+    "hi": ["हिप्पो के ऑगस्टीन", "संत ऑगस्टीन"], "ja": ["アウグスティヌス"],
+    "ko": ["히포의 아우구스티누스", "어거스틴"], "uk": ["Августин Гіппонський", "Блаженний Августин"],
+    "es": ["Agustín de Hipona", "San Agustín"], "fr": ["Augustin d'Hippone", "saint Augustin"],
+    "pt": ["Agostinho de Hipona", "Santo Agostinho"]
+  },
+  "basil-of-caesarea": {
+    "es": ["Basilio de Cesarea", "Basilio el Grande"], "fr": ["Basile de Césarée"], "pt": ["Basílio de Cesareia"]
+  },
+  "bernard-of-clairvaux": {
+    "am": ["የክሌርቮው በርናርድ"], "ar": ["برنارد من كليرفو"], "hi": ["क्लेरवो के बर्नार्ड"],
+    "ko": ["클레르보의 베르나르"], "uk": ["Бернард Клервоський"],
+    "es": ["Bernardo de Claraval"], "pt": ["Bernardo de Claraval"]
+  },
+  "blaise-pascal": {"am": ["ብሌዝ ፓስካል"], "hi": ["ब्लेज़ पास्कल"], "ko": ["블레즈 파스칼"], "ja": ["ブレーズ・パスカル"], "ar": ["بليز باسكال"], "uk": ["Блез Паскаль"]},
+  "boethius": {"es": ["Boecio"], "fr": ["Boèce"], "pt": ["Boécio"]},
+  "brother-lawrence": {
+    "am": ["ወንድም ሎሬንስ"], "ar": ["الأخ لورنس"], "hi": ["ब्रदर लॉरेंस"],
+    "ja": ["ブラザー・ローレンス"], "ko": ["로렌스 형제"], "uk": ["Брат Лаврентій"],
+    "es": ["Hermano Lorenzo"], "fr": ["Frère Laurent"], "pt": ["Irmão Lourenço"]
+  },
+  "catherine-booth": {
+    "am": ["ካትሪን ቡዝ"], "ar": ["كاثرين بوث"], "hi": ["कैथरीन बूथ"],
+    "ja": ["キャサリン・ブース"], "ko": ["캐서린 부스"], "uk": ["Кетрін Бут"]
+  },
+  "catherine-of-siena": {"es": ["Catalina de Siena"], "fr": ["Catherine de Sienne"], "pt": ["Catarina de Sena"]},
+  "charles-finney": {
+    "am": ["ቻርልስ ፊኒ", "ቻርልስ ግራንዲሰን ፊኒ"], "ar": ["تشارلز فيني", "تشارلز غرانديسون فيني"],
+    "hi": ["चार्ल्स फ़िन्नी", "चार्ल्स ग्रैंडिसन फ़िन्नी"], "ja": ["チャールズ・フィニー", "チャールズ・グランディソン・フィニー"],
+    "ko": ["찰스 피니", "찰스 그랜디슨 피니"], "uk": ["Чарлз Фінні", "Чарлз Ґрандісон Фінні"]
+  },
+  "charles-h-spurgeon": {
+    "am": ["ቻርልስ ስፐርጀን"], "ar": ["تشارلز سبرجن", "سبرجون"], "hi": ["चार्ल्स स्पर्जन"],
+    "ja": ["チャールズ・スポルジョン", "C・H・スポルジョン"], "ko": ["찰스 스펄전", "C. H. 스펄전"],
+    "uk": ["Чарлз Сперджен", "Чарльз Сперджен"]
+  },
+  "christmas-evans": {
+    "am": ["ክሪስማስ ኢቫንስ"], "ar": ["كريسمس إيفانز"], "hi": ["क्रिसमस इवांस"],
+    "ja": ["クリスマス・エヴァンズ"], "ko": ["크리스마스 에반스"], "uk": ["Крістмас Еванс"]
+  },
+  "clement-of-alexandria": {"es": ["Clemente de Alejandría"], "fr": ["Clément d'Alexandrie"], "pt": ["Clemente de Alexandria"]},
+  "clement-of-rome": {
+    "am": ["የሮሙ ቀሌምንጦስ"], "ar": ["إكليمندس الروماني"], "hi": ["रोम के क्लेमेंट"],
+    "ko": ["로마의 클레멘스"], "uk": ["Климент Римський"],
+    "es": ["Clemente de Roma"], "fr": ["Clément de Rome"], "pt": ["Clemente de Roma"]
+  },
+  "corrie-ten-boom": {
+    "am": ["ኮሪ ቴን ቡም"], "ar": ["كوري تن بوم"], "hi": ["कॉरी टेन बूम"],
+    "ja": ["コーリー・テン・ブーム"], "ko": ["코리 텐 붐"], "uk": ["Коррі тен Бум", "Коррі тен Бом"]
+  },
+  "cyprian-of-carthage": {
+    "am": ["የካርቴጁ ቆጵርያኖስ"], "es": ["Cipriano de Cartago"], "fr": ["Cyprien de Carthage"], "pt": ["Cipriano de Cartago"]
+  },
+  "cyril-of-jerusalem": {"es": ["Cirilo de Jerusalén"], "fr": ["Cyrille de Jérusalem"], "pt": ["Cirilo de Jerusalém"]},
+  "david-brainerd": {"am": ["ዴቪድ ብሬነርድ"], "ar": ["ديفيد برينرد"], "hi": ["डेविड ब्रेनर्ड"], "uk": ["Девід Брейнерд"]},
+  "dwight-l-moody": {
+    "am": ["ድዋይት ኤል. ሙዲ", "ዲ. ኤል. ሙዲ"], "ar": ["دوايت ل. مودي", "د. ل. مودي"],
+    "hi": ["ड्वाइट एल. मूडी", "डी. एल. मूडी"], "ja": ["ドワイト・L・ムーディー", "D・L・ムーディー"],
+    "ko": ["드와이트 L. 무디", "D. L. 무디"], "uk": ["Двайт Л. Муді", "Д. Л. Муді"]
+  },
+  "e-m-bounds": {
+    "am": ["ኢ. ኤም. ባውንድስ"], "ar": ["إ. م. باوندز"], "hi": ["ई. एम. बाउंड्स"],
+    "ko": ["E. M. 바운즈"], "uk": ["Е. М. Баундс"]
+  },
+  "elisabeth-elliot": {"ko": ["엘리자베스 엘리엇"]},
+  "eusebius-of-caesarea": {"es": ["Eusebio de Cesarea"], "fr": ["Eusèbe de Césarée"], "pt": ["Eusébio de Cesareia"]},
+  "f-f-bosworth": {"am": ["ኤፍ. ኤፍ. ቦስዎርዝ"]},
+  "francis-de-sales": {"es": ["Francisco de Sales"], "fr": ["François de Sales"], "pt": ["Francisco de Sales"]},
+  "frederick-brotherton-meyer": {
+    "am": ["ኤፍ. ቢ. ማየር"], "ar": ["ف. ب. ماير"], "hi": ["एफ़. बी. मेयर"],
+    "ko": ["F. B. 마이어"], "uk": ["Ф. Б. Маєр"]
+  },
+  "g-k-chesterton": {"hi": ["जी. के. चेस्टरटन"], "ko": ["G. K. 체스터턴"]},
+  "gareth-evans": {
+    "am": ["ጋሬዝ ኢቫንስ"], "ar": ["غاريث إيفانز"], "hi": ["गैरेथ इवांस"],
+    "ja": ["ギャレス・エヴァンズ"], "ko": ["개러스 에번스"], "uk": ["Ґарет Еванс"]
+  },
+  "george-muller": {
+    "am": ["ጆርጅ ሙለር"], "ar": ["جورج مولر"], "hi": ["जॉर्ज म्यूलर"],
+    "ja": ["ジョージ・ミュラー"], "ko": ["조지 뮬러"], "uk": ["Джордж Мюллер"], "es": ["Jorge Müller"]
+  },
+  "george-whitefield": {
+    "am": ["ጆርጅ ዋይትፊልድ"], "ar": ["جورج وايتفيلد"], "hi": ["जॉर्ज व्हाइटफ़ील्ड"],
+    "ja": ["ジョージ・ホイットフィールド"], "ko": ["조지 휫필드"], "uk": ["Джордж Вайтфілд"]
+  },
+  "gregory-of-nazianzus": {"es": ["Gregorio Nacianceno"], "fr": ["Grégoire de Nazianze"], "pt": ["Gregório de Nazianzo"]},
+  "gregory-of-nyssa": {"es": ["Gregorio de Nisa"], "fr": ["Grégoire de Nysse"], "pt": ["Gregório de Níssa"]},
+  "gregory-the-great": {"es": ["Gregorio Magno"], "fr": ["Grégoire le Grand"], "pt": ["Gregório Magno"]},
+  "hannah-buyinza": {
+    "am": ["ሃና ቡዪንዛ"], "ar": ["هانا بويينزا"], "hi": ["हन्ना बुयिन्ज़ा"],
+    "ja": ["ハンナ・ブインザ"], "ko": ["한나 부인자"], "uk": ["Ганна Буїнза"]
+  },
+  "hannah-whitall-smith": {
+    "am": ["ሃና ዊታል ስሚዝ"], "ar": ["هانا ويتال سميث"], "hi": ["हन्ना व्हिटॉल स्मिथ"],
+    "ko": ["한나 휘톨 스미스"], "uk": ["Ганна Вітал Сміт"]
+  },
+  "hippolytus-of-rome": {"es": ["Hipólito de Roma"], "fr": ["Hippolyte de Rome"], "pt": ["Hipólito de Roma"]},
+  "hudson-taylor": {
+    "am": ["ሃድሰን ቴለር"], "ar": ["هدسون تايلور"], "hi": ["हडसन टेलर"],
+    "ja": ["ハドソン・テーラー", "ハドソン・テイラー"], "ko": ["허드슨 테일러"], "uk": ["Гадсон Тейлор", "Хадсон Тейлор"]
+  },
+  "ignatius-of-antioch": {
+    "am": ["የአንጾኪያው አግናጥዮስ"], "ar": ["إغناطيوس الأنطاكي"], "hi": ["अन्ताकिया के इग्नेशियस"],
+    "ko": ["안디옥의 이그나티우스"], "uk": ["Ігнатій Антіохійський", "Ігнатій Богоносець"],
+    "es": ["Ignacio de Antioquía"], "fr": ["Ignace d'Antioche"], "pt": ["Inácio de Antioquia"]
+  },
+  "ignatius-of-loyola": {"es": ["Ignacio de Loyola"], "fr": ["Ignace de Loyola"], "pt": ["Inácio de Loyola"]},
+  "irenaeus-of-lyons": {"es": ["Ireneo de Lyon"], "fr": ["Irénée de Lyon"], "pt": ["Ireneu de Lyon"]},
+  "isaac-watts": {"am": ["አይዛክ ዋትስ"]},
+  "j-c-ryle": {
+    "am": ["ጄ. ሲ. ራይል", "ጆን ቻርልስ ራይል"], "ar": ["ج. ك. رايل", "جون تشارلز رايل"],
+    "hi": ["जे. सी. राइल", "जॉन चार्ल्स राइल"], "ja": ["J・C・ライル"],
+    "ko": ["J. C. 라일", "존 찰스 라일"], "uk": ["Дж. К. Райл", "Джон Чарлз Райл"]
+  },
+  "jarena-lee": {"am": ["ጃሬና ሊ"], "ko": ["자레나 리"]},
+  "jeanne-guyon": {
+    "am": ["ዣን ጉዮን"], "ar": ["جان غويون", "مدام غويون"], "hi": ["जीन गीयों", "मैडम गीयों"],
+    "ko": ["잔 귀용", "귀용 부인"], "uk": ["Жанна Гюйон", "мадам Гюйон"],
+    "fr": ["Jeanne-Marie Guyon", "Madame Guyon"]
+  },
+  "jerome": {"es": ["Jerónimo", "San Jerónimo"], "fr": ["Jérôme", "saint Jérôme"], "pt": ["Jerônimo", "São Jerônimo"]},
+  "jesse-lyman-hurlbut": {"am": ["ጄሲ ላይማን ሀርልበት"]},
+  "john-bunyan": {
+    "am": ["ጆን ባንየን"], "ar": ["جون بنيان"], "hi": ["जॉन बनियन"],
+    "ja": ["ジョン・バニヤン"], "ko": ["존 번연"], "uk": ["Джон Беньян"],
+    "es": ["Juan Bunyan"], "pt": ["João Bunyan"]
+  },
+  "john-calvin": {
+    "am": ["ጆን ካልቪን"], "ar": ["جون كالفن", "جون كالفين"], "hi": ["जॉन कैल्विन"],
+    "ko": ["장 칼뱅", "존 칼빈"], "uk": ["Жан Кальвін"],
+    "es": ["Juan Calvino"], "fr": ["Jean Calvin"], "pt": ["João Calvino"]
+  },
+  "john-cassian": {"es": ["Juan Casiano"], "fr": ["Jean Cassien"], "pt": ["João Cassiano"]},
+  "john-chrysostom": {
+    "am": ["ዮሐንስ አፈወርቅ"], "ar": ["يوحنا الذهبي الفم", "يوحنا فم الذهب"], "hi": ["जॉन क्रिसोस्टम"],
+    "ko": ["요한 크리소스토무스", "크리소스톰"], "uk": ["Іоанн Золотоустий", "Іван Золотоустий"],
+    "es": ["Juan Crisóstomo"], "fr": ["Jean Chrysostome"], "pt": ["João Crisóstomo"]
+  },
+  "john-newton": {
+    "am": ["ጆን ኒውተን"], "ar": ["جون نيوتن"], "hi": ["जॉन न्यूटन"],
+    "ja": ["ジョン・ニュートン"], "ko": ["존 뉴턴"], "uk": ["Джон Ньютон"]
+  },
+  "john-owen": {"am": ["ጆን ኦወን"], "hi": ["जॉन ओवेन"], "ko": ["존 오웬"], "uk": ["Джон Овен"]},
+  "john-wesley": {
+    "am": ["ጆን ዌስሊ"], "ar": ["جون وسلي", "جون ويسلي"], "hi": ["जॉन वेस्ली"],
+    "ja": ["ジョン・ウェスレー", "ジョン・ウェスリー"], "ko": ["존 웨슬리"], "uk": ["Джон Веслі"],
+    "es": ["Juan Wesley"], "pt": ["João Wesley"]
+  },
+  "jonathan-edwards": {
+    "am": ["ጆናታን ኤድዋርድስ"], "ar": ["جوناثان إدواردز"], "hi": ["जोनाथन एडवर्ड्स"],
+    "ja": ["ジョナサン・エドワーズ"], "ko": ["조나단 에드워즈"], "uk": ["Джонатан Едвардс"]
+  },
+  "josephine-bakhita": {"es": ["Josefina Bakhita"], "fr": ["Joséphine Bakhita"], "pt": ["Josefina Bakhita"]},
+  "julia-foote": {"am": ["ጁሊያ ፉት"]},
+  "julian-of-norwich": {"am": ["የኖርዊች ጁሊያን"], "es": ["Juliana de Norwich"], "fr": ["Julienne de Norwich"], "pt": ["Juliana de Norwich"]},
+  "justin-martyr": {"es": ["Justino Mártir"], "pt": ["Justino Mártir"]},
+  "kanzo-uchimura": {"ja": ["内村鑑三", "内村"]},
+  "kateri-tekakwitha": {"es": ["Catalina Tekakwitha"]},
+  "lactantius": {"es": ["Lactancio"], "fr": ["Lactance"], "pt": ["Lactâncio"]},
+  "martin-luther": {
+    "am": ["ማርቲን ሉተር"], "ar": ["مارتن لوثر"], "hi": ["मार्टिन लूथर"],
+    "ja": ["マルティン・ルター"], "ko": ["마르틴 루터"], "uk": ["Мартін Лютер"],
+    "es": ["Martín Lutero"], "pt": ["Martinho Lutero"]
+  },
+  "martyn-lloyd-jones": {
+    "am": ["ማርቲን ሎይድ-ጆንስ"], "ar": ["مارتن لويد-جونز"], "hi": ["मार्टिन लॉयड-जोन्स"], "ko": ["마틴 로이드 존스"]
+  },
+  "monica-of-hippo": {"es": ["Santa Mónica"], "fr": ["sainte Monique"], "pt": ["Santa Mônica"]},
+  "origen-of-alexandria": {"es": ["Orígenes"], "fr": ["Origène"], "pt": ["Orígenes"]},
+  "philip-doddridge": {"am": ["ፊሊፕ ዶድሪጅ"]},
+  "polycarp": {"es": ["Policarpo de Esmirna"], "fr": ["Polycarpe de Smyrne"], "pt": ["Policarpo de Esmirna"]},
+  "r-a-torrey": {
+    "am": ["አር. ኤ. ቶሪ", "ሩቤን አርቸር ቶሪ"], "ar": ["ر. أ. توري", "روبن آرتشر توري"],
+    "hi": ["आर. ए. टॉरे", "रूबेन आर्चर टॉरे"], "ja": ["R・A・トーレー"],
+    "ko": ["R. A. 토레이", "루벤 아처 토레이"], "uk": ["Р. А. Торрі", "Рубен Арчер Торрі"]
+  },
+  "richard-allen": {"am": ["ሪቻርድ አለን"]},
+  "richard-baxter": {
+    "am": ["ሪቻርድ ባክስተር"], "ar": ["ريتشارد باكستر"], "hi": ["रिचर्ड बैक्सटर"],
+    "ko": ["리처드 백스터"], "uk": ["Річард Бакстер"]
+  },
+  "richard-sibbes": {"am": ["ሪቻርድ ሲብስ"], "ko": ["리처드 십스"]},
+  "robert-murray-mcheyne": {
+    "am": ["ሮበርት መሪ ማክሼን"], "ar": ["روبرت موراي مكشين"], "hi": ["रॉबर्ट मरे मैकचेन"],
+    "ko": ["로버트 머리 맥체인"], "uk": ["Роберт Мюррей Мак-Чейн"]
+  },
+  "sadhu-sundar-singh": {"ko": ["썬다 싱", "선다 싱"], "hi": ["साधु सुन्दर सिंह"]},
+  "samson-occom": {"ko": ["샘슨 오컴"]},
+  "samuel-ajayi-crowther": {"am": ["ሳሙኤል አጃዪ ክራውዘር"]},
+  "smith-wigglesworth": {"hi": ["स्मिथ विगल्सवर्थ"], "ko": ["스미스 위글스워스"]},
+  "susanna-wesley": {
+    "am": ["ሱዛና ዌስሊ"], "ar": ["سوزانا وسلي"], "hi": ["सुज़ाना वेस्ली"],
+    "ko": ["수잔나 웨슬리"], "uk": ["Сюзанна Веслі"]
+  },
+  "teresa-of-avila": {"es": ["Teresa de Jesús", "Santa Teresa"], "fr": ["Thérèse d'Avila"], "pt": ["Teresa d'Ávila"]},
+  "tertullian": {"es": ["Tertuliano"], "fr": ["Tertullien"], "pt": ["Tertuliano"]},
+  "theophilus-of-antioch": {"es": ["Teófilo de Antioquía"], "fr": ["Théophile d'Antioche"], "pt": ["Teófilo de Antioquia"]},
+  "thomas-a-kempis": {
+    "am": ["ቶማስ አ ኬምፒስ"], "ar": ["توما الكمبيسي", "توماس أكمبيس"], "hi": ["थॉमस आ केम्पिस"],
+    "ja": ["トマス・ア・ケンピス"], "ko": ["토마스 아 켐피스"], "uk": ["Фома Кемпійський", "Томас Кемпійський"],
+    "es": ["Tomás de Kempis"], "pt": ["Tomás de Kempis"]
+  },
+  "thomas-aquinas": {"es": ["Tomás de Aquino"], "fr": ["Thomas d'Aquin"], "pt": ["Tomás de Aquino"]},
+  "thomas-watson": {
+    "am": ["ቶማስ ዋትሰን"], "ar": ["توماس واطسون"], "hi": ["थॉमस वॉटसन"],
+    "ko": ["토마스 왓슨"], "uk": ["Томас Ватсон"]
+  },
+  "william-booth": {
+    "am": ["ዊልያም ቡዝ"], "ar": ["وليم بوث", "ويليام بوث"], "hi": ["विलियम बूथ"],
+    "ko": ["윌리엄 부스"], "uk": ["Вільям Бут"]
+  },
+  "william-j-seymour": {
+    "am": ["ዊልያም ጄ. ሲይሞር"], "hi": ["विलियम जे. सीमोर"], "ja": ["ウィリアム・J・シーモア"], "ko": ["윌리엄 J. 시모어"]
+  },
+  "william-law": {"am": ["ዊልያም ሎው"]}
+}

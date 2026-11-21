@@ -238,11 +238,32 @@
 	let synonymPreview = $state<{ loading: boolean; count?: number; top?: string; error?: string } | null>(
 		null
 	);
-	function openSynonym(language: string, query: string) {
-		previewSeq++;
-		synonymFor = gapKey(language, query);
+	/** What the query itself finds TODAY: a search logged as a miss may be
+	 *  answered since (a typo search learned to forgive, a name it now reads). */
+	let synonymNow = $state<{ count: number; top: string } | null>(null);
+	async function openSynonym(language: string, query: string) {
+		const seq = ++previewSeq;
+		const key = gapKey(language, query);
+		synonymFor = key;
 		synonymWord = '';
 		synonymPreview = null;
+		synonymNow = null;
+		try {
+			const res = await getAdminSearchPreview(query, language);
+			if (seq !== previewSeq || synonymFor !== key) return;
+			if (res.results.length) {
+				synonymNow = {
+					count: res.results.length,
+					top: res.results.slice(0, 2).map((h) => hitTitle(h)).join(' · ')
+				};
+			} else if (res.suggestion && !synonymWord.trim()) {
+				// The nearest word in the library, ready to save after its preview.
+				synonymWord = res.suggestion;
+				await previewSynonym(language);
+			}
+		} catch {
+			// The dialog still works by hand; the check is a head start.
+		}
 	}
 	// Only the newest preview may land: one answered after the word changed
 	// would vouch for a word that was never previewed.
@@ -674,6 +695,13 @@
 															void saveSynonym(lang.code, q.query);
 														}}
 													>
+														{#if synonymNow}
+															<p class="mb-2 text-small text-text">
+																Search finds {fmt(synonymNow.count)} results for “{q.query}” now (top:
+																{synonymNow.top}), so it was answered after these misses were logged.
+																No synonym needed.
+															</p>
+														{/if}
 														<label class="block text-small text-muted" for="syn-{gk}"
 															>When {lang.name} readers search “{q.query}”, search instead for</label
 														>
