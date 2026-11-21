@@ -6,107 +6,135 @@
  "references": [
   {
    "reference": "Romans 8:26",
-   "status": "self_rendered",
-   "block_index": 0
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Romans 8:27",
-   "status": "self_rendered",
-   "block_index": 0
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Romans 8:26",
-   "status": "self_rendered"
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Romans 8:26",
-   "status": "self_rendered"
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Romans 8:13",
-   "status": "self_rendered",
-   "block_index": 11
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Romans 8:14",
-   "status": "self_rendered",
-   "block_index": 11
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Romans 8:15",
-   "status": "self_rendered",
-   "block_index": 11
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Romans 8:16",
-   "status": "self_rendered",
-   "block_index": 11
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Romans 8:26",
-   "status": "self_rendered"
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Romans 8:26",
-   "status": "self_rendered"
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Romans 8:26",
-   "status": "self_rendered"
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Jeremiah 29:13",
-   "status": "self_rendered",
-   "block_index": 20
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Jeremiah 49:11",
-   "status": "self_rendered",
-   "block_index": 20
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Genesis 28:16",
-   "status": "self_rendered"
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Romans 8:26",
-   "status": "self_rendered",
-   "block_index": 0
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "1 John 4:1",
-   "status": "self_rendered",
-   "block_index": 28
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "1 John 4:2",
-   "status": "self_rendered",
-   "block_index": 28
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "1 John 4:3",
-   "status": "self_rendered",
-   "block_index": 28
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Luke 11:13",
-   "status": "self_rendered",
-   "block_index": 30
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "James 4:3",
-   "status": "self_rendered",
-   "block_index": 30
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Matthew 5:48",
-   "status": "self_rendered",
-   "block_index": 58
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Romans 8:26",
-   "status": "self_rendered",
-   "block_index": 0
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Romans 8:27",
@@ -115,40 +143,50 @@
   },
   {
    "reference": "Mark 11:23",
-   "status": "self_rendered",
-   "block_index": 64
+   "status": "mined",
+   "block_index": 64,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Mark 11:24",
-   "status": "self_rendered",
-   "block_index": 64
+   "status": "mined",
+   "block_index": 64,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Romans 8:26",
-   "status": "self_rendered",
-   "block_index": 0
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Romans 8:26",
-   "status": "self_rendered"
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Romans 8:26",
-   "status": "self_rendered"
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Jeremiah 29:13",
-   "status": "self_rendered",
-   "block_index": 20
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Jeremiah 49:11",
-   "status": "self_rendered",
-   "block_index": 20
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
   },
   {
    "reference": "Genesis 28:16b",
-   "status": "self_rendered"
+   "status": "self_rendered",
+   "block_index": 24
   },
   {
    "reference": "Romans 8:14",
