@@ -25359,6 +25359,40 @@
 				528
 			]
 		},
+		"ko/a-brand-plucked-from-the-fire": {
+			"ground": "43ee75d21ac1e272fb50c11aa69895be740fb14aa8de2e5237f95e95a6be5388",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "8da966092620662ab5e7b8d0b17a123089ea6e9a39b99a87d5c3411702336e2e",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[142, 102, 458, 131]
+				],
+				"title": [
+					[115, 283, 485, 380],
+					[115, 367, 485, 464]
+				],
+				"subtitle": [
+					[237, 539, 363, 560]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				234,
+				561
+			]
+		},
 		"ko/a-call-to-the-unconverted": {
 			"ground": "c1352c78ff42925aa1d6e245ea0d003d0c9b4a0672ff0fe1f3de35502b031501",
 			"style": "press",
