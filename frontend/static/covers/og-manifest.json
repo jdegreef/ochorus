@@ -38533,6 +38533,42 @@
 				565
 			]
 		},
+		"ru/brave-for-god-3": {
+			"ground": "219c5aa3bee8985044530b9bebedfba2490dc4826fb5feca6f6c3a54f6b6fbf7",
+			"style": "young",
+			"volume": "3",
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 242, 310, 286],
+					[106, 317, 494, 392],
+					[72, 378, 528, 453]
+				],
+				"subtitle": [
+					[161, 508, 439, 536],
+					[173, 537, 427, 565]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				230,
+				565
+			]
+		},
 		"ru/brave-for-god-4": {
 			"ground": "449393ec9022238d7476e50448587a841e9b3d75e0b561e5f7a6200382d281ab",
 			"style": "young",
@@ -38569,6 +38605,21 @@
 				199,
 				596
 			]
+		},
+		"ru/how-to-succeed-in-the-christian-life": {
+			"ground": "90b3c786fc857ebce42c4b0a2ce7fbbda11ba4b9b1b7aa563ec490bd32718d9e",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
 		},
 		"ru/men-and-women-who-gave-everything-2": {
 			"ground": "f2785f95fac6e5d5d0d7ff420e98a3391f2e36e7267556dbd1d91bacd5f3d6c4",
