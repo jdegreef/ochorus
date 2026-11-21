@@ -9703,6 +9703,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"es/after-his-heart": {
+			"ground": "fc930a00579b23f9f5ad0514a3b7c6ccbf5be9065bab137886153c1f298013e4",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[125, 314, 475, 390],
+					[136, 385, 464, 461]
+				],
+				"subtitle": [
+					[99, 481, 501, 509]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
+		},
 		"es/all-of-grace": {
 			"ground": "4c27f99f956f15bd728a240afab3cfd7f3848f91e5b7d2a67399ffe15db61411",
 			"style": "revival",
@@ -23513,6 +23547,37 @@
 				552
 			]
 		},
+		"ja/clothed-with-strength-and-dignity": {
+			"ground": "524e6353d318b45927eb1e23562a0352f0ba5630d1f6b0f0130cf210443a9d99",
+			"style": "originals",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "f67ebcfd55f158d338820071f7ab8ab27c44ad5ece8e8ba0cece0021551d5fe1",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[149, 308, 451, 384],
+					[118, 374, 482, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"ja/divine-healing": {
 			"ground": "c0c274469c0d3e0235bbb970116b380b6f9519867cbd8e9865e83e903aba312f",
 			"style": "devotional",
@@ -27910,6 +27975,40 @@
 			"bar": 0.02,
 			"caps": false,
 			"sitemark": null
+		},
+		"ko/real-questions-1": {
+			"ground": "90ecd3bca374e77afd46026c8762c637a503f7d9ce0a028ec3e6eda6fb3869f7",
+			"style": "originals",
+			"volume": "1",
+			"script": "korean",
+			"fonts": "4e7462ffe8ba8dd218390f4f01a9844498678f92da1fa69a233aa871066b8648",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 281, 308, 325],
+					[148, 359, 452, 435]
+				],
+				"subtitle": [
+					[90, 497, 510, 525]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				269,
+				525
+			]
 		},
 		"ko/religious-experience-and-journal": {
 			"ground": "60f997bc2e03b3cf983902867bc2adb98898dd45e0f216745b0ae1c06077417d",
