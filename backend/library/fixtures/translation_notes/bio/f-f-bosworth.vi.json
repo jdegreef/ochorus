@@ -4,12 +4,5 @@
  "language": "vi",
  "job_issue": 9219,
  "pull_request": null,
- "references": [
-  {
-   "reference": "Mark 16:15",
-   "status": "mined",
-   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
-   "block_index": 13
-  }
- ]
+ "references": []
 }
