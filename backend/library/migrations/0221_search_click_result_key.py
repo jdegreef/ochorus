@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("library", "0219_amharic_quotes_the_open_word_bible"),
+        ("library", "0220_confirm_stale_sermon_translations"),
     ]
 
     operations = [
