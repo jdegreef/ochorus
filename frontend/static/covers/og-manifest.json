@@ -9703,6 +9703,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"es/after-his-heart": {
+			"ground": "fc930a00579b23f9f5ad0514a3b7c6ccbf5be9065bab137886153c1f298013e4",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[125, 314, 475, 390],
+					[136, 385, 464, 461]
+				],
+				"subtitle": [
+					[99, 481, 501, 509]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
+		},
 		"es/all-of-grace": {
 			"ground": "4c27f99f956f15bd728a240afab3cfd7f3848f91e5b7d2a67399ffe15db61411",
 			"style": "revival",
@@ -23513,6 +23547,52 @@
 				552
 			]
 		},
+		"ja/clothed-with-strength-and-dignity": {
+			"ground": "524e6353d318b45927eb1e23562a0352f0ba5630d1f6b0f0130cf210443a9d99",
+			"style": "originals",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "f67ebcfd55f158d338820071f7ab8ab27c44ad5ece8e8ba0cece0021551d5fe1",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[149, 308, 451, 384],
+					[118, 374, 482, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
+		"ja/confessions": {
+			"ground": "77c7e93adb46ca9fe20c500f16d6f7f2d32bfffc1d4294adbeb7a4ec366e2466",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "483f46895109f5606ce82162e8d5e25d7f82746aa04087b41f06ad43879d7507",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/rust",
+			"bar": 0.015,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/divine-healing": {
 			"ground": "c0c274469c0d3e0235bbb970116b380b6f9519867cbd8e9865e83e903aba312f",
 			"style": "devotional",
@@ -23859,6 +23939,56 @@
 			"middle": [
 				294,
 				501
+			]
+		},
+		"ja/purpose-in-prayer": {
+			"ground": "003fb36db8de2d639e2871de530ff2d67c170c0213ca5dc18623089626a9ebb1",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "b36eafb754e7e639edcfa766494d36ec943e526b688570c771cd678fb069b95c",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null
+		},
+		"ja/rooted-1": {
+			"ground": "7d31fc8bdd1f76b96bc4e2c61607aec703d92b158368e534c7494ae1640bb57a",
+			"style": "young",
+			"volume": "1",
+			"script": "japanese",
+			"fonts": "907d397bb4bf8d23322ee4da9b1513f170d067c53cdc1719af1c370f5f8f38c4",
+			"art": true,
+			"scrim": 0.7,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 269, 308, 313],
+					[187, 344, 413, 419]
+				],
+				"subtitle": [
+					[127, 478, 473, 506],
+					[122, 510, 478, 538]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				538
 			]
 		},
 		"ja/school-of-prayer": {
@@ -27211,6 +27341,40 @@
 				380
 			]
 		},
+		"ko/key-teachings-of-jonathan-edwards": {
+			"ground": "b7d3695148adee9b98dd3fdc51731eecbba6bf7da8124fbd326f50f19b03c116",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "14dcf59a72bc4dfc5b31e698cd87855994b38b93f95d43c26599d33161f20c30",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[117, 102, 483, 131]
+				],
+				"title": [
+					[122, 169, 478, 232],
+					[142, 225, 458, 288]
+				],
+				"subtitle": [
+					[61, 352, 539, 380]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				380
+			]
+		},
 		"ko/key-teachings-of-r-a-torrey": {
 			"ground": "95670c73a8e0b9db5559809ac748ec8aa0df394d9420f0f305ac218fda9f3641",
 			"style": "originals",
@@ -27312,6 +27476,21 @@
 				270,
 				525
 			]
+		},
+		"ko/life-of-antony": {
+			"ground": "83ef29cea54443563e0425f58a1c90bb6a16871aef2f4a552b4a76811e0283a7",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "bd5e6ec1e505ea06a19a3d1298287db93d7070caf1e4bfc374e2b2ae7d99ba49",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/indigo",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
 		},
 		"ko/lord-teach-us-to-pray-2": {
 			"ground": "783e47b80ee6d44ef7b21b23a53a88817e53b4cf7e33200e88a71fa8ab397ca7",
@@ -27760,6 +27939,21 @@
 				497
 			]
 		},
+		"ko/pilgrims-progress-words-of-one-syllable": {
+			"ground": "99f5bfe5f2967ead50223124acd39ccf28e9cff88d4d0990ed22965f9bbce513",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1238c8a7b14eda0e244d45f1a70d9391a533cb678363a361f7c2d6278e0d96d2",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/teal",
+			"bar": 0.025,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/plain-account-christian-perfection": {
 			"ground": "9ef8462e91ec8dbdbad845bbb1e05351fadce5c8b731c5fa3ff0f7cb60723a7a",
 			"style": "enlightenment",
@@ -27893,6 +28087,55 @@
 			"medallion": null,
 			"layout": "split/navy",
 			"bar": 0.02,
+			"caps": false,
+			"sitemark": null
+		},
+		"ko/real-questions-1": {
+			"ground": "90ecd3bca374e77afd46026c8762c637a503f7d9ce0a028ec3e6eda6fb3869f7",
+			"style": "originals",
+			"volume": "1",
+			"script": "korean",
+			"fonts": "4e7462ffe8ba8dd218390f4f01a9844498678f92da1fa69a233aa871066b8648",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 281, 308, 325],
+					[148, 359, 452, 435]
+				],
+				"subtitle": [
+					[90, 497, 510, 525]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				269,
+				525
+			]
+		},
+		"ko/reality-of-prayer": {
+			"ground": "29132c0740841d9fdbfb3c85cc01f80700929290a3f15b1ab1ae6740ce1ae50b",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "b6e818ec319835c480e6aef910bd69b86196000cf317ad988d0450d076cb6b76",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.015,
 			"caps": false,
 			"sitemark": null
 		},
@@ -28033,6 +28276,179 @@
 				538
 			]
 		},
+		"ko/rooted-4": {
+			"ground": "8fee5264576369614cc62131bc72d34cc52e12d6083829e4b5aebaa6fc9156fe",
+			"style": "young",
+			"volume": "4",
+			"script": "korean",
+			"fonts": "10488a99e7d76d90bc662b82f20bd60de51564faf445acadf5820d478f20c944",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1.2,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 269, 311, 313],
+					[196, 344, 404, 419]
+				],
+				"subtitle": [
+					[103, 478, 497, 506],
+					[98, 510, 502, 538]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				538
+			]
+		},
+		"ko/rooted-5": {
+			"ground": "2800140bd0e23e311bb830f3a502a7dcb42276ac7e15dae4d0708f64f4fd049e",
+			"style": "young",
+			"volume": "5",
+			"script": "korean",
+			"fonts": "7a9aab8858402565097f7e7726b0b64d7957399fd6c1039ec05dcc61358a1cdf",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 269, 311, 313],
+					[196, 344, 404, 419]
+				],
+				"subtitle": [
+					[156, 478, 444, 506],
+					[148, 510, 452, 538]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				538
+			]
+		},
+		"ko/rooted-6": {
+			"ground": "e53a53e210558c2b830270c60ed0d4e5ba5915d769910dd7399d7639450bbc57",
+			"style": "young",
+			"volume": "6",
+			"script": "korean",
+			"fonts": "358b8be17a53909412028bfd414b03f9dfecc07e11376b7aec67a777abe3bb1b",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 269, 311, 313],
+					[196, 344, 404, 419]
+				],
+				"subtitle": [
+					[159, 478, 441, 506],
+					[156, 510, 444, 538]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				538
+			]
+		},
+		"ko/samuel-ajayi-crowther-a-life-children": {
+			"ground": "f369c5456acdd737a7c9defc487d2af6042aee01fcd4aa5980126cfcb6843a65",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "d8cb0c3f6a59026fd2097c999d1736bacfd88570553c4254d24419b10bc188ec",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1.3,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[142, 106, 458, 135]
+				],
+				"title": [
+					[163, 290, 437, 365],
+					[163, 351, 437, 426]
+				],
+				"edition": [
+					[252, 438, 348, 463]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				297,
+				502
+			]
+		},
+		"ko/samuel-ajayi-crowther-a-life-teens": {
+			"ground": "5e5f91ed808e4e3ee9d7e313d7b8fffa595a28fa6a3ef5dba0402b757397f52b",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "d8cb0c3f6a59026fd2097c999d1736bacfd88570553c4254d24419b10bc188ec",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[142, 106, 458, 135]
+				],
+				"title": [
+					[148, 288, 452, 364],
+					[148, 354, 452, 430]
+				],
+				"edition": [
+					[252, 444, 348, 469]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				293,
+				507
+			]
+		},
 		"ko/school-of-prayer": {
 			"ground": "06d0d9789cc78677648d024e6d2350469e922c3ab3193e275ae01d262f401b94",
 			"style": "devotional",
@@ -28045,6 +28461,21 @@
 			"medallion": null,
 			"layout": "wash/sage",
 			"bar": 0.04,
+			"caps": false,
+			"sitemark": null
+		},
+		"ko/separation-and-service": {
+			"ground": "b2a6f138b01f8cf0b2c6b92ba8e09d637370f43b1264e94fe88242adde2cfaec",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "5a8051fa8b10a8ac54b25dd44e8f750b06789f785c0ee34c9456cc94dbd3017f",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/teal",
+			"bar": 0,
 			"caps": false,
 			"sitemark": null
 		},
@@ -28832,6 +29263,40 @@
 			"middle": [
 				323,
 				471
+			]
+		},
+		"ko/they-were-young-1": {
+			"ground": "7482d9096b02dcc9f0fa21c07e6707ffbfc471d59db573413c78d846a3a23527",
+			"style": "originals",
+			"volume": "1",
+			"script": "korean",
+			"fonts": "6afe849a15321b44d75d38fddeb6221cf0ce313c31552e222be9a4706049a208",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 281, 308, 325],
+					[83, 359, 517, 435]
+				],
+				"subtitle": [
+					[151, 497, 449, 525]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				269,
+				525
 			]
 		},
 		"ko/true-vine": {
@@ -37847,6 +38312,73 @@
 				534
 			]
 		},
+		"ru/a-retrospect-children": {
+			"ground": "fc7ed67d9d4eac9109302135f3bf95556e8ba5b154aa569b7e092cda810902ce",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[154, 102, 446, 131]
+				],
+				"title": [
+					[105, 299, 495, 381],
+					[218, 370, 382, 452]
+				],
+				"edition": [
+					[225, 464, 375, 489]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				249,
+				546
+			]
+		},
+		"ru/after-his-heart": {
+			"ground": "45a6b80d09640a0231201209aa153a04e7ed124facc3261c1e8cdd4ad1906cb3",
+			"style": "house",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[51, 342, 549, 432]
+				],
+				"subtitle": [
+					[114, 452, 486, 480]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
+		},
 		"ru/amanda-smith-autobiography-children": {
 			"ground": "11a56206fff72ed878bb79d299949601dfe7ea2edec6e92a6f2434a93aa59fa0",
 			"style": "revival",
@@ -38574,6 +39106,40 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"sw/after-his-heart": {
+			"ground": "c1b6f8523cb9853375f213aad1b80a1360854b107b1eaf5ee0f45019d5f20179",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[54, 314, 546, 390],
+					[128, 385, 472, 461]
+				],
+				"subtitle": [
+					[100, 481, 500, 509]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
 		},
 		"sw/all-of-grace": {
 			"ground": "50b3863a8086ecc3146d50d119c78a125f34a52703f79f835154b448d9241c76",
@@ -46805,6 +47371,41 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"vi/after-his-heart": {
+			"ground": "0cc73f9fa7e54a8ff7042dff78d65ea18911b3560b87027af29ae033b3f99bd9",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[210, 286, 390, 376],
+					[122, 370, 479, 460]
+				],
+				"subtitle": [
+					[172, 480, 428, 508],
+					[166, 508, 434, 536]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				259,
+				536
+			]
 		},
 		"vi/all-of-grace": {
 			"ground": "1bf0833cffe0cbd33cca408baad357186151113c2dc3aec0c882ba94b2dda85b",
