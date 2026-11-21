@@ -42,9 +42,13 @@
 				: asLane(initialParams.get('lane'));
 	let fLane = $state(initialLane);
 	// Each lane's natural order: in the verses lane that is fewest verses left,
-	// so half-finished work gets closed out first.
-	const defaultSort = (lane: ReviewLane | '') => (lane === 'verses' ? 'remaining' : 'oldest');
+	// so half-finished work gets closed out first; everywhere else, what readers
+	// read most (the API's `impact` order), so reviews land where the reads are.
+	const defaultSort = (lane: ReviewLane | '') => (lane === 'verses' ? 'remaining' : 'impact');
 	let fSort = $state(initialParams.get('sort') ?? defaultSort(initialLane));
+	// "Next N to review": only the top N by impact in the language in view.
+	const NEXT_N = 10;
+	let fNext = $state(Number(initialParams.get('next')) > 0 ? NEXT_N : 0);
 	let page = $state(Math.max(1, Number(initialParams.get('p')) || 1));
 	// One work, from a coverage-matrix cell (`?slug=…&kind=…&language=…`). The
 	// first load opens its review panel, so the cell lands on the text itself.
@@ -61,6 +65,7 @@
 		if (fLane) p.set('lane', fLane);
 		if (fSort !== defaultSort(fLane)) p.set('sort', fSort);
 		if (fSlug) p.set('slug', fSlug);
+		if (fNext) p.set('next', String(fNext));
 		if (page > 1) p.set('p', String(page));
 		const qs = p.toString();
 		replaceState(`${location.pathname}${qs ? `?${qs}` : ''}`, {});
@@ -158,6 +163,7 @@
 				lane: fLane,
 				sort: fSort,
 				slug: fSlug,
+				next: fNext,
 				page
 			}),
 		'Something went wrong loading the queue.',
@@ -198,6 +204,21 @@
 
 	function setLanguage(code: string) {
 		fLanguage = code;
+		// The shortlist is per language: "all languages" has no next ten.
+		if (!code) fNext = 0;
+		applyFilters();
+	}
+
+	// Toggle the "next 10 to review" shortlist for the language in view.
+	function toggleNext() {
+		fNext = fNext ? 0 : NEXT_N;
+		if (fNext) fSort = 'impact';
+		applyFilters();
+	}
+
+	// The shortlist is the impact order by definition; another sort leaves it.
+	function setSort() {
+		fNext = 0;
 		applyFilters();
 	}
 
@@ -205,7 +226,8 @@
 		fLane = '';
 		fLanguage = '';
 		fKind = '';
-		fSort = 'oldest';
+		fNext = 0;
+		fSort = defaultSort('');
 		applyFilters();
 	}
 
@@ -381,13 +403,34 @@
 	];
 
 	// Whole days since a date, for "waiting 58 d". Amber from a month: the
-	// default sort is oldest first, so this is the number that sort is about.
+	// "Waiting longest" sort is about this number.
 	const STALE_DAYS = 30;
 	function daysSince(iso: string): number | null {
 		if (!iso) return null;
 		const t = Date.parse(iso);
 		return Number.isNaN(t) ? null : Math.max(0, Math.floor((Date.now() - t) / 86_400_000));
 	}
+
+	// The row's reader-impact figure, and on hover what it is made of. An
+	// estimate is marked "~": no reader has opened this edition yet.
+	const impactChip = (i: ReviewItem): { text: string; title: string } => {
+		const m = i.impact;
+		const days = queue?.impact.window_days ?? 90;
+		const recent = queue?.impact.recent_days ?? 30;
+		if (!m || m.basis === 'none')
+			return { text: '0', title: `No reader signal in the last ${days} days.` };
+		if (m.basis === 'estimate') {
+			const share = queue?.impact.language_share[i.language] ?? 0;
+			return {
+				text: `~${m.score.toLocaleString(undefined, { maximumFractionDigits: 1 })}`,
+				title: `Estimated: nobody has read this edition yet. English score ${m.en_score} × ${languageName(i.language)}'s ${(share * 100).toFixed(1)}% share of active readers.`
+			};
+		}
+		return {
+			text: m.score.toLocaleString(),
+			title: `${m.readers} reader${m.readers === 1 ? '' : 's'} in the last ${days} days, ${m.readers_recent} of them in the last ${recent} (counted twice).`
+		};
+	};
 
 	// Languages by queue size, biggest first: the tabs a reviewer picks from.
 	const languageTabs = $derived(
@@ -530,13 +573,25 @@
 				</label>
 				<label class="text-small flex items-center gap-2">
 					<span class="text-muted">Sort</span>
-					<select class="field" bind:value={fSort} onchange={applyFilters}>
+					<select class="field" bind:value={fSort} onchange={setSort}>
+						<option value="impact">Most read first</option>
 						<option value="oldest">Waiting longest</option>
 						<option value="remaining">Fewest verses left</option>
 						<option value="flagged">Most unverified verses</option>
 						<option value="largest">Largest first</option>
 					</select>
 				</label>
+				{#if fLanguage}
+					<button
+						type="button"
+						class="btn btn-sm {fNext ? 'btn-primary' : 'btn-ghost'}"
+						aria-pressed={!!fNext}
+						onclick={toggleNext}
+						title="The {NEXT_N} editions in {languageName(fLanguage)} readers open most: where a review reaches the most readers."
+					>
+						Next {NEXT_N} to review in {languageName(fLanguage)}
+					</button>
+				{/if}
 				{#if readyOnPage.length}
 					<button class="btn btn-sm btn-ghost" onclick={selectReady}>
 						Select {readyOnPage.length} ready on this page
@@ -544,7 +599,7 @@
 				{/if}
 				<p class="text-small ml-auto text-muted">
 					Showing {q.filtered.toLocaleString()} of {q.total.toLocaleString()}
-					{#if fLane || fLanguage || fKind || fSort !== defaultSort(fLane)}
+					{#if fLane || fLanguage || fKind || fNext || fSort !== defaultSort(fLane)}
 						· <button type="button" class="link" onclick={resetFilters}>Reset</button>
 					{/if}
 				</p>
@@ -561,6 +616,14 @@
 					</p>
 				{/if}
 			</div>
+
+			{#if fSort === 'impact'}
+				<!-- What "most read" means, so the order (and each row's figure) can be trusted. -->
+				<p class="text-small mb-3 text-muted">
+					<span class="font-semibold text-text">Most read first.</span>
+					{q.impact.explanation} Hover a row's figure for its breakdown.
+				</p>
+			{/if}
 
 			{#if selectedItems.length}
 				<!-- Pinned while scrolling, so the action stays beside the rows being picked. -->
@@ -636,6 +699,7 @@
 							</div>
 						{:else}
 							{@const waited = daysSince(i.created_at)}
+							{@const chip = impactChip(i)}
 							<div class="flex flex-wrap items-center gap-x-3 gap-y-1.5 px-4 py-2.5">
 								<input
 									type="checkbox"
@@ -699,6 +763,15 @@
 										title={c.title}>{c.text}</span
 									>
 								{/each}
+
+								<span
+									class="text-small w-20 shrink-0 text-right tabular-nums {i.impact?.basis === 'readers'
+										? 'font-semibold text-text'
+										: 'text-muted'}"
+									title={chip.title}
+									aria-label="Reader score {chip.text}. {chip.title}"
+									>{chip.text} <span class="text-micro font-normal text-muted">score</span></span
+								>
 
 								{#if waited != null}
 									<span
