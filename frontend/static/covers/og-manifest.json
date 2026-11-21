@@ -38606,6 +38606,41 @@
 				596
 			]
 		},
+		"ru/growing-in-wisdom": {
+			"ground": "2889274617c2fbd69715edd3bfb122c2ccf92d799c489894f5e98e6e33fd6f49",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.9,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[147, 266, 453, 342],
+					[132, 332, 468, 408]
+				],
+				"subtitle": [
+					[160, 467, 440, 495],
+					[178, 496, 422, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
+		},
 		"ru/how-to-succeed-in-the-christian-life": {
 			"ground": "90b3c786fc857ebce42c4b0a2ce7fbbda11ba4b9b1b7aa563ec490bd32718d9e",
 			"style": "revival",
