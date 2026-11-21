@@ -68,7 +68,6 @@ from dataclasses import asdict, dataclass, field
 from functools import cache, lru_cache
 from pathlib import Path
 
-from . import mined_verification as mv
 from . import verse_consistency as vc
 
 LIBRARY = Path(__file__).resolve().parent
@@ -158,11 +157,18 @@ def words(text: str, language: str) -> list[tuple[str, int, int]]:
     return out
 
 
-def _grams(text: str, language: str, n: int = 3) -> set[str]:
+@lru_cache(maxsize=65536)
+def _grams(text: str, language: str, n: int = 3) -> frozenset[str]:
     """Character n-grams over the folded words — robust to the prefixes and
     suffixes an agglutinative language hangs on a quoted word."""
     s = " ".join(w for w, _, _ in words(text, language))
-    return {s[i : i + n] for i in range(len(s) - n + 1)}
+    return frozenset(s[i : i + n] for i in range(len(s) - n + 1))
+
+
+@lru_cache(maxsize=65536)
+def _word_trigrams(text: str, language: str) -> frozenset[tuple[str, str, str]]:
+    cw = [w for w, _, _ in words(text, language)]
+    return frozenset(tuple(cw[i : i + 3]) for i in range(len(cw) - 2))
 
 
 def similarity(quote: str, candidate: str, language: str) -> float:
@@ -663,15 +669,20 @@ _MIN_PIECE = 3  # normalised characters: an Ethiopic syllable is one, «በእ�
 _MIN_JOINED = 8
 
 
+_norm = lru_cache(maxsize=65536)(vc.normalise)
+
+
 def verbatim(quote: str, source: str) -> bool:
     """``mined_verification.is_verbatim`` with a per-piece floor that suits a
     syllabic script: its 8-character floor rejects the «በእኔ ብትኖሩ … ለምኑ»
     joins the four rules allow. The pieces still have to be in OWB's order
     and together long enough to mean something."""
-    if mv.is_verbatim(quote, source):
+    t, s = _norm(quote), _norm(source)
+    if not t or not s:
+        return False
+    if t in s or s in t:
         return True
-    s = vc.normalise(source)
-    pieces = [vc.normalise(p) for p in _ELLIPSIS.split(quote)]
+    pieces = [_norm(p) for p in _ELLIPSIS.split(quote)]
     pieces = [p for p in pieces if p]
     if (
         len(pieces) < 2
@@ -708,14 +719,11 @@ def is_owb(text: str, span: Span, language: str, slack: int = STATUS_SLACK) -> b
     if verbatim(text, source):
         return True
     pieces = [
-        p
-        for part in _SENTENCES.split(text)
-        for p in _ELLIPSIS.split(part)
-        if vc.normalise(p)
+        p for part in _SENTENCES.split(text) for p in _ELLIPSIS.split(part) if _norm(p)
     ]
-    target = vc.normalise(source)
+    target = _norm(source)
     return len(pieces) > 1 and all(
-        len(vc.normalise(p)) >= _MIN_PIECE and vc.normalise(p) in target for p in pieces
+        len(_norm(p)) >= _MIN_PIECE and _norm(p) in target for p in pieces
     )
 
 
@@ -1023,21 +1031,21 @@ def _block_detect(
     toks = words(text, language)
     free = [(w, s, e) for w, s, e in toks if not any(a <= s < b for a, b in taken)]
     found: list[tuple[int, int, int, int]] = []  # (-length, preference, vid, start)
+    free_words = [w for w, _, _ in free]
+    free_grams = [tuple(free_words[i : i + 3]) for i in range(len(free_words) - 2)]
     for vid in sorted(near | hinted | chapter):
         close = vid in near or vid in hinted
         for rank, cand in enumerate(_candidates_text(vid, language)):
-            cw = [w for w, _, _ in words(cand, language)]
-            grams = {tuple(cw[i : i + 3]) for i in range(len(cw) - 2)}
+            grams = _word_trigrams(cand, language)
+            if grams.isdisjoint(free_grams):
+                continue
             i = 0
             while i < len(free) - 2:
-                if tuple(w for w, _, _ in free[i : i + 3]) not in grams:
+                if free_grams[i] not in grams:
                     i += 1
                     continue
                 j = i + 3
-                while (
-                    j < len(free)
-                    and tuple(w for w, _, _ in free[j - 2 : j + 1]) in grams
-                ):
+                while j < len(free) and free_grams[j - 2] in grams:
                     j += 1
                 # Three words count only in OWB's own wording, close to a
                 # citation: a book's recurring term («በመንፈስ ቅዱስ መጠመቅ») is
