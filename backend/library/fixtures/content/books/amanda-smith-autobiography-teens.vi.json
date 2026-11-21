@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "amanda-berry-smith"
+  ],
+  "slug": "amanda-smith-autobiography-teens",
+  "language": "vi",
+  "title": "Amanda Smith: Tự Truyện (Cho thiếu niên)",
+  "subtitle": "",
+  "description": "Amanda Berry Smith sinh ra đã là tài sản của người khác — một nô lệ ở Maryland — rồi trở thành một nhà truyền đạo một mình vượt các đại dương. Bản kể lại dành cho thiếu niên dựa trên chính hồi ký của bà không hề né tránh: chế độ nô lệ, nỗi đau mất mát và sự kỳ thị đều có ở đây, cùng với một đức tin mãnh liệt và thẳng thắn. Những lời nói thật dành cho bất cứ ai từng bị bảo rằng mình chẳng đáng gì, rằng Đức Chúa Trời là của người khác, hay rằng các vấn đề quá lớn để mình chạm tới.",
+  "hook": "Sinh ra là nô lệ ở Maryland. Trở thành nhà truyền đạo một mình vượt các đại dương.",
+  "qa": [
+   {
+    "question": "Amanda Smith có thật sự sinh ra trong cảnh nô lệ không?",
+    "answer": "Có. Bà sinh năm 1837 ở Maryland, là tài sản của người khác, và cha bà, Samuel Berry, đã làm việc suốt nhiều năm — ban ngày cho người đàn bà làm chủ ông, ban đêm làm chổi và thảm — để chuộc trước hết chính mình, rồi đến vợ con, ra khỏi cảnh nô lệ."
+   },
+   {
+    "question": "Bà được đi học bao nhiêu?",
+    "answer": "Gần như không — tổng cộng chừng ba tháng. Bà tự học đọc bằng cách cắt những chữ cái lớn từ báo ra rồi xếp chúng thành từ trên bậu cửa sổ."
+   },
+   {
+    "question": "Làm sao một phụ nữ da đen không tiền bạc lại trở thành nhà truyền đạo đi khắp thế giới?",
+    "answer": "Bà không được phong chức, không có lương, cũng không có ban trị sự hội thánh nào đứng sau, và phần lớn các mục sư thời ấy phản đối phụ nữ giảng đạo. Bà vẫn lên đường, vì tin chắc Đức Chúa Trời đã kêu gọi mình, và cuối cùng đã hầu việc Chúa khắp nước Mỹ, nước Anh, Ấn Độ, cùng tám năm ở Tây Phi."
+   },
+   {
+    "question": "Bản dành cho thiếu niên này có kể những phần khó khăn trong đời bà không?",
+    "answer": "Có, một cách thẳng thắn. Sách đề cập trực tiếp đến chế độ nô lệ, nạn phân biệt chủng tộc, cảnh nghèo khó và cái chết của những người chồng và những đứa con của bà — những phần nặng nề mà bản dành cho thiếu nhi lược bỏ — nhưng không sa vào các chi tiết rùng rợn."
+   },
+   {
+    "question": "Bà muốn nói gì khi bảo mình “thuộc dòng dõi hoàng tộc”?",
+    "answer": "Amanda dần tin rằng bà là con của Đức Chúa Trời, và bà luôn giữ phẩm giá dù người khác xếp hạng bà thế nào. Tại một nhà thờ ở Anh, bà nhìn thẳng vào mặt những người lạ kiêu căng để họ thấy, như lời bà nói, rằng bà “thuộc dòng hoàng tộc da đen.”"
+   },
+   {
+    "question": "Bé Bob là ai?",
+    "answer": "Bob là một cậu bé ở Tây Phi mà chính cha cậu đã xin Amanda nuôi dạy và dạy cậu biết về Đức Chúa Trời. Dù đang ốm yếu và không có tiền, bà vẫn đón cậu về nhà như con ruột, sau khi cảm nhận Đức Chúa Trời phán với bà: “Con hãy làm những gì con có thể, và chỗ nào con dừng lại, Đức Chúa Trời sẽ dấy lên một người khác làm nốt phần còn lại.”"
+   },
+   {
+    "question": "Trong cuốn sách này Amanda có lập trại mồ côi không?",
+    "answer": "Không có trong câu chuyện này. Trại mồ côi làm bà nổi tiếng về sau ra đời sau cuốn hồi ký này; trong những trang sách đây, việc bà chăm sóc trẻ em mang tính cá nhân — đón từng đứa trẻ như Bob và cô bé người Bassa tên Frances về nhà mình."
+   },
+   {
+    "question": "Điều lớn nhất một thiếu niên có thể học được từ cuộc đời bà là gì?",
+    "answer": "Rằng một hoàn cảnh bất công không nhất thiết là đường cùng. Amanda đối diện với những bất công bà không thể xóa bỏ và những mất mát bà không thể đảo ngược, nhưng bà vẫn tiếp tục tin cậy Đức Chúa Trời và làm việc can đảm kế tiếp ngay trước mặt mình."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại của Ochorus dành cho bạn đọc nhỏ tuổi, dựa trên cuốn tự truyện của Amanda Berry Smith, là tác phẩm thuộc phạm vi công cộng. Lời kể là của chúng tôi, được tự do đọc và chia sẻ. Các câu Kinh Thánh được trích từ bản Open Word Bible (OWB), ấn bản Balanced, bằng tiếng Việt, được hiến tặng cho phạm vi công cộng (CC0).",
+  "cover_url": "/covers/art/amanda-smith-autobiography-teens.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 29,
+  "is_published": true,
+  "created_at": "2026-11-21T00:00:00Z",
+  "updated_at": "2026-11-21T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-teens",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Sinh Ra Làm Nô Lệ, Được Chuộc Ra Tự Do",
+  "body_html": "<blockquote>“Vậy nếu Con làm cho các người được tự do, các người sẽ thật sự được tự do.” — Giăng 8:36</blockquote> <p>Amanda Berry sinh năm 1837 ở Maryland, và ngay từ lúc chào đời cô đã là tài sản của người khác. Ở đất nước nơi cô sinh ra, một đứa trẻ da đen có thể bị mua đi bán lại như một con ngựa hay một bao thóc, bị đem làm của hồi môn cho cô dâu, bị bắt làm việc suốt cả đời mà không được trả một xu. Luật pháp là như thế, và “luật pháp” là một từ quá lạnh lùng cho một thứ cố tình chia lìa các gia đình. Amanda còn quá nhỏ để nhớ những gì tệ hại nhất. Nhưng cô không bao giờ quên rằng tự do của mình có một cái giá, và có người đã trả cái giá ấy.</p> <p>Người trả giá ấy là cha cô, Samuel Berry. Ông thuộc về một người đàn bà cho phép ông kiếm thêm tiền bên ngoài, nên ông tính toán kỹ cuộc đời mình rồi bắt tay vào việc. Làm xong phần việc trong ngày cho bà chủ, ông ngồi bên ánh nến làm chổi và thảm bằng lá bắp để đem ra chợ bán. Vào mùa gặt, ông làm ruộng cho bà chủ suốt ngày, rồi khi trời tối lại đi bộ ba bốn dặm để làm thuê trên những cánh đồng khác cho đến một hai giờ sáng, ngủ một tiếng, rồi lại tiếp tục như thế. Trước hết ông chuộc chính mình. Rồi ông bắt đầu chuộc vợ và các con — tổng cộng mười ba người con — vì một người đàn ông chỉ có thể dành dụm nhanh đến mức ấy thôi.</p> <p>Tuy vậy, chỉ có tiền thôi thì không đủ. Gia đình làm chủ mẹ của Amanda không muốn bán. Điều làm mọi thứ thay đổi là một cái chết và những lời cầu nguyện của một bà cụ bướng bỉnh. Bà ngoại của Amanda đã cầu nguyện suốt nhiều năm cho các cháu được tự do, và bà cầu nguyện thật lòng — bà hay lẻn vào bụi cây để, như người ta vẫn nói, “thưa với Chúa Giê-xu” về chuyện ấy. Trong khi đó, một cô chủ trẻ tên Celie đã tin Chúa tại một buổi nhóm truyền giảng ngoài trời, khiến gia đình cô rất khó chịu, rồi sau đó cô ngã bệnh thương hàn. Lúc hấp hối, cô gọi cả nhà lại và xin một điều duy nhất: hãy để Samuel chuộc mẹ của Amanda và các con. Ba ngày liền cô xin như vậy, cho đến khi họ hứa. Về sau Amanda nói cô đã “được mua hai lần, và được tự do hai lần,” và cô cho rằng như thế cô có đủ lý do để reo mừng.</p> <p>Đây là điều bạn không nên bỏ lỡ trong câu chuyện ấy. Cái ác trong đó là hợp pháp. Những người đáng kính, siêng đi nhà thờ, sở hữu con người mà vẫn ngủ ngon. Một trong những người đàn ông ở vùng ấy chuyên săn bắt nô lệ bỏ trốn để lấy tiền thưởng lại là trưởng nhóm sinh hoạt trong hội thánh của ông ta. Vậy nên đừng cho rằng một điều gì đó là đúng chỉ vì nó bình thường, hợp pháp, hay được làm bởi những người có vẻ tử tế. Cả một xã hội có thể cùng đồng ý với một lời dối trá rồi dựng nên tòa án và tập tục để bảo vệ nó.</p> <p>Cha của Amanda không ngồi chờ đất nước tỉnh ngộ. Ông làm việc trong bóng tối suốt nhiều năm để chuộc lại những gì lẽ ra không bao giờ được đem bán, còn bà ngoại cô thì cầu nguyện như thể Đức Chúa Trời thật sự có ý định đáp lời. Bạn sẽ gặp những bất công lớn hơn bạn — những luật lệ bạn không thể bãi bỏ, những sai trái bạn không thể một mình sửa lại. Đó chính là hoàn cảnh của gia đình Berry, và dù vậy họ vẫn làm hai điều: họ nói thật về sự bất công ấy, và họ tiếp tục làm việc, cầu nguyện hướng về tự do thay vì nhún vai gọi đó là số phận. Một sự tự do khiến ai đó phải trả giá đắt như vậy cũng đáng để bạn nghiêm túc trân trọng trong chính cuộc đời mình.</p> <p><strong>Một việc nên làm:</strong> hãy tìm hiểu cái giá thật của một điều bạn vẫn luôn có sẵn. Hãy hỏi cha mẹ hoặc ông bà xem họ, hay những người đi trước họ, đã hy sinh những gì để cuộc sống của bạn được như hôm nay — một lần chuyển nhà, một công việc, một sự hy sinh, những lời cầu nguyện. Hãy ghi lại một điều bạn học được. Bạn không thể trân trọng một món quà mà bạn chưa từng chịu khó tìm hiểu.</p>",
+  "study_questions": [
+   {
+    "question": "Samuel Berry đã làm cách nào để chuộc tự do cho chính mình rồi cho gia đình?",
+    "answer": "Chủ của ông cho phép ông kiếm thêm tiền, nên sau một ngày làm việc trọn vẹn ông làm chổi và thảm lá bắp, và vào mùa gặt ông làm thuê trên những cánh đồng khác đến một hai giờ sáng, chỉ ngủ một tiếng. Ông chuộc chính mình trước, rồi đến vợ con."
+   },
+   {
+    "question": "Amanda nói cô đã “được mua hai lần, và được tự do hai lần.” Chương này cho thấy điều gì về cả hai loại tự do ấy?",
+    "answer": "Cha cô đã trả một cái giá thật để chuộc cô ra khỏi cảnh nô lệ, còn câu Kinh Thánh mở đầu chỉ về Đấng Con, Đấng làm cho con người “thật sự được tự do.” Chương này nhấn mạnh rằng tự do của cô có một cái giá và có người đã trả cái giá ấy."
+   },
+   {
+    "question": "Chương này cảnh báo rằng một điều có thể hợp pháp và bình thường mà vẫn sai. Ở đâu bạn dễ chấp nhận một điều chỉ vì ai cũng làm?",
+    "answer": "Ý của chương này: cả một xã hội có thể cùng đồng ý với một lời dối trá. Gia đình Berry đã nói thật về sự bất công và tiếp tục làm việc, cầu nguyện hướng về tự do thay vì gọi đó là số phận. Hãy bắt đầu bằng việc tìm hiểu những quyền tự do của bạn đã khiến người khác phải trả giá thế nào."
+   }
+  ],
+  "word_count": 836
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-teens",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Người Đàn Ông Dưới Tấm Nệm",
+  "body_html": "<blockquote>“Hãy giải cứu những người đang bị kéo đi chịu chết; hãy giữ lại những người đang lảo đảo đi đến chỗ bị tàn sát.” — Châm Ngôn 24:11</blockquote> <p>Sau khi được tự do, gia đình Berry định cư trên một trang trại ở Pennsylvania, và ngôi nhà của họ trở thành một trong những trạm chính của Đường Sắt Ngầm — mạng lưới bí mật đưa những người trốn khỏi chế độ nô lệ đi về phía bắc, sang Canada. Đây không phải là việc từ thiện an toàn, êm ả. Trong thị trấn gần đó có những kẻ kiếm sống bằng nghề bắt nô lệ bỏ trốn để lĩnh thưởng, và chúng theo dõi gia đình Amanda rất sát. Cha cô làm việc suốt ngày, ngủ hai tiếng, rồi đi bộ mười lăm, hai mươi dặm trong đêm tối để đưa một người nào đó — khi thì một người đàn ông, khi thì một người mẹ với đứa con — đến nơi an toàn kế tiếp, rồi về đến nhà ngay trước bình minh để lại bắt đầu làm việc.</p> <p>Một đêm nọ, bọn săn nô lệ dùng mưu để vào nhà. Một người lạ ăn mặc chỉnh tề gõ cửa, nói rằng mình đói và đang trên đường đến buổi nhóm truyền giảng, và cha của Amanda cho ông ta ăn. Đó là một cái bẫy. Chẳng mấy chốc, cả bọn đập cửa đòi giao nộp kẻ bỏ trốn mà chúng bảo ông đang giấu, và khi xông vào, chúng đánh cha cô và giẫm đạp lên những đứa trẻ đang ngủ dưới sàn. Mẹ của Amanda chạy đến che chở cho chồng, và một tên vung dao chém bà; lưỡi dao trúng vào cánh cửa sắt của bếp lò chứ không trúng người bà. Suốt đời Amanda cảm tạ Đức Chúa Trời vì cánh cửa bếp lò ấy. Người đàn ông mà chúng truy lùng nhảy qua cửa sổ tầng trên mà chạy, nhưng một con chó săn đã bắt được anh. Chúng đưa anh trở lại cảnh nô lệ, và gia đình cô không bao giờ nghe tin về anh nữa.</p> <p>Một buổi sáng khác, cha cô đang ở ngoài cho heo ăn thì thấy bốn người cưỡi ngựa đang tiến đến — quá muộn để kịp báo cho vợ đàng hoàng. Ông chỉ kịp gọi to: “Mẹ nó ơi, tôi thấy bốn người đang tới; cố hết sức mà lo nhé.” Trong nhà, có một người đàn ông đang trốn trên lầu. Chỉ trong mấy giây, bà đưa anh xuống, giấu anh nằm bẹp trên giường dưới tấm nệm rơm, đặt đứa con trai nhỏ của mình nằm lên trên, rồi dọn dẹp lại căn phòng. Khi viên cảnh sát trưởng và người của ông lục soát, bà bình thản mở toang cửa, kéo chăn ra cho họ thấy cậu bé, thậm chí còn nói: “Các ông nhìn cả dưới gầm giường nữa đi.” Họ bật cười rồi bỏ đi. Người đàn ông được an toàn, và gia đình cô đã đưa được anh sang Canada.</p> <p>Hãy để ý rằng cha mẹ Amanda làm những việc này không phải vì dễ dàng hay vì sẽ có ai khen ngợi. Họ làm trong bóng tối, đối diện nguy cơ thật sự bị tù, bị bạo hành và mất mạng, vì những người lạ mà họ thường chẳng bao giờ biết tên. Đức tin của họ không chỉ là một cảm xúc vào ngày Chúa Nhật; đó là một chuỗi quyết định nguy hiểm mà họ đưa ra vào những buổi tối bình thường trong tuần. Khi Kinh Thánh bảo hãy giải cứu những người đang bị lôi đến chỗ chết, họ xem đó là một mệnh lệnh có ghi rõ địa chỉ — chính cánh cửa trước nhà mình.</p> <p>Có lẽ bạn sẽ không bị yêu cầu giấu một người đang chạy trốn. Nhưng bạn sẽ thấy những người bị ngược đãi, bị gạt ra ngoài, bị dồn vào chân tường — và bạn sẽ thấy mình muốn ngoảnh mặt đi, vì dính vào thì ngại ngùng, tốn kém, và chẳng phải việc của mình. Gia đình Berry dạy bạn rằng “cố hết sức” là một câu trả lời thật sự. Bạn không cần phải sửa chữa mọi thứ. Bạn cần làm điều can đảm, cụ thể ngay trước mặt mình, ngay bây giờ, trước khi khoảnh khắc ấy trôi qua.</p> <p><strong>Một việc nên làm:</strong> lần tới khi bạn thấy ai đó bị nhắm vào hay bị cô lập — một bạn mới, một người bị cả nhóm chat chế giễu, một người đang bị bắt nạt — hãy làm một việc cụ thể để đứng về phía họ trong vòng một tiếng. Ngồi cạnh họ, lên tiếng, đi cùng họ ra về. Đừng đợi đến sau này, khi đã an toàn. Mà là ngay lúc đó.</p>",
+  "study_questions": [
+   {
+    "question": "Khi bốn người cưỡi ngựa đến vào một buổi sáng, mẹ của Amanda đã làm gì để bảo vệ người đàn ông đang trốn trên lầu?",
+    "answer": "Bà giấu anh nằm bẹp trên giường dưới tấm nệm rơm, đặt đứa con trai nhỏ nằm lên trên, rồi bình thản cho những người lục soát xem cậu bé, thậm chí còn mời họ nhìn dưới gầm giường. Họ bỏ đi, và người đàn ông đã đến được Canada."
+   },
+   {
+    "question": "Lời Samuel gọi vợ, “Mẹ nó ơi, tôi thấy bốn người đang tới; cố hết sức mà lo nhé,” mang ý nghĩa gì trong chương này?",
+    "answer": "Câu ấy trở thành hình ảnh của đức tin hành động: bạn không cần phải sửa chữa mọi thứ, nhưng hãy làm điều can đảm, cụ thể ngay trước mặt mình, ngay bây giờ, trước khi khoảnh khắc ấy trôi qua."
+   },
+   {
+    "question": "Khi thấy ai đó bị nhắm vào hay bị cô lập, điều gì ngăn bạn bước vào, và bạn thật sự có thể làm gì?",
+    "answer": "Ý của chương này: gia đình Berry đã hành động bất chấp nguy hiểm thật sự vì những người lạ, xem lời “hãy giải cứu những người đang bị kéo đi chịu chết” là một mệnh lệnh có ghi địa chỉ nhà mình. Chương gợi ý làm một việc cụ thể trong vòng một tiếng — ngồi cạnh họ, lên tiếng, đi cùng họ ra về."
+   }
+  ],
+  "word_count": 813
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-teens",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Học Đọc Giữa Trời Giá Lạnh",
+  "body_html": "<blockquote>“Khi các lời của Ngài được mở ra thì soi sáng; các lời ấy ban sự hiểu biết cho người khờ dại.” — Thi-thiên 119:130</blockquote> <p>Cộng hết thời gian đi học của Amanda Smith lại thì chỉ được chừng ba tháng. Ba tháng, trong suốt cả thời thơ ấu. Không phải vì cô chậm hiểu hay lười biếng. Mà vì ở thời và nơi cô sống, trường học đối với một bé gái da đen chỉ là thứ đồ thừa được chia phát.</p> <p>Những bài học thật sự đầu tiên là do cô tự dạy mình. Cha cô mang báo về nhà, và Amanda cắt những chữ cái lớn ra, bày lên bậu cửa sổ, rồi nhờ mẹ giúp xếp chúng thành từ. Cô không bao giờ quên ngày đầu tiên mình tự đọc được một dòng — “Ngôi nhà, cái cây, con chó, con bò.” Cô gọi lũ trẻ khác đến để khoe. Cô tưởng mình đã biết hết mọi thứ.</p> <p>Về sau, cô và anh trai phải đi bộ chừng năm dặm đến một ngôi trường có nhận vài đứa trẻ da đen. Một buổi sáng mùa đông buốt giá, tuyết dày và cái lạnh có thể gây chết người. Mẹ cô sợ cô bị chết cóng nên không muốn cho cô đi; Amanda nhất định đòi đi, quấn kín người, mang đôi ủng nặng của anh trai. Đi được nửa đường, cái lạnh thấm vào người, và vì bị quấn chặt đến mức gần như không cử động được, cô suýt chết cóng giữa đường. Cô quá bướng bỉnh, và quá sợ bị giữ ở nhà, nên không chịu quay về. Khi đến được cửa lớp học, cô không mở nổi cửa và không nói được lời nào; một cậu bé phải mở cửa cho cô vào, và mọi người phải xoa bóp chăm sóc cô rất lâu cô mới tỉnh lại.</p> <p>Vậy mà sau một chặng đường như thế thì sao? Ở trường, học trò da trắng được học trọn các bài trước. Nếu còn dư thời gian, học trò da đen mới được đến lượt. Nhiều ngày Amanda đi bộ cả mấy dặm đường ấy mà chỉ được học đúng một bài — được nhét vào lúc mọi người khác đang thu dọn hộp cơm để về nhà.</p> <p>Hãy dừng lại mà ngẫm sự bất công ấy, vì đừng bao giờ làm nhẹ nó đi. Cô cũng giỏi giang và khao khát học hỏi chẳng kém bất kỳ đứa trẻ nào trong lớp, vậy mà cô bị bắt phải chờ những mẩu thời gian thừa của buổi học chỉ vì màu da. Đó là sự bất công mà cô lớn lên trong lòng nó. Và đây là điều đáng khâm phục: nó không giết chết lòng khao khát học hỏi của cô. Cô tự học chữ cái trên bậu cửa sổ. Cô đọc Kinh Thánh cho đến khi Kinh Thánh như tranh luận ngược lại với cô. Khi đã trưởng thành, cô vượt đại dương, nói trước đám đông, và viết nhật ký trên ba châu lục — chính con người mà hệ thống ấy đã cho là không xứng được học trọn một ngày.</p> <p>Có thể bạn cũng đã gặp một hoàn cảnh bất công ở mặt nào đó — một ngôi trường đang sa sút, những thầy cô đã gạt bỏ bạn, một gia đình khiến việc học trở nên khó khăn, một môn học mà người ta bảo “kiểu người như bạn” không làm được. Hoàn cảnh bất công ấy là có thật, và gọi tên nó ra không phải là bào chữa. Nhưng Amanda vạch một lằn ranh rõ ràng giữa một hoàn cảnh bất công và một con đường cùng. Điều người ta trao cho cô là một hoàn cảnh bất công. Điều cô làm với nó là không chịu để nó trở thành đường cùng. Không ai có thể cho cô một lớp học công bằng. Nhưng cũng không ai có thể ngăn cô cắt chữ cái ra từ một tờ báo.</p> <p><strong>Một việc nên làm:</strong> hãy chọn một điều bạn đã kết luận rằng mình “không thể” học được vì trường lớp đã khiến nó trở nên khổ sở — đọc sách thật sự, toán, viết, một loại nhạc cụ. Tuần này, hãy tự dạy mình phần đầu tiên của nó, một mình, trong mười lăm phút, như cách Amanda tự học chữ cái. Hãy chứng minh cho chính mình thấy cánh cửa ấy thật ra không hề bị khóa.</p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Amanda thường chỉ được học một bài sau khi đi bộ mấy dặm đến trường?",
+    "answer": "Học trò da trắng được học trọn các bài trước, còn học trò da đen chỉ được đến lượt nếu còn dư thời gian — có khi bị nhét vào lúc những người khác đang thu dọn để về nhà."
+   },
+   {
+    "question": "Chương này vạch một lằn ranh giữa “một hoàn cảnh bất công” và “một con đường cùng.” Điều đó có nghĩa là gì?",
+    "answer": "Sự đối xử bất công mà Amanda phải chịu là có thật và cần được gọi tên, không được làm nhẹ đi. Nhưng cô không để nó ngăn mình lại — cô tự học chữ cái từ những mẩu báo cắt ra trên bậu cửa sổ. Không ai cho cô được một lớp học công bằng; nhưng cũng không ai ngăn được cô học."
+   },
+   {
+    "question": "Có điều gì bạn đã kết luận rằng mình “không thể” học vì một trải nghiệm tồi tệ không? Bước đầu tiên sẽ trông như thế nào?",
+    "answer": "Ý của chương này: gọi tên một hoàn cảnh bất công không phải là bào chữa, nhưng nó không nhất thiết trở thành đường cùng. Chương gợi ý tự dạy mình phần đầu tiên trong mười lăm phút, như Amanda đã làm với chữ cái, để chứng minh cánh cửa không bị khóa."
+   }
+  ],
+  "word_count": 752
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-teens",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Cuộc Tranh Luận Suýt Thắng",
+  "body_html": "<blockquote>“Hãy coi chừng, đừng để ai bắt anh chị em làm tù binh bằng thứ triết lý chỉ là lừa dối rỗng tuếch. Nó theo truyền thống của loài người và theo các nguyên lực của thế gian, chứ không theo Đấng Christ.” — Cô-lô-se 2:8</blockquote> <p>Thời niên thiếu, Amanda tự xem mình là người tin Chúa, nhưng là một người tin qua loa — cô vẫn cầu nguyện, tránh xa rắc rối, và nghĩ rằng một ngày nào đó mình sẽ nghiêm túc với Đức Chúa Trời. Rồi cô cầm lên một cuốn sách. Cuốn sách được viết như một cuộc tranh luận giữa một mục sư Cơ Đốc và một người vô tín, và cô mở nó ra với lòng hoàn toàn tự tin: “Mình biết chắc ông mục sư sẽ thắng.”</p> <p>Ông ấy đã không thắng. Hoặc ít ra, cuốn sách được dàn dựng để trông như ông không thắng. Theo cách nó được viết, những câu hỏi của người hoài nghi thì sắc bén, khéo léo và được dành nhiều chỗ nhất, còn những câu trả lời của mục sư thì dần teo tóp và mất thế. Đến trang cuối, Amanda kể, người vô tín “dường như chiếm được hết mọi lý lẽ.” Và đây là điều cô thành thật thừa nhận: cô không còn nhớ chút nào những lập luận của người Cơ Đốc. Nhưng lập luận của người hoài nghi thì “in sâu vào trí nhớ và tâm hồn tôi.” Cô chỉ đọc một cuốn sách mà đã lặng lẽ không còn chắc rằng Đức Chúa Trời có thật.</p> <p>Điều làm câu chuyện này hữu ích là những gì xảy ra sau đó. Cô không trở thành một người vô thần mạnh dạn, vui vẻ. Cô trở nên sợ hãi và khổ sở trong âm thầm. Cô sợ có người phát hiện. Cô tiếp tục đọc thêm những tài liệu cùng loại “để củng cố mình trong ánh sáng mới,” và mỗi cuốn sách lại thắt cái nút chặt thêm. Cô muốn thoát ra mà không tìm thấy lối. Theo chính lời cô, cô đã bị mắc bẫy.</p> <p>Cô được giải thoát gần như tình cờ. Dì của cô đến thăm — một người tin Chúa chất phác, thẳng thắn như mẹ của Amanda — và khi hai dì cháu đi qua một cây cầu dài, bà dì nói về việc Đức Chúa Trời đã dựng nên bầu trời và mặt nước thật tuyệt diệu biết bao. Amanda thấy đây là cơ hội để trút hết ra, nên tung ra đòn hoài nghi mạnh nhất của mình: “Làm sao dì biết là có Đức Chúa Trời?” Dì cô không tranh luận. Bà quay lại, nhìn Amanda bằng một ánh mắt “xuyên qua tôi như một mũi tên,” giậm chân và nói rằng bà thậm chí không thèm nói chuyện với một đứa con gái được nuôi dạy như Amanda mà lại thốt ra một câu như thế. Và chính điều đó đã phá tan cái bẫy. Amanda cảm thấy nó được gỡ khỏi mình ngay trong khoảnh khắc ấy. Cô luôn tin chắc rằng nếu dì cô tranh luận từng điểm một, thì cô đã mãi mãi mắc kẹt.</p> <p>Hãy rút ra hai điều từ câu chuyện này. Thứ nhất, những gì bạn đọc, xem và lướt không hề trung lập, và chúng không vô hại chỉ vì đó “chỉ là ý tưởng.” Một lập luận được xây dựng khéo léo — hay một trăm lập luận ngắn được một ứng dụng biết rõ điều gì giữ chân bạn liên tục đưa đến — có thể đẩy bạn đến một nơi bạn chưa bao giờ chọn đi, và có khi bạn còn chẳng nhận ra mình đã bị đẩy đi. Amanda thông minh và chân thành, vậy mà vẫn bị bắt làm tù binh. Thông minh không có nghĩa là an toàn.</p> <p>Thứ hai, lối thoát khỏi một cái bẫy tư tưởng thường không phải là một mình cố tranh luận cho thắng nó lúc một giờ sáng. Lối thoát ấy thường là một con người thật, biết bạn, thương bạn, và sẽ không tranh cãi với bạn — người chỉ đơn giản không chịu chấp nhận cái khung nhìn mà bạn đã sa vào. Một người như thế rất đáng để có, và cũng rất đáng để trở thành.</p> <p><strong>Một việc nên làm:</strong> hãy thành thật nhìn vào một tiếng nói, một kênh, hay một bảng tin đã lặng lẽ định hình cách bạn nhìn thế giới gần đây. Hãy tự hỏi: nó đang làm cho mình chân thật hơn, hay chỉ làm cho mình chắc chắn hơn về những điều mình chưa bao giờ xem xét? Rồi hãy đem chuyện đó đến với một người lớn tuổi hơn mà bạn thật sự tin cậy, và nói thành lời những gì bạn đang nghĩ. Cái bẫy lớn lên trong bí mật.</p>",
+  "study_questions": [
+   {
+    "question": "Điều gì đã xảy ra với đức tin của Amanda sau khi cô đọc cuốn sách tranh luận giữa một mục sư và một người vô tín?",
+    "answer": "Lập luận của người hoài nghi bám chặt trong trí nhớ cô, còn những câu trả lời của mục sư thì cô quên hết. Cô lặng lẽ không còn chắc Đức Chúa Trời có thật, tiếp tục đọc thêm những tài liệu cùng loại, và trở nên sợ hãi, khổ sở trong âm thầm — “mắc bẫy.”"
+   },
+   {
+    "question": "Vì sao việc bà dì không chịu tranh luận lại phá tan được cái bẫy, trong khi một cuộc tranh luận có lẽ đã không làm được?",
+    "answer": "Bà dì không chấp nhận cái khung nhìn mà Amanda đã sa vào; ánh mắt bà “xuyên qua tôi như một mũi tên.” Amanda tin rằng một cuộc tranh luận từng điểm một sẽ khiến cô mãi mãi mắc kẹt."
+   },
+   {
+    "question": "Tiếng nói, kênh hay bảng tin nào đang lặng lẽ định hình cách bạn nhìn thế giới? Làm sao bạn biết nó có đang giúp bạn không?",
+    "answer": "Ý của chương này: những gì bạn đọc và lướt không hề trung lập, và thông minh không có nghĩa là an toàn. Hãy tự hỏi nó có làm bạn chân thật hơn không, và nói chuyện đó với một người lớn tuổi hơn mà bạn tin cậy — cái bẫy lớn lên trong bí mật."
+   }
+  ],
+  "word_count": 818
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-teens",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Dưới Hầm Nhà",
+  "body_html": "<blockquote>“Các ngươi sẽ tìm kiếm Ta và sẽ gặp Ta, khi các ngươi hết lòng tìm kiếm Ta.” — Giê-rê-mi 29:13</blockquote> <p>Từ khi còn nhớ được, Amanda đã muốn trở thành một Cơ Đốc nhân. Vấn đề là cô muốn làm điều đó theo cách của riêng mình — lặng lẽ, đàng hoàng, theo điều kiện của mình. Cô đã tính sẵn chính xác việc mình tin Chúa sẽ diễn ra thế nào. Cô sẽ không làm ầm ĩ, sẽ không bước lên bàn thờ nào cả, sẽ không làm một trong “những người kia” khóc lóc và la lớn. Cô tự hào về ý chí mạnh mẽ của mình. Khi Amanda đã nói sẽ không làm việc gì, người ta bảo thà đi dời núi còn dễ hơn.</p> <p>Vì thế cô cầu nguyện và vật lộn suốt nhiều tháng mà chẳng đi đến đâu, vì mỗi lần Đức Chúa Trời đến gần, cô lại đụng phải chính ý chí của mình. Cô cứ so sánh mình với những người mà cô cho là tệ hơn cô. Về sau cô thừa nhận rằng mình đã kiêu ngạo đến thế, và mơ hồ đến thế về việc thật sự tin cậy Đức Chúa Trời, đến nỗi có lần cô thấy mình đang cầu xin mặt trời, mặt trăng và các vì sao chuyển lời cô đến Chúa Giê-xu, vì cô cảm thấy mình quá tội lỗi để thưa chuyện trực tiếp với Ngài.</p> <p>Mọi chuyện lên đến đỉnh điểm vào một buổi chiều bình thường khi cô đang ủi đồ. Một ý nghĩ ập đến đè nặng lên cô — về sau cô nhận ra đó là kẻ cám dỗ — điểm lại toàn bộ quá khứ của cô: Mày đã cầu nguyện. Mày đã thành thật. Mày đã kiêng ăn, đọc Kinh Thánh, và thật lòng mong muốn điều này. Vậy mà Đức Chúa Trời vẫn chưa cứu mày. Thôi bỏ cuộc đi cho rồi. Và Amanda, kiệt sức, đã đồng ý: “Thôi được, chắc mình bỏ cuộc vậy.” Rồi một tiếng nói khác, nhỏ nhẹ hơn, bảo: “Hãy cầu nguyện thêm một lần nữa.” Và có điều gì đó trong cô trỗi dậy, dồn hết sức nặng vào hai chữ: “TÔI SẼ.” Cô kể rằng cô cảm nhận điều đó từ đỉnh đầu chạy suốt khắp người.</p> <p>Cô bắc ấm nước lên, dọn bàn gần xong để không ai gọi mình, rồi xuống hầm nhà quỳ gối — trong cơn tuyệt vọng, cô thật sự tin rằng mình đã khấn hứa và Đức Chúa Trời có thể khiến cô chết ngay tại đó. “Con xuống đây để chết,” cô cầu nguyện, “và chiều nay con phải được cứu rỗi, nếu không thì chết.” Cô cầu nguyện đi cầu nguyện lại lời cầu xin rời rạc ấy. Rồi cô đi đến tận cùng của chính mình, của mọi kế hoạch và mọi lời lẽ khéo léo, và chỉ đơn sơ thưa: “Lạy Chúa, nếu Ngài giúp con, con sẽ tin Ngài” — và ngay trong lúc nói rằng mình sẽ tin, cô đã tin. Gánh nặng lăn khỏi cô. Ánh sáng và niềm vui tràn ngập khắp con người cô. Cô chạy lên khỏi hầm nhà như một con người mới.</p> <p>Đây là điều đáng chú ý cho bất cứ ai từng cố gắng sửa đời mình chỉ bằng sức ý chí: ý chí mạnh mẽ của cô không phải là điều đã cứu cô. Suốt nhiều năm, chính nó lại là thứ chắn đường. Cô quyết tâm đến với Đức Chúa Trời mà không phải buông quyền kiểm soát, không phải bẽ mặt, không làm theo cách nào khác ngoài cách của mình — và chính sự quyết tâm ấy khiến cô mắc kẹt. Bước đột phá đến vào khoảnh khắc cô thôi mặc cả và thật sự tin cậy Ngài.</p> <p>Bạn sẽ tốn không ít sức lực để bảo vệ hình ảnh và quyền kiểm soát của mình. Có những việc bạn sẽ không làm vì sợ trông kỳ cục, những lời xin lỗi bạn sẽ không nói, những sự giúp đỡ bạn sẽ không xin, vì lòng kiêu hãnh của bạn đã vạch sẵn một lằn ranh. Tầng hầm của Amanda là nơi cô nhận ra rằng chính lằn ranh ấy là nhà tù. Đối với cô, tìm kiếm Đức Chúa Trời “hết lòng” nghĩa là buông bỏ các điều kiện.</p> <p><strong>Một việc nên làm:</strong> hãy gọi tên một điều kiện mà bạn đã âm thầm gắn vào việc nghiêm túc với Đức Chúa Trời — “miễn là mình không phải trông kỳ cục, không phải xin lỗi, không phải từ bỏ điều đó, hay không phải thừa nhận mình sai.” Hãy nói thẳng điều đó với chính mình. Rồi ngay tại điểm ấy, hãy buông bỏ điều kiện và hành động như một người tin cậy Đức Chúa Trời hơn hình ảnh của chính mình.</p>",
+  "study_questions": [
+   {
+    "question": "Điều gì đã xảy ra dưới hầm nhà vào buổi chiều Amanda cuối cùng tìm được sự bình an với Đức Chúa Trời?",
+    "answer": "Sau khi quyết định “TÔI SẼ,” cô xuống hầm quỳ gối, cầu xin rằng chiều hôm ấy cô phải được cứu rỗi. Khi đi đến tận cùng của chính mình, cô thưa: “Lạy Chúa, nếu Ngài giúp con, con sẽ tin Ngài,” và ngay khi nói, cô đã tin. Gánh nặng lăn khỏi cô."
+   },
+   {
+    "question": "Chương này nói ý chí mạnh mẽ của Amanda là “chính thứ chắn đường.” Điều đó có nghĩa là gì?",
+    "answer": "Cô muốn đến với Đức Chúa Trời theo điều kiện của mình — không làm ầm ĩ, không bẽ mặt, không mất quyền kiểm soát. Sự quyết tâm ấy khiến cô mắc kẹt; bước đột phá đến khi cô thôi mặc cả và đơn sơ tin cậy Ngài."
+   },
+   {
+    "question": "Bạn có thể đang âm thầm gắn những điều kiện nào vào việc nghiêm túc với Đức Chúa Trời?",
+    "answer": "Ý của chương này: tìm kiếm Đức Chúa Trời “hết lòng” nghĩa là buông bỏ các điều kiện — không còn bảo vệ hình ảnh hay quyền kiểm soát của mình. Chương gợi ý gọi thẳng tên điều kiện của bạn và hành động ngay tại điểm ấy như một người tin cậy Đức Chúa Trời hơn hình ảnh của chính mình."
+   }
+  ],
+  "word_count": 819
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-teens",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Chuộc Frances Trở Về",
+  "body_html": "<blockquote>“Hãy xét xử công bằng cho người yếu thế và trẻ mồ côi; hãy xử cho người khốn khổ và người cùng quẫn được lẽ phải.” — Thi-thiên 82:3</blockquote> <p>Frances, em gái của Amanda, sinh ra là người tự do, ở Pennsylvania, trong một gia đình có cha mẹ là người tự do. Lẽ ra mọi nguy hiểm đã chấm dứt từ đó. Nhưng không. Khi Frances còn nhỏ, cô bé đến sống với một bà dì ở Maryland, và mọi chuyện trở nên tồi tệ — bà dì khắc nghiệt, Frances bỏ trốn sang một gia đình đối xử với em tốt hơn, và trong cảnh hỗn loạn những năm Nội Chiến, khi người da đen bị bắt và bị bán nếu không chứng minh ngay được mình là người tự do, một đứa trẻ sinh ra tự do vẫn cứ bị đem bán. Với giá bốn mươi đô-la. Cho một người đàn ông, trong thời hạn mười năm.</p> <p>Amanda đang làm người giúp việc với lương sáu đô-la một tháng khi tin ấy đến tai cô. Cô vay năm mươi đô-la, trừ dần vào tiền công, rồi lên đường — một phụ nữ da đen đi vào một tiểu bang còn chế độ nô lệ giữa thời chiến để đưa em gái mình về. Cô đến được vùng ấy rồi bắt đầu đi bộ mấy dặm đường đến trang trại, một mình, cả ngày chưa ăn gì. Cô sợ đến mức không dám ghé vào nhà nào xin dù chỉ một ngụm nước. Tại một ngôi nhà khang trang có chiếc máy bơm nước ngay giữa sân, cô xin một bà cụ đang ngồi ngoài hiên cho chút nước và nhận được câu trả lời: “Không, không; đi đi, đi đi.” Amanda suýt ngất, rồi cầu xin Đức Chúa Trời hãy cất cơn khát đi — và, như cô kể, cơn khát hoàn toàn biến mất, và cô đi tiếp thêm một dặm nữa dưới nắng.</p> <p>Khi đến trang trại và tìm thấy Frances, người đàn ông “sở hữu” em gái cô gào thét, chửi rủa và nhất định không chịu để một cô gái sinh ra tự do ra đi nếu không được trả đủ bốn mươi đô-la ông ta đã bỏ ra. Thật là quá quắt — Amanda chẳng có nghĩa vụ pháp lý nào phải trả một xu cho một con người chưa bao giờ hợp pháp là tài sản của ai. Nhưng không có ai làm chứng cho Frances trước tòa, không có sự bảo vệ nào sắp đến, chỉ có một người đàn ông giận dữ cầm roi ngựa trong tay. Vì vậy Amanda đã trả. Cô trao tiền, và Frances ra đi chỉ với chiếc váy đang mặc trên người và một chiếc nữa kẹp dưới nách. Amanda mất nhiều năm làm việc để trả hết món nợ ấy.</p> <p>Hãy thành thật về cảm xúc mà câu chuyện này gợi lên trong bạn, vì chính cảm xúc ấy là điều quan trọng. Nó khiến người ta tức giận. Amanda đã làm mọi điều đúng, vậy mà vẫn phải chuộc lại chính em gái vốn tự do của mình từ một kẻ không có quyền bán em, chỉ vì luật pháp và những người xung quanh không chịu bảo vệ một cô gái da đen. Đôi khi làm điều yêu thương nghĩa là phải trả một cái giá hoàn toàn bất công — một cái giá mà lẽ ra bạn không bao giờ phải gánh. Amanda trả giá ấy vì Frances quan trọng với cô hơn cái nguyên tắc của sự việc.</p> <p>Đó là một kiểu yêu thương khó khăn, trưởng thành, và bạn sẽ cần hiểu nó. Sẽ có những lúc giải pháp công bằng đơn giản là không có — khi việc đứng ra bênh vực ai đó, hay dọn dẹp một mớ hỗn độn không phải do mình gây ra, hay bảo vệ một người đang bị dồn vào chân tường, khiến bạn mất tiền bạc, thời gian, sự thoải mái hay công trạng mà bạn không hề nợ ai. Phản ứng non nớt là: “Thế thì không công bằng, nên mình không làm.” Phản ứng của Amanda là xem con người ấy đáng giá hơn sự bất công. Cô chưa bao giờ giả vờ rằng điều đó là công bằng. Cô chỉ quyết định rằng Frances phải được đặt lên trước.</p> <p><strong>Một việc nên làm:</strong> hãy nghĩ đến một người trong đời bạn đang bị đối xử bất công và không thể tự mình giải quyết — một anh chị em, một người bạn, một người ở trường. Tuần này, hãy làm một việc để giúp họ, một việc khiến bạn phải trả giá và về lý thuyết thì bạn “không bắt buộc phải” làm. Tình yêu chỉ xuất hiện khi mọi thứ công bằng và thuận tiện không phải là kiểu tình yêu mà gia đình Amanda đã sống.</p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Amanda phải đi vào Maryland, và cô đã làm gì khi đến trang trại?",
+    "answer": "Em gái sinh ra tự do của cô, Frances, đã bị bán với giá bốn mươi đô-la trong thời hạn mười năm. Đối diện một người đàn ông giận dữ cầm roi ngựa và không có sự bảo vệ nào của pháp luật, Amanda trả bốn mươi đô-la, đưa Frances về nhà, rồi mất nhiều năm làm việc để trả hết món nợ."
+   },
+   {
+    "question": "Chương này gọi đây là “một kiểu yêu thương khó khăn, trưởng thành.” Điều gì khiến nó như vậy?",
+    "answer": "Amanda không nợ gì cả — Frances chưa bao giờ hợp pháp là tài sản của ai — vậy mà cô vẫn trả một cái giá bất công, vì em gái quan trọng với cô hơn nguyên tắc. Cô không bao giờ giả vờ rằng điều đó công bằng; cô chỉ quyết định đặt Frances lên trước."
+   },
+   {
+    "question": "Ai trong đời bạn đang bị đối xử bất công và không thể tự mình giải quyết? Giúp họ sẽ khiến bạn phải trả giá gì?",
+    "answer": "Ý của chương này: phản ứng non nớt là “Thế thì không công bằng, nên mình không làm.” Chương gợi ý tuần này hãy làm một việc khiến bạn phải trả giá và về lý thuyết bạn “không bắt buộc phải” làm — tình yêu chờ đến khi mọi thứ công bằng không phải là điều Amanda đã sống."
+   }
+  ],
+  "word_count": 821
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-teens",
+   "vi"
+  ],
+  "order": 7,
+  "title": "Khi Nỗi Đau Ập Đến",
+  "body_html": "<blockquote>“Ân điển của Ta đủ cho con, vì quyền năng được trọn vẹn trong sự yếu đuối.” — 2 Cô-rinh-tô 12:9</blockquote> <p>Sẽ là không trung thực nếu kể câu chuyện của Amanda Smith như một chuỗi chiến thắng nối tiếp nhau. Cuộc đời bà chứa đựng biết bao mất mát đến choáng ngợp. Người chồng đầu tiên của bà ra chiến trường trong cuộc Nội Chiến và không bao giờ trở về. Bà đã chôn cất những đứa con — một em bé bị bệnh tật cướp đi vào một mùa hè khắc nghiệt khi bà đang làm đầu bếp xa nhà, và về sau là một cậu bé, Tom Henry, sau nhiều tuần đau đớn. Trong mười ba anh chị em, chỉ có bà và hai người nữa sống được đến tuổi trưởng thành. Cuộc hôn nhân thứ hai, mà bà từng hy vọng cuối cùng sẽ cho mình một mái ấm Cơ Đốc, hóa ra cô đơn và đau khổ; chồng bà đã lừa dối bà về những dự định của ông và chẳng mấy kiên nhẫn với đức tin của bà.</p> <p>Và suốt phần lớn thời gian ấy, bà nghèo khó và làm việc đến kiệt sức. Bà nhận giặt thuê để sống, và bà kể chuyện mình đứng bên chậu giặt suốt cả đêm — bắt đầu lúc sáu giờ sáng hôm trước và làm đến sáu giờ sáng hôm sau — mệt đến nỗi phải tựa đầu vào bậu cửa sổ để chợp mắt vài phút, rồi lại tiếp tục làm bên ánh đèn cho đến rạng sáng. Đây là chất liệu thật của cuộc đời bà: nỗi đau mất mát và sự kiệt sức chồng chất lên nhau, mà chẳng thấy lối thoát nào trước mắt.</p> <p>Trong một thời gian dài, phản xạ của bà là tìm cách thoát khỏi những thử thách — cầu nguyện để đi vòng qua chúng, để đến được một chỗ trong đời mà nỗi đau cuối cùng sẽ dừng lại. Rồi một buổi sáng, một bà cụ tên là Mẹ Jones ghé qua khi Amanda đang khóc bên chậu giặt, lòng tan nát vì sự lạnh nhạt của chồng. Amanda tuôn ra hết mọi điều tốt mình đã làm và mọi chuyện bất công đến thế nào. Mẹ Jones không bảo bà rằng nỗi đau sẽ chấm dứt. Bà cụ nói một điều khác: rằng điều Amanda cần là “ân điển để chịu đựng.” Không phải một cuộc đời không có rắc rối — mà là sức mạnh để đứng vững ngay giữa rắc rối. Amanda nhận ra mình đã dồn hết sức lực vào việc “lo tính cách thoát khỏi thử thách, thay vì cầu xin Đức Chúa Trời ban ân điển để chịu đựng.”</p> <p>Đó là một cách hiểu thật sự khác về đức tin, và đáng để chậm lại mà suy ngẫm. Nhiều người, khi đau khổ, thật ra đang xin Đức Chúa Trời làm cho điều khó khăn biến mất — chữa lành nó, đảo ngược nó, đưa con ra khỏi nó. Và đôi khi Ngài làm vậy. Nhưng Amanda học được rằng món quà sâu xa hơn, đáng tin cậy hơn, là ân điển đủ mạnh để mang bạn đi qua điều không biến mất. Câu Kinh Thánh mà bà nương dựa không hứa ban cho bà quyền năng thay cho sự yếu đuối. Nó hứa quyền năng được trọn vẹn trong sự yếu đuối — ngay giữa sự yếu đuối, chứ không phải sau khi nó đã qua đi.</p> <p>Bạn sẽ mất đi những điều và những người, có khi rất đau đớn, có khi rất bất công, có khi rất sớm. Đó không phải là bi quan; đó chỉ là sự thật, và giả vờ khác đi chẳng giúp ích gì cho người ở tuổi bạn. Khi điều đó đến, bạn sẽ bị cám dỗ đo lường Đức Chúa Trời bằng việc Ngài có cất nỗi đau đi đủ nhanh hay không, và cảm thấy bị bỏ rơi khi Ngài không làm vậy. Amanda sẽ bảo bạn hãy đặt một câu hỏi tốt hơn: không chỉ “Lạy Chúa, xin cất điều này đi,” mà còn “Lạy Chúa, xin nâng đỡ con trong điều này.” Bà đã chôn cất nhiều người thân hơn hầu hết chúng ta sẽ phải chôn, mà vẫn không thôi tin cậy — không phải vì nỗi đau đã hết, mà vì ân điển hóa ra là đủ, đúng như lời đã hứa.</p> <p><strong>Một việc nên làm:</strong> hãy nghĩ đến một điều khó khăn trong đời bạn lúc này mà có lẽ sẽ không tự dưng biến mất. Thay vì chỉ cầu xin cho nó được cất đi, hãy bắt đầu cầu nguyện — thành lời, thật lòng — xin sức mạnh để đi qua nó cho tốt. Rồi hãy nghĩ đến một người đang buồn đau vì một mất mát nào đó và đến ngồi bên họ, như Mẹ Jones đã ngồi bên Amanda.</p>",
+  "study_questions": [
+   {
+    "question": "Mẹ Jones đã nói gì với Amanda khi bà đang khóc bên chậu giặt?",
+    "answer": "Bà cụ không nói rằng nỗi đau sẽ chấm dứt; bà nói Amanda cần “ân điển để chịu đựng” — sức mạnh để đứng vững ngay giữa rắc rối. Amanda nhận ra mình đã “lo tính cách thoát khỏi thử thách, thay vì cầu xin Đức Chúa Trời ban ân điển để chịu đựng.”"
+   },
+   {
+    "question": "Chương này hiểu câu Kinh Thánh “quyền năng được trọn vẹn trong sự yếu đuối” như thế nào?",
+    "answer": "Câu ấy không hứa quyền năng thay cho sự yếu đuối, mà là quyền năng ngay giữa sự yếu đuối. Món quà sâu xa hơn là ân điển đủ mạnh để mang bạn đi qua điều không biến mất."
+   },
+   {
+    "question": "Có điều khó khăn nào trong đời bạn mà có lẽ sẽ không tự dưng biến mất không? Bạn có thể cầu nguyện về nó khác đi thế nào?",
+    "answer": "Ý của chương này: đừng chỉ đo lường Đức Chúa Trời bằng việc Ngài cất nỗi đau đi nhanh đến đâu. Hãy cầu nguyện không chỉ “xin cất điều này đi” mà cả “xin nâng đỡ con trong điều này,” và hãy đến ngồi bên một người đang buồn đau, như Mẹ Jones đã làm với Amanda."
+   }
+  ],
+  "word_count": 827
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-teens",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Người Duy Nhất Đứng Dậy",
+  "body_html": "<blockquote>“Không còn người Do Thái hay người Hy Lạp, không còn nô lệ hay người tự do, không còn nam và nữ, vì tất cả anh chị em đều là một trong Đức Giê-xu Christ.” — Ga-la-ti 3:28</blockquote> <p>Một sáng Chúa Nhật, sau nhiều năm khao khát được biết Đức Chúa Trời sâu nhiệm hơn, Amanda cảm thấy mạnh mẽ rằng mình nên đến Nhà thờ Green Street ở New York để nghe một nhà truyền đạo tên là John Inskip. Suốt quãng đường đi, những nghi ngờ và sợ hãi vây kín bà — lo cho đứa con nhỏ ở nhà, sợ chồng sẽ nói gì, hết cớ này đến cớ khác để rẽ vào một nhà thờ gần hơn. Bà vẫn tiếp tục bước.</p> <p>Bà đến nơi trong tình trạng mệt lả và ngồi cách cửa vài hàng ghế. Và theo những gì bà thấy được, bà là người da đen duy nhất trong cả tòa nhà. Điều đó có ý nghĩa với bà, và bà thành thật nói rõ vì sao. Bà viết rằng mình luôn mang một nỗi sợ người da trắng — không hẳn là sợ họ làm hại mình, mà là một nỗi bất an sâu kín, một cảm giác rằng họ ở “trên kia,” quan trọng, còn bà ở “dưới này,” chẳng là gì. Lớn lên trong cảnh đi ở, bà đã học cách giữ mình thật dè dặt, biết thân biết phận, không bao giờ gây chú ý ở nơi người da trắng có thể nhìn thấy.</p> <p>Vì thế, khi bài giảng mở lòng bà ra và Đức Chúa Trời gặp bà theo cách mà bà đã tìm kiếm suốt mười hai năm, một cuộc chiến nổ ra trong lòng bà. Từng đợt, từng đợt niềm vui dâng lên trong bà và bà muốn reo lên vì vui mừng — và lần nào cũng vậy, một tiếng nói lại bảo: nếu mày làm ồn ở đây, trước mặt tất cả những người da trắng này, họ sẽ đuổi mày ra. Bà ngồi đè lên hai tay. Bà nén nó lại. Hai lần bà cảm thấy niềm vui dâng lên, và hai lần bà dập tắt nó vì sợ hãi. Suýt nữa bà đã đánh mất tất cả; trong mấy phút, bà chìm vào nỗi tuyệt vọng thật sự.</p> <p>Rồi, khi đang đứng run rẩy ở đó, bà nghe những lời vang đến với mình, rõ ràng, từ một góc nhà thờ: Không còn người Do Thái hay người Hy Lạp, không còn nô lệ hay người tự do, không còn nam và nữ, vì tất cả anh chị em đều là một trong Đức Giê-xu Christ. Bà kể rằng trước đó bà chưa bao giờ thật sự hiểu câu Kinh Thánh ấy, nhưng ngay giây phút ấy Đức Chúa Trời đã làm cho nó trở nên rõ ràng với bà. Và khi bài thánh ca kết thúc đến dòng nói về huyết tẩy sạch mọi tội lỗi, bà đứng dậy trên đôi chân run rẩy và reo lên “Vinh hiển thay Chúa Giê-xu” — thành tiếng, trong căn phòng ấy, người phụ nữ da đen duy nhất ở đó. Nhà truyền đạo đáp lại: “A-men, vinh hiển thay Đức Chúa Trời.” Trên đường về nhà sau đó, bà kể rằng những người da trắng mà bà vẫn luôn sợ hãi “trông thật nhỏ bé. Ngọn núi lớn đã trở thành một gò đất con.”</p> <p>Hãy đọc kỹ điều đó, vì đó không phải là chuyện nhỏ. Cả một xã hội đã dành trọn cuộc đời Amanda để dạy bà rằng bà thấp kém hơn — rằng bà nên thu mình lại, im lặng, ở phía sau, đừng bao giờ gây chú ý trong một căn phòng toàn người da trắng. Và điều cuối cùng phá tan nỗi sợ ấy không phải là một khẩu hiệu về lòng tự trọng. Đó là một câu Kinh Thánh giáng xuống đầy quyền năng: trong Đấng Christ, những thứ hạng mà thế gian dùng để xếp loại bạn — chủng tộc, giai cấp, giới tính — không quyết định giá trị của bạn. Bà không phải là một người thấp kém phải giữ im lặng. Trước mặt Đức Chúa Trời, bà là một với mọi người trong căn phòng ấy, trọn vẹn và bình đẳng.</p> <p>Bạn cũng đã thấm vào mình những thông điệp về thứ hạng của bạn — từ trường học, từ bảng tin, từ căn phòng mà bạn cảm thấy mình phải thu nhỏ lại. Một số bạn đã bị làm cho thấy mình nhỏ bé vì chính những điều như Amanda: màu da, tiền bạc, gia đình, thân thể của bạn. Buổi sáng của Amanda ở Green Street cho thấy ngọn núi khiến bạn thấy mình nhỏ bé thường nhỏ hơn vẻ bề ngoài của nó, và điều chân thật nhất về bạn không phải là thứ hạng của bạn trong mắt bất kỳ ai, mà là vị thế của bạn trước mặt Đức Chúa Trời, Đấng xem bạn là một, chứ không phải kém hơn.</p> <p><strong>Một việc nên làm:</strong> hãy gọi tên căn phòng hay hoàn cảnh nơi bạn tự thu mình lại — nơi bạn im lặng, lẩn tránh, thu nhỏ vì cảm thấy mình chẳng có thứ hạng gì. Lần tới khi ở đó, hãy làm một việc bình thường, thành thật mà thường ngày bạn vẫn kìm nén: lên tiếng, ngồi vào chỗ ấy, đặt câu hỏi. Hãy đứng dậy, như Amanda cuối cùng đã đứng dậy.</p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Amanda nén niềm vui của mình trong lúc nghe giảng ở Nhà thờ Green Street?",
+    "answer": "Bà là người da đen duy nhất ở đó, và một tiếng nói cứ cảnh báo rằng nếu bà làm ồn trước mặt tất cả những người da trắng ấy, họ sẽ đuổi bà ra. Bà ngồi đè lên hai tay và dập tắt niềm vui của mình hai lần."
+   },
+   {
+    "question": "Điều gì đã thay đổi khi câu Ga-la-ti 3:28 đến với bà, và bà muốn nói gì khi bảo ngọn núi “đã trở thành một gò đất con”?",
+    "answer": "Câu Kinh Thánh cho bà thấy rằng trong Đấng Christ, chủng tộc, giai cấp và giới tính không quyết định giá trị. Bà đứng dậy reo lên “Vinh hiển thay Chúa Giê-xu,” và những người bà vẫn luôn sợ giờ trông thật nhỏ bé; chính nỗi sợ đã co lại."
+   },
+   {
+    "question": "Ở đâu bạn tự thu mình lại vì cảm thấy mình chẳng có thứ hạng gì? Đứng dậy ở đó sẽ trông như thế nào?",
+    "answer": "Ý của chương này: điều chân thật nhất về bạn không phải là thứ hạng của bạn trong mắt bất kỳ ai, mà là vị thế của bạn trước mặt Đức Chúa Trời, Đấng xem bạn là một, chứ không phải kém hơn. Chương gợi ý làm một việc thành thật mà bạn thường kìm nén — lên tiếng, ngồi vào chỗ ấy, đặt câu hỏi."
+   }
+  ],
+  "word_count": 919
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-teens",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Hãy Đi, Ta Sẽ Đi Cùng Con",
+  "body_html": "<blockquote>“Vậy bây giờ con hãy đi. Ta sẽ ở với miệng con và dạy con những gì con phải nói.” — Xuất Hành Ký 4:12</blockquote> <p>Khi Amanda tin chắc rằng Đức Chúa Trời đang kêu gọi bà rời New York để đi giảng đạo, mọi thứ dường như đều chống lại bà. Bà là một phụ nữ da đen sống trong thời mà phần lớn các mục sư — kể cả các mục sư da đen — hoàn toàn không tin rằng phụ nữ nên giảng đạo nơi công cộng. Bà không được phong chức. Không có ban trị sự hội thánh nào đứng sau bà. Không có lương. Gần như không có học vấn gì đáng kể. Và bà lại được sai đến, giữa bao nhiêu nơi, một thị trấn tên là Salem, ở New Jersey, nơi bà không quen biết một ai. Khi cảm nhận rằng mình nên đi, bà đã cưỡng lại quyết liệt, xin Đức Chúa Trời hết lần này đến lần khác hãy cho thấy thật rõ ràng không thể nhầm lẫn, và nửa mong rằng Ngài sẽ đổi ý.</p> <p>Ngài không đổi ý, nên bà bắt đầu chuẩn bị với gần như hai bàn tay trắng. Bà cần trả tiền thuê nhà và bà cần giày — đôi giày duy nhất của bà đã thủng đế, và bà biết đôi chân ướt giữa mùa đông sẽ khiến mình đổ bệnh. Bà không nói với ai; bà chỉ trình bày nhu cầu của mình với Đức Chúa Trời. Bà cầu xin tiền mua giày, và lạ lùng thay, bà thưa với Đức Chúa Trời rằng bà sẽ tin cậy Ngài về đôi giày trọn vẹn đến mức bà “xỏ chân vào chúng thật như tôi từng xỏ chân vào bất kỳ đôi giày nào,” nhận lấy chúng bằng đức tin trước khi chúng xuất hiện. Vài ngày sau, tại một buổi nhóm, một ông cụ dúi ít tiền vào tay bà khi bà ra về. Bà về nhà, đếm lại — năm đô-la, lần đầu tiên có người cứ thế trao cho bà nhiều tiền đến vậy — và bà sực nhớ: đôi giày.</p> <p>Rồi những nghi ngờ trở nên nhắm thẳng vào bà và cay nghiệt. Khi bà đang đứng ủi đồ, lời cáo buộc ập đến: Chúa Giê-xu sai các môn đồ ra đi từng đôi một, còn mày thì đi một mình — người ta sẽ nói mày đi chỉ để tìm chồng thôi. Câu ấy làm bà đau nhói, vì bà biết người ta sẽ bàn tán. Bà đặt bàn ủi xuống, quỳ gối, và xin Đức Chúa Trời, nếu bà được định cho có một người đồng hành, thì xin Ngài sai ai đó đi cùng bà — và câu trả lời đến với bà chỉ đơn giản là lời hứa Ngài đã ban từ trước: “Chẳng phải Ta đã bảo con rằng Ta sẽ đi cùng con sao?” Bà đã quên mất điều đó. Bà đứng dậy trong bình an và ra đi một mình.</p> <p>Điều nên khiến bạn chú ý ở đây là Amanda có quá nhiều thứ để mất mà lại có quá ít chỗ dựa. Bà không bước ra với học bổng, chức danh, một đội ngũ hay một tấm lưới an toàn. Bà là một người đàn bà giặt thuê nghèo khó, đi ngược lại điều mà gần như mọi người xung quanh cho là đúng đắn, bước vào một thị trấn xa lạ chỉ dựa vào một xác tín mà bà không thể chứng minh cho ai. Mọi dữ kiện thực tế đều bảo hãy ở nhà. Bà cân nhắc sự chế giễu, nỗi cô đơn và rủi ro — và quyết định rằng vâng phục một Đức Chúa Trời mà bà không nhìn thấy còn an toàn hơn là bất tuân để giữ cho mình được thoải mái.</p> <p>Bạn sẽ liên tục gặp những phiên bản nhỏ hơn của điều này: một việc bạn khá chắc là đúng nên làm, nhưng không ai đòi hỏi, không ai vỗ tay, và nhiều người sẽ thấy kỳ cục hay tự phụ. “Bạn nghĩ bạn là ai chứ?” là một câu nói đầy sức mạnh, và nó chặn đứng rất nhiều người. Hãy để ý rằng lời cáo buộc mà Amanda đối diện thậm chí không phải về việc Đức Chúa Trời có kêu gọi bà hay không — mà là về chuyện người ta sẽ nói gì. Bà học cách phân biệt giữa sự dẫn dắt của Đức Chúa Trời và ý kiến của đám đông, và hành động theo điều thứ nhất ngay cả khi điều thứ hai chống lại mình.</p> <p><strong>Một việc nên làm:</strong> hãy xác định một việc đúng mà bạn cứ trì hoãn chủ yếu vì nó sẽ trông thế nào hay người ta có thể nói gì — không phải vì nó sai, chỉ vì nó khiến bạn bị phơi bày. Tuần này, hãy bước bước cụ thể đầu tiên, một mình nếu cần. Hãy làm điều bạn khá chắc là Đức Chúa Trời muốn bạn làm, trước khi nỗi sợ bị xem là ngớ ngẩn thuyết phục bạn bỏ cuộc.</p>",
+  "study_questions": [
+   {
+    "question": "Amanda đã có được đôi giày trước khi đến Salem như thế nào?",
+    "answer": "Bà không nói với ai ngoài Đức Chúa Trời, cầu xin tiền và nhận lấy đôi giày bằng đức tin. Vài ngày sau, tại một buổi nhóm, một ông cụ dúi tiền vào tay bà — năm đô-la — và bà sực nhớ đến đôi giày."
+   },
+   {
+    "question": "Khi lời cáo buộc đến rằng người ta sẽ nói bà đi tìm chồng, Amanda đã học được điều gì?",
+    "answer": "Bà quỳ xuống xin một người đồng hành, và được nhắc lại lời hứa của Đức Chúa Trời: “Chẳng phải Ta đã bảo con rằng Ta sẽ đi cùng con sao?” Bà học cách phân biệt sự dẫn dắt của Đức Chúa Trời với ý kiến của đám đông, rồi ra đi một mình."
+   },
+   {
+    "question": "Có việc đúng nào bạn đã trì hoãn chủ yếu vì nó sẽ trông thế nào không?",
+    "answer": "Ý của chương này: “Bạn nghĩ bạn là ai chứ?” chặn đứng rất nhiều người, nhưng Amanda xem việc vâng phục Đức Chúa Trời an toàn hơn việc giữ mình thoải mái. Chương gợi ý tuần này hãy bước bước cụ thể đầu tiên, một mình nếu cần."
+   }
+  ],
+  "word_count": 861
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-teens",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Amanda Smith, Người Đàn Bà Giặt Thuê, Mà Đi Anh Sao?",
+  "body_html": "<blockquote>“Và Đức Chúa Trời của tôi sẽ đáp ứng mọi nhu cầu của anh chị em, tương xứng với sự giàu có vinh quang của Ngài trong Đức Giê-xu Christ.” — Phi-líp 4:19</blockquote> <p>Sau nhiều năm hầu việc, một phụ nữ người Anh gợi ý Amanda sang Anh một chuyến để nghỉ ngơi đôi chút. Phản ứng đầu tiên của Amanda là bật cười trước ý tưởng ấy. “Đi Anh! Amanda Smith, người đàn bà da màu giặt thuê, mà đi Anh!” Bà quyết định thậm chí sẽ không cầu nguyện về chuyện đó. Bà nghĩ mình đã phải xin Đức Chúa Trời quá nhiều điều thật sự cần thiết, nên chẳng việc gì phải làm phiền Ngài về một chuyện viển vông như một chuyến vượt đại dương. “Mấy người sang trọng thì đi được,” bà nghĩ, “chứ không phải cho mình.”</p> <p>Nhưng cảm nhận rằng Đức Chúa Trời thật sự muốn bà đi cứ lớn dần, và nỗi sợ của bà cũng vậy. Bởi vì bên dưới câu “mình là ai chứ?” là một điều cụ thể hơn: Amanda kinh hãi biển cả. Trong hình dung của bà, đại dương lúc nào cũng dữ dội và chết chóc. Bà nghĩ đến ba nghìn dặm đường, đến con gái ở nhà, đến mọi điều có thể trục trặc, rồi bà viết một lá thư từ chối chuyến đi. Bà thấy nhẹ nhõm ngay khi thả lá thư vào hộp thư — được một lúc.</p> <p>Rồi tối hôm ấy, một làn sóng u tối phủ lên bà mà bà không sao rũ bỏ được. Bà khóa cửa, vặn nhỏ đèn, quỳ xuống, và nhất định không đi ngủ cho đến khi hiểu điều gì không ổn. Bà xem xét lại mọi lời mình đã nói và mọi việc mình đã làm trong ngày để tìm xem có tội lỗi nào không — chẳng có gì. Cuối cùng, trong sự tĩnh lặng, bà nghe rõ ràng: “Con đi khắp nơi bảo người ta hãy tin cậy Chúa trong bóng tối, hãy tin cậy Ngài khi họ không thể nhìn thấy Ngài. Con bảo người khác làm điều mà chính con không sẵn lòng làm.” Rồi đến sự thật cụ thể: “Con sợ tin cậy Chúa mà đi sang Anh. Con sợ đại dương.” Amanda kể rằng điều ấy khiến bà nghẹt thở, vì nó đúng chính xác, đúng đến bẽ mặt.</p> <p>Điều đó đáng để dừng lại, vì đây là cái bẫy mà hầu như ai cũng rơi vào và hầu như chẳng ai nhận ra. Có thể nói Amanda sống bằng việc bảo người ta hãy tin cậy Đức Chúa Trời qua những điều họ không thể thấy hay kiểm soát. Vậy mà bà đã âm thầm miễn trừ chính mình khỏi thông điệp của mình ngay tại điểm duy nhất khiến bà sợ hãi. Bà là một người giả hình theo nghĩa nguyên thủy của từ ấy — không phải kẻ gian ác, chỉ là một người mà việc làm chưa theo kịp lời nói. Điều đáng khâm phục là khi Đức Chúa Trời gọi tên điều đó, bà không tự bào chữa. Bà thưa: “Lạy Chúa, đúng là như vậy,” ăn năn, và về sau đã một mình vượt qua đại dương ấy.</p> <p>Có điều thứ hai ở đây dành cho bất cứ ai từng cảm thấy mình quá tầm thường cho bất cứ việc gì. Trên đường đi, và khi đã đến nơi, những hành khách kiêu căng và giàu có khinh khi người đàn bà da đen giặt thuê đi khoang hạng nhất mà chẳng có lý do gì quan trọng và chẳng có ai ra đón. Amanda không cãi lại họ, cũng không thu mình lại. Tại một nhà thờ, bà lặng lẽ quay lại và nhìn hai người phụ nữ ăn mặc sang trọng “thẳng vào mặt để họ thấy tôi thuộc dòng hoàng tộc da đen.” Bà đã dần tin rằng mình thuộc dòng dõi hoàng tộc — một người con của Đức Chúa Trời — và bà mang dáng dấp ấy, bất kể ai nghĩ gì.</p> <p>Vậy đây là hai câu hỏi dành cho bạn. Thứ nhất: ở đâu bạn đang bảo người khác — một em nhỏ trong nhà, một người bạn, một đồng đội — hãy can đảm, thành thật hay trung tín theo một cách mà chính bạn đang lén né tránh? Và thứ hai: ở đâu bạn đang để cách người khác xếp hạng mình thuyết phục bạn rằng những điều lớn lao, tốt đẹp chỉ “cho mấy người sang trọng, chứ không phải cho mình”?</p> <p><strong>Một việc nên làm:</strong> hãy tìm ra một chỗ mà lời nói và lòng can đảm của bạn không khớp nhau — lời khuyên bạn đưa ra mà chính mình không chịu làm theo. Tuần này, hãy làm điều đáng sợ mà bạn vẫn luôn bảo người khác làm. Đừng tiếp tục bảo người ta tin cậy Đức Chúa Trời trong bóng tối từ một chỗ mà bạn vẫn giữ đèn sáng cho riêng mình.</p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Amanda viết thư từ chối chuyến đi sang Anh?",
+    "answer": "Bên dưới câu “mình là ai chứ?” là nỗi kinh hãi biển cả, vì bà hình dung đại dương lúc nào cũng dữ dội và chết chóc. Bà lo về đường xa và về con gái, nên đã từ chối, và thấy nhẹ nhõm được một lúc."
+   },
+   {
+    "question": "Amanda muốn nói gì khi bảo mình “thuộc dòng hoàng tộc da đen” lúc những hành khách kiêu căng khinh khi bà?",
+    "answer": "Bà đã dần tin rằng mình thuộc dòng dõi hoàng tộc vì là con của Đức Chúa Trời. Vì vậy, thay vì cãi lại hay thu mình, bà nhìn thẳng vào mặt hai người phụ nữ ăn mặc sang trọng và giữ phẩm giá của mình."
+   },
+   {
+    "question": "Ở đâu bạn đang bảo người khác hãy can đảm hay trung tín theo cách mà chính bạn đang lén né tránh?",
+    "answer": "Ý của chương này: Amanda đã miễn trừ chính mình khỏi thông điệp của mình. Khi Đức Chúa Trời gọi tên điều đó, bà không tự bào chữa mà thưa: “Lạy Chúa, đúng là như vậy,” rồi vượt đại dương. Chương gợi ý hãy làm điều đáng sợ mà bạn vẫn bảo người khác làm."
+   }
+  ],
+  "word_count": 843
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-teens",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Đàn Ông Phải Im Lặng",
+  "body_html": "<blockquote>“Đức Chúa Trời phán: Trong những ngày sau rốt, Ta sẽ đổ Thánh Linh Ta trên mọi người. Con trai và con gái các ngươi sẽ nói tiên tri.” — Công Vụ Các Sứ Đồ 2:17</blockquote> <p>Những chuyến đi của Amanda đã đưa bà đến tận Ấn Độ, nơi bà giảng trong những nhà thờ chật kín người và thấy nhiều người tin nhận Chúa. Nhưng không phải ai cũng chào đón bà. Ở một thành phố nọ, một nhóm Cơ Đốc nhân hết sức phật lòng vì một người phụ nữ lại đi giảng đạo. Họ liên tục trích lời Phao-lô để nhắm vào bà — “Trong các Hội Thánh, phụ nữ phải im lặng.” Họ viết bài trên báo chống lại bà. Họ gửi cho bà những lá thư đầy những câu Kinh Thánh bảo bà phải dừng lại, thậm chí còn chỉ ra những phân đoạn mà họ muốn bà giảng thay vào đó.</p> <p>Amanda có một nguyên tắc cho những chuyện kiểu này: “Tôi không bao giờ tranh cãi với ai — chỉ nói điều mình cần nói rồi đi tiếp.” Nhưng một đêm nọ, bà quyết định đối mặt thẳng với vấn đề. Nhà thờ chật kín. Bà đứng lên, đọc đoạn Kinh Thánh của mình, và trích dẫn — chính xác, có chương có câu — một dòng trong chính phân đoạn mà những người chỉ trích bà rất thích: “Đàn ông phải im lặng trong Hội Thánh.” Bà đang đưa ra một ý rất sắc sảo. Lời chỉ dẫn ấy trong thư Cô-rinh-tô thứ nhất là Phao-lô đang bảo một hội chúng hỗn loạn rằng nếu không có ai thông giải điều đang được nói, thì người nói — dù là đàn ông hay đàn bà — nên im lặng để buổi nhóm không tan thành sự rối loạn. Đó là chuyện trật tự, chứ không phải chuyện bắt một nửa Hội Thánh im lặng mãi mãi. Sau buổi nhóm ấy, bà ghi lại, các bài báo thôi xuất hiện, những lá thư cũng thôi gửi đến, và bà tiếp tục công việc của mình.</p> <p>Ngày nay, bạn vẫn có thể gặp những Cơ Đốc nhân còn bất đồng về việc phụ nữ chính xác nên và không nên làm gì trong Hội Thánh, và đó là một cuộc trao đổi thật sự. Nhưng hãy để ý tấm gương thật của Amanda, vốn lớn hơn cuộc tranh luận ấy. Đối diện với những người dùng Kinh Thánh làm vũ khí chống lại mình, bà không lớn tiếng, không cay đắng, và không bỏ cuộc. Bà quay về với chính bản văn, trong văn mạch của nó, một cách bình tĩnh, và để nó trả lời thay cho mình. Bà nghiên cứu kỹ hơn những người chỉ trích mình thay vì cố hét to hơn họ.</p> <p>Trước đó, trong cùng chuyến đi dài ấy, tại Paris, Amanda đã ngắm một người thợ gốm nặn đất sét trên bàn xoay. Bà thấy người thợ gốm hoàn toàn làm chủ — ông có thể biến một nắm đất thành một cái chén, rồi một cái bình, rồi một cái bát, tùy ý ông muốn, và đất sét chẳng bao giờ cãi lại. Bà cũng để ý rằng những màu sắc tuyệt đẹp chỉ hiện ra sau khi các món đồ đã qua lò nung. Ngắm nhìn cảnh ấy, bà cầu nguyện được như đất sét ấy trong tay Đức Chúa Trời — ngay cả khi lò nung đến, vẫn thuận phục và “không ra lệnh.” Hai hình ảnh ấy đi đôi với nhau. Lò nung là sự chống đối, sự kỳ thị, cuộc chiến không ngừng để được phép làm điều Đức Chúa Trời đã kêu gọi bà làm. Bà không đòi một cuộc đời không có lò nung. Bà tin cậy Người Thợ Gốm đang dùng nó để làm nên một điều gì đó.</p> <p>Đây là điều bạn nên mang theo. Đôi khi người ta sẽ đến với bạn bằng những luật lệ, những câu Kinh Thánh, hay những “sự thật” bị bẻ cong thành vũ khí — để bịt miệng bạn, dìm bạn xuống, hay đánh bật bạn khỏi một việc bạn đáng phải làm. Những phản ứng trẻ con là sụp đổ hoặc đáp trả gay gắt hơn. Amanda nêu gương một cách thứ ba: hãy nắm vững điều mình biết hơn họ nắm điều của họ, giữ bình tĩnh, và tiếp tục bước đi. Và bên dưới sự bình tĩnh ấy là lòng tin cậy của đất sét nơi người thợ gốm — bà không chiến đấu để kiểm soát danh tiếng của mình; bà đã giao nó cho Đức Chúa Trời và được tự do để cứ thế làm công việc của mình.</p> <p><strong>Một việc nên làm:</strong> lần tới khi có ai đó dùng một “luật lệ” hay một sự thật bị bóp méo để bịt miệng bạn về một điều bạn chắc chắn là đúng, đừng cãi lại to hơn — hãy đi học cho thật thấu điều đó. Đọc nguồn gốc thật, tìm hiểu văn mạch, nắm vững nó hơn họ. Rồi hãy nói điều mình cần nói, một cách bình tĩnh, và đi tiếp.</p>",
+  "study_questions": [
+   {
+    "question": "Amanda đã đáp lại thế nào trước những Cơ Đốc nhân ở Ấn Độ trích câu “Trong các Hội Thánh, phụ nữ phải im lặng” để chống lại bà?",
+    "answer": "Dù thường không tranh cãi, một đêm nọ bà giảng từ chính phân đoạn ấy, trích câu “Đàn ông phải im lặng trong Hội Thánh,” cho thấy đó là chuyện trật tự, chứ không phải bắt một nửa Hội Thánh im lặng. Sau đó các bài báo và những lá thư đều dừng lại."
+   },
+   {
+    "question": "Việc ngắm người thợ gốm ở Paris đã dạy Amanda điều gì?",
+    "answer": "Người thợ gốm hoàn toàn làm chủ đất sét, và màu sắc chỉ hiện ra sau khi qua lò nung. Bà cầu nguyện được như đất sét trong tay Đức Chúa Trời, thuận phục và “không ra lệnh,” tin cậy Người Thợ Gốm qua lò nung của sự chống đối."
+   },
+   {
+    "question": "Khi ai đó dùng một luật lệ hay một sự thật bị bóp méo để bịt miệng bạn, bạn thường phản ứng thế nào?",
+    "answer": "Ý của chương này: thay vì sụp đổ hay đáp trả gay gắt hơn, hãy nắm vững điều mình biết hơn, giữ bình tĩnh, và tiếp tục bước đi. Amanda nghiên cứu kỹ hơn những người chỉ trích mình thay vì hét to hơn họ. Hãy tìm hiểu nguồn gốc và văn mạch, rồi nói điều mình cần nói và đi tiếp."
+   }
+  ],
+  "word_count": 866
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-teens",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Bé Bob",
+  "body_html": "<blockquote>“Các quan chức cao cấp sẽ đến từ Ai Cập; Cút sẽ mau mắn giơ tay cầu nguyện với Đức Chúa Trời.” — Thi-thiên 68:31</blockquote> <p>Amanda đã sống tám năm ở Tây Phi — lâu hơn rất nhiều so với “chuyến đi” mà có thời bà từng quá sợ không dám đi. Bà đến nơi trong tình trạng yếu ớt vì sốt, đã chôn cất những người bạn, và làm việc ở một nơi khó khăn mà chẳng có mấy tiền bạc. Ngay từ đầu, bà đã học được một bài học định hình suốt thời gian còn lại của bà ở đó. Bà muốn bắt đầu một công việc dành cho các cậu bé địa phương và bắt đầu cầu xin tiền, trong đầu điểm lại danh sách tất cả những người bạn ở Mỹ có thể gửi tiền sang. Nhiều tuần trôi qua. Không có đồng nào đến. Cuối cùng bà hỏi Đức Chúa Trời tại sao, và câu trả lời đến: “Con không tin cậy Ta, con đang tin cậy nước Mỹ; con trông cậy nước Mỹ giúp đỡ nhiều hơn trông cậy Ta.” Bà nhận ra ngay lập tức, buông tấm lưới an toàn nước Mỹ của mình, và thưa với Đức Chúa Trời rằng bà sẽ chỉ tin cậy một mình Ngài — và sự giúp đỡ, từ những nơi không ngờ, bắt đầu đến.</p> <p>Điều đó mở đường cho câu chuyện mà bà gọi đơn giản là “Tôi Đã Nhận Nuôi Bé Bob Như Thế Nào.” Từ lâu Amanda đã muốn nuôi dạy và cho một cậu bé đi học, nhưng những gia đình bà ngỏ lời đều không chịu giao con, và cuối cùng bà đã từ bỏ ý định ấy. Rồi ở Cape Palmas, có hai cậu bé hay quanh quẩn bên cổng nhà, và bà thường chia cho chúng thức ăn còn thừa và trò chuyện với chúng. Bà đặc biệt quý mến một cậu — Bob. Một hôm, khi đi ngang qua, bà dừng lại đặt tay lên đầu cậu, và một người đàn ông đứng gần đó gọi bà. Đó là Jack, cha của Bob. Bằng thứ tiếng Anh bập bẹ, ông nói một điều mà Amanda không bao giờ quên: “Tui ngu lắm; tui hổng biết Đức Chúa Trời. Tui hổng muốn con tui ngu y như tui.” Ông xin bà nhận con trai ông và dạy cậu biết về Đức Chúa Trời, vì ông không muốn cậu bé lớn lên chẳng biết gì, như ông cảm thấy về chính mình.</p> <p>Phản ứng thật lòng của Amanda là ngần ngại. Bà đang ốm yếu, không có tiền để nuôi một đứa trẻ, và bà biết một cậu bé sẽ là cả một khối công việc và trách nhiệm. Bà cứ bảo Jack là không, hoặc là chưa, và cuối cùng đem chuyện ấy đến với Đức Chúa Trời: “Ngài biết con không có tiền để nuôi đứa trẻ này... Nhưng nếu Ngài muốn con nhận nó, và sẽ làm cho điều đó rõ ràng, thì mọi sự sẽ ổn.” Câu trả lời đến qua hai lời. Thứ nhất: “Chẳng phải Ê-thi-ô-pi đang giơ tay hướng về Đức Chúa Trời sao?” — cả một châu lục đang vươn tay ra. Rồi, khi bà phân trần rằng mình quá yếu đuối và không biết mình có thể làm được gì: “Con hãy làm những gì con có thể, và chỗ nào con dừng lại, Đức Chúa Trời sẽ dấy lên một người khác làm nốt phần còn lại.” Vậy là bà nhận Bob. Cha mẹ cậu ký một bản thỏa thuận giao cậu cho bà nuôi dạy và cho đi học như con ruột của bà.</p> <p>Hãy dừng lại mà ngẫm lời hứa sau cùng ấy, vì đó là liều thuốc giải cho một kiểu tê liệt rất hiện đại. Amanda nhìn vào một nhu cầu khổng lồ — trẻ em của cả một châu lục, nghèo đói ở khắp nơi, thân thể yếu đuối của chính bà — và tầm vóc của nó là lý do để chẳng làm gì cả. Điều giải phóng bà không phải là một kế hoạch để giải quyết tất cả. Đó là sự cho phép được làm những gì mình có thể và tin cậy Đức Chúa Trời về phần còn lại. Bà không cần phải là đủ. Bà chỉ cần nhận một cậu bé ngay trước mặt mình.</p> <p>Bạn cũng sẽ cảm thấy điều này. Các vấn đề thì khổng lồ, còn bạn chỉ là một người với thời gian, tiền bạc và sức lực có hạn, và bạn dễ đi đến kết luận rằng vì mình không thể giải quyết được, thì thôi chẳng cần bắt đầu. Cả cuộc đời Amanda trả lời điều đó. Một người cha chuộc từng đứa con ra khỏi cảnh nô lệ. Một người bà đã cầu nguyện. Một người đàn bà giặt thuê đã đón một cậu bé về nhà mình. Không ai trong họ có thể làm mọi việc. Tất cả họ đều làm những gì mình có thể — và chỗ nào họ dừng lại, Đức Chúa Trời đã dấy lên một người khác làm nốt phần còn lại, kể cả, rốt cuộc, một người phụ nữ suýt nữa đã ở nhà vì sợ biển cả.</p> <p><strong>Một việc nên làm:</strong> hãy chọn một vấn đề quá lớn đối với bạn nhưng bạn thật sự quan tâm — một người đang cô đơn, một điều gì đó đang hư hỏng ở trường hay ở thị trấn của bạn, một nhu cầu mà bạn cứ lướt qua. Đừng chờ đến khi bạn có thể giải quyết tất cả. Tuần này, hãy làm một việc nhỏ mà bạn thật sự làm được, và tin cậy Đức Chúa Trời sẽ dấy lên những người khác ở chỗ bạn dừng lại.</p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Jack, cha của Bob, xin Amanda nhận con trai ông?",
+    "answer": "Jack nói ông không biết Đức Chúa Trời và không muốn con mình lớn lên cũng như vậy. Ông xin Amanda nhận Bob và dạy cậu biết về Đức Chúa Trời; về sau cha mẹ cậu ký một bản thỏa thuận để bà nuôi dạy và cho cậu đi học."
+   },
+   {
+    "question": "Đức Chúa Trời muốn nói gì khi phán: “Con không tin cậy Ta, con đang tin cậy nước Mỹ”?",
+    "answer": "Amanda đã cầu xin tiền trong khi lại trông vào bạn bè ở Mỹ gửi sang. Khi bà buông tấm lưới an toàn ấy và chỉ tin cậy một mình Đức Chúa Trời, sự giúp đỡ bắt đầu đến từ những nơi không ngờ."
+   },
+   {
+    "question": "Vấn đề nào khiến bạn thấy quá lớn để chạm tới? Một việc nhỏ bạn thật sự có thể làm là gì?",
+    "answer": "Ý của chương này: “Con hãy làm những gì con có thể, và chỗ nào con dừng lại, Đức Chúa Trời sẽ dấy lên một người khác làm nốt phần còn lại.” Bạn không cần giải quyết tất cả — hãy nhận lấy một người hay một nhu cầu ngay trước mặt bạn trong tuần này."
+   }
+  ],
+  "word_count": 973
+ }
+}
+]

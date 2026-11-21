@@ -1,0 +1,377 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "c-s-lewis-a-life-children",
+  "language": "vi",
+  "title": "C. S. Lewis (Cho thiếu nhi)",
+  "subtitle": "",
+  "cover_byline": "C. S. Lewis",
+  "description": "Câu chuyện có thật về Jack Lewis, một cậu bé mê sách ở Belfast: cậu mất mẹ, thôi không tin Đức Chúa Trời, bị thương trong chiến tranh và giữ một lời hứa suốt ba mươi năm, cho đến khi Đức Chúa Trời tìm thấy ông trong một cuộc dạo bộ bên dòng sông và một chuyến đi trong thùng xe máy, và ông lớn lên viết nên bộ Biên Niên Sử Narnia. Ấn bản dành cho thiếu nhi này kể lại cuộc đời ông qua những chương ngắn, để đọc to cho các em nghe: một câu Kinh Thánh, một phần câu chuyện của ông, một điều câu chuyện ấy muốn nói với con, và một lời cầu nguyện ngắn, kèm những câu hỏi để cùng nhau trò chuyện.",
+  "qa": [
+   {
+    "question": "Cuốn C. S. Lewis (Cho thiếu nhi) nói về điều gì?",
+    "answer": "Đây là phiên bản dành cho thiếu nhi của cuốn tiểu sử đầy đủ về C. S. Lewis. Sách kể một cậu bé tên Jack đã mất mẹ và thôi không tin Đức Chúa Trời ra sao, Đức Chúa Trời đã tìm lại ông thế nào khi ông đã là người lớn, và ông đã dành phần đời còn lại để nói với mọi người về Chúa Giê-xu như thế nào, qua sách vở, qua đài phát thanh và qua những câu chuyện về xứ Narnia."
+   },
+   {
+    "question": "C. S. Lewis là ai?",
+    "answer": "Một nhà văn và nhà giáo, sinh ở Belfast năm 1898 và qua đời ở Oxford năm 1963. Gia đình và bạn bè gọi ông là Jack. Ông giảng dạy tại các trường đại học Oxford và Cambridge, nói về đức tin Cơ Đốc trên đài phát thanh trong Thế chiến thứ hai, và viết rất nhiều sách, trong đó có bảy cuốn Biên Niên Sử Narnia."
+   },
+   {
+    "question": "Mỗi chương được sắp xếp như thế nào?",
+    "answer": "Chương nào cũng ngắn và được viết để đọc to. Mỗi chương mở đầu bằng một câu Kinh Thánh, kể một phần câu chuyện của Jack, cho thấy một điều đơn giản câu chuyện ấy muốn nói với con, và kết thúc bằng một lời cầu nguyện ngắn. Sau đó là ba câu hỏi để cùng nhau trò chuyện."
+   },
+   {
+    "question": "Cuốn sách này có quá buồn đối với trẻ em không?",
+    "answer": "Có những phần buồn. Mẹ của Jack qua đời khi cậu chín tuổi, ông bị thương trong chiến tranh, và vợ ông là Joy qua đời vì bệnh ung thư. Cuốn sách không giả vờ như những chuyện ấy không có. Nhưng sách kể những điều đó một cách nhẹ nhàng, dành cho trẻ em, và trên hết đây là câu chuyện về việc Đức Chúa Trời chưa bao giờ thôi tìm kiếm Jack, và đã ở cùng ông trong những ngày vui cũng như những ngày buồn."
+   },
+   {
+    "question": "Những câu chuyện này có thật không?",
+    "answer": "Có. Chúng được lấy từ chính những lá thư của Jack, nhật ký của anh trai ông là Warnie, và những người từng biết ông. Ở chỗ nào người ta chưa chắc chắn, chẳng hạn như năm chính xác Jack lần đầu quỳ xuống cầu nguyện, sách đều nói rõ. Những cuốn sách của chính Jack vẫn còn được bảo hộ bản quyền, nên cuốn sách này kể câu chuyện của ông bằng lời của riêng mình, và không kể lại các câu chuyện Narnia. Muốn thưởng thức những câu chuyện ấy, con hãy đọc chính các cuốn sách đó."
+   },
+   {
+    "question": "Cuốn sách này dành cho ai?",
+    "answer": "Sách dành cho trẻ em, để người lớn đọc to cho các em nghe hoặc để các em lớn hơn tự đọc một mình. Ngoài ra còn có một ấn bản dành cho thiếu niên, và cuốn tiểu sử đầy đủ dành cho bạn đọc lớn tuổi hơn."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại của Ochorus dành cho bạn đọc nhỏ tuổi, dựa trên cuốn tiểu sử C. S. Lewis của Ochorus, thuộc bộ sách Chân Dung Lòng Can Đảm. Lời kể là của chúng tôi, được tự do đọc và chia sẻ.",
+  "cover_url": "/covers/art/c-s-lewis-a-life-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 153,
+  "is_published": true,
+  "created_at": "2026-11-21T00:00:00Z",
+  "updated_at": "2026-11-21T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Cậu bé tên Jack",
+  "body_html": "<blockquote>“Hãy dạy trẻ từ thuở đầu theo con đường nó phải đi, thì dù đến khi già, nó cũng không rời bỏ.” — trích Châm Ngôn 22</blockquote> <p>Ngày 29 tháng 11 năm 1898, một em bé trai chào đời ở Belfast, một thành phố nhộn nhịp đầy xưởng đóng tàu ở miền bắc Ireland. Cha mẹ đặt tên cậu là Clive Staples Lewis. Cha cậu, ông Albert, là một luật sư rất mê sách và thích dùng những từ thật dài. Mẹ cậu, bà Flora, thì ít nói, vui tính và rất thông minh. Bà đã từng học đại học, học ngành toán, vào thời mà hầu như chẳng có người phụ nữ nào làm vậy.</p> <p>Clive có một người anh trai tên là Warren, hay gọi là Warnie, lớn hơn cậu ba tuổi. Khi Clive còn rất nhỏ, cậu quyết định rằng mình không thích cái tên của mình. Cậu muốn được gọi là Jacksie, theo tên một chú chó sống gần nhà! Ai gọi tên khác, cậu cũng không thèm trả lời, cho đến khi cả nhà phải chịu thua. Chẳng bao lâu, Jacksie thành Jack, và cậu mang tên Jack suốt cả cuộc đời.</p> <p>Jack và Warnie là đôi bạn thân nhất. Một hôm, Warnie mang vào phòng chơi một cái nắp hộp bánh quy, trên đó phủ đầy rêu, cành cây nhỏ và hoa, trông như một khu vườn tí hon. Jack nghĩ đó là thứ đẹp nhất mà cậu từng thấy. Nó khiến cậu có một nỗi khao khát lạ lùng và ngọt ngào, cảm giác muốn một điều gì đó mà cậu không gọi được tên. Cảm giác ấy cứ trở lại với cậu hết lần này đến lần khác suốt cả đời.</p> <p>Hai anh em cùng nhau nghĩ ra cả một thế giới tưởng tượng tên là Boxen. Phần của Jack là Xứ Thú Vật, đầy những con vật mặc quần áo và những hiệp sĩ mặc áo giáp.</p> <p>Khi Jack lên sáu, cả nhà dọn đến một ngôi nhà mới thật lớn tên là Little Lea. Nhà có những hành lang dài và những căn gác mái, và hầu như phòng nào cũng có sách. Vào những buổi chiều mưa, Jack đi khám phá ngôi nhà, rồi đọc, đọc mãi. Chưa bao giờ có ai bảo cậu rằng cuốn sách nào đó không dành cho cậu.</p> <p>Cha mẹ Jack đưa cậu đi nhà thờ và dạy cậu cầu nguyện. Trong một thời gian dài, có vẻ như cậu đã quên hết những điều đó. Nhưng Đức Chúa Trời không hề quên Jack. Những điều chúng ta học về Đức Chúa Trời khi còn nhỏ giống như những hạt giống. Đức Chúa Trời biết cách làm cho chúng lớn lên, dù là nhiều năm sau.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Chúa về gia đình con và về mọi điều con đang học về Chúa. Xin làm cho những hạt giống nhỏ ấy lớn lên trong con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Clive Staples Lewis được gọi là Jack?",
+    "answer": "Khi còn rất nhỏ, cậu quyết định muốn được gọi là Jacksie, theo tên một chú chó sống gần nhà. Cái tên ấy thành Jacks rồi thành Jack, và cậu giữ tên đó suốt đời."
+   },
+   {
+    "question": "Jack và Warnie đã nghĩ ra thế giới tưởng tượng nào?",
+    "answer": "Một thế giới tên là Boxen. Phần của Jack là Xứ Thú Vật, có những con vật mặc quần áo và những hiệp sĩ mặc áo giáp."
+   },
+   {
+    "question": "Con đã học được điều gì về Đức Chúa Trời mà con mong sẽ lớn lên trong con?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là những điều chúng ta học về Đức Chúa Trời khi còn nhỏ giống như hạt giống, và Đức Chúa Trời có thể làm cho nó lớn lên, dù là nhiều năm sau."
+   }
+  ],
+  "word_count": 495
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Mùa hè buồn nhất",
+  "body_html": "<blockquote>“Dù cha mẹ tôi có bỏ tôi, CHÚA vẫn sẽ đón nhận tôi.” — trích Thi-thiên 27</blockquote> <p>Năm 1908, khi Jack lên chín, mẹ cậu bị bệnh rất nặng. Các bác sĩ phát hiện bà bị ung thư. Bà được mổ ngay tại nhà, và có một thời gian bà dường như khỏe lên. Nhưng đến mùa hè, căn bệnh trở lại. Ngôi nhà đầy những y tá và bác sĩ, còn hai cậu bé thì không được vào phòng mẹ. Các cậu không thật sự hiểu chuyện gì đang xảy ra.</p> <p>Jack cầu nguyện. Cậu đã được dạy rằng Đức Chúa Trời nhậm lời cầu nguyện, và cậu hết lòng xin Đức Chúa Trời chữa lành cho mẹ. Ngày 23 tháng 8 năm 1908, mẹ cậu qua đời. Rồi Jack cầu xin cho mẹ sống lại. Nhưng mẹ không trở lại.</p> <p>Đó là một năm khủng khiếp với cả gia đình. Ngay trong năm ấy, cha của Jack cũng mất cha mình và anh em mình. Ông buồn đến nỗi không biết phải an ủi hai con trai thế nào. Vì vậy Jack và Warnie bám lấy nhau. Từ đó trở đi, hai anh em gắn bó với nhau hơn bao giờ hết.</p> <p>Chưa đầy một tháng sau, cha các cậu gửi cả hai anh em sang một trường nội trú ở nước Anh. Hai anh em vượt biển trên một chuyến tàu đêm, và Jack không bao giờ quên chuyến đi ấy khổ sở đến mức nào. Ngôi trường rất tệ, có một ông hiệu trưởng hà khắc, và Jack ở đó rất buồn.</p> <p>Nhưng ngay cả ở đó, một điều tốt đã xảy ra. Ở ngôi trường ấy, Jack được đưa đến một nhà thờ nơi đức tin Cơ Đốc được dạy như một điều thật sự quan trọng. Trong một thời gian ngắn, cậu bắt đầu cầu nguyện nghiêm túc và đọc Kinh Thánh.</p> <p>Khi Jack lớn lên, ông vẫn nhớ cảm giác mất mẹ là thế nào. Chính vì vậy mà ông có thể viết những lá thư dịu dàng, tử tế cho rất nhiều người đang buồn. Đức Chúa Trời đã không ngăn điều buồn ấy xảy ra. Nhưng Ngài ở cùng Jack, và Ngài dùng cả nỗi buồn ấy để làm ra điều tốt. Khi chúng ta buồn, Đức Chúa Trời cũng ở thật gần chúng ta.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Chúa vì Chúa ở gần những trẻ em đang buồn. Xin an ủi bất cứ người nào con quen đã mất đi người mình yêu thương. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Jack đã cầu nguyện xin điều gì khi mẹ cậu bị bệnh?",
+    "answer": "Cậu cầu xin cho mẹ khỏe lại. Khi mẹ qua đời, cậu cầu xin cho mẹ sống lại."
+   },
+   {
+    "question": "Sau khi mẹ mất, cha Jack gửi hai anh em đi đâu?",
+    "answer": "Đến một trường nội trú ở nước Anh. Hai anh em vượt biển trên một chuyến tàu đêm, và ngôi trường là một nơi hà khắc, buồn bã."
+   },
+   {
+    "question": "Con có thể nói chuyện với ai, hoặc cầu nguyện với ai, khi con thấy buồn?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là Đức Chúa Trời ở gần chúng ta khi chúng ta buồn, và Ngài có thể dùng cả những điều buồn để làm ra điều tốt."
+   }
+  ],
+  "word_count": 427
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Ông “Gõ Mạnh”",
+  "body_html": "<blockquote>“Sắt mài sắt cho bén thể nào, người cũng mài giũa người thể ấy.” — trích Châm Ngôn 27</blockquote> <p>Khi Jack lớn hơn, cậu học ở những trường khác. Vào khoảng từ mười hai đến mười bốn tuổi, cậu lặng lẽ thôi không tin Đức Chúa Trời nữa. Một phần lý do là việc cầu nguyện đã trở thành nỗi lo lắng của cậu. Cậu nghĩ một lời cầu nguyện chẳng có giá trị gì nếu cậu không có đúng những cảm xúc cần có, và đêm này qua đêm khác cậu nằm thao thức, cố gắng hết lần này đến lần khác. Khi thôi không tin nữa, cậu thấy như được đặt xuống một gánh nặng. Cậu không nói với ai cả.</p> <p>Năm mười lăm tuổi, Jack đến thăm Arthur Greeves, một cậu bé sống bên kia đường và đang bị ốm nằm trên giường. Trên giường có một cuốn sách kể những câu chuyện xưa của miền bắc, về các vị thần và các anh hùng. Jack cũng mê những câu chuyện đó! Hai cậu trở thành bạn ngay lập tức, và họ viết thư cho nhau gần năm mươi năm.</p> <p>Cũng năm đó, Jack được gửi đến sống với một thầy giáo tên là ông Kirkpatrick, ở một ngôi làng thuộc vùng Surrey. Gia đình Jack gọi ông là “Ông Gõ Mạnh”. Trên đường đi bộ từ nhà ga về, Jack nói rằng vùng quê này hoang dã hơn cậu tưởng. Ông Kirkpatrick dừng lại và hỏi cậu “hoang dã” nghĩa là gì! Mỗi câu Jack nói ra đều phải được suy nghĩ thật kỹ. Jack rất thích điều đó. Cậu học cách suy nghĩ rõ ràng và học đọc tiếng Hy Lạp, tiếng La-tinh, tiếng Pháp và tiếng Ý.</p> <p>Ông Kirkpatrick không tin Đức Chúa Trời, và Jack cũng vậy. Nhưng một ngày năm 1916, trong lúc chờ tàu, Jack mua một cuốn sách tên là Phantastes, của một nhà văn người Scotland tên là George MacDonald. Đó là câu chuyện về một chàng trai trẻ ở trong một xứ thần tiên như trong mơ. Jack không biết MacDonald là một Cơ Đốc nhân. Nhưng câu chuyện chạm đến lòng cậu bằng một thứ tốt lành mới lạ. Nhiều năm sau, Jack gọi MacDonald là người thầy của mình.</p> <p>Jack hoàn toàn không đi tìm Đức Chúa Trời. Nhưng Đức Chúa Trời đã đang làm việc, qua một người thầy sắc sảo, một người bạn tốt và một câu chuyện mua ở nhà ga. Đức Chúa Trời có thể dùng đủ mọi người và mọi cuốn sách để giúp chúng ta, ngay cả trước khi chúng ta nhận ra.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Chúa về thầy cô và bạn bè của con. Xin dùng những cuốn sách hay và những người tốt để đưa con đến gần Chúa hơn. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "“Ông Gõ Mạnh” là ai?",
+    "answer": "Ông Kirkpatrick, người thầy mà Jack đến sống cùng ở vùng Surrey. Ông dạy Jack suy nghĩ rõ ràng và đọc được nhiều thứ tiếng."
+   },
+   {
+    "question": "Jack đã mua cuốn sách nào trong lúc chờ tàu?",
+    "answer": "Cuốn Phantastes của George MacDonald. Đó là một câu chuyện về xứ thần tiên, và nó chạm đến lòng Jack bằng một thứ tốt lành mới lạ."
+   },
+   {
+    "question": "Ai giúp con suy nghĩ và học hỏi?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là Đức Chúa Trời có thể dùng thầy cô, bạn bè và những cuốn sách hay để giúp chúng ta, ngay cả trước khi chúng ta biết Ngài đang làm việc."
+   }
+  ],
+  "word_count": 476
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Lời hứa trong thời chiến",
+  "body_html": "<blockquote>“Khi con khấn nguyện với Đức Chúa Trời, đừng trì hoãn việc thực hiện lời khấn” — trích Truyền Đạo 5</blockquote> <p>Năm 1917, Jack vào học tại Đại học Oxford. Nhưng lúc ấy đang có một cuộc chiến lớn, và hầu hết các chàng trai trẻ đều đã ra trận. Vì đến từ Ireland, Jack không bắt buộc phải nhập ngũ. Dù vậy, cậu vẫn chọn đi lính.</p> <p>Jack được huấn luyện để làm sĩ quan tại một trường tên là Keble. Cậu ở chung phòng với một chàng trai trẻ tên là Paddy Moore. Paddy gần như bằng tuổi cậu, và cũng là người Ireland như cậu. Mẹ của Paddy, bà Moore, đã đến Oxford để được ở gần con trai, cùng với cô em gái nhỏ của Paddy là Maureen. Bà Moore ấm áp và tốt bụng, và bà đón tiếp Jack thật niềm nở.</p> <p>Jack và Paddy hứa với nhau một điều. Nếu một trong hai người tử trận, thì người còn sống sẽ chăm sóc cha hoặc mẹ của người kia. Nhiều năm sau, Maureen vẫn còn nhớ lời hứa ấy.</p> <p>Jack đến các chiến hào ở nước Pháp đúng vào ngày sinh nhật thứ mười chín của mình, ngày 29 tháng 11 năm 1917. Ở đó lạnh lẽo, lầy lội và vô cùng vất vả. Tháng 4 năm 1918, có một trận đánh gần một ngôi làng của Pháp. Khoảng sáu mươi lính địch bước ra khỏi đám khói, giơ tay lên và đầu hàng Jack. Jack nói cậu chỉ mừng vì họ muốn đầu hàng!</p> <p>Ngày hôm sau, ngày 15 tháng 4 năm 1918, một quả đạn pháo nổ ngay sát bên Jack. Cậu bị thương ở tay, ở chân và ở ngực. Một trung sĩ tốt bụng tên là Harry Ayres, người vẫn chăm lo cho Jack, đang đứng cạnh cậu, và ông đã tử trận. Jack được chữa lành trong bệnh viện, nhưng một mảnh kim loại nhỏ xíu vẫn nằm lại trong ngực cậu nhiều năm trời.</p> <p>Paddy đã không trở về. Anh bị mất tích trong trận đánh hồi tháng Ba, và sau đó gia đình anh được tin anh đã tử trận. Anh mới chỉ mười chín tuổi.</p> <p>Chiến tranh là một điều rất buồn, và Jack không thích nói về nó. Nhưng ngay cả khi Jack chưa tin Đức Chúa Trời, Đức Chúa Trời vẫn đang nắm giữ cuộc đời cậu trong tay Ngài. Và Jack đã hứa một lời hứa. Giờ đây cậu phải giữ lời hứa ấy.</p> <p><em>Lạy Đức Chúa Trời, xin ở cùng tất cả những ai đang gặp nguy hiểm vì chiến tranh hôm nay. Xin giúp con giữ lời hứa của mình, ngay cả khi điều đó thật khó. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Jack và Paddy đã hứa với nhau điều gì?",
+    "answer": "Rằng nếu một trong hai người tử trận, thì người còn sống sẽ chăm sóc cha hoặc mẹ của người kia."
+   },
+   {
+    "question": "Chuyện gì đã xảy ra với Jack vào ngày 15 tháng 4 năm 1918?",
+    "answer": "Một quả đạn pháo nổ sát bên cậu, và cậu bị thương ở tay, ở chân và ở ngực. Người trung sĩ tốt bụng đứng cạnh cậu, Harry Ayres, đã tử trận."
+   },
+   {
+    "question": "Vì sao giữ lời hứa là điều quan trọng?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là một lời hứa rất quan trọng, và Đức Chúa Trời giúp chúng ta giữ lời hứa ngay cả khi điều đó thật khó."
+   }
+  ],
+  "word_count": 457
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Giữ lời",
+  "body_html": "<blockquote>“Lạy CHÚA, ai được làm khách trong lều của Ngài? … giữ lời thề dù phải chịu thiệt” — trích Thi-thiên 15</blockquote> <p>Khi Jack nằm trong bệnh viện ở Luân Đôn, cậu viết thư cho cha và xin cha đến thăm. Cha cậu là người hay lo âu, buồn bã và rất cố chấp, và ông đã không đến. Nhưng bà Moore đến ngay. Bà đến thăm Jack, viết thư cho cậu và chăm sóc cậu.</p> <p>Khi chiến tranh kết thúc, Jack trở lại Oxford, và bà Moore cùng Maureen cũng đến đó. Jack giữ lời hứa với Paddy. Cậu về sống chung với hai mẹ con, và cậu tiếp tục chăm sóc bà Moore suốt hơn ba mươi năm. Trong thư, có lúc cậu gọi bà là mẹ, và cậu còn đặt cho bà một biệt danh ngộ nghĩnh: Minto.</p> <p>Họ không có nhiều tiền, và cứ phải dọn từ dãy phòng lạnh lẽo này sang dãy phòng lạnh lẽo khác. Jack đi chợ, rửa bát, chạy việc vặt, dắt chó đi dạo và giúp Maureen học tiếng La-tinh. Rồi hễ tìm được một giờ yên tĩnh nào là cậu lại học bài.</p> <p>Có một việc Jack đã làm sai. Cậu không nói thật với cha mình về nơi cậu đang sống, cũng không nói rằng một phần số tiền cha gửi đang được dùng để giúp gia đình bà Moore. Cậu giấu chuyện đó suốt nhiều năm. Về sau, khi Jack biết Đức Chúa Trời, ông rất hối hận về việc ấy. Ông nói đó là một trong những điều tệ nhất mà ông từng làm.</p> <p>Jack học hành rất chăm chỉ. Ba lần cậu đạt điểm cao nhất trong các kỳ thi. Năm 1925, cậu trở thành giảng viên môn tiếng Anh tại Trường Magdalen ở Oxford. Đó là một ngôi trường cổ kính tuyệt đẹp, có cả một khu vườn đầy hươu nai. Cha cậu vui mừng khôn xiết.</p> <p>Jack đã giữ lời hứa suốt hơn ba mươi năm, ngay cả khi điều đó chẳng dễ dàng gì. Nhưng ông cũng học được rằng giấu giếm sự thật làm người khác đau lòng. Đức Chúa Trời muốn chúng ta trung tín và thật thà. Và khi chúng ta làm sai, chúng ta có thể thưa với Đức Chúa Trời rằng chúng ta xin lỗi.</p> <p><em>Lạy Đức Chúa Trời, xin giúp con giữ lời hứa và nói sự thật. Khi con làm sai, xin giúp con biết nói lời xin lỗi. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ai đã đến thăm Jack trong bệnh viện?",
+    "answer": "Bà Moore, mẹ của Paddy. Cha của Jack thì không đến."
+   },
+   {
+    "question": "Jack đã làm điều gì mà sau này ông hối hận?",
+    "answer": "Ông đã giấu cha sự thật về nơi mình đang sống và về việc tiền của cha được dùng vào đâu."
+   },
+   {
+    "question": "Có điều gì con cần nói lời xin lỗi không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là Đức Chúa Trời muốn chúng ta trung tín và thật thà, và Ngài luôn lắng nghe khi chúng ta thưa với Ngài rằng chúng ta xin lỗi."
+   }
+  ],
+  "word_count": 415
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Được Đức Chúa Trời tìm thấy",
+  "body_html": "<blockquote>“Tôi có thể đi đâu để tránh khỏi Thần Linh của Ngài? Tôi có thể chạy trốn đâu cho khỏi sự hiện diện của Ngài?” — trích Thi-thiên 139</blockquote> <p>Ở Oxford, Jack có được những người bạn tuyệt vời. Một trong số đó là một giáo sư tên là J. R. R. Tolkien, người cũng mê những câu chuyện xưa của miền bắc giống hệt Jack. Tolkien là một Cơ Đốc nhân. Nhiều người bạn thông minh khác của Jack cũng vậy. Jack để ý thấy điều đó, và nó làm ông khó chịu.</p> <p>Jack không tin Đức Chúa Trời, và ông cũng không muốn tin. Nhưng những cuốn sách ông yêu thích nhất cứ hóa ra là do các Cơ Đốc nhân viết. Dần dần, từng lý do khiến ông không tin bắt đầu sụp đổ. Về sau ông nói rằng ông cảm thấy như Đức Chúa Trời đang săn tìm mình, và ông sắp hết chỗ để trốn.</p> <p>Năm 1929, cha của Jack bị bệnh rất nặng. Jack về nhà ở Belfast và ngồi bên cha nhiều tuần liền. Ông trở lại Oxford khi cha có vẻ đỡ hơn một chút, nhưng chẳng bao lâu một bức điện tín gọi ông về. Ông vội vã trở về, nhưng đã quá muộn. Cha ông đã qua đời. Jack vô cùng đau buồn, và hối hận vì đã thường đối xử không tử tế với cha.</p> <p>Rồi một đêm kia, một mình trong căn phòng ở Magdalen, Jack thôi không chạy trốn nữa. Ông quỳ xuống cầu nguyện, và thừa nhận rằng Đức Chúa Trời là Đức Chúa Trời. Ông không thấy vui. Ông tự gọi mình là “người mới tin Chúa chán nản và miễn cưỡng nhất trên khắp nước Anh.” Nghĩa là ông là người ủ rũ nhất, không muốn nhất, từng đến với Đức Chúa Trời!</p> <p>Jack nhớ rằng chuyện này xảy ra vào năm 1929. Những người đã nghiên cứu kỹ các lá thư của ông thì nghĩ có lẽ đó là mùa hè năm 1930 thì đúng hơn. Dù là năm nào, đó cũng là sự khởi đầu. Jack bắt đầu đi nhà thờ, dù ông không thích, vì ông tin đó là điều đúng. Nhưng ông vẫn chưa tin Chúa Giê-xu.</p> <p>Jack đã cố hết sức để trốn khỏi Đức Chúa Trời. Nhưng Đức Chúa Trời chưa bao giờ thôi tìm kiếm ông. Không ai có thể chạy xa đến mức Đức Chúa Trời không tìm thấy được. Đức Chúa Trời cũng yêu con, và Ngài không bao giờ ở xa con.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Chúa vì Chúa không bao giờ thôi tìm kiếm chúng con. Cảm ơn Chúa vì con không bao giờ có thể chạy quá xa khỏi tình yêu của Chúa. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Người bạn nào của Jack cũng mê những câu chuyện xưa của miền bắc?",
+    "answer": "J. R. R. Tolkien, một giáo sư ở Oxford và là một Cơ Đốc nhân."
+   },
+   {
+    "question": "Jack đã làm gì khi ông thôi chạy trốn Đức Chúa Trời?",
+    "answer": "Ông quỳ xuống trong căn phòng của mình ở Magdalen và thừa nhận rằng Đức Chúa Trời là Đức Chúa Trời, dù ông không thấy vui về điều đó."
+   },
+   {
+    "question": "Đã bao giờ con cảm thấy Đức Chúa Trời đang tìm kiếm con chưa?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là Đức Chúa Trời không bao giờ thôi tìm kiếm chúng ta, và không ai có thể chạy quá xa khỏi tình yêu của Ngài."
+   }
+  ],
+  "word_count": 464
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "vi"
+  ],
+  "order": 7,
+  "title": "Cuộc dạo bộ bên dòng sông",
+  "body_html": "<blockquote>“Ngôi Lời đã trở nên xác thịt và cư ngụ giữa chúng tôi. Chúng tôi đã thấy vinh quang Ngài” — trích Giăng 1</blockquote> <p>Giờ đây Jack đã tin có Đức Chúa Trời. Nhưng ông không thể hiểu được Chúa Giê-xu. Làm sao một người đã chết từ lâu lắm rồi, ở một nơi thật xa, lại có thể làm thay đổi điều gì cho Jack bây giờ?</p> <p>Ngày 19 tháng 9 năm 1931, Jack mời hai người bạn đến ăn tối ở Magdalen: Tolkien và một Cơ Đốc nhân khác, Hugo Dyson. Ăn xong, ba người đi dạo dọc Addison’s Walk, một con đường nhỏ bên dòng sông phía sau trường. Họ nói chuyện mãi, nói mãi, đến tận khuya.</p> <p>Họ nói về những câu chuyện xưa. Jack vẫn luôn yêu những truyện cổ kể về một vị thần chết đi rồi sống lại. Những câu chuyện ấy làm ông xúc động sâu xa, dù ông không giải thích được vì sao. Hai người bạn của ông nói: câu chuyện về Chúa Giê-xu giống như những câu chuyện ấy, với tất cả vẻ đẹp và sức mạnh của chúng. Nhưng có một điểm khác biệt rất lớn. Câu chuyện về Chúa Giê-xu đã thật sự xảy ra! Đức Chúa Trời đã kể câu chuyện của Ngài, không chỉ bằng lời nói, mà bằng những sự việc có thật, ở một nơi có thật, vào một thời điểm có thật.</p> <p>Khoảng ba giờ sáng, Tolkien về nhà. Jack và Hugo đi tiếp và trò chuyện đến gần bốn giờ.</p> <p>Chín ngày sau, vào một buổi sáng đầy nắng, Warnie chở Jack đến một sở thú mới tên là Whipsnade. Warnie có một chiếc xe máy có thùng xe bên hông, và Jack ngồi trong thùng xe ấy. Khi họ khởi hành, Jack chưa tin rằng Chúa Giê-xu là Con Đức Chúa Trời. Đến lúc tới sở thú, ông đã tin! Ông nói điều đó giống như khi thức dậy và nhận ra rằng mình đã tỉnh từ lâu rồi.</p> <p>Vào ngày Lễ Giáng Sinh năm đó, Jack dự Tiệc Thánh tại nhà thờ Holy Trinity, gần nhà ông. Lần này ông thật sự tin. Và năm đó Warnie cũng đã trở lại với đức tin. Giờ đây hai anh em cùng chung một đức tin, như họ đã chia sẻ mọi điều với nhau từ thuở còn bé.</p> <p>Đức Chúa Trời đã sai Con Ngài là Chúa Giê-xu đến thế giới có thật của chúng ta. Câu chuyện về Chúa Giê-xu không chỉ là một câu chuyện đẹp. Đó là chuyện có thật! Jack đã dành phần đời còn lại để nói với mọi người điều đó. Con cũng có thể tin điều ấy.</p> <p><em>Lạy Chúa Giê-xu, cảm ơn Chúa đã đến thế giới của chúng con. Cảm ơn Chúa vì câu chuyện của Chúa là có thật. Xin giúp con biết Chúa và yêu Chúa. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Bạn bè của Jack đã nói gì với ông về câu chuyện của Chúa Giê-xu?",
+    "answer": "Rằng nó giống những câu chuyện xưa ông yêu thích về một vị thần chết đi rồi sống lại, nhưng có một điểm khác biệt rất lớn: nó đã thật sự xảy ra."
+   },
+   {
+    "question": "Jack đang đi đâu khi ông tin rằng Chúa Giê-xu là Con Đức Chúa Trời?",
+    "answer": "Đến sở thú Whipsnade, ngồi trong thùng xe bên hông chiếc xe máy của Warnie."
+   },
+   {
+    "question": "Con yêu điều gì nhất trong câu chuyện về Chúa Giê-xu?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là câu chuyện về Chúa Giê-xu không chỉ đẹp mà còn có thật, vì Đức Chúa Trời đã thật sự đến thế giới của chúng ta."
+   }
+  ],
+  "word_count": 487
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Những người bạn ở the Kilns",
+  "body_html": "<blockquote>“Bấy giờ những người kính sợ CHÚA trò chuyện với nhau, và CHÚA lắng nghe họ.” — trích Ma-la-chi 3</blockquote> <p>Năm 1930, Jack, Warnie và bà Moore mua được một ngôi nhà của riêng mình, ngay bên ngoài Oxford. Đó là một ngôi nhà gạch thấp tên là the Kilns, nghĩa là “Những Lò Nung”, đặt theo tên hai lò nung gạch cũ nằm bên cạnh. Nhà có rừng cây, một khu vườn lớn hoang dại và một cái ao. Jack yêu nơi ấy ngay từ cái nhìn đầu tiên. Ông sống ở đó suốt phần đời còn lại.</p> <p>Jack bơi trong ao bất kể thời tiết thế nào và ngày nào cũng đi dạo trong rừng, miệng ngậm tẩu thuốc. Có một người làm vườn tên là Paxford, lúc nào cũng đoán điều tệ nhất sẽ xảy ra mà thường vẫn vui vẻ về chuyện đó. Có chó, có mèo, và có một thời gian còn có rất nhiều gà mái. Năm 1932, Warnie rời quân đội và cũng đến sống ở the Kilns. Hai anh em lại được ở bên nhau.</p> <p>Mỗi Chúa Nhật, Jack đi bộ băng qua những cánh đồng đến nhà thờ Holy Trinity để dự buổi lễ sớm lúc tám giờ. Ông ngồi gần phía trước, ở một bên. Với người dân trong làng, ông không phải là một nhà văn nổi tiếng. Ông chỉ là ông Lewis ở the Kilns.</p> <p>Jack còn có một nhóm bạn hay gặp nhau vào các tối thứ Năm trong phòng của ông ở Magdalen. Họ tự gọi mình là nhóm Inklings. Warnie pha trà. Rồi một người sẽ đọc to điều gì đó mình đã viết, một câu chuyện, một bài thơ hay một chương sách, và những người khác sẽ nói họ nghĩ gì, có khi nhẹ nhàng, có khi chẳng nhẹ nhàng chút nào!</p> <p>Tolkien đọc cho cả nhóm nghe một câu chuyện lớn ông đang viết, từng chương một, suốt nhiều năm. Câu chuyện ấy tên là The Lord of the Rings (Chúa Tể Những Chiếc Nhẫn). Tolkien nói rằng nếu không có Jack khích lệ, ông sẽ không bao giờ viết xong.</p> <p>Bạn bè của Jack yêu mến Đức Chúa Trời và nói thật với nhau. Những người bạn tốt giúp chúng ta lớn lên, và Hội Thánh là nơi chúng ta thuộc về gia đình của Đức Chúa Trời. Đức Chúa Trời lắng nghe khi những người bạn của Ngài cùng nhau trò chuyện về Ngài.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Chúa về bạn bè của con và về gia đình Hội Thánh của con. Xin giúp con trở thành một người bạn tốt biết khích lệ người khác. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Nhà của Jack tên là gì, và vì sao lại có tên đó?",
+    "answer": "The Kilns, nghĩa là “Những Lò Nung”, vì bên cạnh nhà có hai lò nung gạch cũ."
+   },
+   {
+    "question": "Nhóm Inklings là ai?",
+    "answer": "Một nhóm bạn của Jack gặp nhau vào các tối thứ Năm để đọc to những gì mình viết và trò chuyện. Tolkien đã đọc The Lord of the Rings cho họ nghe."
+   },
+   {
+    "question": "Tuần này con có thể khích lệ một người bạn như thế nào?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là những người bạn tốt giúp nhau lớn lên, và Đức Chúa Trời lắng nghe khi những người bạn của Ngài cùng nhau trò chuyện."
+   }
+  ],
+  "word_count": 449
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Một giọng nói trong thời chiến",
+  "body_html": "<blockquote>“Hãy luôn luôn sẵn sàng trả lời bất cứ ai hỏi anh chị em về lý do của niềm hy vọng mà anh chị em đang có… hãy trả lời với sự hiền hòa” — trích 1 Phi-rơ 3</blockquote> <p>Năm 1939, một cuộc chiến lớn khác lại bắt đầu. Jack đã bốn mươi tuổi, quá già để ra trận. Nhưng chỉ vài ngày sau, một nhóm nữ sinh từ Luân Đôn đến sống ở the Kilns, để được an toàn khỏi bom đạn. Trong mấy năm sau đó, còn nhiều trẻ em khác đến nữa. Trước giờ Jack chưa từng gần gũi trẻ con nhiều, nhưng ông nhận ra mình khá thích chúng!</p> <p>Một ngày Chúa Nhật năm 1940, đang ngồi trong nhà thờ, Jack nảy ra ý tưởng cho một cuốn sách. Đó sẽ là những lá thư của một con quỷ già gửi cho một con quỷ trẻ, dạy nó cách dẫn một người đi xa khỏi Đức Chúa Trời. Mọi thứ trong sách đều bị đảo ngược! Cuốn sách tên là The Screwtape Letters (Những Lá Thư Của Quỷ Screwtape), và mọi người rất thích nó. Khi những lá thư lần đầu được đăng trên một tờ báo, Jack được trả tiền cho mỗi lá. Ông đem số tiền ấy cho đi để giúp những người góa bụa.</p> <p>Rồi đài BBC mời Jack nói chuyện trên đài phát thanh. Năm 1941, trong lúc chiến tranh vẫn tiếp diễn, người dân khắp nước Anh bật radio và nghe giọng nói trầm ấm, thân thiện của ông giải thích những điều Cơ Đốc nhân tin. Ông nói thật đơn sơ, như một người đang trò chuyện rất có lý bên bàn bếp. Hàng trăm người viết thư cho ông. Những buổi nói chuyện ấy về sau được in thành sách, cuốn Mere Christianity (Cơ Đốc Giáo Thuần Túy), và cuốn sách đã giúp rất, rất nhiều người đến với đức tin.</p> <p>Jack còn đi đến các căn cứ không quân để nói chuyện với các phi công trẻ. Lúc đầu ông thấy việc đó rất khó. Ông học cách dùng những lời đơn giản và lắng nghe những câu hỏi của họ.</p> <p>Jack trở nên nổi tiếng. Ông biết rằng nổi tiếng có thể khiến mình kiêu ngạo. Vì vậy, gần như tuần nào, suốt mười hai năm, ông cũng xưng tội mình với một vị linh mục già khôn ngoan tên là Cha Adams. Và ông đem phần lớn tiền bán sách cho những người túng thiếu.</p> <p>Jack không phải là mục sư, nhưng ông luôn sẵn sàng nói với mọi người về Chúa Giê-xu bằng những lời họ có thể hiểu. Con không cần phải thông minh hay nổi tiếng mới có thể chia sẻ niềm hy vọng của con nơi Chúa Giê-xu. Con chỉ cần nói với một người nào đó, thật tử tế, Chúa Giê-xu có ý nghĩa thế nào với con.</p> <p><em>Lạy Chúa Giê-xu, xin giúp con luôn sẵn sàng kể cho người khác về Chúa, một cách nhẹ nhàng và tử tế. Xin giữ con khỏi kiêu ngạo. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ai đã đến sống ở the Kilns khi chiến tranh bắt đầu?",
+    "answer": "Những nữ sinh từ Luân Đôn, được gửi về vùng quê để được an toàn khỏi bom đạn."
+   },
+   {
+    "question": "Jack đã làm gì với số tiền được trả cho The Screwtape Letters?",
+    "answer": "Ông đem cho đi để giúp những người góa bụa. Về sau ông còn đem phần lớn tiền bán sách cho những người túng thiếu."
+   },
+   {
+    "question": "Con có thể kể cho ai về Chúa Giê-xu, và con sẽ nói gì?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là chúng ta không cần phải thông minh hay nổi tiếng mới có thể chia sẻ niềm hy vọng của mình nơi Chúa Giê-xu, một cách tử tế và đơn sơ."
+   }
+  ],
+  "word_count": 516
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Bước qua tủ áo",
+  "body_html": "<blockquote>“Thật vậy, Ta nói với các con, nếu các con không đổi hướng mà trở nên như các em nhỏ, thì các con chắc chắn không bao giờ được vào vương quốc thiên đàng.” — trích Ma-thi-ơ 18</blockquote> <p>Từ khi khoảng mười sáu tuổi, Jack đã mang trong đầu một hình ảnh: một thần rừng, nửa người nửa dê, cầm một cây dù và mấy gói đồ đi xuyên qua một khu rừng phủ tuyết. Khi những đứa trẻ Luân Đôn đến the Kilns năm 1939, ông bắt đầu viết một câu chuyện về bốn đứa trẻ bị gửi đi xa khỏi Luân Đôn, rồi tìm được đường vào một thế giới khác. Rồi ông cất nó đi.</p> <p>Gần mười năm sau, ông lấy nó ra và viết cho xong. Khi ông đọc cho Tolkien nghe, Tolkien chẳng thích chút nào! Nhưng một người bạn khác, Roger Lancelyn Green, thì rất thích. Thế là Jack tiếp tục viết.</p> <p>Năm 1950, cuốn The Lion, the Witch and the Wardrobe (Sư Tử, Phù Thủy và Cái Tủ Áo) được xuất bản. Sáu cuốn nữa tiếp nối, mỗi năm một cuốn. Cả bộ sách được gọi là The Chronicles of Narnia (Biên Niên Sử Narnia). Trong đó có chàng sư tử vĩ đại Aslan, đấng tốt lành, mạnh mẽ và tuyệt vời. Jack nói ông đã tưởng tượng Con Đức Chúa Trời sẽ ra sao nếu có một thế giới khác và Ngài đến thế giới ấy. Cuốn cuối cùng đã đoạt một giải thưởng nổi tiếng dành cho sách thiếu nhi.</p> <p>Trẻ em khắp thế giới viết thư cho Jack, và ông viết thư trả lời từng em, bằng tay, với cây bút chấm mực, vì ông chưa bao giờ học đánh máy. Có lần, một cậu bé lo lắng rằng mình yêu Aslan nhiều hơn yêu Chúa Giê-xu. Jack nhẹ nhàng viết lại: những điều con yêu ở Aslan chính là những điều Chúa Giê-xu đã nói và đã làm. Vậy thật ra, từ trước đến giờ con vẫn đang yêu Chúa Giê-xu đấy!</p> <p>Suốt thời gian ấy, Jack vẫn chăm sóc bà Moore, khi ấy đã già yếu và bệnh tật. Khi bà phải vào viện dưỡng lão, gần như ngày nào ông cũng đến thăm bà, cho đến khi bà qua đời năm 1951. Ông đã giữ lời hứa với Paddy cho đến cùng.</p> <p>Jack là một trong những người thông minh nhất thế giới. Nhưng có những điều quan trọng nhất ông muốn nói, ông lại nói qua những câu chuyện viết cho trẻ em. Chúa Giê-xu yêu trẻ em, và Ngài phán rằng mọi người đều phải đến với Ngài như một đứa trẻ.</p> <p><em>Lạy Chúa Giê-xu, cảm ơn Chúa vì Chúa yêu trẻ em. Xin giúp con đến với Chúa bằng một tấm lòng tin cậy, như một đứa trẻ. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Từ khi khoảng mười sáu tuổi, Jack đã mang trong đầu hình ảnh gì?",
+    "answer": "Một thần rừng cầm cây dù và mấy gói đồ đi xuyên qua một khu rừng phủ tuyết."
+   },
+   {
+    "question": "Jack đã nói gì với cậu bé lo lắng vì yêu Aslan nhiều hơn yêu Chúa Giê-xu?",
+    "answer": "Rằng những điều cậu bé yêu ở Aslan chính là những điều Chúa Giê-xu đã nói và đã làm."
+   },
+   {
+    "question": "Đến với Chúa Giê-xu như một đứa trẻ nghĩa là gì?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là Chúa Giê-xu yêu trẻ em và muốn mọi người đến với Ngài bằng tấm lòng đơn sơ, tin cậy."
+   }
+  ],
+  "word_count": 475
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Đám cưới trong bệnh viện",
+  "body_html": "<blockquote>“Lời cầu nguyện bởi đức tin sẽ cứu người bệnh, và Chúa sẽ nâng người ấy dậy.” — trích Gia-cơ 5</blockquote> <p>Ở New York có một nhà văn thông minh tên là Joy Davidman. Bà lớn lên mà không tin Đức Chúa Trời. Một đêm năm 1946, khi chồng bà gặp chuyện rắc rối và không thể về nhà, bà ở một mình, sợ hãi, cùng hai cậu con trai nhỏ. Lần đầu tiên trong đời, bà cảm thấy Đức Chúa Trời đang ở đó với mình. Bà thấy mình quỳ gối xuống cầu nguyện.</p> <p>Joy đọc sách của Jack, và năm 1950 bà viết cho ông một lá thư. Ông viết thư trả lời. Năm 1952, bà sang nước Anh, và hai người gặp nhau ăn trưa ở Oxford. Joy vui tính và gan dạ, và bà có thể tranh luận với Jack mà còn thắng nữa! Warnie cũng quý bà. Về sau bà sang sống ở Anh cùng hai con trai, David và Douglas, và cuộc hôn nhân đầu của bà chấm dứt.</p> <p>Năm 1954, Jack trở thành giáo sư tại Đại học Cambridge, nhưng cuối tuần ông lại về nhà ở the Kilns.</p> <p>Năm 1956, Joy được báo rằng bà không được ở lại nước Anh nữa. Jack không muốn bà và hai cậu bé bị buộc phải ra đi. Vì vậy ông cưới bà trong một nghi thức ngắn gọn, đơn giản tại một văn phòng, để bà có thể ở lại. Ông nghĩ đó là giúp đỡ một người bạn.</p> <p>Nhưng vài tháng sau, xương chân của Joy bị gãy, và các bác sĩ phát hiện bà bị ung thư. Họ nghĩ bà sẽ không sống được lâu. Đến lúc ấy Jack mới nhận ra một điều: ông yêu bà! Ông muốn thật sự là chồng của bà, trước mặt Đức Chúa Trời.</p> <p>Ngày 21 tháng 3 năm 1957, một vị mục sư tên là Peter Bide, người từng là sinh viên của Jack, đã làm lễ cưới cho hai người ngay trong phòng bệnh của Joy. Rồi ông đặt tay trên bà và cầu nguyện xin cho bà được chữa lành. Các bác sĩ vô cùng ngạc nhiên khi Joy bắt đầu khỏe lại! Xương của bà bắt đầu lành, và đến cuối năm bà đã có thể chống gậy đi lại.</p> <p>Jack và Joy tin rằng Đức Chúa Trời đã nghe lời cầu nguyện của họ. Không phải lúc nào Đức Chúa Trời cũng chữa lành con người theo cách chúng ta xin. Nhưng Ngài luôn nghe chúng ta, và chúng ta luôn có thể đem những người mình yêu thương đến với Ngài.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Chúa vì Chúa nghe lời cầu nguyện của chúng con. Xin ở cùng tất cả những người đang bị bệnh, và xin giúp con cầu nguyện cho họ. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Joy Davidman đã biết Đức Chúa Trời như thế nào?",
+    "answer": "Một đêm kia, khi bà ở một mình và sợ hãi, bà cảm thấy Đức Chúa Trời đang ở đó với mình, và bà quỳ xuống cầu nguyện."
+   },
+   {
+    "question": "Chuyện gì đã xảy ra sau khi Peter Bide cầu nguyện cho Joy?",
+    "answer": "Các bác sĩ vô cùng ngạc nhiên khi bà bắt đầu khỏe lại. Xương của bà bắt đầu lành, và bà lại có thể chống gậy đi lại."
+   },
+   {
+    "question": "Hôm nay con muốn cầu nguyện cho ai?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là Đức Chúa Trời luôn nghe lời cầu nguyện của chúng ta, và chúng ta luôn có thể đem những người mình yêu thương đến với Ngài."
+   }
+  ],
+  "word_count": 476
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Về nhà",
+  "body_html": "<blockquote>“Ta đã tranh đấu trong cuộc tranh đấu tốt đẹp, đã chạy trọn cuộc đua, đã giữ vững đức tin.” — trích 2 Ti-mô-thê 4</blockquote> <p>Jack và Joy có ba năm hạnh phúc bên nhau. Joy làm cho ngôi nhà cũ ở the Kilns lại sáng sủa và ấm cúng. Họ đi Ireland, và Jack chỉ cho bà xem những ngọn đồi ông yêu từ thuở bé. Rồi bệnh ung thư trở lại. Mùa xuân năm 1960, họ đi một chuyến sang Hy Lạp, nơi Jack đã đọc về suốt cả đời. Vài tháng sau, ngày 13 tháng 7 năm 1960, Joy qua đời, có Jack ở bên cạnh.</p> <p>Jack vô cùng đau buồn. Ông viết ra những cảm xúc buồn bã của mình vào sổ tay, thật lòng, kể cả những câu hỏi khó nhất của ông dành cho Đức Chúa Trời. Dần dần, ông tìm lại được sự bình an. Về sau, những cuốn sổ ấy trở thành một cuốn sách nhỏ, A Grief Observed (Nhìn Thấu Nỗi Đau), đã giúp nhiều người đang buồn biết rằng họ không cô đơn. Jack cũng chăm sóc hai con trai của Joy, David và Douglas, và cho các cậu một mái nhà ở the Kilns vào những kỳ nghỉ.</p> <p>Chẳng bao lâu, chính Jack cũng đổ bệnh. Năm 1963, ông bệnh nặng đến nỗi người ta nghĩ ông sẽ không qua khỏi. Nhưng ông tỉnh dậy và xin một tách trà! Ông không sợ chết. Ông và Warnie cùng nhau trải qua những tuần lễ yên bình, đọc sách, giải ô chữ và nhớ lại thời hai anh em còn bé.</p> <p>Ngày 22 tháng 11 năm 1963, một tuần trước sinh nhật thứ sáu mươi lăm, Jack qua đời tại nhà ở the Kilns. Ông được chôn trong nghĩa trang của nhà thờ Holy Trinity. Mười năm sau, Warnie được chôn cùng một ngôi mộ. Hai anh em từng cùng nhau nghĩ ra thế giới Boxen nay lại được ở bên nhau.</p> <p>Ngày nay, hàng triệu người đã đọc sách của Jack. Trẻ em vẫn bước qua tủ áo vào xứ Narnia và gặp Aslan, và một số em về sau đã gặp Chúa Giê-xu trong Kinh Thánh và biết Ngài.</p> <p>Jack đã chạy trốn Đức Chúa Trời nhiều năm. Nhưng Đức Chúa Trời đã tìm thấy ông, và Jack giữ vững đức tin cho đến cuối cùng, qua những ngày vui và cả những ngày rất buồn. Đức Chúa Trời nắm giữ mọi người tin cậy Ngài, và Ngài sẽ nắm giữ con.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Chúa về C. S. Lewis và những câu chuyện Chúa đã ban cho ông để kể. Xin giúp con tin cậy Chúa trong những ngày vui và những ngày buồn, và giữ vững đức tin suốt cả cuộc đời con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Jack đã làm gì với những cảm xúc buồn bã của mình sau khi Joy qua đời?",
+    "answer": "Ông viết chúng ra thật lòng vào sổ tay. Về sau những cuốn sổ ấy trở thành một cuốn sách nhỏ, A Grief Observed, đã giúp nhiều người đang buồn."
+   },
+   {
+    "question": "Jack đã xin gì khi ông tỉnh dậy sau cơn bệnh nặng năm 1963?",
+    "answer": "Một tách trà!"
+   },
+   {
+    "question": "Điều gì giúp con tin cậy Đức Chúa Trời trong những ngày buồn?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Ý chính của chương này là Đức Chúa Trời nắm giữ mọi người tin cậy Ngài, trong những ngày vui và cả những ngày buồn."
+   }
+  ],
+  "word_count": 471
+ }
+}
+]
