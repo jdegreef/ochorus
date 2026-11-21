@@ -23629,6 +23629,37 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/women-who-moved-heaven-2": {
+			"ground": "d6d62c96d363eeef004a9e57309373198125ddd05994eef1179ee153108ab52c",
+			"style": "originals",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "8e652c8c6d03fd10f5aa3f872746e49d2d485a499524f33b0c81ed88bc490d01",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[149, 308, 451, 384],
+					[149, 374, 451, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"james": {
 			"ground": "063d330a75164dead466f10646bd7392fdfd7e4da3f18daabace1377db3b150c",
 			"style": "devotional",
