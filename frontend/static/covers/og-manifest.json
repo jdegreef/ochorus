@@ -27092,6 +27092,40 @@
 				599
 			]
 		},
+		"ko/samuel-ajayi-crowther-a-life-teens": {
+			"ground": "5e5f91ed808e4e3ee9d7e313d7b8fffa595a28fa6a3ef5dba0402b757397f52b",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "d8cb0c3f6a59026fd2097c999d1736bacfd88570553c4254d24419b10bc188ec",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[142, 106, 458, 135]
+				],
+				"title": [
+					[148, 288, 452, 364],
+					[148, 354, 452, 430]
+				],
+				"edition": [
+					[252, 444, 348, 469]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				293,
+				507
+			]
+		},
 		"ko/school-of-prayer": {
 			"ground": "06d0d9789cc78677648d024e6d2350469e922c3ab3193e275ae01d262f401b94",
 			"style": "devotional",
