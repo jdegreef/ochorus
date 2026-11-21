@@ -26291,6 +26291,40 @@
 				380
 			]
 		},
+		"ko/key-teachings-of-andrew-murray": {
+			"ground": "f8da39220a9f8834d0100df0c2fad640d6190ac5ae1d444753e65c304d7efcba",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "e6f392fbf3ceca94aa69d72d3a98537287225884fa7e7f9b68cc6718489035d9",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[147, 169, 453, 232],
+					[142, 225, 458, 288]
+				],
+				"subtitle": [
+					[61, 352, 539, 380]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				380
+			]
+		},
 		"ko/key-teachings-of-gareth-evans": {
 			"ground": "d1a874b0ad6eb54cbdc2f1e7438c16f06dd312b8c9610461c5e4ab01996c456b",
 			"style": "originals",
