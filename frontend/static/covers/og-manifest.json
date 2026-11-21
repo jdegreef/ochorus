@@ -26990,6 +26990,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/real-questions-1": {
+			"ground": "90ecd3bca374e77afd46026c8762c637a503f7d9ce0a028ec3e6eda6fb3869f7",
+			"style": "originals",
+			"volume": "1",
+			"script": "korean",
+			"fonts": "4e7462ffe8ba8dd218390f4f01a9844498678f92da1fa69a233aa871066b8648",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 281, 308, 325],
+					[148, 359, 452, 435]
+				],
+				"subtitle": [
+					[90, 497, 510, 525]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				269,
+				525
+			]
+		},
 		"ko/religious-experience-and-journal": {
 			"ground": "60f997bc2e03b3cf983902867bc2adb98898dd45e0f216745b0ae1c06077417d",
 			"style": "enlightenment",

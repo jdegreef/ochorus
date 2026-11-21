@@ -1085,6 +1085,19 @@
   "series": [
    "real-questions"
   ],
+  "language": "ko",
+  "title": "진짜 질문들",
+  "description": "13세에서 17세 독자들이 하나님과 성경, 예수님, 그리고 삶에 대해 실제로 묻는 질문들에 짧고 솔직하게 답해요. 그리스도인들이 동의하는 부분은 분명하게, 생각이 다른 부분은 공정하게 다루고, 고전으로 이어지는 길을 안내해요.",
+  "created_at": "2026-11-21T00:00:00Z",
+  "updated_at": "2026-11-21T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "real-questions"
+  ],
   "language": "pt",
   "title": "Perguntas de Verdade",
   "description": "Respostas sinceras e curtas, para leitores de 13 a 17 anos, às perguntas que os adolescentes realmente fazem sobre Deus, a Bíblia, Jesus e a vida — claras onde os cristãos concordam, justas onde divergem, e que conduzem aos clássicos.",
