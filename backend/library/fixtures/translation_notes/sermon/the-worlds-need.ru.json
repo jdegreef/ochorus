@@ -1,0 +1,149 @@
+{
+ "kind": "sermon",
+ "slug": "the-worlds-need",
+ "language": "ru",
+ "job_issue": 9133,
+ "references": [
+  {
+   "reference": "Romans 16:4",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 8:4",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "2 Timothy 4:2",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Mark 7:24",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 8:30b",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Genesis 4:9",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 12:29",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Psalm 69:9a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Jeremiah 2:2b",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Jeremiah 2:3a",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Revelation 2:5",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 12:26",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 69:9a",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 Timothy 2:8",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Colossians 1:24",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 Peter 2:21",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Matthew 8:20",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Mark 10:45",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Philippians 2:7",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "John 10:34b",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 10:35b",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 John 2:2",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Luke 9:62",
+   "status": "self_rendered",
+   "block_index": 24
+  }
+ ]
+}
