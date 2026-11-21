@@ -2595,6 +2595,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # fr
             ('<blockquote>« Car vous étiez comme',
              '<h3>ALLOCUTION DU NOUVEL AN.</h3>'),
+            # ko
+            ('<blockquote>“너희가 전에는 양과 같이',
+             '<h3>신년 설교.</h3>'),
             # vi
             ('<blockquote>“Vì trước kia anh ',
              '<h3>BÀI GIẢNG ĐẦU NĂM MỚI.</h3>'),
@@ -8635,6 +8638,8 @@ BODY_CORRECTIONS["reality-of-prayer"]["back_matter"] = [
      "<p><i>Printed in the United States of America</i></p>"),
     ("précise et victorieuse.</p>",
      "<p><i>Printed in the United States of America</i></p>"),
+    ("분명하며 이기는 기도로 얻어집니다.</p>",
+     "<p><i>Printed in the United States of America</i></p>"),
 ]
 # Gutenberg #29426 ends ch35 on the printer's imprint, "LONDON: MORGAN AND
 # SCOTT", then its own "Transcriber's Notes" (`div.tnote`: punctuation repaired,
@@ -8791,6 +8796,11 @@ BODY_CORRECTIONS["reality-of-prayer"]["restored_blocks"] = [
      "<blockquote>La prière est le souffle vital du chrétien,<br/>L’air natal de son âme ;<br/>Son mot d’ordre aux portes de la mort ;<br/>Il entre au ciel par la prière.</blockquote>"),
     ("<p>Deux choses peuvent être dites ici,",
      "<blockquote>« Ce que les faibles sens ignorent,<br/>Ce que la raison n’entrevoit,<br/>Avec une ferme et souveraine assurance,<br/>Révèle son origine céleste. »</blockquote>"),
+    # ko (translated from the settled English; same blocks, same positions)
+    ("<p>그리스도께서는 기도에서 모든 자",
+     "<blockquote>기도는 그리스도인의 생명의 호흡,<br/>그리스도인이 숨 쉬는 본향의 공기,<br/>죽음의 문 앞에서 외치는 그의 암호,<br/>그는 기도로 천국에 들어가네.</blockquote>"),
+    ("<p>이 주제에 관한 우리 연구의 이",
+     "<blockquote>“연약한 감각으로는 알 수 없는 것들,<br/>이성의 희미한 빛으로는 보이지 않는 것들이,<br/>강하고 압도적인 확신으로<br/>그 하늘의 근원을 드러내네.”</blockquote>"),
 ]
 BODY_CORRECTIONS.setdefault("prayer-and-praying-men", {}).setdefault("replacements", []).extend([
     # "Betelguese" -> "Betelgeuse".
