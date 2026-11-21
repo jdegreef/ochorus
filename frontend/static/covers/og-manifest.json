@@ -23277,6 +23277,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/gleanings-among-the-sheaves": {
+			"ground": "da7927acffe441d90d5e14eff6168cd050bcdd08c71f265c66c56e7a0eebe1f8",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "eb90dc908b4b38a0a6439348522b74079753903d4af47f4267e0ac28b50ee402",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/growing-in-wisdom": {
 			"ground": "ffa92daed7a4734678353c0b11859181d06a501def9a81f4cbce2dc22b8b7967",
 			"style": "originals",
@@ -47800,21 +47815,6 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": "OpenWordBible.org"
-		},
-		"ja/gleanings-among-the-sheaves": {
-			"ground": "da7927acffe441d90d5e14eff6168cd050bcdd08c71f265c66c56e7a0eebe1f8",
-			"style": "revival",
-			"volume": null,
-			"script": "japanese",
-			"fonts": "eb90dc908b4b38a0a6439348522b74079753903d4af47f4267e0ac28b50ee402",
-			"art": true,
-			"scrim": 1,
-			"lift": 1,
-			"medallion": null,
-			"layout": "band/oxblood",
-			"bar": 0.02,
-			"caps": false,
-			"sitemark": null
 		}
 	}
 }
