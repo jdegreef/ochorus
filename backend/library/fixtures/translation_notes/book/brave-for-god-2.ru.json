@@ -1,0 +1,19 @@
+{
+ "kind": "book",
+ "slug": "brave-for-god-2",
+ "language": "ru",
+ "job_issue": 9075,
+ "references": [
+  {
+   "reference": "Luke 23:34a",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "1 Samuel 2:30b",
+   "status": "self_rendered",
+   "block_index": 35
+  }
+ ]
+}
