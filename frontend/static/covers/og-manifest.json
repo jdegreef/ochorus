@@ -23333,6 +23333,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/after-his-heart": {
+			"ground": "fb47785259a4d7622b4d9f0d1a6c27f34b0a8b345f7b5c93979c613e31aaedc7",
+			"style": "house",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "9d6852fe94df0b4da6c76f9d0409809bf9a114478c36c327c827e19eaa52a0d1",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[135, 287, 465, 389],
+					[135, 382, 465, 484]
+				],
+				"subtitle": [
+					[112, 507, 488, 535]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				260,
+				535
+			]
+		},
 		"ja/all-of-grace": {
 			"ground": "ac729450372743669bed1cff78be7e34a6503a3086290262cb59e007853a81f9",
 			"style": "revival",
