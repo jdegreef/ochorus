@@ -233,3 +233,43 @@ class AliasSearchTests(TestCase):
         self.assertEqual(set(AUTHOR_ALIASES) - authors, set())
         books = {p.name.split(".")[0] for p in (content / "books").glob("*.json")}
         self.assertEqual(set(BOOK_ALIASES) - books, set())
+
+
+class NamesInEachLanguageTests(SimpleTestCase):
+    """A reader types the name the way their language writes it
+    (library/data/author_names.json)."""
+
+    def people(self, slug, name):
+        from .search_aliases import other_names
+
+        return People([(1, name)] + [(1, other, name) for other in other_names(slug)])
+
+    def test_each_script_finds_moody(self):
+        people = self.people("dwight-l-moody", "Dwight L. Moody")
+        for q in ("무디", "D. L. 무디", "무디의 설교", "ムーディー", "ムーディ", "Муді",
+                  "Д. Л. Муді", "مودي", "मूडी", "ሙዲ"):
+            with self.subTest(q=q):
+                found = people.match(q)
+                self.assertTrue(found, q)
+                self.assertEqual(found[0].name, "Dwight L. Moody")
+
+    def test_exonyms_in_latin_scripts(self):
+        self.assertEqual(self.people("augustine-of-hippo", "Augustine of Hippo")
+                         .match("San Agustín")[0].name, "Augustine of Hippo")
+        self.assertTrue(self.people("martin-luther", "Martin Luther").match("Martín Lutero")[0].named)
+        self.assertTrue(self.people("john-calvin", "John Calvin").match("Jean Calvin")[0].named)
+
+    def test_the_file_is_well_formed(self):
+        import json
+        from pathlib import Path
+
+        from .search_aliases import author_names_by_language
+
+        content = Path(__file__).parent / "fixtures" / "content"
+        slugs = {r["fields"]["slug"] for r in json.loads((content / "authors.json").read_text())}
+        site = {"am", "ar", "es", "fr", "hi", "ja", "ko", "lg", "pt", "ru", "sw", "uk", "vi", "zh"}
+        for slug, by_language in author_names_by_language().items():
+            self.assertIn(slug, slugs)
+            for language, forms in by_language.items():
+                self.assertIn(language, site, slug)
+                self.assertTrue(forms and all(isinstance(f, str) and f.strip() for f in forms), slug)
