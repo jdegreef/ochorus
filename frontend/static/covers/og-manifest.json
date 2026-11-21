@@ -25719,6 +25719,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/david-livingstone-a-life-children": {
+			"ground": "6ed4fb31d53b541b20238371d43377616e6027248dedf7a45639b892073695f9",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "e304717d004c617256b1f6bbe02a5264c308d72d1ed739e3bc2c672902e94410",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[178, 106, 422, 135]
+				],
+				"title": [
+					[84, 321, 516, 396]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				328,
+				472
+			]
+		},
 		"ko/divine-healing": {
 			"ground": "7f55a8a937c6491b798118d5320b1187c31022f4f72665060d9378254527a649",
 			"style": "devotional",
