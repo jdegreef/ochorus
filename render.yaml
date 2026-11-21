@@ -25,8 +25,8 @@ services:
     plan: starter # always-on; avoids cold-start spin-down
     healthCheckPath: /api/health/
     # Off: the deploy train (.github/workflows/deploy-train.yml) ships main in
-    # batches every two hours, moving this service and ochorus-web to the same
-    # green commit together (the email cron below auto-deploys on its own).
+    # batches three times a day, moving this service and ochorus-web to the
+    # same green commit together (the email cron below is not on the train).
     # At 100+ merges a day, deploying each one queued the ~21-minute web build
     # back to back and rebuilt this image for every backend commit.
     #
@@ -160,13 +160,22 @@ services:
     rootDir: backend
     dockerfilePath: ./Dockerfile
     schedule: "*/15 * * * *"
-    # NOT on the train: Render gives cron jobs no deploy hook, so the train
-    # cannot fire this one. Left "off" it would never deploy again and run a
-    # stale image forever. So it deploys each green commit itself. That can put
-    # it up to one train (~2 h) ahead of the API's migrations; it runs every
+    # PAUSED while email sending is off (2026-11-20, to cut the Render bill).
+    # With EMAIL_ENABLED off every run only records "skipped", yet each one
+    # still booted a container every 15 minutes, and each backend merge
+    # rebuilt this service's own Docker image outside the deploy train. So
+    # the job is SUSPENDED in the dashboard (a Blueprint cannot suspend a
+    # service) and auto-deploy is off here, so it stops paying for builds.
+    #
+    # TO TURN EMAIL ON: set this back to `checksPass`, Blueprint → Sync, then
+    # Render → ochorus-lifecycle-email → Manual Deploy → "Deploy latest
+    # commit" (its image is stale) and Resume the job. Why `checksPass` then:
+    # Render gives cron jobs no deploy hook, so the train cannot fire this
+    # one, and left "off" it would run a stale image forever. On `checksPass`
+    # it can run up to one train ahead of the API's migrations; it runs every
     # 15 minutes, so a run that trips on a not-yet-migrated column just fails
     # and the next one after the train succeeds. Nothing else depends on it.
-    autoDeployTrigger: checksPass
+    autoDeployTrigger: "off"
     # Same filter as ochorus-api: the cron builds its own copy of the image, so
     # without this every test-only backend commit paid for a second Docker build.
     buildFilter:
