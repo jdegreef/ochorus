@@ -45482,6 +45482,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"vi/all-of-grace-teens": {
+			"ground": "e7b91b84575d364b5ef18fdf4946dc808003f11396ff6d92cf3460229b9ef30e",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[153, 287, 447, 363],
+					[183, 354, 417, 430]
+				],
+				"edition": [
+					[181, 440, 419, 465]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				292,
+				502
+			]
+		},
 		"vi/all-things-for-good": {
 			"ground": "5601b0ae310f59647235d4e2be93d1681238d9cc1d0c7fd9e1641f23ec074ceb",
 			"style": "press",
