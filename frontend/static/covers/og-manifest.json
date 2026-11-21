@@ -27486,6 +27486,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/the-way-to-god-teens": {
+			"ground": "d8d48a528fe1df901f10f681dc24269437a7d44cb666a833aaaf5efcc7460410",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "bd5e6ec1e505ea06a19a3d1298287db93d7070caf1e4bfc374e2b2ae7d99ba49",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[54, 318, 546, 394]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				471
+			]
+		},
 		"ko/true-vine": {
 			"ground": "b7875842ddd499da63400547c79f267ea1402c059e9b58eb89ee18e19d2bab38",
 			"style": "devotional",
