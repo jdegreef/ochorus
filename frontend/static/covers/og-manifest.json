@@ -589,6 +589,40 @@
 			"caps": false,
 			"sitemark": "OpenWordBible.org"
 		},
+		"after-his-heart": {
+			"ground": "4b49dd40e6687ad5d87d1c47e4c57950b2ac38580817105496978d9030bf668b",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[139, 300, 461, 390],
+					[197, 384, 403, 474]
+				],
+				"subtitle": [
+					[93, 494, 507, 522]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				273,
+				522
+			]
+		},
 		"against-heresies": {
 			"ground": "c88800c83694865ba8e484d2f96c3fa3352fe692cfed46ff4987193cb5af72e2",
 			"style": "inscriptional",
