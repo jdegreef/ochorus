@@ -2528,6 +2528,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # es
             ("<p>Con toda naturalidad podríamos",
              "<blockquote><em>«Si alguno quiere venir en pos de mí, niéguese a sí mismo, y tome su cruz cada día, y sígame.</em>—Lucas 9:23.</blockquote>"),
+            # pt
+            ("<p>Poderíamos naturalmente pensar",
+             '<blockquote><em>"Se alguém deseja vir após mim, negue-se a si mesmo, tome a sua cruz cada dia, e siga-me.</em>—LUCAS 9:23.</blockquote>'),
             # ko
             ('<p>주 예수 그리스도의 ',
              '<blockquote><em>“아무든지 나를 따라 오려거든 자기를 부인하고 날마다 제 십자가를 지고 나를 좇을 것이니라”</em>—누가복음 9:23.</blockquote>'),
