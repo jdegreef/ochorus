@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "john-newton",
+ "language": "ru",
+ "job_issue": 9158,
+ "references": [
+  {
+   "reference": "John 9:25b",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 15:10a",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}

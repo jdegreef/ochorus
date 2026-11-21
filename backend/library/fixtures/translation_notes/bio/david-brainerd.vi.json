@@ -1,0 +1,15 @@
+{
+ "kind": "bio",
+ "slug": "david-brainerd",
+ "language": "vi",
+ "job_issue": 9210,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Acts 2:2",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 20
+  }
+ ]
+}
