@@ -37915,6 +37915,40 @@
 				546
 			]
 		},
+		"ru/pilgrims-progress-children": {
+			"ground": "0f50574b6128cc994efd9ba279393fbe2560a6cb136e88d1bb61fc10070a970b",
+			"style": "press",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[177, 102, 423, 131]
+				],
+				"title": [
+					[120, 304, 480, 382],
+					[156, 368, 444, 446]
+				],
+				"edition": [
+					[225, 456, 375, 481]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				278,
+				517
+			]
+		},
 		"ru/talks-to-the-farmer-children": {
 			"ground": "2314c64bbc523d74d38e2b7f6ee50388e99a0be03b6aa6392c856ac3583b5c3d",
 			"style": "young",
