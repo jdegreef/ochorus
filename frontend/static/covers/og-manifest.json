@@ -25424,6 +25424,40 @@
 				560
 			]
 		},
+		"ko/amanda-smith-autobiography-teens": {
+			"ground": "3cfa9f8df4a79f4b042e124ec99e7284b839b711394c4ed420f79a40c042d59d",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "c18e06efeccf0e4a25c0c8ae32d29105c9c3c1940a7d24448d9007416ecd6f0f",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[115, 284, 485, 381],
+					[150, 368, 450, 465]
+				],
+				"edition": [
+					[252, 478, 348, 503]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				235,
+				560
+			]
+		},
 		"ko/answers-to-prayer": {
 			"ground": "501daf605c36080d1ac71f8b6d9c205daedd0c59152fe253483e7a776e638064",
 			"style": "revival",
