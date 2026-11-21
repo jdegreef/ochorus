@@ -27479,6 +27479,21 @@
 				497
 			]
 		},
+		"ko/plain-account-christian-perfection": {
+			"ground": "9ef8462e91ec8dbdbad845bbb1e05351fadce5c8b731c5fa3ff0f7cb60723a7a",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "korean",
+			"fonts": "60dd4ff09e0817d0692f6769212ea5e60223517ae955cea5c40081a5ff91ee35",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/mauve",
+			"bar": 0.04,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/power-through-prayer": {
 			"ground": "b8c62f0bf7415c337df6443dd4783aa6c889553e2e75cfbaae91193377cabce7",
 			"style": "devotional",
