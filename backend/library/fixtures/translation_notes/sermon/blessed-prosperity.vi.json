@@ -1,0 +1,144 @@
+{
+ "kind": "sermon",
+ "slug": "blessed-prosperity",
+ "language": "vi",
+ "job_issue": 9029,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Psalm 37:7",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 2
+  },
+  {
+   "reference": "Psalm 73:11",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 2
+  },
+  {
+   "reference": "Psalm 1:1a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 7
+  },
+  {
+   "reference": "Psalm 1:1b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 1:1c",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 1:2",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 22
+  },
+  {
+   "reference": "Psalm 1:2b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 22
+  },
+  {
+   "reference": "Psalm 1:3a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 34
+  },
+  {
+   "reference": "Psalm 1:3b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 34
+  },
+  {
+   "reference": "Psalm 1:3c",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 34
+  },
+  {
+   "reference": "Psalm 1:3d",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 4
+  },
+  {
+   "reference": "Psalm 1:4",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 51
+  },
+  {
+   "reference": "Matthew 16:23",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 13
+  },
+  {
+   "reference": "John 12:32",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 17
+  },
+  {
+   "reference": "Hebrews 7:26",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 17
+  },
+  {
+   "reference": "2 Corinthians 6:14-18",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 12:34b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 24
+  },
+  {
+   "reference": "Psalm 119:165",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 27
+  },
+  {
+   "reference": "Jeremiah 17:8",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Psalm 37:19",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Proverbs 15:23",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 40
+  },
+  {
+   "reference": "Matthew 11:26",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 47
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 47
+  }
+ ]
+}

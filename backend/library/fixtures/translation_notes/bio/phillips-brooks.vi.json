@@ -1,0 +1,21 @@
+{
+ "kind": "bio",
+ "slug": "phillips-brooks",
+ "language": "vi",
+ "job_issue": 9233,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Psalm 78:72",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 2:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 19
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "kind": "book",
+ "slug": "divine-songs-for-children",
+ "language": "ko",
+ "job_issue": 9026,
+ "references": [
+  {
+   "reference": "2 Kings 2:23",
+   "status": "mined",
+   "block_index": 125,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Proverbs 6:10",
+   "status": "mined",
+   "block_index": 218,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 22:37",
+   "status": "self_rendered",
+   "block_index": 190
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "self_rendered",
+   "block_index": 193
+  }
+ ]
+}

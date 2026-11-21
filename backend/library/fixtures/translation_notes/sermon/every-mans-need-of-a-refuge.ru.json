@@ -1,0 +1,75 @@
+{
+ "kind": "sermon",
+ "slug": "every-mans-need-of-a-refuge",
+ "language": "ru",
+ "job_issue": 9136,
+ "references": [
+  {
+   "reference": "Isaiah 32:2",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Peter 5:8b",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:11",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 3:7",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Acts 17:31a",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Romans 2:5",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Romans 3:23",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Isaiah 53:6a",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:6b",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:6c",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:6c",
+   "status": "self_rendered",
+   "block_index": 35
+  }
+ ]
+}

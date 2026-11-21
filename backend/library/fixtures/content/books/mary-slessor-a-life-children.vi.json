@@ -1,0 +1,377 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "mary-slessor-a-life-children",
+  "language": "vi",
+  "title": "Mary Slessor (Cho thiếu nhi)",
+  "subtitle": "",
+  "cover_byline": "Mary Slessor",
+  "description": "Câu chuyện có thật về Mary Slessor, một cô gái làm nhà máy ở Scotland đã vượt biển đến Calabar ở Tây Phi, học nói tiếng Efik như người dân nơi ấy, đi vào khu rừng Okoyong nơi chưa có giáo sĩ nào từng sống, và cứu những em bé sinh đôi cùng mẹ của các em khi mọi người khác đều bỏ chạy. Ấn bản dành cho thiếu nhi này kể lại cuộc đời bà qua những chương ngắn để đọc to lên: một câu Kinh Thánh, một phần trong câu chuyện của bà, một điều câu chuyện ấy muốn nói với con, và một lời cầu nguyện ngắn, cùng những câu hỏi để cả nhà trò chuyện với nhau.",
+  "qa": [
+   {
+    "question": "Mary Slessor (Cho thiếu nhi) kể về điều gì?",
+    "answer": "Đây là ấn bản dành cho thiếu nhi của cuốn tiểu sử đầy đủ về Mary Slessor. Sách kể lại việc một cô gái nghèo làm việc trong nhà máy ở Dundee đã đến Calabar, nay thuộc nước Nigeria, sống giữa người Okoyong, bảo vệ những em bé sinh đôi cùng mẹ của các em, và được gọi là “Mẹ của Mọi Người.”"
+   },
+   {
+    "question": "Mary Slessor là ai?",
+    "answer": "Một nữ giáo sĩ người Scotland, sống từ năm 1848 đến năm 1915. Bà bắt đầu làm việc trong nhà máy năm mười một tuổi, vượt biển đến Calabar năm 1876, và sống gần bốn mươi năm ở vùng nay là đông nam Nigeria. Bà học tiếng Efik, sống ở Okoyong từ năm 1888, giúp những kẻ thù làm hòa với nhau, cứu những em bé sinh đôi, và lập trường học cùng Hội Thánh dọc theo lạch Enyong. Người dân gọi bà là Ma."
+   },
+   {
+    "question": "Mỗi chương được sắp xếp thế nào?",
+    "answer": "Chương nào cũng ngắn và được viết để đọc to lên. Chương mở đầu bằng một câu Kinh Thánh, kể một phần câu chuyện của Mary, chỉ ra một điều đơn giản mà câu chuyện ấy muốn nói với con, và kết thúc bằng một lời cầu nguyện ngắn. Tiếp theo là ba câu hỏi để cùng nhau trò chuyện."
+   },
+   {
+    "question": "Cuốn sách này có quá buồn đối với trẻ em không?",
+    "answer": "Có những phần buồn. Cha của Mary uống rượu quá nhiều, nhiều em bé bà chăm sóc đã chết, và một số tục lệ xưa đã cướp đi mạng sống của nhiều người. Cuốn sách không giả vờ rằng những điều ấy không có, nhưng kể lại một cách nhẹ nhàng, không có những chi tiết làm các em sợ hãi. Trên hết, đây là câu chuyện về việc Đức Chúa Trời đã chăm sóc một người phụ nữ hay sợ hãi, làm cho bà trở nên can đảm, và dùng bà để cứu sống rất nhiều người."
+   },
+   {
+    "question": "Những câu chuyện này có thật không?",
+    "answer": "Có. Chúng được lấy từ chính những lá thư của Mary Slessor và từ những người từng biết bà, do người viết tiểu sử đầu tiên của bà thu thập. Một vài câu chuyện, như chuyện tên cầm đầu băng với cục chì, là do người ta nhớ lại từ lời bà kể nhiều năm sau, và cuốn sách có nói rõ điều đó. Sách cũng nói thẳng rằng Mary không phải là người đầu tiên đứng lên chống lại việc giết trẻ sinh đôi, và rằng nhiều người khác, cả người châu Phi lẫn người Scotland, đã giúp đỡ bà."
+   },
+   {
+    "question": "Cuốn sách này dành cho ai?",
+    "answer": "Sách dành cho thiếu nhi, để người lớn đọc to lên cho các em nghe, hoặc để các em lớn hơn tự đọc. Ngoài ra còn có một ấn bản dành cho thiếu niên, và cuốn tiểu sử đầy đủ dành cho bạn đọc lớn tuổi hơn."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại của Ochorus dành cho bạn đọc nhỏ tuổi, dựa trên cuốn tiểu sử Mary Slessor của Ochorus, thuộc bộ sách Chân Dung Lòng Can Đảm. Lời kể là của chúng tôi, được tự do đọc và chia sẻ.",
+  "cover_url": "/covers/art/mary-slessor-a-life-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 149,
+  "is_published": true,
+  "created_at": "2026-11-21T00:00:00Z",
+  "updated_at": "2026-11-21T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Cô Bé Nghịch Ngợm",
+  "body_html": "<blockquote>“Như người cha thương xót con cái mình, CHÚA cũng đầy lòng thương yêu dịu dàng với mọi người kính sợ Ngài.” — trích Thi-thiên 103</blockquote> <p>Ngày 2 tháng 12 năm 1848, một bé gái chào đời ở Aberdeen, một thành phố của nước Scotland. Cô bé tên là Mary Mitchell Slessor.</p> <p>Mẹ của Mary là một người hiền lành, có đức tin sâu sắc và lặng lẽ. Hội Thánh của bà có một trạm truyền giáo ở tận Tây Phi xa xôi, tại một nơi tên là Calabar, và tin tức từ nơi ấy thường được đọc to lên trong nhà. Nhiều năm sau, Mary kể: “Lòng nhiệt thành truyền giáo của tôi, nhất là dành cho Calabar, là tôi có được từ mẹ.” Gia đình còn nhớ rằng mỗi lần cô bé Mary chơi trò làm cô giáo, học trò tưởng tượng của cô bao giờ cũng là người châu Phi!</p> <p>Nhưng nhà của Mary không phải lúc nào cũng vui vẻ. Cha cô, ông Robert, là thợ đóng giày, và ông uống rượu quá nhiều. Năm 1859, cả nhà dọn đến Dundee, một thành phố đầy nhà máy, mong được bắt đầu lại từ đầu, nhưng ông vẫn tiêu hết từng đồng vào rượu. Vì thế mẹ của Mary phải đi làm ở nhà máy. Những tối thứ Bảy, bà và Mary ngồi khâu vá đến khuya, chờ ông về, và lặng lẽ cầu nguyện cho lòng mình được yên.</p> <p>Dù vậy, Mary không phải là một cô bé buồn rầu. Cô tự gọi mình là “a wild lassie”, tiếng Scotland nghĩa là một cô bé nghịch ngợm, hoang dã. Một buổi chiều mùa đông, có một bà cụ góa chồng gọi mấy cô bé từ ngoài trời lạnh vào ngồi sưởi bên bếp lửa nhà mình. Bà chỉ vào ngọn lửa và cảnh báo các cô rằng quay lưng lại với Chúa Giê-xu là điều nguy hiểm biết bao. Mary cứ nghĩ mãi về điều đó. Theo lời chính cô kể, cô đã “ăn năn và tin.” Trong lòng mình, cô tìm thấy tình yêu của Đức Chúa Trời, và cô không bao giờ tìm cách dọa cho ai sợ để họ đến với tình yêu ấy.</p> <p>Mary cầu nguyện cho cha mình nhiều năm trời, nhưng ông không bao giờ thay đổi. Mãi về sau cô viết: “Tôi biết thế nào là cầu nguyện suốt bao năm dài mà không bao giờ nhận được lời đáp.” Nhưng cô đã tìm được một Người Cha trên trời, Đấng không bao giờ làm cô thất vọng.</p> <p>Có thể có điều gì đó ở nhà làm con buồn hay lo lắng. Đức Chúa Trời thấy hết, Ngài quan tâm đến con, và con có thể kể cho Ngài nghe mọi điều. Nếu có khi nào con thấy mình không được an toàn ở nhà, hãy nói với một người lớn mà con tin cậy.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài là Cha của con ở trên trời và Ngài luôn luôn yêu thương con. Xin Ngài chăm sóc gia đình con, và giúp con biết kể cho Ngài nghe mọi điều. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lòng yêu mến Calabar của Mary bắt đầu từ đâu?",
+    "answer": "Từ mẹ của cô, người theo dõi từng bản tin của trạm truyền giáo ở Calabar. Những bản tin ấy được đọc to lên trong nhà và cả nhà cùng trò chuyện về chúng."
+   },
+   {
+    "question": "Suốt nhiều năm, Mary đã cầu nguyện cho điều gì?",
+    "answer": "Cô cầu nguyện cho cha mình, người uống rượu quá nhiều. Ông không bao giờ thay đổi, nhưng Mary đã học được cách tin cậy Cha của cô ở trên trời."
+   },
+   {
+    "question": "Hôm nay con muốn kể cho Cha trên trời nghe điều gì?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chính của chương này là Đức Chúa Trời là một Người Cha nhân từ, Ngài quan tâm đến mọi điều xảy ra với chúng ta, kể cả những chuyện khó khăn ở nhà."
+   }
+  ],
+  "word_count": 527
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Cuốn Sách Trên Khung Cửi",
+  "body_html": "<blockquote>“Lời của Ngài là ngọn đèn dẫn lối bước chân tôi và là ánh sáng cho con đường tôi đi.” — trích Thi-thiên 119</blockquote> <p>Khi Mary mười một tuổi, cô vào làm việc ở một nhà máy lớn tên là Baxter Brothers. Lúc đầu, cô làm nửa ngày và nửa ngày còn lại thì đến trường học của nhà máy. Chẳng bao lâu sau, cô làm từ sáu giờ sáng đến sáu giờ tối, rồi buổi tối mới đi học. Cô còn dậy từ năm giờ sáng để giúp việc nhà trước khi đi làm nữa!</p> <p>Xưởng dệt ồn ào đến nỗi người ta gần như không nói chuyện được với nhau. Mary trở thành một thợ dệt giỏi, một mình trông hai khung cửi cùng lúc. Khi cô mang đồng lương đầu tiên về nhà, mẹ cô ôm lấy nó mà khóc và nói rằng số tiền ấy quý quá, không nỡ tiêu. Hai người anh em trai của Mary qua đời, và năm 1870, cha cô cũng mất. Đồng lương của Mary nuôi sống cả gia đình.</p> <p>Mary rất thích học. Cô dựng một cuốn sách mở sẵn trên khung cửi và vừa làm vừa đọc, rồi vừa đi bộ đến chỗ làm cũng vừa đọc. Hơn hết mọi sách, cô đọc Kinh Thánh. Có lần một cô gái xin Mary thứ gì đó để đọc, và Mary đưa luôn cuốn Kinh Thánh của mình, nói: “Bạn cầm lấy đi; chính cuốn sách này đã làm mình thành một cô gái khác hẳn.”</p> <p>Hội Thánh của Mary ở một khu nghèo của thành phố, nơi có những băng nhóm con trai ngỗ nghịch chạy nhảy lung tung. Mary bắt đầu dạy dỗ các cậu, dù có những cậu đến chỉ để phá buổi nhóm và ném bùn vào cô. Nhiều năm sau, hình như chính Mary đã kể lại một đêm nọ, khi cả một băng vây quanh cô. Tên cầm đầu quay một cục chì nặng buộc vào sợi dây quanh đầu cô, mỗi lúc một gần hơn, cho đến khi nó sượt qua trán cô. Mary vẫn đứng yên. Cuối cùng, hắn thả cục chì xuống. “Cô này gan thật đấy, anh em ạ,” hắn nói, và cả băng đi theo cô vào buổi nhóm.</p> <p>Suốt đời mình, Mary sợ đám đông, sợ nói trước mọi người, và thậm chí sợ cả những con bò ngoài đồng! Nhưng cô đã học được cách đứng vững, dù trong lòng chỉ muốn bỏ chạy.</p> <p>Can đảm không có nghĩa là không bao giờ thấy sợ. Đức Chúa Trời có thể giúp con làm điều đúng, ngay cả khi con đang sợ hãi.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Kinh Thánh, cuốn sách chỉ cho con con đường phải đi. Khi con thấy sợ, xin giúp con can đảm và làm điều đúng. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mary làm việc cả ngày dài như vậy, thế thì cô tìm đâu ra thời gian để đọc sách?",
+    "answer": "Cô dựng một cuốn sách mở sẵn trên khung cửi và vừa làm vừa đọc, rồi vừa đi bộ đến chỗ làm cũng vừa đọc."
+   },
+   {
+    "question": "Chuyện gì đã xảy ra khi tên cầm đầu băng quay cục chì quanh đầu Mary?",
+    "answer": "Cô vẫn đứng yên, ngay cả khi cục chì sượt qua trán. Cuối cùng hắn thả nó xuống, nói: “Cô này gan thật đấy, anh em ạ,” và cả băng đi theo cô vào buổi nhóm."
+   },
+   {
+    "question": "Điều gì làm con thấy sợ?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chính của chương này là can đảm không có nghĩa là không bao giờ thấy sợ. Đức Chúa Trời có thể giúp chúng ta làm điều đúng ngay cả khi chúng ta đang sợ."
+   }
+  ],
+  "word_count": 477
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "vi"
+  ],
+  "order": 3,
+  "title": "“Xin Cầu Nguyện Cho Tôi!”",
+  "body_html": "<blockquote>“Tôi thưa: ‘Có con đây. Xin hãy sai con.’” — trích Ê-sai 6</blockquote> <p>Mary có một em trai tên là John. Mẹ của hai chị em mong rằng một ngày kia John sẽ trở thành giáo sĩ. Nhưng John bị bệnh. Cậu đi tàu sang New Zealand, mong khí hậu ấm áp hơn sẽ giúp cậu khỏe lại, nhưng cậu mất không lâu sau khi đến nơi.</p> <p>Mary buồn lắm. Một ý nghĩ lặng lẽ bắt đầu lớn lên trong lòng cô: liệu cô có thể đi châu Phi thay cho John không? Rất lâu, cô không nói với ai cả.</p> <p>Thời ấy, người ta gọi Tây Phi là “nấm mồ của người da trắng”, vì có quá nhiều người từ châu Âu sang đó bị sốt rồi chết. Nhưng một người bạn nhớ Mary từng nói rằng chính vì Calabar là một nơi nguy hiểm nên được đến đó là một vinh dự. Ít ai chịu xung phong đi, vậy thì cô sẽ đi.</p> <p>Năm 1874, có tin nhà thám hiểm nổi tiếng David Livingstone đã qua đời ở châu Phi. Cả nước Scotland xúc động, và Mary quyết định đã đến lúc rồi. Lúc này các em gái cô đã đi làm, và cô định sẽ gửi tiền từ châu Phi về để lo cho mẹ. Mẹ cô vui vẻ đồng ý. Tháng 5 năm 1875, Mary dâng mình cho Hội Thánh, và cô được nhận làm cô giáo cho Calabar. Khi ấy cô hai mươi sáu tuổi, một cô gái làm nhà máy gần như chưa được đi học bao nhiêu.</p> <p>Đêm trước khi rời Dundee để đến Edinburgh học chuẩn bị, một người bạn thấy cô đứng khóc ở cửa tòa nhà nơi cô ở. “Tạm biệt,” Mary nói. Rồi cô nói thêm, bằng cả tấm lòng: “Xin cầu nguyện cho tôi!”</p> <p>Ngày 5 tháng 8 năm 1876, cô lên con tàu tên là Ethiopia, rời cảng Liverpool. Hai người bạn đến tiễn cô. Họ nhìn thấy người ta khiêng từng thùng rượu mạnh lên tàu để mang sang bán ở Tây Phi. Mary biết rượu đã gây ra những gì cho chính gia đình mình. “Hàng chục thùng rượu!” cô nói. “Mà chỉ có một giáo sĩ!”</p> <p>Mary không cảm thấy mình can đảm hay giỏi giang gì. Nhưng cô biết Đức Chúa Trời yêu cô biết bao, và cô muốn thưa với Ngài: “Có con đây. Xin hãy sai con.” Con cũng có thể thưa như thế với Đức Chúa Trời, dù con đang ở bất cứ nơi đâu.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì đã yêu con nhiều đến thế. Có con đây. Xin Ngài dùng con để giúp người khác biết Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Mary bắt đầu nghĩ đến chuyện đi châu Phi?",
+    "answer": "Em trai cô là John, người mà mẹ mong sẽ trở thành giáo sĩ, đã qua đời. Mary tự hỏi liệu mình có thể đi thay cho em không."
+   },
+   {
+    "question": "Mary đã nói gì khi thấy người ta khiêng những thùng rượu lên tàu của cô?",
+    "answer": "“Hàng chục thùng rượu! Mà chỉ có một giáo sĩ!” Cô biết rượu có thể gây ra tai hại lớn biết bao."
+   },
+   {
+    "question": "Con nghĩ Đức Chúa Trời có thể muốn sai con đi đâu, dù chỉ là một nơi nhỏ bé?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chính của chương này là chúng ta không cần phải thấy mình can đảm hay giỏi giang mới thưa được với Đức Chúa Trời: “Có con đây.” Chúng ta chỉ cần biết rằng Ngài yêu chúng ta."
+   }
+  ],
+  "word_count": 453
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Miền Đất Tên Là Calabar",
+  "body_html": "<blockquote>“Dù cha mẹ tôi có bỏ tôi, CHÚA vẫn sẽ đón nhận tôi.” — trích Thi-thiên 27</blockquote> <p>Tháng 9 năm 1876, con tàu Ethiopia ngược dòng một con sông rộng, nước đục ngầu, hai bên bờ mọc đầy cây đước, và Mary đã đến Calabar. Các thị trấn ở đó do chính người dân nơi ấy cai quản, đó là người Efik.</p> <p>Mary học tiếng Efik bằng tai, nghe từ chính người dân, nhiều hơn là học trong sách. Dần dần, khách đến thăm phải nói rằng cô nói tiếng Efik còn giỏi hơn nhiều người Efik nữa!</p> <p>Lúc đầu, cô sống với một cặp vợ chồng giáo sĩ lớn tuổi mà ai cũng gọi là Bố và Má Anderson. Một trong những việc của Mary là rung chuông gọi mọi người cầu nguyện buổi sáng trước khi trời sáng. Có lần cô thức dậy thấy cả phòng sáng rực, liền chạy ra rung chuông, rồi mới biết đó chỉ là ánh trăng! Mỗi khi cô đến bữa ăn trễ và bị phạt đi ngủ không được ăn tối, Bố Anderson lại lén mang bánh quy và chuối cho cô.</p> <p>Sau một lần về thăm quê, Mary được giao phụ trách một nơi gọi là Old Town. Ở đó cô gặp một tục lệ mà về sau trở thành công việc lớn của cả đời cô. Người ta tin rằng sinh đôi sẽ mang đến điều gì đó khủng khiếp. Những em bé sinh đôi bị giết và bỏ ngoài rừng rậm, còn người mẹ thì bị đuổi đi, phải sống một mình. Trước khi Mary đến, các vị cai trị người Efik đã đồng ý cấm tục lệ này, và các giáo sĩ khác đã cứu những em bé sinh đôi từ nhiều năm nay. Nhưng nỗi sợ xưa vẫn còn mạnh lắm, và tục lệ ấy vẫn lén lút tiếp diễn.</p> <p>Mary cứu được một cặp sinh đôi, một bé trai và một bé gái. Trong lúc cô đi vắng, mấy người họ hàng đến lừa bắt bé trai đi, và em bé đã bị giết. Mary đau lòng vô cùng, và cô quyết tâm rằng bé gái phải được sống. Năm 1883, khi Mary bệnh nặng đến nỗi người ta phải khiêng cô lên tàu về quê, cô mang em bé theo về Scotland. Cô bé tên là Atim Eso. Ở Scotland, em được làm báp-têm với tên Janie.</p> <p>Nhiều người nghĩ rằng Janie không nên được sống. Nhưng Đức Chúa Trời đã sai Mary đến đón nhận và yêu thương em. Đức Chúa Trời không bao giờ quên một đứa trẻ nào, kể cả đứa trẻ mà mọi người khác đều quay lưng.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài không bao giờ quên con. Xin Ngài chăm sóc những trẻ em không có ai yêu thương, và giúp con biết tử tế với các bạn ấy. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mary đã nhầm lẫn buồn cười thế nào với cái chuông buổi sáng?",
+    "answer": "Cô thức dậy thấy cả phòng sáng rực và chạy ra rung chuông gọi mọi người cầu nguyện buổi sáng, nhưng đó chỉ là ánh trăng!"
+   },
+   {
+    "question": "Vì sao những em bé sinh đôi ở Calabar gặp nguy hiểm?",
+    "answer": "Người ta tin rằng sinh đôi nghĩa là có điều gì khủng khiếp đã xảy ra, nên các em bé bị giết và người mẹ bị đuổi đi, dù các vị cai trị đã đồng ý cấm việc đó."
+   },
+   {
+    "question": "Con có thể tử tế thế nào với một bạn bị bỏ rơi, bị cho ra rìa?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chính của chương này là Đức Chúa Trời không bao giờ quên một đứa trẻ nào, và Ngài muốn chúng ta chăm sóc những người bị người khác quay lưng, giống như Mary đã đón nhận bé Janie."
+   }
+  ],
+  "word_count": 484
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Mắc Kẹt Và Cô Đơn",
+  "body_html": "<blockquote>“Dù thân thể và tâm hồn tôi hao mòn, Đức Chúa Trời là vầng đá cho lòng tôi nương tựa và là phần của tôi mãi mãi.” — trích Thi-thiên 73</blockquote> <p>Về lại Scotland, Mary chăm sóc bé Janie và ở bên mẹ cùng các em gái. Bé Janie được đặt tên theo em gái út của Mary, người cũng tên là Janie.</p> <p>Rồi em gái Janie của Mary bị bệnh rất nặng, và các bác sĩ nói chỉ có một nơi ấm áp hơn mới có thể giúp cô. Vì thế Mary đưa em gái và mẹ đến Topsham, ở miền nam nước Anh. Sau đó, người em gái khác của cô là Susan đột ngột qua đời. Mary phải lo cho tất cả mọi người.</p> <p>Mary muốn trở lại châu Phi. Cô hỏi mẹ có bằng lòng cho cô đi xa hơn nữa không, đến những nơi chưa từng có giáo sĩ nào đặt chân tới. Mẹ cô đáp: “Con là con của mẹ, là món quà Đức Chúa Trời ban cho mẹ, và mẹ đã dâng con lại cho Ngài. Khi nào Ngài cần con và Ngài sai con đi đâu, thì mẹ muốn con ở đó.”</p> <p>Tháng 11 năm 1885, Mary lên tàu trở lại Calabar. Vào ngày đầu năm mới, cô bắt đầu viết một lá thư dài, vui vẻ gửi về nhà. Lá thư kết thúc bằng câu: “Mẹ hãy kể cho con nghe mọi nỗi khó khăn của mẹ, và nhớ giữ gìn sức khỏe nhé.” Nhưng không bao giờ có thư trả lời. Mẹ cô đã qua đời vào tháng 12, chỉ vài tuần sau khi Mary lên tàu. Ba tháng sau, em gái Janie của cô cũng mất.</p> <p>Mary buồn lắm, buồn vô cùng. Ngay đêm nghe tin mẹ mất, cô vẫn hướng dẫn buổi nhóm cầu nguyện, và không nói với ai cả. Về sau cô viết: “Giờ đây thiên đàng gần tôi hơn cả nước Anh, và nếu tôi có đi vào sâu trong đất liền thì cũng chẳng còn ai phải lo lắng cho tôi nữa.”</p> <p>Chẳng bao lâu, nhà của Mary ở Creek Town lại đầy trẻ con: bé Janie, những em bé sinh đôi được cứu, và nhiều bé trai bé gái khác. Có lần người ta mang đến một em bé mà mẹ đã mất. Mary xin người chủ của em bé cho mượn một người phụ nữ để cho em bú. Câu trả lời gửi lại là: “Cứ để nó chết.” Nhưng Mary không làm thế. Cô đã giữ cho em bé được sống.</p> <p>Khi chúng ta rất buồn, Đức Chúa Trời không bảo chúng ta phải nín khóc. Ngài ở thật gần, và Ngài là sức mạnh của chúng ta khi chúng ta chẳng còn chút sức nào.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài ở với con khi con buồn. Xin Ngài an ủi tất cả những ai đang nhớ thương một người mình yêu. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mẹ của Mary đã nói gì khi Mary hỏi liệu cô có thể đi đến những nơi thật xa không?",
+    "answer": "Bà nói Mary là con của bà, là món quà Đức Chúa Trời ban cho bà, và bà đã dâng cô lại cho Ngài. Đức Chúa Trời sai cô đi đâu thì mẹ cô muốn cô ở đó."
+   },
+   {
+    "question": "Sau khi Mary trở lại Calabar, tin buồn nào đã đến?",
+    "answer": "Mẹ cô đã mất vài tuần sau khi Mary lên tàu, và ba tháng sau em gái Janie của cô cũng mất."
+   },
+   {
+    "question": "Con đang nhớ ai, hoặc con có biết ai đang buồn không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chính của chương này là Đức Chúa Trời ở thật gần chúng ta khi chúng ta buồn, và Ngài là sức mạnh của chúng ta khi chúng ta chẳng còn chút sức nào."
+   }
+  ],
+  "word_count": 496
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Một Tiếng Gọi Trong Đêm Tối",
+  "body_html": "<blockquote>“Hãy mạnh mẽ và can đảm. Đừng run sợ, cũng đừng nản lòng, vì CHÚA Đức Chúa Trời của con ở với con bất cứ nơi nào con đi.” — trích Giô-suê 1</blockquote> <p>Đi sâu vào đất liền chừng một ngày đường, có một vùng rừng tên là Okoyong. Chưa có giáo sĩ nào sống ở đó, và các vùng lân cận đều sợ người Okoyong. Ở đó còn có những tục lệ đáng sợ nữa: khi một người đàn ông quan trọng qua đời, người ta thường giết những người khác để họ đi theo ông.</p> <p>Năm 1886, ban truyền giáo đồng ý sai Mary đến đó, nhưng phải qua nhiều chuyến thăm mới chuẩn bị xong. Cô viết: “Nhiều lần tôi nghẹn ngào, và lòng can đảm của tôi cứ chực mọc cánh bay mất, dù chẳng ai đoán ra điều đó!”</p> <p>Ngày 4 tháng 8 năm 1888, cô lên đường bằng xuồng dưới cơn mưa như trút, cùng năm đứa trẻ trong nhà mình. Một chàng trai trẻ nói với cô: “Tôi sẽ cầu nguyện cho cô luôn luôn, nhưng cô đang tự tìm đến cái chết đấy.” Khi họ lên bờ thì trời đã gần tối, mà vẫn còn bốn dặm đường rừng phải đi bộ. Khu rừng tối đen, đầy những tiếng động lạ của ban đêm, và Mary chỉ muốn quay đầu bỏ chạy. Cô cố cầu nguyện, nhưng đến môi cô cũng không mấp máy nổi. Cô chỉ có thể ngước nhìn lên và thầm gọi một tiếng: “Cha ơi!” Thế là đủ.</p> <p>Vậy là nhóm nhỏ ấy tiếp tục đi: một cậu bé chừng mười một tuổi đội một cái thùng trên đầu, một cậu bé tám tuổi vừa đi vừa khóc, một cậu bé ba tuổi khóc còn to hơn, một cô bé năm tuổi nức nở, và đi sau cùng là Mary, cõng một em bé trên vai, vừa đi vừa hát những bài hát ngộ nghĩnh cho các con vui lên.</p> <p>Làng Ekenge im phăng phắc, vì mọi người đều đã đi dự một đám tang. Những người khuân vác không chịu mang hành lý lên trong đêm ấy, nên Mary tự mình quay lại xuyên qua khu rừng tối, không có giày, ngã hết lần này đến lần khác. Một cậu bé chạy theo để cô khỏi phải đi một mình. Đến nửa đêm thì hành lý đã về tới. Chân cô bị cắt rách đến nỗi suốt sáu tuần cô không mang giày được. Ngày Chúa Nhật đầu tiên của cô ở đó là một trong những ngày buồn nhất đời cô. Nhưng cô vẫn ở lại.</p> <p>Khi con sợ đến nỗi không cầu nguyện được, chỉ một tiếng thôi cũng đủ. Con chỉ cần gọi: “Cha ơi!” và Đức Chúa Trời nghe con.</p> <p><em>Lạy Đức Chúa Trời, khi con sợ hãi, xin giúp con nhớ rằng Ngài ở với con bất cứ nơi nào con đi. Cảm ơn Ngài vì Ngài luôn luôn nghe con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lời cầu nguyện chỉ có một tiếng mà Mary cầu trong khu rừng tối là gì?",
+    "answer": "“Cha ơi!” Cô sợ đến nỗi không nói được gì khác, và chỉ một tiếng ấy là đủ."
+   },
+   {
+    "question": "Vì sao đêm ấy Mary phải đi bộ quay lại xuyên qua khu rừng?",
+    "answer": "Những người khuân vác không chịu mang hành lý lên, còn bọn trẻ thì không có thức ăn hay quần áo khô, nên cô tự mình quay lại để lấy đồ."
+   },
+   {
+    "question": "Khi nào con có thể cầu nguyện bằng lời cầu nguyện một tiếng của Mary?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chính của chương này là khi chúng ta sợ đến nỗi không nói được nhiều, chỉ một tiếng như “Cha ơi!” cũng là một lời cầu nguyện thật, và Đức Chúa Trời nghe lời ấy."
+   }
+  ],
+  "word_count": 500
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "vi"
+  ],
+  "order": 7,
+  "title": "Người Bạn Bí Mật",
+  "body_html": "<blockquote>“Bạn hữu thương mến qua mọi mùa” — trích Châm Ngôn 17</blockquote> <p>Lúc đầu, Mary sống trong một căn phòng nhỏ trong sân nhà của Edem, tù trưởng làng Ekenge. Cô ở chung phòng với năm đứa trẻ. Bên kia bức tường là hai con bò, còn dê, chuột và gián thì ở khắp nơi!</p> <p>Ở Okoyong, để khách ngồi một mình bị coi là rất bất lịch sự. Vì thế các bà vợ của tù trưởng và khách của họ ngồi bầu bạn với Mary suốt cả ngày. Mary rất mong có một chỗ yên tĩnh để cầu nguyện thành tiếng. Thế là cô cầm một con dao rựa lớn đi vào bụi rậm, chặt cây cỏ và cầu nguyện thật to, trong khi tiếng chặt cây át đi tiếng cầu nguyện của cô!</p> <p>Người đã giúp cô vượt qua những tháng ấy là em gái của tù trưởng, bà Eme Ete. Mọi người gọi bà là Ma Eme. Bà là một người phụ nữ to lớn, ăn nói cộc cằn ngoài sân, nhưng giọng bà trở nên dịu dàng khi nói chuyện với Mary và bọn trẻ. Bà mang thức ăn cho Mary và chăm sóc cô.</p> <p>Ma Eme có một bí mật. Không ai biết rằng bà là người giúp đỡ Mary. Mỗi khi nghe tin có ai đó bị đổ tội làm phù thủy, hay sắp bị hại hoặc bị giết, bà tìm cách báo cho Mary biết, dù làm như thế là liều cả mạng sống mình. Về sau, hai người nghĩ ra một ám hiệu. Nếu Ma Eme gửi một cái chai nào đó đến cho Mary để xin thuốc, thì có nghĩa là: “Sẵn sàng nhé! Có người cần giúp.” Các tù trưởng bắt đầu nghĩ rằng Mary đọc được ý nghĩ của họ. Thật ra, phần lớn là nhờ Ma Eme!</p> <p>Tình bạn của hai người kéo dài hai mươi lăm năm. Ma Eme không bao giờ trở thành Cơ Đốc nhân, và điều đó làm Mary rất buồn. Nhưng Mary không bao giờ quên lòng tốt của bà. Cô gọi bà là “người bạn già thân yêu, gần như là chị em của tôi,” và nói rằng “chính bà đã bao lần giúp cho việc cứu người trở nên có thể trong những ngày đầu.”</p> <p>Đức Chúa Trời thường sai những người bạn đến giúp chúng ta, có khi là những người mà chúng ta chẳng bao giờ ngờ tới. Và Ngài cũng muốn con trở thành một người bạn can đảm, tử tế với người khác.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì những người bạn của con. Xin giúp con trở thành một người bạn tử tế và trung thành, và biết bênh vực những người đang gặp nạn. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Không bao giờ được ở một mình, vậy Mary đã tìm cách nào để cầu nguyện thành tiếng?",
+    "answer": "Cô cầm dao rựa đi vào bụi rậm, chặt cây cỏ và cầu nguyện thật to, trong khi tiếng chặt cây át đi tiếng của cô."
+   },
+   {
+    "question": "Ám hiệu bí mật giữa Mary và Ma Eme là gì?",
+    "answer": "Ma Eme sẽ gửi một cái chai nào đó đến xin thuốc. Điều đó có nghĩa là có người đang gặp nguy hiểm và Mary phải sẵn sàng giúp đỡ."
+   },
+   {
+    "question": "Ai là người bạn tốt của con, và con có thể làm một người bạn tốt cho ai đó bằng cách nào?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chính của chương này là Đức Chúa Trời ban cho chúng ta những người bạn, có khi là những người chúng ta không ngờ tới, và Ngài muốn chúng ta cũng là những người bạn tử tế và trung thành."
+   }
+  ],
+  "word_count": 462
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "vi"
+  ],
+  "order": 8,
+  "title": "“Chạy Đi!”",
+  "body_html": "<blockquote>“Hãy đưa người yếu thế và người nghèo đến nơi an toàn; hãy giật họ ra khỏi nanh vuốt kẻ ác.” — trích Thi-thiên 82</blockquote> <p>Khoảng năm 1889, một người thợ mộc Scotland vui tính tên là Charles Ovens đến để xây cho Mary một ngôi nhà. Trong thời gian ông ở đó, một chuyện khủng khiếp đã xảy ra. Etim, con trai cả của tù trưởng Edem, bị một khúc gỗ nặng đập vào cổ. Mary chăm sóc anh suốt hai tuần, nhưng anh vẫn chết.</p> <p>Người Okoyong tin rằng một cái chết như thế hẳn là do bùa ngải gây ra. Một thầy phù thủy đổ tội cho một ngôi làng gần đó, và những người đàn ông cầm vũ khí đã bắt về hơn một chục người đàn ông và phụ nữ bị xích. Họ sắp bị bắt uống thuốc độc.</p> <p>Để an ủi gia đình đang đau buồn, Mary mặc cho Etim bộ đồ lụa để đưa tang, đúng như con trai một tù trưởng đáng được. Rồi cô và ông Ovens thay phiên nhau ngồi canh bên những người bị bắt, cả ngày lẫn đêm, để họ không bao giờ bị bỏ lại một mình. Có lần ông Ovens muốn tự tay thả họ ra, nhưng Mary nói: “Không, không. Mình kiên nhẫn thêm chút nữa đã.”</p> <p>Rồi Mary nhìn thấy những hạt đậu độc nằm trên một hòn đá. Cô vào chòi của mình và cầu nguyện. Khi cô đứng dậy, nỗi sợ hãi đã biến mất. Cô nói với các tù trưởng rằng không được giết ai cả, rồi cô ngồi xuống ngay lối vào sân và nhất định không chịu đi.</p> <p>Đêm ấy, mấy người đàn ông dẫn một trong những người phụ nữ ra để bắt bà uống thuốc độc. Đúng lúc bà vừa nâng ly lên, Mary chạm vào vai bà và thì thầm: “Ifehe!” Tiếng ấy có nghĩa là “Chạy đi!” Hai người cùng nhau chạy vào bụi rậm, chạy một mạch về đến nhà Mary.</p> <p>Từ từ, từng chút một, các tù trưởng thả những người bị bắt ra. Ma Eme quỳ trước mặt anh mình, van xin anh cho một trong những người phụ nữ cuối cùng được ở lại chòi của Mary, dù vẫn còn bị xích. Khi Etim được chôn cất, không có ai bị giết để đi theo anh. Về sau, tù trưởng Edem quỳ xuống cảm ơn Mary. Ông nói với cô: “Tất cả chúng tôi đều đã mỏi mệt với những tục lệ cũ rồi.” Nhưng không ai có thể một mình phá bỏ chúng.</p> <p>Đôi khi can đảm có nghĩa là đứng vững và nói “không.” Đức Chúa Trời có thể ban cho con lòng can đảm để bênh vực một người đang gặp nguy hiểm.</p> <p><em>Lạy Đức Chúa Trời, xin ban cho con lòng can đảm để bênh vực những người đang bị làm hại, và giúp con tin cậy Ngài khi con sợ hãi. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mary đã làm gì khi nhìn thấy những hạt đậu độc?",
+    "answer": "Cô vào chòi của mình và cầu nguyện, và nỗi sợ hãi biến mất. Rồi cô nói với các tù trưởng rằng không được giết ai cả, và ngồi ngay lối vào sân, nhất định không chịu đi."
+   },
+   {
+    "question": "“Ifehe!” có nghĩa là gì, và vì sao Mary thì thầm tiếng ấy?",
+    "answer": "Tiếng ấy có nghĩa là “Chạy đi!” Mary thì thầm với một người phụ nữ sắp phải uống thuốc độc, và hai người cùng nhau chạy về nhà Mary."
+   },
+   {
+    "question": "Con có nhớ lần nào có người cần con đứng ra bênh vực họ không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chính của chương này là Đức Chúa Trời có thể ban cho chúng ta lòng can đảm để nói “không” với điều sai và đứng về phía những người đang gặp nguy hiểm."
+   }
+  ],
+  "word_count": 496
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Bé Susie",
+  "body_html": "<blockquote>“Ngài sẽ gom các chiên con vào cánh tay mình và ẵm chúng sát vào lòng” — trích Ê-sai 40</blockquote> <p>Nhà của Mary trở thành nơi an toàn cho các em bé. Có em bị bệnh, có em bị bỏ rơi, và có em được tìm thấy nằm một mình trong rừng. Đáng buồn là nhiều em quá yếu và đã chết. Mary đặt từng em vào một chiếc hộp nhỏ giữa những bông hoa và chôn cất em với một lời cầu nguyện. Cô khóc cho từng em một.</p> <p>Một ngày kia, một người phụ nữ nô lệ tên là Iye sinh đôi. Vì nỗi sợ xưa, người ta xé rách quần áo của bà, đập vỡ những chiếc chậu quý của bà, và đuổi bà ra khỏi làng. Họ nhét hai em bé vào một cái thùng rỗng rồi đặt lên đầu bà. Khi Mary nghe tin, cô chạy chân trần xuống con đường rừng để đón bà, và tự mình bưng cái thùng, vì không ai khác chịu chạm vào nó. Rồi cô đứng giữa trời nắng chói chang trong khi người ta phát một lối đi hoàn toàn mới thẳng đến nhà cô, để Iye khỏi phải đi qua con đường của làng.</p> <p>Bé trai đã bị thương quá nặng và đã chết. Nhưng bé gái thì sống. Mary đặt tên em là Susie, theo tên em gái của mình. Susie trở thành cục cưng của cả nhà. Khi được mười bốn tháng, em bị bỏng nặng vì nước sôi. Suốt mười ba ngày đêm, Mary hầu như không đặt em xuống. Trong bóng tối, Mary nghe một giọng nói bé xíu gọi “Mem, Mem, Mem,” rồi một bàn tay nhỏ xíu đưa lên đòi hôn. Một sáng Chúa Nhật sớm, Susie qua đời trong vòng tay Mary. Mary viết: “Ôi, Susie, Susie!”</p> <p>Nhưng một điều tuyệt vời đã xảy ra. Cả làng tụ họp quanh ngôi mộ của một em bé sinh đôi, chính điều mà trước kia họ thường bỏ chạy, và một người phụ nữ theo tín ngưỡng cũ đứng lên ca ngợi Đức Chúa Trời của Mary vì em bé. Mary vẫn luôn từ chối mua nô lệ, nhưng cô đã trả mười bảng Anh để Iye được tự do. Nhiều năm sau, Iye chịu báp-têm.</p> <p>Chúa Giê-xu giống như một người chăn chiên ẵm những chiên con bé bỏng của mình trong vòng tay. Con không bao giờ quá nhỏ bé để Ngài yêu thương và ẵm bồng.</p> <p><em>Lạy Chúa Giê-xu, cảm ơn Ngài vì Ngài ẵm con sát vào lòng Ngài. Xin Ngài chăm sóc các em bé và trẻ em đang bị bệnh hay đang cô đơn. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Mary tự mình bưng cái thùng có hai em bé sinh đôi?",
+    "answer": "Vì mọi người đều sợ trẻ sinh đôi và không ai khác chịu chạm vào nó."
+   },
+   {
+    "question": "Sau khi Susie mất, Mary đã làm gì cho bà Iye?",
+    "answer": "Mary vẫn luôn từ chối mua nô lệ, nhưng cô đã trả mười bảng Anh để Iye được tự do. Nhiều năm sau, Iye chịu báp-têm."
+   },
+   {
+    "question": "Con cảm thấy thế nào khi biết Chúa Giê-xu ẵm con như một chiên con bé bỏng?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chính của chương này là Chúa Giê-xu giống như người chăn chiên ẵm chiên con sát vào lòng mình, và không ai quá nhỏ bé đối với tình yêu của Ngài."
+   }
+  ],
+  "word_count": 449
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Đức Chúa Trời Của Người Phụ Nữ",
+  "body_html": "<blockquote>“Phước cho những ai đem lại hòa bình, vì họ sẽ được gọi là con cái Đức Chúa Trời.” — trích Ma-thi-ơ 5</blockquote> <p>Thời gian đầu ở Ekenge, có tin nhắn đến từ một ngôi làng cách đó tám giờ đi bộ. Tù trưởng của họ bị bệnh rất nặng, và nếu ông chết, một số người trong nhà ông sẽ bị giết. Họ nài xin bà Ma da trắng đến giúp.</p> <p>Tù trưởng Edem và Ma Eme nói đường quá xa, nhưng Mary vẫn lên đường cùng một nhóm phụ nữ. Mưa như trút nước. Đầu tiên cô mất đôi giày, rồi mất đôi tất, rồi đến cây dù đã gãy của cô! Ướt sũng cả người, cô cởi bớt phần lớn quần áo, và những người phụ nữ đội chúng trên đầu trong những cái bát lớn. Mary thấy mình thật buồn cười. Nhưng về sau cô mới biết rằng chẳng có việc gì cô từng làm lại chiếm được lòng người Okoyong như chuyến đi bộ dưới mưa hôm ấy. Và vị tù trưởng đã khỏi bệnh, nên không ai bị giết cả.</p> <p>Một thời gian sau, Mary nghe tin một cuộc chiến sắp nổ ra vào lúc rạng đông. Dù đang bệnh, cô vẫn lên đường. Cô xin một tù trưởng cho một người đánh trống đi trước mở đường. Ông nhắn lại rằng một người đàn bà mà dấn thân vào chiến tranh thì chỉ tỏ ra mình chẳng biết gì. Mary gửi lại câu trả lời này: “Khi đo sức mạnh của người đàn bà, rõ ràng ông đã quên tính đến Đức Chúa Trời của người đàn bà ấy.”</p> <p>Ở ngôi làng bên kia, một bức tường người cầm vũ khí đứng lặng im chờ đợi. Rồi một ông lão bước ra và quỳ xuống dưới chân Mary, xin cô giúp họ làm hòa. Đó chính là vị tù trưởng mà cô đã đi bộ dưới mưa đến giúp! Phải mất cả ngày, nhưng cuối cùng họ đồng ý nộp một khoản phạt thay vì đánh nhau.</p> <p>Từ đó, người ta thường nhờ bà Ma phân xử những cuộc cãi cọ. Bà ngồi giữa đám đông la hét om sòm và lặng lẽ đan len. Bà nói việc đó giúp bà không để lộ ra là mình đang sợ, còn tiếng que đan lách cách thì làm mọi người dịu lại.</p> <p>Đem lại hòa bình là công việc của Đức Chúa Trời. Khi con giúp mọi người thôi đánh nhau và làm bạn lại với nhau, con đang sống như một người con của Đức Chúa Trời, đúng như Chúa Giê-xu đã phán.</p> <p><em>Lạy Đức Chúa Trời, xin làm cho con thành người đem lại hòa bình. Khi những người quanh con nổi giận, xin giúp con bình tĩnh và tử tế, và giúp họ làm bạn lại với nhau. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Chuyện gì đã xảy ra với quần áo của Mary trong chuyến đi bộ dưới mưa?",
+    "answer": "Cô mất đôi giày, đôi tất và cây dù đã gãy, còn những người phụ nữ thì đội phần lớn quần áo của cô trên đầu trong những cái bát lớn."
+   },
+   {
+    "question": "Ai đã bước ra khỏi hàng người cầm vũ khí và quỳ dưới chân Mary?",
+    "answer": "Chính là ông tù trưởng già mà cô đã đi bộ dưới mưa đến giúp khi ông bị bệnh. Ông xin cô giúp họ làm hòa."
+   },
+   {
+    "question": "Con có thể làm người đem lại hòa bình ở nhà hay ở trường bằng cách nào?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chính của chương này là Chúa Giê-xu gọi những người đem lại hòa bình là con cái Đức Chúa Trời, và chúng ta có thể giúp mọi người thôi đánh nhau và làm bạn lại với nhau."
+   }
+  ],
+  "word_count": 478
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Niềm Vui Lúc Rạng Đông",
+  "body_html": "<blockquote>“tiếng khóc có thể đến ở lại ban đêm, nhưng lúc rạng đông có tiếng reo vui.” — trích Thi-thiên 30</blockquote> <p>Năm 1896, người Okoyong dời đến vùng đất mới, và Mary cũng dời theo họ đến một nơi tên là Akpap. Trong lúc ngôi nhà mới đang được xây, cô sống trong một cái lán có hai gian và không có sàn.</p> <p>Rồi một trận bệnh lan khắp nhà cô, và bốn đứa con của cô đã qua đời. Ít lâu sau, một căn bệnh khủng khiếp tên là bệnh đậu mùa tràn qua khắp vùng. Mỗi ngày Mary dành hàng giờ chủng ngừa cho mọi người để bảo vệ họ, và biến ngôi nhà cũ của cô ở Ekenge thành một bệnh viện. Gần như tất cả những người khác đều bỏ chạy.</p> <p>Rồi tù trưởng Edem, người đã đón tiếp cô tám năm trước, mắc bệnh đậu mùa. Mary chăm sóc ông ngày đêm, nhưng ông qua đời vào giữa đêm. Không có ai giúp cô cả. Vì thế Mary tự tay đóng một chiếc quan tài, đào một cái huyệt, và chôn cất người bạn già của mình. Rồi cô đi bộ trở về Akpap qua khu rừng tối tăm, ẩm ướt, đúng lúc mặt trời đang mọc.</p> <p>Một thời gian, Mary chẳng còn lòng dạ nào làm việc gì nữa. Suốt ba năm, cô làm việc một mình, thường xuyên bị bệnh và mất ngủ. Cô viết: “Mọi sự đều tối tăm, chỉ trừ ở trên cao. Đồi Gô-gô-tha vẫn đứng vững vàng và chắc chắn.” Đồi Gô-gô-tha là nơi Chúa Giê-xu đã chết vì chúng ta. Năm này qua năm khác, không có ai chịu báp-têm. Nhưng Mary nói: “Đấng Christ sai tôi đi rao giảng Tin Lành, và Ngài sẽ lo liệu kết quả.”</p> <p>Và cuối cùng, buổi sáng đã đến. Tháng 8 năm 1903, mười lăm năm sau lần đầu tiên Mary đặt chân vào Okoyong, bảy người trẻ đã chịu báp-têm tại đó. Mary cũng đưa mười một em nhỏ đến chịu báp-têm, và sáu em trong số đó là những em cô đã cứu. Rồi mọi người cùng hát Thi-thiên 103 bằng tiếng Efik. Thi thiên ấy ca ngợi Đức Chúa Trời là “Đấng chuộc mạng sống mình khỏi mồ mả”, nghĩa là Ngài cứu mạng sống của chúng ta. Mary đã chứng kiến biết bao mạng sống bị cướp đi ở Okoyong. Giờ đây người dân nơi ấy đang ca hát về một Đức Chúa Trời là Đấng cứu, và mắt cô đẫm lệ.</p> <p>Đôi khi chúng ta phải chờ rất lâu mới thấy những điều tốt đẹp xảy ra. Nhưng Đức Chúa Trời vẫn đang làm việc ngay cả trong bóng tối, và niềm vui sẽ đến lúc rạng đông.</p> <p><em>Lạy Đức Chúa Trời, khi con có những ngày buồn, xin giúp con nhớ rằng Ngài vẫn ở với con. Cảm ơn Ngài vì niềm vui sẽ đến lúc rạng đông. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mary đã làm gì khi tù trưởng Edem chết vì bệnh đậu mùa?",
+    "answer": "Không có ai giúp, nên cô tự tay đóng quan tài, đào huyệt và chôn cất ông, rồi đi bộ trở về qua khu rừng lúc mặt trời đang mọc."
+   },
+   {
+    "question": "Chuyện gì đã xảy ra ở Okoyong vào tháng 8 năm 1903?",
+    "answer": "Bảy người trẻ và mười một em nhỏ đã chịu báp-têm, trong đó có sáu em được Mary cứu, và mọi người cùng hát Thi-thiên 103 bằng tiếng Efik."
+   },
+   {
+    "question": "Có điều tốt đẹp nào con đang chờ đợi và cầu nguyện không?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chính của chương này là Đức Chúa Trời vẫn đang làm việc ngay cả khi chúng ta không nhìn thấy, và niềm vui sẽ đến lúc rạng đông."
+   }
+  ],
+  "word_count": 494
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Bình An",
+  "body_html": "<blockquote>“Ân điển của Ta đủ cho con, vì quyền năng được trọn vẹn trong sự yếu đuối.” — trích 2 Cô-rinh-tô 12</blockquote> <p>Năm 1903, Mary đưa hai cậu bé tên là Esien và Effiom cùng một cô bé tên là Mana đến Itu, một chợ nô lệ xưa bên bờ sông. Chính Mana đã từng bị bắt cóc và bán làm nô lệ. Mary để ba em ở lại đó để dạy dỗ. Chỉ trong vài tháng, đã có hơn ba trăm người đến nhóm tại một nhà thờ do chính họ tự xây, và Mana đã dạy dỗ các phụ nữ ở Itu như một người mẹ.</p> <p>Mary cũng tự tay láng những nền xi măng. Bà kể: “Tôi chỉ việc khuấy nó như khuấy cháo, đổ ra, lấy một cây que trét cho phẳng, và trong lúc làm thì cứ cầu nguyện mãi: ‘Lạy Chúa, xi măng đây, nếu điều này làm vinh hiển Ngài thì xin cho nó đông cứng lại,’ và chưa lần nào nó hỏng cả.”</p> <p>Lúc này Mary đã hơn sáu mươi tuổi, và các cậu con trai của bà đẩy bà đi qua rừng rậm trên một chiếc ghế mây có bánh xe. Khi Hội Thánh của bà không sai ai đến một thị trấn tên là Ikpe, bà nói: “Tôi phải đi,” và bà đã đi. Về sau bà nói: “Ngày nào tôi cũng bắt đầu, hầu như chuyến đi nào cũng bắt đầu, trong đau đớn, và mệt mỏi đến nỗi tôi chắc chắn mình không thể đi tiếp được, thế mà hễ tôi bắt đầu là sức lực đến, và càng lúc càng thêm.”</p> <p>Tháng 1 năm 1915, Mary bệnh rất nặng. Sáng sớm ngày 13 tháng 1, tại một nơi tên là Use, với những cô gái bà đã nuôi nấng ở bên cạnh, bà qua đời. Người ta từ khắp nơi kéo đến để khóc thương Eka kpukpru owo, nghĩa là “Mẹ của Mọi Người.” Bà được chôn cất trên ngọn đồi phía trên Duke Town, nơi bà lần đầu tiên đặt chân lên bờ ba mươi chín năm trước.</p> <p>Bên mộ bà có Má Fuller, một người bạn quê ở Jamaica từ những ngày đầu tiên của Mary ở Calabar. Khi một số phụ nữ bắt đầu than khóc ầm ĩ, Má Fuller đứng dậy. Bà nói: “Đừng khóc, đừng khóc. Hãy ngợi khen Đức Chúa Trời là nguồn của mọi phước lành. Bà Ma đã là một phước lành lớn.” Khi chiếc quan tài được hạ xuống, bà chỉ nói một tiếng: “Bình an.”</p> <p>Mary chưa bao giờ là người khỏe mạnh. Nhưng Đức Chúa Trời đã ban cho bà sức lực cho từng ngày, và Ngài cũng sẽ làm như vậy cho con.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Mary Slessor và tất cả những trẻ em mà bà đã yêu thương. Khi con thấy mình yếu đuối, xin ban cho con sức lực cho từng ngày, và giữ con được bình an ở với Ngài mãi mãi. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ai đã khởi đầu Hội Thánh ở Itu?",
+    "answer": "Mary để hai cậu bé là Esien và Effiom cùng một cô bé tên là Mana ở lại đó. Mana đã từng bị bán làm nô lệ, và em đã dạy dỗ các phụ nữ ở Itu như một người mẹ."
+   },
+   {
+    "question": "Má Fuller đã nói một tiếng nào bên mộ của Mary?",
+    "answer": "“Bình an.” Mary, người mà dân chúng gọi là “Mẹ của Mọi Người,” cuối cùng đã được bình an ở với Đức Chúa Trời."
+   },
+   {
+    "question": "Khi nào con thấy mình yếu đuối hay mệt mỏi, và con có thể xin Đức Chúa Trời ban sức lực bằng cách nào?",
+    "answer": "Câu trả lời thật lòng nào cũng tốt. Điều chính của chương này là Mary chưa bao giờ là người khỏe mạnh, nhưng hễ bà bắt đầu là Đức Chúa Trời ban cho bà sức lực cho từng ngày, và Ngài cũng sẽ làm như vậy cho con."
+   }
+  ],
+  "word_count": 506
+ }
+}
+]

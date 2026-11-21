@@ -1,0 +1,107 @@
+{
+ "kind": "book",
+ "slug": "samuel-ajayi-crowther-a-life-children",
+ "language": "vi",
+ "job_issue": 9411,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Psalm 139:16a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Genesis 50:20a",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Matthew 6:13",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalm 124:7",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Luke 4:18",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 6,
+   "chapter_order": 4
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Acts 1:8b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalm 10:14b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Acts 2:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "2 Corinthians 4:8-9",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "1 Samuel 2:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Samuel 3:18b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 2,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Kings 17:6",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalm 4:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}
