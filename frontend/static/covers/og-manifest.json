@@ -28196,6 +28196,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/separation-and-service": {
+			"ground": "b2a6f138b01f8cf0b2c6b92ba8e09d637370f43b1264e94fe88242adde2cfaec",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "5a8051fa8b10a8ac54b25dd44e8f750b06789f785c0ee34c9456cc94dbd3017f",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/teal",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/soar-like-the-eagle-3": {
 			"ground": "3b6d76319312166614955face00bdae1fe609f2e61b7ab6d5307f6a9b0393a05",
 			"style": "devotional",
