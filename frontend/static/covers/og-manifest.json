@@ -25658,6 +25658,39 @@
 				552
 			]
 		},
+		"ko/c-s-lewis-a-life-children": {
+			"ground": "8696e18f0e08f427b94ee2c7c0d59d8b12d5acd8b3ad7a40adadaca78e483c93",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "966de8a9892d74668c23a5205bbc69579588fe7505e78df32aed847bc89f7cc5",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[211, 106, 389, 135]
+				],
+				"title": [
+					[158, 321, 442, 396]
+				],
+				"edition": [
+					[252, 408, 348, 433]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				328,
+				472
+			]
+		},
 		"ko/cheque-book": {
 			"ground": "bb3c7c304511d9092162357b6bb24271e29768f07334371296f0fbd64dee2360",
 			"style": "revival",
