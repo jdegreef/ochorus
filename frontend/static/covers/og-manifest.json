@@ -25567,6 +25567,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/a-hidden-fire": {
+			"ground": "1cfd25e79c8766e84a865f9425dfe0022d5e88d0d4343a1c5bf8cabc26123dc0",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "ebe1a5d135d7e1b2d2e4bc4a51b26a6178493b17bb40c4c4f056f129b407b4cb",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[206, 312, 394, 388]
+				],
+				"subtitle": [
+					[170, 450, 430, 478]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
+		},
 		"ko/a-retrospect": {
 			"ground": "dc0b111003c52427d82593fb243aa8a4513ccf8cd41e1ab58cafbffa8d4264a7",
 			"style": "revival",
