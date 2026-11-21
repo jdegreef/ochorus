@@ -1,0 +1,21 @@
+{
+ "kind": "bio",
+ "slug": "henry-drummond",
+ "language": "vi",
+ "job_issue": 9232,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Romans 14:8b",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 23
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Vietnamese",
+   "block_index": 22
+  }
+ ]
+}
