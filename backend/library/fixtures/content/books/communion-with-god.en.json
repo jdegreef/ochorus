@@ -14,7 +14,32 @@
   "description": "John Owen’s great treatise (1657) on the believer’s fellowship with each person of the Trinity. In three parts he shows how the saints have communion with the Father, chiefly in his love; with the Son, in his personal grace, purchased grace, holiness and the privileges of adoption; and with the Holy Ghost, the Comforter, in all he brings to the soul. Dense and deeply warm, it is the Puritan classic on enjoying God, with two long digressions on the excellencies and wisdom of Christ.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is John Owen’s Communion with God?",
+    "answer": "It is a Puritan treatise by John Owen, published in 1657, on the believer’s fellowship with God. Its distinctive theme is that Christians have communion with each person of the Trinity distinctly: with the Father, with the Son, and with the Holy Spirit. Owen grew it from earlier preaching, and had promised it to his hearers for six years before it appeared."
+   },
+   {
+    "question": "What does Owen mean by communion with God?",
+    "answer": "He means a mutual relationship in which God gives himself to his people and they return to him the love and obedience he requires. It is not an occasional religious feeling but the ordinary life of the Christian, flowing from union with Christ. In it God communicates his goodness, and the believer responds in faith, love and delight."
+   },
+   {
+    "question": "How do believers have communion with the Father?",
+    "answer": "Owen says the saints have communion with the Father especially in love: free, undeserved and eternal love. The Father peculiarly fixes this love on his people, and they are to receive it by faith and return love to him. He urges believers to see the Father not as harsh but as the fountain of all the love they have received in Christ."
+   },
+   {
+    "question": "How do believers have communion with the Son?",
+    "answer": "With Christ, Owen says, believers have communion in grace: his personal grace, the beauty and excellence of who he is, which he explores at length from the Song of Solomon; and his purchased grace, all that he won for us by his life and death, including acceptance with God, holiness and the privileges of adoption into God’s family."
+   },
+   {
+    "question": "What are Owen’s digressions on Christ?",
+    "answer": "In the section on Christ, Owen pauses for two long digressions: one on the excellencies of Christ, his person and glory, and one arguing that all true wisdom is laid up in him. He shows that whatever a believer lacks, Christ is: if dead, Christ is life; if weak, Christ is the power and wisdom of God; if guilty, Christ is righteousness."
+   },
+   {
+    "question": "How do believers have communion with the Holy Spirit?",
+    "answer": "The last part deals with the Spirit as the Comforter. Owen describes how the Spirit brings the love of the Father and the grace of Christ home to the soul, assures believers of their adoption, and fills them with joy and hope. He urges readers not to grieve the Spirit, but to welcome his work with thankfulness and obedience."
+   }
+  ],
   "publication_year": 1657,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/owen/communion",

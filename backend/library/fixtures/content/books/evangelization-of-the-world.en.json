@@ -12,7 +12,32 @@
   "cover_title": "",
   "description": "The book behind the watchword of the Student Volunteer Movement. Writing in 1900, when thousands of college men and women had pledged themselves to foreign missions, John R. Mott sets out what \"the evangelization of the world in this generation\" means — not the conversion of the world, but giving every person living an adequate opportunity to know Jesus Christ as Saviour and to become His real disciple. He grounds the obligation in men's need and Christ's command, weighs the difficulties honestly, and argues its possibility from the first generation of Christians, from modern missionary achievements, from the Church's resources and from the witness of missionary leaders, before naming what it will take: a praying, self-sacrificing, missionary Church.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Evangelization of the World in This Generation?",
+    "answer": "It is a book by John R. Mott, published in 1900, explaining the watchword of the Student Volunteer Movement for Foreign Missions. The movement began at a student conference in 1886 and spread across the Protestant world, as thousands of college students pledged themselves to serve as missionaries abroad. Mott was one of its leaders."
+   },
+   {
+    "question": "What does “the evangelization of the world in this generation” mean?",
+    "answer": "Mott defines it as giving all people an adequate opportunity to know Jesus Christ as their Savior and to become his real disciples. It does not mean, he stresses, the conversion of the world within a generation. The Church’s part is to bring the gospel to bear on everyone living; the results belong to God."
+   },
+   {
+    "question": "Why does Mott say it must be done in this generation?",
+    "answer": "Each generation of Christians can reach only those who are alive at the same time. The people of the world are dying without Christ now, and only those living can preach to them. The command to make disciples of all nations, he argues, was addressed to all Christians in every place and throughout every generation, including his own."
+   },
+   {
+    "question": "Is the goal possible, according to Mott?",
+    "answer": "He argues that it is. The first generation of Christians spread the gospel across the Roman world with far fewer resources. Modern missions had already achieved remarkable things, and the Church of his day had unprecedented opportunities, money, travel, printing and people. He also quotes many missionary leaders who believed the task could be done."
+   },
+   {
+    "question": "What did Mott say would be needed?",
+    "answer": "Mott names the factors essential to the task: a Church that prays, sends and gives sacrificially, with leaders willing to be stirred, students willing to go, and an emphasis on training native leaders in each mission field. Above all, he insists, it will take dependence on the Holy Spirit, without whom no plan can succeed."
+   },
+   {
+    "question": "What was the influence of the book?",
+    "answer": "The book and its watchword shaped a generation of missionary recruits and contributed to the great expansion of Protestant missions in the early twentieth century. Mott went on to chair the World Missionary Conference at Edinburgh in 1910 and later received the Nobel Peace Prize. His definition of the task still shapes discussions of mission."
+   }
+  ],
   "publication_year": 1900,
   "source_type": "public_domain",
   "source_url": "https://archive.org/details/evangelizationof00mottuoft",

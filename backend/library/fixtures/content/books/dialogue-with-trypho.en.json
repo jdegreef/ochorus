@@ -14,7 +14,32 @@
   "description": "Justin\u2019s account of a two-day conversation at Ephesus with Trypho, a Jew who had fled the war in Judaea: how a philosopher found Christ through the prophets, and his case from the Hebrew Scriptures that Jesus is the Christ they foretold.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Justin Martyr\u2019s Dialogue with Trypho?",
+    "answer": "It is Justin\u2019s account of a long conversation with Trypho, a Jew who had fled the war in Judaea, written in the middle of the second century. It is the earliest surviving extended Christian argument with Judaism. Justin seeks to show from the Hebrew Scriptures that Jesus is the Christ the prophets foretold."
+   },
+   {
+    "question": "How does the Dialogue begin?",
+    "answer": "One morning, as Justin walks in the colonnades of the Xystus, a man greets him, \u201cHail, O philosopher!\u201d because of the philosopher\u2019s cloak he wears. The man is Trypho, who explains that he had been taught to show kindness to philosophers. Their friendly exchange leads Justin to tell the story of his search for truth."
+   },
+   {
+    "question": "How was Justin converted?",
+    "answer": "Justin tried several schools of philosophy, including the Stoics and Pythagoreans, and finally the Platonists. Walking alone near the sea, he met an old man who questioned his Platonism and pointed him to the prophets, who spoke by the Holy Spirit and foretold Christ. When the old man left, Justin writes, a flame was kindled in his soul, and a love of the prophets possessed him."
+   },
+   {
+    "question": "What is Trypho\u2019s main objection to Christians?",
+    "answer": "Trypho admires the teaching of the Gospel but objects that Christians do not keep the Jewish law: they do not observe the Sabbath, circumcision or the feasts, yet claim to worship the God of Israel. Justin answers that the law given through Moses was for a time, and that God had promised a new covenant fulfilled in Christ."
+   },
+   {
+    "question": "How does Justin use the Old Testament?",
+    "answer": "Most of the Dialogue is a close reading of the Hebrew Scriptures. Justin argues that passages such as Isaiah\u2019s suffering servant, the Psalms of the crucified and risen king, and the appearances of the Lord to the patriarchs point to Christ. He also argues that the prophets foretold the calling of the Gentiles into God\u2019s people."
+   },
+   {
+    "question": "How does the Dialogue end?",
+    "answer": "After two days of discussion, Trypho and his friends remain unconvinced but part on friendly terms. Trypho says the conversation has helped them in searching the Scriptures, and since Justin is about to set sail, asks him to remember them as friends. Justin prays that they may come to believe that Jesus is the Christ. The tone of mutual respect is notable for its time."
+   }
+  ],
   "publication_year": 160,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/anf01.viii.iv.html",
