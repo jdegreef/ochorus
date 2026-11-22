@@ -1,0 +1,30 @@
+{
+    "kind": "bio",
+    "slug": "john-hyde",
+    "language": "ja",
+    "job_issue": 8830,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Zechariah 2:8",
+            "status": "self_rendered",
+            "block_index": 17
+        },
+        {
+            "reference": "Matthew 9:38",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 2
+        },
+        {
+            "reference": "Revelation 12:10",
+            "status": "self_rendered",
+            "block_index": 16
+        },
+        {
+            "reference": "Exodus 4:10",
+            "status": "self_rendered",
+            "block_index": 4
+        }
+    ]
+}
