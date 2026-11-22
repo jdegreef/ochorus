@@ -1,13 +1,13 @@
 <script lang="ts">
 	import type { BibleBookLinks, BookSummary } from '$lib/library-public';
-	import { bibleChapterCount, bibleChapters, type BiblePlace } from '$lib/bible';
+	import { bibleChapterCount, type BiblePlace } from '$lib/bible';
 	import { chapterCount } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { chapterPath } from '$lib/editionHref';
-	import { listen } from '$lib/listen.svelte';
-	import { requestBookListen } from '$lib/listenBook';
 	import Icon from '$lib/components/Icon.svelte';
+	import BibleChapterPanel from '$lib/components/BibleChapterPanel.svelte';
+	import BibleListenLink from '$lib/components/BibleListenLink.svelte';
+	import BibleMoreLinks from '$lib/components/BibleMoreLinks.svelte';
 
 	/**
 	 * One division of the /bible hub as a compact index: a row per book (its
@@ -67,22 +67,7 @@
 			</a>
 			{#if count}
 				<span class="bible-row-actions">
-					{#if listen.offered}
-						<!-- Listen to the whole book, as its page's button does: its first
-						     chapter opens already reading aloud and the reader carries it on
-						     ($lib/listenBook). A plain link to that chapter without script,
-						     or opened in a new tab. Only where this browser can read aloud. -->
-						<a
-							class="bible-row-listen"
-							href={localizeHref(chapterPath(book.slug, 1, book.has_modern_edition))}
-							aria-label="{t('bible.listenBook')}: {book.title}"
-							title={t('bible.listenBook')}
-							onclick={(e) => {
-								if (e.button === 0 && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey))
-									requestBookListen(book.slug, 1);
-							}}><Icon name="headphones" size={18} /></a
-						>
-					{/if}
+					<BibleListenLink {book} />
 					<button
 						type="button"
 						class="bible-row-chapters"
@@ -96,43 +81,13 @@
 					</button>
 				</span>
 			{/if}
-			{#if links && (links.sermons || links.scripture)}
-				<!-- Beside the row's own link, not inside it (a link can't hold a link).
-				     English, like the hub's other own copy. -->
-				<p class="bible-row-more">
-					{#if links.sermons}
-						<a href={localizeHref(`/sermons?book=${encodeURIComponent(links.sermon_book)}`)}
-							>{links.sermons} {links.sermons === 1 ? 'sermon' : 'sermons'}</a
-						>
-					{/if}
-					{#if links.sermons && links.scripture}<span class="sep" aria-hidden="true"> · </span>{/if}
-					{#if links.scripture}
-						<a href={localizeHref(`/scripture/${links.scripture}/`)}>In the classics</a>
-					{/if}
-				</p>
-			{/if}
+			<!-- Beside the row's own link, not inside it (a link can't hold a link). -->
+			<BibleMoreLinks {links} class="bible-row-more" />
 			{#if count}
 				{#if isOpen}
 					<!-- Opened: what the book is (its house overview), then its chapters. -->
 					<div class="bible-row-panel" id="chapters-{book.slug}">
-						{#if links?.intro}<p class="bible-row-intro">{links.intro}</p>{/if}
-						<ol class="chapter-grid">
-							{#each bibleChapters(book) as ch (ch.n)}
-								{@const current = !place?.finished && ch.n === place?.current}
-								{@const read = !current && ch.n <= (place?.behind ?? 0)}
-								<li>
-									<a
-										class="chapter-chip"
-										class:read
-										class:current
-										href={localizeHref(ch.href)}
-										aria-current={current ? 'step' : undefined}
-										aria-label="{ch.name}{read ? `, ${t('settings.heatmapRead')}` : ''}"
-										title={ch.name}>{ch.n}</a
-									>
-								</li>
-							{/each}
-						</ol>
+						<BibleChapterPanel {book} {place} intro={links?.intro ?? ''} />
 					</div>
 				{/if}
 			{/if}
@@ -209,36 +164,15 @@
 		font-weight: 600;
 		color: var(--accent);
 	}
-	.bible-row-more {
+	.bible-row :global(.bible-row-more) {
 		grid-column: 1;
-		margin: 0.2rem 0 0;
+		margin-top: 0.2rem;
 		padding-inline-start: calc(0.375rem + 0.85rem);
-		font-size: var(--fs-small);
-	}
-	.bible-row-more a {
-		color: var(--accent);
-	}
-	.bible-row-more a:hover {
-		text-decoration: underline;
 	}
 	.bible-row-actions {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.4rem;
-	}
-	.bible-row-listen {
-		display: inline-grid;
-		place-items: center;
-		width: 2.75rem;
-		height: 2.75rem;
-		border: 1px solid var(--border);
-		border-radius: var(--radius-sm);
-		background: var(--surface);
-		color: var(--muted);
-	}
-	.bible-row-listen:hover {
-		border-color: var(--accent);
-		color: var(--accent);
 	}
 	.bible-row-chapters {
 		display: inline-flex;
@@ -274,12 +208,5 @@
 	.bible-row-panel {
 		grid-column: 1 / -1;
 		margin-block: 0.6rem 0.25rem;
-	}
-	.bible-row-intro {
-		max-width: 65ch;
-		margin: 0 0 0.75rem;
-		font-size: var(--fs-small);
-		line-height: 1.55;
-		color: var(--muted);
 	}
 </style>
