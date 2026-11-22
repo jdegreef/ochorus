@@ -17,7 +17,7 @@ import {
 	restartWork,
 	startsAgain
 } from './progress';
-import { furthestOf, isFinishedNow, resumeOrderOf } from './reading-schema';
+import { PROGRESS_KEY, furthestOf, isFinishedNow, resumeOrderOf } from './reading-schema';
 import { pendingAt } from './removals';
 import { undo } from './undo.svelte';
 
@@ -207,6 +207,44 @@ describe('starting a finished book again (a reread)', () => {
 		// Opening that chapter is then not news.
 		saveProgress('mark', 1, 'en');
 		expect(getProgressRecord('mark')?.at).toBe(2_000);
+	});
+
+	it('a reread restarted on a device whose clock runs ahead can still be finished here', () => {
+		finishMark();
+		vi.setSystemTime(50_000); // the fast device's "Read again"…
+		restartWork('mark', 1);
+		vi.setSystemTime(10_000); // …synced to this one, whose clock is behind it
+		expect(markFinished('mark')).toBe(true);
+		const rec = getProgressRecord('mark')!;
+		// The finish lands just after the restart, not before it at "now".
+		expect(rec.last_finished_at).toBe(50_001);
+		expect(isFinishedNow(rec)).toBe(true);
+	});
+
+	it('a finish from a device whose clock runs ahead can still be restarted here', () => {
+		vi.setSystemTime(500);
+		saveProgress('mark', 16, 'en');
+		vi.setSystemTime(50_000); // finished where the clock is ahead…
+		markFinished('mark');
+		vi.setSystemTime(10_000); // …and read again here
+		restartWork('mark', 1);
+		const rec = getProgressRecord('mark')!;
+		expect(rec.restarted_at).toBe(50_001);
+		expect(isFinishedNow(rec)).toBe(false);
+	});
+
+	it('a first finish after a fast-clock restart lands after it too', () => {
+		vi.setSystemTime(500);
+		saveProgress('mark', 16, 'en');
+		const map = JSON.parse(localStorage.getItem(PROGRESS_KEY) ?? '{}');
+		const key = Object.keys(map)[0];
+		map[key].restarted_at = 50_000; // restarted, never finished (another device)
+		localStorage.setItem(PROGRESS_KEY, JSON.stringify(map));
+		vi.setSystemTime(10_000);
+		expect(markFinished('mark')).toBe(true);
+		const rec = getProgressRecord('mark')!;
+		expect(rec.finished_at).toBe(50_001);
+		expect(isFinishedNow(rec)).toBe(true);
 	});
 
 	it('"Read again" is a no-op for a book not finished now', () => {
