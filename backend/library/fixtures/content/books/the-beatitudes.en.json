@@ -14,7 +14,32 @@
   "description": "Thomas Watson opens the eight beatitudes of the Sermon on the Mount one by one: the poor in spirit, the mourners, the meek, the hungry, the merciful, the pure in heart, the peacemakers and the persecuted, and the blessedness Christ promises each.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Thomas Watson\u2019s The Beatitudes about?",
+    "answer": "It is Watson\u2019s exposition of the eight beatitudes that open the Sermon on the Mount in Matthew 5. He takes each in turn: the poor in spirit, those who mourn, the meek, those who hunger and thirst for righteousness, the merciful, the pure in heart, the peacemakers and the persecuted, explaining each grace and the blessedness Christ promises with it."
+   },
+   {
+    "question": "How does Watson describe the Sermon on the Mount?",
+    "answer": "In his letter to the reader Watson calls the Sermon on the Mount a piece of spiritual needlework, wrought with divers colours, both useful and sweet. He says it is a breviary of religion, the Bible epitomised, a garden of delight and the golden key that opens the gate of paradise."
+   },
+   {
+    "question": "What does it mean to be poor in spirit?",
+    "answer": "Watson explains that the poor in spirit is an absolute self-denier who renounces all opinion of himself and acknowledges his dependence on Christ. He gives marks to test it: the poor in spirit is weaned from himself, like the weaned child of Psalm 131. Poverty of spirit is the first step on the way to blessedness."
+   },
+   {
+    "question": "Why does Watson spend so long on mourning?",
+    "answer": "Watson gives several chapters to the second beatitude, with reproofs, motives, hindrances, helps and comforts for mourners. He calls for mourning over sin and over the state of the church, and he marvels that here mourning begets joy: water usually quenches flame, but the water of tears kindles the flame of joy."
+   },
+   {
+    "question": "What does Watson teach about meekness?",
+    "answer": "Watson calls meekness the third step on the way to blessedness. He distinguishes meekness toward God, which means submission to his will and flexibleness to his Word, carrying ourselves calmly without murmuring under his providences, from meekness toward other people. He holds that meek persons are blessed persons, for they shall inherit the earth."
+   },
+   {
+    "question": "Who should read The Beatitudes?",
+    "answer": "It suits readers who want a thorough, devotional study of Christ\u2019s teaching on true happiness. Watson\u2019s style is rich in images and short memorable sayings, and each beatitude stands as a study of its own, making the book useful for personal reading, preaching or small group study."
+   }
+  ],
   "publication_year": 1660,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/watson/beatitudes",
