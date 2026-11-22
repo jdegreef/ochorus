@@ -11,7 +11,32 @@
   "subtitle": "The life of Jesus told simply, for young and old",
   "description": "The life of Jesus told as one connected story, simply enough for a child to follow yet never childish — from the angel’s visit to Nazareth through the birth in Bethlehem, the boyhood in Galilee, the miracles and parables, the last supper and the cross, to the empty tomb and the ascension. Jesse Lyman Hurlbut keeps strictly to the four Gospels, adding no imaginary scenes, so that the youngest readers are led straight to the Bible itself. More than a hundred short chapters, each a single scene, make it made for reading aloud a story at a time.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Hurlbut’s Life of Christ for Young and Old?",
+    "answer": "It is a retelling of the life of Jesus as one connected story by Jesse Lyman Hurlbut, an American Methodist minister and Sunday school leader best known for Hurlbut’s Story of the Bible. Written simply enough for children but never childish, it follows Jesus from the angel’s visit to Nazareth to the ascension."
+   },
+   {
+    "question": "Does Hurlbut add imaginary scenes to the Gospels?",
+    "answer": "No. Hurlbut keeps strictly to what the four Gospels record, adding no invented episodes. He notes, for example, that although many artists have painted Mary, none knew what she looked like; all that we really know of her we read in the Gospels. His aim is to lead young readers straight to the Bible itself."
+   },
+   {
+    "question": "Why does Hurlbut say everyone should know the life of Christ?",
+    "answer": "In his opening chapter he notes that people want to know about famous figures like Washington, Lincoln and Queen Victoria. But for every book about Washington, Napoleon or Columbus, there are hundreds about Jesus, and millions of Bibles are printed every year, because that book tells of him. He is the most important person who ever lived."
+   },
+   {
+    "question": "How is the book arranged?",
+    "answer": "It is divided into more than a hundred short chapters, each telling one scene: the birth in Bethlehem, the boyhood visit to the temple, the baptism, the temptation, the calling of the disciples, miracles and parables, the last supper, the cross and the resurrection. Each chapter can be read aloud in a few minutes."
+   },
+   {
+    "question": "Who is the book for?",
+    "answer": "As the title says, it is for young and old. Parents and teachers can read it aloud to children a chapter at a time, and older readers can use it as a clear, continuous overview of the Gospels. It begins with chapters on the land and people of Jesus’ time to help readers picture the setting."
+   },
+   {
+    "question": "How does the book end?",
+    "answer": "It follows the Gospel accounts through the trial, crucifixion and burial of Jesus, the empty tomb and his appearances to his disciples, to his ascension into heaven. Hurlbut closes with the hope and commission Jesus left his followers, inviting readers to know and follow him themselves."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",

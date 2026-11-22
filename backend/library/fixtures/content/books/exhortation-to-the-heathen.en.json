@@ -14,7 +14,32 @@
   "description": "Clement of Alexandria\u2019s appeal to the educated pagans of his city: he exposes the absurd and cruel myths and mysteries of their gods, gathers what the philosophers and poets glimpsed of the truth, and calls them to the new song of the Word, who became man that man might learn to become like God.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Clement of Alexandria\u2019s Exhortation to the Heathen?",
+    "answer": "It is an appeal, written around the end of the second century, to the educated pagans of Alexandria to abandon their gods and turn to Christ. Clement exposes the shameful myths and cruel rites of the pagan religions, gathers what philosophers and poets glimpsed of the truth, and calls his readers to listen to the Word of God."
+   },
+   {
+    "question": "What is the new song?",
+    "answer": "Clement opens by recalling the legendary musicians Amphion, Arion and Orpheus, who charmed beasts and stones with their songs. He calls them deceivers, and contrasts them with Christ, the Word of God, who is the true New Song. This song, he says, has made men out of stones and beasts, opening blind eyes and giving life to the dead."
+   },
+   {
+    "question": "Why does Clement criticize the pagan myths?",
+    "answer": "He argues that the myths and mysteries of the gods are absurd and immoral: the gods are shown committing crimes, being born and dying, and demanding cruel sacrifices. Their images are made by human hands from wood and stone. Such beings, he says, cannot be truly divine, and worshipping them degrades those who do."
+   },
+   {
+    "question": "Did Clement think pagan philosophers had any truth?",
+    "answer": "Yes. He believed that by divine inspiration some philosophers and poets sometimes hit on the truth about God, recognizing that he is one and good. Plato and others caught glimpses. But for Clement these were only fragments: the full truth is found in the Hebrew prophets and in Christ, the Word who speaks clearly."
+   },
+   {
+    "question": "What does Clement mean by \u201cman may become God\u201d?",
+    "answer": "In one of his most famous lines, Clement says that the Word of God became man so that you may learn from man how man may become God. He means not that humans become divine by nature, but that through Christ they may share in God\u2019s life, being made holy and like him, as early Christian writers often put it."
+   },
+   {
+    "question": "What answer does Clement give to those who will not leave their ancestors\u2019 customs?",
+    "answer": "Pagans objected that it was wrong to abandon the religion of their fathers. Clement replies that no one keeps every inherited custom when something better comes: we do not still live on milk, the first nourishment our nurses gave us, and we freely increase or reduce the property our fathers left us. Truth, not tradition, must guide a person, and God\u2019s gracious call should not be neglected."
+   }
+  ],
   "publication_year": 195,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/anf02.vi.ii.html",

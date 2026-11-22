@@ -1,0 +1,13 @@
+{
+ "why": "Slips in Watson's All Things for Good found while translating it to Japanese (job #8816): a citation one verse off (the quoted words are 2 Chron 33:12-13) and a modernised verb in the wrong tense.",
+ "replacements": [
+  [
+   "(2 Chron. xxxiii. 11, 12)",
+   "(2 Chron. xxxiii. 12, 13)"
+  ],
+  [
+   "and yet he get no heat",
+   "and yet he got no heat"
+  ]
+ ]
+}

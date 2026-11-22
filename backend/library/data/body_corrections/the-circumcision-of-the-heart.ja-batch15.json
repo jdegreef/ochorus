@@ -1,0 +1,17 @@
+{
+ "why": "A split word and lost punctuation in Wesley's The Circumcision of the Heart, found while translating it to Japanese (job #9642).",
+ "replacements": [
+  [
+   "the desires there of",
+   "the desires thereof"
+  ],
+  [
+   "explained into obscurity ?",
+   "explained into obscurity?"
+  ],
+  [
+   "quicken those Who are dead",
+   "quicken those who are dead"
+  ]
+ ]
+}

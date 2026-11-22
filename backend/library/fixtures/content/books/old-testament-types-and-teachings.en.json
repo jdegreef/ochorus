@@ -14,7 +14,32 @@
   "description": "Hannah Whitall Smith's Bible readings through the Old Testament, book by book, tracing in its histories the stages of the soul's life: fall, redemption, wilderness, consecration, failure, union with Christ and the life hid with him in God.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Old Testament Types and Teachings?",
+    "answer": "It is a series of Bible readings by Hannah Whitall Smith, author of The Christian\u2019s Secret of a Happy Life, published in 1878. She works through the Old Testament book by book, tracing in its histories a picture of the stages of the soul\u2019s life with God: fall, redemption, wilderness, consecration, failure, union with Christ and the hidden life in God."
+   },
+   {
+    "question": "Is the book a commentary?",
+    "answer": "No. Smith says plainly that it is not meant to be a commentary, and confesses there are many difficult parts of the Old Testament she does not understand, before which she has learned to wait in faith. Her aim was to give the deep inner sense of the books as she had seen it, in their progressive development of truth and experience."
+   },
+   {
+    "question": "Who influenced Hannah Whitall Smith\u2019s reading of the Old Testament?",
+    "answer": "She credits a few teachers she calls the Lord\u2019s seers, chief among them the English writer Andrew Jukes, whose books on the types and structure of Scripture deeply shaped her understanding. She quotes Jukes on the wisdom of the form of God\u2019s Word, and how its arrangement reveals its meaning."
+   },
+   {
+    "question": "What do the first books of the Old Testament represent?",
+    "answer": "Smith reads Genesis as man\u2019s fall, Exodus as God\u2019s redemption from Egypt, Leviticus as the soul\u2019s communion with God through sacrifice and priesthood, Numbers as the wilderness wanderings of unbelief, and Deuteronomy as a deeper consecration before entering the promised land."
+   },
+   {
+    "question": "What does Canaan represent in the book?",
+    "answer": "Smith notes that Canaan is often taken as a type of heaven, and crossing the Jordan as death. But she argues this can hardly be, since in heaven there will be no foes to conquer and no danger of failure. Instead Canaan represents the life of full trust and victory in Christ that believers may enter now, in heavenly places."
+   },
+   {
+    "question": "How does the book treat the later books?",
+    "answer": "She reads Judges as the Christian\u2019s failures, Ruth as union with Christ, the books of the kings as different kinds of rule in the soul, Ezra and Nehemiah as restoration and service, Esther as God\u2019s faithfulness, Job as the death of self, the Psalms as the life hid with Christ, and the Song of Songs as the love of Christ and his Church."
+   }
+  ],
   "publication_year": 1878,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/smith_hw/types",

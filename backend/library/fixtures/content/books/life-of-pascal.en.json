@@ -12,7 +12,32 @@
   "cover_title": "",
   "description": "Gilberte Périer, Pascal's elder sister, wrote this life soon after his death. She tells of the boy who worked out Euclid's geometry for himself, the inventor of the calculating machine, the family's conversion at Rouen and her brother's withdrawal from the world; then she lingers over his love of poverty, his charity to the poor, his patience in sickness, and the last days when he asked that a poor sick man be brought into the house to die in his company.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "Who wrote The Life of Blaise Pascal?",
+    "answer": "It was written by Gilberte Périer, Pascal’s elder sister, soon after his death in 1662. She knew him intimately from childhood, cared for him in his last illness, and wrote to preserve the memory of his genius and above all his holiness. It was later published with editions of the Pensées."
+   },
+   {
+    "question": "What does the book say about Pascal’s childhood genius?",
+    "answer": "Gilberte tells how their father, wanting him to learn languages first, kept mathematics from him. But the boy worked out geometry for himself, drawing figures and inventing his own names for them, until he reached the thirty-second proposition of Euclid’s first book. His astonished father found him there and from then on allowed him to study mathematics."
+   },
+   {
+    "question": "What did Pascal invent?",
+    "answer": "At eighteen, Gilberte writes, Pascal invented the arithmetical machine, a calculating device that could perform every kind of calculation without pen or counters, and without knowing the rules of arithmetic. It was considered something new in nature, to have reduced to a machine a science that lives wholly in the mind."
+   },
+   {
+    "question": "How was Pascal converted?",
+    "answer": "Gilberte describes the family’s conversion at Rouen, when they came under the influence of devout teachers and Pascal began to give himself wholly to God. In later years he withdrew from worldly society, embraced a life of simplicity and prayer, and devoted himself to the defense of the Christian faith."
+   },
+   {
+    "question": "How did Pascal live after his conversion?",
+    "answer": "Gilberte lingers on his love of poverty, his generosity to the poor, his avoidance of anything that would feed vanity, and his patience in constant pain. When conversation threatened to make him proud, she says, he would wear an iron belt full of points next to his skin as a reminder, pressing on it whenever vain thoughts arose."
+   },
+   {
+    "question": "How did Pascal die?",
+    "answer": "In his last illness, when he could not receive communion, he asked that a poor sick man be brought into the house and given the same care as himself, so that he might communicate with Christ in his members if not in the Head. Gilberte describes his patience and peace, and how, when the curé blessed him with the sacrament, he said, “May God never forsake me!” These were almost his last words; he died soon after, at thirty-nine."
+   }
+  ],
   "publication_year": 1684,
   "source_type": "ai_unreviewed",
   "source_url": "https://fr.wikisource.org/wiki/%C5%92uvres_compl%C3%A8tes_de_Blaise_Pascal_(Hachette,_1871)/Vie_de_Blaise_Pascal",

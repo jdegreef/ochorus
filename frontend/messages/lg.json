@@ -102,6 +102,7 @@
   "reader_no_definition": "Tewali makulu gazuuliddwa ku kigambo kino.",
   "reader_scripture": "Ekyawandiikibwa",
   "reader_scripture_unavailable": "Ebigambo by'olunyiriri tebisoboddwa kufunibwa.",
+  "reader_scripture_omitted": "Olunyiriri luno teruli mu Open Word Bible, egoberera ebiwandiiko ebisinga obukadde. Enkyusa enkadde nga King James zirulimu.",
   "reader_scripture_page": "Ebitabo eby'edda kye byogera ku kitundu kino",
   "reader_related_passages": "Ebitundu ebikwatagana",
   "reader_crossrefs_credit": "Ebijuliziddwa okuva ku %source%, CC BY",

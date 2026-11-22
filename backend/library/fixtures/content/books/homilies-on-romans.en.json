@@ -14,7 +14,32 @@
   "description": "Chrysostom\u2019s thirty-two sermons on Romans, preached at Antioch by the greatest preacher of the early Church. He follows Paul verse by verse \u2014 sin and grace, faith and the law, Adam and Christ, Israel and the Gentiles, the life of love \u2014 always pressing the letter\u2019s teaching into the daily life of his hearers.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What are Chrysostom\u2019s Homilies on Romans?",
+    "answer": "They are thirty-two sermons on Paul\u2019s Letter to the Romans, preached by John Chrysostom at Antioch in the late fourth century. Chrysostom, the most famous preacher of the early Church, follows the letter verse by verse, explaining its teaching and pressing it into the daily lives of his hearers."
+   },
+   {
+    "question": "Why did Chrysostom love the letters of Paul?",
+    "answer": "He begins by saying that whenever he hears Paul\u2019s letters read, which happened twice a week or more, he is roused and warmed by that dear voice and seems almost to see Paul before him. But he grieves that many do not know Paul as they should, some not even knowing how many letters he wrote, simply because they do not care to study him."
+   },
+   {
+    "question": "When does Chrysostom think Romans was written?",
+    "answer": "In his introduction Chrysostom argues that Romans was not, as many think, the first of Paul\u2019s letters. It was written after the letters to the Corinthians, but before those Paul wrote from Rome, since he had not yet set foot in the city when he wrote it. He discusses the order of the letters to help hearers understand them."
+   },
+   {
+    "question": "What themes does Chrysostom draw from Romans?",
+    "answer": "Following Paul, he preaches on sin and grace, faith and the law, Adam and Christ, the Spirit, the place of Israel and the Gentiles, and the life of love in the church. He often rebukes pride and the love of reasoning that refuses faith, describing those who involve themselves in the dust-cloud of countless reasonings."
+   },
+   {
+    "question": "How does Chrysostom apply the letter?",
+    "answer": "As in all his preaching, Chrysostom moves from explanation to exhortation. He urges his hearers to live out Paul\u2019s teaching through humility, generosity to the poor, patience in suffering and love for one another. For him, doctrine is never merely an idea, but always a call to a changed life."
+   },
+   {
+    "question": "Why are these homilies still read?",
+    "answer": "They are one of the earliest complete Christian commentaries on Romans, and show how a pastor of the early Church understood Paul. Readers value them for Chrysostom\u2019s eloquence, pastoral warmth and moral seriousness, and they are a key source for the history of the interpretation of Romans."
+   }
+  ],
   "publication_year": 392,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/npnf111.vii.html",

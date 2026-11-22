@@ -14,7 +14,32 @@
   "description": "Kanzo Uchimura’s own account, drawn from his diary, of how a samurai’s son who prayed to many gods became a Christian. “I was not converted in a day,” he writes; this is the slow story of a heathen boy at the Sapporo college, the little student church he helped to found, and the years in America that brought him to Christ — set down as “the honest confessions of the various stages of the spiritual growth I have passed through.”",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is How I Became a Christian?",
+    "answer": "It is the spiritual autobiography of Kanzo Uchimura, one of Japan’s best-known Christian thinkers, published in 1895. Drawn largely from his own diary, it tells how a samurai’s son who once prayed to many gods became a Christian. He describes it as the honest confession of the stages of spiritual growth he passed through."
+   },
+   {
+    "question": "Why did Uchimura write the book?",
+    "answer": "While speaking in America, he was often asked to tell in fifteen minutes how he was converted. He found that impossible, because the change in his soul was not a single moment. “I was not converted in a day,” he writes. The book gives the slow, honest story behind the short answer people wanted."
+   },
+   {
+    "question": "What was Uchimura’s life like before Christianity?",
+    "answer": "He grew up in traditional Japanese religion, trying to please many gods, each with its own demands. He made many vows, giving up foods for one god or another, and the contradictions between the gods’ requirements troubled him. Learning that there is one God, not many, he says, laid the axe to the root of his superstitions."
+   },
+   {
+    "question": "How did Uchimura first come to Christianity?",
+    "answer": "As a student at the agricultural college in Sapporo, where an American teacher had left a strong Christian influence, he was pressed by older students to sign a Covenant of Believers in Jesus. He admits that his first step toward Christianity was a forced one, made against his will and somewhat against his conscience."
+   },
+   {
+    "question": "What was the little student church?",
+    "answer": "Uchimura and a few friends were baptized and formed a small fellowship of students who met, prayed and preached among themselves. They later founded an independent church, run by laymen, without foreign control. He describes its joys and struggles with affection and humor."
+   },
+   {
+    "question": "What did Uchimura think of Christendom?",
+    "answer": "Traveling to America, he expected a Christian paradise, but was shocked by what he calls the unchristian features of Christendom, such as mammonism, the liquor traffic, legalized lotteries and contempt for other races. Yet among Christian philanthropists and at a New England college he met genuine faith, and there came to a deeper trust in Christ crucified. He returned home convinced that Christianity was true even where Christendom fell short."
+   }
+  ],
   "publication_year": 1895,
   "source_type": "public_domain",
   "source_url": "https://archive.org/details/howibecamechrist00uchi",
