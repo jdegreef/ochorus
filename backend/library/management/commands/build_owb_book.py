@@ -374,6 +374,12 @@ class Source:
         # text is. Keyed by the SOURCE numbering; `chapter_summaries` places
         # each in its English chapter.
         summaries = root / "data" / "summaries" / f"{code}.json"
+        #: OWB used to key a summary by the SOURCE chapter; it now keys them "by
+        #: chapter number as readers see it (NIV numbering…)", as its file's
+        #: description says. Then `chapter_summaries` takes them as they are.
+        self.english_keyed = summaries.exists() and "as readers see it" in json.loads(
+            summaries.read_text("utf-8")
+        ).get("description", "")
         self.summaries = (
             {
                 int(n): convert(
@@ -474,6 +480,9 @@ class Source:
           Hebrew 3's summary, as English 3 does;
         * a one-verse shift (Hebrew Genesis 32:1 is English 31:55) moves nothing.
         """
+        if self.english_keyed:
+            chapters = set(self.chapters())
+            return {n: s for n, s in self.summaries.items() if n in chapters}
         # English chapter -> Counter(source chapter -> verses), and back.
         into: dict[int, Counter] = {}
         spread: dict[int, set[int]] = {}

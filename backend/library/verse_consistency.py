@@ -124,11 +124,20 @@ def _fixture_bodies():
 
     English editions are skipped — the Modern English one included: its
     Scripture is kept exactly as each author quoted it, so it diverges exactly
-    where the originals do, and there is no single rendering to converge on."""
+    where the originals do, and there is no single rendering to converge on.
+
+    The Bible's own books in another language are skipped too: they quote OWB
+    in that language verbatim, by construction (``translated_bible_editions``),
+    while the language's classics keep their own Bible (a founder decision),
+    so the two differ on purpose and there is nothing to converge."""
+    from library.content_fixtures import translated_bible_editions
+
     for sub in ("books", "sermons"):
         for path in sorted((CONTENT / sub).glob("*.json")):
-            language = path.name.split(".")[-2]
+            slug, language = path.name[: -len(".json")].rsplit(".", 1)
             if is_english_edition(language):
+                continue
+            if sub == "books" and (slug, language) in translated_bible_editions():
                 continue
             for row in json.loads(path.read_text(encoding="utf-8")):
                 body = row.get("fields", {}).get("body_html")

@@ -196,6 +196,24 @@ def book_editions() -> list[tuple[Path, str, str, dict]]:
     return editions
 
 
+@lru_cache(maxsize=1)
+def translated_bible_editions() -> frozenset[tuple[str, str]]:
+    """``(slug, language)`` of every non-English book of the Bible (series
+    ``the-bible``): the Open Word Bible's own text in that language, set by
+    ``build_owb_book --language``. Its Scripture chapters are NOT a translation
+    of the English edition's — the two are sibling renderings of the Hebrew and
+    Greek — so the gates that hold a translation to its English source (markup
+    in order, review notes, the verse-consistency ratchet) leave them out. Only
+    the introduction and conclusion are translated from the English, and every
+    Scripture quotation in them is OWB's own wording (``{{OWB:…}}`` embeds, or
+    verbatim from ``owb-<lang>``)."""
+    return frozenset(
+        (slug, language)
+        for _, slug, language, fields in book_editions()
+        if language != "en" and fields.get("series") == ["the-bible"]
+    )
+
+
 def book_sort_order(slug: str) -> int:
     """The ``sort_order`` a build command should give the work ``slug``.
 
