@@ -23482,6 +23482,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/all-things-for-good": {
+			"ground": "1309257c824b1e1e5dfc83ebc859fa207849a186c7d3e243f57d874ffa8886d9",
+			"style": "press",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "3f6203586e591b563607f9f7a8baba011f68cbdbf5d6aa1d34143f9e6ec858ed",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "fade/oxblood",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/around-the-wicket-gate": {
 			"ground": "6fed75e7956231a282f14ee5d37ae08d4b1148d433dfc496531dd5e3c65d0853",
 			"style": "revival",
@@ -24213,6 +24228,36 @@
 			"middle": [
 				173,
 				476
+			]
+		},
+		"ja/the-secret-of-guidance": {
+			"ground": "215cd7770fb9dcfd40414c8bef8a02daddf0bf6139a9fd738bb17d022201814d",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "8e34d8771f460fd14ffc776408d572e8a961e8183daba3bf0f7d4e2115625dad",
+			"art": true,
+			"scrim": 0.45,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[197, 102, 403, 131]
+				],
+				"title": [
+					[72, 307, 528, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
 			]
 		},
 		"ja/the-way-to-god": {
