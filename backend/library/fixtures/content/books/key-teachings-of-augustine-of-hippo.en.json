@@ -12,7 +12,32 @@
   "cover_byline": "Augustine of Hippo",
   "description": "A concise, faithful guide to the heart of Augustine of Hippo’s teaching — the restless heart made for God, the grace that goes before the will, Christ the humble Mediator, the two loves that build two cities, and the love that is the end of every commandment. Twenty short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Augustine’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Augustine of Hippo. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into twenty short chapters for the ordinary reader. It tells his life plainly, as the life of an African bishop in a Roman province, and it draws throughout on the two of his books that sit in the Ochorus library, the Confessions and the Enchiridion.</p><p>Augustine’s one theme was the heart and its loves. We were made for God, and we cannot rest anywhere else; the tragedy of sin is love turned the wrong way, and the wonder of grace is that God Himself turns it back, going before the will He means to heal. This volume follows that thread through his conversion and his mother’s prayers, his teaching on evil, memory, time and the Trinity, his vision of the two cities, the forgiveness of sins, the resurrection of the body and the Sabbath rest, and it is honest about where he pressed too hard. Each chapter ends in a few questions and a prayer.</p><p>Augustine’s own writings are in the public domain and freely available in older English translations, and every chapter here names them so the reader can go to the source. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and makes no claim to stand in for the man’s own searching, praying pages.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of Augustine of Hippo?",
+    "answer": "It is a short guide to the heart of Augustine’s teaching, written as a companion to his own public-domain works. Its chapters cover the restless heart made for God, the stolen pears, evil as the absence of good, his conversion, grace that goes before the will, Christ the humble Mediator, memory and time, the two loves that build two cities, love as the key to Scripture, and the final Sabbath rest."
+   },
+   {
+    "question": "Who was Augustine?",
+    "answer": "Augustine was born on November 13, 354, at Thagaste in Roman North Africa, now Souk Ahras in Algeria. His father Patricius was a pagan and his mother Monica a devout Christian. Educated at Madauros and Carthage, he taught rhetoric, spent nine years among the Manichees, and in 384 became professor of rhetoric at Milan, where he was converted. He died in 430 as bishop of Hippo Regius, and is one of the most influential Christian thinkers in history."
+   },
+   {
+    "question": "What does Augustine mean by the restless heart?",
+    "answer": "The Confessions opens with praise to God, and before telling any fact of his life Augustine writes that God made us for himself, and our heart is restless until it rests in him. The book explains that this sentence interprets everything else in his story: thirty years of searching in pleasure, ambition and philosophy, ended only when he found rest in God."
+   },
+   {
+    "question": "Why does Augustine write so much about stealing pears?",
+    "answer": "As a teenager Augustine and his friends stripped a neighbour’s pear tree and threw most of the fruit to the pigs. In the Confessions he spends far longer on this small theft than on his greater sins, because he did it not for the pears but for the love of doing wrong. The book shows how it became his clearest picture of the deceitfulness of the human heart."
+   },
+   {
+    "question": "What did Augustine teach about evil?",
+    "answer": "For nine years Augustine was held among the Manichees by one question: where does evil come from? They taught that two powers, light and darkness, struggle in the world. Augustine came to see that everything God made is good, and that evil is not a substance at all but the absence or corruption of good, a turning of the will away from God."
+   },
+   {
+    "question": "Where should a reader start with Augustine?",
+    "answer": "The book’s reader’s guide says to begin with the Confessions, and come back to it. Its thirteen books tell his life up to his mother’s death, examine his memory and heart, and then meditate on time, eternity and the opening of Genesis. Many readers leave the last books for a second reading. It also recommends the Enchiridion, his handbook of faith, hope and love."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",

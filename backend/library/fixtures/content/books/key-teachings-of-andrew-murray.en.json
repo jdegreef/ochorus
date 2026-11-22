@@ -12,7 +12,32 @@
   "cover_byline": "Andrew Murray",
   "description": "A concise, faithful guide to the heart of Andrew Murray’s message — abiding in Christ, humility as the root of every grace, absolute surrender, waiting on God and the school of prayer — and the single truth beneath it all: that a creature lives by receiving, and the Christian life is Christ’s own life received moment by moment. Sixteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Murray’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Andrew Murray. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into sixteen short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his books.</p><p>Murray’s one theme was dependence. A branch has no life of its own; it receives everything from the vine. From that single picture, taken from the lips of Christ in John 15, came all his teaching: humility as the creature taking its true place, surrender as consenting to be held, waiting on God as dependence made into a habit, and prayer and intercession as dependence speaking for ourselves and for the world. This volume follows that thread from the vineyards of the Cape to the inner chamber, weighs honestly the places where he must be read with care — above all his teaching on divine healing — and ends each chapter where he ended nearly all of his: in a few questions and a prayer.</p><p>Murray’s own writings are in the public domain and freely available, and every chapter here names them so the reader can go to the source; twelve of them are in the Ochorus library. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and it makes no claim to stand in for the man’s own unhurried, prayerful pages.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of Andrew Murray?",
+    "answer": "It is a short guide to the heart of Andrew Murray’s teaching, written as a companion to his own books. Its chapters cover abiding in Christ, humility, absolute surrender, the carnal and spiritual Christian, the indwelling Spirit, holiness, love, waiting on God, the school of prayer, the sin of prayerlessness and intercession, each ending with questions and a prayer."
+   },
+   {
+    "question": "Who was Andrew Murray?",
+    "answer": "Andrew Murray was born on May 9, 1828, at Graaff-Reinet in the Cape Colony, South Africa, the son of a Scottish minister of the Dutch Reformed Church who often prayed for revival in South Africa. At ten he was sent with his brother to Scotland to be educated. He became a Dutch Reformed minister in South Africa and for more than a century his small books have been read on every continent."
+   },
+   {
+    "question": "What does it mean to abide in Christ?",
+    "answer": "The book says that if Murray had to put the Christian life into two words, he would use the words Jesus spoke the night before he died: Abide in me, from John 15:4. His first famous book, Abide in Christ, was written for young believers after the Worcester revival who had begun well and did not know how to go on."
+   },
+   {
+    "question": "Why is humility so central for Murray?",
+    "answer": "The book explains that Murray’s most searching books begin not with sin but with creation, with the true place of the creature before God. In Humility he teaches that pride is the root of sin and humility the root of every grace, and calls the reader to look at Christ, who made himself of no reputation, until their own pride is exposed."
+   },
+   {
+    "question": "What did Murray teach about intercession?",
+    "answer": "Murray believed that the highest form of prayer is intercession, prayer for others, and that the church’s missionary task depended on it more than on money, organisation or even workers. Drawing on Ezekiel 22:30, where God sought a man to stand in the gap, the book shows how his teaching on the inner chamber reached out to the whole world."
+   },
+   {
+    "question": "Where should a reader start with Andrew Murray?",
+    "answer": "The book’s reader’s guide recommends beginning with With Christ in the School of Prayer (1885), thirty-one short lessons on Jesus’ sayings about prayer, one for each day of a month. It then suggests Humility, twelve brief chapters to be read slowly, and Abide in Christ, thirty-one short readings for young believers."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",

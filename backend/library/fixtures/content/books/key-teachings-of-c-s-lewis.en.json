@@ -12,7 +12,32 @@
   "cover_byline": "C. S. Lewis",
   "description": "A concise, faithful guide to the heart of C. S. Lewis’s Christian teaching — the longing he called joy, the moral law and the case for faith, who Jesus is, pride and humility, temptation, pain and grief, prayer, the four loves, imagination as a road to truth, and the weight of glory — weighed honestly where evangelical readers part company with him. Fifteen short chapters, each ending in questions and a prayer, written by Ochorus as an independent companion. Lewis’s own books are still in copyright; they are named here for readers to obtain from their publishers.",
   "about_html": "<p>This is a companion to C. S. Lewis, not a book by him. Written by Ochorus, it sets out in fifteen short chapters the teaching for which Lewis is chiefly remembered — the longing that points beyond this world, the moral law and what it tells us about the Lawgiver, the claims of Jesus Christ, the faith held in common by all Christians, pride and humility, the new life of the Christian, temptation and the reality of the enemy, the problem of pain and the honest face of grief, prayer, the four loves, myth and imagination, miracles, glory, and the final choice between heaven and hell. It adds a chapter on his life, a conclusion, and a guide to his books and to the older classics he loved.</p><p>It is important to be clear about what this book is and is not. It is an independent work of exposition, summary and appreciation. It is not published by, affiliated with, or endorsed by the C. S. Lewis estate or by any organisation that holds rights in his writings. Lewis’s own books are still in copyright, and none of his words are reproduced here: every description of his thought is the present author’s own summary, and his books are named only so that readers may obtain them from their publishers and read him for themselves, which they are warmly encouraged to do. The only words quoted are those of Scripture, from the Authorised (King James) Version.</p><p>Lewis was loved by evangelicals and was not quite one of them. This volume says so where it matters — on his openness to a purifying purgatory, on his hope that some who never knew Christ’s name might yet be saved by Him, on his view of how Scripture is inspired, and on his willingness to accept an evolutionary account of human origins — briefly, charitably and without hiding it. He would have wanted every claim tested, and he would have wanted readers to go past him to the One he served.</p><p>Many of the older writers who shaped him are in the Ochorus library and are named in the last chapter: George MacDonald, G. K. Chesterton, Athanasius, Augustine, Bunyan, Thomas à Kempis, William Law and others.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of C. S. Lewis?",
+    "answer": "It is a short independent companion to the Christian teaching of C. S. Lewis, not a book by him. Its chapters cover the longing he called joy, the moral law and the case for faith, who Jesus is, pride and humility, temptation, pain and grief, prayer, the four loves, imagination as a road to truth and the weight of glory, and it notes honestly where evangelical readers part company with him. None of his books is reproduced in it."
+   },
+   {
+    "question": "Who was C. S. Lewis?",
+    "answer": "Clive Staples Lewis was born in Belfast on November 29, 1898, and was known as Jack to family and friends all his life. His mother died of cancer when he was nine, and his childhood trust in God began to give way. He came out of his teenage years a confirmed atheist, became a fellow of Magdalen College, Oxford, in 1925, and in 1929 knelt and admitted that God was God, later coming to faith in Christ and becoming one of the best-known Christian writers of the twentieth century."
+   },
+   {
+    "question": "What did Lewis mean by joy?",
+    "answer": "The book explains that beneath everything Lewis wrote runs a longing he first knew as a very small child, stirred by unexpected things such as a toy garden of moss in a biscuit-tin lid. He called this longing joy, and came to believe it pointed beyond this world to the God for whom we were made, echoing Ecclesiastes 3:11, that God has set eternity in our hearts."
+   },
+   {
+    "question": "Why did Lewis begin his radio talks with quarrelling?",
+    "answer": "When the BBC asked Lewis in 1941 to speak about the Christian faith, he began not with God or the Bible but with quarrelling. The book explains his point: when people quarrel they appeal to a standard of right and wrong they expect others to know. That moral law, which we all break, points to a Power behind it, the starting place of what became Mere Christianity."
+   },
+   {
+    "question": "What did Lewis argue about who Jesus is?",
+    "answer": "In the second series of radio talks Lewis moved from the moral law to the question on which everything depends: who is Jesus? The book summarises his argument from Jesus’ claims to forgive sins, to have existed before Abraham and to judge the world. People often say they accept Jesus as a wise moral teacher but not as God, and Lewis argued that this middle position will not hold: someone who made such claims falsely could hardly be called a wise teacher."
+   },
+   {
+    "question": "Where should a reader start with C. S. Lewis?",
+    "answer": "The book’s guide suggests beginning with Mere Christianity (1952), drawn from his wartime broadcast talks, read slowly a chapter at a sitting. Next it recommends The Screwtape Letters (1942), the devil’s-eye view of temptation, read a letter at a time. His books remain in copyright and are widely available from their publishers and in libraries."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",
