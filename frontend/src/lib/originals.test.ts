@@ -10,6 +10,8 @@ describe('authorPath', () => {
 	it('sends the imprint to /originals and everyone else to their author page', () => {
 		expect(authorPath(ORIGINALS_SLUG)).toBe('/originals');
 		expect(authorPath(OWB_SLUG)).toBe('/open-word-bible');
+		// A language with Bible books but no hub goes through the author route.
+		expect(authorPath(OWB_SLUG, 'es')).toBe('/authors/open-word-bible');
 		expect(authorPath('john-bunyan')).toBe('/authors/john-bunyan');
 	});
 });

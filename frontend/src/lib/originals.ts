@@ -1,5 +1,7 @@
 import type { BookSummary, OriginalsSeries } from './library-public';
 import { OWB_PATH, OWB_SLUG } from './openWordBible';
+import { bibleIn } from './bibleLocales';
+import { getLocale } from './paraglide/runtime';
 
 /**
  * Ochorus Originals — the house imprint.
@@ -32,7 +34,12 @@ export const isImprint = (a: { slug: string; is_imprint?: boolean }): boolean =>
 
 /** The page a writer's name links to: their author page, or the byline's own
  * page (above). Unlocalized — pass it through `localizeHref` as usual. */
-export function authorPath(slug: string): string {
+export function authorPath(slug: string, locale: string = getLocale()): string {
+	// The translation's page exists only where the Bible hub does (BIBLE_LOCALES);
+	// elsewhere — a language with Bible books but no hub yet — its name goes
+	// through the author route, which sends the reader on to the English page,
+	// so the localized link never lands on a 404.
+	if (slug === OWB_SLUG && !bibleIn(locale)) return `/authors/${slug}`;
 	return BYLINE_PAGES.get(slug) ?? `/authors/${slug}`;
 }
 

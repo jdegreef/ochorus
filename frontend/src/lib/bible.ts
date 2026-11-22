@@ -30,19 +30,10 @@ export const BIBLE_PATH = '/bible';
  */
 export const BIBLE_STORY_PATH = `${BIBLE_PATH}/story`;
 
-/**
- * The UI locales whose chrome (footer, palette, More sheet) links the hub.
- *
- * The page itself needs no list — it 404s where the series has no book
- * (no English fallback), and its hreflang and sitemap row are derived from the
- * API's own per-language presence. But the chrome is drawn without a request,
- * and a footer link in a locale with no Bible would send the prerender crawl to
- * that 404 and fail the build. Add a locale here when its Bible books ship.
- */
-export const BIBLE_LOCALES: readonly string[] = ['en'];
-
-/** Whether the chrome links the hub for a reader in `locale`. */
-export const bibleIn = (locale: string) => BIBLE_LOCALES.includes(locale);
+// BIBLE_LOCALES and bibleIn live in $lib/bibleLocales (no imports, so
+// $lib/originals can ask them without an import cycle); re-exported here.
+import { bibleIn } from '$lib/bibleLocales';
+export { BIBLE_LOCALES, bibleIn } from '$lib/bibleLocales';
 
 /** Whether `book` is one of the Bible's books (the `the-bible` series). */
 export const isBibleBook = (book: { series?: { slug: string } | null }) =>
