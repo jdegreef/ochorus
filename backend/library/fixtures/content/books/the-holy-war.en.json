@@ -14,7 +14,32 @@
   "description": "John Bunyan’s other great allegory (1682): the war for the town of Mansoul, the human soul, with its five gates of Ear, Eye, Mouth, Nose and Feel. The giant Diabolus talks his way in and makes the town his own; King Shaddai sends his captains, and then his Son, Emmanuel, who takes Mansoul back, pardons it and sets it in order. But Mansoul grows careless under Mr. Carnal-Security, the Prince withdraws, and Diabolus returns with an army of Doubters. Full of Bunyan’s vivid names and courtroom scenes, it is a soldier’s-eye picture of conversion, backsliding and perseverance.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Holy War by John Bunyan?",
+    "answer": "Published in 1682, it is John Bunyan’s second great allegory after The Pilgrim’s Progress. Instead of a journey, it pictures the human soul as a town called Mansoul, built by King Shaddai, and tells of the war fought over it: how the giant Diabolus captures the town, and how the King’s Son, Emmanuel, wins it back."
+   },
+   {
+    "question": "What are the gates of Mansoul?",
+    "answer": "Mansoul has five gates through which anything must enter: Ear-gate, Eye-gate, Mouth-gate, Nose-gate and Feel-gate, standing for the five senses. Diabolus gains the town by persuading it through Ear-gate, and Emmanuel’s captains later batter at the same gate with their rams. Bunyan shows that what the soul listens to and looks upon decides who rules it."
+   },
+   {
+    "question": "Who are the leading characters in Mansoul?",
+    "answer": "Bunyan names the town’s officers after parts of the soul: my Lord Understanding is the Lord Mayor, Mr. Conscience the Recorder, and my Lord Willbewill represents the will. When Diabolus takes over, he removes Understanding and Conscience from power and wins over Willbewill. Emmanuel’s recovery of the town reverses this, restoring each to his proper place."
+   },
+   {
+    "question": "How does Emmanuel take Mansoul back?",
+    "answer": "King Shaddai first sends four captains, but the town resists. Then the Son himself, Emmanuel, comes with his forces, led by Captain Credence. After a long siege he takes the town, and the citizens, expecting punishment, petition him in fear. Instead he grants a general pardon, puts the Diabolonians on trial, and sets Mansoul in order."
+   },
+   {
+    "question": "What happens after Mansoul is restored?",
+    "answer": "The town grows careless under the influence of Mr. Carnal-Security, who throws feasts and lulls the people into ease; only Mr. Godly-Fear refuses to be merry. Grieved, Emmanuel withdraws. Mansoul’s petitions seem to go unanswered, and Diabolus returns with an army of Doubters and retakes much of the town, until the people turn back and the Prince returns."
+   },
+   {
+    "question": "What is the lesson of The Holy War?",
+    "answer": "It is a soldier’s-eye picture of conversion, backsliding and perseverance. Bunyan shows that the soul is won by the grace of Christ, not by its own strength, but that the war does not end at conversion: careless security invites the enemy back. The book closes with Emmanuel’s charge to Mansoul to watch, hold fast and wait for his coming."
+   }
+  ],
   "publication_year": 1682,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/bunyan/holy_war",
