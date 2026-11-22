@@ -14,7 +14,32 @@
   "description": "Luther’s answer to Erasmus’s Diatribe on free will, and the book he counted among his best. Point by point he argues that the human will, fallen, is bound and cannot turn itself to God; that God foreknows and works all things by his immutable will; and that salvation therefore rests wholly on grace. Here in Henry Cole’s 1823 translation, with Luther’s letters on Erasmus to a friend and to Nicolas Amsdorf.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Bondage of the Will?",
+    "answer": "It is Martin Luther’s reply, published in 1525, to the humanist scholar Erasmus, who had written a Diatribe on free will defending the human will’s ability to turn toward God. Luther counted it among his best works. This edition uses Henry Cole’s 1823 English translation and includes Luther’s letters about Erasmus."
+   },
+   {
+    "question": "What is the main argument of the book?",
+    "answer": "Luther argues that the fallen human will is not free in matters of salvation: it is bound by sin and cannot turn itself to God. Salvation therefore rests wholly on God’s grace, not on any contribution from human choice. He insists that this is not an abstract puzzle but the heart of the gospel, since it decides whether we trust God or ourselves."
+   },
+   {
+    "question": "Why did Luther thank Erasmus?",
+    "answer": "Although he attacks Erasmus’s arguments sharply, Luther praises him for seeing the real issue. Unlike other opponents, who had quarreled over the papacy, purgatory and indulgences, Erasmus alone had seen the grand hinge on which the whole debate turned, and attacked the vital part at once. For that, Luther says, he thanks him from his heart."
+   },
+   {
+    "question": "What is Luther’s image of the will as a beast?",
+    "answer": "Luther pictures the human will as a beast standing between two riders. If God sits on it, it wills and goes where God wills; if Satan rides it, it wills and goes where Satan wills. It cannot choose its rider; the riders contend for it. Those freed by the Spirit become God’s willing servants, which is true liberty."
+   },
+   {
+    "question": "Does Luther think people have no choices at all?",
+    "answer": "No. He grants that people make real choices in everyday matters below them, such as eating, working and managing property. His argument concerns what is above us: our standing before God and the things that pertain to salvation. There, he says, the will is not free but passive under the work of grace."
+   },
+   {
+    "question": "Why does Luther say this doctrine is comforting?",
+    "answer": "Luther argues that if his salvation depended on his own free will, he could never be sure he had done enough, and would be in constant doubt. But since God has taken salvation out of his hands and placed it in his own, Luther is certain that God is faithful and will not lie. Certainty comes from God’s promise, not our strength."
+   }
+  ],
   "publication_year": 1823,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/luther/bondage",
