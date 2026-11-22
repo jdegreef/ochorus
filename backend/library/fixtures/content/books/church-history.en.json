@@ -14,7 +14,32 @@
   "description": "The first history of the Church, from the apostles to the peace under Constantine: the succession of bishops, the books of the New Testament, the heresies and the writers who answered them, and the martyrs of the great persecutions, many of them seen by Eusebius himself.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Eusebius\u2019s Church History?",
+    "answer": "It is the first full history of the Christian Church, written by Eusebius, bishop of Caesarea in Palestine, and completed around the 320s. In ten books it traces the Church from the apostles to the peace under Constantine, preserving a great deal of earlier writing that would otherwise be lost. For this reason Eusebius is often called the father of church history."
+   },
+   {
+    "question": "What did Eusebius set out to record?",
+    "answer": "In his opening plan he says he will write of the successions of the apostles, the important events of the Church\u2019s history, the leaders of the most prominent churches, and those who preached the word in each generation. He will also record the heretics who introduced errors, the fate of the Jews, the persecutions, and the martyrs who endured them."
+   },
+   {
+    "question": "Why is the Church History valuable to historians?",
+    "answer": "Eusebius quotes many earlier writers whose works have since perished, including Papias, Hegesippus, Irenaeus, Dionysius of Alexandria and others. Through him we know traditions about the origins of the Gospels, such as the account that Mark wrote down Peter\u2019s preaching. He also distinguishes carefully between what he found well attested and what was only reported."
+   },
+   {
+    "question": "What does Eusebius say about the books of the New Testament?",
+    "answer": "He sorts the writings in use among Christians into those universally acknowledged, such as the four Gospels, Acts and the letters of Paul, those disputed by some, such as James, Jude, 2 Peter, and 2 and 3 John, and those rejected as spurious. His lists are a key witness to how the New Testament canon took shape."
+   },
+   {
+    "question": "Did Eusebius witness the persecutions himself?",
+    "answer": "Yes. Books VIII to X and the Martyrs of Palestine describe the Great Persecution under Diocletian and his successors in the early fourth century, much of which Eusebius saw with his own eyes. He records the courage of men, women and children who died for Christ, and then the sudden end of persecution with the rise of Constantine."
+   },
+   {
+    "question": "How does the Church History end?",
+    "answer": "The tenth book, dedicated to Paulinus of Tyre, celebrates the peace of the Church after Constantine\u2019s victory, describing the rebuilding of churches and including Eusebius\u2019s own sermon at the dedication of the church at Tyre. Eusebius sees in it the triumph of God\u2019s providence, after three centuries of hostility, over all the powers that had opposed the faith."
+   }
+  ],
   "publication_year": 325,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/npnf201.iii.html",

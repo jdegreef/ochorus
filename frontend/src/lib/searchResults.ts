@@ -326,6 +326,25 @@ export function grandTotal(
 	);
 }
 
+/**
+ * The kinds the type tabs offer: every section the merged list carries, then
+ * any kind the server COUNTED matches for that the merged list left out. The
+ * merged list is capped (~33 rows) and ranked across kinds, so a big shelf can
+ * be crowded out of it entirely — "prayer" once counted 200+ sermons and 17
+ * authors, yet neither had a tab, and "All" left them out of its total. A kind
+ * with no rows yet still selects cleanly: choosing it fetches its own page.
+ */
+export function facetGroups(
+	groups: ResultGroup[],
+	totals: Partial<Record<SearchType, number>>
+): ResultGroup[] {
+	const have = new Set(groups.map((g) => g.type));
+	const extra = GROUP_ORDER.filter(
+		(g) => !have.has(g.type) && (totals[g.type as SearchType] ?? 0) > 0
+	).map((g) => ({ type: g.type, labelKey: g.labelKey, rows: [] as ResultRow[] }));
+	return [...groups, ...extra];
+}
+
 /** How many matches of `type` exist — the server's count, else what is loaded. */
 export function totalFor(
 	totals: Partial<Record<SearchType, number>>,

@@ -24,6 +24,7 @@ import {
 	isBibleBook,
 	splitBible,
 	testamentKey,
+	bibleTopics,
 	BIBLE_PATHS,
 	biblePathSteps
 } from './bible';
@@ -466,6 +467,15 @@ describe('bibleBrowseRow', () => {
 		const shelf = ['romans', 'gospel-of-john', 'obadiah', 'genesis', 'psalms'].map((slug) => ({ slug }));
 		expect(bibleBrowseRow(shelf).map((b) => b.slug)).toEqual(['genesis', 'psalms', 'gospel-of-john', 'romans']);
 		expect(bibleBrowseRow([])).toEqual([]);
+	});
+});
+
+describe('bibleTopics', () => {
+	it('keeps the subjects whose shelf exists, in their own order', () => {
+		const out = bibleTopics([{ slug: 'holy-spirit' }, { slug: 'prayer' }, { slug: 'the-puritans' }]);
+		expect(out.map((t) => t.slug)).toEqual(['prayer', 'holy-spirit']);
+		expect(out[0].label).toBe('Prayer');
+		expect(bibleTopics([])).toEqual([]);
 	});
 });
 

@@ -589,6 +589,31 @@ export function bibleBrowseRow<T extends { slug: string }>(bible: readonly T[]):
 	return BIBLE_BROWSE.flatMap((slug) => bySlug.get(slug) ?? []);
 }
 
+/**
+ * The hub's "Passages on…" row: topic shelves whose "In the Bible" section
+ * (`scripture_graph.topic_bible_chapters`, on the topic page) names chapters
+ * of its own, with the short subject a reader would look for. In this order;
+ * a topic the language lacks is left out (`bibleTopics`). English, like the
+ * hub's other own copy. Chosen for distinct lists: nearly every shelf's list
+ * includes Romans 8, so these are the ones whose other chapters differ most.
+ */
+export const BIBLE_TOPICS: readonly { slug: string; label: string }[] = [
+	{ slug: 'prayer', label: 'Prayer' },
+	{ slug: 'faith-and-guidance', label: 'Guidance' },
+	{ slug: 'grace-and-comfort', label: 'Comfort' },
+	{ slug: 'holy-spirit', label: 'The Holy Spirit' },
+	{ slug: 'abiding-in-christ', label: 'Abiding in Christ' },
+	{ slug: 'victory-over-sin', label: 'Temptation and sin' },
+	{ slug: 'the-body-of-christ', label: 'The church' },
+	{ slug: 'to-the-ends-of-the-earth', label: 'Mission' }
+];
+
+/** The `BIBLE_TOPICS` this language has a shelf for, in order. */
+export function bibleTopics(topics: readonly { slug: string }[]): { slug: string; label: string }[] {
+	const have = new Set(topics.map((t) => t.slug));
+	return BIBLE_TOPICS.filter((t) => have.has(t.slug));
+}
+
 /** One step of a "Where to start" path: a chapter (or, with no chapter, a
  *  whole book) by its place in the canon, and why. */
 export interface BiblePathStep {
