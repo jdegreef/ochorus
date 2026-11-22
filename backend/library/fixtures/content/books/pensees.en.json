@@ -12,7 +12,32 @@
   "cover_title": "",
   "description": "When Blaise Pascal died in 1662 at the age of thirty-nine, he left behind hundreds of notes for a great defence of the Christian faith that he never finished. His friends at Port-Royal published them in 1670 as the Pensées, or “Thoughts.” Pascal begins not with proofs from nature but with man himself: his greatness and his misery, his restlessness, the diversions he uses to hide from the one question that matters. Here are the thinking reed, the famous wager, “the heart has its reasons, which reason does not know,” and the “Mystery of Jesus,” written as if kneeling beside Christ in Gethsemane.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What are Pascal’s Pensées?",
+    "answer": "When Blaise Pascal died in 1662 at thirty-nine, he left hundreds of notes for a great defense of the Christian faith he never finished. His friends at Port-Royal published them in 1670 as the Pensées, or Thoughts. Some are polished paragraphs and some only a line, but together they form one of the most searching books ever written about faith and the human condition."
+   },
+   {
+    "question": "Why does Pascal begin with human nature rather than proofs?",
+    "answer": "Pascal believed that arguments from nature rarely convert anyone. Instead he starts with man himself: his greatness and his misery, his restlessness and contradictions. Only Christianity, he argues, explains both at once, by teaching that we were made for God and have fallen from him. A person who sees that riddle in himself is ready to seek the answer."
+   },
+   {
+    "question": "What is the thinking reed?",
+    "answer": "Pascal writes that man is only a reed, the weakest thing in nature, but a thinking reed. A vapor or a drop of water is enough to kill him. Yet even if the universe crushed him, he would be nobler than what kills him, because he knows that he dies, while the universe knows nothing. Our dignity, he says, lies in thought."
+   },
+   {
+    "question": "What does Pascal say about diversion?",
+    "answer": "Pascal observes that all the unhappiness of men comes from one fact: they cannot stay quietly in their own room. People chase gambling, hunting, war and business not for the prize but for the distraction, because if left at rest they would feel their nothingness, weakness and emptiness. Diversion keeps us from thinking about death and God, which is exactly why we crave it."
+   },
+   {
+    "question": "What did Pascal mean by “the heart has its reasons”?",
+    "answer": "His full sentence is that the heart has its reasons, which reason does not know. Pascal did not despise reason, but he held that the deepest truths, including God himself, are perceived by the heart, not reached by argument alone. Faith, he writes elsewhere, is God felt by the heart, not by the reason."
+   },
+   {
+    "question": "What is the Mystery of Jesus?",
+    "answer": "It is a meditation Pascal wrote as if keeping watch with Christ in Gethsemane. He reflects that Jesus will be in agony even to the end of the world, and that we must not sleep during that time. Then he hears Christ speaking to him: “Console thyself, thou wouldst not seek Me, if thou hadst not found Me,” and “I thought of thee in Mine agony.”"
+   }
+  ],
   "publication_year": 1670,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/18269",

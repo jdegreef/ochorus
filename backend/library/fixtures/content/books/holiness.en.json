@@ -14,7 +14,32 @@
   "description": "J. C. Ryle’s classic on what it means to be holy, in the enlarged 1879 edition. Writing amid the “higher life” debates of the 1870s, Ryle went back to Scripture and the Puritans to show that holiness is no sudden leap but a lifelong fight: it begins with an honest look at sin, grows through sanctification, and costs the believer something every day. Twenty plain-spoken papers follow — on the fight, the cost, growth and assurance; on Moses, Lot and Lot’s wife; on the dying thief and the storm on the lake — closing with “Christ Is All” and a set of extracts from Traill and Brooks.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Holiness by J. C. Ryle about?",
+    "answer": "It is a collection of papers on what Scripture teaches about holiness, enlarged in its 1879 edition. Ryle, an evangelical Anglican who later became the first Bishop of Liverpool, wrote out of his own Bible study, meditation, prayer and reading of the old divines. He argues that holiness is not optional for Christians, because without holiness no man shall see the Lord."
+   },
+   {
+    "question": "Why did Ryle write Holiness?",
+    "answer": "He wrote during the “higher life” movement of the 1870s, when many were teaching holiness by faith and a sudden, once-for-all consecration. Ryle welcomed the interest in holiness but could not receive the theory of a sudden transition into a state of entire consecration at one mighty bound. He went back to Scripture and the Puritans to show that sanctification is lifelong."
+   },
+   {
+    "question": "Why does the book begin with sin?",
+    "answer": "Ryle believed that wrong views of holiness usually come from shallow views of sin. His first paper insists that sin is not merely a mistake but a deep corruption of the whole person, which remains even in believers. Only when we see how serious sin is will we understand why justification must be by Christ alone, and why sanctification is a long, hard battle."
+   },
+   {
+    "question": "What does Ryle mean by the fight?",
+    "answer": "In the paper The Fight he argues that the true Christian is a soldier, engaged daily against the world, the flesh and the devil. This warfare is not a sign that something is wrong, but a mark of spiritual life. The believer fights by faith, using Scripture, prayer and watchfulness, and fights a battle that Christ guarantees will end in victory."
+   },
+   {
+    "question": "What is the cost of being a Christian?",
+    "answer": "Ryle’s paper The Cost urges readers to count the cost before following Christ. It will cost self-righteousness, sins and love of ease, and it may cost the world’s favor. But he insists that the gains far outweigh it: peace with God, a hope beyond the grave, and Christ himself. Many who start without counting the cost fall away."
+   },
+   {
+    "question": "What does Ryle mean by “Christ is all”?",
+    "answer": "The closing paper, on Colossians 3:11, gathers the whole book into its center. Christ is all in the believer’s justification, sanctification, comfort and hope. Ryle presses the point that anyone who lives without love to Christ could never be happy in that heaven where Christ is all, and in all. Holiness, in the end, is likeness to him and love for him."
+   }
+  ],
   "publication_year": 1879,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/ryle/holiness",

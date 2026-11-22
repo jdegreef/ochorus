@@ -87,7 +87,17 @@ BOOK_PEOPLE: list[tuple[str, list[Member]]] = [
             ("simeon-nsibambi", "subject", 6),
         ],
     ),
-    ("brave-for-god-4", [("c-t-studd", "subject", 4)]),
+    (
+        "brave-for-god-4",
+        [
+            ("john-g-paton", "subject", 1),
+            ("mary-jones", "subject", 2),
+            ("george-liele", "subject", 3),
+            ("c-t-studd", "subject", 4),
+            ("lilias-trotter", "subject", 5),
+            ("ida-scudder", "subject", 6),
+        ],
+    ),
     (
         "they-were-young-1",
         [

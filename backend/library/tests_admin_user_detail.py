@@ -194,6 +194,40 @@ class AdminUserDetailTests(TestCase):
         self.assertEqual(len(d["reading"]["finished"]), 1)
         self.assertEqual(d["reading"]["finished"][0]["title"], "All of Grace")
 
+    def test_reading_split_follows_a_reread(self):
+        """A finished book read again is in progress (the reader's own shelves'
+        rule), and a finished reread is finished, ordered by its latest finish."""
+        now = timezone.now()
+        author = Author.objects.get(slug="am")
+        Book.objects.create(author=author, slug="abide", language="en", title="Abide")
+        Book.objects.create(author=author, slug="prayer", language="en", title="Prayer")
+        ReadingProgress.objects.create(
+            profile=self.profile,
+            kind="book",
+            book_slug="abide",
+            language="en",
+            chapter_order=1,
+            finished_at=now - timedelta(days=60),
+            restarted_at=now - timedelta(days=1),
+        )
+        ReadingProgress.objects.create(
+            profile=self.profile,
+            kind="book",
+            book_slug="prayer",
+            language="en",
+            chapter_order=9,
+            finished_at=now - timedelta(days=90),
+            restarted_at=now - timedelta(days=10),
+            last_finished_at=now + timedelta(minutes=1),  # after the sermon's finish
+        )
+        reading = self.get().json()["reading"]
+        self.assertEqual(
+            {r["title"] for r in reading["in_progress"]}, {"Humility", "Abide"}
+        )
+        self.assertEqual(
+            [r["title"] for r in reading["finished"]], ["Prayer", "All of Grace"]
+        )
+
     def test_favorites_labelled(self):
         favs = {
             (f["kind"], f["slug"]): f["label"] for f in self.get().json()["favorites"]
