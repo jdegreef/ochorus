@@ -14,7 +14,32 @@
   "description": "Twenty-seven short meditations by the Indian Christian sadhu, written in Urdu in the Simla hills in 1923. “I am neither a philosopher nor a theologian,” he writes, “but a humble servant of the Lord, whose delight it is to meditate on the love of God and on the great wonders of His creation.” On creation and the Incarnation, prayer and meditation, the new birth, the cross, conscience, sin and salvation, and time and eternity — each truth set out in numbered thoughts and parables drawn from nature. With an introduction by Canon B. H. Streeter.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Reality and Religion?",
+    "answer": "It is a book of twenty-seven short meditations by Sadhu Sundar Singh, the Indian Christian holy man. He wrote it in Urdu at Sabathu in the Simla hills in 1923, and it was translated into English with the help of Dr A. J. Appasamy. Its themes include creation, the Incarnation, prayer, meditation, the new birth, the cross, conscience, sin and salvation, and time and eternity."
+   },
+   {
+    "question": "How does Sundar Singh describe himself in the book?",
+    "answer": "In the preface he writes that he is neither a philosopher nor a theologian, but a humble servant of the Lord, whose delight it is to meditate on the love of God and on the great wonders of His creation. He adds that words cannot express all the deep truths the soul feels in meditation and prayer, so he offers ideas and illustrations rather than a system."
+   },
+   {
+    "question": "How does the book teach?",
+    "answer": "Each chapter is set out in numbered thoughts, many of them short parables drawn from nature. For example, Sundar Singh says that though we cannot see the whole ocean, the tip of the tongue tells us at once that it is salt; so we may know truly about God without knowing everything. Elsewhere he compares the indwelling Christ to salt dissolved in water, unseen but present, known by its taste."
+   },
+   {
+    "question": "Who wrote the introduction?",
+    "answer": "The introduction is by Canon B. H. Streeter of Queen’s College, Oxford, dated February 1924. It describes the Sadhu’s life since his travels in the West and includes Dr Appasamy’s account of how the book was written: the Sadhu completed it in Urdu, working about twelve hours a day for twelve days, and then gave the substance of each paragraph in English."
+   },
+   {
+    "question": "What does the book say about prayer and meditation?",
+    "answer": "Sundar Singh treats prayer and meditation as the way the soul’s inner senses come to know Reality, which words cannot fully express. He teaches that Christ will live in the believer and that his whole life will become like Christ’s. He warns that no one can grasp Reality by the intellect, while the heart has a conception of it the intellect cannot measure."
+   },
+   {
+    "question": "Who would enjoy Reality and Religion?",
+    "answer": "It suits readers who want simple, deep devotional reading, and those interested in how the gospel was expressed in Indian terms. The meditations are short enough for daily reading, and their images from nature make profound truths about God, the cross and eternity easy to remember."
+   }
+  ],
   "publication_year": 1924,
   "source_type": "public_domain",
   "source_url": "https://archive.org/details/bwb_T4-ALE-256",

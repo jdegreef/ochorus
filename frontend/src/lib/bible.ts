@@ -613,3 +613,99 @@ export function bibleTopics(topics: readonly { slug: string }[]): { slug: string
 	const have = new Set(topics.map((t) => t.slug));
 	return BIBLE_TOPICS.filter((t) => have.has(t.slug));
 }
+
+/** One step of a "Where to start" path: a chapter (or, with no chapter, a
+ *  whole book) by its place in the canon, and why. */
+export interface BiblePathStep {
+	position: number;
+	chapter?: number;
+	why: string;
+}
+
+/**
+ * The hub's other ways in, beside the first reader's five books
+ * (`BIBLE_STARTS`): what brought someone here, and four or five chapters for
+ * it, each with why. English, like the hub's own copy (BIBLE_LOCALES). The
+ * reasons say what the chapter holds in plain words; where they lean on a
+ * phrase it is one a reader will meet there.
+ */
+export const BIBLE_PATHS: readonly {
+	id: string;
+	label: string;
+	lede: string;
+	steps: readonly BiblePathStep[];
+}[] = [
+	{
+		id: 'jesus',
+		label: 'Who Jesus is',
+		lede: 'Four chapters on who Jesus is, from the people who knew him.',
+		steps: [
+			{ position: 43, chapter: 1, why: 'The Word who was with God and was God, come to live among us.' },
+			{ position: 41, chapter: 8, why: 'Jesus asks his friends the question: who do you say I am?' },
+			{ position: 50, chapter: 2, why: 'He did not hold on to equality with God, but emptied himself.' },
+			{ position: 51, chapter: 1, why: 'The image of the invisible God, in whom all things hold together.' }
+		]
+	},
+	{
+		id: 'grief',
+		label: 'Grief and hard times',
+		lede: 'For a heavy day: chapters to read slowly, and more than once.',
+		steps: [
+			{ position: 19, chapter: 23, why: 'The shepherd who walks with you through the darkest valley.' },
+			{ position: 43, chapter: 11, why: 'Jesus weeps at his friend’s grave, then calls him out of it.' },
+			{ position: 52, chapter: 4, why: 'Grief with hope: those who have died in Christ are not lost.' },
+			{ position: 66, chapter: 21, why: 'The end of the story: no more death, mourning, crying or pain.' }
+		]
+	},
+	{
+		id: 'wisdom',
+		label: 'Wisdom for daily life',
+		lede: 'Four chapters for ordinary days: work, worry, words and people.',
+		steps: [
+			{ position: 20, chapter: 3, why: 'Trust the LORD with all your heart, and he will make your paths straight.' },
+			{ position: 40, chapter: 6, why: 'Prayer, money and worry, from the Sermon on the Mount.' },
+			{ position: 59, chapter: 1, why: 'Ask God for wisdom, and be quick to listen and slow to speak.' },
+			{ position: 45, chapter: 12, why: 'A life given to God, and love worked out with the people around you.' }
+		]
+	},
+	{
+		id: 'story',
+		label: 'The big story',
+		lede: 'The whole Bible in five chapters, from the first day to the new creation.',
+		steps: [
+			{ position: 1, chapter: 1, why: 'In the beginning: God makes the world, and calls it very good.' },
+			{ position: 1, chapter: 12, why: 'God calls Abram, and promises to bless every nation through him.' },
+			{ position: 23, chapter: 53, why: 'The servant who suffers for the sins of others.' },
+			{ position: 42, chapter: 24, why: 'The empty tomb, and the risen Jesus on the road to Emmaus.' },
+			{ position: 66, chapter: 21, why: 'All things made new, and God living with his people.' }
+		]
+	}
+];
+
+/**
+ * A path's steps the library can open, each with its book, a title ("John 1",
+ * "Psalm 23", or the book's own for a whole-book step) and its link
+ * (unlocalized). A step whose book or chapter the library lacks is left out.
+ */
+export function biblePathSteps<
+	T extends { slug: string; title: string; chapter_count?: number; series_position?: number | null }
+>(
+	steps: readonly BiblePathStep[],
+	books: readonly T[]
+): { book: T; title: string; href: string; why: string }[] {
+	const at = new Map(books.flatMap((b) => (b.series_position != null ? [[b.series_position, b] as const] : [])));
+	return steps.flatMap((s) => {
+		const book = at.get(s.position);
+		if (!book) return [];
+		if (s.chapter == null) return [{ book, title: book.title, href: `/books/${book.slug}`, why: s.why }];
+		if (s.chapter > bibleChapterCount([book])) return [];
+		return [
+			{
+				book,
+				title: chapterLabel(s.position, s.chapter) ?? `${book.title} ${s.chapter}`,
+				href: bookChapterPath(book.slug, bibleChapterOrder(s.chapter), false),
+				why: s.why
+			}
+		];
+	});
+}

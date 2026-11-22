@@ -14,7 +14,32 @@
   "description": "Jeremy Taylor\u2019s rule for a whole Christian life, written in hiding during the English Civil War: the right use of time, purity of intention and the presence of God, then the duties of sobriety, justice and religion, each set out in practical rules and closing with prayers.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Jeremy Taylor\u2019s Holy Living?",
+    "answer": "The Rule and Exercises of Holy Living, published in 1650, is Jeremy Taylor\u2019s guide for a whole Christian life. Written during the English Civil War, when the Church of England\u2019s worship had been suppressed, it gives practical rules for every area of life, with prayers for each duty. It became one of the most loved devotional books in English."
+   },
+   {
+    "question": "Why did Taylor write Holy Living?",
+    "answer": "In his dedication to the Earl of Carbery, Taylor says he had lived to see religion painted on banners and thrust out of the churches. With public worship disrupted and clergy scattered, he wrote to help Christians practice their faith privately, in their homes and daily lives, when the ordinary ministry of the Church was hard to reach."
+   },
+   {
+    "question": "What are the three general instruments of holy living?",
+    "answer": "Taylor begins with three foundations for a holy life: care of our time, using every hour well as a gift from God; purity of intention, doing everything for God\u2019s glory; and the practice of the presence of God, remembering that he sees and is with us always. These three underlie all the particular duties that follow."
+   },
+   {
+    "question": "How is Holy Living organized?",
+    "answer": "After the three general instruments, Taylor follows the threefold division of Titus 2:12: living soberly, righteously and godly. Christian sobriety covers temperance, chastity, humility, modesty and contentment. Christian justice covers obedience, duties of superiors, honest business and restitution. Christian religion covers faith, hope, love, Scripture, fasting, prayer and the sacraments."
+   },
+   {
+    "question": "What role do prayers play in the book?",
+    "answer": "Each section closes with prayers relating to the graces and duties just described, so that the book is both instruction and devotion. Taylor\u2019s prayers are beautiful and carefully composed, and many readers have used them in their own private prayer for centuries."
+   },
+   {
+    "question": "Who has been influenced by Holy Living?",
+    "answer": "The book has shaped generations of Anglican devotion. John Wesley later said that reading Taylor\u2019s Holy Living and Holy Dying as a young man convinced him of the need to give his whole life to God, especially through purity of intention. It remains a classic of practical Christian living."
+   }
+  ],
   "publication_year": 1650,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/taylor/holy_living",

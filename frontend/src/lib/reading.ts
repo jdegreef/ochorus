@@ -151,6 +151,21 @@ export function bookTimeLeft(minutes: number): string {
 }
 
 /**
+ * Localized "time left in this chapter", e.g. "2 hr 20 min left in chapter":
+ * under an hour it is the familiar "N min left in chapter"; past it, hours,
+ * like the book figure beside it (a 60,000-word chapter used to read
+ * "140 min left in chapter" next to "15 hr 44 min left in book").
+ */
+export function chapterTimeLeft(minutes: number): string {
+	if (minutes < 60) return `${minutes} ${i18n.t('progress.minLeft')}`;
+	return durationLabel(minutes, {
+		min: 'progress.minLeft',
+		hr: 'progress.chapterHr',
+		hrMin: 'progress.chapterHrMin'
+	});
+}
+
+/**
  * Localized "time left in a reading plan", e.g. "4 hr 11 min left" — the plan
  * card's figure, so it reads in hours once a plan runs past the hour rather
  * than as "251 min left". Whole minutes in, like `bookTimeLeft`.

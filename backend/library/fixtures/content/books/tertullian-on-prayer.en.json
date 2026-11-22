@@ -14,7 +14,32 @@
   "description": "The oldest surviving Christian exposition of the Lord\u2019s Prayer, clause by clause, followed by Tertullian\u2019s counsel on how to pray: without anger or anxiety, with hands lifted in modesty, kneeling, at set hours, and with a psalm, ending with a hymn to the power of prayer.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Tertullian\u2019s On Prayer?",
+    "answer": "It is the oldest surviving Christian exposition of the Lord\u2019s Prayer, written by Tertullian of Carthage around the year 200. He explains the prayer clause by clause and then gives practical counsel on how Christians should pray: without anger, with a calm mind, with modesty in posture, at set hours, and with psalms, ending with a hymn to the power of prayer."
+   },
+   {
+    "question": "Why does Tertullian call the Lord\u2019s Prayer an epitome of the Gospel?",
+    "answer": "Tertullian says the prayer contains not only worship of God and petitions for human needs but almost every discourse of the Lord and every part of his teaching, so that in the prayer is comprised an epitome of the whole Gospel. He explains that Christ gave his disciples a new form of prayer, as new wine needs new skins."
+   },
+   {
+    "question": "What does Tertullian say about anger and prayer?",
+    "answer": "Tertullian asks how anyone can approach the peace of God without peace, or ask for the remission of debts while retaining them. He who is angry with his brother cannot appease his Father, since all anger is forbidden. Prayer must be offered with a mind free from anger and from all mental disturbance."
+   },
+   {
+    "question": "Does Tertullian recommend set times for prayer?",
+    "answer": "Yes. While Christians should pray at all times, Tertullian says it is profitable to observe the common hours that mark the day, the third, the sixth and the ninth, which Scripture shows to have been more solemn. He points to the Spirit\u2019s coming at the third hour, Peter praying at the sixth hour, and Peter and John going to the temple at the ninth."
+   },
+   {
+    "question": "What customs of prayer does Tertullian discuss?",
+    "answer": "He examines customs of his day, such as washing the hands, removing cloaks, sitting after prayer, the kiss of peace, women\u2019s dress and kneeling. He rejects customs that copy pagan practice or have no basis in the apostles\u2019 teaching, observing wryly that God heard the three young men in the furnace without requiring them to doff their cloaks."
+   },
+   {
+    "question": "How does the treatise end?",
+    "answer": "Tertullian calls prayer the spiritual sacrifice that has replaced the old offerings, to be brought to God\u2019s altar with good works, psalms and hymns. He then celebrates its power: Christian prayer does not stop fire or lions as in old times, but it gives the suffering, the feeling and the grieving endurance, and God never denies prayer offered in spirit and in truth."
+   }
+  ],
   "publication_year": 200,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/anf03.vi.iv.html",

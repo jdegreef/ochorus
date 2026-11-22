@@ -14,7 +14,32 @@
   "description": "Gregory the Great\u2019s handbook for bishops and pastors, written soon after he became pope. He asks who should take up the care of souls and how a pastor ought to live, then shows at length how to admonish forty kinds of hearer \u2014 the poor and the rich, the joyful and the sad, the proud and the humble \u2014 and ends by calling the preacher back to his own soul.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Book of Pastoral Rule?",
+    "answer": "It is Gregory the Great\u2019s handbook for bishops and pastors, written soon after he became pope in 590. It has four parts: who should take up the care of souls, how a pastor ought to live, how he should teach different kinds of people, and how the preacher must return to himself so that success does not make him proud."
+   },
+   {
+    "question": "Why did Gregory write it?",
+    "answer": "Gregory addresses the book to John, a fellow bishop, who had gently reproved him for trying to hide from the burden of pastoral care. Gregory answers by setting out how heavy that burden is, so that those who are free from it will not seek it carelessly, and those who have sought it will tremble at what they have taken on."
+   },
+   {
+    "question": "What does Gregory mean by the art of arts?",
+    "answer": "Gregory says that the government of souls is the art of arts. The wounds of the mind are more hidden than wounds of the body, yet people ignorant of spiritual things boldly set up as physicians of the heart while those ignorant of medicine would blush to practise on the body. No one should take up pastoral rule without first learning it."
+   },
+   {
+    "question": "How should a pastor teach different people?",
+    "answer": "Part III, the largest, lists pairs of hearers who must be admonished differently: men and women, the poor and the rich, the joyful and the sad, those in authority and those under it, servants and masters, the wise and the simple, and many more. For each, Gregory shows what medicine suits their condition, because the same word that heals one may harm another."
+   },
+   {
+    "question": "What example does Gregory give of humility?",
+    "answer": "Gregory points to Christ, who on earth fled from being made a king but went willingly to the cross. He fled from the glory of pre-eminence but desired the pain of a shameful death, so that his followers would learn to flee the favour of the world and not fear its terrors. A pastor should be drawn to office by obedience, not ambition."
+   },
+   {
+    "question": "How does the book end?",
+    "answer": "In Part IV Gregory calls the preacher back to his own soul, warning that after good preaching he must not be lifted up. He ends by describing himself as an ill-favoured painter portraying a handsome man, pointing others to the shore of perfection while still tossed by the waves of sin, and begs John to sustain him in the shipwreck of this life by the plank of his prayer."
+   }
+  ],
   "publication_year": 590,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/npnf212.iii.iv.html",

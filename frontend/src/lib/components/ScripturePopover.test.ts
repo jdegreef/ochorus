@@ -33,6 +33,7 @@ const open = (bible_chapter: { slug: string; order: number } | null | undefined)
 afterEach(() => {
 	scripture.open = false;
 	scripture.result = null;
+	scripture.omitted = false;
 	flushSync();
 	if (app) unmount(app);
 	app = null;
@@ -50,5 +51,20 @@ describe('ScripturePopover', () => {
 
 	it('offers none from an API behind this build', () => {
 		expect(open(undefined)).toEqual([]);
+	});
+
+	it('explains a verse the modern text omits instead of "couldn’t be loaded"', () => {
+		const target = document.createElement('div');
+		document.body.append(target);
+		app = mount(ScripturePopover, { target });
+		scripture.ref = 'Matthew 17:21';
+		scripture.loading = false;
+		scripture.result = null;
+		scripture.omitted = true;
+		scripture.open = true;
+		flushSync();
+		const text = document.querySelector('.scripture-pop')?.textContent ?? '';
+		expect(text).toContain('oldest manuscripts');
+		expect(text).not.toContain("couldn't be loaded");
 	});
 });

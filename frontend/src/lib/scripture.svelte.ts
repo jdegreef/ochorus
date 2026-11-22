@@ -24,7 +24,14 @@ export interface ScriptureResult {
 	bible_chapter?: { slug: string; order: number } | null;
 }
 
-const cache = new Map<string, ScriptureResult | 'none'>();
+const cache = new Map<string, ScriptureResult | 'none' | 'omitted'>();
+
+/**
+ * True when the API said the reference is a real verse that its Bibles don't
+ * print (Matthew 17:21, Acts 8:37: the KJV-era classics quote them, the modern
+ * critical text lacks them). Read after `lookupScripture` has answered null.
+ */
+export const isOmittedVerse = (ref: string) => cache.get(ref) === 'omitted';
 
 /**
  * The verse text for a reference, or null when there is none (cached, like a
@@ -33,7 +40,7 @@ const cache = new Map<string, ScriptureResult | 'none'>();
  */
 export async function lookupScripture(ref: string): Promise<ScriptureResult | null> {
 	const cached = cache.get(ref);
-	if (cached !== undefined) return cached === 'none' ? null : cached;
+	if (cached !== undefined) return typeof cached === 'string' ? null : cached;
 	try {
 		const data = await apiFetch<ScriptureResult>(
 			`/api/library/scripture/?ref=${encodeURIComponent(ref)}`
@@ -41,7 +48,10 @@ export async function lookupScripture(ref: string): Promise<ScriptureResult | nu
 		cache.set(ref, data);
 		return data;
 	} catch (e) {
-		if (e instanceof ApiError && e.status === 404) cache.set(ref, 'none');
+		if (e instanceof ApiError && e.status === 404) {
+			const omitted = (e.body as { omitted?: boolean } | null)?.omitted === true;
+			cache.set(ref, omitted ? 'omitted' : 'none');
+		}
 		return null;
 	}
 }
@@ -54,6 +64,8 @@ class Scripture {
 	href = $state('');
 	result = $state<ScriptureResult | null>(null);
 	notFound = $state(false);
+	/** Not found because the verse is one the modern text omits — see isOmittedVerse. */
+	omitted = $state(false);
 	top = $state(0);
 	left = $state(0);
 	#token = 0;
@@ -68,6 +80,7 @@ class Scripture {
 		this.left = clampPopoverLeft(left, 22 * 16);
 		this.open = true;
 		this.notFound = false;
+		this.omitted = false;
 		const token = ++this.#token;
 
 		this.loading = !cache.has(ref);
@@ -76,6 +89,7 @@ class Scripture {
 		if (token !== this.#token) return;
 		this.result = data;
 		this.notFound = data === null;
+		this.omitted = data === null && isOmittedVerse(ref);
 		this.loading = false;
 	}
 

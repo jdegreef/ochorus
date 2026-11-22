@@ -14,7 +14,32 @@
   "description": "Francis de Sales\u2019 guide to holiness for people living in the world, written as letters of counsel to \u201cPhilothea,\u201d a soul who loves God. He leads her from first conversion through prayer and the sacraments, the everyday virtues, temptations and dryness, to a yearly renewal of her resolutions.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is the Introduction to the Devout Life?",
+    "answer": "It is a guide to holiness by Francis de Sales, bishop of Geneva, first published in 1609. Written as counsel to \u201cPhilothea,\u201d a soul who loves God, it shows how people living ordinary lives in the world, not only monks and nuns, can grow in devotion to God."
+   },
+   {
+    "question": "Who is Philothea?",
+    "answer": "Francis explains in the preface that the book grew from letters of guidance written to a real person. He addressed it to Philothea, a name meaning one who loves God, so that it would suit everyone who seeks the devout life. Every reader is invited to see themselves as Philothea."
+   },
+   {
+    "question": "What is true devotion, according to Francis de Sales?",
+    "answer": "He teaches that true devotion is not a matter of outward practices, but of love for God that makes us quick and eager in doing good. He compares it to a bee that gathers bitter juices from the thyme and turns them all to honey. Devotion makes duties sweet and easy that would otherwise feel heavy."
+   },
+   {
+    "question": "Can people in ordinary jobs live a devout life?",
+    "answer": "Yes, and this is the book\u2019s central insight. Francis says it is an error, even a heresy, to banish the devout life from the soldier\u2019s guardroom, the mechanic\u2019s workshop, the prince\u2019s court or the family home. Each vocation has its own form of devotion, and true devotion perfects a person\u2019s calling rather than disrupting it."
+   },
+   {
+    "question": "How is the book organized?",
+    "answer": "It has five parts. The first leads the reader from a first desire for holiness to a firm resolution through purification and meditations on creation, sin, death, judgment, hell and heaven. The second teaches prayer and the sacraments. The third covers the virtues of daily life. The fourth deals with temptations and dryness. The fifth gives exercises to renew resolutions each year."
+   },
+   {
+    "question": "What is Jacob\u2019s ladder in the book?",
+    "answer": "Francis says Jacob\u2019s ladder is a true picture of the devout life. Its two poles are prayer and the sacraments, and its rungs are the steps of love by which we go from virtue to virtue, either descending in good deeds for our neighbor or ascending in contemplation toward union with God. The angels on it show the devout soul\u2019s cheerful freedom."
+   }
+  ],
   "publication_year": 1609,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/desales/devout_life",

@@ -14,7 +14,32 @@
   "description": "Luther\u2019s catechism for pastors and heads of households (1529): a plain, searching exposition of the Ten Commandments, the Creed and the Lord\u2019s Prayer, followed by Baptism and the Lord\u2019s Supper \u2014 the five chief parts of Christian teaching, which he says even a doctor of theology must keep learning daily.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Luther\u2019s Large Catechism?",
+    "answer": "It is Martin Luther\u2019s fuller explanation of the basics of the Christian faith, published in 1529, written mainly for pastors and heads of households. It explains the Ten Commandments, the Apostles\u2019 Creed and the Lord\u2019s Prayer, followed by Baptism and the Lord\u2019s Supper, the five chief parts of Christian teaching."
+   },
+   {
+    "question": "Why did Luther write the Large Catechism?",
+    "answer": "Visits to churches had shown Luther that many pastors and people knew shockingly little of the faith. In his preface he rebukes pastors who neglect the Catechism as too simple for them. He calls it a short summary of the whole of Holy Scripture, which every Christian should learn and keep learning daily."
+   },
+   {
+    "question": "What does Luther say about himself and the Catechism?",
+    "answer": "He writes that he too is a doctor and preacher, as learned as any who think the Catechism beneath them, yet he does as a child being taught it. Every morning, and whenever he has time, he reads and says the Commandments, the Creed and the Lord\u2019s Prayer, and still he must remain a child and pupil of the Catechism, and is glad to remain so."
+   },
+   {
+    "question": "What does the First Commandment require?",
+    "answer": "Luther explains that \u201cThou shalt have no other gods\u201d means: you shall fear, love and trust in me as your only true God. Whatever your heart trusts in and clings to is properly your god. God says, in effect, expect every good thing from me, and in every trouble creep and cling to me, and I will help you."
+   },
+   {
+    "question": "How does the Large Catechism treat the Creed and the Lord\u2019s Prayer?",
+    "answer": "Luther divides the Creed into three articles, on God the Father and creation, God the Son and redemption, and God the Holy Spirit and sanctification. He explains the Lord\u2019s Prayer petition by petition, insisting that God commands us to pray and promises to hear, and that prayer is our defense against the devil and all who oppose the gospel."
+   },
+   {
+    "question": "What does Luther teach about Baptism and the Lord\u2019s Supper?",
+    "answer": "He teaches that Baptism is not mere water but water joined with God\u2019s word and command, through which God gives forgiveness and new life to be received by faith. The Sacrament of the Altar is Christ\u2019s true body and blood given for us, which strengthens faith. Christians should come to it often, especially when they feel weak."
+   }
+  ],
   "publication_year": 1529,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/1722",
