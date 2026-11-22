@@ -2776,17 +2776,27 @@ class BibleLinksView(APIView):
     the book page's shelf count) and ``sermon_book`` the sermons shelf's
     ``?book=`` name for it; ``scripture`` is the book's ``/scripture/<slug>/``
     page — the classics' passages that treat it — where one exists
-    (``current_pages``, so never a page that would 404), else null. The
+    (``current_pages``, so never a page that would 404), else null; ``intro``
+    is the book's short house overview (``bible_book_intros``, the same
+    paragraph that opens its /scripture/ page), "" where none is written. The
     scripture pages are English only (``scripture_graph``), so other languages
     get sermons alone.
     """
 
     def get(self, request):
+        import pythonbible as bible
+
+        from .bible_book_intros import intro
         from .bible_sermons import sermon_counts
-        from .scripture_graph import current_pages
+        from .scripture_graph import book_slug, current_pages
 
         language = request.query_params.get("language", "en")
         sermons = sermon_counts(language)
+        # The house overview of each book (its /scripture/ page's opening),
+        # keyed by the scripture slug of its place in the canon.
+        intros = {
+            pos: text for pos in range(1, 67) if (text := intro(book_slug(bible.Book(pos)), language))
+        }
         scripture: dict[int, str] = {}
         if language == "en":
             for p in current_pages():
@@ -2800,8 +2810,9 @@ class BibleLinksView(APIView):
                 "sermons": sermons.get(pos, ("", 0))[1],
                 "sermon_book": sermons.get(pos, ("", 0))[0],
                 "scripture": scripture.get(pos),
+                "intro": intros.get(pos, ""),
             }
-            for pos in sorted(set(sermons) | set(scripture))
+            for pos in sorted(set(sermons) | set(scripture) | set(intros))
         ]
         return Response({"books": books})
 
