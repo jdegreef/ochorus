@@ -25,6 +25,7 @@ export type BookFields = {
 	series?: string[] | null;
 	series_position?: number | null;
 	is_published?: boolean;
+	pdf_url?: string;
 };
 
 const BOOKS = join(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content', 'books');
@@ -62,6 +63,16 @@ function bookRow(file: string): BookFields | undefined {
 	const { text, cut } = head(join(BOOKS, file));
 	const rows: Row[] = JSON.parse(cut ? `${text.slice(0, cut.index)}]` : text);
 	return rows.find((r) => r.model === 'library.book')?.fields;
+}
+
+/** One edition's book row (`<slug>.<language>.json`), read the same way; null
+ *  when the fixture has no such file. */
+export function bookRowOf(slug: string, language: string): BookFields | null {
+	try {
+		return bookRow(`${slug}.${language}.json`) ?? null;
+	} catch {
+		return null;
+	}
 }
 
 let cache: BookFields[] | undefined;

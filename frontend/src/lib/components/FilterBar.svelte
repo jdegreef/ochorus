@@ -25,7 +25,6 @@
 	 */
 	let {
 		// Write-only: the parent reads it through bind:pinned.
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		pinned = $bindable(0),
 		el = $bindable(),
 		pin = 'always',
