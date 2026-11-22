@@ -39,7 +39,8 @@
 		publisherLd,
 		PUBLIC_DOMAIN_MARK,
 		bookId,
-		personId
+		personId,
+		authorNodeId
 	} from '$lib/seo';
 	import QandA from '$lib/components/QandA.svelte';
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
@@ -418,7 +419,7 @@
 				'@type': authorLdType(book.author.slug),
 				// The same node the author page declares, so the two join by id
 				// rather than by a matching name.
-				'@id': personId(absUrl(localizeHref(authorPath(book.author.slug)))),
+				'@id': authorNodeId(absUrl(localizeHref(authorPath(book.author.slug))), authorLdType(book.author.slug)),
 				name: book.author.name,
 				url: absUrl(localizeHref(authorPath(book.author.slug))),
 				// The identifiers the author page asserts. Without them this Person

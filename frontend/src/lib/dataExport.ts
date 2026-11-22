@@ -1,4 +1,5 @@
 import { readJSON } from './persisted';
+import { localToday } from './streak';
 import {
 	PROGRESS_KEY,
 	MARKS_KEY,
@@ -209,7 +210,7 @@ export async function collectExport(
 /** Render the bundle as a readable Markdown document. */
 export function toMarkdown(b: ExportBundle): string {
 	const lines: string[] = [];
-	lines.push('# My Ochorus reading', '', `_Exported ${b.exported_at.slice(0, 10)}._`, '');
+	lines.push('# My Ochorus reading', '', `_Exported ${localDay(b.exported_at)}._`, '');
 
 	if (b.journal.length) {
 		lines.push('## My Notebook', '');
@@ -222,15 +223,15 @@ export function toMarkdown(b: ExportBundle): string {
 						: j.answered_at
 							? 'Answered prayer'
 							: 'Prayer';
-			lines.push(`### ${j.title || label} — ${j.written_at.slice(0, 10)}`);
+			lines.push(`### ${j.title || label} — ${localDay(j.written_at)}`);
 			const forWhom = j.person ? ` for ${j.person}` : '';
 			lines.push(`_${label}${forWhom}${j.ref ? ` · ${j.ref}` : ''}_`, '');
 			if (j.source) lines.push(`> ${j.source.quote}`, `> — ${j.source.title}`, '');
 			if (j.body) lines.push(j.body, '');
-			for (const u of j.updates) lines.push(`- ${u.at.slice(0, 10)}: ${u.text}`);
+			for (const u of j.updates) lines.push(`- ${localDay(u.at)}: ${u.text}`);
 			if (j.updates.length) lines.push('');
 			if (j.answered_at) {
-				lines.push(`**Answered ${j.answered_at.slice(0, 10)}.**${j.answer ? ` ${j.answer}` : ''}`, '');
+				lines.push(`**Answered ${localDay(j.answered_at)}.**${j.answer ? ` ${j.answer}` : ''}`, '');
 			}
 		}
 	}
@@ -284,26 +285,36 @@ export function downloadFile(filename: string, mime: string, content: string) {
 }
 
 /**
+ * The reader's own calendar day for a moment (YYYY-MM-DD). The Markdown
+ * exports print dates for people, so a prayer written at 8 PM in Vancouver is
+ * dated that day, not the next one in UTC (bug review 2026-11-22, #34). The
+ * JSON export keeps full ISO timestamps.
+ */
+function localDay(at: string | number): string {
+	return localToday(new Date(at));
+}
+
+/**
  * One collection as a Markdown document — "Notes on Humility" to keep, share
  * or paste elsewhere: each entry oldest first, under its title (or kind) and
  * date, with the passage it was written from, its words, and — for a prayer —
  * its updates and how it was answered.
  */
 export function collectionMarkdown(name: string, entries: JournalEntry[], exportedAt: string): string {
-	const lines: string[] = [`# ${name}`, '', `_Exported ${exportedAt.slice(0, 10)} from Ochorus._`, ''];
+	const lines: string[] = [`# ${name}`, '', `_Exported ${localDay(exportedAt)} from Ochorus._`, ''];
 	const kindLabel = (e: JournalEntry) =>
 		e.kind === 'note' ? 'Note' : e.kind === 'daily' ? 'Daily prayer' : e.answeredAt ? 'Answered prayer' : 'Prayer';
 	for (const e of [...entries].sort((a, b) => a.createdAt - b.createdAt)) {
-		const day = new Date(e.createdAt).toISOString().slice(0, 10);
+		const day = localDay(e.createdAt);
 		lines.push(`## ${e.title || kindLabel(e)} — ${day}`);
 		const meta = [kindLabel(e), e.person && `for ${e.person}`, e.ref].filter(Boolean).join(' · ');
 		lines.push(`_${meta}_`, '');
 		if (e.source?.quote) lines.push(`> ${e.source.quote}`, `> — ${e.source.title}`, '');
 		if (e.body) lines.push(e.body, '');
-		for (const u of e.updates) lines.push(`- ${new Date(u.at).toISOString().slice(0, 10)}: ${u.text}`);
+		for (const u of e.updates) lines.push(`- ${localDay(u.at)}: ${u.text}`);
 		if (e.updates.length) lines.push('');
 		if (e.answeredAt) {
-			const when = new Date(e.answeredAt).toISOString().slice(0, 10);
+			const when = localDay(e.answeredAt);
 			lines.push(`**Answered ${when}.**${e.answer ? ` ${e.answer}` : ''}`, '');
 		}
 	}

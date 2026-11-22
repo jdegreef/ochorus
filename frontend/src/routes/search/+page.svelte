@@ -20,7 +20,8 @@
 		type SearchScope,
 		type SearchSort,
 		type SearchType,
-		type TopicSummary
+		type TopicSummary,
+		SEARCH_MAX_CHARS
 	} from '$lib/library-public';
 	import { getLang } from '$lib/lang.svelte';
 	import { minQueryLength } from '$lib/searchHits';
@@ -877,6 +878,7 @@
 				oninput={onInput}
 				onkeydown={onKeydown}
 				type="search"
+				maxlength={SEARCH_MAX_CHARS}
 				autocomplete="off"
 				placeholder={t('search.placeholder')}
 				aria-label={t('search.title')}

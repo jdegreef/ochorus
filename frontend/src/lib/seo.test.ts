@@ -265,6 +265,12 @@ describe('site entity and locale helpers', () => {
 		expect(bookId('https://x/books/humility/')).toBe('https://x/books/humility/#book');
 		expect(personId('https://x/authors/andrew-murray/')).toBe('https://x/authors/andrew-murray/#person');
 	});
+
+	it("names a byline's author node as an organization, a writer's as a person", async () => {
+		const { authorNodeId } = await import('./seo');
+		expect(authorNodeId('https://x/open-word-bible/', 'Organization')).toBe('https://x/open-word-bible/#organization');
+		expect(authorNodeId('https://x/authors/andrew-murray/', 'Person')).toBe('https://x/authors/andrew-murray/#person');
+	});
 });
 
 describe('toQa', () => {

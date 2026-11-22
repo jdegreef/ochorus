@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Arrow from '$lib/components/Arrow.svelte';
 	import DrawerShell from '$lib/components/DrawerShell.svelte';
-	import { getBook, getChapter } from '$lib/library-public';
+	import { getBook, getChapter, SEARCH_MAX_CHARS } from '$lib/library-public';
 	import { getLang } from '$lib/lang.svelte';
 	import { createLimiter } from '$lib/limiter';
 	import { i18n } from '$lib/i18n.svelte';
@@ -154,6 +154,7 @@
 			bind:this={input}
 			bind:value={query}
 			type="search"
+			maxlength={SEARCH_MAX_CHARS}
 			class="field mt-3 w-full"
 			placeholder={t('reader.searchPlaceholder')}
 			aria-label={t('reader.searchPlaceholder')}

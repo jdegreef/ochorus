@@ -95,7 +95,7 @@
 		PUBLIC_DOMAIN_MARK,
 		CC0,
 		bookId,
-		personId,
+		authorNodeId,
 		toQa,
 		chapterHreflang
 	} from '$lib/seo';
@@ -284,7 +284,7 @@
 				name: chapter.book_title,
 				author: {
 					'@type': authorLdType(chapter.author_slug),
-					'@id': personId(`${SITE_URL}${localizeHref(authorPath(chapter.author_slug))}`),
+					'@id': authorNodeId(`${SITE_URL}${localizeHref(authorPath(chapter.author_slug))}`, authorLdType(chapter.author_slug)),
 					name: chapter.author_name
 				},
 				url: `${SITE_URL}${localizeHref(`/books/${slug}/`)}`,
@@ -307,7 +307,7 @@
 			wordCount: chapter.word_count || undefined,
 			author: {
 				'@type': authorLdType(chapter.author_slug),
-				'@id': personId(`${SITE_URL}${localizeHref(authorPath(chapter.author_slug))}`),
+				'@id': authorNodeId(`${SITE_URL}${localizeHref(authorPath(chapter.author_slug))}`, authorLdType(chapter.author_slug)),
 				name: chapter.author_name,
 				url: `${SITE_URL}${localizeHref(authorPath(chapter.author_slug))}`
 			},

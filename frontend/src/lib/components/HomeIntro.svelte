@@ -3,7 +3,7 @@
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import { searchHref } from '$lib/searchState';
-	import { toBookTile, type CoverFace } from '$lib/library-public';
+	import { toBookTile, type CoverFace, SEARCH_MAX_CHARS } from '$lib/library-public';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
@@ -111,6 +111,7 @@
 					bind:value={query}
 					name="q"
 					type="search"
+					maxlength={SEARCH_MAX_CHARS}
 					enterkeyhint="search"
 					placeholder={t('search.placeholder')}
 					aria-label={t('nav.search')}

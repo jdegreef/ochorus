@@ -66,10 +66,10 @@ describe('collection export', () => {
 		const md = collectionMarkdown(
 			'Notes on Humility',
 			[
-				e({ id: 'b', title: 'Dependence', body: 'To let God be all.', createdAt: Date.UTC(2026, 8, 2), ref: 'Phil 2:5',
+				e({ id: 'b', title: 'Dependence', body: 'To let God be all.', createdAt: Date.UTC(2026, 8, 2, 12), ref: 'Phil 2:5',
 					source: { kind: 'book', slug: 'humility', order: 1, p: 3, edition: 'en', title: 'Humility · Chapter 1', quote: 'Humility is the place of entire dependence on God.' } }),
-				e({ id: 'a', kind: 'prayer', body: 'Make me humble.', person: 'Me', createdAt: Date.UTC(2026, 8, 1),
-					answeredAt: Date.UTC(2026, 8, 20), answer: 'Slowly, yes.' })
+				e({ id: 'a', kind: 'prayer', body: 'Make me humble.', person: 'Me', createdAt: Date.UTC(2026, 8, 1, 12),
+					answeredAt: Date.UTC(2026, 8, 20, 12), answer: 'Slowly, yes.' })
 			],
 			'2026-09-23T10:00:00.000Z'
 		);
@@ -78,6 +78,14 @@ describe('collection export', () => {
 		expect(md).toContain('_Note · Phil 2:5_');
 		expect(md).toContain('> — Humility · Chapter 1');
 		expect(md).toContain('**Answered 2026-09-20.** Slowly, yes.');
+	});
+
+	it("dates an entry by the reader's own calendar day, not UTC's", () => {
+		// 8 PM local: in any zone west of UTC that is already tomorrow in UTC.
+		const evening = new Date(2026, 8, 1, 20, 0).getTime();
+		const md = collectionMarkdown('Evening', [e({ id: 'z', title: 'Late', createdAt: evening })], new Date(evening).toISOString());
+		expect(md).toContain('## Late — 2026-09-01');
+		expect(md).toContain('_Exported 2026-09-01 from Ochorus._');
 	});
 
 	it('names the file after the collection', () => {

@@ -98,6 +98,11 @@
 	<p class="text-muted">{failed ? t('common.loadError') : t('daily.none')}</p>
 {:else if readings.length}
 	{#if embedded}
+		<!-- The page heading is prerendered and dateless, so the day these cards
+		     are for is said here, in the reader's own date (bug review
+		     2026-11-22, #44): near midnight or across time zones it is not
+		     obvious. -->
+		<p class="eyebrow mb-3 text-muted">{dateLabel}</p>
 		{@render cards()}
 	{:else}
 		<section class="page-col px-5 pt-14">
