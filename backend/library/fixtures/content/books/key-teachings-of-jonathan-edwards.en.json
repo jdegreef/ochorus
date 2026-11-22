@@ -11,7 +11,32 @@
   "subtitle": "An Ochorus companion to his life and teaching",
   "description": "A concise, faithful guide to the mind and heart of Jonathan Edwards — the sovereignty and the beauty of God, true religion as holy affections, and the end for which God created the world: His own glory, delighted in by His creatures. Twenty short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Edwards's own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is a companion to Jonathan Edwards, not a book by him. Written by Ochorus, it distils the thought of America's greatest theologian into twenty short chapters an ordinary reader can carry.</p><p>Edwards saw further into the greatness and beauty of God than almost anyone who has written in English, and he bent the whole force of a formidable mind to a single end: that God might be seen as supremely glorious and enjoyed as supremely good. This volume traces that vision through his most important works — the sovereignty of God, the beauty of holiness, true religion as holy affections, the end for which God created the world — and through the sterner texts, like the sermon on sinners in the hands of an angry God, that people remember and misremember. Each chapter closes in questions and a prayer, because Edwards held that truth unfelt and unobeyed has not yet been truly known.</p><p>Edwards's own writings are in the public domain and freely available, and this companion names them throughout so the reader may go to the source. It quotes Scripture from the Authorised (King James) Version, the Bible Edwards preached from, and is offered only to open the door to the man's own pages.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of Jonathan Edwards?",
+    "answer": "It is a short guide to the mind and heart of Jonathan Edwards, written as a companion to his own works rather than by him. After a chapter on his life, it sets out the end for which God created the world, absolute dependence on God, the divine and supernatural light, the excellency of Christ, original sin and the will, justification, his famous sermon on sinners, true religion as holy affections, true virtue, heaven as a world of love and his Resolutions."
+   },
+   {
+    "question": "Who was Jonathan Edwards?",
+    "answer": "Jonathan Edwards was born on 5 October 1703 in East Windsor, Connecticut, the only son among eleven children. He entered the college that became Yale in 1716, and in 1727 married Sarah Pierpont and became minister at Northampton. He was a leading voice of the Great Awakening. His congregation dismissed him after twenty-three years, and he went to the frontier mission at Stockbridge. In 1758 he became president of the College of New Jersey, later Princeton, and died there on 22 March after a smallpox inoculation went wrong."
+   },
+   {
+    "question": "What does Edwards teach about the end for which God created the world?",
+    "answer": "Edwards answered that God’s ultimate end in creating the world was his own glory: his fullness known, communicated, esteemed and enjoyed. That can sound like vanity, but he argued that if God is the highest good, for him to value anything above himself would be a falsehood. So God’s regard for his glory is not self-obsession. The book puts this first, because nothing in Edwards can be understood without it."
+   },
+   {
+    "question": "What are holy affections?",
+    "answer": "In A Treatise Concerning Religious Affections (1746), Edwards argued that true religion consists very largely in holy affections, the inclinations of the heart toward God, and not merely in right opinions or outward duties. Writing after the revivals, he set out signs that do not prove grace either way, such as strong emotion, and signs that do, above all a love for God’s holiness that bears fruit in Christian practice. The companion gives this four chapters."
+   },
+   {
+    "question": "Is Edwards only the preacher of Sinners in the Hands of an Angry God?",
+    "answer": "No. The companion gives that sermon a chapter, but argues that his reputation needs correcting. The same man wrote The Excellency of Christ and the sermon Heaven Is a World of Love, and wrote of the beauty of holiness. It also says plainly that the labour of enslaved people helped make his household and his hours of study possible, and it does not hide that."
+   },
+   {
+    "question": "Where should I start reading Jonathan Edwards?",
+    "answer": "The book’s reader’s guide recommends starting with A Divine and Supernatural Light (1734), which is short and the key to everything else. Then read The Excellency of Christ, the most beautiful of his sermons, and Heaven Is a World of Love, the closing sermon of Charity and Its Fruits, which it calls the best correction to his reputation. His Personal Narrative and Resolutions show the man behind the arguments."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",
