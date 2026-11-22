@@ -1,0 +1,133 @@
+{
+    "kind": "sermon",
+    "slug": "hearts-set-on-pilgrimage",
+    "language": "am",
+    "job_issue": 8258,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Psalm 84:5",
+            "status": "self_rendered",
+            "block_index": 0
+        },
+        {
+            "reference": "Ephesians 3:20",
+            "status": "self_rendered",
+            "block_index": 37
+        },
+        {
+            "reference": "Romans 8:29",
+            "status": "self_rendered",
+            "block_index": 13
+        },
+        {
+            "reference": "Romans 8:28",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 14
+        },
+        {
+            "reference": "Hebrews 11:13",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 19
+        },
+        {
+            "reference": "Job 10:8-9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 20
+        },
+        {
+            "reference": "Job 10:9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 21
+        },
+        {
+            "reference": "Psalm 77:8-9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 21
+        },
+        {
+            "reference": "Acts 13:8",
+            "status": "self_rendered",
+            "block_index": 25
+        },
+        {
+            "reference": "Romans 8:28-29",
+            "status": "self_rendered",
+            "block_index": 27
+        },
+        {
+            "reference": "1 Peter 4:12",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 40
+        },
+        {
+            "reference": "Psalm 84:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 50
+        },
+        {
+            "reference": "Psalm 93:4",
+            "status": "self_rendered",
+            "block_index": 64
+        },
+        {
+            "reference": "Psalm 29:3",
+            "status": "self_rendered",
+            "block_index": 64
+        },
+        {
+            "reference": "Hebrews 5:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 77
+        },
+        {
+            "reference": "Psalm 22:15",
+            "status": "self_rendered",
+            "block_index": 81
+        },
+        {
+            "reference": "Psalm 22:6",
+            "status": "self_rendered",
+            "block_index": 81
+        },
+        {
+            "reference": "Hebrews 12:2",
+            "status": "self_rendered",
+            "block_index": 82
+        },
+        {
+            "reference": "Galatians 2:20",
+            "status": "self_rendered",
+            "block_index": 87
+        },
+        {
+            "reference": "Psalm 103:14",
+            "status": "self_rendered",
+            "block_index": 88
+        },
+        {
+            "reference": "Genesis 3:19",
+            "status": "self_rendered",
+            "block_index": 88
+        },
+        {
+            "reference": "Psalm 126:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 93
+        },
+        {
+            "reference": "Jeremiah 31:3",
+            "status": "self_rendered",
+            "block_index": 98
+        }
+    ]
+}
