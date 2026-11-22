@@ -1,0 +1,9 @@
+{
+ "why": "A verse placeholder from the translation pipeline (\"⟦1SA 10:11|…⟧\") left in the French text (ch. 17). Found in the top-50 site bug review (2026-11-22).",
+ "replacements": [
+  [
+   "⟦1SA 10:11|Saül est-il aussi parmi les prophètes?⟧",
+   "Saül est-il aussi parmi les prophètes?"
+  ]
+ ]
+}

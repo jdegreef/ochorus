@@ -1,0 +1,9 @@
+{
+ "why": "A verse placeholder from the translation pipeline (\"⟦DEU 28:3|…⟧\") left in the French text (ch. 1). Found in the top-50 site bug review (2026-11-22).",
+ "replacements": [
+  [
+   "⟦DEU 28:3|tu seras béni dans les champs.⟧",
+   "tu seras béni dans les champs."
+  ]
+ ]
+}
