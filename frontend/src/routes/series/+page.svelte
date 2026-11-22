@@ -120,10 +120,10 @@
 	/>
 	{#snippet counts()}
 		{series.length}
-		{series.length === 1 ? t('common.seriesOne') : t('common.seriesMany')}
+		{i18n.tn(series.length, 'common.seriesOne', 'common.seriesMany')}
 		<span class="sep">·</span>
 		{bookTotal}
-		{bookTotal === 1 ? t('common.bookOne') : t('common.bookMany')}
+		{i18n.tn(bookTotal, 'common.bookOne', 'common.bookMany')}
 	{/snippet}
 	<!-- The library tabs sit under the title, as on /books (design review #4). -->
 	<LibraryTabs current="series" />
@@ -175,7 +175,7 @@
 						<span class="door-name font-display">{audienceName(g.audience)}</span>
 						<span class="text-small text-muted"
 							>{g.series.length}
-							{g.series.length === 1 ? t('common.seriesOne') : t('common.seriesMany')} <Arrow /></span
+							{i18n.tn(g.series.length, 'common.seriesOne', 'common.seriesMany')} <Arrow /></span
 						>
 					</a>
 				{/each}

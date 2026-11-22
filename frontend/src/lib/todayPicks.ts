@@ -11,7 +11,7 @@
 // `pickDailySermon`'s. Chosen with the caller's LOCAL date: every caller is
 // client-side for that reason.
 
-import { getBook, getDailyShelf, listSermons, type DailyEntry, type SermonSummary } from '$lib/library-public';
+import { getBook, getDailyShelf, listSermonPicks, type DailyEntry, type SermonPick } from '$lib/library-public';
 import { bibleIn } from '$lib/bible';
 import { pickDailyChapter, type DailyChapter } from '$lib/dailyChapter';
 import { dateKey } from '$lib/dailyDate';
@@ -24,7 +24,7 @@ export type TodayPicks = {
 	reading: DailyEntry | null;
 	/** The verse, and the language its words are in. */
 	verse: (Verse & { lang: string }) | null;
-	sermon: SermonSummary | null;
+	sermon: SermonPick | null;
 	/** The chapter of the day ($lib/dailyChapter), where the language has the
 	 *  Bible (`bibleIn`); `word_count` when the book's contents could be fetched. */
 	chapter: (DailyChapter & { word_count?: number }) | null;
@@ -66,7 +66,7 @@ export async function loadDayVerse(day: Date, lang: string): Promise<TodayPicks[
 export async function loadTodayPicks(now: Date, lang: string): Promise<TodayPicks> {
 	const [readings, sermons, chapter] = await Promise.all([
 		getDailyShelf(dateKey(now), lang).then((r) => r.readings, () => []),
-		listSermons(lang).catch(() => []),
+		listSermonPicks(lang).catch(() => []),
 		chapterOf(now, lang)
 	]);
 	const { reading, verses } = pickToday(readings, now);

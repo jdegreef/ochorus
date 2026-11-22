@@ -14,7 +14,32 @@
   "description": "Thomas Watson's exposition of the prayer Christ taught his disciples, from \"Our Father which art in heaven\" through each of the six petitions: a Puritan school of prayer, first published in his Body of Practical Divinity.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Thomas Watson\u2019s The Lord\u2019s Prayer?",
+    "answer": "It is the Puritan Thomas Watson\u2019s exposition of the prayer Christ taught his disciples in Matthew 6, first published as part of his Body of Practical Divinity. Watson explains the preface, Our Father which art in heaven, and each of the six petitions in turn, making the book a thorough school of prayer."
+   },
+   {
+    "question": "Why does Watson call the Lord\u2019s Prayer a directory?",
+    "answer": "Watson notes that Christ said, After this manner pray ye, giving his disciples and us a directory for prayer. He sets the Lord\u2019s Prayer beside the Ten Commandments and the Creed: the commandments are the rule of our life, the Creed is the sum of our faith, and the Lord\u2019s Prayer is the pattern of our prayer, as God gave Moses a pattern of the tabernacle."
+   },
+   {
+    "question": "What does Watson say about calling God Father?",
+    "answer": "Watson dwells on the privilege of adoption, marvelling that God should conquer our stubbornness, make enemies his children, write his name and put his image on us, and bestow a kingdom of glory. He also speaks of the witness of the Spirit that we are heirs of heaven, which scatters doubts and fears."
+   },
+   {
+    "question": "What kingdom do we ask for when we pray Thy kingdom come?",
+    "answer": "Watson explains that a twofold kingdom is meant. First, the kingdom of grace, which God exercises in the consciences of his people; we pray that it may be set up in our hearts and increased. Second, the kingdom of glory; we pray that it may hasten, and that in God\u2019s good time we may be brought into it."
+   },
+   {
+    "question": "Which petitions will we no longer need in heaven?",
+    "answer": "Watson points out that in heaven we will not need to pray Give us our daily bread, because there will be no hunger, nor Forgive us our trespasses, because there will be no sin, nor Lead us not into temptation, because the old serpent will not be there. But hallowing God\u2019s name will continue for ever."
+   },
+   {
+    "question": "Who should read this book?",
+    "answer": "It suits anyone who wants to pray better, and especially those who want to understand the Lord\u2019s Prayer phrase by phrase. Watson\u2019s style is clear and full of memorable images, and each petition can be read as a short study on its own."
+   }
+  ],
   "publication_year": 1692,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/watson/prayer",

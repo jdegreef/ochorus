@@ -1,0 +1,17 @@
+{
+ "why": "Slips in E. M. Bounds's The Necessity of Prayer found while translating it to Japanese (job #8910): a dropped verb, a misspelling, and the KJV verb form of Matthew 7:23.",
+ "replacements": [
+  [
+   "fixity of purpose, chief among",
+   "fixity of purpose, are chief among"
+  ],
+  [
+   "langour",
+   "languor"
+  ],
+  [
+   "ye that worketh iniquity",
+   "ye that work iniquity"
+  ]
+ ]
+}

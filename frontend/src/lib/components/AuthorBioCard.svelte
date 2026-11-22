@@ -106,15 +106,15 @@
 			<a href={localizeHref(authorPath(author.slug))} class="text-small font-semibold text-accent">
 				{#if author.book_count > 0}
 					{author.book_count}
-					{author.book_count === 1 ? t('bios.booksInLibraryOne') : t('bios.booksInLibraryMany')}
+					{i18n.tn(author.book_count, 'bios.booksInLibraryOne', 'bios.booksInLibraryMany')}
 					{#if author.sermon_count > 0}
 						· {author.sermon_count}
-						{author.sermon_count === 1 ? t('bios.sermonsOne') : t('bios.sermonsMany')}
+						{i18n.tn(author.sermon_count, 'bios.sermonsOne', 'bios.sermonsMany')}
 					{/if}
 					<Arrow />
 				{:else if author.sermon_count > 0}
 					{author.sermon_count}
-					{author.sermon_count === 1 ? t('bios.sermonsOne') : t('bios.sermonsMany')} <Arrow />
+					{i18n.tn(author.sermon_count, 'bios.sermonsOne', 'bios.sermonsMany')} <Arrow />
 				{:else}
 					<!-- Same wording as the read-more below: both links go to the same
 					     author page, so they say the same thing. Adjacent cards used to

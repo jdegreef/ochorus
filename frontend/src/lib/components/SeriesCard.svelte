@@ -154,7 +154,7 @@
 >
 	{#snippet aside()}
 		{series.book_count}
-		{series.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
+		{i18n.tn(series.book_count, 'common.bookOne', 'common.bookMany')}
 	{/snippet}
 	{#if series.tagline}
 		<!-- The series' promise, as its page leads with it. -->

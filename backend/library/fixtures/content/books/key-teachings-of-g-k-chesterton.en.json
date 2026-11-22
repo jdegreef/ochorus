@@ -12,7 +12,32 @@
   "cover_byline": "G. K. Chesterton",
   "description": "A concise, faithful guide to the heart of G. K. Chesterton’s Christian teaching — wonder and gratitude, the madness of reason cut loose, the paradoxes and the romance of orthodoxy, joy as the Christian secret, tradition and the common man, the uniqueness of man, the strangest story in the world, and the faith that keeps rising from its grave — weighed honestly where evangelical readers part company with him. Fifteen short chapters, each ending in questions and a prayer, written by Ochorus as an independent companion. Orthodoxy and The Everlasting Man are in the Ochorus library.",
   "about_html": "<p>This is a companion to G. K. Chesterton, not a book by him. Written by Ochorus, it sets out in fifteen short chapters the teaching for which Chesterton is chiefly remembered — the wonder and gratitude he learned in the nursery, the madman who has lost everything except his reason, the thought that stops thought, the cosmic loyalty that loves the world enough to change it, the furious opposites that Christianity holds together, orthodoxy as the great adventure, joy as the gigantic secret of the Christian, tradition as the democracy of the dead, humility in its right place, the dignity of ordinary life, the man in the cave and the God in the cave, the strangest story in the world, the five deaths of the faith, and the holy gaiety of St Francis. It adds a chapter on his life, a conclusion, and a guide to his books.</p><p>It is important to be clear about what this book is and is not. It is an independent work of exposition, summary and appreciation, not published by, affiliated with, or endorsed by any society or body devoted to Chesterton’s memory or his cause. Two of his greatest books, Orthodoxy (1908) and The Everlasting Man (1925), are in the public domain and in the Ochorus library, and short sentences from them are quoted sparingly here, each checked against the library’s own text and named by book and chapter. Nothing is quoted from his later works that are still in copyright; those are described in our own words. Scripture is quoted from the Authorised (King James) Version.</p><p>Chesterton wrote Orthodoxy as a member of the Church of England and was received into the Roman Catholic Church in 1922. This volume says plainly where evangelical readers will differ from his later convictions — on the authority of the Church, on Mary and the saints, on the sacraments — and where his politics and economics are opinion rather than doctrine. It also faces honestly the antisemitic passages in some of his writing, which a fair modern companion must name. He would have wanted the argument, and he would have wanted readers to go past him to Christ.</p><p>The best way to use this book is beside his own. Orthodoxy and The Everlasting Man are both in the Ochorus library; read them alongside these chapters.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of G. K. Chesterton?",
+    "answer": "It is a short guide to the heart of G. K. Chesterton’s Christian thought, written as a companion to his books rather than by him. After a chapter on his life, it follows the argument of Orthodoxy, from the ethics of elfland and the madman’s reason to the paradoxes of the faith, and then turns to The Everlasting Man, the strange story of the man in the cave and the God in the cave, ending with a guide to his books and where to start."
+   },
+   {
+    "question": "Who was G. K. Chesterton?",
+    "answer": "Gilbert Keith Chesterton was born on 29 May 1874 in Kensington, in west London. His father built his sons a toy theatre, which he never forgot. He became a journalist, poet, novelist and defender of the faith, best known for Orthodoxy (1908), The Everlasting Man (1925) and the Father Brown stories. In 1909 he and his wife Frances moved to Beaconsfield, where they lived for the rest of their lives. He died in 1936."
+   },
+   {
+    "question": "What is the ethics of elfland?",
+    "answer": "It is Chesterton’s name for the lessons he learned from fairy tales as a child, and the chapter of Orthodoxy the companion builds on. Fairy tales taught him that the world is not a machine that must be as it is, but a gift that might have been otherwise, full of wonder and of conditions to be kept. That sense of astonishment and gratitude, he argued, fits the Christian belief in a Creator far better than the materialism of his day."
+   },
+   {
+    "question": "What does Chesterton mean by the madman and his reason?",
+    "answer": "He argued that the madman is not the man who has lost his reason but the man who has lost everything except his reason. A mind that follows one small logical idea everywhere, and shuts out common sense and mystery, becomes a prison. Chesterton set the sanity of the Christian faith, which holds mystery and reason together, against such closed systems. The book explains the idea and then his warning about thought that stops thought."
+   },
+   {
+    "question": "Did Chesterton become a Roman Catholic?",
+    "answer": "Yes. The book notes that Orthodoxy defends the faith of the Apostles’ Creed rather than the claims of any one church, which is why Christians of every tradition love it. But on 30 July 1922 he was received into the Roman Catholic Church by his friend Father O’Connor at Beaconsfield, and his later books defend its distinctive claims. The companion asks readers to know this as they go on to those books."
+   },
+   {
+    "question": "Where should I start reading Chesterton?",
+    "answer": "The book’s closing guide recommends starting with Orthodoxy (1908), his account of how he came to the Christian faith, which most of the companion draws on. Then read The Everlasting Man (1925), his telling of the human story and of Christ. Heretics (1905), the book that provoked Orthodoxy, shows the argument from the other side, and the Father Brown stories, from 1911, show his imagination at play. The guide also warns that many sayings attributed to him online are not his."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",

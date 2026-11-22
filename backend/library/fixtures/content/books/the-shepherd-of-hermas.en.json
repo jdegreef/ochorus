@@ -14,7 +14,32 @@
   "description": "The most widely read Christian book of the second century: the visions given to Hermas, a freed slave of Rome, and the commandments and parables taught him by the angel of repentance in the form of a shepherd, calling a lukewarm church to repent while there is time.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Shepherd of Hermas?",
+    "answer": "It is one of the most widely read Christian books of the second century, written in Rome. It records visions given to Hermas, a freed slave, followed by commandments and parables taught him by the angel of repentance, who appears as a shepherd. Its message is a call to a lukewarm church to repent while there is still time."
+   },
+   {
+    "question": "How does the book begin?",
+    "answer": "Hermas tells how he was sold as a child to a woman named Rhode in Rome. Years later he saw her bathing in the Tiber, helped her out, and thought how happy he would be with a wife as good as she. Later, in a vision, she tells him that an evil desire had arisen in his heart, and Hermas learns how seriously God takes the desires of the heart."
+   },
+   {
+    "question": "What is the vision of the tower?",
+    "answer": "In the third vision a lady shows Hermas a great tower being built upon the waters out of splendid square stones, with myriads of men carrying stones to it. The tower is the church. Some stones fit at once, others are rejected or set aside, picturing different kinds of believers and the need for repentance before the building is finished."
+   },
+   {
+    "question": "What does the book teach about repentance?",
+    "answer": "The Shepherd teaches that forgiveness will be granted to all the saints who have sinned up to the present, if they repent with all their heart and drive all doubts from their minds. But it warns that the days of repentance for believers have limits, so they must not delay. The angel of repentance urges Hermas to write these things for the whole church."
+   },
+   {
+    "question": "What are the commandments in the Shepherd?",
+    "answer": "The twelve commandments begin with faith in one God who created all things, and go on to warn against evil speaking, falsehood and impurity, and to urge patience, the fear of God, prayer without doubting and cheerfulness. One teaches that there are two angels with each person, one of righteousness and one of iniquity, and that we must learn to tell their promptings apart."
+   },
+   {
+    "question": "What is the parable of the elm and the vine?",
+    "answer": "Walking in a field, Hermas sees an elm and a vine, and the Shepherd explains them as the rich and the poor. The vine produces fruit and the elm is unfruitful, but unless the vine is trained on the elm it cannot bear much fruit. So the rich man, poor in matters of the Lord, helps the poor with his goods, and the poor man, rich in prayer, prays for him, and both share in the work."
+   }
+  ],
   "publication_year": 140,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/anf02.ii.html",

@@ -12,7 +12,32 @@
   "description": "A Christian guide to study, life, and success, written for students and young people. Its short chapters — with twelve life practices and ten key Scriptures to memorise — help you grow in wisdom, character, and faith: discovering your purpose, studying well, resisting temptation, handling money and emotions, and building a God-honouring future.",
   "hook": "Study, friends, pressure, money and failure: a guide to growing up wise.",
   "about_html": "<p>Growing in Wisdom is an original Ochorus book, written by James DeGreef for students and young people setting out in life. Unlike most of the library, it is not a public-domain classic but a contemporary guide, offered free to readers everywhere.</p><p>Its chapters move from discovering your purpose to building a vision for the future, each pairing practical counsel — how to study, how to overcome laziness, how to handle failure, how to manage time and money — with a Scripture, a reflection to sit with, and a prayer to close. Two further sections, Twelve Life Practices and Ten Key Scriptures for Students, gather habits and verses to carry forward and memorise.</p><p>Written with East African students especially in mind, its examples reach from Joseph and David to Ben Carson and the Ugandan runner Stephen Kiprotich, and the voice throughout is warm, direct, and rooted in the conviction that no one is too young or too small to live wisely for God. Scripture quotations are from the Holy Bible, New International Version® (NIV®).</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Growing in Wisdom?",
+    "answer": "Growing in Wisdom is a Christian guide to study, life and success for students and young people, first written with young readers in Uganda in mind. Its short chapters cover discovering your purpose, diligence and discipline, studying well, overcoming procrastination, integrity, friendship and peer pressure, emotions and stress, prayer, money, purity and vision for the future, ending with twelve life practices and ten key Scriptures to memorise."
+   },
+   {
+    "question": "What does the book say about purpose?",
+    "answer": "The book opens by telling readers that they were born for a reason, and that God did not make a mistake in placing them in their family, their school and this moment in history. It quotes Jeremiah 29:11, that God has plans to give hope and a future, and uses the story of Joseph, who went from dreamer to slave to prisoner to leader, to show that God’s purpose grows over time."
+   },
+   {
+    "question": "How does it help with procrastination?",
+    "answer": "It describes two voices every student hears, one saying work now and the other work later, and calls laziness and procrastination silent thieves that steal time, grades and destiny. Its advice is to start small: begin the homework, review one subject, read one chapter, because momentum builds once you begin and discipline starts with one small choice."
+   },
+   {
+    "question": "What examples of discipline does it use?",
+    "answer": "It points to Daniel, who stayed faithful and disciplined even as a captive in Babylon, and to Stephen Kiprotich, who grew up in a small Ugandan village, trained by running long distances barefoot, and in 2012 won an Olympic gold medal for Uganda. The lesson is that success appears in public, but preparation happens in private."
+   },
+   {
+    "question": "What study habits does it recommend?",
+    "answer": "The chapter on studying effectively urges students to plan their study time rather than reading only when they feel like it, to review their notes daily while they are still fresh, since even thirty minutes of daily review makes a big difference, and to ask questions when they do not understand, because diligent students are curious."
+   },
+   {
+    "question": "What are the twelve life practices?",
+    "answer": "The book closes with twelve practices for moving forward with maturity in Christ. They begin with starting every day with God in prayer and Scripture, even for five minutes, and staying consistent in prayer as a friendship rather than a duty, and they end with dreaming big and trusting God with your future, never thinking you are too small or too young to make an impact."
+   }
+  ],
   "publication_year": 2026,
   "source_type": "public_domain",
   "source_url": "",

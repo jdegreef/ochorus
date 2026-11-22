@@ -12,7 +12,32 @@
   "cover_byline": "E. M. Bounds",
   "description": "A concise, faithful guide to the heart of E. M. Bounds’s teaching on prayer — that men, not methods, are God’s instrument; that the real sermon is made in the closet; that faith, importunity, holiness and the Word belong together; and that the praying Church shares in the intercession of the risen Christ. Thirteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Bounds’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by E. M. Bounds. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into thirteen short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his books.</p><p>Bounds wrote about one subject, and he wrote about it as a man who did it every morning before the town was awake. His conviction was that God does His work through people who pray, and that no organisation, eloquence or money can stand in for them. This volume follows that single thread through its many strands — the preacher’s closet, faith and the Word, importunity and the early hour, holiness, trouble, revival and missions, the praying men of Scripture and history, and the intercession of Christ Himself — and it says plainly where his intensity overreaches, where his generalisations belong to his own age, and how much of what we read was shaped by the friends who edited his manuscripts after his death.</p><p>Bounds’s own writings are in the public domain and freely available, and every chapter here names them so the reader can go to the source; seven of his books on prayer are in the Ochorus library. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and it makes no claim to stand in for the man’s own urgent, repetitive and searching pages.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of E. M. Bounds?",
+    "answer": "It is a short guide to the heart of E. M. Bounds’s teaching on prayer, written as a companion to his own books rather than by him. After a chapter on his life, it sets out his conviction that men are God’s method, that the real sermon is made in the closet, that prayer rests on faith and the promises, that it must persist and begin early, and that Christ ever lives to intercede, closing with his warning against prayerless praying and a guide to his books."
+   },
+   {
+    "question": "Who was E. M. Bounds?",
+    "answer": "Edward McKendree Bounds was born on 15 August 1835 in Shelby County, Missouri. He trained and practised as a lawyer before he was converted and became a Methodist preacher. He served as a Confederate chaplain, was captured at the Battle of Franklin in 1864, and afterwards returned to Franklin as pastor. He spent many years as an editor, then settled in Washington, Georgia, where he gave his mornings to prayer. He died there on 24 August 1913."
+   },
+   {
+    "question": "What did Bounds mean by men are God’s method?",
+    "answer": "It is the opening thought of Power Through Prayer. The church looks for better methods, but God looks for better men, and he works through people rather than through machinery or plans. For Bounds this put the weight of a ministry on the preacher’s own walk with God, and especially his prayer. The book gives the idea its own chapter before turning to his claim that the real sermon is made in the closet."
+   },
+   {
+    "question": "Does the book discuss Bounds and the Confederacy?",
+    "answer": "Yes. The life chapter says plainly that the cause he served as a Confederate chaplain was bound up with slavery, and that he shared the assumptions of his time and place. It says a book about his teaching on prayer should not pretend otherwise. Alongside that, it describes what he did next: returning to the wrecked town of Franklin as pastor and gathering a few men to pray for revival."
+   },
+   {
+    "question": "What is prayerless praying?",
+    "answer": "It is Bounds’s name for prayer that has the form without the heart: words said by habit, hurried, without desire or faith, and without expecting an answer. The book gives it the last teaching chapter as a warning. Bounds believed that the remedy was not to stop praying but to pray more and better, with time, fervour and faith in the promises of God."
+   },
+   {
+    "question": "Where should I start reading E. M. Bounds?",
+    "answer": "The book’s reader’s guide recommends starting with Power Through Prayer, first published in 1907 as Preacher and Prayer and the only book of his to appear in his lifetime. It is short and searching, and many chapters of the companion draw on it. Then read Prayer and Praying Men, which turns to the praying men and women of the Bible. His other books on prayer were edited from his manuscripts after his death."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",

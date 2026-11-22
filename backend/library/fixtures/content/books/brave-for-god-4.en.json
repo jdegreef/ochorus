@@ -11,7 +11,32 @@
   "subtitle": "Six more who followed Jesus into the wide world",
   "description": "Six more true stories of faith, told simply for young readers: a man who buried his own family on a faraway island and stayed to dig a well that won it for God; a Welsh girl who walked barefoot over the hills for a Bible; a freed slave who carried the gospel to Jamaica before Carey ever sailed; a famous cricketer who gave away a fortune for the forests of Africa; an artist who traded fame for the desert; and a doctor who opened the hospital doors for the women of India. The fourth book of Brave for God.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Brave for God: Book Four?",
+    "answer": "It is the fourth book of Brave for God, true stories of faith told simply for young readers. Its six stories are about John Paton, Mary Jones, George Liele, C. T. Studd, Lilias Trotter and Ida Scudder, people who gave up comfort, safety or fame to follow God."
+   },
+   {
+    "question": "How did a well win an island for God?",
+    "answer": "John Paton grew up in a poor, praying Scottish family and sailed in 1858 to the New Hebrides, where strangers were sometimes killed. After great sorrow he settled on the island of Aniwa and dug for fresh water, which the people thought impossible. When water rose from the ground, they began to say that if he was right about the hidden water, he might be right about the hidden God too."
+   },
+   {
+    "question": "Why did Mary Jones walk for a Bible?",
+    "answer": "Mary Jones was a Welsh girl who saved her coins for years to buy a Bible of her own. The only man with Welsh Bibles to sell, the minister Thomas Charles, lived in Bala, twenty-five miles away over the hills. She walked there, barefoot much of the way to save her shoes. Though the Bibles were all promised, Mr Charles was so moved by her journey that he gave her one."
+   },
+   {
+    "question": "Who was George Liele?",
+    "answer": "George Liele was born a slave in America and began preaching even while enslaved. His Christian master set him free to preach. Later, to keep his freedom, he worked off the cost of a voyage and sailed to Jamaica, where he preached to enslaved people on the sugar plantations. He did this years before William Carey sailed for India, making him one of the very first missionaries to go out from America."
+   },
+   {
+    "question": "What did C. T. Studd give away?",
+    "answer": "C. T. Studd was a famous English cricketer from a wealthy family. He joined the band of young men called the Cambridge Seven who went to China as missionaries, and when he came into his great fortune he gave it away. Years later, though told he was far too old and ill, he went into the forests of the Congo to preach where no one else would go."
+   },
+   {
+    "question": "What are the stories of Lilias Trotter and Ida Scudder?",
+    "answer": "Lilias Trotter was a gifted artist who was told she could become one of the great painters of her time, by the famous art teacher John Ruskin, but she chose God and went to Algeria to live among people who rarely heard about Jesus. Ida Scudder ran away from India as a girl, but three knocks in the night, from three men whose wives were in danger in childbirth and could not, by custom, be seen by a male doctor, turned her back to become a doctor and open hospital doors for the women of India."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",

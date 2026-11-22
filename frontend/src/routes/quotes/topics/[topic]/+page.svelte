@@ -103,7 +103,7 @@
 		{/if}
 		<ScriptureEpigraph text={topic.scripture_text} reference={topic.scripture_ref} />
 		<p class="mt-3 text-small text-muted">
-			{(total === 1 ? t('quotes.topicCountOne') : t('quotes.topicCountMany'))
+			{(i18n.tn(total, 'quotes.topicCountOne', 'quotes.topicCountMany'))
 				.replace('%count%', String(total))
 				.replace('%writers%', String(page.authors.length))}
 		</p>

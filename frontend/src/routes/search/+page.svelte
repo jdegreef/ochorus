@@ -628,7 +628,17 @@
 	/** The search box, so arriving on this page can put the caret in it. */
 	let input = $state<HTMLInputElement | null>(null);
 
+	/**
+	 * False until the page has hydrated. The page is prerendered with no query,
+	 * so a shared or typed /search?q=… link painted "Type at least two
+	 * characters" for the second or so before the script ran, then the results:
+	 * on a slow phone that read as a search that found nothing (bug review
+	 * 2026-11-22, #20). Until then the results area shows the loading skeleton.
+	 */
+	let hydrated = $state(false);
+
 	onMount(() => {
+		hydrated = true;
 		// Focus only on a pointer device with a real keyboard. On a phone,
 		// autofocus throws up the on-screen keyboard over the results the reader
 		// came to read — and if they arrived from a shared ?q= link, the answer is
@@ -1011,8 +1021,8 @@
 		</div>
 	{/if}
 
-	<div class="mt-4" id="search-results" aria-busy={loading}>
-		{#if loading}
+	<div class="mt-4" id="search-results" aria-busy={loading || !hydrated}>
+		{#if loading || !hydrated}
 			<div class="space-y-6" aria-hidden="true">
 				{#each Array(4) as _, i (i)}
 					<div class="space-y-2">
@@ -1094,7 +1104,7 @@
 								{t('search.resultsMany')}
 							{:else}
 								{shownCount}
-								{shownCount === 1 ? t('search.resultsOne') : t('search.resultsMany')}
+								{i18n.tn(shownCount, 'search.resultsOne', 'search.resultsMany')}
 							{/if}
 						</p>
 					{/if}

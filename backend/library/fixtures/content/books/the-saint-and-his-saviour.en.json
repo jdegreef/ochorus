@@ -14,7 +14,32 @@
   "description": "Written over two busy years at the start of his London ministry, the young Spurgeon's book traces the soul's growing acquaintance with Christ — from the days when “we esteemed him not,” through conviction, longing, pardon and the joy of conversion, to love, trial, the seasons when Jesus seems to hide himself, and the secret of keeping communion with him. It is meant, as its preface says, for beginners: to comfort the mourner, confirm the weak, guide the wandering and reassure the doubting.",
   "hook": "How does a soul come to know Jesus? The young Spurgeon traces the road, step by step.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Saint and His Saviour?",
+    "answer": "It is an early book by Charles Spurgeon, written over two busy years at the start of his London ministry and dated 1857. It traces the soul’s growing acquaintance with Christ, from the days when we esteemed him not, through conviction, longing, pardon and the joy of conversion, to love, trial, the times when Jesus seems to hide himself, and the secret of keeping communion with him."
+   },
+   {
+    "question": "Who is the book written for?",
+    "answer": "Spurgeon says his aim was to deal only with the more common and shallow experiences of beginners, leaving the great deeps to those who have long done business upon them. He hoped the book would comfort the mourner, confirm the weak, guide the wandering and reassure the doubting."
+   },
+   {
+    "question": "What does Spurgeon say about writing the book?",
+    "answer": "In his preface Spurgeon confesses that never was a book written amid more incessant toil, with only fragments of time to give it. He says that writing is to him the work of a slave, while talking out his thoughts in spoken words is a delight and a rapture. He dedicates the work to God and asks for his blessing."
+   },
+   {
+    "question": "What does the first chapter mean by we esteemed him not?",
+    "answer": "Taking Isaiah 53:3 as his text, Spurgeon asks believers to remember the time before conversion when they despised Christ. He confesses that, despite a godly upbringing, he too esteemed him not, and that the haunts of childhood, the companions of youth and the sins of later years all bear witness to it."
+   },
+   {
+    "question": "What does Spurgeon say about the joy of conversion?",
+    "answer": "Spurgeon says the Lord wants to teach us at the very beginning of our Christian life that he would have us happy, happy only in himself. He makes us glad when we are beginners, so that we see we can be blessed by simple faith. Part of that early joy, he suggests, came from closer communion with God."
+   },
+   {
+    "question": "Why does Jesus sometimes seem to hide himself?",
+    "answer": "Spurgeon gives chapters to Jesus Hiding Himself and The Causes of Apparent Desertion. Taking Job 10:2 as his text, he says that the hidings of God’s face are very often a sign of Christ’s grief at our sins, but that there are so many exceptions that it would be untrue to treat every such season as punishment, as Job’s trials show. The final chapter, Communion Preserved, shows how to keep close to him."
+   }
+  ],
   "publication_year": 1857,
   "source_type": "public_domain",
   "source_url": "https://archive.org/details/sainthissaviour00spurrich",

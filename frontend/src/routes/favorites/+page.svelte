@@ -523,11 +523,11 @@
 							{#snippet aside()}
 								{#if topic.book_count}
 									{topic.book_count}
-									{topic.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
+									{i18n.tn(topic.book_count, 'common.bookOne', 'common.bookMany')}
 								{/if}
 								{#if topic.sermon_count}
 									{#if topic.book_count}· {/if}{topic.sermon_count}
-									{topic.sermon_count === 1 ? t('common.sermonOne') : t('common.sermonMany')}
+									{i18n.tn(topic.sermon_count, 'common.sermonOne', 'common.sermonMany')}
 								{/if}
 							{/snippet}
 							<p class="shelf-card-desc mt-1.5 text-small text-muted">{topic.description}</p>
