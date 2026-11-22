@@ -4,6 +4,9 @@
 	import { chapterCount } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { chapterPath } from '$lib/editionHref';
+	import { listen } from '$lib/listen.svelte';
+	import { requestBookListen } from '$lib/listenBook';
 	import Icon from '$lib/components/Icon.svelte';
 
 	/**
@@ -63,17 +66,35 @@
 				</span>
 			</a>
 			{#if count}
-				<button
-					type="button"
-					class="bible-row-chapters"
-					aria-expanded={isOpen}
-					aria-controls={isOpen ? `chapters-${book.slug}` : undefined}
-					aria-label="{book.title}: {countLabel}"
-					onclick={() => (open = isOpen ? null : book.slug)}
-				>
-					{countLabel}
-					<span class="bible-row-chevron"><Icon name="chevron-right" size={16} /></span>
-				</button>
+				<span class="bible-row-actions">
+					{#if listen.offered}
+						<!-- Listen to the whole book, as its page's button does: its first
+						     chapter opens already reading aloud and the reader carries it on
+						     ($lib/listenBook). A plain link to that chapter without script,
+						     or opened in a new tab. Only where this browser can read aloud. -->
+						<a
+							class="bible-row-listen"
+							href={localizeHref(chapterPath(book.slug, 1, book.has_modern_edition))}
+							aria-label="{t('bible.listenBook')}: {book.title}"
+							title={t('bible.listenBook')}
+							onclick={(e) => {
+								if (e.button === 0 && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey))
+									requestBookListen(book.slug, 1);
+							}}><Icon name="headphones" size={18} /></a
+						>
+					{/if}
+					<button
+						type="button"
+						class="bible-row-chapters"
+						aria-expanded={isOpen}
+						aria-controls={isOpen ? `chapters-${book.slug}` : undefined}
+						aria-label="{book.title}: {countLabel}"
+						onclick={() => (open = isOpen ? null : book.slug)}
+					>
+						{countLabel}
+						<span class="bible-row-chevron"><Icon name="chevron-right" size={16} /></span>
+					</button>
+				</span>
 			{/if}
 			{#if links && (links.sermons || links.scripture)}
 				<!-- Beside the row's own link, not inside it (a link can't hold a link).
@@ -195,6 +216,25 @@
 	}
 	.bible-row-more a:hover {
 		text-decoration: underline;
+	}
+	.bible-row-actions {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+	}
+	.bible-row-listen {
+		display: inline-grid;
+		place-items: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-sm);
+		background: var(--surface);
+		color: var(--muted);
+	}
+	.bible-row-listen:hover {
+		border-color: var(--accent);
+		color: var(--accent);
 	}
 	.bible-row-chapters {
 		display: inline-flex;
