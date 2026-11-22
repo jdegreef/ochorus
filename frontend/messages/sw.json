@@ -112,6 +112,8 @@
   "reader_mark_one": "alama",
   "reader_mark_many": "alama",
   "progress_min_left": "dakika zimebaki katika sura",
+  "progress_chapter_hr": "saa %h% zimebaki katika sura",
+  "progress_chapter_hr_min": "saa %h% dakika %m% zimebaki katika sura",
   "progress_book_min": "dakika %n% zimebaki kwenye kitabu",
   "progress_book_hr": "saa %h% zimebaki kwenye kitabu",
   "progress_book_hr_min": "saa %h% dakika %m% zimebaki kwenye kitabu",

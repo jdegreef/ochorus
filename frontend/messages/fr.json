@@ -112,6 +112,8 @@
   "reader_mark_one": "marque",
   "reader_mark_many": "marques",
   "progress_min_left": "min restantes dans le chapitre",
+  "progress_chapter_hr": "%h% h restantes dans le chapitre",
+  "progress_chapter_hr_min": "%h% h %m% min restantes dans le chapitre",
   "progress_book_min": "%n% min restantes dans le livre",
   "progress_book_hr": "%h% h restantes dans le livre",
   "progress_book_hr_min": "%h% h %m% min restantes dans le livre",

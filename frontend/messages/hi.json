@@ -112,6 +112,8 @@
   "reader_mark_one": "चिह्न",
   "reader_mark_many": "चिह्न",
   "progress_min_left": "मिनट अध्याय में शेष",
+  "progress_chapter_hr": "%h% घंटे अध्याय में शेष",
+  "progress_chapter_hr_min": "%h% घंटे %m% मिनट अध्याय में शेष",
   "progress_book_min": "%n% मिनट पुस्तक में शेष",
   "progress_book_hr": "%h% घंटे पुस्तक में शेष",
   "progress_book_hr_min": "%h% घंटे %m% मिनट पुस्तक में शेष",

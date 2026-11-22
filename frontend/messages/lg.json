@@ -112,6 +112,8 @@
   "reader_mark_one": "akabonero",
   "reader_mark_many": "obubonero",
   "progress_min_left": "eddakiika zisigadde mu ssuula",
+  "progress_chapter_hr": "essaawa %h% zisigadde mu ssuula",
+  "progress_chapter_hr_min": "essaawa %h% eddakiika %m% zisigadde mu ssuula",
   "progress_book_min": "eddakiika %n% zisigadde mu kitabo",
   "progress_book_hr": "essaawa %h% zisigadde mu kitabo",
   "progress_book_hr_min": "essaawa %h% eddakiika %m% zisigadde mu kitabo",

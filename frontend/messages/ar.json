@@ -112,6 +112,8 @@
   "reader_mark_one": "علامة",
   "reader_mark_many": "علامات",
   "progress_min_left": "دقيقة متبقية في الفصل",
+  "progress_chapter_hr": "%h% س متبقية في الفصل",
+  "progress_chapter_hr_min": "%h% س %m% د متبقية في الفصل",
   "progress_book_min": "%n% د متبقية في الكتاب",
   "progress_book_hr": "%h% س متبقية في الكتاب",
   "progress_book_hr_min": "%h% س %m% د متبقية في الكتاب",

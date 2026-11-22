@@ -112,6 +112,8 @@
   "reader_mark_one": "件のマーク",
   "reader_mark_many": "件のマーク",
   "progress_min_left": "分（この章の残り）",
+  "progress_chapter_hr": "この章の残り%h%時間",
+  "progress_chapter_hr_min": "この章の残り%h%時間%m%分",
   "progress_book_min": "本の残り%n%分",
   "progress_book_hr": "本の残り%h%時間",
   "progress_book_hr_min": "本の残り%h%時間%m%分",
