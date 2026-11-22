@@ -181,7 +181,7 @@
 								</span>
 								<span class="block text-micro text-muted">
 									{readingTime(ch.word_count)}{#if markCount > 0}
-										· {markCount} {markCount === 1 ? t('reader.markOne') : t('reader.markMany')}{/if}
+										· {markCount} {i18n.tn(markCount, 'reader.markOne', 'reader.markMany')}{/if}
 								</span>
 							</span>
 						</a>

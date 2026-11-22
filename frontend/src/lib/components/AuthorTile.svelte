@@ -33,7 +33,7 @@
 		{#if author.book_count}
 			<span class="block text-small text-muted">
 				{author.book_count}
-				{author.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
+				{i18n.tn(author.book_count, 'common.bookOne', 'common.bookMany')}
 			</span>
 		{/if}
 	</span>

@@ -41,7 +41,7 @@
 	const week = $derived(today ? recentDays(log, today) : []);
 	const number = $derived(game ? t('game.number').replace('%n%', String(game.number)) : '');
 	const streakText = $derived(
-		(streak === 1 ? t('game.streakOne') : t('game.streakMany')).replace('%count%', String(streak))
+		(i18n.tn(streak, 'game.streakOne', 'game.streakMany')).replace('%count%', String(streak))
 	);
 
 	async function load() {

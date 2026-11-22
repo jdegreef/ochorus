@@ -159,10 +159,10 @@
 	const worksBits = $derived(
 		[
 			author.books.length
-				? `${author.books.length} ${author.books.length === 1 ? t('common.bookOne') : t('common.bookMany')}`
+				? `${author.books.length} ${i18n.tn(author.books.length, 'common.bookOne', 'common.bookMany')}`
 				: '',
 			author.sermons.length
-				? `${author.sermons.length} ${author.sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}`
+				? `${author.sermons.length} ${i18n.tn(author.sermons.length, 'common.sermonOne', 'common.sermonMany')}`
 				: ''
 		].filter(Boolean)
 	);

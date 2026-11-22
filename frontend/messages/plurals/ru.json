@@ -1,0 +1,62 @@
+{
+ "common_book_one": {
+  "one": "книга",
+  "few": "книги",
+  "many": "книг",
+  "other": "книги"
+ },
+ "common_sermon_one": {
+  "one": "проповедь",
+  "few": "проповеди",
+  "many": "проповедей",
+  "other": "проповеди"
+ },
+ "common_author_one": {
+  "one": "автор",
+  "few": "автора",
+  "many": "авторов",
+  "other": "автора"
+ },
+ "common_preacher_one": {
+  "one": "проповедник",
+  "few": "проповедника",
+  "many": "проповедников",
+  "other": "проповедника"
+ },
+ "common_article_one": {
+  "one": "статья",
+  "few": "статьи",
+  "many": "статей",
+  "other": "статьи"
+ },
+ "common_topic_one": {
+  "one": "тема",
+  "few": "темы",
+  "many": "тем",
+  "other": "темы"
+ },
+ "common_plan_one": {
+  "one": "план",
+  "few": "плана",
+  "many": "планов",
+  "other": "плана"
+ },
+ "common_series_one": {
+  "one": "серия книг",
+  "few": "серии книг",
+  "many": "серий книг",
+  "other": "серии книг"
+ },
+ "book_chapter_one": {
+  "one": "глава",
+  "few": "главы",
+  "many": "глав",
+  "other": "главы"
+ },
+ "search_results_one": {
+  "one": "результат",
+  "few": "результата",
+  "many": "результатов",
+  "other": "результата"
+ }
+}

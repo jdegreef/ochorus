@@ -216,7 +216,7 @@
 	/>
 	{#snippet planCounts()}
 		{plans.length}
-		{plans.length === 1 ? t('common.planOne') : t('common.planMany')}
+		{i18n.tn(plans.length, 'common.planOne', 'common.planMany')}
 	{/snippet}
 
 	{#if loadError}

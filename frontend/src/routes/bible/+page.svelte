@@ -212,10 +212,10 @@
 	/>
 	{#snippet counts()}
 		{books.length}
-		{books.length === 1 ? t('common.bookOne') : t('common.bookMany')}
+		{i18n.tn(books.length, 'common.bookOne', 'common.bookMany')}
 		{#if chapters}
 			· {chapters.toLocaleString('en')}
-			{chapters === 1 ? t('book.chapterOne') : t('book.chaptersMany')}
+			{i18n.tn(chapters, 'book.chapterOne', 'book.chaptersMany')}
 		{/if}
 	{/snippet}
 

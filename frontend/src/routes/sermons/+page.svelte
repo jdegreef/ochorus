@@ -301,7 +301,7 @@
 	// row and the list. From sm it is always open (CSS — the prerendered HTML
 	// is the same at every width, so nothing moves after first paint).
 	let canonOpen = $state(false);
-	const sermonsLabel = (n: number) => `${n} ${n === 1 ? t('common.sermonOne') : t('common.sermonMany')}`;
+	const sermonsLabel = (n: number) => `${n} ${i18n.tn(n, 'common.sermonOne', 'common.sermonMany')}`;
 
 	/** A cell is a real link (shareable, opens in a new tab); a plain click
 	 *  filters in place and brings the narrowed list into view, since the grid
@@ -434,7 +434,7 @@
 		{sermonsLabel(sermons.length)}
 		<span class="sep">·</span>
 		{preacherCount}
-		{preacherCount === 1 ? t('common.preacherOne') : t('common.preacherMany')}
+		{i18n.tn(preacherCount, 'common.preacherOne', 'common.preacherMany')}
 	{/snippet}
 
 	<!-- Filter bar, pinned under the app nav so the filters come WITH you — 24

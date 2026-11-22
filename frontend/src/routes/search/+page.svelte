@@ -1091,7 +1091,7 @@
 								{t('search.resultsMany')}
 							{:else}
 								{shownCount}
-								{shownCount === 1 ? t('search.resultsOne') : t('search.resultsMany')}
+								{i18n.tn(shownCount, 'search.resultsOne', 'search.resultsMany')}
 							{/if}
 						</p>
 					{/if}

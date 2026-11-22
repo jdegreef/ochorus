@@ -106,7 +106,7 @@
 			</p>
 			<p class="facts mt-5 text-small text-muted">
 				{#if books.length}
-					<span>{books.length} {books.length === 1 ? t('common.bookOne') : t('common.bookMany')} on Ochorus</span>
+					<span>{books.length} {i18n.tn(books.length, 'common.bookOne', 'common.bookMany')} on Ochorus</span>
 					<span class="sep" aria-hidden="true">·</span>
 				{/if}
 				<span>Hebrew &amp; Greek</span>

@@ -197,7 +197,7 @@ export function chapterNameIn(
 
 /** "9 chapters" / "1 chapter". */
 export function chapterCount(n: number): string {
-	return `${n} ${n === 1 ? i18n.t('book.chapterOne') : i18n.t('book.chaptersMany')}`;
+	return `${n} ${i18n.tn(n, 'book.chapterOne', 'book.chaptersMany')}`;
 }
 
 /**
