@@ -113,23 +113,27 @@
 			{/if}
 			{#if count}
 				{#if isOpen}
-					<ol class="chapter-grid bible-row-grid" id="chapters-{book.slug}">
-						{#each bibleChapters(book) as ch (ch.n)}
-							{@const current = !place?.finished && ch.n === place?.current}
-							{@const read = !current && ch.n <= (place?.behind ?? 0)}
-							<li>
-								<a
-									class="chapter-chip"
-									class:read
-									class:current
-									href={localizeHref(ch.href)}
-									aria-current={current ? 'step' : undefined}
-									aria-label="{ch.name}{read ? `, ${t('settings.heatmapRead')}` : ''}"
-									title={ch.name}>{ch.n}</a
-								>
-							</li>
-						{/each}
-					</ol>
+					<!-- Opened: what the book is (its house overview), then its chapters. -->
+					<div class="bible-row-panel" id="chapters-{book.slug}">
+						{#if links?.intro}<p class="bible-row-intro">{links.intro}</p>{/if}
+						<ol class="chapter-grid">
+							{#each bibleChapters(book) as ch (ch.n)}
+								{@const current = !place?.finished && ch.n === place?.current}
+								{@const read = !current && ch.n <= (place?.behind ?? 0)}
+								<li>
+									<a
+										class="chapter-chip"
+										class:read
+										class:current
+										href={localizeHref(ch.href)}
+										aria-current={current ? 'step' : undefined}
+										aria-label="{ch.name}{read ? `, ${t('settings.heatmapRead')}` : ''}"
+										title={ch.name}>{ch.n}</a
+									>
+								</li>
+							{/each}
+						</ol>
+					</div>
 				{/if}
 			{/if}
 		</li>
@@ -267,8 +271,15 @@
 			transition: none;
 		}
 	}
-	.bible-row-grid {
+	.bible-row-panel {
 		grid-column: 1 / -1;
 		margin-block: 0.6rem 0.25rem;
+	}
+	.bible-row-intro {
+		max-width: 65ch;
+		margin: 0 0 0.75rem;
+		font-size: var(--fs-small);
+		line-height: 1.55;
+		color: var(--muted);
 	}
 </style>

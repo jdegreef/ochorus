@@ -1,0 +1,104 @@
+{
+    "kind": "sermon",
+    "slug": "god-made-man-to-worship",
+    "language": "am",
+    "job_issue": 8253,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Psalm 45:11",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 1
+        },
+        {
+            "reference": "John 4:24",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 1
+        },
+        {
+            "reference": "Genesis 3:9",
+            "status": "self_rendered",
+            "block_index": 7
+        },
+        {
+            "reference": "Revelation 22:9",
+            "status": "self_rendered",
+            "block_index": 7
+        },
+        {
+            "reference": "2 Thessalonians 1:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 8
+        },
+        {
+            "reference": "Genesis 18:27",
+            "status": "self_rendered",
+            "block_index": 13
+        },
+        {
+            "reference": "John 17:12",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "1 Corinthians 10:20-21",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 29
+        },
+        {
+            "reference": "1 Corinthians 10:21",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 30
+        },
+        {
+            "reference": "Romans 1:28",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 111
+        },
+        {
+            "reference": "Revelation 1:18",
+            "status": "self_rendered",
+            "block_index": 118
+        },
+        {
+            "reference": "1 Corinthians 6:19",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 127
+        },
+        {
+            "reference": "John 8:24",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 130
+        },
+        {
+            "reference": "John 3:3",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 130
+        },
+        {
+            "reference": "Luke 13:3",
+            "status": "self_rendered",
+            "block_index": 131
+        },
+        {
+            "reference": "Isaiah 28:10",
+            "status": "self_rendered",
+            "block_index": 134
+        },
+        {
+            "reference": "Psalm 96:9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 140
+        }
+    ]
+}
