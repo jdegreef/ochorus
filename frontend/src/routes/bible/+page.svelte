@@ -38,7 +38,7 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
-	import BookCard from '$lib/components/BookCard.svelte';
+	import BibleCoverGrid from '$lib/components/BibleCoverGrid.svelte';
 	import BibleCanonStrip from '$lib/components/BibleCanonStrip.svelte';
 	import BibleTodayHero from '$lib/components/BibleTodayHero.svelte';
 	import BibleBookList from '$lib/components/BibleBookList.svelte';
@@ -490,13 +490,7 @@
 					<section class="bible-division">
 						<GroupHeading as="h3" name={t(divisionKey(group.division.id))} count={group.books.length} />
 						{#if asCovers}
-							<!-- No author line: every book is the Open Word Bible's. No series
-							     line: every book is in the one series this page is. -->
-							<div class="book-grid">
-								{#each group.books as book (book.slug)}
-									<BookCard {book} showSeries={false} />
-								{/each}
-							</div>
+							<BibleCoverGrid books={group.books} bind:open={openBook} {placeOf} {linksOf} />
 						{:else}
 							<BibleBookList books={group.books} bind:open={openBook} {placeOf} {linksOf} />
 						{/if}
