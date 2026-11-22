@@ -14,7 +14,32 @@
   "description": "Jeremy Taylor\u2019s companion to Holy Living, written after the death of his wife: the shortness and misery of life considered and put to practice, daily preparation for death, the temptations and graces of sickness, and the ministry of those who visit the dying, with prayers throughout.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Jeremy Taylor\u2019s Holy Dying?",
+    "answer": "The Rule and Exercises of Holy Dying, published in 1651, is the companion to Taylor\u2019s Holy Living. It teaches how to prepare for death through the whole of life, how to bear sickness, and how to die well in faith and hope. It includes guidance for those who visit and care for the dying, with prayers throughout."
+   },
+   {
+    "question": "Why did Taylor write Holy Dying?",
+    "answer": "He wrote it soon after the death of his wife, and dedicated it to the Earl of Carbery, his patron. In the dedication he says he will take the earl into a charnel house and carry his meditations into the chambers of death, so that thoughts beginning with a sigh might end in holy resolution. Grief gave the book its depth."
+   },
+   {
+    "question": "What does Taylor say about the shortness of life?",
+    "answer": "He opens with a meditation on the vanity and shortness of human life, quoting the Greek proverb that a man is a bubble. Life rises and bursts quickly, and death comes to the young as well as the old, at sea, in childbirth or in sickness. Taylor\u2019s vivid examples are meant not to depress but to awaken readers to use their time for God."
+   },
+   {
+    "question": "How should we prepare for death throughout life?",
+    "answer": "Taylor gives three precepts for preparing for a holy death: daily examination of our actions while we are in health, exercising charity throughout our whole life, and keeping our souls ready, so that death does not catch us unprepared. A good death, he teaches, is the fruit of a holy life."
+   },
+   {
+    "question": "What does Taylor say about sickness?",
+    "answer": "He treats sickness as a time of temptation and grace. Its first temptation is impatience, and he gives remedies by consideration and by practice. He also lists the advantages of sickness: it humbles pride, loosens our hold on the world and draws us to God. He addresses fear of death and the doubts that can trouble the dying."
+   },
+   {
+    "question": "Who is the last part of Holy Dying written for?",
+    "answer": "The final chapters address those who minister to the sick and dying, especially clergy. Taylor gives practical counsel on how to visit, how to help the dying repent and believe, how to comfort them, and which prayers and Scriptures to use. Many have found it a wise guide for pastoral care at the end of life."
+   }
+  ],
   "publication_year": 1651,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/taylor/holy_dying",

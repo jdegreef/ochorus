@@ -14,7 +14,32 @@
   "description": "The four writings that launched the Reformation: the Ninety-five Theses against indulgences (1517) and Luther\u2019s three great treatises of 1520 \u2014 the appeal to the German nobility to reform the Church, the freedom of a Christian, and the attack on the medieval sacramental system in the Babylonish Captivity.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is First Principles of the Reformation?",
+    "answer": "It is a collection of the four writings by Martin Luther that launched the Protestant Reformation: the Ninety-five Theses of 1517, and his three great treatises of 1520, the Address to the Christian Nobility of the German Nation, Concerning Christian Liberty, and On the Babylonish Captivity of the Church."
+   },
+   {
+    "question": "What are the Ninety-five Theses?",
+    "answer": "They are propositions Luther wrote in 1517 for debate on the sale of indulgences, which offered release from the penalties of sin in exchange for money. He sent them to Archbishop Albert of Mainz with a letter of protest. Among the theses he declares that the true treasure of the Church is the holy Gospel of the glory and grace of God."
+   },
+   {
+    "question": "What is the Address to the Christian Nobility?",
+    "answer": "In this 1520 treatise Luther appeals to the German princes and nobles to reform the Church, since the clergy would not. He attacks three walls the Roman authorities had built around themselves: the claim that spiritual power is above temporal power, that only the pope may interpret Scripture, and that only the pope may call a council."
+   },
+   {
+    "question": "What is Concerning Christian Liberty?",
+    "answer": "Also called The Freedom of a Christian, this short 1520 treatise begins with two famous propositions: a Christian is the most free lord of all, subject to none; and a Christian is the most dutiful servant of all, subject to everyone. Luther explains that faith in Christ sets us free from the law, and love then makes us servants of our neighbors."
+   },
+   {
+    "question": "What is the Babylonish Captivity of the Church?",
+    "answer": "In this treatise Luther examines the seven sacraments of the medieval Church. He argues that only those instituted by Christ with a promise, chiefly baptism and the Lord\u2019s Supper, with penance discussed separately, are true sacraments. He compares the Church held under papal rules to Israel held captive in Babylon, and calls for its liberation by the Word."
+   },
+   {
+    "question": "Why are these writings so important?",
+    "answer": "Together they set out the core ideas of the Reformation: that salvation comes by faith in God\u2019s promise, not by purchase or works; that Scripture is the final authority; that all believers are priests; and that the Church must be reformed by the Word of God. They changed the course of Christian history."
+   }
+  ],
   "publication_year": 1520,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/luther/first_prin",

@@ -14,7 +14,32 @@
   "description": "The founder of the Salvation Army surveys London\u2019s \u201csubmerged tenth\u201d \u2014 the homeless, the out-of-work, the drunkard, the prostitute, the criminal and the child of the streets \u2014 and sets out his Scheme to raise them: a City Colony, a Farm Colony and a Colony Over-Sea.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is In Darkest England and the Way Out?",
+    "answer": "It is a book by William Booth, founder of the Salvation Army, published in 1890. Booth describes the condition of the poorest people in England, whom he calls the submerged tenth, and sets out a detailed scheme to rescue them, combining practical help with the gospel."
+   },
+   {
+    "question": "Why is it called Darkest England?",
+    "answer": "The title echoes Henry Morton Stanley\u2019s account of his journey through Darkest Africa, published that same year. Booth argues that there is a darkness as terrible in England itself, in the slums of its great cities, where millions live in poverty, vice and despair, largely ignored by the comfortable."
+   },
+   {
+    "question": "What is the submerged tenth?",
+    "answer": "Booth estimates that about three million people, roughly one-tenth of the population, were sunk in hopeless poverty: the homeless, the starving, the unemployed, the drunkards, the prostitutes, the criminals and the abandoned children. He describes each group in detail, drawing on the Salvation Army\u2019s experience and the reports of others."
+   },
+   {
+    "question": "What is the Cab Horse standard?",
+    "answer": "Booth proposes a humble minimum standard for every human being: that of the London cab horse. When a cab horse falls in the street, it is helped up, and every cab horse has shelter, food and work. Booth asks that every man, woman and child in England be given at least as much."
+   },
+   {
+    "question": "What was Booth\u2019s scheme?",
+    "answer": "He proposed three linked colonies. The City Colony would offer shelter, food and work in the towns. The Farm Colony would train people in agriculture in the countryside. The Colony Over-Sea would help them settle in new lands abroad. Alongside these were plans for rescue homes, employment bureaus, legal help and more."
+   },
+   {
+    "question": "How was religion part of Booth\u2019s plan?",
+    "answer": "Booth insisted that social help and salvation belong together. He believed that changed circumstances alone could not save a person without a changed heart, but also that it was hard to preach to people who were starving. His plan aimed to rescue the whole person, body and soul, for the love of Christ."
+   }
+  ],
   "publication_year": 1890,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/475",
