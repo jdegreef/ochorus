@@ -12,7 +12,32 @@
   "cover_byline": "Martin Luther",
   "description": "A concise, faithful guide to the heart of Martin Luther’s teaching — the righteousness of God given as a gift, faith alone, the theology of the cross, law and gospel, the freedom of a Christian, the Word, vocation, prayer and comfort for the dying — told honestly, with his grave faults named. Twenty short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Luther’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Martin Luther. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into twenty short chapters for the ordinary reader, with an account of his life, a conclusion, and a guide to his writings. It draws its quotations only from the six of his sermons that sit in the Ochorus library; his treatises, catechisms and commentaries are described in the present author’s own words.</p><p>Luther’s teaching has one thread. The righteousness God requires is the righteousness God gives, freely, in Christ, and it is received by faith alone; and everything he wrote about the cross, the law, the will, the Word, the sacraments, prayer, work, marriage and death is that discovery followed out into the whole of life. This volume follows the thread, and it is plain about the places where Luther must be read with sorrow as well as gratitude — above all his late writings against the Jews, his savage words in the Peasants’ War, and the coarseness of his polemic.</p><p>Luther’s own writings are in the public domain and freely available in older English translations, and every chapter here names the work it draws on so that the reader can go to the source. This companion is offered only to open the door. Scripture is quoted from the Authorised (King James) Version, and nothing here claims to stand in for the man’s own vigorous, earthy and consoling pages.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of Martin Luther?",
+    "answer": "It is a short guide to the heart of Martin Luther’s teaching, written as a companion to his own works rather than by him, with his grave faults named. After a chapter on his life, it sets out the righteousness of God given as a gift, faith alone, the theology of the cross, law and gospel, the freedom of a Christian, the bondage of the will, the Word, the priesthood of all believers, vocation, baptism, prayer, the catechism, spiritual assault and comfort for the dying."
+   },
+   {
+    "question": "Who was Martin Luther?",
+    "answer": "Martin Luther was born on 10 November 1483 at Eisleben in Saxony, the son of a miner who rose to lease smelters of his own. On 2 July 1505, caught in a thunderstorm near Stotternheim, he vowed to become a monk. He became a professor of theology at Wittenberg, and from his lecture room came the Reformation. He translated the Bible into German, wrote hymns, married Katharina von Bora and taught a nation its catechism. He died at Eisleben on 18 February 1546."
+   },
+   {
+    "question": "What did Luther discover about the righteousness of God?",
+    "answer": "As a monk, Luther feared the phrase the righteousness of God, because he heard it as the justice by which God punishes sinners. Reading Paul, above all Romans 1:17, he came to see that it means the righteousness God gives as a gift, by which the just live by faith. The companion treats this as the heart of the Reformation, leading directly to his teaching on faith alone and on the believer as righteous and a sinner at once."
+   },
+   {
+    "question": "What is The Freedom of a Christian about?",
+    "answer": "In this short treatise of 1520 Luther set out a famous paradox: a Christian is a perfectly free lord of all, subject to none, and a perfectly dutiful servant of all, subject to all. Through faith the soul is free, because it has everything in Christ. Through love the Christian freely serves the neighbour. The companion gives the idea a chapter called Lord of All, Servant of All."
+   },
+   {
+    "question": "Does the book discuss Luther’s writings against the Jews?",
+    "answer": "Yes, plainly and first. It says that in his last years he wrote against the Jews with a hatred that cannot be excused, and that in On the Jews and Their Lies (1543) he urged that synagogues be burned, Jewish homes destroyed and Jewish teachers silenced. It calls these writings the deepest stain on his name, to be read only as history, with sorrow and as a warning, not as guides to Christian thought or practice."
+   },
+   {
+    "question": "Where should I start reading Martin Luther?",
+    "answer": "The book’s reader’s guide recommends starting with The Freedom of a Christian (1520), which is short, calm and beautiful; if you read only one of his treatises, read this. Then read the Small Catechism (1529), especially its explanations of the Creed and the Lord’s Prayer, and A Simple Way to Pray (1535), the little book he wrote for his barber. For his life it suggests Roland Bainton’s Here I Stand."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",

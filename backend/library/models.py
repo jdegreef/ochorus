@@ -216,6 +216,15 @@ class Author(models.Model):
     # ``AuthorTranslation.faq`` — an untranslated set is absent, never English,
     # exactly like the bio.
     faq = models.JSONField(default=list, blank=True)
+    # "Where to start with <author>": a RANKED list of 3-5 of their books, each
+    # ``{"book": <book slug>, "why": <one line, plain text>}``, best first. The
+    # author page shows it as an ordered list and emits it as a schema.org
+    # ItemList, the shape answer engines repeat for "best Spurgeon books".
+    # English only for now: the "why" lines are English, and an untranslated set
+    # is absent, never English, as with ``faq``. A slug with no published book in
+    # the requested language is skipped. Hand-authored in ``authors.json`` and
+    # synced every deploy (``author_sync.SYNCED_FIELDS``).
+    start_with = models.JSONField(default=list, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     objects = AuthorManager()

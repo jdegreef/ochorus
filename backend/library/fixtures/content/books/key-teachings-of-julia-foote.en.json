@@ -12,7 +12,32 @@
   "cover_byline": "Julia A. J. Foote",
   "description": "A concise, faithful guide to the heart of Julia A. J. Foote’s message — that Christ saves not only from the guilt of sin but from its power, that this full salvation is received by faith and shows itself as love, and that the Spirit who cleanses a heart may send whom He will to preach. Ten short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Julia Foote’s own public-domain memoir, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Julia A. J. Foote. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of her teaching into ten short chapters for the ordinary reader, and tells the story of the life that gave that teaching its force. It is shorter than other volumes in this series, and deliberately so. Her own written legacy is one small book, A Brand Plucked from the Fire, published in 1879, together with a few fragments of her words recorded by others, and a companion ought not to be longer than it can honestly be.</p><p>Her one theme was full salvation. She believed that the blood of Christ does not only pardon the sinner but cleanses the believer, that this cleansing is received by faith and not earned by years of struggle, and that it shows itself as love. She believed that the same Spirit who makes a heart clean may fill any mouth He chooses, a Black woman’s as readily as a bishop’s, and she paid for that belief with her church membership. This volume follows that thread through her conversion, her sanctification, her call, her expulsion, her defence of women in the gospel, her witness against slavery and prejudice, her warnings against drink and worldliness, and her long years of travel and illness. It weighs her fairly where she pressed too hard, and it ends each chapter where she would have wanted it to end: in a few questions and a prayer.</p><p>Julia Foote’s own writing is in the public domain and freely available, and this companion quotes it and names it throughout so that the reader can go straight to the source. It is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, the Bible she learned to read by firelight as a girl, and it makes no claim to stand in for her own plain, fervent and searching words.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of Julia A. J. Foote?",
+    "answer": "It is a short guide to the heart of Julia Foote’s message, written as a companion to her memoir, A Brand Plucked from the Fire, rather than by her. After a chapter on her life, it sets out her conversion, the inward foes that remain after it, full salvation received by faith, love as its mark, her call to preach, her defence of women in the gospel, her stand against prejudice, and her counsel about the world and trials."
+   },
+   {
+    "question": "Who was Julia Foote?",
+    "answer": "Julia Foote was born in 1823 in Schenectady, New York. Her father had been born free but was stolen and enslaved as a child, and her mother was born a slave. She was converted at fifteen, married a sailor, George Foote, and joined the African Methodist Episcopal Zion congregation in Boston. She was called to preach, and her minister had her put out of his church for it, but she went on preaching for decades. In 1894 the same church ordained her its first woman deacon. She died in 1900."
+   },
+   {
+    "question": "What did Julia Foote mean by full salvation?",
+    "answer": "She taught that Christ saves not only from the guilt of sin but from its power. After her conversion she found inward foes still in her heart, and later received what she called sanctification as a second work of grace, received by faith. The companion explains that for her it showed itself as love, so that every temper contrary to love was to be put away. She preached it as a present blessing, not a distant hope."
+   },
+   {
+    "question": "Why did Julia Foote’s church expel her?",
+    "answer": "When she believed God had called her to preach, her minister in Boston, Jehiel Beman, would not allow her to preach her holiness teaching in his church. When a brother opened his house to her, the minister sent a committee to warn him that he would be excommunicated if he allowed it again, and she was put out of the church herself. She answered that her business was with the Lord and that she would go in wherever a door opened. The book gives a chapter to her defence of women preaching from Scripture."
+   },
+   {
+    "question": "Does the book say anything critical about her teaching?",
+    "answer": "Yes. It says at the outset where she must be read with care. With the Methodist holiness tradition of her day, she taught that entire sanctification is a second, distinct work of grace received in a moment, in which the root of sin is destroyed, and she wrote in very strong terms about sin no longer existing in the sanctified. The companion sets this out honestly, as a view many Christians who share her longing for holiness do not hold."
+   },
+   {
+    "question": "Where should I start reading Julia Foote?",
+    "answer": "The book’s reader’s guide recommends her only book, A Brand Plucked from the Fire: An Autobiographical Sketch (1879), read straight through. If time is short, read first the chapters on her conversion, her sanctification, her call to preach and her excommunication, then Women in the Gospel and the three closing chapters, A Word to My Christian Sisters, Love Not the World and How to Obtain Sanctification, the nearest thing she left to written teaching."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",

@@ -11,7 +11,32 @@
   "subtitle": "An Ochorus companion to his life and teaching",
   "description": "A concise, faithful guide to the pastoral heart of Richard Baxter — the saints' everlasting rest, the call to the unconverted, and the minister's charge to take heed to himself and to all the flock. Fifteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Baxter's own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is a companion to Richard Baxter, not a book by him. Written by Ochorus, it renders the pastoral wisdom of the great Puritan of Kidderminster into fifteen short chapters in plain modern English.</p><p>Baxter wrote, by his own account, as a dying man to dying men, and the urgency never left him. Out of a lifetime of sickness and labour came books the church has never let go of: The Saints' Everlasting Rest, on the heaven the weary are travelling toward; A Call to the Unconverted, pressed on the careless with tears; and The Reformed Pastor, still the most searching book a minister can read about his own soul. This volume follows those themes and more — conversion, family religion, the crucifying of the world, counsel for the melancholy, peace among Christians — and ends each chapter, as Baxter would, in self-examination and prayer.</p><p>Baxter's own writings are in the public domain and freely available. Because his seventeenth-century English can be heavy going, this companion renders his thought into modern prose rather than quoting it, and names his works throughout so the reader may go to the source. Scripture is quoted from the Authorised (King James) Version.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of Richard Baxter?",
+    "answer": "It is a short guide to the pastoral heart of Richard Baxter, written as a companion to his own works rather than by him. After a chapter on his life, it sets out his call to be a mere Christian, the saints’ everlasting rest, the call to the unconverted, faith and justification, the work of the pastor and of catechising, family religion, the life of faith, redeeming the time, counsel for the melancholy, peace among Christians, suffering and dying thoughts."
+   },
+   {
+    "question": "Who was Richard Baxter?",
+    "answer": "Richard Baxter was born on 12 November 1615 at Rowton in Shropshire. He never went to university, but by hard reading became one of the most learned men in England. In 1641 he went to Kidderminster, a rough weaving town, where his patient pastoral work changed the parish over some twenty years. After 1662 he was put out of the Church of England, preached when he was permitted and wrote some 140 works. He died in London on 8 December 1691, aged seventy-six."
+   },
+   {
+    "question": "What did Baxter mean by a mere Christian?",
+    "answer": "Weary of being asked which party he belonged to, Baxter said he was a Christian, a mere Christian, of no other religion, and would not be labelled by any narrower name. The companion gives this a chapter and notes that nearly three centuries later C. S. Lewis borrowed the phrase for a book. It also shapes the later chapter on peace among Christians, which Baxter laboured for all his life."
+   },
+   {
+    "question": "What is The Reformed Pastor about?",
+    "answer": "It is Baxter’s charge to ministers, on Paul’s words to take heed to yourselves and to all the flock. He called pastors to look first to their own souls, and then to care for every person in the parish, above all by visiting families and teaching them one by one. At Kidderminster he gave himself to catechising the households of his parish. The companion gives chapters to the pastor and to catechising, with a caution about applying his method today."
+   },
+   {
+    "question": "Does the book say Baxter must be read with care?",
+    "answer": "Yes. It names his teaching on justification, where his concern to protect holiness led him to a remedy that, in the judgment of most Reformed theologians then and since, compromised the freeness of justification. His later followers pressed his views further than he did, and the controversy over what came to be called neonomianism divided English Nonconformity for generations. The companion sets out both sides and then says plainly that it agrees with that majority judgment."
+   },
+   {
+    "question": "Where should I start reading Richard Baxter?",
+    "answer": "The book’s reader’s guide recommends starting with The Reformed Pastor (1656), his most useful book and the one still read, which every pastor, elder and Sunday school teacher should read once. Then read A Call to the Unconverted (1658), short, plain and still usable as an evangelistic gift. The Saints’ Everlasting Rest (1650) is best read in an abridgement, which keeps the description of heaven and the directions for heavenly meditation."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",

@@ -12,7 +12,32 @@
   "cover_byline": "John Owen",
   "description": "A concise, faithful guide to the heart of John Owen’s teaching — the daily killing of sin through the Spirit, the marks of a dangerous sin and the directions for dealing with it, faith fixed on Christ crucified, and the communion with Father, Son and Spirit that makes the fight worthwhile. Fifteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Owen’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by John Owen. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into fifteen short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his books. It draws most closely on The Mortification of Sin in Believers, which is in the Ochorus library, and describes his other great works in plain modern prose.</p><p>Owen’s one theme was communion with God. Sin is dreadful because it spoils that fellowship, and so it must be put to death; Christ has died to make both the fellowship and the dying possible; and the end of it all is to see His glory. This volume follows that thread from his searching directions for killing sin, through his writing on communion with the Trinity, temptation, indwelling sin, the atonement, the spiritual mind and the church, and it is honest about where he must be read with care: his dense style, his disputed doctrine of definite atonement, and his part in the Commonwealth.</p><p>Owen’s own writings are in the public domain and freely available, and every chapter here names them so the reader can go to the source. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and it makes no claim to stand in for the man’s own exacting, prayerful pages.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of John Owen?",
+    "answer": "It is a short guide to the heart of John Owen’s teaching, written as a companion to his own works rather than by him. After a chapter on his life, it sets out the daily killing of sin through the Spirit, the marks of a dangerous sin, faith fixed on Christ crucified, communion with the Father, Son and Spirit, the glory of Christ, temptation and indwelling sin, the atonement, spiritual-mindedness and liberty of conscience, with a reader’s guide."
+   },
+   {
+    "question": "Who was John Owen?",
+    "answer": "John Owen was born in 1616 at Stadhampton, near Oxford, the son of a Puritan minister, and entered Queen’s College, Oxford, at about twelve. He became chaplain to Oliver Cromwell, Dean of Christ Church and, in 1652, Vice-Chancellor of the University of Oxford. After 1662 he was put out of the Church of England with some two thousand other ministers and spent the rest of his life as a Nonconformist pastor in London. He died at Ealing on 24 August 1683, dictating a book on the glory of Christ."
+   },
+   {
+    "question": "What did Owen mean by be killing sin or it will be killing you?",
+    "answer": "The sentence comes from his little book of 1656, The Mortification of Sin in Believers, an exposition of Romans 8:13. Owen first spoke it to young Christians at Oxford. He was not frightening unbelievers but telling believers that forgiveness does not end the fight with sin, which must be their daily work as long as they live. The companion stresses that it is only half of him, and that the work is done through the Spirit, not by willpower."
+   },
+   {
+    "question": "What is communion with God in Owen’s teaching?",
+    "answer": "Owen taught that believers have distinct fellowship with each person of the Trinity: with the Father in his love, with the Son in his grace, and with the Spirit in his comfort. The companion presents this as what makes the fight against sin worthwhile. The man remembered for killing sin spent the best of his life writing about the love of the Father, the beauty of Christ and the comfort of the Holy Spirit."
+   },
+   {
+    "question": "Does the book say Owen must be read with care?",
+    "answer": "Yes. It names his heavy style, which can multiply distinctions until a reader loses the way. It notes that his view of the atonement in The Death of Death in the Death of Christ, that Christ died with the definite intention of saving his elect, is read differently by many faithful Christians, including other Puritans who loved him. And it names his close part in Cromwell’s Commonwealth, while noting that he used his power at Oxford fairly."
+   },
+   {
+    "question": "Where should I start reading John Owen?",
+    "answer": "The book’s reader’s guide recommends starting with The Mortification of Sin in Believers (1656), which is short, practical and searching, ends with Christ, and is the source of most of the companion. Read it slowly, a few pages at a time. Then read Of Temptation: The Nature and Power of It (1658), and after that Indwelling Sin (1667), the fullest and hardest of the three. They are often printed together."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",

@@ -1,0 +1,9 @@
+{
+ "why": "A stray \"]]\" inside an italic phrase (ch. 19). Found in the top-50 site bug review (2026-11-22).",
+ "replacements": [
+  [
+   "because he lived many]] hundred years ago",
+   "because he lived many hundred years ago"
+  ]
+ ]
+}

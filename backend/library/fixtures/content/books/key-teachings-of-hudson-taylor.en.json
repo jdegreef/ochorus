@@ -12,7 +12,32 @@
   "cover_byline": "Hudson Taylor",
   "description": "A concise, faithful guide to the heart of Hudson Taylor’s message — the finished work of Christ, moving man through God by prayer alone, the exchanged life, union and communion with Christ, separation and service, and the burden for China’s inland millions — and the single truth beneath it all: that God is faithful and can be trusted absolutely. Seventeen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Taylor’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Hudson Taylor. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into seventeen short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his books and to the best lives of him.</p><p>Taylor’s one theme was the faithfulness of God. He learned it as a boy converted by a tract about a work already finished, tested it as a medical student with his last half-crown, staked a mission on it on the sands at Brighton, and came to rest in it in 1869 when he saw that he was to lean not on his own faith but on the Faithful One. From that single conviction came everything else he taught: prayer as transacting business with God, finance without debt or appeal, abiding in Christ as a branch in the vine, the union and communion of the Song of Solomon, Nazarite separation and glad service, and a burden for inland China that cost him dearly. This volume follows that thread, weighs honestly the places where he must be read with care, and ends each chapter in a few questions and a prayer.</p><p>Taylor’s own writings are in the public domain and freely available, and every chapter here names them so the reader can go to the source; A Retrospect, Union and Communion, Separation and Service and nine of his addresses are in the Ochorus library. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and it makes no claim to stand in for the man’s own plain, warm and searching pages.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of Hudson Taylor?",
+    "answer": "It is a short guide to the heart of Hudson Taylor’s teaching, written as a companion to his own writings rather than by him. After a chapter on his life, it sets out the finished work of Christ, belonging wholly to God, moving man through God by prayer, the faithfulness of God, the exchanged life, communion with Christ from the Song of Songs, the morning watch, separation and self-denial, and his burden for China, with a guide to his books."
+   },
+   {
+    "question": "Who was Hudson Taylor?",
+    "answer": "James Hudson Taylor was born on 21 May 1832 in Barnsley, Yorkshire. His father had prayed for a son who would go to China. He went there at twenty-one, with half-finished medical training and no money of his own, and on 25 June 1865, on the sands at Brighton, gave himself to God to found what became the China Inland Mission. He suffered heavy bereavements and long illness, and died at Changsha, in Hunan, on 3 June 1905."
+   },
+   {
+    "question": "How was Hudson Taylor converted?",
+    "answer": "In June 1849, when he was seventeen, he picked up a gospel tract in his father’s library, meaning to read the story and skip the sermon. The phrase the finished work of Christ stopped him. He saw that if the whole work was finished and the debt paid, there was nothing left for him to do but receive it. The book’s chapter The Finished Work tells the story and shows how this rest in Christ’s work shaped everything after."
+   },
+   {
+    "question": "What did Hudson Taylor mean by moving man through God by prayer alone?",
+    "answer": "As a young man in England, before going to China, he resolved to learn to move people through God, by prayer alone, rather than by appeals for money. The China Inland Mission was founded on this principle: its needs were made known to God, not through collections or debt. The book gives this a chapter, followed by one on the faithfulness of God and one on his rule to owe no one anything."
+   },
+   {
+    "question": "What is the exchanged life?",
+    "answer": "It is the phrase used for the discovery Hudson Taylor made in 1869, when he saw that he was not to lean on the strength of his own faith but on the faithfulness of Christ, and that Christ himself was his life. He had been weary and discouraged by his own failures; this brought him rest. The book gives it a chapter, and follows it with his teaching from the Song of Songs on communion with Christ, broken and restored."
+   },
+   {
+    "question": "Where should I start reading Hudson Taylor?",
+    "answer": "The book’s reader’s guide recommends starting with A Retrospect, his own short account of his conversion, call and the founding of the China Inland Mission, which reads like a story and shows his principles at work. Then read Union and Communion, his meditations on the Song of Songs, which is quieter and deeper. His addresses, such as A Ribband of Blue, make a good further step."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",
