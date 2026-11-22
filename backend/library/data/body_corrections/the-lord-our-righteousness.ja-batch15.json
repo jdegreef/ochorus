@@ -1,0 +1,13 @@
+{
+ "why": "A stray quotation mark and a word-order slip in Whitefield's The Lord Our Righteousness, found while translating it to Japanese (job #9647).",
+ "replacements": [
+  [
+   "imputed righteousness is “destructive",
+   "imputed righteousness is destructive"
+  ],
+  [
+   "Arminian being antichristian principles",
+   "Arminian principles being antichristian"
+  ]
+ ]
+}
