@@ -14,7 +14,32 @@
   "description": "The second series of Spurgeon's lectures to the students of the Pastors' College, published in 1877. It opens with the work of the Holy Spirit in the ministry and the need for constant progress and decision for the truth, gives two lectures to the history and practice of open-air preaching, and two — sharp and very funny — to posture, action and gesture in the pulpit. It closes with earnestness, the wisdom of having “one blind eye and one deaf ear,” and conversion as the preacher's great aim. Written, Spurgeon says, “entirely for students and beginners in preaching,” it remains a pastor's handbook full of hard-won counsel.",
   "hook": "Spurgeon on the Spirit's power, open-air preaching, earnestness and soul-winning.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is the second series of Lectures to My Students?",
+    "answer": "It is the second volume of Charles Spurgeon’s lectures to the students of his Pastors’ College, published in 1877 after the first series was warmly received. Spurgeon says it is written entirely for students and beginners in preaching. It covers the Holy Spirit in ministry, growth, firmness for truth, open-air preaching, gesture, earnestness and conversion."
+   },
+   {
+    "question": "What does Spurgeon say about the Holy Spirit in ministry?",
+    "answer": "The opening lecture insists that the preacher depends wholly on the Holy Spirit, for knowledge, for utterance and for any real effect on hearers. Without the Spirit, the most gifted preaching will fail; with him, even weak preaching can be powerful. Spurgeon urges his students to seek the Spirit’s help in study, prayer and the pulpit."
+   },
+   {
+    "question": "What does Spurgeon say about open-air preaching?",
+    "answer": "Two lectures trace the history of open-air preaching, from Christ and the apostles through the friars to Whitefield and Wesley, and give practical advice for doing it well. He calls it a brave day for England when Whitefield began field preaching, and urges his students to take the gospel outdoors to those who will never enter a church."
+   },
+   {
+    "question": "What are the lectures on posture and gesture about?",
+    "answer": "In two lively and humorous lectures, Spurgeon describes the awkward habits preachers fall into: stiffness, wild gesturing, odd postures and distracting mannerisms. He wants their movements to be natural and serve the message. He also warns sharply that faking fervor through theatrical tricks is a loathsome deceit to be scorned by honest men."
+   },
+   {
+    "question": "What is the blind eye and the deaf ear?",
+    "answer": "Spurgeon often told his students that a minister ought to have one blind eye and one deaf ear. He means that a wise pastor does not see every slight or hear every piece of gossip, criticism or old quarrel in the church. By applying his blind eye to disputes before his time, he says, he avoided endless strife."
+   },
+   {
+    "question": "What does Spurgeon say should be the preacher’s aim?",
+    "answer": "The final lecture, On Conversion as Our Aim, insists that the great goal of preaching is the conversion of sinners. Preachers should not be content with pleasing hearers or teaching doctrine, but should yearn for souls to be saved, preaching with that purpose, and praying for it until they see the fruit."
+   }
+  ],
   "publication_year": 1877,
   "source_type": "public_domain",
   "source_url": "https://archive.org/details/1877secondseries00spur",

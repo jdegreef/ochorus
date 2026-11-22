@@ -14,7 +14,32 @@
   "description": "Charles G. Finney's searching lectures from New York, delivered to church members rather than to the unconverted: on self-deception, true and false conversion, conformity to the world, justification and sanctification by faith, and love as the whole of religion.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What are Finney\u2019s Lectures to Professing Christians?",
+    "answer": "They are lectures delivered by the revivalist Charles Finney in New York in the 1830s, published in 1837. Unlike his lectures on revival, these are addressed to church members rather than the unconverted. Finney searches the consciences of professing Christians, exposing self-deception and calling them to genuine faith, holiness and love."
+   },
+   {
+    "question": "What does Finney say about self-deceivers?",
+    "answer": "The first lecture, on James 1:22, \u201cBe ye doers of the word, and not hearers only, deceiving your own selves,\u201d describes two extremes in religion, equally false and fatal. Some make religion only a matter of believing abstract doctrines with little stress on good works; others rest everything on their own works with little faith in Christ."
+   },
+   {
+    "question": "How does Finney distinguish true and false conversion?",
+    "answer": "In True and False Conversions and related lectures, Finney argues that false converts are still selfish at heart: their religion is driven by fear of hell or hope of reward for themselves. True conversion is a change from selfishness to benevolence, from living for oneself to living for God and others, and shows itself in a changed life."
+   },
+   {
+    "question": "What does Finney say about conformity to the world?",
+    "answer": "He insists that Christians must not conform to the world in business, fashion, politics or pleasure. Following the world\u2019s standards in these areas, he argues, shows that one\u2019s heart is still governed by the world\u2019s values. He calls church members to live by God\u2019s law even when it costs them financially or socially."
+   },
+   {
+    "question": "What does Finney teach about sanctification?",
+    "answer": "Finney taught that believers are sanctified by faith, just as they are justified by faith, and that Christians should aim at a life of full obedience. His lectures on Christian perfection argue that God commands perfect love and provides grace to obey. These views were controversial among his contemporaries."
+   },
+   {
+    "question": "Why does Finney say love is the whole of religion?",
+    "answer": "In the closing lecture, on Romans 13:10, \u201cLove is the fulfilling of the law,\u201d Finney argues that all true religion consists in love: supreme love to God and impartial love to our neighbors. Every duty and virtue is a form of this love, and anything that lacks it, however religious it looks, is not true religion."
+   }
+  ],
   "publication_year": 1837,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/finney/toprofessingchristians",
