@@ -1,0 +1,32 @@
+{
+  "title": "Esdras",
+  "cover_title": "",
+  "subtitle": "Ezra, «Ayuda»",
+  "description": "El libro del regreso del exilio, que comienza con un emperador pagano cuyo espíritu despertó el SEÑOR: «que suba a Jerusalén, en Judá, y edifique la casa del SEÑOR». Familias contadas por nombre de regreso a casa; un altar sobre sus antiguas bases; los ancianos llorando y los jóvenes gritando de alegría mientras se echan los cimientos; años de oposición, dos profetas, una búsqueda en los archivos persas y por fin un templo terminado. Luego, dos generaciones después, Esdras el escriba, que se había propuesto estudiar la ley del SEÑOR, ponerla en práctica y enseñarla, ayunando junto a un canal antes de un viaje peligroso y elevando una gran oración de confesión por su pueblo. En la Open Word Bible, una nueva traducción del hebreo y del arameo entregada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre qué leer después.",
+  "qa": [
+    {
+      "question": "¿De qué trata el libro de Esdras?",
+      "answer": "Del regreso de los judíos del exilio en Babilonia y de la reconstrucción de su vida en Judá. Los capítulos 1–6 cuentan cómo Ciro, rey de Persia, permitió a los exiliados volver a casa en el 538 a. C., cómo reconstruyeron el altar y echaron los cimientos del templo, y cómo, tras años de oposición, terminaron el templo en el sexto año de Darío, en el 516 o 515 a. C. Los capítulos 7–10 saltan unos sesenta años hacia adelante, hasta Esdras, sacerdote y escriba enviado por el rey Artajerjes para enseñar la ley de Dios en Judá, y hasta la crisis de los matrimonios con los pueblos vecinos con la que termina el libro."
+    },
+    {
+      "question": "¿Quién escribió el libro de Esdras, y cuándo?",
+      "answer": "El libro no dice quién es su autor. La tradición judía sostenía que lo escribió Esdras, y partes de los capítulos 7–9 están narradas con su propia voz, en primera persona. Muchos estudiosos piensan que un editor posterior, que escribió quizá hacia el año 400 a. C. o algo después, reunió las memorias de Esdras, las cartas oficiales persas y las listas de familias en el libro que tenemos, posiblemente el mismo círculo que produjo Crónicas, cuyos versículos finales repiten los versículos iniciales de Esdras. Otros piensan que el propio Esdras sigue siendo el autor más probable."
+    },
+    {
+      "question": "¿Son Esdras y Nehemías un solo libro?",
+      "answer": "En la Biblia hebrea se contaban como un solo libro, Esdras–Nehemías, y cuentan una única historia continua: la reconstrucción del templo, del pueblo bajo la ley de Dios y de las murallas de Jerusalén. La división en dos libros llegó más tarde, en la iglesia cristiana, y pasó a las Biblias hebreas impresas solo en la Edad Media. Esdras aparece en ambos, sobre todo en Nehemías 8, leyendo la ley en voz alta al pueblo reunido."
+    },
+    {
+      "question": "¿Por qué parte de Esdras está escrita en arameo?",
+      "answer": "Dos secciones, Esdras 4:8–6:18 y 7:12–26, están escritas en arameo, la lengua común de gobierno en el Imperio persa, que también hablaban los judíos del exilio. Estas secciones se construyen en torno a cartas oficiales: las quejas enviadas a los reyes persas, la respuesta de Darío, el memorando de Ciro hallado en el archivo de Ecbatana y la carta que Artajerjes dio a Esdras. El resto del libro está en hebreo."
+    },
+    {
+      "question": "¿Por qué hizo Esdras que el pueblo despidiera a sus esposas extranjeras?",
+      "answer": "En Esdras 9–10 los jefes informan que muchos del pueblo, incluidos sacerdotes y levitas, se han casado con mujeres de los pueblos vecinos, en contra de la advertencia de la ley de que tales matrimonios desviarían el corazón de Israel hacia otros dioses, como le había ocurrido a Salomón. Para una pequeña comunidad recién vuelta de un exilio causado por la idolatría, Esdras vio en ello una amenaza para su misma supervivencia como pueblo de Dios, y el pueblo aceptó disolver los matrimonios. Los cristianos leen el episodio de distintas maneras: unos como un acto costoso de fidelidad en una emergencia, otros como algo que el libro registra sin proponerlo como modelo. La preocupación es la adoración y no la raza, ya que los extranjeros que se volvían al SEÑOR participaban de la Pascua (6:21), y en el Nuevo Testamento Pablo dice a los creyentes casados con no creyentes que no busquen el divorcio (1 Corintios 7:12–14)."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del hebreo y del arameo y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser precisa y leerse con naturalidad en voz alta. El razonamiento detrás de cada una de sus oraciones, con el texto original al lado, está publicado en openwordbible.org. La introducción y la conclusión se escribieron para esta edición."
+    }
+  ]
+}

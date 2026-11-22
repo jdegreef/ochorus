@@ -1,0 +1,32 @@
+{
+  "title": "Proverbios",
+  "cover_title": "",
+  "subtitle": "Mishlei, «Proverbios»",
+  "description": "El libro de la sabiduría cotidiana de la Biblia, que comienza con su lema —«El conocimiento comienza con el temor del SEÑOR»— y luego baja ese temor a la vida diaria: palabras que calman el enojo y palabras que hieren, el perezoso y la hormiga, balanzas honradas y justicia para el pobre, amigos más fieles que un hermano y planes que solo el SEÑOR puede hacer que se mantengan firmes. Un padre que enseña a su hijo, la Sabiduría que clama en la calle y se deleita junto a Dios en la creación, dos casas y dos invitaciones, los dichos de Salomón copiados en tiempos de Ezequías, los enigmas de Agur y la esposa capaz que cierra el libro. Treinta y un capítulos, un capítulo al día durante un mes, dispuestos línea por línea, como la poesía que son, en la Open Word Bible, una nueva traducción del hebreo entregada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre por dónde seguir leyendo.",
+  "qa": [
+    {
+      "question": "¿Qué es el libro de Proverbios?",
+      "answer": "Un libro del Antiguo Testamento formado por dichos sabios y poemas didácticos sobre cómo vivir bien bajo Dios. Su nombre hebreo, Mishlei, es su primera palabra, «los proverbios de»; un mashal es un dicho que enseña por comparación. Los capítulos 1–9 son poemas largos en los que un padre instruye a su hijo y la Sabiduría clama en las calles; los capítulos 10–29 reúnen cientos de dichos breves, la mayoría de dos líneas equilibradas; y los capítulos 30–31 contienen las palabras de Agur, las palabras del rey Lemuel y el poema de la esposa capaz. Junto con Job y Eclesiastés, es uno de los libros sapienciales de la Biblia."
+    },
+    {
+      "question": "¿Quién escribió el libro de Proverbios?",
+      "answer": "Proverbios es una colección, y sus encabezados nombran varias fuentes. Comienza con «los proverbios de Salomón», el rey recordado por haber compuesto tres mil proverbios (1 Reyes 4:32), y dos grandes colecciones llevan su nombre (10:1–22:16 y los capítulos 25–29). La segunda contiene proverbios «reunidos y copiados por los funcionarios de Ezequías, rey de Judá» (25:1), hacia el año 700 a. C. El libro también reúne «dichos de los sabios» (22:17; 24:23), las palabras de Agur, hijo de Jaqué (capítulo 30), y las del rey Lemuel, enseñadas por su madre (31:1). Los estudiosos difieren sobre cuánto se remonta al propio Salomón y sobre cuándo tomó el libro su forma final, pero es evidente que se reunió a lo largo de siglos."
+    },
+    {
+      "question": "¿Qué significa «el temor del SEÑOR» en Proverbios?",
+      "answer": "Es el lema del libro: «El conocimiento comienza con el temor del SEÑOR» (1:7), repetido en 9:10 y con eco en el último capítulo, donde la mujer que teme al SEÑOR «es la que merece alabanza» (31:30). No significa un terror que huye de Dios, sino un asombro reverente que confía en Él y se aparta del mal. Proverbios lo define directamente —«Temer al SEÑOR es aborrecer el mal» (8:13)— y lo describe como confiar en el SEÑOR de todo corazón en lugar de apoyarse en el propio entendimiento (3:5–7). En Proverbios, la sabiduría es destreza para vivir, y comienza con saber quién es Dios."
+    },
+    {
+      "question": "¿Son promesas los dichos de Proverbios?",
+      "answer": "No en el sentido de garantías. Un proverbio expresa cómo suele ir la vida en el mundo de Dios, condensado en una línea fácil de recordar, y hay que aplicarlo con criterio. «Pon a los niños en marcha por el camino que deben seguir» (22:6) es sabio y en general verdadero, pero no promete que todo hijo de padres fieles vaya a creer. El mismo Proverbios lo muestra al poner uno junto a otro «No les respondas a los necios en los términos de su necedad» y «Respóndeles a los necios como su necedad merece» (26:4–5): los dos tienen razón, en momentos distintos. Los libros de Job y Eclesiastés, que están junto a Proverbios, abordan los casos difíciles en que los justos sufren y los malvados prosperan."
+    },
+    {
+      "question": "¿Quién es la mujer de Proverbios 31?",
+      "answer": "Proverbios 31:10–31 es un poema alfabético, cuyos veintidós versículos comienzan cada uno con la letra siguiente del alfabeto hebreo, en alabanza de «una esposa capaz» (en hebreo eshet hayil, una mujer de fuerza y valía, la misma expresión que se usa para Rut en Rut 3:11). Trabaja, comercia, compra tierras, cuida de su casa y abre la mano al pobre, y es alabada porque teme al SEÑOR. Muchos la leen como el retrato de una mujer real y admirable, y el poema se canta en los hogares judíos la víspera del sábado; muchos también notan que encarna a la Sabiduría descrita en los capítulos 1–9, de modo que el libro termina con la sabiduría vivida en un hogar. El capítulo se abre con las palabras que la madre del rey Lemuel le enseñó (31:1–9)."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del hebreo y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser exacto y leerse con naturalidad en voz alta. Cada línea de la poesía se presenta por separado, y «SEÑOR» en mayúsculas representa el nombre personal de Dios. El razonamiento detrás de cada una de sus frases, con el hebreo al lado, está publicado en openwordbible.org. La introducción y la conclusión se escribieron para esta edición."
+    }
+  ]
+}

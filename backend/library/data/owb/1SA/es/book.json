@@ -1,0 +1,32 @@
+{
+  "title": "1 Samuel",
+  "cover_title": "",
+  "subtitle": "Shemuel Alef, «El primer libro de Samuel»",
+  "description": "El libro en que Israel recibe un rey y aprende qué clase de rey quiere Dios. Comienza con Ana derramando su alma en el santuario de Silo y cantando a un Dios que levanta del polvo al pobre, y con el niño Samuel respondiendo en la noche: «Habla, que Tu siervo escucha». Después vienen el arca capturada y Dagón caído boca abajo, el pueblo que exige un rey como todas las naciones, y el alto Saúl, que empezó bien y no supo obedecer. Y luego el pastorcillo a quien nadie mandó llamar, porque «el SEÑOR mira el corazón»: David con su honda frente a Goliat, la amistad de Jonatán, la lanza de Saúl, los años en cuevas y desiertos, y el ungido del SEÑOR perdonado dos veces por el hombre que ocuparía su trono. En la Open Word Bible, una nueva traducción desde el hebreo entregada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre dónde seguir leyendo.",
+  "qa": [
+    {
+      "question": "¿De qué trata el libro de 1 Samuel?",
+      "answer": "Del paso de la época de los jueces a la monarquía en Israel, contado a través de tres vidas. Samuel, nacido en respuesta a la oración de su madre Ana, llega a ser profeta y el último de los jueces (capítulos 1–7). El pueblo exige un rey, y Samuel unge a Saúl, que más tarde es rechazado por su desobediencia (capítulos 8–15). Dios escoge entonces a David, un pastor de Belén, que derrota a Goliat, se gana la amistad de Jonatán, hijo de Saúl, y es perseguido por el celoso Saúl hasta que este muere en batalla en el monte Gilboa (capítulos 16–31)."
+    },
+    {
+      "question": "¿Quién escribió 1 Samuel, y cuándo?",
+      "answer": "El libro no nombra a su autor, y Samuel muere antes de que termine (25:1). 1 Crónicas 29:29 menciona registros llevados por los profetas Samuel, Natán y Gad, y la tradición judía sostenía que Samuel escribió la parte que llega hasta su muerte, y que otros completaron el resto. Muchos estudiosos piensan que el libro se apoyó en varias fuentes más antiguas y alcanzó su forma final, junto con 2 Samuel, como parte de una historia más extensa en la época de los reyes o después. 1 y 2 Samuel eran originalmente un solo libro."
+    },
+    {
+      "question": "¿Por qué rechazó Dios a Saúl como rey?",
+      "answer": "Porque no quiso obedecer el mandato del SEÑOR. En 1 Samuel 13 ofreció él mismo un sacrificio en lugar de esperar a Samuel, y en el capítulo 15 perdonó la vida al rey amalecita y a lo mejor del ganado que Dios le había mandado destinar a la destrucción, y luego afirmó que había obedecido. Samuel le dijo que «obedecer es mejor que el sacrificio» (15:22) y que, por haber rechazado la palabra del SEÑOR, el SEÑOR lo había rechazado como rey. Dios escogió en su lugar a «un hombre conforme a Su propio corazón» (13:14)."
+    },
+    {
+      "question": "¿Cambió Dios de parecer respecto a Saúl?",
+      "answer": "1 Samuel 15 dice dos veces que el SEÑOR se lamentó de haber hecho rey a Saúl (15:11, 15:35), y entre ambas Samuel dice que Dios «no miente ni cambia de parecer, porque Él no es un mortal para cambiar de parecer» (15:29). La mayoría de los intérpretes leen ambas cosas juntas: Dios no es voluble ni lo toman por sorpresa los acontecimientos como a los seres humanos, y Sus propósitos se mantienen; aun así, responde de verdad a las decisiones humanas, y Su dolor por la desobediencia de Saúl es real. Los teólogos difieren sobre la mejor manera de describirlo, pero el capítulo mismo sostiene ambas verdades lado a lado."
+    },
+    {
+      "question": "¿Qué significa «el SEÑOR mira el corazón»?",
+      "answer": "Cuando Samuel fue a Belén a ungir a uno de los hijos de Isaí, quedó impresionado por el mayor, Eliab, pero Dios le dijo: «No te fijes en su aspecto ni en lo alto que es… El ser humano mira lo que está a la vista, pero el SEÑOR mira el corazón» (16:7). Dios escogió en cambio al hijo menor, David, a quien habían dejado fuera con las ovejas. La frase resume un tema que recorre el libro desde el cántico de Ana: Dios levanta a los humildes y no se deja impresionar por la fuerza exterior, como muestran tanto Saúl, el hombre más alto de Israel, como Goliat."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente desde el hebreo y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser fiel y leerse con naturalidad en voz alta. «SEÑOR» en mayúsculas representa el nombre personal de Dios, y el cántico de Ana se presenta verso a verso, como poesía. El razonamiento detrás de cada una de sus oraciones, con el hebreo al lado, se publica en openwordbible.org. La introducción y la conclusión se escribieron para esta edición."
+    }
+  ]
+}

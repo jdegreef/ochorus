@@ -1,0 +1,32 @@
+{
+  "title": "El Evangelio según Mateo",
+  "cover_title": "Mateo",
+  "subtitle": "Kata Maththaion, «Según Mateo»",
+  "description": "El primer libro del Nuevo Testamento, que comienza con una genealogía que va de Abraham, pasando por David, hasta «Jesús, a quien llaman Cristo», y muestra una y otra vez que en él se cumplieron las promesas de las Escrituras de Israel. Los sabios de Oriente y su estrella; el Sermón del Monte, con las bienaventuranzas y el Padrenuestro; las parábolas del reino de los cielos, desde la semilla de mostaza hasta la perla de gran precio; la confesión de Pedro y la promesa de la iglesia; las ovejas y las cabras; la cruz, la tumba custodiada y el Señor resucitado que envía a sus discípulos a hacer discípulos de todas las naciones, con la promesa: «yo mismo estoy con ustedes todos los días, hasta el fin de la era». En la Open Word Bible, una nueva traducción del griego entregada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre qué leer después.",
+  "qa": [
+    {
+      "question": "¿Qué es el Evangelio de Mateo?",
+      "answer": "El primero de los cuatro Evangelios, los relatos de la vida, la muerte y la resurrección de Jesús en el Nuevo Testamento, y durante la mayor parte de la historia de la iglesia el más leído de ellos. Presenta a Jesús como hijo de David e hijo de Abraham, el Mesías de Israel, en quien se cumplen las Escrituras, y reúne su enseñanza en cinco largos discursos, empezando por el Sermón del Monte (capítulos 5–7). Termina con Jesús resucitado enviando a sus discípulos a todas las naciones (28:18–20)."
+    },
+    {
+      "question": "¿Quién escribió el Evangelio de Mateo, y cuándo?",
+      "answer": "El Evangelio no da el nombre de su autor. Desde el siglo II la iglesia lo atribuyó a Mateo, el recaudador de impuestos que llegó a ser uno de los Doce (9:9). Papías, a comienzos del siglo II, dijo que Mateo escribió los oráculos en lengua hebrea. La mayoría de los estudiosos piensa hoy que el autor se basó en el Evangelio de Marcos y fecha el libro en las décadas posteriores al año 70 d. C.; otros sostienen que Mateo escribió primero, o lo fechan en los años 60."
+    },
+    {
+      "question": "¿Por qué Mateo dice «reino de los cielos» en lugar de «reino de Dios»?",
+      "answer": "Los judíos piadosos solían decir «el cielo» para no pronunciar el nombre de Dios con demasiada ligereza, y Mateo, que escribe como judío para lectores que conocían las Escrituras, sigue esa costumbre. El reino de los cielos no es un reino distinto del reino de Dios de Marcos y Lucas, y no significa solo un lugar al que se va al morir. Es el reinado mismo de Dios, que según Jesús «se ha acercado» (4:17)."
+    },
+    {
+      "question": "¿Cuáles son los cinco discursos de Mateo?",
+      "answer": "Mateo reúne la enseñanza de Jesús en cinco largos discursos, cada uno de los cuales termina casi con las mismas palabras, «Cuando Jesús terminó»: el Sermón del Monte (5–7), el envío de los Doce (10), las parábolas del reino (13), la vida en común en la comunidad de los discípulos (18) y el fin de la era (24–25). Entre ellos vienen relatos de lo que Jesús hizo. Muchos lectores han oído ahí un eco de los cinco libros de Moisés."
+    },
+    {
+      "question": "¿Qué significa en Mateo 16:18 «sobre esta roca construiré Mi iglesia»?",
+      "answer": "Jesús hace un juego de palabras con el nombre de Pedro, que significa roca, después de que Pedro lo confiesa como el Cristo, el Hijo del Dios vivo. Los cristianos han discrepado desde hace mucho sobre qué es la roca: Pedro mismo, como el primero de los apóstoles; la fe que acaba de confesar; o Cristo, el único fundamento. Mateo es el único Evangelio en el que Jesús habla de la iglesia, aquí y en 18:17."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del griego y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser exacta y leerse con naturalidad en voz alta. El razonamiento detrás de cada una de sus oraciones, con el griego al lado, está publicado en openwordbible.org. La introducción y la conclusión fueron escritas para esta edición."
+    }
+  ]
+}

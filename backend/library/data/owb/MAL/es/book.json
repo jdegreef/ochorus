@@ -1,0 +1,32 @@
+{
+  "title": "Malaquías",
+  "cover_title": "",
+  "subtitle": "Malakhi, «Mi mensajero»",
+  "description": "El último de los doce Profetas Menores y el último libro del Antiguo Testamento, dirigido al pueblo de Judá unas cuantas generaciones después de la reconstrucción del templo, cuando el culto se había vuelto una carga y la fidelidad parecía no traer recompensa. Es un libro de disputas: Dios dice «Yo los he amado», y el pueblo pregunta: «¿De qué manera nos has amado?». A las ofrendas de animales ciegos y cojos, a los sacerdotes que hacen tropezar a muchos, a los matrimonios rotos y a los diezmos retenidos responde un Dios que dice «Yo soy el SEÑOR, y no cambio», que lleva un libro de memoria para los que le temen y que promete un mensajero que prepare el camino, un fuego de fundidor, el sol de justicia que sale «trayendo sanidad en sus alas», y al profeta Elías antes del gran día del SEÑOR. Presentado verso a verso en la Open Word Bible, una nueva traducción del hebreo entregada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre qué leer después.",
+  "qa": [
+    {
+      "question": "¿De qué trata el libro de Malaquías?",
+      "answer": "De un pueblo que se había cansado de Dios. Después del exilio, con el templo ya reconstruido, los sacerdotes ofrecían sacrificios defectuosos, los hombres eran desleales con sus esposas, los diezmos no se pagaban y muchos decían que era inútil servir a Dios. Malaquías responde con seis disputas en las que Dios hace una afirmación, el pueblo la cuestiona y Dios contesta. El libro termina llamando al pueblo a recordar la ley de Moisés y prometiendo que el profeta Elías vendrá antes del gran día del SEÑOR."
+    },
+    {
+      "question": "¿Quién escribió Malaquías, y cuándo?",
+      "answer": "El libro es la «palabra del SEÑOR a Israel por medio de Malaquías» (1:1). El nombre significa «mi mensajero», y los estudiosos discrepan sobre si es el nombre propio del profeta o un título tomado de 3:1; la antigua traducción griega lo leyó como «su mensajero», y una tradición judía identificó al autor con Esdras. El libro menciona a un gobernador y un templo en funcionamiento, y trata los mismos problemas que Esdras y Nehemías, por lo que suele fecharse en el período persa, hacia mediados del siglo V a. C."
+    },
+    {
+      "question": "¿Qué significa «amé a Jacob, pero a Esaú lo odié»?",
+      "answer": "En Malaquías 1:2–3, Dios responde a la duda del pueblo sobre su amor señalando las distintas historias de los descendientes de Jacob, Israel, y los de Esaú, Edom, que yacía en ruinas. En el lenguaje del pacto, «amar» y «odiar» significan aquí escoger a uno para llevar la promesa y no al otro. Pablo cita estas palabras en Romanos 9:13 dentro de su argumento de que las promesas de Dios descansan en su elección y no en el nacimiento ni en el esfuerzo humano. Los cristianos han discrepado desde hace mucho sobre hasta dónde se extiende ese argumento a la salvación individual."
+    },
+    {
+      "question": "¿Quién es el mensajero de Malaquías 3:1?",
+      "answer": "Dios promete enviar a «Mi mensajero» para preparar el camino, después de lo cual «vendrá de repente a Su templo el Señor a quien ustedes buscan». Malaquías 4:5 identifica a este precursor como el profeta Elías. El Nuevo Testamento lo identifica con Juan el Bautista: Marcos 1:2 cita el versículo al comienzo del ministerio de Juan, Jesús lo aplica a Juan en Mateo 11:10, y un ángel dice que Juan irá delante del Señor «con el espíritu y el poder de Elías» (Lucas 1:17). El Señor que viene a su templo es, para el Nuevo Testamento, Jesús."
+    },
+    {
+      "question": "¿Por qué Malaquías tiene cuatro capítulos en las Biblias en español y tres en la hebrea?",
+      "answer": "La diferencia está solo en la numeración. Las Biblias hebreas cuentan los últimos seis versículos como Malaquías 3:19–24; las Biblias en español, siguiendo la tradición latina, los convierten en un capítulo 4 aparte. Esta edición usa esa numeración. En la lectura de la sinagoga, el versículo que promete a Elías (4:5 en las Biblias en español) se lee de nuevo después del último versículo, para que los profetas no terminen con una palabra de destrucción."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del hebreo y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser exacta y leerse con naturalidad en voz alta. El razonamiento detrás de cada una de sus oraciones, con el hebreo al lado, está publicado en openwordbible.org. La introducción y la conclusión fueron escritas para esta edición."
+    }
+  ]
+}

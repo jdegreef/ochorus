@@ -1,0 +1,32 @@
+{
+  "title": "Nahúm",
+  "cover_title": "",
+  "subtitle": "Nachum, «Consuelo»",
+  "description": "El séptimo de los doce Profetas Menores, y un libro acerca de una sola ciudad: Nínive, la capital de Asiria, el imperio que destruyó el reino del norte, Israel, y mantuvo a Judá atemorizada durante un siglo. Comienza con un himno al Dios que es «lento para enojarse, pero grande en poder» y «una fortaleza en el día de la angustia», anuncia buenas noticias sobre los montes para los oprimidos y luego, en una de las poesías más vívidas de la Escritura, habla de escudos rojos, carros que corren y compuertas del río abiertas de par en par, hasta que la guarida del león queda vacía y la ciudad sanguinaria cae. Dispuesto verso a verso, como la poesía que es, en la Open Word Bible, una nueva traducción del hebreo donada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre qué leer después.",
+  "qa": [
+    {
+      "question": "¿De qué trata el libro de Nahúm?",
+      "answer": "De la caída de Nínive, la capital del imperio asirio. Sus tres capítulos comienzan con un himno al SEÑOR como el juez ante quien nadie puede mantenerse en pie (1:1–8), van y vienen entre palabras de condena para Nínive y palabras de libertad para Judá (1:9–15), y luego describen la toma de la ciudad (capítulo 2) y sus razones: su derramamiento de sangre, su saqueo y su crueldad (capítulo 3). A diferencia de la mayoría de los libros proféticos, no contiene ningún llamado al arrepentimiento ni ningún reproche al propio pueblo de Dios."
+    },
+    {
+      "question": "¿Quién escribió Nahúm, y cuándo?",
+      "answer": "El libro es «la visión de Nahúm de Elcos» (1:1). No se sabe nada más de él, y la ubicación de Elcos es incierta. El libro habla del saqueo de Tebas (en hebreo, No-amón) como algo ya pasado (3:8–10); los asirios tomaron Tebas en el 663 a. C. Y mira hacia adelante, a la caída de Nínive, que babilonios y medos tomaron en el 612 a. C. Así que Nahúm profetizó entre esas fechas, cuando Asiria todavía era poderosa."
+    },
+    {
+      "question": "¿Qué relación tiene Nahúm con el libro de Jonás?",
+      "answer": "Ambos tratan de Nínive, y ambos citan la confesión que Dios hizo a Moisés en Éxodo 34:6–7. En Jonás, Nínive se arrepiente, y Jonás se queja de que Dios es «lento para enojarse, rico en amor fiel» (Jonás 4:2). En Nahúm, tal vez un siglo después, el mismo Dios es «lento para enojarse, pero grande en poder», y «nunca declarará inocente al culpable» (1:3). Leídos juntos, los dos libros muestran las dos caras de un mismo carácter: paciente con los que se vuelven a Él, y justo con los que persisten en la crueldad. Ambos libros terminan con una pregunta."
+    },
+    {
+      "question": "¿Es Nahúm un libro de venganza?",
+      "answer": "A muchos lectores les cuesta su gozo por la caída de Nínive. Pero en el libro es el SEÑOR quien actúa, no Judá, y la razón que se da es la propia violencia de Nínive: es «la ciudad sanguinaria», y su último versículo pregunta: «¿quién no ha sufrido tu crueldad sin fin?» (3:19). La Escritura deja la venganza a Dios y no a las personas (Romanos 12:19). Para las naciones que habían sufrido bajo Asiria, la noticia de que su poder terminaría era un consuelo, que es lo que significa el nombre del profeta."
+    },
+    {
+      "question": "¿Qué significa «los pies del que trae la buena noticia» en Nahúm?",
+      "answer": "En 1:15, un mensajero corre por los montes hacia Judá con noticias de paz: el opresor ha sido eliminado, y el pueblo puede volver a celebrar sus fiestas. Isaías 52:7 usa casi las mismas palabras para el regreso del exilio, y Pablo cita a Isaías para la predicación del evangelio (Romanos 10:15). En las Biblias hebreas, este versículo lleva el número 2:1."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del hebreo y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser exacto y sonar natural al leerse en voz alta. El razonamiento detrás de cada una de sus oraciones, con el hebreo al lado, está publicado en openwordbible.org. La introducción y la conclusión fueron escritas para esta edición."
+    }
+  ]
+}

@@ -158,7 +158,11 @@ def translated_works() -> list[tuple[str, str, str]]:
     (``library.originals``: Pascal's own French) is not a translation — nothing
     was rendered, so there is no provenance to record.
     """
-    from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
+    from library.content_fixtures import (
+        BOOKS_DIR,
+        SERMONS_DIR,
+        translated_bible_editions,
+    )
     from library.originals import ORIGINAL_EDITIONS
 
     works = [
@@ -167,6 +171,9 @@ def translated_works() -> list[tuple[str, str, str]]:
         for path in directory.glob("*.json")
         for slug, _, language in [path.name[: -len(".json")].rpartition(".")]
         if slug and language != "en" and (slug, language) not in ORIGINAL_EDITIONS
+        # A Bible book's Scripture is OWB's own text, its quotations OWB's own
+        # wording: there is no provenance to record (translated_bible_editions).
+        and not (kind == "book" and (slug, language) in translated_bible_editions())
     ]
     return sorted(works)
 

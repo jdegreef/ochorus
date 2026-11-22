@@ -1,0 +1,32 @@
+{
+  "title": "Hageo",
+  "cover_title": "",
+  "subtitle": "Chaggai, «Festivo»",
+  "description": "El décimo de los doce Profetas Menores: cuatro mensajes breves, cada uno fechado al día, dados en el 520 a. C. a los desterrados que habían vuelto de Babilonia y habían dejado en ruinas la casa del SEÑOR mientras revestían de madera las suyas. «Piensen bien en cómo están viviendo», les dice Hageo: han sembrado mucho y han cosechado poco, y han ganado un salario solo «para echarlo en una bolsa rota». Cosa rara en un profeta, se le hizo caso de inmediato. A los constructores desanimados por lo pequeño que parecía el nuevo templo les llevó la palabra «Yo estoy con ustedes», la promesa de que su gloria sería mayor que la del de Salomón y un anillo de sellar para Zorobabel. En la Open Word Bible, una nueva traducción del hebreo donada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre qué leer después.",
+  "qa": [
+    {
+      "question": "¿De qué trata el libro de Hageo?",
+      "answer": "De la reconstrucción del templo de Jerusalén después del exilio. Los judíos que volvieron de Babilonia habían puesto sus cimientos y luego se detuvieron, diciendo que no había llegado el tiempo. En cuatro mensajes fechados, Hageo los llama a reconstruir (1:1–15), los anima cuando la nueva casa no parece nada al lado de la de Salomón (2:1–9), enseña que la santidad no se transmite por contacto mientras que la impureza sí, y promete bendición desde ese día en adelante (2:10–19), y declara que Dios ha escogido a Zorobabel como Su anillo de sellar (2:20–23)."
+    },
+    {
+      "question": "¿Cuándo profetizó Hageo?",
+      "answer": "Sus cuatro mensajes están fechados en el segundo año del rey Darío I de Persia, el 520 a. C.: el primer día del mes sexto, el día veintiuno del séptimo y el día veinticuatro del noveno, dos veces. El libro de Esdras registra que Hageo y Zacarías profetizaron juntos y que el pueblo, animado por ellos, terminó el templo en el sexto año de Darío, el 515 a. C. (Esdras 5:1; 6:14–15). No se sabe nada más de la vida de Hageo."
+    },
+    {
+      "question": "¿Qué significa «Piensen bien en cómo están viviendo» en Hageo?",
+      "answer": "Traduce una expresión hebrea que literalmente dice «pongan su corazón en sus caminos», y que Biblias antiguas traducen «meditad sobre vuestros caminos» (1:5, 1:7). Hageo pide al pueblo que mire los resultados de sus prioridades: han sembrado mucho y han cosechado poco, han comido sin quedar satisfechos y han ganado un salario solo para echarlo en una bolsa rota, porque han construido sus propias casas y han descuidado la del SEÑOR."
+    },
+    {
+      "question": "¿Cómo sería la gloria del segundo templo mayor que la del primero?",
+      "answer": "Los desterrados que volvieron pensaban que su templo no era nada comparado con el de Salomón (2:3). Dios prometió hacer temblar a las naciones y llenarlo de gloria, de modo que «La gloria futura de esta casa será mayor que la de antes» (2:9). Los cristianos han entendido que esto se cumplió cuando Jesús vino a ese templo y enseñó en sus atrios, y de forma más amplia en la iglesia como morada de Dios; Hebreos 12:26–28 lee la promesa de Hageo de hacer temblar los cielos y la tierra como una señal del reino final que no puede ser sacudido."
+    },
+    {
+      "question": "¿Por qué se llama a Zorobabel anillo de sellar?",
+      "answer": "Un anillo de sellar era el sello de un gobernante, su autoridad llevada en la mano. Jeremías le había dicho al rey Joaquín (Conías), abuelo de Zorobabel, que aunque fuera el anillo de sello de la mano derecha de Dios, Dios se lo arrancaría (Jeremías 22:24). Hageo 2:23 revierte esa palabra para Zorobabel, renovando la elección divina del linaje de David. Zorobabel fue gobernador, no rey, pero aparece en la genealogía de Jesús en Mateo 1 y Lucas 3, y los cristianos leen la promesa como cumplida en Cristo."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del hebreo y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser exacto y sonar natural al leerse en voz alta. El razonamiento detrás de cada una de sus oraciones, con el hebreo al lado, está publicado en openwordbible.org. La introducción y la conclusión fueron escritas para esta edición."
+    }
+  ]
+}

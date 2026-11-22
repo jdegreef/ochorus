@@ -1,0 +1,32 @@
+{
+  "title": "El Evangelio según Marcos",
+  "cover_title": "Marcos",
+  "subtitle": "Kata Markon, «Según Marcos»",
+  "description": "El más breve de los cuatro Evangelios, y probablemente el primero que se escribió: «El comienzo del evangelio acerca de Jesús Cristo». Rápido y vívido, pasa enseguida del Jordán a Galilea, donde Jesús sana, expulsa espíritus impuros, calma la tormenta y deja a sus discípulos preguntándose: «¿Quién es este?». Luego el camino a Jerusalén, con tres anuncios de su muerte, y la frase que está en el corazón del libro: que el Hijo del Hombre vino a servir y a dar su vida como precio de rescate por muchos. La cruz, donde un centurión romano es el primero en llamarlo Hijo de Dios, y una tumba vacía, donde unas mujeres asustadas oyen que él va delante de ellas a Galilea. Según la tradición, los recuerdos de Pedro, puestos por escrito por su intérprete Marcos. En la Open Word Bible, una nueva traducción del griego entregada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre qué leer después.",
+  "qa": [
+    {
+      "question": "¿Qué es el Evangelio de Marcos?",
+      "answer": "El segundo y más breve de los cuatro Evangelios, los relatos de la vida, la muerte y la resurrección de Jesús en el Nuevo Testamento. Cuenta la historia con rapidez y viveza, desde Juan el Bautista en el Jordán hasta la tumba vacía, y dedica casi un tercio del libro a la última semana de la vida de Jesús. Su centro es la pregunta de quién es Jesús, y su respuesta es que es el Hijo de Dios que vino a «dar Su vida como precio de rescate por muchos» (10:45)."
+    },
+    {
+      "question": "¿Quién escribió el Evangelio de Marcos, y cuándo?",
+      "answer": "El Evangelio no da el nombre de su autor. Desde la tradición más antigua se le ha llamado de Marcos, identificado con Juan Marcos del libro de los Hechos, compañero de Pablo y Bernabé y más tarde de Pedro. Papías, a comienzos del siglo II, dijo que Marcos fue intérprete de Pedro y puso por escrito con exactitud lo que Pedro recordaba de lo que Jesús dijo e hizo. La mayoría de los estudiosos lo fecha a finales de los años 60 o hacia el año 70 d. C., y la tradición lo sitúa en Roma."
+    },
+    {
+      "question": "¿Fue Marcos el primer Evangelio que se escribió?",
+      "answer": "La mayoría de los estudiosos así lo piensa. Casi todo Marcos se encuentra en Mateo y en Lucas, a menudo en el mismo orden y con las mismas palabras, y la explicación habitual es que ambos usaron a Marcos. Otros sostienen, como Agustín, que Mateo vino primero y Marcos lo abrevió. La cuestión no cambia lo que dice ninguno de los Evangelios, pero ayuda a explicar por qué los tres primeros se parecen tanto."
+    },
+    {
+      "question": "¿Qué es el «secreto mesiánico» en Marcos?",
+      "answer": "Un nombre que los estudiosos dan a la manera en que Jesús, en Marcos, manda callar a los demonios, pide a quienes ha sanado que no se lo digan a nadie y ordena a sus discípulos que no digan que él es el Cristo (8:30). Parte de la razón puede ser que las multitudes lo habrían tomado por un Mesías equivocado. Lo que Marcos quiere decir en el fondo es que nadie puede entender quién es Jesús hasta haber visto la cruz, donde un centurión por fin dice: «¡De verdad este hombre era Hijo de Dios!» (15:39)."
+    },
+    {
+      "question": "¿Cómo termina el Evangelio de Marcos?",
+      "answer": "En los dos manuscritos completos más antiguos termina en 16:8, con unas mujeres que huyen de la tumba vacía sin decir nada a nadie, «porque tenían miedo». Si Marcos quiso terminar allí o si su final se perdió es una cuestión abierta. La mayoría de los manuscritos posteriores añaden un final largo (16:9–20), y unos pocos tienen un final breve; ninguno de los dos tiene el estilo de Marcos. Como la mayoría de las Biblias, esta edición imprime ambos después de 16:8, aparte y entre corchetes, con una nota."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del griego y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser exacta y leerse con naturalidad en voz alta. El razonamiento detrás de cada una de sus oraciones, con el griego al lado, está publicado en openwordbible.org. La introducción y la conclusión fueron escritas para esta edición."
+    }
+  ]
+}

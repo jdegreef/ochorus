@@ -41,7 +41,7 @@ import re
 
 from django.test import SimpleTestCase
 
-from library.content_fixtures import rows_by_file
+from library.content_fixtures import rows_by_file, translated_bible_editions
 from library.originals import is_original
 
 # Translations whose markup does NOT match their English source.
@@ -147,7 +147,12 @@ def chapter_divergences() -> dict[tuple[str, str, int], tuple[int, int]]:
         for lang, chapters in by_lang.items():
             if lang == "en" or not chapters:
                 continue
-            for order in sorted(set(chapters) & set(source)):
+            orders = sorted(set(chapters) & set(source))
+            if (slug, lang) in translated_bible_editions():
+                # Only the introduction and conclusion are translated from the
+                # English; the chapters between are OWB's own text in `lang`.
+                orders = [orders[0], orders[-1]]
+            for order in orders:
                 want = tag_sequence(source[order])
                 got = tag_sequence(chapters[order])
                 if want != got:

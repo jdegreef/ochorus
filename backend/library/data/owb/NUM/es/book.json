@@ -1,0 +1,32 @@
+{
+  "title": "Números",
+  "cover_title": "",
+  "subtitle": "Bemidbar, «En el desierto»",
+  "description": "El cuarto libro de la Biblia, llamado en hebreo Bemidbar, «En el desierto», por su primer versículo, y en español Números, por los dos censos del pueblo que lo enmarcan. Israel parte del Sinaí con las tribus acampadas alrededor del tabernáculo, la bendición sacerdotal sobre su cabeza y la nube delante de ellos, y casi enseguida empieza a quejarse. Moisés anhela que todo el pueblo del SEÑOR sea profeta; doce exploradores vuelven de Canaán, diez de ellos sintiéndose como saltamontes, y el pueblo se niega a entrar; Coré se rebela, la vara de Aarón florece, Moisés golpea la peña y una serpiente de bronce es levantada sobre un asta. Luego el vidente Balaam, contratado para maldecir, solo puede bendecir y ve una estrella que sale de Jacob, y una nueva generación se encuentra por fin en las llanuras de Moab. En la Open Word Bible, una nueva traducción del hebreo cedida libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre dónde seguir leyendo.",
+  "qa": [
+    {
+      "question": "¿Qué es el libro de Números?",
+      "answer": "El cuarto libro de la Biblia y de los cinco libros de Moisés. Su nombre hebreo, Bemidbar, significa «En el desierto»; su nombre en español viene, a través del latín, de la traducción griega, y alude a los dos censos del pueblo de los capítulos 1 y 26. Sus treinta y seis capítulos siguen a Israel desde el monte Sinaí hasta las llanuras de Moab, al otro lado del Jordán frente a Jericó, a lo largo de unos cuarenta años: la generación que salió de Egipto se niega a entrar en la tierra prometida y muere en el desierto, y sus hijos son contados y preparados para entrar."
+    },
+    {
+      "question": "¿Quién escribió el libro de Números?",
+      "answer": "Números no nombra a su autor, aunque dice que Moisés anotó las etapas del viaje (33:2), y la tradición judía y cristiana lo ha recibido como uno de los cinco libros de Moisés. Muchos estudiosos piensan que reúne listas, leyes e historias antiguas que alcanzaron su forma final mucho después. Los cristianos sostienen diversas opiniones sobre cómo se compuso, pero lo reciben como Escritura; el Nuevo Testamento lee su historia como escrita para advertir y enseñar a la iglesia (1 Corintios 10:11)."
+    },
+    {
+      "question": "¿Por qué anduvo Israel errante por el desierto durante cuarenta años?",
+      "answer": "Porque en Cades, después de que doce exploradores recorrieron Canaán, el pueblo creyó a los diez que dijeron que la tierra no podía conquistarse y se negó a entrar, e incluso propuso escoger un jefe y volver a Egipto (Números 13–14). Dios los perdonó por la oración de Moisés, pero declaró que la generación que había rechazado la tierra no entraría en ella. Andarían errantes cuarenta años, un año por cada día que los exploradores estuvieron en la tierra, y solo Caleb y Josué, que habían confiado en Dios, entrarían con la generación siguiente. Hebreos 3:19 lo resume así: «fue la incredulidad lo que les impidió entrar»."
+    },
+    {
+      "question": "¿Qué es la serpiente de bronce de Números 21?",
+      "answer": "Cuando el pueblo habló contra Dios y contra Moisés, llegaron entre ellos serpientes ardientes, y muchos murieron. Cuando confesaron su pecado, Dios le dijo a Moisés que hiciera una serpiente y la pusiera sobre un asta, y todo el que había sido mordido y la miraba vivía (Números 21:4–9). Siglos después, cuando los israelitas le quemaban incienso, el rey Ezequías la hizo pedazos (2 Reyes 18:4). Jesús la tomó como imagen de Su propia muerte: «Moisés levantó en alto la serpiente en el desierto, y del mismo modo el Hijo del Hombre tiene que ser levantado en alto» (Juan 3:14)."
+    },
+    {
+      "question": "¿Quién era Balaam, y qué es la estrella que sale de Jacob?",
+      "answer": "Balaam hijo de Beor era un famoso vidente de Aram a quien Balac, rey de Moab, contrató para maldecir a Israel (Números 22–24). En el camino, su burra vio al ángel del SEÑOR cerrándole el paso cuando él no podía verlo, y cuando llegó para maldecir, solo pudo pronunciar bendiciones. En su cuarto oráculo dice: «Una estrella avanzará desde Jacob, y un cetro se levantará en Israel» (24:17), palabras que judíos y cristianos por igual han leído como una promesa del Mesías. El Nuevo Testamento recuerda a Balaam con menos benevolencia, como un hombre que «amó la paga que podía obtener haciendo el mal» (2 Pedro 2:15), y Números 31:16 dice que el pecado de Israel en Peor vino por consejo suyo."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del hebreo y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser precisa y sonar natural al leerse en voz alta. El razonamiento detrás de cada una de sus oraciones, con el hebreo al lado, está publicado en openwordbible.org. La introducción y la conclusión se escribieron para esta edición."
+    }
+  ]
+}

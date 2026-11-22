@@ -309,11 +309,14 @@ class EpubTests(TestCase):
         self.assertLess(html.index('id="author-end"'), html.index('class="contents"'))
         # No English fallback: a language it has no page in gets no page and the
         # generic back matter — but its text is still set as the imprint's.
-        es = Book.objects.create(author=imprint, slug="pilot-book", language="es", title="Libro")
-        settings = book_export.imprint_page(es)
+        lg = Book.objects.create(author=imprint, slug="pilot-book", language="lg", title="Ekitabo")
+        settings = book_export.imprint_page(lg)
         self.assertNotIn("title", settings)
         self.assertNotIn("edition", settings)
         self.assertTrue(settings["verse_lines"])
+        # A language with its own page gets that page, in its own words.
+        es = Book.objects.create(author=imprint, slug="pilot-book", language="es", title="Libro")
+        self.assertEqual(book_export.imprint_page(es)["title"], "Acerca de la traducción")
 
     def test_a_translation_imprints_verse_is_set_line_by_line(self):
         ch = self.book.chapters.get(order=1)

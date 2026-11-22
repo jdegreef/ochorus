@@ -1,0 +1,32 @@
+{
+  "title": "2 Samuel",
+  "cover_title": "",
+  "subtitle": "Shemuel Bet, «El segundo libro de Samuel»",
+  "description": "El reinado de David, contado con una honestidad que ninguna corte antigua habría permitido. Comienza con un lamento, «¡Cómo han caído los guerreros!», por el rey que lo había perseguido, y sigue a David de Hebrón a Jerusalén: el arca llevada a la ciudad mientras el rey danza delante del SEÑOR con todas sus fuerzas, y la promesa que está en el corazón del Antiguo Testamento: «tu trono permanecerá firme para siempre». Luego, en la cumbre de su poder, Betsabé y Urías, la palabra de Natán, «¡Tú eres ese hombre!», y el «He pecado contra el SEÑOR» de David; una familia desgarrada, la rebelión de Absalón, el rey que sube llorando por el monte de los Olivos y el grito «¡Absalón, hijo mío!». Se cierra con el cántico de liberación de David, sus últimas palabras sobre una mañana sin nubes y un altar en una era de Jerusalén. En la Open Word Bible, una nueva traducción desde el hebreo entregada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre dónde seguir leyendo.",
+  "qa": [
+    {
+      "question": "¿De qué trata el libro de 2 Samuel?",
+      "answer": "Del reinado del rey David. Los capítulos 1–10 cuentan su ascenso: su lamento por Saúl y Jonatán, su unción como rey, primero sobre Judá y luego sobre todo Israel, la conquista de Jerusalén, el traslado del arca a la ciudad, el pacto de Dios que le promete una dinastía eterna (capítulo 7) y su bondad con Mefiboset, el hijo de Jonatán. Los capítulos 11–20 cuentan su adulterio con Betsabé y el asesinato de Urías, su marido, la reprensión de Natán y los males que siguieron en su familia, sobre todo la rebelión de Absalón. Los capítulos 21–24 reúnen otros relatos, listas de los guerreros de David y dos de sus poemas."
+    },
+    {
+      "question": "¿Quién escribió 2 Samuel, y cuándo?",
+      "answer": "El libro no nombra a su autor, y 1 y 2 Samuel eran originalmente un solo libro. 1 Crónicas 29:29 menciona registros de los profetas Samuel, Natán y Gad, y la tradición judía sostenía que Natán y Gad completaron la obra que Samuel comenzó. Muchos estudiosos piensan que los capítulos 9–20, junto con 1 Reyes 1–2, formaron en otro tiempo un relato aparte sobre la sucesión al trono de David, escrito por alguien cercano a la corte, y que el conjunto alcanzó su forma final como parte de una historia más extensa en la época de los reyes o después."
+    },
+    {
+      "question": "¿Qué es el pacto davídico?",
+      "answer": "La promesa de Dios a David, transmitida por el profeta Natán en 2 Samuel 7. David quería construirle a Dios una casa, un templo; en cambio, Dios prometió construirle a David una «casa», una dinastía: uno de sus hijos edificaría el templo, Dios sería un padre para él, y la casa, el reino y el trono de David permanecerían firmes para siempre (7:16). La promesa llegó a ser la raíz de la esperanza de Israel en un Mesías del linaje de David, y el Nuevo Testamento proclama a Jesús como su cumplimiento, el hijo de David cuyo reino no tiene fin (Lucas 1:32–33; Hebreos 1:5)."
+    },
+    {
+      "question": "¿Qué sucedió entre David y Betsabé?",
+      "answer": "En 2 Samuel 11, mientras su ejército estaba en guerra, David vio a Betsabé, la esposa de Urías el hitita, uno de sus soldados, la mandó traer y se acostó con ella. Cuando ella quedó embarazada, intentó encubrirlo, y cuando eso fracasó dispuso que Urías muriera en la batalla, y luego se casó con ella. El profeta Natán lo confrontó con una parábola y con las palabras «¡Tú eres ese hombre!» (12:7). David confesó: «He pecado contra el SEÑOR», y fue perdonado, pero el niño murió y la violencia se desató en su familia. El título del Salmo 51 lo relaciona con este momento."
+    },
+    {
+      "question": "¿Por qué se llama a David un hombre conforme al corazón de Dios si pecó tan gravemente?",
+      "answer": "La expresión viene de 1 Samuel 13:14, antes de que David fuera ungido, y Pablo se hace eco de ella en Hechos 13:22. 2 Samuel no oculta los pecados de David; los muestra con detalle, junto con sus consecuencias. Lo que lo distingue de Saúl no es la ausencia de pecado, sino su respuesta cuando es confrontado: confesó sin excusas, aceptó la disciplina de Dios y siguió confiando en Su misericordia (12:13; 24:10, 14). Los cristianos han encontrado desde hace mucho en él un ejemplo de arrepentimiento y de un corazón que, aun después de caer, se volvió a Dios."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente desde el hebreo y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser fiel y leerse con naturalidad en voz alta. «SEÑOR» en mayúsculas representa el nombre personal de Dios, y los poemas de David, su lamento por Saúl y Jonatán, su cántico de liberación y sus últimas palabras, se presentan verso a verso. El razonamiento detrás de cada una de sus oraciones, con el hebreo al lado, se publica en openwordbible.org. La introducción y la conclusión se escribieron para esta edición."
+    }
+  ]
+}

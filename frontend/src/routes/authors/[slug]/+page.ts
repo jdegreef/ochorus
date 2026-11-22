@@ -466,7 +466,7 @@ export const load: PageLoad = async ({ params, fetch }) => {
 	// localized ones.) The translation's page is English-only, like the Bible
 	// it describes, so a language without the Bible is sent to the English one.
 	if (hasBylinePage(params.slug)) {
-		const to = authorPath(params.slug);
+		const to = authorPath(params.slug, 'en');
 		redirect(308, params.slug === OWB_SLUG && !bibleIn(getLang()) ? `${to}/` : localizeHref(to));
 	}
 	// The RESOLVED language, not the requested one: getAuthor falls back to
