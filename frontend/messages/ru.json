@@ -113,6 +113,8 @@
   "reader_mark_one": "пометка",
   "reader_mark_many": "пометок",
   "progress_min_left": "мин до конца главы",
+  "progress_chapter_hr": "%h% ч до конца главы",
+  "progress_chapter_hr_min": "%h% ч %m% мин до конца главы",
   "progress_book_min": "%n% мин до конца книги",
   "progress_book_hr": "%h% ч до конца книги",
   "progress_book_hr_min": "%h% ч %m% мин до конца книги",

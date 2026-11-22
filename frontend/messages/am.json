@@ -113,6 +113,8 @@
   "reader_mark_one": "ምልክት",
   "reader_mark_many": "ምልክቶች",
   "progress_min_left": "ደቂቃ በምዕራፉ ቀርቷል",
+  "progress_chapter_hr": "በምዕራፉ %h% ሰዓት ቀርቷል",
+  "progress_chapter_hr_min": "በምዕራፉ %h% ሰዓት %m% ደቂቃ ቀርቷል",
   "progress_book_min": "በመጽሐፉ %n% ደቂቃ ቀርቷል",
   "progress_book_hr": "በመጽሐፉ %h% ሰዓት ቀርቷል",
   "progress_book_hr_min": "በመጽሐፉ %h% ሰዓት %m% ደቂቃ ቀርቷል",

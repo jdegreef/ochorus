@@ -113,6 +113,8 @@
   "reader_mark_one": "개 표시",
   "reader_mark_many": "개 표시",
   "progress_min_left": "분 남음 (이 장)",
+  "progress_chapter_hr": "이 장 끝까지 %h%시간 남음",
+  "progress_chapter_hr_min": "이 장 끝까지 %h%시간 %m%분 남음",
   "progress_book_min": "책 끝까지 %n%분 남음",
   "progress_book_hr": "책 끝까지 %h%시간 남음",
   "progress_book_hr_min": "책 끝까지 %h%시간 %m%분 남음",

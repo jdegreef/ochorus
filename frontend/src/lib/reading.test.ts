@@ -13,6 +13,7 @@ import {
 	listenMinutes,
 	listenTime,
 	planTimeLeft,
+	chapterTimeLeft,
 	planMinutesPerDay
 } from './reading';
 
@@ -70,6 +71,14 @@ describe('planTimeLeft', () => {
 		expect(planTimeLeft(45)).toBe('45 min left');
 		expect(planTimeLeft(60)).toBe('1 hr left');
 		expect(planTimeLeft(251)).toBe('4 hr 11 min left');
+	});
+});
+
+describe('chapterTimeLeft', () => {
+	it('reads in hours past the hour, like the book figure beside it', () => {
+		expect(chapterTimeLeft(8)).toBe('8 min left in chapter');
+		expect(chapterTimeLeft(120)).toBe('2 hr left in chapter');
+		expect(chapterTimeLeft(140)).toBe('2 hr 20 min left in chapter');
 	});
 });
 

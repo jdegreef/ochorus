@@ -62,6 +62,7 @@
 		readingMinutes,
 		listenTime,
 		bookTimeLeft,
+		chapterTimeLeft,
 		minutesLeft as minutesLeftOf,
 		HEADER_OFFSET,
 		placeAfterLayout,
@@ -842,7 +843,7 @@
 	// line along the reader bar's bottom edge. What the block printed is the
 	// line's tooltip (hover, or Tab onto it) and its accessible value.
 	const progressLabel = $derived(
-		[`${t('progress.page')} ${currentPage} / ${pageCount}`, `${minsLeft} ${t('progress.minLeft')}`, bookTimeLeftLabel]
+		[`${t('progress.page')} ${currentPage} / ${pageCount}`, chapterTimeLeft(minsLeft), bookTimeLeftLabel]
 			.filter(Boolean)
 			.join(' · ')
 	);
@@ -3588,6 +3589,12 @@
 		color: var(--muted);
 		font-size: var(--fs-micro);
 		white-space: nowrap;
+		/* Never wider than the screen: even invisible (opacity 0), a nowrap tip
+		   wider than a phone ("Página 1 / 17 · 8 min restantes en el capítulo ·
+		   2 h 52 min…") widened the page and the reader scrolled sideways. */
+		max-width: calc(100vw - 1rem);
+		overflow: hidden;
+		text-overflow: ellipsis;
 		box-shadow: var(--shadow-popover);
 		pointer-events: none;
 		opacity: 0;

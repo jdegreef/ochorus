@@ -113,6 +113,8 @@
   "reader_mark_one": "dấu",
   "reader_mark_many": "dấu",
   "progress_min_left": "phút còn lại trong chương",
+  "progress_chapter_hr": "Còn %h% giờ nữa là hết chương",
+  "progress_chapter_hr_min": "Còn %h% giờ %m% phút nữa là hết chương",
   "progress_book_min": "Còn %n% phút nữa là hết sách",
   "progress_book_hr": "Còn %h% giờ nữa là hết sách",
   "progress_book_hr_min": "Còn %h% giờ %m% phút nữa là hết sách",
