@@ -14,7 +14,32 @@
   "description": "Athanasius\u2019s great defence of the Son\u2019s full deity, written in exile. Against Arius\u2019s claim that \u201cthere was once when the Son was not,\u201d he argues that the Word is eternal, of one essence with the Father and no creature, and works through every text the Arians urged \u2014 Proverbs 8:22, \u201cthe Father is greater than I,\u201d and the rest.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Athanasius\u2019s Against the Arians?",
+    "answer": "It is a series of discourses by Athanasius, bishop of Alexandria, written in the 350s during one of his exiles, defending the full deity of the Son of God. It is the most important theological answer to Arianism, the teaching that the Son is a creature, made by the Father, rather than truly God."
+   },
+   {
+    "question": "What did Arius teach?",
+    "answer": "Arius, a priest of Alexandria, taught that the Son of God was the first and greatest of God\u2019s creatures, but not eternal: \u201cthere was once when the Son was not.\u201d Athanasius quotes from Arius\u2019s Thalia, a popular poem setting out his views, and mocks its frivolous style as unworthy of the subject."
+   },
+   {
+    "question": "Why does Athanasius say the Arians are not Christians?",
+    "answer": "In the opening discourse he argues that heretical sects always take their name from their founders, while Christians take their name from Christ alone. Because the Arians follow Arius and deny the Son, reckoning him among the creatures, Athanasius says that, as Arians, they are not Christians, and urges those indifferent to the controversy to see how serious it is."
+   },
+   {
+    "question": "How does Athanasius argue that the Son is eternal?",
+    "answer": "He argues that if God is always Father, he always has a Son; a Father without a Son is not a Father at all. The Word and Wisdom of God cannot have had a beginning, since God was never without his Word. The Son and Father are therefore coessential, one in Godhead, the Son being from the Father himself."
+   },
+   {
+    "question": "How does Athanasius answer texts like \u201cthe Father is greater than I\u201d?",
+    "answer": "Much of the work takes up passages the Arians used, such as Proverbs 8:22, Philippians 2:9\u201310, Hebrews 1:4 and John 14:28. Athanasius argues that many of them speak of the Son as he became man for our sake, not of his eternal divine nature. What he received as man, he received for us, so that we might be raised up in him."
+   },
+   {
+    "question": "Why did the doctrine matter so much to Athanasius?",
+    "answer": "Because salvation depends on it. Only God can save, so if the Son were a creature, he could not unite us to God. Athanasius teaches that because the Word took a body, we have become God\u2019s temple and are made God\u2019s sons. Only if Christ is truly God and truly man can he bring human beings into the life of God."
+   }
+  ],
   "publication_year": 358,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/npnf204.xxi.html",

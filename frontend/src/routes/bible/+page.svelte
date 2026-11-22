@@ -20,6 +20,8 @@
 		bibleToContinue,
 		bibleContinueRows,
 		bibleStarts,
+		BIBLE_PATHS,
+		biblePathSteps,
 		divisionKey,
 		groupBible,
 		mayBePassage,
@@ -75,6 +77,16 @@
 	const books = $derived(groups.flatMap((g) => g.divisions.flatMap((d) => d.books)));
 	const chapters = $derived(bibleChapterCount(books));
 	const starts = $derived(bibleStarts(series?.books ?? []));
+	// "Where to start": the first reader's five books by default, or a path
+	// for what brought them (BIBLE_PATHS), one switch away. The prerender
+	// draws the default.
+	let pathId = $state('first');
+	const startPath = $derived(BIBLE_PATHS.find((p) => p.id === pathId) ?? null);
+	const steps = $derived(
+		startPath
+			? biblePathSteps(startPath.steps, series?.books ?? [])
+			: starts.map(({ book, why }) => ({ book, title: book.title, href: `/books/${book.slug}`, why }))
+	);
 	// The reader's place in the Bible: device-local progress (synced when signed
 	// in), read after mount and again on `ochorus:sync`, as the hubs' Continue
 	// rows are. The prerender, and a first visit, have none: no Continue shelf,
@@ -401,15 +413,30 @@
 						>{t('bible.storyTitle')} <Arrow /></a
 					>
 				</div>
-				<p class="mb-4 text-small text-muted">{t('bible.startLede')}</p>
-				<ol class="start-list">
-					{#each starts as { book, why }, i (book.slug)}
+				<!-- What brought them: one press shows that path's chapters below. -->
+				<div class="start-paths" role="group" aria-label="Choose a way in">
+					<button type="button" class="chip" class:active={!startPath} aria-pressed={!startPath} onclick={() => (pathId = 'first')}
+						>New to the Bible</button
+					>
+					{#each BIBLE_PATHS as p (p.id)}
+						<button
+							type="button"
+							class="chip"
+							class:active={pathId === p.id}
+							aria-pressed={pathId === p.id}
+							onclick={() => (pathId = p.id)}>{p.label}</button
+						>
+					{/each}
+				</div>
+				<p class="mb-4 text-small text-muted" aria-live="polite">{startPath ? startPath.lede : t('bible.startLede')}</p>
+				<ol class="start-list" style:--steps={steps.length}>
+					{#each steps as { book, title, href, why }, i (href)}
 						<li>
-							<a class="start card-tint" href={localizeHref(`/books/${book.slug}`)}>
+							<a class="start card-tint" href={localizeHref(href)}>
 								<span class="start-cover"><BookCover {book} rounded="rounded-sm" /></span>
 								<span class="start-text">
 									<span class="start-step">{i + 1}</span>
-									<span class="start-title">{book.title}</span>
+									<span class="start-title">{title}</span>
 									<span class="start-why">{why}</span>
 								</span>
 							</a>
@@ -606,6 +633,15 @@
 	.starts {
 		margin-bottom: 2.75rem;
 	}
+	.start-paths {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 0.75rem;
+	}
+	.start-paths .chip {
+		min-height: 2.25rem;
+	}
 	.starts-head {
 		display: flex;
 		flex-wrap: wrap;
@@ -661,7 +697,7 @@
 	/* After the phone rules, so it overrides them. */
 	@media (min-width: 1024px) {
 		.start-list {
-			grid-template-columns: repeat(5, minmax(0, 1fr));
+			grid-template-columns: repeat(var(--steps, 5), minmax(0, 1fr));
 		}
 		.start {
 			flex-direction: column;

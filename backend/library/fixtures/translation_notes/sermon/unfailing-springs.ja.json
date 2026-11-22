@@ -1,0 +1,118 @@
+{
+    "kind": "sermon",
+    "slug": "unfailing-springs",
+    "language": "ja",
+    "job_issue": 9657,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "John 4:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 1
+        },
+        {
+            "reference": "John 4:14",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 2
+        },
+        {
+            "reference": "Revelation 22:17",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 5
+        },
+        {
+            "reference": "Hebrews 5:7",
+            "status": "self_rendered",
+            "block_index": 7
+        },
+        {
+            "reference": "John 4:4",
+            "status": "self_rendered",
+            "block_index": 7
+        },
+        {
+            "reference": "John 4:17",
+            "status": "self_rendered",
+            "block_index": 7
+        },
+        {
+            "reference": "John 3:16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 9
+        },
+        {
+            "reference": "Matthew 28:20",
+            "status": "self_rendered",
+            "block_index": 9
+        },
+        {
+            "reference": "Psalm 18:30",
+            "status": "self_rendered",
+            "block_index": 9
+        },
+        {
+            "reference": "John 4:13",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 10
+        },
+        {
+            "reference": "John 6:7",
+            "status": "self_rendered",
+            "block_index": 13
+        },
+        {
+            "reference": "John 6:32",
+            "status": "self_rendered",
+            "block_index": 13
+        },
+        {
+            "reference": "John 6:35",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 13
+        },
+        {
+            "reference": "John 1:18",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 13
+        },
+        {
+            "reference": "John 7:37-39",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 13
+        },
+        {
+            "reference": "1 Corinthians 1:30",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 14
+        },
+        {
+            "reference": "Colossians 3:11",
+            "status": "self_rendered",
+            "block_index": 14
+        },
+        {
+            "reference": "John 7:38",
+            "status": "self_rendered",
+            "block_index": 16
+        },
+        {
+            "reference": "Isaiah 37:14",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "Ecclesiastes 10:10",
+            "status": "self_rendered",
+            "block_index": 19
+        }
+    ]
+}

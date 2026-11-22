@@ -14,7 +14,32 @@
   "description": "Hippolytus traces each heresy of his day to a pagan philosophy, mystery cult or astrology it borrowed from, from Simon Magus and the Gnostic teachers to the controversies of his own Roman church, and closes with a summary of the true doctrine and a call to know God.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Refutation of All Heresies about?",
+    "answer": "It is Hippolytus of Rome\u2019s attempt to expose the heresies of his day by tracing each one to the pagan philosophy, mystery religion or astrology it borrowed from. He begins with the Greek philosophers, moves through astrologers and magicians to the Gnostic sects such as the Naasseni, Simon Magus, Valentinus, Basilides and Marcion, and ends with the controversies of his own Roman church and a statement of true doctrine."
+   },
+   {
+    "question": "Why does Hippolytus start with the philosophers?",
+    "answer": "Hippolytus believed the heretics had concealed their teachings in secret, so that many supposed them to be true worshippers of God. By laying out what the Greek thinkers taught, from Thales of Miletus onward, he aimed to show where each heretic took his ideas, and so to exhibit the heresiarchs as naked and unseemly, their teaching borrowed rather than received from Christ."
+   },
+   {
+    "question": "What does the book say about the church at Rome?",
+    "answer": "Book IX gives Hippolytus\u2019s own account of a dispute at Rome. He describes Noetus of Smyrna, whose teaching he traced to Heraclitus, and its spread at Rome under the bishops Zephyrinus and Callistus, whom he accuses of favouring it. He tells how he opposed this teaching. The book is a rare and partisan window into the Roman church of the early third century."
+   },
+   {
+    "question": "Who were the Elchasaites?",
+    "answer": "Hippolytus describes a man named Alcibiades who came to Rome with a book said to have been received by a just man called Elchasai and revealed by an angel. Hippolytus says this came after the teaching of Callistus had been noised abroad, and he records his own opposition to the sect."
+   },
+   {
+    "question": "How does the book end?",
+    "answer": "Book X summarises the systems already examined and then sets out the doctrine of the truth: one God who created all things, the Word through whom he made them, and the incarnation of the Word for our salvation. Hippolytus closes with a call to know God, saying that the true meaning of Know thyself is to discover God, who formed us after his own image."
+   },
+   {
+    "question": "Who should read The Refutation of All Heresies?",
+    "answer": "It is valuable for readers studying early Christianity, Gnosticism and the history of heresy, since it preserves descriptions of many groups known from few other sources. Its closing book on true doctrine is also worth reading on its own as an early statement of Christian faith. Readers should remember that Hippolytus writes as a combatant, not a neutral historian."
+   }
+  ],
   "publication_year": 225,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/anf05.iii.iii.html",

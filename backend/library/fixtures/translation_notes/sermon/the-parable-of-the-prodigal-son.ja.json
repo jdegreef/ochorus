@@ -1,0 +1,107 @@
+{
+    "kind": "sermon",
+    "slug": "the-parable-of-the-prodigal-son",
+    "language": "ja",
+    "job_issue": 9677,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Luke 15:1-2",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 8
+        },
+        {
+            "reference": "Luke 15:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 13
+        },
+        {
+            "reference": "Luke 15:7",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "Luke 15:17",
+            "status": "self_rendered",
+            "block_index": 26
+        },
+        {
+            "reference": "Luke 15:16",
+            "status": "self_rendered",
+            "block_index": 29
+        },
+        {
+            "reference": "Luke 15:12",
+            "status": "self_rendered",
+            "block_index": 33
+        },
+        {
+            "reference": "Luke 15:19",
+            "status": "self_rendered",
+            "block_index": 34
+        },
+        {
+            "reference": "Psalm 22:6",
+            "status": "self_rendered",
+            "block_index": 36
+        },
+        {
+            "reference": "Luke 15:18-20",
+            "status": "self_rendered",
+            "block_index": 45
+        },
+        {
+            "reference": "John 3:16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 48
+        },
+        {
+            "reference": "Luke 15:20",
+            "status": "self_rendered",
+            "block_index": 49
+        },
+        {
+            "reference": "Luke 15:22",
+            "status": "self_rendered",
+            "block_index": 49
+        },
+        {
+            "reference": "Galatians 3:13",
+            "status": "self_rendered",
+            "block_index": 52
+        },
+        {
+            "reference": "Isaiah 64:6",
+            "status": "self_rendered",
+            "block_index": 52
+        },
+        {
+            "reference": "Isaiah 53:11",
+            "status": "self_rendered",
+            "block_index": 52
+        },
+        {
+            "reference": "Micah 7:19",
+            "status": "self_rendered",
+            "block_index": 52
+        },
+        {
+            "reference": "Isaiah 61:10",
+            "status": "self_rendered",
+            "block_index": 54
+        },
+        {
+            "reference": "Luke 15:27",
+            "status": "self_rendered",
+            "block_index": 55
+        },
+        {
+            "reference": "Luke 15:30",
+            "status": "self_rendered",
+            "block_index": 56
+        }
+    ]
+}

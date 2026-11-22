@@ -14,7 +14,32 @@
   "description": "Three works by Anselm of Canterbury in one volume: the Proslogium, his prayerful search for God and the famous argument for his existence; the Monologium, a meditation on the being of God and the Trinity; Gaunilo\u2019s reply on behalf of the fool, with Anselm\u2019s answer; and Cur Deus Homo, his dialogue on why God became man to make satisfaction for sin.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is in this volume?",
+    "answer": "It gathers three works by Anselm of Canterbury, together with a famous exchange. The Proslogium is a prayerful search for God containing Anselm\u2019s argument for God\u2019s existence. The Monologium is a meditation on the being of God and the Trinity. Gaunilo\u2019s reply on behalf of the fool and Anselm\u2019s answer follow. Cur Deus Homo is a dialogue on why God became man."
+   },
+   {
+    "question": "What does faith seeking understanding mean?",
+    "answer": "Anselm first gave the Proslogium the title Faith Seeking Understanding. He writes as one who already believes and wants to understand what he believes. In his words, he does not seek to understand that he may believe, but believes in order to understand, for unless he believed he would not understand. Reason serves faith rather than replacing it."
+   },
+   {
+    "question": "What is Anselm\u2019s argument for God\u2019s existence?",
+    "answer": "Anselm says we believe God is a being than which nothing greater can be conceived. Even the fool who says in his heart there is no God understands this idea when he hears it, so it exists in his understanding. But a being that exists in reality as well as in the mind is greater than one that exists only in the mind, so the greatest conceivable being must exist in reality too. Philosophers have debated this argument ever since."
+   },
+   {
+    "question": "What was Gaunilo\u2019s objection?",
+    "answer": "Gaunilo, writing on behalf of the fool, argued that the same reasoning could prove the existence of a perfect lost island, richer than the Islands of the Blest, simply because we can conceive it. Anselm replied that his argument applies only to the being than which a greater cannot be conceived, not to islands or other limited things, and he included the exchange so readers could weigh both sides."
+   },
+   {
+    "question": "What is the answer of Cur Deus Homo?",
+    "answer": "In this dialogue Boso asks the questions and Anselm replies. Anselm argues that sin dishonours God and demands a satisfaction greater than all creation. None but God can make this satisfaction, yet none but man ought to make it, since man owes it. Therefore it is necessary for the God-man to make it. The book became one of the most influential accounts of the atonement."
+   },
+   {
+    "question": "Who should read Anselm?",
+    "answer": "These works suit readers interested in philosophy of religion, the existence of God, the Trinity or the meaning of the cross. They are also devotional: the Proslogium begins with a call to the mind to set aside its cares and seek God\u2019s face. Anselm shows how rigorous thinking and prayer can belong together."
+   }
+  ],
   "publication_year": 1078,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/anselm/basic_works",

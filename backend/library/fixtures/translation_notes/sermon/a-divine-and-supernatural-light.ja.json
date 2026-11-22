@@ -1,0 +1,165 @@
+{
+    "kind": "sermon",
+    "slug": "a-divine-and-supernatural-light",
+    "language": "ja",
+    "job_issue": 9649,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Matthew 16:17",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 0
+        },
+        {
+            "reference": "Matthew 16:13-15",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Matthew 16:16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 1
+        },
+        {
+            "reference": "Exodus 28:3",
+            "status": "self_rendered",
+            "block_index": 6
+        },
+        {
+            "reference": "Genesis 1:2",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 17
+        },
+        {
+            "reference": "2 Corinthians 11:14",
+            "status": "self_rendered",
+            "block_index": 18
+        },
+        {
+            "reference": "2 Corinthians 4:4",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 36
+        },
+        {
+            "reference": "1 Corinthians 13:12",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 36
+        },
+        {
+            "reference": "1 John 3:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 39
+        },
+        {
+            "reference": "John 14:19",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 39
+        },
+        {
+            "reference": "John 17:3",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 39
+        },
+        {
+            "reference": "Matthew 11:25-27",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 40
+        },
+        {
+            "reference": "2 Corinthians 4:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 40
+        },
+        {
+            "reference": "2 Corinthians 3:18",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 40
+        },
+        {
+            "reference": "Galatians 1:15-16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 40
+        },
+        {
+            "reference": "Psalm 119:18",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 40
+        },
+        {
+            "reference": "Psalm 25:14",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 40
+        },
+        {
+            "reference": "John 6:40",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 41
+        },
+        {
+            "reference": "John 17:6-8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 41
+        },
+        {
+            "reference": "John 12:44-46",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 41
+        },
+        {
+            "reference": "Luke 12:56",
+            "status": "self_rendered",
+            "block_index": 42
+        },
+        {
+            "reference": "Matthew 16:3",
+            "status": "self_rendered",
+            "block_index": 42
+        },
+        {
+            "reference": "Luke 12:57",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 42
+        },
+        {
+            "reference": "2 Peter 1:16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 43
+        },
+        {
+            "reference": "Jeremiah 23:28-29",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 46
+        },
+        {
+            "reference": "Matthew 11:25",
+            "status": "self_rendered",
+            "block_index": 52
+        },
+        {
+            "reference": "1 Corinthians 1:26-27",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 52
+        }
+    ]
+}

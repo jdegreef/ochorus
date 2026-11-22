@@ -12,7 +12,32 @@
   "cover_title": "",
   "description": "Pascal the man, in his own hand. Here are the letters to his sisters in the first fervour of the family's conversion; the long letter written after his father's death, one of the great Christian meditations on dying; and the letters of spiritual counsel to Mademoiselle de Roannez, written in the year of the Provincial Letters. Beside them stand his shorter works: the Prayer to ask of God the right use of sickness, composed in the illness that marked his last years; the Conversion of the Sinner; his comparison of the first Christians with those of his own day; and his conversation with M. de Saci on Epictetus and Montaigne, the germ of the Pensées.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is in Pascal’s Letters and Minor Works?",
+    "answer": "It collects Blaise Pascal’s letters and shorter writings: letters to his sisters during the family’s conversion, his long letter on the death of his father, and letters of spiritual counsel to Mademoiselle de Roannez. It also includes his Prayer for the Right Use of Sickness, On the Conversion of the Sinner, and his famous conversation with M. de Saci on Epictetus and Montaigne."
+   },
+   {
+    "question": "What is the letter on the death of his father?",
+    "answer": "After his father died in 1651, Pascal wrote a long letter of consolation to his sister and brother-in-law. It is one of the great Christian meditations on death. He argues that death must be seen not as nature sees it, but as Jesus Christ sees it, as the completion of the sacrifice of a life given to God, and the entrance into true life."
+   },
+   {
+    "question": "What is the Prayer for the Right Use of Sickness?",
+    "answer": "Pascal composed this prayer during the long illness that marked his last years. In it he asks God not for health or for sickness, but for the right use of whatever God sends. He prays that his sufferings might unite him with Christ’s sufferings, detach him from the world, and lead him to repentance and love."
+   },
+   {
+    "question": "What is the conversation with M. de Saci?",
+    "answer": "It records a conversation between Pascal and Isaac Le Maistre de Saci, a priest at Port-Royal. Pascal told him that his two most familiar books were Epictetus and Montaigne. He explains that Epictetus saw human greatness but not human weakness, and Montaigne the weakness but not the greatness. Only Christianity holds both truths together, an idea at the heart of the Pensées."
+   },
+   {
+    "question": "Who was Mademoiselle de Roannez?",
+    "answer": "Charlotte de Roannez was the sister of Pascal’s close friend, the Duke of Roannez, and a young woman considering a religious vocation. Pascal wrote her letters of spiritual direction in the same year he wrote the Provincial Letters. They are tender, searching letters about the cost and joy of following Christ."
+   },
+   {
+    "question": "Why are these writings important?",
+    "answer": "They show Pascal not only as a brilliant thinker but as a man of deep personal faith, writing to people he loved about death, sickness, conversion and the Christian life. They shed light on how the ideas of the Pensées first took shape, and many readers find them more personal and moving than his larger works."
+   }
+  ],
   "publication_year": 1859,
   "source_type": "public_domain",
   "source_url": "https://en.wikisource.org/wiki/Blaise_Pascal",

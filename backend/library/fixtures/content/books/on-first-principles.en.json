@@ -14,7 +14,32 @@
   "description": "The first systematic work of Christian theology: Origen on God, Christ and the Holy Spirit, on rational beings and their fall and restoration, on the world and the soul, on free will, and on how the Scriptures are inspired and should be read.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is On First Principles about?",
+    "answer": "It is Origen\u2019s attempt to set out the foundations of Christian teaching in an ordered way. He covers God, the Son and the Holy Spirit, rational creatures and angels, the world and its end, free will, and finally how Scripture should be read. It is often called the first systematic theology of the church, written when many questions had not yet been settled and Origen was exploring them openly."
+   },
+   {
+    "question": "How does Origen begin the work?",
+    "answer": "Origen opens by listing the points clearly delivered in the teaching of the apostles: one God who created all things, Jesus Christ born of the Father before all creatures, the Holy Spirit joined with them in honour, the soul\u2019s future reward or punishment, and the inspiration of Scripture. He holds that the church\u2019s teaching, handed down in succession from the apostles, is to be accepted, and then he explores what the apostles left unexplained."
+   },
+   {
+    "question": "What does On First Principles teach about Scripture?",
+    "answer": "The fourth book argues that the Scriptures were written by the Spirit of God and have a meaning beyond what appears on the surface. Origen compares Scripture to a person with body, soul and spirit, and teaches that the reader should seek the spiritual sense, especially where the literal sense alone would be impossible or unworthy of God. This approach shaped Christian interpretation for centuries."
+   },
+   {
+    "question": "What does Origen say about the end of all things?",
+    "answer": "Origen speculates that the end will resemble the beginning, and discusses a restoration in which rational beings are brought back to one end under God, so that God may be all in all. He presents these ideas as inquiry rather than settled teaching, and later church councils rejected some of them. Readers should treat these passages as the bold questioning of an early thinker rather than as the church\u2019s doctrine."
+   },
+   {
+    "question": "Why does the translation compare two texts?",
+    "answer": "The Greek original of On First Principles survives mostly in fragments, and the full work comes down to us chiefly in a Latin version by Rufinus, who softened passages he thought might mislead. This edition sets a more literal rendering beside Rufinus\u2019s paraphrase where the evidence allows, so the reader can see where the Latin translator smoothed or adjusted Origen\u2019s thought."
+   },
+   {
+    "question": "Who should read On First Principles?",
+    "answer": "It rewards readers interested in early Christian theology and the history of doctrine. It shows how the church\u2019s first great scholar reasoned about God, freedom and Scripture before the creeds of later councils were written. Because some of its speculations were later rejected, it is best read alongside other Fathers, as a window into the questions the early church was working through."
+   }
+  ],
   "publication_year": 225,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/anf04.vi.v.html",

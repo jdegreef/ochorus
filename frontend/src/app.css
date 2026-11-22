@@ -1144,9 +1144,15 @@
 	   single-word labels (fr "Enregistrer · Télécharger · Rechercher"). There
 	   the strip borrows the page gutter (`.page-col`'s px-5), full-bleed like a
 	   tab bar, and its labels drop to the micro step. */
-	@container action-host (max-width: 279.98px) {
+	/* 299.98, not 279.98: on a 320px phone the host is EXACTLY 280px (320 less
+	   the 20px gutters), so the old bound never matched the phone it was for,
+	   and the French strip overflowed by 58px, scrolling the page sideways. The
+	   strip itself scrolls if a language is longer still, never the page. */
+	@container action-host (max-width: 299.98px) {
 		.action-strip {
 			margin-inline: -1.25rem;
+			overflow-x: auto;
+			scrollbar-width: none;
 		}
 		.action-strip .btn:not(.account-menu *) {
 			padding-inline: 0;
