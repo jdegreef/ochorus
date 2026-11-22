@@ -101,6 +101,7 @@ DEFAULTED_OK = {
     ("library.book", "quiz"),
     ("library.sermon", "source_type"),
     ("library.sermon", "summary"),  # "In brief" TL;DR — blank default, fixture-owned
+    ("library.sermon", "main_points"),  # "Main points" box — [] on most sermons
     ("library.author", "faq"),
     # Empty for every author without a ranked "Where to start" list.
     ("library.author", "start_with"),

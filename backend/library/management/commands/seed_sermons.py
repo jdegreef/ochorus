@@ -37,6 +37,8 @@ SERMON_FIELDS = (
     "title",
     "scripture_ref",
     "summary",
+    # Fixture-owned like `summary`, for the same reason (see the model field).
+    "main_points",
     # Fixture-owned like `summary` — AI-drafted off-server and shipped in the
     # fixture, no live-DB workflow edits it, so it updates from the fixture on
     # every deploy (not create-only). A plain list, so save() derives nothing.

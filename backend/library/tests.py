@@ -533,6 +533,29 @@ class SermonNeighboursTests(TestCase):
         self.assertEqual(d["next"]["slug"], "gamma")
 
 
+class SermonMainPointsApiTests(TestCase):
+    """The detail payload carries the "Main points" box, [] when unwritten."""
+
+    def setUp(self):
+        self.client = APIClient()
+        a = Author.objects.create(slug="mp", name="A Preacher")
+        Sermon.objects.create(
+            author=a, slug="pts", language="en", title="Points",
+            body_html="<p>x</p>", main_points=["One.", "Two.", "Three."],
+        )
+        Sermon.objects.create(
+            author=a, slug="none", language="en", title="None", body_html="<p>x</p>",
+        )
+
+    def test_points_are_served_in_order(self):
+        res = self.client.get("/api/library/sermons/pts/?language=en")
+        self.assertEqual(res.data["main_points"], ["One.", "Two.", "Three."])
+
+    def test_a_sermon_without_points_sends_an_empty_list(self):
+        res = self.client.get("/api/library/sermons/none/?language=en")
+        self.assertEqual(res.data["main_points"], [])
+
+
 class SermonScriptureRefsTests(TestCase):
     """The scripture-index chip row: the sermon's text + body citations."""
 
