@@ -1,0 +1,13 @@
+{
+ "why": "OCR slips in Spurgeon's The Raven's Cry (a joined and a split word), found while translating it to Japanese (job #9641).",
+ "replacements": [
+  [
+   "the beasthis food",
+   "the beast his food"
+  ],
+  [
+   "Sa vior's",
+   "Savior's"
+  ]
+ ]
+}
