@@ -23785,6 +23785,37 @@
 				480
 			]
 		},
+		"ja/men-and-women-who-gave-everything-2": {
+			"ground": "8801d6e2b41a8045754baadf985d5209c2b463f34e7ed35adb6ca1d62bdb9f03",
+			"style": "originals",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "3b4e8d93c4a40327f4b0d2573068b262dca8a402a9584ea90a8fa2540a39eb87",
+			"art": true,
+			"scrim": 0.4,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[149, 308, 451, 384],
+					[149, 374, 451, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"ja/men-of-prayer-2": {
 			"ground": "2c3734aba7821f26edd01364fd8ba713575196582789fa1aa1ce43e901b9df1c",
 			"style": "originals",
@@ -24005,6 +24036,39 @@
 			"bar": 0.04,
 			"caps": false,
 			"sitemark": null
+		},
+		"ja/talks-to-the-farmer-children": {
+			"ground": "fa1b6933f06b17c3c36fd3306f393ef2bc9bf5afba4653761de9ae3847d77ebb",
+			"style": "young",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "43ce66cf69e6fc469e96e53b81b221a31edeb73468674265db4252cb2d1e8268",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[158, 318, 442, 393]
+				],
+				"edition": [
+					[238, 405, 362, 430]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				325,
+				469
+			]
 		},
 		"ja/the-imitation-of-christ": {
 			"ground": "79fbd618b62370d9bf9b08747b06311ebb4dd2071c2eaa0fd45686da5ae95f80",

@@ -1,0 +1,13 @@
+{
+ "why": "Two typographic slips in A. B. Simpson's Filled with the Spirit, found while translating it to Japanese (job #8578; the ja edition that shipped is #9639's): a stray full stop inside John 7:38's 'rivers of living water', and a missing space before an opening quotation mark. Punctuation only; no word changes.",
+ "replacements": [
+  [
+   "rivers of. living water",
+   "rivers of living water"
+  ],
+  [
+   "fulfilled,\"He",
+   "fulfilled, \"He"
+  ]
+ ]
+}
