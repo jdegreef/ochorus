@@ -14,7 +14,32 @@
   "description": "Augustine\u2019s handbook for reading and preaching Scripture: the things Scripture teaches us to enjoy and use, chiefly the love of God and neighbour; the signs it speaks through and the learning needed to understand them; how to resolve its figures and ambiguities; and, in the fourth book, how the Christian teacher should deliver what he has found.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is On Christian Doctrine about?",
+    "answer": "It is Augustine\u2019s handbook for reading and teaching Scripture. The first three books explain how to discover the meaning of the Bible: what its subject is, what signs and words are, and how to handle passages that are obscure or figurative. The fourth book turns to the preacher, showing how what has been understood should be put into words. Throughout, Augustine treats the love of God and of our neighbour as the goal of all interpretation."
+   },
+   {
+    "question": "What does Augustine mean by things to be enjoyed and things to be used?",
+    "answer": "Augustine divides things into those to be enjoyed, those to be used, and those which both use and enjoy. To enjoy something is to rest in it for its own sake; to use something is to employ it for the sake of something else. Only the Father, the Son and the Holy Spirit are truly to be enjoyed. Everything else, even the good things of this world, is to be used on the way to God, so that we do not settle for less than him."
+   },
+   {
+    "question": "What is the image of the Egyptians\u2019 gold and silver?",
+    "answer": "Augustine compares useful pagan learning to the gold and silver the Israelites carried out of Egypt. Just as God\u2019s people took those treasures and put them to better use, a Christian may take what is true and helpful in the learning of the pagans, such as language, history or reasoning, and claim it for the service of the gospel. What is false or superstitious is left behind; what is true belongs to God wherever it is found."
+   },
+   {
+    "question": "What does the book say about understanding hard passages of Scripture?",
+    "answer": "Augustine teaches that obscure places should be read in the light of clear ones, and that the reader must learn to tell when a passage is meant literally and when figuratively. A key test is love: Scripture enjoins love for God and our neighbour, and a reading that leads away from that love has missed the sense. Knowing the original languages, the things Scripture mentions, and the rule of faith all help the reader find the true sense."
+   },
+   {
+    "question": "What does Book IV teach about preaching?",
+    "answer": "Book IV is a short guide to Christian eloquence. Augustine borrows from Cicero the idea that a speaker should teach, delight and move his hearers, and he says that teaching is the most essential of the three, because the hearer must first understand. He describes three styles, the subdued, the temperate and the majestic, gives examples of each, and insists that the preacher\u2019s life and prayer matter more than skill with words."
+   },
+   {
+    "question": "Who would benefit from reading On Christian Doctrine?",
+    "answer": "It suits anyone who wants to read the Bible well, and especially those who teach or preach. Students of the history of interpretation will find here one of the founding works of Christian hermeneutics, and readers interested in how faith relates to learning will value Augustine\u2019s case for using all true knowledge in God\u2019s service. Its steady focus on love as the aim of Scripture makes it devotional as well as instructive."
+   }
+  ],
   "publication_year": 426,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/npnf102",

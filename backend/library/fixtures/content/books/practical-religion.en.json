@@ -14,7 +14,32 @@
   "description": "Twenty-one plain papers on the Christian’s daily life, written as the companion to Knots Untied and Old Paths. Ryle begins with self-inquiry and effort, turns to prayer, Bible-reading, the Lord’s Supper, charity and zeal, weighs formality, the world, riches and sickness, and ends with the family of God, heaven and eternity — always pressing the reader to make religion real and personal.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Practical Religion about?",
+    "answer": "It is a collection of twenty-one plain papers by J. C. Ryle on the Christian’s daily life. Ryle wrote it as a companion to Knots Untied and Old Paths: where those books deal with disputed church questions and leading gospel doctrines, this one deals with the practice of faith. It covers self-inquiry, prayer, Bible reading, the Lord’s Supper, charity, zeal, the world, riches, sickness, heaven and eternity."
+   },
+   {
+    "question": "Why does Ryle begin with self-inquiry?",
+    "answer": "The opening paper takes Paul’s words to Barnabas in Acts 15:36, let us go again and visit our brethren, and see how they do. Ryle asks every reader to begin the book by joining him in self-inquiry: do we think about our souls at all, and have we received the forgiveness of our sins? He believes that an age of great spiritual privilege calls for honest examination of how matters stand between ourselves and God."
+   },
+   {
+    "question": "What does Ryle mean by zeal?",
+    "answer": "Ryle says that a zealous man in religion is pre-eminently a man of one thing. He sees one thing, cares for one thing, and lives for one thing: to please God. Such zeal is not mere excitement but a burning desire to honour Christ, willing to labour, spend and even die for that end. Ryle distinguishes true zeal from party spirit and urges lukewarm Christians to wake up."
+   },
+   {
+    "question": "What does the book teach about prayer?",
+    "answer": "Ryle calls prayer the most important subject in practical religion, saying all other subjects are second to it. He presses for prayer that is real, persevering and earnest, and laments how tame and lukewarm many prayers are compared with Christ’s strong crying and tears. He urges readers to knock loudly at the door of grace."
+   },
+   {
+    "question": "How does Practical Religion end?",
+    "answer": "The last papers turn to the future: the family of God, the believer’s home in heaven, being heirs of God, the great gathering of Christ’s people, the great separation at judgment, and eternity. Ryle wants readers to measure everything in this life by the life to come, and to settle the matter of their souls now."
+   },
+   {
+    "question": "Who should read Practical Religion?",
+    "answer": "It suits any Christian who wants plain, searching counsel on living the faith, and anyone unsure where they stand with God. Ryle writes clearly, warmly and directly, believing that he is your best friend who tells you the most truth. Each paper stands alone, so the book works well for daily reading or group study."
+   }
+  ],
   "publication_year": 1878,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/38162",
