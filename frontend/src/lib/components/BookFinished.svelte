@@ -148,7 +148,7 @@
 				{/each}
 			</div>
 		{/if}
-		<p class="eyebrow text-gold">{t('finished.eyebrow')}</p>
+		<p class="eyebrow text-gold-ink">{t('finished.eyebrow')}</p>
 		<h2 id="finished-heading" class="font-display mt-2 text-h2 text-balance" dir="auto">{book.title}</h2>
 		<p class="mt-1 text-small text-muted">
 			{book.author.name}

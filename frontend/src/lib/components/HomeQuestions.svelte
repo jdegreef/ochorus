@@ -19,6 +19,9 @@
 	{@html ld}
 </svelte:head>
 
-<section class="page-col px-5 pt-14" aria-label={t('home.qa.title')}>
+<!-- A plain wrapper: QandA's own <section> is already the landmark, named by
+     its heading. Labelling this one too gave screen readers two identical
+     "Questions about Ochorus" regions (bug review 2026-11-22, #32). -->
+<div class="page-col px-5 pt-14">
 	<QandA {items} title={t('home.qa.title')} headingClass="section-heading" />
-</section>
+</div>

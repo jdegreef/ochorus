@@ -25,7 +25,7 @@
 {#if welcome.pending}
 	<section class="page-col px-5 pt-8" aria-labelledby="welcome-palette-heading">
 		<div class="rounded-card border border-border bg-surface p-6 sm:p-8">
-			<p class="eyebrow text-gold">{t('welcome.eyebrow')}</p>
+			<p class="eyebrow text-gold-ink">{t('welcome.eyebrow')}</p>
 			<h2 id="welcome-palette-heading" class="font-display mt-2 text-h2">{t('welcome.paletteTitle')}</h2>
 			<p class="mt-1 mb-5 text-small text-muted">{t('welcome.paletteSub')}</p>
 

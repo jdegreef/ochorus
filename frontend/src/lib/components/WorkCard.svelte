@@ -124,7 +124,7 @@
 		     text stays reachable in `title` — on /reading a sermon's verse range
 		     is worth the hover. -->
 		<div class="mt-1 truncate text-micro text-muted" title={caption}>
-			{#if complete}<span class="text-gold" aria-hidden="true">✓</span> {/if}{caption}
+			{#if complete}<span class="text-gold-ink" aria-hidden="true">✓</span> {/if}{caption}
 		</div>
 	</div>
 </a>

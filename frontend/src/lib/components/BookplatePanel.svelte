@@ -39,7 +39,7 @@
 
 {#if auth.initialized}
 	<section class="mt-8" aria-labelledby="bookplate-h">
-		<h3 id="bookplate-h" class="eyebrow text-gold">{t('bookplate.heading')}</h3>
+		<h3 id="bookplate-h" class="eyebrow text-gold-ink">{t('bookplate.heading')}</h3>
 		<div class="mt-3">
 			<Bookplate {name} title={book.title} author={book.author.name} {date} {style} lang={book.language}>
 				{#snippet blank()}

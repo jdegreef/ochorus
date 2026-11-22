@@ -138,6 +138,7 @@
 	--color-accent-soft: var(--accent-soft);
 	--color-accent-soft-border: var(--accent-soft-border);
 	--color-gold: var(--gold);
+	--color-gold-ink: var(--gold-ink);
 	--color-border: var(--border);
 	--color-border-strong: var(--border-strong);
 	--color-danger: var(--danger);
@@ -318,6 +319,11 @@
 	--accent-soft: #221f33;
 	--accent-soft-border: #36324f;
 	--gold: #e0b45c;
+	/* Gold as TEXT (`text-gold-ink`): --gold itself is a fill (highlights,
+	   seals, washes) and only 3.1:1 on paper's --surface-2, under AA for the
+	   12 px eyebrows it labels (bug review 2026-11-22, #31). Night keeps the
+	   fill colour (~8:1 there). */
+	--gold-ink: var(--gold);
 	/* The metal of the ornaments — fleurons, a drop cap's raised edge, the
 	   settings gear. Gold, but a palette may strike them in silver
 	   (Cathedral, Monastery). Not --gold's other jobs (highlights, the
@@ -447,6 +453,7 @@
 	--accent-soft: #ecebf7;
 	--accent-soft-border: #d9d7f0;
 	--gold: #b07d22;
+	--gold-ink: #86601a; /* 4.8 / 5.2 / 4.9 on bg / surface / surface-2 */
 	--border: #e8dfcf;
 	--border-strong: #968462;
 	--danger: #b23a48;
@@ -491,6 +498,7 @@
 	--accent-soft: #e9e5f3;
 	--accent-soft-border: #d7d2ec;
 	--gold: #9c6f1e;
+	--gold-ink: #7a5716; /* 5.6 / 6.0 / 5.0 */
 	--border: #ddcfb1;
 	--border-strong: #8d7b57;
 	--danger: #b23a48;

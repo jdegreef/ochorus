@@ -48,7 +48,7 @@
 		<BookCover {book} />
 	</a>
 	<div class="min-w-0">
-		<p class="eyebrow text-gold">{t('audience.spotlightEyebrow')}</p>
+		<p class="eyebrow text-gold-ink">{t('audience.spotlightEyebrow')}</p>
 		<h2
 			id="spotlight-heading"
 			class="mt-1 text-balance font-display text-h2 font-semibold leading-tight"

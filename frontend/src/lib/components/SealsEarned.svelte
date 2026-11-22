@@ -45,7 +45,7 @@
 			<div class="seal-earned">
 				<SealMark id={seal.id} state="earned" size="4.5rem" {stamp} delay="{0.2 + i * 0.35}s" />
 				<div class="min-w-0 text-start">
-					<p class="eyebrow text-gold">{t('seals.new')}</p>
+					<p class="eyebrow text-gold-ink">{t('seals.new')}</p>
 					<p class="font-display text-h3">{sealName(seal)}</p>
 					<p class="text-small text-muted">{sealRule(seal.id)}</p>
 					<a class="mt-1 inline-block text-small font-semibold text-accent" href={next.href}>{next.label} <Arrow /></a>

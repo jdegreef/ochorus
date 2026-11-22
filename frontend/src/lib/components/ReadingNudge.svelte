@@ -88,7 +88,7 @@
 		>
 			<!-- Streak -->
 			<div class="flex items-center gap-3">
-				<span class="text-gold"><Icon name="flame" size={26} /></span>
+				<span class="text-gold-ink"><Icon name="flame" size={26} /></span>
 				<div class="leading-tight">
 					{#if streak > 0}
 						<div>

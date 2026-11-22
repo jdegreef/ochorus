@@ -151,7 +151,7 @@
 					<div class="mt-1 text-micro text-muted">{lastRead || meter}</div>
 				{:else if item.status === 'finished'}
 					<div class="text-micro text-muted">
-						<span class="text-gold" aria-hidden="true">✓</span>
+						<span class="text-gold-ink" aria-hidden="true">✓</span>
 						{finishedOn}
 					</div>
 				{:else}

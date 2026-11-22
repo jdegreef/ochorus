@@ -193,12 +193,12 @@
 	<div
 		class="mx-auto flex min-h-[clamp(420px,60vh,620px)] max-w-5xl flex-col justify-end px-5 py-16 sm:py-24"
 	>
-		<p class="eyebrow mb-3 text-gold">{t('about.title')}</p>
+		<p class="eyebrow mb-3 text-gold-ink">{t('about.title')}</p>
 		<!-- The page <h1>. Light on the photo scrim, so the colour is theme-fixed
 		     white (the ground is the photograph, not a theme surface). -->
 		<h1 class="text-h1 max-w-[16ch] text-white">{t('about.heading')}</h1>
 		<p class="mt-4 max-w-2xl text-body text-white/90">{t('about.p1')}</p>
-		<p class="mt-6 text-small uppercase tracking-[0.12em] text-gold">{t('about.heroMeta')}</p>
+		<p class="mt-6 text-small uppercase tracking-[0.12em] text-gold-ink">{t('about.heroMeta')}</p>
 	</div>
 </section>
 
@@ -225,7 +225,7 @@
 		<div class="space-y-6 self-center">
 			{#each [['about.pillar1Title', 'about.pillar1Body'], ['about.pillar2Title', 'about.pillar2Body'], ['about.pillar3Title', 'about.pillar3Body']] as [title, body] (title)}
 				<div>
-					<p class="eyebrow mb-1.5 text-gold">{t(title)}</p>
+					<p class="eyebrow mb-1.5 text-gold-ink">{t(title)}</p>
 					<p class="text-body text-muted">{t(body)}</p>
 				</div>
 			{/each}
@@ -237,7 +237,7 @@
 <section class="bg-surface-2">
 	<div class="mx-auto max-w-5xl px-5 py-16 sm:py-20">
 		<div class="mb-10 max-w-2xl">
-			<p class="eyebrow mb-3 text-gold">{t('about.statsEyebrow')}</p>
+			<p class="eyebrow mb-3 text-gold-ink">{t('about.statsEyebrow')}</p>
 			<h2 class="text-h2 text-text">{t('about.statsHeading')}</h2>
 			<p class="mt-3 text-body text-muted">{t('about.statsIntro')}</p>
 		</div>
@@ -249,7 +249,7 @@
 			{#each stats as [n, label] (label)}
 				<div class="bg-surface p-6">
 					<div class="mb-3.5 h-[3px] w-7 rounded bg-gold/80" aria-hidden="true"></div>
-					<dd class="text-h2 font-display leading-none text-gold tabular-nums" use:countUp={n}>{n}</dd>
+					<dd class="text-h2 font-display leading-none text-gold-ink tabular-nums" use:countUp={n}>{n}</dd>
 					<dt class="mt-3 text-small uppercase tracking-wider text-muted">{t(label)}</dt>
 				</div>
 			{/each}
@@ -314,7 +314,7 @@
 		</div>
 		<div>
 			<p
-				class="eyebrow mb-4 inline-block rounded-full border border-border px-3 py-1 text-gold"
+				class="eyebrow mb-4 inline-block rounded-full border border-border px-3 py-1 text-gold-ink"
 			>
 				{t('about.featureTag')}
 			</p>
@@ -339,7 +339,7 @@
 					<blockquote class="font-display text-body italic text-text">
 						“{t(text)}”
 					</blockquote>
-					<figcaption class="mt-3 text-small uppercase tracking-wider text-gold">
+					<figcaption class="mt-3 text-small uppercase tracking-wider text-gold-ink">
 						{t(ref)}
 					</figcaption>
 				</figure>
@@ -355,7 +355,7 @@
 		<h2 class="mb-8 max-w-[22ch] text-h2 text-text">{t('about.partnerHeading')}</h2>
 		<div class="flex max-w-3xl gap-5 rounded-card border border-border bg-surface-2 p-6 sm:p-8">
 			<span
-				class="font-display grid h-12 w-12 shrink-0 place-items-center rounded-full bg-bg text-h3 text-gold"
+				class="font-display grid h-12 w-12 shrink-0 place-items-center rounded-full bg-bg text-h3 text-gold-ink"
 				aria-hidden="true">✦</span
 			>
 			<div>
@@ -377,7 +377,7 @@
 <!-- ============================= CTA ============================= -->
 <section class="bg-surface-2">
 	<div class="mx-auto max-w-3xl px-5 py-16 text-center sm:py-20">
-		<p class="eyebrow mb-3 text-gold">{t('about.ctaEyebrow')}</p>
+		<p class="eyebrow mb-3 text-gold-ink">{t('about.ctaEyebrow')}</p>
 		<h2 class="text-h2 mx-auto max-w-[18ch] text-text">{t('about.ctaHeading')}</h2>
 		<p class="mx-auto mt-4 max-w-xl text-body text-muted">{t('about.ctaBody')}</p>
 		<div class="mt-8 flex flex-wrap justify-center gap-3">

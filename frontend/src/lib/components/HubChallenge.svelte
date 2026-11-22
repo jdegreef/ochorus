@@ -87,7 +87,7 @@
 						<span class="font-semibold text-text">{dayLabel}</span>
 						{#if streak > 0}
 							<span class="flex items-center gap-1 text-muted">
-								<span class="text-gold"><Icon name="flame" size={16} /></span>
+								<span class="text-gold-ink"><Icon name="flame" size={16} /></span>
 								{streak}
 								{t('settings.streakLabel')}
 							</span>
