@@ -1,0 +1,32 @@
+{
+  "title": "La Primera Carta de Juan",
+  "cover_title": "1 Juan",
+  "subtitle": "Iōannou A, «Primera de Juan»",
+  "description": "Una carta sin saludo ni despedida, escrita por un anciano pastor a sus «hijitos» después de una dolorosa división en su iglesia, para que quienes se quedaron supieran que tienen vida eterna. Comienza con la vida que fue oída, vista y tocada con manos humanas, y vuelve una y otra vez a tres pruebas: lo que creemos acerca de Jesús, si guardamos sus mandamientos y si nos amamos unos a otros. Dios es luz; Dios es amor; el amor no deja lugar al temor; y amamos porque él nos amó primero. En la Open Word Bible, una nueva traducción desde el griego entregada libremente al dominio público, con una introducción a la forma y el sentido de la carta y una conclusión sobre dónde seguir leyendo.",
+  "qa": [
+    {
+      "question": "¿Qué es la Primera Carta de Juan?",
+      "answer": "Es el vigésimo tercer libro del Nuevo Testamento, la más larga de las tres cartas que llevan el nombre de Juan. No tiene saludo ni despedida y se lee como el sermón de un pastor a una iglesia que conoce bien. Escrita después de que un grupo abandonara la iglesia negando que Jesucristo hubiera venido en la carne, ofrece a los creyentes que se quedaron maneras de reconocer la verdad y de estar seguros de su situación ante Dios. Ella misma declara su propósito en 5:13: para que sepan que tienen vida eterna."
+    },
+    {
+      "question": "¿Quién escribió 1 Juan, y cuándo se escribió?",
+      "answer": "La carta no nombra a su autor. Escribe como testigo presencial de Jesús y como un padre para sus lectores, con un lenguaje muy cercano al del Evangelio de Juan. Desde el siglo II la iglesia la recibió como obra del apóstol Juan, escrita al final de su vida en Éfeso, probablemente en las últimas décadas del siglo I. Algunos estudiosos piensan que procede de un dirigente del círculo que atesoraba el testimonio de Juan, quizá el «anciano» de 2 y 3 Juan."
+    },
+    {
+      "question": "¿Por qué se escribió 1 Juan?",
+      "answer": "Un grupo había abandonado la iglesia («Salieron de entre nosotros», 2:19). Negaban que Jesús fuera el Cristo y no querían confesarlo como aquel que ha venido en la carne, mientras afirmaban conocer a Dios. La carta no los nombra, y los estudiosos discuten si sostenían las ideas que más tarde enseñó Cerinto o las de quienes decían que Cristo solo aparentaba tener un cuerpo. El autor tranquiliza a quienes se quedaron y les da pruebas de la fe verdadera: la creencia correcta acerca de Jesús, la obediencia a sus mandamientos y el amor de unos por otros."
+    },
+    {
+      "question": "¿Qué significa «Dios es amor» en 1 Juan?",
+      "answer": "La frase aparece dos veces, en 4:8 y 4:16, junto a la afirmación anterior de que «Dios es luz» (1:5). La carta dice que el amor no se encuentra primero en nuestro amor por Dios, sino en su amor por nosotros, mostrado al enviar a su Hijo como el sacrificio que expía nuestros pecados (4:10). Como Dios es amor, quien lo conoce amará a los demás, no solo de palabra sino con hechos (3:18), y el amor no deja lugar al temor (4:18)."
+    },
+    {
+      "question": "¿Enseña 1 Juan que los cristianos no pecan?",
+      "answer": "Dice a la vez que quien afirma estar libre de pecado se engaña a sí mismo (1:8) y que quien ha nacido de Dios «no sigue pecando» (3:9). El tiempo verbal del griego en el capítulo 3 describe un modo de vida estable más que cada acto aislado. John Wesley se apoyó en estos versículos para su enseñanza sobre la perfección cristiana; otros los leen como una descripción de la dirección de la vida del creyente. Todos coinciden en que la carta llama a los cristianos a la santidad y promete perdón a quienes confiesan sus pecados (1:9; 2:1–2)."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del griego y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser precisa y sonar natural al leerse en voz alta. Como la mayoría de las Biblias modernas, no incluye las palabras sobre el Padre, el Verbo y el Espíritu Santo que aparecen en 5:7 en la versión King James, que no se encuentran en ningún manuscrito griego antiguo. El razonamiento detrás de cada una de sus oraciones, con el griego al lado, se publica en openwordbible.org. La introducción y la conclusión se escribieron para esta edición."
+    }
+  ]
+}

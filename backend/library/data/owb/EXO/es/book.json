@@ -1,0 +1,32 @@
+{
+  "title": "Éxodo",
+  "cover_title": "",
+  "subtitle": "Shemot, «Nombres»",
+  "description": "El segundo libro de la Biblia, llamado en hebreo Shemot por sus primeras palabras, «Estos son los nombres», y en griego Éxodo, «el camino de salida». Un nuevo rey que nunca había oído hablar de José convierte en esclavos a la familia de Jacob, y Dios oye sus gemidos y se acuerda de Su pacto. Luego viene la gran historia de rescate: el bebé escondido entre los juncos del Nilo, la zarza que arde y no se consume, el nombre «YO SOY QUIEN SOY», las plagas, el cordero de la Pascua y el mar partido en dos. En el desierto llegan el maná y el agua de la roca; en el Sinaí, los Diez Mandamientos y el pacto sellado con sangre; y después del becerro de oro, la oración de Moisés, el SEÑOR que pasa proclamando Su nombre y la gloria que llena el tabernáculo. En la Open Word Bible, una nueva traducción del hebreo cedida libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre dónde seguir leyendo.",
+  "qa": [
+    {
+      "question": "¿Qué es el libro de Éxodo?",
+      "answer": "El segundo libro de la Biblia y de los cinco libros de Moisés, la Torá. Su nombre hebreo, Shemot, «Nombres», viene de sus primeras palabras; el nombre Éxodo, que en griego significa «salida», viene de la antigua traducción griega. Sus cuarenta capítulos cuentan cómo Dios rescató de la esclavitud en Egipto a los descendientes de Jacob (capítulos 1–15), los guio por el desierto (15–18) y, en el monte Sinaí, hizo un pacto con ellos, les dio Su ley y vino a vivir entre ellos en el tabernáculo (19–40)."
+    },
+    {
+      "question": "¿Quién escribió el libro de Éxodo, y cuándo ocurrió el éxodo?",
+      "answer": "Éxodo no nombra a su autor, aunque dice que Moisés escribió algunas de sus palabras (17:14; 24:4; 34:27), y la tradición judía y cristiana lo ha recibido como uno de los cinco libros de Moisés. Muchos estudiosos piensan que se nutrió de fuentes más antiguas y alcanzó su forma final mucho después. La fecha del éxodo también se debate: algunos la sitúan en el siglo XV a. C., a partir de los 480 años de 1 Reyes 6:1; muchos la sitúan en el siglo XIII, a partir de la ciudad de Ramsés mencionada en Éxodo 1:11. Los cristianos sostienen diversas opiniones sobre ambas cuestiones."
+    },
+    {
+      "question": "¿Qué son los Diez Mandamientos?",
+      "answer": "Las palabras que Dios pronunció desde el monte Sinaí en Éxodo 20:1–17, repetidas en Deuteronomio 5; el hebreo las llama «las Diez Palabras» (34:28). No comienzan con un mandato, sino con un recordatorio del rescate: «Yo soy el SEÑOR tu Dios. Fui yo quien te sacó del país de Egipto, de la casa en que servías como esclavo». Luego vienen: ningún otro dios, ningún ídolo, ningún mal uso del nombre de Dios, el sábado, la honra a los padres, y no matar, no cometer adulterio, no robar, no dar falso testimonio y no codiciar. Las tradiciones judía, católica y luterana, y ortodoxa y reformada, dividen las mismas palabras en diez de maneras ligeramente distintas."
+    },
+    {
+      "question": "¿Qué significa «YO SOY QUIEN SOY» en Éxodo 3:14?",
+      "answer": "Es la respuesta de Dios cuando Moisés le pregunta Su nombre ante la zarza ardiente. Las palabras provienen del verbo hebreo «ser», y el nombre personal de Dios, que las Biblias en español escriben «el SEÑOR», está estrechamente relacionado con ellas. Se han entendido como una promesa de presencia fiel («Seré el que seré», que hace eco de «Yo estaré contigo» en 3:12), como una afirmación de la libertad de Dios y como una declaración de que Dios simplemente es, sin depender de nada. En Juan 8:58 Jesús dice: «antes que Abraham existiera, yo soy», y muchos lectores oyen este nombre detrás de esas palabras."
+    },
+    {
+      "question": "¿Por qué Éxodo dedica tantos capítulos al tabernáculo?",
+      "answer": "Porque el tabernáculo es la meta del rescate. Dios le dice a Moisés: «Que Me hagan un santuario, para que yo habite entre ellos» (25:8), y dice que sacó a Israel de Egipto para «hacer Mi morada entre ellos» (29:46). Los planos se dan en los capítulos 25–31 y la construcción se describe en los capítulos 35–40, con el becerro de oro en medio, y el libro termina con la gloria del SEÑOR llenando la tienda. El Nuevo Testamento retoma la imagen: Juan dice que el Verbo «hizo Su morada entre nosotros», y la carta a los Hebreos lee el tabernáculo como copia y sombra del santuario celestial en el que Cristo ha entrado."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del hebreo y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser precisa y sonar natural al leerse en voz alta. El razonamiento detrás de cada una de sus oraciones, con el hebreo al lado, está publicado en openwordbible.org. La introducción y la conclusión se escribieron para esta edición."
+    }
+  ]
+}

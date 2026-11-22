@@ -1,0 +1,32 @@
+{
+  "title": "El Cantar de los Cantares",
+  "cover_title": "Cantar de los Cantares",
+  "subtitle": "Shir HaShirim, «El Cantar de los Cantares»",
+  "description": "El más grande de los cantos, como dice su título: un poema de amor entre una mujer y un hombre, situado en medio de la Biblia. Comienza con anhelo —«¡Que me bese con los besos de su boca!»— y avanza entre viñas y jardines, gacelas y palomas, una voz que llama «Levántate, amada mía, hermosa mía, y vámonos», dos búsquedas por la ciudad de noche y un día de bodas, hasta la gran sentencia de que el amor es tan fuerte como la muerte y que las aguas poderosas no pueden apagarlo. Leído por los judíos como el amor entre Dios e Israel, por los cristianos como el amor entre Cristo y su iglesia, y por todos como la bendición de Dios sobre el amor humano fiel. Dispuesto línea por línea, como la poesía que es, en la Open Word Bible, una nueva traducción del hebreo entregada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre por dónde seguir leyendo.",
+  "qa": [
+    {
+      "question": "¿Qué es el Cantar de los Cantares?",
+      "answer": "Un libro del Antiguo Testamento, ocho capítulos de poesía amorosa en los que una mujer y un hombre hablan de su anhelo y de su deleite el uno en el otro, mientras un grupo de amigas, «las mujeres de Jerusalén», escucha y responde. Su título hebreo, Shir HaShirim, es un superlativo que significa «el más grande de los cantos». También se le llama Cantar de Salomón y, por su título latino, Cántico de los Cánticos. Menciona a Dios por su nombre como mucho una vez, en la última palabra de 8:6, y se lee en la sinagoga en la Pascua."
+    },
+    {
+      "question": "¿Quién escribió el Cantar de los Cantares?",
+      "answer": "El título lo llama el Cantar «que es de Salomón» (1:1), y la pequeña palabra hebrea delante de su nombre puede significar escrito por, dedicado a, acerca de o perteneciente a Salomón, como los títulos de los salmos dicen «de David». Se recordaba a Salomón por haber compuesto 1005 cantos (1 Reyes 4:32), y la tradición recibió el Cantar como suyo, escrito en el siglo X a. C. También aparece en el poema como personaje (3:7–11; 8:11–12), y algunos estudiosos piensan que un poeta posterior lo escribió acerca de él o se lo dedicó. Su fecha es discutida."
+    },
+    {
+      "question": "¿Por qué hay un poema de amor en la Biblia?",
+      "answer": "Porque la Biblia honra el amor entre un hombre y una mujer como un don de Dios. Génesis cuenta la alegría del primer hombre ante la primera mujer y cómo los dos llegan a ser una sola carne (Génesis 2:23–25), y Proverbios anima al marido a encontrar su alegría en la esposa de su juventud (5:18–19). El Cantar celebra el deseo sostenido dentro de la fidelidad —«Yo soy de mi amado, y mi amado es mío» (6:3)— y advierte tres veces que no se despierte el amor antes de su tiempo (2:7; 3:5; 8:4). Su punto culminante dice que el amor es «tan fuerte como la muerte» y que «Las aguas poderosas no pueden apagar el amor» (8:6–7)."
+    },
+    {
+      "question": "¿Es el Cantar de los Cantares una alegoría de Cristo y la iglesia?",
+      "answer": "Los cristianos lo han leído de distintas maneras. La tradición judía lo leyó durante mucho tiempo como el amor entre Dios e Israel; desde Orígenes, en el siglo III, pasando por Bernardo de Claraval y los puritanos, hasta Hudson Taylor, la iglesia lo leyó como el amor de Cristo por su iglesia o por el alma creyente. Muchos lectores de hoy comienzan por el sentido literal, una celebración del amor humano. Estas lecturas no tienen por qué competir: la Biblia representa el amor de Dios por su pueblo como un matrimonio (Isaías 62:5), y Pablo, escribiendo sobre el marido y la mujer, dice: «Aquí hay un gran misterio, pero yo me refiero a Cristo y a la iglesia» (Efesios 5:32). Muchos han descubierto que el Cantar, leído fielmente como un canto de amor humano, apunta más allá de sí mismo."
+    },
+    {
+      "question": "¿Quién habla en el Cantar de los Cantares?",
+      "answer": "El hebreo no da nombres ni acotaciones escénicas, pero sus verbos y pronombres muestran si habla un hombre o una mujer y a quién, así que por lo general se pueden distinguir las voces: la mujer, cuya voz es la que más se oye y que pronuncia las primeras y las últimas palabras; el hombre, que la llama «amada mía» y «hermana mía, esposa mía»; y las mujeres de Jerusalén, que hacen preguntas y a veces responden. Los lectores difieren sobre si el poema cuenta una sola historia o reúne varias canciones de amor, y algunos han visto en él a dos hombres, el rey Salomón y un pastor."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del hebreo y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser exacto y leerse con naturalidad en voz alta. Cada línea de la poesía se presenta por separado. El razonamiento detrás de cada una de sus frases, con el hebreo al lado, está publicado en openwordbible.org. La introducción y la conclusión se escribieron para esta edición."
+    }
+  ]
+}

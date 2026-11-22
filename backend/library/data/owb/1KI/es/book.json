@@ -1,0 +1,32 @@
+{
+  "title": "1 Reyes",
+  "cover_title": "",
+  "subtitle": "Melakhim Alef, «Reyes»",
+  "description": "La primera mitad del libro de Reyes, que comienza con el rey David demasiado anciano para entrar en calor y termina con el hijo de Acab postrándose ante Baal. Salomón pide un corazón que sepa escuchar y recibe una sabiduría mayor que la de todos los reyes de la tierra; edifica el templo, la nube de gloria lo llena, y él ora: «¿de verdad vivirá Dios en la tierra?». Luego su corazón se desvía, el reino se parte en dos y Jeroboam levanta becerros de oro. Y en la oscuridad de Acab y Jezabel aparece Elías: los cuervos junto al arroyo, la tinaja de harina de la viuda, el fuego en el monte Carmelo y un sonido apenas perceptible, tenue como el silencio, en el monte de Dios. En la Open Word Bible, una nueva traducción desde el hebreo entregada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre dónde seguir leyendo.",
+  "qa": [
+    {
+      "question": "¿Qué es el libro de 1 Reyes?",
+      "answer": "La primera mitad del libro de Reyes del Antiguo Testamento, que cuenta la historia de los reyes de Israel desde la muerte de David, hacia el año 970 a. C., hasta mediados del siglo IX a. C. En hebreo, Reyes es un solo libro, llamado Melakhim, «Reyes»; la antigua traducción griega lo dividió en dos. Sus veintidós capítulos se dividen en tres partes: el reinado de Salomón y la construcción del templo (1–11), la división del reino en Israel, al norte, y Judá, al sur (12–16), y el ministerio del profeta Elías en los días del rey Acab (17–22)."
+    },
+    {
+      "question": "¿Quién escribió 1 y 2 Reyes, y cuándo?",
+      "answer": "El libro no nombra a su autor. La tradición judía, recogida en el Talmud, atribuyó Reyes al profeta Jeremías. Muchos estudiosos lo ven como la parte final de una historia que va de Deuteronomio a Reyes, moldeada por la enseñanza de Deuteronomio y que recibió su forma final durante el exilio en Babilonia, ya que 2 Reyes termina con un suceso de hacia el año 561 a. C. El autor nombra fuentes más antiguas de las que se sirvió, como «el libro de los Hechos de Salomón» y las historias de los reyes de Israel y de Judá, hoy perdidas."
+    },
+    {
+      "question": "¿Por qué se dividió Israel en dos reinos?",
+      "answer": "1 Reyes da dos razones, una humana y otra divina. Cuando Roboam, el hijo de Salomón, se negó a aligerar los pesados trabajos que su padre había impuesto al pueblo, las tribus del norte lo rechazaron e hicieron rey a Jeroboam (capítulo 12). Pero el libro remonta la ruptura al propio corazón de Salomón: en su vejez, sus esposas extranjeras lo desviaron hacia otros dioses, y el SEÑOR le dijo que el reino le sería arrancado a su hijo, dejándole una tribu por amor a David y a Jerusalén (11:4–13). A partir de entonces hubo dos reinos: Israel, al norte, y Judá, gobernado por el linaje de David, al sur."
+    },
+    {
+      "question": "¿Quién fue Elías?",
+      "answer": "Un profeta, «Elías el tisbita», de Galaad, al este del Jordán, que se opuso al rey Acab y a la reina Jezabel cuando hicieron del culto a Baal la religión de la corte en el siglo IX a. C. Su nombre significa «Mi Dios es el SEÑOR». En 1 Reyes anuncia una sequía, es alimentado por cuervos y por una viuda de Sarepta, resucita al hijo de ella, hace descender fuego en el monte Carmelo, huye a Horeb y confronta a Acab por el asesinato de Nabot. En 2 Reyes es llevado al cielo en un torbellino. El Nuevo Testamento ve su espíritu en Juan el Bautista, lo muestra con Jesús en la transfiguración y lo presenta como ejemplo de oración (Santiago 5:17–18)."
+    },
+    {
+      "question": "¿Qué es el «silbo apacible y delicado» de 1 Reyes 19?",
+      "answer": "Las palabras que usan Biblias más antiguas en español para la manera en que Dios vino a Elías en Horeb, después de un viento, un terremoto y un fuego en los que el SEÑOR no estaba (19:11–12). El hebreo significa algo así como «un sonido de silencio tenue», y esta traducción lo vierte como «un sonido apenas perceptible, tenue como el silencio». La escena llega justo después del triunfo de Elías en el Carmelo, cuando ha huido para salvar la vida y ha pedido morir. Dios responde a su desesperación con comida, descanso, quietud, una nueva tarea y la noticia de que siete mil en Israel se han mantenido fieles."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente desde el hebreo y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser fiel y leerse con naturalidad en voz alta. «SEÑOR» en mayúsculas representa el nombre personal de Dios. El razonamiento detrás de cada una de sus oraciones, con el hebreo al lado, se publica en openwordbible.org. La introducción y la conclusión se escribieron para esta edición."
+    }
+  ]
+}

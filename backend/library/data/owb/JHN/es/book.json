@@ -1,0 +1,32 @@
+{
+  "title": "El Evangelio según Juan",
+  "cover_title": "Juan",
+  "subtitle": "Kata Iōannēn, «Según Juan»",
+  "description": "El cuarto Evangelio, que comienza antes del comienzo —«En el principio era el Verbo»— y dice claramente por qué se escribió: para que sus lectores crean que Jesús es el Cristo, el Hijo de Dios, y, al creer, tengan vida en su nombre. Siete señales, desde el agua convertida en vino hasta Lázaro llamado a salir de la tumba; siete dichos «Yo soy»; Nicodemo de noche y la samaritana al mediodía; la despedida en el aposento alto; la cruz como la hora de la gloria; y un desayuno junto al lago. En la Open Word Bible, una nueva traducción del griego entregada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre qué leer después.",
+  "qa": [
+    {
+      "question": "¿Qué es el Evangelio de Juan?",
+      "answer": "El cuarto de los cuatro Evangelios, los relatos de la vida, la muerte y la resurrección de Jesús en el Nuevo Testamento. Aproximadamente nueve décimas partes de él no tienen paralelo en Mateo, Marcos ni Lucas: solo Juan cuenta las bodas de Caná, a Nicodemo, a la mujer junto al pozo, la resurrección de Lázaro, el lavamiento de los pies de los discípulos y a Tomás tocando las heridas. Declara su propio propósito en 20:31: que sus lectores crean que Jesús es el Cristo, el Hijo de Dios, y, al creer, tengan vida en su nombre."
+    },
+    {
+      "question": "¿Quién escribió el Evangelio de Juan?",
+      "answer": "El Evangelio no da el nombre de su autor. Señala al «discípulo a quien Jesús amaba» y dice que su testimonio está detrás del libro (21:24). Desde el siglo II la iglesia lo identificó con Juan, el hijo de Zebedeo, uno de los Doce, que habría escrito al final de su vida en Éfeso, probablemente hacia finales del siglo I. Algunos estudiosos piensan que el discípulo amado era un seguidor de Jesús que no pertenecía a los Doce, o que sus propios discípulos dieron al libro su forma final."
+    },
+    {
+      "question": "¿Cuáles son las siete señales de Juan?",
+      "answer": "Juan llama señales a los milagros de Jesús, obras que apuntan más allá de sí mismas. Las siete son: el agua convertida en vino en Caná, la curación del hijo de un funcionario, un hombre enfermo durante treinta y ocho años que vuelve a caminar, la alimentación de los cinco mil, Jesús caminando sobre el agua, la vista dada a un hombre ciego de nacimiento y Lázaro resucitado de entre los muertos. Cada una va acompañada de palabras que la explican, como la alimentación de la multitud va seguida de «Yo soy el pan de vida»."
+    },
+    {
+      "question": "¿Cuáles son los dichos «Yo soy» de Juan?",
+      "answer": "Siete dichos en los que Jesús se describe a sí mismo: el pan de vida, la luz del mundo, la puerta, el buen pastor, la resurrección y la vida, el camino, la verdad y la vida, y la vid verdadera. Juan también recoge a Jesús diciendo «yo soy» sin nada después, como en «antes que Abraham existiera, yo soy» (8:58), que hace eco del nombre que Dios dio a Moisés en la zarza ardiente."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del griego y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser exacta y leerse con naturalidad en voz alta. El razonamiento detrás de cada una de sus oraciones, con el griego al lado, está publicado en openwordbible.org. La introducción y la conclusión fueron escritas para esta edición."
+    },
+    {
+      "question": "¿Por qué se presenta aparte la historia de la mujer sorprendida en adulterio?",
+      "answer": "El pasaje (7:53–8:11) no se encuentra en los manuscritos más antiguos de Juan, y los manuscritos posteriores lo colocan en distintos lugares. Como la mayoría de las Biblias, esta edición lo imprime aparte y entre corchetes, con una nota que explica por qué."
+    }
+  ]
+}

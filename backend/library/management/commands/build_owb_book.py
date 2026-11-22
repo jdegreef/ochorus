@@ -53,13 +53,25 @@ a small port of the ones its site builder (`scripts/build_site.py`) applies:
 * **A disputed passage** (`DISPUTED`) is set apart as a `<blockquote>` after a
   note saying so, as OWB sets it.
 
-Footnotes, the Literal and Readable levels and the other languages are not
-carried (yet). Quotation marks are curled the house way.
+Footnotes and the Literal and Readable levels are not carried (yet).
+Quotation marks are curled the house way.
+
+LANGUAGES. `--language es` builds the same book in another language OWB
+renders in full (`LANGUAGES`): the same slug, a row of its own
+(`unique(slug, language)`), the same chapters and English verse numbers, that
+language's headings and summaries, and its own editorial (below). Settings take
+OWB's own defaults there (`markup.DEFAULTS`: the capitalised deity pronoun,
+Él / Su), as the bundled popover text (`scripts/build_owb_bible.py`) and every
+work quoting `owb-<lang>` do, so the reader and the quotations agree; the
+English edition keeps the lower-case pronoun it shipped with.
 
 EDITORIAL lives beside the command in `library/data/owb/<CODE>/`: `book.json`
 (slug, title, description, Q&A, and the book page's `overview` card, which
 `library/bible_overview.py` reads at serialize time rather than this command),
-`introduction.html` and `conclusion.html`.
+`introduction.html` and `conclusion.html`; another language's in
+`library/data/owb/<CODE>/<lang>/` (the same three files, its `book.json`
+holding only the words: title, subtitle, description, Q&A, and the
+cover title and chapter label where the English has one).
 Both are Ochorus's own writing, deliberately not OWB's shorter
 `data/intros/<CODE>.md`: longer, a reader's guide to the book's shape and
 meaning, and the conclusion points into the library. `{{OWB:<record id>}}` in
@@ -77,6 +89,7 @@ import json
 import re
 import subprocess
 from collections import Counter
+from dataclasses import dataclass, field
 from html import escape
 from pathlib import Path
 
@@ -94,7 +107,6 @@ from library.scripture_graph import BIBLE_SERIES
 AUTHOR_SLUG = "open-word-bible"
 #: Every book is a volume of this series, numbered by its place in the canon.
 SERIES_SLUG = BIBLE_SERIES
-LANGUAGE = "en"
 LEVEL = "B"
 SITE = "https://openwordbible.org"
 EDITORIAL = Path(settings.BASE_DIR) / "library" / "data" / "owb"
@@ -174,10 +186,11 @@ PSALM_TITLE = re.compile(
 )
 
 
-def split_psalm_title(text: str) -> tuple[str, str]:
+def split_psalm_title(text: str, language: str = "en") -> tuple[str, str]:
     """(the title sentences at the start of `text`, the rest)."""
     end = 0
-    while m := PSALM_TITLE.match(text, end):
+    pattern = LANGUAGES[language].psalm_title if language in LANGUAGES else PSALM_TITLE
+    while m := pattern.match(text, end):
         end = m.end()
     return " ".join(text[:end].split()), text[end:]
 
@@ -221,42 +234,110 @@ def disputed_entry(record: dict) -> tuple[str, str, str | None] | None:
     return None
 
 
-def plain(text: str, lines: bool = False) -> str:
+def choose(m: re.Match, language: str = "en") -> str:
+    """A setting span at the option the edition shows (`Language.defaults`)."""
+    options = m[2].split("|")
+    index = LANGUAGES[language].defaults.get(m[1], 0) if language in LANGUAGES else 0
+    return options[index] if index < len(options) else options[0]
+
+
+def plain(text: str, lines: bool = False, language: str = "en") -> str:
     """A rendering with every setting at its default. Its poetry lines run
     together, or with `lines` are kept apart by a newline."""
-    text = _SPAN.sub(lambda m: m[2].split("|")[0], text)
+    text = _SPAN.sub(lambda m: choose(m, language), text)
     if not lines:
         return curl_singles(" ".join(_LINE.sub(" ", text).split()))
     return "\n".join(curl_singles(" ".join(line.split())) for line in _LINE.split(text))
 
 
-def heading_text(heading: str) -> str:
+def heading_text(heading: str, language: str = "en") -> str:
     """A section heading, capitalised: OWB sets Psalm 121's as "the LORD guards
     your going and coming", lower case where its divine-name setting begins it."""
-    text = plain(heading)
+    text = plain(heading, language=language)
     return text[:1].upper() + text[1:]
 
 
-def verses_of(record: dict, lines: bool = False) -> list[tuple[str, str]]:
+def verses_of(record: dict, lines: bool = False, language: str = "en") -> list[tuple[str, str]]:
     """[(verse id, text)] for one sentence, split at its verse markers. A
     record's markers follow its refs in order. `lines` as for `plain`."""
-    parts = _VERSE.split(record["renderings"][LANGUAGE][LEVEL])
+    parts = _VERSE.split(record["renderings"][language][LEVEL])
     texts = [parts[0], *parts[2::2]]
     if len(texts) != len(record["refs"]):
         raise CommandError(
             f"{record['id']}: {len(texts)} verse parts for refs {record['refs']}"
         )
     return [
-        (vid, plain(text, lines))
+        (vid, plain(text, lines, language))
         for vid, text in zip(record["refs"], texts, strict=True)
     ]
+
+
+@dataclass(frozen=True)
+class Language:
+    """What the edition of one language prints around OWB's text."""
+
+    #: The chapters before and after the Bible's own.
+    introduction: str
+    conclusion: str
+    #: The language's name in the attribution, and the attribution.
+    attribution: str
+    #: OWB's note on a passage the oldest manuscripts lack, and on Mark's endings.
+    disputed_note: str
+    mark_endings_note: str
+    #: The title sentences of a psalm (see PSALM_TITLE).
+    psalm_title: re.Pattern
+    #: Setting -> the option a span shows (else the first): see the module doc.
+    defaults: dict = field(default_factory=dict)
+    #: Whether the language quotes « » outside (`quote_marks.convert`).
+    outer_guillemets: bool = False
+
+
+LANGUAGES = {
+    "en": Language(
+        introduction="Introduction",
+        conclusion="Conclusion",
+        attribution=(
+            "Scripture from the Open Word Bible ({site}), English, Balanced level, "
+            "commit {commit}: dedicated to the public domain under CC0 1.0. "
+            "The introduction and conclusion are by Ochorus."
+        ),
+        disputed_note=DISPUTED_NOTE,
+        mark_endings_note=DISPUTED[1][2],
+        psalm_title=PSALM_TITLE,
+    ),
+    "es": Language(
+        introduction="Introducción",
+        conclusion="Conclusión",
+        attribution=(
+            "Escrituras de la Open Word Bible ({site}), en español, nivel Equilibrado, "
+            "commit {commit}: dedicada al dominio público bajo CC0 1.0. "
+            "La introducción y la conclusión son de Ochorus."
+        ),
+        disputed_note=(
+            "Los manuscritos más antiguos de {book} no tienen {ref}. La mayoría de las "
+            "Biblias lo imprimen, como aquí, aparte y entre corchetes."
+        ),
+        mark_endings_note=(
+            "Los manuscritos más antiguos de Marcos terminan en 16:8. Los dos finales "
+            "que siguen, uno breve y el más largo de 16:9–20, se añadieron después. La "
+            "mayoría de las Biblias los imprimen, como aquí, aparte y entre corchetes."
+        ),
+        psalm_title=re.compile(
+            r"(?:Al director del coro|(?:Un |Una )?(?:[Ss]almo|[Cc]ántico|[Cc]anto|[Oo]ración"
+            r"|[Mm]asquil|[Mm]ictam|[Ss]igaión)\b[^.!?\n]*"
+            r"|De (?:los hijos de Coré|[A-ZÁÉÍÓÚ][a-záéíóúñ]+))\.[ \n]*"
+        ),
+        defaults={"deity_pronoun": 1},
+        outer_guillemets=True,
+    ),
+}
 
 
 class Source:
     """One book's data, read from an OWB checkout."""
 
-    def __init__(self, root: Path, code: str):
-        self.root, self.code = root, code
+    def __init__(self, root: Path, code: str, language: str = "en"):
+        self.root, self.code, self.language = root, code, language
         files = sorted((root / "content" / code).glob(f"{code}.*.json"))
         if not files:
             raise CommandError(f"no content/{code}/ in {root}")
@@ -264,11 +345,11 @@ class Source:
             r for f in files for r in json.loads(f.read_text("utf-8"))["records"]
         ]
         missing = [
-            r["id"] for r in records if LEVEL not in r["renderings"].get(LANGUAGE, {})
+            r["id"] for r in records if LEVEL not in r["renderings"].get(language, {})
         ]
         if missing:
             raise CommandError(
-                f"{len(missing)} sentences have no {LANGUAGE}-{LEVEL}: {missing[:5]}"
+                f"{len(missing)} sentences have no {language}-{LEVEL}: {missing[:5]}"
             )
         self.records = sorted(records, key=record_key)
         self.by_id = {r["id"]: r for r in self.records}
@@ -277,11 +358,11 @@ class Source:
         headings = root / "data" / "headings" / f"{code}.json"
         self.headings = (
             {
-                rid: h[LANGUAGE]
+                rid: h[language]
                 for rid, h in json.loads(headings.read_text("utf-8"))[
                     "headings"
                 ].items()
-                if LANGUAGE in h
+                if language in h
             }
             if headings.exists()
             else {}
@@ -292,15 +373,17 @@ class Source:
         summaries = root / "data" / "summaries" / f"{code}.json"
         self.summaries = (
             {
-                int(n): convert(curl_singles(s[LANGUAGE]), outer_guillemets=False)[0]
+                int(n): convert(
+                    curl_singles(s[language]), outer_guillemets=LANGUAGES[language].outer_guillemets
+                )[0]
                 for n, s in json.loads(summaries.read_text("utf-8"))["summaries"].items()
-                if s.get(LANGUAGE)
+                if s.get(language)
             }
             if summaries.exists()
             else {}
         )
         books = json.loads((root / "data" / "books.json").read_text("utf-8"))["books"]
-        self.name = books[code][LANGUAGE]
+        self.name = books[code][language]
         #: The book's place in the canon (Genesis 1, Revelation 66): OWB's own order.
         self.number = list(books).index(code) + 1
         self.greek = self.number >= FIRST_NT_NUMBER
@@ -338,7 +421,7 @@ class Source:
         verse, the id would point at the Gospel's own last words instead."""
         for first, _, _ in DISPUTED:
             if ".s" in first and first in self.by_id:
-                text = plain(self.by_id[first]["renderings"][LANGUAGE][LEVEL])
+                text = plain(self.by_id[first]["renderings"][self.language][LEVEL], language=self.language)
                 if not text.startswith("["):
                     raise CommandError(f"{first} no longer opens the bracketed passage: {text[:60]!r}")
 
@@ -478,8 +561,8 @@ class Source:
                 close()
                 heading = self.headings.get(r["id"])
                 if heading and not title:
-                    out.append(f"<h3>{escape(heading_text(heading), quote=False)}</h3>")
-                title.extend(escape(text, quote=False) for _, text in verses_of(r))
+                    out.append(f"<h3>{escape(heading_text(heading, self.language), quote=False)}</h3>")
+                title.extend(escape(text, quote=False) for _, text in verses_of(r, language=self.language))
                 continue
             close_title()
             disputed = disputed_entry(r) is not None
@@ -491,17 +574,17 @@ class Source:
             if in_disputed and not disputed:
                 out.append("</blockquote>")
             if heading:
-                out.append(f"<h3>{escape(heading_text(heading), quote=False)}</h3>")
+                out.append(f"<h3>{escape(heading_text(heading, self.language), quote=False)}</h3>")
             if disputed and not in_disputed:
                 out.append(
                     f"<p><em>{escape(self.disputed_note(r), quote=False)}</em></p><blockquote>"
                 )
             in_disputed = disputed
-            verses = verses_of(r, lines=True)
+            verses = verses_of(r, lines=True, language=self.language)
             texts = [text for _, text in verses]
             if peel:
                 peel = False
-                heading_title, texts[0] = split_psalm_title(texts[0])
+                heading_title, texts[0] = split_psalm_title(texts[0], self.language)
                 if heading_title:
                     close()
                     title.append(escape(heading_title, quote=False))
@@ -550,11 +633,12 @@ class Source:
 
     def disputed_note(self, record: dict) -> str:
         first, last, note = disputed_entry(record)
+        language = LANGUAGES[self.language]
         if note:
-            return note
+            return note if self.language == "en" else language.mark_endings_note
         (c1, v1, _), (c2, v2) = place(first), verse_key(last)
         span = f"{c1}:{v1}–" + (str(v2) if c1 == c2 else f"{c2}:{v2}")
-        return DISPUTED_NOTE.format(book=self.name, ref=f"{self.name} {span}")
+        return language.disputed_note.format(book=self.name, ref=f"{self.name} {span}")
 
     def sentence(self, rid: str) -> dict:
         """Any sentence of OWB by id: this book's, or another's (an introduction
@@ -570,8 +654,10 @@ class Source:
                 r["id"]: r for f in files for r in json.loads(f.read_text("utf-8"))["records"]
             }
         found = self._elsewhere[code, chapter].get(rid)
-        if found is None or LEVEL not in found["renderings"].get(LANGUAGE, {}):
-            raise CommandError(f"editorial quotes unknown sentence {rid} (or one with no {LANGUAGE}-{LEVEL})")
+        if found is None or LEVEL not in found["renderings"].get(self.language, {}):
+            raise CommandError(
+                f"editorial quotes unknown sentence {rid} (or one with no {self.language}-{LEVEL})"
+            )
         return found
 
     def embed(self, html: str) -> str:
@@ -579,19 +665,25 @@ class Source:
         book or any other, so a quotation can't drift from the translation."""
 
         def text(m: re.Match) -> str:
-            return escape(" ".join(t for _, t in verses_of(self.sentence(m[1]))), quote=False)
+            return escape(
+                " ".join(t for _, t in verses_of(self.sentence(m[1]), language=self.language)),
+                quote=False,
+            )
 
         return _EMBED.sub(text, html)
 
 
 class Command(BaseCommand):
-    help = "Build one book of the Open Word Bible (English, Balanced) from an OWB checkout."
+    help = "Build one book of the Open Word Bible (Balanced) from an OWB checkout."
 
     def add_arguments(self, parser):
         parser.add_argument(
             "owb", type=Path, help="a checkout of the open-word-bible repo"
         )
         parser.add_argument("code", help="the book's USFM code, e.g. JHN")
+        parser.add_argument(
+            "--language", default="en", choices=sorted(LANGUAGES), help="the edition (default: en)"
+        )
 
     def handle(self, *args, **opts):
         code = opts["code"].upper()
@@ -599,13 +691,22 @@ class Command(BaseCommand):
         if not editorial.is_dir():
             raise CommandError(f"no editorial in {editorial}")
         meta = json.loads((editorial / "book.json").read_text("utf-8"))
-        source = Source(opts["owb"].resolve(), code)
+        lang = opts["language"]
+        language = LANGUAGES[lang]
+        if lang != "en":
+            # The slug and colour are the English edition's; the words are its own.
+            editorial = editorial / lang
+            if not editorial.is_dir():
+                raise CommandError(f"no editorial in {editorial}")
+            words = json.loads((editorial / "book.json").read_text("utf-8"))
+            meta = {"slug": meta["slug"], "cover_color": meta["cover_color"], **words}
+        source = Source(opts["owb"].resolve(), code, lang)
 
         # (title, body, summary): the introduction and conclusion are Ochorus's
         # own and carry no summary; each Bible chapter carries OWB's.
         bodies = [
             (
-                "Introduction",
+                language.introduction,
                 source.embed((editorial / "introduction.html").read_text("utf-8")),
                 "",
             )
@@ -623,7 +724,7 @@ class Command(BaseCommand):
         ]
         bodies.append(
             (
-                "Conclusion",
+                language.conclusion,
                 source.embed((editorial / "conclusion.html").read_text("utf-8")),
                 "",
             )
@@ -656,15 +757,13 @@ class Command(BaseCommand):
             "qa": meta["qa"],
             "cover_color": meta["cover_color"],
             "source_url": f"{SITE}/read/#{source.code.lower()}",
-            "attribution": (
-                f"Scripture from the Open Word Bible ({SITE}), English, Balanced level, "
-                f"commit {source.commit[:12]}: dedicated to the public domain under CC0 1.0. "
-                "The introduction and conclusion are by Ochorus."
+            "attribution": LANGUAGES[source.language].attribution.format(
+                site=SITE, commit=source.commit[:12]
             ),
         }
         book, _ = Book.objects.update_or_create(
             slug=slug,
-            language=LANGUAGE,
+            language=source.language,
             defaults=content,
             create_defaults={
                 **content,
@@ -677,7 +776,7 @@ class Command(BaseCommand):
         total = 0
         for order, (title, body, summary) in enumerate(bodies, start=1):
             cleaned = clean_fragment(body)
-            curled, _ = convert(cleaned, outer_guillemets=False)
+            curled, _ = convert(cleaned, outer_guillemets=LANGUAGES[source.language].outer_guillemets)
             assert_punctuation_only(cleaned, curled, f"{slug} {title}")
             chapter = Chapter.objects.create(
                 book=book,

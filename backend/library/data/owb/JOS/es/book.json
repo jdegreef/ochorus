@@ -1,0 +1,32 @@
+{
+  "title": "Josué",
+  "cover_title": "",
+  "subtitle": "Yehoshua, «El SEÑOR salva»",
+  "description": "El libro que lleva a Israel al otro lado del Jordán, llamado así por el hombre que lo guio, cuyo nombre significa «el SEÑOR salva». Se abre con la muerte de Moisés y un encargo, «Sé fuerte y valiente», y se cierra en Siquem con una elección: «Mi familia y yo serviremos al SEÑOR». Entre ambos: Rahab y el cordón escarlata, el río detenido en un solo montón y doce piedras levantadas para que los niños pregunten por ellas, las murallas de Jericó, el botín enterrado de Acán, un sol que se quedó inmóvil en Gabaón, el anciano Caleb pidiendo la región montañosa de los gigantes, la tierra repartida tribu por tribu, y un Dios de quien se dice que no falló ni una sola de Sus buenas promesas. En la Open Word Bible, una nueva traducción del hebreo cedida libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre dónde seguir leyendo.",
+  "qa": [
+    {
+      "question": "¿De qué trata el libro de Josué?",
+      "answer": "De la entrada de Israel en la tierra que Dios había prometido a Abraham, bajo Josué, el sucesor de Moisés. Los capítulos 1–12 cuentan el cruce del Jordán, la caída de Jericó, la derrota y la victoria en Hai, el tratado con Gabaón y las campañas en el sur y en el norte; los capítulos 13–21 cuentan cómo se repartió la tierra entre las doce tribus; y los capítulos 22–24 se cierran con la despedida de Josué y la renovación del pacto en Siquem. Su tema se resume en 21:45: de todas las buenas promesas que el SEÑOR había hecho a Israel, no falló ni una."
+    },
+    {
+      "question": "¿Quién escribió el libro de Josué, y cuándo?",
+      "answer": "El libro no nombra a su autor. Una antigua tradición judía sostiene que Josué escribió la mayor parte, y que otros completaron el relato de su muerte. Muchos estudiosos lo ven como parte de una historia más larga, que va de Deuteronomio a Reyes, que alcanzó su forma final siglos después; su frase repetida «hasta el día de hoy» muestra a un escritor que mira los hechos en retrospectiva. Los cristianos también difieren sobre cuándo tuvo lugar la conquista: unos la fechan en el siglo XV a. C. y otros en el XIII."
+    },
+    {
+      "question": "¿Quién era Rahab en la Biblia?",
+      "answer": "Una mujer cananea de Jericó, una prostituta, que escondió a los dos espías de Josué y confesó que «el SEÑOR su Dios es Dios arriba en el cielo y abajo en la tierra» (2:11). Ató un cordón escarlata en su ventana, y cuando la ciudad cayó, toda su familia se salvó (6:25). El Nuevo Testamento la honra tres veces: como heroína de la fe en Hebreos 11:31, como ejemplo de una fe que se muestra en acciones en Santiago 2:25, y como antepasada de Jesús en Mateo 1:5."
+    },
+    {
+      "question": "¿Cómo deben leer los cristianos la violencia en Josué?",
+      "answer": "Con cuidado, y los cristianos responden a la pregunta de más de una manera. Muchos subrayan que la Biblia presenta la conquista como el juicio de Dios sobre la larga maldad de los pueblos de Canaán (Génesis 15:16; Deuteronomio 9:5); algunos señalan que los relatos de guerra antiguos usaban un lenguaje rotundo de victoria total, mientras que el propio libro de Josué registra que muchos cananeos permanecieron; otros hacen notar que Rahab y los gabaonitas se salvaron y que el mismo juicio cayó sobre Acán, un israelita. Los cristianos de hoy coinciden en general, aunque el libro se ha usado a veces indebidamente para justificar la violencia, en que describe un momento único en la historia de la promesa de Dios y no autoriza hoy ninguna violencia en nombre de Dios."
+    },
+    {
+      "question": "¿Qué quiere decir Josué con «Mi familia y yo serviremos al SEÑOR»?",
+      "answer": "Es la declaración de Josué en la asamblea del pacto en Siquem, cerca del final de su vida (24:15), conocida por las Biblias antiguas como «yo y mi casa». Después de volver a contar todo lo que Dios había hecho por Israel, Josué llama al pueblo a escoger entre el SEÑOR y los dioses a los que habían servido sus antepasados, y declara su propia elección por toda su familia. El pueblo promete servir al SEÑOR, y Josué pone por escrito el pacto y levanta una piedra como testigo."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del hebreo y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser precisa y sonar natural al leerse en voz alta. «SEÑOR» en mayúsculas representa el nombre personal de Dios. El razonamiento detrás de cada una de sus oraciones, con el hebreo al lado, está publicado en openwordbible.org. La introducción y la conclusión se escribieron para esta edición."
+    }
+  ]
+}

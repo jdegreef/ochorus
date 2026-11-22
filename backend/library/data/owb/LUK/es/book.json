@@ -1,0 +1,32 @@
+{
+  "title": "El Evangelio según Lucas",
+  "cover_title": "Lucas",
+  "subtitle": "Kata Loukan, «Según Lucas»",
+  "description": "El más extenso de los cuatro Evangelios, escrito por un historiador cuidadoso «de forma ordenada» para que su lector estuviera seguro de lo que se le había enseñado: «El Hijo del Hombre vino a buscar lo que se había perdido y a salvarlo». Las visitas de Gabriel a Zacarías y a María; los cánticos de María, de Zacarías, de los ángeles y de Simeón; los pastores y el pesebre; el primer sermón de Jesús en Nazaret, buena noticia para los pobres; el largo viaje a Jerusalén con el buen samaritano, la oveja perdida, la moneda perdida y el hijo perdido, el rico y Lázaro, y Zaqueo subido a su árbol. Luego la oración «Padre, perdónalos», la promesa del paraíso a un criminal moribundo, y Jesús resucitado, reconocido en el camino a Emaús al partir el pan. El primero de los dos volúmenes de Lucas, que continúa en Hechos. En la Open Word Bible, una nueva traducción del griego entregada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre qué leer después.",
+  "qa": [
+    {
+      "question": "¿Qué es el Evangelio de Lucas?",
+      "answer": "El tercero de los cuatro Evangelios, los relatos de la vida, la muerte y la resurrección de Jesús en el Nuevo Testamento, y la primera parte de una obra en dos partes que completan los Hechos de los Apóstoles. Cuenta más del nacimiento de Jesús que ningún otro Evangelio, y muchas de sus parábolas más queridas solo se encuentran aquí, entre ellas el buen samaritano y el hijo perdido. Muestra a Jesús llevando buenas noticias a los pobres, a los pecadores y a los marginados; en sus propias palabras: «El Hijo del Hombre vino a buscar lo que se había perdido y a salvarlo» (19:10)."
+    },
+    {
+      "question": "¿Quién escribió el Evangelio de Lucas, y cuándo?",
+      "answer": "El Evangelio no da el nombre de su autor, pero tanto él como Hechos están dirigidos al mismo Teófilo y escritos por la misma mano. Desde el siglo II la iglesia ha dicho que el autor fue Lucas, el médico y compañero de Pablo (Colosenses 4:14), y los pasajes de Hechos narrados en primera persona («nosotros») sugieren que viajó con Pablo. Él dice que no fue testigo presencial, sino que se apoyó en quienes sí lo fueron (1:1–4). Las fechas propuestas van desde principios de los años 60 hasta los 80."
+    },
+    {
+      "question": "¿De qué trata la parábola del hijo pródigo?",
+      "answer": "Es la tercera de tres historias de Lucas 15 que Jesús cuenta cuando los líderes religiosos se quejan de que acoge a los pecadores y come con ellos: una oveja perdida, una moneda perdida y un hijo perdido. Un hijo menor derrocha su herencia y vuelve a casa, y su padre corre a su encuentro y organiza un banquete. Cada historia termina con una celebración por lo que estaba perdido y ha sido hallado. El hermano mayor, que se niega a entrar, queda afuera con su padre suplicándole, y la parábola termina sin decir si entró."
+    },
+    {
+      "question": "¿Por qué se llama a Lucas el Evangelio de la oración y del Espíritu Santo?",
+      "answer": "Lucas muestra a Jesús orando más a menudo que ningún otro Evangelio: en su bautismo, antes de escoger a los Doce, en la transfiguración, por Pedro, en Getsemaní y en la cruz; y solo Lucas cuenta las parábolas del amigo a medianoche y de la viuda insistente. También cuenta que el Espíritu llenó a Isabel, a Zacarías y a Simeón, que vino sobre María y reposó sobre Jesús, y recoge la promesa de Jesús de que el Padre dará el Espíritu Santo a quienes se lo pidan (11:13), una promesa que se cumple en Hechos."
+    },
+    {
+      "question": "¿Dónde dice Lucas 2:7 que nació Jesús?",
+      "answer": "Biblias más antiguas dicen que «no había lugar para ellos en el mesón». La palabra griega es la que Lucas usa para la habitación de huéspedes de la última cena (22:11), un cuarto dentro de una casa, y no su palabra para una posada; por eso esta traducción dice que «en la habitación de huéspedes no había espacio para ellos». José y María probablemente se alojaban en una casa cuya habitación de huéspedes estaba llena, y el niño fue acostado en un comedero, un pesebre, donde se alimentaba a los animales."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del griego y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser exacta y leerse con naturalidad en voz alta. El razonamiento detrás de cada una de sus oraciones, con el griego al lado, está publicado en openwordbible.org. La introducción y la conclusión fueron escritas para esta edición."
+    }
+  ]
+}

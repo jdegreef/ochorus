@@ -1,0 +1,103 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "open-word-bible"
+  ],
+  "slug": "3-john",
+  "language": "es",
+  "title": "La Tercera Carta de Juan",
+  "subtitle": "Iōannou Γ, «Tercera de Juan»",
+  "cover_title": "3 Juan",
+  "cover_byline": "",
+  "description": "El libro más breve de la Biblia, una nota personal de «el anciano» a su querido amigo Gayo, y una ventana a la vida cotidiana de las primeras iglesias. Gayo ha abierto su casa a creyentes itinerantes que se pusieron en camino por causa del Nombre y no aceptan nada de los paganos; Diótrefes, que ama ser el primero, les ha cerrado la puerta y ha expulsado a quienes querían ayudarlos. No hay que copiar lo malo, escribe el anciano, sino lo bueno; y lo demás lo dirá cara a cara. En la Open Word Bible, una nueva traducción desde el griego entregada libremente al dominio público, con una introducción a la forma y el sentido de la carta y una conclusión sobre dónde seguir leyendo.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "¿Qué es la Tercera Carta de Juan?",
+    "answer": "Es el vigésimo quinto libro del Nuevo Testamento y el libro más breve de la Biblia, una carta personal de «el anciano» a un cristiano llamado Gayo. Elogia a Gayo por recibir y sostener a predicadores itinerantes, reprende a un dirigente de la iglesia llamado Diótrefes que se negaba a recibirlos y recomienda a un hombre llamado Demetrio. Es el único libro del Nuevo Testamento que no menciona a Jesús ni a Cristo por su nombre, y habla en cambio de «el Nombre» (1:7)."
+   },
+   {
+    "question": "¿Quién escribió 3 Juan, y quiénes eran Gayo, Diótrefes y Demetrio?",
+    "answer": "El autor se presenta como «el anciano», igual que en 2 Juan, y las dos cartas se parecen tanto que en general se acepta que proceden de la misma mano; la iglesia las ha relacionado con el apóstol Juan, aunque algunos de los primeros cristianos pensaban que el anciano podía ser otro Juan. Gayo era un creyente fiel, desconocido por lo demás, que daba hospitalidad a misioneros itinerantes. Diótrefes era un dirigente que «ama ser el primero» y no quería recibirlos ni a ellos ni al anciano. Demetrio, de quien todos hablaban bien, quizá fue quien llevó la carta."
+   },
+   {
+    "question": "¿Qué enseña 3 Juan sobre la hospitalidad y el sostén de los misioneros?",
+    "answer": "Los creyentes itinerantes se habían puesto en camino «por causa del Nombre» y no aceptaban nada de los no creyentes, así que dependían de las iglesias para la comida, el alojamiento y las provisiones. El anciano le dice a Gayo que los despida «de una manera digna de Dios» (1:6) y afirma que quienes reciben y sostienen a personas así llegan a «ser colaboradores de la verdad» (1:8). Quienes dan participan en la obra de quienes van."
+   },
+   {
+    "question": "¿Promete 3 Juan 2 salud y prosperidad?",
+    "answer": "El anciano escribe: «Querido amigo, mi oración es que te vaya bien en todo y que tengas buena salud, así como a tu alma le va bien» (1:2). Algunos han leído el versículo como la promesa de que Dios quiere que todo creyente prospere en el cuerpo y en los bienes. Pero es el deseo amable y corriente con que empezaban las cartas de la época, como cuando hoy escribimos «Espero que estés bien». Lo inusual es la comparación: el anciano espera que al cuerpo de Gayo le vaya tan bien como a su alma. Y la alegría que nombra a continuación no es la riqueza, sino esta: «enterarme de que mis hijos andan en la verdad» (1:4)."
+   },
+   {
+    "question": "¿Qué significa «Quien hace el bien procede de Dios» en 3 Juan?",
+    "answer": "En lugar de decirle a Gayo que luche contra Diótrefes, el anciano le da una regla sencilla: «Querido amigo, no copies lo que es malo, sino lo que es bueno. Quien hace el bien procede de Dios; quien hace el mal no ha visto a Dios» (1:11). Gayo tiene delante dos ejemplos: Diótrefes, que «ama ser el primero» y expulsa de la iglesia a los creyentes itinerantes, y Demetrio, de quien el anciano dice: «Demetrio cuenta con el testimonio favorable de todos, y de la verdad misma» (1:12). Las palabras recuerdan a 1 Juan, donde hacer lo justo y amar son las señales de pertenecer a Dios. No se trata de que las buenas obras ganen un lugar ante Dios, sino de que una vida muestra de dónde procede."
+   },
+   {
+    "question": "¿Qué traducción de la Biblia es esta?",
+    "answer": "La Open Word Bible, una nueva traducción hecha directamente del griego y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser precisa y sonar natural al leerse en voz alta. El razonamiento detrás de cada una de sus oraciones, con el griego al lado, se publica en openwordbible.org. La introducción y la conclusión se escribieron para esta edición."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "https://openwordbible.org/read/#3jn",
+  "attribution": "Escrituras de la Open Word Bible (https://openwordbible.org), en español, nivel Equilibrado, commit b239700145bb: dedicada al dominio público bajo CC0 1.0. La introducción y la conclusión son de Ochorus.",
+  "cover_url": "/covers/art/3-john.jpg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/3-john.es.pdf?download=3-john.es.pdf",
+  "cover_color": "#4a3a24",
+  "series": [
+   "the-bible"
+  ],
+  "series_position": 64,
+  "sort_order": 311,
+  "is_published": true,
+  "created_at": "2026-11-22T00:00:00Z",
+  "updated_at": "2026-11-22T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "3-john",
+   "es"
+  ],
+  "order": 1,
+  "title": "Introducción",
+  "body_html": "<blockquote><p>Ninguna alegría es para mí más grande que esta: enterarme de que mis hijos andan en la verdad.</p><p>— 3 Juan 1:4</p></blockquote> <p>Tercera de Juan es el libro más breve de la Biblia. En griego apenas supera las doscientas palabras, una sola hoja de papiro, más o menos lo que ocupa una nota que un amigo deja sobre la mesa. Es también la más personal de las cartas de Juan y, en cierto modo, la más sorprendente de todas las cartas del Nuevo Testamento: ni una sola vez menciona a Jesús ni a Cristo por su nombre. Él está presente, pero solo como «el Nombre» por cuya causa se han puesto en camino los predicadores itinerantes.</p> <p>Eso hace de 3 Juan una valiosa ventana a la vida corriente de las primeras iglesias. Aquí no hay grandes doctrinas, ni visiones, ni argumentos. Hay tres hombres, uno bueno, uno malo y uno recomendado, y una pregunta que toda iglesia sigue enfrentando: ¿cómo debemos tratar a quienes llevan el evangelio de un lugar a otro?</p> <h3>Gayo, el querido amigo</h3> <blockquote><p>El anciano, a mi querido amigo Gayo, a quien amo en la verdad. Querido amigo, mi oración es que te vaya bien en todo y que tengas buena salud, así como a tu alma le va bien.</p><p>— 3 Juan 1:1–2</p></blockquote> <p>Gayo era uno de los nombres más comunes del mundo romano, y no podemos saber si este Gayo es alguno de los otros que aparecen en el Nuevo Testamento. Lo que sabemos de él procede solo de esta carta, y todo es bueno. Cuatro veces el anciano lo llama «querido amigo». Algunos creyentes itinerantes han vuelto con noticias de su fidelidad, de que «andas en la verdad» (1:3), y esas noticias son la mayor alegría del anciano.</p> <p>El deseo del versículo 2, que Gayo goce de buena salud, se ha leído a veces como la promesa de que Dios quiere que todo creyente prospere en el cuerpo y en los bienes. En realidad es el deseo amable y corriente con que empezaban las cartas de la época, como cuando hoy escribimos «Espero que estés bien». Lo inusual es la comparación: el anciano espera que al cuerpo de Gayo le vaya tan bien como a su alma.</p> <h3>Por causa del Nombre</h3> <p>El corazón de la carta trata de la hospitalidad. Gayo ha estado recibiendo a cristianos itinerantes, hombres a quienes nunca antes había visto, y ayudándolos a seguir su camino:</p> <blockquote><p>Querido amigo, actúas con fidelidad en todo lo que haces por los hermanos, aunque sean forasteros para ti. Ellos han dado testimonio de tu amor delante de la iglesia. Harás bien en proveerles lo necesario para la siguiente etapa de su viaje, de una manera digna de Dios.</p><p>— 3 Juan 1:5–6</p></blockquote> <p>Eran misioneros, o algo parecido. «Se pusieron en camino por causa del Nombre, y no aceptan nada de los paganos» (1:7). No querían pedir a los no creyentes que pagaran por la predicación del evangelio, así que dependían de las iglesias a lo largo del camino para tener una cama, una comida y provisiones para la siguiente etapa. Despedirlos «de una manera digna de Dios» significaba tratarlos como se trataría a los propios mensajeros de Dios.</p> <p>Y el anciano saca la lección: «Por eso es nuestro deber recibir y sostener a personas así, y de este modo ser colaboradores de la verdad» (1:8). No todos están llamados a ir. Pero quienes se quedan en casa y abren sus puertas participan en la obra de quienes van. Una iglesia que sostiene a sus misioneros no es un público para el evangelio; es una socia en él.</p> <h3>Diótrefes, que ama ser el primero</h3> <p>Entonces cambia el tono:</p> <blockquote><p>Escribí unas líneas a la iglesia, pero Diótrefes, que ama ser el primero entre ellos, se niega a recibirnos.</p><p>— 3 Juan 1:9</p></blockquote> <p>Es la única vez que Diótrefes aparece en la historia, y no es un retrato halagador. Rechaza la autoridad del anciano. Va diciendo de él «cosas vacías y malvadas». No quiere recibir él mismo a los creyentes itinerantes, impide que otros los reciban y «los expulsa de la iglesia» (1:10).</p> <p>Desde hace mucho los lectores se preguntan qué había detrás de la disputa. Algunos piensan que Diótrefes era el dirigente de una iglesia doméstica que no toleraba la supervisión de fuera; otros ven en él una etapa temprana de la lucha sobre cómo debían gobernarse las iglesias; unos pocos se han preguntado si en el fondo había un desacuerdo de doctrina. La carta no lo dice. Lo que sí dice es la raíz del problema, en una sola palabra griega: «ama ser el primero». Estuviera en juego lo que estuviera, el anciano lo diagnostica como ambición. Es el pecado que mostraron los discípulos cuando discutían sobre cuál de ellos era el mayor, y ha afligido a la iglesia en todas las épocas desde entonces.</p> <h3>Hacer el bien</h3> <p>El anciano no le dice a Gayo que luche contra Diótrefes. Le da una regla sencilla:</p> <blockquote><p>Querido amigo, no copies lo que es malo, sino lo que es bueno. Quien hace el bien procede de Dios; quien hace el mal no ha visto a Dios.</p><p>— 3 Juan 1:11</p></blockquote> <p>Es la misma prueba que da 1 Juan, condensada en una sola línea: una vida muestra de dónde procede. Y el anciano pone un buen ejemplo junto al malo. «Demetrio cuenta con el testimonio favorable de todos, y de la verdad misma» (1:12). Puede que Demetrio fuera uno de los viajeros, quizá el que llevaba esta misma carta, y las palabras del anciano son una carta de recomendación: he aquí alguien a quien se puede recibir.</p> <h3>Tinta y pluma</h3> <p>El cierre se parece mucho al de 2 Juan. El anciano tiene mucho más que decir, pero «no quiero ponerlo por escrito con tinta y pluma» (1:13). Espera ir pronto y hablar cara a cara. Luego vienen tres breves líneas de saludo: paz para Gayo, saludos de «los amigos de aquí» y saludos «a cada uno de los amigos de allá por su nombre». La iglesia, en esta carta, es una red de amigos que se conocen por su nombre.</p> <h3>¿Quién escribió 3 Juan?</h3> <p>Como en 2 Juan, el autor se presenta solo como «el anciano», y las dos cartas se parecen tanto en su forma y sus expresiones, hasta en las líneas finales, que casi todos coinciden en que proceden de la misma mano. La iglesia las relacionó con el apóstol Juan, aunque, como registra Eusebio, algunos en los primeros siglos no estaban seguros de si eran del evangelista «o de otra persona del mismo nombre», el Juan el Anciano que menciona Papías. Probablemente se escribieron a finales del siglo I, en la provincia de Asia, donde la tradición sitúa los últimos años de Juan.</p> <h3>Cómo leer 3 Juan</h3> <p>Conviene leerla como una carta real entre personas reales, con los vacíos que tiene toda carta real. Vale la pena fijarse en los tres hombres y en lo que muestra cada uno: el anfitrión fiel, el hombre que ama ser el primero, aquel de quien todos hablan bien. En cuántas veces aparece la palabra verdad, incluso aquí. Y conviene leerla junto a 2 Juan. Una carta le dice a una iglesia a quién no recibir; la otra le dice a un amigo a quién debe recibir. Juntas muestran una iglesia que vigila su puerta y la mantiene abierta, en ambos casos por causa de la verdad.</p> <h3>Acerca de esta traducción</h3> <p>El texto de esta edición es la Open Word Bible, una nueva traducción hecha directamente del griego y entregada libremente al dominio público. Se imprime aquí en su nivel Equilibrado, que busca ser preciso y sonar natural al leerse en voz alta. Vale la pena conocer algunas de sus decisiones en 3 Juan.</p> <p><strong>«El Nombre».</strong> En el versículo 7 la traducción escribe Nombre con mayúscula. El griego dice simplemente «el nombre», y el anciano se refiere al nombre de Jesús, como los apóstoles en Hechos se alegraban de haber sido considerados dignos «de cargar con la vergüenza por causa del Nombre» (Hechos 5:41).</p> <p><strong>«Paganos» y «hermanos».</strong> La palabra del versículo 7 significa las naciones, los que no eran pueblo de Dios; aquí se traduce «paganos». Donde el griego «hermanos» designa a creyentes de uno u otro sexo, la traducción dice «hermanos» en el sentido que abarca a hermanos y hermanas.</p> <p><strong>El último versículo.</strong> Las Biblias dividen de distinta manera las líneas finales. Algunas, como la versión King James, terminan la carta en el versículo 14; otras hacen de los saludos finales un versículo 15. Las referencias aquí siguen la primera numeración.</p> <p>Para conocer el razonamiento detrás de cada oración de la traducción, con el griego al lado, puede consultarse la propia Open Word Bible en openwordbible.org.</p>",
+  "study_questions": [],
+  "word_count": 1457
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "3-john",
+   "es"
+  ],
+  "order": 2,
+  "title": "3 Juan 1",
+  "body_html": "<h3>El anciano a Gayo</h3><p><sup class=\"v\" id=\"v1\">1</sup>El anciano, a mi querido amigo Gayo, a quien amo en la verdad.</p><p><sup class=\"v\" id=\"v2\">2</sup>Querido amigo, mi oración es que te vaya bien en todo y que tengas buena salud, así como a tu alma le va bien. <sup class=\"v\" id=\"v3\">3</sup>Me alegró mucho que llegaran hermanos y dieran testimonio de tu fidelidad a la verdad: contaron que andas en la verdad. <sup class=\"v\" id=\"v4\">4</sup>Ninguna alegría es para mí más grande que esta: enterarme de que mis hijos andan en la verdad.</p><h3>Ayuda para los creyentes que viajan</h3><p><sup class=\"v\" id=\"v5\">5</sup>Querido amigo, actúas con fidelidad en todo lo que haces por los hermanos, aunque sean forasteros para ti. <sup class=\"v\" id=\"v6\">6</sup>Ellos han dado testimonio de tu amor delante de la iglesia. Harás bien en proveerles lo necesario para la siguiente etapa de su viaje, de una manera digna de Dios. <sup class=\"v\" id=\"v7\">7</sup>Se pusieron en camino por causa del Nombre, y no aceptan nada de los paganos. <sup class=\"v\" id=\"v8\">8</sup>Por eso es nuestro deber recibir y sostener a personas así, y de este modo ser colaboradores de la verdad.</p><h3>Diótrefes y Demetrio</h3><p><sup class=\"v\" id=\"v9\">9</sup>Escribí unas líneas a la iglesia, pero Diótrefes, que ama ser el primero entre ellos, se niega a recibirnos. <sup class=\"v\" id=\"v10\">10</sup>Por eso, si voy, le recordaré a la iglesia lo que él está haciendo: anda diciendo de nosotros cosas vacías y malvadas. Y eso no le basta: él mismo no quiere recibir a los hermanos, impide a los que quieren recibirlos y los expulsa de la iglesia.</p><p><sup class=\"v\" id=\"v11\">11</sup>Querido amigo, no copies lo que es malo, sino lo que es bueno. Quien hace el bien procede de Dios; quien hace el mal no ha visto a Dios. <sup class=\"v\" id=\"v12\">12</sup>Demetrio cuenta con el testimonio favorable de todos, y de la verdad misma. También nosotros damos testimonio a su favor, y sabes que nuestro testimonio es verdadero.</p><h3>Saludos finales</h3><p><sup class=\"v\" id=\"v13\">13</sup>Tengo mucho que podría escribirte, pero no quiero ponerlo por escrito con tinta y pluma. <sup class=\"v\" id=\"v14\">14</sup>Espero, más bien, verte muy pronto, y entonces podremos hablar en persona.</p><p>Que la paz esté contigo. Los amigos de aquí te envían saludos. Saluda a cada uno de los amigos de allá por su nombre.</p>",
+  "study_questions": [],
+  "word_count": 347,
+  "summary": "El anciano elogia a Gayo por andar en la verdad y por ayudar a los creyentes que viajan. Reprende a Diótrefes, que se niega a recibirlos, habla bien de Demetrio y envía los saludos finales."
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "3-john",
+   "es"
+  ],
+  "order": 3,
+  "title": "Conclusión",
+  "body_html": "<blockquote><p>Por eso es nuestro deber recibir y sostener a personas así, y de este modo ser colaboradores de la verdad.</p><p>— 3 Juan 1:8</p></blockquote> <p>Tercera de Juan nos deja en medio de una historia. Nunca sabemos si el anciano llegó, si Diótrefes cedió, ni qué fue de Gayo y de Demetrio. La carta se conservó porque la iglesia vio en ella algo más que la disputa de una congregación: un retrato de lo que la iglesia está llamada a ser, y de lo que puede echarla a perder.</p> <h3>La pregunta que el libro deja</h3> <p>La carta pone dos clases de personas una junto a otra y pregunta cuál somos. Gayo abre su puerta a desconocidos porque pertenecen al Nombre. Diótrefes cierra su puerta, y también las puertas de otros, porque ama ser el primero. Ambos son miembros de la iglesia. Ambos, presumiblemente, habrían dicho que servían a Dios. Lo que los separa no es su doctrina, sino lo que aman.</p> <p>La pregunta alcanza a todo cristiano, pero especialmente a quien tiene un poco de autoridad: un pastor, un anciano, alguien que dirige cualquier cosa. ¿Usamos nuestro lugar para hacer sitio a otros, o para guardarlo para nosotros mismos? ¿Nos alegramos cuando el evangelio avanza por medio de otra persona, o solo cuando avanza por medio de nosotros? La respuesta del anciano es tan sencilla como penetrante: «Quien hace el bien procede de Dios; quien hace el mal no ha visto a Dios».</p> <h3>Por dónde seguir</h3> <p>Ningún libro de esta biblioteca está dedicado por entero a 3 Juan, pero varios abordan sus dos grandes preocupaciones, el sostén de quienes salen con el evangelio y el peligro de amar ser el primero:</p> <ul> <li><strong>Sobre la ambición en la iglesia.</strong> <em>La regla pastoral</em>, de Gregorio Magno, cuya primera parte advierte contra quienes «codician estar por encima de los demás» y asumen el liderazgo «por ansia de preeminencia»; <em>El pastor reformado</em>, de Richard Baxter, que aparta a los ministros del egoísmo y el orgullo; y <em>Humildad</em>, de Andrew Murray.</li> <li><strong>Sobre quienes se ponen en camino por causa del Nombre.</strong> <em>Una Retrospectiva</em>, de Hudson Taylor, la historia de un misionero que decidió depender solo de Dios para su sustento, y <em>La evangelización del mundo en esta generación</em>, de John R. Mott.</li> <li><strong>Sobre el anciano y sus cartas.</strong> La <em>Historia eclesiástica</em> de Eusebio de Cesarea, que conserva lo que Papías dijo de Juan y del anciano Juan, junto con el argumento del propio Eusebio de que eran dos hombres distintos, y registra las primeras dudas sobre 2 y 3 Juan; y <em>Homilías sobre la Primera Epístola de Juan</em>, de Agustín de Hipona, sobre la carta más larga de la misma mano.</li> </ul> <p>Pero quizá el mejor paso siguiente sea más sencillo. Pensar en alguien que haya salido por causa del Nombre, un misionero, un predicador itinerante, un creyente lejos de casa, y hacer algo para ayudarlo a seguir su camino «de una manera digna de Dios». Así es como el anciano querría que se leyera su carta. Y luego recibir su bendición, como la recibió Gayo:</p> <blockquote><p>Que la paz esté contigo.</p><p>— 3 Juan 1:14</p></blockquote>",
+  "study_questions": [],
+  "word_count": 523
+ }
+}
+]

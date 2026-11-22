@@ -1,0 +1,32 @@
+{
+  "title": "Ester",
+  "cover_title": "",
+  "subtitle": "Ester, «Estrella»",
+  "description": "La historia de una huérfana judía que llegó a ser reina de Persia y salvó a su pueblo de la destrucción, leída cada año en la fiesta de Purim, y el único libro de la Biblia en el que nunca se nombra a Dios. Los banquetes de un rey y una reina que se negó a acudir; Mardoqueo a la puerta del palacio; Amán el agagueo echando suertes para elegir el día en que morirían los judíos; las palabras «Tal vez llegaste a ser reina para un momento como este», y la respuesta de Ester: «Y si perezco, perezco»; dos banquetes, una noche en vela, una horca construida para un hombre y usada para otro, y un mes convertido de tristeza en alegría. En la Open Word Bible, una nueva traducción del hebreo entregada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre qué leer después.",
+  "qa": [
+    {
+      "question": "¿De qué trata el libro de Ester?",
+      "answer": "Del rescate de los judíos del Imperio persa de un complot para destruirlos. Ester, una huérfana judía criada por su primo Mardoqueo, llega a ser reina del rey Asuero sin revelar cuál es su pueblo. Cuando el principal funcionario del rey, Amán, obtiene un decreto para matar a todos los judíos en un solo día, Mardoqueo insta a Ester a interceder ante el rey, y ella arriesga la vida para hacerlo. Amán es colgado en la horca que había construido para Mardoqueo, un segundo decreto permite a los judíos defenderse, y el día previsto para su destrucción se convierte en la fiesta de Purim, que todavía se celebra cada año."
+    },
+    {
+      "question": "¿Quién escribió el libro de Ester, y cuándo?",
+      "answer": "El libro no dice quién es su autor. La tradición judía lo atribuyó a los hombres de la Gran Asamblea, el consejo que, según se dice, sucedió a Esdras, y algunos han sugerido a Mardoqueo, de quien se dice que puso por escrito estos sucesos (9:20). La historia se sitúa en el reinado de Asuero, identificado por lo general con Jerjes I, que gobernó Persia del 486 al 465 a. C., y la mayoría de los estudiosos fecha la redacción del libro a finales del período persa o a comienzos del griego. Los cristianos difieren sobre hasta qué punto leerlo como historia sin más y hasta qué punto como historia contada con el arte de un narrador."
+    },
+    {
+      "question": "¿Por qué no se menciona a Dios en el libro de Ester?",
+      "answer": "En el texto hebreo de Ester nunca aparece el nombre de Dios, y hay ayuno pero no oración, ni templo, ni mención de la ley. La mayoría de los lectores judíos y cristianos han visto en este silencio el sentido mismo del libro: Dios obra entre bastidores, a través del valor de una reina, de la noche en vela de un rey y de una cadena de sucesos demasiado oportunos para ser casualidad, aun cuando nadie lo nombra. La esperanza de Mardoqueo de que la ayuda vendría «de otra parte» (4:14) se ha oído a menudo como una discreta alusión a Su cuidado."
+    },
+    {
+      "question": "¿Qué son las adiciones a Ester?",
+      "answer": "La antigua traducción griega de Ester contiene seis pasajes que no están en el hebreo, más de cien versículos en total, entre ellos un sueño de Mardoqueo, los textos de los decretos del rey y oraciones de Mardoqueo y de Ester que nombran a Dios abiertamente. Se imprimen en las Biblias católicas y ortodoxas, donde forman parte de los libros deuterocanónicos. Las Biblias protestantes, y esta edición, siguen el texto hebreo."
+    },
+    {
+      "question": "¿Qué es Purim?",
+      "answer": "La fiesta judía que celebra la liberación narrada en Ester, que se guarda el día catorce del mes de Adar, o el quince en Jerusalén y en otras ciudades amuralladas desde la antigüedad. Su nombre viene de pur, «suerte», porque Amán echó suertes para elegir el día de la destrucción de los judíos (3:7; 9:24–26). El libro la ordena como un tiempo de banquete y de alegría, de enviarse regalos de comida unos a otros y de dar regalos a los pobres (9:22). El rollo de Ester se lee en voz alta en la sinagoga, y la congregación ahoga con ruido el nombre de Amán cada vez que se lee."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del hebreo y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser precisa y leerse con naturalidad en voz alta. El razonamiento detrás de cada una de sus oraciones, con el hebreo al lado, está publicado en openwordbible.org. La introducción y la conclusión se escribieron para esta edición."
+    }
+  ]
+}

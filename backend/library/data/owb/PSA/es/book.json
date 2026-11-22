@@ -1,0 +1,33 @@
+{
+  "title": "Los Salmos",
+  "cover_title": "Salmos",
+  "subtitle": "Tehillim, «Alabanzas»",
+  "chapter_label": "Salmo",
+  "description": "El libro de oración y el cancionero de Israel y de la iglesia: ciento cincuenta salmos, reunidos a lo largo de mil años en cinco libros, que comienzan con «¡Qué dichosa es la persona…!» y terminan con «¡Que toda criatura que respira alabe al SEÑOR!». El salmo del pastor y el clamor «Dios mío, Dios mío, ¿por qué me has abandonado?»; la confesión de David después de Betsabé y la oración de Moisés por todas las generaciones; los cánticos de las subidas que entonaban los peregrinos camino a Jerusalén; lamentos que se convierten en confianza, y los salmos que Jesús oró en la cruz. Dispuestos línea por línea, como la poesía que son, en la Open Word Bible, una nueva traducción del hebreo entregada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre por dónde seguir leyendo.",
+  "qa": [
+    {
+      "question": "¿Qué son los Salmos?",
+      "answer": "Los Salmos son una colección de ciento cincuenta oraciones y cantos del Antiguo Testamento, el libro de oración y el himnario del antiguo Israel, y de la iglesia desde entonces. Su nombre hebreo, Tehillim, significa «Alabanzas», aunque hay más lamentos que de ningún otro tipo. Se escribieron a lo largo de muchos siglos, desde la época de Moisés y David hasta el regreso del exilio en Babilonia, y se reunieron en cinco libros, cada uno de los cuales termina con una bendición a Dios. Ningún libro del Antiguo Testamento se cita con más frecuencia en el Nuevo Testamento."
+    },
+    {
+      "question": "¿Quién escribió los Salmos?",
+      "answer": "Muchas manos. Según los títulos que llevan encima, David está vinculado con setenta y tres salmos; Asaf, uno de los músicos levitas que David nombró, con doce; los hijos de Coré, una familia de cantores del templo, con once; Salomón con dos; y Moisés, Hemán y Etán con uno cada uno. Alrededor de un tercio no lleva nombre alguno. Los títulos son muy antiguos, ya formaban parte del texto hebreo y fueron traducidos en la Septuaginta griega antes de la época de Cristo, pero la mayoría de los estudiosos piensa que los añadieron los editores que reunieron las colecciones, y el hebreo «de David» puede significar escrito por David, dedicado a David o perteneciente a la colección de David. Jesús cita el Salmo 110 como palabras de David."
+    },
+    {
+      "question": "¿Por qué están divididos los Salmos en cinco libros?",
+      "answer": "Los editores finales organizaron los Salmos en cinco libros (Salmos 1–41, 42–72, 73–89, 90–106 y 107–150), cada uno de los cuales se cierra con una breve doxología, una bendición a Dios, y el último termina con cinco salmos de alabanza. Los antiguos maestros judíos veían en los cinco libros la respuesta de Israel a los cinco libros de Moisés. La disposición también cuenta una historia: el Libro III termina con dolor por la caída de la línea de David, el Libro IV responde con la oración de Moisés y el clamor «¡El SEÑOR es Rey!», y toda la colección asciende hacia la alabanza."
+    },
+    {
+      "question": "¿Qué tipos de salmos hay?",
+      "answer": "Los tipos principales son los salmos de alabanza, que llaman a la gente a adorar a Dios y dan el motivo; los lamentos, de una persona o de todo el pueblo, que derraman una angustia y por lo general terminan en confianza; las acciones de gracias por oraciones respondidas; los salmos reales, sobre el rey de la línea de David, y los salmos que celebran al SEÑOR como Rey; los salmos sapienciales, sobre los dos caminos y la ley de Dios; los serenos salmos de confianza, como el Salmo 23; y los siete salmos penitenciales de confesión (6, 32, 38, 51, 102, 130 y 143). Los salmos imprecatorios, que piden juicio sobre los enemigos, son los más difíciles para los cristianos; la iglesia los ha leído como clamores sinceros que entregan la venganza a Dios, como una negativa a tomar el mal a la ligera y como oraciones contra el pecado y el diablo, más que como maldiciones contra el prójimo."
+    },
+    {
+      "question": "¿Cómo usan los Salmos Jesús y el Nuevo Testamento?",
+      "answer": "Jesús creció cantando los Salmos y los citaba a menudo. En la cruz oró la primera línea del Salmo 22, «Dios mío, Dios mío, ¿por qué me has abandonado?», y, en Lucas, el Salmo 31:5, encomendando su espíritu en las manos de su Padre. Preguntó cómo podía David llamar al Mesías «mi señor» en el Salmo 110, el pasaje del Antiguo Testamento que el Nuevo Testamento cita con más frecuencia. Los apóstoles predicaron el Salmo 2 y el Salmo 110 sobre su realeza, el Salmo 16 sobre su resurrección y el Salmo 118 sobre la piedra rechazada convertida en piedra principal de la esquina, y exhortaron a las iglesias a cantar salmos juntas."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del hebreo y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser exacto y leerse con naturalidad en voz alta. Cada línea de la poesía se presenta por separado, y «SEÑOR» en mayúsculas representa el nombre personal de Dios. El razonamiento detrás de cada una de sus frases, con el hebreo al lado, está publicado en openwordbible.org. La introducción y la conclusión se escribieron para esta edición."
+    }
+  ]
+}

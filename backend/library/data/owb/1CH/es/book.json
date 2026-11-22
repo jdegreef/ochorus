@@ -1,0 +1,32 @@
+{
+  "title": "1 Crónicas",
+  "cover_title": "",
+  "subtitle": "Divrei HaYamim Alef, «Los sucesos de los días»",
+  "description": "La primera mitad de Crónicas, la historia del pueblo de Dios contada de nuevo para quienes volvieron a casa del exilio. Comienza con un árbol genealógico que va desde Adán hasta las tribus de Israel, con la oración de Jabes escondida entre los nombres, y luego narra la historia de David: proclamado rey por todo Israel, derramando el agua que sus guerreros arriesgaron la vida para traerle, danzando mientras el arca sube a Jerusalén y escuchando la promesa de Dios: «yo haré firme su trono para siempre». Termina con David preparando un templo que nunca verá y orando: «Todo viene de Ti; lo que Te hemos dado salió de Tu propia mano». En la Open Word Bible, una nueva traducción del hebreo entregada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre qué leer después.",
+  "qa": [
+    {
+      "question": "¿Qué es el libro de 1 Crónicas?",
+      "answer": "La primera mitad de Crónicas, que en hebreo es un solo libro llamado Divrei HaYamim, «los sucesos de los días»; la antigua traducción griega lo dividió en dos, y el nombre de Crónicas viene de Jerónimo. Sus veintinueve capítulos comienzan con genealogías desde Adán a través de todas las tribus de Israel (1–9), y luego cuentan la muerte de Saúl (10) y el reinado de David (11–29): su unción por todo Israel, el traslado del arca a Jerusalén, la promesa del pacto de Dios de un reino eterno y los preparativos de David para el templo que Salomón construiría."
+    },
+    {
+      "question": "¿Quién escribió 1 y 2 Crónicas, y cuándo?",
+      "answer": "Los libros no dicen quién es su autor. La tradición judía, recogida en el Talmud, los atribuyó a Esdras el escriba, y los últimos versículos de 2 Crónicas se repiten al comienzo del libro de Esdras. Muchos estudiosos hablan simplemente del «Cronista», que escribió después del regreso del exilio en Babilonia, en el período persa, quizá hacia el año 400 a. C., ya que la línea de David en 1 Crónicas 3 se extiende varias generaciones más allá de Zorobabel; algunos fechan el libro antes. Se debate si el mismo escritor compuso Esdras y Nehemías."
+    },
+    {
+      "question": "¿En qué se diferencia Crónicas de Samuel y Reyes?",
+      "answer": "Crónicas vuelve a contar buena parte de la misma historia, a menudo palabra por palabra, pero con otro propósito y para otro público: la comunidad que volvió del exilio con un templo pero sin rey. Comienza con Adán, omite la mayor parte de la historia del reino del norte y mucho de la tragedia familiar de David, como su pecado con Betsabé y la rebelión de Absalón, y añade mucho acerca del arca, el templo, los sacerdotes, los levitas y los cantores, y las oraciones de los reyes y del pueblo. Sus primeros lectores conocían Samuel y Reyes; Crónicas no es tanto una corrección de ellos como un segundo testigo, que predica la misma historia a una nueva generación."
+    },
+    {
+      "question": "¿Qué es la oración de Jabes?",
+      "answer": "Una breve oración registrada en medio de la genealogía de Judá (1 Crónicas 4:9–10). Jabes, a quien su madre puso nombre por el dolor de su parto, «invocó al Dios de Israel» y le pidió que lo bendijera, ensanchara su territorio, mantuviera Su mano con él y lo guardara del mal, «Y Dios le concedió lo que había pedido». Es uno de varios lugares de las listas de Crónicas donde el libro se detiene para mostrar que Dios escucha a quienes lo invocan, como sucede con las tribus al este del Jordán, que «clamaron a Dios durante la batalla» (5:20)."
+    },
+    {
+      "question": "¿Por qué dice 1 Crónicas 21 que Satanás incitó a David a contar a Israel?",
+      "answer": "En 1 Crónicas 21:1, «Satanás se levantó contra Israel e incitó a David a contar a Israel», mientras que el pasaje paralelo de 2 Samuel 24:1 dice que fue la ira del SEÑOR la que incitó a David. Muchos intérpretes ven dos caras de un mismo suceso: Dios permitiendo lo que el adversario se proponía, como al comienzo de Job; algunos señalan que la palabra hebrea no lleva artículo y puede significar simplemente «un adversario». Ambos relatos hacen responsable a David, y en ambos él confiesa su pecado. Crónicas muestra después cómo el lugar de su arrepentimiento, la era de Ornán, se convierte en el sitio del templo."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del hebreo y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser precisa y leerse con naturalidad en voz alta. «SEÑOR» en mayúsculas representa el nombre personal de Dios, y el salmo del capítulo 16 se presenta verso por verso como poesía. El razonamiento detrás de cada una de sus oraciones, con el hebreo al lado, está publicado en openwordbible.org. La introducción y la conclusión se escribieron para esta edición."
+    }
+  ]
+}

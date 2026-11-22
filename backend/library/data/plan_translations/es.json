@@ -293,5 +293,68 @@
     "note": [
       "AI-drafted (2026-11-07); awaiting native review. Job #6999. diary-of-an-old-soul has no es edition yet; «El diario de un alma anciana» is coined. Description follows the shipped es year plans («Comience cualquier día…»). Prose-ahead until the book ships."
     ]
+  },
+  "john-in-21-days": {
+    "title": "El Evangelio de Juan en 21 días",
+    "description": "Tres semanas con el cuarto Evangelio en la Open Word Bible, un capítulo al día: el Verbo hecho carne, siete señales, los dichos «Yo soy», la larga despedida en el aposento alto, la cruz como la hora de la gloria y el desayuno junto al lago.",
+    "note": [
+      "Planes de lectura de la Biblia en español (Open Word Bible, build_owb_book --language es): las citas de Salmos 1:1, Salmos 150:6 y Proverbios 1:7 son las palabras de owb-es."
+    ]
+  },
+  "psalms-in-150-days": {
+    "title": "Los Salmos en 150 días",
+    "description": "Un salmo al día durante cinco meses en la Open Word Bible, dispuestos verso a verso: el propio libro de oración de la Biblia, de alabanza y lamento, confianza y gratitud, desde «¡Qué dichosa es la persona» hasta «¡Que toda criatura que respira alabe al SEÑOR!»",
+    "note": [
+      "Planes de lectura de la Biblia en español (Open Word Bible, build_owb_book --language es): las citas de Salmos 1:1, Salmos 150:6 y Proverbios 1:7 son las palabras de owb-es."
+    ]
+  },
+  "proverbs-in-a-month": {
+    "title": "Proverbios en un mes",
+    "description": "Un capítulo de Proverbios para cada día del mes en la Open Word Bible: treinta y un capítulos de sabiduría para la vida diaria, desde el temor del SEÑOR como el comienzo del conocimiento hasta la mujer fuerte.",
+    "note": [
+      "Planes de lectura de la Biblia en español (Open Word Bible, build_owb_book --language es): las citas de Salmos 1:1, Salmos 150:6 y Proverbios 1:7 son las palabras de owb-es."
+    ]
+  },
+  "advent-in-scripture": {
+    "title": "El Adviento en las Escrituras",
+    "description": "Veinticinco días, del 1 de diciembre al día de Navidad, un capítulo al día en la Open Word Bible. Primero vienen las promesas: la serpiente aplastada, la bendición a Abraham, la estrella que sale de Jacob, el trono eterno de David, y el niño, el siervo y la luz de Isaías, con el Renuevo de Jeremías, la Belén de Miqueas y el mensajero de Malaquías. Después, el Verbo hecho carne, Gabriel y María, el sueño de José, el nacimiento en Nochebuena y los sabios en el día de Navidad. Unos tres minutos al día.",
+    "note": [
+      "Planes de lectura de la Biblia en español (Open Word Bible, build_owb_book --language es): las citas de Salmos 1:1, Salmos 150:6 y Proverbios 1:7 son las palabras de owb-es."
+    ]
+  },
+  "lent-the-road-to-the-cross": {
+    "title": "Cuaresma: el camino a la cruz",
+    "description": "Cuarenta lecturas para los cuarenta días de Cuaresma en la Open Word Bible. Se empieza el Miércoles de Ceniza y se lee de lunes a sábado, descansando los domingos, y el Viernes Santo y el Sábado Santo caen en sus propios capítulos. Desde el llamado a volver de todo corazón, pasando por el cordero, la Pascua y el siervo sufriente, hasta Jesús que se encamina con determinación a Jerusalén; la Pasión en Mateo, Marcos y Lucas; lo que logró la cruz, en Hebreos, Romanos, Filipenses y Pedro; y la Semana Santa día a día en Juan. Unos cinco minutos al día.",
+    "note": [
+      "Planes de lectura de la Biblia en español (Open Word Bible, build_owb_book --language es): las citas de Salmos 1:1, Salmos 150:6 y Proverbios 1:7 son las palabras de owb-es."
+    ]
+  },
+  "easter-the-risen-lord": {
+    "title": "Pascua: el Señor resucitado",
+    "description": "Ocho días, del Domingo de Resurrección al domingo siguiente, un capítulo de la resurrección al día en la Open Word Bible: la tumba vacía y María en el huerto, el camino a Emaús, la gran comisión, el joven en la tumba, el desayuno junto al lago, Pablo sobre las primicias de los muertos, el bautismo en una vida nueva, y el que vive entre los candeleros. Unos cuatro minutos al día.",
+    "note": [
+      "Planes de lectura de la Biblia en español (Open Word Bible, build_owb_book --language es): las citas de Salmos 1:1, Salmos 150:6 y Proverbios 1:7 son las palabras de owb-es."
+    ]
+  },
+  "the-story-of-the-bible": {
+    "title": "La historia de la Biblia",
+    "description": "Dos meses a través de la única historia que cuenta toda la Biblia, un solo capítulo al día en la Open Word Bible: la creación y la caída, la promesa a Abraham, la Pascua y el mar, la ley y la tierra, David y la promesa de un rey, los profetas, el exilio y el regreso; luego Jesús que nace, enseña, es crucificado y resucita, el Espíritu derramado sobre la iglesia, y la nueva creación donde Dios habita con Su pueblo. Sesenta capítulos clave, de unos cuatro minutos cada uno.",
+    "note": [
+      "Planes de lectura de la Biblia en español (Open Word Bible, build_owb_book --language es): las citas de Salmos 1:1, Salmos 150:6 y Proverbios 1:7 son las palabras de owb-es."
+    ]
+  },
+  "bible-in-a-year": {
+    "title": "La Biblia en un año",
+    "description": "Toda la Biblia en la Open Word Bible, de Génesis a Apocalipsis en orden: los 1189 capítulos en 365 días. La mayoría de los días se leen de dos a cuatro capítulos, unos diez minutos, repartidos para que cada día tenga una extensión parecida y se quede en un solo libro; los Salmos vienen de varios en varios y las cartas más breves tienen un día propio. A través de la ley y la historia, los poetas y los profetas, los Evangelios, las cartas y la nueva creación.",
+    "note": [
+      "Planes de lectura de la Biblia en español (Open Word Bible, build_owb_book --language es): las citas de Salmos 1:1, Salmos 150:6 y Proverbios 1:7 son las palabras de owb-es."
+    ]
+  },
+  "new-testament-in-90-days": {
+    "title": "El Nuevo Testamento en 90 días",
+    "description": "Todo el Nuevo Testamento en la Open Word Bible, de Mateo a Apocalipsis en orden: los 260 capítulos en 90 días. La mayoría de los días se leen de dos a cuatro capítulos, unos diez minutos, repartidos para que cada día tenga una extensión parecida y se quede en un solo libro; las cartas más breves tienen un día propio. A través de los cuatro Evangelios, los primeros días de la iglesia en Hechos, las cartas de Pablo y de los apóstoles, y el cielo nuevo y la tierra nueva.",
+    "note": [
+      "Planes de lectura de la Biblia en español (Open Word Bible, build_owb_book --language es): las citas de Salmos 1:1, Salmos 150:6 y Proverbios 1:7 son las palabras de owb-es."
+    ]
   }
 }

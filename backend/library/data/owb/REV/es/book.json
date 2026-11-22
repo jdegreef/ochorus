@@ -1,0 +1,32 @@
+{
+  "title": "El Apocalipsis",
+  "cover_title": "Apocalipsis",
+  "subtitle": "Apokalypsis Iōannou, «La revelación de Juan»",
+  "description": "El último libro de la Biblia, una visión dada a Juan en el destierro de Patmos y enviada a siete iglesias de Asia, con una bendición para todo el que la lee en voz alta y para todos los que la escuchan. El Cristo resucitado entre los candelabros y sus cartas a las iglesias; el trono en el cielo, y el León de Judá que resulta ser un Cordero degollado; sellos, trompetas y copas; el dragón, la bestia y la caída de Babilonia la grande; el jinete llamado el Verbo de Dios; los mil años y el gran trono blanco; y un cielo nuevo y una tierra nueva, donde Dios enjuga toda lágrima de sus ojos y hace nuevas todas las cosas. En la Open Word Bible, una nueva traducción desde el griego entregada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre dónde seguir leyendo.",
+  "qa": [
+    {
+      "question": "¿Qué es el libro del Apocalipsis?",
+      "answer": "Es el vigésimo séptimo y último libro del Nuevo Testamento, el relato de las visiones dadas a un profeta llamado Juan. Es a la vez un apocalipsis, un libro de visiones simbólicas como Daniel; una profecía; y una carta a siete iglesias de la provincia romana de Asia. Muestra a Jesús resucitado, la adoración del cielo, los juicios de Dios sobre el mal, la caída de los poderes que se le oponen y un cielo nuevo y una tierra nueva. Su nombre procede de su primera palabra en griego, apokalypsis, un desvelamiento."
+    },
+    {
+      "question": "¿Quién escribió el Apocalipsis, y cuándo?",
+      "answer": "El autor se llama a sí mismo Juan y dice que estaba en la isla de Patmos «a causa de la palabra de Dios y del testimonio de Jesús» (1:9). Desde el siglo II la mayor parte de la iglesia lo identificó con el apóstol Juan; en el siglo III, Dionisio de Alejandría argumentó, a partir de su griego tan distinto, que se trataba de otro Juan, y muchos estudiosos actuales están de acuerdo. Ireneo sitúa la visión hacia el final del reinado del emperador Domiciano, hacia el año 95 d. C., la fecha que acepta la mayoría de los estudiosos; algunos la fechan a finales de los años 60, después de la persecución de Nerón."
+    },
+    {
+      "question": "¿Qué significa el Cordero en el Apocalipsis?",
+      "answer": "En el capítulo 5 se le dice a Juan que el León de la tribu de Judá ha vencido y puede abrir el rollo sellado, pero cuando mira ve «un Cordero de pie, con aspecto de haber sido degollado» (5:6). La imagen muestra que Jesús, el Rey prometido de Israel, ha vencido por medio de su muerte. A partir de ahí el Apocalipsis lo llama el Cordero casi treinta veces, y toda la creación lo adora, cantando que es digno porque con su sangre compró para Dios a gente de toda nación."
+    },
+    {
+      "question": "¿Cuál es el número de la bestia, el 666?",
+      "answer": "En 13:18 Juan invita a quien tenga entendimiento a calcular el número de la bestia, «porque es un número humano. Su número es 666». Muchos estudiosos piensan que los primeros lectores habrían oído en él el nombre del emperador Nerón, cuyo nombre en letras hebreas suma 666; unos pocos manuscritos antiguos dicen 616, que corresponde al mismo nombre escrito a partir de su forma latina. Otros lo entienden como un símbolo del poder humano, que siempre se queda corto ante el siete, el número de la plenitud. Ya en el siglo II, Ireneo advirtió que el número puede ajustarse a muchos nombres."
+    },
+    {
+      "question": "¿Cuáles son las principales maneras en que los cristianos interpretan el Apocalipsis y los mil años?",
+      "answer": "Los preteristas leen el Apocalipsis sobre todo como referido a la época del propio Juan y a la lucha con Roma; los historicistas, como un recorrido por la historia de la iglesia; los futuristas, como la descripción de acontecimientos todavía por venir antes del regreso de Cristo; los idealistas, como un cuadro del conflicto entre Dios y el mal en todas las épocas. Sobre los mil años del capítulo 20, los premilenaristas esperan que Cristo vuelva y luego reine en la tierra; los amilenaristas, siguiendo a Agustín, los entienden como la era presente de la iglesia; y los posmilenaristas esperan un largo triunfo del evangelio antes de su venida. Todos coinciden en que Cristo volverá, los muertos resucitarán y Dios hará nuevas todas las cosas."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del griego y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser precisa y sonar natural al leerse en voz alta. Da las distancias y medidas en unidades modernas; las medidas originales pueden consultarse en la propia Open Word Bible. El razonamiento detrás de cada una de sus oraciones, con el griego al lado, se publica en openwordbible.org. La introducción y la conclusión se escribieron para esta edición."
+    }
+  ]
+}

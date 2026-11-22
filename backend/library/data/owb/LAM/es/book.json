@@ -1,0 +1,32 @@
+{
+  "title": "Lamentaciones",
+  "cover_title": "",
+  "subtitle": "Eikhah, «¡Cómo!»",
+  "description": "Cinco poemas de duelo escritos entre las ruinas de Jerusalén después de que los babilonios incendiaran la ciudad y su templo en el 587 o 586 a. C., llamados en hebreo por su grito inicial: «¡Cómo!». Cuatro de ellos son acrósticos, que recorren el alfabeto hebreo como diciendo que este es un sufrimiento de la primera letra a la última. La ciudad llora como una viuda sin nadie que la consuele; el Señor se ha portado como un enemigo; los niños desfallecen en las calles. Y en el centro, un hombre que ha conocido la aflicción se sienta entre las cenizas y trae a la memoria que la compasión del SEÑOR no se ha acabado: «Cada mañana vuelven a ser nuevas; ¡qué grande es Tu fidelidad!». Presentados verso por verso, como la poesía que son, en la Open Word Bible, una nueva traducción del hebreo entregada libremente al dominio público, con una introducción a la forma y el sentido del libro y una conclusión sobre qué leer a continuación.",
+  "qa": [
+    {
+      "question": "¿Qué es el libro de Lamentaciones?",
+      "answer": "Un breve libro del Antiguo Testamento formado por cinco poemas que lloran la destrucción de Jerusalén y de su templo a manos de los babilonios en el 587 o 586 a. C. Su nombre hebreo, Eikhah, es su primera palabra, un grito que significa «¡Cómo!». Los poemas describen el sitio y sus consecuencias sin apartar la mirada, confiesan el pecado del pueblo, se quejan ante Dios y le suplican que mire y recuerde. En el centro se alza una de las confesiones de esperanza más queridas de la Biblia: «Gracias al amor fiel del SEÑOR no hemos sido aniquilados, porque Su compasión no se ha acabado. Cada mañana vuelven a ser nuevas; ¡qué grande es Tu fidelidad!» (3:22–23)."
+    },
+    {
+      "question": "¿Quién escribió Lamentaciones, y cuándo?",
+      "answer": "El libro no nombra a su autor. La antigua traducción griega lo presenta como un lamento de Jeremías sobre Jerusalén, y la tradición judía y cristiana siguió durante mucho tiempo esa idea; las Biblias lo colocan después del libro de Jeremías. Jeremías vivió la caída de la ciudad y se sabe que compuso lamentos (2 Crónicas 35:25). Muchos estudiosos modernos piensan que los poemas provienen de uno o más poetas anónimos que presenciaron los mismos hechos. Todos coinciden en que los poemas se escribieron poco después de la caída de Jerusalén, por personas que la habían visto."
+    },
+    {
+      "question": "¿Por qué Lamentaciones está escrito como un acróstico?",
+      "answer": "Los cuatro primeros poemas son acrósticos alfabéticos: cada versículo, o en el capítulo 3 cada grupo de tres versículos, comienza con la letra siguiente del alfabeto hebreo de veintidós letras. El patrón hacía que los poemas fueran más fáciles de aprender y de cantar, y muchos lectores creen que también expresa plenitud, un dolor contado de la A a la Z, y da orden a una experiencia de caos. El quinto poema conserva los veintidós versículos pero abandona el alfabeto, como si el propio patrón se hubiera derrumbado mientras la oración continúa."
+    },
+    {
+      "question": "¿De dónde viene el himno «Grande es tu fidelidad»?",
+      "answer": "De Lamentaciones 3:22–23, traducido aquí «Cada mañana vuelven a ser nuevas; ¡qué grande es Tu fidelidad!». Las palabras las pronuncia un hombre que acaba de describir en los términos más sombríos la mano de Dios contra él, y que, sin que nada haya cambiado en sus circunstancias, da un giro al traer a la memoria el amor fiel y la compasión de Dios. El himno «Grande es tu fidelidad», escrito por Thomas Chisholm en 1923, tomó su estribillo de este pasaje."
+    },
+    {
+      "question": "¿Cómo se usa Lamentaciones en el culto?",
+      "answer": "Las comunidades judías leen Lamentaciones cada año en el ayuno del Nueve de Av, que conmemora con duelo la destrucción del primer y del segundo templo, y repiten al final su penúltimo versículo para no cerrar con sus últimas palabras. Los cristianos lo han leído desde hace mucho durante la Semana Santa, y han oído en «¿No les importa nada a todos ustedes los que pasan por el camino?» (1:12) la voz de Cristo en Sus sufrimientos. Sus lamentos sinceros también han dado a muchos creyentes palabras para orar en tiempos de duelo."
+    },
+    {
+      "question": "¿Qué traducción de la Biblia es esta?",
+      "answer": "La Open Word Bible, una nueva traducción hecha directamente del hebreo y dedicada al dominio público, impresa aquí en su nivel Equilibrado, que busca ser precisa y sonar natural al leerse en voz alta. Lamentaciones es poesía de principio a fin, y cada verso va en su propia línea; «SEÑOR» en mayúsculas representa el nombre personal de Dios. El razonamiento detrás de cada una de sus oraciones, con el hebreo al lado, está publicado en openwordbible.org. La introducción y la conclusión se escribieron para esta edición."
+    }
+  ]
+}
