@@ -2355,8 +2355,9 @@ export const adminUserDirectoryCsvUrl = (params: { q?: string; sort?: AdminUserS
 // source of truth is the sync schema) rather than re-declaring them, so a new
 // kind added there can't silently drift out of step here.
 
-/** A work the reader has open or has finished. `finished_at` is null while in
- *  progress (see reading.ReadingProgress.finished_at). */
+/** A work the reader has open or has finished. `finished_at` is the latest
+ *  finish (a finished reread's), null if never finished — a book being reread
+ *  is in progress yet carries its earlier finish. */
 export interface UserProgress {
 	kind: WorkKind;
 	slug: string;

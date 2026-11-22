@@ -437,9 +437,17 @@ def _progress_extras(data: dict) -> dict:
     — validated; absent (an older client) stays None, which the upsert reads as
     "not reported"."""
     out = {}
+    # These keep the LATEST any device reports, so a far-future one (a clock
+    # set days ahead) would outrank every honest stamp — a restart no device
+    # could finish. One beyond the skew a write's own stamp may have
+    # (`CLIENT_CLOCK_SKEW`) is dropped as unreported, not clamped: the device
+    # re-sends its stamp on every push, and a clamp to the moving "now" would
+    # land a later value each time — a restart that creeps past every finish.
+    # A stamp within the skew is kept as sent, for the same reason.
+    latest_ok = datetime.now(UTC) + CLIENT_CLOCK_SKEW
     for field in ("restarted_at", "last_finished_at"):
         dt = _ms_to_dt(data.get(field))
-        if dt is not None:
+        if dt is not None and dt <= latest_ok:
             out[field] = dt
     if data.get("furthest_order") is not None:
         out["furthest_order"] = clamp_int(
@@ -559,12 +567,19 @@ def _upsert_progress(
         if resolved_restarted is None:
             resolved_finished = None
 
+    # Does this write START the current read-through — a restart newer than the
+    # server's, and newer than every finish (a stale restart that a later finish
+    # already closed starts nothing)?
+    starts_read = _is_later(restarted_at, server_restarted) and _is_later(
+        restarted_at, _latest(resolved_finished, resolved_last_finished)
+    )
+
     # The furthest chapter reached: the higher of the two, never lowered —
-    # within one read-through. A write reporting a NEWER restart begins a new
-    # one, so its furthest replaces the server's; a write from an EARLIER
-    # read-through (a device that never saw the restart) can't raise it.
+    # within one read-through. A write starting a new one replaces the
+    # server's; a write from an EARLIER read-through (a device that never saw
+    # the restart) can't raise it.
     server_furthest = existing.furthest_order if existing else 0
-    if _is_later(restarted_at, server_restarted):
+    if starts_read:
         resolved_furthest = furthest_order if furthest_order is not None else server_furthest
     elif _is_later(server_restarted, restarted_at):
         resolved_furthest = server_furthest
@@ -580,6 +595,11 @@ def _upsert_progress(
         position_stale = (stored is not None and client_dt is not None and stored >= client_dt) or (
             client_dt is None and keep_server_when_unknown
         )
+        # A write that STARTS a new read-through carries its position, however
+        # its clock compares: the furthest above restarts with it, and keeping
+        # the old read-through's place beside the new furthest would mix the two.
+        if starts_read:
+            position_stale = False
 
     if position_stale:
         # Keep the server's newer position, but still apply a finished change —
@@ -616,7 +636,12 @@ def _upsert_progress(
             "language": language,
             "chapter_order": chapter_order,
             "paragraph_index": paragraph_index,
-            "client_updated_at": client_dt,
+            # A restart on an older clock (it lands anyway, above) doesn't move
+            # the clock back: else a stale retry from the old read-through
+            # would win on its clock.
+            "client_updated_at": _latest(existing.client_updated_at, client_dt)
+            if existing and starts_read
+            else client_dt,
             "finished_at": resolved_finished,
             "restarted_at": resolved_restarted,
             "last_finished_at": resolved_last_finished,

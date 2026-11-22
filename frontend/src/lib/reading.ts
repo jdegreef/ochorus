@@ -1,6 +1,14 @@
 import { i18n } from './i18n.svelte';
 import { getLang } from './lang.svelte';
-import { MODERN_EDITION, baseEdition, furthestOf, isFinishedNow, resumeOrderOf, type ProgressRecord } from './reading-schema';
+import {
+	MODERN_EDITION,
+	baseEdition,
+	furthestOf,
+	isFinishedNow,
+	resumeOrderOf,
+	type FinishFields,
+	type ProgressRecord
+} from './reading-schema';
 import { readingPace } from './readingPace.svelte';
 import { minutesPerDay } from './planCard';
 
@@ -88,7 +96,7 @@ export function bookProgressPercent(order: number, chapterCount: number): number
  * the bar is always visibly started and never claims completion.
  */
 export function workPercent(
-	rec: Pick<ProgressRecord, 'order' | 'pct' | 'finished_at' | 'restarted_at' | 'last_finished_at' | 'furthest'>,
+	rec: Pick<ProgressRecord, 'order' | 'pct' | 'furthest'> & FinishFields,
 	chapterCount: number
 ): number {
 	if (isFinishedNow(rec)) return 100;

@@ -1,4 +1,5 @@
 
+from datetime import UTC, datetime, timedelta
 from unittest import skipUnless
 
 from django.contrib.auth import get_user_model
@@ -17,7 +18,7 @@ from .marks import (
     reconcile_marks,
 )
 from .models import Bookmark, ChapterMarks, Favorite, ReadingDay, ReadingProgress
-from .views import _now_ms
+from .views import CLIENT_CLOCK_SKEW, _now_ms
 
 User = get_user_model()
 
@@ -492,6 +493,99 @@ class RereadProgressTests(TestCase):
         res = self._progress(chapter_order=16, unfinish=True)
         self.assertIsNone(res.data["finished_at"])
         self.assertIsNone(res.data["restarted_at"])
+
+
+    def test_a_restart_carries_its_position_even_on_an_older_clock(self):
+        # Another device read on in the FIRST read-through with a later clock…
+        self._progress(chapter_order=12, furthest_order=16, updated_at=self.RESTART + 50_000)
+        # …then this one starts again, its clock behind that write.
+        res = self._restart()
+        self.assertEqual(res.data["chapter_order"], 2)  # not the old read's 12
+        self.assertEqual(res.data["furthest_order"], 2)
+        # …and that device's retry of its old-read-through write can't win back
+        # on its clock: the restart didn't move the stored clock back.
+        res = self._progress(chapter_order=12, furthest_order=16, updated_at=self.RESTART + 50_000)
+        self.assertEqual(res.data["chapter_order"], 2)
+        self.assertEqual(res.data["furthest_order"], 2)
+
+    def test_a_stale_restart_behind_a_later_finish_starts_nothing(self):
+        # The reread was restarted and finished elsewhere…
+        self._progress(
+            chapter_order=16,
+            furthest_order=16,
+            restarted_at=self.RESTART,
+            last_finished_at=self.RESTART + 9000,
+            updated_at=self.RESTART + 9000,
+        )
+        # …then a device that restarted offline in between syncs its restart.
+        res = self._progress(
+            chapter_order=2, furthest_order=2, restarted_at=self.RESTART + 1000, updated_at=self.RESTART + 1000
+        )
+        self.assertEqual(res.data["chapter_order"], 16)  # its stale place doesn't land
+        self.assertEqual(res.data["furthest_order"], 16)
+        self.assertTrue(ReadingProgress.objects.get(book_slug="mark").is_finished_now)
+
+    def test_a_far_future_stamp_is_dropped(self):
+        far = int((datetime.now(UTC) + CLIENT_CLOCK_SKEW + timedelta(days=1)).timestamp() * 1000)
+        res = self._progress(chapter_order=2, restarted_at=far, updated_at=self.RESTART)
+        self.assertIsNone(res.data["restarted_at"])  # unreported, not clamped
+        self.assertIsNone(ReadingProgress.objects.get(book_slug="mark").restarted_at)
+
+    def test_a_slightly_fast_stamp_is_kept_as_sent(self):
+        # Held to the skew, not to "now": the device keeps re-sending its own
+        # stamp, so a server copy pinned below it would drift on every push.
+        ahead = int((datetime.now(UTC) + timedelta(minutes=5)).timestamp() * 1000)
+        self._progress(chapter_order=2, restarted_at=ahead, updated_at=self.RESTART)
+        stored = ReadingProgress.objects.get(book_slug="mark").restarted_at
+        self.assertEqual(round(stored.timestamp() * 1000), ahead)
+
+
+class FinishedNowTests(TestCase):
+    """``is_finished_now`` and ``in_progress_q`` are one rule, in Python and in
+    SQL — the frontend's ``isFinishedNow`` (a restart at the very instant of a
+    finish leaves the work finished) — and they partition every row."""
+
+    def test_the_property_and_the_query_agree(self):
+        user = User.objects.create(username="00000000-0000-0000-0000-000000000012")
+        profile = UserProfile.objects.create(
+            user=user, supabase_uid=user.username, email="now@example.com"
+        )
+        t = datetime.now(UTC)
+        d = timedelta(days=1)
+        cases = {
+            # slug: (finished_at, restarted_at, last_finished_at, finished now?)
+            "never-finished": (None, None, None, False),
+            "finished": (t, None, None, True),
+            "rereading": (t, t + d, None, False),
+            "restart-at-finish": (t, t, None, True),
+            "reread-finished": (t, t + d, t + 2 * d, True),
+            "reread-finish-at-restart": (t, t + d, t + d, True),
+            "restarted-again": (t, t + 3 * d, t + 2 * d, False),
+            "only-reread-finish": (None, t, t + d, True),
+            "restart-without-finish": (None, t, None, False),
+            "first-after-restart": (t + d, t, None, True),
+        }
+        for slug, (fin, restart, last, _) in cases.items():
+            ReadingProgress.objects.create(
+                profile=profile,
+                kind="book",
+                book_slug=slug,
+                language="en",
+                chapter_order=1,
+                finished_at=fin,
+                restarted_at=restart,
+                last_finished_at=last,
+            )
+        in_progress = set(
+            ReadingProgress.objects.filter(ReadingProgress.in_progress_q()).values_list(
+                "book_slug", flat=True
+            )
+        )
+        for row in ReadingProgress.objects.all():
+            expected = cases[row.book_slug][3]
+            with self.subTest(row.book_slug):
+                self.assertEqual(row.is_finished_now, expected)
+                self.assertEqual(row.book_slug in in_progress, not expected)
 
 
 class FavoriteTests(TestCase):
