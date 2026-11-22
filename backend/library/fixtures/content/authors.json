@@ -57,6 +57,28 @@
           "q": "How is Andrew Murray remembered?",
           "a": "Murray died at Wellington on 18 January 1917 in his eighty-ninth year, having outlived by more than half a century the revival that made him. His influence reached far beyond his own communion, drawing readers as different as Watchman Nee in China and Jessie Penn-Lewis in Wales. He never wished to be remembered as a great man; his own writing pressed the opposite point, that the soul emptied of self leaves God free to be all."
         }
+      ],
+      "start_with": [
+        {
+          "book": "school-of-prayer",
+          "why": "His best-known book: thirty-one short lessons on the sayings of Jesus about prayer."
+        },
+        {
+          "book": "humility-2",
+          "why": "Twelve brief chapters, and perhaps the most searching thing he wrote."
+        },
+        {
+          "book": "abide-in-christ",
+          "why": "His first famous book, thirty-one short readings for young believers on abiding in Christ."
+        },
+        {
+          "book": "true-vine",
+          "why": "Short daily meditations on Jesus’s words in John 15 about the vine and the branches."
+        },
+        {
+          "book": "absolute-surrender",
+          "why": "Addresses from his travels in the 1890s on giving the whole life to God."
+        }
       ]
     }
   },
@@ -208,6 +230,24 @@
           "q": "When and where did Torrey die, and how is he remembered?",
           "a": "He resigned his Los Angeles posts in 1924 to return to evangelism, still travelling and preaching, and lectured again at Moody in 1927. He died at his home in Asheville, North Carolina, on 26 October 1928, aged seventy-two, and was buried on the grounds of the Montrose conference he had founded. Those who knew him best remembered not the vast crowds but the man of regular, uninterrupted prayer behind them."
         }
+      ],
+      "start_with": [
+        {
+          "book": "how-to-pray",
+          "why": "His best-known book: short, practical chapters on praying in Christ’s name and in the Spirit."
+        },
+        {
+          "book": "how-to-succeed-in-the-christian-life",
+          "why": "A handbook for new Christians, and the best single introduction to his practical teaching."
+        },
+        {
+          "book": "the-person-and-work-of-the-holy-spirit",
+          "why": "His fullest treatment of the Holy Spirit as a person to be known."
+        },
+        {
+          "book": "how-to-bring-men-to-christ",
+          "why": "His plain guide to personal soul-winning, from a man who trained a generation to do it."
+        }
       ]
     }
   },
@@ -266,6 +306,28 @@
         {
           "q": "How does he minister now?",
           "a": "No longer tied to a single pulpit, Gareth ministers largely through his website, where his devotionals, books and poems gather the wisdom of an expansive journey for the scattered and the isolated. He carries a particular burden for the young — to disciple and equip them to maturity in Christ — and still walks by the motto given him long ago: not ahead of Jesus, not lagging behind, but with Him, one stepping stone at a time."
+        }
+      ],
+      "start_with": [
+        {
+          "book": "he-holds-my-tomorrows",
+          "why": "His book on faith, and the natural place to start."
+        },
+        {
+          "book": "the-key-in-my-hand",
+          "why": "His best-known book, on forgiveness, release and healing. Read it slowly."
+        },
+        {
+          "book": "stepping-stones-2",
+          "why": "His autobiography, told as a series of stepping stones laid by God."
+        },
+        {
+          "book": "soar-like-the-eagle-3",
+          "why": "On how gifts, burden and anointing belong together, for those who serve."
+        },
+        {
+          "book": "feasting-at-the-table",
+          "why": "A short study of Ephesians, drawn from his Bible school lectures."
         }
       ]
     }
@@ -326,6 +388,20 @@
         {
           "q": "What else did she give herself to, and how did she end?",
           "a": "Alongside her writing she gave herself to reform — helping found the Woman's Christian Temperance Union in 1874, championing women's right to a public religious voice, and speaking for suffrage. In her last years arthritis confined her to a wheelchair and much pain, yet her outlook only brightened. She died in England on 1 May 1911, aged seventy-nine, undefeated by a wounded marriage, four small graves, and children who had walked away from her faith."
+        }
+      ],
+      "start_with": [
+        {
+          "book": "the-christians-secret-of-a-happy-life-4",
+          "why": "Her classic on trusting God for the whole of the Christian life."
+        },
+        {
+          "book": "the-god-of-all-comfort",
+          "why": "Written later in life, and turning from what we do to who God is."
+        },
+        {
+          "book": "the-unselfishness-of-god",
+          "why": "Her own story of finding God, told with unusual candour."
         }
       ]
     }
@@ -405,6 +481,28 @@
         {
           "q": "How and where did he die, and what did he leave behind?",
           "a": "Worn out by a lifetime of labour and illness, Spurgeon sought relief in the milder air of Menton on the French Riviera, and there he died on 31 January 1892, at the age of fifty-seven. He left behind more than three thousand five hundred published sermons, still among the largest bodies of work by any Christian author, along with beloved books such as The Treasury of David, All of Grace, and Lectures to My Students. London mourned as for a prince, tens of thousands filed past his coffin, and his open Bible lay upon it."
+        }
+      ],
+      "start_with": [
+        {
+          "book": "all-of-grace",
+          "why": "Written late in his life for seekers, and the best single door into his teaching."
+        },
+        {
+          "book": "around-the-wicket-gate",
+          "why": "A short companion to All of Grace for anyone anxious or hesitating to come to Christ."
+        },
+        {
+          "book": "morning-by-morning",
+          "why": "A reading for every morning of the year, and never out of print since 1866."
+        },
+        {
+          "book": "cheque-book",
+          "why": "A promise and a page of comment for each day, written in the hardest years of his life."
+        },
+        {
+          "book": "till-he-come",
+          "why": "His communion addresses, published after his death, and the tenderest of his books."
         }
       ]
     }
@@ -830,6 +928,24 @@
           "q": "How did he die?",
           "a": "In November 1899, midway through a campaign in Kansas City, his great heart began to fail, and he was brought home to Northfield, to the room where he had been born sixty-two years before. On the morning of 22 December 1899 he was heard to say clearly, \"Earth recedes; heaven opens before me... This is my triumph; this is my coronation day!\" Months earlier he had told an audience, \"Some day you will read in the papers that D. L. Moody... is dead. Don't you believe a word of it! At that moment I shall be more alive than I am now.\""
         }
+      ],
+      "start_with": [
+        {
+          "book": "the-way-to-god",
+          "why": "His short, warm explanation of the gospel, beginning with the love of God."
+        },
+        {
+          "book": "prevailing-prayer",
+          "why": "His practical book on prayer, confession, forgiveness and asking."
+        },
+        {
+          "book": "secret-power",
+          "why": "On the power of the Holy Spirit for Christian service."
+        },
+        {
+          "book": "thoughts-for-the-quiet-hour",
+          "why": "A Scripture and a short comment for every day of the year, gathered by Moody."
+        }
       ]
     }
   },
@@ -890,6 +1006,24 @@
         {
           "q": "How did he die, and what did he leave?",
           "a": "Simpson preached, travelled, wrote and administered at full stretch into his seventies, and when his strength finally failed he grieved most that he could no longer carry the missionary burden in prayer as before. He died at Nyack, New York, on 29 October 1919, and was buried on the hillside campus of the institute he founded. The societies he began now number their churches in the thousands and their missionaries around the globe, but his truest monument is the reader who, somewhere in his pages, stops chasing the blessing and finds the Blesser — Himself."
+        }
+      ],
+      "start_with": [
+        {
+          "book": "the-fourfold-gospel",
+          "why": "Short, and the best entry point: Christ as Saviour, Sanctifier, Healer and Coming King."
+        },
+        {
+          "book": "days-of-heaven-upon-earth",
+          "why": "A daily devotional still in print after more than a century, and his gentlest introduction."
+        },
+        {
+          "book": "the-gospel-of-healing",
+          "why": "His teaching on divine healing, closing with the story of his own healing."
+        },
+        {
+          "book": "power-from-on-high-new-testament",
+          "why": "The fullest statement of his teaching on the Holy Spirit, through the New Testament."
         }
       ]
     }
@@ -1499,6 +1633,24 @@
           "q": "How did John Bunyan die?",
           "a": "In August 1688 he rode to Reading to reconcile a father and son who had quarrelled, and he succeeded in making peace between them. Riding on to London through a storm, he arrived soaked at his friend John Strudwick's house on Snow Hill, and a fever took hold. He died there on 31 August 1688, aged fifty-nine, and was buried in Strudwick's vault in Bunhill Fields among the Dissenters."
         }
+      ],
+      "start_with": [
+        {
+          "book": "pilgrims-progress",
+          "why": "The story of Christian’s journey to the Celestial City, and the place to begin."
+        },
+        {
+          "book": "grace-abounding",
+          "why": "His spiritual autobiography, and the key to everything else he wrote."
+        },
+        {
+          "book": "the-holy-war",
+          "why": "His other great allegory, of the town of Mansoul besieged and won back."
+        },
+        {
+          "book": "the-jerusalem-sinner-saved",
+          "why": "His last treatise, on Christ’s mercy offered first to the biggest sinners."
+        }
       ]
     }
   },
@@ -1558,6 +1710,24 @@
         {
           "q": "How did he die, and what became of his work?",
           "a": "His health failing, he retired to Barnston in Essex and died suddenly in 1686; tradition, though not eyewitness, holds that he was found dead in his closet at private prayer — the door closing on him mid-sentence, speaking to the God he had spent forty years commending to others. His greatest work appeared only after his death: \"A Body of Practical Divinity,\" one hundred and seventy-six sermons on the Shorter Catechism, a people's theology that taught the unlearned to think."
+        }
+      ],
+      "start_with": [
+        {
+          "book": "all-things-for-good",
+          "why": "His warm exposition of Romans 8:28, written just after he lost his pulpit for conscience."
+        },
+        {
+          "book": "the-art-of-divine-contentment",
+          "why": "Plain Puritan counsel on learning to be content in every state."
+        },
+        {
+          "book": "the-beatitudes",
+          "why": "A clear, practical walk through the opening blessings of the Sermon on the Mount."
+        },
+        {
+          "book": "a-body-of-divinity",
+          "why": "The whole Christian faith taught through the Westminster Shorter Catechism."
         }
       ]
     }
@@ -1681,6 +1851,20 @@
         {
           "q": "Did any of his work outlive him in unexpected ways?",
           "a": "In 1747 Edwards published An Humble Attempt, a plea for Christians everywhere to unite in regular, extraordinary prayer for revival and for the nations, and in his lifetime it seemed to accomplish little. Decades after his death the English Baptist pastor John Sutcliff took up its call, and out of the resulting prayer meetings in Northamptonshire grew the Baptist Missionary Society and William Carey’s voyage to India in the 1790s. The prayer movement Edwards had asked for was convened, and answered, by men he never met."
+        }
+      ],
+      "start_with": [
+        {
+          "book": "selected-sermons-edwards",
+          "why": "Seven major sermons, including A Divine and Supernatural Light. Begin with these."
+        },
+        {
+          "book": "religious-affections",
+          "why": "His masterpiece on telling true religion from false."
+        },
+        {
+          "book": "freedom-of-the-will",
+          "why": "His most famous argument, and the most demanding."
         }
       ]
     }
@@ -1866,6 +2050,24 @@
         {
           "q": "How did Augustine die?",
           "a": "His last years darkened. In 429 the Vandals crossed into North Africa, and in 430 they laid siege to Hippo itself. Augustine, in his seventy-sixth year, kept working and praying while the enemy sat outside the walls, asking God either to free the city or to make His servants brave to endure His will, \"or at least that He may take me from this world unto Himself.\" In the third month of the siege he took a fever; he had the penitential psalms copied out and hung where he could read them from his bed, and wept over them freely — the great teacher of grace dying as a penitent. He died on 28 August 430, with the Vandals still at the gates, leaving no will, for as his biographer Possidius said, as a poor man of God he had nothing to leave but his clergy and his library, which they kept."
+        }
+      ],
+      "start_with": [
+        {
+          "book": "confessions",
+          "why": "His story of his own restless heart, told as a prayer to God. Begin here, and come back here."
+        },
+        {
+          "book": "enchiridion",
+          "why": "His own short handbook of the faith under faith, hope and love, and the best summary of his theology."
+        },
+        {
+          "book": "homilies-on-the-first-epistle-of-john",
+          "why": "Easter sermons on the letter of love, with his famous counsel, love and do what you will."
+        },
+        {
+          "book": "the-city-of-god",
+          "why": "His vast story of the two cities, written after the sack of Rome."
         }
       ]
     }
@@ -2595,6 +2797,24 @@
           "q": "Why does he still read?",
           "a": "Bounds is not a systematic theologian and does not pretend to be; he repeats himself and hammers one nail. But he wrote as a man describing something he did every morning rather than something he had read about, and that is why the books have outlasted almost everything published alongside them. His central conviction never moves: God works through people, not arrangements. \"Talking to men for God is a great thing,\" he wrote, \"but talking to God for men is greater still.\""
         }
+      ],
+      "start_with": [
+        {
+          "book": "power-through-prayer",
+          "why": "The only book of his published in his lifetime, and the classic on prayer and preaching."
+        },
+        {
+          "book": "prayer-and-praying-men",
+          "why": "The praying men and women of the Bible, held up as examples to follow."
+        },
+        {
+          "book": "necessity-of-prayer",
+          "why": "Prayer set beside the things it cannot live without: faith, trust, desire, fervency and obedience."
+        },
+        {
+          "book": "purpose-in-prayer",
+          "why": "His argument that prayer is real work, and how God shapes the world by it."
+        }
       ]
     }
   },
@@ -2717,6 +2937,28 @@
           "q": "How did he die?",
           "a": "Owen died on 24 August 1683 at Ealing. Two days before, dictating a farewell to his old friend Charles Fleetwood, he wrote, \"I am going to Him whom my soul hath loved, or rather who hath loved me with an everlasting love, which is the whole ground of all my consolation.\" Told on his last morning that his book Meditations on the Glory of Christ had gone to press, he answered, \"the long looked-for day is come at last.\" He was buried at Bunhill Fields among the dissenters he had loved."
         }
+      ],
+      "start_with": [
+        {
+          "book": "mortification-of-sin",
+          "why": "Short, practical and searching, on putting sin to death by the Spirit. The best place to start."
+        },
+        {
+          "book": "of-temptation",
+          "why": "The natural companion to the first, on Christ’s words in Gethsemane about entering into temptation."
+        },
+        {
+          "book": "indwelling-sin-in-believers",
+          "why": "The fullest and hardest of his three books on sin in the believer."
+        },
+        {
+          "book": "communion-with-god",
+          "why": "On fellowship with the Father in love, the Son in grace and the Spirit in comfort."
+        },
+        {
+          "book": "the-glory-of-christ",
+          "why": "Meditations on beholding the glory of Christ, from the last years of his life."
+        }
       ]
     }
   },
@@ -2778,6 +3020,24 @@
         {
           "q": "How did he die?",
           "a": "Worn by decades of overwork, in the winter of 1546 he travelled, unwell, back to Eisleben — the town where he had been born — to make peace between two quarrelling noble brothers. He completed the reconciliation, and then his heart gave out. In the early hours of 18 February 1546 his friend Justus Jonas asked whether he was ready to die trusting Christ and the gospel he had preached, and he answered clearly, \"Yes.\" Beside him they found his last written words: \"We are beggars. This is true.\""
+        }
+      ],
+      "start_with": [
+        {
+          "book": "first-principles-of-the-reformation",
+          "why": "The Ninety-Five Theses and his three great treatises of 1520, including The Freedom of a Christian."
+        },
+        {
+          "book": "small-catechism",
+          "why": "A few pages meant for the kitchen table, and among the finest things he wrote."
+        },
+        {
+          "book": "large-catechism",
+          "why": "His fuller teaching on the Commandments, the Creed, the Lord’s Prayer and the sacraments."
+        },
+        {
+          "book": "bondage-of-the-will",
+          "why": "His answer to Erasmus on grace and the human will."
         }
       ]
     }
@@ -5332,6 +5592,24 @@
           "q": "What sorrows did Ryle bear, and how did his life end?",
           "a": "Ryle married three times and was widowed three times, burying wives while raising his children and carrying on his ministry, and he wrote of comfort in affliction as a man who had earned the right to. He resigned his see early in 1900, worn out at last in his eighties, and died within a few months. On his gravestone was carved the verse that had arrested him more than sixty years before — \"By grace are ye saved through faith\" — the whole of his theology in a single line."
         }
+      ],
+      "start_with": [
+        {
+          "book": "holiness",
+          "why": "His best-known book, on the nature of holiness, its hindrances and its roots."
+        },
+        {
+          "book": "practical-religion",
+          "why": "Plain papers on the daily duties and privileges of a Christian."
+        },
+        {
+          "book": "expository-thoughts-on-matthew",
+          "why": "Short, devotional comments on Matthew’s Gospel, a passage at a time."
+        },
+        {
+          "book": "old-paths",
+          "why": "Plain papers on the truths he held necessary to salvation, from Scripture to perseverance."
+        }
       ]
     }
   },
@@ -6065,6 +6343,20 @@
           "q": "How did Blaise Pascal die?",
           "a": "Frail from childhood, he said he had not passed a day without pain since eighteen. After his sister Jacqueline died in October 1661, his health collapsed further; he gave much to the poor and wrote a Prayer to Ask God for the Right Use of Sickness. Having left his home to a poor family with a sick child, he died at Gilberte's house at one in the morning on 19 August 1662, aged thirty-nine, saying, \"May God never abandon me.\" He was buried in Saint-Étienne-du-Mont, Paris."
         }
+      ],
+      "start_with": [
+        {
+          "book": "pensees",
+          "why": "His unfinished notes toward a defence of the Christian faith, and his most famous work."
+        },
+        {
+          "book": "life-of-pascal",
+          "why": "A short life by his elder sister Gilberte, written soon after his death."
+        },
+        {
+          "book": "provincial-letters",
+          "why": "His witty letters against lax moral teaching, which made him famous."
+        }
       ]
     }
   },
@@ -6185,6 +6477,24 @@
           "q": "How did The Everlasting Man influence C. S. Lewis?",
           "a": "The Everlasting Man (1925) retells the whole human story, from the paintings in the prehistoric cave to the child born at Bethlehem, to show that man is no mere animal and Christ no mere teacher. C. S. Lewis, then a young Oxford don and still an unbeliever, read it and later wrote that in it he first saw the whole Christian outline of history set out in a form that seemed to make sense; he counted it among the books that brought him to faith. Chesterton died at Beaconsfield on 14 June 1936."
         }
+      ],
+      "start_with": [
+        {
+          "book": "orthodoxy",
+          "why": "His account of how he came to believe, and the natural starting point."
+        },
+        {
+          "book": "the-everlasting-man",
+          "why": "His greatest book: the human story from the cave to Christ."
+        },
+        {
+          "book": "heretics",
+          "why": "The book that provoked Orthodoxy, so read it after Orthodoxy to see the other side."
+        },
+        {
+          "book": "st-francis-of-assisi",
+          "why": "A short, glowing portrait of the saint he loved best."
+        }
       ]
     }
   },
@@ -6244,6 +6554,28 @@
         {
           "q": "How did George MacDonald influence C. S. Lewis?",
           "a": "In 1916 a seventeen-year-old C. S. Lewis, then an atheist, bought a copy of Phantastes at Leatherhead station. He later wrote that it had worked on his imagination long before the rest of him followed. Lewis came to regard MacDonald as his master. In 1946 he published an anthology of 365 readings from MacDonald, drawn mostly from the Unspoken Sermons, and in The Great Divorce he made MacDonald the narrator's guide through the outskirts of heaven."
+        }
+      ],
+      "start_with": [
+        {
+          "book": "unspoken-sermons",
+          "why": "The heart of his work. Read one sermon at a sitting, slowly."
+        },
+        {
+          "book": "phantastes",
+          "why": "The faerie romance that first touched C. S. Lewis, and the best way into his imagination."
+        },
+        {
+          "book": "at-the-back-of-the-north-wind",
+          "why": "The gentle, strange story of Diamond and the North Wind, about suffering and trust."
+        },
+        {
+          "book": "the-princess-and-the-goblin",
+          "why": "A children’s fairy tale about the princess Irene and her mysterious great-great-grandmother."
+        },
+        {
+          "book": "diary-of-an-old-soul",
+          "why": "A short poem of prayer for every day of the year."
         }
       ]
     }

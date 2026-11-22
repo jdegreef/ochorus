@@ -1360,6 +1360,44 @@ class TopicQaShapeTests(SimpleTestCase):
                 assert_qa_wellformed(self, qa, {"question", "answer"}, slug)
 
 
+class AuthorStartWithShapeTests(SimpleTestCase):
+    """``Author.start_with``: the ranked "Where to start" list in authors.json.
+
+    3 to 5 entries of exactly ``{"book", "why"}``, each naming a distinct
+    published English book BY THIS AUTHOR (the page resolves the slug against
+    the books it lists, so a typo'd or misattributed slug would vanish
+    silently), with a one-line plain-text reason.
+    """
+
+    MAX_WHY = 160
+
+    def test_start_with_is_well_formed(self):
+        rows = json.loads(AUTHORS_FILE.read_text(encoding="utf-8"))
+        books_dir = AUTHORS_FILE.parent / "books"
+        for row in rows:
+            f = row["fields"]
+            picks = f.get("start_with")
+            if not picks:
+                continue
+            with self.subTest(slug=f["slug"]):
+                self.assertFalse(f.get("is_imprint"), "an imprint has no reading order")
+                self.assertTrue(3 <= len(picks) <= 5, f"{len(picks)} picks")
+                slugs = [p.get("book") for p in picks]
+                self.assertEqual(len(slugs), len(set(slugs)), "a book is listed twice")
+                for p in picks:
+                    self.assertEqual(set(p), {"book", "why"})
+                    why = p["why"]
+                    self.assertTrue(why.strip(), f"{p['book']} has no reason")
+                    self.assertLessEqual(len(why), self.MAX_WHY, p["book"])
+                    self.assertNotRegex(why, r"[<>]|&[a-z#0-9]+;|https?:")
+                    self.assertNotIn("ochorus", why.lower())
+                    path = books_dir / f"{p['book']}.en.json"
+                    self.assertTrue(path.exists(), f"no English book {p['book']}")
+                    book = json.loads(path.read_text(encoding="utf-8"))[0]["fields"]
+                    self.assertEqual(book["author"], [f["slug"]], p["book"])
+                    self.assertTrue(book.get("is_published", True), p["book"])
+
+
 class AuthorFaqShapeTests(SimpleTestCase):
     """The editorial Q&A on ``Author.faq``, shipped as plain-text JSON in
     ``authors.json``. The house rule: the Q&A talks about the PERSON, never the
