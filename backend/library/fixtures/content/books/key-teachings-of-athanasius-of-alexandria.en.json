@@ -12,7 +12,32 @@
   "cover_byline": "Athanasius of Alexandria",
   "description": "A concise, faithful guide to the heart of Athanasius of Alexandria’s teaching — the Word made flesh to remake what He had made, the image of God restored, death undone at the cross, the Son of one substance with the Father, and the desert wisdom of his friend Antony. Sixteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Athanasius’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Athanasius of Alexandria. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into sixteen short chapters for the ordinary reader. It tells his life plainly, as the life of an African bishop, an Egyptian who spent forty-five years as bishop of Alexandria and seventeen of them in exile, and it draws throughout on the two of his books that sit in the Ochorus library, On the Incarnation and The Life of Antony.</p><p>Athanasius had one great theme: God Himself has come the whole way down to us. The Word who made the world took a real body, died a real death and rose again, so that a ruined creation might be remade by the same hand that first made it. Everything he fought for, and everything he suffered, followed from refusing to let that truth be made smaller. This volume follows the thread through creation, the cross, the resurrection, the long battle over the Son’s full divinity, the Holy Spirit, the Scriptures and the desert, and it is honest about where he must be read with care. Each chapter ends in a few questions and a prayer.</p><p>Athanasius’s own writings are in the public domain and freely available in older English translations, above all in the fourth volume of the second series of the Nicene and Post-Nicene Fathers, and every chapter here names them so that the reader can go to the source. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and makes no claim to stand in for his own clear and fearless pages.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of Athanasius of Alexandria?",
+    "answer": "It is a short guide to the teaching of Athanasius, written as a companion to his own works, especially On the Incarnation. Its chapters cover the Word made flesh, creation out of nothing, why God became man, death defeated, salvation as being made partakers of God, the Son of one substance with the Father, the deity of the Spirit, the life of Antony and Athanasius’s stand against the world."
+   },
+   {
+    "question": "Who was Athanasius?",
+    "answer": "Athanasius was born in Alexandria, Egypt, around 296, and grew up in a church that had known persecution and martyrdom. As a young man he became deacon and secretary to Bishop Alexander, just as the presbyter Arius began teaching that the Son was a creature. Athanasius was bishop of Alexandria for forty-five years, seventeen of them in exile, driven from his city five times by four emperors for defending the full deity of Christ."
+   },
+   {
+    "question": "What question lies at the centre of On the Incarnation?",
+    "answer": "The book explains that Athanasius asks again and again, having described the ruin of the human race through sin and death, what was God in his goodness to do? It was unworthy of God to let his creatures perish, yet God could not simply set aside his word. His answer is that the Word himself became man, to die in our place and renew us."
+   },
+   {
+    "question": "What does the image of the portrait mean?",
+    "answer": "Athanasius compares humanity to a portrait painted on wood that has been defaced. When a picture is spoiled, the painter does not throw away the wood but asks the subject to sit again, so the portrait can be renewed on the same wood. So the Word, the true image of the Father, came in person to renew the image of God in human nature."
+   },
+   {
+    "question": "What does Athanasius against the world mean?",
+    "answer": "The Latin phrase Athanasius contra mundum has attached itself to him for centuries, though he never said it of himself. The book explains that it is only half true, but captures a lesson every generation needs: there are times when the truth is held by a few, when the powerful are against it and councils sign what they should not, and faithfulness means standing fast."
+   },
+   {
+    "question": "Where should a reader start with Athanasius?",
+    "answer": "The book’s reader’s guide says simply: begin with On the Incarnation, and come back to it. It is fifty-seven short sections on why the Word became man, written in a clear, unhurried style. It also recommends The Life of Antony, the story of the Egyptian hermit told by a man who knew him, for its counsels on prayer and the spiritual life."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",

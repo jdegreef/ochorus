@@ -92,5 +92,12 @@
    "Written with talks-to-the-farmer-children.ja (『農夫に語る（子ども向け）』, ja batch of 15, job #8905); the description quotes that shipped title exactly. pilgrims-progress-children has no ja edition yet, so seed_plans does NOT create this (family-devotions-pilgrims-journey, ja) row today; the prose ships ahead (the #819 defect). Bunyan's retelling is named descriptively until its ja edition fixes a title.",
    "Family devotions = 家族の礼拝; です・ます体 with gentle wording for families. AI-drafted; awaiting native review."
   ]
+ },
+ "praying-men": {
+  "title": "祈る人々——E・M・バウンズに学ぶ祈りの学校",
+  "description": "祈りの偉大な使徒とともに、とりなしの炉の中で7週間を過ごします。E・M・バウンズはまず、説教者自身が力を必要としていることから始め、続いて祈りを勝利させる目的を、そして祈りをキリスト者の生涯の全事業とする必要を明らかにします。",
+  "note": [
+   "Plan prose shipped with the ja edition of necessity-of-prayer (queue job #8910): with it, all three source books of praying-men exist in ja (『祈りによる力』, 『目的をもった祈り』, 『祈りの必要』), so PlanTranslationCoverageTests requires this entry. The description follows the English one book by book (power → purpose → necessity) in the です・ます phrasing of the shipped ja plans, with the house dash ——. AI-written; for native review with the book."
+  ]
  }
 }

@@ -14,7 +14,32 @@
   "description": "Francis de Sales\u2019 great study of the love of God, the fruit of his own prayer and his direction of souls: how love is born in the will and grows, how it can decay, its exercises of complacency and benevolence, prayer and union, conformity and holy indifference to God\u2019s will, and its rule over every virtue.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Treatise on the Love of God?",
+    "answer": "It is Francis de Sales\u2019s great study of divine love, published in 1616 as the fruit of his own prayer and his direction of souls. In a series of books it explains how love is born in the will and grows, how it can decay, its two chief exercises of complacency and benevolence, prayer and union with God, conformity and holy indifference to God\u2019s will, and love\u2019s rule over every virtue."
+   },
+   {
+    "question": "Who is Theotimus?",
+    "answer": "De Sales addresses the treatise to Theotimus, just as he addressed his earlier Introduction to the Devout Life to Philothea. He explains that some felt Philothea\u2019s name kept men from reading the earlier book, so here he addresses Theotimus, who is not a particular person but the human spirit desirous of making progress in holy love."
+   },
+   {
+    "question": "What are complacency and benevolence?",
+    "answer": "De Sales calls love the first complacency, or delight, the will takes in good, which comes before desire. He distinguishes love of cupidity, by which we love something for the profit we expect from it, from love of benevolence, by which we love a thing for its own good. Holy love delights in God\u2019s goodness and wills his glory."
+   },
+   {
+    "question": "What is holy indifference?",
+    "answer": "De Sales describes two ways of uniting our will to God\u2019s good pleasure: holy resignation and most holy indifference. Resignation accepts God\u2019s will with an effort of submission, still preferring other things. Indifference goes further: it loves nothing except for the love of God\u2019s will, so the soul is content with whatever he sends."
+   },
+   {
+    "question": "How does love rule the other virtues?",
+    "answer": "De Sales teaches that love rules over all the affections and passions and even governs the will, and that it gives life and value to every virtue. He compares charity to the famous statue by Phidias, in whose shield the sculptor carved his own face so cleverly that one line could not be removed without destroying the whole. So love holds all the virtues together."
+   },
+   {
+    "question": "Who should read this book?",
+    "answer": "It suits readers who want a deep and gentle guide to loving God, and those who have enjoyed de Sales\u2019s Introduction to the Devout Life. It is long and best read a little at a time, but its warmth, clarity and homely images make it one of the classics of Christian spirituality."
+   }
+  ],
   "publication_year": 1616,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/desales/love",

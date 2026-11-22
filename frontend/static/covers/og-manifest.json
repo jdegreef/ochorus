@@ -23861,6 +23861,54 @@
 				449
 			]
 		},
+		"ja/mortification-of-sin": {
+			"ground": "5ae25bf73dd7e21150402d505ccd647e1284cab50282f9e9be1b896edfeea1c3",
+			"style": "press",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "fc6b1154612fe1b27d4d30acdd0eba5ef75ce8b7b6cde7fe68127ce35aca3e67",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[52, 319, 548, 424]
+				],
+				"subtitle": [
+					[136, 477, 464, 498]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				296,
+				499
+			]
+		},
+		"ja/necessity-of-prayer": {
+			"ground": "e8eaff02fbee4e24477ce38707808cb345faa38ad4a7daba6d6bab16ca44f6a4",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "6dbbf4ad0515d1bc8c761b881db7ea9fac1204e3a20405f6728476bdc9493694",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.05,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/pilgrims-progress": {
 			"ground": "d7aa3d996830d95b331d5efea0e1c516cfec332142c46eb9b5efb866fe870589",
 			"style": "press",

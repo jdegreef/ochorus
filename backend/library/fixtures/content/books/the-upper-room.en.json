@@ -14,7 +14,32 @@
   "description": "Ryle’s last collection of sermons and papers, “a few truths for the times”: plain preaching on Christ’s invitation, foundation truths, victory over the world and the old paths, alongside his classic Thoughts for Young Men, The Duties of Parents and questions on regeneration and the Lord’s Supper.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Upper Room?",
+    "answer": "It is J. C. Ryle’s last collection of sermons and papers, published in 1888 and gathered, as he says, from a forty-five years’ ministry. It includes plain preaching on foundation truths, Christ’s invitation and victory over the world, together with his well-known papers on simplicity in preaching, the duties of parents, thoughts for young men, and questions about regeneration and the Lord’s Supper."
+   },
+   {
+    "question": "What is the opening sermon about?",
+    "answer": "The first paper takes the words of Acts 1, that after Christ’s ascension the disciples returned from Mount Olivet and went into an upper room. Ryle says that this upper room was the forerunner of every church and cathedral since, and draws lessons from who the first worshippers were, how they behaved and what they did, including their unity."
+   },
+   {
+    "question": "What does Ryle say about simplicity in preaching?",
+    "answer": "Ryle writes that among all questions about preaching, simplicity in language and style receives far less attention than it deserves. He began preaching forty-five years before in a poor rural parish, and learned there to use plain words and clear arrangement. He urges preachers to aim to be understood by the simplest hearer."
+   },
+   {
+    "question": "What does The Duties of Parents teach?",
+    "answer": "Ryle builds the paper on Proverbs 22:6, Train up a child in the way he should go: and when he is old, he will not depart from it. He admits that parents cannot convert their children, since the new birth is of God, but insists that God commands training and never lays a command on man that he will not help him to obey."
+   },
+   {
+    "question": "What does Ryle say to young men?",
+    "answer": "In Thoughts for Young Men Ryle addresses the dangers and duties of youth. He warns against pride, love of pleasure and fear of man, and notes how the fear of seeming party-spirited keeps many young men from taking a decided line in religion. He urges them to choose Christ early."
+   },
+   {
+    "question": "Who should read The Upper Room?",
+    "answer": "It suits readers who already enjoy Ryle’s plain, direct style, and parents, preachers and young people looking for practical counsel. Because it is a miscellany, each paper stands on its own, so it works well for dipping into rather than reading straight through."
+   }
+  ],
   "publication_year": 1888,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/ryle/upper_room.html",

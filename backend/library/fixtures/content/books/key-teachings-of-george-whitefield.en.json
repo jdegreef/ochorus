@@ -12,7 +12,32 @@
   "cover_byline": "George Whitefield",
   "description": "A concise, faithful guide to the heart of George Whitefield’s preaching — the new birth, the method of grace, Christ our righteousness, the indwelling Spirit, the almost Christian, the open field and the free offer of Christ to all — and to the single conviction beneath it: that religion is a work of God in the heart. Fourteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Whitefield’s own public-domain sermons, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by George Whitefield. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his preaching into fourteen short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his writings and the best books about him.</p><p>Whitefield preached one thing in a thousand places: that true religion is not an outward form but an inward change, wrought by the Spirit of God, which joins a sinner to Christ and clothes him in Christ’s righteousness. You must be born again. From that single conviction came everything else — his warnings against the almost Christian and the unconverted minister, his walk into the open fields, his offer of Christ to colliers and slaves and gentry alike, his counsel on prayer, Scripture and family worship, and his friendship with a man he could not agree with. This volume follows that thread through his own sermons, and it says plainly where he must not be followed, above all in his campaign for slavery in Georgia and his ownership of enslaved people at Bethesda.</p><p>Whitefield’s own writings are in the public domain and freely available, and every chapter here names the sermons it draws on so the reader can go to the source; his Selected Sermons, fifty-nine in all, are in the Ochorus library. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and it makes no claim to stand in for the voice that once reached twenty thousand people in a field.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of George Whitefield?",
+    "answer": "It is a short guide to the heart of George Whitefield’s preaching, written as a companion to his sermons rather than by him. After a chapter on his life, it sets out the new birth, the method of grace, Christ our righteousness, the indwelling Spirit, the almost Christian, field preaching and the free offer of Christ, walking with God, prayer and family religion, and ends with an honest chapter on Bethesda and slavery and a guide to his works."
+   },
+   {
+    "question": "Who was George Whitefield?",
+    "answer": "George Whitefield was born in December 1714 at the Bell Inn in Gloucester, where his mother kept the inn. He went to Pembroke College, Oxford, as a servitor, working for his keep, and there came to faith. Ordained in the Church of England, he began preaching in the open fields when churches closed their doors, crossed the Atlantic thirteen times, and became a leading voice of the Great Awakening. He died at Newburyport, Massachusetts, on 30 September 1770, aged fifty-five."
+   },
+   {
+    "question": "Why did Whitefield preach that ye must be born again?",
+    "answer": "The new birth was the one conviction beneath all the others. At Oxford Whitefield threw himself into the fasting, rules and good works of the Holy Club, but found no peace, and came to see that a person needs not reform but a new life from God, given through faith in Christ. He preached it to rich and poor alike as the great need of every soul. The book gives it the first teaching chapter and follows it into his sermon The Method of Grace."
+   },
+   {
+    "question": "What does the book say about Whitefield and slavery?",
+    "answer": "It says it plainly. For the sake of Bethesda, his orphanage in Georgia, which he loved and begged for all his life, he campaigned for slavery to be allowed in the colony and became an owner of enslaved people. The chapter called Bethesda and Its Shadow sets this out without excuse, as the thing that most darkens his memory, so that readers can honour what was true in his preaching without pretending it away."
+   },
+   {
+    "question": "How did Whitefield relate to John Wesley?",
+    "answer": "They were friends from Oxford and fellow leaders of the revival, but they disagreed publicly over predestination, Whitefield holding the Calvinist view. The book’s chapter Friends Who Differed shows how they remained friends despite it. Whitefield cared more whether a person loved Christ than which party they belonged to, and he preached among Presbyterians, Baptists and Congregationalists as well as in the Church of England."
+   },
+   {
+    "question": "Where should I start reading Whitefield?",
+    "answer": "The book’s reader’s guide recommends starting with three sermons: The Method of Grace, on how a sinner comes to peace with God; The Lord Our Righteousness, on the righteousness of Christ received by faith; and Walking with God, on the daily life of a believer. Whitefield left no great treatise, only sermons, journals and letters, so his sermons are the way in. His published Journals tell the story of the early revival, though he later admitted they judged others too rashly and revised them."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",
