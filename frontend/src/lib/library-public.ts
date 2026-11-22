@@ -1536,6 +1536,8 @@ export interface BibleBookLinks {
 	sermons: number;
 	sermon_book: string;
 	scripture: string | null;
+	/** The book's short house overview (its /scripture/ page's opening), "" if none. */
+	intro: string;
 }
 
 export const getBibleLinks = (language = 'en', f?: Fetch) =>
