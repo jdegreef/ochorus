@@ -14,7 +14,32 @@
   "description": "Basil the Great\u2019s defence of the doxology \u201cglory to the Father, with the Son, together with the Holy Spirit,\u201d written for his friend Amphilochius. Weighing the very prepositions of Scripture, he shows that the Spirit is to be glorified with the Father and the Son, and draws on the Church\u2019s unwritten tradition.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is On the Holy Spirit about?",
+    "answer": "It is Basil the Great\u2019s defence of the full divinity of the Holy Spirit. Some of his opponents objected to a form of the doxology that gave glory to the Father with the Son together with the Holy Spirit. Basil shows from Scripture and tradition that the Spirit is to be honoured and glorified together with the Father and the Son, not ranked beneath them as a creature."
+   },
+   {
+    "question": "To whom did Basil write the treatise?",
+    "answer": "Basil addressed the work to Amphilochius, a younger bishop and friend who had asked him to explain his teaching on the Holy Spirit. The treatise opens by praising Amphilochius\u2019s desire to learn, and Basil writes as one answering a sincere enquirer while also answering those who attacked him."
+   },
+   {
+    "question": "Why does Basil spend so long on small words?",
+    "answer": "Basil\u2019s opponents built their case on prepositions, arguing that glory should be given to the Father through the Son in the Spirit, and that other phrasings implied equality. Basil therefore examines syllables and prepositions with great care, because he believes that even the smallest words of theology matter. He shows that Scripture itself uses these words flexibly of all three Persons, so they cannot be used to rank the Spirit lower."
+   },
+   {
+    "question": "What does Basil say about unwritten tradition?",
+    "answer": "Basil argues that the church holds some teachings from Scripture and others from the unwritten tradition of the Fathers, received from the apostles. He gives examples such as signing with the cross and facing the East at prayer, practices nobody questions though they are not commanded in writing. He uses this to show that the church\u2019s way of glorifying the Spirit rests on ancient practice as well as Scripture."
+   },
+   {
+    "question": "What does the treatise teach about the work of the Spirit?",
+    "answer": "Basil describes the Holy Spirit as the one who perfects and sanctifies. The Spirit is present in creation, in the ministry of Christ, in the church and in the believer, bringing the soul into fellowship with God. Through him comes our restoration to paradise and our return to the adoption of sons, and enabled to call God Father. Because the Spirit does what only God does, he shares in God\u2019s glory."
+   },
+   {
+    "question": "Why is On the Holy Spirit important?",
+    "answer": "The treatise helped prepare the way for the church\u2019s confession of the Holy Spirit as Lord and giver of life, glorified together with the Father and the Son. It is one of the key works of the fourth century debates about the Trinity, and it still guides Christians in thinking carefully about the Spirit and in worshipping him."
+   }
+  ],
   "publication_year": 375,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/npnf208.vii.html",
