@@ -32,6 +32,14 @@
 
 	const openBook = $derived(books.find((b) => b.slug === open) ?? null);
 
+	// The panel opens below the division's covers, so take a keyboard or
+	// screen-reader user to it rather than leave it a dozen stops away.
+	async function show(slug: string) {
+		open = slug;
+		await tick();
+		document.getElementById(`panel-title-${slug}`)?.focus();
+	}
+
 	async function close(slug: string) {
 		open = null;
 		// Back to the toggle that opened it, so a keyboard reader keeps their place.
@@ -57,8 +65,8 @@
 						class="bible-cover-chapters"
 						aria-expanded={isOpen}
 						aria-controls={isOpen ? `chapters-${book.slug}` : undefined}
-						aria-label="{book.title}: {chapterCount(count)}"
-						onclick={() => (open = isOpen ? null : book.slug)}
+						aria-label="Chapters: {book.title}, {chapterCount(count)}"
+						onclick={() => (isOpen ? (open = null) : show(book.slug))}
 					>
 						Chapters
 						<span class="bible-cover-chevron"><Icon name="chevron-right" size={16} /></span>
@@ -73,7 +81,7 @@
 	{@const links = linksOf?.(openBook)}
 	<section class="bible-cover-panel" id="chapters-{openBook.slug}" aria-labelledby="panel-title-{openBook.slug}">
 		<div class="bible-cover-panel-head">
-			<h4 id="panel-title-{openBook.slug}" class="bible-cover-panel-title">{openBook.title}</h4>
+			<h4 id="panel-title-{openBook.slug}" class="bible-cover-panel-title" tabindex="-1">{openBook.title}</h4>
 			<BibleMoreLinks {links} />
 			<button
 				type="button"
@@ -87,9 +95,12 @@
 {/if}
 
 <style>
+	/* The card above, its actions below, in one grid cell: the shared
+	   .book-card is height:100% (it fills a shelf's cell), so here it takes the
+	   free row and the actions keep their own. */
 	.bible-cover {
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		grid-template-rows: 1fr auto;
 		gap: 0.5rem;
 		min-width: 0;
 	}
@@ -97,7 +108,6 @@
 		display: flex;
 		align-items: center;
 		gap: 0.4rem;
-		margin-top: auto;
 	}
 	.bible-cover-chapters {
 		display: inline-flex;
@@ -139,6 +149,9 @@
 		border-radius: var(--radius-card);
 		background: var(--surface);
 	}
+	.bible-cover-panel-head :global(.bible-more) {
+		margin: 0;
+	}
 	.bible-cover-panel-head {
 		display: flex;
 		flex-wrap: wrap;
@@ -151,6 +164,13 @@
 		font-family: var(--font-display);
 		font-size: var(--fs-h3);
 		font-weight: 600;
+	}
+	.bible-cover-panel-title:focus {
+		outline: none;
+	}
+	.bible-cover-panel-title:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 2px;
 	}
 	.bible-cover-close {
 		margin-inline-start: auto;

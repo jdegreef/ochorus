@@ -166,7 +166,7 @@
 	}
 	.bible-row :global(.bible-row-more) {
 		grid-column: 1;
-		margin-top: 0.2rem;
+		margin: 0.2rem 0 0;
 		padding-inline-start: calc(0.375rem + 0.85rem);
 	}
 	.bible-row-actions {

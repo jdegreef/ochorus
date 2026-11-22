@@ -26,8 +26,8 @@
 {/if}
 
 <style>
+	/* No margin of its own: each caller spaces it (the list row, the panel). */
 	.bible-more {
-		margin: 0;
 		font-size: var(--fs-small);
 	}
 	.bible-more a {
