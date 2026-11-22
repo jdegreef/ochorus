@@ -849,6 +849,9 @@ export interface Sermon extends SermonSummary {
 	/** Answered study questions (plain text), shown as a "Questions for
 	 * reflection" section and emitted as FAQPage JSON-LD. Empty = none written. */
 	study_questions: { question: string; answer: string }[];
+	/** "Main points": 3–5 plain-text points in the sermon's own order; optional
+	 * so an API behind this build simply shows no box. */
+	main_points?: string[];
 	difficulty: Difficulty;
 	/** Topical shelves this sermon belongs to (localized), for cross-links. */
 	topics: TopicChip[];

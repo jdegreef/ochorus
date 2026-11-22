@@ -2741,6 +2741,34 @@ class TopicShareCardTests(SimpleTestCase):
         )
 
 
+class SermonMainPointsShapeTests(SimpleTestCase):
+    """``Sermon.main_points``: the "Main points" box under the standfirst.
+
+    Absent or [] on most sermons. Where present: 3 to 5 distinct, non-empty
+    plain-text strings (rendered escaped, so no HTML or entities), each short
+    enough to read at a glance, never naming the platform or linking out.
+    """
+
+    MAX_POINT = 220
+
+    def test_main_points_are_well_formed_plain_text(self):
+        for path in sorted(SERMONS_DIR.glob("*.json")):
+            fields = json.loads(path.read_text(encoding="utf-8"))[0]["fields"]
+            points = fields.get("main_points")
+            if not points:
+                continue
+            with self.subTest(file=path.name):
+                self.assertIsInstance(points, list)
+                self.assertTrue(3 <= len(points) <= 5, f"{len(points)} points")
+                self.assertEqual(len(points), len(set(points)), "a point is repeated")
+                for point in points:
+                    self.assertIsInstance(point, str)
+                    self.assertTrue(point.strip())
+                    self.assertLessEqual(len(point), self.MAX_POINT, point)
+                    self.assertNotRegex(point, r"[<>]|&[a-z#0-9]+;|https?:")
+                    self.assertNotIn("ochorus", point.lower())
+
+
 class SermonBriefCoverageTests(SimpleTestCase):
     """Every sermon on the shelf should carry its "In brief".
 

@@ -1062,6 +1062,13 @@ class Sermon(models.Model):
     # and shipped in the sermon's fixture file, per the pipeline's founding
     # rule (prod holds no model credentials); blank = the reader shows none.
     summary = models.TextField(blank=True, default="")
+    # "Main points": 3-5 short plain-text strings, in the sermon's own order,
+    # each a point the preacher actually makes. Shown in a box under the "In
+    # brief" standfirst, because a 7,000-word sermon is a wall of text to a
+    # skimming reader and to an answer engine alike. Fixture-owned like
+    # `summary` (drafted off-server, grounded strictly in this sermon); per
+    # language like every sermon row field; [] = no box.
+    main_points = models.JSONField(default=list, blank=True)
     # Answered study questions: a list of {"question", "answer"} objects, both
     # PLAIN TEXT (no HTML — rendered as escaped text, so no sanitize path). Like
     # `summary`: AI-drafted off-server, grounded strictly in this sermon, shipped
