@@ -14,7 +14,32 @@
   "description": "Ignatius of Loyola\u2019s handbook for the director of a retreat: the Principle and Foundation, the daily examen, and four Weeks of meditations on sin, on the life of Christ, on His Passion and on His Resurrection, with methods of prayer, the rules for the discernment of spirits, and the Contemplation to Gain Love.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What are The Spiritual Exercises?",
+    "answer": "It is Ignatius of Loyola\u2019s handbook for those who guide others through a retreat. It contains the Principle and Foundation, the examination of conscience, four Weeks of meditations on sin and on the life, Passion and Resurrection of Christ, methods of prayer, rules for the discernment of spirits, and the Contemplation to Gain Love."
+   },
+   {
+    "question": "What does Ignatius mean by spiritual exercises?",
+    "answer": "Ignatius explains that by spiritual exercises he means every way of examining one\u2019s conscience, meditating, contemplating, praying vocally and mentally, and other spiritual actions. As strolling, walking and running are bodily exercises, so these are ways of preparing the soul to rid itself of disordered attachments and then to seek and find the will of God for one\u2019s life."
+   },
+   {
+    "question": "What is the Principle and Foundation?",
+    "answer": "It begins: Man is created to praise, reverence, and serve God our Lord, and by this means to save his soul. All other things on earth are created to help him toward that end, so he should use them as far as they help and rid himself of them as far as they hinder. For this it is necessary to make ourselves indifferent to all created things."
+   },
+   {
+    "question": "What is the meditation on the Two Standards?",
+    "answer": "In the Second Week the retreatant meditates on two standards, or banners: one of Christ, our commander-in-chief and Lord, and the other of Lucifer, mortal enemy of our human nature. The exercise helps the person see how each calls people, and to ask for the grace to be received under the standard of Christ."
+   },
+   {
+    "question": "What are consolation and desolation?",
+    "answer": "Ignatius uses these words for the spiritual movements a person feels in prayer. He tells the director to ask about them, and if none come, to inquire whether the exercises are being made properly. His rules for the discernment of spirits teach how to recognise and respond to these movements wisely."
+   },
+   {
+    "question": "What is the prayer Take, Lord, and receive?",
+    "answer": "In the Contemplation to Gain Love, the retreatant offers everything to God as one who makes an offering with much feeling: Take, Lord, and receive all my liberty, my memory, my intellect, and all my will, all that I have and possess. This prayer of self-giving has become one of the best-known prayers in Christian devotion."
+   }
+  ],
   "publication_year": 1548,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/ignatius/exercises",

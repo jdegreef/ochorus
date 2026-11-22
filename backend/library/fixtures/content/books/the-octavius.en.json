@@ -14,7 +14,32 @@
   "description": "A dialogue on the shore at Ostia: the pagan Caecilius lays out every charge the Romans made against the Christians, and his friend Octavius answers each one, until Caecilius gives way and all three walk home rejoicing.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Octavius?",
+    "answer": "The Octavius is a dialogue by Minucius Felix, written in Latin in the early third century. Minucius recalls a walk on the shore at Ostia with two friends: the pagan Caecilius, who lays out the charges the Romans made against Christians, and the Christian Octavius, who answers each one. At the end Caecilius gives way, and all three go home rejoicing."
+   },
+   {
+    "question": "How does the debate begin?",
+    "answer": "As the friends walk toward the sea, Caecilius sees an image of Serapis and raises his hand to his mouth in the customary gesture of reverence. Octavius rebukes Minucius for letting his friend remain in such superstition. Caecilius, stung, proposes a debate, and they sit down with Minucius in the middle, as arbitrator between the two."
+   },
+   {
+    "question": "What charges does Caecilius make against the Christians?",
+    "answer": "Caecilius argues that all things are uncertain, so it is better to keep the religion of one\u2019s ancestors. He repeats the rumours that Christians worship the head of an ass and commit secret crimes, mocks them for having no temples or altars, ridicules belief in the burning of the world and the resurrection, and points to their poverty and sufferings as proof that their God cannot help them."
+   },
+   {
+    "question": "How does Octavius answer the charge of having no temples?",
+    "answer": "Octavius asks what image of God he could make, since man himself is the image of God, and what temple he could build for God, when the whole world fashioned by his work cannot contain him. God is better honoured in a pure mind and a good conscience than in a building."
+   },
+   {
+    "question": "What is the famous line about living great things?",
+    "answer": "Contrasting Christians with the philosophers, Octavius says, We who bear wisdom not in our dress but in our mind, we do not speak great things, but we live them. He claims that Christians have attained what the philosophers sought with so much effort and never found."
+   },
+   {
+    "question": "Who would enjoy The Octavius?",
+    "answer": "It suits readers interested in how the early church answered its critics, and anyone who enjoys a well-written dialogue. The setting by the sea, the friendship between the speakers and the graceful Latin style make it one of the most charming works of early Christian apologetics."
+   }
+  ],
   "publication_year": 210,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/anf04.iv.iii.html",
