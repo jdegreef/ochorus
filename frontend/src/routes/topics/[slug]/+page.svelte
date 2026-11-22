@@ -553,7 +553,7 @@
 	     language but English, where the library has no Bible to open. -->
 	{#if bibleChapters.length}
 		<section class="mb-10" aria-labelledby="topic-in-bible">
-			<h2 id="topic-in-bible" class="section-heading">{t('topics.inBible')}</h2>
+			<h2 id="topic-in-bible" class="section-heading anchor-target">{t('topics.inBible')}</h2>
 			<p class="-mt-2 mb-4 text-small text-muted">{t('topics.inBibleNote')}</p>
 			<ul class="bible-chapters grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
 				{#each bibleChapters as ch (`${ch.slug}/${ch.order}`)}
@@ -615,6 +615,11 @@
 </div>
 
 <style>
+	/* Linked to from the Bible hub ("Passages on…"): land below the pinned
+	   header, not under it. */
+	.anchor-target {
+		scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem);
+	}
 	/* The plain header: the title column and the Scripture epigraph side by
 	   side, the verse wrapping under the text when the row can't hold both at
 	   their basis (phones). No box — the page column is the frame. */

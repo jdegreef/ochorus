@@ -3,11 +3,12 @@ import {
 	getBibleLinks,
 	getSeries,
 	listPlans,
+	listTopics,
 	type BibleBookLinks,
 	type PlanSummary,
 	type SeriesDetail
 } from '$lib/library-public';
-import { BIBLE_SERIES, biblePlans } from '$lib/bible';
+import { BIBLE_SERIES, biblePlans, bibleTopics } from '$lib/bible';
 import { orNotFound } from '$lib/loadHelpers';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
@@ -30,7 +31,7 @@ export const load: PageLoad = async ({ fetch }) => {
 	// The plans and the per-book links (sermons, the classics) are decoration:
 	// each has its own silent catch, costing only what it draws.
 	const fetchSeries = () => getSeries(BIBLE_SERIES, lang);
-	const [result, plans, links] = await Promise.all([
+	const [result, plans, links, topics] = await Promise.all([
 		(lang === 'en' ? fetchSeries() : orNotFound(fetchSeries)).then(
 			(series): { series: SeriesDetail | null; loadError: boolean } => ({ series, loadError: false }),
 			(e) => {
@@ -39,11 +40,14 @@ export const load: PageLoad = async ({ fetch }) => {
 			}
 		),
 		listPlans(lang, fetch).catch((): PlanSummary[] => []),
-		getBibleLinks(lang, fetch).catch((): BibleBookLinks[] => [])
+		getBibleLinks(lang, fetch).catch((): BibleBookLinks[] => []),
+		listTopics(lang, fetch).catch((): { slug: string }[] => [])
 	]);
 	return {
 		...result,
 		plans: result.series ? biblePlans(plans) : [],
-		links
+		links,
+		// Decoration too: the "Passages on…" row's subjects, by topic shelf.
+		topics: result.series ? bibleTopics(topics) : []
 	};
 };
