@@ -172,11 +172,11 @@
 					<span class="min-w-0 flex-1">
 						<span class="block text-h3 text-text">{a.name}</span>
 						<span class="text-small text-muted">
-							{(a.count === 1 ? t('quotes.countOne') : t('quotes.countMany')).replace(
+							{(i18n.tn(a.count, 'quotes.countOne', 'quotes.countMany')).replace(
 								'%count%',
 								String(a.count)
 							)}{#if a.work_count > 0}
-								· {(a.work_count === 1 ? t('quotes.worksOne') : t('quotes.worksMany')).replace(
+								· {(i18n.tn(a.work_count, 'quotes.worksOne', 'quotes.worksMany')).replace(
 									'%count%',
 									String(a.work_count)
 								)}{/if}

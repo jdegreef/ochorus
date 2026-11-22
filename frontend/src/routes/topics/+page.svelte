@@ -46,9 +46,9 @@
 	// and announcing what it does NOT have first made the card contradict itself.
 	const countParts = (tp: TopicSummary): string[] =>
 		[
-			tp.book_count && `${tp.book_count} ${tp.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}`,
+			tp.book_count && `${tp.book_count} ${i18n.tn(tp.book_count, 'common.bookOne', 'common.bookMany')}`,
 			tp.sermon_count &&
-				`${tp.sermon_count} ${tp.sermon_count === 1 ? t('common.sermonOne') : t('common.sermonMany')}`
+				`${tp.sermon_count} ${i18n.tn(tp.sermon_count, 'common.sermonOne', 'common.sermonMany')}`
 		].filter((p): p is string => !!p);
 
 	// schema.org ItemList of the topical shelves — an ordered roster for
@@ -89,7 +89,7 @@
 	/>
 	{#snippet topicCounts()}
 		{topics.length}
-		{topics.length === 1 ? t('common.topicOne') : t('common.topicMany')}
+		{i18n.tn(topics.length, 'common.topicOne', 'common.topicMany')}
 	{/snippet}
 
 	{#if loadError}

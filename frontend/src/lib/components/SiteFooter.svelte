@@ -251,7 +251,7 @@
 								{#if LIVE_LOCALE_BOOKS[l.code]}
 									<span class="footer-lang-count">
 										{LIVE_LOCALE_BOOKS[l.code]}
-										{LIVE_LOCALE_BOOKS[l.code] === 1 ? t('common.bookOne') : t('common.bookMany')}
+										{i18n.tn(LIVE_LOCALE_BOOKS[l.code], 'common.bookOne', 'common.bookMany')}
 									</span>
 								{/if}
 							</a>

@@ -184,7 +184,7 @@
 						{t('fav.shelfFinished')}
 					{:else}
 						{book.chapter_count}
-						{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}{#if book.word_count}
+						{i18n.tn(book.chapter_count, 'book.chapterOne', 'book.chaptersMany')}{#if book.word_count}
 							· {readingTime(book.word_count)}{/if}
 					{/if}
 				</div>

@@ -43,12 +43,12 @@
 		<span class="text-micro font-semibold text-accent">
 			{#if author.book_count > 0}
 				{author.book_count}
-				{author.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
+				{i18n.tn(author.book_count, 'common.bookOne', 'common.bookMany')}
 			{/if}
 			{#if author.book_count > 0 && author.sermon_count > 0}·{/if}
 			{#if author.sermon_count > 0}
 				{author.sermon_count}
-				{author.sermon_count === 1 ? t('bios.sermonsOne') : t('bios.sermonsMany')}
+				{i18n.tn(author.sermon_count, 'bios.sermonsOne', 'bios.sermonsMany')}
 			{/if}
 		</span>
 	{/if}

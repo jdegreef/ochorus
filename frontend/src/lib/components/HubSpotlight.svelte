@@ -63,7 +63,7 @@
 		<p class="mt-3 text-small text-muted">
 			<span class="whitespace-nowrap"
 				>{book.chapter_count}
-				{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}</span
+				{i18n.tn(book.chapter_count, 'book.chapterOne', 'book.chaptersMany')}</span
 			>{#if sitting}<span class="sep">{' · '}</span><span class="whitespace-nowrap"
 					>{sitting}</span
 				>{/if}

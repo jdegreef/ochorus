@@ -218,10 +218,10 @@
 	</section>
 	{#snippet meta()}
 		<span class="whitespace-nowrap"
-			>{counts.books} {counts.books === 1 ? t('common.bookOne') : t('common.bookMany')}</span
+			>{counts.books} {i18n.tn(counts.books, 'common.bookOne', 'common.bookMany')}</span
 		>{#if counts.series}{' '}<span class="sep">·</span>{' '}<span class="whitespace-nowrap"
 				>{counts.series}
-				{counts.series === 1 ? t('common.seriesOne') : t('common.seriesMany')}</span
+				{i18n.tn(counts.series, 'common.seriesOne', 'common.seriesMany')}</span
 			>{/if}
 	{/snippet}
 

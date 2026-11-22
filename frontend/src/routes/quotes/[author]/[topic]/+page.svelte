@@ -111,7 +111,7 @@
 		</div>
 		<ScriptureEpigraph text={topic.scripture_text} reference={topic.scripture_ref} />
 		<p class="mt-3 max-w-2xl text-small text-muted">
-			{(page.quotes.length === 1 ? t('quotes.authorTopicIntroOne') : t('quotes.authorTopicIntroMany'))
+			{(i18n.tn(page.quotes.length, 'quotes.authorTopicIntroOne', 'quotes.authorTopicIntroMany'))
 				.replace('%count%', String(page.quotes.length))
 				.replace('%name%', page.author.name)
 				.replace('%phrase%', phrase)}

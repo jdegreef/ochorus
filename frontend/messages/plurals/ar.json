@@ -1,0 +1,72 @@
+{
+ "common_book_one": {
+  "zero": "كتاب",
+  "two": "كتابان",
+  "few": "كتب",
+  "many": "كتابًا",
+  "other": "كتاب"
+ },
+ "common_sermon_one": {
+  "zero": "عظة",
+  "two": "عظتان",
+  "few": "عظات",
+  "many": "عظة",
+  "other": "عظة"
+ },
+ "common_author_one": {
+  "zero": "مؤلف",
+  "two": "مؤلفان",
+  "few": "مؤلفين",
+  "many": "مؤلفًا",
+  "other": "مؤلف"
+ },
+ "common_preacher_one": {
+  "zero": "واعظ",
+  "two": "واعظان",
+  "few": "وعّاظ",
+  "many": "واعظًا",
+  "other": "واعظ"
+ },
+ "common_article_one": {
+  "zero": "مقال",
+  "two": "مقالان",
+  "few": "مقالات",
+  "many": "مقالًا",
+  "other": "مقال"
+ },
+ "common_topic_one": {
+  "zero": "موضوع",
+  "two": "موضوعان",
+  "few": "مواضيع",
+  "many": "موضوعًا",
+  "other": "موضوع"
+ },
+ "common_plan_one": {
+  "zero": "خطة",
+  "two": "خطتان",
+  "few": "خطط",
+  "many": "خطة",
+  "other": "خطة"
+ },
+ "common_series_one": {
+  "zero": "سلسلة كتب",
+  "two": "سلسلتا كتب",
+  "few": "سلاسل كتب",
+  "many": "سلسلة كتب",
+  "other": "سلسلة كتب"
+ },
+ "book_chapter_one": {
+  "zero": "فصل",
+  "two": "فصلان",
+  "few": "فصول",
+  "many": "فصلًا",
+  "other": "فصل"
+ },
+ "search_results_one": {
+  "zero": "نتيجة",
+  "two": "نتيجتان",
+  "few": "نتائج",
+  "many": "نتيجة",
+  "other": "نتيجة"
+ }
+}

@@ -157,7 +157,7 @@
 				{:else}
 					<div class="text-micro text-muted">
 						{book.chapter_count}
-						{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}{#if book.word_count}<span
+						{i18n.tn(book.chapter_count, 'book.chapterOne', 'book.chaptersMany')}{#if book.word_count}<span
 								class="opacity-50"
 							>
 								· </span

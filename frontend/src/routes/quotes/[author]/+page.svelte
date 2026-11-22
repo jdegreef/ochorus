@@ -115,7 +115,7 @@
 			<h1 class="text-h1">{t('quotes.authorH1').replace('%name%', page.author.name)}</h1>
 		</div>
 		<p class="mt-2 max-w-2xl text-small text-muted">
-			{(page.quotes.length === 1 ? t('quotes.authorIntroOne') : t('quotes.authorIntroMany')).replace(
+			{(i18n.tn(page.quotes.length, 'quotes.authorIntroOne', 'quotes.authorIntroMany')).replace(
 				'%count%',
 				String(page.quotes.length)
 			)}

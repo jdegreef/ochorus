@@ -128,11 +128,11 @@
 	     guides (the switch below splits them). -->
 	{#snippet counts()}
 		{articles.length}
-		{articles.length === 1 ? t('common.articleOne') : t('common.articleMany')}
+		{i18n.tn(articles.length, 'common.articleOne', 'common.articleMany')}
 		{#if guides.length}
 			<span class="sep">·</span>
 			{guides.length}
-			{guides.length === 1 ? t('articles.guideOne') : t('articles.guideMany')}
+			{i18n.tn(guides.length, 'articles.guideOne', 'articles.guideMany')}
 		{/if}
 	{/snippet}
 

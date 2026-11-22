@@ -12,7 +12,6 @@
 	 * home drew its roster with it until design #17 made that a row of faces.)
 	 */
 	let { author }: { author: AuthorTileData } = $props();
-	const t = i18n.t;
 </script>
 
 <a
@@ -33,7 +32,7 @@
 		{#if author.book_count}
 			<span class="block text-small text-muted">
 				{author.book_count}
-				{author.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
+				{i18n.tn(author.book_count, 'common.bookOne', 'common.bookMany')}
 			</span>
 		{/if}
 	</span>
