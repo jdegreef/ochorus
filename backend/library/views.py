@@ -92,6 +92,7 @@ from .serializers import (
     SeriesBookSerializer,
     SermonDetailSerializer,
     SermonListSerializer,
+    SermonPickSerializer,
     TopicDetailSerializer,
     TopicListSerializer,
     _book_cover,
@@ -534,6 +535,13 @@ class SermonListView(PublicContentCacheMixin, generics.ListAPIView):
 
     serializer_class = SermonListSerializer
 
+    def _pick_only(self) -> bool:
+        """``?fields=pick``: only what the "Sermon of the day" card draws."""
+        return self.request.query_params.get("fields") == "pick"
+
+    def get_serializer_class(self):
+        return SermonPickSerializer if self._pick_only() else SermonListSerializer
+
     def get_queryset(self):
         return (
             Sermon.objects.filter(is_published=True, language=_language(self.request))
@@ -548,7 +556,8 @@ class SermonListView(PublicContentCacheMixin, generics.ListAPIView):
         # (the shelf's topic filter) cost a fixed handful of queries, not one per
         # sermon. Mirrors BookListView / ArticleListView.
         ctx = super().get_serializer_context()
-        ctx["sermon_topics"] = sermon_topic_map(_language(self.request))
+        if not self._pick_only():
+            ctx["sermon_topics"] = sermon_topic_map(_language(self.request))
         return ctx
 
 

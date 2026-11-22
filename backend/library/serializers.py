@@ -764,6 +764,22 @@ class SermonListSerializer(LocalizedMixin, serializers.ModelSerializer):
         ]
 
 
+class SermonPickSerializer(LocalizedMixin, serializers.ModelSerializer):
+    """The slim sermon row behind "Sermon of the day" (``?fields=pick``).
+
+    The daily pick is chosen in the browser, by the reader's local date, from
+    every sermon in the language (``$lib/dailySermon``), so the home page used
+    to fetch the whole shelf, summaries and topics included: 430 KB of JSON
+    for one card (bug review 2026-11-22, #18). The card draws only these.
+    """
+
+    author = CardAuthorSerializer(read_only=True)
+
+    class Meta:
+        model = Sermon
+        fields = ["slug", "language", "title", "scripture_ref", "word_count", "author"]
+
+
 class SermonDetailSerializer(serializers.ModelSerializer):
     """A single sermon with its full body, for the reader."""
 
