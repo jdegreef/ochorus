@@ -1515,6 +1515,10 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     # ([] when this locale has no translated set — same no-fallback rule as the
     # bio). Detail-only: a card has nowhere to show it.
     faq = serializers.SerializerMethodField()
+    # The ranked "Where to start" list (``Author.start_with``): ``[{"slug",
+    # "why"}]``, best first, kept only where the book is one this page lists in
+    # this language. English only — see the field.
+    start_with = serializers.SerializerMethodField()
     # Books this person is FOUND IN but did not write (BookPerson) — the reverse
     # of BookDetailSerializer.featured_people, so a bio can offer "appears in".
     appears_in = serializers.SerializerMethodField()
@@ -1542,8 +1546,8 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     class Meta:
         model = Author
         fields = [
-            "slug", "name", "bio", "bio_html", "bio_source_type", "faq", "photo_url",
-            "available_languages",
+            "slug", "name", "bio", "bio_html", "bio_source_type", "faq", "start_with",
+            "photo_url", "available_languages",
             # Portrait credit — only the detail page renders it (a card shows the
             # thumbnail without a caption, which the CC licences allow because
             # every card links here, so the credit is one click from any
@@ -1619,6 +1623,16 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
 
     def get_faq(self, obj):
         return obj.faq_for(self._language())
+
+    def get_start_with(self, obj):
+        if self._language() != "en" or not obj.start_with:
+            return []
+        listed = {b.slug for b in self._books(obj)}
+        return [
+            {"slug": e["book"], "why": e["why"]}
+            for e in obj.start_with
+            if e.get("book") in listed and e.get("why")
+        ]
 
     def get_bio_source_type(self, obj):
         """How the bio shown in the requested language got here, so the page can

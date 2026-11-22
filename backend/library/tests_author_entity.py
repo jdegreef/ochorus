@@ -330,3 +330,63 @@ class TaglineTests(TestCase):
             if len(a.get("tagline", "")) > 100
         ]
         self.assertEqual(long, [], "taglines over 100 characters")
+
+
+class StartWithTests(TestCase):
+    """`Author.start_with` — the ranked "Where to start" list on the author page.
+
+    Fixture-owned like `tagline` (synced every deploy), English-only, and
+    resolved against the books the page actually lists, so a slug that has no
+    published book in the requested language drops out instead of linking
+    nowhere.
+    """
+
+    def setUp(self):
+        from .models import Book, Chapter
+
+        self.author = Author.objects.create(slug="sw", name="A Writer", bio="A bio.")
+        for slug in ("first", "second", "third"):
+            book = Book.objects.create(
+                author=self.author, slug=slug, language="en", title=slug.title()
+            )
+            Chapter.objects.create(book=book, order=1, title="One", body_html="<p>x</p>")
+        Book.objects.create(
+            author=self.author, slug="hidden", language="en", title="Hidden", is_published=False
+        )
+        self.picks = [
+            {"book": "second", "why": "Begin here."},
+            {"book": "hidden", "why": "Unpublished."},
+            {"book": "missing", "why": "No such book."},
+            {"book": "first", "why": "Then this."},
+        ]
+
+    def test_the_fixture_fills_and_corrects_it(self):
+        sync_author(self.author, {"start_with": self.picks[:1]})
+        sync_author(self.author, {"start_with": self.picks})
+        self.author.refresh_from_db()
+        self.assertEqual(self.author.start_with, self.picks)
+
+    def test_a_row_that_omits_the_key_leaves_it_alone(self):
+        self.author.start_with = self.picks
+        self.author.save()
+        changed, _ = sync_author(self.author, {"bio": "A bio."})
+        self.assertNotIn("start_with", changed)
+
+    def test_the_api_keeps_the_ranking_and_drops_books_it_does_not_list(self):
+        self.author.start_with = self.picks
+        self.author.save()
+        res = self.client.get("/api/library/authors/sw/")
+        self.assertEqual(
+            res.data["start_with"],
+            [{"slug": "second", "why": "Begin here."}, {"slug": "first", "why": "Then this."}],
+        )
+
+    def test_it_is_served_in_english_only(self):
+        self.author.start_with = self.picks
+        self.author.save()
+        res = self.client.get("/api/library/authors/sw/?language=es")
+        self.assertEqual(res.data["start_with"], [])
+
+    def test_an_author_without_one_sends_an_empty_list(self):
+        res = self.client.get("/api/library/authors/sw/")
+        self.assertEqual(res.data["start_with"], [])

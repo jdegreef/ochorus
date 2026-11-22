@@ -992,6 +992,12 @@ export interface AuthorDetail extends AuthorBio {
 	 */
 	faq?: { q: string; a: string }[];
 	/**
+	 * "Where to start with <author>": 3–5 of the books listed below, best first,
+	 * each with a one-line reason. English only for now (empty elsewhere), and
+	 * optional so an API behind this build renders no list.
+	 */
+	start_with?: { slug: string; why: string }[];
+	/**
 	 * Authoritative identifiers for this person — Wikipedia, Wikidata — emitted
 	 * as schema.org `sameAs`. Empty for the house byline and for contemporary
 	 * contributors, and optional besides: an API running behind this build

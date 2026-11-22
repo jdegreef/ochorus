@@ -102,6 +102,8 @@ DEFAULTED_OK = {
     ("library.sermon", "source_type"),
     ("library.sermon", "summary"),  # "In brief" TL;DR — blank default, fixture-owned
     ("library.author", "faq"),
+    # Empty for every author without a ranked "Where to start" list.
+    ("library.author", "start_with"),
     ("library.author", "list_in_biographies"),
     ("library.author", "milestones"),
     ("library.author", "photo_attribution"),
