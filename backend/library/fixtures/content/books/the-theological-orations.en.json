@@ -14,7 +14,32 @@
   "description": "The five sermons Gregory of Nazianzus preached in Constantinople in 380 that earned him the name \u201cthe Theologian\u201d: who may speak of God and how, the limits of our knowledge of Him, the full deity of the Son against the Eunomians\u2019 proof-texts, and the deity of the Holy Spirit.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What are The Theological Orations?",
+    "answer": "They are five sermons preached by Gregory of Nazianzus in Constantinople in 380, which earned him the title the Theologian. Against the Eunomians, who denied the full deity of the Son, Gregory discusses who may speak of God and how, the limits of our knowledge of God, the full deity of the Son, and the deity of the Holy Spirit."
+   },
+   {
+    "question": "Who may speak about God, according to Gregory?",
+    "answer": "Gregory says, Not to every one, my friends, does it belong to philosophize about God; the subject is not so cheap and low. He who speaks of God should be, as far as possible, pure, so that light may be apprehended by light, and should speak on subjects within our reach, at the right time and before the right hearers."
+   },
+   {
+    "question": "Can we comprehend God?",
+    "answer": "Gregory teaches that we can know that God exists from the order of creation, as one might know of a maker from his work without seeing him. But to comprehend the whole of so great a subject is impossible, not only for the careless but for the wisest. Names like Unbegotten or Incorruptible say what God is not, without capturing his essence."
+   },
+   {
+    "question": "How does Gregory handle texts used against the Son\u2019s deity?",
+    "answer": "In the third and fourth orations Gregory answers the passages his opponents used to make the Son lesser. He teaches that the loftier names belong to Christ\u2019s divinity and the lowlier ones to the human nature he took for our sake. Keep to this, he says, and you will never err, for Jesus Christ is the same yesterday, today and for ever."
+   },
+   {
+    "question": "Why was the Spirit\u2019s deity revealed gradually?",
+    "answer": "In the fifth oration Gregory explains that the Old Testament proclaimed the Father openly and the Son more obscurely; the New manifested the Son and suggested the deity of the Spirit; now the Spirit himself dwells among us and gives a clearer demonstration of himself. So the light of the Trinity broke on the church gradually, according to its capacity."
+   },
+   {
+    "question": "Who should read The Theological Orations?",
+    "answer": "They suit readers who want to understand the doctrine of the Trinity from one of its greatest defenders. The orations are compact, eloquent and often witty, and they helped shape the church\u2019s confession at the Council of Constantinople in 381. They reward slow, careful reading."
+   }
+  ],
   "publication_year": 380,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/npnf207.iii.xiii.html",
