@@ -54,6 +54,28 @@
      "slug": "william-law"
     }
    ],
+   "qa": [
+    {
+     "question": "What books influenced C. S. Lewis?",
+     "answer": "Seven classics stand out: George MacDonald\u2019s Unspoken Sermons, G. K. Chesterton\u2019s Orthodoxy and The Everlasting Man, Athanasius\u2019 On the Incarnation, Augustine\u2019s Confessions, Bunyan\u2019s The Pilgrim\u2019s Progress, Thomas \u00e0 Kempis\u2019 The Imitation of Christ, and William Law\u2019s A Serious Call to a Devout and Holy Life. Every one of them is long out of copyright and free to read today."
+    },
+    {
+     "question": "Why did C. S. Lewis tell people to read old books?",
+     "answer": "In his 1944 introduction to Athanasius\u2019 On the Incarnation, Lewis argued that every age has blind spots so widely shared that nobody notices them. Reading only new books is like hearing one side of a two-thousand-year conversation. The old books have different mistakes from ours, and the contrast lets us see both, so he urged keeping them in our regular diet."
+    },
+    {
+     "question": "Who was George MacDonald to C. S. Lewis?",
+     "answer": "No writer mattered more to Lewis. As a teenage atheist in 1916 he bought MacDonald\u2019s Phantastes on a railway bookstall and found a holiness he could not name. He later called MacDonald his master, compiled an anthology of his writings, and made him the guide in The Great Divorce. Evangelical readers will want to read him with discernment."
+    },
+    {
+     "question": "Which book helped bring C. S. Lewis back to faith?",
+     "answer": "As an unbeliever in his twenties, Lewis read G. K. Chesterton\u2019s The Everlasting Man and for the first time saw the whole sweep of human history in a Christian light. It made sense in a way the alternatives did not, and he later gave it a large share of the credit for his return to faith."
+    },
+    {
+     "question": "Which of Lewis\u2019s old books should I read first?",
+     "answer": "To understand the faith, start with On the Incarnation, then Orthodoxy. For a story, start with The Pilgrim\u2019s Progress, then the Confessions. To pray and grow, read a chapter of The Imitation of Christ each morning and one of the Unspoken Sermons each Sunday. To be challenged, read A Serious Call slowly, always alongside Scripture."
+    }
+   ],
    "source_url": "",
    "sort_order": 88,
    "is_published": true,
