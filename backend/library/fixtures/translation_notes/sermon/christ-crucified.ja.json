@@ -1,0 +1,199 @@
+{
+    "kind": "sermon",
+    "slug": "christ-crucified",
+    "language": "ja",
+    "job_issue": 9637,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "1 Corinthians 1:23-24",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 0
+        },
+        {
+            "reference": "Romans 1:20",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 1
+        },
+        {
+            "reference": "1 Corinthians 1:25",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 1
+        },
+        {
+            "reference": "Isaiah 14:12",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 1
+        },
+        {
+            "reference": "1 Corinthians 1:21",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 1
+        },
+        {
+            "reference": "1 Corinthians 2:2",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 2
+        },
+        {
+            "reference": "Acts 19:2",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 3
+        },
+        {
+            "reference": "Ephesians 4:20",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 3
+        },
+        {
+            "reference": "Matthew 13:55",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Matthew 23:13",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 7
+        },
+        {
+            "reference": "Matthew 27:25",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 7
+        },
+        {
+            "reference": "Matthew 18:3",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 7
+        },
+        {
+            "reference": "Job 19:25",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 8
+        },
+        {
+            "reference": "1 Corinthians 1:27",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 12
+        },
+        {
+            "reference": "1 Corinthians 1:28",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 12
+        },
+        {
+            "reference": "Matthew 11:7",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 12
+        },
+        {
+            "reference": "1 Corinthians 1:24",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Isaiah 55:11",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 13
+        },
+        {
+            "reference": "Isaiah 53:11",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 13
+        },
+        {
+            "reference": "Matthew 22:14",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "John 20:16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 27
+        },
+        {
+            "reference": "John 6:37",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 27
+        },
+        {
+            "reference": "Acts 9:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 27
+        },
+        {
+            "reference": "Acts 9:4",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 27
+        },
+        {
+            "reference": "Luke 19:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 27
+        },
+        {
+            "reference": "2 Timothy 1:12",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 38
+        },
+        {
+            "reference": "Acts 26:16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 44
+        },
+        {
+            "reference": "Jeremiah 31:3",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 44
+        },
+        {
+            "reference": "Psalm 103:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 52
+        },
+        {
+            "reference": "Job 19:25-26",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Luke 23:46",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 52
+        },
+        {
+            "reference": "Exodus 3:3",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 64
+        },
+        {
+            "reference": "Proverbs 1:4",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 65
+        }
+    ]
+}

@@ -14,7 +14,32 @@
   "description": "Wilberforce\u2019s appeal to the fashionable, nominally Christian classes of his day: that real Christianity rests on man\u2019s corruption, Christ\u2019s atonement and the Holy Spirit\u2019s work, and must change the whole of life, not merely its outward decencies.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is A Practical View of Christianity?",
+    "answer": "It is William Wilberforce\u2019s book of 1797, the full title of which contrasts the prevailing religious system of professed Christians in the higher and middle classes with real Christianity. Wilberforce, a member of Parliament best known for his campaign to abolish the slave trade, wrote it to call his countrymen from a nominal faith to a living one."
+   },
+   {
+    "question": "Why did Wilberforce write the book?",
+    "answer": "He says that for several years he had earnestly wished to address his countrymen on religion, but his public duties and poor health kept getting in the way. Seeing life wearing away, he wrote what he could. His aim was to show the fashionable, nominally Christian classes that their outwardly respectable religion fell far short of the Christianity of the Bible."
+   },
+   {
+    "question": "What does Wilberforce mean by nominal Christians?",
+    "answer": "He means people who call themselves Christians and keep up its outward decencies, but who know little of its central doctrines and feel little love for Christ. He contrasts their religious system with that of the Scriptures, noting for example that they barely believe in the existence and agency of the evil spirit that the Bible describes so plainly."
+   },
+   {
+    "question": "What are the central doctrines Wilberforce stresses?",
+    "answer": "He argues that real Christianity rests on three great truths often neglected in his day: the deep corruption of human nature, the atonement made by Jesus Christ, and the sanctifying work of the Holy Spirit. Those who would grow in love for Christ, he says, must be much conversant with these great doctrines of the Gospel."
+   },
+   {
+    "question": "How should real Christianity affect life?",
+    "answer": "Wilberforce insists that true faith must change the whole of life, not merely its outward behavior. Real Christians are marked by a new principle of love for God and Christ, which governs their use of time, money, position and influence. He warns against making grand houses, equipages, entertainments and fashionable connections the supreme happiness of life."
+   },
+   {
+    "question": "What impact did the book have?",
+    "answer": "It became a bestseller, read widely across Britain and beyond, and helped shape the evangelical renewal of the upper classes. It gave a religious foundation to the movement for moral and social reform that Wilberforce and his friends of the Clapham circle led, including the long campaign against the slave trade."
+   }
+  ],
   "publication_year": 1797,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/25709",

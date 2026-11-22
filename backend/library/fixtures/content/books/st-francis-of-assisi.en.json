@@ -13,7 +13,32 @@
   "cover_byline": "",
   "description": "A life of St. Francis, Chesterton says, can be written as if he were only a lover of nature and a friend of the birds, or only a saint of the stained-glass window; he sets out to do something harder, and to show a modern reader why the man did what he did. Beginning with the dark world Francis was born into, he follows the young soldier of Assisi through his conversion, the rebuilding of the ruined church, the leper he ran to embrace and the joyful poverty of the friars, to the stigmata and his death, and finds the secret of it all in one thing: that Francis was a lover, a lover of God and of men.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Chesterton’s St. Francis of Assisi?",
+    "answer": "It is G. K. Chesterton’s short life of St. Francis, published in 1923. He notes that Francis can be written about as a figure in secular history or as a saint of stained glass, but chooses a harder third way: to explain to a modern reader why Francis did what he did, by entering into the faith that drove him."
+   },
+   {
+    "question": "What was the world St. Francis was born into?",
+    "answer": "Chesterton argues that anyone who imagines the Dark Ages as mere darkness, and the thirteenth century as sudden daylight, will never understand Francis. The earlier centuries had been a long, stern purification after the corruptions of the pagan world. Francis appeared as that penance was ending, when people could at last look at nature again with innocent eyes."
+   },
+   {
+    "question": "What happened when Francis met the leper?",
+    "answer": "Riding in the open country, the young Francis saw a leper coming toward him, and felt that his courage was being challenged as never before. He sprang from his horse, rushed to the leper and threw his arms around him. Chesterton marks it as the beginning of a long ministry among lepers, and a turning point in his conversion."
+   },
+   {
+    "question": "Why did Francis rebuild the church of St. Damian?",
+    "answer": "He often prayed before the crucifix in the ruined church of St. Damian at Assisi, and took a call to repair it literally. To raise money he sold his own horse and some of his father’s cloth, which led to a bitter break with his father. He then worked with his own hands, dragging building materials like a beast of burden."
+   },
+   {
+    "question": "What does Chesterton mean by calling Francis God’s jester?",
+    "answer": "In the chapter Le Jongleur de Dieu he suggests that Francis, after his humiliation, saw the world as if upside down, with everything hanging from God. That inverted vision emphasizes dependence: all things exist only by God’s mercy. From that low place Francis found a strange joy, becoming like the court fool of the King of Paradise."
+   },
+   {
+    "question": "What was the secret of St. Francis?",
+    "answer": "Chesterton’s answer is that Francis was, to the last agonies of asceticism, a troubadour: a lover. He was a lover of God, and really and truly a lover of men, which Chesterton calls a much rarer vocation. He did not love humanity in general; he loved each person he met, and saw in each one the image of God."
+   }
+  ],
   "publication_year": 1923,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/63084",

@@ -15,6 +15,7 @@ import {
 	isFinishedNow,
 	lastFinishOf,
 	parseWorkSlugKey,
+	type FinishFields,
 	type WorkKind,
 	type ProgressRecord,
 	type ProgressMap
@@ -117,7 +118,11 @@ export function saveProgress(
 		at: now,
 		finished_at: prev?.finished_at ?? null,
 		...(prev?.last_finished_at != null ? { last_finished_at: prev.last_finished_at } : {}),
-		...(restarting ? { restarted_at: now } : prev?.restarted_at != null ? { restarted_at: prev.restarted_at } : {}),
+		...(restarting
+			? { restarted_at: restartStamp(prev, now) }
+			: prev?.restarted_at != null
+				? { restarted_at: prev.restarted_at }
+				: {}),
 		furthest
 	};
 	map[key] = rec;
@@ -141,12 +146,22 @@ export function saveProgress(
  * restarts explicitly (`restartWork`).
  */
 export function startsAgain(
-	prev: Pick<ProgressRecord, 'order' | 'at' | 'finished_at' | 'restarted_at' | 'last_finished_at'>,
+	prev: Pick<ProgressRecord, 'order' | 'at'> & FinishFields,
 	order: number
 ): boolean {
 	if (!isFinishedNow(prev)) return false;
 	const finished = lastFinishOf(prev) ?? 0;
 	return prev.at > finished && order === prev.order + 1;
+}
+
+/**
+ * The stamp that starts a finished work again: now, or just after its latest
+ * finish when that came from a device whose clock runs ahead of this one's —
+ * else the restart would sort before the finish and the work stay finished
+ * (`markFinished` holds a finish after a restart the same way).
+ */
+function restartStamp(prev: FinishFields, now: number): number {
+	return Math.max(now, (lastFinishOf(prev) ?? 0) + 1);
 }
 
 /**
@@ -168,7 +183,7 @@ export function restartWork(slug: string, order: number, kind: WorkKind = 'book'
 		order,
 		paragraph_index: 0,
 		at: now,
-		restarted_at: now,
+		restarted_at: restartStamp(prev, now),
 		furthest: order
 	};
 	delete rec.pct;
@@ -245,9 +260,12 @@ export function markFinished(slug: string, kind: WorkKind = 'book'): boolean {
 	const rec = map[key];
 	if (!rec || isFinishedNow(rec)) return false;
 	// The first completion stays in `finished_at` (history); finishing a
-	// reread records the new one beside it.
-	if (rec.finished_at == null) rec.finished_at = Date.now();
-	else rec.last_finished_at = Date.now();
+	// reread records the new one beside it. Either lands after the restart,
+	// even one from a device whose clock runs ahead of this one's (else the
+	// reread could never be finished here).
+	const at = Math.max(Date.now(), (rec.restarted_at ?? 0) + 1);
+	if (rec.finished_at == null) rec.finished_at = at;
+	else rec.last_finished_at = at;
 	write(map);
 	// Not debounced: a discrete action, and coalescing it with scroll saves is a
 	// hazard for the un-finish direction (see readingSync.setFinished).

@@ -13,7 +13,32 @@
   "cover_byline": "",
   "description": "The modern world, Chesterton complains, has stopped asking whether a man's view of the universe is true; it is thought bad manners to have one at all. In these twenty essays he takes the celebrated thinkers of his day one by one, Kipling, Shaw, Wells, Moore, Whistler and the rest, and asks of each the question it is no longer polite to ask: what does he believe, and is it right? Witty, generous to his opponents and relentless with their ideas, the book argues that a man who refuses to have a creed has not escaped dogma but only hidden it, and it is the challenge to which Orthodoxy, three years later, gave his answer.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Heretics by G. K. Chesterton?",
+    "answer": "Published in 1905, Heretics is a collection of twenty essays in which Chesterton takes on the celebrated thinkers of his day, among them Rudyard Kipling, George Bernard Shaw, H. G. Wells and George Moore. He is not judging them as artists or personalities, he says, but as heretics: people whose view of things has the hardihood to differ from his own."
+   },
+   {
+    "question": "What is Chesterton’s main argument in Heretics?",
+    "answer": "That the most practical and important thing about a man is still his view of the universe. A landlady considering a lodger should want to know his income, but even more his philosophy. The modern world, he complains, has decided that having a creed is bad manners, and so it discusses details while refusing to ask whether anything is actually true."
+   },
+   {
+    "question": "What does Chesterton mean by the word “heretic”?",
+    "answer": "He points out that in former days the heretic was proud of not being a heretic: he believed he was orthodox, and that the kings and judges around him had gone astray. Now people are proud of being heretics and treat orthodoxy as a dull thing. Chesterton wants to restore the older sense, in which being right was what mattered."
+   },
+   {
+    "question": "What does Chesterton say about Bernard Shaw?",
+    "answer": "He calls Shaw one of the most brilliant and most honest men alive, and then explains that he is concerned with him as a heretic: a man whose philosophy is quite solid, quite coherent, and quite wrong. He quotes Shaw’s epigram that the golden rule is that there is no golden rule, as a perfect statement of the age’s refusal of all general principles."
+   },
+   {
+    "question": "Why does Chesterton say that progress needs a creed?",
+    "answer": "Because progress means moving toward something. Nobody, he argues, has any business using the word unless he has a definite creed and a firm code of morals; you cannot tell whether you are improving if you refuse to say what better looks like. Those who reject all dogma have not escaped dogma; they have only hidden it."
+   },
+   {
+    "question": "How is Heretics connected to Orthodoxy?",
+    "answer": "Critics complained that Heretics attacked every modern philosophy without offering any alternative. Chesterton took up the challenge three years later in Orthodoxy (1908), in which he set out the positive side: how he himself came to believe the Christian creed. The two books are best read together, the first clearing the ground and the second building on it."
+   }
+  ],
   "publication_year": 1905,
   "source_type": "public_domain",
   "source_url": "https://standardebooks.org/ebooks/g-k-chesterton/heretics",

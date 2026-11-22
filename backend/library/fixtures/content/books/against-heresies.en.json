@@ -14,7 +14,32 @@
   "description": "Irenaeus\u2019s five-book answer to the Gnostic teachers of his day: an exposure of their systems, a refutation by reason, and a defence of the one God, the true humanity of Christ and the resurrection of the flesh from the faith handed down by the apostles.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Against Heresies?",
+    "answer": "It is the major work of Irenaeus, bishop of Lyons in the late second century, written around 180. In five books he exposes the teachings of the Gnostics, refutes them by reason, and defends the faith handed down from the apostles: the one God who made all things, the true humanity of Christ, and the resurrection of the flesh."
+   },
+   {
+    "question": "Who were the Gnostics Irenaeus opposed?",
+    "answer": "They were teachers who claimed a secret, superior knowledge, or gnosis, and taught that the material world was made by a lesser being and that salvation was escape from the body. Irenaeus focuses especially on the followers of Valentinus. He read their commentaries and talked with some of them himself so that he could describe their systems accurately."
+   },
+   {
+    "question": "What is the rule of truth?",
+    "answer": "Irenaeus appeals to the rule of truth held by the Church everywhere: that there is one God Almighty, who made all things by his Word and formed them out of nothing. This shared summary of the faith, received from the apostles, is the measure by which he judges the Gnostics\u2019 elaborate speculations, and the key for reading Scripture rightly."
+   },
+   {
+    "question": "Why does Irenaeus appeal to the succession of bishops?",
+    "answer": "Against claims of secret teaching, he points to the churches founded by the apostles, which can name their bishops in succession back to the apostles themselves. The same faith has been preserved and handed down openly. He gives the example of Polycarp, instructed by apostles and appointed bishop of Smyrna, whom Irenaeus had known in his youth."
+   },
+   {
+    "question": "What does Irenaeus mean by recapitulation?",
+    "answer": "He teaches that Christ recapitulated, or summed up, in himself the whole history of humanity. Where Adam disobeyed, Christ obeyed; where humanity fell, Christ restored it, passing through every stage of human life. In this way God recapitulated in himself the ancient formation of man, that he might kill sin, deprive death of its power, and give man life."
+   },
+   {
+    "question": "What is the most famous line from Against Heresies?",
+    "answer": "In Book IV Irenaeus writes that the glory of God is a living man, and the life of man consists in beholding God. The sentence sums up his whole vision: against those who despised the body and the created world, he insists that God delights in giving life to human beings, and that true life comes from seeing God as he reveals himself."
+   }
+  ],
   "publication_year": 180,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/anf01.ix.html",

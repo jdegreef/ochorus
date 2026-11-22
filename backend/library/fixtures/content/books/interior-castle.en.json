@@ -14,7 +14,32 @@
   "description": "Teresa of \u00c1vila\u2019s masterpiece on prayer, written for her Carmelite sisters. She pictures the soul as a castle of crystal with God dwelling at its centre, and leads the reader through seven mansions \u2014 from self-knowledge and the struggle against sin, through the prayer of quiet and of union, to the spiritual marriage of the soul with Christ.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is the Interior Castle?",
+    "answer": "It is Teresa of \u00c1vila\u2019s masterpiece on prayer and the spiritual life, written in 1577 for her sisters, the Discalced Carmelite nuns. She wrote it under obedience, though, as she says at the start, she was suffering from noises and great weakness in her head. It describes the journey of the soul toward full union with God, using the image of a castle."
+   },
+   {
+    "question": "Why does Teresa compare the soul to a castle?",
+    "answer": "She writes that she thought of the soul as a castle made of a single diamond or very clear crystal, containing many rooms, just as in heaven there are many mansions. At the very center, in the innermost room, dwells God himself. The spiritual life is a journey inward, through these mansions, toward the King who lives at its center."
+   },
+   {
+    "question": "How does a person enter the castle?",
+    "answer": "Teresa says that the gate by which to enter the castle is prayer and meditation, and she does not mean only mental prayer, for if it is prayer at all, the mind must take part. Many people live in the outer court among the snakes and vermin of worldly cares, never knowing the beauty within them. Prayer is the first step inside."
+   },
+   {
+    "question": "What happens in the first mansions?",
+    "answer": "The first three mansions describe the soul\u2019s early struggle: learning humility and self-knowledge, resisting sin and the distractions of the world, and building a steady, disciplined Christian life. Teresa insists that self-knowledge is essential at every stage, but that we come to know ourselves best by looking at God, whose greatness reveals our lowliness."
+   },
+   {
+    "question": "What is the image of the silkworm?",
+    "answer": "In the fifth mansions Teresa compares the soul to a silkworm that spins its cocoon and dies within it, then emerges as a little white butterfly. The cocoon is Christ, in whom the soul hides by prayer, self-denial and obedience. Dying to self there, it rises transformed, restless now for nothing but God and his will."
+   },
+   {
+    "question": "What is the spiritual marriage?",
+    "answer": "The seventh and innermost mansion is the spiritual marriage, the deepest union of the soul with God. Teresa distinguishes it from the earlier betrothal: the union is now permanent, and the soul has a settled peace and an abiding sense of God within. Yet she insists it is not for idle enjoyment. Its fruit is good works, and Martha and Mary must work together."
+   }
+  ],
   "publication_year": 1577,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/teresa/castle2",

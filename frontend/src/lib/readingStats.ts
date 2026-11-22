@@ -100,6 +100,7 @@ export async function collectReadingActivity(
 
 	const history: HistoryItem[] = allProgress().map((p) => {
 		const m = titles[p.kind].get(p.slug);
+		const finishedNow = isFinishedNow(p);
 		return {
 			kind: p.kind,
 			slug: p.slug,
@@ -108,8 +109,8 @@ export async function collectReadingActivity(
 			order: resumeOrderOf(p),
 			at: p.at,
 			// Where it stands now: a reread is on the reading list again.
-			finished: isFinishedNow(p),
-			finishedAt: isFinishedNow(p) ? lastFinishOf(p) : null
+			finished: finishedNow,
+			finishedAt: finishedNow ? lastFinishOf(p) : null
 		};
 	});
 

@@ -38,5 +38,5 @@ def confirm(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-    dependencies = [("library", "0221_search_click_result_key")]
+    dependencies = [("library", "0222_book_four_biography_authors")]
     operations = [migrations.RunPython(confirm, migrations.RunPython.noop)]
