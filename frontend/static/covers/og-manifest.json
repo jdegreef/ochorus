@@ -38656,6 +38656,36 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ru/humility-2": {
+			"ground": "55cded6e86c0035a6707d7305e7aa0a14d75dd688206178c541031489223a594",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[102, 307, 498, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
+		},
 		"ru/men-and-women-who-gave-everything-2": {
 			"ground": "f2785f95fac6e5d5d0d7ff420e98a3391f2e36e7267556dbd1d91bacd5f3d6c4",
 			"style": "originals",
