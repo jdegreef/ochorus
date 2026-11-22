@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("library", "0223_confirm_stale_article_translations"),
+        ("library", "0225_merge_author_start_with"),
     ]
 
     operations = [
