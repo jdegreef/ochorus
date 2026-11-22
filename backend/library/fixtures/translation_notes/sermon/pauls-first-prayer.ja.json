@@ -1,0 +1,226 @@
+{
+    "kind": "sermon",
+    "slug": "pauls-first-prayer",
+    "language": "ja",
+    "job_issue": 8818,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Acts 9:11",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 0
+        },
+        {
+            "reference": "Psalm 35:21",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Isaiah 44:25",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Judges 14:14",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Matthew 3:9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 13
+        },
+        {
+            "reference": "Acts 7:58",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Acts 9:4",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 1
+        },
+        {
+            "reference": "Psalm 51:10",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "1 Kings 18:27",
+            "status": "self_rendered",
+            "block_index": 9
+        },
+        {
+            "reference": "Luke 18:13",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 9
+        },
+        {
+            "reference": "Isaiah 65:24",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 9
+        },
+        {
+            "reference": "Luke 10:21",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 10
+        },
+        {
+            "reference": "Zephaniah 3:17",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "Matthew 18:13",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 10
+        },
+        {
+            "reference": "Luke 15:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 10
+        },
+        {
+            "reference": "Matthew 11:28",
+            "status": "self_rendered",
+            "block_index": 11
+        },
+        {
+            "reference": "Ezekiel 3:18",
+            "status": "self_rendered",
+            "block_index": 12
+        },
+        {
+            "reference": "Isaiah 53:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 12
+        },
+        {
+            "reference": "Hebrews 2:13",
+            "status": "self_rendered",
+            "block_index": 12
+        },
+        {
+            "reference": "Ephesians 2:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 12
+        },
+        {
+            "reference": "Ephesians 1:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 13
+        },
+        {
+            "reference": "Luke 19:41",
+            "status": "self_rendered",
+            "block_index": 13
+        },
+        {
+            "reference": "Luke 18:11-12",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 15
+        },
+        {
+            "reference": "Matthew 7:15",
+            "status": "self_rendered",
+            "block_index": 17
+        },
+        {
+            "reference": "1 Timothy 1:15",
+            "status": "self_rendered",
+            "block_index": 17
+        },
+        {
+            "reference": "Acts 9:15",
+            "status": "self_rendered",
+            "block_index": 18
+        },
+        {
+            "reference": "1 Peter 2:9",
+            "status": "self_rendered",
+            "block_index": 18
+        },
+        {
+            "reference": "Ephesians 1:4",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 18
+        },
+        {
+            "reference": "Isaiah 49:4",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 19
+        },
+        {
+            "reference": "Isaiah 66:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 28
+        },
+        {
+            "reference": "Judges 15:4-5",
+            "status": "self_rendered",
+            "block_index": 28
+        },
+        {
+            "reference": "Ezekiel 37:4",
+            "status": "self_rendered",
+            "block_index": 29
+        },
+        {
+            "reference": "Ephesians 2:12",
+            "status": "self_rendered",
+            "block_index": 29
+        },
+        {
+            "reference": "Psalm 7:11",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 29
+        },
+        {
+            "reference": "Luke 16:24",
+            "status": "self_rendered",
+            "block_index": 29
+        },
+        {
+            "reference": "Ezekiel 33:11",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 34
+        },
+        {
+            "reference": "Psalm 111:4",
+            "status": "self_rendered",
+            "block_index": 34
+        },
+        {
+            "reference": "Hosea 14:4",
+            "status": "self_rendered",
+            "block_index": 34
+        },
+        {
+            "reference": "Psalm 115:1",
+            "status": "self_rendered",
+            "block_index": 34
+        },
+        {
+            "reference": "Revelation 4:10",
+            "status": "self_rendered",
+            "block_index": 34
+        }
+    ]
+}
