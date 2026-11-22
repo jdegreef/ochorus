@@ -22,6 +22,28 @@
     "slug": "on-loving-god"
    }
   ],
+  "qa": [
+   {
+    "question": "Do science and faith contradict each other?",
+    "answer": "No. Science and faith are not two rival answers to the same question; they answer different questions. Science is spectacularly good at the how: how stars form, how cells divide, how the universe expanded. Faith speaks to who is behind it all and why there is anything here at all. Once you see that, most of the supposed war disappears."
+   },
+   {
+    "question": "Were the founders of modern science Christians?",
+    "answer": "Overwhelmingly, yes. Many said their faith was what drove them to study nature, because a rational, faithful God gives every reason to expect an orderly world worth investigating. Kepler saw astronomy as tracing God’s order in the heavens, and Newton, Faraday, Mendel and Maxwell were all believers who did not think their science pushed God out."
+   },
+   {
+    "question": "Is Genesis meant to be read as a science textbook?",
+    "answer": "No. Genesis tells you who made the world and why, not how the machinery runs. More than sixteen hundred years ago, Augustine warned Christians not to make Scripture say things about the physical world that careful observation plainly contradicts. Genesis was written so a people would know there is one God, that he made everything good, and that humans bear his image."
+   },
+   {
+    "question": "Do all Christians agree about how God created the world?",
+    "answer": "No. Some read the days of Genesis literally, some as a poetic framework, and some see God working through the long processes science describes. These are good-faith differences among people who take the Bible seriously. You do not have to solve them to follow Jesus, because the center of the faith is not a theory of biology but a person."
+   },
+   {
+    "question": "What questions can science not answer?",
+    "answer": "Even if science explained every physical how, it could not settle the questions people actually live by. It cannot tell you what your existence is for, how you ought to behave, whether love is more than chemistry, or whether death is the end. These are not gaps better science will fill, but a different kind of question that a person must answer."
+   }
+  ],
   "source_url": "",
   "sort_order": 84,
   "is_published": true,
