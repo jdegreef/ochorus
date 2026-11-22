@@ -14,7 +14,32 @@
   "description": "The correspondence of the translator of the Vulgate across fifty years: counsel to monks, virgins and widows, letters on the study of Scripture, consolation in bereavement, quarrels with friends and opponents, his exchange with Augustine, and his witness to the fall of Rome.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What are the Letters of St. Jerome?",
+    "answer": "They are the correspondence of Jerome, the scholar who translated the Bible into Latin in the version known as the Vulgate. Written over about fifty years, from around 370 into the early fifth century, they include counsel to monks, virgins and widows, letters on studying Scripture, letters of consolation, quarrels, and his exchanges with Augustine."
+   },
+   {
+    "question": "What is the earliest letter?",
+    "answer": "The first letter, written around 370 to his friend Innocent, is probably Jerome\u2019s earliest surviving writing. Innocent was one of a little band of enthusiasts Jerome had gathered around him at Aquileia, and followed him to Syria, where he died in 374. The letter describes a marvelous event, the miraculous deliverance of a woman wrongly condemned."
+   },
+   {
+    "question": "What is the letter to Eustochium?",
+    "answer": "Letter XXII, to the young Roman noblewoman Eustochium, is Jerome\u2019s most famous letter, a long exhortation on the life of consecrated virginity. He addresses her as his Lord\u2019s bride and warns her about the dangers of the world. Eustochium and her mother Paula later followed Jerome to the Holy Land and founded monasteries at Bethlehem."
+   },
+   {
+    "question": "Why did Jerome live in Bethlehem?",
+    "answer": "After leaving Rome in 385, Jerome settled in Bethlehem, which became his home for the rest of his life. With Paula and Eustochium he founded monasteries there. He wrote to friends in Rome, such as Marcella, describing the charms of the Holy Land and urging them to come, and there he did most of his work translating the Scriptures."
+   },
+   {
+    "question": "What did Jerome write about the fall of Rome?",
+    "answer": "When Rome was sacked by the Goths in 410, Jerome wrote with deep grief that the city which had taken the whole world was itself taken. As he dictated, he said, his voice stuck in his throat and sobs choked his words. His letters also describe barbarian invasions across the empire, with cities destroyed and churches full of the slain."
+   },
+   {
+    "question": "What was Jerome\u2019s relationship with Augustine?",
+    "answer": "The two great scholars of the Latin Church corresponded over many years. Their letters show both respect and tension: Augustine questioned Jerome\u2019s translation from the Hebrew rather than the Greek Septuagint, and they disagreed over Paul\u2019s rebuke of Peter in Galatians. Jerome, the older man, could be prickly, but they came to a lasting mutual regard."
+   }
+  ],
   "publication_year": 400,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/npnf206.v.html",
