@@ -1,0 +1,39 @@
+{
+    "kind": "sermon",
+    "slug": "breaking-up-the-fallow-ground",
+    "language": "ja",
+    "job_issue": 8827,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Hosea 10:12",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 0
+        },
+        {
+            "reference": "Hosea 10:12a",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 0
+        },
+        {
+            "reference": "Matthew 7:12",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 40
+        },
+        {
+            "reference": "Matthew 7:12",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 40
+        },
+        {
+            "reference": "Exodus 34:14",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 17
+        }
+    ]
+}
