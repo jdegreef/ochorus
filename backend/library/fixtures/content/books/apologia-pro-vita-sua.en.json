@@ -14,7 +14,32 @@
   "description": "Newman\u2019s answer to Charles Kingsley\u2019s charge that he cared nothing for truth: the history of his religious opinions from his evangelical boyhood through the Oxford Movement to his reception into the Catholic Church in 1845, with his reply to each of Kingsley\u2019s accusations.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Newman\u2019s Apologia Pro Vita Sua?",
+    "answer": "It is John Henry Newman\u2019s account of his religious life, published in 1864. The Latin title means a defense of his life. It traces the history of his religious opinions from his evangelical boyhood, through his leadership of the Oxford Movement in the Church of England, to his reception into the Catholic Church in 1845."
+   },
+   {
+    "question": "Why did Newman write the Apologia?",
+    "answer": "The novelist and clergyman Charles Kingsley had publicly suggested that Newman, and the Catholic clergy generally, did not value truth for its own sake. Rather than answer point by point alone, Newman decided to tell the whole story of how his mind had changed, so that readers could judge his honesty for themselves. He even said he was glad to have drawn out Kingsley\u2019s full charges."
+   },
+   {
+    "question": "What was the Oxford Movement?",
+    "answer": "It was a movement within the Church of England, beginning in 1833, that sought to recover the Church\u2019s apostolic and catholic heritage against liberalism and state control. Newman and his friends published a series of Tracts for the Times. The Apologia describes his part in it year by year, from 1833 to 1845."
+   },
+   {
+    "question": "What was Tract 90?",
+    "answer": "Tract 90, written by Newman in 1841, argued that the Church of England\u2019s Thirty-Nine Articles could be read in a sense compatible with much Catholic doctrine. It caused a storm of controversy and was condemned by many bishops. The Apologia explains why he wrote it, and how the reaction helped convince him that he had no secure place in the Church of England."
+   },
+   {
+    "question": "When did Newman write \u201cLead, Kindly Light\u201d?",
+    "answer": "In the Apologia Newman recalls that in 1833, returning from a journey in Italy where he had fallen dangerously ill, he got passage on an orange boat bound for Marseilles. While becalmed for a week in the Straits of Bonifacio, he wrote the lines \u201cLead, kindly light,\u201d which later became a well-known hymn."
+   },
+   {
+    "question": "What does Newman say about difficulties and doubt?",
+    "answer": "In his general answer to Kingsley, Newman writes that ten thousand difficulties do not make one doubt; difficulty and doubt are incommensurate. One may feel the force of hard questions about a doctrine keenly without doubting the doctrine itself. The line has become one of the most quoted sayings on the nature of faith."
+   }
+  ],
   "publication_year": 1864,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/19690",

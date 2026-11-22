@@ -14,7 +14,32 @@
   "description": "The letters of the Covenanter minister of Anwoth, most written from his banishment in Aberdeen: to his parishioners, to Lady Kenmure and other friends, and to the grieving and the tempted, full of an ardent love for Christ that has made them a devotional classic.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "Who was Samuel Rutherford?",
+    "answer": "Samuel Rutherford was a seventeenth-century Scottish minister, first at the rural parish of Anwoth in Galloway, and later a professor at St Andrews. He was one of the Covenanters who resisted the imposition of bishops on the Church of Scotland. In 1636 he was banished to Aberdeen for his views, where he wrote many of his famous letters."
+   },
+   {
+    "question": "What are the Letters of Samuel Rutherford?",
+    "answer": "They are his letters to parishioners, friends, nobles and fellow ministers, published after his death in 1664. Many were written during his banishment in Aberdeen, to people grieving, tempted, sick or persecuted. They are filled with an ardent, almost rapturous love for Christ, and have made Rutherford one of the best-loved devotional writers in English."
+   },
+   {
+    "question": "Why did Rutherford call Aberdeen his King\u2019s palace?",
+    "answer": "When banished, Rutherford wrote that he would soon go to his King\u2019s palace at Aberdeen, and that tongue, pen and wit could not express his joy. He felt that Christ was especially near to him in suffering. Again and again in his letters he says that he finds Christ\u2019s cross sweet, because Christ himself meets him in it."
+   },
+   {
+    "question": "Who was Lady Kenmure?",
+    "answer": "Jane Campbell, Viscountess Kenmure, was a noblewoman in Rutherford\u2019s parish and one of his closest friends and correspondents. Many of the letters are addressed to her, on her illness, her spiritual struggles, the deaths of her children and the death of her husband. Rutherford points her again and again to Christ as her strength and joy."
+   },
+   {
+    "question": "How does Rutherford comfort the grieving?",
+    "answer": "He writes to bereaved parents that the weightiest end of the cross of Christ laid upon them lies upon their strong Savior. Their children are not lost but sent ahead. God, he says, will have them rejoice in nothing but himself, and their grief can drive them deeper into his love. He offers tenderness without denying the pain."
+   },
+   {
+    "question": "Why are Rutherford\u2019s letters still read?",
+    "answer": "Their burning devotion to Christ, vivid images and honesty about suffering have moved readers for centuries. Generation after generation has returned to them. Christians facing trial, grief or spiritual dryness continue to find in them a friend who knew both the depths of pain and the sweetness of Christ."
+   }
+  ],
   "publication_year": 1664,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/42557",

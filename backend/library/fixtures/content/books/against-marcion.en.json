@@ -14,7 +14,32 @@
   "description": "Tertullian\u2019s five-book answer to Marcion, who set a good God of the gospel against the just Creator of the Old Testament: the unity of God, the goodness of the Creator, Christ as the Son foretold by the prophets, and a reading of Luke and Paul that shows both Testaments preaching one God.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Tertullian\u2019s Against Marcion?",
+    "answer": "It is a five-book refutation by Tertullian of Carthage, written in the early third century, of the teaching of Marcion, a second-century teacher from Pontus. Tertullian explains in the preface that this is a new work replacing two earlier drafts, one of which had been copied and published full of mistakes by a former friend who later fell away."
+   },
+   {
+    "question": "What did Marcion teach?",
+    "answer": "Marcion taught that there are two gods: the just, severe Creator of the Old Testament, and a higher, purely good God revealed by Jesus, who had nothing to do with the world or the Law. Tertullian says Marcion, helped by a teacher named Cerdon, constructed this duality from passages that seemed to set a good God against an evil or harsh one."
+   },
+   {
+    "question": "What were Marcion\u2019s Antitheses?",
+    "answer": "The Antitheses were Marcion\u2019s list of contradictory propositions setting the Old Testament against the Gospel, meant to show that they come from different gods. Tertullian treats them as the very best pretext for the heresy, and answers them point by point, even advancing his own antitheses in favor of the one true God."
+   },
+   {
+    "question": "How did Marcion treat the Bible?",
+    "answer": "Marcion rejected the Old Testament and accepted only an edited version of Luke\u2019s Gospel and ten letters of Paul, removing passages that linked Jesus to the Creator. Tertullian says Marcion singled out Luke for his mutilating process, and in Books IV and V he goes through Marcion\u2019s own Luke and Paul to show that even they proclaim one God."
+   },
+   {
+    "question": "How does Tertullian argue for one God?",
+    "answer": "He argues that God, by definition, is supreme and therefore one: there cannot be two supreme beings. He defends the Creator\u2019s goodness, showing that his justice and even his severity are forms of goodness, and argues that Christ is the Son of the Creator, foretold by the prophets, so that both Testaments preach the same God."
+   },
+   {
+    "question": "Why is Against Marcion important?",
+    "answer": "It is the main source for what we know of Marcion\u2019s teaching, and it shows why the early Church insisted on keeping the Old Testament alongside the New. Tertullian\u2019s defense of the unity of God and of Scripture helped settle one of the great questions of the second century, and influenced how Christians read the whole Bible."
+   }
+  ],
   "publication_year": 208,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/anf03.v.iv.html",

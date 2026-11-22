@@ -11,7 +11,32 @@
   "subtitle": "Edited by William Byron Forbush (1926), with additions",
   "description": "For four centuries, after the Bible itself, few books so shaped Protestant hearts as John Foxe's record of those who died rather than deny Christ. Here are the apostles and the ten persecutions under the Roman emperors, the Waldenses and the Inquisition, Huss and Jerome of Prague, William Tyndale, and the men and women burned under Queen Mary — Rogers, Hooper, Ridley, Latimer and Cranmer among them — told with passion and tenderness. This is William Byron Forbush's 1926 edition, which abridges Foxe and adds chapters he never wrote: the lives of Wickliffe, Luther, Calvin, Bunyan and Wesley, the Irish massacre of 1641, the Quakers, the French Protestants of 1814–1820 and the beginnings of American foreign missions. It describes torture and execution plainly, as the history it is.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Fox’s Book of Martyrs?",
+    "answer": "It is John Foxe’s record of Christians who died rather than deny Christ, first published in 1563 and for centuries one of the most widely read books in the English-speaking world after the Bible. This is William Byron Forbush’s 1926 edition, which abridges Foxe’s vast original and adds later chapters, including lives of Wycliffe, Luther, Calvin, Bunyan and Wesley."
+   },
+   {
+    "question": "What periods of history does the book cover?",
+    "answer": "It begins with the apostles and the ten persecutions under the Roman emperors, then covers Christians in Persia, the Waldenses and the Inquisition, John Huss and Jerome of Prague, the persecutions of the Reformation in Germany and the Netherlands, and the burnings under Queen Mary in England. Forbush’s additions reach into the eighteenth and nineteenth centuries."
+   },
+   {
+    "question": "What does the book say about Polycarp?",
+    "answer": "It tells how Polycarp, the aged bishop of Smyrna, was discovered and brought before the proconsul, who urged him to swear and reproach Christ in exchange for his life. Polycarp answered that he had served Christ eighty-six years and had never been wronged by him; how then could he blaspheme his King who had saved him? He was burned in the marketplace."
+   },
+   {
+    "question": "What happened to William Tyndale?",
+    "answer": "Tyndale translated the New Testament into English from the Greek, and was hunted for it. He was betrayed, imprisoned for over a year, then strangled and burned at Vilvorde in 1536. At the stake, the book records, he cried with a loud voice, “Lord! open the king of England’s eyes.” Within a few years an English Bible was placed in every parish church."
+   },
+   {
+    "question": "What did Latimer say to Ridley at the stake?",
+    "answer": "Hugh Latimer and Nicholas Ridley, bishops under Edward VI, were burned together at Oxford in 1555 under Queen Mary. As the fire was lit, Latimer said, “Be of good cheer, Ridley; and play the man. We shall this day, by God’s grace, light up such a candle in England, as I trust, will never be put out.” It became one of the most famous scenes in the book."
+   },
+   {
+    "question": "How did Thomas Cranmer die?",
+    "answer": "Cranmer, Archbishop of Canterbury, had signed recantations of his Protestant faith under pressure. At the end he renounced them publicly, and at the stake he stretched out his right hand, the hand that had signed, and held it in the fire until it burned, repeating, “This unworthy right hand.” He died praying the words of Stephen, “Lord Jesus, receive my spirit.”"
+   }
+  ],
   "publication_year": 1926,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/f/foxe/martyrs/files/martyrs.html",

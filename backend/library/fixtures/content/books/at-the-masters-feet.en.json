@@ -14,7 +14,32 @@
   "description": "A conversation between the Disciple and the Master, in which Sadhu Sundar Singh sets down the truths he says the Master revealed to him in prayer: on the manifestation of God’s presence, sin and salvation, prayer, service, the cross and the mystery of suffering, and heaven and hell. “It would be impossible for me to set forth these truths that have been revealed to me,” he writes, “except in parabolic language” — and so the Master answers in parables of the sponge in the water, the charcoal in the fire and the child who wants only his mother. Translated from the Urdu with the Sadhu’s own co-operation.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is At the Master’s Feet?",
+    "answer": "It is a small devotional book by Sadhu Sundar Singh, the Indian Christian who traveled as a wandering holy man preaching Christ. Written as a conversation between the Disciple and the Master, it sets down truths he believed Christ had shown him in prayer. It was first published in Urdu and translated into English with the Sadhu’s own help."
+   },
+   {
+    "question": "Why is it written in parables?",
+    "answer": "Sundar Singh said that it would be impossible for him to set forth the truths revealed to him except in parabolic language. Following the example of Jesus and of Indian teaching, the Master answers the Disciple’s questions with short pictures from everyday life, which make spiritual truths easy to remember and hard to forget."
+   },
+   {
+    "question": "What is the parable of the sponge?",
+    "answer": "The Master says that just as a sponge lies in water and the water fills the sponge, yet the water is not the sponge and the sponge is not the water, so he is present in every place and in everything, but they are not he. Union with God fills the believer completely, yet God and the believer remain distinct."
+   },
+   {
+    "question": "What is the parable of the charcoal?",
+    "answer": "A piece of charcoal stays black however much it is washed. But when fire enters it, its blackness disappears and it glows. So, the Master says, when he enters a person in the baptism of fire, all the blackness of sin is driven away, and that person becomes a light to the world. Sin is overcome by his presence, not by human effort."
+   },
+   {
+    "question": "What does the book teach about prayer?",
+    "answer": "Prayer, the Master says, is breathing in the life-giving Spirit of God. Just as fish spend their whole lives in the salt water of the sea without becoming salty, because they have life in them, so the person of prayer remains pure though living in a sin-defiled world. Prayer is not mainly asking for things but receiving God himself."
+   },
+   {
+    "question": "What is the story of the child and his mother?",
+    "answer": "A mother once hid in a garden among thick shrubs, and her little son went searching for her. When a servant offered him mangoes and pretty flowers, he cried that he wanted his mother, whose food and love were sweeter than any of them. The Master uses this to show that his true children want him, not merely his gifts."
+   }
+  ],
   "publication_year": 1922,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/singh/feet",

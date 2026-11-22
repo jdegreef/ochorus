@@ -13,7 +13,32 @@
   "cover_byline": "",
   "description": "On the morning after his twenty-first birthday, a young man named Anodos wakes to find the stream from his washbasin running across his carpet and his bedroom turning into a wood: he has crossed into Fairy Land. Following a path into the forest, he meets the friendly spirits of the trees and the treacherous Alder-maiden, opens a forbidden door and gains a shadow that withers whatever it falls on, reads strange tales in a palace of the fairies, sings a marble lady to life and loses her, and learns at last, through failure and death, that the way to find himself is to lose himself in love. MacDonald's first romance is the book that a young atheist named C. S. Lewis bought at a railway bookstall in 1916, and later said had baptized his imagination.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Phantastes?",
+    "answer": "Phantastes is George MacDonald’s first fantasy romance, published in 1858. On the morning after his twenty-first birthday, a young man named Anodos wakes to find a stream running from his washbasin across the carpet and his bedroom turning into a wood. He has crossed into Fairy Land, and the book follows his wanderings there."
+   },
+   {
+    "question": "What happens to Anodos in Fairy Land?",
+    "answer": "He meets the spirits of the trees, and is warned to trust the Oak, the Elm and the Beech but to shun the Ash, an ogre, and the Alder, who will smother him with her web of hair. He reads strange tales in a fairy palace, sings a marble lady to life and loses her, and becomes a knight, learning through many failures."
+   },
+   {
+    "question": "What is Anodos’s shadow?",
+    "answer": "After opening a forbidden door, Anodos acquires a dark shadow that follows him everywhere and withers whatever it falls on. Grass and flowers on which it has lain are scorched and dead, with no hope of revival. The shadow seems to represent a self-centered, disenchanting spirit that drains the wonder from the world, and he cannot be rid of it by his own effort."
+   },
+   {
+    "question": "What is the story of Cosmo?",
+    "answer": "In the fairy palace Anodos reads a tale about Cosmo von Wehrstahl, a poor student at Prague who falls in love with a lady seen only in an old magic mirror. He longs to possess her, and must learn that to free her he has to give her up. The story within the story explores love that must let go of possession, a theme the whole book shares."
+   },
+   {
+    "question": "What does Anodos learn at the end?",
+    "answer": "Through failure, humbling and even death, Anodos learns that the way to find himself is to lose himself in love. Returned home, he hears a voice saying that a great good is coming to him, and he concludes that good is always coming, though few have the simplicity and courage to believe it. What we call evil may be the best good’s only possible shape."
+   },
+   {
+    "question": "Why is Phantastes important in literary history?",
+    "answer": "It was one of the first full-length fantasy novels for adults in English, and it shaped later writers. Most famously, the young C. S. Lewis, then an atheist, bought a copy at a railway bookstall in 1916, and later wrote that reading it began the conversion of his imagination long before his intellect followed."
+   }
+  ],
   "publication_year": 1858,
   "source_type": "public_domain",
   "source_url": "https://standardebooks.org/ebooks/george-macdonald/phantastes",

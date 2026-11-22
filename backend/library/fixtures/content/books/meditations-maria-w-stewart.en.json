@@ -14,7 +14,32 @@
   "description": "In 1879, near the end of her life, Maria W. Stewart reprinted the writings Garrison had published for her in Boston: her 1831 call to Religion and the Pure Principles of Morality, fourteen Meditations, many closing in a written prayer, and the four addresses she gave in Boston in 1832 and 1833. To them she added an account of her sufferings and labours during the Civil War, and letters from Garrison, Alexander Crummell and others who knew her.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "Who was Maria W. Stewart?",
+    "answer": "Maria W. Stewart was a free Black woman in Boston, a writer, speaker and teacher, and an early voice for abolition and for the rights of Black Americans and women. In the early 1830s she published and lectured with the support of William Lloyd Garrison. She is often described as the first American woman to lecture publicly on political themes to mixed audiences."
+   },
+   {
+    "question": "What is in the Meditations from the Pen of Mrs. Maria W. Stewart?",
+    "answer": "In 1879, near the end of her life, Stewart reprinted her early writings: her 1831 essay Religion and the Pure Principles of Morality, fourteen Meditations, many ending in a prayer, and four public addresses from 1832 and 1833. She added an account of her sufferings during the Civil War and letters from Garrison, Alexander Crummell and others."
+   },
+   {
+    "question": "Why was the book republished in 1879?",
+    "answer": "The preface explains that the work had been suppressed for forty-six years while Stewart struggled in widowhood and poverty. When she established her claim to a pension as the widow of a veteran of the War of 1812, she used the money to republish her writings, encouraged by friends such as Garrison, who had been one of her earliest benefactors."
+   },
+   {
+    "question": "What is the message of Stewart’s addresses?",
+    "answer": "She calls Black Americans, and especially Black women, to faith in God, education, moral excellence and self-improvement, and denounces slavery and racial injustice. In one address she cries, “O ye daughters of Africa, awake! awake! arise!” urging them to show the world that they are endowed with noble and exalted faculties."
+   },
+   {
+    "question": "How is Stewart’s faith shown in the Meditations?",
+    "answer": "The Meditations are prayers and reflections on Scripture, sin, grace, suffering and hope. Many close with a written prayer. They show a deep evangelical faith that saw no separation between personal holiness and the struggle for justice. For Stewart, God’s call to righteousness included the call to resist oppression."
+   },
+   {
+    "question": "Why is Maria Stewart important today?",
+    "answer": "She was a pioneer who spoke publicly when it was almost unheard of for women, and especially Black women, to do so. Her blend of biblical faith, social criticism and passionate rhetoric anticipated later movements for abolition, civil rights and women’s rights. Her writings remain an important witness in American religious history."
+   }
+  ],
   "publication_year": 1879,
   "source_type": "public_domain",
   "source_url": "https://archive.org/details/meditationsfromp00stew",

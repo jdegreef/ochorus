@@ -102,6 +102,7 @@
   "reader_no_definition": "Nenhuma definição encontrada para esta palavra.",
   "reader_scripture": "Escritura",
   "reader_scripture_unavailable": "Não foi possível carregar o texto do versículo.",
+  "reader_scripture_omitted": "Este versículo não está na Open Word Bible, que segue os manuscritos mais antigos. Traduções mais antigas, como a Almeida, o incluem.",
   "reader_scripture_page": "O que os clássicos dizem sobre esta passagem",
   "reader_related_passages": "Passagens relacionadas",
   "reader_crossrefs_credit": "Referências cruzadas de %source%, CC BY",

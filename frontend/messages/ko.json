@@ -102,6 +102,7 @@
   "reader_no_definition": "이 단어의 뜻풀이를 찾을 수 없습니다.",
   "reader_scripture": "성경",
   "reader_scripture_unavailable": "성경 구절을 불러오지 못했습니다.",
+  "reader_scripture_omitted": "이 구절은 가장 오래된 사본을 따르는 Open Word Bible에는 없습니다. 킹 제임스 같은 옛 번역에는 들어 있습니다.",
   "reader_scripture_page": "이 구절에 대해 고전이 말하는 것",
   "reader_related_passages": "관련 구절",
   "reader_crossrefs_credit": "상호 참조: %source%, CC BY",

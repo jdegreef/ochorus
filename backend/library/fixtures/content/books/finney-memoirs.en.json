@@ -11,7 +11,32 @@
   "subtitle": "Written by Himself",
   "description": "Charles G. Finney's own account of the revivals that followed his preaching across upstate New York, the eastern cities and Britain. He wrote it at the urging of the trustees of Oberlin College, to give from himself a statement of the doctrines he preached, the measures he used and their results: from his conversion as a young law student at Adams in the autumn of 1821, through the awakenings at Western, Rome, Utica, Rochester, Philadelphia, New York and Boston, to his labors in England and Scotland and his long years at Oberlin. His family published the manuscript in 1876, the year after his death, essentially as he left it.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What are the Memoirs of Charles G. Finney?",
+    "answer": "They are the autobiography of Charles Finney, the American revivalist, describing the revivals that followed his preaching in upstate New York, the eastern cities and Britain. He wrote them at the urging of the trustees of Oberlin College, and his family published them in 1876, the year after his death."
+   },
+   {
+    "question": "Why did Finney write his memoirs?",
+    "answer": "Finney says that God had connected his name with an extensive movement in revivals of religion, which involved views of doctrine and methods that some had questioned. He wanted to give, from himself, a plain account of the doctrines he preached, the measures he used and their results, to correct misunderstandings."
+   },
+   {
+    "question": "How was Finney converted?",
+    "answer": "As a young law student in Adams, New York, in 1821, he became convinced he needed to settle the question of his soul. He went into a wood north of the village, resolving to give his heart to God or die in the attempt. After hours of struggle and prayer there, he found peace, and that evening, alone in his office, he received what he called a mighty baptism of the Holy Ghost."
+   },
+   {
+    "question": "What did Finney experience at his conversion?",
+    "answer": "He describes the Holy Spirit descending on him in a way that seemed to go through him body and soul, like a wave of electricity, and in waves and waves of liquid love. It seemed like the very breath of God. He wept aloud with joy and love, and knew with certainty that he had received the love of God and the baptism of the Holy Ghost."
+   },
+   {
+    "question": "What did Finney tell his law client the next day?",
+    "answer": "The morning after his conversion, a deacon came to ask whether he was ready for a lawsuit set for that day. Finney replied that he had a retainer from the Lord Jesus Christ to plead his cause, and could not plead the deacon’s. He gave up law and began at once to speak to others about their souls."
+   },
+   {
+    "question": "What were Finney’s new measures?",
+    "answer": "Finney used methods that critics called new measures, such as protracted meetings, praying for people by name, and the anxious seat, a bench where people concerned for their souls could come forward. He says he rarely used the anxious seat until his work in Rochester in 1830, which became one of the most famous revivals of his ministry."
+   }
+  ],
   "publication_year": 1876,
   "source_type": "public_domain",
   "source_url": "",
