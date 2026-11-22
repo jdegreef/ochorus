@@ -30,7 +30,7 @@ const absoluteAssetUrls = (): Plugin => ({
 	apply: 'build',
 	enforce: 'post',
 	closeBundle() {
-		const root = path.resolve(__dirname, '.svelte-kit/output/client/_app/immutable');
+		const root = path.resolve(import.meta.dirname, '.svelte-kit/output/client/_app/immutable');
 		if (!fs.existsSync(root)) return;
 		const walk = (dir: string) => {
 			for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {

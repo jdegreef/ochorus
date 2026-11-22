@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { bookRowOf, type BookFields } from '../test/bookRows';
 import { FOR_LINKS, forIndexPath, forLocale, forPath } from './forLinks';
 import { FOR_META } from './forMeta';
 import { messageShareLinks } from './share';
@@ -36,7 +37,6 @@ import type { BookDetail, BookSummary, PlanSummary, QuotePage } from './library-
 
 const ROUTES = join(import.meta.dirname, '..', 'routes');
 const LIBRARY = join(import.meta.dirname, '..', '..', '..', 'backend', 'library');
-const BOOKS = join(LIBRARY, 'fixtures', 'content', 'books');
 /** The quote seed and the authors fixture, read as text / JSON. */
 const QUOTE_SEED = readFileSync(join(LIBRARY, 'quote_seed.py'), 'utf8');
 const APPROVED = new Set(
@@ -54,13 +54,15 @@ const PLAN_SLUGS = new Set(
 	[...readFileSync(join(LIBRARY, 'plan_seed.py'), 'utf8').matchAll(/\(\s*\n(?:\s*#[^\n]*\n)*\s*"([a-z0-9-]+)",/g)].map((m) => m[1])
 );
 
-/** This slug's English book row in the content fixture, or null. */
-const fixtureBook = (slug: string): { is_published: boolean; pdf_url: string } | null => {
-	try {
-		return JSON.parse(readFileSync(join(BOOKS, `${slug}.en.json`), 'utf8'))[0].fields;
-	} catch {
-		return null;
-	}
+const enBooks = new Map<string, BookFields | null>();
+
+/** This slug's English book row in the content fixture, or null. Its book row
+ *  alone (`bookRowOf`): parsing each whole file, chapters and all, ran this
+ *  test past vitest's 5 s limit when the full suite was busy (bug review
+ *  2026-11-22, #46). */
+const fixtureBook = (slug: string): BookFields | null => {
+	if (!enBooks.has(slug)) enBooks.set(slug, bookRowOf(slug, 'en'));
+	return enBooks.get(slug) ?? null;
 };
 
 /** This slug's English sermon row in the content fixture, or null. */
