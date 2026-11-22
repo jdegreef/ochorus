@@ -14,7 +14,32 @@
   "description": "The first full Latin account of the Christian faith, written for educated pagans in the years of the Great Persecution: against the gods and the philosophers, then for true wisdom, justice, the worship of the one God and the life to come.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What are The Divine Institutes?",
+    "answer": "It is Lactantius\u2019s full defence and explanation of the Christian faith, written in Latin for educated pagans in the years of the Great Persecution and dedicated to the Emperor Constantine. In seven books he exposes the false worship of the gods and the false wisdom of the philosophers, then sets out true wisdom and religion, justice, true worship and the happy life to come."
+   },
+   {
+    "question": "Why did Lactantius write for educated pagans?",
+    "answer": "Lactantius had long been engaged in oratory, and he says that this work is better and more glorious than oratory, because it directs the learned to true wisdom and the unlearned to true religion. He meets his readers on their own ground, quoting their poets, Cicero and the philosophers, and he presents the truth in a polished style so that it may flow with greater power into their minds."
+   },
+   {
+    "question": "What does Lactantius say about wisdom and religion?",
+    "answer": "His central claim is that wisdom and religion cannot be separated. The philosophers sought wisdom without religion, and the pagan cults practised religion without wisdom, so both failed. Only the worship of the one true God, who is the Lord of nature and the Father of all, unites knowing the truth with honouring God rightly."
+   },
+   {
+    "question": "How does Lactantius use pagan writers?",
+    "answer": "He draws on testimony from the pagans themselves to show that the one God was not unknown to them. He cites Cicero and other writers who acknowledged a supreme God, and he gathers the Sibylline oracles as divine testimony. His aim is to show that the best pagan thought points toward the God whom Christians worship."
+   },
+   {
+    "question": "What does the final book teach?",
+    "answer": "Book VII, Of a Happy Life, describes the end of the world and the reward of the righteous. Lactantius teaches that, as God\u2019s works were completed in six days, the world will continue in its present state through six ages, or six thousand years, before the consummation and the reign of the righteous. These views reflect his own era and are not shared by all Christians."
+   },
+   {
+    "question": "Who should read The Divine Institutes?",
+    "answer": "It suits readers interested in early Christian apologetics, the age of Constantine, or how the faith was presented to the educated Roman world. Its clear, polished Latin style and its arguments for justice and true worship remain readable. Some of its views on history and the end times should be read in their early context."
+   }
+  ],
   "publication_year": 310,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/anf07.iii.ii.html",

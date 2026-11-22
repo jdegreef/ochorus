@@ -14,7 +14,32 @@
   "description": "The letters of Cyprian, bishop of Carthage, from his hiding place in the Decian persecution to the eve of his martyrdom, with those written to him: counsel to clergy and confessors, the hard question of the lapsed, the unity of the Church, the schism of Novatian and the dispute over rebaptism with Rome.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What are The Epistles of Cyprian?",
+    "answer": "They are the letters of Cyprian, bishop of Carthage in the third century, together with some written to him. They run from his time in hiding during the Decian persecution to the eve of his martyrdom in 258, and deal with counsel to clergy and confessors, the hard question of the lapsed, the unity of the Church, the schism of Novatian and the dispute over rebaptism with Rome."
+   },
+   {
+    "question": "What is the letter to Donatus?",
+    "answer": "The first epistle, to his friend Donatus, was written in the quiet of the vintage season. Cyprian describes how the grace of God in baptism changed him, contrasts it with the cruelty and corruption of the world, including the bloody spectacles of the arena, and urges Donatus to despise the world and give himself to reading and prayer."
+   },
+   {
+    "question": "Who were the lapsed?",
+    "answer": "During persecution many Christians denied the faith or sacrificed to the gods to save their lives. These were called the lapsed. Cyprian\u2019s letters wrestle with how and when they could be restored to the Church, warning against presbyters who rashly granted them peace without repentance, while hoping that the repentance of the lapsed might be renewed."
+   },
+   {
+    "question": "What does Cyprian teach about the unity of the Church?",
+    "answer": "Cyprian insists that the house of God is one and that there can be no salvation for anyone except in the Church. He asks how anyone can have God for his Father who has not first had the Church for his Mother. For him, schism is as serious as heresy, since it tears the one body that Christ founded."
+   },
+   {
+    "question": "How did Cyprian respond to Novatian?",
+    "answer": "When messengers came to Carthage announcing Novatian\u2019s ordination as a rival bishop of Rome, Cyprian rejected them and stood with Cornelius, once letters from his colleagues confirmed that Cornelius had been lawfully ordained. Several letters to Cornelius deal with this schism and its supporters."
+   },
+   {
+    "question": "Who should read The Epistles of Cyprian?",
+    "answer": "They suit readers interested in the early Church under persecution, church discipline, and the meaning of Christian unity. The letters show a pastor caring for his flock from hiding, encouraging martyrs and confessors, and making hard decisions in a crisis. They are a vivid record of third-century Christian life."
+   }
+  ],
   "publication_year": 258,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/anf05.iv.iv.html",

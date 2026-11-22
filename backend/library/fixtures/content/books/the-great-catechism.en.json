@@ -14,7 +14,32 @@
   "description": "Gregory of Nyssa\u2019s handbook for those who teach the faith, arguing from reason with Greek and Jew alike: one God in Word and Spirit, man made in God\u2019s image and fallen by his own choice, why God became man and how the Cross ransoms and heals us, and the new birth of baptism and the Eucharist.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Great Catechism?",
+    "answer": "It is Gregory of Nyssa\u2019s handbook for those who teach the Christian faith, written in the late fourth century. It sets out the main doctrines for instructing converts and answers objections from Greeks and Jews: one God with his Word and Spirit, man made in God\u2019s image and fallen by his own choice, why God became man, how the cross ransoms and heals us, and the new birth of baptism and the Eucharist."
+   },
+   {
+    "question": "Why does Gregory say instruction must be adapted?",
+    "answer": "Gregory opens by saying that those who teach the mystery of godliness need a system, but that the same method will not suit everyone. The Judaizer comes with one set of notions and the one steeped in Hellenism with another. So against the Greek he stresses the unity of God, and against the Jew the distinction of the Word and the Spirit, applying the right remedy to each."
+   },
+   {
+    "question": "How does Gregory explain the origin of evil?",
+    "answer": "Gregory teaches that God made man in his image and gave him the precious gift of being his own master, with free will. Evil has no existence of its own; it arises when the will turns away from the good. Since free will chooses what it likes, God is not the author of evil, which springs from human choice."
+   },
+   {
+    "question": "What is the image of the hook and the bait?",
+    "answer": "Gregory explains the ransom paid at the cross with a striking image. The Deity was hidden under the veil of our human nature, so that, as with a ravenous fish, the hook of the Deity might be swallowed along with the bait of flesh. In this way life entered the house of death and light shone in darkness, and the enemy who held humanity captive was overcome."
+   },
+   {
+    "question": "Is the Incarnation unworthy of God?",
+    "answer": "Gregory answers those who think it beneath God to be born and to die. He compares Christ to a physician who touches the sick without being weakened by their disease, and says that, as a man can touch water and stay safe, with far greater ease the Divine Power can enter death without being changed by it. God\u2019s love for man is the reason he came."
+   },
+   {
+    "question": "Who should read The Great Catechism?",
+    "answer": "It suits those who teach the faith, students of early Christian theology, and anyone who wants a reasoned account of why God became man. Gregory argues closely but clearly, and the work shows how the Fathers presented the gospel to thoughtful unbelievers of their day."
+   }
+  ],
   "publication_year": 385,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/npnf205.xi.ii.html",

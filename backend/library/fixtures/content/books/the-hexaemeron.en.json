@@ -14,7 +14,32 @@
   "description": "Nine Lenten homilies Basil the Great preached to working people on the six days of creation, morning and evening: heaven and earth, light, the firmament and the waters, plants, the sun and moon, fish and birds, beasts and finally man, with the wisdom of the Creator read in every creature.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Hexaemeron?",
+    "answer": "It is a set of nine homilies by Basil the Great on the six days of creation in Genesis 1, preached around 370, morning and evening. Basil moves through heaven and earth, light, the firmament and the waters, plants, the sun and moon, fish and birds, and land animals, reading the wisdom of the Creator in every creature."
+   },
+   {
+    "question": "Who was Basil preaching to?",
+    "answer": "Basil preached to ordinary people in his church at Caesarea. He mentions that many artisans from mechanical trades were crowding around him, men whose day\u2019s labour hardly sufficed to keep them, and he is mindful of how much of their time he takes. The homilies are learned but meant for working people."
+   },
+   {
+    "question": "Does Basil read Genesis literally or allegorically?",
+    "answer": "Basil deliberately avoids fanciful allegories. He says that some interpret Scripture like interpreters of dreams, but for him grass is grass; plant, fish, wild beast and domestic animal, he takes all in the literal sense. He wants his hearers to see God\u2019s wisdom in creatures as they really are."
+   },
+   {
+    "question": "What does Basil want his hearers to learn from creation?",
+    "answer": "Basil invites his congregation to stand around the vast and varied workshop of divine creation and to view its order with wonder. In the habits of animals, the growth of plants and the movement of the heavens he finds lessons for the Christian life and reasons to praise the Creator. Creation is a school for the soul."
+   },
+   {
+    "question": "What does Basil say about the beginning of the world?",
+    "answer": "In his first homily Basil insists that the creation of heaven and earth was not spontaneous, as some had imagined, but drew its origin from God. He tells his hearers that the soul must prepare itself, free from earthly cares, to receive such high lessons, and must seek in the world an idea of God worthy of him."
+   },
+   {
+    "question": "Who would enjoy The Hexaemeron?",
+    "answer": "It suits readers who love the natural world and want to see it through the eyes of faith, and those interested in early Christian readings of Genesis. Basil\u2019s descriptions of creatures are lively and often charming. The work pairs well with his brother Gregory of Nyssa\u2019s On the Making of Man, which completes it."
+   }
+  ],
   "publication_year": 370,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/npnf208.viii.html",
