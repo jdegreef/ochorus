@@ -215,6 +215,47 @@ def _first_reference(text: str):
     return refs[0] if refs else None
 
 
+# Short forms pythonbible doesn't know but readers' texts (and the reader's own
+# reference parser, frontend ``biblePassage.ts``) use: "— Ro 15:5" in a daily
+# reading, "Mt 5:3" in 32 works. Expanded only where a reference is LOOKED UP
+# (the popover, its chapter link), never where one is found in prose, so which
+# spans get linked and counted stays exactly as it was.
+_LOOKUP_ALIASES = re.compile(r"\b(Ro|Mt|Mk|Lk|Revelations)\b\.?(?=\s*\d)")
+_LOOKUP_ALIAS_NAMES = {
+    "Ro": "Romans",
+    "Mt": "Matthew",
+    "Mk": "Mark",
+    "Lk": "Luke",
+    "Revelations": "Revelation",
+}
+
+
+def _lookup_reference(text: str):
+    """``_first_reference`` for a reference someone asked to READ: also
+    accepts the short forms in ``_LOOKUP_ALIASES``."""
+    expanded = _LOOKUP_ALIASES.sub(lambda m: _LOOKUP_ALIAS_NAMES[m.group(1)], text)
+    return _first_reference(expanded)
+
+
+def omitted_reference(ref_text: str) -> str | None:
+    """The formatted reference when ``ref_text`` names real verse numbers that
+    no bundled Bible prints, else None.
+
+    Matthew 17:21, Mark 7:16, Luke 17:36, Acts 8:37: the KJV-era classics quote
+    them, but OWB and the ASV follow manuscripts that lack them. The popover says
+    so instead of "couldn't be loaded", which read as a broken site.
+    """
+    ref = _lookup_reference(ref_text)
+    # The 66-book canon only: an Apocrypha quote (Wisdom, Ecclus.) has no text
+    # here for a different reason, and the omitted-verse note would mislead.
+    if ref is None or ref.book.value > 66:
+        return None
+    ids = bible.convert_reference_to_verse_ids(ref)[:_MAX_VERSES]
+    if not ids or any(owb_verse(v) is not None or _asv_text(v) for v in ids):
+        return None
+    return bible.format_scripture_references([ref])
+
+
 # An epigraph's attribution: a dash, then the reference ("— Isaiah 43:1 (BSB)").
 # A devotional opens on its key verse this way; a citation in running prose does
 # not wear the dash, so only an attributed verse becomes the day's key verse.
@@ -378,7 +419,7 @@ def lookup(ref_text: str) -> dict | None:
     (Romans 16:20-27 runs into the doxology OWB's Greek ends before), so one
     popover never mixes two Bibles under one label nor drops a verse unsaid.
     """
-    ref = _first_reference(ref_text)
+    ref = _lookup_reference(ref_text)
     if ref is None:
         return None
     all_ids = bible.convert_reference_to_verse_ids(ref)
@@ -421,7 +462,7 @@ def chapter_of(ref_text: str) -> tuple[int, int] | None:
     63:19) is in THAT chapter, where the reader prints it. None for text that
     isn't a parseable English reference. Uncached: ``_first_reference`` is.
     """
-    ref = _first_reference(ref_text)
+    ref = _lookup_reference(ref_text)
     if ref is None:
         return None
     try:

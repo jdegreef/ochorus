@@ -54,6 +54,31 @@ class ScriptureTests(TestCase):
         self.assertIn("one and only Son", res.data["verses"][0]["text"])
         self.assertEqual(res.data["version"], "Open Word Bible")
 
+    def test_lookup_accepts_short_book_forms(self):
+        # "— Ro 15:5" headed a daily reading on the home page and 404'd; the
+        # fixtures cite "Mt" 381 times. The reader's own parser accepts these.
+        for short, full in [
+            ("Ro 15:5", "Romans 15:5"),
+            ("Mt 5:3", "Matthew 5:3"),
+            ("Mk 1:1", "Mark 1:1"),
+            ("Lk. 2:1", "Luke 2:1"),
+            ("Revelations 3:20", "Revelation 3:20"),
+        ]:
+            res = self.client.get(f"/api/library/scripture/?ref={short}")
+            self.assertEqual(res.status_code, 200, short)
+            self.assertEqual(res.data["reference"], full)
+
+    def test_a_verse_no_bundled_bible_prints_is_flagged_omitted(self):
+        res = self.client.get("/api/library/scripture/?ref=Matthew 17:21")
+        self.assertEqual(res.status_code, 404)
+        self.assertIs(res.data["omitted"], True)
+        self.assertEqual(res.data["reference"], "Matthew 17:21")
+        # Not for the Apocrypha (absent for another reason) or a non-verse.
+        for ref in ["Wisdom 5:15", "John 99:1", "Room 3:16"]:
+            res = self.client.get(f"/api/library/scripture/?ref={ref}")
+            self.assertEqual(res.status_code, 404, ref)
+            self.assertNotIn("omitted", res.data, ref)
+
     def test_lookup_prints_a_joined_verse_once(self):
         # OWB prints Psalm 13:5-6 as one verse: the popover must not repeat it.
         from library.scripture import lookup
