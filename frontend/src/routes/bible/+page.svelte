@@ -218,6 +218,33 @@
 			{chapters === 1 ? t('book.chapterOne') : t('book.chaptersMany')}
 		{/if}
 	{/snippet}
+	<!-- What the translation is, where a reader first wonders: who made it, what
+	     "Balanced" means, that it is free. Its words are the /open-word-bible
+	     page's own (English, as the hub is), and a native <details>, so it opens
+	     without script and announces its state. -->
+	<details class="owb-note">
+		<summary>
+			<span>Open Word Bible</span><span class="sep" aria-hidden="true">·</span><span
+				>Balanced</span
+			><span class="sep" aria-hidden="true">·</span><span>Free to share</span>
+			<span class="owb-chev" aria-hidden="true"><Icon name="chevron-right" size={14} /></span>
+		</summary>
+		<div class="owb-note-body">
+			<p>
+				A new translation of the Bible from the Hebrew and Greek, in today's English. Every
+				sentence is translated three ways, from word-for-word to plain; Ochorus prints the
+				Balanced one, faithful to the original and easy to read.
+			</p>
+			<p>
+				It is given to the public domain, so anyone may read, copy, print and share it, free.
+			</p>
+			<p>
+				<a href={localizeHref(`${OWB_PATH}/`)} class="font-medium text-accent hover:underline"
+					>More about the translation <Arrow /></a
+				>
+			</p>
+		</div>
+	</details>
 
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
@@ -442,6 +469,56 @@
 </div>
 
 <style>
+	.owb-note {
+		margin: -0.5rem 0 1.5rem;
+		max-width: 40rem;
+		font-size: var(--fs-small);
+	}
+	.owb-note summary {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		min-height: 2.25rem;
+		padding: 0.3rem 0.75rem;
+		border: 1px solid var(--border-strong);
+		border-radius: var(--radius-pill);
+		background: var(--surface);
+		color: var(--muted);
+		cursor: pointer;
+		list-style: none;
+	}
+	.owb-note summary::-webkit-details-marker {
+		display: none;
+	}
+	/* The row's chapter-button chevron, a quarter turn when open. */
+	.owb-chev {
+		display: inline-flex;
+		margin-inline-start: 0.15rem;
+		transition: transform var(--duration-base) ease;
+	}
+	.owb-note[open] .owb-chev {
+		transform: rotate(90deg);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.owb-chev {
+			transition: none;
+		}
+	}
+	.owb-note summary:hover {
+		color: var(--text);
+	}
+	.owb-note-body {
+		display: grid;
+		gap: 0.5rem;
+		margin-top: 0.75rem;
+		padding-inline-start: 0.75rem;
+		border-inline-start: 2px solid var(--border-strong);
+		color: var(--muted);
+		line-height: 1.55;
+	}
+	.owb-note-body p {
+		margin: 0;
+	}
 	.jump {
 		position: relative;
 		margin: 0.25rem 0 0.75rem;
