@@ -30,6 +30,7 @@
 	import { readSearchState, searchStateKey, writeSearchState } from '$lib/searchState';
 	import {
 		GROUP_ORDER,
+		facetGroups,
 		grandTotal as grandTotalOf,
 		groupRows,
 		leadWithPinned,
@@ -192,7 +193,9 @@
 	);
 
 	/** Whether there is more than one kind to choose between — see the tabs. */
-	const hasFacets = $derived(groups.length > 1);
+	/** Every kind with matches — merged rows or a server count (see facetGroups). */
+	const facets = $derived(facetGroups(groups, totals));
+	const hasFacets = $derived(facets.length > 1);
 	/** Sorting is only meaningful once one type owns the list, and only above one row. */
 	const showsSort = $derived(typeFilter !== 'all' && shownCount > 1);
 
@@ -209,13 +212,13 @@
 	 * usually far larger than what is on screen — and saying "30 results" when it
 	 * is 251 was the whole problem.
 	 */
-	const grandTotal = $derived(grandTotalOf(groups, totals));
-	const anyCapped = $derived(groups.some((g) => isCapped(g.type)));
+	const grandTotal = $derived(grandTotalOf(facets, totals));
+	const anyCapped = $derived(facets.some((g) => isCapped(g.type)));
 
 	/** The kind tabs: All, then each kind present, each with its real total. */
 	const tabs = $derived([
 		{ type: 'all', label: t('search.filterAll'), count: grandTotal, capped: anyCapped },
-		...groups.map((g) => ({
+		...facets.map((g) => ({
 			type: g.type as string,
 			label: t(g.labelKey),
 			count: totalFor(g.type, g.rows.length),
@@ -1326,6 +1329,11 @@
 	}
 	:global([dir='rtl']) input[type='search'].field.search-field {
 		background-position: right 0.9rem center;
+	}
+	/* Label and count are separate text nodes that Svelte trims together
+	   ("Books37"); the shared gap rule only covers `.chip`. */
+	.search-tabs .count {
+		margin-inline-start: 0.3rem;
 	}
 	.search-tabs {
 		border-bottom: 1px solid var(--border);

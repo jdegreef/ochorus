@@ -12,7 +12,32 @@
   "cover_title": "",
   "description": "Five sermons on divine healing, published in 1924 at the urging of the ministers and others in the cities where Bosworth had held revival campaigns across the United States and Canada. Written, as his preface admits, under great pressure and weariness between revivals, they make no pretence to literary style; their one aim is the simplest possible statement of the argument — that bodily healing, like forgiveness, was provided for in Christ's atonement, that it is God's will to heal, and how the sick may appropriate it by faith in His word. Bosworth answers the common objections, Paul's \"thorn\" among them, and closes with thirty-one questions and testimonies of those healed in his meetings.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Christ the Healer?",
+    "answer": "It is a book of sermons on divine healing by F. F. Bosworth, published in 1924 at the urging of ministers in cities where he had held revival campaigns across the United States and Canada. Bosworth admits in the preface that he wrote under pressure and weariness between meetings, aiming only at the simplest possible statement of the scriptural argument."
+   },
+   {
+    "question": "What is the main argument of Christ the Healer?",
+    "answer": "Bosworth argues that bodily healing, like forgiveness of sins, was provided for in Christ’s atonement; that it is God’s will to heal; and that the sick may receive it by faith in God’s word. He reasons that since disease, which he calls incipient death, entered the world through sin, Christ’s redemption from sin also reaches to sickness."
+   },
+   {
+    "question": "How does Bosworth use Isaiah 53?",
+    "answer": "He takes Isaiah 53:4, “Surely he hath borne our griefs, and carried our sorrows,” as referring to bodily sickness and pain, not only to sorrow of soul. His key evidence is Matthew 8:16–17, which says Jesus healed all the sick to fulfill what Isaiah spoke: “Himself took our infirmities, and bare our sicknesses.” He calls this an inspired commentary on the prophecy."
+   },
+   {
+    "question": "What does Bosworth say about Paul’s thorn?",
+    "answer": "Bosworth urges readers who think of sickness as a thorn in the flesh that must remain to read that sermon first. He argues that Paul himself calls the thorn the messenger of Satan sent to buffet him, and understands it as the persecution and opposition Paul faced, not a disease. So, he says, it cannot be used to argue that God wills Christians to stay sick."
+   },
+   {
+    "question": "How does Bosworth say faith for healing comes?",
+    "answer": "He stresses that faith comes by hearing, and hearing by the word of God. Many sick people, he says, have not received healing because they have never heard that it is God’s will, since ministers had not preached it. He urges the sick to fill their minds with God’s promises, act on them, and thank God before seeing the change."
+   },
+   {
+    "question": "What else is included in the book?",
+    "answer": "Besides the sermons, the book includes a section of questions and answers addressing common objections, and testimonies from people who said they had been healed in Bosworth’s meetings. Bosworth was one of the best-known healing evangelists of his era, and the book has remained in print and influential in Pentecostal and charismatic circles."
+   }
+  ],
   "publication_year": 1924,
   "source_type": "public_domain",
   "source_url": "https://archive.org/details/christhealerserm00bosw_0",

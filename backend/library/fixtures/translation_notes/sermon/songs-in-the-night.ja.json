@@ -1,0 +1,173 @@
+{
+    "kind": "sermon",
+    "slug": "songs-in-the-night",
+    "language": "ja",
+    "job_issue": 9638,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Job 35:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 0
+        },
+        {
+            "reference": "Psalm 91:5-6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 2
+        },
+        {
+            "reference": "Psalm 103:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 9
+        },
+        {
+            "reference": "Habakkuk 3:17-18",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 9
+        },
+        {
+            "reference": "Exodus 15:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 9
+        },
+        {
+            "reference": "Psalm 58:4-5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 11
+        },
+        {
+            "reference": "Lamentations 3:19",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 11
+        },
+        {
+            "reference": "Psalm 102:9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 11
+        },
+        {
+            "reference": "Job 19:25",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 17
+        },
+        {
+            "reference": "Psalm 77:10",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Job 2:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 24
+        },
+        {
+            "reference": "1 Kings 20:31-32",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 25
+        },
+        {
+            "reference": "Lamentations 3:22",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 27
+        },
+        {
+            "reference": "Psalm 103:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 27
+        },
+        {
+            "reference": "Revelation 11:15",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 29
+        },
+        {
+            "reference": "Revelation 19:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 11
+        },
+        {
+            "reference": "Malachi 4:2",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 29
+        },
+        {
+            "reference": "Romans 8:21",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 29
+        },
+        {
+            "reference": "Revelation 22:12",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 29
+        },
+        {
+            "reference": "Job 13:15",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 34
+        },
+        {
+            "reference": "Psalm 23:4",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 42
+        },
+        {
+            "reference": "Matthew 6:17",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 42
+        },
+        {
+            "reference": "Acts 13:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 43
+        },
+        {
+            "reference": "John 8:11",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 46
+        },
+        {
+            "reference": "Acts 16:30",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 47
+        },
+        {
+            "reference": "Acts 16:31",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Mark 16:16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 47
+        },
+        {
+            "reference": "Hebrews 7:25",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 50
+        }
+    ]
+}

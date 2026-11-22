@@ -13,7 +13,32 @@
   "cover_byline": "",
   "description": "George MacDonald called these sermons “unspoken” because they were never preached: he had lost his pulpit young, and wrote them instead, gathering them in three series in 1867, 1885 and 1889. In thirty-six meditations on the words of Jesus and the apostles he returns again and again to one conviction — that God is a Father whose love will not rest until his children are made like his Son. Here are “The Child in the Midst,” “The Consuming Fire,” “The Way,” “Abba, Father!” and “Self-Denial”: searching, tender and often startling pages, and the ones from which C. S. Lewis drew most of his anthology of the writer he called his master.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What are George MacDonald’s Unspoken Sermons?",
+    "answer": "They are thirty-six meditations on sayings of Jesus and the apostles, published in three series in 1867, 1885 and 1889. MacDonald called them unspoken because they were never preached: he had lost his pulpit as a young minister, and wrote these instead. They are among his most searching and influential writings."
+   },
+   {
+    "question": "What is the central theme of the Unspoken Sermons?",
+    "answer": "Again and again MacDonald returns to one conviction: that God is a Father whose love will not rest until his children are made like his Son. He insists that God’s love is not soft or indulgent but determined. The Father will spare no pain, for himself or for us, to bring us out of sin into his likeness."
+   },
+   {
+    "question": "What does MacDonald mean by “Our God is a consuming fire”?",
+    "answer": "In the sermon The Consuming Fire, on Hebrews 12:29, he argues that God’s fire is his love, which burns against everything in us that is not lovely. He writes that nothing is inexorable but love: a love that would yield to our prayers to leave us as we are would be imperfect and poor. The fire consumes the sin, not the sinner."
+   },
+   {
+    "question": "What is the sermon The New Name about?",
+    "answer": "It meditates on Revelation 2:17, the promise of a white stone with a new name that no one knows except the one who receives it. MacDonald reads the new name as God’s own idea of each person, the true self he meant us to become. Each soul has a unique relationship with God that no other can share."
+   },
+   {
+    "question": "What does MacDonald teach about obedience?",
+    "answer": "He insists that faith is proved in doing what Jesus says. Many, he writes, eat and drink and talk and teach in Christ’s presence, but few do the things he says to them: obedience is the one key of life. But it is not obedience alone that the Lord wants, he says elsewhere, but obedience to the truth: to the Light of the World, beheld and known."
+   },
+   {
+    "question": "Why have the Unspoken Sermons been so influential?",
+    "answer": "Their mix of tenderness and severity has moved generations of readers. C. S. Lewis regarded MacDonald as his master, and drew most of the selections in his anthology of MacDonald from these sermons. Many readers find in them a vision of a Father whose love is both more demanding and more hopeful than they had imagined."
+   }
+  ],
   "publication_year": 1867,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/9057",

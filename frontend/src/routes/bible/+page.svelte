@@ -129,6 +129,7 @@
 	// box. `active` is the one the arrow keys are on (-1: none).
 	const suggestions = $derived(passageSuggestions(jumpQ, series?.books ?? []));
 	const quick = $derived(quickPassages(series?.books ?? []));
+	const topics = $derived(data.topics);
 	let listOpen = $state(false);
 	let active = $state(-1);
 	const showList = $derived(listOpen && suggestions.length > 0);
@@ -312,15 +313,34 @@
 			</ul>
 
 		</form>
-		{#if quick.length}
-			<!-- One tap to the chapters most looked for: the placeholder's own
-			     examples first, so they also show what the box takes. -->
-			<ul class="quick" aria-label={t('bible.jumpLabel')}>
-				{#each quick as p (p.href)}
-					<li><a class="chip quick-chip" href={localizeHref(p.href)}>{p.label}</a></li>
-				{/each}
-			</ul>
-		{/if}
+		<div class="jump-extras">
+			{#if quick.length}
+				<!-- One tap to the chapters most looked for: the placeholder's own
+				     examples first, so they also show what the box takes. -->
+				<ul class="quick" aria-label={t('bible.jumpLabel')}>
+					{#each quick as p (p.href)}
+						<li><a class="chip quick-chip" href={localizeHref(p.href)}>{p.label}</a></li>
+					{/each}
+				</ul>
+			{/if}
+			{#if topics.length}
+				<!-- For a reader who comes with a subject, not a reference: each opens
+				     its topic shelf at "In the Bible", the chapters that shelf's
+				     classics and sermons return to most. -->
+				<nav class="topics-row" aria-labelledby="topics-row-label">
+					<span id="topics-row-label" class="topics-row-label">Passages on</span>
+					<ul class="quick">
+						{#each topics as tp (tp.slug)}
+							<li>
+								<a class="chip quick-chip" href={localizeHref(`/topics/${tp.slug}/#topic-in-bible`)}
+									>{tp.label}</a
+								>
+							</li>
+						{/each}
+					</ul>
+				</nav>
+			{/if}
+		</div>
 
 		{#if continues.plans.length || continues.books.length}
 			<!-- A returning reader's way back in: the books they are partway
@@ -543,13 +563,31 @@
 		background: var(--accent-soft);
 		color: var(--accent);
 	}
+	/* The one-tap passages and the "Passages on…" subjects, one block under
+	   the box: it owns the space before what follows. */
+	.jump-extras {
+		display: grid;
+		gap: 0.75rem;
+		margin-bottom: 2.25rem;
+	}
 	.quick {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.5rem;
-		margin: 0 0 2.25rem;
+		margin: 0;
 		padding: 0;
 		list-style: none;
+	}
+	.topics-row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem 0.75rem;
+	}
+	.topics-row-label {
+		font-size: var(--fs-small);
+		font-weight: 600;
+		color: var(--muted);
 	}
 	.jump-label {
 		display: block;
