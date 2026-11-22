@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { listSermons, type SermonSummary } from '$lib/library-public';
+	import { listSermonPicks, type SermonPick } from '$lib/library-public';
 	import { getLang } from '$lib/lang.svelte';
 	import { readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
@@ -29,14 +29,14 @@
 	let { embedded = false, reserve = false }: { embedded?: boolean; reserve?: boolean } =
 		$props();
 
-	let pick = $state<SermonSummary | null>(null);
+	let pick = $state<SermonPick | null>(null);
 	// The fetch has answered (with a pick or without): a reserve that would
 	// otherwise shimmer "loading" for good after a failed or empty fetch goes.
 	let settled = $state(false);
 
 	onMount(async () => {
 		try {
-			pick = pickDailySermon(await listSermons(getLang()), new Date());
+			pick = pickDailySermon(await listSermonPicks(getLang()), new Date());
 		} catch {
 			pick = null;
 		}

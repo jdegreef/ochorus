@@ -1017,6 +1017,18 @@ class LocalizedAuthorBioTests(TestCase):
         res = self.client.get("/api/library/sermons/?language=lg")
         self.assertEqual(res.data[0]["author"]["bio"], "Musumba atambulatambula.")
 
+    def test_sermon_pick_rows_are_slim(self):
+        # "Sermon of the day" picks from every sermon in the browser; it reads
+        # ?fields=pick so the home page doesn't download the whole shelf.
+        res = self.client.get("/api/library/sermons/?language=lg&fields=pick")
+        self.assertEqual(res.status_code, 200)
+        row = res.data[0]
+        self.assertEqual(
+            set(row), {"slug", "language", "title", "scripture_ref", "word_count", "author"}
+        )
+        self.assertEqual(row["author"]["name"], self.author.name)
+        self.assertNotIn("bio", row["author"])
+
     def test_english_is_unaffected(self):
         res = self.client.get("/api/library/books/tomorrows/?language=en")
         self.assertEqual(res.data["author"]["bio"], "An itinerant pastor.")
