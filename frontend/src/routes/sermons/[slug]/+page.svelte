@@ -774,6 +774,19 @@
 			</p>
 		{/if}
 
+		<!-- Main points (Sermon.main_points): the sermon's argument in 3–5 lines,
+		     in its own order, for the reader deciding whether to read 7,000 words. -->
+		{#if (sermon.main_points?.length ?? 0) >= 3}
+			<section class="main-points" aria-labelledby="main-points-heading">
+				<h2 id="main-points-heading" class="eyebrow text-muted">{t('sermon.mainPoints')}</h2>
+				<ol dir="auto" lang={contentLang(sermon.language)}>
+					{#each sermon.main_points ?? [] as point, i (i)}
+						<li>{point}</li>
+					{/each}
+				</ol>
+			</section>
+		{/if}
+
 		<!-- The preaching text as a quiet epigraph — unless the body opens on the
 		     same verse (`text_in_body`), when the preacher's own wording stands
 		     alone and the reference rides in the eyebrow. -->
@@ -1197,6 +1210,20 @@
 		font-size: var(--fs-h3);
 		line-height: 1.5;
 		color: var(--muted);
+	}
+
+	.main-points {
+		margin-top: 1.25rem;
+		padding: 0.875rem 1rem;
+		border: 1px solid var(--border);
+		border-radius: 0.5rem;
+	}
+	.main-points ol {
+		list-style: decimal;
+		padding-inline-start: 1.25rem;
+		margin-top: 0.5rem;
+		display: grid;
+		gap: 0.375rem;
 	}
 
 	/* --- Top bar's "⋯" group (.more-group / .more-item: app.css) ------------ */
