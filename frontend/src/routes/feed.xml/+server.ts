@@ -125,7 +125,7 @@ export async function GET() {
 		'<?xml version="1.0" encoding="utf-8"?>',
 		'<feed xmlns="http://www.w3.org/2005/Atom">',
 		'  <title>Ochorus — New in the Library</title>',
-		'  <subtitle>Free public-domain Christian classics: books, sermons and articles.</subtitle>',
+		'  <subtitle>Free Christian classics and new Ochorus books: books, sermons and articles.</subtitle>',
 		`  <link href="${SITE_URL}/feed.xml" rel="self"/>`,
 		`  <link href="${SITE_URL}/"/>`,
 		`  <id>${SITE_URL}/</id>`,

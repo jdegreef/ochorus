@@ -1,7 +1,7 @@
 {
 	"name": "Ochorus — Classic Christian Books",
 	"short_name": "Ochorus",
-	"description": "A free library of public-domain Christian classics — read beautifully, in your language, online or off.",
+	"description": "A free library of Christian classics and new Ochorus books — read beautifully, in your language, online or off.",
 	"start_url": "/",
 	"scope": "/",
 	"display": "standalone",
