@@ -14,7 +14,32 @@
   "description": "Clement presents Christ as the Instructor of believers, who heals the passions and trains the soul, then applies His teaching to every part of daily life: eating and drinking, dress, speech, laughter, sleep, the use of wealth, and the true beauty of a Christian; it closes with a hymn to Christ.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Instructor?",
+    "answer": "It is Clement of Alexandria\u2019s work, written around the end of the second century, presenting Christ as the Instructor, or tutor, of believers. In Book I Clement describes how Christ heals the passions and trains the soul. Books II and III apply his teaching to every part of daily life: eating and drinking, dress, speech, laughter, sleep, wealth and the true beauty of a Christian. It ends with a hymn to Christ."
+   },
+   {
+    "question": "Why does Clement call Christ the Instructor?",
+    "answer": "Clement explains that the Word first exhorts, then trains, and finally teaches. The Instructor is practical, not theoretical: his aim is to improve the soul, not merely to inform it, and to train it up to a virtuous life. Just as children need a tutor, believers need Christ to guide their habits and actions."
+   },
+   {
+    "question": "Why does Clement speak of believers as children?",
+    "answer": "Clement defends the idea that Christians are children in Christ, not in the sense of being foolish but of being new, simple and teachable. He discusses Paul\u2019s words about feeding the Corinthians with milk, and says that believers become God\u2019s children as soon as he wills it, receiving the best and most secure rank."
+   },
+   {
+    "question": "What does The Instructor teach about food and drink?",
+    "answer": "Clement urges Christians to take food and drink for sustenance, not pleasure, since the body gains nothing from extravagance. He says that those who use the most frugal fare are the strongest and healthiest, and he mocks the gluttons who search out exotic delicacies. He also criticises costly vessels of silver and gold as useless display."
+   },
+   {
+    "question": "What is the hymn at the end of The Instructor?",
+    "answer": "The work closes with A Hymn to Christ the Saviour, composed by Clement. It begins Bridle of colts untamed, over our wills presiding, and praises Christ in a series of images as the guide, shepherd and king of his children."
+   },
+   {
+    "question": "Who should read The Instructor?",
+    "answer": "It suits readers interested in early Christian ethics and daily life, and anyone who wants to see how the Fathers applied the gospel to ordinary habits. Some of Clement\u2019s advice reflects the customs of Alexandria in his day, but his call to simplicity, self-control and Christ-centred living remains striking."
+   }
+  ],
   "publication_year": 198,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/anf02.vi.iii.html",

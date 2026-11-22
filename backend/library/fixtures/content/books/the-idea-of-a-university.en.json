@@ -14,7 +14,32 @@
   "description": "Newman\u2019s Discourses to the new Catholic University in Dublin on what a university is for: knowledge pursued as its own end, the place of theology among the sciences, and the cultivation of the mind; with his Lectures on literature, preaching, science and medicine.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Idea of a University?",
+    "answer": "It is John Henry Newman\u2019s collection of Discourses given to the new Catholic University in Dublin in the 1850s, together with lectures on literature, preaching, science and medicine. Newman asks what a university is for, and answers that it is a place of teaching universal knowledge, where the mind is cultivated and theology takes its place among the sciences."
+   },
+   {
+    "question": "What does Newman mean by knowledge its own end?",
+    "answer": "In Discourse V Newman argues that knowledge is capable of being its own end. Such is the nature of the human mind that any real knowledge is its own reward. A liberal education does not need to justify itself by producing useful results, because the cultivation of the intellect is a good in itself."
+   },
+   {
+    "question": "Why does Newman insist on theology in the university?",
+    "answer": "Newman argues that a university claims to teach universal knowledge, so it cannot leave out the knowledge of God. Theology is a branch of knowledge, and to exclude it distorts the circle of knowledge, since other sciences then usurp territory beyond their competence, a particular craft occupying the universe."
+   },
+   {
+    "question": "What is liberal knowledge?",
+    "answer": "Newman discusses the common phrases liberal knowledge, liberal arts and liberal education. He explains that liberal knowledge is pursued for its own sake, not for some further gain, and that its fruit is what he calls enlargement of mind, or philosophical knowledge: the perfection or virtue of the intellect."
+   },
+   {
+    "question": "What is Newman\u2019s description of a gentleman?",
+    "answer": "In a famous passage Newman says that it is almost a definition of a gentleman to say he is one who never inflicts pain. He presents this as the natural fruit of a liberal education, but he is careful to say that such refinement is not the same as religion. Cultivation of mind can make a person courteous without making them holy."
+   },
+   {
+    "question": "Who should read The Idea of a University?",
+    "answer": "It suits students, teachers and anyone who cares about education and its purpose. Newman\u2019s case for liberal learning and for the unity of knowledge under God is still widely discussed, and his prose is among the finest in English. Readers should be prepared for long, carefully built arguments."
+   }
+  ],
   "publication_year": 1852,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/24526",
