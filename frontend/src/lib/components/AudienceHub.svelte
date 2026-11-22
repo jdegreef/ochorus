@@ -39,6 +39,8 @@
 	import HubContinue from '$lib/components/HubContinue.svelte';
 	import HubChallenge from '$lib/components/HubChallenge.svelte';
 	import HubSpotlight from '$lib/components/HubSpotlight.svelte';
+	import TonightStory from '$lib/components/TonightStory.svelte';
+	import { tick } from 'svelte';
 	import { track } from '$lib/analytics';
 
 	/**
@@ -96,6 +98,30 @@
 		].filter((s) => s.count > 0)
 	);
 	const parentsHeading = $derived(t(hub.parentsHeadingKey));
+
+	// The storybook hero's age buttons (Young Readers only): "how old is your
+	// reader?" narrows the series to those written for that age (each series'
+	// own min/max age) and scrolls there. Client state, so the prerendered page
+	// still lists every series.
+	const isYoung = $derived(hub.audience === 'young_readers');
+	const AGE_BANDS: [number, number][] = [
+		[6, 7],
+		[8, 9],
+		[10, 12]
+	];
+	let band = $state<number | null>(null);
+	const fits = (s: { min_age?: number | null; max_age?: number | null }, [lo, hi]: [number, number]) =>
+		(s.min_age ?? 0) <= hi && (s.max_age ?? 99) >= lo;
+	const bands = $derived(AGE_BANDS.filter((b) => shelf.series.some((s) => fits(s, b))));
+	const picked = $derived(band === null ? null : bands[band]);
+	const shownSeries = $derived(picked ? shelf.series.filter((s) => fits(s, picked)) : shelf.series);
+	const bandLabel = (b: [number, number]) =>
+		t('audience.agesBand').replace('%from%', String(b[0])).replace('%to%', String(b[1]));
+	async function pickBand(i: number) {
+		band = band === i ? null : i;
+		await tick();
+		document.getElementById('series')?.scrollIntoView({ block: 'start' });
+	}
 
 	const crumbsLd = $derived(
 		breadcrumbLd([
@@ -162,6 +188,24 @@
 						onshare={() => track(HUB_EVENT, { hub: hub.audience, action: 'share' })}
 					/>
 				</div>
+				{#if isYoung && bands.length > 1 && shelf.series.length}
+					<!-- The storybook hero's question: one tap to the series for
+					     this child's age. -->
+					<div class="ages mt-5" role="group" aria-labelledby="ages-q">
+						<p id="ages-q" class="font-display text-h3 font-semibold">{t('audience.agesQuestion')}</p>
+						<div class="mt-2 flex flex-wrap gap-2">
+							{#each bands as b, i (b[0])}
+								<button
+									type="button"
+									class="age-btn"
+									class:active={band === i}
+									aria-pressed={band === i}
+									onclick={() => pickBand(i)}>{bandLabel(b)}</button
+								>
+							{/each}
+						</div>
+					</div>
+				{/if}
 				<!-- The adult choosing for a child or a youth group: their page. -->
 				<ForPromo place={hub.audience === 'teens' ? 'teens' : 'young-readers'} class="mt-4" />
 			{/if}
@@ -187,6 +231,10 @@
 		<EmptyState art="language" message={t('audience.none')} />
 	{:else}
 		<HubContinue {shelf} exclude={challengeSeries?.slug} />
+
+		{#if isYoung && people.length}
+			<TonightStory {people} />
+		{/if}
 
 		{#if paths.length > 1}
 			<!-- A few clear first choices above the shelves, by what the reader is
@@ -335,9 +383,17 @@
 
 		{#if shelf.series.length}
 			<section id="series" class="jump-anchor mb-12">
-				<GroupHeading name={t('nav.series')} count={shelf.series.length} />
+				<GroupHeading name={t('nav.series')} count={shownSeries.length} />
+				{#if picked}
+					<p class="-mt-2 mb-4 text-small text-muted">
+						{t('audience.agesShowing').replace('%from%', String(picked[0])).replace('%to%', String(picked[1]))}
+						<button type="button" class="ms-2 font-semibold text-accent hover:underline" onclick={() => (band = null)}
+							>{t('common.clearFilters')}</button
+						>
+					</p>
+				{/if}
 				<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
-					{#each shelf.series as s (s.slug)}
+					{#each shownSeries as s (s.slug)}
 						<SeriesCard
 							series={s}
 							companion={seriesCompanion(s.slug, shelf.series)}
@@ -513,6 +569,30 @@
 	.hub-hero[data-audience='teens'] {
 		--hub-hue: var(--audience-teens);
 		--hub-soft: var(--audience-teens-soft);
+	}
+	/* Young Readers: a storybook page — a second, inset frame in the hue,
+	   like the rule round a picture-book's text. */
+	.hub-hero[data-audience='young_readers'] {
+		outline: 1px dashed color-mix(in srgb, var(--hub-hue) 45%, transparent);
+		outline-offset: -0.6rem;
+	}
+	.age-btn {
+		border: 2px solid color-mix(in srgb, var(--hub-hue) 55%, var(--border));
+		border-radius: var(--radius-pill);
+		background: var(--surface);
+		padding: 0.4rem 1rem;
+		font-family: var(--font-display);
+		font-weight: 600;
+		color: var(--text);
+		cursor: pointer;
+	}
+	.age-btn:hover {
+		background: var(--hub-soft);
+	}
+	.age-btn.active {
+		background: var(--hub-hue);
+		border-color: var(--hub-hue);
+		color: var(--surface);
 	}
 	/* The fan is decoration: on a phone the words lead and it steps aside. */
 	.hub-fan {

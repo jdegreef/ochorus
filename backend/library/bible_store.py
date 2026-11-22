@@ -41,7 +41,11 @@ STORE_DIR = Path(
 )
 ASV = "asv"
 #: Bump when the tables change shape: it is part of the file's digest.
-SCHEMA = 1
+SCHEMA = 2
+#: The Bibles whose words are indexed for search (``phrase``): the reader's
+#: English, and the ASV, whose KJV-era wording is how most readers remember a
+#: verse ("for God so loved the world").
+SEARCHABLE = ("owb-en", ASV)
 
 _lock = threading.Lock()
 _local = threading.local()
@@ -122,6 +126,17 @@ def build(path: Path) -> None:
             del data
         db.execute("INSERT INTO bible VALUES (?)", (ASV,))
         db.executemany("INSERT INTO verse VALUES (?, ?, ?)", ((ASV, vid, t) for vid, t in _asv_rows()))
+        # Porter-stemmed, so "loved" meets "love" and "believeth" its stem;
+        # both sides of a phrase are stemmed alike, so word order still binds.
+        db.execute(
+            "CREATE VIRTUAL TABLE words USING fts5(bible UNINDEXED, id UNINDEXED, text,"
+            " tokenize = 'porter unicode61 remove_diacritics 2')"
+        )
+        db.execute(
+            f"INSERT INTO words SELECT bible, id, text FROM verse"
+            f" WHERE bible IN ({', '.join('?' * len(SEARCHABLE))})",
+            SEARCHABLE,
+        )
         db.commit()
         db.execute("VACUUM")
         db.close()
@@ -191,6 +206,31 @@ def text(bible: str, verse_id: int) -> str | None:
     """The text stored under one verse id, or None when there is none."""
     row = _db().execute("SELECT text FROM verse WHERE bible = ? AND id = ?", (bible, verse_id)).fetchone()
     return row[0] if row else None
+
+
+def containing(bible: str, needle: str, limit: int = 5000) -> list[tuple[int, str]]:
+    """(id, text) of verses whose text contains ``needle`` (ASCII
+    case-insensitive, SQLite's LIKE), in canonical order — a prefilter: the
+    caller decides what really matches."""
+    escaped = needle.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+    return _db().execute(
+        "SELECT id, text FROM verse WHERE bible = ? AND text LIKE ? ESCAPE '\\' ORDER BY id LIMIT ?",
+        (bible, f"%{escaped}%", limit),
+    ).fetchall()
+
+
+def phrase(words: list[str], limit: int = 10) -> list[int]:
+    """Verse ids whose text holds ``words`` in a row, in any ``SEARCHABLE``
+    Bible, best match first (FTS5's bm25), each id once. ``words`` are plain
+    words — anything else is dropped, so no FTS syntax gets through."""
+    clean = [w for w in ("".join(c for c in word if c.isalnum()) for word in words) if w]
+    if not clean:
+        return []
+    rows = _db().execute(
+        "SELECT id FROM words WHERE words MATCH ? ORDER BY bm25(words) LIMIT ?",
+        ('"' + " ".join(clean) + '"', limit * 2),
+    ).fetchall()
+    return list(dict.fromkeys(int(r[0]) for r in rows))[:limit]
 
 
 def joined_to(bible: str, verse_id: int) -> int | None:

@@ -1,4 +1,5 @@
 import glossaryData from './glossary.json';
+import headsData from './glossaryHeads.json';
 
 /**
  * The Ochorus glossary — archaic and theological words from the classics, each
@@ -81,3 +82,37 @@ export function relatedTerms(term: string, max = 6): string[] {
 	}
 	return [...new Set([...family, ...near])].slice(0, max);
 }
+
+/** A word's family alone (abide → abideth, abase → abasement) — the term
+ *  page's "Same family" row; `relatedTerms` leads with these too. */
+export const wordFamily = (term: string): string[] =>
+	isGlossaryTerm(term) ? CURATED.filter((t) => t !== term && sameFamily(t, term)) : [];
+
+/**
+ * A term's dictionary head: part of speech, a plain respelling (stress in
+ * capitals) and a one-line origin (`glossaryHeads.json` — drafted, for the
+ * founder to check). Null for a word without one.
+ */
+export interface GlossaryHead {
+	pos: string;
+	say: string;
+	origin: string;
+}
+const heads = headsData as Record<string, GlossaryHead | string>;
+export const headOf = (term: string): GlossaryHead | null => {
+	const h = isGlossaryTerm(term) ? heads[term] : undefined;
+	return h && typeof h === 'object' ? h : null;
+};
+
+/**
+ * The index's two shelves, cut where the file's curated order turns from the
+ * old English of the King James Bible (thou … betoken) to the vocabulary of
+ * doctrine (covenant onward).
+ */
+const FAITH_FROM = 'covenant';
+const cut = CURATED.indexOf(FAITH_FROM);
+export const OLD_WORDS: string[] = cut > 0 ? CURATED.slice(0, cut) : [];
+export const FAITH_WORDS: string[] = cut > 0 ? CURATED.slice(cut) : [];
+
+/** The word of the day, the same for every reader on a date (`dayIndex`). */
+export const wordOfTheDay = (index: number): string => GLOSSARY_TERMS[index % GLOSSARY_TERMS.length];

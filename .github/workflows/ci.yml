@@ -10,10 +10,10 @@ name: CI
 # (autoDeploy ships main to production.)
 #
 # Structure: four jobs that run in PARALLEL instead of one serial job.
-#   backend-tests   — ruff, migration check, SQLite + Postgres suites
+#   backend-tests   — ruff (lint; format on changed files), migration check, suites
 #   backend-image   — production Docker image builds (layer-cached), runs
 #                     unprivileged, and serves
-#   frontend-checks — eslint, svelte-check, unit tests (no API needed)
+#   frontend-checks — eslint, prettier (changed files), svelte-check, unit tests
 #   integration     — seed a local API, build the frontend against it, assert
 #                     the built output, run the real-browser smoke
 # The four are independent of each other. On a PR they gate on `changes` (a
@@ -129,7 +129,7 @@ jobs:
             native:
               - 'frontend/{android/**,ios/**,resources/**,capacitor.config.ts,package.json,package-lock.json}'
             ci:
-              - '{.github/workflows/**,.github/scripts/**,render.yaml}'
+              - '{.github/workflows/**,.github/scripts/**,scripts/**,render.yaml}'
 
   # --- Backend gate -------------------------------------------------------
   backend-tests:
@@ -182,6 +182,10 @@ jobs:
           --health-retries 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # 2: the PR merge commit AND its first parent (the base), which the
+          # changed-files format check diffs against.
+          fetch-depth: 2
 
       - name: Install uv
         uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
@@ -195,6 +199,19 @@ jobs:
       - name: Lint (ruff)
         working-directory: backend
         run: uv run ruff check .
+
+      # Format check on the files THIS PR changes only (scripts/format-changed.sh).
+      # ~400 backend files predate `ruff format`; a repo-wide sweep would conflict
+      # with every parallel session, so files converge as they are touched. PR
+      # only: on main/merge_group there is no "this PR's files" to check.
+      # ADVISORY for now (continue-on-error): with ~400 unformatted files, a
+      # blocking check would make any routine edit reformat a whole shared file
+      # (serializers.py, views.py) and collide with parallel sessions. It flags
+      # the file in the run; make it blocking once the backlog is small.
+      - name: Format (ruff format, changed files only)
+        if: github.event_name == 'pull_request'
+        continue-on-error: true
+        run: scripts/format-changed.sh --check --base HEAD^1 backend
 
       - name: Check for missing migrations
         working-directory: backend
@@ -218,6 +235,34 @@ jobs:
           with psycopg.connect("postgres://postgres:postgres@localhost:5432/postgres", autocommit=True) as c:
               c.execute("ALTER SYSTEM SET autovacuum = off")
               c.execute("SELECT pg_reload_conf()")
+          EOF
+
+      # Give the test server Supabase's Data API roles and the grants Supabase
+      # hands them, so the "second lock" is tested rather than skipped.
+      # accounts.tests_rls.DataApiGrantTests skips when `anon`/`authenticated`
+      # don't exist — which on a plain Postgres was every run, so
+      # accounts/0004_revoke_anon_public_schema.py (the migration that strips
+      # those grants) had never once been exercised by CI. Supabase grants both
+      # roles everything on new public tables via DEFAULT PRIVILEGES; set the
+      # same in template1, which Django's test DB (and each --parallel clone of
+      # it) is created from, so every table the migrations create is born
+      # granted and the test proves the migration revoked it.
+      - name: Emulate Supabase's Data API roles on the test Postgres
+        working-directory: backend
+        run: |
+          uv run python - <<'EOF'
+          import psycopg
+          base = "postgres://postgres:postgres@localhost:5432/"
+          with psycopg.connect(base + "postgres", autocommit=True) as c:
+              c.execute("CREATE ROLE anon NOLOGIN")
+              c.execute("CREATE ROLE authenticated NOLOGIN")
+          with psycopg.connect(base + "template1", autocommit=True) as c:
+              c.execute("GRANT USAGE ON SCHEMA public TO anon, authenticated")
+              for kind in ("TABLES", "SEQUENCES"):
+                  c.execute(
+                      f"ALTER DEFAULT PRIVILEGES IN SCHEMA public "
+                      f"GRANT ALL ON {kind} TO anon, authenticated"
+                  )
           EOF
 
       # --parallel auto: one worker per core (4 on ubuntu-latest), each with its
@@ -317,6 +362,10 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # 2: the PR merge commit AND its first parent (the base), which the
+          # changed-files format check diffs against.
+          fetch-depth: 2
 
       - name: Setup Node
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
@@ -342,6 +391,13 @@ jobs:
       - name: Lint (eslint)
         working-directory: frontend
         run: npx eslint .
+
+      # Same rule as the backend's: only the files this PR changes (~680 predate
+      # prettier). Config: frontend/.prettierrc + .prettierignore.
+      - name: Format (prettier, changed files only)
+        if: github.event_name == 'pull_request'
+        continue-on-error: true  # advisory, as the backend's (see there)
+        run: scripts/format-changed.sh --check --base HEAD^1 frontend
 
       - name: Type-check
         working-directory: frontend
@@ -590,6 +646,23 @@ jobs:
           java -cp "$RUNNER_TEMP/epubcheck-$EPUBCHECK_VERSION/epubcheck.jar" \
             .github/scripts/EpubCheckAll.java "$RUNNER_TEMP/epubs"
 
+  # --- Deploy scripts --------------------------------------------------------
+  # Unit tests for .github/scripts (the deploy train's rules: never overlap a
+  # running deploy, go red when a web deploy failed or the site lags main).
+  # No network; seconds. Rides the `ci` filter, which covers .github/scripts/**.
+  deploy-scripts:
+    name: Deploy scripts — unit tests
+    needs: [changes]
+    if: ${{ github.event_name != 'pull_request' || needs.changes.outputs.ci == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: python3 -m unittest
+        run: |
+          pip install --quiet pyyaml
+          python3 -m unittest discover -s .github/scripts -p 'test_*.py'
+
   # --- Stable required-check name -----------------------------------------
   # Branch protection requires the context "test-and-build". Splitting the old
   # monolith renamed that job away, so this aggregator RE-EMITS the name and
@@ -615,7 +688,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     if: always()
-    needs: [changes, backend-tests, backend-image, frontend-checks, native-android, integration, epub-check]
+    needs: [changes, backend-tests, backend-image, frontend-checks, native-android, integration, epub-check, deploy-scripts]
     steps:
       - name: Every gate passed or was skipped
         run: |
@@ -626,6 +699,7 @@ jobs:
           echo "native-android:  ${{ needs.native-android.result }}"
           echo "integration:     ${{ needs.integration.result }}"
           echo "epub-check:      ${{ needs.epub-check.result }}"
+          echo "deploy-scripts:  ${{ needs.deploy-scripts.result }}"
           # The filter itself must have run; a broken filter must not merge blind.
           if [ "${{ needs.changes.result }}" != "success" ]; then
             echo "::error::the changes filter did not succeed"; exit 1
@@ -637,7 +711,8 @@ jobs:
             "frontend-checks:${{ needs.frontend-checks.result }}" \
             "native-android:${{ needs.native-android.result }}" \
             "integration:${{ needs.integration.result }}" \
-            "epub-check:${{ needs.epub-check.result }}"; do
+            "epub-check:${{ needs.epub-check.result }}" \
+            "deploy-scripts:${{ needs.deploy-scripts.result }}"; do
             name="${entry%%:*}"; result="${entry##*:}"
             case "$result" in
               success|skipped) : ;;  # skipped == path filter said this change can't break it

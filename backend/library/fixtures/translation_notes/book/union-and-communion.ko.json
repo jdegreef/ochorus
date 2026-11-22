@@ -1,0 +1,2438 @@
+{
+ "kind": "book",
+ "slug": "union-and-communion",
+ "language": "ko",
+ "job_issue": 8750,
+ "references": [
+  {
+   "reference": "Acts 8:31",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 17:3",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 3:29",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 4:13",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:1",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 John 1:1",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 John 1:2",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 John 1:4",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:2",
+   "status": "mined",
+   "block_index": 44,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:2",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Job 23:3",
+   "status": "mined",
+   "block_index": 49,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:2",
+   "status": "mined",
+   "block_index": 49,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:3",
+   "status": "mined",
+   "block_index": 53,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:3",
+   "status": "mined",
+   "block_index": 54,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:3",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:4",
+   "status": "mined",
+   "block_index": 57,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:4",
+   "status": "mined",
+   "block_index": 60,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:14",
+   "status": "mined",
+   "block_index": 63,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:14",
+   "status": "mined",
+   "block_index": 64,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:4",
+   "status": "mined",
+   "block_index": 68,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:4",
+   "status": "mined",
+   "block_index": 69,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:4",
+   "status": "mined",
+   "block_index": 70,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:5",
+   "status": "mined",
+   "block_index": 71,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:5",
+   "status": "mined",
+   "block_index": 71,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:5",
+   "status": "mined",
+   "block_index": 71,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:5",
+   "status": "mined",
+   "block_index": 71,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:6",
+   "status": "mined",
+   "block_index": 72,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:6",
+   "status": "mined",
+   "block_index": 73,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:6",
+   "status": "mined",
+   "block_index": 74,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:6",
+   "status": "mined",
+   "block_index": 75,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:6",
+   "status": "mined",
+   "block_index": 76,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:7",
+   "status": "mined",
+   "block_index": 79,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:7",
+   "status": "mined",
+   "block_index": 80,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:7",
+   "status": "mined",
+   "block_index": 81,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:7",
+   "status": "mined",
+   "block_index": 82,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:8",
+   "status": "mined",
+   "block_index": 84,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:8",
+   "status": "mined",
+   "block_index": 85,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:8",
+   "status": "mined",
+   "block_index": 86,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:9",
+   "status": "mined",
+   "block_index": 90,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:9",
+   "status": "mined",
+   "block_index": 91,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:10",
+   "status": "mined",
+   "block_index": 96,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:10",
+   "status": "mined",
+   "block_index": 97,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:11",
+   "status": "mined",
+   "block_index": 98,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:11",
+   "status": "mined",
+   "block_index": 99,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:12",
+   "status": "mined",
+   "block_index": 102,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:12",
+   "status": "mined",
+   "block_index": 103,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:13",
+   "status": "mined",
+   "block_index": 105,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:13",
+   "status": "mined",
+   "block_index": 106,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:14",
+   "status": "mined",
+   "block_index": 107,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:14",
+   "status": "mined",
+   "block_index": 108,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:15",
+   "status": "mined",
+   "block_index": 110,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:15",
+   "status": "mined",
+   "block_index": 111,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:5",
+   "status": "mined",
+   "block_index": 71,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:5",
+   "status": "mined",
+   "block_index": 71,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:7",
+   "status": "mined",
+   "block_index": 115,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:7",
+   "status": "mined",
+   "block_index": 116,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:15",
+   "status": "mined",
+   "block_index": 111,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:16",
+   "status": "mined",
+   "block_index": 125,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:16",
+   "status": "mined",
+   "block_index": 126,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:17",
+   "status": "mined",
+   "block_index": 127,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:17",
+   "status": "mined",
+   "block_index": 128,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:1",
+   "status": "mined",
+   "block_index": 129,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:1",
+   "status": "mined",
+   "block_index": 130,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:2",
+   "status": "mined",
+   "block_index": 133,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:2",
+   "status": "mined",
+   "block_index": 134,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:3",
+   "status": "mined",
+   "block_index": 136,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:3",
+   "status": "mined",
+   "block_index": 137,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:3",
+   "status": "mined",
+   "block_index": 138,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:3",
+   "status": "mined",
+   "block_index": 139,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:4",
+   "status": "mined",
+   "block_index": 142,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:4",
+   "status": "mined",
+   "block_index": 143,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:5",
+   "status": "mined",
+   "block_index": 145,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:5",
+   "status": "mined",
+   "block_index": 146,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:6",
+   "status": "mined",
+   "block_index": 147,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:6",
+   "status": "mined",
+   "block_index": 148,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:7",
+   "status": "mined",
+   "block_index": 150,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:7",
+   "status": "mined",
+   "block_index": 151,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:7",
+   "status": "mined",
+   "block_index": 152,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:7",
+   "status": "mined",
+   "block_index": 153,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "block_index": 159,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 1:15",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "1 John 5:21",
+   "status": "mined",
+   "block_index": 169,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 John 2:15",
+   "status": "mined",
+   "block_index": 170,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "James 4:4",
+   "status": "mined",
+   "block_index": 170,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:8",
+   "status": "mined",
+   "block_index": 178,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:8",
+   "status": "mined",
+   "block_index": 179,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:9",
+   "status": "mined",
+   "block_index": 180,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:9",
+   "status": "mined",
+   "block_index": 181,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:9",
+   "status": "mined",
+   "block_index": 182,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:9",
+   "status": "mined",
+   "block_index": 183,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:10",
+   "status": "mined",
+   "block_index": 185,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:10",
+   "status": "mined",
+   "block_index": 186,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:11",
+   "status": "mined",
+   "block_index": 187,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:11",
+   "status": "mined",
+   "block_index": 188,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:12",
+   "status": "mined",
+   "block_index": 189,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:12",
+   "status": "mined",
+   "block_index": 190,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:12",
+   "status": "mined",
+   "block_index": 191,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:13",
+   "status": "mined",
+   "block_index": 192,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:13",
+   "status": "mined",
+   "block_index": 193,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:13",
+   "status": "mined",
+   "block_index": 194,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:13",
+   "status": "mined",
+   "block_index": 186,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:13",
+   "status": "mined",
+   "block_index": 186,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:14",
+   "status": "mined",
+   "block_index": 200,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:14",
+   "status": "mined",
+   "block_index": 63,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:14",
+   "status": "mined",
+   "block_index": 64,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:15",
+   "status": "mined",
+   "block_index": 205,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:15",
+   "status": "mined",
+   "block_index": 206,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:16",
+   "status": "mined",
+   "block_index": 209,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:16",
+   "status": "mined",
+   "block_index": 210,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 2:16",
+   "status": "mined",
+   "block_index": 210,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:17",
+   "status": "mined",
+   "block_index": 212,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:17",
+   "status": "mined",
+   "block_index": 213,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:17",
+   "status": "mined",
+   "block_index": 214,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:1",
+   "status": "mined",
+   "block_index": 218,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:1",
+   "status": "mined",
+   "block_index": 219,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:2",
+   "status": "mined",
+   "block_index": 221,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:2",
+   "status": "mined",
+   "block_index": 221,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:2",
+   "status": "mined",
+   "block_index": 222,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:2",
+   "status": "mined",
+   "block_index": 223,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:2",
+   "status": "mined",
+   "block_index": 224,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:3",
+   "status": "mined",
+   "block_index": 226,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 3:3",
+   "status": "mined",
+   "block_index": 227,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:4",
+   "status": "mined",
+   "block_index": 228,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:4",
+   "status": "mined",
+   "block_index": 229,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:10",
+   "status": "mined",
+   "block_index": 186,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:4",
+   "status": "mined",
+   "block_index": 231,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:4",
+   "status": "mined",
+   "block_index": 232,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:4",
+   "status": "mined",
+   "block_index": 233,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:5",
+   "status": "mined",
+   "block_index": 150,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:5",
+   "status": "mined",
+   "block_index": 237,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:5",
+   "status": "mined",
+   "block_index": 239,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:5",
+   "status": "mined",
+   "block_index": 153,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:13",
+   "status": "self_rendered",
+   "block_index": 196
+  },
+  {
+   "reference": "Song 3:6",
+   "status": "mined",
+   "block_index": 268,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:6",
+   "status": "mined",
+   "block_index": 269,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:6",
+   "status": "mined",
+   "block_index": 270,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:9",
+   "status": "mined",
+   "block_index": 272,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:9",
+   "status": "mined",
+   "block_index": 273,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:10",
+   "status": "mined",
+   "block_index": 274,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:10",
+   "status": "mined",
+   "block_index": 275,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:10",
+   "status": "mined",
+   "block_index": 276,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:10",
+   "status": "mined",
+   "block_index": 277,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:7",
+   "status": "mined",
+   "block_index": 278,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:7",
+   "status": "mined",
+   "block_index": 279,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:7",
+   "status": "mined",
+   "block_index": 280,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:8",
+   "status": "mined",
+   "block_index": 281,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 3:8",
+   "status": "mined",
+   "block_index": 281,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:8",
+   "status": "mined",
+   "block_index": 282,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:8",
+   "status": "mined",
+   "block_index": 283,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:11",
+   "status": "mined",
+   "block_index": 286,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:11",
+   "status": "mined",
+   "block_index": 287,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:11",
+   "status": "mined",
+   "block_index": 288,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:1",
+   "status": "mined",
+   "block_index": 290,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:1",
+   "status": "mined",
+   "block_index": 291,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:1",
+   "status": "mined",
+   "block_index": 292,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:1",
+   "status": "mined",
+   "block_index": 293,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:2",
+   "status": "mined",
+   "block_index": 294,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:2",
+   "status": "mined",
+   "block_index": 294,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 4:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 4:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 4:2",
+   "status": "mined",
+   "block_index": 295,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:2",
+   "status": "mined",
+   "block_index": 296,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:2",
+   "status": "mined",
+   "block_index": 297,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:3",
+   "status": "mined",
+   "block_index": 298,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:3",
+   "status": "mined",
+   "block_index": 299,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:6",
+   "status": "mined",
+   "block_index": 212,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:6",
+   "status": "mined",
+   "block_index": 304,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:6",
+   "status": "mined",
+   "block_index": 305,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:7",
+   "status": "mined",
+   "block_index": 115,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:7",
+   "status": "mined",
+   "block_index": 116,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:8",
+   "status": "mined",
+   "block_index": 310,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:8",
+   "status": "mined",
+   "block_index": 311,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:8",
+   "status": "mined",
+   "block_index": 312,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:8",
+   "status": "mined",
+   "block_index": 313,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:8",
+   "status": "mined",
+   "block_index": 314,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:8",
+   "status": "mined",
+   "block_index": 315,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:8",
+   "status": "mined",
+   "block_index": 311,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:9",
+   "status": "mined",
+   "block_index": 318,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:9",
+   "status": "mined",
+   "block_index": 319,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:9",
+   "status": "mined",
+   "block_index": 320,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:9",
+   "status": "mined",
+   "block_index": 318,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Acts 28:15",
+   "status": "mined",
+   "block_index": 321,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:10",
+   "status": "mined",
+   "block_index": 318,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 4:10",
+   "status": "mined",
+   "block_index": 323,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:10",
+   "status": "mined",
+   "block_index": 324,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:10",
+   "status": "mined",
+   "block_index": 325,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 4:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 4:11",
+   "status": "mined",
+   "block_index": 326,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:11",
+   "status": "mined",
+   "block_index": 326,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:11",
+   "status": "mined",
+   "block_index": 326,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:11",
+   "status": "mined",
+   "block_index": 327,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:11",
+   "status": "mined",
+   "block_index": 328,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:12",
+   "status": "mined",
+   "block_index": 318,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 4:12",
+   "status": "mined",
+   "block_index": 329,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:12",
+   "status": "mined",
+   "block_index": 330,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:13",
+   "status": "mined",
+   "block_index": 331,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:13",
+   "status": "mined",
+   "block_index": 332,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:14",
+   "status": "mined",
+   "block_index": 333,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:14",
+   "status": "mined",
+   "block_index": 334,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:14",
+   "status": "mined",
+   "block_index": 335,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 4:15",
+   "status": "mined",
+   "block_index": 336,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:15",
+   "status": "mined",
+   "block_index": 337,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:15",
+   "status": "mined",
+   "block_index": 338,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:16",
+   "status": "mined",
+   "block_index": 341,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:16",
+   "status": "mined",
+   "block_index": 342,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:16",
+   "status": "mined",
+   "block_index": 343,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:16",
+   "status": "mined",
+   "block_index": 344,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:1",
+   "status": "mined",
+   "block_index": 347,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:1",
+   "status": "mined",
+   "block_index": 348,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:1",
+   "status": "mined",
+   "block_index": 349,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:1",
+   "status": "mined",
+   "block_index": 350,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:1",
+   "status": "mined",
+   "block_index": 353,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:1",
+   "status": "mined",
+   "block_index": 354,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 4:9",
+   "status": "self_rendered",
+   "block_index": 321
+  },
+  {
+   "reference": "Song 4:12",
+   "status": "mined",
+   "block_index": 369,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 370,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 371,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 372,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 373,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 374,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:10",
+   "status": "mined",
+   "block_index": 186,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 372,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 372,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 372,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 318,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 200,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 372,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 373,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 374,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 5:17",
+   "status": "mined",
+   "block_index": 379,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 372,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 373,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 374,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:3",
+   "status": "mined",
+   "block_index": 384,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:3",
+   "status": "mined",
+   "block_index": 385,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:4",
+   "status": "mined",
+   "block_index": 388,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:4",
+   "status": "mined",
+   "block_index": 389,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:5",
+   "status": "mined",
+   "block_index": 391,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:5",
+   "status": "mined",
+   "block_index": 392,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:5",
+   "status": "mined",
+   "block_index": 393,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:5",
+   "status": "mined",
+   "block_index": 394,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:6",
+   "status": "mined",
+   "block_index": 395,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:6",
+   "status": "mined",
+   "block_index": 396,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:6",
+   "status": "mined",
+   "block_index": 397,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:6",
+   "status": "mined",
+   "block_index": 399,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:6",
+   "status": "mined",
+   "block_index": 400,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:7",
+   "status": "mined",
+   "block_index": 401,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:7",
+   "status": "mined",
+   "block_index": 402,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:7",
+   "status": "mined",
+   "block_index": 403,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:8",
+   "status": "mined",
+   "block_index": 415,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:8",
+   "status": "mined",
+   "block_index": 416,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:9",
+   "status": "mined",
+   "block_index": 418,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:9",
+   "status": "mined",
+   "block_index": 419,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:9",
+   "status": "mined",
+   "block_index": 419,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:9",
+   "status": "mined",
+   "block_index": 421,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:10",
+   "status": "mined",
+   "block_index": 423,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:10",
+   "status": "mined",
+   "block_index": 424,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:16",
+   "status": "mined",
+   "block_index": 426,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:16",
+   "status": "mined",
+   "block_index": 427,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:16",
+   "status": "mined",
+   "block_index": 150,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:11",
+   "status": "mined",
+   "block_index": 430,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:12",
+   "status": "mined",
+   "block_index": 430,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:15",
+   "status": "mined",
+   "block_index": 430,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:1",
+   "status": "mined",
+   "block_index": 418,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:1",
+   "status": "mined",
+   "block_index": 432,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:1",
+   "status": "mined",
+   "block_index": 433,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:1",
+   "status": "mined",
+   "block_index": 434,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:2",
+   "status": "mined",
+   "block_index": 436,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:2",
+   "status": "mined",
+   "block_index": 437,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:3",
+   "status": "mined",
+   "block_index": 438,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:3",
+   "status": "mined",
+   "block_index": 439,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:3",
+   "status": "mined",
+   "block_index": 438,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:16",
+   "status": "mined",
+   "block_index": 209,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 7:10",
+   "status": "mined",
+   "block_index": 441,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 7:10",
+   "status": "mined",
+   "block_index": 442,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:4",
+   "status": "mined",
+   "block_index": 445,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:4",
+   "status": "mined",
+   "block_index": 447,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:4",
+   "status": "mined",
+   "block_index": 449,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:4",
+   "status": "mined",
+   "block_index": 449,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:5",
+   "status": "mined",
+   "block_index": 450,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:5",
+   "status": "mined",
+   "block_index": 451,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:8",
+   "status": "mined",
+   "block_index": 453,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:8",
+   "status": "mined",
+   "block_index": 454,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:9",
+   "status": "mined",
+   "block_index": 455,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:9",
+   "status": "mined",
+   "block_index": 456,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:9",
+   "status": "mined",
+   "block_index": 457,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:9",
+   "status": "mined",
+   "block_index": 458,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:9",
+   "status": "mined",
+   "block_index": 459,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:10",
+   "status": "mined",
+   "block_index": 460,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:10",
+   "status": "mined",
+   "block_index": 461,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:10",
+   "status": "mined",
+   "block_index": 462,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:10",
+   "status": "mined",
+   "block_index": 463,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 6:11",
+   "status": "mined",
+   "block_index": 469,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:11",
+   "status": "mined",
+   "block_index": 470,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:11",
+   "status": "mined",
+   "block_index": 471,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:11",
+   "status": "mined",
+   "block_index": 472,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:11",
+   "status": "mined",
+   "block_index": 472,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:12",
+   "status": "mined",
+   "block_index": 473,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:12",
+   "status": "mined",
+   "block_index": 474,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:12",
+   "status": "mined",
+   "block_index": 474,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 373,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 5:2",
+   "status": "mined",
+   "block_index": 374,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:13",
+   "status": "mined",
+   "block_index": 483,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:13",
+   "status": "mined",
+   "block_index": 483,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:13",
+   "status": "mined",
+   "block_index": 486,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 7:1",
+   "status": "mined",
+   "block_index": 487,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 7:5",
+   "status": "mined",
+   "block_index": 487,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 7:6",
+   "status": "mined",
+   "block_index": 489,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 7:6",
+   "status": "mined",
+   "block_index": 490,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 7:8",
+   "status": "mined",
+   "block_index": 528,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:3",
+   "status": "mined",
+   "block_index": 136,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:3",
+   "status": "mined",
+   "block_index": 137,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:3",
+   "status": "mined",
+   "block_index": 138,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:3",
+   "status": "mined",
+   "block_index": 139,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 7:9",
+   "status": "mined",
+   "block_index": 534,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 7:9",
+   "status": "mined",
+   "block_index": 535,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 7:9",
+   "status": "mined",
+   "block_index": 536,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 7:9",
+   "status": "mined",
+   "block_index": 538,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 7:10",
+   "status": "mined",
+   "block_index": 441,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 7:10",
+   "status": "mined",
+   "block_index": 442,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 7:11",
+   "status": "mined",
+   "block_index": 543,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 7:11",
+   "status": "mined",
+   "block_index": 544,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:1",
+   "status": "mined",
+   "block_index": 546,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:1",
+   "status": "mined",
+   "block_index": 547,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:1",
+   "status": "mined",
+   "block_index": 548,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:1",
+   "status": "mined",
+   "block_index": 548,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:1",
+   "status": "mined",
+   "block_index": 549,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:2",
+   "status": "mined",
+   "block_index": 552,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:2",
+   "status": "mined",
+   "block_index": 552,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 8:2",
+   "status": "mined",
+   "block_index": 553,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:2",
+   "status": "mined",
+   "block_index": 554,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:2",
+   "status": "mined",
+   "block_index": 555,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:3",
+   "status": "mined",
+   "block_index": 557,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:3",
+   "status": "mined",
+   "block_index": 147,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:3",
+   "status": "mined",
+   "block_index": 557,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:3",
+   "status": "mined",
+   "block_index": 558,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:4",
+   "status": "mined",
+   "block_index": 560,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:4",
+   "status": "mined",
+   "block_index": 561,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 6:13a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 6:13",
+   "status": "self_rendered",
+   "block_index": 485
+  },
+  {
+   "reference": "Song 3:6",
+   "status": "mined",
+   "block_index": 268,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 3:6",
+   "status": "mined",
+   "block_index": 270,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:5",
+   "status": "mined",
+   "block_index": 581,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:5",
+   "status": "mined",
+   "block_index": 582,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 8:58",
+   "status": "mined",
+   "block_index": 584,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:5",
+   "status": "mined",
+   "block_index": 585,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:5",
+   "status": "mined",
+   "block_index": 586,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:6",
+   "status": "mined",
+   "block_index": 589,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:6",
+   "status": "mined",
+   "block_index": 590,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 8:6",
+   "status": "mined",
+   "block_index": 591,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:6",
+   "status": "mined",
+   "block_index": 592,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:6",
+   "status": "mined",
+   "block_index": 593,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:6",
+   "status": "mined",
+   "block_index": 597,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 John 4:7",
+   "status": "mined",
+   "block_index": 597,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "block_index": 597,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:7",
+   "status": "mined",
+   "block_index": 599,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:7",
+   "status": "mined",
+   "block_index": 600,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:7",
+   "status": "mined",
+   "block_index": 601,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:7",
+   "status": "mined",
+   "block_index": 602,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:7",
+   "status": "mined",
+   "block_index": 601,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:8",
+   "status": "mined",
+   "block_index": 605,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:8",
+   "status": "mined",
+   "block_index": 606,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:8",
+   "status": "mined",
+   "block_index": 607,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:8",
+   "status": "mined",
+   "block_index": 608,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:8",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:8",
+   "status": "mined",
+   "block_index": 605,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 8:8",
+   "status": "mined",
+   "block_index": 608,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:9",
+   "status": "mined",
+   "block_index": 613,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:9",
+   "status": "mined",
+   "block_index": 614,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:9",
+   "status": "mined",
+   "block_index": 615,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:9",
+   "status": "mined",
+   "block_index": 616,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 8:8",
+   "status": "mined",
+   "block_index": 608,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 8:9",
+   "status": "mined",
+   "block_index": 614,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song 8:9",
+   "status": "mined",
+   "block_index": 616,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:10",
+   "status": "mined",
+   "block_index": 618,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:11",
+   "status": "mined",
+   "block_index": 620,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:11",
+   "status": "mined",
+   "block_index": 621,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:11",
+   "status": "mined",
+   "block_index": 622,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:11",
+   "status": "mined",
+   "block_index": 622,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:11",
+   "status": "mined",
+   "block_index": 622,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:12",
+   "status": "mined",
+   "block_index": 623,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:12",
+   "status": "mined",
+   "block_index": 624,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:12",
+   "status": "mined",
+   "block_index": 625,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:13",
+   "status": "mined",
+   "block_index": 628,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:13",
+   "status": "mined",
+   "block_index": 629,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:13",
+   "status": "mined",
+   "block_index": 630,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:14",
+   "status": "mined",
+   "block_index": 633,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:14",
+   "status": "mined",
+   "block_index": 634,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 8:14",
+   "status": "mined",
+   "block_index": 635,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:17",
+   "status": "mined",
+   "block_index": 125,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:17",
+   "status": "mined",
+   "block_index": 213,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song 2:17",
+   "status": "mined",
+   "block_index": 214,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 21:36",
+   "status": "mined",
+   "block_index": 649,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}

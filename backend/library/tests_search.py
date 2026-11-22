@@ -276,18 +276,23 @@ class SearchTests(TestCase):
         return res.data
 
     def test_suggests_on_misspelled_title(self):
-        data = self._raw("humilty")
+        # One slip ("humilty") is corrected in the search itself
+        # (tests_search_typos); a further one still gets a did-you-mean.
+        data = self._raw("humiltee")
         self.assertEqual(data["results"], [])
         self.assertEqual(data.get("suggestion", "").lower(), "humility")
 
-    def test_suggests_misspelled_author_surname(self):
+    def test_misspelled_author_surname_finds_the_author(self):
+        # Once a did-you-mean; a misspelt surname now finds the person outright
+        # (library/people.py), so there is nothing to suggest.
         data = self._raw("Spurgen")
-        self.assertEqual(data.get("suggestion", "").lower(), "spurgeon")
+        authors = [h for h in data["results"] if h["type"] == "author"]
+        self.assertEqual([a["author_slug"] for a in authors], ["charles-h-spurgeon"])
 
     def test_suggests_word_from_article_title(self):
         # Article h1 words feed the did-you-mean vocabulary, so a misspelt one
         # resolves — the same guarantee the book/author suggestions carry.
-        data = self._raw("somone")
+        data = self._raw("sumone")
         self.assertEqual(data["results"], [])
         self.assertEqual(data.get("suggestion", "").lower(), "someone")
 
@@ -899,7 +904,7 @@ class SearchLogTests(TestCase):
         self.assertFalse(row.suggested)
 
     def test_zero_result_query_logged_with_suggestion_flag(self):
-        res = self.search("humilty")  # typo → did-you-mean fires
+        res = self.search("humiltee")  # typo → did-you-mean fires
         self.assertEqual(res.status_code, 200)
         # Pin the behaviour, not the implementation: the typo must actually
         # produce a hint, and the log row must record that it did.
@@ -1433,9 +1438,9 @@ class SearchScopeTests(TestCase):
     def test_no_did_you_mean_inside_a_scope(self):
         # The suggester reads the whole library, so inside a scope it would
         # propose a spelling this author never used — a second empty page.
-        wide = self.search(q="humilty")
+        wide = self.search(q="humiltee")
         self.assertIn("suggestion", wide.data)
-        scoped = self.search("author:spurgeon", q="humilty")
+        scoped = self.search("author:spurgeon", q="humiltee")
         self.assertNotIn("suggestion", scoped.data)
 
 

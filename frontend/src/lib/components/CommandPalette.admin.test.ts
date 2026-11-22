@@ -5,11 +5,16 @@
 import { flushSync, mount, unmount } from 'svelte';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-const { gotoSpy, searchSpy } = vi.hoisted(() => ({ gotoSpy: vi.fn(), searchSpy: vi.fn() }));
+const { gotoSpy, searchSpy, completeSpy } = vi.hoisted(() => ({
+	gotoSpy: vi.fn(),
+	searchSpy: vi.fn(),
+	completeSpy: vi.fn()
+}));
 vi.mock('$app/navigation', () => ({ goto: gotoSpy, preloadCode: vi.fn() }));
 vi.mock('$lib/library-public', async (orig) => ({
 	...(await orig<typeof import('$lib/library-public')>()),
-	search: searchSpy
+	search: searchSpy,
+	searchComplete: completeSpy
 }));
 
 import CommandPalette from './CommandPalette.svelte';
@@ -37,6 +42,7 @@ beforeEach(() => {
 	vi.useFakeTimers();
 	// jsdom has no layout: the palette keeps its active row in view with this.
 	Element.prototype.scrollIntoView = vi.fn();
+	completeSpy.mockResolvedValue({ results: [] });
 	searchSpy.mockResolvedValue({
 		results: [
 			{ type: 'book', book_slug: 'humility', book_title: 'Humility', author_name: 'Andrew Murray' },
@@ -110,5 +116,27 @@ describe('CommandPalette admin shortcuts', () => {
 		key('Enter');
 		expect(gotoSpy).toHaveBeenLastCalledWith(expect.stringMatching(/\/books\/humility\/?$/));
 		expect(gotoSpy.mock.lastCall![0]).not.toContain('/admin/');
+	});
+});
+
+describe('CommandPalette suggestions as you type', () => {
+	it('leads with what the letters so far already name, without repeating it', async () => {
+		completeSpy.mockResolvedValue({
+			results: [
+				{ type: 'author', author_slug: 'dwight-l-moody', author_name: 'Dwight L. Moody', photo_url: '' },
+				{ type: 'book', book_slug: 'humility', book_title: 'Humility', author_name: 'Andrew Murray' }
+			]
+		});
+		open();
+		type('mo');
+		await vi.advanceTimersByTimeAsync(250);
+		flushSync();
+		const list = rows();
+		// The "show all" row, then the suggestions, then the instant hits.
+		expect(list[1]).toContain('Dwight L. Moody');
+		expect(list[2]).toContain('Humility');
+		expect(list.filter((r) => r.includes('Humility'))).toHaveLength(1);
+		expect(list.some((r) => r.includes('Do You Pray?'))).toBe(true);
+		expect(completeSpy).toHaveBeenCalledWith('mo', 'en');
 	});
 });

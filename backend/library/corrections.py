@@ -16,9 +16,11 @@ Shape:
 
 from __future__ import annotations
 
+import json
 import re as _re
 from collections.abc import Sequence
 from html import escape as _escape
+from pathlib import Path
 
 from library import dashes
 from library.text import html_to_text
@@ -2449,6 +2451,48 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<p>Tekyetaagisa kulwawo ku n", "<h3>ENJAWULO.</h3>"),
             ("<p>Tekyetaagisa kulwawo ku n",
              '<p><em>"Abakola ebibi tebakola bwe batyo."</em></p>'),
+            # ko
+            ('<p>복이 되지 않는 형통',
+             '<p>첫째 시편에 대한 묵상.</p>'),
+            ('<p>복이 되지 않는 형통',
+             '<h3>들어가는 말</h3>'),
+            ('<p>더 문자적으로 옮기면',
+             '<h3>복의 소극적 조건</h3>'),
+            ('<p>더 문자적으로 옮기면',
+             '<p><em>“복 있는 사람은 악인의 꾀를 좇지 아니하며.”</em></p>'),
+            ('<p>유유상종입니다. 신자',
+             '<p><em>죄인의 길에 서지 아니하며.</em></p>'),
+            ('<p>오만한 자의 자리는 ',
+             '<p><em>“오만한 자의 자리에 앉지 아니하고.”</em></p>'),
+            ('<p>우리는 참으로 복 있',
+             '<h3>복의 적극적 조건</h3>'),
+            ('<p>다음으로 이 시편 3',
+             '<h3>복의 결과</h3>'),
+            ('<p>이 대조에 대해서는 ',
+             '<h3>대조</h3>'),
+            ('<p>이 대조에 대해서는 ',
+             '<p><em>“악인은 그렇지 않음이여.”</em></p>'),
+            # vi
+            ('<p>Có một thứ thịnh vượng kh',
+             '<p>Suy gẫm về Thi Thiên Thứ Nhất.</p>'),
+            ('<p>Có một thứ thịnh vượng kh',
+             '<h3>LỜI MỞ ĐẦU.</h3>'),
+            ('<p>Nói sát nghĩa hơn: Ôi, ph',
+             '<h3>NHỮNG ĐIỀU KIỆN TIÊU CỰC CỦA PHƯỚC HẠNH</h3>'),
+            ('<p>Nói sát nghĩa hơn: Ôi, ph',
+             '<p><em>“Phước hạnh thay người không bước theo lời khuyên của kẻ ác.”</em></p>'),
+            ('<p>Ngưu tầm ngưu, mã tầm mã;',
+             '<p><em>không đứng trên con đường kẻ tội lỗi đi.</em></p>'),
+            ('<p>Chỗ ngồi của kẻ nhạo báng',
+             '<p><em>“Cũng không ngồi giữa đám người nhạo báng.”</em></p>'),
+            ('<p>Chúng ta đã xem xét những',
+             '<h3>NHỮNG ĐIỀU KIỆN TÍCH CỰC CỦA PHƯỚC HẠNH.</h3>'),
+            ('<p>Tiếp theo, chúng ta để ý ',
+             '<h3>KẾT QUẢ TRONG PHƯỚC HẠNH.</h3>'),
+            ('<p>Không cần phải bàn dài về',
+             '<h3>SỰ TƯƠNG PHẢN.</h3>'),
+            ('<p>Không cần phải bàn dài về',
+             '<p><em>“Kẻ ác thì không như thế.”</em></p>'),
         ],
     },
     "a-full-reward": {
@@ -2489,6 +2533,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # ja
             ('<p>この興味深い物語にも、聖霊が予型的な生涯を通して',
              '<blockquote><em>「……あなたがしゅうとめにつくしたこと、また自分の父母と生れた国を離れて、かつて知らなかった民のところにきたことは皆わたしに聞えました。どうぞ、主があなたのしたことに報いられるように。どうぞ、イスラエルの神、主、すなわちあなたがその翼の下に身を寄せようとしてきた主からじゅうぶんの報いを得られるように」（ルツ記2:11-12）</em></blockquote>'),
+            # ru
+            ('<p>В этом занимательном повествовании перед',
+             '<blockquote><em>«Мне сказано все, что сделала ты … что ты оставила твоего отца и твою мать и твою родину и пришла к народу, которого ты не знала вчера и третьего дня; да воздаст Господь за это дело твое, и да будет тебе полная награда от Господа Бога Израилева, к Которому ты пришла, чтоб успокоиться под Его крылами!» (Руфь 2:11, 12).</em></blockquote>'),
         ],
     },
     "self-denial-versus-self-assertion": {
@@ -2505,6 +2552,15 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # es
             ("<p>Con toda naturalidad podríamos",
              "<blockquote><em>«Si alguno quiere venir en pos de mí, niéguese a sí mismo, y tome su cruz cada día, y sígame.</em>—Lucas 9:23.</blockquote>"),
+            # pt
+            ("<p>Poderíamos naturalmente pensar",
+             '<blockquote><em>"Se alguém deseja vir após mim, negue-se a si mesmo, tome a sua cruz cada dia, e siga-me.</em>—LUCAS 9:23.</blockquote>'),
+            # ko
+            ('<p>주 예수 그리스도의 ',
+             '<blockquote><em>“아무든지 나를 따라 오려거든 자기를 부인하고 날마다 제 십자가를 지고 나를 좇을 것이니라”</em>—누가복음 9:23.</blockquote>'),
+            # vi
+            ('<p>Có lẽ chúng ta sẽ tự nhiên ',
+             '<blockquote><em>“Ai muốn đi theo Ta, người ấy phải từ bỏ chính mình, mỗi ngày vác thập tự giá của mình, và cứ theo Ta.</em>—Lu-ca 9:23.</blockquote>'),
         ],
     },
     "all-sufficiency": {
@@ -2521,6 +2577,12 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # es
             ("<p>¡Qué grato es al corazón",
              '<blockquote><em>"El SEÑOR DIOS es Sol y Escudo;<br/> gracia y gloria dará el SEÑOR:<br/> ninguna cosa buena negará<br/> a los que andan en integridad."<br/></em>—SALMO 84:11.</blockquote>'),
+            # ko
+            ('<p>참된 자녀라면 자기 ',
+             '<blockquote><em>“여호와 하나님은 해요 방패시라<br/> 여호와께서 은혜와 영화를 주시며<br/> 정직히 행하는 자에게<br/> 좋은 것을 아끼지 아니하실 것임이니이다”<br/></em>—시편 84:11</blockquote>'),
+            # vi
+            ('<p>Lòng một người con thật vui',
+             '<blockquote><em>“CHÚA Đức Chúa Trời vừa là mặt trời vừa là cái khiên;<br/> CHÚA ban ơn và vinh dự;<br/> Ngài chẳng tiếc điều tốt lành nào<br/> với những người sống trọn vẹn.”<br/></em>—THI-THIÊN 84:11.</blockquote>'),
         ],
     },
     "under-the-shepherds-care": {
@@ -2533,6 +2595,12 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # fr
             ('<blockquote>« Car vous étiez comme',
              '<h3>ALLOCUTION DU NOUVEL AN.</h3>'),
+            # ko
+            ('<blockquote>“너희가 전에는 양과 같이',
+             '<h3>신년 설교.</h3>'),
+            # vi
+            ('<blockquote>“Vì trước kia anh ',
+             '<h3>BÀI GIẢNG ĐẦU NĂM MỚI.</h3>'),
         ],
     },
     # --- Gutenberg #65066, "The Life and Diary of David Brainerd" ------------
@@ -2733,6 +2801,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # vi
             ('<p>BẰNG chứng tốt nhất của Cơ Đốc giáo l',
              '<p>“Kẻ nào muốn, khá nhận lấy nước sự sống cách nhưng không”<br/> (Khải Huyền 22:17)</p>'),
+            # ru
+            ("<p>Лучшее свидетельство истинности христианства",
+             "<p>«Желающий пусть берет воду жизни даром»<br/> (Откровение 22:17)</p>"),
         ],
     },
     "essentials-of-prayer": {
@@ -5120,6 +5191,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("¡Gloria a su bendito nombre!</p>", "<p>FIN</p>"),  # es
             ("Gloire soit à son nom béni !</p>", "<p>FIN</p>"),  # fr
             ("उसके धन्य नाम की महिमा हो!</p>", "<p>समाप्त</p>"),  # hi
+            ("主の祝福された御名に栄光がありますように！</p>", "<p>終わり</p>"),  # ja
             ("복되신 주님의 이름에 영광을 돌립니다!</p>", "<p>끝</p>"),  # ko
             ("Ekitiibwa kibe eri erinnya lye ery’omukisa!</p>", "<p>ENKOMERERO</p>"),  # lg
             ("Glória ao seu bendito nome!</p>", "<p>FIM</p>"),  # pt
@@ -6005,6 +6077,25 @@ BODY_CORRECTIONS: dict[str, dict] = {
              '<h3>더 깊은 시련</h3>'),
             ('<p>하나님께서 자기 종에게 주신 복은 결코 작은 것이 아니었습니다. 어',
              '<h3>여호와의 인자하심</h3>'),
+            # ru
+            ('<p>Размышляя над первым псалмом, мы говорил',
+             '<h3>ВСТУПЛЕНИЕ.</h3>'),
+            ('<p><em>«Господь дал, Господь и взял; да будет и',
+             '<h3>СВИДЕТЕЛЬСТВО И ВЫЗОВ БОЖИЙ.</h3>'),
+            ('<p>В 8-м стихе 1-й главы Сам Бог свидетельс',
+             '<p><em>«Господь дал, Господь и взял; да будет имя Господне благословенно!</em>» — Иов 1:21.</p>'),
+            ('<p>Ответ сатаны примечателен. Ему не нужно ',
+             '<h3>НЕВИДИМАЯ ОГРАДА.</h3>'),
+            ('<p>Вернемся к истории Иова. Великий клеветн',
+             '<h3>ИСПЫТАНИЕ ИОВА</h3>'),
+            ('<p>И вскоре сатана показал злобу своего нра',
+             '<h3>ЗЛОБА САТАНЫ.</h3>'),
+            ('<p>Но Тот, Кто послал испытание, дал и нужн',
+             '<h3>ДОВОЛЬНО БЛАГОДАТИ.</h3>'),
+            ('<p>Однако испытание Иова, как мы видели, не',
+             '<h3>ИСПЫТАНИЯ ГЛУБЖЕ.</h3>'),
+            ('<p>И благословение, которое Бог дал Своему ',
+             '<h3>МИЛОСЕРДИЕ ГОСПОДНЕ.</h3>'),
         ],
     },
     # --- Drop caps that lost the space after them -----------------------------
@@ -8547,6 +8638,8 @@ BODY_CORRECTIONS["reality-of-prayer"]["back_matter"] = [
      "<p><i>Printed in the United States of America</i></p>"),
     ("précise et victorieuse.</p>",
      "<p><i>Printed in the United States of America</i></p>"),
+    ("분명하며 이기는 기도로 얻어집니다.</p>",
+     "<p><i>Printed in the United States of America</i></p>"),
 ]
 # Gutenberg #29426 ends ch35 on the printer's imprint, "LONDON: MORGAN AND
 # SCOTT", then its own "Transcriber's Notes" (`div.tnote`: punctuation repaired,
@@ -8703,6 +8796,11 @@ BODY_CORRECTIONS["reality-of-prayer"]["restored_blocks"] = [
      "<blockquote>La prière est le souffle vital du chrétien,<br/>L’air natal de son âme ;<br/>Son mot d’ordre aux portes de la mort ;<br/>Il entre au ciel par la prière.</blockquote>"),
     ("<p>Deux choses peuvent être dites ici,",
      "<blockquote>« Ce que les faibles sens ignorent,<br/>Ce que la raison n’entrevoit,<br/>Avec une ferme et souveraine assurance,<br/>Révèle son origine céleste. »</blockquote>"),
+    # ko (translated from the settled English; same blocks, same positions)
+    ("<p>그리스도께서는 기도에서 모든 자",
+     "<blockquote>기도는 그리스도인의 생명의 호흡,<br/>그리스도인이 숨 쉬는 본향의 공기,<br/>죽음의 문 앞에서 외치는 그의 암호,<br/>그는 기도로 천국에 들어가네.</blockquote>"),
+    ("<p>이 주제에 관한 우리 연구의 이",
+     "<blockquote>“연약한 감각으로는 알 수 없는 것들,<br/>이성의 희미한 빛으로는 보이지 않는 것들이,<br/>강하고 압도적인 확신으로<br/>그 하늘의 근원을 드러내네.”</blockquote>"),
 ]
 BODY_CORRECTIONS.setdefault("prayer-and-praying-men", {}).setdefault("replacements", []).extend([
     # "Betelguese" -> "Betelgeuse".
@@ -24871,6 +24969,9 @@ BODY_CORRECTIONS.setdefault("key-teachings-of-richard-baxter", {}).setdefault("r
 BODY_CORRECTIONS["separation-and-service"]["back_matter"].append(
     ("crucifié pour nous.</p> <p>FIN.</p>", "<p>Note du transcripteur :<br/>"),
 )
+BODY_CORRECTIONS["separation-and-service"]["back_matter"].append(
+    ("실제로 보여 줍니다.</p> <p>끝</p>", "<p>필사자 주:<br/>"),
+)
 
 # --- English defects found while translating (queue batch 5) ---
 # OCR slips in the source scan, and miscited chapter headings: Hezekiah's healing is 2 Kings 20, the blind man John 9, Paul stoned at Lystra Acts 14:19, the temptation Matthew 4.
@@ -25214,17 +25315,38 @@ BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements"
     ('or what is forgiveness of sin’?, how many', 'or what is forgiveness of sin?’ how many'),
 ])
 
-# OCR slips in Crombie's De Principiis (CCEL scan), found while translating it to
-# French (job #7204). Each is a one-letter misread forced by grammar or sense;
-# the French edition already renders the corrected word.
-BODY_CORRECTIONS.setdefault("on-first-principles", {}).setdefault("replacements", []).extend([
-    ("Enoch, Noe, Sere, Abraham", "Enoch, Noe, Sem, Abraham"),
-    ("mortal yet clothed with immorality", "mortal yet clothed with immortality"),
-    ("a matter requiting examination", "a matter requiring examination"),
-    ("understood that them is no dissimilarity", "understood that there is no dissimilarity"),
-    ("knowledge to be confined from the sacred Scriptures", "knowledge to be confirmed from the sacred Scriptures"),
-    ("Creator and Legislator of the word is not called good", "Creator and Legislator of the world is not called good"),
-    ("bodies would nor possess a desire", "bodies would not possess a desire"),
-    ("is shown by Eccelesiastes", "is shown by Ecclesiastes"),
-    ("an uncertain event, council is taken", "an uncertain event, counsel is taken"),
-])
+
+# --- Drop-in corrections: one file per work and job, so parallel PRs never meet --
+#
+# Everything above is appended to by hand, and appending is what collided: over
+# 14 days to 2026-11-20 this module had more merge conflicts than any other file
+# — 9 of 42 consecutive commits that touched it would have conflicted had
+# they been written in parallel, nearly all of them two translation jobs adding a
+# block at the same end of the file (Brainerd -> ar and -> hi, batch 4 and batch
+# 5). So NEW replacement pairs go in a NEW file instead:
+#
+#     library/data/body_corrections/<work-slug>.<tag>.json
+#     {"why": "<what the slips are and where they were found>",
+#      "replacements": [["<exact old>", "<exact new>"], ...]}
+#
+# `<tag>` is anything that makes the name unique to your job (`fr-7204`,
+# `ko-batch-3`). Files load in sorted-name order AFTER every block above, so a
+# drop-in behaves exactly like a block appended at the end of this module — the
+# placement those PRs were fighting over. `tests_fixture.BodyCorrectionDropInTests`
+# holds the shape; the dead-pair, dash and idempotence gates read
+# BODY_CORRECTIONS and so cover these entries like any other. Only `replacements`
+# is supported here: the structural keys (back_matter, paragraph_breaks, ...)
+# are rare and stay in Python above.
+BODY_CORRECTIONS_DIR = Path(__file__).resolve().parent / "data" / "body_corrections"
+
+
+def _load_body_correction_drop_ins() -> None:
+    for path in sorted(BODY_CORRECTIONS_DIR.glob("*.json")):
+        work = path.name.split(".", 1)[0]
+        pairs = json.loads(path.read_text(encoding="utf-8"))["replacements"]
+        BODY_CORRECTIONS.setdefault(work, {}).setdefault("replacements", []).extend(
+            (old, new) for old, new in pairs
+        )
+
+
+_load_body_correction_drop_ins()

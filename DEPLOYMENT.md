@@ -180,10 +180,11 @@ makes it quick.
 ## Refreshing / adding content later
 
 Re-run the importers locally, regenerate the fixture, commit, and push. The
-**deploy train** ships it: `.github/workflows/deploy-train.yml` runs every two
-hours and moves `ochorus-api` and `ochorus-web` together to the newest commit
-whose `test-and-build` passed (Render's own auto-deploy is off on both; the
-email cron has no deploy hook, so it still auto-deploys after CI). To ship
+**deploy train** ships it: `.github/workflows/deploy-train.yml` runs three times
+a day (15:05, 21:05 and 03:05 UTC: 7 AM, 1 PM and 7 PM Pacific in winter) and moves `ochorus-api` and `ochorus-web`
+together to the newest commit whose `test-and-build` passed (Render's own
+auto-deploy is off on both; the email cron is suspended while sending is off,
+and render.yaml says how to bring it back). To ship
 now: Actions → Deploy train → Run workflow, or `gh workflow run deploy-train.yml`
 (add `-f force=true` to redeploy with nothing changed). A red train run means
 nothing is deploying — fix it the same day. Between trains, a language launch

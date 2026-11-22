@@ -831,6 +831,22 @@ export interface ReviewItem {
 	flags?: ReviewFlags | null;
 	/** Which kind of review it needs — see `ReviewLane`. */
 	lane: ReviewLane;
+	/** Reader impact — the default order (backend library/review_impact.py). */
+	impact: ReviewImpact;
+}
+
+/**
+ * How much readers read an edition awaiting review. `readers`: measured on this
+ * edition (signed-in readers with progress in the window, the recent ones
+ * counted twice). `estimate`: nobody has read it yet, so the English edition's
+ * score × the language's share of readers. `none`: no signal at all.
+ */
+export interface ReviewImpact {
+	score: number;
+	basis: 'readers' | 'estimate' | 'none';
+	readers: number;
+	readers_recent: number;
+	en_score: number;
 }
 
 /**
@@ -863,6 +879,15 @@ export interface ReviewQueue {
 	 * registry row maps to itself.
 	 */
 	language_names: Record<string, string>;
+	/** `?next=N` echoed back: the list is the top N by impact (0 = normal paging). */
+	next: number;
+	impact: {
+		window_days: number;
+		recent_days: number;
+		explanation: string;
+		/** Language → its share of active readers (the estimate's multiplier). */
+		language_share: Record<string, number>;
+	};
 }
 
 export interface ReviewQueueParams {
@@ -873,6 +898,8 @@ export interface ReviewQueueParams {
 	page?: number;
 	/** One work (the coverage matrix's deep link) — shown whatever its outcome. */
 	slug?: string;
+	/** Only the top N by reader impact: "next N to review". */
+	next?: number;
 }
 
 export const getReviewQueue = (p: ReviewQueueParams = {}) => {
@@ -882,6 +909,7 @@ export const getReviewQueue = (p: ReviewQueueParams = {}) => {
 	if (p.lane) q.set('lane', p.lane);
 	if (p.sort) q.set('sort', p.sort);
 	if (p.slug) q.set('slug', p.slug);
+	if (p.next) q.set('next', String(p.next));
 	if (p.page && p.page > 1) q.set('page', String(p.page));
 	const qs = q.toString();
 	return apiFetch<ReviewQueue>(`/api/admin/review-queue/${qs ? `?${qs}` : ''}`);
@@ -2745,9 +2773,10 @@ export const decideSearch = (d: {
 	});
 
 /** What a search returns in one language, unlogged and without synonyms or
- *  pins — the preview behind the synonym and pin dialogs. */
+ *  pins — the preview behind the synonym and pin dialogs. `suggestion` is the
+ *  library's nearest word when the query finds nothing. */
 export const getAdminSearchPreview = (q: string, language: string) =>
-	apiFetch<{ query: string; results: SearchHit[] }>(
+	apiFetch<{ query: string; results: SearchHit[]; suggestion?: string }>(
 		`/api/admin/search-preview/?${new URLSearchParams({ q, language })}`
 	);
 

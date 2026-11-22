@@ -1,0 +1,14 @@
+{
+    "kind": "bio",
+    "slug": "clement-of-alexandria",
+    "language": "pt",
+    "job_issue": 8690,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Isaiah 35:5",
+            "status": "self_rendered",
+            "block_index": 12
+        }
+    ]
+}

@@ -15,8 +15,8 @@
  */
 import { portraitPosition } from '$lib/portraits';
 import { authorPath } from './originals';
-import { scripturePageHref } from '$lib/library-public';
-import type { CoverFace, SearchHit, SearchType } from '$lib/library-public';
+import { quoteHitHref, scripturePageHref } from '$lib/library-public';
+import type { AnswerHit, CoverFace, SearchHit, SearchType } from '$lib/library-public';
 import { chapterName } from './reading';
 import { foldText } from './searchNormalize';
 import { sermonArt } from './sermonArt';
@@ -60,6 +60,12 @@ export type ResultRow = Row & {
 	type: SearchHit['type'];
 	/** An admin's pinned best match for this query (see `leadWithPinned`). */
 	pinned?: boolean;
+	/** A writer the query names however it was spelt ("d l moody"); see `topResult`. */
+	named?: boolean;
+	/** The result most readers open for this query; see `leadWithPinned`, `topResult`. */
+	chosen?: boolean;
+	/** A quotation the query is quoting word for word; see `leadWithPinned`. */
+	phrase?: boolean;
 };
 
 /** What `toRow` needs from the page: the type chip's wording, and the query. */
@@ -158,6 +164,36 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
 				color: '',
 				round: false
 			};
+		case 'answer':
+			return {
+				key: `answer:${hit.work_kind}-${hit.work_slug}`,
+				label: ctx.label('answer'),
+				href: answerHref(hit),
+				title: hit.question,
+				meta: hit.work_title,
+				// Read like a passage: the question, then the answer itself.
+				location: hit.question,
+				snippet: hit.answer,
+				date: hit.date,
+				image: '',
+				color: '',
+				round: false
+			};
+		case 'quote':
+			return {
+				key: 'quote:' + hit.quote_slug,
+				label: ctx.label('quote'),
+				href: quoteHitHref(hit),
+				title: hit.text,
+				meta: `${hit.author_name} · ${hit.source.work}`,
+				// Read like a passage: who said it and where, then the words.
+				location: `${hit.author_name} · ${hit.source.work}`,
+				snippet: hit.snippet,
+				date: hit.date,
+				image: '',
+				color: '',
+				round: false
+			};
 		case 'sermon':
 			return {
 				key: 'sermon:' + hit.sermon_slug,
@@ -205,11 +241,16 @@ export const GROUP_ORDER: { type: SearchHit['type']; labelKey: string }[] = [
 	// Scripture leads: it only appears for a reference query, where the passage
 	// hub is the most direct answer, above the books/passages that treat it.
 	{ type: 'scripture', labelKey: 'search.groupScripture' },
+	// Answers come only for a question, and they are the most direct reply to one.
+	{ type: 'answer', labelKey: 'search.groupAnswers' },
 	{ type: 'book', labelKey: 'search.groupBooks' },
 	{ type: 'author', labelKey: 'search.groupAuthors' },
 	{ type: 'topic', labelKey: 'search.groupTopics' },
 	{ type: 'plan', labelKey: 'search.groupPlans' },
 	{ type: 'article', labelKey: 'search.groupArticles' },
+	// Quotations are English-only, so this section never shows elsewhere. It
+	// leads when the reader is quoting one (see `leadWithPinned`).
+	{ type: 'quote', labelKey: 'nav.quotes' },
 	{ type: 'chapter', labelKey: 'search.groupPassages' },
 	{ type: 'sermon', labelKey: 'search.groupSermons' }
 ];
@@ -218,6 +259,22 @@ export interface ResultGroup {
 	type: SearchHit['type'];
 	labelKey: string;
 	rows: ResultRow[];
+}
+
+/** Where an answer is read in full: its page's questions section. */
+export function answerHref(hit: AnswerHit): string {
+	switch (hit.work_kind) {
+		case 'author':
+			return `${authorPath(hit.work_slug)}#faq`;
+		case 'sermon':
+			return `/sermons/${hit.work_slug}#questions-heading`;
+		case 'book':
+			return `/books/${hit.work_slug}#questions`;
+		case 'topic':
+			return `/topics/${hit.work_slug}#questions`;
+		default:
+			return `/articles/${hit.work_slug}#questions`;
+	}
 }
 
 /** Cluster rows into type sections, keeping only the sections present. */
@@ -242,7 +299,11 @@ export function groupRows(rows: ResultRow[]): ResultGroup[] {
  * list, so within its group it is already the top row.
  */
 export function leadWithPinned(groups: ResultGroup[]): ResultGroup[] {
-	const i = groups.findIndex((g) => g.rows.some((r) => r.pinned));
+	// An admin's pin first; then a quotation the reader is quoting word for
+	// word; failing those, the result readers keep choosing.
+	let i = groups.findIndex((g) => g.rows.some((r) => r.pinned));
+	if (i < 0) i = groups.findIndex((g) => g.rows.some((r) => r.phrase));
+	if (i < 0) i = groups.findIndex((g) => g.rows.some((r) => r.chosen));
 	return i > 0 ? [groups[i], ...groups.slice(0, i), ...groups.slice(i + 1)] : groups;
 }
 
@@ -322,7 +383,10 @@ function fold(s: string): string {
 /**
  * The one result worth a larger card above the list: a book or a writer the
  * query names exactly ("all of grace", "spurgeon" does not; "Charles Spurgeon"
- * does), or an admin's pinned best match when that is a book or a writer.
+ * does), or an admin's pinned best match when that is a book or a writer. A
+ * writer the server says the query names (`named`: "d l moody", "C.H.
+ * Spurgeon", "Dwight Moody") counts as exact, after an exactly-titled book;
+ * then the book or writer most readers open for this query (`chosen`).
  *
  * Exact, not "first": a top card over a fuzzy match claims an answer the
  * reader didn't ask for. Books win a tie with writers because the reader came
@@ -335,5 +399,11 @@ export function topResult(rows: ResultRow[], query: string): ResultRow | null {
 	const q = fold(query);
 	if (q.length < 2) return null;
 	const exact = named.filter((r) => fold(r.title) === q);
-	return exact.find((r) => r.type === 'book') ?? exact[0] ?? null;
+	return (
+		exact.find((r) => r.type === 'book') ??
+		exact[0] ??
+		named.find((r) => r.type === 'author' && r.named) ??
+		named.find((r) => r.chosen) ??
+		null
+	);
 }

@@ -1,13 +1,18 @@
-import { building } from '$app/environment';
-import { listAuthors, listBooks } from '$lib/library-public';
-import { getLang } from '$lib/lang.svelte';
-import { ERAS, eraOf } from '$lib/eras';
-import { countWriters } from '$lib/authorIndex';
-import type { PageLoad } from './$types';
+import { building } from "$app/environment";
+import {
+  listAuthors,
+  listBooks,
+  listHubs,
+  type Hub,
+} from "$lib/library-public";
+import { getLang } from "$lib/lang.svelte";
+import { ERAS, eraOf } from "$lib/eras";
+import { countWriters } from "$lib/authorIndex";
+import type { PageLoad } from "./$types";
 
 // Prerenders to authors/index.html, which the static host serves natively for
 // /authors/ — no Render rewrite needed ($lib/canonicalRedirect isSlashedPath).
-export const trailingSlash = 'always';
+export const trailingSlash = "always";
 
 /**
  * The library A–Z ($lib/authorIndex). Three lists, fetched together:
@@ -34,41 +39,68 @@ export const trailingSlash = 'always';
  * browser a failure is reported (`loadError`), and Try again re-runs this.
  */
 export const load: PageLoad = async ({ fetch }) => {
-	const lang = getLang();
-	try {
-		const [authors, books, local] = await Promise.all([
-			listAuthors('en', fetch),
-			listBooks(lang, fetch),
-			lang === 'en' ? null : listAuthors(lang, fetch)
-		]);
-		// Only eras that actually contain a writer, matching the era route's own
-		// `entries()` — linking an empty era would bake a page the sitemap never
-		// advertises.
-		const present = new Set(authors.map((a) => eraOf(a.birth_year)));
-		const english = new Set(authors.map((a) => a.slug));
-		const roster = local ? [...authors, ...local.filter((a) => !english.has(a.slug))] : authors;
-		// `bio`: the author page renders its #bio section for a short bio too.
-		// `quotes`: English only. The quote pages are English — lifted from the
-		// English works, each citation naming an English chapter — and are never
-		// prerendered under a locale prefix (the author and book pages gate their
-		// link the same way), so a count off English would link a missing page.
-		const works = Object.fromEntries(
-			(local ?? authors).map((a) => [
-				a.slug,
-				{
-					sermons: a.sermon_count,
-					bio: a.has_long_bio || !!a.bio.trim(),
-					quotes: lang === 'en' ? (a.quote_count ?? 0) : 0
-				}
-			])
-		);
-		// The header's authors number: THIS language's writers, as the home page
-		// counts them (`countWriters` over the same two lists) — not the English
-		// roster the index lists, which would read ~130 on a ~30-writer locale.
-		const people = countWriters(local ?? authors, books);
-		return { authors: roster, books, works, people, eras: ERAS.filter((e) => present.has(e.id)), loadError: false };
-	} catch (e) {
-		if (building) throw e;
-		return { authors: [], books: [], works: {}, people: 0, eras: [], loadError: true };
-	}
+  const lang = getLang();
+  try {
+    const [authors, books, local, allHubs] = await Promise.all([
+      listAuthors("en", fetch),
+      listBooks(lang, fetch),
+      lang === "en" ? null : listAuthors(lang, fetch),
+      // The tradition / region chips. Only a filter, so a failure degrades
+      // to no chips rather than failing the page (or the build).
+      listHubs(lang, fetch).catch(() => [] as Hub[]),
+    ]);
+    // Only eras that actually contain a writer, matching the era route's own
+    // `entries()` — linking an empty era would bake a page the sitemap never
+    // advertises.
+    const present = new Set(authors.map((a) => eraOf(a.birth_year)));
+    const english = new Set(authors.map((a) => a.slug));
+    const roster = local
+      ? [...authors, ...local.filter((a) => !english.has(a.slug))]
+      : authors;
+    // `bio`: the author page renders its #bio section for a short bio too.
+    // `quotes`: English only. The quote pages are English — lifted from the
+    // English works, each citation naming an English chapter — and are never
+    // prerendered under a locale prefix (the author and book pages gate their
+    // link the same way), so a count off English would link a missing page.
+    const works = Object.fromEntries(
+      (local ?? authors).map((a) => [
+        a.slug,
+        {
+          sermons: a.sermon_count,
+          bio: a.has_long_bio || !!a.bio.trim(),
+          quotes: lang === "en" ? (a.quote_count ?? 0) : 0,
+        },
+      ]),
+    );
+    // The header's authors number: THIS language's writers, as the home page
+    // counts them (`countWriters` over the same two lists) — not the English
+    // roster the index lists, which would read ~130 on a ~30-writer locale.
+    const people = countWriters(local ?? authors, books);
+    // Traditions, then regions — a place (England, Uganda) is too fine a cut
+    // for a chip row; its region carries it.
+    const hubs = [
+      ...allHubs.filter((h) => h.kind === "tradition"),
+      ...allHubs.filter((h) => h.kind === "region"),
+    ].map((h) => ({ slug: h.slug, label: h.label, members: h.members }));
+    return {
+      authors: roster,
+      books,
+      works,
+      people,
+      hubs,
+      eras: ERAS.filter((e) => present.has(e.id)),
+      loadError: false,
+    };
+  } catch (e) {
+    if (building) throw e;
+    return {
+      authors: [],
+      books: [],
+      works: {},
+      people: 0,
+      hubs: [],
+      eras: [],
+      loadError: true,
+    };
+  }
 };

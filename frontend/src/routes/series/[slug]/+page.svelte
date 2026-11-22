@@ -29,6 +29,9 @@
 	import { seriesCardUrl } from '$lib/seriesCard';
 	import { localizeHref } from '$lib/href';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import SubjectFaces from '$lib/components/SubjectFaces.svelte';
+	import { subjectSlug } from '$lib/keyTeachings';
+	import TonightStory from '$lib/components/TonightStory.svelte';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import SeriesCard from '$lib/components/SeriesCard.svelte';
 	import SeriesVolumes from '$lib/components/SeriesVolumes.svelte';
@@ -303,6 +306,12 @@
 		</section>
 	{/if}
 
+	<!-- A series for children whose volumes tell real lives (Brave for God):
+	     one of them for tonight, above the volumes. -->
+	{#if series.audience === 'young_readers' && people.length}
+		<TonightStory {people} class="mt-12" />
+	{/if}
+
 	<section class="mt-12">
 		<h2 class="section-label mb-4">
 			{t('nav.books')}{#if series.ordered}{' · '}{t('series.inOrder')}{/if}
@@ -324,6 +333,11 @@
 					</div>
 				</div>
 			{/if}
+		{:else if data.subjects.length}
+			<!-- The Key Teachings: every volume is about a person, so the shelf
+			     is the people (SubjectFaces), not thirty-six covers that all
+			     read "Key Teachings". Only when the writers list arrived. -->
+			<SubjectFaces books={series.books} authors={data.subjects} subjectOf={(b) => subjectSlug(b.slug)} />
 		{:else}
 			<!-- The cover grid the shelves use. The author rides the card only when
 			     the books have more than one — The Key Teachings is a collection,

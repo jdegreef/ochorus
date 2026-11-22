@@ -1313,7 +1313,7 @@ class UnfailingSpringsDisplayLineTests(SimpleTestCase):
     `corrections.py`. Asserted per edition, for the same reason as above."""
 
     SLUG = "unfailing-springs"
-    LANGUAGES = {"am", "ar", "en", "es", "fr", "hi", "ko", "lg", "pt", "sw", "uk", "vi"}
+    LANGUAGES = {"am", "ar", "en", "es", "fr", "hi", "ko", "lg", "pt", "ru", "sw", "uk", "vi"}
 
     @classmethod
     def setUpClass(cls):
@@ -1378,7 +1378,7 @@ class RealityOfPrayerVerseTests(SimpleTestCase):
         return [block for _, block in corrections.BODY_CORRECTIONS[self.SLUG]["restored_blocks"]]
 
     def test_each_edition_carries_both_poems_in_place(self):
-        self.assertEqual(set(self.editions), {"am", "en", "es", "fr"})
+        self.assertEqual(set(self.editions), {"am", "en", "es", "fr", "ko"})
         for lang, chapters in self.editions.items():
             for order, index in self.POSITIONS.items():
                 with self.subTest(language=lang, chapter=order):

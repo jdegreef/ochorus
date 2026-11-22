@@ -32,12 +32,17 @@
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import type { BookQuote, KeyVerse } from '$lib/articleExtras';
 
 	const t = i18n.t;
 
 	// The reader detail for one article. Its sibling on the same route is the
 	// topic shelf (ArticleTopicShelf) — the [slug]/+page.svelte switch picks one.
-	let { article }: { article: Article } = $props();
+	let {
+		article,
+		keyVerse = null,
+		bookQuote = null
+	}: { article: Article; keyVerse?: KeyVerse | null; bookQuote?: BookQuote | null } = $props();
 
 	/** Links into the ARTICLE's language, not the UI locale: an article falls
 	 *  back to English, and the works it names have no English fallback. */
@@ -332,6 +337,18 @@
 				{/if}
 			</header>
 
+			<!-- The key verse: the article's first cited passage, set in the Open
+			     Word Bible (articleExtras). Outside the Reader, so the body's
+			     paragraph indexes are unchanged. -->
+			{#if keyVerse}
+				<figure class="key-verse">
+					<blockquote><p>{keyVerse.text}</p></blockquote>
+					<figcaption>
+						<span class="font-semibold">{keyVerse.ref}</span><span class="sep">{' · '}</span>{keyVerse.version}
+					</figcaption>
+				</figure>
+			{/if}
+
 			{#if showToc}
 				<div class="toc-inline">{@render contents(false)}</div>
 			{/if}
@@ -368,6 +385,15 @@
 			     mid-article once; inside the Reader's prose any extra block would
 			     shift the paragraph index every highlight and bookmark keys on.) -->
 			{#if lead}
+				{#if bookQuote}
+					<!-- A line from the classic itself, the reason to open it. -->
+					<blockquote class="book-quote mt-10">
+						<p>{bookQuote.text}</p>
+						<footer>
+							<a href={bookQuote.href}>{lead.author.name}, <cite>{lead.title}</cite></a>
+						</footer>
+					</blockquote>
+				{/if}
 				<aside class="book-teaser" aria-label={t('articles.readInFull')}>
 					<a href={inArticleLang(`/books/${lead.slug}`)} class="w-14 shrink-0" tabindex="-1" aria-hidden="true">
 						<BookCover book={lead} />
@@ -482,6 +508,29 @@
 
 			<AccountCta source="article" />
 		</article>
+
+		<!-- The book behind this article, beside the prose on a wide screen
+		     (the grid's third column): the cover, a line from it and the way
+		     in, in view the whole way down. Below 1200px the end-of-article
+		     teaser and quote carry the same. -->
+		{#if lead}
+			<aside class="book-rail" aria-label={t('articles.bookBehind')}>
+				<div class="book-rail-card">
+					<p class="eyebrow text-accent">{t('articles.bookBehind')}</p>
+					<a href={inArticleLang(`/books/${lead.slug}`)} class="mt-3 block w-24" tabindex="-1" aria-hidden="true">
+						<BookCover book={lead} />
+					</a>
+					<a href={inArticleLang(`/books/${lead.slug}`)} class="teaser-title mt-3">{lead.title}</a>
+					<p class="text-small text-muted">{lead.author.name}</p>
+					{#if bookQuote}
+						<p class="rail-quote">“{bookQuote.text}”</p>
+					{/if}
+					<a href={inArticleLang(`/books/${lead.slug}/1`)} class="btn btn-primary btn-sm mt-4">
+						{t('book.beginReading')}
+					</a>
+				</div>
+			</aside>
+		{/if}
 	</div>
 </div>
 
@@ -495,7 +544,8 @@
 		margin-inline: auto;
 		max-width: var(--reading-measure);
 	}
-	.toc-rail {
+	.toc-rail,
+	.book-rail {
 		display: none;
 	}
 	@media (min-width: 1200px) {
@@ -518,6 +568,79 @@
 			max-width: 15rem;
 		}
 		.toc-inline {
+			display: none;
+		}
+		.book-rail {
+			display: block;
+			grid-column: 3;
+			grid-row: 1;
+			width: 100%;
+			max-width: 15rem;
+		}
+		.book-rail-card {
+			position: sticky;
+			top: calc(var(--appnav-h, 0px) + 1.5rem);
+		}
+	}
+
+	/* The key verse, set: Scripture in the display face between rules, the
+	   reference and translation under it. */
+	.key-verse {
+		margin: 0 0 2rem;
+		padding-block: 1.1rem;
+		border-block: 1px solid var(--color-border);
+	}
+	.key-verse blockquote {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		line-height: 1.45;
+		color: var(--color-text);
+	}
+	.key-verse figcaption {
+		margin-top: 0.5rem;
+		font-size: var(--fs-small);
+		color: var(--color-muted);
+	}
+	/* A line from the classic: the pull-quote register, at the article's end. */
+	.book-quote {
+		margin-inline: 0;
+		padding-inline-start: 1.1rem;
+		border-inline-start: 3px solid var(--color-accent);
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		font-style: italic;
+		line-height: 1.45;
+	}
+	.book-quote footer {
+		margin-top: 0.5rem;
+		font-family: var(--font-sans);
+		font-size: var(--fs-small);
+		font-style: normal;
+	}
+	.book-quote footer a {
+		color: var(--color-muted);
+	}
+	.book-rail .teaser-title {
+		display: block;
+		font-family: var(--font-display);
+		font-weight: 600;
+		line-height: 1.25;
+		color: var(--color-text);
+	}
+	.rail-quote {
+		margin-top: 0.9rem;
+		font-family: var(--font-display);
+		font-style: italic;
+		font-size: var(--fs-small);
+		line-height: 1.55;
+		color: var(--color-text);
+	}
+	/* The end quote and the header's cover repeat the rail; on a wide screen
+	   the rail has them. */
+	@media (min-width: 1200px) {
+		.book-quote,
+		.hero-cover {
 			display: none;
 		}
 	}

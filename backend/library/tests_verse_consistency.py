@@ -75,7 +75,7 @@ class VerseConsistencyRatchetTests(SimpleTestCase):
             better,
             [],
             "These are more consistent than their pin — re-pin with `manage.py "
-            "audit_verse_consistency --update-baseline` so the ratchet can only "
+            "audit_verse_consistency --update-baseline --language <lang>` so the ratchet can only "
             "tighten, and say in the commit message which renderings you reconciled.",
         )
 
@@ -112,6 +112,48 @@ class VerseConsistencyRepinTests(SimpleTestCase):
 
     def test_a_reference_leaving_entirely_is_not_a_regression(self):
         self.assertEqual(vc.baseline_regressions({}, {"sw\tWarumi 10:17": 2}), [])
+
+    def test_a_scoped_repin_rewrites_only_its_own_language(self):
+        """`--update-baseline --language sw` must leave every other line alone.
+
+        That is what keeps two translation jobs in two languages off each other's
+        lines in this shared file — a whole-corpus re-pin rewrites every
+        language to whatever the branch happens to hold.
+        """
+        import json
+        import tempfile
+        from pathlib import Path
+        from unittest import mock
+
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "baseline.json"
+            path.write_text(
+                json.dumps({"conflicts": {"am\tዮሐንስ 3:16": 2, "sw\tWarumi 10:17": 3, "sw\tYohana 1:1": 2}}),
+                encoding="utf-8",
+            )
+            with mock.patch.object(vc, "BASELINE_PATH", path):
+                # The branch's corpus says am grew (someone else's job, not ours)
+                # and sw tightened; only sw may move.
+                vc.write_baseline({"am\tዮሐንስ 3:16": 3, "sw\tWarumi 10:17": 2}, "sw")
+                self.assertEqual(vc.read_baseline(), {"am\tዮሐንስ 3:16": 2, "sw\tWarumi 10:17": 2})
+
+    def test_a_conflicted_baseline_says_how_to_resolve_it(self):
+        import tempfile
+        from pathlib import Path
+        from unittest import mock
+
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "baseline.json"
+            path.write_text('{\n<<<<<<< HEAD\n "a": 1\n=======\n "a": 2\n>>>>>>> x\n}\n', encoding="utf-8")
+            with mock.patch.object(vc, "BASELINE_PATH", path), self.assertRaisesRegex(
+                ValueError, "git checkout origin/main"
+            ):
+                vc.read_baseline()
+
+    def test_in_language_narrows_the_pins(self):
+        pins = {"am\tዮሐንስ 3:16": 2, "sw\tWarumi 10:17": 3}
+        self.assertEqual(vc.in_language(pins, "sw"), {"sw\tWarumi 10:17": 3})
+        self.assertEqual(vc.in_language(pins, None), pins)
 
     def test_the_committed_baseline_is_its_own_fixed_point(self):
         """Re-pinning the corpus as it stands must be a no-op.
