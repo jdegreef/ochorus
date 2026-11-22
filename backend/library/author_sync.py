@@ -60,7 +60,9 @@ FILL_ONLY_FIELDS = ("photo_url", "birth_year", "death_year")
 # revisit this the way the fill-only caveat above describes.
 #
 # `tagline` likewise: written into `authors.json` and nowhere else.
-SYNCED_FIELDS = ("same_as", "faq", "tagline")
+# `start_with` likewise: the ranked "Where to start" list is researched into
+# `authors.json` and nothing else writes it.
+SYNCED_FIELDS = ("same_as", "faq", "tagline", "start_with")
 
 def mark_translations_stale(author) -> list[str]:
     """Flag this author's short-bio translations as describing superseded text.
