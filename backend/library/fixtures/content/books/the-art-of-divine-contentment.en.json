@@ -14,7 +14,32 @@
   "description": "Watson\u2019s treatise on Paul\u2019s words \u201cI have learned, in whatsoever state I am, therewith to be content\u201d: what holy contentment is and is not, why it is so hard to learn, a long array of arguments for it, and practical rules for attaining it.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Art of Divine Contentment about?",
+    "answer": "It is Thomas Watson\u2019s treatise on Paul\u2019s words in Philippians 4:11, I have learned, in whatsoever state I am, therewith to be content. Watson explains what holy contentment is and is not, why it is so hard to learn, answers questions that troubled believers raise, gives a long list of motives for contentment, and ends with practical rules for attaining it."
+   },
+   {
+    "question": "Why does Watson call contentment an art?",
+    "answer": "Watson notes that Paul says I have learned, so contentment is not natural but must be learned. The trade of sin needs no learning, but the art of divine contentment is not achieved without holy industry. He says the doctrine of contentment is so important that until we have learned it we have not learned to be Christians."
+   },
+   {
+    "question": "Does contentment mean not caring about anything?",
+    "answer": "No. Watson explains that Paul\u2019s command to be careful for nothing does not exclude a prudent care for one\u2019s household, or a religious care to make one\u2019s calling and election sure. It excludes anxious care about the outcome of events. In this sense it should be a Christian\u2019s care not to be careful."
+   },
+   {
+    "question": "What does Watson say about discontent?",
+    "answer": "Watson treats discontent as a quarrel with God. A contented Christian is an advocate for God against unbelief and impatience, while discontent takes everything from God in the worst sense and censures him. When faced with a hard relationship, error in the church or loss, he urges believers to mourn if they must but not to murmur."
+   },
+   {
+    "question": "Is prosperity a cure for discontent?",
+    "answer": "Watson argues it is not. Care is the evil spirit that haunts the rich man, and when his chest is full of gold his heart is full of care. A prosperous condition brings more danger and a greater reckoning, since everyone must account for their talents. Outward comforts cannot make a person blessed, so contentment must come from God."
+   },
+   {
+    "question": "Who would benefit from this book?",
+    "answer": "It suits anyone struggling with anxiety, envy, loss or a hard providence, and anyone who wants to learn peace in God whatever their circumstances. Watson writes in vivid, memorable images typical of the Puritans, and his practical rules at the end make the book a guide to daily practice as well as a meditation."
+   }
+  ],
   "publication_year": 1653,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/watson/contentment.html",

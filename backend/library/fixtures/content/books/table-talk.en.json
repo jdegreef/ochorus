@@ -14,7 +14,32 @@
   "description": "Luther\u2019s sayings at his own table, gathered by his students and first printed in 1566: on the Word of God, the works of God, Christ, sin and free will, the law and the gospel, prayer, the confession of the faith, and the diets where it was defended.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Table Talk?",
+    "answer": "Table Talk is a collection of Martin Luther\u2019s sayings at his own table, gathered by his students and first printed in 1566. This edition groups them by subject: the Word of God, the works of God, the world, Christ, sin and free will, the catechism, the law and the gospel, prayer, confession of the faith and the imperial diets."
+   },
+   {
+    "question": "How does Luther describe the Bible?",
+    "answer": "Luther says the Bible is like a fair and spacious orchard, where all sorts of trees grow and many kinds of fruit can be gathered: comforts, teachings, warnings, promises and threatenings. He adds that there is not a tree in this orchard on which he has not knocked and shaken down at least a couple of apples or pears. He also urges readers to search Scripture with prayer rather than measure it by natural reason."
+   },
+   {
+    "question": "What does Luther say about prayer?",
+    "answer": "Luther says no one can believe how powerful prayer is except those who have learned it by experience. He recalls that as often as he has prayed earnestly he has been richly heard and received more than he asked; God sometimes delayed, but he came. The chapter on prayer gathers many such sayings, treating prayer as the Christian\u2019s chief resource in need."
+   },
+   {
+    "question": "What does Table Talk say about justification?",
+    "answer": "Luther calls the article of justification, how we are justified and saved before God, the teaching that overcomes all sorrow, perplexity and adversity, without which there is neither help nor counsel. Many sayings return to this theme, contrasting the free grace of God in Christ with any trust in human works or merit."
+   },
+   {
+    "question": "Does Luther speak about his appearance at Worms?",
+    "answer": "Yes. In the sayings on the confession of the faith Luther recalls how the pope and emperor cited him to appear at Worms in 1521 at the imperial assembly, and how he was pressed to submit his teaching to human judgment. He insists that in matters of religion we must judge not by human wisdom but by God\u2019s Word."
+   },
+   {
+    "question": "Who will enjoy Table Talk?",
+    "answer": "It suits readers who want to meet Luther as a person: blunt, humorous, pastoral and often fierce. Because the sayings are short and arranged by topic, the book can be dipped into anywhere. It is also valuable to students of the Reformation as a record of how Luther spoke about faith, Scripture and the controversies of his day."
+   }
+  ],
   "publication_year": 1566,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/9841",
