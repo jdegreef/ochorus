@@ -297,6 +297,37 @@ class SendingTests(TestCase):
         )
         self.assertNotIn("Chapter 9", render_broadcast(self._digest(), reader, sub).html)
 
+    def test_a_book_being_reread_is_in_progress(self):
+        reader = _make_profile(email="r@example.com")
+        sub = EmailSubscription.objects.create(profile=reader)
+        now = timezone.now()
+        ReadingProgress.objects.create(
+            profile=reader,
+            kind=WorkKind.BOOK,
+            book_slug="humility",
+            language="en",
+            chapter_order=3,
+            finished_at=now - timedelta(days=30),
+            restarted_at=now - timedelta(days=2),
+        )
+        self.assertIn("Chapter 3", render_broadcast(self._digest(), reader, sub).html)
+
+    def test_a_finished_reread_is_not_in_progress(self):
+        reader = _make_profile(email="r@example.com")
+        sub = EmailSubscription.objects.create(profile=reader)
+        now = timezone.now()
+        ReadingProgress.objects.create(
+            profile=reader,
+            kind=WorkKind.BOOK,
+            book_slug="humility",
+            language="en",
+            chapter_order=9,
+            finished_at=now - timedelta(days=30),
+            restarted_at=now - timedelta(days=2),
+            last_finished_at=now - timedelta(days=1),
+        )
+        self.assertNotIn("Chapter 9", render_broadcast(self._digest(), reader, sub).html)
+
 
 @override_settings(DEBUG=True)  # loopback test client → admin gate bypassed
 class AdminApiTests(TestCase):

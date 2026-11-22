@@ -1,5 +1,5 @@
 {
-	"_comment": "A dictionary head per glossary word: part of speech, a plain respelling (stress in capitals) and a one-line origin. DRAFTED 2026-11-20 for the founder to check — every line is a first draft, not a sourced etymology. Keys match glossary.json.",
+	"_comment": "A dictionary head per glossary word: part of speech, a plain respelling (stress in capitals) and a one-line origin. Drafted 2026-11-20; every line re-checked against standard etymologies 2026-11-22 (one corrected: firstfruits). Short glosses, not full etymologies. Keys match glossary.json.",
 	"thou": { "pos": "pronoun", "say": "thow", "origin": "Old English þū, the singular 'you'." },
 	"thee": { "pos": "pronoun", "say": "thee", "origin": "Old English þē, the object form of 'thou'." },
 	"thine": { "pos": "pronoun", "say": "thyne", "origin": "Old English þīn, 'of thee'." },
@@ -57,7 +57,7 @@
 	"winepress": { "pos": "noun", "say": "WINE-press", "origin": "'Wine' + 'press', where grapes were trodden." },
 	"manna": { "pos": "noun", "say": "MAN-uh", "origin": "Hebrew mān hū, 'What is it?' (Exodus 16:15)." },
 	"leaven": { "pos": "noun", "say": "LEV-un", "origin": "Old French levain, from Latin levare, to raise." },
-	"firstfruits": { "pos": "noun", "say": "FURST-froots", "origin": "Old English, translating the Hebrew bikkurim." },
+	"firstfruits": { "pos": "noun", "say": "FURST-froots", "origin": "'First' + 'fruits', translating the Hebrew bikkurim, the first of the harvest given to God." },
 	"slothful": { "pos": "adjective", "say": "SLAWTH-ful", "origin": "From 'sloth', Old English slǣwþ, slowness." },
 	"sluggard": { "pos": "noun", "say": "SLUG-urd", "origin": "Middle English, from 'slug', to be slow." },
 	"betoken": { "pos": "verb", "say": "bi-TOH-kun", "origin": "Old English, 'be-' + tācnian, to show by a sign." },

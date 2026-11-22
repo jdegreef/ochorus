@@ -232,16 +232,20 @@ class AdminUserDetailView(APIView):
                 "chapter_order": p.chapter_order,
                 "paragraph_index": p.paragraph_index,
                 "updated_at": _iso(p.updated_at),
-                "finished_at": _iso(p.finished_at),
+                # The LATEST finish (a finished reread's, not the first): the
+                # date the Finished list shows and sorts by.
+                "finished_at": _iso(p.last_finish),
             }
 
         in_progress = sorted(
-            (progress_row(p) for p in progress if p.finished_at is None),
+            (progress_row(p) for p in progress if not p.is_finished_now),
             key=lambda r: r["updated_at"] or "",
             reverse=True,
         )
+        # A reread counts by where it stands NOW (the reader's own shelves'
+        # rule): started again → in progress; finished again → finished.
         finished = sorted(
-            (progress_row(p) for p in progress if p.finished_at is not None),
+            (progress_row(p) for p in progress if p.is_finished_now),
             key=lambda r: r["finished_at"] or "",
             reverse=True,
         )

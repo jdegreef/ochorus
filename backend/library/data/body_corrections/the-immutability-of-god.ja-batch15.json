@@ -1,0 +1,45 @@
+{
+ "why": "OCR and transcription slips in Spurgeon's The Immutability of God, found while translating it to Japanese (job #9636). Each is a one-word misread forced by grammar or sense; the Japanese edition renders the corrected word.",
+ "replacements": [
+  [
+   "a babe in the manager",
+   "a babe in the manger"
+  ],
+  [
+   "consolatary",
+   "consolatory"
+  ],
+  [
+   "he hath saith it",
+   "he hath said it"
+  ],
+  [
+   "Be eternal destination",
+   "By eternal destination"
+  ],
+  [
+   "is an unchangeable as",
+   "is as unchangeable as"
+  ],
+  [
+   "they they can no more live",
+   "that they can no more live"
+  ],
+  [
+   "ye sons Jacob",
+   "ye sons of Jacob"
+  ],
+  [
+   "such a things as",
+   "such a thing as"
+  ],
+  [
+   "Oh? had he left you",
+   "Oh! had he left you"
+  ],
+  [
+   "pushed alone",
+   "pushed along"
+  ]
+ ]
+}

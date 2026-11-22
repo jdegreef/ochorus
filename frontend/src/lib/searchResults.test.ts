@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
 	GROUP_ORDER,
+	facetGroups,
 	grandTotal,
 	groupRows,
 	leadWithPinned,
@@ -181,6 +182,22 @@ describe('groupRows', () => {
 	it('files articles among the navigational entities, before passages', () => {
 		const groups = groupRows(rowsOf([chapter('humility', 1), article(), book()]));
 		expect(groups.map((g) => g.type)).toEqual(['book', 'article', 'chapter']);
+	});
+});
+
+describe('facetGroups', () => {
+	// "prayer": the merged list carried no sermon or author rows, so the 200+
+	// sermons and 17 authors the server counted had no tab at all.
+	it('adds a tab for a kind the server counted but the merged list crowded out', () => {
+		const groups = groupRows(rowsOf([book(), chapter('humility', 1)]));
+		const facets = facetGroups(groups, { book: 178, chapter: 200, sermon: 200, author: 17 });
+		expect(facets.map((g) => g.type)).toEqual(['book', 'chapter', 'author', 'sermon']);
+		expect(grandTotal(facets, { book: 178, chapter: 200, sermon: 200, author: 17 })).toBe(595);
+	});
+
+	it('adds nothing for a kind counted at zero', () => {
+		const groups = groupRows(rowsOf([book()]));
+		expect(facetGroups(groups, { book: 3, sermon: 0 }).map((g) => g.type)).toEqual(['book']);
 	});
 });
 
