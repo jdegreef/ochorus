@@ -134,6 +134,13 @@ class SearchTests(TestCase):
         res = self.client.get("/api/library/search/?q=a")
         self.assertEqual(res.data["results"], [])
 
+    def test_an_overlong_query_is_trimmed_not_refused(self):
+        # The search box caps a query at 200 characters (SEARCH_MAX_CHARS); a
+        # longer one reaching the API is trimmed to the same length.
+        res = self.client.get("/api/library/search/?q=" + "dependence " * 40)
+        self.assertEqual(res.status_code, 200)
+        self.assertLessEqual(len(res.data["query"]), 200)
+
     def test_unpublished_books_excluded(self):
         slugs = {r["book_slug"] for r in self.search("dependence")}
         self.assertNotIn("hidden", slugs)

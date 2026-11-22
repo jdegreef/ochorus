@@ -117,6 +117,9 @@ logger = logging.getLogger(__name__)
 #: See LanguageListView — short enough that an admin go-live shows up promptly.
 LANGUAGES_CACHE_SECONDS = 30
 
+#: The longest search query honoured, matching the frontend's SEARCH_MAX_CHARS.
+SEARCH_MAX_CHARS = 200
+
 
 def _language(request) -> str:
     return language_from_request(request)
@@ -1782,7 +1785,8 @@ class SearchView(APIView):
     MAX_OFFSET = 500
 
     def get(self, request):
-        q = (request.query_params.get("q") or "").strip()
+        # Capped like the search box (SEARCH_MAX_CHARS): longer is no real query.
+        q = (request.query_params.get("q") or "").strip()[:SEARCH_MAX_CHARS]
         language = _language(request)
 
         # "Search inside this author / topic / book". Narrows every type at once

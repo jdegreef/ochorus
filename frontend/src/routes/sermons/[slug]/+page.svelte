@@ -35,7 +35,7 @@
 	import { wantsListen, withoutListen } from '$lib/listenOnArrival';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
 	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
-	import { absUrl, jsonLd, breadcrumbLd, truncateMeta, stripHtml, faqPage, toQa, REVIEWED_UI_LOCALES, publisherLd, personId } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, truncateMeta, stripHtml, faqPage, toQa, REVIEWED_UI_LOCALES, publisherLd, authorNodeId } from '$lib/seo';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { dismissable } from '$lib/actions/dismissable';
 	import { hasNativeShare, nativeShare, shareLinks } from '$lib/share';
@@ -420,7 +420,7 @@
 			// the identifiers that say which person this is.
 			author: {
 				'@type': authorLdType(sermon.author_slug),
-				'@id': personId(absUrl(localizeHref(authorPath(sermon.author_slug)))),
+				'@id': authorNodeId(absUrl(localizeHref(authorPath(sermon.author_slug))), authorLdType(sermon.author_slug)),
 				name: sermon.author_name,
 				url: absUrl(localizeHref(authorPath(sermon.author_slug))),
 				sameAs: sermon.author_same_as?.length ? sermon.author_same_as : undefined

@@ -1429,8 +1429,16 @@ export const searchComplete = (q: string, language = 'en') =>
 		`/api/library/search/complete/?${new URLSearchParams({ q, language })}`
 	);
 
+/**
+ * The longest query the search box takes. A longer one is no search anyone
+ * means, and past about 4 KB of URL the API's server refused the request line
+ * with an HTML error page the search page could not read (bug review
+ * 2026-11-22, #35). The API trims to the same length.
+ */
+export const SEARCH_MAX_CHARS = 200;
+
 export const search = (q: string, language = 'en', scope = '') => {
-	const params = new URLSearchParams({ q, language });
+	const params = new URLSearchParams({ q: q.slice(0, SEARCH_MAX_CHARS), language });
 	if (scope) params.set('in', scope);
 	return apiFetch<SearchResponse>(`/api/library/search/?${params}`);
 };

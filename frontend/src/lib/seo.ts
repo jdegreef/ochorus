@@ -75,6 +75,13 @@ export const CC0 = 'https://creativecommons.org/publicdomain/zero/1.0/';
  *  page's absolute URL — so a book naming its author links to the same node. */
 export const personId = (authorUrl: string) => `${authorUrl}#person`;
 
+/** The `@id` of a work's author node, by its schema.org type: a person's
+ *  `#person` (the node their author page declares), or `#organization` for a
+ *  byline (the Originals imprint, the Open Word Bible). An Organization with a
+ *  `#person` id read as a contradiction (bug review 2026-11-22, #36). */
+export const authorNodeId = (authorUrl: string, type: 'Organization' | 'Person') =>
+	type === 'Organization' ? `${authorUrl}#organization` : personId(authorUrl);
+
 /** The `@id` of the Book an edition page is about, from its absolute URL. */
 export const bookId = (bookUrl: string) => `${bookUrl}#book`;
 
