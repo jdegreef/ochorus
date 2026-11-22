@@ -12,7 +12,6 @@
 	 * home drew its roster with it until design #17 made that a row of faces.)
 	 */
 	let { author }: { author: AuthorTileData } = $props();
-	const t = i18n.t;
 </script>
 
 <a
