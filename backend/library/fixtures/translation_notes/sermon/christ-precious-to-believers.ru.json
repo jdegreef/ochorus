@@ -1,0 +1,260 @@
+{
+ "kind": "sermon",
+ "slug": "christ-precious-to-believers",
+ "language": "ru",
+ "job_issue": 9626,
+ "references": [
+  {
+   "reference": "1 Peter 2:7a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Zechariah 3:2",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Psalm 40:2-3",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Numbers 23:23",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Isaiah 60:22",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Psalm 116:18-19",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Song of Solomon 5:16",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Revelation 22:13",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "2 Samuel 23:5",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Philippians 3:7-9",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Job 2:5",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 21:19",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 8:35-37",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 10:37-38",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Hebrews 11:36",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 12:4",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Zechariah 13:9",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Lamentations 4:1",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 Samuel 4:21",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 20:13",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Acts 26:29a",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Acts 26:29b",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Job 2:4",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Galatians 6:14",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Isaiah 40:15",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 63:1",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 84:2",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 10:42",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 23:2",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Isaiah 32:2",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Hebrews 11:32",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ecclesiastes 11:7",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Luke 7:47-48",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Psalm 41:3",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "John 11:25",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Isaiah 46:4",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 119:9a",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Psalm 119:9b",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "John 3:18",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "John 21:16",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 21:17",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 John 4:19",
+   "status": "self_rendered",
+   "block_index": 25
+  }
+ ]
+}

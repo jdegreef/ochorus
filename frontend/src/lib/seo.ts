@@ -58,6 +58,8 @@ export const organizationLd = (description: string, contactEmail: string) => ({
 	areaServed: 'Worldwide',
 	knowsLanguage: [...ADVERTISED_LOCALES],
 	email: contactEmail,
+	// How Ochorus sources, edits and translates what it publishes (/editorial).
+	publishingPrinciples: absUrl('/editorial'),
 	...(ORG_SAME_AS.length ? { sameAs: ORG_SAME_AS } : {})
 });
 

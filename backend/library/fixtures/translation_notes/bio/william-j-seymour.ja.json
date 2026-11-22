@@ -1,15 +1,7 @@
 {
-    "kind": "bio",
-    "slug": "william-j-seymour",
-    "language": "ja",
-    "job_issue": 8870,
-    "pull_request": null,
-    "references": [
-        {
-            "reference": "Matthew 28:19",
-            "status": "mined",
-            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
-            "block_index": 27
-        }
-    ]
+ "kind": "bio",
+ "slug": "william-j-seymour",
+ "language": "ja",
+ "job_issue": 8870,
+ "references": []
 }

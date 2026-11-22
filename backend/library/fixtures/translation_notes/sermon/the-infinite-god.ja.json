@@ -42,28 +42,55 @@
             "block_index": 13
         },
         {
-            "reference": "1 Corinthians 2:11",
-            "status": "mined",
-            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
-            "block_index": 13
+            "reference": "Malachi 3:6",
+            "status": "self_rendered",
+            "block_index": 28
+        },
+        {
+            "reference": "Acts 14:15",
+            "status": "self_rendered",
+            "block_index": 65
+        },
+        {
+            "reference": "Psalm 146:6",
+            "status": "self_rendered",
+            "block_index": 65
         },
         {
             "reference": "Jeremiah 31:3",
-            "status": "mined",
-            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "status": "self_rendered",
             "block_index": 98
         },
         {
-            "reference": "Romans 5:20",
-            "status": "mined",
-            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
-            "block_index": 105
+            "reference": "Ecclesiastes 3:11",
+            "status": "self_rendered",
+            "block_index": 99
+        },
+        {
+            "reference": "Genesis 3:19",
+            "status": "self_rendered",
+            "block_index": 101
+        },
+        {
+            "reference": "Jeremiah 23:24",
+            "status": "self_rendered",
+            "block_index": 104
+        },
+        {
+            "reference": "1 John 4:8",
+            "status": "self_rendered",
+            "block_index": 104
         },
         {
             "reference": "Romans 5:20",
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 105
+        },
+        {
+            "reference": "Isaiah 6:2",
+            "status": "self_rendered",
+            "block_index": 123
         },
         {
             "reference": "Matthew 11:28",
@@ -72,15 +99,16 @@
             "block_index": 123
         },
         {
-            "reference": "Matthew 6:9",
+            "reference": "Luke 11:2",
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 124
         },
         {
-            "reference": "Jeremiah 23:24 + 1 Kings 8:27",
-            "status": "self_rendered",
-            "block_index": 104
+            "reference": "Matthew 6:9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 124
         }
     ]
 }

@@ -6,12 +6,6 @@
     "pull_request": null,
     "references": [
         {
-            "reference": "Ephesians 5:18",
-            "status": "mined",
-            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
-            "block_index": 22
-        },
-        {
             "reference": "Philippians 4:7",
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
@@ -55,8 +49,7 @@
         },
         {
             "reference": "Ephesians 1:6",
-            "status": "mined",
-            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "status": "self_rendered",
             "block_index": 8
         },
         {
@@ -115,8 +108,7 @@
         },
         {
             "reference": "Mark 9:23",
-            "status": "mined",
-            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "status": "self_rendered",
             "block_index": 17
         },
         {
@@ -126,15 +118,30 @@
             "block_index": 19
         },
         {
+            "reference": "Exodus 40:35",
+            "status": "self_rendered",
+            "block_index": 22
+        },
+        {
+            "reference": "Ephesians 5:18",
+            "status": "self_rendered",
+            "block_index": 22
+        },
+        {
             "reference": "John 1:16",
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
-            "block_index": 5
+            "block_index": 22
         },
         {
             "reference": "John 15:11",
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 24
+        },
+        {
+            "reference": "Psalm 23:2",
+            "status": "self_rendered",
             "block_index": 24
         },
         {
@@ -145,8 +152,7 @@
         },
         {
             "reference": "Deuteronomy 33:23",
-            "status": "mined",
-            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "status": "self_rendered",
             "block_index": 28
         },
         {
@@ -181,12 +187,6 @@
         },
         {
             "reference": "2 Kings 3:17",
-            "status": "mined",
-            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
-            "block_index": 30
-        },
-        {
-            "reference": "2 Corinthians 3:5",
             "status": "self_rendered",
             "block_index": 30
         },
@@ -207,6 +207,11 @@
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 31
+        },
+        {
+            "reference": "Acts 4:31",
+            "status": "self_rendered",
+            "block_index": 33
         },
         {
             "reference": "John 7:37-38",

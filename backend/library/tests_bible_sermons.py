@@ -85,9 +85,18 @@ class BibleLinksTests(BibleSermonsTests):
         self.assertEqual(books[43]["sermons"], 1)
         self.assertEqual(books[19]["sermons"], self.detail("psalms")["bible_sermons"]["count"])
 
-    def test_lists_only_books_with_something_and_in_canon_order(self):
-        positions = [b["position"] for b in self.links()]
-        self.assertEqual(positions, [19, 43])
+    def test_lists_every_book_in_canon_order_with_its_intro(self):
+        books = self.links()
+        # Every book has a house overview in English, so all 66 are listed.
+        self.assertEqual([b["position"] for b in books], list(range(1, 67)))
+        self.assertTrue(all(b["intro"] for b in books))
+        self.assertIn("gospel", books[44]["intro"].lower())  # Romans
+        # A book with no sermon still has its overview, and no sermon link.
+        self.assertEqual((books[0]["sermons"], books[0]["sermon_book"]), (0, ""))
 
     def test_counts_in_the_language_asked(self):
-        self.assertEqual(self.links("sw"), [{"position": 19, "sermons": 1, "sermon_book": "Psalms", "scripture": None}])
+        # No overviews are written in Swahili: only the book with a sermon.
+        self.assertEqual(
+            self.links("sw"),
+            [{"position": 19, "sermons": 1, "sermon_book": "Psalms", "scripture": None, "intro": ""}],
+        )

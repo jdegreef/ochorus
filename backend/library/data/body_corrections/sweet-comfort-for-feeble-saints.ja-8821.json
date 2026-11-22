@@ -1,5 +1,5 @@
 {
- "why": "Two slips in Spurgeon's Sweet Comfort for Feeble Saints, found translating it to Japanese (job #8821): the tribe's name misspelled (Gen 49:14, Issachar), and 'than' misread as 'that' in a comparison the sentence needs ('depends more upon circumstances than a bruised reed'). The ja edition renders the corrected words.",
+ "why": "Two slips in Spurgeon's Sweet Comfort for Feeble Saints, found while translating it to Japanese (job #8821; the ja edition that shipped is #9639's): the tribe's name misspelled (Gen 49:14, Issachar), and 'than' misread as 'that' in a comparison the sentence needs ('depends more upon circumstances than a bruised reed').",
  "replacements": [
   [
    "Issacher",

@@ -12,28 +12,45 @@
             "block_index": 0
         },
         {
-            "reference": "Hosea 10:12a",
-            "status": "mined",
-            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
-            "block_index": 0
-        },
-        {
-            "reference": "Matthew 7:12",
-            "status": "mined",
-            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
-            "block_index": 40
-        },
-        {
-            "reference": "Matthew 7:12",
-            "status": "mined",
-            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
-            "block_index": 40
-        },
-        {
             "reference": "Exodus 34:14",
+            "status": "self_rendered",
+            "block_index": 17
+        },
+        {
+            "reference": "Matthew 7:12",
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 40
+        },
+        {
+            "reference": "Luke 11:13",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "Jeremiah 3:1",
+            "status": "self_rendered",
             "block_index": 17
+        },
+        {
+            "reference": "Matthew 13:8",
+            "status": "self_rendered",
+            "block_index": 46
+        },
+        {
+            "reference": "2 Thessalonians 2:7",
+            "status": "self_rendered",
+            "block_index": 49
+        },
+        {
+            "reference": "Matthew 13:5",
+            "status": "self_rendered",
+            "block_index": 53
+        },
+        {
+            "reference": "Revelation 2:5",
+            "status": "self_rendered",
+            "block_index": 55
         }
     ]
 }
