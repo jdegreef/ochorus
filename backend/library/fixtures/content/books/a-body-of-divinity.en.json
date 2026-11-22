@@ -14,7 +14,32 @@
   "description": "Thomas Watson’s sermons on the Westminster Shorter Catechism, the first and best-loved part of his Body of Practical Divinity (1692). Beginning with man’s chief end — to glorify God and enjoy him for ever — Watson works through Scripture, the being and attributes of God, the Trinity, creation and providence, the fall, the covenant of grace, the offices of Christ, and the benefits of redemption, from faith and justification to assurance, perseverance and the resurrection. Plain, warm and endlessly quotable, it is Puritan doctrine pressed home on the heart. This edition opens with the memoir C. H. Spurgeon compiled for it, and Watson’s own Preliminary Discourse to Catechising.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Thomas Watson’s A Body of Divinity?",
+    "answer": "It is a series of sermons on the Westminster Shorter Catechism by the Puritan pastor Thomas Watson, the first and best-loved part of his Body of Practical Divinity, published in 1692. Watson works through the main doctrines of the Christian faith question by question, applying each one warmly to the heart and to daily life."
+   },
+   {
+    "question": "What does Watson teach about man’s chief end?",
+    "answer": "He begins with the catechism’s first answer: man’s chief end is to glorify God and to enjoy him for ever. Watson treats these as two ends that belong together. By raising God’s glory, he says, we increase our own, and by glorifying God we come at last to the blessed enjoyment of him, both now in his presence and fully in the life to come."
+   },
+   {
+    "question": "What topics does A Body of Divinity cover?",
+    "answer": "Following the catechism, Watson treats the Scriptures, the being and attributes of God, the Trinity, creation and providence, the covenant of works and the fall, original sin, the covenant of grace, Christ as Mediator in his offices of prophet, priest and king, his humiliation and exaltation, and the benefits of redemption, from faith and justification to assurance, perseverance and the resurrection."
+   },
+   {
+    "question": "Who was Thomas Watson?",
+    "answer": "Watson was an English Puritan minister of the seventeenth century, known as a concise, vivid and quotable preacher. For nearly sixteen years he was rector of St Stephen’s, Walbrook, in the heart of London, until the Act of Uniformity of 1662 forced him and many other Puritan ministers out of the Church of England. Comparatively little is known of his life."
+   },
+   {
+    "question": "Why did Spurgeon admire this book?",
+    "answer": "This edition opens with a memoir compiled by C. H. Spurgeon, who called Watson’s Body of Practical Divinity one of the most precious of the peerless works of the Puritans. He praised Watson’s happy union of sound doctrine, heart-searching experience and practical wisdom, and said the book was, beyond all the rest, useful to the student and the minister."
+   },
+   {
+    "question": "How is the book useful today?",
+    "answer": "It is a clear and warm guide to the whole of Christian doctrine, written for ordinary church members rather than scholars. Each sermon explains a truth from Scripture and then presses it home with questions, comfort and exhortation. Readers use it for personal study, family teaching, and as a companion to the Shorter Catechism itself."
+   }
+  ],
   "publication_year": 1692,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/watson/divinity",

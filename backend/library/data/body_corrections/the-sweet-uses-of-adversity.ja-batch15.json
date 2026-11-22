@@ -1,0 +1,41 @@
+{
+ "why": "OCR slips in Spurgeon's The Sweet Uses of Adversity, found while translating it to Japanese (job #9640). Each is a misread letter or word forced by grammar or sense.",
+ "replacements": [
+  [
+   "this not a contention",
+   "this is not a contention"
+  ],
+  [
+   "practical affect",
+   "practical effect"
+  ],
+  [
+   "Tried saint t follow",
+   "Tried saint, follow"
+  ],
+  [
+   "his child and with,",
+   "his child and saith,"
+  ],
+  [
+   "thou west saying",
+   "thou wast saying"
+  ],
+  [
+   "they lead rested",
+   "they had rested"
+  ],
+  [
+   "a brood spreading oak",
+   "a broad spreading oak"
+  ],
+  [
+   "hard service He makes",
+   "hard service. He makes"
+  ],
+  [
+   "strove with him? find why?",
+   "strove with him? And why?"
+  ]
+ ]
+}

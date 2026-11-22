@@ -1,0 +1,45 @@
+{
+ "why": "OCR slips in Spurgeon's Songs in the Night (joined or split words, a digit for I, lost full stops), found while translating it to Japanese (job #9638).",
+ "replacements": [
+  [
+   "1 have been all this while",
+   "I have been all this while"
+  ],
+  [
+   "were s weet",
+   "were sweet"
+  ],
+  [
+   "saint'sSavior",
+   "saint's Savior"
+  ],
+  [
+   "songs ofjoy",
+   "songs of joy"
+  ],
+  [
+   "Jesus'sake",
+   "Jesus' sake"
+  ],
+  [
+   "in the night Bring",
+   "in the night. Bring"
+  ],
+  [
+   "the day that is over The man",
+   "the day that is over. The man"
+  ],
+  [
+   "concerning that night For",
+   "concerning that night. For"
+  ],
+  [
+   "true love to Christ It is",
+   "true love to Christ. It is"
+  ],
+  [
+   "His people sing in the night At",
+   "His people sing in the night. At"
+  ]
+ ]
+}

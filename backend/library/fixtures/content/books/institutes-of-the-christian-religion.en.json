@@ -14,7 +14,32 @@
   "description": "Calvin’s summary of Christian doctrine in its final form, the most influential work of Reformed theology. Following the Apostles’ Creed, its four books treat the knowledge of God the Creator, God the Redeemer in Christ, the way we receive Christ’s grace — faith, repentance, the Christian life, justification, prayer and election — and the church, sacraments and civil government. With Calvin’s prefaces, including his address to King Francis, and the One Hundred Aphorisms that summarise the whole.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Calvin’s Institutes of the Christian Religion?",
+    "answer": "It is John Calvin’s systematic summary of Christian doctrine, first published in 1536 and enlarged over more than twenty years into its final form of 1559. It became the most influential work of Reformed theology. Calvin first meant it as a basic handbook for training those interested in religion in true godliness, especially his fellow French Protestants."
+   },
+   {
+    "question": "How is the Institutes organized?",
+    "answer": "The final edition has four books loosely following the Apostles’ Creed. Book 1 treats the knowledge of God the Creator; Book 2, the knowledge of God the Redeemer in Christ; Book 3, the way we receive the grace of Christ, including faith, repentance, the Christian life, justification, prayer and election; and Book 4, the church, the sacraments and civil government."
+   },
+   {
+    "question": "What is the famous opening of the Institutes?",
+    "answer": "Calvin begins by saying that nearly all true and solid wisdom consists of two parts: the knowledge of God and the knowledge of ourselves. The two are closely connected, and it is hard to say which comes first. We cannot truly know ourselves without looking to God, and seeing God shows us our own poverty and need."
+   },
+   {
+    "question": "What does Calvin mean by the sense of Deity?",
+    "answer": "In Book 1, Chapter 3, Calvin argues that by natural instinct there is a sense of Deity in every human mind. God has given all people some idea of his Godhead, so that no one can plead ignorance. The fact that every nation and household has had some religion, even idolatry, is evidence that this awareness is inscribed on every heart."
+   },
+   {
+    "question": "Why did Calvin address the Institutes to King Francis?",
+    "answer": "The prefatory address to Francis I of France defends persecuted French Protestants against charges of heresy and sedition. Calvin explains that he wrote the book to instruct his countrymen, many of whom hungered for Christ but knew little of him, and appeals to the king to judge their teaching fairly by Scripture rather than by rumor."
+   },
+   {
+    "question": "Why is Scripture so important in the Institutes?",
+    "answer": "Calvin argues that because the human mind is a labyrinth of error, people are prone to invent their own gods. Scripture shows us the Maker of the world as he truly is, so that we are saved from wandering up and down, as in a labyrinth, in search of some doubtful deity. Its authority is not finally proved by argument but confirmed by the inner testimony of the Holy Spirit, who persuades believers that it is God’s word."
+   }
+  ],
   "publication_year": 1845,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/calvin/institutes",

@@ -14,7 +14,32 @@
   "description": "The only surviving letter of Polycarp, bishop of Smyrna and hearer of the apostle John, urging the Philippians to faith, righteousness and endurance; with the Smyrnaean church\u2019s account of his arrest, his confession before the proconsul, and his death by fire.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "Who was Polycarp?",
+    "answer": "Polycarp was bishop of Smyrna, in what is now western Turkey, in the first half of the second century. He was a hearer of the apostle John and a friend of Ignatius of Antioch, and a link between the apostles and later Christians such as Irenaeus, who knew him in his youth. He was martyred in his old age."
+   },
+   {
+    "question": "What is Polycarp\u2019s Epistle to the Philippians?",
+    "answer": "It is the only surviving letter of Polycarp, written to the church at Philippi. He praises them for caring for Christians who passed through in chains, and urges them to faith, righteousness, endurance and love, warning against greed and false teaching. The letter is full of echoes of the New Testament, especially the letters of Paul and Peter."
+   },
+   {
+    "question": "What is the Martyrdom of Polycarp?",
+    "answer": "It is a letter from the church at Smyrna describing Polycarp\u2019s arrest, trial and death by fire. It is the earliest surviving account of a Christian martyrdom outside the New Testament. The writers present Polycarp\u2019s death as a martyrdom in conformity with the Gospel, echoing the passion of Christ."
+   },
+   {
+    "question": "What did Polycarp say before the proconsul?",
+    "answer": "When the proconsul urged him to swear by the fortune of Caesar and revile Christ in exchange for his life, Polycarp replied that he had served Christ eighty-six years, and Christ had never done him any wrong: how then could he blaspheme his King who had saved him? As he entered the stadium, a voice from heaven said, \u201cBe strong, and show thyself a man, O Polycarp!\u201d"
+   },
+   {
+    "question": "How did Polycarp die?",
+    "answer": "He was sentenced to be burned alive. But the flames formed an arch around him like a ship\u2019s sail filled with wind, and he appeared not like burning flesh but like bread baking or gold glowing in a furnace. When the fire did not consume him, an executioner pierced him with a dagger, and so much blood poured out that it put out the fire."
+   },
+   {
+    "question": "Why is this work important?",
+    "answer": "It gives a vivid picture of the faith and courage of the early Church under persecution, and of the honor Christians gave their martyrs. The Smyrnaeans gathered his bones as more precious than jewels and hoped to celebrate the anniversary of his martyrdom each year, one of the earliest records of honoring a martyr\u2019s day. His calm confession has inspired believers ever since."
+   }
+  ],
   "publication_year": 155,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/anf01.iv.html",
