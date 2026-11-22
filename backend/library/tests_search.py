@@ -552,6 +552,22 @@ class StoredSearchVectorTests(TestCase):
     def _hits(self, q, kind, language="en"):
         return [h for h in self._search(q, language) if h["type"] == kind]
 
+    def test_a_young_reader_edition_ranks_below_its_full_text(self):
+        # "grace" listed All of Grace (For Teens) above All of Grace: the
+        # retelling's short, plain title vector outscored the classic's.
+        spurgeon = Author.objects.create(slug="spurgeon", name="C. H. Spurgeon")
+        Book.objects.create(author=spurgeon, slug="all-of-grace", language="en",
+                            title="All of Grace", subtitle="An Earnest Word to Those Seeking Salvation",
+                            description="Spurgeon's plain presentation of the gospel.")
+        Book.objects.create(author=spurgeon, slug="all-of-grace-teens", language="en",
+                            title="All of Grace (For Teens)",
+                            description="Salvation is all of grace: free grace, for nothing.")
+        slugs = [h["book_slug"] for h in self._hits("grace", "book")]
+        self.assertLess(slugs.index("all-of-grace"), slugs.index("all-of-grace-teens"), slugs)
+        # Asked for by name, the teens edition is not held back.
+        teens = [h["book_slug"] for h in self._hits("grace for teens", "book")]
+        self.assertEqual(teens[0], "all-of-grace-teens", teens)
+
     def test_entity_vectors_are_populated_on_save(self):
         plan = Plan.objects.create(slug="p", language="en", title="Perfect Love")
         article = Article.objects.create(

@@ -88,6 +88,41 @@ def min_query_len(language: str) -> int:
 # whose title *is* the query is almost always what the reader wants.
 ENTITY_BOOST = 1.6
 
+# A young-reader edition (`<base>-teens`, `<base>-children`: CLAUDE.md) is a
+# retelling of a classic, written short and plain, so it out-ranked the full
+# text for that classic's own title: "grace" listed All of Grace (For Teens)
+# above All of Grace (bug review 2026-11-22, #43). Its rank is damped unless the
+# query asks for young readers itself.
+YOUNG_EDITION_SUFFIXES = ("-teens", "-children")
+YOUNG_EDITION_DAMP = 0.75
+YOUNG_READER_WORDS = re.compile(
+    r"\b(teens?|teenagers?|youth|young|kids?|child(ren)?|children's)\b", re.I
+)
+
+
+def _book_rank(rank, ctx):
+    """A book's rank, with a young-reader edition damped unless the query is
+    looking for one. Applied in SQL, so the merged list's cap, the Books tab's
+    page and its order all agree."""
+    from django.db.models import Case, FloatField, Q, Value, When
+
+    if YOUNG_READER_WORDS.search(ctx.q):
+        return rank
+    young = Q()
+    for suffix in YOUNG_EDITION_SUFFIXES:
+        young |= Q(slug__endswith=suffix)
+    return rank * Case(
+        When(young, then=Value(YOUNG_EDITION_DAMP)),
+        default=Value(1.0),
+        output_field=FloatField(),
+    )
+
+
+def _ranked_expr(kind, rank, ctx):
+    """The rank a row of `kind` sorts by (`_book_rank` for books)."""
+    return _book_rank(rank, ctx) if kind == "book" else rank
+
+
 # Per-type caps so one kind can't crowd the others out of the merged list. This
 # is the set of QUERYSET-backed types; "scripture" is deliberately absent — it is
 # a synthesized, reference-triggered hit with no queryset, handled out of band in
@@ -779,7 +814,11 @@ def _search_postgres(ctx, qs):
     def ranked(kind, *tiebreak):
         return (
             _match(kind, ctx, qs[kind])
-            .annotate(rank=SearchRank(_pg_vector(kind, config, ctx.language), query))
+            .annotate(
+                rank=_ranked_expr(
+                    kind, SearchRank(_pg_vector(kind, config, ctx.language), query), ctx
+                )
+            )
             .order_by("-rank", *tiebreak)
         )
 
@@ -1150,7 +1189,7 @@ def _pg_rank_order(kind, ctx, qs):
 
     config = config_for(ctx.language)
     vector = _pg_vector(kind, config, ctx.language)
-    qs = qs.annotate(rank=SearchRank(vector, _query(ctx)))
+    qs = qs.annotate(rank=_ranked_expr(kind, SearchRank(vector, _query(ctx)), ctx))
     if kind == "author":
         return qs.annotate(name_score=_name_order(ctx)).order_by(
             "-name_score", "-rank", *_ORDER[kind]["natural"]
