@@ -13,7 +13,32 @@
   "cover_byline": "",
   "description": "When critics of Heretics complained that Chesterton had attacked every modern philosophy without offering one of his own, he answered with this book: not an argument for whether the Christian faith can be believed, but an account of how he personally came to believe it. He tells it as the story of a man who set out to discover a new truth and found that he had discovered orthodoxy. With the madman who has lost everything except his reason, the ethics of elfland learned in the nursery, and the paradoxes that make the Church a thrilling romance, he shows the old creed to be the one answer large enough for the riddle of the world.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Orthodoxy by G. K. Chesterton?",
+    "answer": "Published in 1908, Orthodoxy is Chesterton’s account of how he came to believe the Christian creed. His earlier book Heretics had criticized the fashionable philosophies of the day, and critics complained that he never offered one of his own. Orthodoxy is his answer: not a formal proof, but the story of the ideas that led him, step by step, to the Apostles’ Creed."
+   },
+   {
+    "question": "Why is the book written as an autobiography?",
+    "answer": "In the preface Chesterton says the book is unavoidably affirmative and therefore unavoidably autobiographical. Like Newman writing his Apologia, he must be egotistical in order to be sincere. He pictures himself as a yachtsman who set out to discover a new island and landed, amid great excitement, on England: he had tried to invent a philosophy and found he had rediscovered orthodoxy."
+   },
+   {
+    "question": "What does Chesterton mean by the maniac?",
+    "answer": "In the chapter The Maniac he argues that the madman is not the person who has lost his reason, but the one who has lost everything except his reason. The madman’s logic is complete and unanswerable, but it runs in a small, tight circle. Chesterton sees modern materialism the same way, and says that mysticism, which keeps room for mystery, is what keeps people sane."
+   },
+   {
+    "question": "What are the ethics of elfland?",
+    "answer": "Chesterton says the things he believed most deeply he learned from fairy tales in the nursery. They taught him that the world is magic rather than mechanism, that its ordinary wonders, like green grass and rising suns, are surprising gifts, and the doctrine of conditional joy: that happiness often hangs on one small command, as in the stories. These instincts later fitted Christianity like a key in a lock."
+   },
+   {
+    "question": "What are the paradoxes of Christianity?",
+    "answer": "Chesterton noticed that critics attacked Christianity from opposite sides: too gloomy and too cheerful, too meek and too warlike. He concluded that the faith was not a compromise between extremes but held both at full strength, combining fierce courage with deep humility. He pictures orthodoxy as a heavenly chariot thundering through the ages, the dull heresies sprawling and prostrate, the wild truth reeling but erect."
+   },
+   {
+    "question": "Why does Chesterton call orthodoxy a romance?",
+    "answer": "Against the idea that the old creed is dull and safe, Chesterton argues that orthodoxy is the most exciting adventure there is. To keep the balance of the faith, avoiding every heresy on either side, has been one whirling adventure. He closes by suggesting that joy, which was the small publicity of the pagan, is the gigantic secret of the Christian."
+   }
+  ],
   "publication_year": 1908,
   "source_type": "public_domain",
   "source_url": "https://standardebooks.org/ebooks/g-k-chesterton/orthodoxy",
