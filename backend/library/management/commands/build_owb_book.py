@@ -18,7 +18,8 @@ chapter's one-sentence summary, which becomes `Chapter.summary`: the reader's
 under `data/grc|hbo/` for paragraphing — never its code, so the rules below are
 a small port of the ones its site builder (`scripts/build_site.py`) applies:
 
-* **Settings** at their defaults: a `{{setting:a|b}}` span reads `a`.
+* **Settings** at the edition's defaults (`Language.defaults`, else the first option):
+  in English a `{{setting:a|b}}` span reads `a` (see LANGUAGES below).
 * **Verse, line by line.** A sentence OWB breaks into lines (`\\q`) is set
   one line to a line, and on lines of its own; prose around it runs on. In a
   book of verse (`VERSE`) every verse starts a line, a one-line verse too.
@@ -189,8 +190,7 @@ PSALM_TITLE = re.compile(
 def split_psalm_title(text: str, language: str = "en") -> tuple[str, str]:
     """(the title sentences at the start of `text`, the rest)."""
     end = 0
-    pattern = LANGUAGES[language].psalm_title if language in LANGUAGES else PSALM_TITLE
-    while m := pattern.match(text, end):
+    while m := LANGUAGES[language].psalm_title.match(text, end):
         end = m.end()
     return " ".join(text[:end].split()), text[end:]
 
@@ -237,7 +237,7 @@ def disputed_entry(record: dict) -> tuple[str, str, str | None] | None:
 def choose(m: re.Match, language: str = "en") -> str:
     """A setting span at the option the edition shows (`Language.defaults`)."""
     options = m[2].split("|")
-    index = LANGUAGES[language].defaults.get(m[1], 0) if language in LANGUAGES else 0
+    index = LANGUAGES[language].defaults.get(m[1], 0)
     return options[index] if index < len(options) else options[0]
 
 
@@ -281,9 +281,10 @@ class Language:
     conclusion: str
     #: The language's name in the attribution, and the attribution.
     attribution: str
-    #: OWB's note on a passage the oldest manuscripts lack, and on Mark's endings.
+    #: OWB's note on a passage the oldest manuscripts lack, and the passages
+    #: with a note of their own (DISPUTED's third field), by first id.
     disputed_note: str
-    mark_endings_note: str
+    own_notes: dict
     #: The title sentences of a psalm (see PSALM_TITLE).
     psalm_title: re.Pattern
     #: Setting -> the option a span shows (else the first): see the module doc.
@@ -302,7 +303,7 @@ LANGUAGES = {
             "The introduction and conclusion are by Ochorus."
         ),
         disputed_note=DISPUTED_NOTE,
-        mark_endings_note=DISPUTED[1][2],
+        own_notes={first: note for first, _, note in DISPUTED if note},
         psalm_title=PSALM_TITLE,
     ),
     "es": Language(
@@ -317,11 +318,11 @@ LANGUAGES = {
             "Los manuscritos más antiguos de {book} no tienen {ref}. La mayoría de las "
             "Biblias lo imprimen, como aquí, aparte y entre corchetes."
         ),
-        mark_endings_note=(
+        own_notes={"MRK.16.8.s2": (
             "Los manuscritos más antiguos de Marcos terminan en 16:8. Los dos finales "
             "que siguen, uno breve y el más largo de 16:9–20, se añadieron después. La "
             "mayoría de las Biblias los imprimen, como aquí, aparte y entre corchetes."
-        ),
+        )},
         psalm_title=re.compile(
             r"(?:Al director del coro|(?:Un |Una )?(?:[Ss]almo|[Cc]ántico|[Cc]anto|[Oo]ración"
             r"|[Mm]asquil|[Mm]ictam|[Ss]igaión)\b[^.!?\n]*"
@@ -337,6 +338,8 @@ class Source:
     """One book's data, read from an OWB checkout."""
 
     def __init__(self, root: Path, code: str, language: str = "en"):
+        if language not in LANGUAGES:
+            raise CommandError(f"no edition settings for {language!r} (LANGUAGES)")
         self.root, self.code, self.language = root, code, language
         files = sorted((root / "content" / code).glob(f"{code}.*.json"))
         if not files:
@@ -635,7 +638,7 @@ class Source:
         first, last, note = disputed_entry(record)
         language = LANGUAGES[self.language]
         if note:
-            return note if self.language == "en" else language.mark_endings_note
+            return language.own_notes[first]
         (c1, v1, _), (c2, v2) = place(first), verse_key(last)
         span = f"{c1}:{v1}–" + (str(v2) if c1 == c2 else f"{c2}:{v2}")
         return language.disputed_note.format(book=self.name, ref=f"{self.name} {span}")
@@ -699,7 +702,7 @@ class Command(BaseCommand):
             if not editorial.is_dir():
                 raise CommandError(f"no editorial in {editorial}")
             words = json.loads((editorial / "book.json").read_text("utf-8"))
-            meta = {"slug": meta["slug"], "cover_color": meta["cover_color"], **words}
+            meta = {**words, "slug": meta["slug"], "cover_color": meta["cover_color"]}
         source = Source(opts["owb"].resolve(), code, lang)
 
         # (title, body, summary): the introduction and conclusion are Ochorus's

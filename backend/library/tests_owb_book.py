@@ -206,6 +206,45 @@ class FusedTitleTests(SimpleTestCase):
         )
 
 
+class SpanishEditionTests(SimpleTestCase):
+    """`--language es`: the same rules, the Spanish words around them."""
+
+    def source(self, code: str, records: list[dict], name: str) -> Source:
+        for r in records:
+            r["renderings"]["es"] = {"B": r["renderings"].pop("en")["B"]}
+        chapter = records[0]["refs"][0].split(".")[1]
+        fake = FakeCheckout({code: {chapter: records}}, {})
+        self.addCleanup(fake.close)
+        (fake.root / "data" / "books.json").write_text(
+            json.dumps({"books": {code: {"en": code, "es": name}}})
+        )
+        return Source(fake.root, code, "es")
+
+    def test_a_psalm_title_is_peeled_and_the_deity_pronoun_is_owbs_default(self):
+        source = self.source("PSA", [record(
+            "PSA.121.1.s1", ["PSA.121.1"],
+            "Cántico de las subidas. \\q {{deity_pronoun:él|Él}} es mi ayuda.",
+        )], "Salmos")
+        self.assertEqual(
+            layout(source, 121, source.chapters()[121]),
+            "<p><em>Cántico de las subidas.</em></p><p>Él es mi ayuda.</p>",
+        )
+
+    def test_marks_endings_take_their_spanish_note(self):
+        source = self.source("MRK", [
+            record("MRK.16.8.s1", ["MRK.16.8"], "Tenían miedo."),
+            record("MRK.16.8.s2", ["MRK.16.8"], "[Un breve informe.]"),
+        ], "Marcos")
+        html = layout(source, 16, source.chapters()[16])
+        self.assertIn("<em>Los manuscritos más antiguos de Marcos terminan en 16:8.", html)
+
+    def test_a_language_with_no_settings_is_refused(self):
+        fake = FakeCheckout({"PSA": {"1": [record("PSA.1.1.s1", ["PSA.1.1"], "x")]}}, {})
+        self.addCleanup(fake.close)
+        with self.assertRaises(CommandError):
+            Source(fake.root, "PSA", "xx")
+
+
 class NewTestamentTests(SimpleTestCase):
     def test_revelation_12_18_opens_english_chapter_13(self):
         """OWB's hand-kept New Testament table: SBLGNT 12:18 is English 13:1."""
