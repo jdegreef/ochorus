@@ -1257,6 +1257,10 @@ class BookQaShapeTests(SimpleTestCase):
                 assert_qa_wellformed(self, qa, {"question", "answer"}, path.name)
 
 
+#: Languages written without spaces between words.
+UNSPACED_LANGUAGES = {"ja", "zh"}
+
+
 class ArticleQaShapeTests(SimpleTestCase):
     """``Article.qa`` — the answer-first Q&A under an article, the same
     ``{question, answer}`` plain-text contract as ``Book.qa``, on every article
@@ -1277,11 +1281,16 @@ class ArticleQaShapeTests(SimpleTestCase):
                     # Answer-first means short: a reply an answer engine can lift
                     # whole (the target is 40–60 words; this is the hard edge).
                     words = len(item["answer"].split())
+                    if path.name.split(".")[-2] in UNSPACED_LANGUAGES:
+                        # Japanese / Chinese set no spaces between words, so the
+                        # split above sees one; about three characters carry an
+                        # English word's worth of sense.
+                        words = round(len("".join(item["answer"].split())) / 3)
                     self.assertTrue(
                         25 <= words <= 80,
                         f"{path.name}[{i}]: answer is {words} words — keep it 40–60",
                     )
-                    self.assertTrue(item["question"].rstrip().endswith("?"), f"{path.name}[{i}]: a question ends in ?")
+                    self.assertTrue(item["question"].rstrip().endswith(("?", "？")), f"{path.name}[{i}]: a question ends in ?")
 
 
 class ChapterQuestionsShapeTests(SimpleTestCase):
