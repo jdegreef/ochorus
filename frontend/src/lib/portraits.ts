@@ -92,6 +92,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'henry-drummond': '50% 0%', // frontispiece of Lennox, Practical Life Work of Henry Drummond (1901); face at ~34% of a 0.77 crop
 	'henry-scougal': '50% 0%', // University of Aberdeen oil; face at ~32% of a 0.84 plate
 	'hudson-taylor': '50% 20%',
+	'ida-scudder': '50% 15%', // 1899 photograph, bust; face at ~37% of a 0.80 plate
 	'ignatius-of-antioch': '50% 0%', // fresco: head at ~17% of a 0.72 plate
 	'ignatius-of-loyola': '50% 30%', // 16th-c. head-and-shoulders oil; face at ~45% of a 0.83 plate — 45% cut the crown
 	'irenaeus-of-lyons': '50% 10%', // stained glass (Bégule, 1901) cropped to the bust; face at ~20% of a 0.68 crop
@@ -112,6 +113,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'john-flavel': '50% 0%', // Hopwood engraving cropped to the bust; face high in a 0.80 crop
 	'john-foxe': '50% 20%', // 1587 portrait cropped to a bust; near-square
 	'john-g-lake': '50% 0%', // c.1900–05 profile bust; face at ~25% of a 0.62 plate
+	'john-g-paton': '50% 15%', // autobiography frontispiece photo; face at ~36% of a 0.76 plate
 	'john-henry-newman': '50% 15%', // 1887 photograph: the face sits high in a half-length
 	'john-hyde': '50% 20%', // studio bust; face at ~40% of a 0.86 plate
 	'john-milton': '50% 30%', // c. 1629 portrait; face at ~40% of a 0.80 plate
@@ -131,6 +133,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'lactantius': '50% 20%', // 4th-c. wall painting (probable likeness); face at ~30% of a 0.75 crop
 	'lawrence-barham': '50% 0%', // cropped from a photo with his wife Julia; head at the top edge
 	'lemuel-haynes': '50% 0%',
+	'lilias-trotter': '50% 20%', // c.1888 oval photograph; face at ~34% of a 0.73 plate
 	'loren-cunningham': '50% 0%', // cropped from a group photo; face at ~22% of a 0.61 plate
 	'lottie-moon': '50% 30%', // oval studio photo; face at ~40% of a 0.66 plate
 	'maria-w-stewart': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate
