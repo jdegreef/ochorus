@@ -10,6 +10,7 @@ import {
 	collectionPage,
 	faqPage,
 	hreflangFor,
+	organizationLd,
 	itemList,
 	toQa
 } from './seo';
@@ -304,5 +305,13 @@ describe('chapterHreflang', () => {
 	it('never names a locale the site does not advertise', () => {
 		const h = chapterHreflang(path, ['en', 'es', 'xx'], 'es');
 		expect(h?.alternates.map((a) => a.loc)).not.toContain('xx');
+	});
+});
+
+describe('organizationLd', () => {
+	it('points answer engines at the editorial standards page', () => {
+		expect(organizationLd('About.', 'hi@example.org').publishingPrinciples).toBe(
+			absUrl('/editorial')
+		);
 	});
 });
