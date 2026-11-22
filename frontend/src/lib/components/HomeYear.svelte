@@ -61,7 +61,7 @@
 	<section class="page-col px-5 pt-14">
 		<div class="flex flex-col gap-6 rounded-card border border-border bg-surface p-6 sm:flex-row sm:items-start sm:gap-8 sm:p-8">
 			<div class="shrink-0 sm:w-56">
-				<p class="eyebrow text-gold">{t('year.title')} · {year}</p>
+				<p class="eyebrow text-gold-ink">{t('year.title')} · {year}</p>
 				<!-- The number and what it counts on one line: stacked, they left a
 				     tall empty column beside nothing on a phone. -->
 				<p class="mt-2 flex items-baseline gap-3">

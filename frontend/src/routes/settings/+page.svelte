@@ -650,7 +650,7 @@
 					{#if activityDays.length}
 						<!-- Reading streak -->
 						<div class="mb-6 flex items-center gap-4 rounded-card border border-border bg-surface-2 px-5 py-4">
-							<span class="text-gold"><Icon name="flame" size={30} /></span>
+							<span class="text-gold-ink"><Icon name="flame" size={30} /></span>
 							<div>
 								{#if streak > 0}
 									<div class="text-text">

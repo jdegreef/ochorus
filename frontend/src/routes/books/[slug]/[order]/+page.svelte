@@ -2,6 +2,7 @@
 	import { assetHtml } from '$lib/assetUrl';
 	import { hasVerseNumbers, markVerse } from '$lib/verse';
 	import { anchorParagraphs, paragraphFromHash } from '$lib/paragraphAnchor';
+	import { alignHeadingLevels } from '$lib/headingLevels';
 	import { smartQuotesHtml } from '$lib/smartQuotes';
 	import { bibleChapterMeta, bibleChapterTitle, chapterMeta, isBibleChapter } from '$lib/bookSeo';
 	import { OWB_SLUG } from '$lib/openWordBible';
@@ -2422,7 +2423,7 @@
 			<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. Quotes
 			     are curled at render time, length-preserving ($lib/smartQuotes). -->
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<div class="reading" class:story={childrens} class:no-verse-numbers={!readerPrefs.verseNumbers} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html anchorParagraphs(assetHtml(markVerse(smartQuotesHtml(chapter.body_html, language))))}</div>
+			<div class="reading" class:story={childrens} class:no-verse-numbers={!readerPrefs.verseNumbers} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html alignHeadingLevels(anchorParagraphs(assetHtml(markVerse(smartQuotesHtml(chapter.body_html, language)))))}</div>
 			<!-- Parsed straight after the body — its previousElementSibling, so it
 			     stays INSIDE .par-wrap, next to the body — so it can put a returning
 			     reader at their paragraph before first paint (see $lib/earlyResume).
@@ -2708,7 +2709,7 @@
 				{/if}
 				{#if endStreak > 0}
 					<p class="mt-3 inline-flex items-center gap-1.5 text-small">
-						<Icon name="flame" size={18} class="text-gold" /><span
+						<Icon name="flame" size={18} class="text-gold-ink" /><span
 							><span class="font-semibold">{endStreak}</span> {t('settings.streakLabel')}</span
 						>
 					</p>

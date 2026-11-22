@@ -132,7 +132,7 @@
 		     the logo and the H1 already say. The BreadcrumbList stays in the head. -->
 		<section class="hero">
 			<div>
-				<p class="eyebrow text-gold">{t('originals.eyebrow')}</p>
+				<p class="eyebrow text-gold-ink">{t('originals.eyebrow')}</p>
 				<h1 class="mt-2 text-balance font-display text-h1 font-semibold leading-tight">{t('originals.title')}</h1>
 				<p class="lede mt-4 text-muted">{t('originals.lede')}</p>
 				<p class="facts mt-5 text-small text-muted">
@@ -161,7 +161,7 @@
 					<a class="latest card-lift" href={localizeHref(`/books/${latest.slug}`)}>
 						<span class="latest-cover"><BookCover book={latest} /></span>
 						<span class="min-w-0">
-							<span id="new-heading" class="eyebrow block text-gold">{t('originals.justPublished')}</span>
+							<span id="new-heading" class="eyebrow block text-gold-ink">{t('originals.justPublished')}</span>
 							<span class="mt-1 block font-display text-h2 font-semibold text-balance text-text" dir="auto">
 								{latest.title}
 							</span>
@@ -241,7 +241,7 @@
 		<!-- Why we write: the imprint is a ministry, and says so in its own voice
 		     before the shelves. -->
 		<section class="why mt-14" aria-labelledby="why-heading">
-			<p class="eyebrow text-gold">{t('originals.whyEyebrow')}</p>
+			<p class="eyebrow text-gold-ink">{t('originals.whyEyebrow')}</p>
 			<h2 id="why-heading" class="mt-1 text-h2 font-display font-semibold">{t('originals.whyTitle')}</h2>
 			<p class="why-note mt-3">{t('originals.whyNote')}</p>
 			<p class="mt-3 text-small text-muted">{t('originals.whySign')}</p>
@@ -356,7 +356,7 @@
 		{#if otherLangs.length}
 			<section class="colophon mt-16">
 				<div>
-					<p class="eyebrow text-gold">{t('originals.langsEyebrow')}</p>
+					<p class="eyebrow text-gold-ink">{t('originals.langsEyebrow')}</p>
 					<p class="mt-2 text-small text-muted">{t('originals.langsBody')}</p>
 					<ul class="mt-3 flex flex-wrap gap-2">
 						{#each otherLangs as l (l.loc)}

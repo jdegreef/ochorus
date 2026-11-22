@@ -180,7 +180,7 @@
 							{item.order} / {book.chapter_count} · {item.pct}%
 						</div>
 					{:else if item.status === 'finished'}
-						<span class="text-gold" aria-hidden="true">✓</span>
+						<span class="text-gold-ink" aria-hidden="true">✓</span>
 						{t('fav.shelfFinished')}
 					{:else}
 						{book.chapter_count}

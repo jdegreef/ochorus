@@ -2,6 +2,7 @@
 	import { assetHtml } from '$lib/assetUrl';
 	import { markVerse } from '$lib/verse';
 	import { anchorParagraphs, paragraphFromHash } from '$lib/paragraphAnchor';
+	import { alignHeadingLevels } from '$lib/headingLevels';
 	import { smartQuotesHtml } from '$lib/smartQuotes';
 	import { onPageHidden } from '$lib/pageHidden';
 	import { readingSync } from '$lib/readingSync';
@@ -290,7 +291,7 @@
      curled here, at render time and length-preserving ($lib/smartQuotes). -->
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-<div class="reading {className}" bind:this={body} onclick={reader.onScriptureClick} dir="auto" lang={contentLang(language)}>{@html anchorParagraphs(assetHtml(markVerse(smartQuotesHtml(html, language))))}</div>
+<div class="reading {className}" bind:this={body} onclick={reader.onScriptureClick} dir="auto" lang={contentLang(language)}>{@html alignHeadingLevels(anchorParagraphs(assetHtml(markVerse(smartQuotesHtml(html, language)))))}</div>
 
 <ReaderOverlays {reader} container={body} {language} />
 

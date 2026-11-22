@@ -123,7 +123,7 @@
 		{#if book && gift && firstChapter}
 			<div class="gift-cover" aria-hidden="true"><BookCover {book} /></div>
 			<div class="min-w-0">
-				<p class="eyebrow text-gold">
+				<p class="eyebrow text-gold-ink">
 					{#if fromLine}{fromLine[0]}<bdi>{gift.name}</bdi>{fromLine[1]}{:else}{t('gift.forYou')}{/if}
 				</p>
 				<h1 id="gift-title" class="font-display mt-1 text-h2" lang={book.language}>{book.title}</h1>

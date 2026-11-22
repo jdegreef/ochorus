@@ -1283,7 +1283,7 @@
 			<!-- A part's heading: "Part Two · 1684" and its subtitle. Plain text
 			     from the fixture (`Book.parts`). -->
 			<h3 class="contents-part" dir="auto">
-				<span class="eyebrow text-gold">{partLine(group.part)}</span>
+				<span class="eyebrow text-gold-ink">{partLine(group.part)}</span>
 				{#if group.part.subtitle}<span class="text-small text-muted">{group.part.subtitle}</span>{/if}
 			</h3>
 		{/if}

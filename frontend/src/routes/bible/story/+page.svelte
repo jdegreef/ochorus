@@ -82,7 +82,7 @@
 	<li class="era" id={s.id}>
 		<span class="marker" aria-hidden="true">{number.get(s.id)}</span>
 		<div class="era-body">
-			<p class="eyebrow text-gold">{s.period}</p>
+			<p class="eyebrow text-gold-ink">{s.period}</p>
 			<h3 class="era-title mt-1 font-display text-h3 font-semibold">{s.title}</h3>
 			<p class="prose-line mt-2 text-muted">{s.prose}</p>
 			<dl class="links mt-4 text-small">

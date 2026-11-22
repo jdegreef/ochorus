@@ -94,7 +94,7 @@
 	<!-- Hero: the name, what it is in a sentence, the two ways in. -->
 	<section class="hero">
 		<div>
-			<p class="eyebrow text-gold">The translation</p>
+			<p class="eyebrow text-gold-ink">The translation</p>
 			<h1 class="mt-2 text-balance font-display text-h1 font-semibold leading-tight">
 				The Open Word Bible
 			</h1>
@@ -129,7 +129,7 @@
 
 	<!-- Three levels: one verse, side by side, the Ochorus one marked. -->
 	<section class="mt-12" aria-labelledby="levels-heading">
-		<p class="eyebrow text-gold">Three levels</p>
+		<p class="eyebrow text-gold-ink">Three levels</p>
 		<h2 id="levels-heading" class="mt-1 text-h2 font-display font-semibold">
 			One verse, translated three ways
 		</h2>
@@ -158,7 +158,7 @@
 	<!-- The reasoning record: one real decision, as the translation keeps it. -->
 	<section class="working mt-14" aria-labelledby="working-heading">
 		<div>
-			<p class="eyebrow text-gold">Open reasoning</p>
+			<p class="eyebrow text-gold-ink">Open reasoning</p>
 			<h2 id="working-heading" class="mt-1 text-h2 font-display font-semibold">
 				Every sentence shows its working
 			</h2>
@@ -205,7 +205,7 @@
 	<!-- Sources and freedom, as two quiet panels. -->
 	<section class="facts-grid mt-14">
 		<div class="panel">
-			<p class="eyebrow text-gold">From the original languages</p>
+			<p class="eyebrow text-gold-ink">From the original languages</p>
 			<h2 class="mt-1 text-h3 font-display font-semibold">Translated from the source texts</h2>
 			<ul class="mt-3 space-y-2 text-small text-muted">
 				<li>
@@ -223,7 +223,7 @@
 			</ul>
 		</div>
 		<div class="panel">
-			<p class="eyebrow text-gold">Free for everyone</p>
+			<p class="eyebrow text-gold-ink">Free for everyone</p>
 			<h2 class="mt-1 text-h3 font-display font-semibold">Given to the public domain</h2>
 			<p class="mt-3 text-small text-muted">
 				The translation is released under CC0: no permission to ask, no fee, no limit on
@@ -241,7 +241,7 @@
 
 	<!-- What Ochorus adds around the text, each a door into the library. -->
 	<section class="mt-14" aria-labelledby="here-heading">
-		<p class="eyebrow text-gold">On Ochorus</p>
+		<p class="eyebrow text-gold-ink">On Ochorus</p>
 		<h2 id="here-heading" class="mt-1 text-h2 font-display font-semibold">
 			Read it here like any book in the library
 		</h2>

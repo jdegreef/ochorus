@@ -68,7 +68,7 @@
 
 <div class="page-col px-5 py-10" lang={locale}>
 	<header class="max-w-2xl">
-		<p class="eyebrow text-gold">{FOR_EYEBROW[locale]}</p>
+		<p class="eyebrow text-gold-ink">{FOR_EYEBROW[locale]}</p>
 		<h1 class="mt-2 text-balance font-display text-h1 font-semibold leading-tight">{title}</h1>
 		<p class="mt-4 text-body text-muted">{c.indexLead}</p>
 	</header>

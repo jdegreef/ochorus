@@ -130,7 +130,7 @@
 				{#if book && firstChapter}
 					<div class="start-cover" aria-hidden="true"><BookCover {book} /></div>
 					<div class="min-w-0">
-						<p class="eyebrow text-gold">{t('welcomePage.startEyebrow')}</p>
+						<p class="eyebrow text-gold-ink">{t('welcomePage.startEyebrow')}</p>
 						<h2 id="welcome-start" class="font-display mt-1 text-h2" lang={book.language}>{book.title}</h2>
 						<p class="text-small text-muted">
 							<a href={localizeHref(authorPath(book.author.slug))}>{book.author.name}</a>
@@ -244,7 +244,7 @@
 			{#each KEEPS as k (k.title)}
 				<li>
 					<span class="inline-flex items-center gap-2 text-body font-semibold">
-						<span class="inline-flex text-gold"><Icon name={k.icon} size={20} /></span>{t(k.title)}
+						<span class="inline-flex text-gold-ink"><Icon name={k.icon} size={20} /></span>{t(k.title)}
 					</span>
 					<span class="mt-1 block text-small text-muted">{t(k.body)}</span>
 				</li>

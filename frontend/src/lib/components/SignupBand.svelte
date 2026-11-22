@@ -164,7 +164,7 @@
 						</div>
 					{/if}
 					<div>
-						<p class="eyebrow mb-2 text-gold">{t('home.signupMicroFree')}</p>
+						<p class="eyebrow mb-2 text-gold-ink">{t('home.signupMicroFree')}</p>
 						<h2 class="text-h2 mb-2 text-balance">{t('home.signupCoversTitle')}</h2>
 						<p class="max-w-xl text-body text-muted">{t('home.signupCoversText')}</p>
 					</div>
@@ -195,7 +195,7 @@
 						{/each}
 					</div>
 					<div>
-						<p class="eyebrow mb-2 text-gold">{t('home.signupMicroFree')}</p>
+						<p class="eyebrow mb-2 text-gold-ink">{t('home.signupMicroFree')}</p>
 						<h2 class="text-h2 mb-2">{t('home.signupLibraryTitle')}</h2>
 						<p class="max-w-xl text-body text-muted">{t('home.signupLibraryText')}</p>
 					</div>
