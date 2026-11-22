@@ -227,6 +227,7 @@
 			<span>Open Word Bible</span><span class="sep" aria-hidden="true">·</span><span
 				>Balanced</span
 			><span class="sep" aria-hidden="true">·</span><span>Free to share</span>
+			<span class="owb-chev" aria-hidden="true"><Icon name="chevron-right" size={14} /></span>
 		</summary>
 		<div class="owb-note-body">
 			<p>
@@ -489,17 +490,19 @@
 	.owb-note summary::-webkit-details-marker {
 		display: none;
 	}
-	.owb-note summary::after {
-		content: '';
-		width: 0.4rem;
-		height: 0.4rem;
-		margin-inline-start: 0.5rem;
-		border-inline-end: 1.5px solid currentColor;
-		border-block-end: 1.5px solid currentColor;
-		transform: rotate(45deg) translateY(-2px);
+	/* The row's chapter-button chevron, a quarter turn when open. */
+	.owb-chev {
+		display: inline-flex;
+		margin-inline-start: 0.15rem;
+		transition: transform var(--duration-base) ease;
 	}
-	.owb-note[open] summary::after {
-		transform: rotate(-135deg) translateY(-2px);
+	.owb-note[open] .owb-chev {
+		transform: rotate(90deg);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.owb-chev {
+			transition: none;
+		}
 	}
 	.owb-note summary:hover {
 		color: var(--text);
