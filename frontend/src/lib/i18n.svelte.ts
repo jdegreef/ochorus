@@ -31,12 +31,35 @@ const catalogs = new Map<string, Catalog>();
 
 const loaderFor = (locale: string) => loaders[`/messages/${locale}.json`];
 
+/**
+ * Count-dependent noun forms beyond English's one/many, for the languages that
+ * need them: messages/plurals/<locale>.json maps a `…_one` message key to its
+ * forms by CLDR plural category. Arabic says "81 كتابًا" and "5 كتب", Russian
+ * "2 книги", "5 книг", "21 книга" — none of which a one/many pair can say, so
+ * every count on the site read ungrammatically there. Kept out of the main
+ * catalogue (which every locale must mirror key for key) and loaded with it.
+ */
+type PluralForms = Record<string, Partial<Record<Intl.LDMLPluralRule, string>>>;
+const pluralLoaders = import.meta.glob<PluralForms>('/messages/plurals/*.json', {
+	import: 'default'
+});
+const plurals = new Map<string, PluralForms>();
+const rules = new Map<string, Intl.PluralRules>();
+const rulesFor = (locale: string) => {
+	let r = rules.get(locale);
+	if (!r) rules.set(locale, (r = new Intl.PluralRules(locale)));
+	return r;
+};
+
 /** Load (once) the UI catalogue for `locale`. Resolves when `t` can serve it. */
 export async function loadUiCatalog(locale: string): Promise<void> {
 	if (catalogs.has(locale)) return;
 	const load = loaderFor(locale);
 	if (!load) return;
-	catalogs.set(locale, await load());
+	const loadPlurals = pluralLoaders[`/messages/plurals/${locale}.json`];
+	const [catalog, forms] = await Promise.all([load(), loadPlurals?.()]);
+	if (forms) plurals.set(locale, forms);
+	catalogs.set(locale, catalog);
 }
 
 const toSnake = (key: string): string =>
@@ -47,6 +70,17 @@ const toSnake = (key: string): string =>
 
 class I18n {
 	t = (key: string): string => catalogs.get(getLocale())?.[toSnake(key)] ?? key;
+	/**
+	 * The noun for a count: `tn(3, 'common.bookOne', 'common.bookMany')`. The
+	 * locale's own plural form when messages/plurals has one, else the one/many
+	 * pair exactly as before (`n === 1` picks the first).
+	 */
+	tn = (n: number, oneKey: string, manyKey: string): string => {
+		const locale = getLocale();
+		const forms = plurals.get(locale)?.[toSnake(oneKey)];
+		const form = forms?.[rulesFor(locale).select(n)];
+		return form ?? this.t(n === 1 ? oneKey : manyKey);
+	};
 }
 
 export const i18n = new I18n();

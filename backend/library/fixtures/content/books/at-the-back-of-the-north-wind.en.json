@@ -13,7 +13,32 @@
   "cover_byline": "",
   "description": "Little Diamond, a coachman's son, sleeps in a hayloft over the horses, and one night the wind that blows through a hole in the boards speaks to him. She is North Wind, a great and beautiful lady who carries him through the night on her errands, some of them kind and some of them terrible, and at last takes him to the strange, quiet country at her back. Home again in the poor streets of London, Diamond drives his father's cab, befriends a crossing-sweeper and a drunken cabman's family, and carries a quiet goodness into every place he goes. MacDonald's tender, mysterious story for children of every age is about suffering, trust and a love that is at work even in the dark.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is At the Back of the North Wind about?",
+    "answer": "Published in 1871, it is George MacDonald’s story of Diamond, a coachman’s son who sleeps in a hayloft above the horses. One night the wind blowing through a hole in the boards speaks to him: she is North Wind, a great and beautiful lady who carries him on her errands and eventually takes him to the quiet country at her back."
+   },
+   {
+    "question": "Who is North Wind?",
+    "answer": "She is a mysterious, shape-changing lady, sometimes tiny and sometimes immense, who does the work she is given. Some of her errands are kind and some are terrible: she tells Diamond she must sink a ship that night, with men and women in it. She can do nothing cruel, she says, although she often does what looks cruel to those who do not know what she is really doing."
+   },
+   {
+    "question": "Why does North Wind do frightening things?",
+    "answer": "Diamond struggles to understand how someone so good could cause shipwrecks and storms. North Wind explains that she obeys a higher voice, and trusts that it is good, even when she cannot see the whole. The book quietly explores how a loving God can be at work through suffering, a mystery Diamond learns to trust rather than fully explain."
+   },
+   {
+    "question": "What is the country at the back of the north wind?",
+    "answer": "It is a strange, quiet land where there is no storm, and where everything seems well, though not quite happy, since people are waiting. MacDonald hints that it is a picture of the life beyond death. Diamond returns from it changed, with a stillness and gentleness that he carries back into the poor streets of London."
+   },
+   {
+    "question": "How does Diamond help the people around him?",
+    "answer": "Back in London, Diamond drives his father’s cab when his father is ill, befriends Nanny, a crossing-sweeper, and Jim, a crippled boy, and quietly brings peace to a drunken cabman’s family. With the help of Mr. Raymond, a kind gentleman, things improve for his friends. His simple, trusting goodness changes every place he goes."
+   },
+   {
+    "question": "How does the story end?",
+    "answer": "Diamond grows frail, and North Wind comes for him one last time. Those around him think he has died, but the narrator, who came to know Diamond, says that he had gone to the back of the north wind. The ending is gentle rather than tragic: death is pictured as a passage into the peace Diamond had already tasted."
+   }
+  ],
   "publication_year": 1871,
   "source_type": "public_domain",
   "source_url": "https://standardebooks.org/ebooks/george-macdonald/at-the-back-of-the-north-wind",

@@ -68,5 +68,36 @@
    "Shipping with the-way-to-god.ja (queue job #8098). This plan's source books are a-call-to-the-unconverted, the-way-to-god and all-of-grace; it becomes creatable in ja only once all three exist, so the prose is written ahead of the last of them rather than left for whichever job completes the set.",
    "The title opens with the ja edition's own title (神に至る道) and the ―― dash the shipped ja plans use; 『すべては恵み』 is the shipped ja title of all-of-grace. Baxter's work is described rather than titled, since no ja edition of it exists yet to take a title from. です・ます体. AI-written; for native review with the book."
   ]
+ },
+ "everything-for-christ": {
+  "title": "キリストのためにすべてを――注ぎ出された生涯",
+  "description": "心からの献身には、どれほどの代価がかかり、何がもたらされるのでしょうか。デイヴィッド・ブレイナードが宣教の日々を書きとめた心探られる日記を読み、続いて福音のためにすべてをささげた人々の物語『すべてをささげた人々』を読みます。それに応えて生きた人生を通して語られる、献身への招きです。",
+  "note": [
+   "Written with men-and-women-who-gave-everything-2.ja (『すべてをささげた人々』, ja batch of 15, job #8907); the description quotes that shipped title exactly. life-and-diary-of-david-brainerd has no ja edition yet, so seed_plans does NOT create this (everything-for-christ, ja) row today; the prose ships ahead so the diary's arrival cannot publish an English-titled plan (the #819 defect). Brainerd's diary is named descriptively, not by a title, until its ja edition fixes one.",
+   "です・ます体, the ja house register; ――as in the shipped ja plan titles. AI-drafted; awaiting native review."
+  ]
+ },
+ "first-steps-for-teens": {
+  "title": "はじめの一歩――十代のための信仰",
+  "description": "十代の読者のための、イエスさまとともに歩む最初の一歩です。チャールズ・スポルジョンが『狭い門のほとりで』で門のところであなたを迎え、キリストへの道を探しているすべての人に、いちばんわかりやすい助けを差し出します。続いて、キリストにすべてをささげた人々の実話『すべてをささげた人々』が、そのような生き方がどのようなものになるのかを見せてくれます。およそ3週間で読む、短い2冊の本です。",
+  "note": [
+   "Backed by around-the-wicket-gate.ja (『狭い門のほとりで』, already shipped) and men-and-women-who-gave-everything-2.ja (『すべてをささげた人々』, new in the ja batch of 15, job #8907); both titles are quoted exactly. With the second book live, seed_plans creates the (first-steps-for-teens, ja) row on this deploy, so PlanTranslationCoverageTests requires this prose in the same PR.",
+   "'Starting Out' = はじめの一歩 (also the description's 'first walk'); です・ます体. AI-drafted; awaiting native review."
+  ]
+ },
+ "family-devotions-pilgrims-journey": {
+  "title": "家族の礼拝――巡礼者の旅",
+  "description": "子どもたちと、いっしょに読む大人のための、5分間の家族の礼拝です。およそ3週間半、毎晩、短い章を一つ声に出して読みます。まずバニヤンの巡礼者が天の都への道を進む物語、続いてスポルジョンの『農夫に語る（子ども向け）』の農場の絵物語です。どの章もお祈りと、いっしょに話し合う三つの問いで終わります。",
+  "note": [
+   "Written with talks-to-the-farmer-children.ja (『農夫に語る（子ども向け）』, ja batch of 15, job #8905); the description quotes that shipped title exactly. pilgrims-progress-children has no ja edition yet, so seed_plans does NOT create this (family-devotions-pilgrims-journey, ja) row today; the prose ships ahead (the #819 defect). Bunyan's retelling is named descriptively until its ja edition fixes a title.",
+   "Family devotions = 家族の礼拝; です・ます体 with gentle wording for families. AI-drafted; awaiting native review."
+  ]
+ },
+ "praying-men": {
+  "title": "祈る人々——E・M・バウンズに学ぶ祈りの学校",
+  "description": "祈りの偉大な使徒とともに、とりなしの炉の中で7週間を過ごします。E・M・バウンズはまず、説教者自身が力を必要としていることから始め、続いて祈りを勝利させる目的を、そして祈りをキリスト者の生涯の全事業とする必要を明らかにします。",
+  "note": [
+   "Plan prose shipped with the ja edition of necessity-of-prayer (queue job #8910): with it, all three source books of praying-men exist in ja (『祈りによる力』, 『目的をもった祈り』, 『祈りの必要』), so PlanTranslationCoverageTests requires this entry. The description follows the English one book by book (power → purpose → necessity) in the です・ます phrasing of the shipped ja plans, with the house dash ——. AI-written; for native review with the book."
+  ]
  }
 }

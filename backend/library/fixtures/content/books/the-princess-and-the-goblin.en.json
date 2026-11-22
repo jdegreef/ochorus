@@ -13,7 +13,32 @@
   "cover_byline": "",
   "description": "Princess Irene is eight years old and lives in a great house on a mountainside, under which the goblins dig and plot in the dark. One rainy day she climbs a forgotten stair and finds, spinning at the top of the house, a beautiful old lady who says she is her great-great-grandmother, and whom nobody else believes in. Her gift is a ring and a thread too fine to see, which will always lead Irene where she must go; and when Curdie, the brave miner boy who drives the goblins off with rhymes, is caught inside the mountain, she must trust the thread to lead her in after him. MacDonald's best-loved fairy tale is a story about faith in what cannot be seen, and about a child who believes.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Princess and the Goblin about?",
+    "answer": "It is George MacDonald’s fairy tale, published in 1872, about Princess Irene, an eight-year-old who lives in a large house on a mountainside. Beneath the mountain live the goblins, who dig in the dark and plot against the people above. With the help of Curdie, a brave miner boy, and her mysterious great-great-grandmother, Irene faces the goblins’ scheme."
+   },
+   {
+    "question": "Who is the old lady at the top of the house?",
+    "answer": "One rainy day Irene climbs a forgotten stair and finds a beautiful old lady spinning at the top of the house, who tells her that her name is Irene too, and that she is her great-great-grandmother. Nobody else believes she exists. Many readers see her as a picture of God’s wisdom and loving care, present though unseen."
+   },
+   {
+    "question": "What is the thread the grandmother gives Irene?",
+    "answer": "The grandmother spins a thread so fine that Irene can hardly see it, and ties it to a ring she gives her. Whenever Irene is in trouble, she is to put her finger on the thread and follow it, trusting it even when it seems to lead the wrong way. It always leads her where she needs to go, even into the goblins’ caves."
+   },
+   {
+    "question": "How does Curdie fight the goblins?",
+    "answer": "Curdie, the miner’s son, knows that goblins cannot stand rhymes, especially new ones made up on the spot, so he sings to drive them off. He also discovers their weak point: their soft, toeless feet. In a fight with the goblin king, he stamps with all his might on the king’s feet. Later he uncovers their plot to flood the mines."
+   },
+   {
+    "question": "Why doesn’t Curdie see the grandmother?",
+    "answer": "When Irene brings Curdie to the grandmother’s room, he sees only a tub, a heap of musty straw and a withered apple. The grandmother explains that Curdie is not yet able to believe some things: seeing is not believing, it is only seeing. The book is in large part about faith in what cannot be seen, and about the pain of not being believed."
+   },
+   {
+    "question": "What is the message of The Princess and the Goblin?",
+    "answer": "It is a story about trusting a love that cannot always be seen, following its guidance even when it makes no sense, and holding to the truth even when others mock it. Irene keeps her word, believes her grandmother and follows the thread, and through her faith Curdie is rescued. MacDonald wrote a sequel, The Princess and Curdie."
+   }
+  ],
   "publication_year": 1872,
   "source_type": "public_domain",
   "source_url": "https://standardebooks.org/ebooks/george-macdonald/the-princess-and-the-goblin",

@@ -12,7 +12,32 @@
   "cover_byline": "Catherine Booth",
   "description": "A concise, faithful guide to the heart of Catherine Booth’s message — that godliness is a real power and not a respectable form, that it must be had in the heart and carried to the people, and that God may send whom He will to carry it. Nineteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Catherine Booth’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Catherine Booth. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of her teaching into nineteen short chapters for the ordinary reader, and tells the story of the life that gave that teaching its force.</p><p>Her one theme was reality. She had no patience with a religion of forms, creeds and pleasant feelings that left the heart unchanged and the streets unreached. She wanted the thing itself: a repentance that really let go of sin, a faith that really committed the whole person to Christ, a holiness that really cleansed, and a love that really went out after the lost, whatever it cost in comfort or reputation. This volume follows that thread through her life, her teaching on salvation and the Holy Spirit, her defence of women’s preaching, her counsel to parents, and her campaigns against the evils of her day. It weighs her fairly where she pressed too hard, and it ends each chapter where she would have wanted it to end: in a few questions and a prayer.</p><p>Catherine Booth’s own writings are in the public domain and freely available, and every chapter here names them so the reader can go to the source. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, the Bible she read through many times as a girl and preached from all her life, and it makes no claim to stand in for her own direct and searching words.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of Catherine Booth?",
+    "answer": "It is a short guide to the heart of Catherine Booth’s message, written as a companion to her own public-domain works. Its chapters cover the power of godliness, repentance, true and false faith, the Holy Spirit, full salvation, prayer, aggressive Christianity, adapting methods to reach people, woman’s right to preach, the training of children and a religion to die with."
+   },
+   {
+    "question": "Who was Catherine Booth?",
+    "answer": "Catherine Mumford was born on January 17, 1829, at Ashbourne in Derbyshire, the daughter of a coachbuilder and lay Methodist preacher. A serious, bookish child, she was often ill, and is said to have read the Bible through eight times before she was twelve. She married William Booth, the founder of The Salvation Army, was the mother of eight children, and became a powerful preacher in her own right."
+   },
+   {
+    "question": "What did Catherine Booth mean by godliness?",
+    "answer": "The book explains that she wanted a word harder to fake than religious, respectable or sound. Godliness, in her use, meant God-likeness: a life actually changed at the root by the power of God. Her charge against much of the church of her day was that it kept the form of godliness while denying its power."
+   },
+   {
+    "question": "Why did she insist on repentance?",
+    "answer": "Her book Godliness begins with a sermon on repentance, deliberately. She believed the greatest weakness of the evangelism of her day was offering Christ to people who had no intention of giving up their sins. Real repentance, she taught, is a turning from sin to God that bears fruit in a changed life, as Paul preached in Acts 26:20."
+   },
+   {
+    "question": "What did she teach about women preaching?",
+    "answer": "The book gives a chapter to Woman’s Right to Preach, a subject on which she wrote and spoke boldly from Scripture. Drawing on 1 Corinthians 1:27, that God chooses the weak and foolish things of the world, she argued that God may send whom he will to carry the gospel, and that women called by him should not be silenced."
+   },
+   {
+    "question": "Where should a reader start with Catherine Booth?",
+    "answer": "The book’s reader’s guide recommends Godliness as her most rounded book, gathering her sermons on repentance, saving faith, love, prayer and the perfect heart. If you read only one book of hers, it says, read this, and it singles out the four sermons on love. It also recommends Aggressive Christianity (1880), the collection that made her name as a writer."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",

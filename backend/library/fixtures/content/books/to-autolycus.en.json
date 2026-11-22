@@ -14,7 +14,32 @@
   "description": "The bishop of Antioch answers a learned pagan friend who scorned the faith: who the invisible God is and how he may be known, what the prophets teach of creation, and why the Scriptures are older and truer than the poets and philosophers.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is To Autolycus?",
+    "answer": "It is a defence of the Christian faith in three books, written around 180 by Theophilus, bishop of Antioch, to a learned pagan friend named Autolycus who scorned the faith. Theophilus explains who the invisible God is and how he may be known, what the prophets teach about creation, and why the Scriptures are older and truer than the poets and philosophers."
+   },
+   {
+    "question": "How does Theophilus answer the demand Show me thy God?",
+    "answer": "Theophilus says that God is seen by those whose eyes of the soul are opened. As a burnished mirror must be clean to show a face, so a person\u2019s soul must be pure; when there is rust on the mirror, no face can be seen, and when there is sin in a person, he cannot behold God. He invites Autolycus to entrust himself to the Physician who heals the eyes of the soul."
+   },
+   {
+    "question": "What does Theophilus say about the name Christian?",
+    "answer": "Autolycus mocked him with the name Christian, as if it were a damning name. Theophilus answers that he gladly avows that he is a Christian, and explains that the name means anointed. Just as a ship must be caulked and a house finished before they are serviceable, so Christians are called Christians because they are anointed with the oil of God."
+   },
+   {
+    "question": "Is To Autolycus the first to use the word Trinity?",
+    "answer": "Theophilus is often noted as one of the earliest writers to use the word Trinity in Christian writing. In Book II he says that the three days before the sun and moon were made are types of the Trinity, of God, and his Word, and his wisdom, and that the fourth day is the type of man, who needs light."
+   },
+   {
+    "question": "Why does Theophilus argue that Scripture is older?",
+    "answer": "In Book III Theophilus sets out a chronology to show that the Hebrew writings are older than all Greek authors, so the Greeks could not have taught the prophets. He calculates the years from the creation of the world to the death of the Emperor Aurelius Verus at a total of 5698 years, to show the antiquity of the truth Christians hold."
+   },
+   {
+    "question": "Who should read To Autolycus?",
+    "answer": "It suits readers interested in early Christian apologetics and in how second-century believers answered educated pagans. Theophilus writes personally to a friend, which gives the work warmth, and his reading of Genesis and his chronology are valuable windows into the thought of the early church."
+   }
+  ],
   "publication_year": 180,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/anf02.iv.html",

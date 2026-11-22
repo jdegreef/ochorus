@@ -1,6 +1,14 @@
 import { i18n } from './i18n.svelte';
 import { getLang } from './lang.svelte';
-import { MODERN_EDITION, baseEdition, furthestOf, isFinishedNow, resumeOrderOf, type ProgressRecord } from './reading-schema';
+import {
+	MODERN_EDITION,
+	baseEdition,
+	furthestOf,
+	isFinishedNow,
+	resumeOrderOf,
+	type FinishFields,
+	type ProgressRecord
+} from './reading-schema';
 import { readingPace } from './readingPace.svelte';
 import { minutesPerDay } from './planCard';
 
@@ -88,7 +96,7 @@ export function bookProgressPercent(order: number, chapterCount: number): number
  * the bar is always visibly started and never claims completion.
  */
 export function workPercent(
-	rec: Pick<ProgressRecord, 'order' | 'pct' | 'finished_at' | 'restarted_at' | 'last_finished_at' | 'furthest'>,
+	rec: Pick<ProgressRecord, 'order' | 'pct' | 'furthest'> & FinishFields,
 	chapterCount: number
 ): number {
 	if (isFinishedNow(rec)) return 100;
@@ -139,6 +147,21 @@ export function bookTimeLeft(minutes: number): string {
 		min: 'progress.bookMin',
 		hr: 'progress.bookHr',
 		hrMin: 'progress.bookHrMin'
+	});
+}
+
+/**
+ * Localized "time left in this chapter", e.g. "2 hr 20 min left in chapter":
+ * under an hour it is the familiar "N min left in chapter"; past it, hours,
+ * like the book figure beside it (a 60,000-word chapter used to read
+ * "140 min left in chapter" next to "15 hr 44 min left in book").
+ */
+export function chapterTimeLeft(minutes: number): string {
+	if (minutes < 60) return `${minutes} ${i18n.t('progress.minLeft')}`;
+	return durationLabel(minutes, {
+		min: 'progress.minLeft',
+		hr: 'progress.chapterHr',
+		hrMin: 'progress.chapterHrMin'
 	});
 }
 
@@ -197,7 +220,7 @@ export function chapterNameIn(
 
 /** "9 chapters" / "1 chapter". */
 export function chapterCount(n: number): string {
-	return `${n} ${n === 1 ? i18n.t('book.chapterOne') : i18n.t('book.chaptersMany')}`;
+	return `${n} ${i18n.tn(n, 'book.chapterOne', 'book.chaptersMany')}`;
 }
 
 /**

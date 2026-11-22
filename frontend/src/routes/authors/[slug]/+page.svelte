@@ -159,10 +159,10 @@
 	const worksBits = $derived(
 		[
 			author.books.length
-				? `${author.books.length} ${author.books.length === 1 ? t('common.bookOne') : t('common.bookMany')}`
+				? `${author.books.length} ${i18n.tn(author.books.length, 'common.bookOne', 'common.bookMany')}`
 				: '',
 			author.sermons.length
-				? `${author.sermons.length} ${author.sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}`
+				? `${author.sermons.length} ${i18n.tn(author.sermons.length, 'common.sermonOne', 'common.sermonMany')}`
 				: ''
 		].filter(Boolean)
 	);
@@ -314,6 +314,23 @@
 				)
 			: null
 	);
+	// "Where to start with <author>": the editors' ranked picks (Author.start_with),
+	// joined to the book cards the page already has. Three is the floor, as the
+	// fixture gate requires; the same array feeds the list and its ItemList.
+	const startList = $derived(
+		(author.start_with ?? [])
+			.map((p) => ({ ...p, book: author.books.find((b) => b.slug === p.slug) }))
+			.filter((p): p is { slug: string; why: string; book: BookSummary } => p.book != null)
+	);
+	const showStartList = $derived(startList.length >= 3);
+	const startListLd = $derived(
+		showStartList
+			? itemList(
+					t('author.whereToStart').replace('%name%', author.name),
+					startList.map((p) => ({ name: p.book.title, url: `/books/${p.slug}` }))
+				)
+			: null
+	);
 	// One trail feeds both the visible <Breadcrumb> and the JSON-LD, so the
 	// on-page path and the structured BreadcrumbList can't drift apart.
 	const crumbs = $derived([
@@ -346,8 +363,8 @@
 		);
 		resumeBook = rec ? { book: bySlug.get(rec.slug)!, order: resumeOrderOf(rec) } : null;
 	});
-	// Otherwise the first book, in the API's featured order.
-	const cardBook = $derived(resumeBook?.book ?? author.books[0] ?? null);
+	// Otherwise the editors' first pick, else the first book in the API's order.
+	const cardBook = $derived(resumeBook?.book ?? startList[0]?.book ?? author.books[0] ?? null);
 	// The Where to start row's sermon: the first, in the API's order.
 	const startSermon = $derived(author.sermons[0] ?? null);
 
@@ -453,7 +470,7 @@
 	ogImageWidth={LANDSCAPE_WIDTH}
 	ogImageHeight={LANDSCAPE_HEIGHT}
 	ogImageAlt={author.photo_url ? `${t('a11y.portraitOf')} ${author.name}` : author.name}
-	structuredData={[personLd, worksLd, crumbsLd, faqLd].filter((x): x is string => x != null)}
+	structuredData={[personLd, worksLd, startListLd, crumbsLd, faqLd].filter((x): x is string => x != null)}
 />
 
 <svelte:head>
@@ -669,6 +686,26 @@
 
 	<!-- The works come first (design #14): most visitors came for the books,
 	     which used to start some 1,500 words of biography down. -->
+	<!-- Where to start with <author>: the ranked picks with one line on why
+	     (Author.start_with), above the full shelf. -->
+	{#if showStartList}
+		<section class="mt-8 max-w-[40rem]" aria-labelledby="start-list-heading">
+			<h2 id="start-list-heading" class="section-heading">
+				{t('author.whereToStart').replace('%name%', author.name)}
+			</h2>
+			<ol class="start-list">
+				{#each startList as pick (pick.slug)}
+					<li>
+						<a class="start-list-title" href={localizeHref(`/books/${pick.slug}`)} dir="auto"
+							>{pick.book.title}</a
+						>
+						<p class="text-small text-muted">{pick.why}</p>
+					</li>
+				{/each}
+			</ol>
+		</section>
+	{/if}
+
 	{#if author.books.length}
 		<section id="books" class="jump-anchor mt-8">
 			<h2 class="section-heading">
@@ -1078,6 +1115,19 @@
 
 	/* Derived FAQ accordion. Native <details> so it works with no JS and during
 	   prerender; the marker is replaced with a +/− that flips on [open]. */
+	.start-list {
+		list-style: decimal;
+		padding-inline-start: 1.25rem;
+		margin-top: 0.75rem;
+		display: grid;
+		gap: 0.75rem;
+	}
+	.start-list-title {
+		font-weight: 600;
+		color: var(--color-text);
+		text-decoration: underline;
+		text-underline-offset: 0.15em;
+	}
 	.faq-list {
 		display: flex;
 		flex-direction: column;

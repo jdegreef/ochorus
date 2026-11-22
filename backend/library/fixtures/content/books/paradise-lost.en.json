@@ -13,7 +13,32 @@
   "cover_byline": "",
   "description": "Of Man’s first disobedience, and the fruit of that forbidden tree: Milton’s epic sets out to “justify the ways of God to men.” It opens in Hell, with Satan and his fallen angels roused on the burning lake, and rises to Heaven, where the Son offers himself for mankind while all the angels stand silent. It walks in the garden with Adam and Eve in their innocence, follows the temptation, the fall and their bitter quarrel through to repentance, and gives them the angel Michael’s vision of the history to come and of the Redeemer, until the pair go out from Eden hand in hand, the world all before them, and Providence their guide.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Paradise Lost about?",
+    "answer": "John Milton’s epic poem in twelve books tells the story of the fall of man from Genesis: “Man’s first disobedience, and the fruit of that forbidden tree.” It begins with Satan and the rebel angels in Hell, moves to Heaven and to the garden of Eden, and follows the temptation, the fall, and the hope of redemption, ending as Adam and Eve leave Paradise."
+   },
+   {
+    "question": "What does Milton mean by “justify the ways of God to men”?",
+    "answer": "In his opening invocation Milton asks for divine help so that he may assert the Eternal Providence and justify the ways of God to men. He means to show that God is just and good even in permitting the fall: that humans were made free, sufficient to stand though free to fall, and that God brings greater good out of evil through the Son’s redemption."
+   },
+   {
+    "question": "Why does Satan seem so impressive in the early books?",
+    "answer": "Milton gives Satan magnificent speeches, such as his claim that it is better to reign in Hell than serve in Heaven. Many readers have found him the most vivid character in the poem. But Milton traces his steady decline from a bright archangel to a crawling serpent, and shows his defiance as pride and self-deception. His grandeur is the grandeur of ruin."
+   },
+   {
+    "question": "What happens in Heaven in Book III?",
+    "answer": "In Book III God the Father foresees the fall and asks who will pay the price to redeem mankind. All the heavenly host stand silent, until the Son offers himself, freely, to become man and die for humanity. The angels respond with a great hymn of praise. It is the poem’s answer, before the fall even happens, to the question of how God will save."
+   },
+   {
+    "question": "How does Paradise Lost portray Adam and Eve?",
+    "answer": "Milton shows them first in innocence, working in the garden, praying, and loving each other, and visited by the angel Raphael, who warns Adam of his enemy. After the fall they quarrel bitterly, blaming each other. Then Eve seeks reconciliation, and they turn together to God in repentance. Their humble prayers are the first fruits of grace in a fallen world."
+   },
+   {
+    "question": "How does Paradise Lost end?",
+    "answer": "In the last two books the archangel Michael shows Adam the history to come, through the flood and Abraham to the coming of the Redeemer, who will crush the serpent’s head. Comforted, Adam and Eve are led out of Eden. In the poem’s closing lines they go hand in hand, with wandering steps and slow, with the world all before them and Providence their guide."
+   }
+  ],
   "publication_year": 1674,
   "source_type": "public_domain",
   "source_url": "https://standardebooks.org/ebooks/john-milton/paradise-lost",

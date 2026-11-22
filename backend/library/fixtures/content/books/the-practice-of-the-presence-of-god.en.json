@@ -13,7 +13,32 @@
   "cover_byline": "",
   "description": "Brother Lawrence was a lay brother of the Discalced Carmelites in Paris, a former soldier and footman who spent fifteen years as the monastery's cook, in a kitchen for which he had, he said, a great natural aversion. What he learned there was to live every hour in the company of God — “in the noise and clatter of my kitchen,” as he put it, as quietly as on his knees before the sacrament. Here are the four conversations that Joseph de Beaufort recorded with him in 1666 and 1667, and fifteen of his letters, many of them written in his old age to friends who were ill or troubled: a small book, unlearned and plain, that Catholics and Protestants have loved alike for three centuries.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "Who was Brother Lawrence?",
+    "answer": "Brother Lawrence of the Resurrection was a lay brother of the Discalced Carmelites in Paris in the seventeenth century. He had been a soldier and then a footman before entering the monastery, where for many years he worked as the cook, in a kitchen for which, he said, he had a great natural aversion. There he learned to live every hour in the company of God."
+   },
+   {
+    "question": "What is The Practice of the Presence of God?",
+    "answer": "It is a small book gathered after Brother Lawrence’s death: four conversations that Joseph de Beaufort recorded with him in 1666 and 1667, and fifteen of his letters, many written in old age to friends who were ill or troubled. Together they describe one simple practice: turning the heart to God continually, in every task, as a habit of loving attention."
+   },
+   {
+    "question": "How was Brother Lawrence converted?",
+    "answer": "In the first conversation he told de Beaufort that at eighteen, one winter, he saw a tree stripped of its leaves. Considering that within a little time the leaves would be renewed and the flowers and fruit appear, he received a high view of the providence and power of God. That view, he said, never left him, and set him loose from the world."
+   },
+   {
+    "question": "What does practicing the presence of God mean?",
+    "answer": "For Brother Lawrence it meant a continual, quiet conversation with God throughout the day, doing ordinary work for love of him. He said he possessed God as tranquilly in the noise and clatter of his kitchen, with several people calling for different things at once, as on his knees before the sacrament. Set times of prayer were no different to him from other times."
+   },
+   {
+    "question": "What did Brother Lawrence do when he failed?",
+    "answer": "He did not torment himself. When he fell into a fault, he simply confessed it to God and told him that he would never do otherwise if God left him to himself, and that it was for God to prevent his falling and correct what was amiss. Then he returned to his work and his practice of loving God, without anxiety over the failure."
+   },
+   {
+    "question": "Why has the book been loved for so long?",
+    "answer": "It is short, plain and unlearned, and asks for no special methods or settings, only a heart turned to God in whatever work is at hand. That simplicity has made it a favorite of Catholics and Protestants alike for over three centuries, and of busy people who cannot withdraw to a monastery but want to live in God’s company in ordinary life."
+   }
+  ],
   "publication_year": 1694,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/13871",

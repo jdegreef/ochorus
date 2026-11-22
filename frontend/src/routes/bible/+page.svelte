@@ -20,6 +20,8 @@
 		bibleToContinue,
 		bibleContinueRows,
 		bibleStarts,
+		BIBLE_PATHS,
+		biblePathSteps,
 		divisionKey,
 		groupBible,
 		mayBePassage,
@@ -36,7 +38,7 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
-	import BookCard from '$lib/components/BookCard.svelte';
+	import BibleCoverGrid from '$lib/components/BibleCoverGrid.svelte';
 	import BibleCanonStrip from '$lib/components/BibleCanonStrip.svelte';
 	import BibleTodayHero from '$lib/components/BibleTodayHero.svelte';
 	import BibleBookList from '$lib/components/BibleBookList.svelte';
@@ -75,6 +77,16 @@
 	const books = $derived(groups.flatMap((g) => g.divisions.flatMap((d) => d.books)));
 	const chapters = $derived(bibleChapterCount(books));
 	const starts = $derived(bibleStarts(series?.books ?? []));
+	// "Where to start": the first reader's five books by default, or a path
+	// for what brought them (BIBLE_PATHS), one switch away. The prerender
+	// draws the default.
+	let pathId = $state('first');
+	const startPath = $derived(BIBLE_PATHS.find((p) => p.id === pathId) ?? null);
+	const steps = $derived(
+		startPath
+			? biblePathSteps(startPath.steps, series?.books ?? [])
+			: starts.map(({ book, why }) => ({ book, title: book.title, href: `/books/${book.slug}`, why }))
+	);
 	// The reader's place in the Bible: device-local progress (synced when signed
 	// in), read after mount and again on `ochorus:sync`, as the hubs' Continue
 	// rows are. The prerender, and a first visit, have none: no Continue shelf,
@@ -129,6 +141,7 @@
 	// box. `active` is the one the arrow keys are on (-1: none).
 	const suggestions = $derived(passageSuggestions(jumpQ, series?.books ?? []));
 	const quick = $derived(quickPassages(series?.books ?? []));
+	const topics = $derived(data.topics);
 	let listOpen = $state(false);
 	let active = $state(-1);
 	const showList = $derived(listOpen && suggestions.length > 0);
@@ -212,12 +225,39 @@
 	/>
 	{#snippet counts()}
 		{books.length}
-		{books.length === 1 ? t('common.bookOne') : t('common.bookMany')}
+		{i18n.tn(books.length, 'common.bookOne', 'common.bookMany')}
 		{#if chapters}
 			· {chapters.toLocaleString('en')}
-			{chapters === 1 ? t('book.chapterOne') : t('book.chaptersMany')}
+			{i18n.tn(chapters, 'book.chapterOne', 'book.chaptersMany')}
 		{/if}
 	{/snippet}
+	<!-- What the translation is, where a reader first wonders: who made it, what
+	     "Balanced" means, that it is free. Its words are the /open-word-bible
+	     page's own (English, as the hub is), and a native <details>, so it opens
+	     without script and announces its state. -->
+	<details class="owb-note">
+		<summary>
+			<span>Open Word Bible</span><span class="sep" aria-hidden="true">·</span><span
+				>Balanced</span
+			><span class="sep" aria-hidden="true">·</span><span>Free to share</span>
+			<span class="owb-chev" aria-hidden="true"><Icon name="chevron-right" size={14} /></span>
+		</summary>
+		<div class="owb-note-body">
+			<p>
+				A new translation of the Bible from the Hebrew and Greek, in today's English. Every
+				sentence is translated three ways, from word-for-word to plain; Ochorus prints the
+				Balanced one, faithful to the original and easy to read.
+			</p>
+			<p>
+				It is given to the public domain, so anyone may read, copy, print and share it, free.
+			</p>
+			<p>
+				<a href={localizeHref(`${OWB_PATH}/`)} class="font-medium text-accent hover:underline"
+					>More about the translation <Arrow /></a
+				>
+			</p>
+		</div>
+	</details>
 
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
@@ -285,15 +325,34 @@
 			</ul>
 
 		</form>
-		{#if quick.length}
-			<!-- One tap to the chapters most looked for: the placeholder's own
-			     examples first, so they also show what the box takes. -->
-			<ul class="quick" aria-label={t('bible.jumpLabel')}>
-				{#each quick as p (p.href)}
-					<li><a class="chip quick-chip" href={localizeHref(p.href)}>{p.label}</a></li>
-				{/each}
-			</ul>
-		{/if}
+		<div class="jump-extras">
+			{#if quick.length}
+				<!-- One tap to the chapters most looked for: the placeholder's own
+				     examples first, so they also show what the box takes. -->
+				<ul class="quick" aria-label={t('bible.jumpLabel')}>
+					{#each quick as p (p.href)}
+						<li><a class="chip quick-chip" href={localizeHref(p.href)}>{p.label}</a></li>
+					{/each}
+				</ul>
+			{/if}
+			{#if topics.length}
+				<!-- For a reader who comes with a subject, not a reference: each opens
+				     its topic shelf at "In the Bible", the chapters that shelf's
+				     classics and sermons return to most. -->
+				<nav class="topics-row" aria-labelledby="topics-row-label">
+					<span id="topics-row-label" class="topics-row-label">Passages on</span>
+					<ul class="quick">
+						{#each topics as tp (tp.slug)}
+							<li>
+								<a class="chip quick-chip" href={localizeHref(`/topics/${tp.slug}/#topic-in-bible`)}
+									>{tp.label}</a
+								>
+							</li>
+						{/each}
+					</ul>
+				</nav>
+			{/if}
+		</div>
 
 		{#if continues.plans.length || continues.books.length}
 			<!-- A returning reader's way back in: the books they are partway
@@ -354,15 +413,30 @@
 						>{t('bible.storyTitle')} <Arrow /></a
 					>
 				</div>
-				<p class="mb-4 text-small text-muted">{t('bible.startLede')}</p>
-				<ol class="start-list">
-					{#each starts as { book, why }, i (book.slug)}
+				<!-- What brought them: one press shows that path's chapters below. -->
+				<div class="start-paths" role="group" aria-label="Choose a way in">
+					<button type="button" class="chip" class:active={!startPath} aria-pressed={!startPath} onclick={() => (pathId = 'first')}
+						>New to the Bible</button
+					>
+					{#each BIBLE_PATHS as p (p.id)}
+						<button
+							type="button"
+							class="chip"
+							class:active={pathId === p.id}
+							aria-pressed={pathId === p.id}
+							onclick={() => (pathId = p.id)}>{p.label}</button
+						>
+					{/each}
+				</div>
+				<p class="mb-4 text-small text-muted" aria-live="polite">{startPath ? startPath.lede : t('bible.startLede')}</p>
+				<ol class="start-list" style:--steps={steps.length}>
+					{#each steps as { book, title, href, why }, i (href)}
 						<li>
-							<a class="start card-tint" href={localizeHref(`/books/${book.slug}`)}>
+							<a class="start card-tint" href={localizeHref(href)}>
 								<span class="start-cover"><BookCover {book} rounded="rounded-sm" /></span>
 								<span class="start-text">
 									<span class="start-step">{i + 1}</span>
-									<span class="start-title">{book.title}</span>
+									<span class="start-title">{title}</span>
 									<span class="start-why">{why}</span>
 								</span>
 							</a>
@@ -416,13 +490,7 @@
 					<section class="bible-division">
 						<GroupHeading as="h3" name={t(divisionKey(group.division.id))} count={group.books.length} />
 						{#if asCovers}
-							<!-- No author line: every book is the Open Word Bible's. No series
-							     line: every book is in the one series this page is. -->
-							<div class="book-grid">
-								{#each group.books as book (book.slug)}
-									<BookCard {book} showSeries={false} />
-								{/each}
-							</div>
+							<BibleCoverGrid books={group.books} bind:open={openBook} {placeOf} {linksOf} />
 						{:else}
 							<BibleBookList books={group.books} bind:open={openBook} {placeOf} {linksOf} />
 						{/if}
@@ -442,6 +510,56 @@
 </div>
 
 <style>
+	.owb-note {
+		margin: -0.5rem 0 1.5rem;
+		max-width: 40rem;
+		font-size: var(--fs-small);
+	}
+	.owb-note summary {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		min-height: 2.25rem;
+		padding: 0.3rem 0.75rem;
+		border: 1px solid var(--border-strong);
+		border-radius: var(--radius-pill);
+		background: var(--surface);
+		color: var(--muted);
+		cursor: pointer;
+		list-style: none;
+	}
+	.owb-note summary::-webkit-details-marker {
+		display: none;
+	}
+	/* The row's chapter-button chevron, a quarter turn when open. */
+	.owb-chev {
+		display: inline-flex;
+		margin-inline-start: 0.15rem;
+		transition: transform var(--duration-base) ease;
+	}
+	.owb-note[open] .owb-chev {
+		transform: rotate(90deg);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.owb-chev {
+			transition: none;
+		}
+	}
+	.owb-note summary:hover {
+		color: var(--text);
+	}
+	.owb-note-body {
+		display: grid;
+		gap: 0.5rem;
+		margin-top: 0.75rem;
+		padding-inline-start: 0.75rem;
+		border-inline-start: 2px solid var(--border-strong);
+		color: var(--muted);
+		line-height: 1.55;
+	}
+	.owb-note-body p {
+		margin: 0;
+	}
 	.jump {
 		position: relative;
 		margin: 0.25rem 0 0.75rem;
@@ -472,13 +590,31 @@
 		background: var(--accent-soft);
 		color: var(--accent);
 	}
+	/* The one-tap passages and the "Passages on…" subjects, one block under
+	   the box: it owns the space before what follows. */
+	.jump-extras {
+		display: grid;
+		gap: 0.75rem;
+		margin-bottom: 2.25rem;
+	}
 	.quick {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.5rem;
-		margin: 0 0 2.25rem;
+		margin: 0;
 		padding: 0;
 		list-style: none;
+	}
+	.topics-row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem 0.75rem;
+	}
+	.topics-row-label {
+		font-size: var(--fs-small);
+		font-weight: 600;
+		color: var(--muted);
 	}
 	.jump-label {
 		display: block;
@@ -496,6 +632,15 @@
 	}
 	.starts {
 		margin-bottom: 2.75rem;
+	}
+	.start-paths {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 0.75rem;
+	}
+	.start-paths .chip {
+		min-height: 2.25rem;
 	}
 	.starts-head {
 		display: flex;
@@ -552,7 +697,7 @@
 	/* After the phone rules, so it overrides them. */
 	@media (min-width: 1024px) {
 		.start-list {
-			grid-template-columns: repeat(5, minmax(0, 1fr));
+			grid-template-columns: repeat(var(--steps, 5), minmax(0, 1fr));
 		}
 		.start {
 			flex-direction: column;

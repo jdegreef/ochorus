@@ -1,0 +1,25 @@
+{
+ "why": "A footnote (\"** See Gen. chap. 28.\") pasted mid-sentence as raw asterisks and a stray paragraph, in all five editions (ch. 2); now an inline parenthesis. Found in the top-50 site bug review (2026-11-22).",
+ "replacements": [
+  [
+   "a bethel ** <br/><p> ** See Gen. chap. 28. </p><br/> to the gathering",
+   "a bethel (see Gen. chap. 28) to the gathering"
+  ],
+  [
+   "un Betel ** <br/><p> ** Véase Gén. cap. 28. </p><br/> para la reunión",
+   "un Betel (véase Gén. cap. 28) para la reunión"
+  ],
+  [
+   "un Béthel ** <br/><p> ** Voir Gen., chap. 28. </p><br/> pour le rassemblement",
+   "un Béthel (voir Gen., chap. 28) pour le rassemblement"
+  ],
+  [
+   "ቤቴል ** <br/><p> ** ዘፍጥረት ምዕራፍ 28ን ተመልከት። </p><br/> እንዲሆን",
+   "ቤቴል (ዘፍጥረት ምዕራፍ 28ን ተመልከት) እንዲሆን"
+  ],
+  [
+   "베델 ** <br/><p> ** 창세기 28장을 보십시오. </p><br/> 이 되게",
+   "베델(창세기 28장을 보십시오)이 되게"
+  ]
+ ]
+}

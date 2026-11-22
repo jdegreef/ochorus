@@ -809,6 +809,14 @@ export interface SermonSummary {
 	updated_at?: string;
 }
 
+/** The slim row "Sermon of the day" picks from (`?fields=pick`): only what
+ *  its cards draw. The pick is made in the browser from EVERY sermon in the
+ *  language, so the whole shelf was being fetched for one card. */
+export type SermonPick = Pick<
+	SermonSummary,
+	'slug' | 'language' | 'title' | 'scripture_ref' | 'word_count'
+> & { author: CardAuthor };
+
 /** Adjacent sermon in the author's corpus, for prev/next navigation. */
 export interface SermonNeighbour {
 	slug: string;
@@ -983,6 +991,12 @@ export interface AuthorDetail extends AuthorBio {
 	 * the bio follows). Optional so an API behind this build renders no Q&A band.
 	 */
 	faq?: { q: string; a: string }[];
+	/**
+	 * "Where to start with <author>": 3–5 of the books listed below, best first,
+	 * each with a one-line reason. English only for now (empty elsewhere), and
+	 * optional so an API behind this build renders no list.
+	 */
+	start_with?: { slug: string; why: string }[];
 	/**
 	 * Authoritative identifiers for this person — Wikipedia, Wikidata — emitted
 	 * as schema.org `sameAs`. Empty for the house byline and for contemporary
@@ -1232,6 +1246,10 @@ export const getPopularSearches = (language = 'en') =>
 
 export const listSermons = (language = 'en', f?: Fetch) =>
 	apiFetch<SermonSummary[]>(`/api/library/sermons/?language=${language}`, {}, f);
+
+/** Every sermon in `language` as a `SermonPick` — what the daily pick needs. */
+export const listSermonPicks = (language = 'en') =>
+	apiFetch<SermonPick[]>(`/api/library/sermons/?language=${language}&fields=pick`);
 
 // Every language the library supports publishing in — not just ones that
 // already have content — so the admin import picker can start a new language.

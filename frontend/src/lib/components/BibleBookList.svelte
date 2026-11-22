@@ -1,10 +1,13 @@
 <script lang="ts">
 	import type { BibleBookLinks, BookSummary } from '$lib/library-public';
-	import { bibleChapterCount, bibleChapters, type BiblePlace } from '$lib/bible';
+	import { bibleChapterCount, type BiblePlace } from '$lib/bible';
 	import { chapterCount } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import Icon from '$lib/components/Icon.svelte';
+	import BibleChapterPanel from '$lib/components/BibleChapterPanel.svelte';
+	import BibleListenLink from '$lib/components/BibleListenLink.svelte';
+	import BibleMoreLinks from '$lib/components/BibleMoreLinks.svelte';
 
 	/**
 	 * One division of the /bible hub as a compact index: a row per book (its
@@ -63,55 +66,28 @@
 				</span>
 			</a>
 			{#if count}
-				<button
-					type="button"
-					class="bible-row-chapters"
-					aria-expanded={isOpen}
-					aria-controls={isOpen ? `chapters-${book.slug}` : undefined}
-					aria-label="{book.title}: {countLabel}"
-					onclick={() => (open = isOpen ? null : book.slug)}
-				>
-					{countLabel}
-					<span class="bible-row-chevron"><Icon name="chevron-right" size={16} /></span>
-				</button>
+				<span class="bible-row-actions">
+					<BibleListenLink {book} />
+					<button
+						type="button"
+						class="bible-row-chapters"
+						aria-expanded={isOpen}
+						aria-controls={isOpen ? `chapters-${book.slug}` : undefined}
+						aria-label="{book.title}: {countLabel}"
+						onclick={() => (open = isOpen ? null : book.slug)}
+					>
+						{countLabel}
+						<span class="bible-row-chevron"><Icon name="chevron-right" size={16} /></span>
+					</button>
+				</span>
 			{/if}
-			{#if links && (links.sermons || links.scripture)}
-				<!-- Beside the row's own link, not inside it (a link can't hold a link).
-				     English, like the hub's other own copy. -->
-				<p class="bible-row-more">
-					{#if links.sermons}
-						<a href={localizeHref(`/sermons?book=${encodeURIComponent(links.sermon_book)}`)}
-							>{links.sermons} {links.sermons === 1 ? 'sermon' : 'sermons'}</a
-						>
-					{/if}
-					{#if links.sermons && links.scripture}<span class="sep" aria-hidden="true"> · </span>{/if}
-					{#if links.scripture}
-						<a href={localizeHref(`/scripture/${links.scripture}/`)}>In the classics</a>
-					{/if}
-				</p>
-			{/if}
+			<!-- Beside the row's own link, not inside it (a link can't hold a link). -->
+			<BibleMoreLinks {links} class="bible-row-more" />
 			{#if count}
 				{#if isOpen}
 					<!-- Opened: what the book is (its house overview), then its chapters. -->
 					<div class="bible-row-panel" id="chapters-{book.slug}">
-						{#if links?.intro}<p class="bible-row-intro">{links.intro}</p>{/if}
-						<ol class="chapter-grid">
-							{#each bibleChapters(book) as ch (ch.n)}
-								{@const current = !place?.finished && ch.n === place?.current}
-								{@const read = !current && ch.n <= (place?.behind ?? 0)}
-								<li>
-									<a
-										class="chapter-chip"
-										class:read
-										class:current
-										href={localizeHref(ch.href)}
-										aria-current={current ? 'step' : undefined}
-										aria-label="{ch.name}{read ? `, ${t('settings.heatmapRead')}` : ''}"
-										title={ch.name}>{ch.n}</a
-									>
-								</li>
-							{/each}
-						</ol>
+						<BibleChapterPanel {book} {place} intro={links?.intro ?? ''} />
 					</div>
 				{/if}
 			{/if}
@@ -188,17 +164,15 @@
 		font-weight: 600;
 		color: var(--accent);
 	}
-	.bible-row-more {
+	.bible-row :global(.bible-row-more) {
 		grid-column: 1;
 		margin: 0.2rem 0 0;
 		padding-inline-start: calc(0.375rem + 0.85rem);
-		font-size: var(--fs-small);
 	}
-	.bible-row-more a {
-		color: var(--accent);
-	}
-	.bible-row-more a:hover {
-		text-decoration: underline;
+	.bible-row-actions {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
 	}
 	.bible-row-chapters {
 		display: inline-flex;
@@ -234,12 +208,5 @@
 	.bible-row-panel {
 		grid-column: 1 / -1;
 		margin-block: 0.6rem 0.25rem;
-	}
-	.bible-row-intro {
-		max-width: 65ch;
-		margin: 0 0 0.75rem;
-		font-size: var(--fs-small);
-		line-height: 1.55;
-		color: var(--muted);
 	}
 </style>

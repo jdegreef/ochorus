@@ -1,0 +1,9 @@
+{
+ "why": "Project Gutenberg's end-of-text line left at the end of the last chapter. Found in the top-50 site bug review (2026-11-22).",
+ "replacements": [
+  [
+   " End of Project Gutenberg's Apologia pro Vita Sua, by John Henry Newman",
+   ""
+  ]
+ ]
+}

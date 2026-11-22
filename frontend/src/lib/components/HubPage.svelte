@@ -124,9 +124,9 @@
 		{#if writers.length}
 			<p class="mb-3 text-small text-muted">
 				<span class="whitespace-nowrap"
-					>{writers.length} {writers.length === 1 ? t('common.authorOne') : t('common.authorMany')}</span
+					>{writers.length} {i18n.tn(writers.length, 'common.authorOne', 'common.authorMany')}</span
 				>{#if bookCount}{' · '}<span class="whitespace-nowrap"
-						>{bookCount} {bookCount === 1 ? t('common.bookOne') : t('common.bookMany')}</span
+						>{bookCount} {i18n.tn(bookCount, 'common.bookOne', 'common.bookMany')}</span
 					>{/if}
 			</p>
 		{/if}

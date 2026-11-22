@@ -14,7 +14,32 @@
   "description": "Chrysostom\u2019s ninety sermons on Matthew, preached at Antioch about 390 \u2014 the fullest commentary on the Gospel from the early Church. Verse by verse he follows Christ from the genealogy to the resurrection, and turns each passage on his hearers: their almsgiving, their prayers, their wealth and their care for the poor.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What are Chrysostom\u2019s Homilies on Matthew?",
+    "answer": "They are ninety sermons on the Gospel of Matthew preached by John Chrysostom at Antioch around 390, before he became archbishop of Constantinople. They form the fullest commentary on Matthew to survive from the early Church, following the Gospel verse by verse from the genealogy to the resurrection."
+   },
+   {
+    "question": "Why does Chrysostom begin by saying we should not need books?",
+    "answer": "He opens by saying that ideally we would need no written word, but would live so purely that the Spirit\u2019s grace would write on our hearts as ink writes on paper. God spoke directly to Noah, Abraham, Job and Moses. But since we have put that grace away, he says, let us at least embrace the second-best course: the Scriptures."
+   },
+   {
+    "question": "Why was Chrysostom called \u201cgolden-mouthed\u201d?",
+    "answer": "Chrysostom is a Greek nickname meaning golden-mouthed, given to John after his death because of his extraordinary eloquence. His sermons are vivid, direct and full of images from everyday life in Antioch. He speaks to his congregation as a pastor, often rebuking and urging them as well as teaching."
+   },
+   {
+    "question": "What themes does Chrysostom stress?",
+    "answer": "Again and again he turns from explaining the text to applying it to his hearers\u2019 lives: their prayers, their almsgiving, their attitude to wealth and above all their care for the poor. He warns against pride in small gifts to the poor while ignoring daily sins, and urges generosity as the fruit of true faith."
+   },
+   {
+    "question": "Did Chrysostom criticize his congregation?",
+    "answer": "Yes, often. He rebukes those who give more leisure to the theaters, which he calls the theaters of Satan, than to the Scriptures. He asks his hearers to enter church with reverent silence rather than noise and tumult, as they would for a great performance, and to listen carefully to God\u2019s word."
+   },
+   {
+    "question": "Why are these homilies valued today?",
+    "answer": "They show how a great early Christian preacher read and applied the Gospel in a busy, worldly city much like ours. Chrysostom\u2019s blend of careful explanation and practical moral challenge has made the homilies a resource for preachers, scholars and devotional readers for over sixteen centuries."
+   }
+  ],
   "publication_year": 390,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/npnf110.iii.html",

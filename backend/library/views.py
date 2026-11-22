@@ -92,6 +92,7 @@ from .serializers import (
     SeriesBookSerializer,
     SermonDetailSerializer,
     SermonListSerializer,
+    SermonPickSerializer,
     TopicDetailSerializer,
     TopicListSerializer,
     _book_cover,
@@ -534,6 +535,13 @@ class SermonListView(PublicContentCacheMixin, generics.ListAPIView):
 
     serializer_class = SermonListSerializer
 
+    def _pick_only(self) -> bool:
+        """``?fields=pick``: only what the "Sermon of the day" card draws."""
+        return self.request.query_params.get("fields") == "pick"
+
+    def get_serializer_class(self):
+        return SermonPickSerializer if self._pick_only() else SermonListSerializer
+
     def get_queryset(self):
         return (
             Sermon.objects.filter(is_published=True, language=_language(self.request))
@@ -548,7 +556,8 @@ class SermonListView(PublicContentCacheMixin, generics.ListAPIView):
         # (the shelf's topic filter) cost a fixed handful of queries, not one per
         # sermon. Mirrors BookListView / ArticleListView.
         ctx = super().get_serializer_context()
-        ctx["sermon_topics"] = sermon_topic_map(_language(self.request))
+        if not self._pick_only():
+            ctx["sermon_topics"] = sermon_topic_map(_language(self.request))
         return ctx
 
 
@@ -3159,13 +3168,21 @@ class ScriptureView(APIView):
     """
 
     def get(self, request):
-        from .scripture import lookup
+        from .scripture import lookup, omitted_reference
 
         ref = (request.query_params.get("ref") or "").strip()
         if not ref:
             return Response({"detail": "A 'ref' query parameter is required."}, status=400)
         data = lookup(ref[:120])
         if not data:
+            # Still a 404 (every caller treats "no text" the same), but one the
+            # popover can explain: a real verse the bundled Bibles don't print.
+            omitted = omitted_reference(ref[:120])
+            if omitted:
+                return Response(
+                    {"detail": "Not in this Bible's text.", "omitted": True, "reference": omitted},
+                    status=404,
+                )
             return Response({"detail": "No such reference."}, status=404)
         return Response({**data, "bible_chapter": _bible_reader_chapter(ref[:120])})
 

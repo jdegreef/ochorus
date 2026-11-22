@@ -89,7 +89,7 @@
 			chapters: here.reduce((n, s) => n + s.chapters, 0)
 		};
 	}
-	const booksLabel = (n: number) => `${n} ${n === 1 ? t('common.bookOne') : t('common.bookMany')}`;
+	const booksLabel = (n: number) => `${n} ${i18n.tn(n, 'common.bookOne', 'common.bookMany')}`;
 
 	// --- The card: one, beside whichever spine is pointed at or focused. ---
 	let nav = $state<HTMLElement | null>(null);

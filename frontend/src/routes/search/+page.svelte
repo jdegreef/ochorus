@@ -30,6 +30,7 @@
 	import { readSearchState, searchStateKey, writeSearchState } from '$lib/searchState';
 	import {
 		GROUP_ORDER,
+		facetGroups,
 		grandTotal as grandTotalOf,
 		groupRows,
 		leadWithPinned,
@@ -192,7 +193,9 @@
 	);
 
 	/** Whether there is more than one kind to choose between — see the tabs. */
-	const hasFacets = $derived(groups.length > 1);
+	/** Every kind with matches — merged rows or a server count (see facetGroups). */
+	const facets = $derived(facetGroups(groups, totals));
+	const hasFacets = $derived(facets.length > 1);
 	/** Sorting is only meaningful once one type owns the list, and only above one row. */
 	const showsSort = $derived(typeFilter !== 'all' && shownCount > 1);
 
@@ -209,13 +212,13 @@
 	 * usually far larger than what is on screen — and saying "30 results" when it
 	 * is 251 was the whole problem.
 	 */
-	const grandTotal = $derived(grandTotalOf(groups, totals));
-	const anyCapped = $derived(groups.some((g) => isCapped(g.type)));
+	const grandTotal = $derived(grandTotalOf(facets, totals));
+	const anyCapped = $derived(facets.some((g) => isCapped(g.type)));
 
 	/** The kind tabs: All, then each kind present, each with its real total. */
 	const tabs = $derived([
 		{ type: 'all', label: t('search.filterAll'), count: grandTotal, capped: anyCapped },
-		...groups.map((g) => ({
+		...facets.map((g) => ({
 			type: g.type as string,
 			label: t(g.labelKey),
 			count: totalFor(g.type, g.rows.length),
@@ -625,7 +628,17 @@
 	/** The search box, so arriving on this page can put the caret in it. */
 	let input = $state<HTMLInputElement | null>(null);
 
+	/**
+	 * False until the page has hydrated. The page is prerendered with no query,
+	 * so a shared or typed /search?q=… link painted "Type at least two
+	 * characters" for the second or so before the script ran, then the results:
+	 * on a slow phone that read as a search that found nothing (bug review
+	 * 2026-11-22, #20). Until then the results area shows the loading skeleton.
+	 */
+	let hydrated = $state(false);
+
 	onMount(() => {
+		hydrated = true;
 		// Focus only on a pointer device with a real keyboard. On a phone,
 		// autofocus throws up the on-screen keyboard over the results the reader
 		// came to read — and if they arrived from a shared ?q= link, the answer is
@@ -1008,8 +1021,8 @@
 		</div>
 	{/if}
 
-	<div class="mt-4" id="search-results" aria-busy={loading}>
-		{#if loading}
+	<div class="mt-4" id="search-results" aria-busy={loading || !hydrated}>
+		{#if loading || !hydrated}
 			<div class="space-y-6" aria-hidden="true">
 				{#each Array(4) as _, i (i)}
 					<div class="space-y-2">
@@ -1091,7 +1104,7 @@
 								{t('search.resultsMany')}
 							{:else}
 								{shownCount}
-								{shownCount === 1 ? t('search.resultsOne') : t('search.resultsMany')}
+								{i18n.tn(shownCount, 'search.resultsOne', 'search.resultsMany')}
 							{/if}
 						</p>
 					{/if}
@@ -1326,6 +1339,11 @@
 	}
 	:global([dir='rtl']) input[type='search'].field.search-field {
 		background-position: right 0.9rem center;
+	}
+	/* Label and count are separate text nodes that Svelte trims together
+	   ("Books37"); the shared gap rule only covers `.chip`. */
+	.search-tabs .count {
+		margin-inline-start: 0.3rem;
 	}
 	.search-tabs {
 		border-bottom: 1px solid var(--border);

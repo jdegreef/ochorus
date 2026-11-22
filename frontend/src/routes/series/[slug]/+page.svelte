@@ -248,9 +248,7 @@
 							{#if resume.title}· <span class="welcome-chapter">{resume.title}</span>{/if}
 						</p>
 						<p class="text-small text-muted">
-							{resume.left === 1
-								? t('series.chaptersLeftOne')
-								: t('series.chaptersLeftMany').replace('%n%', numeral(resume.left, lang))}
+							{i18n.tn(resume.left, 'series.chaptersLeftOne', 'series.chaptersLeftMany').replace('%n%', numeral(resume.left, lang))}
 						</p>
 						{#if stages.length > 1}
 							<div class="welcome-segments">
@@ -323,9 +321,7 @@
 					<span class="to-come-n" aria-hidden="true">{numeral(count + 1, lang)}</span>
 					<div>
 						<p class="font-display font-semibold">
-							{toCome === 1
-								? t('series.toComeOne')
-								: t('series.toComeMany').replace('%n%', numeral(toCome, lang))}
+							{i18n.tn(toCome, 'series.toComeOne', 'series.toComeMany').replace('%n%', numeral(toCome, lang))}
 						</p>
 						<p class="text-small text-muted">
 							{t('series.toComeLine').replace('%n%', numeral(planned ?? count, lang))}

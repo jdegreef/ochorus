@@ -1,0 +1,9 @@
+{
+ "why": "An OCR slip in Whitefield's Marks of a True Conversion (the idiom is 'ten thousand to one'), found while translating it to Japanese (job #9646).",
+ "replacements": [
+  [
+   "then thousand to one",
+   "ten thousand to one"
+  ]
+ ]
+}

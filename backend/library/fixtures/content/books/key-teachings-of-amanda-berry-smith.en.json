@@ -12,7 +12,32 @@
   "cover_byline": "Amanda Berry Smith",
   "description": "A concise, faithful guide to the heart of Amanda Berry Smith’s message — that the God who saves a sinner can fill a heart with His own presence, deliver it from fear, and keep it in daily trust at the wash-tub, in the pulpit and on the far side of the world. Seventeen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Amanda Smith’s own public-domain Autobiography, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Amanda Berry Smith. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers what she taught and testified into seventeen short chapters for the ordinary reader, and tells the story of the life that gave her words their weight. She was born enslaved in Maryland, earned her bread for years at the wash-tub, and became one of the best-known holiness preachers of her century on four continents.</p><p>She wrote no treatise, but she was a theologian all the same: a theologian of lived holiness. Her one theme was God in you — a Saviour who does not only forgive, but comes to dwell in the heart, rule it, and set it free from sin, from fear and from self-will. This volume follows that thread through her conversion and her sanctification, her deliverance from the fear of man, her honest witness about race and the church, her life of prayer for rent and bread, her call to preach without ordination, and her work in India and West Africa. It weighs her fairly where she leaned too hard on impressions or pressed a rule too far, and it ends each chapter where she would have wanted it to end: in a few questions and a prayer.</p><p>Amanda Smith’s Autobiography of 1893 is in the public domain and freely available, and every chapter here names the part of it that it draws on, so the reader can go to the source. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, the Bible she read by lamplight and preached from on three continents, and it makes no claim to stand in for her own plain, vivid and searching words.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of Amanda Berry Smith?",
+    "answer": "It is a short guide to the life and teaching of Amanda Berry Smith, the nineteenth-century holiness evangelist, written as a companion to her own Autobiography. Its chapters cover her conversion, the witness of the Spirit, sanctification, guidance, prayer, suffering, race, women’s preaching, mission and temperance, each ending with questions and a prayer."
+   },
+   {
+    "question": "Who was Amanda Berry Smith?",
+    "answer": "Amanda Berry was born into slavery on January 23, 1837, at Long Green in Baltimore County, Maryland. Her father bought his own freedom by working through the night, and then bought his wife and children. With no ordination, salary or society behind her, she became one of the best-known holiness preachers of her century, in America, Britain, India and West Africa, where she laboured in Liberia for about eight years."
+   },
+   {
+    "question": "How was Amanda Smith converted?",
+    "answer": "The book draws on her own account in her Autobiography. It explains her belief that the great obstacle to coming to God is not the size of our sins but the stubbornness of our will, and that conversion turns in the end on a simple act of trust. A week afterwards, when she was tempted to doubt because she had no evidence, she learned to rest on the witness of the Spirit."
+   },
+   {
+    "question": "What happened to her in September 1868?",
+    "answer": "After twelve years as a Christian, hungry for something she could not name, Amanda Smith entered into what she called the blessing of sanctification on a Sunday morning in September 1868. The book calls this the centre of her life and teaching, and explains it from Ephesians 4:24 as putting on the new man, created after God in righteousness and true holiness."
+   },
+   {
+    "question": "What did she teach about race and freedom?",
+    "answer": "Having been born enslaved and set free, she knew both bondage and liberty, and the book gives chapters to her teaching on race and on being neither bond nor free in Christ. It shows how, once fear of colour lost its hold on her, she bore an honest, unbitter witness: she did not pretend prejudice had disappeared, met it for the rest of her life and named it plainly."
+   },
+   {
+    "question": "Where should a reader start with Amanda Berry Smith?",
+    "answer": "The book’s reader’s guide recommends her Autobiography (1893), but not straight through at first. It suggests beginning with the chapters on her early life, deliverance from slavery and conversion, then going to The Blessing of Sanctification, the heart of the book, followed by the chapters on her obedience and on learning Thy will be done."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",

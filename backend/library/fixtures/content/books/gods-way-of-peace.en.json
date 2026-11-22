@@ -14,7 +14,32 @@
   "description": "A book for the anxious: Horatius Bonar turns the troubled reader away from his own feelings and faith to God's testimony, the blood of Christ and the finished work of the Substitute, where alone peace is found.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is God\u2019s Way of Peace?",
+    "answer": "It is a short book by the Scottish minister and hymn writer Horatius Bonar, published in 1862, written for anxious souls who lack peace with God. Bonar turns the troubled reader away from his own feelings and efforts to God\u2019s testimony in the gospel, the blood of Christ and the finished work of the Substitute, where alone peace is found."
+   },
+   {
+    "question": "What is God\u2019s testimony concerning man?",
+    "answer": "Bonar begins with what God says about us. God knows what we are and what he meant us to be, and on the difference between the two he founds his testimony: that every person is a sinner. God is too loving to say anything needlessly severe and too true to say anything untrue. Peace begins with accepting his verdict."
+   },
+   {
+    "question": "Why can\u2019t our own character give us peace?",
+    "answer": "Bonar argues that our doings, feelings, strivings, prayers, gifts and self-denials cannot relieve a guilty conscience. Nothing short of a pardon that is present, sure and righteous can bring peace. When a person sees that he cannot save himself or help God save him, he is ready to look outside himself."
+   },
+   {
+    "question": "Where does Bonar say peace is found?",
+    "answer": "Peace is found in God\u2019s character as the righteous God who freely forgives, and in the blood of Christ, the Substitute who bore our sins. Because Christ\u2019s work is finished and accepted, the sinner may rest on it. Bonar returns again and again to Jesus only, as the anxious soul\u2019s one resting place."
+   },
+   {
+    "question": "Does faith itself save us, according to Bonar?",
+    "answer": "Not as a work. Bonar says faith is the link, the one link, between the sinner and the Sin-bearer. But it is not faith as a mental exercise or religious duty performed correctly that qualifies us for pardon. Faith simply receives what God gives in Christ, and its value lies wholly in the one it rests on."
+   },
+   {
+    "question": "What does Bonar say to those who feel unable to believe?",
+    "answer": "In chapters on the want of power to believe and on insensibility, Bonar tells readers not to wait until they feel ready. He compares them to the man with the withered hand, told by Jesus to stretch it out, which was the very thing he could not do. The command came with the power, so the sinner should believe now."
+   }
+  ],
   "publication_year": 1862,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/bonar/peace",

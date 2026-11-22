@@ -14,7 +14,32 @@
   "description": "Fifty years of Wesley’s own record of his life, abridged by Percy Livingstone Parker. It runs from the Holy Club and the mission to Georgia, through Aldersgate, where his heart was “strangely warmed,” to the long years of field-preaching on horseback across Britain and Ireland — mobs, conferences and converts — and his last hours at ninety.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Journal of John Wesley?",
+    "answer": "It is an abridgement, by Percy Livingstone Parker, of John Wesley’s own record of his life across more than fifty years. It begins with the little society at Oxford later called the Holy Club and his mission to Georgia, passes through Aldersgate, and follows the long years of preaching on horseback across Britain and Ireland, ending with his last hours."
+   },
+   {
+    "question": "What happened at Aldersgate?",
+    "answer": "Wesley writes that in the evening of May 24, 1738, he went very unwillingly to a society in Aldersgate Street, where someone was reading Luther’s preface to the Epistle to the Romans. About a quarter before nine, while the change God works in the heart through faith in Christ was being described, he felt his heart strangely warmed, and felt that he did trust in Christ, Christ alone, for salvation."
+   },
+   {
+    "question": "What was the Holy Club?",
+    "answer": "Wesley recalls that in November 1729, at Oxford, he, his brother Charles, Mr Morgan and one more agreed to meet several evenings a week to read the classics and, on Sundays, divinity. They soon began visiting prisoners in the gaol. Other students mocked them, and the little company became known as the Holy Club."
+   },
+   {
+    "question": "What does Wesley mean by all the world my parish?",
+    "answer": "When churches closed their pulpits to him and he was criticised for preaching outside any parish, Wesley wrote, I look upon all the world as my parish. He meant that, having no parish of his own, he judged it right in whatever part of the world he was to declare the glad tidings of salvation to all who were willing to hear."
+   },
+   {
+    "question": "What is the journal like to read?",
+    "answer": "It reads as a travel diary of an evangelist: rides through storms, preaching in fields and town squares to crowds and to mobs, conferences with his preachers, encounters with soldiers and the poor and the many he met on the road. Wesley’s energy never flags, and he writes simply, I do indeed live by preaching."
+   },
+   {
+    "question": "How does the journal end?",
+    "answer": "The book closes with an account of Wesley’s death at the age of eighty-seven, in 1791. Surrounded by friends, and almost unable to speak, he gathered his strength and cried out, The best of all is, God is with us, then repeated the words again, lifting his dying arm in token of victory."
+   }
+  ],
   "publication_year": 1791,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/wesley/journal",

@@ -23,7 +23,10 @@ import {
 	groupBible,
 	isBibleBook,
 	splitBible,
-	testamentKey
+	testamentKey,
+	bibleTopics,
+	BIBLE_PATHS,
+	biblePathSteps
 } from './bible';
 import { bookChapterPath } from './reading-schema';
 import en from '../../messages/en.json';
@@ -464,5 +467,46 @@ describe('bibleBrowseRow', () => {
 		const shelf = ['romans', 'gospel-of-john', 'obadiah', 'genesis', 'psalms'].map((slug) => ({ slug }));
 		expect(bibleBrowseRow(shelf).map((b) => b.slug)).toEqual(['genesis', 'psalms', 'gospel-of-john', 'romans']);
 		expect(bibleBrowseRow([])).toEqual([]);
+	});
+});
+
+describe('bibleTopics', () => {
+	it('keeps the subjects whose shelf exists, in their own order', () => {
+		const out = bibleTopics([{ slug: 'holy-spirit' }, { slug: 'prayer' }, { slug: 'the-puritans' }]);
+		expect(out.map((t) => t.slug)).toEqual(['prayer', 'holy-spirit']);
+		expect(out[0].label).toBe('Prayer');
+		expect(bibleTopics([])).toEqual([]);
+	});
+});
+
+describe('biblePathSteps', () => {
+	const ps = { slug: 'psalms', title: 'The Psalms', series_position: 19, chapter_count: 152 };
+	const john = { slug: 'gospel-of-john', title: 'The Gospel of John', series_position: 43, chapter_count: 23 };
+
+	it('opens each step at its chapter, named as the chapter is titled', () => {
+		const out = biblePathSteps([{ position: 19, chapter: 23, why: 'w' }], [ps]);
+		expect(out).toEqual([
+			{ book: ps, title: 'Psalm 23', href: bookChapterPath('psalms', 24, false), why: 'w' }
+		]);
+	});
+
+	it('opens a whole-book step at the book', () => {
+		expect(biblePathSteps([{ position: 43, why: 'w' }], [john])[0]).toMatchObject({
+			title: 'The Gospel of John',
+			href: '/books/gospel-of-john'
+		});
+	});
+
+	it('leaves out a book the library lacks, or a chapter past its end', () => {
+		expect(biblePathSteps([{ position: 1, chapter: 1, why: 'w' }], [ps])).toEqual([]);
+		expect(biblePathSteps([{ position: 43, chapter: 30, why: 'w' }], [john])).toEqual([]);
+	});
+
+	it('names real chapters in every path', () => {
+		// Every step is inside its book's chapter range (the canon's own counts).
+		const LAST: Record<number, number> = { 1: 50, 19: 150, 20: 31, 23: 66, 40: 28, 41: 16, 42: 24, 43: 21, 45: 16, 50: 4, 51: 4, 52: 5, 59: 5, 66: 22 };
+		for (const p of BIBLE_PATHS)
+			for (const s of p.steps) expect(s.chapter ?? 1).toBeLessThanOrEqual(LAST[s.position] ?? 0);
+		expect(new Set(BIBLE_PATHS.map((p) => p.id)).size).toBe(BIBLE_PATHS.length);
 	});
 });

@@ -119,7 +119,7 @@
 	});
 	const openBooks = new SvelteSet<string>();
 	const toggleBook = (slug: string) => (openBooks.has(slug) ? openBooks.delete(slug) : openBooks.add(slug));
-	const chapterCount = (n: number) => `${n} ${n === 1 ? t('book.chapterOne') : t('book.chaptersMany')}`;
+	const chapterCount = (n: number) => `${n} ${i18n.tn(n, 'book.chapterOne', 'book.chaptersMany')}`;
 
 	// Keep the open books across Back from a chapter page, so the scroll position
 	// SvelteKit restores still matches the layout it was saved against.

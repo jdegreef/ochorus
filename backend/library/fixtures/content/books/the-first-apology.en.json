@@ -14,7 +14,32 @@
   "description": "Justin Martyr\u2019s open defence of the Christians, addressed to the Emperor Antoninus Pius about 155: why they should not be condemned for a name, what Christ taught, how the prophets foretold Him, and the earliest full account of Christian baptism and Sunday worship, with three imperial letters appended.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Justin Martyr\u2019s First Apology?",
+    "answer": "It is Justin Martyr\u2019s open defence of the Christians, addressed about 155 to the Emperor Antoninus Pius, his sons and the Roman Senate and people. Justin argues that Christians should not be condemned for the mere name, explains what Christ taught, shows how the prophets foretold him, and gives the earliest full account of Christian baptism and Sunday worship."
+   },
+   {
+    "question": "How does Justin answer the charge of atheism?",
+    "answer": "Justin admits that Christians are called atheists because they refuse to worship the gods, whom he regards as wicked demons. He confesses that Christians are atheists as far as such gods are concerned, but not with respect to the most true God, the Father of righteousness, whom they worship together with the Son and the Holy Spirit."
+   },
+   {
+    "question": "What does Justin say about Socrates and the Logos?",
+    "answer": "Justin argues that reason, the Logos, condemned the worship of demons among the Greeks through Socrates, who was himself accused of introducing new divinities. Among the barbarians the same Reason, the Word himself, took shape, became man and was called Jesus Christ. So Christians are persecuted for the same truth that Socrates served."
+   },
+   {
+    "question": "What does the First Apology say about baptism?",
+    "answer": "Justin describes how those who believe and promise to live accordingly are taught to pray and fast, then brought to water and washed in the name of God the Father, of Jesus Christ and of the Holy Spirit. He notes that this washing is called illumination, because those who learn these things are illuminated in their understanding."
+   },
+   {
+    "question": "How does Justin describe Sunday worship?",
+    "answer": "Justin says that on the day called Sunday all who live in cities or in the country gather in one place. The memoirs of the apostles or the writings of the prophets are read, the president instructs and exhorts, prayers are offered, and bread and wine with water are brought and given thanks over. This food is called the Eucharist, and gifts are collected for orphans, widows, prisoners and strangers."
+   },
+   {
+    "question": "Why do Christians meet on Sunday, according to Justin?",
+    "answer": "Justin explains that Sunday is the first day, on which God made the world, and the day on which Jesus Christ rose from the dead. He was crucified on the day before Saturn\u2019s day, and on the day after it, the day of the Sun, he appeared to his apostles and disciples and taught them. This passage is one of the earliest descriptions of the Lord\u2019s Day."
+   }
+  ],
   "publication_year": 155,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/anf01.viii.ii.html",

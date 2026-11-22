@@ -184,7 +184,7 @@
 		[
 			`${plan.day_count} ${t('plans.days')}`,
 			// "1 book" says nothing the cover beside it doesn't.
-			planBooks.length > 1 ? `${planBooks.length} ${t('common.bookMany')}` : '',
+			planBooks.length > 1 ? `${planBooks.length} ${i18n.tn(planBooks.length, 'common.bookOne', 'common.bookMany')}` : '',
 			perDay ? t('plans.aboutMinPerDay').replace('%n%', String(perDay)) : '',
 			next !== null && finishDate
 				? t(started ? 'plans.finishReadingDaily' : 'plans.finishIfStart').replace('%d%', () => finishDate)

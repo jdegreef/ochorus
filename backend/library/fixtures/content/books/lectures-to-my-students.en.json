@@ -14,7 +14,32 @@
   "description": "The first series of the lectures Charles Spurgeon gave on Friday afternoons to the students of his Pastors' College at the Metropolitan Tabernacle, published in 1875 at the request of the ministers who had first heard them. He warns that they are “colloquial, familiar, full of anecdote, and often humorous,” and they are: thirteen talks on the minister's own soul, the marks of a true call, private and public prayer, the matter of sermons, choosing a text, spiritualizing, the voice, holding attention, speaking without notes, the minister's fainting fits, his ordinary conversation, and how to work with few books. Under the humour runs one conviction — that the preacher's own walk with God is his first tool, and that Christ must be all in his ministry.",
   "hook": "Spurgeon's Friday-afternoon talks to his young preachers — frank, funny and searching.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Lectures to My Students?",
+    "answer": "It is the first series of talks Charles Spurgeon gave to the students of his Pastors’ College in London, published in 1875 at the request of ministers who had heard them as students. Spurgeon gave them on Friday afternoons, at the end of a week of harder studies, and covers the minister’s own soul, his call, prayer, sermons, voice and manner."
+   },
+   {
+    "question": "Why are the lectures so informal and humorous?",
+    "answer": "Spurgeon explains in his apology that his college lectures are colloquial, familiar, full of anecdote and often humorous on purpose. By Friday the students were weary from classics, mathematics and divinity, and he judged it best to be as lively and interesting as he could, to secure their attention and fire their hearts."
+   },
+   {
+    "question": "What does Spurgeon say about the minister’s self-watch?",
+    "answer": "In The Minister’s Self-Watch he insists that the preacher’s own heart is his first concern. A preacher can only feel with his own heart and weep for souls with his own renewed nature, so his walk with God is his chief tool. Like a cavalry officer keeping his sword clean and sharp, he must keep himself pure, for he is God’s sword."
+   },
+   {
+    "question": "How can someone tell if they are called to the ministry?",
+    "answer": "In The Call to the Ministry, Spurgeon gives marks of a true call, including an intense, all-absorbing desire for the work, aptness to teach, some evidence of fruit, and the approval of God’s people. He quotes the advice “Do not enter the ministry if you can help it”: if a student could be content as an editor, grocer, farmer or lawyer, he should go and be one."
+   },
+   {
+    "question": "What are the minister’s fainting fits?",
+    "answer": "In one of his most personal lectures, Spurgeon admits that fits of depression come over most ministers, however cheerful they usually are. He notes that Moses’ hands grew heavy, Elijah sank after the fire fell, and even John the Baptist is thought to have had his fainting fits, and gives reasons why preachers are prone to them. He encourages them to rest when needed, remembering Jesus’ invitation to come apart and rest awhile."
+   },
+   {
+    "question": "What does Spurgeon say about prayer and sermons?",
+    "answer": "He urges that private prayer is the preacher’s lifeblood and that public prayer must be real, fresh and fervent, not formal. Sermons should be full of solid gospel matter, with Christ at the center. He gives practical advice on choosing texts, using the voice well, gaining attention, and speaking without notes."
+   }
+  ],
   "publication_year": 1875,
   "source_type": "public_domain",
   "source_url": "https://archive.org/details/lecturestomystu00spuruoft",

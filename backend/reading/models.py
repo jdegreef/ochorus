@@ -65,9 +65,9 @@ class ReadingProgress(models.Model):
 
     # When the reader FINISHED this work: reaching the end of the last chapter
     # (books) or of the single document (sermons, bios), or an explicit "mark as
-    # finished". Null while it is still in progress. This is what splits the
-    # reader's "Continue reading" list (finished_at IS NULL) from the finished /
-    # history shelf (finished_at IS NOT NULL), and it counts for every readable
+    # finished". Null until the first completion. With the reread stamps below it
+    # splits the reader's "Continue reading" list (`in_progress_q`) from the
+    # finished / history shelf (`is_finished_now`), and it counts for every readable
     # kind — unlike the old client-side guess (chapter_order >= chapter_count),
     # which only worked for books and re-broke if a book was re-imported at a
     # different length.
@@ -134,6 +134,39 @@ class ReadingProgress(models.Model):
 
     def __str__(self) -> str:
         return f"{self.profile_id}:{self.kind}:{self.book_slug} → ch{self.chapter_order}"
+
+    @property
+    def last_finish(self):
+        """When the reader most recently finished this work, or None if never
+        (the frontend's ``lastFinishOf``)."""
+        finishes = [d for d in (self.finished_at, self.last_finished_at) if d is not None]
+        return max(finishes) if finishes else None
+
+    @property
+    def is_finished_now(self) -> bool:
+        """Finished, and not started again since — the reader's current status
+        (the frontend's ``isFinishedNow``: a restart stamped at the same instant
+        as the finish leaves it finished). ``finished_at`` alone is history."""
+        last = self.last_finish
+        return last is not None and (self.restarted_at is None or self.restarted_at <= last)
+
+    @staticmethod
+    def in_progress_q() -> models.Q:
+        """The rows being read NOW — exactly those ``is_finished_now`` is False
+        for: never finished, or started again strictly after the latest finish
+        (a reread). Written as positive conditions only, so the nullable
+        comparisons never meet a NOT (SQL's NOT of a NULL comparison is NULL,
+        which would silently drop rows)."""
+        never_finished = models.Q(finished_at__isnull=True, last_finished_at__isnull=True)
+        restarted_after_all = (
+            models.Q(restarted_at__isnull=False)
+            & (models.Q(finished_at__isnull=True) | models.Q(restarted_at__gt=models.F("finished_at")))
+            & (
+                models.Q(last_finished_at__isnull=True)
+                | models.Q(restarted_at__gt=models.F("last_finished_at"))
+            )
+        )
+        return never_finished | restarted_after_all
 
 
 class FavoriteKind(models.TextChoices):

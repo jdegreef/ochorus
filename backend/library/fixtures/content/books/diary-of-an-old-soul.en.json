@@ -13,7 +13,32 @@
   "cover_byline": "",
   "description": "In 1880, in years of illness and of grief for children he had lost, George MacDonald printed for his friends a book of prayer in verse: one seven-line stanza for every day of the year, with a blank page facing each for the reader's own. The old soul of the title talks honestly with God through dullness, doubt, pain and joy, asking not to be spared the strife but to be made true in it, and learning to rest in the will of a Father who is nearer than his own heart. Read a stanza a day, from the first of January to the last of December, it is one of the most searching devotional poems in English.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Diary of an Old Soul?",
+    "answer": "It is a book of prayer in verse by George MacDonald, first printed in 1880 for his friends. It contains one seven-line stanza for every day of the year, from January 1 to December 31. In the first edition each printed page faced a blank one, so readers could add their own thoughts, and MacDonald signed the dedication simply, your old soul."
+   },
+   {
+    "question": "When did MacDonald write The Diary of an Old Soul?",
+    "answer": "He wrote it in years of illness and of grief, after the deaths of children he loved. The poems are not polished sermons but honest prayers from a man who knew dullness, pain, doubt and joy. That honesty is a large part of why readers have found it so helpful in their own seasons of difficulty."
+   },
+   {
+    "question": "What is the book about?",
+    "answer": "The old soul of the title talks openly with God through every kind of weather of the heart. He asks not to be spared the struggle but to be made true in it, to want what God wants, and to rest in the will of a Father who is nearer to him than his own heart. It is a year-long journey of surrender and trust."
+   },
+   {
+    "question": "Why is it written as a diary?",
+    "answer": "The form suits a life of prayer, which happens day by day rather than all at once. Each stanza can be read in a minute, but holds enough to ponder through the day. MacDonald’s dedication asks his friends to let their white page be the ground and his print the seed, so that faith and hope may grow."
+   },
+   {
+    "question": "How should The Diary of an Old Soul be read?",
+    "answer": "It is meant to be read one stanza a day, beginning on the first of January and ending on the last of December. Many readers return to it year after year, finding that different stanzas speak to them at different times. It can also be prayed aloud, since each stanza is addressed directly to God."
+   },
+   {
+    "question": "What is the first stanza of the book?",
+    "answer": "The first stanza, for January 1, asks God for a second chance: what the old soul might once have done with youthful strength, had he been true to the truth from the start, he asks to be allowed to do now, with better sight and a humbler heart. He asks to be led back, by the path of pain, to his best."
+   }
+  ],
   "publication_year": 1880,
   "source_type": "public_domain",
   "source_url": "https://standardebooks.org/ebooks/george-macdonald/poetry",

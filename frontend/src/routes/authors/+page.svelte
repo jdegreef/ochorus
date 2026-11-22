@@ -206,7 +206,7 @@
 	     live on /originals, so any count here fell short of the library's. -->
 	{#snippet counts()}
 		{data.people}
-		{data.people === 1 ? t('common.authorOne') : t('common.authorMany')}
+		{i18n.tn(data.people, 'common.authorOne', 'common.authorMany')}
 	{/snippet}
 	<!-- The library tabs sit under the title, as on /books (design review #4). -->
 	<LibraryTabs current="az" />
@@ -298,7 +298,7 @@
 									<a class="font-semibold hover:text-accent" href={localizeHref(BIBLE_PATH)}>{entry.name}</a>
 									<span class="text-small text-muted">
 										· {entry.count}
-										{entry.count === 1 ? t('common.bookOne') : t('common.bookMany')}</span
+										{i18n.tn(entry.count, 'common.bookOne', 'common.bookMany')}</span
 									>
 								</div>
 							</li>
@@ -376,7 +376,7 @@
 												class="inline-flex items-center gap-1 text-muted hover:text-accent"
 												href={localizeHref(`/authors/${author.slug}#sermons`)}
 												><Icon name="mic" size={14} />{w.sermons}
-												{w.sermons === 1 ? t('common.sermonOne') : t('common.sermonMany')}</a
+												{i18n.tn(w.sermons, 'common.sermonOne', 'common.sermonMany')}</a
 											>
 										{/if}
 										{#if w.quotes}
@@ -385,9 +385,7 @@
 											<a
 												class="inline-flex items-center gap-1 text-muted hover:text-accent"
 												href={`/quotes/${author.slug}/`}
-												><Icon name="quote" size={14} />{(w.quotes === 1
-													? t('quotes.countOne')
-													: t('quotes.countMany')
+												><Icon name="quote" size={14} />{(i18n.tn(w.quotes, 'quotes.countOne', 'quotes.countMany')
 												).replace('%count%', String(w.quotes))}</a
 											>
 										{/if}

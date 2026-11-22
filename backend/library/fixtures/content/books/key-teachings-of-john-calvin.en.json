@@ -12,7 +12,32 @@
   "cover_byline": "John Calvin",
   "description": "A concise, faithful guide to the heart of John Calvin’s teaching — the knowledge of God and of ourselves, Scripture as spectacles for dim eyes, union with Christ and its double grace, and the Christian life of self-denial and prayer. Twenty-one short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Calvin’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by John Calvin. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into twenty-one short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his books. It draws throughout on his Institutes of the Christian Religion and his commentaries, and on the four of his sermons that sit in the Ochorus library.</p><p>Calvin’s one theme was the knowledge of God — not the cold knowledge of a textbook, but the knowledge that makes a person bow, trust and give thanks. We cannot know ourselves truly until we have looked upon God, and we cannot know God as He wishes to be known except in Christ, clothed with His gospel. This volume follows that thread from the opening page of the Institutes through Scripture, providence, sin and grace, union with Christ, faith, self-denial, prayer and election, to the church, the sacraments, the state and the Genevan pulpit. It is honest about the burning of Michael Servetus, the severity of Genevan discipline, the hardness of his teaching on reprobation and the heat of his polemic.</p><p>Calvin’s own writings are in the public domain, and older English translations of the Institutes, the commentaries and many sermons are freely available; every chapter here names them so the reader can go to the source. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and makes no claim to stand in for the man’s own clear, searching and deeply reverent pages.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of John Calvin?",
+    "answer": "It is a short guide to the heart of John Calvin’s teaching, written as a companion to his own works rather than by him. After a chapter on his life, it follows the Institutes: the knowledge of God and of ourselves, Scripture as spectacles, the world as a theatre of God’s glory, providence, union with Christ, the Christian life of self-denial and cross-bearing, prayer, election, the church and sacraments, and calling, with honest cautions and a reader’s guide."
+   },
+   {
+    "question": "Who was John Calvin?",
+    "answer": "John Calvin, Jean Cauvin in French, was born on 10 July 1509 at Noyon in Picardy. He studied in Paris and then law at Orléans and Bourges, and after embracing the Reformation left France. The first edition of his Institutes of the Christian Religion appeared at Basel in March 1536. That summer, passing through Geneva, he was persuaded by Guillaume Farel to stay. He pastored there for most of his life and died in 1564, not yet fifty-five, asking to be buried without a stone."
+   },
+   {
+    "question": "What does Calvin mean by Scripture as spectacles?",
+    "answer": "In one of the best-loved images of the Institutes, Calvin says that people with weak sight can see there is writing in a book but can hardly make out two words, until they are given spectacles. Scripture works like that. It gathers up the confused knowledge of God we already have from creation, scatters our darkness and shows us the true God plainly. The image is modest on purpose: creation is not silent, but we need help to read it."
+   },
+   {
+    "question": "What is the double grace in Calvin’s teaching?",
+    "answer": "Calvin taught that everything depends on union with Christ, being engrafted into him by the Holy Spirit through faith. From that union flow two gifts at once, which he called a double grace. First, we are reconciled to God through Christ’s righteousness, so that we have a gracious Father in heaven instead of a judge. Second, we are sanctified by his Spirit to grow in holiness. The two can be told apart but never separated."
+   },
+   {
+    "question": "Does the book discuss Calvin and the death of Servetus?",
+    "answer": "Yes. It says plainly that Calvin must be read gratefully but also honestly. In 1553 the Spanish physician and anti-Trinitarian writer Michael Servetus was arrested in Geneva, tried and burned alive, and Calvin drew up the charges, sought his conviction and afterwards defended the punishment. The book also names other cautions, including his teaching on reprobation, which has troubled many who love his teaching on grace."
+   },
+   {
+    "question": "Where should I start reading John Calvin?",
+    "answer": "The book’s reader’s guide recommends beginning with the short chapters on the Christian life in the Institutes (3.6 to 3.10), on self-denial, bearing the cross, meditating on the future life and the right use of this life. They have often been printed on their own as The Golden Booklet of the True Christian Life, and nothing Calvin wrote is warmer or more practical. Then read his sermons, which show him as his congregation heard him."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",

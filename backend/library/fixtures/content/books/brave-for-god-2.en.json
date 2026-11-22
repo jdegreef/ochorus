@@ -11,7 +11,32 @@
   "subtitle": "Six more who followed Jesus into the wide world",
   "description": "Six more true stories of faith, told simply for young readers: a poor cobbler who gave India the Bible; a mill boy who walked across Africa and fought the slave trade; a Ugandan bishop who loved even a cruel ruler; a brilliant Indian scholar who rescued the widows and orphans no one else would help; a watchmaker who hid the hunted; and a runner who gave up the race. Ordinary people made brave by God — the second book of Brave for God.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Brave for God: Book Two?",
+    "answer": "It is the second book of Brave for God, a series of true stories of faith told simply for young readers. It has six stories: William Carey, David Livingstone, Festo Kivengere, Pandita Ramabai, Corrie ten Boom and Eric Liddell, ordinary people who were made brave by God."
+   },
+   {
+    "question": "Who was William Carey?",
+    "answer": "William Carey was a poor shoemaker in an English village who taught himself languages from books propped on his workbench, with a hand-drawn map of the world on his wall. He told other Christians, Expect great things from God; attempt great things for God, and then he went to India himself, where he worked to give the people the Bible in their own languages."
+   },
+   {
+    "question": "What did David Livingstone do?",
+    "answer": "David Livingstone walked across Africa, further than almost any traveller before him. Everywhere he went he saw slave traders stealing people from their homes and marching them away in chains. He called the slave trade the open sore of the world and made it his life’s work to help end it."
+   },
+   {
+    "question": "How did Festo Kivengere love his enemy?",
+    "answer": "Festo Kivengere was a much-loved Ugandan preacher and bishop. When the cruel ruler Idi Amin seized power and killed many people, Festo had to flee for his life. Yet he chose not to hate, remembering that Jesus prayed on the cross, Father, forgive them. He even wrote a book called I Love Idi Amin, to show that forgiveness is stronger than hate."
+   },
+   {
+    "question": "Who was Pandita Ramabai?",
+    "answer": "Pandita Ramabai was a brilliant Indian scholar who cared for widows and orphans whom no one else would help. During a famine she gathered starving girls and orphans by the hundreds and built a home for them near the city of Pune. She called it Mukti, which means Salvation, and thousands of rescued women and children were fed, taught and loved there."
+   },
+   {
+    "question": "What are the stories of Corrie ten Boom and Eric Liddell?",
+    "answer": "Corrie ten Boom was a Dutch watchmaker whose family hid Jewish people from those who hunted them, in a secret room behind her bedroom wall. Betrayed, she and her sister Betsie were sent to a prison camp, where Betsie said no pit is so deep that God’s love is not deeper still. Eric Liddell was a runner who would not race in the Olympic hundred metres because it was held on a Sunday."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",

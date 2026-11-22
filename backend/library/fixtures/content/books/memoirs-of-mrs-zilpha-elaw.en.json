@@ -14,8 +14,33 @@
   "description": "A free Black woman from Pennsylvania tells how God found her: a girl in service with a Quaker family, converted by a vision of Christ, sanctified at a camp meeting, and called to preach against the protests of her husband, her church and her own fears. Widowed, she travelled the slave states, New England and then England itself, preaching more than a thousand sermons there. Written in London in 1846 and dedicated to the English friends who heard her, it is a fervent record of holiness, hardship and a call she would not deny.",
   "hook": "",
   "about_html": "",
-  "qa": [],
-  "publication_year": null,
+  "qa": [
+   {
+    "question": "Who was Zilpha Elaw?",
+    "answer": "Zilpha Elaw was a free Black woman born in Pennsylvania in the late eighteenth century who became a traveling Methodist preacher. Her memoirs tell how God found her as a girl in service with a Quaker family, how she was converted and sanctified, and how she answered a call to preach in America and then in England."
+   },
+   {
+    "question": "How was Zilpha Elaw converted?",
+    "answer": "As a teenager, she writes, she was milking a cow in the stall and singing a hymn when she turned and saw a tall figure approaching, who stood by her with open arms and smiled on her before disappearing. She was convinced it was Jesus, and says that even the cow seemed aware of his presence. The experience assured her of his love."
+   },
+   {
+    "question": "What happened at the camp meeting?",
+    "answer": "In 1817 Elaw attended an American camp meeting, where thousands gathered in the woods for days of worship and preaching. There she experienced what she understood as entire sanctification, a deeper work of grace that filled her with God’s love. She describes camp meetings warmly for her English readers, who had never seen one."
+   },
+   {
+    "question": "Why was her call to preach difficult?",
+    "answer": "Women preaching was widely opposed in her day, and Elaw faced resistance from her husband, Joseph Elaw, who was not a Christian when they married, from some in her church, and from her own fears. She questioned whether her call was real and tested it before God. Even so, she felt compelled to obey."
+   },
+   {
+    "question": "Where did Zilpha Elaw preach?",
+    "answer": "After her husband’s death she traveled widely, preaching in Baltimore, Washington and the slave states, at great personal risk as a free Black woman, and in New York, New England, Maine and Nantucket. In 1840 she sailed to England, where she spent five years preaching in London, Yorkshire, Lancashire and the north."
+   },
+   {
+    "question": "Why did she write her memoirs?",
+    "answer": "She wrote them in London in 1846, as she prepared to return to America, and dedicated them to the English friends who had heard her preach. She wanted to leave them a record of God’s dealings with her and to encourage them in holiness. It is one of the earliest spiritual autobiographies by an African American woman."
+   }
+  ],
+  "publication_year": 1846,
   "source_type": "public_domain",
   "source_url": "https://archive.org/details/MinisterialTravelsAndLaboursOfMrs.ZilphaElaw",
   "attribution": "Public domain — first published London, 1846. Proofed line by line from the Internet Archive scan of the first edition, with its four missing final pages from the Google Books copy. The original has no chapters: the chapter divisions and titles are editorial; the wording is unchanged apart from a few obvious printer's errors.",

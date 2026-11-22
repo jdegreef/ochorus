@@ -14,7 +14,32 @@
   "description": "Philip Doddridge’s guide for a reader at every stage of the Christian life: the careless sinner awakened, the way of salvation through Christ, the first act of self-dedication, then counsel for daily communion with God, for decline and affliction, and for meeting death. Wilberforce was among those it brought to faith.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Rise and Progress of Religion in the Soul?",
+    "answer": "It is Philip Doddridge’s guide, published in 1745, for a reader at every stage of the Christian life. It begins with the careless sinner awakened and convicted, explains the way of salvation through Christ, leads to a solemn act of self-dedication to God, and then gives counsel for daily communion with God, for times of decline and affliction, and for facing death."
+   },
+   {
+    "question": "How did the book come to be written?",
+    "answer": "In the preface Doddridge explains that his honoured friend Dr Isaac Watts had laid out the plan, especially of the earlier part. When illness prevented Watts from writing it himself, he urged Doddridge in an affectionate and importunate manner to undertake it, and Doddridge blesses God for carrying him through what he calls a delightful task."
+   },
+   {
+    "question": "How does the book move the reader?",
+    "answer": "Doddridge arranges the chapters as a journey. The sinner is awakened and urged not to delay, then arraigned, convicted and stripped of vain pleas, and shown his helpless state. Then comes the news of salvation by Christ, a careful account of how it is received, and an earnest appeal to accept it. Later chapters guide the believer’s growth."
+   },
+   {
+    "question": "What is the act of self-dedication?",
+    "answer": "Doddridge urges the reader who has come to Christ to make a solemn, deliberate covenant of giving themselves to God. He provides a written example of self-dedication, beginning Eternal and unchangeable Jehovah, which the reader may adapt and make their own, as a lasting reminder of their commitment."
+   },
+   {
+    "question": "What does Doddridge say about spiritual decline?",
+    "answer": "Doddridge warns that when love to God and to Christ fails, love for fellow believers declines with it, and concern for usefulness fades. He urges regular self-examination, reflecting on whether religion is advancing or declining in the soul, and gives counsel for recovering from coldness and for bearing affliction."
+   },
+   {
+    "question": "Who should read this book?",
+    "answer": "It suits seekers who want to understand how to come to God, new believers who want guidance on growing, and Christians who feel they have grown cold. Many chapters close with a prayer, so the book can be read devotionally as well as studied."
+   }
+  ],
   "publication_year": 1745,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/doddridge/rise",

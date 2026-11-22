@@ -12,7 +12,32 @@
   "cover_byline": "Ignatius of Antioch",
   "description": "A concise, faithful guide to the heart of Ignatius of Antioch’s teaching — Christ truly born, crucified and risen, the Lord’s Supper as the medicine of immortality, one church gathered around one table, faith as the beginning and love as the end, and a disciple’s courage on the road to death. Eleven short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Ignatius’s own public-domain letters, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Ignatius of Antioch. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into eleven short chapters for the ordinary reader. It is a shorter volume than others in this series, and deliberately so: everything Ignatius left us is seven brief letters, written in a few weeks, probably between 107 and 110, while he was taken under guard from Antioch to die at Rome. Very little else is known of his life, and this book does not pretend otherwise.</p><p>Ignatius’s one great conviction was that Jesus Christ is real — truly born, truly crucified, truly raised in the flesh — and that the Christian life must therefore be real too. From that conviction came his defence of Christ’s humanity against those who said He only seemed to suffer, his reverence for the Lord’s table, his passion for the unity of the church, his gentleness, his prayer for the whole world, and his courage in the face of death. This volume follows that thread, and it is honest about where he must be read with care: his longing for martyrdom, his strong language about bishops, and his sharp words against Judaizing.</p><p>Ignatius’s letters are in the public domain and freely available; the seven genuine letters are in the Ochorus library in J. B. Lightfoot’s translation, and every quotation from Ignatius here is taken from that edition. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and makes no claim to stand in for the urgent, burning pages of the letters themselves.</p>",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Key Teachings of Ignatius of Antioch?",
+    "answer": "It is a short guide to the seven letters of Ignatius, bishop of Antioch, written as a companion to them rather than by him. After a chapter on what little is known of his life, it sets out his insistence that Christ was truly born, crucified and raised, the Eucharist as the medicine of immortality, unity with the bishop, his longing for martyrdom, faith and love, the universal church, and Christ as his charter, with a guide to reading the letters."
+   },
+   {
+    "question": "Who was Ignatius of Antioch?",
+    "answer": "Ignatius was bishop of the church in Antioch in Syria early in the second century. Under the emperor Trajan, probably between 107 and 110, he was arrested, condemned to die by wild beasts in Rome, and taken there under guard. On the way, at Smyrna and Troas, he wrote seven letters to churches and to Polycarp, bishop of Smyrna. Then he went on to Rome and died there. Almost nothing else is known about him."
+   },
+   {
+    "question": "Why did Ignatius insist that Jesus was truly born and truly crucified?",
+    "answer": "He was writing against teachers who said that Christ only seemed to have a body and only appeared to suffer. Ignatius answered that Jesus was truly born of Mary, truly persecuted under Pontius Pilate, truly crucified and truly raised from the dead. If Christ’s suffering was only an appearance, his own chains and coming death would be meaningless. The book gives this the first teaching chapter."
+   },
+   {
+    "question": "What did Ignatius mean by the medicine of immortality?",
+    "answer": "In his letter to the Ephesians he calls the one bread broken in the Eucharist the medicine of immortality, the antidote against dying, so that believers may live in Jesus Christ for ever. The book explains the phrase in its own chapter, as one of the earliest Christian witnesses to what the Lord’s Supper meant to the church, and as part of his call for believers to gather often and in unity."
+   },
+   {
+    "question": "What did Ignatius mean when he called himself God’s wheat?",
+    "answer": "In his letter to the Romans he asks them not to try to save him from death, saying that he is God’s wheat, to be ground by the teeth of the wild beasts so that he may be found the pure bread of Christ. The book treats this letter carefully, as a cry of love for Christ rather than a pattern for seeking death, and as the reason the letter to the Romans is the most moving of the seven."
+   },
+   {
+    "question": "Where should I start reading Ignatius?",
+    "answer": "The book’s reader’s guide recommends reading the seven letters themselves, which are short enough to read in an evening. If you read only one, it says, read Romans, the most personal and intense, with the book’s cautions in mind. Then read Smyrnaeans, the clearest statement of his faith in the real flesh of Christ, and the short letter to Polycarp, an older pastor’s counsel to a younger one, before Ephesians and the rest."
+   }
+  ],
   "publication_year": null,
   "source_type": "public_domain",
   "source_url": "",
