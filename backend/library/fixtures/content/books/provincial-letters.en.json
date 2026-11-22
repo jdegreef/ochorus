@@ -12,7 +12,32 @@
   "cover_title": "",
   "description": "In January 1656 the Sorbonne was about to condemn Antoine Arnauld, Pascal's friend at Port-Royal, and Pascal came to his defence in an anonymous letter “to a provincial,” a friend in the country. Seventeen more followed over the next fourteen months, passed hand to hand through Paris while the police hunted the printers. They begin as a comedy, with a puzzled outsider interviewing theologians who cannot say what their own words mean, and they grow into a fierce and serious attack on a morality that had learned to excuse almost anything. Pascal's charge is that the Jesuit casuists had made the gospel easy by emptying it, and his letters on murder, calumny and the love of God still ask what it costs to be honest before God. They are also the book that fixed modern French prose.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What are The Provincial Letters?",
+    "answer": "They are eighteen letters, with a fragment of a nineteenth, that Blaise Pascal published anonymously in 1656 and 1657. They began as a defence of his friend Antoine Arnauld when the Sorbonne was about to condemn him, written as letters to a friend in the provinces. They grew into a sharp attack on the moral teaching of the Jesuit casuists, and they helped fix the style of modern French prose."
+   },
+   {
+    "question": "How do the letters begin?",
+    "answer": "The first letter, dated Paris, January 23, 1656, opens: We were entirely mistaken. Pascal’s narrator, a puzzled outsider, had thought the Sorbonne’s disputes were vastly important, and goes to theologians to learn what the quarrel is about. He finds that they agree on the phrase proximate power but cannot agree on what it means. The early letters use this comedy to expose arguments about words without sense."
+   },
+   {
+    "question": "What is the dispute about sufficient grace?",
+    "answer": "In the second letter Pascal explains that the Jesuits held that a grace is given to all, which free will makes effective or not, while others agreed to call such grace sufficient though it did not by itself suffice. Pascal mocks a sufficient grace that does not suffice, arguing that the theologians had joined in a word to condemn Arnauld while disagreeing about the thing itself."
+   },
+   {
+    "question": "What does Pascal criticise in Jesuit moral teaching?",
+    "answer": "From the fifth letter onward a Jesuit father cheerfully shows the narrator his order’s books, especially Escobar’s Moral Theology. Pascal exposes the doctrine of probable opinions, by which an action is allowed if some doctor thinks it permissible, and the method of directing the intention, by which a wrong deed is excused by fixing the mind on some other aim. He charges that these methods made the gospel easy by emptying it."
+   },
+   {
+    "question": "Why does Pascal turn more serious in the later letters?",
+    "answer": "From the eleventh letter Pascal writes directly to the Jesuit fathers, defending his use of ridicule against absurd opinions and then addressing their teaching on alms, simony, murder and calumny. The tone becomes grave and personal. He defends Port-Royal from charges of heresy and insists that the love of God, not mere fear of punishment, is what the gospel requires."
+   },
+   {
+    "question": "What is the famous line about a long letter?",
+    "answer": "In the sixteenth letter Pascal apologises for its length, saying that the present letter is a very long one simply because he had no leisure to make it shorter. The remark, often quoted, reflects the haste in which the letters were written and printed while the authorities hunted the presses."
+   }
+  ],
   "publication_year": 1657,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/73959",

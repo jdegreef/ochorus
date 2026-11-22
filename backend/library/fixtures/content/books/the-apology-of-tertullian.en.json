@@ -14,7 +14,32 @@
   "description": "Tertullian\u2019s defence of the Christians to the governors of the Roman provinces: they are condemned for a name without a hearing; the charges of secret crimes are absurd; their refusal to worship the gods or sacrifice for the emperor is no treason; and their blood is the seed of the church.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Tertullian\u2019s Apology?",
+    "answer": "It is Tertullian\u2019s defence of the Christians, written about 197 and addressed to the rulers of the Roman provinces. He argues that Christians are condemned for their name without a hearing, that the rumours of secret crimes are absurd, and that their refusal to worship the gods or sacrifice for the emperor is not treason. It is one of the most powerful early Christian apologies."
+   },
+   {
+    "question": "What does Tertullian mean when he says Christians are condemned without a hearing?",
+    "answer": "Tertullian points out that in every other case accused people may defend themselves and be questioned, but Christians are punished simply for confessing the name. Torture is used not to make them confess what they have done but to make them deny what they are. He asks the magistrates at least to let the truth reach their ears."
+   },
+   {
+    "question": "How does Tertullian answer the charge of disloyalty to the emperor?",
+    "answer": "He says that Christians pray without ceasing for all the emperors, asking for long life, security for the empire, protection for the imperial house, brave armies and a faithful senate. Many who swore by the emperor\u2019s genius were later traitors, while Christians honour him truly by praying to the one God who gave him power."
+   },
+   {
+    "question": "What is the source of the saying about the blood of Christians?",
+    "answer": "Near the end of the Apology Tertullian tells the persecutors that their cruelty is no use to them and is rather an attraction: the oftener we are mown down by you, the more in number we grow; the blood of Christians is seed. The line became one of the most quoted sayings of the early church."
+   },
+   {
+    "question": "What does the Apology say about how Christians live?",
+    "answer": "Tertullian describes the deeds of love among Christians that pagans mock, and he reports that pagans say, See how they love one another, and how they are ready even to die for one another. He also notes that whenever disaster strikes the cry goes up, Away with the Christians to the lion, though calamities happened long before Christ."
+   },
+   {
+    "question": "Why does Tertullian say Christians are everywhere?",
+    "answer": "To show that Christians are no small faction, Tertullian writes: We are but of yesterday, and we have filled every place among you, cities, islands, fortresses, towns, market places, the very camp, the palace, the senate and the forum, leaving the pagans nothing but the temples of their gods. Yet, he says, Christians so many could fight, they do not, because in their religion it is counted better to be slain than to slay."
+   }
+  ],
   "publication_year": 197,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/anf03.iv.iii.html",

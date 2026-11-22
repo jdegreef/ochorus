@@ -14,7 +14,32 @@
   "description": "Calvin\u2019s first commentary, written in Strasbourg and dedicated to Simon Grynaeus with his plea for \u201clucid brevity.\u201d Passage by passage he expounds Paul\u2019s letter \u2014 the guilt of all, justification by faith, union with Christ, the work of the Spirit, election, Israel\u2019s future and the Christian life \u2014 the book he called the key to all of Scripture.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Calvin\u2019s Commentary on Romans?",
+    "answer": "It is John Calvin\u2019s first biblical commentary, published in 1540, a passage-by-passage exposition of Paul\u2019s Letter to the Romans. Calvin wrote it during his time in Strasbourg and dedicated it to the scholar Simon Grynaeus, recalling their conversation about the best way to explain Scripture."
+   },
+   {
+    "question": "What is \u201clucid brevity\u201d?",
+    "answer": "In his dedication Calvin recalls that he and Grynaeus agreed that the chief excellence of an interpreter is lucid brevity. Since the interpreter\u2019s main task is to lay open the mind of the author, any wandering away from that is a failure. Calvin aimed to explain Paul clearly and concisely, without long digressions."
+   },
+   {
+    "question": "Why did Calvin think Romans was so important?",
+    "answer": "Calvin wrote that whoever understands this epistle has a passage opened to the understanding of the whole of Scripture. Gaining a knowledge of Romans, he said, opens an entrance to all the most hidden treasures of the Bible. For him it was a key to the rest of God\u2019s word."
+   },
+   {
+    "question": "What does Calvin see as the main theme of Romans?",
+    "answer": "In his Argument he identifies justification by faith as the main subject of the whole epistle, which Paul treats from the first chapter to the end of the fifth. Paul first shows that all, Jews and Gentiles, are guilty before God, then that righteousness is given freely through faith in Christ, with Abraham as the great example."
+   },
+   {
+    "question": "What does Calvin say about the rest of Romans?",
+    "answer": "After justification, Calvin follows Paul through the believer\u2019s union with Christ and freedom from sin and the law in chapters 6 to 8, the work of the Spirit and assurance, God\u2019s election and the future of Israel in chapters 9 to 11, and the Christian life of love, obedience and mutual acceptance in chapters 12 to 16."
+   },
+   {
+    "question": "Why is Calvin\u2019s commentary still read?",
+    "answer": "It combines careful attention to Paul\u2019s words with clear theological insight and practical application. Calvin\u2019s commitment to explaining the text plainly, rather than imposing his own system, set a pattern for Protestant biblical commentary. Many pastors and students still consult it alongside modern works."
+   }
+  ],
   "publication_year": 1540,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/calvin/calcom38",

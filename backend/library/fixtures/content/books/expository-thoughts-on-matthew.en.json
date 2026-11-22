@@ -14,7 +14,32 @@
   "description": "Ryle\u2019s plain, warm exposition of Matthew\u2019s Gospel, written for family prayers and private reading. Passage by passage he draws out what each part of the story teaches about Christ, sin, grace and the Christian life \u2014 from the genealogy and the Sermon on the Mount to the cross and the empty tomb \u2014 and presses it home on the heart.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Ryle\u2019s Expository Thoughts on Matthew?",
+    "answer": "It is J. C. Ryle\u2019s passage-by-passage commentary on the Gospel of Matthew, first published in 1856 as part of his Expository Thoughts on the Gospels. It is not a scholarly commentary but a plain, warm exposition meant for family prayers and private reading, drawing practical lessons from each section of the Gospel."
+   },
+   {
+    "question": "How is the book arranged?",
+    "answer": "Ryle takes Matthew a short section at a time, usually a few verses, from the genealogy in chapter 1 to the resurrection and Great Commission in chapter 28. For each passage he draws out several lessons about Christ, sin, grace and the Christian life, then presses them on the reader\u2019s heart and conscience."
+   },
+   {
+    "question": "What does Ryle say about the Bible itself?",
+    "answer": "At the very start he urges readers to read the New Testament with serious and solemn feelings, since every verse was written by inspiration of the Holy Ghost. He notes that the poorest person who understands the Bible knows more about religion than the wisest philosophers of Greece and Rome, and warns that possession of the Bible brings responsibility."
+   },
+   {
+    "question": "What does Ryle say about the Sermon on the Mount?",
+    "answer": "He says the three chapters of the Sermon on the Mount deserve the special attention of all readers of the Bible. Every word of the Lord Jesus should be precious to his followers. If we want to know the character, walk and habits of mind at which Christians ought to aim, Ryle says, we should often study the Sermon and test ourselves by it."
+   },
+   {
+    "question": "Who is the book written for?",
+    "answer": "Ryle wrote for ordinary Christians and families rather than for scholars. He meant the expositions to be read aloud at family worship or used in private devotion, with short sections that could be read in a few minutes. His style is direct and simple, and he avoids technical discussion in favor of plain application."
+   },
+   {
+    "question": "Why is Ryle\u2019s commentary still valued?",
+    "answer": "It combines faithful explanation with searching application, and points every passage to Christ. Ryle writes as a pastor who wants readers not only to understand Matthew, but to repent, believe and live for Christ. Many pastors, families and individuals still use his Expository Thoughts for daily reading."
+   }
+  ],
   "publication_year": 1856,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/ryle/matthew",

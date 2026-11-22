@@ -14,7 +14,32 @@
   "description": "R. A. Torrey’s plain, Scripture-packed guide to prayer, first published in 1900 out of the revival campaigns he led around the world. Torrey shows why prayer matters so much, then works through its conditions: praying to God himself, obedience, praying in the name of Christ and according to his will, praying in the Spirit, perseverance, abiding in Christ, and thanksgiving. He names the hindrances that keep prayers unanswered, when to pray, and closes with two chapters on the place of prayer in revival — the book’s burden from first page to last.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is R. A. Torrey’s How to Pray?",
+    "answer": "It is a short, practical book on prayer by the American evangelist and Bible teacher R. A. Torrey, first published in 1900. Packed with Scripture, it explains why prayer matters, what conditions God attaches to answered prayer, what hinders it, when to pray, and the place of prayer in revival."
+   },
+   {
+    "question": "Why does Torrey say prayer is so important?",
+    "answer": "He opens with Ephesians 6:18, praying always with all prayer and supplication in the Spirit. Weighing those words, he says, the child of God is driven to say: I must pray, pray, pray; I must put all my energy and all my heart into prayer; whatever else I do, I must pray. Prayer is the means by which God works."
+   },
+   {
+    "question": "What are the conditions of prevailing prayer?",
+    "answer": "Torrey lists them from Scripture: truly praying to God himself, obeying his commandments, praying in the name of Christ and according to God’s will, praying in the Holy Spirit, persevering without fainting, abiding in Christ, and praying with thanksgiving. Each condition gets its own chapter."
+   },
+   {
+    "question": "What hinders prayer, according to Torrey?",
+    "answer": "Torrey draws the hindrances from Scripture. Selfish prayer is robbed of power, for “ye ask amiss, that ye may spend it in your pleasures” (James 4:3). Sin not put away hinders prayer, and so do idols taken into the heart (Ezekiel 14:3). He adds a stingy heart, since the generous man is the mighty man of prayer, and warns against coming as though we had any claims on God at all."
+   },
+   {
+    "question": "When should Christians pray?",
+    "answer": "Torrey points to the example of Jesus, for whom prayer occupied a very prominent place. Mark 1:35 says that, rising up a great while before day, he went out to a solitary place and prayed. The day before had been very busy, and before the great test of the cross he went to pray in Gethsemane, and Torrey urges Christians to follow his pattern: praying early, praying through the day, and praying most when life is busiest."
+   },
+   {
+    "question": "What does Torrey say about prayer and revival?",
+    "answer": "The last two chapters argue that the church urgently needs a general revival, and that every true revival has begun in prayer and been sustained by it. Torrey calls on Christians to unite in prayer for revival, believing that God will answer and send it. This is the burden of the whole book."
+   }
+  ],
   "publication_year": 1900,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/torrey/pray",

@@ -1741,6 +1741,14 @@
 	.book-hero-cover {
 		width: 7rem;
 	}
+	/* Beside the cover on a 320px phone the title column is ~150px, narrower
+	   than one long word at h1 size ("Lamentations" rendered "Lamentatio" and
+	   widened the page). Hyphenate in the title's own language, and break as a
+	   last resort. */
+	.book-hero h1 {
+		hyphens: auto;
+		overflow-wrap: break-word;
+	}
 	.book-hero-actions {
 		grid-column: 1 / -1;
 	}

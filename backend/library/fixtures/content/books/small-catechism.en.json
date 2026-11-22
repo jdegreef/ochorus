@@ -14,7 +14,32 @@
   "description": "Luther\u2019s little instruction book for the household (1529): the Ten Commandments, the Creed, the Lord\u2019s Prayer, Baptism, Confession and the Lord\u2019s Supper, each set out with the question \u201cWhat does this mean?\u201d and a short answer for a father to teach his family \u2014 with morning and evening prayers, grace at meals and the household\u2019s duties from Scripture.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Luther\u2019s Small Catechism?",
+    "answer": "It is Martin Luther\u2019s short instruction book of 1529, written so that a father could teach the basics of the faith to his household. It sets out the Ten Commandments, the Apostles\u2019 Creed, the Lord\u2019s Prayer, Baptism, Confession and the Lord\u2019s Supper, followed by morning and evening prayers, grace at meals and a chart of household duties drawn from Scripture."
+   },
+   {
+    "question": "Why does it keep asking What does this mean?",
+    "answer": "After each commandment, article and petition Luther asks the simple question What does this mean? and gives a short answer to be learned by heart. The pattern keeps the teaching personal and practical: the first commandment, for example, means that we must fear, love and trust God more than anything else. The repetition makes the catechism easy for children and new believers to memorise."
+   },
+   {
+    "question": "How does Luther explain the commandments?",
+    "answer": "Luther explains every commandment by beginning, We must fear and love God, so that we will not do what the commandment forbids, but will do the good it implies. For the second commandment that means we will not use God\u2019s name to curse, swear, lie or deceive, but will call upon him, pray, praise and give thanks. Each prohibition is turned into a positive duty."
+   },
+   {
+    "question": "What does the Small Catechism say about daily bread?",
+    "answer": "On the fourth petition of the Lord\u2019s Prayer, Luther says that God gives daily bread even to evil people without our prayer, but we pray so that he will help us realise this and receive our daily bread with thanksgiving. So the petition teaches gratitude as well as trust, echoing the Creed\u2019s confession that God daily and abundantly provides everything needed for this body and life."
+   },
+   {
+    "question": "What does it teach about Baptism?",
+    "answer": "The catechism asks what Baptism gives and answers that it gives the forgiveness of sins, redeems from death and the devil, and gives eternal salvation to all who believe, as God\u2019s words and promises declare. It grounds Baptism in Christ\u2019s command to make disciples of all nations, baptizing them in the name of the Father, the Son and the Holy Spirit."
+   },
+   {
+    "question": "How does the catechism shape daily prayer?",
+    "answer": "Luther tells the reader, on rising in the morning and on going to bed at night, to bless himself with the sign of the holy cross and say, May the will of God, the Father, the Son and the Holy Spirit be done. Then come the Creed, the Lord\u2019s Prayer and a short prayer of thanks and commitment. He also gives graces before and after meals, so that the whole day is framed by prayer."
+   }
+  ],
   "publication_year": 1529,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/1670",

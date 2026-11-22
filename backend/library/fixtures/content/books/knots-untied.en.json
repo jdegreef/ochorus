@@ -14,7 +14,32 @@
   "description": "Nineteen plain papers on the questions that divided Churchmen in Ryle\u2019s day: private judgment, the Articles, baptism and regeneration, the Lord\u2019s Supper and the Real Presence, the Church, the priest, confession, worship and the Sabbath. The companion to Old Paths and Practical Religion, written from the standpoint of an Evangelical Churchman.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Knots Untied by J. C. Ryle?",
+    "answer": "It is a collection of nineteen papers by J. C. Ryle, first published in 1874, on the questions that most divided members of the Church of England in his day. Ryle writes as an evangelical churchman, explaining his position on issues such as baptism, the Lord\u2019s Supper, the priesthood and confession in a plain, direct style."
+   },
+   {
+    "question": "Why did Ryle write Knots Untied?",
+    "answer": "He believed that many church members were confused about controversial questions that were tearing the Church apart, especially in the face of the ritualist movement, which was bringing back Catholic practices. He wanted to untie these knots by setting out clearly what Scripture and the Church of England\u2019s own formularies teach."
+   },
+   {
+    "question": "What does Ryle mean by evangelical religion?",
+    "answer": "The opening paper explains the leading features of evangelical religion: the supreme authority of Scripture, the depth of human sinfulness, the work and office of Christ, the inward work of the Holy Spirit, and the outward and visible work of the Spirit in a changed life. Ryle insists these are the doctrines of the Reformation and of the Church of England."
+   },
+   {
+    "question": "What does Ryle teach about baptism and regeneration?",
+    "answer": "Ryle believed that baptism is a sacrament ordained by Christ, but that it does not automatically regenerate those who receive it. Regeneration is the inward work of the Holy Spirit, shown by its fruits in a changed life. He argues that the Prayer Book\u2019s language about regeneration must be read in the light of Scripture and the Thirty-nine Articles."
+   },
+   {
+    "question": "What does Ryle say about the Lord\u2019s Supper?",
+    "answer": "He teaches that the Lord\u2019s Supper is a memorial of Christ\u2019s death and a means of grace for those who receive it in faith, but he rejects the doctrine that Christ\u2019s body and blood are physically present in the bread and wine. In the paper The Real Presence, he argues that Christ is present spiritually to faithful believers."
+   },
+   {
+    "question": "Did Ryle later change his views?",
+    "answer": "No. In the preface to the tenth edition, written in 1885 when he had become Bishop of Liverpool, Ryle says he finds nothing to retract in the nineteen papers. He admits there are some sharp expressions he might soften, but chose to leave them, saying the views he held as a presbyter he still held as a bishop."
+   }
+  ],
   "publication_year": 1874,
   "source_type": "public_domain",
   "source_url": "https://archive.org/details/knotsuntied00ryleuoft",

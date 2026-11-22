@@ -14,7 +14,32 @@
   "description": "Nineteen plain papers on the truths Ryle held \u201cnecessary to salvation\u201d: the inspiration of Scripture, the soul, sin, forgiveness, justification, the cross, the Holy Ghost, conversion, faith and repentance, Christ\u2019s invitation and intercession, election and perseverance. The doctrinal companion to Practical Religion and Knots Untied, it presses each truth home as a question the reader must answer for himself.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Old Paths by J. C. Ryle?",
+    "answer": "It is a collection of papers by J. C. Ryle, first published in 1877, on the leading truths of Christianity that he regarded as necessary to salvation. Ryle notes that Christians may differ on many matters and still be saved, but on these doctrines there can be no compromise. It is the doctrinal companion to his Practical Religion and Knots Untied."
+   },
+   {
+    "question": "What topics does Old Paths cover?",
+    "answer": "Ryle writes on the inspiration of Scripture, the value of the soul, the fewness of the saved, Christian hope, spiritual life and death, sin, forgiveness, justification, the cross, the Holy Spirit, conversion, the heart, Christ\u2019s invitation, faith, repentance, Christ\u2019s power to save, election and perseverance."
+   },
+   {
+    "question": "Why is the book called Old Paths?",
+    "answer": "The title comes from Jeremiah 6:16: \u201cStand ye in the ways, and see, and ask for the old paths, where is the good way, and walk therein, and ye shall find rest for your souls.\u201d Ryle believed that the old truths of the gospel, taught by the apostles and Reformers, were still the way to rest and salvation."
+   },
+   {
+    "question": "What does Ryle say about the inspiration of the Bible?",
+    "answer": "The opening paper asks whether the Bible is unlike all other books and deserves our special attention. Ryle argues that it is the inspired Word of God, given by the Holy Spirit, and therefore true and authoritative in all it teaches. Everything else in the book rests on this foundation."
+   },
+   {
+    "question": "Why does Ryle ask whether few will be saved?",
+    "answer": "In Few Saved! he takes Christ\u2019s answer to that question seriously and presses it on the reader\u2019s conscience. If few are saved, he asks, will you be one of them? He insists that the way to heaven is an actual personal interest in Christ\u2019s salvation, and urges readers not to rest until they know they have it."
+   },
+   {
+    "question": "How does Ryle write?",
+    "answer": "Ryle writes plainly, directly and urgently, aiming at the conscience as well as the mind. Each paper explains a truth from Scripture and then presses it home as a question the reader must answer personally. His clear style and practical application have kept his books widely read among evangelical Christians."
+   }
+  ],
   "publication_year": 1877,
   "source_type": "public_domain",
   "source_url": "https://archive.org/details/oldpathsbeingpla00ryle",

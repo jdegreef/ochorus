@@ -14,7 +14,32 @@
   "description": "The first book of poems by an African American woman, printed in London in 1773 when its author was about twenty and still enslaved in Boston. Phillis Wheatley writes elegies for friends and ministers — George Whitefield among them — hymns to the morning and evening, a verse retelling of David and Goliath, meditations on providence, recollection and imagination, and the eight lines of “On Being Brought from Africa to America.” The first edition’s preface, her master’s letter and the attestation signed by eighteen Boston men, who vouched that she had written the poems herself, open the book.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is Poems on Various Subjects, Religious and Moral?",
+    "answer": "It is the first book of poems by an African American woman, printed in London in 1773. Phillis Wheatley wrote it while still enslaved in Boston, when she was about twenty. It contains elegies for friends and ministers, hymns to the morning and the evening, a verse retelling of David and Goliath, poems on providence, recollection and imagination, and the short poem On Being Brought from Africa to America."
+   },
+   {
+    "question": "Why does the book open with an attestation?",
+    "answer": "Many readers in 1773 doubted that an enslaved young African woman could have written such poems. To answer them, the book prints a statement signed by leading men of Boston, among them Governor Thomas Hutchinson, John Hancock and several ministers, assuring the world that the poems were written by Phillis. Her master’s letter adds that she was brought from Africa in 1761, aged between seven and eight, and learned to read without schooling."
+   },
+   {
+    "question": "What does On Being Brought from Africa to America say?",
+    "answer": "In eight lines Wheatley says it was mercy that brought her from her pagan land and taught her soul that there is a God and a Saviour. She then turns to those who view her race with scorn, and ends with a direct appeal: Remember, Christians, Negroes, black as Cain, may be refined, and join the angelic train. The poem both confesses her faith and rebukes Christian prejudice."
+   },
+   {
+    "question": "What does Wheatley write about George Whitefield?",
+    "answer": "Her elegy On the Death of the Rev. Mr. George Whitefield, 1770 pictures the preacher rising to heaven and recalls his prayers and his invitation of sinners to Christ, whom he called the impartial Saviour. It speaks of New England’s grief and of the orphans who mourn him, and it addresses the Countess of Huntingdon, to whom Whitefield had been chaplain. The poem first made Wheatley’s name known on both sides of the Atlantic."
+   },
+   {
+    "question": "What other kinds of poems are in the book?",
+    "answer": "Besides elegies, there are hymns to the morning and the evening, poems On Imagination and On Recollection, Thoughts on the Works of Providence, a long retelling of the battle of David and Goliath, a paraphrase of Isaiah 63, and poems addressed to public figures such as the King and the Earl of Dartmouth. Many of them close in praise of God and hope of heaven."
+   },
+   {
+    "question": "Why is this book still read today?",
+    "answer": "It is a landmark of American literature and of Christian poetry. Wheatley wrote with learning and skill in the style of her age, and her faith runs through almost every poem. Her lines on freedom, on her own people and on the equal welcome of the gospel give the book lasting historical and spiritual weight."
+   }
+  ],
   "publication_year": 1773,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/409",

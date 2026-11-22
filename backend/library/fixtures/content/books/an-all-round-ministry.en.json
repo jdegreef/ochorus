@@ -14,7 +14,32 @@
   "description": "Twelve of Charles Spurgeon's presidential addresses to the annual Conference of his Pastors' College, given between 1872 and 1890 to the hundreds of ministers and students he called his sons in the faith. Speaking with a freedom he allowed himself nowhere else, Spurgeon presses on preachers the faith, holiness, prayer, and courage their calling demands, and stands firm for the old gospel against the drift of his day. Written for ministers, but a bracing word for every servant of Christ — teacher, missionary, or believer — who would exercise an “all-round ministry.”",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is An All-Round Ministry?",
+    "answer": "It is a collection of twelve addresses by Charles Haddon Spurgeon to the annual Conference of the Pastors’ College, the training school for ministers he founded in London. Given between 1872 and 1890, they were spoken to former students and current ones, men he regarded as his sons in the ministry, and were published together after his death."
+   },
+   {
+    "question": "Who were these addresses for?",
+    "answer": "They were spoken to pastors, evangelists and students trained at Spurgeon’s college, gathered each year for fellowship and encouragement. Spurgeon spoke to them with unusual freedom and warmth. Though written for ministers, the addresses apply to any Christian worker: teachers, missionaries and believers who want to serve Christ faithfully."
+   },
+   {
+    "question": "What does Spurgeon say about faith in ministry?",
+    "answer": "In the first address, on faith, he reminds his hearers that they are of the pedigree of faith, children of the promise like Isaac rather than of human effort like Ishmael. Just as the Christian life begins and continues by faith, so does the ministry. To be useful one must have faith, and to be greatly useful, great faith."
+   },
+   {
+    "question": "What is the meaning of “Forward!”?",
+    "answer": "One address takes its title from God’s command to Moses, “Speak unto the children of Israel, that they go forward.” Spurgeon made “Forward” the watchword of the Conference that year, urging his men not to settle into comfortable routine, but to press on in holiness, evangelism and boldness for Christ."
+   },
+   {
+    "question": "What does Spurgeon say about the evils of his age?",
+    "answer": "Several addresses warn against the drift from the old gospel in his day, the theological decline that led to the Down-grade Controversy of 1887 and 1888. Spurgeon urged his men to stand firm on Scripture and the doctrines of grace, but also to meet the evils of the age with prayer, holy living and earnest preaching of Christ."
+   },
+   {
+    "question": "What is the source of a preacher’s power?",
+    "answer": "In The Preacher’s Power, and the Conditions of Obtaining It, Spurgeon insists that real power in preaching comes from God the Holy Spirit, not from talent or learning. It is obtained through prayer, holiness, faith in the gospel and dependence on God. He warns that a preacher must be right with God before God can be with him."
+   }
+  ],
   "publication_year": 1900,
   "source_type": "public_domain",
   "source_url": "https://archive.spurgeon.org/misc/aarm.php",
