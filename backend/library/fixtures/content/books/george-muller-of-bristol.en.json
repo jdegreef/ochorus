@@ -11,7 +11,32 @@
   "subtitle": "And His Witness to a Prayer-Hearing God",
   "description": "The authorized memoir of George Müller, written soon after his death by his friend Arthur T. Pierson and commended, in its introduction, by Müller's son-in-law and executor, James Wright. Drawing on Müller's own Narrative and the yearly reports of his work, Pierson follows the wayward student of Halle to his conversion, his call to Bristol, and the five great orphan houses on Ashley Down, where over ten thousand orphans were taken in without appeal to man and in sole dependence on God. He tells the story less for its chronology than for its lessons in holy living and serving, with one aim: to extend George Müller's witness to a prayer-hearing God, and so answer the question, \"Where is the Lord God of Elijah?\" An appendix gathers the Scriptures that moulded Müller and a treasury of his wise sayings.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is George Müller of Bristol?",
+    "answer": "It is the authorized memoir of George Müller, written by his friend Arthur T. Pierson soon after Müller’s death in 1898, and introduced by Müller’s son-in-law, James Wright. Drawing on Müller’s own Narrative and the yearly reports of his work, it tells the story of the orphan homes of Bristol and the life of prayer behind them."
+   },
+   {
+    "question": "Who was George Müller?",
+    "answer": "Müller was born in Prussia and, by his own account, was a wayward and dishonest youth, at one point forging what he called a whole chain of lies. Converted as a student, he came to England as a missionary, became a pastor in Bristol, and there founded the orphan houses on Ashley Down, which cared for thousands of children."
+   },
+   {
+    "question": "How were the orphan homes supported?",
+    "answer": "Müller resolved never to ask any person for money, nor to go into debt, but to make his needs known to God alone in prayer. Over the years, he and his helpers trusted God for daily food, buildings and staff. Pierson tells many stories of needs met at the last moment, without any appeal to people."
+   },
+   {
+    "question": "Why did Müller start the orphan work?",
+    "answer": "Pierson explains that Müller wanted above all to give visible proof that God still hears and answers prayer. The orphan houses were meant as a living answer to the question, “Where is the Lord God of Elijah?” Caring for orphans was the work, but the deeper aim was to strengthen the faith of believers everywhere."
+   },
+   {
+    "question": "How many answers to prayer did Müller record?",
+    "answer": "According to Pierson, Müller calculated that he could trace distinct answers to definite prayers in fifty thousand cases. As his faith was exercised it grew stronger, until it became as natural for him to ask God confidently for a hundred, a thousand or ten thousand pounds as it had once been to ask for a pound or a penny."
+   },
+   {
+    "question": "What did Müller do in his later years?",
+    "answer": "From his seventies onward, Müller traveled widely, preaching in many countries in what Pierson calls the period of world-wide witness. He spoke about faith, prayer and the Bible to large audiences. The book’s appendix gathers the Scriptures that shaped Müller and a collection of his wise sayings."
+   }
+  ],
   "publication_year": 1899,
   "source_type": "public_domain",
   "source_url": "https://www.gutenberg.org/ebooks/26522",
