@@ -1,0 +1,192 @@
+{
+ "kind": "sermon",
+ "slug": "free-grace",
+ "language": "ru",
+ "job_issue": 9627,
+ "references": [
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Galatians 4:30b",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:32a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:24a",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:25a",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:26a",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:27a",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:32a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Hebrews 2:16",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 Peter 2:9b",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 115:1a",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Romans 3:4b",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Galatians 1:1b",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "John 1:13a",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Romans 13:4b",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Isaiah 1:18",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Acts 16:31b",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ezekiel 33:11a",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Song of Solomon 5:2b",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:32a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:32a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "1 Timothy 1:15b",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Luke 18:13b",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 9:13b",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Matthew 9:12b",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  },
+  {
+   "reference": "Revelation 1:5b-6",
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+  }
+ ]
+}
