@@ -75,5 +75,5 @@ def confirm(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-    dependencies = [("library", "0222_confirm_stale_article_translations")]
+    dependencies = [("library", "0223_confirm_stale_article_translations")]
     operations = [migrations.RunPython(confirm, migrations.RunPython.noop)]
