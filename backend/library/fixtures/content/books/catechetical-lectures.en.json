@@ -14,7 +14,32 @@
   "description": "The lectures Cyril of Jerusalem gave in the Church of the Holy Sepulchre to candidates for baptism in Lent, around 350: a prologue, eighteen lectures on repentance, baptism and every article of the creed, and five on the mysteries given in Easter week to the newly baptized.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What are the Catechetical Lectures?",
+    "answer": "They are lectures given around 350 by Cyril, later bishop of Jerusalem, to candidates preparing for baptism at Easter. Delivered in the Church of the Holy Sepulchre, they include a prologue, eighteen lectures during Lent on repentance, baptism and each article of the creed, and five lectures on the sacraments given to the newly baptized during Easter week."
+   },
+   {
+    "question": "Where were the lectures given?",
+    "answer": "Cyril spoke in the great church built by Constantine over the site of Christ\u2019s death and resurrection. He often points to it: if anyone denies that Christ was crucified, he says, the very place refutes them, this blessed Golgotha where they are assembled. The setting gave his teaching about the cross and resurrection a striking immediacy."
+   },
+   {
+    "question": "Who were the lectures for?",
+    "answer": "They were for the photizomenoi, those about to be enlightened, as the early Church called candidates for baptism. Cyril welcomes them warmly in the prologue, saying that already there is an odor of blessedness upon them, and urges them to take their preparation seriously, since the foundation must be laid well, like planting a tree or building a house."
+   },
+   {
+    "question": "What do the lectures teach about the creed?",
+    "answer": "Most of the Lenten lectures take a phrase of the Jerusalem creed and explain it from Scripture: the one God, the Father, the Almighty, Maker of heaven and earth, the one Lord Jesus Christ, his incarnation, crucifixion, resurrection, ascension and return, the Holy Spirit, the Church and the resurrection of the body. Together they form a complete introduction to Christian belief."
+   },
+   {
+    "question": "What happened at baptism, according to Cyril?",
+    "answer": "The lectures to the newly baptized describe the rites they had just experienced. In the vestibule of the baptistery they stood facing west, the place of darkness, stretched out their hands and said, \u201cI renounce thee, Satan.\u201d Then each was asked whether he believed in the name of the Father, the Son and the Holy Ghost, made that saving confession, and went down three times into the water, a sign of the three days of Christ in the tomb."
+   },
+   {
+    "question": "Why are the lectures important today?",
+    "answer": "They are one of the fullest records of how the early Church prepared converts for baptism and of its worship in Jerusalem in the fourth century. They show a church that took teaching seriously, grounding each truth in Scripture. Many Christians still find them a clear, warm summary of the faith confessed in the creeds."
+   }
+  ],
   "publication_year": 350,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/npnf207.ii.html",
