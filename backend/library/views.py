@@ -3148,13 +3148,21 @@ class ScriptureView(APIView):
     """
 
     def get(self, request):
-        from .scripture import lookup
+        from .scripture import lookup, omitted_reference
 
         ref = (request.query_params.get("ref") or "").strip()
         if not ref:
             return Response({"detail": "A 'ref' query parameter is required."}, status=400)
         data = lookup(ref[:120])
         if not data:
+            # Still a 404 (every caller treats "no text" the same), but one the
+            # popover can explain: a real verse the bundled Bibles don't print.
+            omitted = omitted_reference(ref[:120])
+            if omitted:
+                return Response(
+                    {"detail": "Not in this Bible's text.", "omitted": True, "reference": omitted},
+                    status=404,
+                )
             return Response({"detail": "No such reference."}, status=404)
         return Response({**data, "bible_chapter": _bible_reader_chapter(ref[:120])})
 

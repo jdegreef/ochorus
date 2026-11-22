@@ -53,6 +53,8 @@
 					>{v.text}{' '}{/each}{#if scripture.result.truncated}…{/if}
 			</p>
 			<p class="eyebrow mt-2 text-muted">{scripture.result.version}</p>
+		{:else if scripture.omitted}
+			<p class="mt-2 text-small text-muted">{t('reader.scriptureOmitted')}</p>
 		{:else}
 			<p class="mt-2 text-small text-muted">{t('reader.scriptureUnavailable')}</p>
 		{/if}
