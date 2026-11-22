@@ -158,7 +158,11 @@ def translated_works() -> list[tuple[str, str, str]]:
     (``library.originals``: Pascal's own French) is not a translation — nothing
     was rendered, so there is no provenance to record.
     """
-    from library.content_fixtures import BOOKS_DIR, SERMONS_DIR, translated_bible_editions
+    from library.content_fixtures import (
+        BOOKS_DIR,
+        SERMONS_DIR,
+        translated_bible_editions,
+    )
     from library.originals import ORIGINAL_EDITIONS
 
     works = [
