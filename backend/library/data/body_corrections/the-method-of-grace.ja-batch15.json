@@ -1,0 +1,9 @@
+{
+ "why": "A verb-agreement slip in Whitefield's The Method of Grace, found while translating it to Japanese (job #9645).",
+ "replacements": [
+  [
+   "say the psalmist",
+   "says the psalmist"
+  ]
+ ]
+}

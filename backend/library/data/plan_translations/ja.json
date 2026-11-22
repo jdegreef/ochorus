@@ -68,5 +68,12 @@
    "Shipping with the-way-to-god.ja (queue job #8098). This plan's source books are a-call-to-the-unconverted, the-way-to-god and all-of-grace; it becomes creatable in ja only once all three exist, so the prose is written ahead of the last of them rather than left for whichever job completes the set.",
    "The title opens with the ja edition's own title (神に至る道) and the ―― dash the shipped ja plans use; 『すべては恵み』 is the shipped ja title of all-of-grace. Baxter's work is described rather than titled, since no ja edition of it exists yet to take a title from. です・ます体. AI-written; for native review with the book."
   ]
+ },
+ "praying-men": {
+  "title": "祈る人々——E・M・バウンズに学ぶ祈りの学校",
+  "description": "祈りの偉大な使徒とともに、とりなしの炉の中で7週間を過ごします。E・M・バウンズはまず、説教者自身が力を必要としていることから始め、続いて祈りを勝利させる目的を、そして祈りをキリスト者の生涯の全事業とする必要を明らかにします。",
+  "note": [
+   "Plan prose shipped with the ja edition of necessity-of-prayer (queue job #8910): with it, all three source books of praying-men exist in ja (『祈りによる力』, 『目的をもった祈り』, 『祈りの必要』), so PlanTranslationCoverageTests requires this entry. The description follows the English one book by book (power → purpose → necessity) in the です・ます phrasing of the shipped ja plans, with the house dash ——. AI-written; for native review with the book."
+  ]
  }
 }
