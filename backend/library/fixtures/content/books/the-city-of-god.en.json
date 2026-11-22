@@ -14,7 +14,32 @@
   "description": "Augustine\u2019s great defence of the faith, begun after the Goths sacked Rome in 410 and pagans blamed the Christians. In twenty-two books he answers the charge, weighs Rome\u2019s gods and philosophers, and then traces the two cities \u2014 the earthly, built on love of self, and the heavenly, built on love of God \u2014 from creation to their final ends.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The City of God?",
+    "answer": "It is Augustine of Hippo\u2019s great defense of the Christian faith, written in twenty-two books over more than a decade in the early fifth century. He addressed it to his friend Marcellinus, who had urged him to answer pagan critics. It begins as a reply to a crisis and grows into a vast history of two cities from creation to the end of the world."
+   },
+   {
+    "question": "Why did Augustine write The City of God?",
+    "answer": "In 410 the Goths sacked Rome, a shock felt across the empire. Many pagans blamed the disaster on the Christians, saying that Rome had fallen because it abandoned its old gods. Augustine\u2019s first books answer that charge, pointing out that Rome suffered calamities when it worshipped those gods too, and that Christian churches had sheltered pagans and Christians alike during the sack."
+   },
+   {
+    "question": "What are the two cities?",
+    "answer": "Augustine traces two communities mingled together in this world. In Book XIV he says that two loves have made two cities: the earthly city by the love of self, even to the contempt of God, and the heavenly city by the love of God, even to the contempt of self. The heavenly city lives as a pilgrim here, longing for its eternal home."
+   },
+   {
+    "question": "How is The City of God organized?",
+    "answer": "The first ten books are a critique: Books I to V answer those who worship the gods for earthly prosperity, and Books VI to X answer those who worship them for life after death, including the Platonists. The last twelve books tell the story of the two cities: their origin in creation and the fall, their course through history, and their final ends."
+   },
+   {
+    "question": "What does Augustine say about peace?",
+    "answer": "Book XIX argues that every creature, even in war, seeks peace, but true and lasting peace belongs only to the heavenly city in the enjoyment of God. Meanwhile, the pilgrim city makes use of the earthly peace of ordered society, obeys its laws so far as they do not hinder worship of the one true God, and directs that peace toward eternal peace."
+   },
+   {
+    "question": "How does the book end?",
+    "answer": "The closing books describe the last judgment, the punishment of the wicked and the eternal happiness of the saints, ending with the resurrection of the body and the vision of God. Augustine finishes with a famous picture of the eternal Sabbath, where the saints shall rest and see, see and love, love and praise, in the end that has no end."
+   }
+  ],
   "publication_year": 426,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/schaff/npnf102.iv.html",

@@ -13,7 +13,32 @@
   "cover_byline": "",
   "description": "There are two ways of getting home, Chesterton says, and one of them is to stay there; the other is to walk round the whole world until we come back to the same place. This is that second journey. Answering the popular histories that made man a mere animal and Christ a mere teacher, he walks the reader through the story of mankind, from the pictures in the prehistoric cave through the myths, philosophies and empires of the ancient world, to the child born in a cave at Bethlehem, and shows that seen freshly, from outside, both man and the Church are as strange and as unique as the creed has always said.",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Everlasting Man about?",
+    "answer": "Published in 1925, it is G. K. Chesterton’s sweeping view of human history and the place of Christ in it. Answering popular histories that made man merely an advanced animal and Christ merely a great teacher, he argues that both man and Christ are unique. The first part is about the creature called man, and the second about the man called Christ."
+   },
+   {
+    "question": "What does Chesterton mean by two ways of getting home?",
+    "answer": "He says there are two ways of getting home: one is to stay there, and the other is to walk round the whole world until we come back to the same place. The Everlasting Man takes the second road. By looking at Christianity freshly, as if from outside, he hopes the reader will see how strange and unique it is."
+   },
+   {
+    "question": "What is the point of the man in the cave?",
+    "answer": "Chesterton begins with the prehistoric cave paintings. Animals have lived in caves for ages, but only man drew pictures on the walls. This, he argues, shows that man is not just a slightly more developed animal, but a different kind of creature, an artist and image maker. The difference between man and beast is a difference not of degree but of kind."
+   },
+   {
+    "question": "What is the God in the cave?",
+    "answer": "The second part opens with the birth of Christ in a cave at Bethlehem, where the shepherds and the wise men met. Chesterton sees in that scene a meeting of the simple and the learned, of the human longing reflected in myth and philosophy. The God of the universe came as a baby in a stable: the most startling event in history."
+   },
+   {
+    "question": "Why does Chesterton call the gospel the strangest story in the world?",
+    "answer": "Read freshly, Chesterton argues, the Gospels are not gentle moral tales but a story of startling claims. Great teachers like Shakespeare never talked as if they were literally divine; people who make that supremely superhuman claim are usually found in asylums. Yet Christ made it while showing perfect sanity and balance, and no merely human teacher fits the figure we actually meet."
+   },
+   {
+    "question": "What are the five deaths of the faith?",
+    "answer": "Chesterton notes that at least five times the Christian faith has seemed to be dying: with the Arians, the Albigensians, the Humanist skeptics, after Voltaire, and after Darwin. Each time it was pronounced dead, and each time it rose again. A faith that keeps rising from the grave, he argues, points to a God who knew the way out of the grave."
+   }
+  ],
   "publication_year": 1925,
   "source_type": "public_domain",
   "source_url": "https://standardebooks.org/ebooks/g-k-chesterton/the-everlasting-man",

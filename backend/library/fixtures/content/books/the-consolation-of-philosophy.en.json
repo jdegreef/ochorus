@@ -14,7 +14,32 @@
   "description": "Written in prison as Boethius awaited execution: Lady Philosophy visits the fallen statesman and, in alternating prose and song, leads him from bitter complaint against Fortune to the true good, which is God, and on to the hardest questions of providence, evil, free will and God\u2019s foreknowledge.",
   "hook": "",
   "about_html": "",
-  "qa": [],
+  "qa": [
+   {
+    "question": "What is The Consolation of Philosophy?",
+    "answer": "It is a dialogue written by Boethius, a Roman statesman and scholar, while he was in prison awaiting execution around 524. Once a powerful official under King Theodoric, he had been accused of treason and condemned. In the book, Lady Philosophy visits him in his cell and, in alternating prose and verse, leads him from despair toward the true good."
+   },
+   {
+    "question": "Who is Lady Philosophy?",
+    "answer": "She is a majestic woman who appears to Boethius as he laments his fate. He recognizes her as his nurse, Philosophy, in whose chambers he had spent his life from youth. She drives away the Muses of poetry who were feeding his grief, and like a physician begins to treat his sick mind, step by step, with gentle remedies first and stronger ones later."
+   },
+   {
+    "question": "What is the wheel of Fortune?",
+    "answer": "Philosophy tells Boethius that he gave himself over to Fortune\u2019s rule and now complains about her ways. But Fortune\u2019s nature is to turn her wheel, raising some and casting others down; if she stopped, she would no longer be Fortune. Her gifts of wealth, power and fame were never truly his, and losing them teaches who his real friends are."
+   },
+   {
+    "question": "What is the true good, according to the book?",
+    "answer": "In Book III Philosophy shows that everyone seeks happiness, but wealth, honor, power, fame and pleasure are only partial and fragile goods. True happiness is the supreme good, which contains all goods in itself and cannot be lost. She concludes that this supreme good is God himself, and that a person becomes happy by sharing in the divine goodness."
+   },
+   {
+    "question": "How does Boethius deal with the problem of evil?",
+    "answer": "In Book IV Boethius asks why the wicked prosper and the good suffer. Philosophy answers that evil men are actually powerless and wretched, because they fail to reach the good everyone desires. Divine providence orders all things, and what seems like misfortune to the good is training, correction or reward, while every fortune is, in the end, good."
+   },
+   {
+    "question": "How can God know the future if we are free?",
+    "answer": "In Book V Philosophy explains that God does not foresee the future the way we predict it. Eternity is the simultaneous and complete possession of infinite life, so God sees all things in his eternal present, as we see things happening before us now. His knowledge does not force our choices; free will remains, and so prayer and virtue are never in vain."
+   }
+  ],
   "publication_year": 524,
   "source_type": "public_domain",
   "source_url": "https://ccel.org/ccel/boethius/consolation",
