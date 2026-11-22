@@ -1,0 +1,650 @@
+{
+ "kind": "book",
+ "slug": "growing-in-wisdom",
+ "language": "ru",
+ "job_issue": 9084,
+ "references": [
+  {
+   "reference": "Jeremiah 29:11",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 2:6",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "1 Timothy 4:12",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Jeremiah 1:5a",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Genesis 50:20",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 25:4",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Luke 16:10a",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "1 Samuel 17:37a",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Habakkuk 2:2b",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Matthew 23:11",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 21:5",
+   "status": "mined",
+   "block_index": 51,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Colossians 3:23",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Hebrews 12:11",
+   "status": "mined",
+   "block_index": 59,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 6:6",
+   "status": "mined",
+   "block_index": 62,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 6:7",
+   "status": "mined",
+   "block_index": 62,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 6:8",
+   "status": "mined",
+   "block_index": 62,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 14:23",
+   "status": "mined",
+   "block_index": 77,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 6:10",
+   "status": "mined",
+   "block_index": 80,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 6:11",
+   "status": "mined",
+   "block_index": 80,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Daniel 1:20",
+   "status": "mined",
+   "block_index": 83,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 90:12",
+   "status": "mined",
+   "block_index": 87,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 9:10",
+   "status": "mined",
+   "block_index": 98,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "1 Kings 3:9a",
+   "status": "mined",
+   "block_index": 101,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "block_index": 104,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Daniel 1:17a",
+   "status": "mined",
+   "block_index": 107,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 19:20",
+   "status": "mined",
+   "block_index": 113,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Colossians 3:23a",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 22:29a",
+   "status": "mined",
+   "block_index": 125,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "John 14:26",
+   "status": "mined",
+   "block_index": 133,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 10:9a",
+   "status": "mined",
+   "block_index": 140,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 6:6",
+   "status": "mined",
+   "block_index": 62,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Ecclesiastes 11:4",
+   "status": "mined",
+   "block_index": 154,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Romans 12:11",
+   "status": "mined",
+   "block_index": 158,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 12:24",
+   "status": "mined",
+   "block_index": 163,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "mined",
+   "block_index": 172,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 11:3",
+   "status": "mined",
+   "block_index": 179,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "1 Samuel 16:7b",
+   "status": "mined",
+   "block_index": 183,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Genesis 39:9b",
+   "status": "mined",
+   "block_index": 186,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 20:7",
+   "status": "mined",
+   "block_index": 191,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 15:1a",
+   "status": "mined",
+   "block_index": 198,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 15:2",
+   "status": "mined",
+   "block_index": 198,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Luke 16:10a",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 13:20",
+   "status": "mined",
+   "block_index": 209,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 27:17",
+   "status": "mined",
+   "block_index": 213,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Romans 12:2a",
+   "status": "mined",
+   "block_index": 221,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "1 Corinthians 15:33",
+   "status": "mined",
+   "block_index": 224,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 18:24",
+   "status": "mined",
+   "block_index": 227,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 1:1a",
+   "status": "mined",
+   "block_index": 234,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 1:3b",
+   "status": "mined",
+   "block_index": 234,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "block_index": 242,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 16:32",
+   "status": "mined",
+   "block_index": 246,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Luke 22:42b",
+   "status": "mined",
+   "block_index": 248,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "block_index": 253,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "mined",
+   "block_index": 257,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "mined",
+   "block_index": 263,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "mined",
+   "block_index": 271,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "block_index": 275,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Joshua 1:8",
+   "status": "mined",
+   "block_index": 286,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 119:11",
+   "status": "mined",
+   "block_index": 290,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "block_index": 302,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Mark 8:36",
+   "status": "mined",
+   "block_index": 305,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 16:3",
+   "status": "mined",
+   "block_index": 309,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Deuteronomy 8:18a",
+   "status": "mined",
+   "block_index": 318,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Matthew 25:21b",
+   "status": "mined",
+   "block_index": 323,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 24:16a",
+   "status": "mined",
+   "block_index": 332,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 145:14",
+   "status": "mined",
+   "block_index": 336,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 34:18",
+   "status": "mined",
+   "block_index": 340,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Philippians 3:13b",
+   "status": "mined",
+   "block_index": 351,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Philippians 3:14a",
+   "status": "mined",
+   "block_index": 351,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Matthew 23:11",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "John 13:14",
+   "status": "mined",
+   "block_index": 366,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Romans 12:10b",
+   "status": "mined",
+   "block_index": 370,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Philippians 2:3b",
+   "status": "mined",
+   "block_index": 380,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "mined",
+   "block_index": 380,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "1 Corinthians 4:2",
+   "status": "mined",
+   "block_index": 388,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 24:1a",
+   "status": "mined",
+   "block_index": 391,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Ecclesiastes 3:1a",
+   "status": "mined",
+   "block_index": 395,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 21:20",
+   "status": "mined",
+   "block_index": 398,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "1 Peter 4:10a",
+   "status": "mined",
+   "block_index": 402,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 119:9",
+   "status": "mined",
+   "block_index": 413,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "1 Thessalonians 4:3a",
+   "status": "mined",
+   "block_index": 416,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "block_index": 419,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "1 Corinthians 6:19a",
+   "status": "mined",
+   "block_index": 425,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Habakkuk 2:2b",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 19:21",
+   "status": "mined",
+   "block_index": 440,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Ephesians 2:10a",
+   "status": "mined",
+   "block_index": 449,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 5:3",
+   "status": "mined",
+   "block_index": 461,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "mined",
+   "block_index": 271,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Mark 10:43b",
+   "status": "mined",
+   "block_index": 473,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 10:9a",
+   "status": "mined",
+   "block_index": 140,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "1 Thessalonians 5:18",
+   "status": "mined",
+   "block_index": 481,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Galatians 6:9b",
+   "status": "mined",
+   "block_index": 172,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Ephesians 3:20a",
+   "status": "mined",
+   "block_index": 489,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Matthew 5:14a, 16a",
+   "status": "mined",
+   "block_index": 491,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "mined",
+   "block_index": 496,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 3:6",
+   "status": "mined",
+   "block_index": 496,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Jeremiah 29:11",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "block_index": 302,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Joshua 1:8",
+   "status": "mined",
+   "block_index": 286,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 1:7",
+   "status": "mined",
+   "block_index": 521,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Colossians 3:23",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 119:9",
+   "status": "mined",
+   "block_index": 413,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Romans 12:2a",
+   "status": "mined",
+   "block_index": 221,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 37:4",
+   "status": "mined",
+   "block_index": 541,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 119:11",
+   "status": "mined",
+   "block_index": 290,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  }
+ ]
+}
