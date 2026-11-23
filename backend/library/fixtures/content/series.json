@@ -1603,6 +1603,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "the-bible"
+  ],
+  "language": "ru",
+  "title": "Библия",
+  "description": "Книги Библии в переводе Open Word Bible, новом переводе с еврейского и греческого, свободно переданном в общественное достояние, в порядке от Бытия до Откровения. У каждой книги есть введение о её строении и смысле и заключение о том, что читать дальше.",
+  "created_at": "2026-11-23T00:00:00Z",
+  "updated_at": "2026-11-23T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "the-lamplighters-of-gloamhaven"
   ],
   "language": "am",
