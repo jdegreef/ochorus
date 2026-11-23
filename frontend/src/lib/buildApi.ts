@@ -38,6 +38,43 @@ export function buildApiBase(env: Env): string {
 	return (localBuildApiOrigin(env) ?? env.PUBLIC_API_BASE_URL ?? '').replace(/\/+$/, '');
 }
 
+/** The header that marks a request as the web build's (backend common/api_guard.py). */
+export const SERVICE_KEY_HEADER = 'x-ochorus-key';
+
+/**
+ * The header the build sends so the API's guard lets it through: the build is a
+ * server, so it sends no `Origin`, and it is the one caller that can keep a
+ * secret. `OCHORUS_API_KEY` is a PRIVATE env var on ochorus-web (never
+ * `PUBLIC_`, which would bake it into the bundle every visitor downloads).
+ * Unset, this is `{}` and the build behaves as it always has.
+ */
+export function serviceKeyHeaders(env: Env): Record<string, string> {
+	const key = (env.OCHORUS_API_KEY || '').trim();
+	return key ? { [SERVICE_KEY_HEADER]: key } : {};
+}
+
+/**
+ * `input` + `init` as one Request carrying the service key, when it is
+ * addressed to `apiOrigin` and a key is set; otherwise `input` untouched.
+ * Applied inside handleFetch, AFTER SvelteKit has recorded the load's own
+ * request headers for the inlined response, so the key never reaches a page
+ * and hydration still matches what the browser asks for.
+ */
+export function withServiceKey(
+	input: string | URL | Request,
+	init: RequestInit | undefined,
+	apiOrigin: string,
+	headers: Record<string, string>
+): [string | URL | Request, RequestInit | undefined] {
+	const raw = input instanceof Request ? input.url : String(input);
+	if (!Object.keys(headers).length || !URL.canParse(raw) || new URL(raw).origin !== apiOrigin) {
+		return [input, init];
+	}
+	const request = new Request(input, init);
+	for (const [name, value] of Object.entries(headers)) request.headers.set(name, value);
+	return [request, undefined];
+}
+
 /**
  * `input` addressed to `to` instead of `from` when it is addressed to `from`;
  * otherwise `input` itself. Path, query and — for a Request — method, headers

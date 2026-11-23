@@ -1,7 +1,7 @@
 import type { Handle, HandleFetch } from '@sveltejs/kit';
 import { building } from '$app/environment';
 import { env as privateEnv } from '$env/dynamic/private';
-import { localBuildApiOrigin, retarget } from '$lib/buildApi';
+import { localBuildApiOrigin, retarget, serviceKeyHeaders, withServiceKey } from '$lib/buildApi';
 import { createBuildFetch } from '$lib/buildFetch';
 import { markFallbackNoindex } from '$lib/fallbackShell';
 import { markUnadvertisedNoindex } from '$lib/advertised-locales';
@@ -71,10 +71,17 @@ const buildFetch = building && apiOrigin ? createBuildFetch(apiOrigin) : null;
 // inert) unless the flag is set.
 const localApi = building && apiOrigin ? localBuildApiOrigin(privateEnv) : null;
 
+// The build is a server, so the API's guard (backend common/api_guard.py) can't
+// recognise it by Origin: it sends OCHORUS_API_KEY instead, a private env var
+// on ochorus-web. Only on the build's own network hop, after SvelteKit has
+// recorded the load's request for inlining, so no page ever carries it.
+const serviceKey = building && apiOrigin ? serviceKeyHeaders(privateEnv) : {};
+
 export const handleFetch: HandleFetch = async ({ event, request, fetch: kitFetch }) => {
-	const fetch: typeof kitFetch = localApi
-		? (input, init) => kitFetch(retarget(input, apiOrigin!, localApi), init)
-		: kitFetch;
+	const fetch: typeof kitFetch = (input, init) => {
+		const [keyed, keyedInit] = withServiceKey(input, init, apiOrigin ?? '', serviceKey);
+		return kitFetch(localApi ? retarget(keyed, apiOrigin!, localApi) : keyed, keyedInit);
+	};
 	const response = buildFetch ? await buildFetch(request, fetch) : await fetch(request);
 	if (!apiOrigin || new URL(request.url).origin !== apiOrigin) return response;
 	const headers = new Headers(response.headers);
