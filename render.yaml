@@ -80,6 +80,16 @@ services:
         sync: false
       - key: CSRF_TRUSTED_ORIGINS # same frontend URL (used by the Django admin)
         sync: false
+      # The API guard (backend/common/api_guard.py, docs/api-access.md): /api/
+      # answers only the reader's origins, the apps, and servers sending
+      # X-Ochorus-Key. API_SERVICE_KEYS holds the accepted keys (comma-separated,
+      # for rotation); ochorus-web's OCHORUS_API_KEY must be one of them.
+      # API_GUARD_MODE: "report" (the default when unset: log, refuse nothing)
+      # or "enforce" (403). Set "enforce" only once a build has run with the key.
+      - key: API_SERVICE_KEYS
+        sync: false
+      - key: API_GUARD_MODE
+        sync: false
       # Optional: paste a Sentry DSN to turn on API error monitoring. Each report
       # is tagged with the deploy's commit automatically (Render sets
       # RENDER_GIT_COMMIT), so an error names the release that introduced it
@@ -883,6 +893,11 @@ services:
         destination: /:lang/topics.html
     envVars:
       - key: PUBLIC_API_BASE_URL # the ochorus-api URL, after first deploy
+        sync: false
+      # PRIVATE (no PUBLIC_ prefix, so it never reaches the bundle): the key the
+      # build's prerender sends so the API guard lets it in. One of ochorus-api's
+      # API_SERVICE_KEYS. docs/api-access.md.
+      - key: OCHORUS_API_KEY
         sync: false
       - key: PUBLIC_SITE_URL # public origin for canonical/OG/sitemap; the ochorus-web URL (or ochorus.com later)
         sync: false

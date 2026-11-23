@@ -12,6 +12,7 @@ import tempfile
 from pathlib import Path
 
 import dj_database_url
+from django.core.exceptions import ImproperlyConfigured
 from dotenv import load_dotenv
 
 from common.env import origin_url
@@ -73,6 +74,9 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",  # must come before CommonMiddleware
+    # After CORS, so a refusal still carries the headers a browser needs to read
+    # it. Keeps /api/ for Ochorus's own clients (common/api_guard.py).
+    "common.api_guard.ApiGuardMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -417,6 +421,28 @@ CSRF_TRUSTED_ORIGINS = [
     o.strip()
     for o in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
     if o.strip()
+]
+
+
+# --- API guard (common/api_guard.py) ------------------------------------------
+# Keeps /api/ for Ochorus's own clients: a browser page from one of the CORS
+# origins above, the phone apps, or a server sending X-Ochorus-Key (the web
+# build). "off" | "report" (log what would be refused) | "enforce" (403).
+# Production defaults to "report": the build sends its key only once
+# OCHORUS_API_KEY is set on ochorus-web, so enforcing first would fail its
+# prerender. docs/api-access.md has the switch-over steps.
+_API_GUARD_DEFAULT = (
+    "off" if DEBUG or (len(sys.argv) > 1 and sys.argv[1] == "test") else "report"
+)
+API_GUARD_MODE = os.getenv("API_GUARD_MODE", _API_GUARD_DEFAULT).strip().lower()
+if API_GUARD_MODE not in {"off", "report", "enforce"}:
+    raise ImproperlyConfigured(
+        f"API_GUARD_MODE must be off, report or enforce, not {API_GUARD_MODE!r}"
+    )
+# Comma-separated, so a key can be rotated: add the new one, move the callers,
+# drop the old one. Each should be long and random (`openssl rand -hex 32`).
+API_SERVICE_KEYS = [
+    k.strip() for k in os.getenv("API_SERVICE_KEYS", "").split(",") if k.strip()
 ]
 
 

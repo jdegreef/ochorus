@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { buildApiBase, DEFAULT_LOCAL_API_PORT, localBuildApiOrigin, retarget } from './buildApi';
+import {
+	buildApiBase,
+	DEFAULT_LOCAL_API_PORT,
+	localBuildApiOrigin,
+	retarget,
+	SERVICE_KEY_HEADER,
+	serviceKeyHeaders,
+	withServiceKey
+} from './buildApi';
 
 const PROD = 'https://api.ochorus.com';
 const LOCAL = 'http://127.0.0.1:8765';
@@ -64,5 +72,55 @@ describe('retarget', () => {
 		const other = new Request('https://api.takeroot.bible/api/bible/x');
 		expect(retarget(other, PROD, LOCAL)).toBe(other);
 		expect(retarget('/covers/a.webp', PROD, LOCAL)).toBe('/covers/a.webp');
+	});
+});
+
+describe('serviceKeyHeaders', () => {
+	it('is empty without a key, so an unconfigured build is unchanged', () => {
+		expect(serviceKeyHeaders({})).toEqual({});
+		expect(serviceKeyHeaders({ OCHORUS_API_KEY: '  ' })).toEqual({});
+	});
+	it('names the key the API guard reads', () => {
+		expect(serviceKeyHeaders({ OCHORUS_API_KEY: ' s3cret ' })).toEqual({
+			[SERVICE_KEY_HEADER]: 's3cret'
+		});
+	});
+});
+
+describe('withServiceKey', () => {
+	const API = 'https://api.ochorus.com';
+	const KEY = { [SERVICE_KEY_HEADER]: 's3cret' };
+
+	it('adds the key to a request for the API, keeping its own headers', () => {
+		const [out, init] = withServiceKey(
+			`${API}/api/library/books/`,
+			{ headers: { accept: 'x' } },
+			API,
+			KEY
+		);
+		expect(out).toBeInstanceOf(Request);
+		expect(init).toBeUndefined();
+		const req = out as Request;
+		expect(req.headers.get(SERVICE_KEY_HEADER)).toBe('s3cret');
+		expect(req.headers.get('accept')).toBe('x');
+		expect(req.url).toBe(`${API}/api/library/books/`);
+	});
+
+	it('never sends the key anywhere else', () => {
+		const init = {};
+		for (const url of [
+			'https://example.com/api/x',
+			'/api/library/books/',
+			'https://api.ochorus.com.evil.example/'
+		]) {
+			const [out, outInit] = withServiceKey(url, init, API, KEY);
+			expect(out).toBe(url);
+			expect(outInit).toBe(init);
+		}
+	});
+
+	it('leaves the request alone when no key is configured', () => {
+		const req = new Request(`${API}/api/library/books/`);
+		expect(withServiceKey(req, undefined, API, {})[0]).toBe(req);
 	});
 });

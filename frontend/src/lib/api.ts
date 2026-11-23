@@ -1,5 +1,6 @@
 import { building } from '$app/environment';
 import { englishDownloadedOffline, readDownloaded, storeDownloaded } from './appOffline.svelte';
+import { serviceKeyHeaders } from './buildApi';
 import { API_BASE_URL } from './config';
 import { IS_APP } from './platform';
 
@@ -126,6 +127,23 @@ const RUNTIME_TRANSIENT = new Set([502, 503, 504]);
 const isIdempotent = (init: RequestInit) =>
 	!init.method || ['GET', 'HEAD'].includes(init.method.toUpperCase());
 
+/**
+ * A build-time request on the GLOBAL fetch (a route's `entries()`, the chapter
+ * batcher's own calls) with the build's service key, so the API's guard
+ * (backend common/api_guard.py) lets the build in. `OCHORUS_API_KEY` is read
+ * from the build's environment, never bundled: `building` is false in the
+ * browser, so this never runs there. A load()'s own fetch is left alone — its
+ * headers are hashed into the inlined response's key, and hooks.server.ts adds
+ * the key on that path after SvelteKit has recorded them.
+ */
+function withBuildKey(init: RequestInit): RequestInit {
+	const key = serviceKeyHeaders(globalThis.process?.env ?? {});
+	if (!Object.keys(key).length) return init;
+	const headers = new Headers(init.headers);
+	for (const [name, value] of Object.entries(key)) headers.set(name, value);
+	return { ...init, headers };
+}
+
 async function robustFetch(url: string, init: RequestInit, f: Fetch = fetch): Promise<Response> {
 	// The native app's build prerenders nothing, so nothing in it may ask the
 	// API (vite.config.ts un-exports the routes' `entries`). Say so at once,
@@ -135,6 +153,7 @@ async function robustFetch(url: string, init: RequestInit, f: Fetch = fetch): Pr
 			`The app build asked the API for ${url}. It prerenders nothing — see appSkipsEntries in vite.config.ts.`
 		);
 	}
+	if (building && f === fetch) init = withBuildKey(init);
 	if (!isIdempotent(init)) return f(url, init);
 	const transient = (status: number) => (building ? status >= 500 : RUNTIME_TRANSIENT.has(status));
 	const ladder = (restartShaped: boolean) =>

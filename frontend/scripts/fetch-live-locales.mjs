@@ -21,7 +21,7 @@
 import { writeFileSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildApiBase } from '../src/lib/buildApi.ts';
+import { buildApiBase, serviceKeyHeaders } from '../src/lib/buildApi.ts';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT = join(HERE, '..', 'src', 'lib', 'live-locales.generated.ts');
@@ -30,6 +30,8 @@ const INLANG = join(HERE, '..', 'project.inlang', 'settings.json');
 // The local build API when OCHORUS_BUILD_API=local, else PUBLIC_API_BASE_URL.
 const API = buildApiBase(process.env);
 const ENDPOINT = `${API}/api/library/languages/?all=1`;
+// The API's guard knows the build by this key (backend common/api_guard.py).
+const HEADERS = serviceKeyHeaders(process.env);
 
 /** Exit with a message that says what broke and what to do about it. */
 function die(what, detail) {
@@ -51,7 +53,7 @@ if (!API) {
 
 let payload;
 try {
-	const res = await fetch(ENDPOINT, { signal: AbortSignal.timeout(20_000) });
+	const res = await fetch(ENDPOINT, { headers: HEADERS, signal: AbortSignal.timeout(20_000) });
 	if (!res.ok) die(`the API answered ${res.status}`, 'Expected 200 with a JSON array.');
 	payload = await res.json();
 } catch (e) {
@@ -122,6 +124,7 @@ for (const code of codes) {
 	let list;
 	try {
 		const res = await fetch(`${API}/api/library/articles/?language=${code}`, {
+			headers: HEADERS,
 			signal: AbortSignal.timeout(20_000)
 		});
 		if (!res.ok) die(`the articles endpoint answered ${res.status} for ${code}`, 'Expected 200.');
