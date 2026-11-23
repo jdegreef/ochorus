@@ -33,5 +33,20 @@
     "title": "Семейные чтения: герои, которые доверились Богу",
     "description": "Пять недель пятиминутных семейных чтений: подлинные истории трёх людей, которые во всём доверялись Богу, — по одной короткой главе вслух каждый вечер. Джордж Мюллер и его сироты, Хадсон Тейлор на пути в Китай и Аманда Смит, рождённая в рабстве, которая молилась о паре туфель. Каждая глава заканчивается молитвой и тремя вопросами, чтобы поговорить вместе.",
     "note": ["Family-devotions plan backed by the ru editions of the-life-of-trust-children, a-retrospect-children and amanda-smith-autobiography-children (Russian batch 2026-11-21). AI-drafted; awaiting native review."]
+  },
+  "john-in-21-days": {
+    "title": "Евангелие от Иоанна за 21 день",
+    "description": "Три недели с четвёртым Евангелием в переводе Open Word Bible, по главе в день: Слово, ставшее плотью, семь знамений, слова «Я есть», долгое прощание в горнице, крест как час славы и завтрак у озера.",
+    "note": ["Russian Bible reading plans (Open Word Bible, build_owb_book --language ru, New Testament 2026-11-23). AI-drafted; awaiting native review."]
+  },
+  "easter-the-risen-lord": {
+    "title": "Пасха: воскресший Господь",
+    "description": "Восемь дней от Пасхи до следующего воскресенья, по одной главе о воскресении в день в переводе Open Word Bible: пустая гробница и Мария в саду, дорога в Эммаус, великое поручение, юноша у гробницы, завтрак у озера, Павел о первенце из мёртвых, крещение в новую жизнь и Живой среди светильников. Около четырёх минут в день.",
+    "note": ["Russian Bible reading plans (Open Word Bible, build_owb_book --language ru, New Testament 2026-11-23). AI-drafted; awaiting native review."]
+  },
+  "new-testament-in-90-days": {
+    "title": "Новый Завет за 90 дней",
+    "description": "Весь Новый Завет в переводе Open Word Bible, от Матфея до Откровения по порядку: все 260 глав за 90 дней. В большинство дней читается от двух до четырёх глав, около десяти минут, и они распределены так, чтобы дни были примерно равной длины и не выходили за пределы одной книги; самые короткие послания получают свой день. Через четыре Евангелия, первые дни церкви в Деяниях, письма Павла и других апостолов, к новому небу и новой земле.",
+    "note": ["Russian Bible reading plans (Open Word Bible, build_owb_book --language ru, New Testament 2026-11-23). AI-drafted; awaiting native review."]
   }
 }

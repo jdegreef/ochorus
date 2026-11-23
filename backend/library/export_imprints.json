@@ -17,6 +17,13 @@
         "html": "<p>Las Escrituras de este libro son la Open Word Bible, una nueva traducción de la Biblia hecha directamente del hebreo y del griego, y vertida al español de hoy.</p><p>Cada una de sus oraciones está traducida en tres niveles: <em>Literal</em>, que sigue de cerca el original y pone entre corchetes toda palabra que añade; <em>Equilibrado</em>, preciso y natural; y <em>Legible</em>, en lenguaje sencillo y actual, explícito donde eso ayuda. Este libro imprime el nivel Equilibrado.</p><p>Detrás de cada oración hay un registro de las palabras originales, una glosa literal, las tres traducciones y cada decisión que tomaron los traductores, con su razón. Donde una lectura es incierta, el registro lo dice.</p><p>Esta es una edición para leer: capítulos y párrafos, con los números de versículo en tamaño pequeño, y la poesía dispuesta verso a verso. «SEÑOR» en mayúsculas representa el nombre personal de Dios. La introducción y la conclusión fueron escritas para esta edición por Ochorus.</p><p>La Open Word Bible está dedicada al dominio público bajo CC0 1.0. Cualquiera puede leerla, copiarla, imprimirla y compartirla libremente.</p>",
         "more": "Cada oración puede leerse con su razonamiento, en los tres niveles, en",
         "edition": "Esta edición fue preparada por Ochorus, una biblioteca gratuita de clásicos cristianos."
+      },
+      "ru": {
+        "title": "О переводе",
+        "name": "Open Word Bible",
+        "html": "<p>Писание в этой книге — Open Word Bible, новый перевод Библии, сделанный прямо с еврейского и греческого на современный русский язык.</p><p>Каждое его предложение переведено на трёх уровнях: <em>Буквальный</em>, который близко следует оригиналу и заключает в скобки каждое добавленное слово; <em>Сбалансированный</em>, точный и естественный; и <em>Простой</em>, на понятном современном языке, с пояснениями там, где они помогают. В этой книге напечатан уровень «Сбалансированный».</p><p>За каждым предложением стоит запись исходных слов, буквальный подстрочник, три перевода и каждое решение переводчиков с его обоснованием. Где чтение неясно, запись говорит об этом.</p><p>Это издание для чтения: главы и абзацы, с номерами стихов мелким шрифтом, и поэзия, набранная строка за строкой. «ГОСПОДЬ» заглавными буквами передаёт личное имя Бога. Введение и заключение написаны для этого издания Ochorus.</p><p>Open Word Bible передана в общественное достояние по лицензии CC0 1.0. Любой может читать, копировать, печатать и распространять её свободно.</p>",
+        "more": "Каждое предложение с его обоснованием, на всех трёх уровнях, можно прочитать на",
+        "edition": "Это издание подготовлено Ochorus, бесплатной библиотекой христианской классики."
       }
     }
   }
