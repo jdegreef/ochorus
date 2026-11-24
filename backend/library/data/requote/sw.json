@@ -5,6 +5,7 @@
   "Read by library.requote (manage.py requote_inventory). Same shape as am.json; see its `about` for what each key does.",
   "book_names: how the Swahili library cites each book (Union-era names, counted across its fixtures and bios), mapped to USFM. A numbered book is keyed '1 Wakorintho' (Swahili writes no ordinal suffix); abbreviations the corpus uses are their own keys, without a trailing dot.",
   "quote_marks: the marks a quotation stands in. The Swahili library quotes with “…” (a few older works with «…»); the validator reads the Scripture inside either, and keeps each pair balanced.",
+  "case_sensitive: OWB Swahili capitalises God's pronouns (Yako, Langu, Yeye) where the Union text has yako, langu, yeye, so a verbatim-OWB check compares with case. min_piece: a '…'-joined or sentence piece shorter than 8 letters proves nothing in a Latin script ('ni', 'kwa'), so it is not counted as OWB.",
   "fold: none. Swahili spelling does not vary between the Union text and OWB the way Ethiopic syllable rows do.",
   "decisions: the recurring words where the Union wording the corpus quotes differs from OWB Swahili, seeded from the corpus before the first wave. Waves add to it, as Amharic's did. OWB Swahili capitalises pronouns for God (Yako, Langu, Yeye): a quoted verse keeps OWB's capitals; the author's own prose follows the translation-worker rule."
  ],
@@ -20,6 +21,8 @@
    "»"
   ]
  ],
+ "case_sensitive": true,
+ "min_piece": 8,
  "sentence_final": [
   ".",
   "?",
@@ -163,7 +166,7 @@
    "old": [
     "Yehova"
    ],
-   "decision": "OWB renders the divine name BWANA (Exodus 6:3 '…kwa jina Langu, BWANA'). A quoted verse keeps OWB; the author's own 'Jehovah' in prose may stay Yehova where he argues from the name itself."
+   "decision": "OWB renders the divine name BWANA (Exodus 6:3 '…kwa jina Langu, BWANA'). A quoted verse keeps OWB; the author's own 'Jehovah' in prose follows the same word, as in Amharic."
   },
   {
    "id": "convict",

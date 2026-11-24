@@ -672,22 +672,47 @@ _MIN_JOINED = 8
 _norm = lru_cache(maxsize=65536)(vc.normalise)
 
 
-def verbatim(quote: str, source: str) -> bool:
+@lru_cache(maxsize=65536)
+def _norm_cased(text: str) -> str:
+    """``vc.normalise`` without the casefold."""
+    return "".join(
+        c
+        for c in text
+        if not unicodedata.category(c).startswith("P") and not c.isspace()
+    )
+
+
+def _norm_for(language: str):
+    """The comparison key for a language's VERBATIM checks. Case-sensitive
+    where OWB's capitals are part of the wording (``case_sensitive`` in the
+    language data: Swahili OWB capitalises God's pronouns, Yako against the
+    Union's yako). The fuzzy same-verse match stays casefolded."""
+    return _norm_cased if language_data(language).get("case_sensitive") else _norm
+
+
+def _min_piece(language: str) -> int:
+    """The shortest joined piece that proves anything (``min_piece``): three
+    Ethiopic syllables are a word, three Latin letters are not."""
+    return int(language_data(language).get("min_piece", _MIN_PIECE))
+
+
+def verbatim(quote: str, source: str, language: str) -> bool:
     """``mined_verification.is_verbatim`` with a per-piece floor that suits a
     syllabic script: its 8-character floor rejects the «በእኔ ብትኖሩ … ለምኑ»
     joins the four rules allow. The pieces still have to be in OWB's order
     and together long enough to mean something."""
-    t, s = _norm(quote), _norm(source)
+    norm = _norm_for(language)
+    t, s = norm(quote), norm(source)
     if not t or not s:
         return False
     if t in s or s in t:
         return True
-    pieces = [_norm(p) for p in _ELLIPSIS.split(quote)]
+    pieces = [norm(p) for p in _ELLIPSIS.split(quote)]
     pieces = [p for p in pieces if p]
     if (
         len(pieces) < 2
         or not s
-        or any(len(p) < _MIN_PIECE for p in pieces)
+        or any(len(p) < _min_piece(language) for p in pieces)
         or sum(map(len, pieces)) < _MIN_JOINED
     ):
         return False
@@ -716,14 +741,15 @@ def is_owb(text: str, span: Span, language: str, slack: int = STATUS_SLACK) -> b
     source = owb_text(span, language, slack=slack)
     if not source:
         return False
-    if verbatim(text, source):
+    if verbatim(text, source, language):
         return True
+    norm, floor = _norm_for(language), _min_piece(language)
     pieces = [
-        p for part in _SENTENCES.split(text) for p in _ELLIPSIS.split(part) if _norm(p)
+        p for part in _SENTENCES.split(text) for p in _ELLIPSIS.split(part) if norm(p)
     ]
-    target = _norm(source)
+    target = norm(source)
     return len(pieces) > 1 and all(
-        len(_norm(p)) >= _MIN_PIECE and _norm(p) in target for p in pieces
+        len(norm(p)) >= floor and norm(p) in target for p in pieces
     )
 
 
@@ -760,7 +786,7 @@ def _best_verse(quote: str, vids, language: str) -> tuple[float, int | None]:
     best, at = 0.0, None
     for vid in sorted(vids):
         owb = scripture.owb_verse(vid, language)
-        if owb and verbatim(quote, owb[1]):
+        if owb and verbatim(quote, owb[1], language):
             return 2.0, vid
         for cand in _candidates_text(vid, language):
             s = similarity(quote, cand, language)
@@ -1089,7 +1115,7 @@ def _global_verbatim(quote: str, language: str) -> int | None:
             votes[v] += 1
     for vid, _ in sorted(votes.items(), key=lambda kv: -kv[1])[:10]:
         found = scripture.owb_verse(vid, language)
-        if found and verbatim(quote, found[1]):
+        if found and verbatim(quote, found[1], language):
             return vid
     return None
 
@@ -1288,7 +1314,9 @@ def notes_diff(rows: list[Row], notes: list[dict], work: Work) -> dict:
             return True
         source = owb_text(span, work.language, slack=1)
         return any(
-            r.kind != "english_only" and source and verbatim(r.text, source)
+            r.kind != "english_only"
+            and source
+            and verbatim(r.text, source, work.language)
             for r in groups[key]
         )
 

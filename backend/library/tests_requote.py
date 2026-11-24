@@ -435,6 +435,37 @@ class SwahiliValidatorTests(SimpleTestCase):
         self.assertIn("balance", self.check(f"“{self.verse[:-1]}", self_rendered=True))
 
 
+class SwahiliInventoryTests(SimpleTestCase):
+    """The detectors on Swahili text, and the two ways Latin-script Swahili
+    differs from Ethiopic: OWB's capitals are wording, and three letters are
+    not a piece."""
+
+    def test_union_quotations_need_requoting_and_owb_does_not(self):
+        work = work_of(
+            "<p>Yesu alisema, “Mapenzi yako yatimizwe” (Mathayo 26:42).</p>"
+            "<p>Paulo, “ombeni bila kukoma” (1 Wathesalonike 5:17).</p>"
+            "<p>“Mapenzi Yako na yatendeke duniani kama yanavyotendeka mbinguni”"
+            " (Mathayo 6:10).</p>",
+            language="sw",
+        )
+        rows = {r.reference: r for r in rq.inventory(work, None)}
+        self.assertEqual(rows["Matthew 26:42"].status, rq.NEEDS_REQUOTE)
+        self.assertIn("thy-will-be-done", rows["Matthew 26:42"].flags)
+        self.assertEqual(rows["1 Thessalonians 5:17"].status, rq.NEEDS_REQUOTE)
+        self.assertIn("pray-without-ceasing", rows["1 Thessalonians 5:17"].flags)
+        self.assertEqual(rows["Matthew 6:10"].status, rq.ALREADY_OWB)
+
+    def test_owbs_capitals_are_part_of_the_wording(self):
+        span = rq.parse_reference("Matthew 6:10")
+        self.assertTrue(rq.is_owb("Mapenzi Yako na yatendeke duniani", span, "sw"))
+        self.assertFalse(rq.is_owb("Mapenzi yako na yatendeke duniani", span, "sw"))
+
+    def test_a_short_latin_piece_proves_nothing(self):
+        span = rq.parse_reference("Matthew 6:10")
+        self.assertFalse(rq.is_owb("Mapenzi Yako… kama", span, "sw"))
+        self.assertTrue(rq.is_owb("Mapenzi Yako na yatendeke… mbinguni", span, "sw"))
+
+
 class ShippedWorkTests(SimpleTestCase):
     """A wave-1 work, already re-quoted: the inventory should call nearly
     every quotation OWB and find the notes complete."""
