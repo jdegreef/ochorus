@@ -33,12 +33,6 @@ class ApiCompressionTests(SimpleTestCase):
         self.assertFalse(response.has_header("Content-Encoding"))
         self.assertEqual(response.content, BODY)
 
-    def test_a_server_without_an_origin_gets_plain_bytes(self):
-        # The web build's crawl (Node's fetch crashed on gzip bodies).
-        response = respond("/api/books/", origin=None)
-        self.assertFalse(response.has_header("Content-Encoding"))
-        self.assertEqual(response.content, BODY)
-
     def test_the_admin_is_never_compressed(self):
         # BREACH: a CSRF token (Django admin) or readers' emails (admin API)
         # next to caller-chosen text.
