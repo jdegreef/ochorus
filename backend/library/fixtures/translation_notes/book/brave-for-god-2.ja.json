@@ -1,0 +1,14 @@
+{
+    "kind": "book",
+    "slug": "brave-for-god-2",
+    "language": "ja",
+    "job_issue": 9757,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Luke 23:34",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        }
+    ]
+}
