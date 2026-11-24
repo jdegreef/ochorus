@@ -1,0 +1,32 @@
+{
+  "title": "A Primeira Carta de João",
+  "cover_title": "1 João",
+  "subtitle": "Iōannou A, “Primeira de João”",
+  "description": "Uma carta sem saudação e sem despedida, escrita por um velho pastor aos seus “filhinhos” depois de uma divisão dolorosa na igreja, para que os que ficaram soubessem que têm a vida eterna. Ela começa com a vida que foi ouvida, vista e tocada com mãos humanas, e volta repetidas vezes a três testes: o que cremos sobre Jesus, se guardamos os Seus mandamentos e se amamos uns aos outros. Deus é luz; Deus é amor; o amor não tem lugar para o medo; e nós amamos porque Ele nos amou primeiro. Na Open Word Bible, uma nova tradução do grego entregue livremente ao domínio público, com uma introdução à forma e ao sentido da carta e uma conclusão sobre por onde continuar a leitura.",
+  "qa": [
+    {
+      "question": "O que é a Primeira Carta de João?",
+      "answer": "O vigésimo terceiro livro do Novo Testamento, a mais longa das três cartas que levam o nome de João. Não tem saudação nem despedida e se parece com o sermão de um pastor a uma igreja que ele conhece bem. Escrita depois que um grupo deixou a igreja negando que Jesus Cristo tivesse vindo em carne, ela dá aos crentes que ficaram maneiras de reconhecer a verdade e de ter certeza da sua posição diante de Deus. Ela declara o seu próprio propósito em 5:13: para que vocês saibam que têm a vida eterna."
+    },
+    {
+      "question": "Quem escreveu 1 João, e quando foi escrita?",
+      "answer": "A carta não diz o nome do seu autor. Ele escreve como testemunha ocular de Jesus e como pai dos seus leitores, numa linguagem muito próxima à do Evangelho de João. Desde o século II, a igreja a recebeu como obra do apóstolo João, escrita no fim da vida, em Éfeso, provavelmente nas últimas décadas do século I. Alguns estudiosos pensam que ela veio de um líder do círculo que guardava com carinho o testemunho de João, talvez o “presbítero” de 2 e 3 João."
+    },
+    {
+      "question": "Por que 1 João foi escrita?",
+      "answer": "Um grupo tinha deixado a igreja (“Eles saíram do nosso meio”, 2:19). Eles negavam que Jesus é o Cristo e não queriam confessá-Lo como aquele que veio em carne, embora afirmassem conhecer a Deus. A carta não os nomeia, e os estudiosos discutem se eles tinham as ideias ensinadas mais tarde por Cerinto ou pelos que diziam que Cristo apenas parecia ter um corpo. O autor tranquiliza os que ficaram e lhes dá testes da fé verdadeira: a crença correta sobre Jesus, a obediência aos Seus mandamentos e o amor uns pelos outros."
+    },
+    {
+      "question": "O que significa “Deus é amor” em 1 João?",
+      "answer": "A frase aparece duas vezes, em 4:8 e 4:16, ao lado da afirmação anterior de que “Deus é luz” (1:5). A carta diz que o amor não se encontra primeiro no nosso amor por Deus, mas no amor Dele por nós, mostrado quando Ele enviou o Seu Filho como o sacrifício que faz expiação pelos nossos pecados (4:10). Porque Deus é amor, quem O conhece amará os outros, não só com palavras, mas com atos (3:18), e o amor não tem lugar para o medo (4:18)."
+    },
+    {
+      "question": "1 João ensina que os cristãos não pecam?",
+      "answer": "Ela diz tanto que quem afirma estar livre de pecado está enganando a si mesmo (1:8) quanto que quem nasceu de Deus “não continua pecando” (3:9). O tempo verbal do grego no capítulo 3 descreve um modo de vida estabelecido, e não cada ato isolado. John Wesley recorreu a esses versículos para o seu ensino sobre a perfeição cristã; outros os leem como uma descrição da direção da vida do crente. Todos concordam que a carta chama os cristãos à santidade e promete perdão aos que confessam os seus pecados (1:9; 2:1–2)."
+    },
+    {
+      "question": "Que tradução da Bíblia é esta?",
+      "answer": "A Open Word Bible, uma nova tradução feita diretamente do grego e dedicada ao domínio público, impressa aqui em seu nível Equilibrado, que procura ser precisa e soar natural quando lida em voz alta. Como a maioria das Bíblias modernas, ela não inclui as palavras sobre o Pai, a Palavra e o Espírito Santo que se encontram em 5:7 na versão King James e na Almeida Revista e Corrigida, e que não estão em nenhum manuscrito grego antigo. O raciocínio por trás de cada uma das suas frases, com o grego ao lado, está publicado em openwordbible.org. A introdução e a conclusão foram escritas para esta edição."
+    }
+  ]
+}

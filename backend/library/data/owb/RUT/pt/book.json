@@ -1,0 +1,32 @@
+{
+  "title": "Rute",
+  "cover_title": "",
+  "subtitle": "Rut, “O Livro de Rute”",
+  "description": "Uma história curta dos dias sombrios dos juízes, contada com rara ternura. A fome leva uma família de Belém para Moabe, e dez anos depois Noemi volta para casa viúva, sem os filhos, dizendo: “Saí daqui cheia, mas o SENHOR me trouxe de volta vazia.” Com ela vem a nora moabita, que não quis deixá-la: “O seu povo agora é o meu povo, e o seu Deus agora é o meu Deus.” Depois vêm a colheita da cevada, o campo de Boaz, uma noite na eira e um resgatador da família à porta da cidade, até que as vazias ficam cheias e nasce um bebê que será o avô de Davi. Um livro sobre o amor leal, humano e divino, e sobre Deus agindo nos dias comuns. Na Open Word Bible, uma nova tradução do hebraico entregue livremente ao domínio público, com uma introdução à forma e ao sentido do livro e uma conclusão sobre o que ler em seguida.",
+  "qa": [
+    {
+      "question": "Do que trata o livro de Rute?",
+      "answer": "De uma viúva moabita, Rute, que se recusa a deixar a sogra israelita, Noemi, depois que os maridos de ambas morrem, e vai com ela para Belém, tomando como seus o povo e o Deus de Noemi. Respigando nos campos da colheita, ela conhece Boaz, parente do marido de Noemi, que a trata com grande bondade e, como resgatador da família, se casa com ela e restaura a terra e o nome da família. O filho deles, Obede, é o avô do rei Davi (4:17). Os seus quatro capítulos levam Noemi do vazio à plenitude e mostram o cuidado de Deus agindo por meio da fidelidade de pessoas comuns."
+    },
+    {
+      "question": "Quem escreveu o livro de Rute, e quando?",
+      "answer": "O livro não diz quem é o seu autor. A tradição judaica o atribuiu a Samuel. Como a genealogia final termina em Davi, ele não foi escrito antes do tempo de Davi. Alguns estudiosos o datam do período dos reis; outros, do tempo depois do exílio, quando a sua calorosa acolhida a uma esposa estrangeira teria falado aos debates sobre casamentos fora de Israel. A própria história se passa “nos dias em que os juízes julgavam” (1:1), provavelmente algumas gerações antes de Davi."
+    },
+    {
+      "question": "O que é um resgatador (go’el) no livro de Rute?",
+      "answer": "Um parente próximo que tinha o direito e o dever de socorrer um membro da família em dificuldade: resgatar a terra que um parente pobre tinha sido obrigado a vender (Levítico 25:25) e, por um costume relacionado (Deuteronômio 25:5–6), suscitar um herdeiro para um homem que morreu sem filhos. Esta tradução o chama de “resgatador da família”. Em Rute 4, um parente mais próximo recusa esse papel por medo de prejudicar a própria herança, e Boaz o assume, comprando a terra de Elimeleque e casando-se com Rute. Os cristãos há muito veem nele uma figura de Cristo, que resgata o seu povo à custa de si mesmo."
+    },
+    {
+      "question": "O que significa “hesed” no livro de Rute?",
+      "answer": "Hesed é a palavra hebraica para uma bondade leal e comprometida, que vai além do que o dever exige; esta tradução a verte por “amor leal” e, em 3:10, por “lealdade”. Ela aparece em três momentos decisivos do livro: na oração de Noemi pelas noras (1:8), no seu louvor ao SENHOR quando descobre onde Rute respigou (2:20) e no elogio de Boaz a Rute na eira (3:10). Rute a demonstra a Noemi, Boaz a demonstra a Rute e, por trás de ambos, o SENHOR a demonstra a todos."
+    },
+    {
+      "question": "Por que Rute está na genealogia de Jesus?",
+      "answer": "Porque ela foi bisavó do rei Davi, de cuja linhagem foi prometido o Messias. O Evangelho de Mateus a nomeia na lista dos antepassados de Jesus, “Boaz foi pai de Obede, filho de Rute” (Mateus 1:5), ao lado de Tamar, Raabe e a mulher de Urias. Que uma mulher moabita, de um povo que Deuteronômio excluía da assembleia de Israel, seja antepassada do Messias há muito tempo é lido como sinal de que a promessa de Deus de abençoar todas as famílias da terra era destinada a todas as nações."
+    },
+    {
+      "question": "Que tradução da Bíblia é esta?",
+      "answer": "A Open Word Bible, uma nova tradução feita diretamente do hebraico e dedicada ao domínio público, impressa aqui em seu nível Equilibrado, que procura ser exata e soar natural quando lida em voz alta. “SENHOR” em maiúsculas representa o nome pessoal de Deus. O raciocínio por trás de cada uma das suas frases, com o hebraico ao lado, está publicado em openwordbible.org. A introdução e a conclusão foram escritas para esta edição."
+    }
+  ]
+}

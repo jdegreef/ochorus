@@ -1,0 +1,33 @@
+{
+  "title": "Os Salmos",
+  "cover_title": "Salmos",
+  "subtitle": "Tehillim, “Louvores”",
+  "chapter_label": "Salmo",
+  "description": "O livro de orações e de cânticos de Israel e da igreja: cento e cinquenta salmos, reunidos ao longo de mil anos em cinco livros, que começam com “Como é feliz a pessoa” e terminam com “Que toda criatura que respira louve o SENHOR!” O salmo do pastor e o clamor “Meu Deus, meu Deus, por que me abandonaste?”; a confissão de Davi depois de Bate-Seba e a oração de Moisés por todas as gerações; os cânticos das subidas, entoados pelos peregrinos a caminho de Jerusalém; lamentos que se transformam em confiança, e os salmos que Jesus orou na cruz. Dispostos linha por linha, como a poesia que são, na Open Word Bible, uma nova tradução do hebraico entregue livremente ao domínio público, com uma introdução à forma e ao sentido do livro e uma conclusão sobre o que ler a seguir.",
+  "qa": [
+    {
+      "question": "O que são os Salmos?",
+      "answer": "Os Salmos são uma coleção de cento e cinquenta orações e cânticos do Antigo Testamento, o livro de orações e o hinário do antigo Israel e, desde então, da igreja. O seu nome hebraico, Tehillim, significa “Louvores”, embora haja entre eles mais lamentos do que qualquer outra coisa. Foram escritos ao longo de muitos séculos, desde o tempo de Moisés e de Davi até a volta do exílio na Babilônia, e foram reunidos em cinco livros, cada um terminando com uma bênção a Deus. Nenhum livro do Antigo Testamento é citado com mais frequência no Novo Testamento."
+    },
+    {
+      "question": "Quem escreveu os Salmos?",
+      "answer": "Muitas mãos. Segundo os títulos impressos acima deles, Davi está ligado a setenta e três salmos; Asafe, um dos músicos levitas que Davi nomeou, a doze; os filhos de Corá, uma família de cantores do templo, a onze; Salomão a dois; e Moisés, Hemã e Etã a um cada. Cerca de um terço não traz nome nenhum. Os títulos são muito antigos, já faziam parte do texto hebraico e foram traduzidos na Septuaginta grega antes do tempo de Cristo, mas a maioria dos estudiosos pensa que foram acrescentados pelos editores que reuniram as coleções, e o hebraico “de Davi” pode significar escrito por Davi, dedicado a ele ou pertencente à coleção de Davi. Jesus cita o Salmo 110 como palavras de Davi."
+    },
+    {
+      "question": "Por que os Salmos estão divididos em cinco livros?",
+      "answer": "Os editores finais organizaram os Salmos em cinco livros (Salmos 1–41, 42–72, 73–89, 90–106 e 107–150), cada um fechado por uma breve doxologia, uma bênção a Deus, e o último terminando com cinco salmos de louvor. Os antigos mestres judeus viam os cinco livros como a resposta de Israel aos cinco livros de Moisés. A organização também conta uma história: o Livro III termina em tristeza pela queda da linhagem de Davi, o Livro IV responde com a oração de Moisés e o clamor “O SENHOR é Rei!”, e a coleção inteira sobe em direção ao louvor."
+    },
+    {
+      "question": "Que tipos de salmos existem?",
+      "answer": "Os principais tipos são os salmos de louvor, que chamam as pessoas a adorar a Deus e dão o motivo; os lamentos, de uma pessoa ou do povo inteiro, que derramam uma aflição e geralmente se transformam em confiança; as ações de graças por uma oração respondida; os salmos reais, sobre o rei da linhagem de Davi, e os salmos que celebram o SENHOR como Rei; os salmos de sabedoria, sobre os dois caminhos e a lei de Deus; os serenos salmos de confiança, como o Salmo 23; e os sete salmos penitenciais de confissão (6, 32, 38, 51, 102, 130 e 143). Os salmos imprecatórios, que invocam juízo sobre os inimigos, são os mais difíceis para os cristãos; a igreja os tem lido como clamores sinceros que entregam a vingança a Deus, como uma recusa a tratar o mal com leviandade, e como orações contra o pecado e o diabo, e não como maldições contra o próximo."
+    },
+    {
+      "question": "Como Jesus e o Novo Testamento usam os Salmos?",
+      "answer": "Jesus cresceu cantando os Salmos e os citava com frequência. Na cruz, orou a primeira linha do Salmo 22, “Meu Deus, meu Deus, por que me abandonaste?”, e, em Lucas, o Salmo 31:5, entregando o Seu espírito nas mãos do Pai. Ele perguntou como Davi podia chamar o Messias de “meu senhor” no Salmo 110, a passagem do Antigo Testamento mais citada no Novo. Os apóstolos pregaram o Salmo 2 e o Salmo 110 sobre o Seu reinado, o Salmo 16 sobre a Sua ressurreição e o Salmo 118 sobre a pedra rejeitada que se tornou a pedra angular, e orientaram as igrejas a cantar salmos juntas."
+    },
+    {
+      "question": "Que tradução da Bíblia é esta?",
+      "answer": "A Open Word Bible, uma nova tradução feita diretamente do hebraico e dedicada ao domínio público, impressa aqui em seu nível Equilibrado, que procura ser exata e soar natural quando lida em voz alta. Cada linha da poesia aparece separada, e “SENHOR” em maiúsculas representa o nome pessoal de Deus. O raciocínio por trás de cada uma das suas frases, com o hebraico ao lado, está publicado em openwordbible.org. A introdução e a conclusão foram escritas para esta edição."
+    }
+  ]
+}

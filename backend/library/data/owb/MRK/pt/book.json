@@ -1,0 +1,32 @@
+{
+  "title": "O Evangelho de Marcos",
+  "cover_title": "Marcos",
+  "subtitle": "Kata Markon, “Segundo Marcos”",
+  "description": "O mais curto dos quatro Evangelhos, e provavelmente o primeiro a ser escrito: “Princípio do evangelho a respeito de Jesus Cristo.” Rápido e vívido, ele passa de imediato do Jordão à Galileia, onde Jesus cura, expulsa espíritos impuros, acalma a tempestade e deixa os Seus discípulos perguntando: “Quem é este?” Depois vem o caminho para Jerusalém, com três anúncios da Sua morte, e o dito que está no coração do livro: o Filho do Homem veio para servir e dar a Sua vida como o preço do resgate de muitos. A cruz, onde um centurião romano é o primeiro a chamá-Lo de Filho de Deus, e um túmulo vazio, onde mulheres assustadas ouvem que Ele vai adiante delas para a Galileia. Segundo a tradição, as memórias de Pedro, postas por escrito pelo seu intérprete Marcos. Na Open Word Bible, uma nova tradução do grego entregue livremente ao domínio público, com uma introdução à forma e ao sentido do livro e uma conclusão sobre o que ler em seguida.",
+  "qa": [
+    {
+      "question": "O que é o Evangelho de Marcos?",
+      "answer": "O segundo e o mais curto dos quatro Evangelhos, os relatos da vida, morte e ressurreição de Jesus no Novo Testamento. Conta a história com rapidez e vivacidade, de João Batista no Jordão até o túmulo vazio, e dedica cerca de um terço do livro à última semana da vida de Jesus. O seu centro é a pergunta sobre quem é Jesus, e a sua resposta é que Ele é o Filho de Deus que veio “dar a Sua vida como o preço do resgate de muitos” (10:45)."
+    },
+    {
+      "question": "Quem escreveu o Evangelho de Marcos, e quando?",
+      "answer": "O Evangelho não diz quem é o seu autor. Desde a tradição mais antiga ele é chamado de Marcos, identificado com o João Marcos de Atos, companheiro de Paulo e Barnabé e, mais tarde, de Pedro. Papias, no início do século II, disse que Marcos foi o intérprete de Pedro e escreveu com exatidão o que Pedro lembrava do que Jesus disse e fez. A maioria dos estudiosos o data do fim dos anos 60 ou de por volta de 70 d.C., e a tradição o situa em Roma."
+    },
+    {
+      "question": "Marcos foi o primeiro Evangelho a ser escrito?",
+      "answer": "A maioria dos estudiosos pensa que sim. Quase todo o conteúdo de Marcos se encontra em Mateus e Lucas, muitas vezes na mesma ordem e com as mesmas palavras, e a explicação habitual é que os dois usaram Marcos. Outros sustentam, como Agostinho, que Mateus veio primeiro e Marcos o resumiu. A questão não muda o que nenhum dos Evangelhos diz, mas ajuda a explicar por que os três primeiros são tão parecidos."
+    },
+    {
+      "question": "O que é o “segredo messiânico” em Marcos?",
+      "answer": "Um nome que os estudiosos dão ao modo como Jesus, em Marcos, manda os demônios se calarem, diz às pessoas que curou que não contem a ninguém e ordena aos Seus discípulos que não digam que Ele é o Cristo (8:30). Parte da razão pode ser que as multidões O tomariam pelo tipo errado de Messias. O ponto mais profundo de Marcos é que ninguém consegue entender quem Jesus é antes de ter visto a cruz, onde um centurião finalmente diz: “Este homem era mesmo Filho de Deus!” (15:39)."
+    },
+    {
+      "question": "Como termina o Evangelho de Marcos?",
+      "answer": "Nos dois manuscritos completos mais antigos, ele termina em 16:8, com as mulheres fugindo do túmulo vazio sem dizer nada a ninguém, “porque estavam com medo”. Se Marcos quis terminar ali ou se o seu final se perdeu é uma questão em aberto. A maioria dos manuscritos posteriores acrescenta um final longo (16:9–20), e alguns têm um final curto; nenhum dos dois está no estilo de Marcos. Como a maioria das Bíblias, esta edição imprime os dois depois de 16:8, à parte e entre colchetes, com uma nota."
+    },
+    {
+      "question": "Que tradução da Bíblia é esta?",
+      "answer": "A Open Word Bible, uma nova tradução feita diretamente do grego e dedicada ao domínio público, impressa aqui em seu nível Equilibrado, que busca ser exata e soar natural quando lida em voz alta. O raciocínio por trás de cada uma de suas frases, com o grego ao lado, está publicado em openwordbible.org. A introdução e a conclusão foram escritas para esta edição."
+    }
+  ]
+}
