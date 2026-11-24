@@ -1,0 +1,23 @@
+{
+    "kind": "bio",
+    "slug": "george-whitefield",
+    "language": "ja",
+    "job_issue": 9704,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Luke 5:32",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Galatians 1:10",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "John 3:7",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "kind": "bio",
+    "slug": "blaise-pascal",
+    "language": "ja",
+    "job_issue": 9698,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Psalms 119:16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "2 Timothy 1:12",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Exodus 3:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        }
+    ]
+}
