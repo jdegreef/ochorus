@@ -1,0 +1,14 @@
+{
+    "kind": "bio",
+    "slug": "martin-luther",
+    "language": "ja",
+    "job_issue": 9706,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Romans 1:17",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        }
+    ]
+}
