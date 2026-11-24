@@ -24,6 +24,20 @@
         "html": "<p>Писание в этой книге — Open Word Bible, новый перевод Библии, сделанный прямо с еврейского и греческого на современный русский язык.</p><p>Каждое его предложение переведено на трёх уровнях: <em>Буквальный</em>, который близко следует оригиналу и заключает в скобки каждое добавленное слово; <em>Сбалансированный</em>, точный и естественный; и <em>Простой</em>, на понятном современном языке, с пояснениями там, где они помогают. В этой книге напечатан уровень «Сбалансированный».</p><p>За каждым предложением стоит запись исходных слов, буквальный подстрочник, три перевода и каждое решение переводчиков с его обоснованием. Где чтение неясно, запись говорит об этом.</p><p>Это издание для чтения: главы и абзацы, с номерами стихов мелким шрифтом, и поэзия, набранная строка за строкой. «ГОСПОДЬ» заглавными буквами передаёт личное имя Бога. Введение и заключение написаны для этого издания Ochorus.</p><p>Open Word Bible передана в общественное достояние по лицензии CC0 1.0. Любой может читать, копировать, печатать и распространять её свободно.</p>",
         "more": "Каждое предложение с его обоснованием, на всех трёх уровнях, можно прочитать на",
         "edition": "Это издание подготовлено Ochorus, бесплатной библиотекой христианской классики."
+      },
+      "fr": {
+        "title": "À propos de la traduction",
+        "name": "L’Open Word Bible",
+        "html": "<p>Les Écritures de ce livre sont l’Open Word Bible, une nouvelle traduction de la Bible faite directement à partir de l’hébreu et du grec, et rendue dans le français d’aujourd’hui.</p><p>Chacune de ses phrases est traduite à trois niveaux : <em>Littéral</em>, qui suit de près l’original et met entre crochets tout mot ajouté ; <em>Équilibré</em>, précis et naturel ; et <em>Lisible</em>, en langage simple et actuel, explicite là où cela aide. Ce livre donne le niveau Équilibré.</p><p>Derrière chaque phrase se trouve un dossier : les mots de l’original, une glose littérale, les trois traductions et chaque décision des traducteurs, avec sa raison. Là où une lecture est incertaine, le dossier le dit.</p><p>C’est une édition de lecture : des chapitres et des paragraphes, les numéros de versets en petit, et la poésie disposée vers par vers. « SEIGNEUR » en majuscules représente le nom personnel de Dieu. L’introduction et la conclusion ont été écrites pour cette édition par Ochorus.</p><p>L’Open Word Bible est dédiée au domaine public sous CC0 1.0. Chacun peut la lire, la copier, l’imprimer et la partager librement.</p>",
+        "more": "Chaque phrase peut se lire avec son raisonnement, aux trois niveaux, sur",
+        "edition": "Cette édition a été préparée par Ochorus, une bibliothèque gratuite de classiques chrétiens."
+      },
+      "pt": {
+        "title": "Sobre a tradução",
+        "name": "A Open Word Bible",
+        "html": "<p>As Escrituras deste livro são a Open Word Bible, uma nova tradução da Bíblia feita diretamente do hebraico e do grego para o português de hoje.</p><p>Cada frase é traduzida em três níveis: <em>Literal</em>, que segue de perto o original e coloca entre colchetes toda palavra acrescentada; <em>Equilibrado</em>, preciso e natural; e <em>Legível</em>, em linguagem simples e atual, explícito onde isso ajuda. Este livro traz o nível Equilibrado.</p><p>Por trás de cada frase há um registro das palavras originais, uma glosa literal, as três traduções e cada decisão dos tradutores, com a sua razão. Onde uma leitura é incerta, o registro diz isso.</p><p>Esta é uma edição de leitura: capítulos e parágrafos, com os números dos versículos em tamanho pequeno, e a poesia disposta verso a verso. “SENHOR” em maiúsculas representa o nome pessoal de Deus. A introdução e a conclusão foram escritas para esta edição pela Ochorus.</p><p>A Open Word Bible é dedicada ao domínio público sob CC0 1.0. Qualquer pessoa pode lê-la, copiá-la, imprimi-la e compartilhá-la livremente.</p>",
+        "more": "Cada frase pode ser lida com o seu raciocínio, nos três níveis, em",
+        "edition": "Esta edição foi preparada pela Ochorus, uma biblioteca gratuita de clássicos cristãos."
       }
     }
   }

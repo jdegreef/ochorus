@@ -1,0 +1,32 @@
+{
+  "title": "Le Cantique des cantiques",
+  "cover_title": "Cantique des cantiques",
+  "subtitle": "Shir HaShirim, « Le Cantique des cantiques »",
+  "description": "Le plus grand des chants, comme le dit son titre : un poème d’amour entre une femme et un homme, placé au cœur de la Bible. Il commence par le désir — « Qu’il me donne les baisers de sa bouche ! » — et passe par les vignes et les jardins, les gazelles et les colombes, une voix qui appelle « Lève-toi, ma bien-aimée, ma belle, et pars avec moi », deux recherches à travers la ville de nuit et un jour de noces, jusqu’à la grande parole selon laquelle l’amour est aussi puissant que la mort et que les eaux puissantes ne peuvent pas l’éteindre. Lu par les Juifs comme l’amour de Dieu et d’Israël, par les chrétiens comme l’amour du Christ et de Son Église, et par tous comme la bénédiction de Dieu sur l’amour humain fidèle. Disposé ligne par ligne comme la poésie qu’il est, dans l’Open Word Bible, une nouvelle traduction de l’hébreu offerte librement au domaine public, avec une introduction à la forme et au sens du livre et une conclusion sur ce qu’il est bon de lire ensuite.",
+  "qa": [
+    {
+      "question": "Qu’est-ce que le Cantique des cantiques ?",
+      "answer": "Un livre de l’Ancien Testament, huit chapitres de poésie amoureuse dans lesquels une femme et un homme disent leur désir l’un de l’autre et la joie qu’ils trouvent l’un en l’autre, tandis qu’un groupe d’amies, « les femmes de Jérusalem », écoute et répond. Son titre hébreu, Shir HaShirim, est un superlatif qui signifie « le plus grand des chants ». On l’appelle aussi le Cantique de Salomon, et, d’après son titre latin, simplement le Cantique. Il mentionne Dieu par Son nom tout au plus une fois, dans le dernier mot de 8:6, et il est lu à la synagogue à la Pâque."
+    },
+    {
+      "question": "Qui a écrit le Cantique des cantiques ?",
+      "answer": "Le titre l’appelle le Cantique « qui est de Salomon » (1:1), et le petit mot hébreu placé devant son nom peut signifier par, pour, au sujet de ou appartenant à Salomon, comme les titres des psaumes disent « de David ». On se souvenait de Salomon comme de l’auteur de 1 005 chants (1 Rois 4:32), et la tradition a reçu le Cantique comme le sien, écrit au Xe siècle av. J.-C. Il apparaît aussi dans le poème comme un personnage (3:7–11 ; 8:11–12), et certains spécialistes pensent qu’un poète plus tardif l’a écrit à son sujet, ou le lui a dédié. Sa date est débattue."
+    },
+    {
+      "question": "Pourquoi un poème d’amour se trouve-t-il dans la Bible ?",
+      "answer": "Parce que la Bible honore l’amour d’un homme et d’une femme comme un don de Dieu. La Genèse raconte la joie du premier homme devant la première femme et comment tous deux deviennent une seule chair (Genèse 2:23–25), et les Proverbes exhortent un mari à trouver sa joie dans la femme de sa jeunesse (5:18–19). Le Cantique célèbre le désir vécu dans la fidélité — « Je suis à mon bien-aimé, et mon bien-aimé est à moi » (6:3) — et avertit trois fois de ne pas éveiller l’amour avant son heure (2:7 ; 3:5 ; 8:4). Son sommet dit que l’amour est « aussi puissant que la mort » et que « Les eaux puissantes ne peuvent pas éteindre l’amour » (8:6–7)."
+    },
+    {
+      "question": "Le Cantique des cantiques est-il une allégorie du Christ et de l’Église ?",
+      "answer": "Les chrétiens l’ont lu de différentes manières. La tradition juive l’a longtemps lu comme l’amour entre Dieu et Israël ; d’Origène au IIIe siècle jusqu’à Hudson Taylor, en passant par Bernard de Clairvaux et les puritains, l’Église l’a lu comme l’amour du Christ pour Son Église ou pour l’âme croyante. Beaucoup de lecteurs aujourd’hui commencent par le sens obvie, une célébration de l’amour humain. Ces lectures n’ont pas à se faire concurrence : la Bible dépeint l’amour de Dieu pour Son peuple comme un mariage (Ésaïe 62:5), et Paul, écrivant au sujet du mari et de la femme, dit : « Il y a là un grand mystère, mais je parle du Christ et de l’Église » (Éphésiens 5:32). Beaucoup ont découvert que le Cantique, lu vraiment comme un chant d’amour humain, renvoie au-delà de lui-même."
+    },
+    {
+      "question": "Qui parle dans le Cantique des cantiques ?",
+      "answer": "L’hébreu ne donne ni noms ni indications de mise en scène, mais ses verbes et ses pronoms montrent si c’est un homme ou une femme qui parle et à qui, si bien que l’on peut généralement distinguer les voix : la femme, dont la voix se fait le plus entendre et qui prononce les premiers et les derniers mots ; l’homme, qui l’appelle « ma bien-aimée » et « ma sœur, mon épouse » ; et les femmes de Jérusalem, qui posent des questions et répondent parfois. Les lecteurs ne s’accordent pas sur la question de savoir si le poème raconte une seule histoire ou rassemble plusieurs chants d’amour, et certains y ont vu deux hommes, le roi Salomon et un berger."
+    },
+    {
+      "question": "De quelle traduction de la Bible s’agit-il ?",
+      "answer": "L’Open Word Bible, une nouvelle traduction faite directement à partir de l’hébreu et dédiée au domaine public, imprimée ici au niveau Équilibré, qui vise à être exact et à se lire naturellement à voix haute. Chaque vers de la poésie est placé sur sa propre ligne. Le raisonnement qui sous-tend chacune de ses phrases, avec l’hébreu en regard, est publié sur openwordbible.org. L’introduction et la conclusion ont été écrites pour cette édition."
+    }
+  ]
+}

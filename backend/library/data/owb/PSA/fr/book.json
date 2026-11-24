@@ -1,0 +1,33 @@
+{
+  "title": "Les Psaumes",
+  "cover_title": "Psaumes",
+  "subtitle": "Tehillim, « Louanges »",
+  "chapter_label": "Psaume",
+  "description": "Le livre de prière et le recueil de chants d’Israël et de l’Église : cent cinquante psaumes, rassemblés au fil de mille ans en cinq livres, qui commencent par « Quel bonheur pour l’être humain qui… » et s’achèvent sur « Que toute créature qui respire loue le SEIGNEUR ! ». Le psaume du berger et le cri « Mon Dieu, mon Dieu, pourquoi m’as-Tu abandonné ? » ; la confession de David après Bethsabée et la prière de Moïse pour toutes les générations ; les cantiques des montées que chantaient les pèlerins sur la route de Jérusalem ; des lamentations qui se changent en confiance, et les psaumes que Jésus a priés sur la croix. Disposés ligne par ligne, comme la poésie qu’ils sont, dans l’Open Word Bible, une nouvelle traduction de l’hébreu offerte librement au domaine public, avec une introduction à la forme et au sens du livre et une conclusion sur ce qu’il est bon de lire ensuite.",
+  "qa": [
+    {
+      "question": "Que sont les Psaumes ?",
+      "answer": "Les Psaumes sont un recueil de cent cinquante prières et chants de l’Ancien Testament, le livre de prière et le recueil d’hymnes de l’ancien Israël, et de l’Église depuis lors. Leur nom hébreu, Tehillim, signifie « Louanges », bien que les lamentations y soient plus nombreuses que tout le reste. Ils ont été écrits sur de nombreux siècles, de l’époque de Moïse et de David jusqu’au retour de l’exil à Babylone, et rassemblés en cinq livres, qui se terminent chacun par une bénédiction de Dieu. Aucun livre de l’Ancien Testament n’est cité plus souvent dans le Nouveau Testament."
+    },
+    {
+      "question": "Qui a écrit les Psaumes ?",
+      "answer": "De nombreuses mains. D’après les titres placés en tête des psaumes, David est associé à soixante-treize psaumes ; Asaph, l’un des musiciens lévites que David avait établis, à douze ; les fils de Coré, une famille de chantres du temple, à onze ; Salomon à deux ; et Moïse, Hémân et Éthan à un chacun. Environ un tiers ne portent aucun nom. Les titres sont très anciens, déjà présents dans le texte hébreu et traduits dans la Septante grecque avant l’époque du Christ, mais la plupart des spécialistes pensent qu’ils ont été ajoutés par les éditeurs qui ont rassemblé les recueils, et l’hébreu « de David » peut signifier par David, pour David ou appartenant au recueil de David. Jésus cite le Psaume 110 comme des paroles de David."
+    },
+    {
+      "question": "Pourquoi les Psaumes sont-ils divisés en cinq livres ?",
+      "answer": "Les derniers éditeurs ont disposé les Psaumes en cinq livres (Psaumes 1–41, 42–72, 73–89, 90–106 et 107–150), chacun se terminant par une courte doxologie, une bénédiction de Dieu, et le dernier s’achevant sur cinq psaumes de louange. Les anciens maîtres juifs voyaient dans ces cinq livres la réponse d’Israël aux cinq livres de Moïse. Cette disposition raconte aussi une histoire : le livre III s’achève dans la douleur devant la lignée déchue de David, le livre IV répond par la prière de Moïse et le cri « Le SEIGNEUR est roi ! », et tout le recueil s’élève vers la louange."
+    },
+    {
+      "question": "Quels sont les différents genres de psaumes ?",
+      "answer": "Les principaux genres sont les psaumes de louange, qui appellent à adorer Dieu et en donnent la raison ; les lamentations, d’une personne ou de tout le peuple, qui déversent une détresse et se tournent le plus souvent vers la confiance ; les actions de grâce pour une prière exaucée ; les psaumes royaux sur le roi de la lignée de David, et les psaumes qui célèbrent le SEIGNEUR comme Roi ; les psaumes de sagesse sur les deux chemins et la loi de Dieu ; les paisibles psaumes de confiance comme le Psaume 23 ; et les sept psaumes pénitentiels de confession (6, 32, 38, 51, 102, 130 et 143). Les psaumes imprécatoires, qui appellent le jugement sur des ennemis, sont les plus difficiles pour les chrétiens ; l’Église les a lus comme des cris sincères qui remettent la vengeance à Dieu, comme un refus de prendre le mal à la légère, et comme des prières contre le péché et le diable plutôt que des malédictions contre un prochain."
+    },
+    {
+      "question": "Comment Jésus et le Nouveau Testament utilisent-ils les Psaumes ?",
+      "answer": "Jésus a grandi en chantant les Psaumes et les a souvent cités. Sur la croix, Il a prié le premier vers du Psaume 22, « Mon Dieu, mon Dieu, pourquoi m’as-Tu abandonné ? », et, chez Luc, le Psaume 31:5, remettant Son esprit entre les mains de Son Père. Il a demandé comment David pouvait appeler le Messie « mon seigneur » dans le Psaume 110, le passage de l’Ancien Testament que le Nouveau cite le plus. Les apôtres ont prêché le Psaume 2 et le Psaume 110 au sujet de Sa royauté, le Psaume 16 au sujet de Sa résurrection et le Psaume 118 au sujet de la pierre rejetée devenue pierre angulaire, et ils ont recommandé aux Églises de chanter ensemble des psaumes."
+    },
+    {
+      "question": "De quelle traduction de la Bible s’agit-il ?",
+      "answer": "L’Open Word Bible, une nouvelle traduction faite directement à partir de l’hébreu et dédiée au domaine public, imprimée ici au niveau Équilibré, qui vise à être exact et à se lire naturellement à voix haute. Chaque vers de la poésie est placé sur sa propre ligne, et « SEIGNEUR » en majuscules représente le nom personnel de Dieu. Le raisonnement qui sous-tend chacune de ses phrases, avec l’hébreu en regard, est publié sur openwordbible.org. L’introduction et la conclusion ont été écrites pour cette édition."
+    }
+  ]
+}
