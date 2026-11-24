@@ -441,6 +441,10 @@ if API_GUARD_MODE not in {"off", "report", "enforce"}:
     )
 # Comma-separated, so a key can be rotated: add the new one, move the callers,
 # drop the old one. Each should be long and random (`openssl rand -hex 32`).
+# The shared secret for GET /api/build-facts/ (library/build_facts_view.py), the
+# same value as OCHORUS_BUILD_FACTS_TOKEN on ochorus-web. Unset → that route 404s.
+BUILD_FACTS_TOKEN = os.getenv("BUILD_FACTS_TOKEN", "").strip()
+
 API_SERVICE_KEYS = [
     k.strip() for k in os.getenv("API_SERVICE_KEYS", "").split(",") if k.strip()
 ]
