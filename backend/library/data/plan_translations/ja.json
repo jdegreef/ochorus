@@ -99,5 +99,13 @@
   "note": [
    "Plan prose shipped with the ja edition of necessity-of-prayer (queue job #8910): with it, all three source books of praying-men exist in ja (『祈りによる力』, 『目的をもった祈り』, 『祈りの必要』), so PlanTranslationCoverageTests requires this entry. The description follows the English one book by book (power → purpose → necessity) in the です・ます phrasing of the shipped ja plans, with the house dash ——. AI-written; for native review with the book."
   ]
+ },
+ "brave-for-god-24-true-stories": {
+  "title": "神さまのために勇敢に――24の本当のお話",
+  "description": "若い読者のための、3週間半の本当のお話です。毎日一つずつ、『神さまのために勇敢に』の4冊すべてを読みます。神さまを信頼し、勇敢にされた、世界のあらゆる場所の24人のふつうの人々の物語です。",
+  "note": [
+   "Ships with brave-for-god-2/3/4.ja (Japanese Level 1 push, jobs #9757 #9758 #9760), which complete this plan's sources. The title opens with the shipped ja series title 神さまのために勇敢に, and 勇敢にされた echoes the series description.",
+   "です・ます体, simple wording for young readers. AI-drafted; awaiting native review."
+  ]
  }
 }
