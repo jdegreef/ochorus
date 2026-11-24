@@ -306,5 +306,68 @@
   "note": [
    "AI-drafted (2026-11-07); awaiting native review. Job #7442. diary-of-an-old-soul has no fr edition yet; « Le Journal d’une vieille âme » is coined. Title follows « Une année avec Des jours du ciel sur la terre ». Prose-ahead until the book ships."
   ]
+ },
+ "advent-in-scripture": {
+  "title": "L’Avent dans les Écritures",
+  "description": "Vingt-cinq jours, du 1er décembre au jour de Noël, un chapitre par jour dans l’Open Word Bible. D’abord les promesses : le serpent écrasé, la bénédiction donnée à Abraham, l’étoile issue de Jacob, le trône éternel de David, et l’enfant, le serviteur et la lumière d’Ésaïe, avec le Germe de Jérémie, la Bethléhem de Michée et le messager de Malachie. Puis la Parole faite chair, Gabriel et Marie, le songe de Joseph, la naissance la veille de Noël et les sages le jour de Noël. Environ trois minutes par jour.",
+  "note": [
+   "Plans de lecture de la Bible en français (Open Word Bible, build_owb_book --language fr) : les citations des Psaumes 1:1 et 150:6 sont les mots d’owb-fr."
+  ]
+ },
+ "bible-in-a-year": {
+  "title": "La Bible en un an",
+  "description": "Toute la Bible dans l’Open Word Bible, de la Genèse à l’Apocalypse dans l’ordre : les 1 189 chapitres en 365 jours. La plupart des jours, on lit de deux à quatre chapitres, environ dix minutes, répartis pour que chaque jour ait une longueur semblable et reste dans un seul livre ; les Psaumes viennent par petits groupes et les lettres les plus courtes ont un jour à elles. À travers la loi et l’histoire, les poètes et les prophètes, les Évangiles, les lettres et la nouvelle création.",
+  "note": [
+   "Plans de lecture de la Bible en français (Open Word Bible, build_owb_book --language fr) : les citations des Psaumes 1:1 et 150:6 sont les mots d’owb-fr."
+  ]
+ },
+ "easter-the-risen-lord": {
+  "title": "Pâques : le Seigneur ressuscité",
+  "description": "Huit jours, du dimanche de Pâques au dimanche suivant, un chapitre de la résurrection par jour dans l’Open Word Bible : le tombeau vide et Marie dans le jardin, la route d’Emmaüs, le grand envoi, le jeune homme au tombeau, le repas au bord du lac, Paul sur les prémices des morts, le baptême dans une vie nouvelle, et le Vivant au milieu des chandeliers. Environ quatre minutes par jour.",
+  "note": [
+   "Plans de lecture de la Bible en français (Open Word Bible, build_owb_book --language fr) : les citations des Psaumes 1:1 et 150:6 sont les mots d’owb-fr."
+  ]
+ },
+ "john-in-21-days": {
+  "title": "L’Évangile de Jean en 21 jours",
+  "description": "Trois semaines avec le quatrième Évangile dans l’Open Word Bible, un chapitre par jour : la Parole faite chair, sept signes, les paroles « Je suis », les longs adieux dans la chambre haute, la croix comme l’heure de la gloire, et le repas au bord du lac.",
+  "note": [
+   "Plans de lecture de la Bible en français (Open Word Bible, build_owb_book --language fr) : les citations des Psaumes 1:1 et 150:6 sont les mots d’owb-fr."
+  ]
+ },
+ "lent-the-road-to-the-cross": {
+  "title": "Le Carême : le chemin de la croix",
+  "description": "Quarante lectures pour les quarante jours du Carême dans l’Open Word Bible. On commence le mercredi des Cendres et on lit du lundi au samedi, en se reposant le dimanche ; le Vendredi saint et le Samedi saint tombent sur leurs propres chapitres. De l’appel à revenir de tout son cœur, en passant par l’agneau, la Pâque et le serviteur souffrant, jusqu’à Jésus qui prend résolument le chemin de Jérusalem ; la Passion selon Matthieu, Marc et Luc ; ce que la croix a accompli, dans Hébreux, Romains, Philippiens et Pierre ; et la Semaine sainte jour après jour dans Jean. Environ cinq minutes par jour.",
+  "note": [
+   "Plans de lecture de la Bible en français (Open Word Bible, build_owb_book --language fr) : les citations des Psaumes 1:1 et 150:6 sont les mots d’owb-fr."
+  ]
+ },
+ "new-testament-in-90-days": {
+  "title": "Le Nouveau Testament en 90 jours",
+  "description": "Tout le Nouveau Testament dans l’Open Word Bible, de Matthieu à l’Apocalypse dans l’ordre : les 260 chapitres en 90 jours. La plupart des jours, on lit de deux à quatre chapitres, environ dix minutes, répartis pour que chaque jour ait une longueur semblable et reste dans un seul livre ; les lettres les plus courtes ont un jour à elles. À travers les quatre Évangiles, les premiers jours de l’Église dans les Actes, les lettres de Paul et des apôtres, et le nouveau ciel et la nouvelle terre.",
+  "note": [
+   "Plans de lecture de la Bible en français (Open Word Bible, build_owb_book --language fr) : les citations des Psaumes 1:1 et 150:6 sont les mots d’owb-fr."
+  ]
+ },
+ "proverbs-in-a-month": {
+  "title": "Les Proverbes en un mois",
+  "description": "Un chapitre des Proverbes pour chaque jour du mois dans l’Open Word Bible : trente et un chapitres de sagesse pour la vie de tous les jours, de la crainte du SEIGNEUR comme commencement de la connaissance jusqu’à la femme de valeur.",
+  "note": [
+   "Plans de lecture de la Bible en français (Open Word Bible, build_owb_book --language fr) : les citations des Psaumes 1:1 et 150:6 sont les mots d’owb-fr."
+  ]
+ },
+ "psalms-in-150-days": {
+  "title": "Les Psaumes en 150 jours",
+  "description": "Un psaume par jour pendant cinq mois dans l’Open Word Bible, disposé vers par vers : le livre de prière de la Bible elle-même, de louange et de lamentation, de confiance et d’action de grâce, de « Quel bonheur pour l’être humain » à « Que toute créature qui respire loue le SEIGNEUR ! »",
+  "note": [
+   "Plans de lecture de la Bible en français (Open Word Bible, build_owb_book --language fr) : les citations des Psaumes 1:1 et 150:6 sont les mots d’owb-fr."
+  ]
+ },
+ "the-story-of-the-bible": {
+  "title": "L’histoire de la Bible",
+  "description": "Deux mois à travers l’unique histoire que raconte toute la Bible, un seul chapitre par jour dans l’Open Word Bible : la création et la chute, la promesse faite à Abraham, la Pâque et la mer, la loi et le pays, David et la promesse d’un roi, les prophètes, l’exil et le retour ; puis Jésus qui naît, enseigne, est crucifié et ressuscite, l’Esprit répandu sur l’Église, et la nouvelle création où Dieu demeure avec Son peuple. Soixante chapitres clés, d’environ quatre minutes chacun.",
+  "note": [
+   "Plans de lecture de la Bible en français (Open Word Bible, build_owb_book --language fr) : les citations des Psaumes 1:1 et 150:6 sont les mots d’owb-fr."
+  ]
  }
 }

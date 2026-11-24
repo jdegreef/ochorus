@@ -1,0 +1,32 @@
+{
+  "title": "Exode",
+  "cover_title": "",
+  "subtitle": "Shemot, « Noms »",
+  "description": "Le deuxième livre de la Bible, appelé en hébreu Shemot d’après ses premiers mots, « Voici les noms », et en grec Exode, « la sortie ». Un nouveau roi qui n’avait jamais entendu parler de Joseph réduit en esclavage la famille de Jacob, et Dieu entend leurs gémissements et se souvient de son alliance. Puis vient le grand récit de la délivrance : le bébé caché parmi les roseaux du Nil, le buisson qui brûle sans se consumer, le nom « JE SUIS QUI JE SUIS », les plaies, l’agneau de la Pâque et la mer fendue en deux. Au désert viennent la manne et l’eau jaillie du rocher ; au Sinaï, les Dix Commandements et l’alliance scellée dans le sang ; et après le veau d’or, la prière de Moïse, le SEIGNEUR qui passe en proclamant son nom, et la gloire qui remplit la Demeure. Dans l’Open Word Bible, une nouvelle traduction de l’hébreu offerte librement au domaine public, avec une introduction sur la forme et le sens du livre et une conclusion sur ce qu’il faut lire ensuite.",
+  "qa": [
+    {
+      "question": "Qu’est-ce que le livre de l’Exode ?",
+      "answer": "Le deuxième livre de la Bible et des cinq livres de Moïse, la Torah. Son nom hébreu, Shemot, « Noms », vient de ses premiers mots ; le nom d’Exode, qui signifie « sortie » en grec, vient de l’ancienne traduction grecque. Ses quarante chapitres racontent comment Dieu a délivré les descendants de Jacob de l’esclavage en Égypte (chapitres 1–15), les a conduits à travers le désert (15–18), et au mont Sinaï a conclu une alliance avec eux, leur a donné sa loi et est venu vivre au milieu d’eux dans la Demeure (19–40)."
+    },
+    {
+      "question": "Qui a écrit le livre de l’Exode, et quand l’exode a-t-il eu lieu ?",
+      "answer": "L’Exode ne nomme pas son auteur, bien qu’il dise que Moïse a mis par écrit certaines de ses paroles (17:14 ; 24:4 ; 34:27), et la tradition juive et chrétienne l’a reçu comme l’un des cinq livres de Moïse. Beaucoup de spécialistes pensent qu’il a puisé dans des sources plus anciennes et atteint sa forme définitive bien plus tard. La date de l’exode est elle aussi débattue : certains la situent au quinzième siècle av. J.-C., d’après les 480 ans de 1 Rois 6:1 ; beaucoup la placent au treizième, d’après la ville de Ramsès nommée en Exode 1:11. Les chrétiens ont des vues diverses sur ces deux questions."
+    },
+    {
+      "question": "Que sont les Dix Commandements ?",
+      "answer": "Les paroles que Dieu a prononcées du haut du mont Sinaï en Exode 20:1–17, reprises en Deutéronome 5 ; l’hébreu les appelle « les Dix Paroles » (34:28). Elles ne commencent pas par un ordre, mais par le rappel d’une délivrance : « Je suis le SEIGNEUR ton Dieu. C’est Moi qui t’ai fait sortir du pays d’Égypte, de la maison où tu servais comme esclave. » Viennent ensuite : pas d’autres dieux, pas d’idoles, pas d’usage abusif du nom de Dieu, le sabbat, l’honneur dû aux parents, et ni meurtre, ni adultère, ni vol, ni faux témoignage, ni convoitise. Les traditions juive, catholique et luthérienne, orthodoxe et réformée répartissent ces mêmes paroles en dix de manières légèrement différentes."
+    },
+    {
+      "question": "Que signifie « JE SUIS QUI JE SUIS » en Exode 3:14 ?",
+      "answer": "C’est la réponse de Dieu quand Moïse lui demande son nom au buisson ardent. Ces mots viennent du verbe hébreu « être », et le nom personnel de Dieu, écrit « le SEIGNEUR » dans les Bibles françaises, leur est étroitement apparenté. On les a compris comme une promesse de présence fidèle (« je serai qui je serai », en écho à « Je serai avec toi » en 3:12), comme l’affirmation de la liberté de Dieu, et comme la déclaration que Dieu est, tout simplement, sans dépendre de rien. En Jean 8:58, Jésus dit : « avant qu’Abraham existe, je suis », et beaucoup de lecteurs entendent ce nom derrière ses paroles."
+    },
+    {
+      "question": "Pourquoi l’Exode consacre-t-il tant de chapitres à la Demeure ?",
+      "answer": "Parce que la Demeure est le but de la délivrance. Dieu dit à Moïse : « Qu’ils Me fassent un sanctuaire, afin que je demeure parmi eux » (25:8), et dit qu’il a fait sortir Israël d’Égypte pour « établir Ma demeure parmi eux » (29:46). Les plans sont donnés aux chapitres 25–31 et la construction est décrite aux chapitres 35–40, avec le veau d’or entre les deux, et le livre s’achève sur la gloire du SEIGNEUR qui remplit la tente. Le Nouveau Testament reprend cette image : Jean dit que le Verbe « établit Sa demeure parmi nous », et la lettre aux Hébreux lit la Demeure comme une copie et une ombre du sanctuaire céleste où le Christ est entré."
+    },
+    {
+      "question": "De quelle traduction de la Bible s’agit-il ?",
+      "answer": "De l’Open Word Bible, une nouvelle traduction faite directement à partir de l’hébreu et dédiée au domaine public, imprimée ici au niveau Équilibré, qui vise à être exact et à se lire naturellement à voix haute. Le raisonnement qui sous-tend chacune de ses phrases, avec l’hébreu en regard, est publié sur openwordbible.org. L’introduction et la conclusion ont été écrites pour cette édition."
+    }
+  ]
+}

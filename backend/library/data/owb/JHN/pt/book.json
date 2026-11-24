@@ -1,0 +1,32 @@
+{
+  "title": "O Evangelho de João",
+  "cover_title": "João",
+  "subtitle": "Kata Iōannēn, “Segundo João”",
+  "description": "O quarto Evangelho, que começa antes do princípio — “No princípio era o Verbo” — e diz claramente por que foi escrito: para que você creia que Jesus é o Cristo, o Filho de Deus, e para que, crendo, tenha vida no Seu nome. Sete sinais, da água transformada em vinho a Lázaro chamado para fora do túmulo; sete ditos “Eu sou”; Nicodemos de noite e a samaritana ao meio-dia; a despedida no cenáculo; a cruz como a hora da glória; e o café da manhã à beira do lago. Na Open Word Bible, uma nova tradução do grego entregue livremente ao domínio público, com uma introdução à forma e ao sentido do livro e uma conclusão sobre o que ler em seguida.",
+  "qa": [
+    {
+      "question": "O que é o Evangelho de João?",
+      "answer": "O quarto dos quatro Evangelhos, os relatos da vida, morte e ressurreição de Jesus no Novo Testamento. Cerca de nove décimos dele não têm paralelo em Mateus, Marcos ou Lucas: só João conta o casamento em Caná, Nicodemos, a mulher junto ao poço, a ressurreição de Lázaro, o lava-pés dos discípulos e Tomé tocando as feridas. Ele mesmo declara o seu propósito em 20:31 — que os seus leitores creiam que Jesus é o Cristo, o Filho de Deus, e que, crendo, tenham vida no Seu nome."
+    },
+    {
+      "question": "Quem escreveu o Evangelho de João?",
+      "answer": "O Evangelho não diz quem é o seu autor. Ele aponta para “o discípulo a quem Jesus amava” e diz que o testemunho dele está por trás do livro (21:24). Desde o século II, a Igreja o identificou como João, filho de Zebedeu, um dos Doze, que teria escrito já idoso em Éfeso, provavelmente perto do fim do século I. Alguns estudiosos pensam que o discípulo amado era um seguidor de Jesus de fora dos Doze, ou que os seus próprios discípulos deram ao livro a sua forma final."
+    },
+    {
+      "question": "Quais são os sete sinais de João?",
+      "answer": "João chama os milagres de Jesus de sinais, atos que apontam para além de si mesmos. Os sete são a água transformada em vinho em Caná, o filho de um oficial curado, um homem doente havia trinta e oito anos que volta a andar, os cinco mil alimentados, Jesus andando sobre as águas, um homem cego de nascença que recebe a vista e Lázaro ressuscitado dos mortos. Cada um vem acompanhado de palavras que o explicam, como a multiplicação dos pães é seguida de “Eu sou o pão da vida”."
+    },
+    {
+      "question": "Quais são os ditos “Eu sou” de João?",
+      "answer": "Sete ditos em que Jesus descreve a Si mesmo: o pão da vida, a luz do mundo, a porta, o bom pastor, a ressurreição e a vida, o caminho, a verdade e a vida, e a videira verdadeira. João também registra Jesus dizendo “Eu sou” sem nada depois, como em “antes que Abraão existisse, Eu sou” (8:58), que ecoa o nome que Deus deu a Moisés na sarça ardente."
+    },
+    {
+      "question": "Que tradução da Bíblia é esta?",
+      "answer": "A Open Word Bible, uma nova tradução feita diretamente do grego e dedicada ao domínio público, impressa aqui em seu nível Equilibrado, que busca ser exata e soar natural quando lida em voz alta. O raciocínio por trás de cada uma de suas frases, com o grego ao lado, está publicado em openwordbible.org. A introdução e a conclusão foram escritas para esta edição."
+    },
+    {
+      "question": "Por que a história da mulher apanhada em adultério aparece à parte?",
+      "answer": "A passagem (7:53–8:11) não se encontra nos manuscritos mais antigos de João, e manuscritos posteriores a colocam em lugares diferentes. Como a maioria das Bíblias, esta edição a imprime à parte e entre colchetes, com uma nota explicando por quê."
+    }
+  ]
+}

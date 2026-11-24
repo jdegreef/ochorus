@@ -201,5 +201,68 @@
  "our-daily-walk-year": {
   "title": "Um ano de Nossa Caminhada Diária",
   "description": "As leituras de F. B. Meyer para cada dia do ano: uma breve meditação, com seu título e sua passagem bíblica, sobre andar com Deus nos dias comuns. Comece em qualquer dia: o primeiro dia é a leitura de 1º de janeiro, e cada dia seguinte traz a próxima. Dois ou três minutos por dia."
+ },
+ "advent-in-scripture": {
+  "title": "O Advento nas Escrituras",
+  "description": "Vinte e cinco dias, de 1º de dezembro ao dia de Natal, um capítulo por dia na Open Word Bible. Primeiro vêm as promessas: a serpente esmagada, a bênção a Abraão, a estrela que sai de Jacó, o trono eterno de Davi, e a criança, o servo e a luz de Isaías, com o Renovo de Jeremias, a Belém de Miqueias e o mensageiro de Malaquias. Depois, o Verbo que se fez carne, Gabriel e Maria, o sonho de José, o nascimento na véspera de Natal e os sábios no dia de Natal. Cerca de três minutos por dia.",
+  "note": [
+   "Planos de leitura da Bíblia em português (Open Word Bible, build_owb_book --language pt): as citações de Salmos 1:1 e 150:6 são as palavras de owb-pt."
+  ]
+ },
+ "bible-in-a-year": {
+  "title": "A Bíblia em um ano",
+  "description": "A Bíblia inteira na Open Word Bible, de Gênesis a Apocalipse em ordem: os 1.189 capítulos em 365 dias. Na maioria dos dias você lê de dois a quatro capítulos, cerca de dez minutos, divididos para que cada dia tenha um tamanho parecido e fique em um só livro; os Salmos vêm alguns de cada vez e as cartas mais curtas têm um dia só para elas. Pela lei e pela história, pelos poetas e pelos profetas, pelos Evangelhos, pelas cartas e pela nova criação.",
+  "note": [
+   "Planos de leitura da Bíblia em português (Open Word Bible, build_owb_book --language pt): as citações de Salmos 1:1 e 150:6 são as palavras de owb-pt."
+  ]
+ },
+ "easter-the-risen-lord": {
+  "title": "Páscoa: o Senhor ressuscitado",
+  "description": "Oito dias, do Domingo de Páscoa ao domingo seguinte, um capítulo da ressurreição por dia na Open Word Bible: o túmulo vazio e Maria no jardim, o caminho de Emaús, a grande comissão, o jovem no túmulo, o café da manhã à beira do lago, Paulo sobre as primícias dos mortos, o batismo para uma vida nova, e Aquele que vive entre os candelabros. Cerca de quatro minutos por dia.",
+  "note": [
+   "Planos de leitura da Bíblia em português (Open Word Bible, build_owb_book --language pt): as citações de Salmos 1:1 e 150:6 são as palavras de owb-pt."
+  ]
+ },
+ "john-in-21-days": {
+  "title": "O Evangelho de João em 21 dias",
+  "description": "Três semanas com o quarto Evangelho na Open Word Bible, um capítulo por dia: o Verbo que se fez carne, sete sinais, as afirmações “Eu sou”, a longa despedida no cenáculo, a cruz como a hora da glória e o café da manhã à beira do lago.",
+  "note": [
+   "Planos de leitura da Bíblia em português (Open Word Bible, build_owb_book --language pt): as citações de Salmos 1:1 e 150:6 são as palavras de owb-pt."
+  ]
+ },
+ "lent-the-road-to-the-cross": {
+  "title": "Quaresma: o caminho da cruz",
+  "description": "Quarenta leituras para os quarenta dias da Quaresma na Open Word Bible. Comece na Quarta-feira de Cinzas e leia de segunda a sábado, descansando aos domingos; a Sexta-feira Santa e o Sábado Santo caem em seus próprios capítulos. Do chamado para voltar de todo o coração, passando pelo cordeiro, a Páscoa e o servo sofredor, até Jesus seguindo decidido para Jerusalém; a Paixão em Mateus, Marcos e Lucas; o que a cruz realizou, em Hebreus, Romanos, Filipenses e Pedro; e a Semana Santa dia a dia em João. Cerca de cinco minutos por dia.",
+  "note": [
+   "Planos de leitura da Bíblia em português (Open Word Bible, build_owb_book --language pt): as citações de Salmos 1:1 e 150:6 são as palavras de owb-pt."
+  ]
+ },
+ "new-testament-in-90-days": {
+  "title": "O Novo Testamento em 90 dias",
+  "description": "O Novo Testamento inteiro na Open Word Bible, de Mateus a Apocalipse em ordem: os 260 capítulos em 90 dias. Na maioria dos dias você lê de dois a quatro capítulos, cerca de dez minutos, divididos para que cada dia tenha um tamanho parecido e fique em um só livro; as cartas mais curtas têm um dia só para elas. Pelos quatro Evangelhos, pelos primeiros dias da igreja em Atos, pelas cartas de Paulo e dos apóstolos, e pelo novo céu e a nova terra.",
+  "note": [
+   "Planos de leitura da Bíblia em português (Open Word Bible, build_owb_book --language pt): as citações de Salmos 1:1 e 150:6 são as palavras de owb-pt."
+  ]
+ },
+ "proverbs-in-a-month": {
+  "title": "Provérbios em um mês",
+  "description": "Um capítulo de Provérbios para cada dia do mês na Open Word Bible: trinta e um capítulos de sabedoria para a vida de todos os dias, desde o temor do SENHOR como o começo do conhecimento até a mulher virtuosa.",
+  "note": [
+   "Planos de leitura da Bíblia em português (Open Word Bible, build_owb_book --language pt): as citações de Salmos 1:1 e 150:6 são as palavras de owb-pt."
+  ]
+ },
+ "psalms-in-150-days": {
+  "title": "Os Salmos em 150 dias",
+  "description": "Um salmo por dia durante cinco meses na Open Word Bible, disposto verso a verso: o próprio livro de oração da Bíblia, de louvor e lamento, confiança e gratidão, desde “Como é feliz a pessoa” até “Que toda criatura que respira louve o SENHOR!”",
+  "note": [
+   "Planos de leitura da Bíblia em português (Open Word Bible, build_owb_book --language pt): as citações de Salmos 1:1 e 150:6 são as palavras de owb-pt."
+  ]
+ },
+ "the-story-of-the-bible": {
+  "title": "A história da Bíblia",
+  "description": "Dois meses pela única história que toda a Bíblia conta, um só capítulo por dia na Open Word Bible: a criação e a queda, a promessa a Abraão, a Páscoa e o mar, a lei e a terra, Davi e a promessa de um rei, os profetas, o exílio e o retorno; depois Jesus que nasce, ensina, é crucificado e ressuscita, o Espírito derramado sobre a igreja, e a nova criação onde Deus habita com o Seu povo. Sessenta capítulos-chave, de cerca de quatro minutos cada.",
+  "note": [
+   "Planos de leitura da Bíblia em português (Open Word Bible, build_owb_book --language pt): as citações de Salmos 1:1 e 150:6 são as palavras de owb-pt."
+  ]
  }
 }

@@ -1,0 +1,32 @@
+{
+  "title": "Première lettre de Jean",
+  "cover_title": "1 Jean",
+  "subtitle": "Iōannou A, « Première de Jean »",
+  "description": "Une lettre sans salutation ni adieu, écrite par un vieux pasteur à ses « chers enfants » après une division douloureuse dans leur Église, pour que ceux qui sont restés sachent qu’ils ont la vie éternelle. Elle s’ouvre sur la vie qui a été entendue, vue et touchée de mains humaines, et revient sans cesse à trois critères : ce que nous croyons au sujet de Jésus, si nous gardons ses commandements, et si nous nous aimons les uns les autres. Dieu est lumière ; Dieu est amour ; l’amour ne laisse aucune place à la peur ; et nous aimons parce qu’il nous a aimés le premier. Dans l’Open Word Bible, une nouvelle traduction faite à partir du grec et offerte librement au domaine public, avec une introduction sur la structure et le sens de la lettre et une conclusion sur ce qu’il faut lire ensuite.",
+  "qa": [
+    {
+      "question": "Qu’est-ce que la Première lettre de Jean ?",
+      "answer": "C’est le vingt-troisième livre du Nouveau Testament, la plus longue des trois lettres qui portent le nom de Jean. Elle n’a ni salutation ni adieu et se lit comme le sermon d’un pasteur à une Église qu’il connaît bien. Écrite après qu’un groupe eut quitté l’Église en niant que Jésus Christ soit venu dans la chair, elle donne aux croyants restés fidèles des moyens de reconnaître la vérité et d’être sûrs de leur relation avec Dieu. Elle énonce elle-même son but en 5:13 : pour que vous sachiez que vous avez la vie éternelle."
+    },
+    {
+      "question": "Qui a écrit 1 Jean, et quand a-t-elle été écrite ?",
+      "answer": "La lettre ne nomme pas son auteur. Il écrit comme un témoin oculaire de Jésus et comme un père pour ses lecteurs, dans une langue très proche de celle de l’Évangile de Jean. Dès le IIe siècle, l’Église l’a reçue comme l’œuvre de l’apôtre Jean, écrivant à la fin de sa vie à Éphèse, probablement dans les dernières décennies du Ier siècle. Certains spécialistes pensent qu’elle vient d’un responsable du cercle qui chérissait le témoignage de Jean, peut-être « l’ancien » de 2 et 3 Jean."
+    },
+    {
+      "question": "Pourquoi 1 Jean a-t-elle été écrite ?",
+      "answer": "Un groupe avait quitté l’Église (« Ils sont sortis de nos rangs », 2:19). Ils niaient que Jésus soit le Christ et refusaient de le confesser comme venu dans la chair, tout en prétendant connaître Dieu. La lettre ne les nomme pas, et les spécialistes débattent pour savoir s’ils tenaient les idées enseignées plus tard par Cérinthe ou par ceux qui disaient que le Christ n’avait eu un corps qu’en apparence. L’auteur rassure ceux qui sont restés et leur donne des critères de la vraie foi : une juste croyance au sujet de Jésus, l’obéissance à ses commandements, et l’amour les uns pour les autres."
+    },
+    {
+      "question": "Que signifie « Dieu est amour » dans 1 Jean ?",
+      "answer": "L’expression apparaît deux fois, en 4:8 et 4:16, à côté de l’affirmation antérieure que « Dieu est lumière » (1:5). La lettre dit que l’amour se trouve d’abord non dans notre amour pour Dieu, mais dans son amour pour nous, manifesté quand il a envoyé son Fils comme sacrifice d’expiation pour nos péchés (4:10). Parce que Dieu est amour, quiconque le connaît aimera les autres, non seulement en paroles mais en actes (3:18), et l’amour ne laisse aucune place à la peur (4:18)."
+    },
+    {
+      "question": "1 Jean enseigne-t-elle que les chrétiens ne pèchent pas ?",
+      "answer": "Elle dit à la fois que quiconque prétend être sans péché se fait des illusions (1:8) et que celui qui est né de Dieu « ne continue pas à pécher » (3:9). Le temps du grec au chapitre 3 décrit une manière de vivre bien établie plutôt que chaque acte isolé. John Wesley s’est appuyé sur ces versets pour son enseignement sur la perfection chrétienne ; d’autres y voient la description de la direction de la vie d’un croyant. Tous s’accordent à dire que la lettre appelle les chrétiens à la sainteté et promet le pardon à ceux qui confessent leurs péchés (1:9 ; 2:1–2)."
+    },
+    {
+      "question": "Quelle traduction de la Bible est-ce ?",
+      "answer": "L’Open Word Bible, une nouvelle traduction faite directement à partir du grec et dédiée au domaine public, imprimée ici au niveau Équilibré, qui vise à être exacte et à se lire naturellement à voix haute. Comme la plupart des Bibles modernes, elle ne comprend pas les mots sur le Père, la Parole et le Saint-Esprit que l’on trouve en 5:7 dans d’anciennes versions comme celles de Martin ou d’Ostervald, et qui ne figurent dans aucun manuscrit grec ancien. Le raisonnement qui sous-tend chacune de ses phrases, avec le grec en regard, est publié sur openwordbible.org. L’introduction et la conclusion ont été écrites pour cette édition."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "title": "Gênesis",
+  "cover_title": "",
+  "subtitle": "Bereshit, “No princípio”",
+  "description": "O primeiro livro da Bíblia, chamado em hebraico Bereshit por causa das suas palavras iniciais, “No princípio”. Ele começa com Deus falando luz para dentro da escuridão e com um mundo que Ele chama de muito bom, e termina com um caixão no Egito e uma promessa ainda à espera de ser cumprida. Entre as duas pontas: Adão e Eva no jardim e fora dele, Caim e Abel, Noé e o arco-íris, a torre de Babel e, depois, uma família chamada do meio das nações por amor de todas elas — Abraão contando as estrelas, Isaque sobre o monte, Jacó lutando a noite inteira e José perdoando os irmãos que o venderam. Na Open Word Bible, uma nova tradução do hebraico entregue livremente ao domínio público, com uma introdução sobre a forma e o sentido do livro e uma conclusão sobre o que ler em seguida.",
+  "qa": [
+    {
+      "question": "O que é o livro de Gênesis?",
+      "answer": "O primeiro livro da Bíblia e dos cinco livros de Moisés, a Torá. O seu nome hebraico, Bereshit, é a sua primeira palavra, “No princípio”; o nome Gênesis, que em grego significa “origem”, vem da antiga tradução grega. Os seus cinquenta capítulos vão da criação do mundo à morte de José no Egito: os capítulos 1–11 falam dos começos do mundo e de todos os povos, e os capítulos 12–50 acompanham uma família, Abraão, Isaque, Jacó e os doze filhos de Jacó, por meio da qual Deus promete abençoar todas as famílias da terra (12:3)."
+    },
+    {
+      "question": "Quem escreveu o livro de Gênesis?",
+      "answer": "Gênesis não nomeia o seu autor. A tradição judaica e cristã há muito o recebe como o primeiro dos cinco livros de Moisés, e o Novo Testamento fala da Lei como tendo vindo por meio de Moisés. Muitos estudiosos pensam que o livro se baseou em fontes e registros familiares mais antigos e chegou à sua forma final ao longo de um longo período, alguns situando isso bem depois de Moisés. Os cristãos têm diversas opiniões sobre como o livro foi composto, mas concordam que ele é Escritura e o fundamento de tudo o que o restante da Bíblia diz sobre Deus, a humanidade e a promessa."
+    },
+    {
+      "question": "Como o livro de Gênesis está estruturado?",
+      "answer": "Por um cabeçalho que se repete ao longo do livro, em hebraico “estas são as toledot de…”, tradicionalmente traduzido por “estas são as gerações de”. Ele aparece dez vezes (onze, contando a repetição em 36:9) e introduz os relatos dos céus e da terra (2:4), de Adão (5:1), de Noé (6:9), dos filhos de Noé (10:1), de Sem (11:10), de Terá (11:27), de Ismael (25:12), de Isaque (25:19), de Esaú (36:1 e 36:9) e de Jacó (37:2). Cada cabeçalho nomeia um pai e passa a contar o que veio da sua linhagem, de modo que o relato de Terá é a história de Abraão, o de Isaque é a história de Jacó e o de Jacó é a história de José e seus irmãos."
+    },
+    {
+      "question": "Gênesis está em conflito com a ciência?",
+      "answer": "Os cristãos respondem a isso de maneiras diferentes. Alguns leem os seis dias de Gênesis 1 como dias comuns e a terra como jovem; outros os leem como longas eras, ou como uma moldura literária em que os dias organizam a obra de Deus em vez de medir o seu tempo, ou como um relato antigo escrito para mostrar quem fez o mundo e por quê, e não como nem quando. Aquilo em que o próprio capítulo insiste não está em disputa entre eles: que um só Deus fez tudo o que existe, que Ele o fez bom, que fez os seres humanos à Sua imagem e que o mundo é Dele e não um deus por direito próprio. Muitos cientistas e teólogos crentes, ao longo dos séculos, não encontraram nenhum conflito definitivo entre essa confissão e o estudo da natureza."
+    },
+    {
+      "question": "O que é a aliança de Deus com Abraão?",
+      "answer": "A promessa de Deus, dada pela primeira vez em Gênesis 12:1–3 e confirmada por aliança nos capítulos 15 e 17, de fazer de Abraão uma grande nação, de dar aos seus descendentes a terra de Canaã, de ser o Deus deles e de, por meio dele, abençoar todas as famílias da terra. Abraão era idoso e a sua esposa Sara era estéril, e “Abrão creu no SENHOR, e isso lhe foi contado como justiça” (15:6). O apóstolo Paulo lê esse versículo como o modelo da fé para todos, e a promessa de bênção para todas as nações como o evangelho anunciado de antemão, cumprido em Cristo (Gálatas 3:8, 3:29)."
+    },
+    {
+      "question": "Que tradução da Bíblia é esta?",
+      "answer": "A Open Word Bible, uma nova tradução feita diretamente do hebraico e dedicada ao domínio público, impressa aqui em seu nível Equilibrado, que busca ser preciso e soar natural quando lido em voz alta. O raciocínio por trás de cada uma das suas frases, com o hebraico ao lado, está publicado em openwordbible.org. A introdução e a conclusão foram escritas para esta edição."
+    }
+  ]
+}
