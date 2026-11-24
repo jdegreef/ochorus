@@ -13,7 +13,8 @@
  */
 import { CANON } from '$lib/sermonCanon';
 import { canonIn } from '$lib/bibleNames';
-import { bibleChapterCount, bibleChapterOrder, chapterLabel } from '$lib/bible';
+import { bibleChapterCount, bibleChapterOrder } from '$lib/bible';
+import { chapterLabel } from '$lib/bibleNames';
 import { bookChapterPath } from '$lib/reading-schema';
 
 type HubBook = { slug: string; title: string; chapter_count?: number; series_position?: number | null };
@@ -133,14 +134,15 @@ function distance(a: string, b: string): number {
 /**
  * The canon positions a typed book name could mean, best first: names it
  * begins (in canon order), else — for a name of four letters or more that
- * begins none — the books one or two typos away ("Roamns", "Phillipians").
+ * begins none — the books one or two typos away ("Roamns", "Phillipians"),
+ * unless `fuzzy` is false.
  */
-export function matchBooks(token: string, lang: string): number[] {
+export function matchBooks(token: string, lang: string, fuzzy = true): number[] {
 	const q = squash(token);
 	if (!q) return [];
 	const names = NAMES[lang] ?? NAMES_EN;
 	const prefix = names.filter(([, names]) => names.some((n) => n.startsWith(q))).map(([p]) => p);
-	if (prefix.length || q.length < 4) return prefix;
+	if (prefix.length || q.length < 4 || !fuzzy) return prefix;
 	const close = names.map(([p, names]) => [p, Math.min(...names.map((n) => distance(q, n)))] as const)
 		.filter(([, d]) => d <= (q.length >= 7 ? 2 : 1))
 		.sort((a, b) => a[1] - b[1] || a[0] - b[0]);
@@ -153,7 +155,7 @@ const QUERY = /^\s*((?:[1-3]\s*)?\p{L}[\p{L}\p{M} .]*?)\s*(?:(\d{1,3})(?:\s*[:.]
 /**
  * What the box suggests for `q`, at most `max`: with a chapter typed, that
  * chapter (at the verse) of each book the name could mean, where it has the
- * chapter; with a name alone, those books' pages. Empty for a query it cannot
+ * chapter; with a name alone, the pages of the books it begins the name of. Empty for a query it cannot
  * read ("grace") — the box then leaves it to the resolver and search, as before.
  */
 export function passageSuggestions(
@@ -168,7 +170,11 @@ export function passageSuggestions(
 	const at = byPosition(books);
 	const chapter = ch ? Number(ch) : null;
 	const verse = vs ? Number(vs) : undefined;
-	return matchBooks(name, lang)
+	// A name alone opens a book only when it reads as one (a prefix of its
+	// name): a typo-close match of a bare word is as likely an ordinary word
+	// («amor», "grace") the reader meant to search for. With a chapter typed,
+	// a typo still reads as a reference ("Roamns 8").
+	return matchBooks(name, lang, chapter != null)
 		.flatMap((pos) => {
 			const book = at.get(pos);
 			if (!book) return [];

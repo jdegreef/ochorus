@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { BookSummary } from '$lib/library-public';
-	import { bibleChapters, type BiblePlace } from '$lib/bible';
+	import { type BiblePlace } from '$lib/bible';
+	import { bibleChapters } from '$lib/bibleHub';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { localizeHref } from '$lib/href';

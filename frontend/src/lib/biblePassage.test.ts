@@ -107,6 +107,17 @@ describe('in Spanish', () => {
 		expect(matchBooks('Romnaos', 'es')).toEqual([45]);
 	});
 
+	it('leaves a common word to search, rather than a book one typo away', () => {
+		const ALL = [...BOOKS, book('amos', 'Amós', 30, 9), book('james', 'Santiago', 59, 5)];
+		expect(matchBooks('amor', 'es')).toEqual([30]); // fuzzy: Amós
+		expect(passageSuggestions('amor', ALL, 'es')).toEqual([]);
+		expect(passageSuggestions('santo', ALL, 'es')).toEqual([]);
+		expect(passageSuggestions('Roamns', BOOKS, 'en')).toEqual([]);
+		// With a chapter, a typo still reads as a reference.
+		expect(passageSuggestions('Romnaos 8', BOOKS, 'es')[0].label).toBe('Romanos 8');
+		expect(passageSuggestions('Amós', ALL, 'es')).toEqual([{ label: 'Amós', href: '/books/amos' }]);
+	});
+
 	it('suggests Spanish chapters at a verse', () => {
 		expect(passageSuggestions('Juan 3:16', BOOKS, 'es')).toEqual([
 			{ label: 'Juan 3:16', href: `${bookChapterPath('gospel-of-john', 4, false)}#v16` }

@@ -4,17 +4,16 @@
 	import {
 		CANON_FILTERS,
 		bibleChapterOrder,
-		bibleChapters,
 		canonReading,
 		matchesCanonFilter,
 		type CanonFilter,
-		canonStrip,
 		divisionKey,
 		spineLabel,
 		testamentKey,
 		type BiblePlace,
 		type CanonSlot
 	} from '$lib/bible';
+	import { bibleChapters, canonStrip } from '$lib/bibleHub';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { localizeHref } from '$lib/href';

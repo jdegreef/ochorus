@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
-import { bibleIn } from '$lib/bible';
+import { BIBLE_SERIES, bibleIn } from '$lib/bible';
 import { STORY_BOOK, STORY_PLAN_SLUG } from '$lib/bibleStory';
-import { getBook, listPlans } from '$lib/library-public';
+import { getBook, getSeries, listPlans } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
@@ -19,7 +19,7 @@ export const trailingSlash = 'always';
 export const load: PageLoad = async ({ fetch }) => {
 	const lang = getLang();
 	if (!bibleIn(lang)) error(404, 'Not found');
-	const [plan, book] = await Promise.all([
+	const [plan, book, languages] = await Promise.all([
 		listPlans(lang, fetch).then(
 			(plans) => plans.some((p) => p.slug === STORY_PLAN_SLUG),
 			() => false
@@ -28,7 +28,14 @@ export const load: PageLoad = async ({ fetch }) => {
 		getBook(STORY_BOOK.slug, lang, fetch).then(
 			(b) => (b.language === lang ? b.title : null),
 			() => null
+		),
+		// The languages the page is an alternate in: the hub's own set (the
+		// series' languages the chrome links). Decoration: a failure only
+		// drops the hreflang.
+		getSeries(BIBLE_SERIES, lang, fetch).then(
+			(s) => s.available_languages.filter(bibleIn) as string[],
+			(): string[] => []
 		)
 	]);
-	return { plan, book };
+	return { plan, book, languages };
 };

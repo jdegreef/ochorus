@@ -1,35 +1,36 @@
 import { describe, expect, it } from 'vitest';
 import {
 	BIBLE_LOCALES,
-	chapterLabel,
 	BIBLE_DIVISIONS,
 	bibleBrowseRow,
 	matchesCanonFilter,
 	THIN_SPINE,
 	canonReading,
 	spineLabel,
-	BIBLE_STARTS,
 	bibleChapterCount,
-	bibleChapters,
 	biblePlace,
 	bibleToContinue,
 	bibleContinueRows,
-	canonName,
 	biblePlans,
-	bibleStarts,
 	mayBePassage,
 	passageHref,
-	canonStrip,
 	divisionKey,
 	divisionOf,
 	groupBible,
 	isBibleBook,
 	splitBible,
-	testamentKey,
-	bibleTopics,
-	BIBLE_PATHS,
-	biblePathSteps
+	testamentKey
 } from './bible';
+import { canonName, chapterLabel } from './bibleNames';
+import {
+	BIBLE_PATHS,
+	BIBLE_STARTS,
+	bibleChapters,
+	biblePathSteps,
+	bibleStarts,
+	bibleTopics,
+	canonStrip
+} from './bibleHub';
 import { bookChapterPath } from './reading-schema';
 import en from '../../messages/en.json';
 
@@ -523,5 +524,26 @@ describe('biblePathSteps', () => {
 				expect(p.label[l] && p.lede[l], `${p.id} ${l}`).toBeTruthy();
 				for (const st of p.steps) expect(st.why[l].length, `${p.id} ${l}`).toBeGreaterThan(20);
 			}
+	});
+});
+
+describe('Spanish quotations on the hub', () => {
+	it('quote the Open Word Bible (owb-es-b) word for word', async () => {
+		const { readFileSync } = await import('node:fs');
+		const { gunzipSync } = await import('node:zlib');
+		const { resolve } = await import('node:path');
+		const owb = JSON.parse(
+			gunzipSync(
+				readFileSync(resolve(__dirname, '../../../backend/library/data/bible/owb-es-b.json.gz'))
+			).toString('utf8')
+		) as { verses: Record<string, string> };
+		const text = Object.values(owb.verses).join(' ');
+		const reasons = [
+			...BIBLE_STARTS.map((s) => s.why.es),
+			...BIBLE_PATHS.flatMap((p) => p.steps.map((s) => s.why.es))
+		];
+		const quoted = reasons.flatMap((r) => [...r.matchAll(/«([^»]+)»/g)].map((m) => m[1]));
+		expect(quoted.length).toBeGreaterThan(0);
+		for (const q of quoted) expect(text, q).toContain(q);
 	});
 });

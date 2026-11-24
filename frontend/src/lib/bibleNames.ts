@@ -10,6 +10,7 @@
  * abbreviations are the usual Spanish ones (Gn, Éx … Ap).
  */
 import { CANON } from '$lib/sermonCanon';
+import { divisionOf } from '$lib/bible';
 import type { BibleLocale } from '$lib/bibleLocales';
 
 type Canon = readonly (readonly [name: string, abbr: string])[];
@@ -98,3 +99,21 @@ export const canonIn = (locale: string): Canon =>
 /** `PSALM` in `locale`, English outside the hub (as `canonIn`). */
 export const psalmIn = (locale: string): string =>
 	(PSALM as Record<string, string>)[locale] ?? PSALM.en;
+
+/** The Psalms' place in the canon. */
+const PSALMS = 19;
+
+/**
+ * How a Bible chapter is named in `lang` ("Romans 8", «Romanos 8»), or null off
+ * the canon. Psalms is the one book whose chapters are titled in the singular
+ * ("Psalm 23", «Salmo 23», as `build_owb_book` titles them).
+ */
+export function chapterLabel(position: number | null | undefined, n: number, lang: string): string | null {
+	const name = position === PSALMS ? psalmIn(lang) : canonName(position, lang);
+	return name ? `${name} ${n}` : null;
+}
+
+/** The canon's short name for a position (1 Genesis … 66 Revelation) in
+ *  `lang`, or null off the canon. */
+export const canonName = (position: number | null | undefined, lang: string): string | null =>
+	divisionOf(position) ? canonIn(lang)[position! - 1][0] : null;

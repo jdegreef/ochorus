@@ -3,7 +3,7 @@
 	import { breadcrumbLd, hreflangExact, jsonLd, publisherLd } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
-	import { BIBLE_LOCALES, BIBLE_PATH, bibleText, testamentKey } from '$lib/bible';
+	import { BIBLE_PATH, bibleText, testamentKey } from '$lib/bible';
 	import { getLang } from '$lib/lang.svelte';
 	import {
 		BIBLE_STORY,
@@ -32,6 +32,8 @@
 	 * BIBLE_LOCALES); the headings and labels around it are chrome, through
 	 * the catalogue.
 	 */
+	/** Which "Read on" links this language has, and its alternates (+page.ts). */
+	let { data } = $props();
 	const t = i18n.t;
 	const lang = getLang();
 	const tagline = bibleText(STORY_TAGLINE, lang);
@@ -47,8 +49,8 @@
 
 	const path = `${BIBLE_STORY_PATH}/`;
 	const canonical = `${SITE_URL}${localizeHref(path)}`;
-	// Every hub locale has the page, in its own words (the sitemap's set).
-	const hreflang = hreflangExact(path, [...BIBLE_LOCALES]);
+	// The hub's set: the series' languages the chrome links (+page.ts).
+	const hreflang = $derived(hreflangExact(path, data.languages));
 	const title = `${t('bible.storyTitle')} — Ochorus`;
 	const crumbsLd = breadcrumbLd([
 		{ name: t('common.home'), href: '/' },
@@ -71,8 +73,6 @@
 		author: publisherLd(),
 		publisher: publisherLd()
 	});
-	/** Which "Read on" links this language has (+page.ts). */
-	let { data } = $props();
 </script>
 
 <Seo

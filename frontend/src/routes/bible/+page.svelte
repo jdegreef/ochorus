@@ -20,9 +20,6 @@
 		biblePlace,
 		bibleToContinue,
 		bibleContinueRows,
-		bibleStarts,
-		BIBLE_PATHS,
-		biblePathSteps,
 		bibleText,
 		type BibleText,
 		divisionKey,
@@ -31,6 +28,7 @@
 		passageHref,
 		testamentKey
 	} from '$lib/bible';
+	import { BIBLE_PATHS, bibleStarts, biblePathSteps } from '$lib/bibleHub';
 	import { goto } from '$app/navigation';
 	import { lookupScripture } from '$lib/scripture.svelte';
 	import { passageSuggestions, quickPassages } from '$lib/biblePassage';

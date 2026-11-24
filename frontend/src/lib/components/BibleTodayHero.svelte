@@ -94,13 +94,13 @@
 		gap: 1.5rem;
 		min-block-size: 12rem;
 		margin: 0.5rem 0 2rem;
+		padding: 1.5rem 1.75rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
 	}
 	/* Chapter only: nothing to reserve room for. */
 	.today.solo {
 		min-block-size: 0;
-		padding: 1.5rem 1.75rem;
-		border: 1px solid var(--border);
-		border-radius: var(--radius-card);
 	}
 	.words {
 		flex: 1;

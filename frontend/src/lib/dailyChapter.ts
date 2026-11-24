@@ -14,7 +14,8 @@
 
 import { localDayNumber } from '$lib/dailyArticles';
 import { bookChapterPath } from '$lib/reading-schema';
-import { bibleChapterOrder, chapterLabel } from '$lib/bible';
+import { bibleChapterOrder } from '$lib/bible';
+import { chapterLabel } from '$lib/bibleNames';
 
 /** The path, as (Bible book slug, its place in the canon, chapters). A
  *  book's chapter `n` is reader chapter `n + 1`: `build_owb_book` sets an

@@ -19,7 +19,8 @@
  * `library/plan_seed.py`), so the page and the plan read the same story.
  */
 
-import { bibleChapterOrder, bibleText, canonName, chapterLabel, type BibleText } from '$lib/bible';
+import { bibleChapterOrder, bibleText, type BibleText } from '$lib/bible';
+import { canonName, chapterLabel } from '$lib/bibleNames';
 import { bookChapterPath } from '$lib/reading-schema';
 
 export { BIBLE_STORY_PATH } from '$lib/bible';
@@ -364,7 +365,7 @@ export const BIBLE_STORY: readonly StorySection[] = [
 		period: { en: 'Revelation', es: 'Apocalipsis' },
 		prose: {
 			en: 'The Bible ends where it began, with God and his world. In visions given to John, Jesus reigns, evil is finally overthrown, and heaven and earth are made new. God lives with his people, and there is no more death, mourning or pain.',
-			es: 'La Biblia termina donde comenzó, con Dios y su mundo. En visiones dadas a Juan, Jesús reina, el mal es vencido por fin, y el cielo y la tierra son hechos nuevos. Dios vive con su pueblo, y ya no hay muerte, ni llanto, ni dolor.'
+			es: 'La Biblia termina donde comenzó, con Dios y su mundo. En visiones dadas a Juan, Jesús reina, el mal es vencido por fin, y el cielo y la tierra son hechos nuevos. Dios vive con su pueblo, y la muerte, el llanto y el dolor quedan atrás.'
 		},
 		books: ['revelation'],
 		keys: [
