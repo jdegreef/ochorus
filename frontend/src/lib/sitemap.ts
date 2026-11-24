@@ -61,7 +61,7 @@ import { AUDIENCE_HUBS } from '$lib/audienceHub';
 import { hubLanguages } from '$lib/audienceHubData';
 import { APP_ONLY } from '$lib/robots';
 import { withTrailingSlash } from '$lib/href';
-import { modernChapterPath } from '$lib/reading-schema';
+import { chapterSegment, modernChapterPath } from '$lib/reading-schema';
 import { GLOSSARY_TERMS, glossaryHref } from '$lib/glossary';
 
 /** Locale-prefixed absolute URL ('' prefix for the default locale, en). */
@@ -918,7 +918,7 @@ async function build(): Promise<SitemapData> {
 				const key = `${b.slug}#${order}`;
 				let e = byChapter.get(key);
 				if (!e) byChapter.set(key, (e = { byLocale: new Map() }));
-				e.byLocale.set(slice.locale, `/books/${b.slug}/${order}/`);
+				e.byLocale.set(slice.locale, `/books/${b.slug}/${chapterSegment(b.slug, order)}/`);
 			}
 		}
 	}
@@ -932,7 +932,7 @@ async function build(): Promise<SitemapData> {
 			if (b.chapter_count < 1) continue;
 			let e = byOpening.get(b.slug);
 			if (!e) byOpening.set(b.slug, (e = { byLocale: new Map() }));
-			e.byLocale.set(slice.locale, `/books/${b.slug}/1/`);
+			e.byLocale.set(slice.locale, `/books/${b.slug}/${chapterSegment(b.slug, 1)}/`);
 			if (b.updated_at) (e.lastmods ??= new Map()).set(slice.locale, b.updated_at);
 		}
 	}
@@ -947,7 +947,7 @@ async function build(): Promise<SitemapData> {
 				const key = `${b.slug}#${order}`;
 				let e = byBibleChapter.get(key);
 				if (!e) byBibleChapter.set(key, (e = { byLocale: new Map() }));
-				e.byLocale.set(slice.locale, `/books/${b.slug}/${order}/`);
+				e.byLocale.set(slice.locale, `/books/${b.slug}/${chapterSegment(b.slug, order)}/`);
 				if (b.updated_at) (e.lastmods ??= new Map()).set(slice.locale, b.updated_at);
 			}
 		}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	import type { CitingPassage } from '$lib/library-public';
 	import { markSnippet } from '$lib/highlight';
 	import { i18n } from '$lib/i18n.svelte';
@@ -17,7 +18,7 @@
 <ol class="passages">
 	{#each passages as p (`${p.book_slug}-${p.chapter_order}`)}
 		<li class="passage">
-			<a class="who" href={`/books/${p.book_slug}/${p.chapter_order}/`}>
+			<a class="who" href={`${bookChapterPath(p.book_slug, p.chapter_order, false)}/`}>
 				<span class="work">{p.book_title}</span>
 				<span class="sep mx-1">·</span>
 				<span class="author">{p.author_name}</span>

@@ -98,7 +98,7 @@ const all = await sitemapUrls();
 // Only the nested detail routes ever had the split brain; index pages resolve
 // either way via explicit Render rewrites.
 const detail = all.filter((u) => /\/(books|authors|topics|sermons|plans)\/[^/]+\/?$/.test(u)
-	|| /\/books\/[^/]+\/\d+\/?$/.test(u));
+	|| /\/books\/[^/]+\/(\d+|introduction|conclusion)\/?$/.test(u));
 const chosen = LIMIT ? detail.slice(0, LIMIT) : detail;
 
 console.log(`sitemap: ${all.length} URLs (${detail.length} detail) — checking ${chosen.length} against ${BASE}\n`);

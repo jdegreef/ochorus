@@ -1,3 +1,5 @@
+import { chapterOrder } from './reading-schema';
+
 /**
  * Work out which library work a page is showing, from its path, so a piece of
  * feedback filed while reading carries "which book, which chapter" without the
@@ -39,7 +41,10 @@ export function feedbackContext(pathname: string): FeedbackContext {
 		// (never another route word).
 		const modern = segments[i + 2] === 'modern';
 		const next = segments[i + (modern ? 3 : 2)];
-		if (kind === 'book' && next && /^\d+$/.test(next)) ctx.chapter_ref = next;
+		// chapter_ref is the STORED order: a Bible chapter's segment is its Bible
+		// number (or introduction / conclusion), which chapterOrder maps back.
+		const order = kind === 'book' && next ? chapterOrder(slug, next) : null;
+		if (order !== null) ctx.chapter_ref = String(order);
 		return ctx;
 	}
 	return {};

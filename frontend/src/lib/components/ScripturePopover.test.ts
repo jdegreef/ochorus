@@ -42,7 +42,7 @@ afterEach(() => {
 
 describe('ScripturePopover', () => {
 	it('links the whole chapter in the library’s own Bible', () => {
-		expect(open({ slug: 'romans', order: 9 })).toEqual(['/books/romans/9/']);
+		expect(open({ slug: 'romans', order: 9 })).toEqual(['/books/romans/8/']);
 	});
 
 	it('offers no chapter where the library has no edition of the book', () => {

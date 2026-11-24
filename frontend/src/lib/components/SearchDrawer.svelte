@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import DrawerShell from '$lib/components/DrawerShell.svelte';
 	import { getBook, getChapter, SEARCH_MAX_CHARS } from '$lib/library-public';
@@ -173,7 +174,7 @@
 				{#each results as hit (hit.order + '-' + hit.p)}
 					<li>
 						<a
-							href={localizeHref(`/books/${slug}/${hit.order}?p=${hit.p}`)}
+							href={localizeHref(`${bookChapterPath(slug, hit.order, false)}?p=${hit.p}`)}
 							class="search-item"
 							onclick={close}
 						>

@@ -124,7 +124,7 @@ describe('links', () => {
 		expect(storyBooks(kings)[0]).toEqual({ label: '1 Samuel', href: '/books/1-samuel' });
 		expect(storyKeys(kings)[0]).toEqual({
 			label: '2 Samuel 7',
-			href: `/books/2-samuel/${bibleChapterOrder(7)}`
+			href: '/books/2-samuel/7'
 		});
 		expect(bibleChapterOrder(7)).toBe(8);
 	});

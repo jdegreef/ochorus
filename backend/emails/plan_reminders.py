@@ -33,6 +33,7 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from django.utils import timezone
 
+from library.chapter_urls import chapter_segment
 from library.models import Article, Book, Chapter, Plan, PlanDay
 from reading.models import PlanProgress, PlanSchedule, ReadingDay
 
@@ -193,7 +194,8 @@ def day_path(plan: Plan, day: PlanDay) -> str:
         return links.localized(f"today/{day.book_slug}/?d={day.entry_date}&{query[1:]}", plan.language)
     if day.kind == "article":
         return links.localized(f"articles/{day.article_slug}/{query}", plan.language)
-    return links.localized(f"books/{day.book_slug}/{day.chapter_order or 1}/{query}", plan.language)
+    segment = chapter_segment(day.book_slug, day.chapter_order or 1)
+    return links.localized(f"books/{day.book_slug}/{segment}/{query}", plan.language)
 
 
 def _send(profile, subscription, due: Due) -> EmailMessage | None:

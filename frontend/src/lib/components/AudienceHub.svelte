@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import { citeLine, guideCardLink, type AudienceShelf } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
@@ -337,7 +338,7 @@
 					{#each people as p (`${p.book}/${p.chapter}`)}
 						<li class="person">
 							<a
-								href={localizeHref(`/books/${p.book}/${p.chapter}`)}
+								href={localizeHref(bookChapterPath(p.book, p.chapter, false))}
 								class="person-card card-lift group"
 								onclick={() => track(HUB_EVENT, { hub: hub.audience, action: 'person' })}
 							>

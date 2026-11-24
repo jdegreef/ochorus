@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	import type { BookGuide } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, hreflangExact } from '$lib/seo';
@@ -154,7 +155,7 @@
 
 			<p class="screen-only mt-6 text-small">
 				<a
-					href={localizeHref(`/books/${book.slug}/${week.chapter}`)}
+					href={localizeHref(bookChapterPath(book.slug, week.chapter, false))}
 					class="text-accent hover:underline"
 					>{t('guide.readChapter').replace('%n%', String(week.chapter))} <Arrow /></a
 				>

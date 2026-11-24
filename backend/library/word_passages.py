@@ -232,7 +232,8 @@ def bible_verses_for(word: str, limit: int = LIMIT) -> list[dict]:
                 "before": before,
                 "match": hit,
                 "after": after,
-                "href": f"/books/{slug}/{chapter + 1}/" if slug and chapter in printed else "",
+                # A Bible chapter's URL is its Bible number (library.chapter_urls).
+                "href": f"/books/{slug}/{chapter}/" if slug and chapter in printed else "",
             }
         )
     return out

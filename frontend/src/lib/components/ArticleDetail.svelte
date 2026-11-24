@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	import { assetSrcset, assetUrl } from '$lib/assetUrl';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
@@ -403,7 +404,7 @@
 						<a href={inArticleLang(`/books/${lead.slug}`)} class="teaser-title">{lead.title}</a>
 						<p class="text-small text-muted">{lead.author.name}</p>
 					</div>
-					<a href={inArticleLang(`/books/${lead.slug}/1`)} class="btn btn-primary btn-sm shrink-0">
+					<a href={inArticleLang(bookChapterPath(lead.slug, 1, false))} class="btn btn-primary btn-sm shrink-0">
 						{t('book.beginReading')}
 					</a>
 				</aside>
@@ -465,7 +466,7 @@
 								{#if r.type === 'book'}
 									<!-- Straight into chapter one: the book page is a click
 									     the reader who has decided doesn't need. -->
-									<a href={inArticleLang(`/books/${r.slug}/1`)} class="btn btn-ghost btn-sm shrink-0">
+									<a href={inArticleLang(bookChapterPath(r.slug, 1, false))} class="btn btn-ghost btn-sm shrink-0">
 										{t('book.beginReading')}
 									</a>
 								{/if}
@@ -525,7 +526,7 @@
 					{#if bookQuote}
 						<p class="rail-quote">“{bookQuote.text}”</p>
 					{/if}
-					<a href={inArticleLang(`/books/${lead.slug}/1`)} class="btn btn-primary btn-sm mt-4">
+					<a href={inArticleLang(bookChapterPath(lead.slug, 1, false))} class="btn btn-primary btn-sm mt-4">
 						{t('book.beginReading')}
 					</a>
 				</div>

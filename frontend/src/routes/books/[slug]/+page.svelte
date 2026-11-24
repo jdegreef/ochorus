@@ -476,7 +476,7 @@
 			// how that is expressed to a machine rather than implied.
 			potentialAction: {
 				'@type': 'ReadAction',
-				target: absUrl(localizeHref(`/books/${book.slug}/1`)),
+				target: absUrl(localizeHref(bookChapterPath(book.slug, 1, false))),
 				actionStatus: 'https://schema.org/PotentialActionStatus'
 			},
 			datePublished: book.publication_year ? String(book.publication_year) : undefined,
@@ -495,7 +495,7 @@
 						'@type': 'Chapter',
 						name: chapterName(c.order, c.title),
 						position: c.order,
-						url: absUrl(localizeHref(`/books/${book.slug}/${c.order}/`)),
+						url: absUrl(localizeHref(`${bookChapterPath(book.slug, c.order, false)}/`)),
 						...(c.word_count ? { wordCount: c.word_count } : {})
 					}))
 				: undefined,
