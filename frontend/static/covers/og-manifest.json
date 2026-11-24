@@ -25383,6 +25383,36 @@
 			"caps": false,
 			"sitemark": "OpenWordBible.org"
 		},
+		"ja/a-call-to-the-unconverted": {
+			"ground": "83ec99a1a00639cf656df96e10271c03747b9f2bb552caa3b723252cf8ff7582",
+			"style": "press",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "cba0cfaa838741d4e4b56ebabc8e4635697f81d2369deb0e82a7d52b7808f123",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/rust",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
+		"ja/a-retrospect": {
+			"ground": "7894ec1185db327e35627c304a185aafd31eba9d7505570a3f68f2d6f4fe3743",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "3f456083dd382486331af4dc9eb7c5ce901f8d79cccd3cf6f6dd2c3dbb82e095",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/teal",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/a-retrospect-children": {
 			"ground": "22991d2014c525856ab4eae6c83684b7a0b6be43e2404d30c1f894ee9e8c6aef",
 			"style": "revival",
@@ -25558,6 +25588,40 @@
 			"bar": 0.025,
 			"caps": false,
 			"sitemark": null
+		},
+		"ja/at-the-masters-feet": {
+			"ground": "a713dde22030d830640a4dc2f8efe4737b67751c32b0948c86694783374a8e84",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "4d980a5e76226659396ed0d692633ed79256870f14ba4cbd288e5b9c7a9c389c",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[104, 102, 496, 131]
+				],
+				"title": [
+					[52, 306, 548, 416]
+				],
+				"subtitle": [
+					[167, 490, 433, 511],
+					[157, 515, 443, 536]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				258,
+				537
+			]
 		},
 		"ja/baptism-with-the-holy-spirit": {
 			"ground": "57270c0bba1a09d8c29e2206bc3a5f22acdd695512a2797c942af6e59941d365",
@@ -25812,6 +25876,37 @@
 				486
 			]
 		},
+		"ja/ever-increasing-faith": {
+			"ground": "c4a40c8504ae6a7431fe3bf8ac0bb1c3f5c9862874dcf0e555c0d18139af6fb0",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "c9c6519c5be93dd2d95337e9bd5c427a91123a0ddaf8d3272bf155fb153b617a",
+			"art": true,
+			"scrim": 0.55,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[96, 102, 504, 131]
+				],
+				"title": [
+					[176, 221, 424, 331],
+					[135, 316, 465, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				476
+			]
+		},
 		"ja/faithful-with-little": {
 			"ground": "46244d5fadf5ea506c2f01ca80bb9924daa8e5b46b7b3fa80c22b9d2e6e13bdc",
 			"style": "originals",
@@ -26064,6 +26159,51 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/on-the-incarnation": {
+			"ground": "c468db08471ffec11600459850fe53a282db7a333c0b04f4a55ade850ec34fd1",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "af320fed34c3578d14ffec80a21ed3430a739279c08bbbf11ac7623f8a5d5793",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/indigo",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
+		"ja/orthodoxy": {
+			"ground": "71ad435fa89e36071e8a8539d8bca99dc6d1f8746e0065a83d8a791a7aac3fe3",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "d94be5729a949ce763134bce7a213c72ce54d6462213dcc0907b6b42ea794695",
+			"art": true,
+			"scrim": 0.4,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[52, 342, 548, 452]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				294,
+				501
+			]
+		},
 		"ja/pensees": {
 			"ground": "d68ac3d2c322c4eddfbd777e8c5584640592528a9f303f9b9ac2b2f1613b5987",
 			"style": "press",
@@ -26284,6 +26424,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/religious-experience-and-journal": {
+			"ground": "98d47b2c27db41cb79f867af66421512a78523324e2d34d1811e089eadc28daa",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "7aa1b66586f57ee229eac1a0a67da78f8593c53d8443b4523016dd6821033715",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[195, 102, 405, 131]
+				],
+				"title": [
+					[43, 172, 557, 263]
+				],
+				"subtitle": [
+					[89, 331, 511, 359]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				359
+			]
+		},
 		"ja/rooted-1": {
 			"ground": "7d31fc8bdd1f76b96bc4e2c61607aec703d92b158368e534c7494ae1640bb57a",
 			"style": "young",
@@ -26397,6 +26570,37 @@
 			"middle": [
 				229,
 				566
+			]
+		},
+		"ja/the-god-of-all-comfort": {
+			"ground": "35ed0fba4120d193555593fa23e5b884da74879bddccbde17d4f6c340d608ea2",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "21f301a626bdf9081b8599cea44c4cfd422f24be8286073ea2457af6f40312e1",
+			"art": true,
+			"scrim": 0.85,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[117, 255, 483, 374],
+					[117, 359, 483, 478]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				263,
+				532
 			]
 		},
 		"ja/the-imitation-of-christ": {
