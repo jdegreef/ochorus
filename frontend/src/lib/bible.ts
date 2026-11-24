@@ -10,6 +10,8 @@
  */
 
 import { CANON } from '$lib/sermonCanon';
+import { canonIn, psalmIn } from '$lib/bibleNames';
+import { bibleText, type BibleText } from '$lib/bibleLocales';
 import {
 	BIBLE_CLOSING_CHAPTERS,
 	BIBLE_INTRO_CHAPTERS,
@@ -35,7 +37,7 @@ export const BIBLE_STORY_PATH = `${BIBLE_PATH}/story`;
 // BIBLE_LOCALES and bibleIn live in $lib/bibleLocales (no imports, so
 // $lib/originals can ask them without an import cycle); re-exported here.
 import { bibleIn } from '$lib/bibleLocales';
-export { BIBLE_LOCALES, bibleIn } from '$lib/bibleLocales';
+export { BIBLE_LOCALES, bibleIn, bibleText, type BibleLocale, type BibleText } from '$lib/bibleLocales';
 
 /** Whether `book` is one of the Bible's books (the `the-bible` series). */
 export const isBibleBook = (book: { series?: { slug: string } | null }) =>
@@ -158,7 +160,7 @@ function byTestament<G extends { division: BibleDivision }>(
 export interface CanonSlot<T> {
 	/** Canonical number, 1 Genesis … 66 Revelation. */
 	position: number;
-	/** The book's short English name ("Psalms", "1 Corinthians", "John"). */
+	/** The book's short name in the hub's language ("Psalms", «Salmos», "John"). */
 	name: string;
 	/** Its abbreviation ("Obad", "Phlm", "2 John") — what a thin spine shows. */
 	abbr: string;
@@ -196,12 +198,11 @@ export interface CanonTestament<T> {
  * division, each slot holding the library's edition or null. Unlike
  * `groupBible`, nothing is dropped — the strip's point is the whole shape of the
  * canon, with the books a language lacks shown as gaps. The names are the
- * canon's short English names (`CANON`): the hub is drawn only in
- * BIBLE_LOCALES, all English today; a translated Bible would bring its own.
+ * canon's short names in `lang` ($lib/bibleNames).
  */
 export function canonStrip<
 	T extends { series_position?: number | null; word_count?: number | null; chapter_count?: number }
->(books: readonly T[]): CanonTestament<T>[] {
+>(books: readonly T[], lang: string): CanonTestament<T>[] {
 	const at = new Map<number, T>();
 	for (const b of books) {
 		const p = b.series_position;
@@ -217,8 +218,8 @@ export function canonStrip<
 		const chapters = book ? chaptersOf(book) : 0;
 		return {
 			position,
-			name: canonName(position) ?? '',
-			abbr: CANON[position - 1][1],
+			name: canonName(position, lang) ?? '',
+			abbr: canonIn(lang)[position - 1][1],
 			book,
 			weight: book && largest ? Math.round((size(book) / largest) * 100) / 100 : 0,
 			chapters,
@@ -308,34 +309,66 @@ export const mayBePassage = (q: string): boolean =>
 export interface BibleStart {
 	/** The Bible book's slug (its `the-bible` series volume). */
 	slug: string;
-	/** Why this book, and why now — English, as the hub is (BIBLE_LOCALES). */
-	why: string;
+	/** Why this book, and why now, in each hub locale. */
+	why: BibleText;
 }
 
 /**
  * The hub's "Where to start": five books for a first reader, in reading order.
  * A Gospel first, the shortest; then the one written "that you may believe";
  * then the beginning; then the prayer book; then the gospel explained. The
- * reasons are English prose like the rest of the hub's own copy: the hub exists
- * only where the Bible does, English today. A step whose book is missing in the
- * series (`bibleStarts`) is left out.
+ * reasons are the hub's own prose, in each hub locale (`BibleText`); a
+ * quotation in them is the Open Word Bible's wording in that language. A step
+ * whose book is missing in the series (`bibleStarts`) is left out.
  */
 export const BIBLE_STARTS: readonly BibleStart[] = [
-	{ slug: 'gospel-of-mark', why: 'The shortest Gospel, and the quickest: the life of Jesus in one sitting.' },
-	{ slug: 'gospel-of-john', why: 'Written “so that you may believe”: who Jesus is, in his own words.' },
-	{ slug: 'genesis', why: 'The beginning: creation, the fall, and God’s promise to Abraham.' },
-	{ slug: 'psalms', why: 'The Bible’s prayer book. Read one a day, aloud if you can.' },
-	{ slug: 'romans', why: 'The gospel set out step by step: sin, grace, faith and new life.' }
+	{
+		slug: 'gospel-of-mark',
+		why: {
+			en: 'The shortest Gospel, and the quickest: the life of Jesus in one sitting.',
+			es: 'El Evangelio más breve y el más ágil: la vida de Jesús de una sentada.'
+		}
+	},
+	{
+		slug: 'gospel-of-john',
+		why: {
+			en: 'Written “so that you may believe”: who Jesus is, in his own words.',
+			// John 20:31, OWB-es.
+			es: 'Escrito «para que ustedes crean»: quién es Jesús, en Sus propias palabras.'
+		}
+	},
+	{
+		slug: 'genesis',
+		why: {
+			en: 'The beginning: creation, the fall, and God’s promise to Abraham.',
+			es: 'El principio: la creación, la caída y la promesa de Dios a Abraham.'
+		}
+	},
+	{
+		slug: 'psalms',
+		why: {
+			en: 'The Bible’s prayer book. Read one a day, aloud if you can.',
+			es: 'El libro de oración de la Biblia. Lee un salmo al día, en voz alta si puedes.'
+		}
+	},
+	{
+		slug: 'romans',
+		why: {
+			en: 'The gospel set out step by step: sin, grace, faith and new life.',
+			es: 'El evangelio expuesto paso a paso: el pecado, la gracia, la fe y la vida nueva.'
+		}
+	}
 ];
 
 /** The "Where to start" steps the series has, each with its book, in order. */
 export function bibleStarts<T extends { slug: string }>(
-	books: readonly T[]
+	books: readonly T[],
+	lang: string
 ): { book: T; why: string }[] {
 	const bySlug = new Map(books.map((b) => [b.slug, b]));
 	return BIBLE_STARTS.flatMap((s) => {
 		const book = bySlug.get(s.slug);
-		return book ? [{ book, why: s.why }] : [];
+		return book ? [{ book, why: bibleText(s.why, lang) }] : [];
 	});
 }
 
@@ -362,18 +395,19 @@ export const bibleChapterCount = (books: readonly { chapter_count?: number }[]):
 const PSALMS = 19;
 
 /**
- * How a Bible chapter is named ("Romans 8"), or null off the canon. Psalms is
- * the one book whose chapters are titled in the singular ("Psalm 23", as
- * `build_owb_book` titles them and `dailyChapter` names them).
+ * How a Bible chapter is named in `lang` ("Romans 8", «Romanos 8»), or null off
+ * the canon. Psalms is the one book whose chapters are titled in the singular
+ * ("Psalm 23", «Salmo 23», as `build_owb_book` titles them).
  */
-export function chapterLabel(position: number | null | undefined, n: number): string | null {
-	const name = position === PSALMS ? 'Psalm' : canonName(position);
+export function chapterLabel(position: number | null | undefined, n: number, lang: string): string | null {
+	const name = position === PSALMS ? psalmIn(lang) : canonName(position, lang);
 	return name ? `${name} ${n}` : null;
 }
 
-/** The canon's short English name for a position (1 Genesis … 66 Revelation), or null off the canon. */
-export const canonName = (position: number | null | undefined): string | null =>
-	divisionOf(position) ? CANON[position! - 1][0] : null;
+/** The canon's short name for a position (1 Genesis … 66 Revelation) in
+ *  `lang` ($lib/bibleNames), or null off the canon. */
+export const canonName = (position: number | null | undefined, lang: string): string | null =>
+	divisionOf(position) ? canonIn(lang)[position! - 1][0] : null;
 
 /** One chip of the hub's chapter picker. */
 export interface BibleChapterLink {
@@ -389,19 +423,22 @@ export interface BibleChapterLink {
  * A Bible book's chapters for the hub's picker, from the book's summary alone.
  * A summary carries no chapter titles, so where the book page reads each
  * chip's number off its title (`chapterNumber`), this counts them and places
- * each by `bibleChapterOrder`. The name is the canon's short English name, as
+ * each by `bibleChapterOrder`. The name is the canon's short name in `lang`, as
  * the canon strip's spines are; a book off the canon falls back to its title.
  */
-export function bibleChapters(book: {
-	slug: string;
-	title: string;
-	chapter_count?: number;
-	series_position?: number | null;
-}): BibleChapterLink[] {
+export function bibleChapters(
+	book: {
+		slug: string;
+		title: string;
+		chapter_count?: number;
+		series_position?: number | null;
+	},
+	lang: string
+): BibleChapterLink[] {
 	const pos = book.series_position;
 	return Array.from({ length: bibleChapterCount([book]) }, (_, i) => ({
 		n: i + 1,
-		name: chapterLabel(pos, i + 1) ?? `${book.title} ${i + 1}`,
+		name: chapterLabel(pos, i + 1, lang) ?? `${book.title} ${i + 1}`,
 		href: bookChapterPath(book.slug, bibleChapterOrder(i + 1), false)
 	}));
 }
@@ -584,10 +621,14 @@ export function bibleBrowseRow<T extends { slug: string }>(bible: readonly T[]):
  * The hub's "Passages on…" row: topic shelves whose "In the Bible" section
  * (`scripture_graph.topic_bible_chapters`, on the topic page) names chapters
  * of its own, with the short subject a reader would look for. In this order;
- * a topic the language lacks is left out (`bibleTopics`). English, like the
- * hub's other own copy. Chosen for distinct lists: nearly every shelf's list
- * includes Romans 8, so these are the ones whose other chapters differ most.
+ * a topic the language lacks is left out (`bibleTopics`). English only: the
+ * topic pages' "In the Bible" section is (the API sends `bible_chapters` for
+ * English alone), so the hub asks for the row only there (`BIBLE_TOPIC_LOCALES`).
+ * Chosen for distinct lists: nearly every shelf's list includes Romans 8, so
+ * these are the ones whose other chapters differ most.
  */
+export const BIBLE_TOPIC_LOCALES: readonly string[] = ['en'];
+
 export const BIBLE_TOPICS: readonly { slug: string; label: string }[] = [
 	{ slug: 'prayer', label: 'Prayer' },
 	{ slug: 'faith-and-guidance', label: 'Guidance' },
@@ -610,65 +651,196 @@ export function bibleTopics(topics: readonly { slug: string }[]): { slug: string
 export interface BiblePathStep {
 	position: number;
 	chapter?: number;
-	why: string;
+	why: BibleText;
 }
 
 /**
  * The hub's other ways in, beside the first reader's five books
  * (`BIBLE_STARTS`): what brought someone here, and four or five chapters for
- * it, each with why. English, like the hub's own copy (BIBLE_LOCALES). The
- * reasons say what the chapter holds in plain words; where they lean on a
- * phrase it is one a reader will meet there.
+ * it, each with why, in each hub locale (`BibleText`). The reasons say what
+ * the chapter holds in plain words; where they lean on a phrase it is one a
+ * reader will meet there (in Spanish, the Open Word Bible's own wording).
  */
 export const BIBLE_PATHS: readonly {
 	id: string;
-	label: string;
-	lede: string;
+	label: BibleText;
+	lede: BibleText;
 	steps: readonly BiblePathStep[];
 }[] = [
 	{
 		id: 'jesus',
-		label: 'Who Jesus is',
-		lede: 'Four chapters on who Jesus is, from the people who knew him.',
+		label: { en: 'Who Jesus is', es: 'Quién es Jesús' },
+		lede: {
+			en: 'Four chapters on who Jesus is, from the people who knew him.',
+			es: 'Cuatro capítulos sobre quién es Jesús, contados por quienes lo conocieron.'
+		},
 		steps: [
-			{ position: 43, chapter: 1, why: 'The Word who was with God and was God, come to live among us.' },
-			{ position: 41, chapter: 8, why: 'Jesus asks his friends the question: who do you say I am?' },
-			{ position: 50, chapter: 2, why: 'He did not hold on to equality with God, but emptied himself.' },
-			{ position: 51, chapter: 1, why: 'The image of the invisible God, in whom all things hold together.' }
+			{
+				position: 43,
+				chapter: 1,
+				why: {
+					en: 'The Word who was with God and was God, come to live among us.',
+					es: 'El Verbo, que estaba con Dios y era Dios, vino a vivir entre nosotros.'
+				}
+			},
+			{
+				position: 41,
+				chapter: 8,
+				why: {
+					en: 'Jesus asks his friends the question: who do you say I am?',
+					es: 'Jesús les hace a Sus amigos la pregunta: ¿quién dicen que soy yo?'
+				}
+			},
+			{
+				position: 50,
+				chapter: 2,
+				why: {
+					en: 'He did not hold on to equality with God, but emptied himself.',
+					es: 'No se aferró a ser igual a Dios, sino que se vació a Sí mismo.'
+				}
+			},
+			{
+				position: 51,
+				chapter: 1,
+				why: {
+					en: 'The image of the invisible God, in whom all things hold together.',
+					es: 'La imagen del Dios que no se ve, en quien todas las cosas se mantienen unidas.'
+				}
+			}
 		]
 	},
 	{
 		id: 'grief',
-		label: 'Grief and hard times',
-		lede: 'For a heavy day: chapters to read slowly, and more than once.',
+		label: { en: 'Grief and hard times', es: 'Duelo y tiempos difíciles' },
+		lede: {
+			en: 'For a heavy day: chapters to read slowly, and more than once.',
+			es: 'Para un día pesado: capítulos para leer despacio, y más de una vez.'
+		},
 		steps: [
-			{ position: 19, chapter: 23, why: 'The shepherd who walks with you through the darkest valley.' },
-			{ position: 43, chapter: 11, why: 'Jesus weeps at his friend’s grave, then calls him out of it.' },
-			{ position: 52, chapter: 4, why: 'Grief with hope: those who have died in Christ are not lost.' },
-			{ position: 66, chapter: 21, why: 'The end of the story: no more death, mourning, crying or pain.' }
+			{
+				position: 19,
+				chapter: 23,
+				why: {
+					en: 'The shepherd who walks with you through the darkest valley.',
+					es: 'El pastor que camina contigo por el valle más oscuro.'
+				}
+			},
+			{
+				position: 43,
+				chapter: 11,
+				why: {
+					en: 'Jesus weeps at his friend’s grave, then calls him out of it.',
+					es: 'Jesús llora ante la tumba de Su amigo, y luego lo llama a salir de ella.'
+				}
+			},
+			{
+				position: 52,
+				chapter: 4,
+				why: {
+					en: 'Grief with hope: those who have died in Christ are not lost.',
+					es: 'Un duelo con esperanza: los que han muerto en Cristo no están perdidos.'
+				}
+			},
+			{
+				position: 66,
+				chapter: 21,
+				why: {
+					en: 'The end of the story: no more death, mourning, crying or pain.',
+					es: 'El final de la historia: ya no habrá muerte, ni llanto, ni dolor.'
+				}
+			}
 		]
 	},
 	{
 		id: 'wisdom',
-		label: 'Wisdom for daily life',
-		lede: 'Four chapters for ordinary days: work, worry, words and people.',
+		label: { en: 'Wisdom for daily life', es: 'Sabiduría para cada día' },
+		lede: {
+			en: 'Four chapters for ordinary days: work, worry, words and people.',
+			es: 'Cuatro capítulos para los días comunes: el trabajo, las preocupaciones, las palabras y la gente.'
+		},
 		steps: [
-			{ position: 20, chapter: 3, why: 'Trust the LORD with all your heart, and he will make your paths straight.' },
-			{ position: 40, chapter: 6, why: 'Prayer, money and worry, from the Sermon on the Mount.' },
-			{ position: 59, chapter: 1, why: 'Ask God for wisdom, and be quick to listen and slow to speak.' },
-			{ position: 45, chapter: 12, why: 'A life given to God, and love worked out with the people around you.' }
+			{
+				position: 20,
+				chapter: 3,
+				why: {
+					en: 'Trust the LORD with all your heart, and he will make your paths straight.',
+					es: 'Confía en el SEÑOR con el corazón entero, y Él te abrirá un camino recto.'
+				}
+			},
+			{
+				position: 40,
+				chapter: 6,
+				why: {
+					en: 'Prayer, money and worry, from the Sermon on the Mount.',
+					es: 'La oración, el dinero y la ansiedad, del Sermón del Monte.'
+				}
+			},
+			{
+				position: 59,
+				chapter: 1,
+				why: {
+					en: 'Ask God for wisdom, and be quick to listen and slow to speak.',
+					es: 'Pide sabiduría a Dios, y está dispuesto a escuchar y sé lento para hablar.'
+				}
+			},
+			{
+				position: 45,
+				chapter: 12,
+				why: {
+					en: 'A life given to God, and love worked out with the people around you.',
+					es: 'Una vida entregada a Dios, y el amor puesto en práctica con quienes te rodean.'
+				}
+			}
 		]
 	},
 	{
 		id: 'story',
-		label: 'The big story',
-		lede: 'The whole Bible in five chapters, from the first day to the new creation.',
+		label: { en: 'The big story', es: 'La gran historia' },
+		lede: {
+			en: 'The whole Bible in five chapters, from the first day to the new creation.',
+			es: 'Toda la Biblia en cinco capítulos, del primer día a la nueva creación.'
+		},
 		steps: [
-			{ position: 1, chapter: 1, why: 'In the beginning: God makes the world, and calls it very good.' },
-			{ position: 1, chapter: 12, why: 'God calls Abram, and promises to bless every nation through him.' },
-			{ position: 23, chapter: 53, why: 'The servant who suffers for the sins of others.' },
-			{ position: 42, chapter: 24, why: 'The empty tomb, and the risen Jesus on the road to Emmaus.' },
-			{ position: 66, chapter: 21, why: 'All things made new, and God living with his people.' }
+			{
+				position: 1,
+				chapter: 1,
+				why: {
+					en: 'In the beginning: God makes the world, and calls it very good.',
+					es: 'En el principio: Dios hace el mundo y lo llama muy bueno.'
+				}
+			},
+			{
+				position: 1,
+				chapter: 12,
+				why: {
+					en: 'God calls Abram, and promises to bless every nation through him.',
+					es: 'Dios llama a Abram y promete bendecir por medio de él a todas las naciones.'
+				}
+			},
+			{
+				position: 23,
+				chapter: 53,
+				why: {
+					en: 'The servant who suffers for the sins of others.',
+					es: 'El siervo que sufre por los pecados de otros.'
+				}
+			},
+			{
+				position: 42,
+				chapter: 24,
+				why: {
+					en: 'The empty tomb, and the risen Jesus on the road to Emmaus.',
+					es: 'La tumba vacía, y Jesús resucitado en el camino a Emaús.'
+				}
+			},
+			{
+				position: 66,
+				chapter: 21,
+				why: {
+					en: 'All things made new, and God living with his people.',
+					es: 'Todas las cosas hechas nuevas, y Dios viviendo con Su pueblo.'
+				}
+			}
 		]
 	}
 ];
@@ -682,20 +854,22 @@ export function biblePathSteps<
 	T extends { slug: string; title: string; chapter_count?: number; series_position?: number | null }
 >(
 	steps: readonly BiblePathStep[],
-	books: readonly T[]
+	books: readonly T[],
+	lang: string
 ): { book: T; title: string; href: string; why: string }[] {
 	const at = new Map(books.flatMap((b) => (b.series_position != null ? [[b.series_position, b] as const] : [])));
 	return steps.flatMap((s) => {
 		const book = at.get(s.position);
 		if (!book) return [];
-		if (s.chapter == null) return [{ book, title: book.title, href: `/books/${book.slug}`, why: s.why }];
+		const why = bibleText(s.why, lang);
+		if (s.chapter == null) return [{ book, title: book.title, href: `/books/${book.slug}`, why }];
 		if (s.chapter > bibleChapterCount([book])) return [];
 		return [
 			{
 				book,
-				title: chapterLabel(s.position, s.chapter) ?? `${book.title} ${s.chapter}`,
+				title: chapterLabel(s.position, s.chapter, lang) ?? `${book.title} ${s.chapter}`,
 				href: bookChapterPath(book.slug, bibleChapterOrder(s.chapter), false),
-				why: s.why
+				why
 			}
 		];
 	});

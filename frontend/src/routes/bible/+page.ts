@@ -8,13 +8,13 @@ import {
 	type PlanSummary,
 	type SeriesDetail
 } from '$lib/library-public';
-import { BIBLE_SERIES, biblePlans, bibleTopics } from '$lib/bible';
+import { BIBLE_SERIES, BIBLE_TOPIC_LOCALES, biblePlans, bibleTopics } from '$lib/bible';
 import { orNotFound } from '$lib/loadHelpers';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
-// Prerenders to bible/index.html (isSlashedPath), reached by the English
-// footer's More column. Only the locales in BIBLE_LOCALES link it, so the
+// Prerenders to bible/index.html (isSlashedPath), reached by the footer's
+// More column and the Bible tab. Only the locales in BIBLE_LOCALES link it, so the
 // crawl bakes no copy where there is no Bible to show.
 export const prerender = true;
 export const trailingSlash = 'always';
@@ -41,7 +41,10 @@ export const load: PageLoad = async ({ fetch }) => {
 		),
 		listPlans(lang, fetch).catch((): PlanSummary[] => []),
 		getBibleLinks(lang, fetch).catch((): BibleBookLinks[] => []),
-		listTopics(lang, fetch).catch((): { slug: string }[] => [])
+		// Only where the topic pages have an "In the Bible" section to open.
+		BIBLE_TOPIC_LOCALES.includes(lang)
+			? listTopics(lang, fetch).catch((): { slug: string }[] => [])
+			: Promise.resolve([])
 	]);
 	return {
 		...result,

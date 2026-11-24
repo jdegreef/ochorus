@@ -8,7 +8,7 @@ import {
 	primaryNav,
 	hubDests
 } from './contentNav';
-import { BIBLE_PATH, BIBLE_LOCALES } from './bible';
+import { BIBLE_PATH, bibleIn } from './bible';
 
 /**
  * The nav, the footer Explore group and the command palette all `.map` these
@@ -38,7 +38,8 @@ describe('contentNav', () => {
 			'/biographies'
 		]);
 		expect(primaryNav('en')).toEqual(SECTION_DESTS);
-		for (const l of ['es', 'fr', 'sw', 'lg', 'ar'].filter((l) => !BIBLE_LOCALES.includes(l)))
+		expect(primaryNav('es')).toEqual(SECTION_DESTS);
+		for (const l of ['fr', 'sw', 'lg', 'ar'].filter((l) => !bibleIn(l)))
 			expect(primaryNav(l), l).toEqual(PRIMARY_NAV);
 	});
 

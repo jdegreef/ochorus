@@ -2,6 +2,7 @@
 	import type { BookSummary } from '$lib/library-public';
 	import { bibleChapters, type BiblePlace } from '$lib/bible';
 	import { i18n } from '$lib/i18n.svelte';
+	import { getLang } from '$lib/lang.svelte';
 	import { localizeHref } from '$lib/href';
 
 	/**
@@ -18,11 +19,12 @@
 		intro = ''
 	}: { book: BookSummary; place?: BiblePlace | null; intro?: string } = $props();
 	const t = i18n.t;
+	const lang = getLang();
 </script>
 
 {#if intro}<p class="chapter-panel-intro">{intro}</p>{/if}
 <ol class="chapter-grid">
-	{#each bibleChapters(book) as ch (ch.n)}
+	{#each bibleChapters(book, lang) as ch (ch.n)}
 		{@const current = !place?.finished && ch.n === place?.current}
 		{@const read = !current && ch.n <= (place?.behind ?? 0)}
 		<li>

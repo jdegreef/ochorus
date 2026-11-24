@@ -78,7 +78,7 @@ export async function loadTodayPicks(now: Date, lang: string): Promise<TodayPick
  *  the chapter is still offered, only with no reading time. */
 async function chapterOf(now: Date, lang: string): Promise<TodayPicks['chapter']> {
 	if (!bibleIn(lang)) return null;
-	const pick = pickDailyChapter(now);
+	const pick = pickDailyChapter(now, lang);
 	const toc = await getBook(pick.slug, lang).then((b) => b.chapters, () => []);
 	const word_count = toc.find((c) => c.order === pick.order)?.word_count;
 	return word_count ? { ...pick, word_count } : pick;

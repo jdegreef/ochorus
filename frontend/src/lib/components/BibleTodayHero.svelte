@@ -18,38 +18,62 @@
 	 * $lib/dailyChapter), so the two pages never disagree about today. They
 	 * are chosen by the reader's LOCAL date, so after mount: the prerender
 	 * draws the box at its size with nothing in it (no shift when it fills),
-	 * and a language or a day with no verse keeps only the chapter. With
+	 * and a language or a day with no OWB verse keeps only the chapter. With
 	 * neither, the box goes.
 	 */
 	let { books }: { books: readonly BookSummary[] } = $props();
 	const t = i18n.t;
+	/** Whether the day's verse is the Open Word Bible's here (English only). */
+	const withVerse = lang.current === 'en';
 
 	let verse = $state<TodayPicks['verse']>(null);
 	let chapter = $state<DailyChapter | null>(null);
 	let ready = $state(false);
 	onMount(() => {
 		const now = new Date();
-		chapter = pickDailyChapter(now);
+		chapter = pickDailyChapter(now, lang.current);
+		// Scripture on the hub is the Open Word Bible's own wording. The day's
+		// verse is in the OWB only in English (`loadDayVerse`); elsewhere it is
+		// the devotional's own Bible, so here it is left out and the chapter of
+		// the day stands alone.
+		if (!withVerse) {
+			ready = true;
+			return;
+		}
 		loadDayVerse(now, lang.current)
 			.then((v) => (verse = v), () => (verse = null))
 			.finally(() => (ready = true));
 	});
 	const book = $derived(chapter ? books.find((b) => b.slug === chapter!.slug) : undefined);
 	// Gone once loaded with nothing to show; until then, the reserved box.
-	const show = $derived(!ready || !!verse || !!book);
+	// Chapter only (no OWB verse here): drawn once the chapter is picked.
+	const show = $derived(withVerse ? !ready || !!verse || !!book : !!book);
 </script>
 
 {#if show}
-	<section class="today card-tint" aria-label={t('home.todayVerse')} aria-busy={!ready}>
+	<section
+		class="today card-tint"
+		class:solo={!withVerse}
+		aria-label={withVerse ? t('home.todayVerse') : t('home.todayChapter')}
+		aria-busy={!ready}
+	>
 		<div class="words">
 			{#if verse}
 				<p class="eyebrow text-accent">{t('home.todayVerse')}</p>
 				<blockquote class="verse" lang={verse.lang} dir="auto">{verse.text}</blockquote>
 				<p class="ref">{verse.ref}</p>
-			{:else if !ready}
+			{:else if !ready && withVerse}
 				<span class="ghost" aria-hidden="true"></span>
+			{:else if !withVerse && chapter && book}
+				<!-- No verse here: the chapter itself is the headline. -->
+				<p class="eyebrow text-accent">{t('home.todayChapter')}</p>
+				<p class="verse">{chapter.title}</p>
 			{/if}
-			{#if chapter && book}
+			{#if chapter && book && !withVerse}
+				<a class="btn btn-primary btn-solid read" href={localizeHref(chapter.href)}
+					>{t('home.startReading')} <Arrow /></a
+				>
+			{:else if chapter && book}
 				<a class="btn btn-primary btn-solid read" href={localizeHref(chapter.href)}
 					>{t('home.todayChapter')}: {chapter.title} <Arrow /></a
 				>
@@ -70,6 +94,10 @@
 		gap: 1.5rem;
 		min-block-size: 12rem;
 		margin: 0.5rem 0 2rem;
+	}
+	/* Chapter only: nothing to reserve room for. */
+	.today.solo {
+		min-block-size: 0;
 		padding: 1.5rem 1.75rem;
 		border: 1px solid var(--border);
 		border-radius: var(--radius-card);

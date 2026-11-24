@@ -10,6 +10,7 @@
 	import { breadcrumbLd, hreflangExact, itemList } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { getLang } from '$lib/lang.svelte';
 	import {
 		BIBLE_PATH,
 		BIBLE_SERIES,
@@ -22,6 +23,8 @@
 		bibleStarts,
 		BIBLE_PATHS,
 		biblePathSteps,
+		bibleText,
+		type BibleText,
 		divisionKey,
 		groupBible,
 		mayBePassage,
@@ -71,12 +74,38 @@
 		book.series_position != null ? linksAt.get(book.series_position) : undefined;
 	const loadError = $derived<boolean>(data.loadError);
 	const t = i18n.t;
+	const lang = getLang();
+
+	/**
+	 * The hub's own words beyond the catalogue's: only this page uses them,
+	 * and it exists only in BIBLE_LOCALES, so they live here, one per hub
+	 * locale (`BibleText`), rather than as 14-locale catalogue keys.
+	 */
+	const COPY = {
+		balanced: { en: 'Balanced', es: 'Equilibrado' },
+		freeToShare: { en: 'Free to share', es: 'Libre para compartir' },
+		noteWhat: {
+			en: "A new translation of the Bible from the Hebrew and Greek, in today's English. Every sentence is translated three ways, from word-for-word to plain; Ochorus prints the Balanced one, faithful to the original and easy to read.",
+			es: 'Una nueva traducción de la Biblia hecha directamente del hebreo y el griego, en el español de hoy. Ochorus imprime su nivel Equilibrado: fiel al original y fácil de leer.'
+		},
+		noteFree: {
+			en: 'It is given to the public domain, so anyone may read, copy, print and share it, free.',
+			es: 'Está cedida al dominio público, así que cualquiera puede leerla, copiarla, imprimirla y compartirla, gratis.'
+		},
+		moreAbout: { en: 'More about the translation', es: 'Más sobre la traducción' },
+		passagesOn: { en: 'Passages on', es: 'Pasajes sobre' },
+		chooseWay: { en: 'Choose a way in', es: 'Elige por dónde entrar' },
+		newToBible: { en: 'New to the Bible', es: 'Nuevo en la Biblia' },
+		showCovers: { en: 'Show covers', es: 'Ver portadas' },
+		aboutOwb: { en: 'About the Open Word Bible', es: 'Acerca de la Open Word Bible' }
+	} satisfies Record<string, BibleText>;
+	const say = (text: BibleText) => bibleText(text, lang);
 
 	const groups = $derived(groupBible<BookSummary>(series?.books ?? []));
 	// In the page's order, so the count, the cards and the JSON-LD agree.
 	const books = $derived(groups.flatMap((g) => g.divisions.flatMap((d) => d.books)));
 	const chapters = $derived(bibleChapterCount(books));
-	const starts = $derived(bibleStarts(series?.books ?? []));
+	const starts = $derived(bibleStarts(series?.books ?? [], lang));
 	// "Where to start": the first reader's five books by default, or a path
 	// for what brought them (BIBLE_PATHS), one switch away. The prerender
 	// draws the default.
@@ -84,7 +113,7 @@
 	const startPath = $derived(BIBLE_PATHS.find((p) => p.id === pathId) ?? null);
 	const steps = $derived(
 		startPath
-			? biblePathSteps(startPath.steps, series?.books ?? [])
+			? biblePathSteps(startPath.steps, series?.books ?? [], lang)
 			: starts.map(({ book, why }) => ({ book, title: book.title, href: `/books/${book.slug}`, why }))
 	);
 	// The reader's place in the Bible: device-local progress (synced when signed
@@ -139,8 +168,8 @@
 	// Suggestions as the reader types (`passageSuggestions`: the hub's own books,
 	// so each is a chapter the library prints), a combobox's listbox under the
 	// box. `active` is the one the arrow keys are on (-1: none).
-	const suggestions = $derived(passageSuggestions(jumpQ, series?.books ?? []));
-	const quick = $derived(quickPassages(series?.books ?? []));
+	const suggestions = $derived(passageSuggestions(jumpQ, series?.books ?? [], lang));
+	const quick = $derived(quickPassages(series?.books ?? [], lang));
 	const topics = $derived(data.topics);
 	let listOpen = $state(false);
 	let active = $state(-1);
@@ -172,11 +201,14 @@
 		if (q.length < 2) return;
 		const seq = ++jumpSeq;
 		jumping = true;
-		const found = mayBePassage(q) ? await lookupScripture(q) : null;
+		// The resolver reads English names alone; a Spanish name ("Juan 3:16")
+		// is the suggestions' to read, so it is asked only where they found none.
+		const own = lang !== 'en' ? (suggestions[0]?.href ?? null) : null;
+		const found = !own && mayBePassage(q) ? await lookupScripture(q) : null;
 		if (seq !== jumpSeq) return;
 		// The resolver's reading first; then the best suggestion (a typo the
 		// resolver refused, "Roamns 8"); then search, so nothing dead-ends.
-		const href = (found ? passageHref(found) : null) ?? suggestions[0]?.href ?? null;
+		const href = own ?? (found ? passageHref(found) : null) ?? suggestions[0]?.href ?? null;
 		// Kept busy until the navigation lands, so Read can't fire it twice.
 		await goto(localizeHref(href ?? searchHref(q)));
 		if (seq === jumpSeq) jumping = false;
@@ -227,33 +259,27 @@
 		{books.length}
 		{i18n.tn(books.length, 'common.bookOne', 'common.bookMany')}
 		{#if chapters}
-			· {chapters.toLocaleString('en')}
+			· {chapters.toLocaleString(lang)}
 			{i18n.tn(chapters, 'book.chapterOne', 'book.chaptersMany')}
 		{/if}
 	{/snippet}
 	<!-- What the translation is, where a reader first wonders: who made it, what
 	     "Balanced" means, that it is free. Its words are the /open-word-bible
-	     page's own (English, as the hub is), and a native <details>, so it opens
-	     without script and announces its state. -->
+	     page's own, and a native <details>, so it opens without script and
+	     announces its state. -->
 	<details class="owb-note">
 		<summary>
 			<span>Open Word Bible</span><span class="sep" aria-hidden="true">·</span><span
-				>Balanced</span
-			><span class="sep" aria-hidden="true">·</span><span>Free to share</span>
+				>{say(COPY.balanced)}</span
+			><span class="sep" aria-hidden="true">·</span><span>{say(COPY.freeToShare)}</span>
 			<span class="owb-chev" aria-hidden="true"><Icon name="chevron-right" size={14} /></span>
 		</summary>
 		<div class="owb-note-body">
-			<p>
-				A new translation of the Bible from the Hebrew and Greek, in today's English. Every
-				sentence is translated three ways, from word-for-word to plain; Ochorus prints the
-				Balanced one, faithful to the original and easy to read.
-			</p>
-			<p>
-				It is given to the public domain, so anyone may read, copy, print and share it, free.
-			</p>
+			<p>{say(COPY.noteWhat)}</p>
+			<p>{say(COPY.noteFree)}</p>
 			<p>
 				<a href={localizeHref(`${OWB_PATH}/`)} class="font-medium text-accent hover:underline"
-					>More about the translation <Arrow /></a
+					>{say(COPY.moreAbout)} <Arrow /></a
 				>
 			</p>
 		</div>
@@ -340,7 +366,7 @@
 				     its topic shelf at "In the Bible", the chapters that shelf's
 				     classics and sermons return to most. -->
 				<nav class="topics-row" aria-labelledby="topics-row-label">
-					<span id="topics-row-label" class="topics-row-label">Passages on</span>
+					<span id="topics-row-label" class="topics-row-label">{say(COPY.passagesOn)}</span>
 					<ul class="quick">
 						{#each topics as tp (tp.slug)}
 							<li>
@@ -414,9 +440,9 @@
 					>
 				</div>
 				<!-- What brought them: one press shows that path's chapters below. -->
-				<div class="start-paths" role="group" aria-label="Choose a way in">
+				<div class="start-paths" role="group" aria-label={say(COPY.chooseWay)}>
 					<button type="button" class="chip" class:active={!startPath} aria-pressed={!startPath} onclick={() => (pathId = 'first')}
-						>New to the Bible</button
+						>{say(COPY.newToBible)}</button
 					>
 					{#each BIBLE_PATHS as p (p.id)}
 						<button
@@ -424,11 +450,11 @@
 							class="chip"
 							class:active={pathId === p.id}
 							aria-pressed={pathId === p.id}
-							onclick={() => (pathId = p.id)}>{p.label}</button
+							onclick={() => (pathId = p.id)}>{say(p.label)}</button
 						>
 					{/each}
 				</div>
-				<p class="mb-4 text-small text-muted" aria-live="polite">{startPath ? startPath.lede : t('bible.startLede')}</p>
+				<p class="mb-4 text-small text-muted" aria-live="polite">{startPath ? say(startPath.lede) : t('bible.startLede')}</p>
 				<ol class="start-list" style:--steps={steps.length}>
 					{#each steps as { book, title, href, why }, i (href)}
 						<li>
@@ -476,13 +502,12 @@
 					<h2 class="section-label">{t(testamentKey(testament.testament))}</h2>
 					{#if ti === 0}
 						<!-- Covers or the compact index, for the whole list: on the first
-						     heading's row, where the list begins. English, like the page's
-						     other own copy: the hub exists only in BIBLE_LOCALES. Not the book
-						     page's "Show as a grid", which here would read as the chapters. -->
+						     heading's row, where the list begins. Not the book page's "Show as
+						     a grid", which here would read as the chapters. -->
 						<button type="button" class="btn btn-sm btn-ghost" onclick={() => (asCovers = !asCovers)}>
 							<Icon name={asCovers ? 'list' : 'grid'} size={16} />{asCovers
-								? 'Show as a list'
-								: 'Show covers'}
+								? t('bible.contentsAsList')
+								: say(COPY.showCovers)}
 						</button>
 					{/if}
 				</div>
@@ -499,11 +524,10 @@
 			</section>
 		{/each}
 
-		<!-- What the translation is, and its home: English prose, like the page
-		     it opens (it exists only where the hub does). -->
+		<!-- What the translation is, and its home (it exists wherever the hub does). -->
 		<p class="mt-12 text-small">
 			<a href={localizeHref(`${OWB_PATH}/`)} class="font-medium text-accent hover:underline"
-				>About the Open Word Bible <Arrow /></a
+				>{say(COPY.aboutOwb)} <Arrow /></a
 			>
 		</p>
 	{/if}

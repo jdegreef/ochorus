@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { SITE_URL } from '$lib/config';
-	import { breadcrumbLd, jsonLd, publisherLd } from '$lib/seo';
+	import { breadcrumbLd, hreflangExact, jsonLd, publisherLd } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
-	import { BIBLE_PATH, testamentKey } from '$lib/bible';
+	import { BIBLE_LOCALES, BIBLE_PATH, bibleText, testamentKey } from '$lib/bible';
+	import { getLang } from '$lib/lang.svelte';
 	import {
 		BIBLE_STORY,
 		BIBLE_STORY_PATH,
@@ -13,6 +14,7 @@
 		storyBooks,
 		storyEras,
 		storyKeys,
+		storyText,
 		type StorySection
 	} from '$lib/bibleStory';
 	import Seo from '$lib/components/Seo.svelte';
@@ -26,10 +28,14 @@
 	 * margin with each era's number on it — and a plain stack on a phone. CSS
 	 * only, so the prerendered HTML is one layout at every width.
 	 *
-	 * The prose is English (the page exists only in BIBLE_LOCALES); the
-	 * headings and labels around it are chrome, through the catalogue.
+	 * The prose is the page's own, in each hub locale (the page exists only in
+	 * BIBLE_LOCALES); the headings and labels around it are chrome, through
+	 * the catalogue.
 	 */
 	const t = i18n.t;
+	const lang = getLang();
+	const tagline = bibleText(STORY_TAGLINE, lang);
+	const ABOUT = { en: 'The Bible', es: 'La Biblia' };
 
 	const eras = storyEras();
 	// Numbered through both testaments, so the New Testament list starts where
@@ -41,6 +47,8 @@
 
 	const path = `${BIBLE_STORY_PATH}/`;
 	const canonical = `${SITE_URL}${localizeHref(path)}`;
+	// Every hub locale has the page, in its own words (the sitemap's set).
+	const hreflang = hreflangExact(path, [...BIBLE_LOCALES]);
 	const title = `${t('bible.storyTitle')} — Ochorus`;
 	const crumbsLd = breadcrumbLd([
 		{ name: t('common.home'), href: '/' },
@@ -53,12 +61,12 @@
 		'@context': 'https://schema.org',
 		'@type': 'Article',
 		headline: t('bible.storyTitle'),
-		description: STORY_TAGLINE,
-		inLanguage: 'en',
+		description: tagline,
+		inLanguage: lang,
 		url: canonical,
 		mainEntityOfPage: canonical,
 		articleSection: t('nav.bible'),
-		about: { '@type': 'Book', name: 'The Bible' },
+		about: { '@type': 'Book', name: bibleText(ABOUT, lang) },
 		isAccessibleForFree: true,
 		author: publisherLd(),
 		publisher: publisherLd()
@@ -69,22 +77,23 @@
 
 <Seo
 	{title}
-	description={STORY_TAGLINE}
+	description={tagline}
 	{canonical}
-	hreflang={null}
+	{hreflang}
 	ogImage={`${SITE_URL}/og/bible.png`}
 	structuredData={[articleLd, crumbsLd]}
 />
 
 {#snippet era(s: StorySection)}
-	{@const books = storyBooks(s)}
-	{@const keys = storyKeys(s)}
+	{@const books = storyBooks(s, lang)}
+	{@const keys = storyKeys(s, lang)}
+	{@const words = storyText(s, lang)}
 	<li class="era" id={s.id}>
 		<span class="marker" aria-hidden="true">{number.get(s.id)}</span>
 		<div class="era-body">
-			<p class="eyebrow text-gold-ink">{s.period}</p>
-			<h3 class="era-title mt-1 font-display text-h3 font-semibold">{s.title}</h3>
-			<p class="prose-line mt-2 text-muted">{s.prose}</p>
+			<p class="eyebrow text-gold-ink">{words.period}</p>
+			<h3 class="era-title mt-1 font-display text-h3 font-semibold">{words.title}</h3>
+			<p class="prose-line mt-2 text-muted">{words.prose}</p>
 			<dl class="links mt-4 text-small">
 				<div>
 					<dt>{t('bible.storyToldIn')}</dt>
@@ -112,7 +121,7 @@
 {/snippet}
 
 <div class="page-col px-5 py-10">
-	<PageHeader eyebrow={t('nav.bible')} title={t('bible.storyTitle')} tagline={STORY_TAGLINE} />
+	<PageHeader eyebrow={t('nav.bible')} title={t('bible.storyTitle')} {tagline} />
 
 	<section class="testament" aria-labelledby="story-old">
 		<h2 id="story-old" class="section-label">{t(testamentKey('old'))}</h2>
@@ -125,9 +134,10 @@
 
 	<!-- The pause between the testaments: a line, not an era. -->
 	{#each interludes as s (s.id)}
+		{@const words = storyText(s, lang)}
 		<div class="interlude" id={s.id}>
-			<p class="eyebrow text-muted">{s.title} · {s.period}</p>
-			<p class="mt-1 text-small text-muted">{s.prose}</p>
+			<p class="eyebrow text-muted">{words.title} · {words.period}</p>
+			<p class="mt-1 text-small text-muted">{words.prose}</p>
 		</div>
 	{/each}
 
@@ -158,7 +168,7 @@
 			{#if data.book}
 			<li>
 				<a class="read-card card-lift" href={localizeHref(`/books/${STORY_BOOK.slug}`)}>
-					<span class="font-display text-body font-semibold text-text">{STORY_BOOK.title}</span>
+					<span class="font-display text-body font-semibold text-text">{data.book}</span>
 					<span class="mt-1 block text-small text-muted">{t('bible.storyForTeens')}</span>
 					<span class="mt-2 block text-small font-semibold text-accent">{t('home.startReading')} <Arrow /></span>
 				</a>
