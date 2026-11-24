@@ -71,7 +71,7 @@
 			{/if}
 			{#if chapter && book && !withVerse}
 				<a class="btn btn-primary btn-solid read" href={localizeHref(chapter.href)}
-					>{t('home.startReading')} <Arrow /></a
+					>{t('book.beginReading')} <Arrow /></a
 				>
 			{:else if chapter && book}
 				<a class="btn btn-primary btn-solid read" href={localizeHref(chapter.href)}

@@ -334,7 +334,7 @@ export const BIBLE_STARTS: readonly BibleStart[] = [
 		why: {
 			en: 'Written “so that you may believe”: who Jesus is, in his own words.',
 			// John 20:31, OWB-es.
-			es: 'Escrito «para que ustedes crean»: quién es Jesús, en Sus propias palabras.'
+			es: 'Escrito «para que ustedes crean»: quién es Jesús, en sus propias palabras.'
 		}
 	},
 	{
@@ -348,7 +348,7 @@ export const BIBLE_STARTS: readonly BibleStart[] = [
 		slug: 'psalms',
 		why: {
 			en: 'The Bible’s prayer book. Read one a day, aloud if you can.',
-			es: 'El libro de oración de la Biblia. Lee un salmo al día, en voz alta si puedes.'
+			es: 'El libro de oración de la Biblia. Conviene leer un salmo al día, en voz alta si se puede.'
 		}
 	},
 	{
@@ -688,7 +688,7 @@ export const BIBLE_PATHS: readonly {
 				chapter: 8,
 				why: {
 					en: 'Jesus asks his friends the question: who do you say I am?',
-					es: 'Jesús les hace a Sus amigos la pregunta: ¿quién dicen que soy yo?'
+					es: 'Jesús les hace a sus amigos la pregunta: ¿quién dicen que soy yo?'
 				}
 			},
 			{
@@ -696,7 +696,7 @@ export const BIBLE_PATHS: readonly {
 				chapter: 2,
 				why: {
 					en: 'He did not hold on to equality with God, but emptied himself.',
-					es: 'No se aferró a ser igual a Dios, sino que se vació a Sí mismo.'
+					es: 'No se aferró a ser igual a Dios, sino que se vació a sí mismo.'
 				}
 			},
 			{
@@ -722,7 +722,7 @@ export const BIBLE_PATHS: readonly {
 				chapter: 23,
 				why: {
 					en: 'The shepherd who walks with you through the darkest valley.',
-					es: 'El pastor que camina contigo por el valle más oscuro.'
+					es: 'El pastor que acompaña a los suyos por el valle más oscuro.'
 				}
 			},
 			{
@@ -730,7 +730,7 @@ export const BIBLE_PATHS: readonly {
 				chapter: 11,
 				why: {
 					en: 'Jesus weeps at his friend’s grave, then calls him out of it.',
-					es: 'Jesús llora ante la tumba de Su amigo, y luego lo llama a salir de ella.'
+					es: 'Jesús llora ante la tumba de su amigo, y luego lo llama a salir de ella.'
 				}
 			},
 			{
@@ -764,7 +764,7 @@ export const BIBLE_PATHS: readonly {
 				chapter: 3,
 				why: {
 					en: 'Trust the LORD with all your heart, and he will make your paths straight.',
-					es: 'Confía en el SEÑOR con el corazón entero, y Él te abrirá un camino recto.'
+					es: 'Confiar en el SEÑOR con el corazón entero, y él abrirá un camino recto.'
 				}
 			},
 			{
@@ -780,7 +780,7 @@ export const BIBLE_PATHS: readonly {
 				chapter: 1,
 				why: {
 					en: 'Ask God for wisdom, and be quick to listen and slow to speak.',
-					es: 'Pide sabiduría a Dios, y está dispuesto a escuchar y sé lento para hablar.'
+					es: 'Pedir sabiduría a Dios, estar dispuesto a escuchar y ser lento para hablar.'
 				}
 			},
 			{
@@ -788,7 +788,7 @@ export const BIBLE_PATHS: readonly {
 				chapter: 12,
 				why: {
 					en: 'A life given to God, and love worked out with the people around you.',
-					es: 'Una vida entregada a Dios, y el amor puesto en práctica con quienes te rodean.'
+					es: 'Una vida entregada a Dios, y el amor puesto en práctica con los demás.'
 				}
 			}
 		]
@@ -838,7 +838,7 @@ export const BIBLE_PATHS: readonly {
 				chapter: 21,
 				why: {
 					en: 'All things made new, and God living with his people.',
-					es: 'Todas las cosas hechas nuevas, y Dios viviendo con Su pueblo.'
+					es: 'Todas las cosas hechas nuevas, y Dios viviendo con su pueblo.'
 				}
 			}
 		]

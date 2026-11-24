@@ -31,7 +31,7 @@ export const OWB_LEVELS: readonly { code: 'OWB-L' | 'OWB-B' | 'OWB-R'; name: Bib
 		name: { en: 'Balanced', es: 'Equilibrado' },
 		aim: {
 			en: 'Accurate and natural: faithful to the original, and easy to read. This is the text you read on Ochorus.',
-			es: 'Exacto y natural: fiel al original y fácil de leer. Es el texto que lees en Ochorus.'
+			es: 'Exacto y natural: fiel al original y fácil de leer. Es el texto que se lee en Ochorus.'
 		}
 	},
 	{

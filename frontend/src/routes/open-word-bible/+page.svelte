@@ -73,7 +73,7 @@
 		heading: { en: 'The Open Word Bible', es: 'La Open Word Bible' },
 		lede: {
 			en: "A new translation of the Bible from the Hebrew and Greek, in today's English. Every sentence is translated three ways, from word-for-word to plain, and every choice the translators made is written down with its reason, so you can see why it reads as it does. It is free for anyone to read, copy and share.",
-			es: 'Una nueva traducción de la Biblia hecha directamente del hebreo y el griego. Traduce cada oración en tres niveles, de la palabra por palabra a la más sencilla, y deja por escrito cada decisión de los traductores con su razón, para que puedas ver por qué dice lo que dice. En Ochorus se lee en español, en su nivel Equilibrado, y cualquiera puede leerla, copiarla y compartirla, gratis.'
+			es: 'Una nueva traducción de la Biblia hecha directamente del hebreo y el griego. Traduce cada oración en tres niveles, de la palabra por palabra a la más sencilla, y deja por escrito cada decisión de los traductores con su razón, para que se pueda ver por qué dice lo que dice. En Ochorus se lee en español, en su nivel Equilibrado, y cualquiera puede leerla, copiarla y compartirla, gratis.'
 		},
 		onOchorus: { en: 'on Ochorus', es: 'en Ochorus' },
 		languages: { en: 'Hebrew & Greek', es: 'Hebreo y griego' },
@@ -95,7 +95,7 @@
 		},
 		working2: {
 			en: 'On OpenWordBible.org you can open any verse and read its record, compare the three levels, and follow the cross-references in the margin.',
-			es: 'En OpenWordBible.org puedes abrir cualquier versículo y leer su registro, comparar los tres niveles y seguir las referencias cruzadas del margen.'
+			es: 'En OpenWordBible.org se puede abrir cualquier versículo y leer su registro, comparar los tres niveles y seguir las referencias cruzadas del margen.'
 		},
 		readReasoning: {
 			en: 'Read with the reasoning on OpenWordBible.org',
@@ -136,7 +136,7 @@
 		freeHeading: { en: 'Given to the public domain', es: 'Cedida al dominio público' },
 		freeText: {
 			en: 'The translation is released under CC0: no permission to ask, no fee, no limit on copies. Print it, quote it at length, put it in an app or a church bulletin. That is why it can sit in a free library like this one.',
-			es: 'La traducción se publica bajo CC0: sin permisos que pedir, sin costo, sin límite de copias. Imprímela, cítala extensamente, ponla en una aplicación o en el boletín de una iglesia. Por eso puede estar en una biblioteca gratuita como esta.'
+			es: 'La traducción se publica bajo CC0: sin permisos que pedir, sin costo, sin límite de copias. Se puede imprimir, citar extensamente, poner en una aplicación o en el boletín de una iglesia. Por eso puede estar en una biblioteca gratuita como esta.'
 		},
 		follow: {
 			en: 'English comes first, and these languages follow:',
@@ -146,7 +146,7 @@
 		hereEyebrow: { en: 'On Ochorus', es: 'En Ochorus' },
 		hereHeading: {
 			en: 'Read it here like any book in the library',
-			es: 'Léela aquí como cualquier libro de la biblioteca'
+			es: 'Se lee aquí como cualquier libro de la biblioteca'
 		},
 		everyBook: { en: 'Every book, in order', es: 'Todos los libros, en orden' },
 		everyBookText: {
@@ -156,7 +156,7 @@
 		through: { en: 'Straight through', es: 'De principio a fin' },
 		throughText: {
 			en: 'Genesis to Revelation as one reading, with your place kept from book to book.',
-			es: 'De Génesis a Apocalipsis como una sola lectura, con tu lugar guardado de un libro a otro.'
+			es: 'De Génesis a Apocalipsis como una sola lectura, con el lugar de lectura guardado de un libro a otro.'
 		},
 		daily: { en: 'A chapter a day', es: 'Un capítulo al día' },
 		dailyText: {
@@ -169,7 +169,7 @@
 			en: 'Who wrote it, when and why, before you begin; and a closing note on what to carry away. Poetry is set line by line, as the Hebrew divides it.',
 			es: 'Quién lo escribió, cuándo y por qué, antes de empezar; y una nota final sobre lo que conviene llevarse. La poesía se presenta línea por línea, como la divide el hebreo.'
 		},
-		whole: { en: 'See the whole translation', es: 'Mira la traducción completa' },
+		whole: { en: 'See the whole translation', es: 'Ver la traducción completa' },
 		wholeText: {
 			en: 'All three levels, every reasoning record, the interlinear view and the other languages as they are drafted live at OpenWordBible.org.',
 			es: 'Los tres niveles, cada registro de razonamiento, la vista interlineal y los demás idiomas, a medida que se redactan, están en OpenWordBible.org.'

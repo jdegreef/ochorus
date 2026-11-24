@@ -94,7 +94,7 @@
 		},
 		moreAbout: { en: 'More about the translation', es: 'Más sobre la traducción' },
 		passagesOn: { en: 'Passages on', es: 'Pasajes sobre' },
-		chooseWay: { en: 'Choose a way in', es: 'Elige por dónde entrar' },
+		chooseWay: { en: 'Choose a way in', es: 'Elegir por dónde entrar' },
 		newToBible: { en: 'New to the Bible', es: 'Nuevo en la Biblia' },
 		showCovers: { en: 'Show covers', es: 'Ver portadas' },
 		aboutOwb: { en: 'About the Open Word Bible', es: 'Acerca de la Open Word Bible' }

@@ -97,7 +97,7 @@ export const BIBLE_STORY: readonly StorySection[] = [
 		period: { en: 'Genesis 1–2', es: 'Génesis 1–2' },
 		prose: {
 			en: 'The Bible opens with God and nothing else. He makes the world by his word, calls it good, and makes man and woman in his own image to care for it. They live in a garden with God, in a world as it was meant to be.',
-			es: 'La Biblia comienza con Dios y nada más. Él hace el mundo por Su palabra, lo llama bueno, y hace al hombre y a la mujer a Su propia imagen para que lo cuiden. Viven en un jardín con Dios, en un mundo tal como debía ser.'
+			es: 'La Biblia comienza con Dios y nada más. Él hace el mundo por su palabra, lo llama bueno, y hace al hombre y a la mujer a su propia imagen para que lo cuiden. Viven en un jardín con Dios, en un mundo tal como debía ser.'
 		},
 		books: ['genesis'],
 		keys: [
@@ -142,7 +142,7 @@ export const BIBLE_STORY: readonly StorySection[] = [
 		period: { en: 'Exodus 1–18', es: 'Éxodo 1–18' },
 		prose: {
 			en: 'Generations later Jacob’s descendants, the Israelites, are slaves in Egypt. God hears their cry and sends Moses to bring them out. At the Passover and the crossing of the sea he rescues his people, and the exodus becomes the great picture of salvation for the rest of the Bible.',
-			es: 'Generaciones después, los descendientes de Jacob, los israelitas, son esclavos en Egipto. Dios oye su clamor y envía a Moisés a sacarlos. En la Pascua y en el cruce del mar rescata a Su pueblo, y el éxodo se convierte en la gran imagen de la salvación para el resto de la Biblia.'
+			es: 'Generaciones después, los descendientes de Jacob, los israelitas, son esclavos en Egipto. Dios oye su clamor y envía a Moisés a sacarlos. En la Pascua y en el cruce del mar rescata a su pueblo, y el éxodo se convierte en la gran imagen de la salvación para el resto de la Biblia.'
 		},
 		books: ['exodus'],
 		keys: [
@@ -157,7 +157,7 @@ export const BIBLE_STORY: readonly StorySection[] = [
 		period: { en: 'Exodus 19 – Deuteronomy', es: 'Éxodo 19 – Deuteronomio' },
 		prose: {
 			en: 'At Mount Sinai God makes a covenant with Israel, gives them his law, and comes to live among them in the tabernacle, with sacrifices to deal with their sin. When they refuse to enter the promised land, they wander forty years in the wilderness. On its border Moses sets the law before a new generation and urges them to love God with all their heart.',
-			es: 'En el monte Sinaí Dios hace un pacto con Israel, le da Su ley y viene a vivir en medio de ellos en el tabernáculo, con sacrificios para tratar su pecado. Cuando se niegan a entrar en la tierra prometida, andan errantes cuarenta años por el desierto. En su frontera, Moisés pone la ley delante de una nueva generación y la exhorta a amar a Dios con todo el corazón.'
+			es: 'En el monte Sinaí Dios hace un pacto con Israel, le da su ley y viene a vivir en medio de ellos en el tabernáculo, con sacrificios para tratar su pecado. Cuando se niegan a entrar en la tierra prometida, andan errantes cuarenta años por el desierto. En su frontera, Moisés pone la ley delante de una nueva generación y la exhorta a amar a Dios con todo el corazón.'
 		},
 		books: ['exodus', 'leviticus', 'numbers', 'deuteronomy'],
 		keys: [
@@ -214,7 +214,7 @@ export const BIBLE_STORY: readonly StorySection[] = [
 		period: { en: 'Isaiah – Zephaniah', es: 'Isaías – Sofonías' },
 		prose: {
 			en: 'Through the years of the kings, God sends prophets to call his people back to him, away from idols and injustice, before judgement falls. Most of their warnings go unheeded. Yet their books are full of hope as well: of a King to come from David’s line, and of a servant who will suffer for the sins of many.',
-			es: 'Durante los años de los reyes, Dios envía profetas para llamar a Su pueblo a volver a Él, lejos de los ídolos y la injusticia, antes de que caiga el juicio. La mayoría de sus advertencias no son escuchadas. Sin embargo, sus libros también están llenos de esperanza: la de un Rey que vendrá del linaje de David, y la de un siervo que sufrirá por los pecados de muchos.'
+			es: 'Durante los años de los reyes, Dios envía profetas para llamar a su pueblo a volver a él, lejos de los ídolos y la injusticia, antes de que caiga el juicio. La mayoría de sus advertencias no son escuchadas. Sin embargo, sus libros también están llenos de esperanza: la de un Rey que vendrá del linaje de David, y la de un siervo que sufrirá por los pecados de muchos.'
 		},
 		books: [
 			'isaiah',
@@ -239,7 +239,7 @@ export const BIBLE_STORY: readonly StorySection[] = [
 		period: { en: '2 Kings 17–25 · Jeremiah – Daniel', es: '2 Reyes 17–25 · Jeremías – Daniel' },
 		prose: {
 			en: 'Assyria takes the northern kingdom, and later Babylon destroys Jerusalem and its temple and carries Judah away. Lamentations mourns the city; in Babylon, Ezekiel and Daniel speak of a God who has not abandoned his people. Jeremiah, who saw the end coming, also speaks of a new covenant, written on the heart.',
-			es: 'Asiria conquista el reino del norte, y más tarde Babilonia destruye Jerusalén y su templo y se lleva cautivo a Judá. Lamentaciones llora por la ciudad; en Babilonia, Ezequiel y Daniel hablan de un Dios que no ha abandonado a Su pueblo. Jeremías, que vio venir el fin, habla también de un nuevo pacto, escrito en el corazón.'
+			es: 'Asiria conquista el reino del norte, y más tarde Babilonia destruye Jerusalén y su templo y se lleva cautivo a Judá. Lamentaciones llora por la ciudad; en Babilonia, Ezequiel y Daniel hablan de un Dios que no ha abandonado a su pueblo. Jeremías, que vio venir el fin, habla también de un nuevo pacto, escrito en el corazón.'
 		},
 		books: ['2-kings', 'jeremiah', 'lamentations', 'ezekiel', 'daniel', 'obadiah'],
 		keys: [
@@ -254,7 +254,7 @@ export const BIBLE_STORY: readonly StorySection[] = [
 		period: { en: 'Ezra – Esther · Haggai – Malachi', es: 'Esdras – Ester · Hageo – Malaquías' },
 		prose: {
 			en: 'When Persia conquers Babylon, the exiles are allowed to go home. They rebuild the temple and, under Nehemiah, the walls of Jerusalem, and Ezra reads them the law again; the book of Esther shows God keeping his people who stayed in Persia. The last prophets urge them on, and the Old Testament closes still waiting for the promised King.',
-			es: 'Cuando Persia conquista Babilonia, a los exiliados se les permite volver a casa. Reconstruyen el templo y, con Nehemías, los muros de Jerusalén, y Esdras vuelve a leerles la ley; el libro de Ester muestra a Dios guardando a los de Su pueblo que se quedaron en Persia. Los últimos profetas los animan, y el Antiguo Testamento se cierra esperando todavía al Rey prometido.'
+			es: 'Cuando Persia conquista Babilonia, a los exiliados se les permite volver a casa. Reconstruyen el templo y, con Nehemías, los muros de Jerusalén, y Esdras vuelve a leerles la ley; el libro de Ester muestra a Dios guardando a los de su pueblo que se quedaron en Persia. Los últimos profetas los animan, y el Antiguo Testamento se cierra esperando todavía al Rey prometido.'
 		},
 		books: ['ezra', 'nehemiah', 'esther', 'haggai', 'zechariah', 'malachi'],
 		keys: [
@@ -282,7 +282,7 @@ export const BIBLE_STORY: readonly StorySection[] = [
 		period: { en: 'The Gospels', es: 'Los Evangelios' },
 		prose: {
 			en: 'In Bethlehem, Jesus is born to Mary, the long-promised son of David and the Son of God. He announces that the kingdom of God has come near, teaches, heals the sick, forgives sinners and calls twelve disciples to follow him. Four Gospels tell his life, each in its own way.',
-			es: 'En Belén nace Jesús, hijo de María, el hijo de David tanto tiempo prometido y el Hijo de Dios. Anuncia que el reino de Dios se ha acercado, enseña, sana a los enfermos, perdona a los pecadores y llama a doce discípulos a seguirlo. Cuatro Evangelios cuentan Su vida, cada uno a su manera.'
+			es: 'En Belén nace Jesús, hijo de María, el hijo de David tanto tiempo prometido y el Hijo de Dios. Anuncia que el reino de Dios se ha acercado, enseña, sana a los enfermos, perdona a los pecadores y llama a doce discípulos a seguirlo. Cuatro Evangelios cuentan su vida, cada uno a su manera.'
 		},
 		books: ['gospel-of-matthew', 'gospel-of-mark', 'gospel-of-luke', 'gospel-of-john'],
 		keys: [
@@ -297,7 +297,7 @@ export const BIBLE_STORY: readonly StorySection[] = [
 		period: { en: 'The Gospels', es: 'Los Evangelios' },
 		prose: {
 			en: 'Jesus goes up to Jerusalem knowing what waits for him there. He shares a last supper with his disciples, is arrested, and is crucified, giving his life for the sins of the world. On the third day the tomb is empty: he is risen, and he appears to his friends.',
-			es: 'Jesús sube a Jerusalén sabiendo lo que lo espera allí. Comparte una última cena con Sus discípulos, es arrestado y crucificado, y da Su vida por los pecados del mundo. Al tercer día la tumba está vacía: ha resucitado, y se aparece a Sus amigos.'
+			es: 'Jesús sube a Jerusalén sabiendo lo que lo espera allí. Comparte una última cena con sus discípulos, es arrestado y crucificado, y da su vida por los pecados del mundo. Al tercer día la tumba está vacía: ha resucitado, y se aparece a sus amigos.'
 		},
 		books: ['gospel-of-matthew', 'gospel-of-mark', 'gospel-of-luke', 'gospel-of-john'],
 		keys: [
@@ -312,7 +312,7 @@ export const BIBLE_STORY: readonly StorySection[] = [
 		period: { en: 'Acts', es: 'Hechos' },
 		prose: {
 			en: 'Jesus returns to his Father and sends the Holy Spirit on his followers at Pentecost. From Jerusalem the good news spreads outward, carried by Peter, by Paul, once its fierce opponent, and by many others, until there are churches across the Roman world. Acts ends with Paul in Rome, still preaching.',
-			es: 'Jesús vuelve a Su Padre y envía el Espíritu Santo sobre Sus seguidores en Pentecostés. Desde Jerusalén la buena noticia se extiende, llevada por Pedro, por Pablo, que antes fue su feroz enemigo, y por muchos otros, hasta que hay iglesias por todo el mundo romano. Hechos termina con Pablo en Roma, predicando todavía.'
+			es: 'Jesús vuelve a su Padre y envía el Espíritu Santo sobre sus seguidores en Pentecostés. Desde Jerusalén la buena noticia se extiende, llevada por Pedro, por Pablo, que antes fue su feroz enemigo, y por muchos otros, hasta que hay iglesias por todo el mundo romano. Hechos termina con Pablo en Roma, predicando todavía.'
 		},
 		books: ['acts-of-the-apostles'],
 		keys: [
@@ -364,7 +364,7 @@ export const BIBLE_STORY: readonly StorySection[] = [
 		period: { en: 'Revelation', es: 'Apocalipsis' },
 		prose: {
 			en: 'The Bible ends where it began, with God and his world. In visions given to John, Jesus reigns, evil is finally overthrown, and heaven and earth are made new. God lives with his people, and there is no more death, mourning or pain.',
-			es: 'La Biblia termina donde comenzó, con Dios y Su mundo. En visiones dadas a Juan, Jesús reina, el mal es vencido por fin, y el cielo y la tierra son hechos nuevos. Dios vive con Su pueblo, y ya no hay muerte, ni llanto, ni dolor.'
+			es: 'La Biblia termina donde comenzó, con Dios y su mundo. En visiones dadas a Juan, Jesús reina, el mal es vencido por fin, y el cielo y la tierra son hechos nuevos. Dios vive con su pueblo, y ya no hay muerte, ni llanto, ni dolor.'
 		},
 		books: ['revelation'],
 		keys: [
