@@ -81,18 +81,30 @@
 
 {#if openBook}
 	{@const links = linksOf?.(openBook)}
-	<section class="bible-cover-panel" id="chapters-{openBook.slug}" aria-labelledby="panel-title-{openBook.slug}">
+	<section
+		class="bible-cover-panel"
+		id="chapters-{openBook.slug}"
+		aria-labelledby="panel-title-{openBook.slug}"
+	>
 		<div class="bible-cover-panel-head">
-			<h4 id="panel-title-{openBook.slug}" class="bible-cover-panel-title" tabindex="-1">{openBook.title}</h4>
+			<h4 id="panel-title-{openBook.slug}" class="bible-cover-panel-title" tabindex="-1">
+				{openBook.title}
+			</h4>
 			<BibleMoreLinks {links} />
 			<button
 				type="button"
 				class="btn btn-sm btn-ghost bible-cover-close"
 				aria-label="{t('a11y.close')}: {openBook.title}"
-				onclick={() => close(openBook.slug)}>{t('a11y.close')}</button
+				onclick={() => close(openBook.slug)}
 			>
+				{t('a11y.close')}
+			</button>
 		</div>
-		<BibleChapterPanel book={openBook} place={placeOf?.(openBook) ?? null} intro={links?.intro ?? ''} />
+		<BibleChapterPanel
+			book={openBook}
+			place={placeOf?.(openBook) ?? null}
+			intro={links?.intro ?? ''}
+		/>
 	</section>
 {/if}
 

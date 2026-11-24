@@ -88,7 +88,10 @@
 		},
 		ours: { en: 'On Ochorus', es: 'En Ochorus' },
 		workingEyebrow: { en: 'Open reasoning', es: 'Razonamiento abierto' },
-		workingHeading: { en: 'Every sentence shows its working', es: 'Cada oración muestra su razonamiento' },
+		workingHeading: {
+			en: 'Every sentence shows its working',
+			es: 'Cada oración muestra su razonamiento'
+		},
 		working1: {
 			en: 'Behind each sentence is a record: the original words, a literal gloss, the three translations, and every decision the translators made, with the options they set aside and the reason for their choice. Where a reading is uncertain, the record says so.',
 			es: 'Detrás de cada oración hay un registro: las palabras originales, una glosa literal, las tres traducciones y cada decisión que tomaron los traductores, con las opciones que descartaron y la razón de su elección. Donde una lectura es incierta, el registro lo dice.'
@@ -119,7 +122,10 @@
 			es: 'En Juan la palabra suele significar «así, de esta manera», y se acaba de usar en 3:14: «del mismo modo el Hijo del Hombre tiene que ser levantado en alto». Así es como Dios amó al mundo: dando al Hijo.'
 		},
 		sourcesEyebrow: { en: 'From the original languages', es: 'Desde las lenguas originales' },
-		sourcesHeading: { en: 'Translated from the source texts', es: 'Traducida de los textos fuente' },
+		sourcesHeading: {
+			en: 'Translated from the source texts',
+			es: 'Traducida de los textos fuente'
+		},
 		oldSource: {
 			en: 'the Westminster Leningrad Codex, with the MACULA Hebrew word data, numbered as in the Hebrew.',
 			es: 'el Códice de Leningrado de Westminster, con los datos de palabras hebreas de MACULA, numerado como en el hebreo.'
@@ -233,11 +239,11 @@
 			<p class="lede mt-4 text-muted">{say(COPY.lede)}</p>
 			<p class="facts mt-5 text-small text-muted">
 				{#if books.length}
-					<span
-						>{books.length}
+					<span>
+						{books.length}
 						{i18n.tn(books.length, 'common.bookOne', 'common.bookMany')}
-						{say(COPY.onOchorus)}</span
-					>
+						{say(COPY.onOchorus)}
+					</span>
 					<span class="sep" aria-hidden="true">·</span>
 				{/if}
 				<span>{say(COPY.languages)}</span>
@@ -245,7 +251,10 @@
 				<span>{say(COPY.publicDomain)}</span>
 			</p>
 			<div class="mt-6 flex flex-wrap gap-3">
-				<a class="btn btn-primary" href={localizeHref(`${BIBLE_PATH}/`)}>{say(COPY.readBible)} <Arrow /></a>
+				<a class="btn btn-primary" href={localizeHref(`${BIBLE_PATH}/`)}>
+					{say(COPY.readBible)}
+					<Arrow />
+				</a>
 				<a class="btn btn-ghost" href={OWB_URL} rel="external noopener">
 					{say(COPY.visit)} <span aria-hidden="true">↗</span>
 				</a>
@@ -295,7 +304,11 @@
 			</h2>
 			<p class="mt-3 text-small text-muted">{say(COPY.working1)}</p>
 			<p class="mt-3 text-small text-muted">{say(COPY.working2)}</p>
-			<a class="mt-4 inline-block text-small font-semibold text-accent" href={OWB_READ_URL} rel="external noopener">
+			<a
+				class="mt-4 inline-block text-small font-semibold text-accent"
+				href={OWB_READ_URL}
+				rel="external noopener"
+			>
 				{say(COPY.readReasoning)} <span aria-hidden="true">↗</span>
 			</a>
 		</div>
@@ -363,21 +376,30 @@
 				<a class="here-card card-lift" href={localizeHref(`${BIBLE_PATH}/`)}>
 					<span class="font-display text-body font-semibold text-text">{say(COPY.everyBook)}</span>
 					<span class="mt-1 block text-small text-muted">{say(COPY.everyBookText)}</span>
-					<span class="mt-2 block text-small font-semibold text-accent">{t('nav.bible')} <Arrow /></span>
+					<span class="mt-2 block text-small font-semibold text-accent">
+						{t('nav.bible')}
+						<Arrow />
+					</span>
 				</a>
 			</li>
 			<li>
 				<a class="here-card card-lift" href={localizeHref(`/series/${BIBLE_SERIES}/`)}>
 					<span class="font-display text-body font-semibold text-text">{say(COPY.through)}</span>
 					<span class="mt-1 block text-small text-muted">{say(COPY.throughText)}</span>
-					<span class="mt-2 block text-small font-semibold text-accent">{t('bible.inOrder')} <Arrow /></span>
+					<span class="mt-2 block text-small font-semibold text-accent">
+						{t('bible.inOrder')}
+						<Arrow />
+					</span>
 				</a>
 			</li>
 			<li>
 				<a class="here-card card-lift" href={localizeHref('/plans/')}>
 					<span class="font-display text-body font-semibold text-text">{say(COPY.daily)}</span>
 					<span class="mt-1 block text-small text-muted">{say(COPY.dailyText)}</span>
-					<span class="mt-2 block text-small font-semibold text-accent">{say(COPY.plansLink)} <Arrow /></span>
+					<span class="mt-2 block text-small font-semibold text-accent">
+						{say(COPY.plansLink)}
+						<Arrow />
+					</span>
 				</a>
 			</li>
 			<li>

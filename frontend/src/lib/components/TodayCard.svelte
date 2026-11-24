@@ -85,7 +85,12 @@
 </script>
 
 {#if !picks || columns}
-	<section id="today" class="page-col px-5 pt-8 sm:pt-14" aria-busy={!picks} style:scroll-margin-top="var(--pinned-offset, 4rem)">
+	<section
+		id="today"
+		class="page-col px-5 pt-8 sm:pt-14"
+		aria-busy={!picks}
+		style:scroll-margin-top="var(--pinned-offset, 4rem)"
+	>
 		<div class="rounded-2xl border border-border bg-surface px-5 py-6 sm:px-8 sm:py-7">
 			{#if picks}
 				<SectionHeader
@@ -106,19 +111,28 @@
 								<!-- Whole, never clamped (design review 2026-11, #7): an ellipsis
 								     through a verse cuts off its point, and once it ran
 								     "…at the time Jesus…". -->
-								<span class="title verse mt-2 block text-body" lang={v.lang} dir="auto">{v.text}</span>
-								<span class="mt-2 block text-small text-muted" lang={v.lang} dir="auto">{v.ref}</span>
+								<span class="title verse mt-2 block text-body" lang={v.lang} dir="auto">
+									{v.text}
+								</span>
+								<span class="mt-2 block text-small text-muted" lang={v.lang} dir="auto">
+									{v.ref}
+								</span>
 							{/if}
 							{#if picks.chapter}
 								{@const c = picks.chapter}
 								<!-- The chapter of the day ($lib/dailyChapter): one Bible
 								     chapter everyone reads today, under the verse, titled in
 								     the page's language: only where the Bible is (`bibleIn`). -->
-								<a class="today-link chapter" class:after-verse={picks.verse} href={localizeHref(c.href)}>
+								<a
+									class="today-link chapter"
+									class:after-verse={picks.verse}
+									href={localizeHref(c.href)}
+								>
 									<span class="eyebrow block text-accent">{t('home.todayChapter')}</span>
-									<span class="title mt-1 block text-body font-semibold">{c.title}
-										<Arrow /></span
-									>
+									<span class="title mt-1 block text-body font-semibold">
+										{c.title}
+										<Arrow />
+									</span>
 									{#if c.word_count}
 										<span class="block text-small text-muted">{readingTime(c.word_count)}</span>
 									{/if}
@@ -131,10 +145,20 @@
 						<li class="col">
 							<a class="today-link" href={localizeHref(`/today/${r.book.slug}/`)}>
 								<span class="eyebrow block text-accent">{t('home.todayReading')}</span>
-								<span class="title mt-2 line-clamp-2 text-h3" lang={contentLang(r.book.language)} dir="auto">{r.heading || r.book.title}</span>
-								<span class="mt-2 line-clamp-2 text-small text-muted" lang={contentLang(r.book.language)} dir="auto"
-									>{r.heading ? `${r.book.title} · ${r.book.author.name}` : r.book.author.name}</span
+								<span
+									class="title mt-2 line-clamp-2 text-h3"
+									lang={contentLang(r.book.language)}
+									dir="auto"
 								>
+									{r.heading || r.book.title}
+								</span>
+								<span
+									class="mt-2 line-clamp-2 text-small text-muted"
+									lang={contentLang(r.book.language)}
+									dir="auto"
+								>
+									{r.heading ? `${r.book.title} · ${r.book.author.name}` : r.book.author.name}
+								</span>
 							</a>
 						</li>
 					{/if}
@@ -144,19 +168,22 @@
 							<a class="today-link" href={localizeHref(`/sermons/${s.slug}`)}>
 								<span class="eyebrow block text-accent">{t('home.sermonOfDay')}</span>
 								<span class="title mt-2 line-clamp-2 text-h3" dir="auto">{s.title}</span>
-								<span class="mt-2 line-clamp-2 text-small text-muted"
-									>{s.author.name} · {readingTime(s.word_count)}</span
-								>
+								<span class="mt-2 line-clamp-2 text-small text-muted">
+									{s.author.name} · {readingTime(s.word_count)}
+								</span>
 							</a>
 						</li>
 					{/if}
 				</ul>
 				{#if calendar}
-					<a class="calendar-row mt-6 text-small font-semibold text-accent" href="{localizeHref('/today')}#calendar"
-						>{t(calendar.window.season === 'advent' ? 'calendar.adventTitle' : 'calendar.lentTitle')} · {t(
-							calendar.today ? 'calendar.openToday' : 'calendar.seeDoors'
-						)} <Arrow /></a
+					<a
+						class="calendar-row mt-6 text-small font-semibold text-accent"
+						href="{localizeHref('/today')}#calendar"
 					>
+						{t(calendar.window.season === 'advent' ? 'calendar.adventTitle' : 'calendar.lentTitle')} ·
+						{t(calendar.today ? 'calendar.openToday' : 'calendar.seeDoors')}
+						<Arrow />
+					</a>
 				{/if}
 			{:else}
 				<!-- The card's shape while the day is picked: the header's two lines,

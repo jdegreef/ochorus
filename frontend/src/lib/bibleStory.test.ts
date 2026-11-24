@@ -54,7 +54,10 @@ describe('BIBLE_STORY', () => {
 	it('links only Bible books, each section in canonical order', () => {
 		for (const s of BIBLE_STORY) {
 			const positions = s.books.map((slug) => canonPosition(slug));
-			expect(positions.every((p) => p != null), s.id).toBe(true);
+			expect(
+				positions.every((p) => p != null),
+				s.id
+			).toBe(true);
 			expect(positions, s.id).toEqual([...positions].sort((a, b) => a! - b!));
 		}
 	});

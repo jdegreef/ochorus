@@ -35,8 +35,10 @@
 				href={localizeHref(ch.href)}
 				aria-current={current ? 'step' : undefined}
 				aria-label="{ch.name}{read ? `, ${t('settings.heatmapRead')}` : ''}"
-				title={ch.name}>{ch.n}</a
+				title={ch.name}
 			>
+				{ch.n}
+			</a>
 		</li>
 	{/each}
 </ol>

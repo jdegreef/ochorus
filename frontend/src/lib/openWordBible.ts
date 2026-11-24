@@ -17,7 +17,11 @@ export const OWB_READ_URL = 'https://openwordbible.org/read/';
 
 /** The three levels OWB translates every sentence at; Ochorus prints Balanced.
  *  Named and described in each hub locale, for the /open-word-bible page. */
-export const OWB_LEVELS: readonly { code: 'OWB-L' | 'OWB-B' | 'OWB-R'; name: BibleText; aim: BibleText }[] = [
+export const OWB_LEVELS: readonly {
+	code: 'OWB-L' | 'OWB-B' | 'OWB-R';
+	name: BibleText;
+	aim: BibleText;
+}[] = [
 	{
 		code: 'OWB-L',
 		name: { en: 'Literal', es: 'Literal' },

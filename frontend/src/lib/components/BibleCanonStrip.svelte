@@ -69,7 +69,8 @@
 	let {
 		books,
 		placeOf
-	}: { books: readonly BookSummary[]; placeOf?: (book: BookSummary) => BiblePlace | null } = $props();
+	}: { books: readonly BookSummary[]; placeOf?: (book: BookSummary) => BiblePlace | null } =
+		$props();
 	const t = i18n.t;
 	const lang = getLang();
 	const testaments = $derived(canonStrip(books, lang));
@@ -111,14 +112,18 @@
 		if (!nav) return;
 		// The card belongs to a mouse or a keyboard: a touch opens the book.
 		const el = e.currentTarget as HTMLElement;
-		if (e.type === 'mouseenter' && !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+		if (e.type === 'mouseenter' && !matchMedia('(hover: hover) and (pointer: fine)').matches)
+			return;
 		if (e.type === 'focus' && !el.matches(':focus-visible')) return;
 		if (nav.clientWidth < TILES_PX) return;
 		clearTimeout(hideTimer);
 		const r = el.getBoundingClientRect();
 		const n = nav.getBoundingClientRect();
 		const w = CARD_REM * parseFloat(getComputedStyle(document.documentElement).fontSize);
-		const left = Math.min(Math.max(r.left - n.left + r.width / 2 - w / 2, 0), Math.max(0, n.width - w));
+		const left = Math.min(
+			Math.max(r.left - n.left + r.width / 2 - w / 2, 0),
+			Math.max(0, n.width - w)
+		);
 		card = { slot, division, left, top: r.bottom - n.top + 10 };
 	}
 	/** Hidden a beat after the pointer leaves, so it can cross to the card. */
@@ -168,23 +173,24 @@
 	/** Each filter on offer with how many books it keeps. "Not started" only
 	 *  once the reader has started one — before that it would keep them all. */
 	const filters = $derived(
-		CANON_FILTERS.filter((f) => f !== 'unread' || !!(reading && (reading.finished || reading.started))).map(
-			(f) => ({
-				f,
-				count: testaments.reduce(
-					(n, tm) =>
-						n +
-						tm.divisions.reduce(
-							(m, d) => m + d.slots.filter((sl) => matches(f, sl, d.division.id)).length,
-							0
-						),
-					0
-				)
-			})
-		)
+		CANON_FILTERS.filter(
+			(f) => f !== 'unread' || !!(reading && (reading.finished || reading.started))
+		).map((f) => ({
+			f,
+			count: testaments.reduce(
+				(n, tm) =>
+					n +
+					tm.divisions.reduce(
+						(m, d) => m + d.slots.filter((sl) => matches(f, sl, d.division.id)).length,
+						0
+					),
+				0
+			)
+		}))
 	);
 	/** A spine's grow factor: its own width, in rem, as a unitless number. */
-	const grow = (slot: CanonSlot<BookSummary>) => (slot.book ? 1.0625 + slot.weight * 1.125 : 1.0625);
+	const grow = (slot: CanonSlot<BookSummary>) =>
+		slot.book ? 1.0625 + slot.weight * 1.125 : 1.0625;
 </script>
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
@@ -192,24 +198,29 @@
 	{#if reading && (reading.finished || reading.started)}
 		<!-- The reader's Bible at a glance: what the ticks and fills below add up to. -->
 		<div class="canon-meter">
-			<span class="font-display font-semibold"
-				>{t('bible.canonRead').replace('%n%', String(reading.finished)).replace('%total%', String(reading.total))}</span
-			>
+			<span class="font-display font-semibold">
+				{t('bible.canonRead')
+					.replace('%n%', String(reading.finished))
+					.replace('%total%', String(reading.total))}
+			</span>
 			{#if reading.started}
-				<span class="text-small text-muted">{t('bible.canonUnderWay').replace('%n%', String(reading.started))}</span>
+				<span class="text-small text-muted">
+					{t('bible.canonUnderWay').replace('%n%', String(reading.started))}
+				</span>
 			{/if}
-			<span class="canon-bar" aria-hidden="true"
-				><i style:width="{(reading.finished / Math.max(1, reading.total)) * 100}%"></i></span
-			>
+			<span class="canon-bar" aria-hidden="true">
+				<i style:width="{(reading.finished / Math.max(1, reading.total)) * 100}%"></i>
+			</span>
 		</div>
 	{/if}
 	{#if today && todayBook}
 		<!-- Today's chapter (the home page's Today card): its book wears the
 		     ribbon below. -->
-		<a class="canon-today" href={localizeHref(today.href)}
-			><span class="canon-today-mark" aria-hidden="true"></span>{t('home.todayChapter')}
-			<span class="font-semibold">{today.title}</span> <Arrow /></a
-		>
+		<a class="canon-today" href={localizeHref(today.href)}>
+			<span class="canon-today-mark" aria-hidden="true"></span>{t('home.todayChapter')}
+			<span class="font-semibold">{today.title}</span>
+			<Arrow />
+		</a>
 	{/if}
 	<div class="canon-filters" role="group" aria-label={t('bible.filterLabel')}>
 		{#each filters as { f, count } (f)}
@@ -217,8 +228,10 @@
 				type="button"
 				class="canon-chip"
 				aria-pressed={filter === f}
-				onclick={() => (filter = filter === f ? null : f)}>{filterLabel(f)} <span class="canon-chip-n">{count}</span></button
+				onclick={() => (filter = filter === f ? null : f)}
 			>
+				{filterLabel(f)} <span class="canon-chip-n">{count}</span>
+			</button>
 		{/each}
 	</div>
 	{#each testaments as testament (testament.testament)}
@@ -236,7 +249,8 @@
 					{@const divisionName = t(divisionKey(group.division.id))}
 					<li
 						class="canon-division"
-						style:--dg={group.slots.reduce((n, sl) => n + grow(sl), 0) + (group.slots.length - 1) * 0.125}
+						style:--dg={group.slots.reduce((n, sl) => n + grow(sl), 0) +
+							(group.slots.length - 1) * 0.125}
 					>
 						<ol class="canon-spines" aria-label={t(divisionKey(group.division.id))}>
 							{#each group.slots as slot (slot.position)}
@@ -265,14 +279,24 @@
 											style:--spine-w={slot.weight}
 											style:--spine-t={slot.tall}
 											style:--spine-c={slot.book.cover_color || null}
-											>{#if todayBook?.slug === slot.book.slug}<span class="spine-ribbon" aria-hidden="true"
-												></span>{/if}{#if read && !read.done}<span class="spine-fill" style:height="{read.fill * 100}%" style:--fill-w="{read.fill * 100}%"
-												></span>{/if}<span class="spine-name long">{spineLabel(slot)}</span><span
-												class="spine-name short">{slot.abbr}</span
-											></a
 										>
+											{#if todayBook?.slug === slot.book.slug}<span
+													class="spine-ribbon"
+													aria-hidden="true"
+												></span>{/if}{#if read && !read.done}<span
+													class="spine-fill"
+													style:height="{read.fill * 100}%"
+													style:--fill-w="{read.fill * 100}%"
+												></span>{/if}<span class="spine-name long">{spineLabel(slot)}</span><span
+												class="spine-name short"
+											>
+												{slot.abbr}
+											</span>
+										</a>
 									{:else}
-										<span class="spine absent" title={slot.name}><span class="spine-name">{slot.abbr}</span></span>
+										<span class="spine absent" title={slot.name}>
+											<span class="spine-name">{slot.abbr}</span>
+										</span>
 									{/if}
 								</li>
 							{/each}
@@ -284,9 +308,11 @@
 						     Visual only: the list's aria-label names it for a screen reader. -->
 						<span class="canon-label" class:single={group.slots.length === 1} aria-hidden="true">
 							<span class="canon-label-name">{divisionName}</span>
-							<span class="canon-label-meta"
-								>{#if sum.books > 1}{booksLabel(sum.books)}{#if sum.words}{` · ${readingTime(sum.words)}`}{/if}{:else}&nbsp;{/if}</span
-							>
+							<span class="canon-label-meta">
+								{#if sum.books > 1}{booksLabel(
+										sum.books
+									)}{#if sum.words}{` · ${readingTime(sum.words)}`}{/if}{:else}&nbsp;{/if}
+							</span>
 						</span>
 					</li>
 				{/each}
@@ -308,17 +334,21 @@
 			onmouseleave={hideSoon}
 		>
 			<span class="eyebrow-micro text-muted">{card.division}</span>
-			<a class="canon-card-title" href={localizeHref(`/books/${b.slug}`)} tabindex="-1">{b.title}</a>
+			<a class="canon-card-title" href={localizeHref(`/books/${b.slug}`)} tabindex="-1">
+				{b.title}
+			</a>
 			{#if b.subtitle}<span class="canon-card-sub">{b.subtitle}</span>{/if}
-			<span class="text-small text-muted"
-				>{chapterCount(card.slot.chapters)}{#if b.word_count}{` · ${readingTime(b.word_count)}`}{/if}</span
-			>
+			<span class="text-small text-muted">
+				{chapterCount(card.slot.chapters)}{#if b.word_count}{` · ${readingTime(b.word_count)}`}{/if}
+			</span>
 			{#if cardPlace?.finished}
 				<span class="text-small font-semibold text-accent">{t('bible.canonFinished')}</span>
 			{:else if cardPlace?.current != null}
-				<span class="text-small font-semibold text-accent"
-					>{t('book.chapterOf').replace('%n%', String(cardPlace.current)).replace('%t%', String(card.slot.chapters))}</span
-				>
+				<span class="text-small font-semibold text-accent">
+					{t('book.chapterOf')
+						.replace('%n%', String(cardPlace.current))
+						.replace('%t%', String(card.slot.chapters))}
+				</span>
 			{/if}
 			{#if cardChapters.length > 1}
 				<!-- Straight to a chapter: the read ones quieter, the reader's own marked. -->
@@ -329,14 +359,20 @@
 							tabindex="-1"
 							title={ch.name}
 							class:read={cardPlace?.finished || ch.n <= (cardPlace?.behind ?? 0)}
-							class:current={cardPlace?.current === ch.n}>{ch.n}</a
+							class:current={cardPlace?.current === ch.n}
 						>
+							{ch.n}
+						</a>
 					{/each}
 				</span>
 			{/if}
-			<a class="btn btn-primary btn-solid mt-2" href={localizeHref(bookChapterPath(b.slug, into, false))} tabindex="-1"
-				>{cardPlace?.current != null ? t('book.continue') : t('book.beginReading')}</a
+			<a
+				class="btn btn-primary btn-solid mt-2"
+				href={localizeHref(bookChapterPath(b.slug, into, false))}
+				tabindex="-1"
 			>
+				{cardPlace?.current != null ? t('book.continue') : t('book.beginReading')}
+			</a>
 		</div>
 	{/if}
 </nav>
@@ -614,7 +650,12 @@
 		background: var(--spine-c, #4a3a2a);
 		/* A little roundness; the gilt bands are the ::before / ::after rules,
 		   at the very ends, clear of the name. */
-		background-image: linear-gradient(to right, rgb(255 255 255 / 0.1), transparent 40%, rgb(0 0 0 / 0.18));
+		background-image: linear-gradient(
+			to right,
+			rgb(255 255 255 / 0.1),
+			transparent 40%,
+			rgb(0 0 0 / 0.18)
+		);
 		/* hex-ok: light ink on that dark cloth, as a cover sets its title */
 		color: #f3ead9;
 		/* The interface face, upright weight: a name read sideways at this size
