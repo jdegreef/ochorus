@@ -1,0 +1,32 @@
+{
+  "title": "Lettre de Jude",
+  "cover_title": "Jude",
+  "subtitle": "Iouda, « De Jude »",
+  "description": "Une lettre brève et pressante de Jude, serviteur de Jésus Christ et frère de Jacques, qui voulait écrire au sujet du salut que partagent tous les croyants et qui a écrit à la place pour exhorter ses lecteurs à lutter avec ardeur pour la foi transmise une fois pour toutes. Des intrus se sont glissés parmi eux, qui font de la grâce de Dieu un prétexte à la débauche : des écueils cachés sous l’eau, des nuages sans pluie, des étoiles errantes. Caïn, Balaam et Coré, Michel et le diable, la prophétie d’Hénoch ; puis l’appel à se construire, à prier, à se garder dans l’amour de Dieu et à faire miséricorde, et la grande doxologie à celui qui peut vous préserver de toute chute. Dans l’Open Word Bible, une nouvelle traduction faite à partir du grec et offerte librement au domaine public, avec une introduction sur la structure et le sens de la lettre et une conclusion sur ce qu’il faut lire ensuite.",
+  "qa": [
+    {
+      "question": "Qui a écrit la Lettre de Jude, et quand ?",
+      "answer": "L’auteur se présente comme « serviteur de Jésus Christ et frère de Jacques » (1:1). Le Jacques dont il s’agit est presque certainement Jacques de Jérusalem, le frère de Jésus, ce qui ferait de Jude un autre des frères de Jésus, nommé en Marc 6:3. La plupart de ceux qui tiennent la lettre pour sienne la datent entre les années 50 et 80 du Ier siècle ; certains spécialistes pensent qu’elle a été écrite plus tard sous son nom. Sa date et ses premiers lecteurs ne sont pas indiqués."
+    },
+    {
+      "question": "De quoi parle la Lettre de Jude ?",
+      "answer": "Jude met une Église en garde contre des gens qui « se sont glissés parmi vous sans qu’on les remarque » et « qui font de la grâce de notre Dieu un prétexte à la débauche » (1:4). Il exhorte ses lecteurs à lutter avec ardeur « pour la foi qui a été transmise une fois pour toutes au peuple saint de Dieu » (1:3), rappelle des exemples de jugement tirés de l’histoire d’Israël, et décrit les intrus par des images saisissantes. Puis il dit à ses lecteurs de se construire, de prier dans l’Esprit Saint, de se garder dans l’amour de Dieu et de faire miséricorde, et termine par une doxologie au Dieu qui peut les préserver de toute chute."
+    },
+    {
+      "question": "Pourquoi Jude cite-t-il le livre d’Hénoch et raconte-t-il l’histoire de Michel et du corps de Moïse ?",
+      "answer": "Les versets 14–15 correspondent de près à un passage de 1 Hénoch, un écrit juif bien connu au Ier siècle, et Origène dit que l’histoire de Michel en conflit avec le diable au sujet du corps de Moïse (1:9) vient d’un livre appelé l’Ascension de Moïse. Jude se sert d’écrits que ses lecteurs connaissaient pour faire passer son message. Certains des premiers chrétiens ont hésité au sujet de la lettre pour cette raison, mais la plupart ont compris que citer un livre ne fait pas de lui une Écriture, de même que Paul a cité des poètes grecs."
+    },
+    {
+      "question": "Pourquoi Jude mentionne-t-il Caïn, Balaam et Coré ?",
+      "answer": "« Malheur à eux ! Ils ont suivi le chemin de Caïn. Pour de l’argent, ils se sont précipités dans l’égarement de Balaam. Ils ont péri dans la révolte de Coré » (1:11). Tous trois viennent de l’Ancien Testament. Caïn a tué son frère ; Balaam, le prophète engagé pour maudire Israël, est devenu le type même de celui qui fait le mal pour de l’argent ; Coré s’est soulevé contre Moïse et Aaron et a été englouti par la terre. Jude s’en sert comme de portraits des intrus, qui vivent selon leurs propres désirs, servent pour de l’argent et « rejettent l’autorité du Seigneur » (1:8). Ils rejoignent les exemples de jugement donnés plus tôt dans la lettre : Israël au désert, les anges qui ne sont pas restés à leur place, et Sodome et Gomorrhe (1:5–7)."
+    },
+    {
+      "question": "Qu’est-ce que la doxologie à la fin de Jude ?",
+      "answer": "La lettre se termine par l’une des bénédictions les plus aimées du Nouveau Testament : « À celui qui peut vous préserver de toute chute et vous faire paraître devant Sa gloire sans tache et dans une grande joie, au seul Dieu, notre Sauveur, par Jésus Christ notre Seigneur, soient la gloire, la majesté, la force et l’autorité, avant le commencement des temps, maintenant et pour tous les siècles à venir. Amen » (1:24–25). Après une lettre pleine d’avertissements, Jude ne termine pas sur l’effort de ses lecteurs, mais sur celui de Dieu. Ils doivent se garder dans l’amour de Dieu (1:21), mais c’est Dieu qui les préserve de toute chute. Les Églises se servent depuis longtemps de ces paroles pour conclure leur culte."
+    },
+    {
+      "question": "Quelle traduction de la Bible est-ce ?",
+      "answer": "L’Open Word Bible, une nouvelle traduction faite directement à partir du grec et dédiée au domaine public, imprimée ici au niveau Équilibré, qui vise à être exacte et à se lire naturellement à voix haute. Au verset 5, là où les manuscrits divergent, elle dit que « Jésus a sauvé un peuple en le faisant sortir du pays d’Égypte ». Le raisonnement qui sous-tend chacune de ses phrases, avec le grec en regard, est publié sur openwordbible.org. L’introduction et la conclusion ont été écrites pour cette édition."
+    }
+  ]
+}

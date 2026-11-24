@@ -1,0 +1,32 @@
+{
+  "title": "O Evangelho de Mateus",
+  "cover_title": "Mateus",
+  "subtitle": "Kata Maththaion, “Segundo Mateus”",
+  "description": "O primeiro livro do Novo Testamento, que começa com uma genealogia de Abraão, passando por Davi, até “Jesus, que é chamado Cristo”, e mostra repetidas vezes que Nele se cumpriram as promessas das Escrituras de Israel. Os magos e a sua estrela; o Sermão do Monte, com as bem-aventuranças e o Pai-Nosso; as parábolas do Reino dos céus, do grão de mostarda à pérola de grande valor; a confissão de Pedro e a promessa da Igreja; as ovelhas e os bodes; a cruz, o túmulo guardado e o Senhor ressuscitado enviando os Seus discípulos a fazer discípulos de todas as nações, com a promessa: “eu mesmo estou com vocês todos os dias, até o fim da era.” Na Open Word Bible, uma nova tradução do grego entregue livremente ao domínio público, com uma introdução à forma e ao sentido do livro e uma conclusão sobre o que ler em seguida.",
+  "qa": [
+    {
+      "question": "O que é o Evangelho de Mateus?",
+      "answer": "O primeiro dos quatro Evangelhos, os relatos da vida, morte e ressurreição de Jesus no Novo Testamento, e, durante a maior parte da história da Igreja, o mais lido deles. Apresenta Jesus como o filho de Davi e o filho de Abraão, o Messias de Israel, em quem as Escrituras se cumprem, e reúne o Seu ensino em cinco longos discursos, começando pelo Sermão do Monte (capítulos 5–7). Termina com Jesus ressuscitado enviando os Seus discípulos a todas as nações (28:18–20)."
+    },
+    {
+      "question": "Quem escreveu o Evangelho de Mateus, e quando?",
+      "answer": "O Evangelho não diz quem é o seu autor. Desde o século II, a Igreja o atribuiu a Mateus, o cobrador de impostos que se tornou um dos Doze (9:9). Papias, no início do século II, disse que Mateus escreveu os oráculos na língua hebraica. A maioria dos estudiosos hoje pensa que o autor se baseou no Evangelho de Marcos e data o livro das décadas posteriores a 70 d.C.; outros sustentam que Mateus escreveu primeiro, ou o datam dos anos 60."
+    },
+    {
+      "question": "Por que Mateus diz “Reino dos céus” em vez de “Reino de Deus”?",
+      "answer": "Os judeus piedosos muitas vezes diziam “céu” para não pronunciar o nome de Deus com muita liberdade, e Mateus, escrevendo como judeu para leitores que conheciam as Escrituras, segue esse costume. O Reino dos céus não é um reino diferente do Reino de Deus de Marcos e Lucas, nem significa apenas um lugar para onde as pessoas vão quando morrem. É o próprio reinado de Deus, que Jesus diz que “está próximo” (4:17)."
+    },
+    {
+      "question": "Quais são os cinco discursos de Mateus?",
+      "answer": "Mateus reúne o ensino de Jesus em cinco longos discursos, cada um terminando quase com as mesmas palavras, “Quando Jesus terminou”: o Sermão do Monte (5–7), o envio dos Doze (10), as parábolas do Reino (13), a vida em comum na comunidade dos discípulos (18) e o fim da era (24–25). Entre eles vêm relatos do que Jesus fez. Muitos leitores ouviram aí um eco dos cinco livros de Moisés."
+    },
+    {
+      "question": "O que significa, em Mateus 16:18, “sobre esta pedra edificarei a Minha Igreja”?",
+      "answer": "Jesus faz um jogo com o nome de Pedro, que significa pedra, depois que Pedro O confessa como o Cristo, o Filho do Deus vivo. Os cristãos há muito tempo divergem sobre o que é a pedra: o próprio Pedro, como o primeiro dos apóstolos; a fé que ele acabou de confessar; ou Cristo, o único fundamento. Mateus é o único Evangelho em que Jesus fala da Igreja, aqui e em 18:17."
+    },
+    {
+      "question": "Que tradução da Bíblia é esta?",
+      "answer": "A Open Word Bible, uma nova tradução feita diretamente do grego e dedicada ao domínio público, impressa aqui em seu nível Equilibrado, que busca ser exata e soar natural quando lida em voz alta. O raciocínio por trás de cada uma de suas frases, com o grego ao lado, está publicado em openwordbible.org. A introdução e a conclusão foram escritas para esta edição."
+    }
+  ]
+}

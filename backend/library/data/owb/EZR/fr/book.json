@@ -1,0 +1,32 @@
+{
+  "title": "Esdras",
+  "cover_title": "",
+  "subtitle": "Ezra, « Secours »",
+  "description": "Le livre du retour de l’exil, qui s’ouvre sur un empereur païen dont le SEIGNEUR réveilla l’esprit : « qu’il monte à Jérusalem, en Juda, pour bâtir la maison du SEIGNEUR ». Des familles recensées une à une à leur retour ; un autel sur ses anciens fondements ; les vieillards qui pleurent et les jeunes qui crient de joie tandis que l’on pose les fondations ; des années d’opposition, deux prophètes, une recherche dans les archives perses et un temple enfin achevé. Puis, deux générations plus tard, Esdras le scribe, qui avait appliqué son cœur à étudier la Loi du SEIGNEUR, à la mettre en pratique et à l’enseigner, jeûnant au bord d’un canal avant un voyage dangereux et priant une grande prière de confession pour son peuple. Dans l’Open Word Bible, une nouvelle traduction faite à partir de l’hébreu et de l’araméen et offerte librement au domaine public, avec une introduction sur la forme et le sens du livre et une conclusion sur ce qu’il faut lire ensuite.",
+  "qa": [
+    {
+      "question": "De quoi parle le livre d’Esdras ?",
+      "answer": "Du retour des Juifs de l’exil à Babylone et de la reconstruction de leur vie en Juda. Les chapitres 1–6 racontent comment Cyrus, roi de Perse, permit aux exilés de rentrer chez eux en 538 av. J.-C., comment ils rebâtirent l’autel et posèrent les fondations du temple, et comment, après des années d’opposition, ils achevèrent le temple la sixième année de Darius, en 516 ou 515 av. J.-C. Les chapitres 7–10 font un bond d’une soixantaine d’années jusqu’à Esdras, prêtre et scribe envoyé par le roi Artaxerxès pour enseigner la loi de Dieu en Juda, et jusqu’à la crise des mariages avec les peuples voisins qui clôt le livre."
+    },
+    {
+      "question": "Qui a écrit le livre d’Esdras, et quand ?",
+      "answer": "Le livre ne nomme pas son auteur. La tradition juive tenait qu’Esdras l’avait écrit, et certaines parties des chapitres 7–9 sont racontées de sa propre voix, à la première personne. Beaucoup de spécialistes pensent qu’un éditeur plus tardif, écrivant peut-être vers 400 av. J.-C. ou un peu après, a rassemblé les mémoires d’Esdras, les lettres officielles perses et les listes de familles dans le livre que nous avons, peut-être le même cercle que celui qui a produit les Chroniques, dont les derniers versets sont repris par les premiers versets d’Esdras. D’autres pensent qu’Esdras lui-même reste l’auteur le plus probable."
+    },
+    {
+      "question": "Esdras et Néhémie forment-ils un seul livre ?",
+      "answer": "Dans la Bible hébraïque, ils étaient comptés comme un seul livre, Esdras–Néhémie, et ils racontent une seule histoire continue : la reconstruction du temple, du peuple sous la loi de Dieu, et des murailles de Jérusalem. La division en deux livres est venue plus tard, dans l’Église chrétienne, et n’est passée dans les Bibles hébraïques imprimées qu’au Moyen Âge. Esdras apparaît dans les deux, de façon mémorable en Néhémie 8, où il lit la loi à haute voix devant le peuple rassemblé."
+    },
+    {
+      "question": "Pourquoi une partie d’Esdras est-elle écrite en araméen ?",
+      "answer": "Deux sections, Esdras 4:8–6:18 et 7:12–26, sont écrites en araméen, la langue commune de l’administration dans l’Empire perse, que les Juifs de l’exil parlaient aussi. Ces sections sont construites autour de lettres officielles : les plaintes envoyées aux rois perses, la réponse de Darius, le mémorandum de Cyrus retrouvé dans les archives d’Ecbatane, et la lettre qu’Artaxerxès remit à Esdras. Le reste du livre est en hébreu."
+    },
+    {
+      "question": "Pourquoi Esdras fit-il renvoyer au peuple ses femmes étrangères ?",
+      "answer": "En Esdras 9–10, les chefs rapportent que beaucoup de membres du peuple, y compris des prêtres et des Lévites, ont épousé des femmes des peuples voisins, malgré l’avertissement de la loi selon lequel de tels mariages détourneraient le cœur d’Israël vers d’autres dieux, comme cela était arrivé à Salomon. Pour une petite communauté tout juste revenue d’un exil causé par l’idolâtrie, Esdras y vit une menace pour sa survie même en tant que peuple de Dieu, et le peuple accepta de dissoudre ces mariages. Les chrétiens lisent cet épisode de différentes manières : certains comme un acte de fidélité coûteux dans une situation d’urgence, d’autres comme un fait que le livre rapporte sans le présenter comme un modèle. La question porte sur le culte et non sur la race, puisque les étrangers qui se tournaient vers le SEIGNEUR prenaient part à la Pâque (6:21), et dans le Nouveau Testament, Paul dit aux croyants mariés à des non-croyants de ne pas chercher le divorce (1 Corinthiens 7:12–14)."
+    },
+    {
+      "question": "De quelle traduction de la Bible s’agit-il ?",
+      "answer": "L’Open Word Bible, une nouvelle traduction faite directement à partir de l’hébreu et de l’araméen et dédiée au domaine public, imprimée ici au niveau Équilibré, qui cherche à être exacte et à se lire naturellement à voix haute. Le raisonnement qui justifie chacune de ses phrases, avec le texte original en regard, est publié sur openwordbible.org. L’introduction et la conclusion ont été écrites pour cette édition."
+    }
+  ]
+}

@@ -1618,6 +1618,32 @@
   "series": [
    "the-bible"
   ],
+  "language": "fr",
+  "title": "La Bible",
+  "description": "Les livres de la Bible dans l’Open Word Bible, une nouvelle traduction de l’hébreu et du grec offerte librement au domaine public, dans leur ordre, de la Genèse à l’Apocalypse. Chaque livre a une introduction à sa forme et à son sens, et une conclusion sur ce qu’il faut lire ensuite.",
+  "created_at": "2026-11-24T00:00:00Z",
+  "updated_at": "2026-11-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "the-bible"
+  ],
+  "language": "pt",
+  "title": "A Bíblia",
+  "description": "Os livros da Bíblia na Open Word Bible, uma nova tradução do hebraico e do grego dedicada livremente ao domínio público, na sua ordem, de Gênesis a Apocalipse. Cada livro tem uma introdução à sua forma e ao seu sentido, e uma conclusão sobre o que ler em seguida.",
+  "created_at": "2026-11-24T00:00:00Z",
+  "updated_at": "2026-11-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "the-bible"
+  ],
   "language": "ru",
   "title": "Библия",
   "description": "Книги Библии в переводе Open Word Bible, новом переводе с еврейского и греческого, свободно переданном в общественное достояние, в порядке от Бытия до Откровения. У каждой книги есть введение о её строении и смысле и заключение о том, что читать дальше.",
