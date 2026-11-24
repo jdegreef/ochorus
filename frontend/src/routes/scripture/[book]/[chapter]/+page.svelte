@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	import { scriptureBookHref, type ScripturePage, SCRIPTURE_OG } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
@@ -59,7 +60,7 @@
 				'@type': 'Quotation',
 				spokenByCharacter: p.author_name,
 				isPartOf: { '@type': 'Book', name: p.book_title },
-				url: `${SITE_URL}/books/${p.book_slug}/${p.chapter_order}/`
+				url: `${SITE_URL}${bookChapterPath(p.book_slug, p.chapter_order, false)}/`
 			}))
 		})
 	);

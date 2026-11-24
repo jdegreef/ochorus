@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	import { assetUrl } from '$lib/assetUrl';
 	import { ApiError } from '$lib/api';
 	import { adminResource } from '$lib/adminResource.svelte';
@@ -178,7 +179,7 @@
 										class:bg-accent-soft={targetId === adminChapterId(l.code, c.order)}
 									>
 										<!-- This edition's chapter, not the English one. -->
-										<a href={siteHref(l.code, `/books/${b.slug}/${c.order}`) ?? `/books/${b.slug}/${c.order}`} class="min-w-0 truncate text-body text-text hover:text-accent">
+										<a href={siteHref(l.code, bookChapterPath(b.slug, c.order, false)) ?? bookChapterPath(b.slug, c.order, false)} class="min-w-0 truncate text-body text-text hover:text-accent">
 											<span class="text-muted tabular-nums">{c.order}.</span> {c.title || '(untitled)'}
 										</a>
 										<span class="flex shrink-0 items-center gap-2">

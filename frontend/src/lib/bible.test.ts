@@ -238,18 +238,18 @@ describe('passageHref', () => {
 	const at = { slug: 'gospel-of-john', order: 4 };
 	it('opens a verse at its anchor, a range at its first verse', () => {
 		expect(passageHref({ reference: 'John 3:16', verses: [{ number: 16 }], bible_chapter: at })).toBe(
-			'/books/gospel-of-john/4#v16'
+			'/books/gospel-of-john/3#v16'
 		);
 		expect(
 			passageHref({ reference: 'Romans 8:28-30', verses: [{ number: 28 }, { number: 29 }], bible_chapter: { slug: 'romans', order: 9 } })
-		).toBe('/books/romans/9#v28');
+		).toBe('/books/romans/8#v28');
 	});
 	it('opens a whole chapter at its top', () => {
 		expect(
 			passageHref({ reference: 'Psalms 23:1-6', verses: [{ number: 1 }], bible_chapter: { slug: 'psalms', order: 24 } })
-		).toBe('/books/psalms/24');
+		).toBe('/books/psalms/23');
 		expect(passageHref({ reference: 'John 3', verses: [{ number: 1 }], bible_chapter: at })).toBe(
-			'/books/gospel-of-john/4'
+			'/books/gospel-of-john/3'
 		);
 	});
 	it('opens a bare book at its page, a numbered book too', () => {

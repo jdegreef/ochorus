@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	import { search, searchComplete, scripturePageHref, quoteHitHref, type SearchHit } from '$lib/library-public';
 	import { authorPath } from '$lib/originals';
 	import { answerHref } from '$lib/searchResults';
@@ -122,7 +123,7 @@
 			case 'sermon':
 				return { key: 'sermon:' + h.sermon_slug, kind: 'hit', label: t('search.typeSermon'), title: h.sermon_title, meta: h.author_name, href: `/sermons/${h.sermon_slug}`, admin: adminHref('sermon', h.sermon_slug) };
 			default:
-				return { key: `chapter:${h.book_slug}:${h.chapter_order}`, kind: 'hit', label: t('search.typeChapter'), title: h.chapter_title || h.book_title, meta: h.book_title, href: `/books/${h.book_slug}/${h.chapter_order}` };
+				return { key: `chapter:${h.book_slug}:${h.chapter_order}`, kind: 'hit', label: t('search.typeChapter'), title: h.chapter_title || h.book_title, meta: h.book_title, href: bookChapterPath(h.book_slug, h.chapter_order, false) };
 		}
 	}
 

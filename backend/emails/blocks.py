@@ -39,6 +39,8 @@ from types import SimpleNamespace
 
 from django.db import models
 
+from library.chapter_urls import chapter_segment
+
 from . import links
 
 
@@ -493,7 +495,9 @@ def _continue_card(profile, cards: dict) -> dict | None:
     return {
         **card,
         "chapter": chapter,
-        "url": links.site_url(links.localized(f"books/{slug}/{chapter}/", lang)),
+        "url": links.site_url(
+            links.localized(f"books/{slug}/{chapter_segment(slug, chapter)}/", lang)
+        ),
     }
 
 

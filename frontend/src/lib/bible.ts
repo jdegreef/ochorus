@@ -11,6 +11,8 @@
 
 import { CANON } from '$lib/sermonCanon';
 import {
+	BIBLE_CLOSING_CHAPTERS,
+	BIBLE_INTRO_CHAPTERS,
 	bookChapterPath,
 	furthestOf,
 	isFinishedNow,
@@ -342,8 +344,6 @@ export function bibleStarts<T extends { slug: string }>(
  * introduction before (order 1) and a conclusion after. Stated once here, so the
  * count and the chapter links cannot disagree about it.
  */
-const BIBLE_INTRO_CHAPTERS = 1;
-const BIBLE_CLOSING_CHAPTERS = 1;
 
 /** The reader chapter (`order`) that prints Bible chapter `n` of a book. */
 export const bibleChapterOrder = (n: number): number => n + BIBLE_INTRO_CHAPTERS;

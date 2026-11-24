@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import ChapterLengthChart from '$lib/components/ChapterLengthChart.svelte';
@@ -606,7 +607,7 @@
 				<li class="rounded-sm py-1.5" tabindex="-1" data-triage>
 					<div class="flex items-baseline justify-between gap-3">
 						<a
-							href={editionHref(`/books/${f.book}/${f.order}`, f.language)}
+							href={editionHref(bookChapterPath(f.book, f.order, false), f.language)}
 							class="min-w-0 truncate text-body text-text hover:text-accent"
 							data-triage-open
 						>

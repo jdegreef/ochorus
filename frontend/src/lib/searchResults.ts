@@ -20,6 +20,7 @@ import type { AnswerHit, CoverFace, SearchHit, SearchType } from '$lib/library-p
 import { chapterName } from './reading';
 import { foldText } from './searchNormalize';
 import { sermonArt } from './sermonArt';
+import { bookChapterPath } from '$lib/reading-schema';
 
 /** One flat shape for every hit type, so the list renders uniformly. */
 export interface Row {
@@ -216,7 +217,7 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
 			return {
 				key: `chapter:${hit.book_slug}:${hit.chapter_order}`,
 				label: ctx.label('chapter'),
-				href: withQuery(`/books/${hit.book_slug}/${hit.chapter_order}`),
+				href: withQuery(bookChapterPath(hit.book_slug, hit.chapter_order, false)),
 				title,
 				meta: `${hit.book_title} · ${hit.author_name}`,
 				location: `${hit.book_title} · ${title}`,

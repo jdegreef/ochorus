@@ -3,7 +3,7 @@
 	import * as m from '$lib/paraglide/messages.js';
 	import { toBookTile, type SeriesDetail } from '$lib/library-public';
 	import { bookProgressReader, getProgressRecord } from '$lib/progress';
-	import { furthestOf } from '$lib/reading-schema';
+	import { furthestOf, bookChapterPath } from '$lib/reading-schema';
 	import { chapterCount, contentLang, readingTime } from '$lib/reading';
 	import {
 		nextInSeries,
@@ -178,7 +178,9 @@
 	const resume = $derived(next?.resume ? resumePoint(next.book, focusRec) : null);
 	const stages = $derived(next?.resume ? (progress?.stages ?? []) : []);
 	const primaryHref = $derived(
-		next ? localizeHref(`/books/${next.book.slug}${resume ? `/${resume.order}` : ''}`) : ''
+		next
+			? localizeHref(resume ? bookChapterPath(next.book.slug, resume.order, false) : `/books/${next.book.slug}`)
+			: ''
 	);
 
 	// Questions readers ask, answered from Book 1 (its own Q&A). Parents'
@@ -296,7 +298,7 @@
 				<blockquote {lang} dir="auto" class="has-initial"><p>{opening.text}</p></blockquote>
 				<figcaption>
 					<span dir="auto">{opening.chapter}</span>
-					<a href={localizeHref(`/books/${series.books[0].slug}/${opening.order}`)} class="btn btn-primary">
+					<a href={localizeHref(bookChapterPath(series.books[0].slug, opening.order, false))} class="btn btn-primary">
 						{t('series.keepReading')}
 					</a>
 				</figcaption>

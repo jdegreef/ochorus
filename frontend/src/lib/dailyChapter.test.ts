@@ -17,7 +17,7 @@ describe('pickDailyChapter', () => {
 			slug: 'gospel-of-mark',
 			order: 2,
 			title: 'Mark 1',
-			href: '/books/gospel-of-mark/2'
+			href: '/books/gospel-of-mark/1'
 		});
 		expect(pickDailyChapter(dayOf(15)).title).toBe('Mark 16');
 		expect(pickDailyChapter(dayOf(16)).title).toBe('John 1');
