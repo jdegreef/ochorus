@@ -99,5 +99,29 @@
   "note": [
    "Plan prose shipped with the ja edition of necessity-of-prayer (queue job #8910): with it, all three source books of praying-men exist in ja (『祈りによる力』, 『目的をもった祈り』, 『祈りの必要』), so PlanTranslationCoverageTests requires this entry. The description follows the English one book by book (power → purpose → necessity) in the です・ます phrasing of the shipped ja plans, with the house dash ——. AI-written; for native review with the book."
   ]
+ },
+ "new-to-the-faith": {
+  "title": "信仰の第一歩",
+  "description": "キリストとの歩みを始めたばかりのすべての人のための、5週間半です。チャールズ・スポルジョンが『狭い門のほとりで』で門のところであなたを迎え、イエスに信頼するための、いちばんわかりやすい助けを差し出します。続いて、新しい信者のために書いたR・A・トーリーが、『クリスチャン生活に成功する秘訣』で、正しい始め方を示します。救いの確信、聖霊、教会、聖書、祈り、そして証しです。その合間に短い記事が、新しいクリスチャンなら誰もが抱く問いに答えます。福音とは何か、イエスはなぜ死なれたのか、洗礼と主の晩餐は何を意味するのか、そしてどのように成長し続けるのか。",
+  "note": [
+   "Ships with how-to-succeed-in-the-christian-life.ja (『クリスチャン生活に成功する秘訣』, Japanese Level 1 push, job #9735), the plan's last ja source; around-the-wicket-gate.ja and the ja articles already ship. Both book titles are quoted exactly.",
+   "AI-drafted; awaiting native review."
+  ]
+ },
+ "the-puritan-heart": {
+  "title": "ピューリタンの心",
+  "description": "内なる生活の三人の師とともに過ごす8週間です。リチャード・シブスが傷んだ葦を包み、ジョン・オーウェンがなお内に住む罪と戦い、トマス・ワトソンが、すべてのことがともに働いて益となるという約束の上に、その戦いのすべてを休ませます。",
+  "note": [
+   "Ships with the-bruised-reed.ja (『傷んだ葦』, Japanese Level 1 push, job #9747); mortification-of-sin.ja (『罪を殺すこと』) and all-things-for-good.ja (『すべてのことが益となる』) already ship, so this completes the plan. Like the English, it describes the books rather than quoting titles.",
+   "AI-drafted; awaiting native review."
+  ]
+ },
+ "the-pilgrims-way": {
+  "title": "巡礼者の道",
+  "description": "三つの古典でたどる、わが家への道です。チャールズ・スポルジョンが狭い門のほとりで求める人を迎え、ジョン・バニヤンの不朽の寓話が巡礼者に天の都までの道のりをずっと寄り添い、バニヤン自身の証しが、罪人のかしらに溢れた恵みを示します。",
+  "note": [
+   "Ships with grace-abounding.ja (『罪人のかしらに溢るる恩寵』, Japanese Level 1 push, job #9748); around-the-wicket-gate.ja and pilgrims-progress.ja already ship, so this completes the plan. Describes the books rather than quoting titles, like the English.",
+   "AI-drafted; awaiting native review."
+  ]
  }
 }

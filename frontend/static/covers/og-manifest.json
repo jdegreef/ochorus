@@ -24487,6 +24487,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/answers-to-prayer": {
+			"ground": "7b599935a0c94f4e9106dcf7c87789d880456fbdf026cb544d85f6784498dc38",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "dbc39ce33aec61108c7a725d59c787d3f81a55f5ca2cb63fef757aa2bb837a8a",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/oxblood",
+			"bar": 0.105,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/around-the-wicket-gate": {
 			"ground": "6fed75e7956231a282f14ee5d37ae08d4b1148d433dfc496531dd5e3c65d0853",
 			"style": "revival",
@@ -24677,6 +24692,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/grace-abounding": {
+			"ground": "e65f6f8b12bde2eacd4b34ce0f3a863f0ea9d10fc1eab6f661fd19ac50eca29d",
+			"style": "press",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "d7e9a89933c7fc5843545a50ab69ccb938cc38e19197c2fe86318f4de2dd4a55",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/teal",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/growing-in-wisdom": {
 			"ground": "ffa92daed7a4734678353c0b11859181d06a501def9a81f4cbce2dc22b8b7967",
 			"style": "originals",
@@ -24759,6 +24789,21 @@
 				192,
 				603
 			]
+		},
+		"ja/how-to-succeed-in-the-christian-life": {
+			"ground": "099963f91d53b8fb4bc708633f169d4d438b71a5e91cd71729a720df1170036f",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "9f29d2ef701e5a94e4b7ec596d73968c2d951fb393eae79245b80ff8bcad633d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
 		},
 		"ja/humility-2": {
 			"ground": "ab8070b18dbfdbb83365757093735ef727752735dac588a9ed8680594aae3fbd",
@@ -24898,6 +24943,40 @@
 			"bar": 0.05,
 			"caps": false,
 			"sitemark": null
+		},
+		"ja/on-loving-god": {
+			"ground": "43d6e388257da7c0e1843e2b1a67dc004db3087caec30bc444154566e50a152f",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "d4d76b8b3624b21712ed7c97a7d9d8e3d1b8855c80e52e61a58faf9cf55bbf43",
+			"art": true,
+			"scrim": 0.55,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[85, 102, 515, 131]
+				],
+				"title": [
+					[145, 298, 455, 377],
+					[115, 356, 485, 435]
+				],
+				"subtitle": [
+					[188, 464, 412, 485]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				309,
+				486
+			]
 		},
 		"ja/pilgrims-progress": {
 			"ground": "d7aa3d996830d95b331d5efea0e1c516cfec332142c46eb9b5efb866fe870589",
@@ -25103,6 +25182,39 @@
 				469
 			]
 		},
+		"ja/the-bruised-reed": {
+			"ground": "5d27f10a1207d116544153e4d7d5d61c7277525105bee7f2ea5f9395bfd42fc5",
+			"style": "press",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "8359df6e9028ff037d5da970f9c828814cef673bacc16ed5d2ad6fe073001cb9",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[135, 319, 465, 424]
+				],
+				"subtitle": [
+					[197, 477, 403, 498]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				296,
+				499
+			]
+		},
 		"ja/the-imitation-of-christ": {
 			"ground": "79fbd618b62370d9bf9b08747b06311ebb4dd2071c2eaa0fd45686da5ae95f80",
 			"style": "devotional",
@@ -25290,6 +25402,21 @@
 			"medallion": null,
 			"layout": "wash/ochre",
 			"bar": 0.015,
+			"caps": false,
+			"sitemark": null
+		},
+		"ja/true-vine": {
+			"ground": "85d9205e1b0f842df0987ad05ebf35bdfdd4d5967ff89fdc7a9cfe8a4128f0a2",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "f20344f2035fc9a4c5645eb8001150b23a42eb33be83957a9afa11504a8788f1",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0,
 			"caps": false,
 			"sitemark": null
 		},
