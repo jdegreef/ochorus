@@ -1018,6 +1018,11 @@ class LocalizedAuthorBioTests(TestCase):
         self.assertNotIn("bio", res.data[0]["author"])
         self.assertEqual(res.data[0]["author"]["name"], self.author.name)
 
+    def test_book_index_rows_carry_only_what_the_a_to_z_draws(self):
+        res = self.client.get("/api/library/books/?language=lg&fields=index")
+        self.assertEqual(set(res.data[0]), {"slug", "title", "author", "series"})
+        self.assertEqual(res.data[0]["author"]["name"], self.author.name)
+
     def test_book_list_is_the_whole_set_unless_a_page_is_asked_for(self):
         Book.objects.create(author=self.author, slug="second", language="lg", title="Ekyokubiri")
         whole = self.client.get("/api/library/books/?language=lg&page=9&page_size=1")
