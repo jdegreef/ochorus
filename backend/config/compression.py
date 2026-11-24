@@ -23,7 +23,6 @@ from __future__ import annotations
 
 from django.middleware.gzip import GZipMiddleware
 
-
 # Paths whose responses can hold a secret: a CSRF token in a Django admin form,
 # or private reader data in the admin dashboard's API.
 UNCOMPRESSED_PREFIXES = ("/admin/", "/api/admin/")
