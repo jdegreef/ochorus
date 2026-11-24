@@ -1,0 +1,32 @@
+{
+  "title": "Proverbes",
+  "cover_title": "",
+  "subtitle": "Mishlei, « Proverbes »",
+  "description": "Le livre biblique de la sagesse de tous les jours, qui s’ouvre sur sa devise — « La connaissance commence par la crainte du SEIGNEUR » — puis fait descendre cette crainte dans le concret : les paroles qui apaisent la colère et celles qui blessent, le paresseux et la fourmi, les balances honnêtes et la justice pour les pauvres, des amis plus proches qu’un frère, et des projets que seul le SEIGNEUR peut faire tenir. Un père qui enseigne son fils, la Sagesse qui appelle dans la rue et se réjouit aux côtés de Dieu lors de la création, deux maisons et deux invitations, les maximes de Salomon copiées au temps d’Ézéchias, les énigmes d’Agur, et l’épouse capable qui clôt le livre. Trente et un chapitres, un chapitre par jour pendant un mois, disposés ligne par ligne comme la poésie qu’ils sont, dans l’Open Word Bible, une nouvelle traduction de l’hébreu offerte librement au domaine public, avec une introduction à la forme et au sens du livre et une conclusion sur ce qu’il est bon de lire ensuite.",
+  "qa": [
+    {
+      "question": "Qu’est-ce que le livre des Proverbes ?",
+      "answer": "Un livre de l’Ancien Testament composé de maximes sages et de poèmes d’enseignement sur la manière de bien vivre sous le regard de Dieu. Son nom hébreu, Mishlei, est son premier mot, « les proverbes de » ; un mashal est une maxime qui enseigne par comparaison. Les chapitres 1–9 sont de longs poèmes dans lesquels un parent instruit son fils et où la Sagesse appelle dans les rues ; les chapitres 10–29 rassemblent des centaines de maximes brèves, la plupart en deux vers équilibrés ; et les chapitres 30–31 contiennent les paroles d’Agur, les paroles du roi Lemuel et le poème de l’épouse capable. Avec Job et l’Ecclésiaste, c’est l’un des livres de sagesse de la Bible."
+    },
+    {
+      "question": "Qui a écrit le livre des Proverbes ?",
+      "answer": "Les Proverbes sont un recueil, et leurs titres nomment plusieurs sources. Le livre s’ouvre sur « les proverbes de Salomon », le roi dont on se souvient qu’il prononça trois mille proverbes (1 Rois 4:32), et deux grands recueils portent son nom (10:1–22:16 et les chapitres 25–29). Le second réunit des proverbes « rassemblés et copiés par les fonctionnaires d’Ézéchias, roi de Juda » (25:1), vers 700 av. J.-C. Le livre rassemble aussi des « paroles des sages » (22:17 ; 24:23), les paroles d’Agur, fils de Jaké (chapitre 30), et celles du roi Lemuel, enseignées par sa mère (31:1). Les spécialistes ne s’accordent pas sur la part qui remonte à Salomon lui-même ni sur la date à laquelle le livre a pris sa forme définitive, mais il a manifestement été rassemblé au fil des siècles."
+    },
+    {
+      "question": "Que signifie « la crainte du SEIGNEUR » dans les Proverbes ?",
+      "answer": "C’est la devise du livre : « La connaissance commence par la crainte du SEIGNEUR » (1:7), reprise en 9:10 et rappelée dans le dernier chapitre, où la femme qui craint le SEIGNEUR est celle « qu’il faut louer » (31:30). Il ne s’agit pas d’une terreur qui fuit Dieu, mais d’un respect plein d’émerveillement qui Lui fait confiance et se détourne du mal. Les Proverbes la définissent directement — « Craindre le SEIGNEUR, c’est haïr le mal » (8:13) — et la décrivent comme une confiance de tout le cœur dans le SEIGNEUR, plutôt que de s’appuyer sur sa propre intelligence (3:5–7). Dans les Proverbes, la sagesse est l’art de vivre, et elle commence par la connaissance de qui est Dieu."
+    },
+    {
+      "question": "Les maximes des Proverbes sont-elles des promesses ?",
+      "answer": "Pas au sens de garanties. Un proverbe dit comment la vie se déroule habituellement dans le monde de Dieu, condensé en une formule facile à retenir, et il faut l’appliquer avec discernement. « Mets l’enfant sur le chemin qu’il doit suivre » (22:6) est sage et généralement vrai, mais cela ne promet pas que chaque enfant de parents fidèles croira. Les Proverbes le montrent eux-mêmes en plaçant côte à côte « Ne réponds pas aux insensés sur le terrain de leur folie » et « Réponds aux insensés comme leur folie le mérite » (26:4–5) : les deux ont raison, à des moments différents. Les livres de Job et de l’Ecclésiaste, qui se tiennent à côté des Proverbes, abordent les cas difficiles où les justes souffrent et où les méchants prospèrent."
+    },
+    {
+      "question": "Qui est la femme de Proverbes 31 ?",
+      "answer": "Proverbes 31:10–31 est un poème alphabétique, dont chacun des vingt-deux versets commence par la lettre suivante de l’alphabet hébreu, à la louange d’« une épouse capable » (en hébreu eshet hayil, une femme de force et de valeur, l’expression employée pour Ruth en Ruth 3:11). Elle travaille, fait du commerce, achète un champ, prend soin de sa maisonnée et ouvre la main aux pauvres, et elle est louée parce qu’elle craint le SEIGNEUR. Beaucoup y voient le portrait d’une femme réelle et admirable, et le poème est chanté dans les foyers juifs la veille du sabbat ; beaucoup remarquent aussi qu’elle incarne la Sagesse décrite dans les chapitres 1–9, si bien que le livre s’achève sur la sagesse vécue dans un foyer. Le chapitre s’ouvre sur les paroles que la mère du roi Lemuel lui a enseignées (31:1–9)."
+    },
+    {
+      "question": "De quelle traduction de la Bible s’agit-il ?",
+      "answer": "L’Open Word Bible, une nouvelle traduction faite directement à partir de l’hébreu et dédiée au domaine public, imprimée ici au niveau Équilibré, qui vise à être exact et à se lire naturellement à voix haute. Chaque vers de la poésie est placé sur sa propre ligne, et « SEIGNEUR » en majuscules représente le nom personnel de Dieu. Le raisonnement qui sous-tend chacune de ses phrases, avec l’hébreu en regard, est publié sur openwordbible.org. L’introduction et la conclusion ont été écrites pour cette édition."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "title": "O Evangelho de Lucas",
+  "cover_title": "Lucas",
+  "subtitle": "Kata Loukan, “Segundo Lucas”",
+  "description": "O mais longo dos quatro Evangelhos, escrito por um historiador cuidadoso “numa sequência ordenada”, para que o seu leitor pudesse estar seguro daquilo que lhe fora ensinado: “O Filho do Homem veio procurar o que se tinha perdido e salvá-lo.” As visitas de Gabriel a Zacarias e a Maria; os cânticos de Maria, de Zacarias, dos anjos e de Simeão; os pastores e a manjedoura; o primeiro sermão de Jesus em Nazaré, boa notícia aos pobres; a longa viagem a Jerusalém, com o bom samaritano, a ovelha perdida, a moeda perdida e o filho perdido, o rico e Lázaro, e Zaqueu em cima da sua árvore. Depois a oração “Pai, perdoa-lhes”, a promessa do paraíso a um criminoso moribundo, e Jesus ressuscitado reconhecido no caminho de Emaús, ao partir o pão. O primeiro dos dois volumes de Lucas, continuado em Atos. Na Open Word Bible, uma nova tradução do grego entregue livremente ao domínio público, com uma introdução à forma e ao sentido do livro e uma conclusão sobre o que ler em seguida.",
+  "qa": [
+    {
+      "question": "O que é o Evangelho de Lucas?",
+      "answer": "O terceiro dos quatro Evangelhos, os relatos da vida, morte e ressurreição de Jesus no Novo Testamento, e a primeira parte de uma obra em dois volumes completada pelos Atos dos Apóstolos. Conta mais sobre o nascimento de Jesus do que qualquer outro Evangelho, e muitas das Suas parábolas mais amadas só se encontram aqui, entre elas a do bom samaritano e a do filho perdido. Mostra Jesus levando boas notícias aos pobres, aos pecadores e aos de fora: nas Suas próprias palavras, “O Filho do Homem veio procurar o que se tinha perdido e salvá-lo” (19:10)."
+    },
+    {
+      "question": "Quem escreveu o Evangelho de Lucas, e quando?",
+      "answer": "O Evangelho não diz quem é o seu autor, mas ele e Atos são dirigidos ao mesmo Teófilo e escritos pela mesma mão. Desde o século II, a Igreja diz que o autor foi Lucas, o médico e companheiro de Paulo (Colossenses 4:14), e as passagens de Atos narradas na primeira pessoa (“nós”) sugerem que ele viajou com Paulo. Ele diz que não foi testemunha ocular, mas que se baseou nos que foram (1:1–4). As datas propostas vão do início dos anos 60 aos anos 80."
+    },
+    {
+      "question": "Sobre o que é a parábola do filho pródigo?",
+      "answer": "É a terceira de três histórias de Lucas 15 que Jesus conta quando líderes religiosos reclamam que Ele acolhe pecadores e come com eles: uma ovelha perdida, uma moeda perdida e um filho perdido. Um filho mais novo desperdiça a sua herança e volta para casa, e o pai corre ao seu encontro e dá uma festa. Cada história termina em alegria pelo que estava perdido e foi achado. O irmão mais velho, que se recusa a entrar, fica do lado de fora, com o pai insistindo com ele, e a parábola termina sem dizer se ele entrou."
+    },
+    {
+      "question": "Por que Lucas é chamado o Evangelho da oração e do Espírito Santo?",
+      "answer": "Lucas mostra Jesus orando com mais frequência do que qualquer outro Evangelho: no Seu batismo, antes de escolher os Doze, na transfiguração, por Pedro, no Getsêmani e na cruz; e só Lucas conta as parábolas do amigo à meia-noite e da viúva persistente. Ele também conta como o Espírito encheu Isabel, Zacarias e Simeão, desceu sobre Maria e repousou sobre Jesus, e registra a promessa de Jesus de que o Pai dará o Espírito Santo aos que Lhe pedirem (11:13), promessa cumprida em Atos."
+    },
+    {
+      "question": "Onde, segundo Lucas 2:7, Jesus nasceu?",
+      "answer": "As Bíblias mais antigas dizem que “não havia lugar para eles na estalagem”. A palavra grega é a mesma que Lucas usa para o quarto de hóspedes da última ceia (22:11), um cômodo de uma casa, e não a palavra que ele usa para hospedaria; por isso esta tradução diz que “no quarto de hóspedes não havia espaço para eles”. José e Maria provavelmente estavam hospedados numa casa cujo quarto de hóspedes estava cheio, e o bebê foi deitado num cocho, uma manjedoura, onde os animais comiam."
+    },
+    {
+      "question": "Que tradução da Bíblia é esta?",
+      "answer": "A Open Word Bible, uma nova tradução feita diretamente do grego e dedicada ao domínio público, impressa aqui em seu nível Equilibrado, que busca ser exata e soar natural quando lida em voz alta. O raciocínio por trás de cada uma de suas frases, com o grego ao lado, está publicado em openwordbible.org. A introdução e a conclusão foram escritas para esta edição."
+    }
+  ]
+}
