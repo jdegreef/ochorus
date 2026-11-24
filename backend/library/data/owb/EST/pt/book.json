@@ -1,0 +1,32 @@
+{
+  "title": "Ester",
+  "cover_title": "",
+  "subtitle": "Ester, “Estrela”",
+  "description": "A história de uma órfã judia que se tornou rainha da Pérsia e salvou o seu povo da destruição, lida todos os anos na festa de Purim, e o único livro da Bíblia em que Deus nunca é nomeado. Os banquetes de um rei e uma rainha que se recusou a comparecer; Mardoqueu à porta do palácio; Hamã, o agagita, lançando sortes para escolher o dia em que os judeus morreriam; as palavras “Quem sabe se não foi para um momento como este que você chegou à posição de rainha?”, e a resposta de Ester: “se eu perecer, pereci”; dois banquetes, uma noite sem sono, uma forca construída para um homem e usada para outro, e um mês transformado de tristeza em alegria. Na Open Word Bible, uma nova tradução do hebraico entregue livremente ao domínio público, com uma introdução à forma e ao sentido do livro e uma conclusão sobre o que ler em seguida.",
+  "qa": [
+    {
+      "question": "Sobre o que é o livro de Ester?",
+      "answer": "Sobre o livramento dos judeus do Império Persa de um plano para destruí-los. Ester, uma órfã judia criada pelo primo Mardoqueu, torna-se rainha do rei Assuero sem revelar o seu povo. Quando o principal oficial do rei, Hamã, obtém um decreto para matar todos os judeus num único dia, Mardoqueu insiste com Ester para que interceda junto ao rei, e ela arrisca a vida para fazê-lo. Hamã é enforcado na forca que construiu para Mardoqueu, um segundo decreto permite que os judeus se defendam, e o dia da sua destruição planejada se torna a festa de Purim, celebrada até hoje todos os anos."
+    },
+    {
+      "question": "Quem escreveu o livro de Ester, e quando?",
+      "answer": "O livro não diz quem foi o seu autor. A tradição judaica o atribuiu aos homens da Grande Assembleia, o conselho que teria sucedido a Esdras, e alguns sugeriram Mardoqueu, de quem se diz que registrou esses acontecimentos (9:20). A história se passa no reinado de Assuero, geralmente identificado com Xerxes I, que governou a Pérsia de 486 a 465 a.C., e a maioria dos estudiosos data a redação do livro no final do período persa ou no início do período grego. Os cristãos divergem sobre até que ponto lê-lo como história pura e simples e até que ponto como história contada com a arte de um narrador."
+    },
+    {
+      "question": "Por que Deus não é mencionado no livro de Ester?",
+      "answer": "No texto hebraico de Ester, o nome de Deus nunca aparece, e há jejum, mas não há oração, templo nem menção da lei. A maioria dos leitores judeus e cristãos viu nesse silêncio o próprio sentido do livro: Deus está agindo nos bastidores, por meio da coragem de uma rainha, da insônia de um rei e de uma série de acontecimentos bem cronometrados demais para serem coincidência, mesmo quando ninguém O nomeia. A esperança de Mardoqueu de que o socorro viria “de outro lugar” (4:14) muitas vezes foi ouvida como uma discreta alusão ao Seu cuidado."
+    },
+    {
+      "question": "O que são os acréscimos a Ester?",
+      "answer": "A antiga tradução grega de Ester contém seis passagens que não se encontram no hebraico, mais de cem versículos ao todo, incluindo um sonho de Mardoqueu, os textos dos decretos do rei e orações de Mardoqueu e de Ester que nomeiam Deus livremente. Eles são impressos nas Bíblias católicas e ortodoxas, onde pertencem aos livros deuterocanônicos. As Bíblias protestantes, e esta edição, seguem o texto hebraico."
+    },
+    {
+      "question": "O que é Purim?",
+      "answer": "A festa judaica que celebra o livramento narrado em Ester, celebrada no dia catorze do mês de Adar, ou no dia quinze em Jerusalém e em outras cidades que tinham muralhas na Antiguidade. O seu nome vem de pur, “sorte”, porque Hamã lançou sortes para escolher o dia da destruição dos judeus (3:7; 9:24–26). O livro a ordena como um tempo de banquete e alegria, de mandar presentes de comida uns aos outros e presentes aos pobres (9:22). O rolo de Ester é lido em voz alta na sinagoga, e a congregação abafa o nome de Hamã com barulho cada vez que ele é lido."
+    },
+    {
+      "question": "Que tradução da Bíblia é esta?",
+      "answer": "A Open Word Bible, uma nova tradução feita diretamente do hebraico e dedicada ao domínio público, impressa aqui em seu nível Equilibrado, que procura ser exata e soar natural quando lida em voz alta. O raciocínio por trás de cada uma das suas frases, com o hebraico ao lado, está publicado em openwordbible.org. A introdução e a conclusão foram escritas para esta edição."
+    }
+  ]
+}

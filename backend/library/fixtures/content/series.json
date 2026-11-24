@@ -1384,6 +1384,19 @@
   "series": [
    "straight-talk"
   ],
+  "language": "ja",
+  "title": "まっすぐな話",
+  "description": "十代の読者のために、正直に、わかりやすいことばで語り直したキリスト教の古典と本当の生涯です。天の都への道を進むバニヤンの巡礼者、農場から語るスポルジョンのまっすぐな話、そして神さまにすべてをかけた人々の物語です。",
+  "created_at": "2026-11-24T00:00:00Z",
+  "updated_at": "2026-11-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
   "language": "ko",
   "title": "솔직한 이야기",
   "description": "청소년 독자를 위해 솔직하고 쉬운 말로 다시 들려주는 기독교 고전과 실제 인물의 삶입니다. 천성을 향해 가는 존 번연의 순례자, 농장에서 들려주는 찰스 스펄전의 솔직한 이야기, 그리고 모든 것을 하나님께 건 남자와 여자들의 이야기를 담았습니다.",
@@ -1597,6 +1610,32 @@
   "description": "Los libros de la Biblia en la Open Word Bible, una nueva traducción del hebreo y del griego entregada libremente al dominio público, en su orden de Génesis a Apocalipsis. Cada libro tiene una introducción a su forma y su sentido, y una conclusión sobre qué leer después.",
   "created_at": "2026-11-22T00:00:00Z",
   "updated_at": "2026-11-22T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "the-bible"
+  ],
+  "language": "fr",
+  "title": "La Bible",
+  "description": "Les livres de la Bible dans l’Open Word Bible, une nouvelle traduction de l’hébreu et du grec offerte librement au domaine public, dans leur ordre, de la Genèse à l’Apocalypse. Chaque livre a une introduction à sa forme et à son sens, et une conclusion sur ce qu’il faut lire ensuite.",
+  "created_at": "2026-11-24T00:00:00Z",
+  "updated_at": "2026-11-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "the-bible"
+  ],
+  "language": "pt",
+  "title": "A Bíblia",
+  "description": "Os livros da Bíblia na Open Word Bible, uma nova tradução do hebraico e do grego dedicada livremente ao domínio público, na sua ordem, de Gênesis a Apocalipse. Cada livro tem uma introdução à sua forma e ao seu sentido, e uma conclusão sobre o que ler em seguida.",
+  "created_at": "2026-11-24T00:00:00Z",
+  "updated_at": "2026-11-24T00:00:00Z"
  }
 },
 {

@@ -1,0 +1,32 @@
+{
+  "title": "Genèse",
+  "cover_title": "",
+  "subtitle": "Bereshit, « Au commencement »",
+  "description": "Le premier livre de la Bible, appelé en hébreu Bereshit d’après ses premiers mots, « Au commencement ». Il s’ouvre sur Dieu qui fait jaillir par sa parole la lumière dans les ténèbres et sur un monde qu’il déclare très bon, et il s’achève sur un cercueil en Égypte et une promesse qui attend encore d’être tenue. Entre les deux : Adam et Ève dans le jardin et hors du jardin, Caïn et Abel, Noé et l’arc-en-ciel, la tour de Babel, puis une seule famille appelée d’entre les nations pour le bien de toutes — Abraham comptant les étoiles, Isaac sur la montagne, Jacob luttant toute la nuit, et Joseph pardonnant aux frères qui l’avaient vendu. Dans l’Open Word Bible, une nouvelle traduction de l’hébreu offerte librement au domaine public, avec une introduction sur la forme et le sens du livre et une conclusion sur ce qu’il faut lire ensuite.",
+  "qa": [
+    {
+      "question": "Qu’est-ce que le livre de la Genèse ?",
+      "answer": "Le premier livre de la Bible et des cinq livres de Moïse, la Torah. Son nom hébreu, Bereshit, est son premier mot, « Au commencement » ; le nom de Genèse, qui signifie « origine » en grec, vient de l’ancienne traduction grecque. Ses cinquante chapitres vont de la création du monde à la mort de Joseph en Égypte : les chapitres 1–11 racontent les commencements du monde et de tous les peuples, et les chapitres 12–50 suivent une seule famille, Abraham, Isaac, Jacob et les douze fils de Jacob, par laquelle Dieu promet de bénir tous les clans de la terre (12:3)."
+    },
+    {
+      "question": "Qui a écrit le livre de la Genèse ?",
+      "answer": "La Genèse ne nomme pas son auteur. La tradition juive et chrétienne l’a reçue depuis longtemps comme le premier des cinq livres de Moïse, et le Nouveau Testament parle de la Loi comme venue par Moïse. Beaucoup de spécialistes pensent que le livre a puisé dans des sources et des archives familiales plus anciennes et a atteint sa forme définitive sur une longue période, certains la situant bien après Moïse. Les chrétiens ont des vues diverses sur la manière dont le livre a été composé, tout en s’accordant à dire qu’il est Écriture et le fondement de tout ce que le reste de la Bible dit de Dieu, de l’humanité et de la promesse."
+    },
+    {
+      "question": "Comment le livre de la Genèse est-il structuré ?",
+      "answer": "Par un titre qui revient tout au long du livre, en hébreu « voici les toledot de… », traditionnellement traduit « voici la postérité de… » (Louis Segond). Il apparaît dix fois (onze, si l’on compte la reprise en 36:9) et introduit les récits des cieux et de la terre (2:4), d’Adam (5:1), de Noé (6:9), des fils de Noé (10:1), de Sem (11:10), de Térah (11:27), d’Ismaël (25:12), d’Isaac (25:19), d’Ésaü (36:1 et 36:9) et de Jacob (37:2). Chaque titre nomme un père, puis raconte ce qu’il est advenu de sa lignée : ainsi le récit de Térah est l’histoire d’Abraham, celui d’Isaac est l’histoire de Jacob, et celui de Jacob est l’histoire de Joseph et de ses frères."
+    },
+    {
+      "question": "La Genèse est-elle en conflit avec la science ?",
+      "answer": "Les chrétiens répondent à cette question de différentes manières. Certains lisent les six jours de Genèse 1 comme des jours ordinaires et considèrent la terre comme jeune ; d’autres y voient de longues ères, ou un cadre littéraire dans lequel les jours ordonnent l’œuvre de Dieu sans la chronométrer, ou encore un récit antique écrit pour montrer qui a fait le monde et pourquoi, non comment ni quand. Ce sur quoi le chapitre lui-même insiste n’est pas contesté entre eux : qu’un seul Dieu a fait tout ce qui existe, qu’il l’a fait bon, qu’il a fait les êtres humains à son image, et que le monde lui appartient et n’est pas un dieu à part entière. Beaucoup de scientifiques et de théologiens croyants, au fil des siècles, n’ont trouvé aucun conflit définitif entre cette confession et l’étude de la nature."
+    },
+    {
+      "question": "Qu’est-ce que l’alliance de Dieu avec Abraham ?",
+      "answer": "La promesse de Dieu, donnée d’abord en Genèse 12:1–3 et confirmée par une alliance aux chapitres 15 et 17, de faire d’Abraham une grande nation, de donner à ses descendants le pays de Canaan, d’être leur Dieu, et par lui de bénir tous les clans de la terre. Abraham était âgé et sa femme Sara était stérile, et il « mit sa confiance dans le SEIGNEUR, et le SEIGNEUR la porta à son crédit comme justice » (15:6). L’apôtre Paul lit ce verset comme le modèle de la foi pour tous, et la promesse de bénédiction pour toutes les nations comme l’Évangile annoncé d’avance, accompli en Christ (Galates 3:8, 3:29)."
+    },
+    {
+      "question": "De quelle traduction de la Bible s’agit-il ?",
+      "answer": "De l’Open Word Bible, une nouvelle traduction faite directement à partir de l’hébreu et dédiée au domaine public, imprimée ici au niveau Équilibré, qui vise à être exact et à se lire naturellement à voix haute. Le raisonnement qui sous-tend chacune de ses phrases, avec l’hébreu en regard, est publié sur openwordbible.org. L’introduction et la conclusion ont été écrites pour cette édition."
+    }
+  ]
+}

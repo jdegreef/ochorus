@@ -1,0 +1,32 @@
+{
+  "title": "Esther",
+  "cover_title": "",
+  "subtitle": "Ester, « Étoile »",
+  "description": "L’histoire d’une orpheline juive devenue reine de Perse qui sauva son peuple de l’extermination, lue chaque année à la fête de Pourim, et le seul livre de la Bible où Dieu n’est jamais nommé. Les banquets d’un roi et une reine qui refusa de venir ; Mardochée à la porte du palais ; Haman l’Agaguite jetant le sort pour fixer le jour où les Juifs mourraient ; les mots « Peut-être es-tu devenue reine pour un moment comme celui-ci », et la réponse d’Esther, « si je péris, je péris » ; deux banquets, une nuit sans sommeil, une potence dressée pour un homme et servant à un autre, et un mois qui passa du chagrin à la joie. Dans l’Open Word Bible, une nouvelle traduction faite à partir de l’hébreu et offerte librement au domaine public, avec une introduction sur la forme et le sens du livre et une conclusion sur ce qu’il faut lire ensuite.",
+  "qa": [
+    {
+      "question": "De quoi parle le livre d’Esther ?",
+      "answer": "Du sauvetage des Juifs de l’Empire perse, menacés par un complot visant à les exterminer. Esther, une orpheline juive élevée par son cousin Mardochée, devient l’épouse du roi Assuérus sans révéler à quel peuple elle appartient. Quand le premier ministre du roi, Haman, obtient un décret ordonnant de tuer tous les Juifs en un seul jour, Mardochée presse Esther d’intercéder auprès du roi, et elle risque sa vie pour le faire. Haman est pendu à la potence qu’il avait dressée pour Mardochée, un second décret permet aux Juifs de se défendre, et le jour prévu pour leur extermination devient la fête de Pourim, célébrée encore chaque année."
+    },
+    {
+      "question": "Qui a écrit le livre d’Esther, et quand ?",
+      "answer": "Le livre ne nomme pas son auteur. La tradition juive l’attribuait aux hommes de la Grande Assemblée, le conseil qui aurait succédé à Esdras, et certains ont pensé à Mardochée, dont il est dit qu’il « mit ces événements par écrit » (9:20). L’histoire se déroule sous le règne d’Assuérus, habituellement identifié à Xerxès Iᵉʳ, qui régna sur la Perse de 486 à 465 av. J.-C., et la plupart des spécialistes datent la rédaction du livre de la fin de l’époque perse ou du début de l’époque grecque. Les chrétiens divergent sur la mesure dans laquelle il faut le lire comme une histoire au sens strict, ou comme une histoire racontée avec l’art d’un conteur."
+    },
+    {
+      "question": "Pourquoi Dieu n’est-il pas mentionné dans le livre d’Esther ?",
+      "answer": "Dans le texte hébreu d’Esther, le nom de Dieu n’apparaît jamais, et l’on y trouve le jeûne, mais ni prière, ni temple, ni mention de la loi. La plupart des lecteurs juifs et chrétiens ont vu dans ce silence le propos même du livre : Dieu agit en coulisses, à travers le courage d’une reine, la nuit blanche d’un roi et une suite d’événements trop bien synchronisés pour être des coïncidences, même quand personne ne le nomme. L’espoir de Mardochée que le secours viendrait « d’ailleurs » (4:14) a souvent été compris comme une allusion discrète à sa sollicitude."
+    },
+    {
+      "question": "Que sont les additions à Esther ?",
+      "answer": "L’ancienne traduction grecque d’Esther contient six passages absents de l’hébreu, plus d’une centaine de versets en tout, dont un songe de Mardochée, le texte des décrets du roi, et des prières de Mardochée et d’Esther qui nomment Dieu librement. Elles sont imprimées dans les Bibles catholiques et orthodoxes, où elles font partie des livres deutérocanoniques. Les Bibles protestantes, et cette édition, suivent le texte hébreu."
+    },
+    {
+      "question": "Qu’est-ce que Pourim ?",
+      "answer": "La fête juive qui célèbre la délivrance racontée dans Esther, observée le quatorze du mois d’Adar, ou le quinze à Jérusalem et dans les autres villes entourées de murailles depuis l’Antiquité. Son nom vient de pour, « sort », parce que Haman avait jeté le sort pour choisir le jour de l’extermination des Juifs (3:7 ; 9:24–26). Le livre la prescrit comme un temps de festin et de joie, où l’on s’envoie des parts de nourriture les uns aux autres et où l’on fait des dons aux pauvres (9:22). Le rouleau d’Esther est lu à haute voix à la synagogue, et l’assemblée couvre de bruit le nom de Haman chaque fois qu’il est prononcé."
+    },
+    {
+      "question": "De quelle traduction de la Bible s’agit-il ?",
+      "answer": "L’Open Word Bible, une nouvelle traduction faite directement à partir de l’hébreu et dédiée au domaine public, imprimée ici au niveau Équilibré, qui cherche à être exacte et à se lire naturellement à voix haute. Le raisonnement qui justifie chacune de ses phrases, avec l’hébreu en regard, est publié sur openwordbible.org. L’introduction et la conclusion ont été écrites pour cette édition."
+    }
+  ]
+}

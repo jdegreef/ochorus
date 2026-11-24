@@ -1,0 +1,32 @@
+{
+  "title": "Job",
+  "cover_title": "",
+  "subtitle": "Iyov, « Le livre de Job »",
+  "description": "Le grand livre de la Bible sur la souffrance, qui pose sa question dès le premier chapitre : « Job craint-il Dieu pour rien ? » Un homme intègre du pays d’Outs perd en quelques jours ses biens, ses enfants et sa santé, et dit : « Le SEIGNEUR a donné, le SEIGNEUR a retiré ». Puis trois amis restent assis avec lui en silence pendant sept jours, avant de soutenir, chapitre après chapitre, qu’il a forcément péché, tandis que Job maudit le jour de sa naissance, exige d’être entendu par Dieu, et s’élève jusqu’à ces mots : « je sais, moi, que mon Rédempteur est vivant ». Un poème qui demande où l’on peut trouver la sagesse ; un jeune homme nommé Élihou ; et enfin le SEIGNEUR qui répond à Job depuis la tempête : « Où étais-tu quand j’ai posé les fondations de la terre ? » Disposé vers par vers, comme la poésie qu’il est, dans l’Open Word Bible, une nouvelle traduction faite à partir de l’hébreu et offerte librement au domaine public, avec une introduction sur la forme et le sens du livre et une conclusion sur ce qu’il faut lire ensuite.",
+  "qa": [
+    {
+      "question": "De quoi parle le livre de Job ?",
+      "answer": "D’un homme juste qui perd tout et qui lutte avec Dieu pour savoir pourquoi. Dans le prologue en prose (chapitres 1–2), l’Accusateur, à la cour céleste, prétend que Job ne sert Dieu que pour ce qu’il en retire, et Dieu permet qu’il soit mis à l’épreuve : Job perd ses biens, ses dix enfants et sa santé, mais il ne maudit pas Dieu. Dans la longue partie poétique centrale (3:1–42:6), ses trois amis affirment qu’il souffre forcément à cause de ses péchés, Job proteste de son innocence et exige que Dieu lui réponde, un jeune homme nommé Élihou prend la parole, et finalement le SEIGNEUR répond à Job depuis la tempête. Dans l’épilogue en prose, Dieu blâme les amis, dit que Job a parlé de lui avec justesse, et rétablit le sort de Job."
+    },
+    {
+      "question": "Qui a écrit le livre de Job, et quand ?",
+      "answer": "Le livre ne nomme pas son auteur et ne dit pas quand il a été écrit. Une ancienne tradition juive l’attribuait à Moïse. L’histoire se situe dans un monde patriarcal, hors d’Israël, au pays d’Outs, où Job offre lui-même des sacrifices pour sa famille et compte sa richesse en troupeaux, mais cela nous dit quand l’histoire se déroule plutôt que quand le livre a été écrit. Les spécialistes ont proposé des dates allant de l’époque de Salomon jusqu’après l’exil, et la question reste ouverte. Ézéchiel 14:14 nomme Job avec Noé et Daniel, et Jacques 5:11 parle de l’endurance de Job."
+    },
+    {
+      "question": "Qui est l’Accusateur dans le livre de Job ?",
+      "answer": "Aux chapitres 1–2, un personnage appelé en hébreu « le satan », avec l’article, vient parmi les êtres célestes devant le SEIGNEUR et met en doute les motivations de Job : « Job craint-il Dieu pour rien ? » Le mot est un titre qui signifie l’adversaire ou l’accusateur, et cette traduction le rend par « l’Accusateur ». La suite de l’Écriture emploie ce mot comme un nom, Satan, pour désigner le grand ennemi de Dieu, et beaucoup de chrétiens l’identifient à ce personnage. Le livre de Job lui-même le présente comme un accusateur de la cour céleste qui ne peut agir que dans la mesure où le SEIGNEUR le permet, et il disparaît de l’histoire après le chapitre 2."
+    },
+    {
+      "question": "Que signifie « je sais, moi, que mon Rédempteur est vivant » dans Job ?",
+      "answer": "En Job 19:25–27, abandonné par sa famille et ses amis, Job déclare que son Rédempteur est vivant et qu’il prendra sa défense au bout du compte, et qu’il verra Dieu lui-même. Le rédempteur, en hébreu go’el, était le plus proche parent, celui qui prenait la défense d’un membre de sa famille en difficulté, rachetant sa terre, le libérant de l’esclavage et le défendant en justice. La plupart des interprètes pensent que Job parle de Dieu lui-même, qui finira par prendre son parti. Les chrétiens ont depuis longtemps entendu dans ces paroles une espérance accomplie en Christ et dans la résurrection du corps ; Haendel les a mises en musique au début de la troisième partie du Messie."
+    },
+    {
+      "question": "Dieu explique-t-il jamais à Job pourquoi il a souffert ?",
+      "answer": "Non. Quand le SEIGNEUR répond à Job depuis la tempête (chapitres 38–41), il ne mentionne jamais la scène céleste et ne donne aucune raison à la souffrance de Job. Au lieu de cela, il pose à Job une longue série de questions sur la création du monde et sur les créatures sauvages dont il prend soin, des étoiles jusqu’au corbeau, et il lui montre Béhémoth et Léviathan. Job reçoit pourtant une réponse : « J’avais entendu parler de Toi par ce qu’on m’en disait, mais à présent ce sont mes propres yeux qui T’ont vu. » Le livre ne résout pas le problème de la souffrance. Il montre un homme qui rencontre Dieu au cœur de celle-ci, et Dieu déclare que Job, qui a discuté honnêtement avec lui, a parlé avec justesse, alors que les amis qui le défendaient avec de fausses raisons ne l’ont pas fait."
+    },
+    {
+      "question": "De quelle traduction de la Bible s’agit-il ?",
+      "answer": "L’Open Word Bible, une nouvelle traduction faite directement à partir de l’hébreu et dédiée au domaine public, imprimée ici au niveau Équilibré, qui cherche à être exacte et à se lire naturellement à voix haute. La poésie, qui va du chapitre 3 à 42:6, est imprimée vers par vers, et « SEIGNEUR » en majuscules représente le nom personnel de Dieu. Le raisonnement qui justifie chacune de ses phrases, avec l’hébreu en regard, est publié sur openwordbible.org. L’introduction et la conclusion ont été écrites pour cette édition."
+    }
+  ]
+}

@@ -362,6 +362,55 @@ LANGUAGES = {
         defaults={"deity_pronoun": 1},
         outer_guillemets=True,
     ),
+    "fr": Language(
+        introduction="Introduction",
+        conclusion="Conclusion",
+        attribution=(
+            "Écritures tirées de l’Open Word Bible ({site}), en français, niveau Équilibré, "
+            "commit {commit} : dédiée au domaine public sous CC0 1.0. "
+            "L’introduction et la conclusion sont d’Ochorus."
+        ),
+        disputed_note=(
+            "Les manuscrits les plus anciens de {book} n’ont pas {ref}. La plupart des "
+            "Bibles le donnent, comme ici, à part et entre crochets."
+        ),
+        own_notes={"MRK.16.8.s2": (
+            "Les manuscrits les plus anciens de Marc s’arrêtent en 16:8. Les deux finales "
+            "qui suivent, une courte et la plus longue en 16:9–20, ont été ajoutées plus tard. "
+            "La plupart des Bibles les donnent, comme ici, à part et entre crochets."
+        )},
+        psalm_title=re.compile(
+            r"(?:Au chef de chœur|(?:Un |Une )?(?:[Pp]saume|[Cc]antique|[Cc]hant|[Pp]rière"
+            r"|[Mm]askil|[Mm]iktam|[Ss]higgayon)\b[^.!?\n]*"
+            r"|De(?:s fils de Coré| [A-ZÉ][a-zéè]+))\.[ \n]*"
+        ),
+        defaults={"deity_pronoun": 1},
+        outer_guillemets=True,
+    ),
+    "pt": Language(
+        introduction="Introdução",
+        conclusion="Conclusão",
+        attribution=(
+            "Escrituras da Open Word Bible ({site}), em português, nível Equilibrado, "
+            "commit {commit}: dedicada ao domínio público sob CC0 1.0. "
+            "A introdução e a conclusão são de Ochorus."
+        ),
+        disputed_note=(
+            "Os manuscritos mais antigos de {book} não têm {ref}. A maioria das Bíblias "
+            "o traz, como aqui, à parte e entre colchetes."
+        ),
+        own_notes={"MRK.16.8.s2": (
+            "Os manuscritos mais antigos de Marcos terminam em 16:8. Os dois finais que "
+            "seguem, um breve e o mais longo, em 16:9–20, foram acrescentados depois. A "
+            "maioria das Bíblias os traz, como aqui, à parte e entre colchetes."
+        )},
+        psalm_title=re.compile(
+            r"(?:Para o mestre de música|(?:Um |Uma )?(?:[Ss]almo|[Cc]ântico|[Oo]ração"
+            r"|[Mm]asquil|[Mm]ictão|[Ss]igaiom)\b[^.!?\n]*"
+            r"|D(?:os filhos de Corá|e [A-ZÁÉ][a-záéã]+))\.[ \n]*"
+        ),
+        defaults={"deity_pronoun": 1},
+    ),
 }
 
 
