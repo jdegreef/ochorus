@@ -24567,6 +24567,114 @@
 				552
 			]
 		},
+		"ja/brave-for-god-2": {
+			"ground": "77e8cd2a390efd822f6bab9562735780fe294378b3db25dd41b055fc9cc5d8ce",
+			"style": "young",
+			"volume": "2",
+			"script": "japanese",
+			"fonts": "aa2ef1f8cfea622914361f65a07b4a9c77ed31c6283c6e27091cabf77a183613",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 239, 311, 283],
+					[101, 314, 499, 389],
+					[114, 375, 486, 450]
+				],
+				"subtitle": [
+					[145, 508, 455, 536],
+					[156, 540, 444, 568]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				227,
+				568
+			]
+		},
+		"ja/brave-for-god-3": {
+			"ground": "a50e4ee059bea4e6d3f84110cc34c0dcbd0a4d65314eacf4e8819c43f8b7813b",
+			"style": "young",
+			"volume": "3",
+			"script": "japanese",
+			"fonts": "aa2ef1f8cfea622914361f65a07b4a9c77ed31c6283c6e27091cabf77a183613",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 239, 310, 283],
+					[101, 314, 499, 389],
+					[114, 375, 486, 450]
+				],
+				"subtitle": [
+					[145, 508, 455, 536],
+					[156, 540, 444, 568]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				227,
+				568
+			]
+		},
+		"ja/brave-for-god-4": {
+			"ground": "dd15e89f963eb27723fbe2e9e8827eea5f19a1627f950bda65faac4c47144fa5",
+			"style": "young",
+			"volume": "4",
+			"script": "japanese",
+			"fonts": "aa2ef1f8cfea622914361f65a07b4a9c77ed31c6283c6e27091cabf77a183613",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 239, 311, 283],
+					[101, 314, 499, 389],
+					[114, 375, 486, 450]
+				],
+				"subtitle": [
+					[145, 508, 455, 536],
+					[156, 540, 444, 568]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				227,
+				568
+			]
+		},
 		"ja/clothed-with-strength-and-dignity": {
 			"ground": "524e6353d318b45927eb1e23562a0352f0ba5630d1f6b0f0130cf210443a9d99",
 			"style": "originals",
@@ -24992,6 +25100,39 @@
 			"bar": 0.03,
 			"caps": false,
 			"sitemark": null
+		},
+		"ja/pilgrims-progress-teens": {
+			"ground": "55943c65cbe9e6e296e577f7c36ba4dd8d2eb5abb6e3b0afd7bf40d00f74d7e9",
+			"style": "press",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "9c8f1b784a90a0a4f0cd293f5c86db49e7e4b50f1822150bfcc021a069b4e0f3",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1.15,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[177, 102, 423, 131]
+				],
+				"title": [
+					[135, 321, 465, 426]
+				],
+				"edition": [
+					[226, 435, 374, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				298,
+				497
+			]
 		},
 		"ja/power-through-prayer": {
 			"ground": "775cca2f885d8c3e64e97ea9a9063ac07f527485fa77cd179bd88a90cfa5f74b",

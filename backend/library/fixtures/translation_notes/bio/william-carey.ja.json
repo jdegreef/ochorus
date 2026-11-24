@@ -1,0 +1,19 @@
+{
+    "kind": "bio",
+    "slug": "william-carey",
+    "language": "ja",
+    "job_issue": 9732,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Psalms 46:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Isaiah 54:2",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        }
+    ]
+}

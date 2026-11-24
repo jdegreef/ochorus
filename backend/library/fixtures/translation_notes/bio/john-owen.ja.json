@@ -1,0 +1,14 @@
+{
+    "kind": "bio",
+    "slug": "john-owen",
+    "language": "ja",
+    "job_issue": 9699,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Matthew 8:26",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        }
+    ]
+}
