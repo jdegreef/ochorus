@@ -101,6 +101,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+from datetime import datetime
 
 import yaml
 
@@ -314,6 +315,39 @@ def wait_for(service_id: str, deploy_id: str, sha: str, api_key: str) -> str:
     return "timeout"
 
 
+# A build that fails this fast never ran: Render refused it before the build
+# started. The usual cause is the workspace's pipeline spend limit. On
+# 2026-11-20 November's Pipeline line sat at exactly $150.00 and the 22:11 UTC
+# train saw ochorus-api `build_failed` within 30 seconds; nothing in the run
+# said why, and every later build failed the same way until the month turned.
+FAST_FAIL_SECONDS = 90
+SPEND_CAP_HINT = (
+    "failed {secs}s after it was created, before a build could run: most likely"
+    " Render's pipeline spend limit (Render > Billing > Pipeline minutes). Raise"
+    " the limit or wait for the month to reset; a redeploy fails the same way"
+)
+
+
+def _seconds(start: str | None, end: str | None) -> float | None:
+    """Seconds between two of Render's ISO timestamps, or None."""
+    try:
+        a = datetime.fromisoformat(str(start).replace("Z", "+00:00"))
+        b = datetime.fromisoformat(str(end).replace("Z", "+00:00"))
+    except (TypeError, ValueError):
+        return None
+    return (b - a).total_seconds()
+
+
+def spend_cap_hint(d: dict) -> str | None:
+    """The spend-limit hint for a deploy that failed its build at once, or None."""
+    if d.get("status") != "build_failed":
+        return None
+    secs = _seconds(d.get("createdAt"), d.get("finishedAt") or d.get("updatedAt"))
+    if secs is None or secs > FAST_FAIL_SECONDS:
+        return None
+    return SPEND_CAP_HINT.format(secs=max(0, round(secs)))
+
+
 def failed_web_deploy(service_id: str, api_key: str) -> str | None:
     """One line naming the newest FINISHED deploy on a service if it failed,
     or None (it went live, or nothing has finished). Raises if Render's answer
@@ -330,9 +364,12 @@ def failed_web_deploy(service_id: str, api_key: str) -> str | None:
             return None
         sha = str((d.get("commit") or {}).get("id") or "?")
         when = d.get("finishedAt") or d.get("updatedAt") or d.get("createdAt")
+        hint = spend_cap_hint(d)
         return (
             f"last {ANCHOR} deploy `{d.get('id') or '?'}` of `{sha[:8]}`"
-            f" ended **{status}**" + (f" at {when}" if when else "")
+            f" ended **{status}**"
+            + (f" at {when}" if when else "")
+            + (f" ({hint})" if hint else "")
         )
     return None
 
@@ -531,6 +568,17 @@ def main() -> int:
                 status = wait_for(service_id, deploy_id, target, api_key)
                 if status != "live":
                     failed = True
+                if status == "build_failed":
+                    try:
+                        dep = deploy_id
+                        if not dep.startswith("dep-"):
+                            dep = find_deploy(service_id, target, api_key) or dep
+                        d = render_get(f"/services/{service_id}/deploys/{dep}", api_key)
+                        if hint := spend_cap_hint(d or {}):
+                            print(f"::error title=Deploy train::{service} {hint}")
+                            summary.append(f"  - {service}: **{hint}**.")
+                    except Exception as e:  # noqa: BLE001 — a hint is optional
+                        print(f"  (could not read the failed deploy: {e})", flush=True)
                 summary.append(
                     f"  - {service}: {status}"
                     + (
