@@ -1,0 +1,14 @@
+{
+    "kind": "bio",
+    "slug": "pandita-ramabai",
+    "language": "ja",
+    "job_issue": 9724,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Malachi 3:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        }
+    ]
+}
