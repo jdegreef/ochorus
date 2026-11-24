@@ -25,7 +25,8 @@
  * the reader's own storage keys and header offset, so renaming one changes the
  * text — and csp.test.ts then fails until the pin is updated, rather than the
  * script silently reading a key nobody writes. The anchor key is
- * `chapterKey(slug, order)`'s `slug:order` (earlyResume.test.ts checks it).
+ * `chapterKey(slug, order)`'s `slug:order` (earlyResume.test.ts checks it), with
+ * the order read from the body's `data-order`, not the URL.
  */
 import { ANCHOR_KEY, PROGRESS_KEY } from './reading-schema';
 import { HEADER_OFFSET } from './reading';
@@ -34,7 +35,11 @@ import { READER_PREFS_KEY, WIDE_SCREEN_MIN } from './readerPrefs.svelte';
 export const EARLY_RESUME_JS =
 	'(function(){try{var b=document.currentScript&&document.currentScript.previousElementSibling;' +
 	'if(!b||/[?&](p|pg)=/.test(location.search)||location.hash)return;' +
-	'var m=location.pathname.match(/\\/books\\/([^/]+)\\/(?:modern\\/)?(\\d+)\\/?$/);if(!m)return;' +
+	'var m=location.pathname.match(/\\/books\\/([^/]+)\\/(?:modern\\/)?(\\d+|introduction|conclusion)\\/?$/);if(!m)return;' +
+	// The STORED order, from the body: a Bible chapter's URL is its Bible
+	// number, one less than the order its saved spot is keyed by
+	// (chapterSegment in reading-schema). The path's number is a fallback.
+	"var o=b.getAttribute('data-order')||m[2];" +
 	"var g=function(k){return JSON.parse(localStorage.getItem(k)||'{}')};" +
 	// Page mode: stored, or the wide-screen default a reader who never chose gets.
 	`var pm=g('${READER_PREFS_KEY}').paged;if(pm===true||(pm!==false&&innerWidth>=${WIDE_SCREEN_MIN}))return;` +
@@ -42,8 +47,8 @@ export const EARLY_RESUME_JS =
 	// number is a legacy one that restores anywhere), and the synced record
 	// must be in the page's language. `<html lang>` is the locale getLang() reads.
 	'var L=document.documentElement.lang;' +
-	`var v=g('${ANCHOR_KEY}')[m[1]+':'+m[2]];var a=v&&typeof v=='object'?(v.lang===L?v.p:null):v;` +
-	`if(a==null){var r=g('${PROGRESS_KEY}')[m[1]];if(r&&r.order==m[2]&&r.language===L)a=r.paragraph_index}` +
+	`var v=g('${ANCHOR_KEY}')[m[1]+':'+o];var a=v&&typeof v=='object'?(v.lang===L?v.p:null):v;` +
+	`if(a==null){var r=g('${PROGRESS_KEY}')[m[1]];if(r&&r.order==o&&r.language===L)a=r.paragraph_index}` +
 	'var el=a>0&&b.children[a];if(!el)return;' +
 	// Mid-parse the document ends at the body, so a paragraph in the chapter's
 	// last screenful can't reach the top yet; a clamped scroll would paint short

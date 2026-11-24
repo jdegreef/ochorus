@@ -178,7 +178,9 @@
 	const resume = $derived(next?.resume ? resumePoint(next.book, focusRec) : null);
 	const stages = $derived(next?.resume ? (progress?.stages ?? []) : []);
 	const primaryHref = $derived(
-		next ? localizeHref(`/books/${next.book.slug}${resume ? `/${resume.order}` : ''}`) : ''
+		next
+			? localizeHref(resume ? bookChapterPath(next.book.slug, resume.order, false) : `/books/${next.book.slug}`)
+			: ''
 	);
 
 	// Questions readers ask, answered from Book 1 (its own Q&A). Parents'

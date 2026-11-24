@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	/**
 	 * The reader-feedback queue. Read what people submitted, filter by status and
 	 * category, and triage one item — change its status, note it, or take it.
@@ -67,7 +68,7 @@
 		const prefix = item.content_language && item.content_language !== 'en' ? `/${item.content_language}` : '';
 		const at = item.anchor_block != null ? `?p=${item.anchor_block}` : '';
 		if (item.content_kind === 'book' && item.chapter_ref) {
-			return `${prefix}/books/${item.content_slug}/${item.chapter_ref}${at}`;
+			return `${prefix}${bookChapterPath(item.content_slug, Number(item.chapter_ref), false)}${at}`;
 		}
 		if (item.content_kind === 'sermon') return `${prefix}/sermons/${item.content_slug}${at}`;
 		return '';

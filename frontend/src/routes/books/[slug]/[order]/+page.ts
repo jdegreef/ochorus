@@ -3,7 +3,13 @@ import { building } from '$app/environment';
 import { getChapterWithLang, listBooks } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
 import { localizeHref } from '$lib/href';
-import { BIBLE_CHAPTER_COUNTS, chapterOrder, isBibleBookSlug, modernChapterPath } from '$lib/reading-schema';
+import {
+	BIBLE_CHAPTER_COUNTS,
+	chapterOrder,
+	chapterSegment,
+	isBibleBookSlug,
+	modernChapterPath
+} from '$lib/reading-schema';
 import { retiredChapterHref } from '$lib/retiredBooks';
 import { chapterEntries, orNotFound } from '$lib/loadHelpers';
 import { chapterFetch, takeChapterSeed } from '$lib/chapterSeed';
@@ -52,7 +58,8 @@ export const trailingSlash = 'always';
 // One entry per English chapter; the localized copies are discovered by the
 // crawler through each localized book page's table of contents (the same
 // mechanism that prerenders /es /sw /lg book pages today).
-export const entries: EntryGenerator = async () => chapterEntries(await listBooks('en'));
+export const entries: EntryGenerator = async () =>
+	chapterEntries(await listBooks('en'), chapterSegment);
 
 export const load: PageLoad = async ({ params, url, fetch }) => {
 	// The URL segment is not always the stored order: a Bible book's follow the
@@ -66,7 +73,8 @@ export const load: PageLoad = async ({ params, url, fetch }) => {
 		const n = isBibleBookSlug(params.slug) ? BIBLE_CHAPTER_COUNTS[params.slug] : 0;
 		const old = Number(params.order);
 		const to = old === n + 1 ? String(n) : old === n + 2 ? 'conclusion' : null;
-		if (n && to) redirect(308, localizeHref(`/books/${params.slug}/${to}/${building ? "" : url.search}`));
+		if (n && to)
+			redirect(308, localizeHref(`/books/${params.slug}/${to}/${building ? '' : url.search}`));
 		error(404, 'Not found');
 	}
 	// A retired duplicate's chapter: the same lesson in the work that replaced

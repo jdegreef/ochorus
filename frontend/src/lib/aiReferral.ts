@@ -45,7 +45,7 @@ export function pageKind(pathname: string): string {
 	// Drop a locale prefix (/es/, /pt/…) so a localized page counts as its kind.
 	const p = pathname.replace(/^\/[a-z]{2}(?=\/)/, '');
 	if (p === '/' || p === '') return 'home';
-	if (/^\/books\/[^/]+\/(modern\/)?\d+\/?$/.test(p)) return 'chapter';
+	if (/^\/books\/[^/]+\/(modern\/)?(\d+|introduction|conclusion)\/?$/.test(p)) return 'chapter';
 	const first = p.split('/')[1];
 	const kinds: Record<string, string> = {
 		books: 'book',

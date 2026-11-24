@@ -379,6 +379,11 @@ export const BIBLE_CHAPTER_COUNTS: Readonly<Record<string, number>> = {
 	'revelation': 22,
 };
 
+/** A Bible book's front and back matter: one Introduction before its chapters,
+ *  one Conclusion after (build_owb_book). bible.ts counts with these too. */
+export const BIBLE_INTRO_CHAPTERS = 1;
+export const BIBLE_CLOSING_CHAPTERS = 1;
+
 export const INTRODUCTION_SEGMENT = 'introduction';
 export const CONCLUSION_SEGMENT = 'conclusion';
 
@@ -392,9 +397,9 @@ export const isBibleBookSlug = (slug: string): boolean => bibleCount(slug) !== u
 export function chapterSegment(slug: string, order: number): string {
 	const n = bibleCount(slug);
 	if (n === undefined) return String(order);
-	if (order <= 1) return INTRODUCTION_SEGMENT;
-	if (order >= n + 2) return CONCLUSION_SEGMENT;
-	return String(order - 1);
+	if (order <= BIBLE_INTRO_CHAPTERS) return INTRODUCTION_SEGMENT;
+	if (order > n + BIBLE_INTRO_CHAPTERS) return CONCLUSION_SEGMENT;
+	return String(order - BIBLE_INTRO_CHAPTERS);
 }
 
 /**
@@ -404,13 +409,13 @@ export function chapterSegment(slug: string, order: number): string {
 export function chapterOrder(slug: string, segment: string): number | null {
 	const n = bibleCount(slug);
 	if (n !== undefined) {
-		if (segment === INTRODUCTION_SEGMENT) return 1;
-		if (segment === CONCLUSION_SEGMENT) return n + 2;
+		if (segment === INTRODUCTION_SEGMENT) return BIBLE_INTRO_CHAPTERS;
+		if (segment === CONCLUSION_SEGMENT) return n + BIBLE_INTRO_CHAPTERS + BIBLE_CLOSING_CHAPTERS;
 	}
 	if (!/^[1-9]\d*$/.test(segment)) return null;
 	const k = Number(segment);
 	if (n === undefined) return k;
-	return k <= n ? k + 1 : null;
+	return k <= n ? k + BIBLE_INTRO_CHAPTERS : null;
 }
 
 /** A book chapter's path (unlocalized) in the original or the Modern edition —
