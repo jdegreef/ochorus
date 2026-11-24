@@ -1,0 +1,32 @@
+{
+    "kind": "bio",
+    "slug": "absalom-jones",
+    "language": "ja",
+    "job_issue": 9716,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Exodus 3:7-8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Hebrews 13:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "2 Timothy 3:15",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Acts 10:34",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Acts 17:26",
+            "status": "self_rendered"
+        }
+    ]
+}

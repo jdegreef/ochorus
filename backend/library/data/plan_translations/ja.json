@@ -89,7 +89,7 @@
   "title": "家族の礼拝――巡礼者の旅",
   "description": "子どもたちと、いっしょに読む大人のための、5分間の家族の礼拝です。およそ3週間半、毎晩、短い章を一つ声に出して読みます。まずバニヤンの巡礼者が天の都への道を進む物語、続いてスポルジョンの『農夫に語る（子ども向け）』の農場の絵物語です。どの章もお祈りと、いっしょに話し合う三つの問いで終わります。",
   "note": [
-   "Written with talks-to-the-farmer-children.ja (『農夫に語る（子ども向け）』, ja batch of 15, job #8905); the description quotes that shipped title exactly. pilgrims-progress-children.ja (『天路歴程（子ども向け）』) ships in the Japanese Level 1 push (job #9752), which completes this plan's sources so seed_plans now creates the row. Bunyan's retelling is still named descriptively.",
+   "Written with talks-to-the-farmer-children.ja (『農夫に語る（子ども向け）』, ja batch of 15, job #8905); the description quotes that shipped title exactly. pilgrims-progress-children has no ja edition yet, so seed_plans does NOT create this (family-devotions-pilgrims-journey, ja) row today; the prose ships ahead (the #819 defect). Bunyan's retelling is named descriptively until its ja edition fixes a title.",
    "Family devotions = 家族の礼拝; です・ます体 with gentle wording for families. AI-drafted; awaiting native review."
   ]
  },
@@ -98,6 +98,14 @@
   "description": "祈りの偉大な使徒とともに、とりなしの炉の中で7週間を過ごします。E・M・バウンズはまず、説教者自身が力を必要としていることから始め、続いて祈りを勝利させる目的を、そして祈りをキリスト者の生涯の全事業とする必要を明らかにします。",
   "note": [
    "Plan prose shipped with the ja edition of necessity-of-prayer (queue job #8910): with it, all three source books of praying-men exist in ja (『祈りによる力』, 『目的をもった祈り』, 『祈りの必要』), so PlanTranslationCoverageTests requires this entry. The description follows the English one book by book (power → purpose → necessity) in the です・ます phrasing of the shipped ja plans, with the house dash ——. AI-written; for native review with the book."
+  ]
+ },
+ "brave-for-god-24-true-stories": {
+  "title": "神さまのために勇敢に――24の本当のお話",
+  "description": "若い読者のための、3週間半の本当のお話です。毎日一つずつ、『神さまのために勇敢に』の4冊すべてを読みます。神さまを信頼し、勇敢にされた、世界のあらゆる場所の24人のふつうの人々の物語です。",
+  "note": [
+   "Ships with brave-for-god-2/3/4.ja (Japanese Level 1 push, jobs #9757 #9758 #9760), which complete this plan's sources. The title opens with the shipped ja series title 神さまのために勇敢に, and 勇敢にされた echoes the series description.",
+   "です・ます体, simple wording for young readers. AI-drafted; awaiting native review."
   ]
  },
  "family-devotions-heroes-who-trusted-god": {

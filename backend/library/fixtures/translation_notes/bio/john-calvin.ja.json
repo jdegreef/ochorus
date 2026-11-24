@@ -1,0 +1,14 @@
+{
+    "kind": "bio",
+    "slug": "john-calvin",
+    "language": "ja",
+    "job_issue": 9708,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Psalm 13:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        }
+    ]
+}
