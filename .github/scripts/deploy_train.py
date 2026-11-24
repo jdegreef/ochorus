@@ -145,6 +145,12 @@ FAILED = DONE - {"live", "deactivated"}
 DEFAULT_MAX_WEB_LAG_HOURS = 6.0
 
 
+# The workflows check out with `filter: blob:none` and a sparse `.github`
+# tree: full history, but file contents only on demand. So every git call here
+# must read commits and trees, not blobs. `--name-only` diffs do, as long as
+# rename detection is off (finding a rename compares contents, which would
+# fetch every changed blob one round trip at a time); `git show <sha>:render.yaml`
+# fetches that one file.
 def sh(*args: str) -> str:
     return subprocess.run(
         args, check=True, capture_output=True, text=True
@@ -359,7 +365,9 @@ def pending_since(last: str, target: str) -> tuple[str, int] | None:
     )
     for line in log.splitlines():
         sha, ct = line.split()
-        files = sh("git", "diff", "--name-only", f"{sha}^", sha).splitlines()
+        files = sh(
+            "git", "diff", "--name-only", "--no-renames", f"{sha}^", sha
+        ).splitlines()
         if any(
             deployable(p, paths, ignored)
             for p in files
@@ -423,7 +431,7 @@ def why_deploy(target: str, last: str | None) -> tuple[str | None, str]:
         return f"last deploy {last[:8]} is not on main any more", ""
     if is_ancestor(target, last):
         return None, "Production already holds the target."
-    changed = sh("git", "diff", "--name-only", last, target).splitlines()
+    changed = sh("git", "diff", "--name-only", "--no-renames", last, target).splitlines()
     globs = service_globs(sh("git", "show", f"{target}:render.yaml"))
     counts = {
         name: n
