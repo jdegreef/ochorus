@@ -25383,6 +25383,39 @@
 			"caps": false,
 			"sitemark": "OpenWordBible.org"
 		},
+		"ja/a-retrospect-children": {
+			"ground": "22991d2014c525856ab4eae6c83684b7a0b6be43e2404d30c1f894ee9e8c6aef",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "d69d987351482c957218a1c5b3273d87379b93c83af21679d06ec024a56931a8",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[154, 102, 446, 131]
+				],
+				"title": [
+					[176, 320, 424, 430]
+				],
+				"edition": [
+					[238, 441, 362, 466]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
+		},
 		"ja/abide-in-christ": {
 			"ground": "180ea3920cc09d2827eb350c4924d17d8af2a1df79e4bcc8f9cdcdac1e1c9801",
 			"style": "devotional",
@@ -25476,6 +25509,40 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"ja/amanda-smith-autobiography-children": {
+			"ground": "e190a96ec584542c59f7f8eea961179dc9dcedec8e98a5622862b6fdf4d5fa1e",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "b06be3a241370fafaafcb0320f009b88181a5593e6fb355e1e657c48f81d1043",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[83, 284, 517, 381],
+					[118, 368, 482, 465]
+				],
+				"edition": [
+					[238, 478, 362, 503]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				235,
+				560
+			]
 		},
 		"ja/around-the-wicket-gate": {
 			"ground": "6fed75e7956231a282f14ee5d37ae08d4b1148d433dfc496531dd5e3c65d0853",
@@ -26012,6 +26079,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/pilgrims-progress-children": {
+			"ground": "2f13d519fa807fb27934d53d4578434158c86067f4abbbcca538336faf9bfe9e",
+			"style": "press",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "4fa01ad1535a0f2b1c466125ad8e61afb4d29f7d7bffd98c284ebe2435d89676",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[177, 102, 423, 131]
+				],
+				"title": [
+					[135, 321, 465, 426]
+				],
+				"edition": [
+					[238, 435, 362, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				298,
+				497
+			]
+		},
 		"ja/pilgrims-progress-teens": {
 			"ground": "55943c65cbe9e6e296e577f7c36ba4dd8d2eb5abb6e3b0afd7bf40d00f74d7e9",
 			"style": "press",
@@ -26283,6 +26383,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/the-life-of-trust-children": {
+			"ground": "3ee9ea5b96c1ffc3ce7727296c335f4878b6ed3287e7844daa39d1120e0eb3ff",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "54d7e775bced5fae7bbb6fcfc3fdb9441973f1d8b6b6165ba8962459a6882852",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[155, 102, 445, 131]
+				],
+				"title": [
+					[93, 320, 507, 430]
+				],
+				"edition": [
+					[238, 441, 362, 466]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
+		},
 		"ja/the-person-and-work-of-the-holy-spirit": {
 			"ground": "833c27f63a3ad47abc531ed665af7b847104eb6f96947f563c702709c7fc23fe",
 			"style": "revival",
@@ -26346,6 +26479,39 @@
 			"middle": [
 				253,
 				542
+			]
+		},
+		"ja/the-practice-of-the-presence-of-god-children": {
+			"ground": "9168602c1fbd72fef7ff4fb7c18141d93ce3fccfc77801e868a8ae4ba96fc90e",
+			"style": "young",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "51dd2b2428c938f61690c2463c010921594d132e25ca3c01b8131a1a2179c84b",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[101, 318, 499, 393]
+				],
+				"edition": [
+					[238, 405, 362, 430]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				325,
+				469
 			]
 		},
 		"ja/the-pursuit-of-god": {

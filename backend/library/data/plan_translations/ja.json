@@ -107,5 +107,21 @@
    "Ships with brave-for-god-2/3/4.ja (Japanese Level 1 push, jobs #9757 #9758 #9760), which complete this plan's sources. The title opens with the shipped ja series title 神さまのために勇敢に, and 勇敢にされた echoes the series description.",
    "です・ます体, simple wording for young readers. AI-drafted; awaiting native review."
   ]
+ },
+ "family-devotions-heroes-who-trusted-god": {
+  "title": "家族の礼拝――神さまに信頼したヒーローたち",
+  "description": "5週間の、5分間の家族の礼拝です。すべてのことで神さまに信頼した三人の本当のお話を、毎晩、短い章を一つずつ声に出して読みます。孤児たちといっしょに祈ったジョージ・ミュラー、中国へ向かったハドソン・テーラー、そして奴隷として生まれ、一足のくつのために祈ったアマンダ・スミスです。どの章もお祈りと、いっしょに話し合う三つの問いで終わります。",
+  "note": [
+   "Shipped with the-life-of-trust-children, a-retrospect-children and amanda-smith-autobiography-children (ja, Japanese Level 1 push). Like the English, it describes the books rather than quoting their titles. Names follow the shipped children's editions (ジョージ・ミュラー, ハドソン・テーラー, アマンダ・スミス).",
+   "Family devotions = 家族の礼拝, as in family-devotions-pilgrims-journey; です・ます体 with gentle wording for families. AI-drafted; awaiting native review."
+  ]
+ },
+ "family-devotions-talking-with-god": {
+  "title": "家族の礼拝――一日じゅう神さまとお話しする",
+  "description": "12夜の、5分間の家族の礼拝です。なべやおさらにかこまれた台所で、神さまとお話しすることを学んだ、ぶきっちょな台所係のブラザー・ローレンスといっしょに読みます。毎晩、短い章を一つ声に出して読みましょう。冬のはだかの木を見て神さまのほうを向いたこと、どんな仕事も神さまへの愛のためにしたこと、失敗したときにどうしたか。どの章もお祈りと、いっしょに話し合う三つの問いで終わります。",
+  "note": [
+   "Shipped with the-practice-of-the-presence-of-god-children.ja (Japanese Level 1 push), whose arrival completes this plan's only source. Describes the book rather than quoting its title, like the English.",
+   "Family devotions = 家族の礼拝; です・ます体 with gentle wording for families. AI-drafted; awaiting native review."
+  ]
  }
 }
