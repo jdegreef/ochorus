@@ -1,0 +1,58 @@
+{
+    "kind": "sermon",
+    "slug": "i-keep-a-quiet-heart",
+    "language": "ja",
+    "job_issue": 9679,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Mark 4:35-41",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Philippians 4:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Hebrews 13:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Jeremiah 31:3",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Deuteronomy 33:27",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Psalm 19:14",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Psalms 16:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Genesis 50:20",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Luke 11:2",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Matthew 6:9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        }
+    ]
+}
