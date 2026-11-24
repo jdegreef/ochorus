@@ -14,6 +14,7 @@ from django.db.models import Count, F, Prefetch, Q, Sum
 from django.http import Http404, HttpResponse, HttpResponseNotModified
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
+from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.parsers import JSONParser
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -319,12 +320,25 @@ class OriginalsView(PublicContentCacheMixin, APIView):
         )
 
 
+class OptInLimitOffset(LimitOffsetPagination):
+    """Paging a caller asks for, never a default. Without ``?limit=`` the list
+    is the whole set as a bare array, which the shelves, the facets and the
+    prerender depend on (see the note on DEFAULT_PAGINATION_CLASS in settings).
+    With it, ``{count, next, previous, results}`` — so an API client that wants
+    one page no longer has to download the whole catalogue to get it."""
+
+    default_limit = None
+    max_limit = 100
+
+
 class BookListView(PublicContentCacheMixin, generics.ListAPIView):
-    """All published books for a language, ordered for the shelf."""
+    """All published books for a language, ordered for the shelf.
+    ``?limit=&offset=`` pages it (OptInLimitOffset)."""
 
     response_cache = True
 
     serializer_class = BookListSerializer
+    pagination_class = OptInLimitOffset
 
     def _index_only(self) -> bool:
         """``?fields=index``: only what the A–Z draws (BookIndexSerializer)."""

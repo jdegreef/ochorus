@@ -1023,6 +1023,18 @@ class LocalizedAuthorBioTests(TestCase):
         self.assertEqual(set(res.data[0]), {"slug", "title", "author", "series"})
         self.assertEqual(res.data[0]["author"]["name"], self.author.name)
 
+    def test_book_list_is_the_whole_set_unless_a_page_is_asked_for(self):
+        Book.objects.create(author=self.author, slug="second", language="lg", title="Ekyokubiri")
+        whole = self.client.get("/api/library/books/?language=lg&page=9&page_size=1")
+        self.assertIsInstance(whole.data, list)
+        self.assertEqual(len(whole.data), 2)
+        page = self.client.get("/api/library/books/?language=lg&limit=1&offset=1")
+        self.assertEqual(page.data["count"], 2)
+        self.assertEqual(len(page.data["results"]), 1)
+        self.assertEqual(page.data["results"][0]["slug"], whole.data[1]["slug"])
+        capped = self.client.get("/api/library/books/?language=lg&limit=100000")
+        self.assertEqual(len(capped.data["results"]), 2)
+
     def test_card_lists_never_load_long_biographies(self):
         # Every card list used to load every author's long-form bio_html and
         # Q&A, in every language, to show one short bio (AUTHOR_CARD_DEFER,

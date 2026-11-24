@@ -1,10 +1,13 @@
-import { PUBLIC_API_BASE_URL } from '$env/static/public';
+import * as staticEnv from '$env/static/public';
 import { env } from '$env/dynamic/public';
 
 // Base URL of the Django API. Empty string = same origin (production, where the
 // API is served from the same host). In dev, set PUBLIC_API_BASE_URL to the
-// local backend (see .env).
-export const API_BASE_URL = PUBLIC_API_BASE_URL || '';
+// local backend (see .env). Read through the namespace, not a named import:
+// `$env/static/public` only exports the variables that are set, so a named
+// import fails `npm run check` on a fresh clone with no .env.
+export const API_BASE_URL =
+	(staticEnv as Record<string, string | undefined>).PUBLIC_API_BASE_URL || '';
 
 // Public site origin, used to build absolute canonical / Open Graph / sitemap
 // URLs at prerender time. Set PUBLIC_SITE_URL per deployment; falls back to the
