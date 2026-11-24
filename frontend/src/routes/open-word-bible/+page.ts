@@ -6,9 +6,9 @@ import type { PageLoad } from './$types';
 
 // The page about the translation the library's Bible is printed in, in place
 // of an author page (see $lib/openWordBible). Prerenders to
-// open-word-bible/index.html (isSlashedPath). Its prose is English, like the
-// Bible it describes: a language with no Bible has no page (BIBLE_LOCALES),
-// as it has no hub.
+// open-word-bible/index.html (isSlashedPath). Its prose is in each hub
+// locale: a language with no Bible hub has no page (BIBLE_LOCALES), as it has
+// no hub.
 export const prerender = true;
 export const trailingSlash = 'always';
 

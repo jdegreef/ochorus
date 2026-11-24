@@ -8,13 +8,14 @@ import {
 	type PlanSummary,
 	type SeriesDetail
 } from '$lib/library-public';
-import { BIBLE_SERIES, biblePlans, bibleTopics } from '$lib/bible';
+import { BIBLE_SERIES, bibleIn, biblePlans } from '$lib/bible';
+import { BIBLE_TOPIC_LOCALES, bibleTopics } from '$lib/bibleHub';
 import { orNotFound } from '$lib/loadHelpers';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
-// Prerenders to bible/index.html (isSlashedPath), reached by the English
-// footer's More column. Only the locales in BIBLE_LOCALES link it, so the
+// Prerenders to bible/index.html (isSlashedPath), reached by the footer's
+// More column and the Bible tab. Only the locales in BIBLE_LOCALES link it, so the
 // crawl bakes no copy where there is no Bible to show.
 export const prerender = true;
 export const trailingSlash = 'always';
@@ -24,15 +25,15 @@ export const load: PageLoad = async ({ fetch }) => {
 	// The primary list is the `the-bible` series. In a language with no Bible
 	// book the API 404s (no English fallback) and orNotFound turns that into the
 	// not-found page, as a series page does — never English books at a
-	// localized URL. English is where the hub always exists, so there any
-	// failure (a 404 included: a web build that runs ahead of the API release
+	// localized URL. A hub locale (`bibleIn`) is where the chrome links the hub,
+	// so there any failure (a 404 included: a web build that runs ahead of the API release
 	// that seeds the series) bakes the error panel instead of failing the build,
 	// and its Try again re-runs this against the live API (loadShelf's reason).
 	// The plans and the per-book links (sermons, the classics) are decoration:
 	// each has its own silent catch, costing only what it draws.
 	const fetchSeries = () => getSeries(BIBLE_SERIES, lang);
 	const [result, plans, links, topics] = await Promise.all([
-		(lang === 'en' ? fetchSeries() : orNotFound(fetchSeries)).then(
+		(bibleIn(lang) ? fetchSeries() : orNotFound(fetchSeries)).then(
 			(series): { series: SeriesDetail | null; loadError: boolean } => ({ series, loadError: false }),
 			(e) => {
 				if (isHttpError(e)) throw e;
@@ -41,7 +42,10 @@ export const load: PageLoad = async ({ fetch }) => {
 		),
 		listPlans(lang, fetch).catch((): PlanSummary[] => []),
 		getBibleLinks(lang, fetch).catch((): BibleBookLinks[] => []),
-		listTopics(lang, fetch).catch((): { slug: string }[] => [])
+		// Only where the topic pages have an "In the Bible" section to open.
+		BIBLE_TOPIC_LOCALES.includes(lang)
+			? listTopics(lang, fetch).catch((): { slug: string }[] => [])
+			: Promise.resolve([])
 	]);
 	return {
 		...result,

@@ -15,16 +15,18 @@
 import { localDayNumber } from '$lib/dailyArticles';
 import { bookChapterPath } from '$lib/reading-schema';
 import { bibleChapterOrder } from '$lib/bible';
+import { chapterLabel } from '$lib/bibleNames';
 
-/** The path, as (Bible book slug, the label its chapters carry, chapters). A
+/** The path, as (Bible book slug, its place in the canon, chapters). A
  *  book's chapter `n` is reader chapter `n + 1`: `build_owb_book` sets an
- *  introduction first. */
-export const DAILY_CHAPTER_PATH: readonly (readonly [slug: string, label: string, chapters: number])[] = [
-	['gospel-of-mark', 'Mark', 16],
-	['gospel-of-john', 'John', 21],
-	['genesis', 'Genesis', 50],
-	['psalms', 'Psalm', 150],
-	['romans', 'Romans', 16]
+ *  introduction first. The chapter is named by `chapterLabel`, in the
+ *  reader's language. */
+export const DAILY_CHAPTER_PATH: readonly (readonly [slug: string, position: number, chapters: number])[] = [
+	['gospel-of-mark', 41, 16],
+	['gospel-of-john', 43, 21],
+	['genesis', 1, 50],
+	['psalms', 19, 150],
+	['romans', 45, 16]
 ];
 
 /** Days in one turn of the path (253). */
@@ -35,19 +37,20 @@ export interface DailyChapter {
 	slug: string;
 	/** The reader chapter's `order` (the Bible chapter + 1). */
 	order: number;
-	/** As the chapter is titled: "Mark 4", "Psalm 23". */
+	/** As the chapter is titled in the reader's language: "Mark 4", «Salmo 23». */
 	title: string;
 	/** Its path (unlocalized). */
 	href: string;
 }
 
-/** The chapter for the local date of `date`. */
-export function pickDailyChapter(date: Date): DailyChapter {
+/** The chapter for the local date of `date`, titled in `lang`. */
+export function pickDailyChapter(date: Date, lang: string): DailyChapter {
 	let day = localDayNumber(date) % DAILY_CHAPTER_CYCLE;
-	for (const [slug, label, chapters] of DAILY_CHAPTER_PATH) {
+	for (const [slug, position, chapters] of DAILY_CHAPTER_PATH) {
 		if (day < chapters) {
 			const order = bibleChapterOrder(day + 1);
-			return { slug, order, title: `${label} ${day + 1}`, href: bookChapterPath(slug, order, false) };
+			const title = chapterLabel(position, day + 1, lang)!;
+			return { slug, order, title, href: bookChapterPath(slug, order, false) };
 		}
 		day -= chapters;
 	}

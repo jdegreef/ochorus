@@ -4,18 +4,18 @@
 	import {
 		CANON_FILTERS,
 		bibleChapterOrder,
-		bibleChapters,
 		canonReading,
 		matchesCanonFilter,
 		type CanonFilter,
-		canonStrip,
 		divisionKey,
 		spineLabel,
 		testamentKey,
 		type BiblePlace,
 		type CanonSlot
 	} from '$lib/bible';
+	import { bibleChapters, canonStrip } from '$lib/bibleHub';
 	import { i18n } from '$lib/i18n.svelte';
+	import { getLang } from '$lib/lang.svelte';
 	import { localizeHref } from '$lib/href';
 	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import Arrow from '$lib/components/Arrow.svelte';
@@ -31,8 +31,8 @@
 	 * book the language lacks keeps its place as a pale, unlinked outline, so
 	 * the canon's shape stays whole however much of it has shipped.
 	 *
-	 * The spine names are the canon's short English names (`CANON`, via
-	 * `canonStrip`): the hub is drawn only in BIBLE_LOCALES, English today.
+	 * The spine names are the canon's short names in the page's language
+	 * ($lib/bibleNames, via `canonStrip`).
 	 * On a phone each row scrolls sideways, snapping to a division.
 	 *
 	 * A spine's two kinds of length both show: its thickness is the book's
@@ -70,7 +70,8 @@
 		placeOf
 	}: { books: readonly BookSummary[]; placeOf?: (book: BookSummary) => BiblePlace | null } = $props();
 	const t = i18n.t;
-	const testaments = $derived(canonStrip(books));
+	const lang = getLang();
+	const testaments = $derived(canonStrip(books, lang));
 	const reading = $derived(placeOf ? canonReading(books, placeOf) : null);
 	/** A spine's reading: finished, or the share of its chapters behind the reader. */
 	function readOf(book: BookSummary, chapters: number): { done: boolean; fill: number } | null {
@@ -131,12 +132,12 @@
 		if (e.key === 'Escape') card = null;
 	}
 	const cardPlace = $derived(card?.slot.book ? (placeOf?.(card.slot.book) ?? null) : null);
-	const cardChapters = $derived(card?.slot.book ? bibleChapters(card.slot.book) : []);
+	const cardChapters = $derived(card?.slot.book ? bibleChapters(card.slot.book, lang) : []);
 
 	// --- Today's chapter: by the reader's local date, so only after mount. ---
 	let today = $state<DailyChapter | null>(null);
 	onMount(() => {
-		today = pickDailyChapter(new Date());
+		today = pickDailyChapter(new Date(), lang);
 	});
 	const todayBook = $derived(today ? books.find((b) => b.slug === today!.slug) : undefined);
 

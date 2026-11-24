@@ -22,68 +22,109 @@ const BOOKS = [
 
 describe('quickPassages', () => {
 	it('offers the chips whose book and chapter the library has, in order', () => {
-		expect(quickPassages(BOOKS).map((p) => p.label)).toEqual([
+		expect(quickPassages(BOOKS, 'en').map((p) => p.label)).toEqual([
 			'John 3',
 			'Psalm 23',
 			'Romans 8',
 			'1 Corinthians 13'
 		]);
-		expect(quickPassages(BOOKS)[1].href).toBe(bookChapterPath('psalms', 24, false));
+		expect(quickPassages(BOOKS, 'en')[1].href).toBe(bookChapterPath('psalms', 24, false));
 	});
 
 	it('leaves out a chip the book is too short for', () => {
-		expect(quickPassages([book('psalms', 'The Psalms', 19, 20)])).toEqual([]);
+		expect(quickPassages([book('psalms', 'The Psalms', 19, 20)], 'en')).toEqual([]);
 	});
 });
 
 describe('matchBooks', () => {
 	it('matches names and abbreviations by their start, in canon order', () => {
-		expect(matchBooks('ph')).toEqual([50, 57]);
-		expect(matchBooks('Ps')).toEqual([19]);
-		expect(matchBooks('1 cor')).toEqual([46]);
-		expect(matchBooks('1cor.')).toEqual([46]);
-		expect(matchBooks('jn')).toEqual([43]);
+		expect(matchBooks('ph', 'en')).toEqual([50, 57]);
+		expect(matchBooks('Ps', 'en')).toEqual([19]);
+		expect(matchBooks('1 cor', 'en')).toEqual([46]);
+		expect(matchBooks('1cor.', 'en')).toEqual([46]);
+		expect(matchBooks('jn', 'en')).toEqual([43]);
 	});
 
 	it('forgives a typo in a longer name', () => {
-		expect(matchBooks('Roamns')).toEqual([45]);
-		expect(matchBooks('Phillipians')).toEqual([50]);
+		expect(matchBooks('Roamns', 'en')).toEqual([45]);
+		expect(matchBooks('Phillipians', 'en')).toEqual([50]);
 	});
 
 	it('does not guess at short or unrelated words', () => {
-		expect(matchBooks('xq')).toEqual([]);
-		expect(matchBooks('grace')).toEqual([]);
+		expect(matchBooks('xq', 'en')).toEqual([]);
+		expect(matchBooks('grace', 'en')).toEqual([]);
 	});
 });
 
 describe('passageSuggestions', () => {
 	it('suggests the chapter, at the verse', () => {
-		expect(passageSuggestions('ps 23', BOOKS)).toEqual([
+		expect(passageSuggestions('ps 23', BOOKS, 'en')).toEqual([
 			{ label: 'Psalm 23', href: bookChapterPath('psalms', 24, false) }
 		]);
-		expect(passageSuggestions('Romans 8:28', BOOKS)).toEqual([
+		expect(passageSuggestions('Romans 8:28', BOOKS, 'en')).toEqual([
 			{ label: 'Romans 8:28', href: `${bookChapterPath('romans', 9, false)}#v28` }
 		]);
-		expect(passageSuggestions('rom 8.1', BOOKS)[0].label).toBe('Romans 8');
+		expect(passageSuggestions('rom 8.1', BOOKS, 'en')[0].label).toBe('Romans 8');
 	});
 
 	it('suggests every book a name could mean that has the chapter', () => {
-		expect(passageSuggestions('ph 2', BOOKS).map((p) => p.label)).toEqual(['Philippians 2']);
-		expect(passageSuggestions('ph 1', BOOKS).map((p) => p.label)).toEqual(['Philippians 1', 'Philemon 1']);
+		expect(passageSuggestions('ph 2', BOOKS, 'en').map((p) => p.label)).toEqual(['Philippians 2']);
+		expect(passageSuggestions('ph 1', BOOKS, 'en').map((p) => p.label)).toEqual(['Philippians 1', 'Philemon 1']);
 	});
 
 	it("suggests the books' pages for a name alone", () => {
-		expect(passageSuggestions('1 j', BOOKS)).toEqual([{ label: '1 John', href: '/books/1-john' }]);
+		expect(passageSuggestions('1 j', BOOKS, 'en')).toEqual([{ label: '1 John', href: '/books/1-john' }]);
 	});
 
 	it('suggests nothing it cannot read, or a book the library lacks', () => {
-		expect(passageSuggestions('grace', BOOKS)).toEqual([]);
-		expect(passageSuggestions('genesis 1', BOOKS)).toEqual([]);
-		expect(passageSuggestions('', BOOKS)).toEqual([]);
-		expect(passageSuggestions('john 3 16 17', BOOKS)).toEqual([]);
+		expect(passageSuggestions('grace', BOOKS, 'en')).toEqual([]);
+		expect(passageSuggestions('genesis 1', BOOKS, 'en')).toEqual([]);
+		expect(passageSuggestions('', BOOKS, 'en')).toEqual([]);
+		expect(passageSuggestions('john 3 16 17', BOOKS, 'en')).toEqual([]);
 	});
 
 	it('keeps at most `max`', () => {
-		expect(passageSuggestions('p', BOOKS, 2)).toHaveLength(2);
+		expect(passageSuggestions('p', BOOKS, 'en', 2)).toHaveLength(2);
+	});
+});
+
+describe('in Spanish', () => {
+	it('names the quick passages as the Spanish chapters are titled', () => {
+		expect(quickPassages(BOOKS, 'es').map((p) => p.label)).toEqual([
+			'Juan 3',
+			'Salmo 23',
+			'Romanos 8',
+			'1 Corintios 13'
+		]);
+	});
+
+	it('reads Spanish names, with or without accents, and the English ones too', () => {
+		expect(matchBooks('Juan', 'es')).toEqual([43]);
+		expect(matchBooks('Éxodo', 'es')).toEqual([2]);
+		expect(matchBooks('exodo', 'es')).toEqual([2]);
+		expect(matchBooks('Salmo', 'es')).toEqual([19]);
+		expect(matchBooks('Romans', 'es')).toEqual([45]);
+		expect(matchBooks('Romnaos', 'es')).toEqual([45]);
+	});
+
+	it('leaves a common word to search, rather than a book one typo away', () => {
+		const ALL = [...BOOKS, book('amos', 'Amós', 30, 9), book('james', 'Santiago', 59, 5)];
+		expect(matchBooks('amor', 'es')).toEqual([30]); // fuzzy: Amós
+		expect(passageSuggestions('amor', ALL, 'es')).toEqual([]);
+		expect(passageSuggestions('santo', ALL, 'es')).toEqual([]);
+		expect(passageSuggestions('Roamns', BOOKS, 'en')).toEqual([]);
+		// With a chapter, a typo still reads as a reference.
+		expect(passageSuggestions('Romnaos 8', BOOKS, 'es')[0].label).toBe('Romanos 8');
+		expect(passageSuggestions('Amós', ALL, 'es')).toEqual([{ label: 'Amós', href: '/books/amos' }]);
+	});
+
+	it('suggests Spanish chapters at a verse', () => {
+		expect(passageSuggestions('Juan 3:16', BOOKS, 'es')).toEqual([
+			{ label: 'Juan 3:16', href: `${bookChapterPath('gospel-of-john', 4, false)}#v16` }
+		]);
+		expect(passageSuggestions('Salmo 23', BOOKS, 'es')[0].label).toBe('Salmo 23');
+		expect(passageSuggestions('Filipenses', BOOKS, 'es')).toEqual([
+			{ label: 'Philippians', href: '/books/philippians' }
+		]);
 	});
 });
