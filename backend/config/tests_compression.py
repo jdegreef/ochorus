@@ -10,8 +10,11 @@ from config.compression import ApiGZipMiddleware
 BODY = b'{"body_html": "' + b"<p>Grace and peace.</p>" * 200 + b'"}'
 
 
-def respond(path: str, encoding: str = "gzip, br") -> HttpResponse:
-    request = RequestFactory().get(path, HTTP_ACCEPT_ENCODING=encoding)
+def respond(
+    path: str, encoding: str = "gzip, br", origin: str | None = "https://ochorus.com"
+) -> HttpResponse:
+    extra = {"HTTP_ORIGIN": origin} if origin else {}
+    request = RequestFactory().get(path, HTTP_ACCEPT_ENCODING=encoding, **extra)
     middleware = ApiGZipMiddleware(
         lambda r: HttpResponse(BODY, content_type="application/json")
     )
@@ -27,6 +30,12 @@ class ApiCompressionTests(SimpleTestCase):
 
     def test_a_client_that_asks_for_none_gets_plain_bytes(self):
         response = respond("/api/books/", encoding="")
+        self.assertFalse(response.has_header("Content-Encoding"))
+        self.assertEqual(response.content, BODY)
+
+    def test_a_server_without_an_origin_gets_plain_bytes(self):
+        # The web build's crawl (Node's fetch crashed on gzip bodies).
+        response = respond("/api/books/", origin=None)
         self.assertFalse(response.has_header("Content-Encoding"))
         self.assertEqual(response.content, BODY)
 
