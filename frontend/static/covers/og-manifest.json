@@ -26204,6 +26204,39 @@
 				501
 			]
 		},
+		"ja/pensees": {
+			"ground": "d68ac3d2c322c4eddfbd777e8c5584640592528a9f303f9b9ac2b2f1613b5987",
+			"style": "press",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "2b3860c3b78b6f6a3159a6f7636b336af4eb48569fe19fbbd51e52408a6ee761",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[176, 319, 424, 424]
+				],
+				"subtitle": [
+					[170, 477, 430, 498]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				296,
+				499
+			]
+		},
 		"ja/pilgrims-progress": {
 			"ground": "d7aa3d996830d95b331d5efea0e1c516cfec332142c46eb9b5efb866fe870589",
 			"style": "press",
@@ -26505,6 +26538,38 @@
 			"middle": [
 				325,
 				469
+			]
+		},
+		"ja/the-christians-secret-of-a-happy-life-4": {
+			"ground": "c88f89ccbef77ed1e4d32c34f9805299af1da1fdaf78f8d7ce79a9d38733f7bf",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "7209fb0a81144fd16d2083e5f7b76950ed8a38225a26244213dbc31c64d0407c",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[101, 222, 499, 327],
+					[98, 314, 502, 419],
+					[98, 407, 502, 512]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				229,
+				566
 			]
 		},
 		"ja/the-god-of-all-comfort": {

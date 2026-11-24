@@ -3,6 +3,7 @@
 	import type { BibleBookLinks, BookSummary } from '$lib/library-public';
 	import { bibleChapterCount, type BiblePlace } from '$lib/bible';
 	import { chapterCount } from '$lib/reading';
+	import { i18n } from '$lib/i18n.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import BibleChapterPanel from '$lib/components/BibleChapterPanel.svelte';
@@ -30,6 +31,7 @@
 		linksOf?: (book: BookSummary) => BibleBookLinks | undefined;
 	} = $props();
 
+	const t = i18n.t;
 	const openBook = $derived(books.find((b) => b.slug === open) ?? null);
 
 	// The panel opens below the division's covers, so take a keyboard or
@@ -65,10 +67,10 @@
 						class="bible-cover-chapters"
 						aria-expanded={isOpen}
 						aria-controls={isOpen ? `chapters-${book.slug}` : undefined}
-						aria-label="Chapters: {book.title}, {chapterCount(count)}"
+						aria-label="{t('scripture.chaptersHeading')}: {book.title}, {chapterCount(count)}"
 						onclick={() => (isOpen ? (open = null) : show(book.slug))}
 					>
-						Chapters
+						{t('scripture.chaptersHeading')}
 						<span class="bible-cover-chevron"><Icon name="chevron-right" size={16} /></span>
 					</button>
 				</div>
@@ -86,8 +88,8 @@
 			<button
 				type="button"
 				class="btn btn-sm btn-ghost bible-cover-close"
-				aria-label="Close {openBook.title}"
-				onclick={() => close(openBook.slug)}>Close</button
+				aria-label="{t('a11y.close')}: {openBook.title}"
+				onclick={() => close(openBook.slug)}>{t('a11y.close')}</button
 			>
 		</div>
 		<BibleChapterPanel book={openBook} place={placeOf?.(openBook) ?? null} intro={links?.intro ?? ''} />

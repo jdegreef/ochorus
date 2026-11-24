@@ -13,26 +13,29 @@ const dayOf = (n: number) => new Date(turnStart.getFullYear(), turnStart.getMont
 describe('pickDailyChapter', () => {
 	it('walks Mark, John, Genesis, Psalms and Romans, a chapter a day, then begins again', () => {
 		expect(DAILY_CHAPTER_CYCLE).toBe(253);
-		expect(pickDailyChapter(dayOf(0))).toEqual({
+		expect(pickDailyChapter(dayOf(0), 'en')).toEqual({
 			slug: 'gospel-of-mark',
 			order: 2,
 			title: 'Mark 1',
 			href: '/books/gospel-of-mark/1'
 		});
-		expect(pickDailyChapter(dayOf(15)).title).toBe('Mark 16');
-		expect(pickDailyChapter(dayOf(16)).title).toBe('John 1');
-		expect(pickDailyChapter(dayOf(16 + 21 + 50 + 22))).toMatchObject({ title: 'Psalm 23', order: 24 });
-		expect(pickDailyChapter(dayOf(252)).title).toBe('Romans 16');
-		expect(pickDailyChapter(dayOf(253)).title).toBe('Mark 1');
+		expect(pickDailyChapter(dayOf(15), 'en').title).toBe('Mark 16');
+		expect(pickDailyChapter(dayOf(16), 'en').title).toBe('John 1');
+		expect(pickDailyChapter(dayOf(16 + 21 + 50 + 22), 'en')).toMatchObject({ title: 'Psalm 23', order: 24 });
+		expect(pickDailyChapter(dayOf(252), 'en').title).toBe('Romans 16');
+		expect(pickDailyChapter(dayOf(253), 'en').title).toBe('Mark 1');
+		// Titled as the reader's edition titles its chapters.
+		expect(pickDailyChapter(dayOf(16 + 21 + 50 + 22), 'es').title).toBe('Salmo 23');
+		expect(pickDailyChapter(dayOf(0), 'es').title).toBe('Marcos 1');
 	});
 	it('is the same all day, and the next day moves on one', () => {
 		const morning = new Date(2026, 10, 13, 0, 5);
 		const night = new Date(2026, 10, 13, 23, 55);
-		expect(pickDailyChapter(morning)).toEqual(pickDailyChapter(night));
-		expect(pickDailyChapter(new Date(2026, 10, 14, 0, 5))).not.toEqual(pickDailyChapter(night));
+		expect(pickDailyChapter(morning, 'en')).toEqual(pickDailyChapter(night, 'en'));
+		expect(pickDailyChapter(new Date(2026, 10, 14, 0, 5), 'en')).not.toEqual(pickDailyChapter(night, 'en'));
 	});
 	it('reaches every chapter of the path once per turn', () => {
-		const seen = new Set(Array.from({ length: DAILY_CHAPTER_CYCLE }, (_, n) => pickDailyChapter(dayOf(n)).title));
+		const seen = new Set(Array.from({ length: DAILY_CHAPTER_CYCLE }, (_, n) => pickDailyChapter(dayOf(n), 'en').title));
 		expect(seen.size).toBe(DAILY_CHAPTER_PATH.reduce((n, [, , c]) => n + c, 0));
 	});
 });
