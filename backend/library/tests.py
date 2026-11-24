@@ -1018,6 +1018,11 @@ class LocalizedAuthorBioTests(TestCase):
         self.assertNotIn("bio", res.data[0]["author"])
         self.assertEqual(res.data[0]["author"]["name"], self.author.name)
 
+    def test_book_index_rows_carry_only_what_the_a_to_z_draws(self):
+        res = self.client.get("/api/library/books/?language=lg&fields=index")
+        self.assertEqual(set(res.data[0]), {"slug", "title", "author", "series"})
+        self.assertEqual(res.data[0]["author"]["name"], self.author.name)
+
     def test_card_lists_never_load_long_biographies(self):
         # Every card list used to load every author's long-form bio_html and
         # Q&A, in every language, to show one short bio (AUTHOR_CARD_DEFER,

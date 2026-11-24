@@ -1076,6 +1076,14 @@ export async function localizedWithLang<T>(
 export const listBooks = (language = 'en', f?: Fetch) =>
 	apiFetch<BookSummary[]>(`/api/library/books/?language=${language}`, {}, f);
 
+/** The slim book row the A–Z draws (`?fields=index`): title, link, writer, and
+ * the series that tells the Bible's books apart. A fraction of the full shelf,
+ * which the prerender would otherwise inline into /authors/ (bug #19). */
+export type BookIndexRow = Pick<BookSummary, 'slug' | 'title' | 'author' | 'series'>;
+
+export const listBookIndex = (language = 'en', f?: Fetch) =>
+	apiFetch<BookIndexRow[]>(`/api/library/books/?language=${language}&fields=index`, {}, f);
+
 export const listAuthors = (language = 'en', f?: Fetch) =>
 	apiFetch<AuthorBio[]>(`/api/library/authors/?language=${language}`, {}, f);
 

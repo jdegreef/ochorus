@@ -1,7 +1,7 @@
 import { building } from "$app/environment";
 import {
   listAuthors,
-  listBooks,
+  listBookIndex,
   listHubs,
   type Hub,
 } from "$lib/library-public";
@@ -43,7 +43,7 @@ export const load: PageLoad = async ({ fetch }) => {
   try {
     const [authors, books, local, allHubs] = await Promise.all([
       listAuthors("en", fetch),
-      listBooks(lang, fetch),
+      listBookIndex(lang, fetch),
       lang === "en" ? null : listAuthors(lang, fetch),
       // The tradition / region chips. Only a filter, so a failure degrades
       // to no chips rather than failing the page (or the build).
