@@ -7,11 +7,14 @@
  * library prints, never a guess the resolver might refuse. A query this cannot
  * read still goes to the resolver and then to search on submit, as before.
  *
- * The names are the canon's English ones (`CANON`) and a few common short
- * forms: the hub is drawn only in BIBLE_LOCALES, English today.
+ * The names are the canon's in the hub's language ($lib/bibleNames) and a few
+ * common short forms; a Spanish reader's box also takes the English names.
+ * Accents are optional ("Genesis", "Exodo").
  */
 import { CANON } from '$lib/sermonCanon';
-import { bibleChapterCount, bibleChapterOrder, chapterLabel } from '$lib/bible';
+import { canonIn } from '$lib/bibleNames';
+import { bibleChapterCount, bibleChapterOrder } from '$lib/bible';
+import { chapterLabel } from '$lib/bibleNames';
 import { bookChapterPath } from '$lib/reading-schema';
 
 type HubBook = { slug: string; title: string; chapter_count?: number; series_position?: number | null };
@@ -37,9 +40,15 @@ export const QUICK_PASSAGES: readonly (readonly [position: number, chapter: numb
 	[40, 5] // Matthew 5
 ];
 
-const chapterLink = (book: HubBook, position: number, n: number, verse?: number): PassageLink => {
+const chapterLink = (
+	book: HubBook,
+	position: number,
+	n: number,
+	lang: string,
+	verse?: number
+): PassageLink => {
 	const path = bookChapterPath(book.slug, bibleChapterOrder(n), false);
-	const label = chapterLabel(position, n) ?? `${book.title} ${n}`;
+	const label = chapterLabel(position, n, lang) ?? `${book.title} ${n}`;
 	return verse && verse > 1 ? { label: `${label}:${verse}`, href: `${path}#v${verse}` } : { label, href: path };
 };
 
@@ -50,16 +59,22 @@ const byPosition = (books: readonly HubBook[]) => {
 };
 
 /** The quick passages whose book (and chapter) the library has. */
-export function quickPassages(books: readonly HubBook[]): PassageLink[] {
+export function quickPassages(books: readonly HubBook[], lang: string): PassageLink[] {
 	const at = byPosition(books);
 	return QUICK_PASSAGES.flatMap(([pos, n]) => {
 		const book = at.get(pos);
-		return book && n <= bibleChapterCount([book]) ? [chapterLink(book, pos, n)] : [];
+		return book && n <= bibleChapterCount([book]) ? [chapterLink(book, pos, n, lang)] : [];
 	});
 }
 
-/** A name squashed for matching: lower case, no dots or spaces ("1 Cor." → "1cor"). */
-const squash = (s: string) => s.toLowerCase().replace(/[.\s]/g, '');
+/** A name squashed for matching: lower case, no accents, dots or spaces
+ *  ("1 Cor." → "1cor", "Éxodo" → "exodo"). */
+const squash = (s: string) =>
+	s
+		.normalize('NFD')
+		.replace(/\p{M}/gu, '')
+		.toLowerCase()
+		.replace(/[.\s]/g, '');
 
 /** Short forms beyond the canon's own abbreviation, by canon position. */
 const ALIASES: Record<number, readonly string[]> = {
@@ -74,10 +89,30 @@ const ALIASES: Record<number, readonly string[]> = {
 	66: ['Revelations', 'Apocalypse']
 };
 
+/** Spanish short forms beyond the canon's own (`ALIASES`' twin). */
+const ALIASES_ES: Record<number, readonly string[]> = {
+	19: ['Salmo', 'Sl'],
+	22: ['Cantar de los Cantares', 'Cantar', 'Cant'],
+	40: ['Mat'],
+	41: ['Mc', 'Mar'],
+	42: ['Luc'],
+	44: ['Hechos de los Apóstoles', 'Hech'],
+	45: ['Rom'],
+	59: ['Sant'],
+	66: ['Apoc', 'Revelación']
+};
+
+type Names = readonly (readonly [position: number, names: readonly string[]])[];
+
 /** Every name each canon position goes by, squashed. */
-const NAMES: readonly (readonly [position: number, names: readonly string[]])[] = CANON.map(
-	([name, abbr], i) => [i + 1, [name, abbr, ...(ALIASES[i + 1] ?? [])].map(squash)] as const
-);
+const namesOf = (canon: typeof CANON, aliases: Record<number, readonly string[]>, also?: Names): Names =>
+	canon.map(
+		([name, abbr], i) =>
+			[i + 1, [name, abbr, ...(aliases[i + 1] ?? [])].map(squash).concat(also?.[i][1] ?? [])] as const
+	);
+const NAMES_EN = namesOf(CANON, ALIASES);
+/** A hub locale's names, by locale: Spanish adds the English ones. */
+const NAMES: Record<string, Names> = { en: NAMES_EN, es: namesOf(canonIn('es'), ALIASES_ES, NAMES_EN) };
 
 /**
  * The edit distance between two short strings, counting two swapped letters
@@ -99,42 +134,53 @@ function distance(a: string, b: string): number {
 /**
  * The canon positions a typed book name could mean, best first: names it
  * begins (in canon order), else — for a name of four letters or more that
- * begins none — the books one or two typos away ("Roamns", "Phillipians").
+ * begins none — the books one or two typos away ("Roamns", "Phillipians"),
+ * unless `fuzzy` is false.
  */
-export function matchBooks(token: string): number[] {
+export function matchBooks(token: string, lang: string, fuzzy = true): number[] {
 	const q = squash(token);
 	if (!q) return [];
-	const prefix = NAMES.filter(([, names]) => names.some((n) => n.startsWith(q))).map(([p]) => p);
-	if (prefix.length || q.length < 4) return prefix;
-	const close = NAMES.map(([p, names]) => [p, Math.min(...names.map((n) => distance(q, n)))] as const)
+	const names = NAMES[lang] ?? NAMES_EN;
+	const prefix = names.filter(([, names]) => names.some((n) => n.startsWith(q))).map(([p]) => p);
+	if (prefix.length || q.length < 4 || !fuzzy) return prefix;
+	const close = names.map(([p, names]) => [p, Math.min(...names.map((n) => distance(q, n)))] as const)
 		.filter(([, d]) => d <= (q.length >= 7 ? 2 : 1))
 		.sort((a, b) => a[1] - b[1] || a[0] - b[0]);
 	return close.map(([p]) => p);
 }
 
 /** "1 cor 13:4" → the book part, the chapter and the verse (both optional). */
-const QUERY = /^\s*((?:[1-3]\s*)?[a-z][a-z .]*?)\s*(?:(\d{1,3})(?:\s*[:.]\s*(\d{1,3}))?)?\s*$/i;
+const QUERY = /^\s*((?:[1-3]\s*)?\p{L}[\p{L}\p{M} .]*?)\s*(?:(\d{1,3})(?:\s*[:.]\s*(\d{1,3}))?)?\s*$/iu;
 
 /**
  * What the box suggests for `q`, at most `max`: with a chapter typed, that
  * chapter (at the verse) of each book the name could mean, where it has the
- * chapter; with a name alone, those books' pages. Empty for a query it cannot
+ * chapter; with a name alone, the pages of the books it begins the name of. Empty for a query it cannot
  * read ("grace") — the box then leaves it to the resolver and search, as before.
  */
-export function passageSuggestions(q: string, books: readonly HubBook[], max = 6): PassageLink[] {
+export function passageSuggestions(
+	q: string,
+	books: readonly HubBook[],
+	lang: string,
+	max = 6
+): PassageLink[] {
 	const m = QUERY.exec(q);
 	if (!m) return [];
 	const [, name, ch, vs] = m;
 	const at = byPosition(books);
 	const chapter = ch ? Number(ch) : null;
 	const verse = vs ? Number(vs) : undefined;
-	return matchBooks(name)
+	// A name alone opens a book only when it reads as one (a prefix of its
+	// name): a typo-close match of a bare word is as likely an ordinary word
+	// («amor», "grace") the reader meant to search for. With a chapter typed,
+	// a typo still reads as a reference ("Roamns 8").
+	return matchBooks(name, lang, chapter != null)
 		.flatMap((pos) => {
 			const book = at.get(pos);
 			if (!book) return [];
 			if (chapter == null) return [{ label: book.title, href: `/books/${book.slug}` }];
 			return chapter >= 1 && chapter <= bibleChapterCount([book])
-				? [chapterLink(book, pos, chapter, verse)]
+				? [chapterLink(book, pos, chapter, lang, verse)]
 				: [];
 		})
 		.slice(0, max);

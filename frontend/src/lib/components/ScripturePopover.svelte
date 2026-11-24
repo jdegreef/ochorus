@@ -11,7 +11,8 @@
 
 	const t = i18n.t;
 	// The whole chapter in the library's own Bible, where this locale has one
-	// (`bibleIn`: the Bible books are English-only rows, no fallback). Read once:
+	// (`bibleIn`: the hub locales, whose Bible books share the English slugs and
+	// chapters; no fallback). Read once:
 	// a document's locale is fixed (a cross-locale navigation is a full load).
 	const withBible = bibleIn(getLocale());
 	const chapterHref = $derived.by(() => {

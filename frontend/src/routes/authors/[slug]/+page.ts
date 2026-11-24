@@ -463,8 +463,8 @@ export const entries: EntryGenerator = async () => {
 export const load: PageLoad = async ({ params, fetch }) => {
 	// Old links and bookmarks to the imprint's or the translation's author page
 	// land on its own page. (render.yaml 301s the English URLs; this covers the
-	// localized ones.) The translation's page is English-only, like the Bible
-	// it describes, so a language without the Bible is sent to the English one.
+	// localized ones.) The translation's page exists where the Bible hub does
+	// (BIBLE_LOCALES), so a language without the hub is sent to the English one.
 	if (hasBylinePage(params.slug)) {
 		const to = authorPath(params.slug, 'en');
 		redirect(308, params.slug === OWB_SLUG && !bibleIn(getLang()) ? `${to}/` : localizeHref(to));

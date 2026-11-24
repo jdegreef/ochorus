@@ -2,7 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { CANON } from './sermonCanon';
-import { bibleChapterOrder } from './bible';
+import { BIBLE_LOCALES, bibleChapterOrder } from './bible';
 import {
 	BIBLE_SLUGS,
 	BIBLE_STORY,
@@ -108,21 +108,25 @@ describe('BIBLE_STORY', () => {
 		expect(genesisKeys).toEqual([...genesisKeys].sort((a, b) => a - b));
 	});
 
-	it('keeps each era to a few sentences, quoting no Scripture', () => {
-		for (const s of BIBLE_STORY) {
-			const sentences = s.prose.split(/(?<=[.!?])\s+/).length;
-			expect(sentences, s.id).toBeLessThanOrEqual(s.interlude ? 1 : 3);
-			// A quotation would have to be the OWB's exact wording; there is none.
-			expect(s.prose, s.id).not.toMatch(/[“"]/);
-		}
+	it('keeps each era to a few sentences in every hub locale, quoting no Scripture', () => {
+		for (const s of BIBLE_STORY)
+			for (const l of BIBLE_LOCALES) {
+				const sentences = s.prose[l].split(/(?<=[.!?])\s+/).length;
+				expect(sentences, `${s.id} ${l}`).toBeLessThanOrEqual(s.interlude ? 1 : 3);
+				// A quotation would have to be the OWB's exact wording; there is none.
+				expect(s.prose[l], `${s.id} ${l}`).not.toMatch(/[“"«]/);
+				expect(s.title[l] && s.period[l], `${s.id} ${l}`).toBeTruthy();
+			}
 	});
 });
 
 describe('links', () => {
 	it('names books as the canon does and opens key chapters past the introduction', () => {
 		const kings = BIBLE_STORY.find((s) => s.id === 'kings')!;
-		expect(storyBooks(kings)[0]).toEqual({ label: '1 Samuel', href: '/books/1-samuel' });
-		expect(storyKeys(kings)[0]).toEqual({
+		expect(storyBooks(kings, 'en')[0]).toEqual({ label: '1 Samuel', href: '/books/1-samuel' });
+		expect(storyKeys(kings, 'es')[1].label).toBe('1 Reyes 12');
+		expect(storyBooks(BIBLE_STORY.at(-1)!, 'es')[0].label).toBe('Apocalipsis');
+		expect(storyKeys(kings, 'en')[0]).toEqual({
 			label: '2 Samuel 7',
 			href: '/books/2-samuel/7'
 		});

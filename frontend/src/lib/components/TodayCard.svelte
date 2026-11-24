@@ -112,11 +112,11 @@
 							{#if picks.chapter}
 								{@const c = picks.chapter}
 								<!-- The chapter of the day ($lib/dailyChapter): one Bible
-								     chapter everyone reads today, under the verse. English
-								     only, where the Bible is (`bibleIn`). -->
+								     chapter everyone reads today, under the verse, titled in
+								     the page's language: only where the Bible is (`bibleIn`). -->
 								<a class="today-link chapter" class:after-verse={picks.verse} href={localizeHref(c.href)}>
 									<span class="eyebrow block text-accent">{t('home.todayChapter')}</span>
-									<span class="title mt-1 block text-body font-semibold" lang="en">{c.title}
+									<span class="title mt-1 block text-body font-semibold">{c.title}
 										<Arrow /></span
 									>
 									{#if c.word_count}
