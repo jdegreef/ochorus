@@ -1,0 +1,29 @@
+{
+    "kind": "bio",
+    "slug": "samson-occom",
+    "language": "ja",
+    "job_issue": 9717,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Romans 6:23",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Matthew 24:44",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Genesis 2:23",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Hebrews 6:18",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        }
+    ]
+}
