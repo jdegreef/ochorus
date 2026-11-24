@@ -1,0 +1,24 @@
+{
+    "kind": "bio",
+    "slug": "richard-sibbes",
+    "language": "ja",
+    "job_issue": 9700,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Matthew 12:20",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Psalm 42:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "John 14:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        }
+    ]
+}

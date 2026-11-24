@@ -1,0 +1,18 @@
+{
+    "kind": "bio",
+    "slug": "john-wesley",
+    "language": "ja",
+    "job_issue": 9703,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Zechariah 3:2",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Romans 8:31",
+            "status": "self_rendered"
+        }
+    ]
+}
