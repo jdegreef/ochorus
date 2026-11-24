@@ -1,0 +1,18 @@
+{
+    "kind": "bio",
+    "slug": "elisabeth-elliot",
+    "language": "ja",
+    "job_issue": 9715,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Jeremiah 31:3",
+            "status": "self_rendered"
+        },
+        {
+            "reference": "Deuteronomy 33:27",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        }
+    ]
+}
