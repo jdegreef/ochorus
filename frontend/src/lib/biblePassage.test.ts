@@ -69,16 +69,11 @@ describe('passageSuggestions', () => {
 
 	it('suggests every book a name could mean that has the chapter', () => {
 		expect(passageSuggestions('ph 2', BOOKS, 'en').map((p) => p.label)).toEqual(['Philippians 2']);
-		expect(passageSuggestions('ph 1', BOOKS, 'en').map((p) => p.label)).toEqual([
-			'Philippians 1',
-			'Philemon 1'
-		]);
+		expect(passageSuggestions('ph 1', BOOKS, 'en').map((p) => p.label)).toEqual(['Philippians 1', 'Philemon 1']);
 	});
 
 	it("suggests the books' pages for a name alone", () => {
-		expect(passageSuggestions('1 j', BOOKS, 'en')).toEqual([
-			{ label: '1 John', href: '/books/1-john' }
-		]);
+		expect(passageSuggestions('1 j', BOOKS, 'en')).toEqual([{ label: '1 John', href: '/books/1-john' }]);
 	});
 
 	it('suggests nothing it cannot read, or a book the library lacks', () => {

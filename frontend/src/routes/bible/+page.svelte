@@ -114,12 +114,7 @@
 	const steps = $derived(
 		startPath
 			? biblePathSteps(startPath.steps, series?.books ?? [], lang)
-			: starts.map(({ book, why }) => ({
-					book,
-					title: book.title,
-					href: `/books/${book.slug}`,
-					why
-				}))
+			: starts.map(({ book, why }) => ({ book, title: book.title, href: `/books/${book.slug}`, why }))
 	);
 	// The reader's place in the Bible: device-local progress (synced when signed
 	// in), read after mount and again on `ochorus:sync`, as the hubs' Continue
@@ -274,19 +269,18 @@
 	     announces its state. -->
 	<details class="owb-note">
 		<summary>
-			<span>Open Word Bible</span><span class="sep" aria-hidden="true">·</span><span>
-				{say(COPY.balanced)}
-			</span><span class="sep" aria-hidden="true">·</span><span>{say(COPY.freeToShare)}</span>
+			<span>Open Word Bible</span><span class="sep" aria-hidden="true">·</span><span
+				>{say(COPY.balanced)}</span
+			><span class="sep" aria-hidden="true">·</span><span>{say(COPY.freeToShare)}</span>
 			<span class="owb-chev" aria-hidden="true"><Icon name="chevron-right" size={14} /></span>
 		</summary>
 		<div class="owb-note-body">
 			<p>{say(COPY.noteWhat)}</p>
 			<p>{say(COPY.noteFree)}</p>
 			<p>
-				<a href={localizeHref(`${OWB_PATH}/`)} class="font-medium text-accent hover:underline">
-					{say(COPY.moreAbout)}
-					<Arrow />
-				</a>
+				<a href={localizeHref(`${OWB_PATH}/`)} class="font-medium text-accent hover:underline"
+					>{say(COPY.moreAbout)} <Arrow /></a
+				>
 			</p>
 		</div>
 	</details>
@@ -339,13 +333,7 @@
 			<!-- Always in the DOM (empty when closed), so aria-controls names it. The
 			     options are links: a click is a plain navigation, and mousedown keeps
 			     the box's focus so the list isn't torn down before the click lands. -->
-			<ul
-				id="bible-jump-list"
-				class="jump-list"
-				role="listbox"
-				aria-label={t('bible.jumpLabel')}
-				hidden={!showList}
-			>
+			<ul id="bible-jump-list" class="jump-list" role="listbox" aria-label={t('bible.jumpLabel')} hidden={!showList}>
 				{#if showList}
 					{#each suggestions as s, i (s.href)}
 						<li id="bible-jump-opt-{i}" role="option" aria-selected={i === active}>
@@ -355,14 +343,13 @@
 								class:active={i === active}
 								tabindex="-1"
 								onmousedown={(e) => e.preventDefault()}
-								onclick={() => (listOpen = false)}
+								onclick={() => (listOpen = false)}>{s.label}</a
 							>
-								{s.label}
-							</a>
 						</li>
 					{/each}
 				{/if}
 			</ul>
+
 		</form>
 		<div class="jump-extras">
 			{#if quick.length}
@@ -383,12 +370,9 @@
 					<ul class="quick">
 						{#each topics as tp (tp.slug)}
 							<li>
-								<a
-									class="chip quick-chip"
-									href={localizeHref(`/topics/${tp.slug}/#topic-in-bible`)}
+								<a class="chip quick-chip" href={localizeHref(`/topics/${tp.slug}/#topic-in-bible`)}
+									>{tp.label}</a
 								>
-									{tp.label}
-								</a>
 							</li>
 						{/each}
 					</ul>
@@ -425,9 +409,7 @@
 					{#each continues.books as row (row.book.slug)}
 						{@const caption = `${t('continue.chapter')} ${row.chapter} ${t('plans.of')} ${row.count}`}
 						<ContinueRow
-							href={localizeHref(
-								chapterPath(row.book.slug, row.order, row.book.has_modern_edition)
-							)}
+							href={localizeHref(chapterPath(row.book.slug, row.order, row.book.has_modern_edition))}
 							title={row.book.title}
 							{caption}
 							verb={t('plans.continue')}
@@ -453,40 +435,26 @@
 				<div class="starts-head">
 					<h2 id="starts-heading" class="section-label">{t('bible.startHeading')}</h2>
 					<!-- The whole Bible in story order, for a reader who wants the shape first. -->
-					<a
-						href={localizeHref(`${BIBLE_STORY_PATH}/`)}
-						class="text-small font-medium text-accent hover:underline"
+					<a href={localizeHref(`${BIBLE_STORY_PATH}/`)} class="text-small font-medium text-accent hover:underline"
+						>{t('bible.storyTitle')} <Arrow /></a
 					>
-						{t('bible.storyTitle')}
-						<Arrow />
-					</a>
 				</div>
 				<!-- What brought them: one press shows that path's chapters below. -->
 				<div class="start-paths" role="group" aria-label={say(COPY.chooseWay)}>
-					<button
-						type="button"
-						class="chip"
-						class:active={!startPath}
-						aria-pressed={!startPath}
-						onclick={() => (pathId = 'first')}
+					<button type="button" class="chip" class:active={!startPath} aria-pressed={!startPath} onclick={() => (pathId = 'first')}
+						>{say(COPY.newToBible)}</button
 					>
-						{say(COPY.newToBible)}
-					</button>
 					{#each BIBLE_PATHS as p (p.id)}
 						<button
 							type="button"
 							class="chip"
 							class:active={pathId === p.id}
 							aria-pressed={pathId === p.id}
-							onclick={() => (pathId = p.id)}
+							onclick={() => (pathId = p.id)}>{say(p.label)}</button
 						>
-							{say(p.label)}
-						</button>
 					{/each}
 				</div>
-				<p class="mb-4 text-small text-muted" aria-live="polite">
-					{startPath ? say(startPath.lede) : t('bible.startLede')}
-				</p>
+				<p class="mb-4 text-small text-muted" aria-live="polite">{startPath ? say(startPath.lede) : t('bible.startLede')}</p>
 				<ol class="start-list" style:--steps={steps.length}>
 					{#each steps as { book, title, href, why }, i (href)}
 						<li>
@@ -517,13 +485,9 @@
 				</div>
 			{/if}
 			<p class="text-small">
-				<a
-					href={localizeHref(`/series/${BIBLE_SERIES}/`)}
-					class="font-medium text-accent hover:underline"
+				<a href={localizeHref(`/series/${BIBLE_SERIES}/`)} class="font-medium text-accent hover:underline"
+					>{t('bible.inOrder')} <Arrow /></a
 				>
-					{t('bible.inOrder')}
-					<Arrow />
-				</a>
 			</p>
 		</section>
 
@@ -540,11 +504,7 @@
 						<!-- Covers or the compact index, for the whole list: on the first
 						     heading's row, where the list begins. Not the book page's "Show as
 						     a grid", which here would read as the chapters. -->
-						<button
-							type="button"
-							class="btn btn-sm btn-ghost"
-							onclick={() => (asCovers = !asCovers)}
-						>
+						<button type="button" class="btn btn-sm btn-ghost" onclick={() => (asCovers = !asCovers)}>
 							<Icon name={asCovers ? 'list' : 'grid'} size={16} />{asCovers
 								? t('bible.contentsAsList')
 								: say(COPY.showCovers)}
@@ -553,11 +513,7 @@
 				</div>
 				{#each testament.divisions as group (group.division.id)}
 					<section class="bible-division">
-						<GroupHeading
-							as="h3"
-							name={t(divisionKey(group.division.id))}
-							count={group.books.length}
-						/>
+						<GroupHeading as="h3" name={t(divisionKey(group.division.id))} count={group.books.length} />
 						{#if asCovers}
 							<BibleCoverGrid books={group.books} bind:open={openBook} {placeOf} {linksOf} />
 						{:else}
@@ -570,10 +526,9 @@
 
 		<!-- What the translation is, and its home (it exists wherever the hub does). -->
 		<p class="mt-12 text-small">
-			<a href={localizeHref(`${OWB_PATH}/`)} class="font-medium text-accent hover:underline">
-				{say(COPY.aboutOwb)}
-				<Arrow />
-			</a>
+			<a href={localizeHref(`${OWB_PATH}/`)} class="font-medium text-accent hover:underline"
+				>{say(COPY.aboutOwb)} <Arrow /></a
+			>
 		</p>
 	{/if}
 </div>

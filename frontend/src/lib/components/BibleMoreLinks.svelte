@@ -20,10 +20,9 @@
 {#if links && (links.sermons || links.scripture)}
 	<p class="bible-more {cls}">
 		{#if links.sermons}
-			<a href={localizeHref(`/sermons?book=${encodeURIComponent(links.sermon_book)}`)}>
-				{links.sermons}
-				{i18n.tn(links.sermons, 'common.sermonOne', 'common.sermonMany')}
-			</a>
+			<a href={localizeHref(`/sermons?book=${encodeURIComponent(links.sermon_book)}`)}
+				>{links.sermons} {i18n.tn(links.sermons, 'common.sermonOne', 'common.sermonMany')}</a
+			>
 		{/if}
 		{#if links.sermons && links.scripture}<span class="sep" aria-hidden="true"> · </span>{/if}
 		{#if links.scripture}

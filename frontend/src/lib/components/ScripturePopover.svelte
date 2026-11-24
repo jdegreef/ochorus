@@ -43,22 +43,15 @@
 	>
 		<div class="flex items-baseline justify-between gap-3">
 			<span class="scripture-ref-title">{scripture.result?.reference ?? scripture.ref}</span>
-			<button
-				class="scripture-close"
-				onclick={() => scripture.close()}
-				aria-label={t('a11y.close')}
-			>
-				<Icon name="close" size={14} />
-			</button>
+			<button class="scripture-close" onclick={() => scripture.close()} aria-label={t('a11y.close')}><Icon name="close" size={14} /></button>
 		</div>
 
 		{#if scripture.loading}
 			<p class="mt-2 text-small text-muted">…</p>
 		{:else if scripture.result}
 			<p class="scripture-body mt-2">
-				{#each scripture.result.verses as v (v.number)}<sup class="scripture-num">
-						{v.number}
-					</sup>{v.text}{' '}{/each}{#if scripture.result.truncated}…{/if}
+				{#each scripture.result.verses as v (v.number)}<sup class="scripture-num">{v.number}</sup
+					>{v.text}{' '}{/each}{#if scripture.result.truncated}…{/if}
 			</p>
 			<p class="eyebrow mt-2 text-muted">{scripture.result.version}</p>
 		{:else if scripture.omitted}
@@ -69,19 +62,15 @@
 		{#if chapterHref || scripture.href}
 			<div class="mt-2 flex flex-wrap gap-x-4 gap-y-1">
 				{#if chapterHref}
-					<a class="text-small font-semibold" href={chapterHref} onclick={() => scripture.close()}>
-						{t('reader.scriptureReadChapter')}
-					</a>
+					<a class="text-small font-semibold" href={chapterHref} onclick={() => scripture.close()}
+						>{t('reader.scriptureReadChapter')}</a
+					>
 				{/if}
 				{#if scripture.href}
 					<!-- The tap opened this popover instead of following the href: offer it here. -->
-					<a
-						class="text-small font-semibold"
-						href={scripture.href}
-						onclick={() => scripture.close()}
+					<a class="text-small font-semibold" href={scripture.href} onclick={() => scripture.close()}
+						>{t('reader.scripturePage')}</a
 					>
-						{t('reader.scripturePage')}
-					</a>
 				{/if}
 			</div>
 		{/if}

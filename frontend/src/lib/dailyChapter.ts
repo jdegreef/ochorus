@@ -20,11 +20,7 @@ import { bibleChapterOrder, chapterLabel } from '$lib/bible';
  *  book's chapter `n` is reader chapter `n + 1`: `build_owb_book` sets an
  *  introduction first. The chapter is named by `chapterLabel`, in the
  *  reader's language. */
-export const DAILY_CHAPTER_PATH: readonly (readonly [
-	slug: string,
-	position: number,
-	chapters: number
-])[] = [
+export const DAILY_CHAPTER_PATH: readonly (readonly [slug: string, position: number, chapters: number])[] = [
 	['gospel-of-mark', 41, 16],
 	['gospel-of-john', 43, 21],
 	['genesis', 1, 50],

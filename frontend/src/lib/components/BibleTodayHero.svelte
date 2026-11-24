@@ -41,10 +41,7 @@
 			return;
 		}
 		loadDayVerse(now, lang.current)
-			.then(
-				(v) => (verse = v),
-				() => (verse = null)
-			)
+			.then((v) => (verse = v), () => (verse = null))
 			.finally(() => (ready = true));
 	});
 	const book = $derived(chapter ? books.find((b) => b.slug === chapter!.slug) : undefined);
@@ -73,15 +70,13 @@
 				<p class="verse">{chapter.title}</p>
 			{/if}
 			{#if chapter && book && !withVerse}
-				<a class="btn btn-primary btn-solid read" href={localizeHref(chapter.href)}>
-					{t('book.beginReading')}
-					<Arrow />
-				</a>
+				<a class="btn btn-primary btn-solid read" href={localizeHref(chapter.href)}
+					>{t('book.beginReading')} <Arrow /></a
+				>
 			{:else if chapter && book}
-				<a class="btn btn-primary btn-solid read" href={localizeHref(chapter.href)}>
-					{t('home.todayChapter')}: {chapter.title}
-					<Arrow />
-				</a>
+				<a class="btn btn-primary btn-solid read" href={localizeHref(chapter.href)}
+					>{t('home.todayChapter')}: {chapter.title} <Arrow /></a
+				>
 			{/if}
 		</div>
 		{#if chapter && book}

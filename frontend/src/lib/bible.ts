@@ -37,13 +37,7 @@ export const BIBLE_STORY_PATH = `${BIBLE_PATH}/story`;
 // BIBLE_LOCALES and bibleIn live in $lib/bibleLocales (no imports, so
 // $lib/originals can ask them without an import cycle); re-exported here.
 import { bibleIn } from '$lib/bibleLocales';
-export {
-	BIBLE_LOCALES,
-	bibleIn,
-	bibleText,
-	type BibleLocale,
-	type BibleText
-} from '$lib/bibleLocales';
+export { BIBLE_LOCALES, bibleIn, bibleText, type BibleLocale, type BibleText } from '$lib/bibleLocales';
 
 /** Whether `book` is one of the Bible's books (the `the-bible` series). */
 export const isBibleBook = (book: { series?: { slug: string } | null }) =>
@@ -393,8 +387,7 @@ export const bibleChapterOrder = (n: number): number => n + BIBLE_INTRO_CHAPTERS
  */
 export const bibleChapterCount = (books: readonly { chapter_count?: number }[]): number =>
 	books.reduce(
-		(n, b) =>
-			n + Math.max(0, (b.chapter_count ?? 0) - BIBLE_INTRO_CHAPTERS - BIBLE_CLOSING_CHAPTERS),
+		(n, b) => n + Math.max(0, (b.chapter_count ?? 0) - BIBLE_INTRO_CHAPTERS - BIBLE_CLOSING_CHAPTERS),
 		0
 	);
 
@@ -406,11 +399,7 @@ const PSALMS = 19;
  * the canon. Psalms is the one book whose chapters are titled in the singular
  * ("Psalm 23", «Salmo 23», as `build_owb_book` titles them).
  */
-export function chapterLabel(
-	position: number | null | undefined,
-	n: number,
-	lang: string
-): string | null {
+export function chapterLabel(position: number | null | undefined, n: number, lang: string): string | null {
 	const name = position === PSALMS ? psalmIn(lang) : canonName(position, lang);
 	return name ? `${name} ${n}` : null;
 }
@@ -507,31 +496,28 @@ export interface BibleContinue<T, R> {
  */
 export function bibleToContinue<
 	T extends { slug: string; chapter_count?: number },
-	R extends Pick<ProgressRecord, 'order' | 'furthest' | 'at'> &
-		FinishFields & { slug: string; kind: string }
+	R extends Pick<ProgressRecord, 'order' | 'furthest' | 'at'> & FinishFields & { slug: string; kind: string }
 >(books: readonly T[], records: readonly R[], max = 3): BibleContinue<T, R>[] {
 	const bySlug = new Map(books.map((b) => [b.slug, b]));
-	return (
-		records
-			.filter((r) => r.kind === 'book' && bySlug.has(r.slug))
-			// filter() made a copy, so the sort leaves the caller's list alone.
-			.sort((a, b) => b.at - a.at)
-			.flatMap((r) => {
-				const book = bySlug.get(r.slug)!;
-				const place = biblePlace(book, r);
-				if (!place || place.current == null) return [];
-				return [
-					{
-						book,
-						record: r,
-						chapter: place.current,
-						order: bibleChapterOrder(place.current),
-						count: bibleChapterCount([book])
-					}
-				];
-			})
-			.slice(0, max)
-	);
+	return records
+		.filter((r) => r.kind === 'book' && bySlug.has(r.slug))
+		// filter() made a copy, so the sort leaves the caller's list alone.
+		.sort((a, b) => b.at - a.at)
+		.flatMap((r) => {
+			const book = bySlug.get(r.slug)!;
+			const place = biblePlace(book, r);
+			if (!place || place.current == null) return [];
+			return [
+				{
+					book,
+					record: r,
+					chapter: place.current,
+					order: bibleChapterOrder(place.current),
+					count: bibleChapterCount([book])
+				}
+			];
+		})
+		.slice(0, max);
 }
 
 /**
@@ -558,12 +544,8 @@ export function bibleContinueRows<
 export const THIN_SPINE = 0.33;
 
 /** What a spine is labelled: its name, or its abbreviation when thin. */
-export const spineLabel = (slot: {
-	name: string;
-	abbr: string;
-	weight: number;
-	book: unknown;
-}): string => (slot.book && slot.weight < THIN_SPINE ? slot.abbr : slot.name);
+export const spineLabel = (slot: { name: string; abbr: string; weight: number; book: unknown }): string =>
+	slot.book && slot.weight < THIN_SPINE ? slot.abbr : slot.name;
 
 /** The canon strip's reading summary: books finished and books under way,
  *  from each present book's place (`biblePlace`; null = not started). */
@@ -583,13 +565,7 @@ export function canonReading<T>(
 
 /** The canon strip's quick filters. */
 export type CanonFilter = 'short' | 'gospels' | 'poetry' | 'letters' | 'unread';
-export const CANON_FILTERS: readonly CanonFilter[] = [
-	'short',
-	'gospels',
-	'poetry',
-	'letters',
-	'unread'
-];
+export const CANON_FILTERS: readonly CanonFilter[] = ['short', 'gospels', 'poetry', 'letters', 'unread'];
 /** "Short": a book read in this many minutes or fewer, at the reader's pace. */
 export const SHORT_BOOK_MINUTES = 20;
 
@@ -665,9 +641,7 @@ export const BIBLE_TOPICS: readonly { slug: string; label: string }[] = [
 ];
 
 /** The `BIBLE_TOPICS` this language has a shelf for, in order. */
-export function bibleTopics(
-	topics: readonly { slug: string }[]
-): { slug: string; label: string }[] {
+export function bibleTopics(topics: readonly { slug: string }[]): { slug: string; label: string }[] {
 	const have = new Set(topics.map((t) => t.slug));
 	return BIBLE_TOPICS.filter((t) => have.has(t.slug));
 }
@@ -883,9 +857,7 @@ export function biblePathSteps<
 	books: readonly T[],
 	lang: string
 ): { book: T; title: string; href: string; why: string }[] {
-	const at = new Map(
-		books.flatMap((b) => (b.series_position != null ? [[b.series_position, b] as const] : []))
-	);
+	const at = new Map(books.flatMap((b) => (b.series_position != null ? [[b.series_position, b] as const] : [])));
 	return steps.flatMap((s) => {
 		const book = at.get(s.position);
 		if (!book) return [];

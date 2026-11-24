@@ -55,10 +55,7 @@ describe('BIBLE_DIVISIONS', () => {
 
 	it('has a heading string for every division and both testaments', () => {
 		const snake = (k: string) =>
-			k
-				.replace(/([a-z0-9])([A-Z])/g, '$1_$2')
-				.replace(/\./g, '_')
-				.toLowerCase();
+			k.replace(/([a-z0-9])([A-Z])/g, '$1_$2').replace(/\./g, '_').toLowerCase();
 		const keys = [
 			...BIBLE_DIVISIONS.map((d) => divisionKey(d.id)),
 			testamentKey('old'),
@@ -102,20 +99,11 @@ describe('groupBible', () => {
 	it('shows only the New Testament when no Old Testament book is in', () => {
 		const groups = groupBible([book('revelation', 66), book('acts', 44), book('matthew', 40)]);
 		expect(groups.map((t) => t.testament)).toEqual(['new']);
-		expect(groups[0].divisions.map((d) => d.division.id)).toEqual([
-			'gospels',
-			'acts',
-			'revelation'
-		]);
+		expect(groups[0].divisions.map((d) => d.division.id)).toEqual(['gospels', 'acts', 'revelation']);
 	});
 
 	it('orders the books inside a division by their canonical number', () => {
-		const [nt] = groupBible([
-			book('mark', 41),
-			book('john', 43),
-			book('matthew', 40),
-			book('luke', 42)
-		]);
+		const [nt] = groupBible([book('mark', 41), book('john', 43), book('matthew', 40), book('luke', 42)]);
 		expect(nt.divisions[0].books.map((b) => b.slug)).toEqual(['matthew', 'mark', 'luke', 'john']);
 	});
 
@@ -127,11 +115,7 @@ describe('groupBible', () => {
 
 describe('biblePlans', () => {
 	it('offers the named Bible plans that shipped, in their own order', () => {
-		const plans = [
-			{ slug: 'psalms-in-150-days' },
-			{ slug: 'romans-with-moule' },
-			{ slug: 'john-in-21-days' }
-		];
+		const plans = [{ slug: 'psalms-in-150-days' }, { slug: 'romans-with-moule' }, { slug: 'john-in-21-days' }];
 		expect(biblePlans(plans).map((p) => p.slug)).toEqual(['john-in-21-days', 'psalms-in-150-days']);
 		expect(biblePlans([{ slug: 'romans-with-moule' }])).toEqual([]);
 	});
@@ -159,52 +143,34 @@ describe('canonName', () => {
 		expect(canonName(66, 'es')).toBe('Apocalipsis');
 		expect(chapterLabel(19, 23, 'es')).toBe('Salmo 23');
 		expect(chapterLabel(22, 1, 'es')).toBe('Cantares 1');
-		expect([canonName(0, 'en'), canonName(67, 'en'), canonName(null, 'en')]).toEqual([
-			null,
-			null,
-			null
-		]);
+		expect([canonName(0, 'en'), canonName(67, 'en'), canonName(null, 'en')]).toEqual([null, null, null]);
 	});
 });
 
 describe('bibleChapters', () => {
 	it('numbers the Bible chapters, past the introduction', () => {
-		const chs = bibleChapters(
-			{ slug: 'ruth', title: 'Ruth', chapter_count: 6, series_position: 8 },
-			'en'
-		);
+		const chs = bibleChapters({ slug: 'ruth', title: 'Ruth', chapter_count: 6, series_position: 8 }, 'en');
 		expect(chs.map((c) => c.n)).toEqual([1, 2, 3, 4]);
 		expect(chs[0]).toEqual({ n: 1, name: 'Ruth 1', href: bookChapterPath('ruth', 2, false) });
 		expect(chs[3].href).toBe(bookChapterPath('ruth', 5, false));
 	});
 
 	it('names a chip as the chapter is titled: the canon short name, "Psalm", or the title off the canon', () => {
-		const psalms = bibleChapters(
-			{ slug: 'psalms', title: 'The Psalms', chapter_count: 152, series_position: 19 },
-			'en'
-		);
+		const psalms = bibleChapters({ slug: 'psalms', title: 'The Psalms', chapter_count: 152, series_position: 19 }, 'en');
 		expect(psalms[22].name).toBe('Psalm 23');
-		expect(
-			bibleChapters({ slug: 'x', title: 'Stray', chapter_count: 3, series_position: null }, 'en')[0]
-				.name
-		).toBe('Stray 1');
+		expect(bibleChapters({ slug: 'x', title: 'Stray', chapter_count: 3, series_position: null }, 'en')[0].name).toBe(
+			'Stray 1'
+		);
 	});
 
 	it('is empty for a book with no Bible chapters', () => {
-		expect(
-			bibleChapters({ slug: 'x', title: 'X', chapter_count: 2, series_position: 1 }, 'en')
-		).toEqual([]);
+		expect(bibleChapters({ slug: 'x', title: 'X', chapter_count: 2, series_position: 1 }, 'en')).toEqual([]);
 		expect(bibleChapters({ slug: 'x', title: 'X', series_position: 1 }, 'en')).toEqual([]);
 	});
 });
 
 describe('canonStrip', () => {
-	const sized = (
-		slug: string,
-		series_position: number,
-		word_count: number | null,
-		chapter_count = 1
-	) => ({
+	const sized = (slug: string, series_position: number, word_count: number | null, chapter_count = 1) => ({
 		slug,
 		series_position,
 		word_count,
@@ -235,33 +201,26 @@ describe('canonStrip', () => {
 	});
 
 	it('weighs a spine by the square root of its words beside the longest book', () => {
-		const slots = canonStrip(
-			[
-				sized('psalms', 19, 40000),
-				sized('obadiah', 31, 10000),
-				sized('jude', 65, null, 2) // no count: chapters stand in
-			],
-			'en'
-		).flatMap((t) => t.divisions.flatMap((d) => d.slots));
+		const slots = canonStrip([
+			sized('psalms', 19, 40000),
+			sized('obadiah', 31, 10000),
+			sized('jude', 65, null, 2) // no count: chapters stand in
+		], 'en').flatMap((t) => t.divisions.flatMap((d) => d.slots));
 		expect(slots[18].weight).toBe(1);
 		expect(slots[30].weight).toBe(0.5);
 		expect(slots[64].weight).toBe(Math.round(Math.sqrt(1000 / 40000) * 100) / 100);
 	});
 
 	it('skips books with no place in the canon and keeps the first of a doubled one', () => {
-		const slots = canonStrip(
-			[book('x', null), book('y', 99), book('a', 1), book('b', 1)],
-			'en'
-		).flatMap((t) => t.divisions.flatMap((d) => d.slots));
+		const slots = canonStrip([book('x', null), book('y', 99), book('a', 1), book('b', 1)], 'en').flatMap(
+			(t) => t.divisions.flatMap((d) => d.slots)
+		);
 		expect(slots.filter((s) => s.book).map((s) => s.book!.slug)).toEqual(['a']);
 	});
 });
 
 describe('splitBible', () => {
-	const inSeries = (slug: string, series: string | null) => ({
-		slug,
-		series: series ? { slug: series } : null
-	});
+	const inSeries = (slug: string, series: string | null) => ({ slug, series: series ? { slug: series } : null });
 
 	it("tells the Bible's books by their series", () => {
 		expect(isBibleBook(inSeries('genesis', 'the-bible'))).toBe(true);
@@ -285,49 +244,31 @@ describe('splitBible', () => {
 describe('passageHref', () => {
 	const at = { slug: 'gospel-of-john', order: 4 };
 	it('opens a verse at its anchor, a range at its first verse', () => {
+		expect(passageHref({ reference: 'John 3:16', verses: [{ number: 16 }], bible_chapter: at })).toBe(
+			'/books/gospel-of-john/3#v16'
+		);
 		expect(
-			passageHref({ reference: 'John 3:16', verses: [{ number: 16 }], bible_chapter: at })
-		).toBe('/books/gospel-of-john/3#v16');
-		expect(
-			passageHref({
-				reference: 'Romans 8:28-30',
-				verses: [{ number: 28 }, { number: 29 }],
-				bible_chapter: { slug: 'romans', order: 9 }
-			})
+			passageHref({ reference: 'Romans 8:28-30', verses: [{ number: 28 }, { number: 29 }], bible_chapter: { slug: 'romans', order: 9 } })
 		).toBe('/books/romans/8#v28');
 	});
 	it('opens a whole chapter at its top', () => {
 		expect(
-			passageHref({
-				reference: 'Psalms 23:1-6',
-				verses: [{ number: 1 }],
-				bible_chapter: { slug: 'psalms', order: 24 }
-			})
+			passageHref({ reference: 'Psalms 23:1-6', verses: [{ number: 1 }], bible_chapter: { slug: 'psalms', order: 24 } })
 		).toBe('/books/psalms/23');
 		expect(passageHref({ reference: 'John 3', verses: [{ number: 1 }], bible_chapter: at })).toBe(
 			'/books/gospel-of-john/3'
 		);
 	});
 	it('opens a bare book at its page, a numbered book too', () => {
+		expect(passageHref({ reference: 'John', verses: [{ number: 1 }], bible_chapter: { slug: 'gospel-of-john', order: 2 } })).toBe(
+			'/books/gospel-of-john'
+		);
 		expect(
-			passageHref({
-				reference: 'John',
-				verses: [{ number: 1 }],
-				bible_chapter: { slug: 'gospel-of-john', order: 2 }
-			})
-		).toBe('/books/gospel-of-john');
-		expect(
-			passageHref({
-				reference: '1 Corinthians',
-				verses: [{ number: 1 }],
-				bible_chapter: { slug: '1-corinthians', order: 2 }
-			})
+			passageHref({ reference: '1 Corinthians', verses: [{ number: 1 }], bible_chapter: { slug: '1-corinthians', order: 2 } })
 		).toBe('/books/1-corinthians');
 	});
 	it('is null where the library prints none of it', () => {
-		expect(
-			passageHref({ reference: 'Tobit 1:1', verses: [{ number: 1 }], bible_chapter: null })
-		).toBeNull();
+		expect(passageHref({ reference: 'Tobit 1:1', verses: [{ number: 1 }], bible_chapter: null })).toBeNull();
 		expect(passageHref({ reference: 'John 3:16', verses: [{ number: 16 }] })).toBeNull();
 	});
 });
@@ -335,11 +276,7 @@ describe('passageHref', () => {
 describe('bibleStarts', () => {
 	it('keeps the curated order and drops a book the series lacks', () => {
 		const books = ['romans', 'genesis', 'gospel-of-mark'].map((slug) => ({ slug }));
-		expect(bibleStarts(books, 'en').map((s) => s.book.slug)).toEqual([
-			'gospel-of-mark',
-			'genesis',
-			'romans'
-		]);
+		expect(bibleStarts(books, 'en').map((s) => s.book.slug)).toEqual(['gospel-of-mark', 'genesis', 'romans']);
 	});
 	it('names five books, each with a reason', () => {
 		expect(BIBLE_STARTS).toHaveLength(5);
@@ -357,15 +294,7 @@ describe('bibleChapterCount', () => {
 
 describe('mayBePassage', () => {
 	it('asks the resolver for a chapter or a book named alone', () => {
-		for (const q of [
-			'John 3:16',
-			'Ps 23',
-			'Romans',
-			' 1 john ',
-			'Psalm',
-			'Song of Solomon',
-			'Rom.'
-		])
+		for (const q of ['John 3:16', 'Ps 23', 'Romans', ' 1 john ', 'Psalm', 'Song of Solomon', 'Rom.'])
 			expect(mayBePassage(q), q).toBe(true);
 	});
 	it('sends any other word to search', () => {
@@ -454,17 +383,11 @@ describe('bibleToContinue', () => {
 });
 
 describe('bibleContinueRows', () => {
-	const plan = (slug: string, ...covers: string[]) => ({
-		slug,
-		covers: covers.map((c) => ({ slug: c }))
-	});
+	const plan = (slug: string, ...covers: string[]) => ({ slug, covers: covers.map((c) => ({ slug: c })) });
 	const row = (slug: string) => ({ book: { slug } });
 
 	it('puts plans first and drops the book a one-book plan already reads', () => {
-		const out = bibleContinueRows(
-			[plan('john-in-21-days', 'gospel-of-john')],
-			[row('gospel-of-john'), row('ruth')]
-		);
+		const out = bibleContinueRows([plan('john-in-21-days', 'gospel-of-john')], [row('gospel-of-john'), row('ruth')]);
 		expect(out.plans.map((p) => p.slug)).toEqual(['john-in-21-days']);
 		expect(out.books.map((r) => r.book.slug)).toEqual(['ruth']);
 	});
@@ -477,9 +400,7 @@ describe('bibleContinueRows', () => {
 	it('shows at most `max` rows in all', () => {
 		const out = bibleContinueRows([plan('a', 'x'), plan('b', 'y')], [row('c'), row('d')], 3);
 		expect([out.plans.length, out.books.length]).toEqual([2, 1]);
-		expect(
-			bibleContinueRows([plan('a'), plan('b'), plan('c'), plan('d')], [row('e')]).plans
-		).toHaveLength(3);
+		expect(bibleContinueRows([plan('a'), plan('b'), plan('c'), plan('d')], [row('e')]).plans).toHaveLength(3);
 	});
 });
 
@@ -490,14 +411,11 @@ describe('canon strip: names, height, reading', () => {
 		word_count,
 		chapter_count
 	});
-	const slots = canonStrip(
-		[
-			sized('psalms', 19, 50000, 152),
-			sized('obadiah', 31, 2500, 3),
-			sized('romans', 45, 15000, 18)
-		],
-		'en'
-	).flatMap((t) => t.divisions.flatMap((d) => d.slots));
+	const slots = canonStrip([
+		sized('psalms', 19, 50000, 152),
+		sized('obadiah', 31, 2500, 3),
+		sized('romans', 45, 15000, 18)
+	], 'en').flatMap((t) => t.divisions.flatMap((d) => d.slots));
 	const at = (pos: number) => slots.find((s) => s.position === pos)!;
 
 	it('carries each book its abbreviation, its Bible chapters and its height', () => {
@@ -523,11 +441,7 @@ describe('canon strip: names, height, reading', () => {
 			obadiah: null
 		} as const;
 		const books = [{ slug: 'psalms' }, { slug: 'romans' }, { slug: 'obadiah' }] as const;
-		expect(canonReading(books, (b) => places[b.slug])).toEqual({
-			finished: 1,
-			started: 1,
-			total: 3
-		});
+		expect(canonReading(books, (b) => places[b.slug])).toEqual({ finished: 1, started: 1, total: 3 });
 	});
 });
 
@@ -551,36 +465,23 @@ describe('matchesCanonFilter', () => {
 	});
 	it('keeps the books not yet started', () => {
 		expect(matchesCanonFilter('unread', 'law', 90, fresh)).toBe(true);
-		expect(
-			matchesCanonFilter('unread', 'law', 90, { behind: 0, current: null, finished: false })
-		).toBe(true);
+		expect(matchesCanonFilter('unread', 'law', 90, { behind: 0, current: null, finished: false })).toBe(true);
 		expect(matchesCanonFilter('unread', 'law', 90, started)).toBe(false);
 		expect(matchesCanonFilter('unread', 'law', 90, done)).toBe(false);
 	});
 });
 
 describe('bibleBrowseRow', () => {
-	it("sets the Browse tab's Bible row in its own order, leaving out what the language lacks", () => {
-		const shelf = ['romans', 'gospel-of-john', 'obadiah', 'genesis', 'psalms'].map((slug) => ({
-			slug
-		}));
-		expect(bibleBrowseRow(shelf).map((b) => b.slug)).toEqual([
-			'genesis',
-			'psalms',
-			'gospel-of-john',
-			'romans'
-		]);
+	it('sets the Browse tab\'s Bible row in its own order, leaving out what the language lacks', () => {
+		const shelf = ['romans', 'gospel-of-john', 'obadiah', 'genesis', 'psalms'].map((slug) => ({ slug }));
+		expect(bibleBrowseRow(shelf).map((b) => b.slug)).toEqual(['genesis', 'psalms', 'gospel-of-john', 'romans']);
 		expect(bibleBrowseRow([])).toEqual([]);
 	});
 });
 
 describe('bibleTopics', () => {
 	it('keeps the subjects whose shelf exists, in their own order', () => {
-		const out = bibleTopics([
-			{ slug: 'holy-spirit' },
-			{ slug: 'prayer' },
-			{ slug: 'the-puritans' }
-		]);
+		const out = bibleTopics([{ slug: 'holy-spirit' }, { slug: 'prayer' }, { slug: 'the-puritans' }]);
 		expect(out.map((t) => t.slug)).toEqual(['prayer', 'holy-spirit']);
 		expect(out[0].label).toBe('Prayer');
 		expect(bibleTopics([])).toEqual([]);
@@ -590,12 +491,7 @@ describe('bibleTopics', () => {
 describe('biblePathSteps', () => {
 	const W = { en: 'w', es: 'v' };
 	const ps = { slug: 'psalms', title: 'The Psalms', series_position: 19, chapter_count: 152 };
-	const john = {
-		slug: 'gospel-of-john',
-		title: 'The Gospel of John',
-		series_position: 43,
-		chapter_count: 23
-	};
+	const john = { slug: 'gospel-of-john', title: 'The Gospel of John', series_position: 43, chapter_count: 23 };
 
 	it('opens each step at its chapter, named as the chapter is titled', () => {
 		const out = biblePathSteps([{ position: 19, chapter: 23, why: W }], [ps], 'en');
@@ -618,22 +514,7 @@ describe('biblePathSteps', () => {
 
 	it('names real chapters in every path', () => {
 		// Every step is inside its book's chapter range (the canon's own counts).
-		const LAST: Record<number, number> = {
-			1: 50,
-			19: 150,
-			20: 31,
-			23: 66,
-			40: 28,
-			41: 16,
-			42: 24,
-			43: 21,
-			45: 16,
-			50: 4,
-			51: 4,
-			52: 5,
-			59: 5,
-			66: 22
-		};
+		const LAST: Record<number, number> = { 1: 50, 19: 150, 20: 31, 23: 66, 40: 28, 41: 16, 42: 24, 43: 21, 45: 16, 50: 4, 51: 4, 52: 5, 59: 5, 66: 22 };
 		for (const p of BIBLE_PATHS)
 			for (const s of p.steps) expect(s.chapter ?? 1).toBeLessThanOrEqual(LAST[s.position] ?? 0);
 		expect(new Set(BIBLE_PATHS.map((p) => p.id)).size).toBe(BIBLE_PATHS.length);

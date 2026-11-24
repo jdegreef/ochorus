@@ -33,10 +33,7 @@ export const load: PageLoad = async ({ fetch }) => {
 	const fetchSeries = () => getSeries(BIBLE_SERIES, lang);
 	const [result, plans, links, topics] = await Promise.all([
 		(lang === 'en' ? fetchSeries() : orNotFound(fetchSeries)).then(
-			(series): { series: SeriesDetail | null; loadError: boolean } => ({
-				series,
-				loadError: false
-			}),
+			(series): { series: SeriesDetail | null; loadError: boolean } => ({ series, loadError: false }),
 			(e) => {
 				if (isHttpError(e)) throw e;
 				return { series: null, loadError: true };

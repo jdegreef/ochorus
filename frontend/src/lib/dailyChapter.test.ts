@@ -8,8 +8,7 @@ const turnStart = (() => {
 	d.setDate(d.getDate() - (localDayNumber(d) % DAILY_CHAPTER_CYCLE));
 	return d;
 })();
-const dayOf = (n: number) =>
-	new Date(turnStart.getFullYear(), turnStart.getMonth(), turnStart.getDate() + n, 12);
+const dayOf = (n: number) => new Date(turnStart.getFullYear(), turnStart.getMonth(), turnStart.getDate() + n, 12);
 
 describe('pickDailyChapter', () => {
 	it('walks Mark, John, Genesis, Psalms and Romans, a chapter a day, then begins again', () => {
@@ -22,10 +21,7 @@ describe('pickDailyChapter', () => {
 		});
 		expect(pickDailyChapter(dayOf(15), 'en').title).toBe('Mark 16');
 		expect(pickDailyChapter(dayOf(16), 'en').title).toBe('John 1');
-		expect(pickDailyChapter(dayOf(16 + 21 + 50 + 22), 'en')).toMatchObject({
-			title: 'Psalm 23',
-			order: 24
-		});
+		expect(pickDailyChapter(dayOf(16 + 21 + 50 + 22), 'en')).toMatchObject({ title: 'Psalm 23', order: 24 });
 		expect(pickDailyChapter(dayOf(252), 'en').title).toBe('Romans 16');
 		expect(pickDailyChapter(dayOf(253), 'en').title).toBe('Mark 1');
 		// Titled as the reader's edition titles its chapters.
@@ -36,14 +32,10 @@ describe('pickDailyChapter', () => {
 		const morning = new Date(2026, 10, 13, 0, 5);
 		const night = new Date(2026, 10, 13, 23, 55);
 		expect(pickDailyChapter(morning, 'en')).toEqual(pickDailyChapter(night, 'en'));
-		expect(pickDailyChapter(new Date(2026, 10, 14, 0, 5), 'en')).not.toEqual(
-			pickDailyChapter(night, 'en')
-		);
+		expect(pickDailyChapter(new Date(2026, 10, 14, 0, 5), 'en')).not.toEqual(pickDailyChapter(night, 'en'));
 	});
 	it('reaches every chapter of the path once per turn', () => {
-		const seen = new Set(
-			Array.from({ length: DAILY_CHAPTER_CYCLE }, (_, n) => pickDailyChapter(dayOf(n), 'en').title)
-		);
+		const seen = new Set(Array.from({ length: DAILY_CHAPTER_CYCLE }, (_, n) => pickDailyChapter(dayOf(n), 'en').title));
 		expect(seen.size).toBe(DAILY_CHAPTER_PATH.reduce((n, [, , c]) => n + c, 0));
 	});
 });

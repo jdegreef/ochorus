@@ -16,12 +16,7 @@ import { canonIn } from '$lib/bibleNames';
 import { bibleChapterCount, bibleChapterOrder, chapterLabel } from '$lib/bible';
 import { bookChapterPath } from '$lib/reading-schema';
 
-type HubBook = {
-	slug: string;
-	title: string;
-	chapter_count?: number;
-	series_position?: number | null;
-};
+type HubBook = { slug: string; title: string; chapter_count?: number; series_position?: number | null };
 
 /** One place the box can open: a book's page, or a chapter (at a verse). */
 export interface PassageLink {
@@ -53,9 +48,7 @@ const chapterLink = (
 ): PassageLink => {
 	const path = bookChapterPath(book.slug, bibleChapterOrder(n), false);
 	const label = chapterLabel(position, n, lang) ?? `${book.title} ${n}`;
-	return verse && verse > 1
-		? { label: `${label}:${verse}`, href: `${path}#v${verse}` }
-		: { label, href: path };
+	return verse && verse > 1 ? { label: `${label}:${verse}`, href: `${path}#v${verse}` } : { label, href: path };
 };
 
 const byPosition = (books: readonly HubBook[]) => {
@@ -76,7 +69,11 @@ export function quickPassages(books: readonly HubBook[], lang: string): PassageL
 /** A name squashed for matching: lower case, no accents, dots or spaces
  *  ("1 Cor." → "1cor", "Éxodo" → "exodo"). */
 const squash = (s: string) =>
-	s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/[.\s]/g, '');
+	s
+		.normalize('NFD')
+		.replace(/\p{M}/gu, '')
+		.toLowerCase()
+		.replace(/[.\s]/g, '');
 
 /** Short forms beyond the canon's own abbreviation, by canon position. */
 const ALIASES: Record<number, readonly string[]> = {
@@ -107,24 +104,14 @@ const ALIASES_ES: Record<number, readonly string[]> = {
 type Names = readonly (readonly [position: number, names: readonly string[]])[];
 
 /** Every name each canon position goes by, squashed. */
-const namesOf = (
-	canon: typeof CANON,
-	aliases: Record<number, readonly string[]>,
-	also?: Names
-): Names =>
+const namesOf = (canon: typeof CANON, aliases: Record<number, readonly string[]>, also?: Names): Names =>
 	canon.map(
 		([name, abbr], i) =>
-			[
-				i + 1,
-				[name, abbr, ...(aliases[i + 1] ?? [])].map(squash).concat(also?.[i][1] ?? [])
-			] as const
+			[i + 1, [name, abbr, ...(aliases[i + 1] ?? [])].map(squash).concat(also?.[i][1] ?? [])] as const
 	);
 const NAMES_EN = namesOf(CANON, ALIASES);
 /** A hub locale's names, by locale: Spanish adds the English ones. */
-const NAMES: Record<string, Names> = {
-	en: NAMES_EN,
-	es: namesOf(canonIn('es'), ALIASES_ES, NAMES_EN)
-};
+const NAMES: Record<string, Names> = { en: NAMES_EN, es: namesOf(canonIn('es'), ALIASES_ES, NAMES_EN) };
 
 /**
  * The edit distance between two short strings, counting two swapped letters
@@ -136,11 +123,7 @@ function distance(a: string, b: string): number {
 	);
 	for (let i = 1; i <= a.length; i++)
 		for (let j = 1; j <= b.length; j++) {
-			d[i][j] = Math.min(
-				d[i - 1][j] + 1,
-				d[i][j - 1] + 1,
-				d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)
-			);
+			d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
 			if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1])
 				d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
 		}
@@ -158,16 +141,14 @@ export function matchBooks(token: string, lang: string): number[] {
 	const names = NAMES[lang] ?? NAMES_EN;
 	const prefix = names.filter(([, names]) => names.some((n) => n.startsWith(q))).map(([p]) => p);
 	if (prefix.length || q.length < 4) return prefix;
-	const close = names
-		.map(([p, names]) => [p, Math.min(...names.map((n) => distance(q, n)))] as const)
+	const close = names.map(([p, names]) => [p, Math.min(...names.map((n) => distance(q, n)))] as const)
 		.filter(([, d]) => d <= (q.length >= 7 ? 2 : 1))
 		.sort((a, b) => a[1] - b[1] || a[0] - b[0]);
 	return close.map(([p]) => p);
 }
 
 /** "1 cor 13:4" → the book part, the chapter and the verse (both optional). */
-const QUERY =
-	/^\s*((?:[1-3]\s*)?\p{L}[\p{L}\p{M} .]*?)\s*(?:(\d{1,3})(?:\s*[:.]\s*(\d{1,3}))?)?\s*$/iu;
+const QUERY = /^\s*((?:[1-3]\s*)?\p{L}[\p{L}\p{M} .]*?)\s*(?:(\d{1,3})(?:\s*[:.]\s*(\d{1,3}))?)?\s*$/iu;
 
 /**
  * What the box suggests for `q`, at most `max`: with a chapter typed, that

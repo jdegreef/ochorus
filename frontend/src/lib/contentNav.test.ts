@@ -56,12 +56,7 @@ describe('contentNav', () => {
 	});
 
 	it('keeps the English-hub order Articles · Scripture · Quotes', () => {
-		expect(ENGLISH_HUBS.map((d) => d.href)).toEqual([
-			'/articles',
-			'/scripture',
-			'/quotes',
-			'/glossary'
-		]);
+		expect(ENGLISH_HUBS.map((d) => d.href)).toEqual(['/articles', '/scripture', '/quotes', '/glossary']);
 	});
 
 	it('gives every primary destination a label key and an icon', () => {

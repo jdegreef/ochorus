@@ -100,9 +100,7 @@
 					<dd>
 						<ul class="book-links">
 							{#each books as b (b.href)}
-								<li>
-									<a href={localizeHref(b.href)} class="text-accent hover:underline">{b.label}</a>
-								</li>
+								<li><a href={localizeHref(b.href)} class="text-accent hover:underline">{b.label}</a></li>
 							{/each}
 						</ul>
 					</dd>
@@ -157,40 +155,31 @@
 	<section class="mt-14" aria-labelledby="story-read-on">
 		<h2 id="story-read-on" class="section-label mb-5">{t('bible.storyReadOn')}</h2>
 		{#if data.plan || data.book}
-			<ul class="read-on">
-				{#if data.plan}
-					<li>
-						<a class="read-card card-lift" href={localizeHref(`/plans/${STORY_PLAN_SLUG}`)}>
-							<span class="font-display text-body font-semibold text-text">
-								{t('bible.storyTitle')}
-							</span>
-							<span class="mt-1 block text-small text-muted">{t('bible.storyPlan')}</span>
-							<span class="mt-2 block text-small font-semibold text-accent">
-								{t('plans.title')}
-								<Arrow />
-							</span>
-						</a>
-					</li>
-				{/if}
-				{#if data.book}
-					<li>
-						<a class="read-card card-lift" href={localizeHref(`/books/${STORY_BOOK.slug}`)}>
-							<span class="font-display text-body font-semibold text-text">{data.book}</span>
-							<span class="mt-1 block text-small text-muted">{t('bible.storyForTeens')}</span>
-							<span class="mt-2 block text-small font-semibold text-accent">
-								{t('home.startReading')}
-								<Arrow />
-							</span>
-						</a>
-					</li>
-				{/if}
-			</ul>
+		<ul class="read-on">
+			{#if data.plan}
+			<li>
+				<a class="read-card card-lift" href={localizeHref(`/plans/${STORY_PLAN_SLUG}`)}>
+					<span class="font-display text-body font-semibold text-text">{t('bible.storyTitle')}</span>
+					<span class="mt-1 block text-small text-muted">{t('bible.storyPlan')}</span>
+					<span class="mt-2 block text-small font-semibold text-accent">{t('plans.title')} <Arrow /></span>
+				</a>
+			</li>
+			{/if}
+			{#if data.book}
+			<li>
+				<a class="read-card card-lift" href={localizeHref(`/books/${STORY_BOOK.slug}`)}>
+					<span class="font-display text-body font-semibold text-text">{data.book}</span>
+					<span class="mt-1 block text-small text-muted">{t('bible.storyForTeens')}</span>
+					<span class="mt-2 block text-small font-semibold text-accent">{t('home.startReading')} <Arrow /></span>
+				</a>
+			</li>
+			{/if}
+		</ul>
 		{/if}
 		<p class="mt-8 text-small">
-			<a href={localizeHref(`${BIBLE_PATH}/`)} class="font-medium text-accent hover:underline">
-				<Arrow back />
-				{t('nav.bible')}
-			</a>
+			<a href={localizeHref(`${BIBLE_PATH}/`)} class="font-medium text-accent hover:underline"
+				><Arrow back /> {t('nav.bible')}</a
+			>
 		</p>
 	</section>
 </div>

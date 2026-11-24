@@ -1,14 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { BookSummary } from './library-public';
-import {
-	ORIGINALS_SLUG,
-	authorLdType,
-	authorPath,
-	hasBylinePage,
-	isImprint,
-	shelveOriginals,
-	newestOriginals
-} from './originals';
+import { ORIGINALS_SLUG, authorLdType, authorPath, hasBylinePage, isImprint, shelveOriginals, newestOriginals } from './originals';
 import { OWB_SLUG } from './openWordBible';
 
 const book = (slug: string, word_count: number | null = 1000) =>
@@ -48,12 +40,7 @@ describe('shelveOriginals', () => {
 		book('a-new-original')
 	];
 	const brave = [
-		{
-			slug: 'brave-for-god',
-			title: 'Brave for God',
-			description: '',
-			books: ['brave-for-god', 'brave-for-god-2']
-		}
+		{ slug: 'brave-for-god', title: 'Brave for God', description: '', books: ['brave-for-god', 'brave-for-god-2'] }
 	];
 
 	it('rows each series in its volume order and totals its words', () => {
@@ -93,10 +80,9 @@ describe('shelveOriginals', () => {
 	});
 
 	it('drops a series whose books are all missing in this language', () => {
-		const { series } = shelveOriginals(
-			[],
-			[{ slug: 'rooted', title: 'Rooted', description: '', books: ['rooted-1'] }]
-		);
+		const { series } = shelveOriginals([], [
+			{ slug: 'rooted', title: 'Rooted', description: '', books: ['rooted-1'] }
+		]);
 		expect(series).toEqual([]);
 	});
 });
@@ -104,17 +90,11 @@ describe('shelveOriginals', () => {
 describe('newestOriginals', () => {
 	const at = (slug: string, created_at: string) => ({ slug, created_at }) as BookSummary;
 	it('puts the most recently added first and keeps n', () => {
-		const books = [
-			at('a', '2026-11-01T00:00:00Z'),
-			at('b', '2026-11-19T00:00:00Z'),
-			at('c', '2026-11-15T00:00:00Z')
-		];
+		const books = [at('a', '2026-11-01T00:00:00Z'), at('b', '2026-11-19T00:00:00Z'), at('c', '2026-11-15T00:00:00Z')];
 		expect(newestOriginals(books, 2).map((b) => b.slug)).toEqual(['b', 'c']);
 		expect(books[0].slug).toBe('a');
 	});
 	it('skips a book the API sent no date for', () => {
-		expect(
-			newestOriginals([at('a', ''), at('b', '2026-01-01T00:00:00Z')]).map((b) => b.slug)
-		).toEqual(['b']);
+		expect(newestOriginals([at('a', ''), at('b', '2026-01-01T00:00:00Z')]).map((b) => b.slug)).toEqual(['b']);
 	});
 });
