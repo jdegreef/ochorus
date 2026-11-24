@@ -2,7 +2,7 @@
 
 Each detector is pinned with the case that shaped it, and the validator with
 each check a wave-1 worker's throwaway script carried (substring unique,
-replacement inside OWB, tag sequence and «» balance unchanged), plus the
+replacement inside OWB, tag sequence and quote-mark balance unchanged), plus the
 allowances the four founder rules make (pieces joined with "…", OWB's own
 speech marks set as ‹ ›). One integration test runs the inventory on a
 shipped, already re-quoted sermon, so a detector that starts crying wolf on
@@ -67,13 +67,31 @@ class ReferenceTests(SimpleTestCase):
         self.assertEqual(rq.local_citations("(13:4)", "am"), [])
 
     def test_language_data_is_well_formed(self):
-        data = rq.language_data("am")
-        self.assertTrue(set(data["book_names"].values()) <= set(USFM_ORDER))
-        self.assertEqual(len(set(data["book_names"].values())), 66)
-        for d in data["decisions"]:
-            for ref in d["references"]:
-                self.assertIsNotNone(rq.parse_reference(ref), (d["id"], ref))
-            self.assertTrue(d["decision"])
+        for path in sorted(rq.LANGUAGE_DATA.glob("*.json")):
+            with self.subTest(language=path.stem):
+                data = rq.language_data(path.stem)
+                self.assertEqual(data["language"], path.stem)
+                self.assertTrue(set(data["book_names"].values()) <= set(USFM_ORDER))
+                self.assertEqual(len(set(data["book_names"].values())), 66)
+                for d in data["decisions"]:
+                    for ref in d["references"]:
+                        self.assertIsNotNone(rq.parse_reference(ref), (d["id"], ref))
+                    self.assertTrue(d["decision"])
+
+    def test_swahili_citations_as_the_library_writes_them(self):
+        spans = rq.local_citations("(Yohana 3:36; 1 Yohana 5:12)", "sw")
+        self.assertEqual([s.label for s in spans], ["John 3:36", "1 John 5:12"])
+        self.assertEqual(
+            rq.local_citations("(1 Wathesalonike 5:16-18)", "sw")[0].label,
+            "1 Thessalonians 5:16-18",
+        )
+        self.assertEqual(
+            rq.local_citations("(Matendo ya Mitume 2:38)", "sw")[0].usfm, "ACT"
+        )
+        self.assertEqual(rq.local_citations("(Ebr 11:6)", "sw")[0].usfm, "HEB")
+        self.assertEqual(
+            rq.local_citations("(Kumbukumbu la Torati 6:5)", "sw")[0].usfm, "DEU"
+        )
 
 
 class BlockTests(SimpleTestCase):
@@ -382,6 +400,39 @@ class ValidatorTests(SimpleTestCase):
             written[1]["fields"]["word_count"],
             word_count(written[1]["fields"]["body_html"]),
         )
+
+
+class SwahiliValidatorTests(SimpleTestCase):
+    """Swahili quotes with “…”: the validator reads the Scripture inside
+    those marks and keeps them balanced, as it does «…» for Amharic."""
+
+    def setUp(self):
+        self.verse = rq.owb_text(rq.parse_reference("1 Thessalonians 5:17"), "sw")
+        self.work = work_of(
+            "<p>Paulo anasema, “ombeni bila kukoma” (1 Wathesalonike 5:17).</p>",
+            language="sw",
+        )
+
+    def check(self, new, **kw):
+        e = {
+            "chapter": 1,
+            "block": 0,
+            "reference": "1 Thessalonians 5:17",
+            "old": "“ombeni bila kukoma”",
+            "new": new,
+            **kw,
+        }
+        problems, _ = rq.validate(self.work, [e])
+        return [p.check for p in problems]
+
+    def test_owb_inside_the_marks_passes(self):
+        self.assertEqual(self.check(f"“{self.verse[:-1]}”"), [])
+
+    def test_union_wording_inside_the_marks_is_not_owb(self):
+        self.assertIn("owb", self.check("“ombeni bila kukoma daima”"))
+
+    def test_a_dropped_mark_is_unbalanced(self):
+        self.assertIn("balance", self.check(f"“{self.verse[:-1]}", self_rendered=True))
 
 
 class ShippedWorkTests(SimpleTestCase):

@@ -45,7 +45,7 @@ VALIDATOR (``validate`` / ``apply``)
     ``old`` exactly once in its block, put only OWB words inside the quote
     marks (``«…»``-joined pieces and ``‹›``-converted inner marks allowed, and
     "…"-joined pieces per the translation-worker skill), and leave the chapter's
-    tag sequence, the block's «» balance and a sentence-final mark unchanged.
+    tag sequence, the block's quote-mark balance and a sentence-final mark unchanged.
     ``apply`` writes the result in the file's existing layout.
 
 Block indexes. A book or sermon block is what the admin's side-by-side view
@@ -1452,12 +1452,22 @@ class Problem:
     message: str
 
 
-def _quoted_pieces(new_text: str) -> list[str]:
-    """The words a splice claims are Scripture: each «…» (pieces joined by
-    "…" split apart), or — with no quote marks — the whole replacement less
-    any trailing citation (a recitation)."""
+def _quote_marks(language: str) -> list[tuple[str, str]]:
+    """The language's quotation marks (``quote_marks`` in its data): «» unless
+    it says otherwise — Swahili quotes with “”."""
+    return [tuple(p) for p in language_data(language).get("quote_marks", [["«", "»"]])]
+
+
+def _quoted_pieces(new_text: str, language: str) -> list[str]:
+    """The words a splice claims are Scripture: each quotation in the
+    language's marks (pieces joined by "…" split apart), or — with no quote
+    marks — the whole replacement less any trailing citation (a recitation)."""
     text = re.sub(r"\s*\([^()]*\d[^()]*\)\s*$", "", new_text)
-    inner = re.findall(r"«(.*?)»", text, re.S)
+    inner = [
+        q
+        for o, c in _quote_marks(language)
+        for q in re.findall(rf"{re.escape(o)}(.*?){re.escape(c)}", text, re.S)
+    ]
     pieces = inner if inner else [text]
     return [p for piece in pieces for p in _ELLIPSIS.split(piece) if vc.normalise(p)]
 
@@ -1466,8 +1476,8 @@ def _tags(text: str) -> list[str]:
     return _TAG.findall(text)
 
 
-def _balance(text: str) -> int:
-    return text.count("«") - text.count("»")
+def _balance(text: str, language: str) -> int:
+    return sum(text.count(o) - text.count(c) for o, c in _quote_marks(language))
 
 
 def _final(text: str, marks: list[str]) -> bool:
@@ -1520,12 +1530,12 @@ def validate(work: Work, edits: list[dict]) -> tuple[list[Problem], dict[str, st
             problems.append(
                 Problem(k, "tags", f"{where}: the ordered tag sequence changes")
             )
-        if _balance(new_raw) != _balance(raw):
+        if _balance(new_raw, language) != _balance(raw, language):
             problems.append(
                 Problem(
                     k,
                     "balance",
-                    f"{where}: «» balance {_balance(raw)} → {_balance(new_raw)}",
+                    f"{where}: quote-mark balance {_balance(raw, language)} → {_balance(new_raw, language)}",
                 )
             )
         if render(new).count("‹") != render(new).count("›"):
@@ -1556,7 +1566,7 @@ def validate(work: Work, edits: list[dict]) -> tuple[list[Problem], dict[str, st
                     problems.append(
                         Problem(k, "owb", f"{where}: OWB has no text for {span.label}")
                     )
-                for piece in _quoted_pieces(render(new)):
+                for piece in _quoted_pieces(render(new), language):
                     if not is_owb(piece, span, language, slack=slack):
                         problems.append(
                             Problem(

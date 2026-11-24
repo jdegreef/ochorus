@@ -825,6 +825,18 @@ So when the English does not say what it should:
      Japanese クシュ). Where the author argues from "Ethiopia", keep the
      language's "Ethiopia" and mark the row `self_rendered`; the rendering
      itself is raised with the OWB project.
+   **Re-quoting a shipped work** (Amharic, Swahili; Japanese and Vietnamese have
+   no re-quote data yet) starts from the tool, not from the notes file:
+   `manage.py requote_inventory <book|sermon|bio> <slug> --language <am|sw>
+   --json inv.json` lists every quotation (cited, uncited, recited, and English
+   quotations the translation lost), its OWB text, a status guess and what the
+   notes file misses. Write the edits as a splice spec, run `--check spec.json`
+   until it is clean, then `--apply`; it validates that only OWB words stand
+   inside the language's quote marks (`quote_marks` in
+   `library/data/requote/<lang>.json`) and that tags, mark balance and sentence
+   ends are unchanged. Then update the notes rows to the OWB `source_file`.
+   The language file's `decisions` are the recurring-word calls earlier waves
+   settled: reuse them, and add a new one when a wave settles one.
 
 The `english-qa` skill has the full triage table and the rule that matters most:
 archaic spelling and period punctuation are the text, not defects in it.
