@@ -180,7 +180,7 @@
 	// `seo.hreflang` still lists the editions this chapter exists in — for the
 	// fallback notice's "read it in …" links, never for the <head>.
 	const seo = $derived(
-		editionSeo(`/books/${slug}/${chapter.order}/`, chapter.available_languages, shownElsewhere)
+		editionSeo(`${bookChapterPath(slug, chapter.order, false)}/`, chapter.available_languages, shownElsewhere)
 	);
 	const canonical = $derived(
 		edition === 'modern' ? absUrl(modernChapterPath(slug, chapter.order)) : seo.canonical
@@ -188,7 +188,7 @@
 	const headHreflang = $derived(
 		edition || shownElsewhere
 			? null
-			: chapterHreflang(`/books/${slug}/${chapter.order}/`, chapter.indexed_languages ?? [], language)
+			: chapterHreflang(`${bookChapterPath(slug, chapter.order, false)}/`, chapter.indexed_languages ?? [], language)
 	);
 
 	// One trail feeds both the visible <Breadcrumb> and the JSON-LD (the reader

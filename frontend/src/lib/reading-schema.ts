@@ -283,10 +283,140 @@ export const MODERN_EDITION = 'en-modern';
  */
 export const modernChapterPath = (slug: string, order: number) => `/books/${slug}/modern/${order}`;
 
+// --- Bible chapter URL segments -----------------------------------------------
+// Here rather than in a module of their own because `bookChapterPath` needs them
+// and this file must import nothing (the build scripts load it under bare Node;
+// nodeLoadable.test.ts).
+
+/**
+ * Bible-book chapter URLs follow the Bible's own numbering (bug #15).
+ *
+ * A Bible book (the `the-bible` series) is stored as an Introduction at
+ * chapter order 1, the book's chapters at 2..N+1, and a Conclusion at N+2 —
+ * so `/books/leviticus/15/` used to open Leviticus 14 while
+ * `/scripture/leviticus/15/` opened Leviticus 15. The stored order is a public
+ * contract that reading progress, highlights, bookmarks and plans key on, so it
+ * does not move. Only the URL segment does:
+ *
+ *   order 1     ↔ `introduction`
+ *   order k+1   ↔ `k`             (Leviticus 15 is /books/leviticus/15/)
+ *   order N+2   ↔ `conclusion`
+ *
+ * Every other book keeps `segment === String(order)`. Build chapter paths with
+ * `chapterSegment` (reading-schema's `bookChapterPath` does), and read the
+ * route param back with `chapterOrder`. The counts are the same in every
+ * language that has the Bible (bibleChapterUrls.test.ts holds them to the
+ * fixtures).
+ */
+
+/** Chapters of each Bible book, by its slug, in canonical order. */
+export const BIBLE_CHAPTER_COUNTS: Readonly<Record<string, number>> = {
+	'genesis': 50,
+	'exodus': 40,
+	'leviticus': 27,
+	'numbers': 36,
+	'deuteronomy': 34,
+	'joshua': 24,
+	'judges': 21,
+	'ruth': 4,
+	'1-samuel': 31,
+	'2-samuel': 24,
+	'1-kings': 22,
+	'2-kings': 25,
+	'1-chronicles': 29,
+	'2-chronicles': 36,
+	'ezra': 10,
+	'nehemiah': 13,
+	'esther': 10,
+	'job': 42,
+	'psalms': 150,
+	'proverbs': 31,
+	'ecclesiastes': 12,
+	'song-of-songs': 8,
+	'isaiah': 66,
+	'jeremiah': 52,
+	'lamentations': 5,
+	'ezekiel': 48,
+	'daniel': 12,
+	'hosea': 14,
+	'joel': 3,
+	'amos': 9,
+	'obadiah': 1,
+	'jonah': 4,
+	'micah': 7,
+	'nahum': 3,
+	'habakkuk': 3,
+	'zephaniah': 3,
+	'haggai': 2,
+	'zechariah': 14,
+	'malachi': 4,
+	'gospel-of-matthew': 28,
+	'gospel-of-mark': 16,
+	'gospel-of-luke': 24,
+	'gospel-of-john': 21,
+	'acts-of-the-apostles': 28,
+	'romans': 16,
+	'1-corinthians': 16,
+	'2-corinthians': 13,
+	'galatians': 6,
+	'ephesians': 6,
+	'philippians': 4,
+	'colossians': 4,
+	'1-thessalonians': 5,
+	'2-thessalonians': 3,
+	'1-timothy': 6,
+	'2-timothy': 4,
+	'titus': 3,
+	'philemon': 1,
+	'hebrews': 13,
+	'james': 5,
+	'1-peter': 5,
+	'2-peter': 3,
+	'1-john': 5,
+	'2-john': 1,
+	'3-john': 1,
+	'jude': 1,
+	'revelation': 22,
+};
+
+export const INTRODUCTION_SEGMENT = 'introduction';
+export const CONCLUSION_SEGMENT = 'conclusion';
+
+const bibleCount = (slug: string): number | undefined =>
+	Object.hasOwn(BIBLE_CHAPTER_COUNTS, slug) ? BIBLE_CHAPTER_COUNTS[slug] : undefined;
+
+/** Is `slug` a Bible book, whose chapter URLs follow the Bible's numbering? */
+export const isBibleBookSlug = (slug: string): boolean => bibleCount(slug) !== undefined;
+
+/** The URL segment for stored chapter `order` of book `slug`. */
+export function chapterSegment(slug: string, order: number): string {
+	const n = bibleCount(slug);
+	if (n === undefined) return String(order);
+	if (order <= 1) return INTRODUCTION_SEGMENT;
+	if (order >= n + 2) return CONCLUSION_SEGMENT;
+	return String(order - 1);
+}
+
+/**
+ * The stored chapter order a URL segment names, or `null` for one that names
+ * no chapter (a word on an ordinary book, `0`, a Bible chapter past the end).
+ */
+export function chapterOrder(slug: string, segment: string): number | null {
+	const n = bibleCount(slug);
+	if (n !== undefined) {
+		if (segment === INTRODUCTION_SEGMENT) return 1;
+		if (segment === CONCLUSION_SEGMENT) return n + 2;
+	}
+	if (!/^[1-9]\d*$/.test(segment)) return null;
+	const k = Number(segment);
+	if (n === undefined) return k;
+	return k <= n ? k + 1 : null;
+}
+
 /** A book chapter's path (unlocalized) in the original or the Modern edition —
  *  the one place that choice is spelled. */
 export const bookChapterPath = (slug: string, order: number, modern: boolean) =>
-	modern ? modernChapterPath(slug, order) : `/books/${slug}/${order}`;
+	modern ? modernChapterPath(slug, order) : `/books/${slug}/${chapterSegment(slug, order)}`;
 
 /** The plain-language edition behind an edition tag (`en-modern` → `en`). */
 export const baseEdition = (edition: string): string =>

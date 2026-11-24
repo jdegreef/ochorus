@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { ApiError } from './api';
+import { chapterSegment } from '$lib/reading-schema';
 
 /**
  * Run a page loader, translating an API 404 into a SvelteKit 404 so the
@@ -22,5 +23,8 @@ export async function orNotFound<T>(fn: () => Promise<T>): Promise<T> {
  *  routes (original and Modern English), which differ only in the books listed. */
 export const chapterEntries = (books: { slug: string; chapter_count: number }[]) =>
 	books.flatMap((b) =>
-		Array.from({ length: b.chapter_count }, (_, i) => ({ slug: b.slug, order: String(i + 1) }))
+		Array.from({ length: b.chapter_count }, (_, i) => ({
+			slug: b.slug,
+			order: chapterSegment(b.slug, i + 1)
+		}))
 	);

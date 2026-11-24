@@ -1,9 +1,9 @@
-import { redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import { building } from '$app/environment';
 import { getChapterWithLang, listBooks } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
 import { localizeHref } from '$lib/href';
-import { modernChapterPath } from '$lib/reading-schema';
+import { BIBLE_CHAPTER_COUNTS, chapterOrder, isBibleBookSlug, modernChapterPath } from '$lib/reading-schema';
 import { retiredChapterHref } from '$lib/retiredBooks';
 import { chapterEntries, orNotFound } from '$lib/loadHelpers';
 import { chapterFetch, takeChapterSeed } from '$lib/chapterSeed';
@@ -55,10 +55,24 @@ export const trailingSlash = 'always';
 export const entries: EntryGenerator = async () => chapterEntries(await listBooks('en'));
 
 export const load: PageLoad = async ({ params, url, fetch }) => {
+	// The URL segment is not always the stored order: a Bible book's follow the
+	// Bible's numbering, with `introduction` and `conclusion` around them
+	// (chapterSegment in $lib/reading-schema).
+	const order = chapterOrder(params.slug, params.order);
+	if (order === null) {
+		// Before the Bible's numbering, a Bible book's last chapter and its
+		// Conclusion sat one past it (Leviticus 27 at /28/, the Conclusion at
+		// /29/). Those two old links still land where they used to.
+		const n = isBibleBookSlug(params.slug) ? BIBLE_CHAPTER_COUNTS[params.slug] : 0;
+		const old = Number(params.order);
+		const to = old === n + 1 ? String(n) : old === n + 2 ? 'conclusion' : null;
+		if (n && to) redirect(308, localizeHref(`/books/${params.slug}/${to}/${building ? "" : url.search}`));
+		error(404, 'Not found');
+	}
 	// A retired duplicate's chapter: the same lesson in the work that replaced
 	// it ($lib/retiredBooks), keeping plan context but not ?p=. No query at
 	// build time (touching url.search would fail the prerender).
-	const moved = retiredChapterHref(params.slug, Number(params.order), building ? '' : url.search);
+	const moved = retiredChapterHref(params.slug, order, building ? '' : url.search);
 	if (moved) redirect(308, localizeHref(moved));
 	// ?edition=modern is the Modern English edition's OLD address (bookmarks,
 	// shared links, saved marks): send it to the edition's own route, keeping the
@@ -69,7 +83,7 @@ export const load: PageLoad = async ({ params, url, fetch }) => {
 		const qs = new URLSearchParams(url.search);
 		qs.delete('edition');
 		const q = qs.toString();
-		redirect(307, localizeHref(`${modernChapterPath(params.slug, Number(params.order))}${q ? `?${q}` : ''}`));
+		redirect(307, localizeHref(`${modernChapterPath(params.slug, order)}${q ? `?${q}` : ''}`));
 	}
 	// The language the body is actually IN — needed for the prose's `lang`
 	// attribute, since the Chapter payload carries none of its own and without it
@@ -87,7 +101,7 @@ export const load: PageLoad = async ({ params, url, fetch }) => {
 	const { data: chapter, language } =
 		takeChapterSeed(url.pathname) ??
 		(await orNotFound(() =>
-			getChapterWithLang(params.slug, Number(params.order), getLang(), chapterFetch(fetch))
+			getChapterWithLang(params.slug, order, getLang(), chapterFetch(fetch))
 		));
 	// The shared reader component's prop shape: the modern route sets 'modern'.
 	return { chapter, slug: params.slug, language, edition: null as 'modern' | null };

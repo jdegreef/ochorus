@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	import type { QuizQuestion } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -115,7 +116,7 @@
 					<button type="button" class="btn btn-primary btn-sm" onclick={next}>
 						{last ? t('quiz.seeScore') : t('quiz.next')}
 					</button>
-					<a href={localizeHref(`/books/${slug}/${q.chapter}`)} class="text-small font-semibold text-accent hover:underline"
+					<a href={localizeHref(bookChapterPath(slug, q.chapter, false))} class="text-small font-semibold text-accent hover:underline"
 						>{t('quiz.readChapter')} <Arrow /></a
 					>
 				</div>

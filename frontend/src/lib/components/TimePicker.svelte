@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	import { onMount } from 'svelte';
 	import { getTimeFit, type TimeFit } from '$lib/library-public';
 	import { getLang } from '$lib/lang.svelte';
@@ -105,7 +106,7 @@
 					{@const c = fit.chapter}
 					<a
 						class="fit-row"
-						href={editionHref(`/books/${c.book.slug}/${c.order}`, c.book.language)}
+						href={editionHref(bookChapterPath(c.book.slug, c.order, false), c.book.language)}
 						lang={contentLang(c.book.language)}
 					>
 						<!-- Decorative: the row names the book in words. -->

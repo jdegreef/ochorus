@@ -405,12 +405,12 @@ describe('build() chapter entries', () => {
 		try {
 			const { bible: listed, openings } = await sitemapData();
 			expect(listed.map((e) => [...e.byLocale])).toEqual([
-				[['en', '/books/psalms/2/']],
-				[['en', '/books/psalms/3/']]
+				[['en', '/books/psalms/1/']],
+				[['en', '/books/psalms/2/']]
 			]);
 			expect(listed[0].lastmods?.get('en')).toBe('2026-11-01T00:00:00Z');
 			// The opening is listed once, under chapters, not again here.
-			expect(openings.map((e) => e.byLocale.get('en'))).toContain('/books/psalms/1/');
+			expect(openings.map((e) => e.byLocale.get('en'))).toContain('/books/psalms/introduction/');
 		} finally {
 			english.books = [];
 			resetSitemapData();

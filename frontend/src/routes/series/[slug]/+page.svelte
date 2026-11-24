@@ -3,7 +3,7 @@
 	import * as m from '$lib/paraglide/messages.js';
 	import { toBookTile, type SeriesDetail } from '$lib/library-public';
 	import { bookProgressReader, getProgressRecord } from '$lib/progress';
-	import { furthestOf } from '$lib/reading-schema';
+	import { furthestOf, bookChapterPath } from '$lib/reading-schema';
 	import { chapterCount, contentLang, readingTime } from '$lib/reading';
 	import {
 		nextInSeries,
@@ -296,7 +296,7 @@
 				<blockquote {lang} dir="auto" class="has-initial"><p>{opening.text}</p></blockquote>
 				<figcaption>
 					<span dir="auto">{opening.chapter}</span>
-					<a href={localizeHref(`/books/${series.books[0].slug}/${opening.order}`)} class="btn btn-primary">
+					<a href={localizeHref(bookChapterPath(series.books[0].slug, opening.order, false))} class="btn btn-primary">
 						{t('series.keepReading')}
 					</a>
 				</figcaption>

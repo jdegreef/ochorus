@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	import { localizeHref } from '$lib/href';
 	import { readingTime } from '$lib/reading';
 	import { volumeLabel, volumeName } from '$lib/series';
@@ -35,7 +36,7 @@
 </script>
 
 {#snippet face(p: HubPerson, volume: string)}
-	<a href={localizeHref(`/books/${p.book}/${p.chapter}`)} class="face card-lift">
+	<a href={localizeHref(bookChapterPath(p.book, p.chapter, false))} class="face card-lift">
 		<Portrait
 			slug={p.slug}
 			name={p.name}

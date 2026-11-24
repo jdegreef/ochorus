@@ -20,8 +20,9 @@
 		baseEdition,
 		type Bookmark,
 		type Mark,
-		type WorkKind
-	} from '$lib/reading-schema';
+		type WorkKind,
+	bookChapterPath
+} from '$lib/reading-schema';
 	import { createLimiter, NOTEBOOK_CONCURRENCY } from '$lib/limiter';
 	import { paragraphs, groupMarks, type Highlight as HL } from '$lib/markText';
 
@@ -487,7 +488,7 @@
 			{#if bk.author}<p class="text-small text-muted">{bk.author}</p>{/if}
 
 			{#if bk.bookmarks.length}
-				{@render bookmarkList(bk.bookmarks, (bm) => localizeHref(`/books/${bk.slug}/${bm.order}?p=${bm.p}`))}
+				{@render bookmarkList(bk.bookmarks, (bm) => localizeHref(`${bookChapterPath(bk.slug, bm.order, false)}?p=${bm.p}`))}
 			{/if}
 
 			<!-- Keyed per (chapter, edition): `ch.order` alone is a duplicate key
@@ -500,7 +501,7 @@
 					</h4>
 					<ul class="clips">
 						{#each ch.highlights as hl (hl.id)}
-							{@render highlightItem(hl, editionHref(`/books/${bk.slug}/${ch.order}?p=${hl.p}`, ch.edition), '')}
+							{@render highlightItem(hl, editionHref(`${bookChapterPath(bk.slug, ch.order, false)}?p=${hl.p}`, ch.edition), '')}
 						{/each}
 					</ul>
 				{/if}

@@ -11,6 +11,7 @@ import {
 	requireFields,
 	SERMON_FIELDS
 } from './payloadGuards';
+import { bookChapterPath } from '$lib/reading-schema';
 
 export interface Author {
 	slug: string;
@@ -2480,7 +2481,7 @@ export const resolveQuotes = (slugs: string[]) =>
 export const quoteHref = (q: Quote): string =>
 	q.source.kind === 'sermon'
 		? `/sermons/${q.source.slug}/?p=${q.paragraph}`
-		: `/books/${q.source.slug}/${q.source.order}/?p=${q.paragraph}`;
+		: `${bookChapterPath(q.source.slug, q.source.order ?? 1, false)}/?p=${q.paragraph}`;
 
 /** A quote search hit's link: the same paragraph its card links to. */
 export const quoteHitHref = (h: QuoteHit): string =>

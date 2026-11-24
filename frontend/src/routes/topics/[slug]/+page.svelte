@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	import ForPromo from '$lib/components/ForPromo.svelte';
 	import { TOPIC_FOR } from '$lib/forPromos';
 	import { onMount } from 'svelte';
@@ -560,7 +561,7 @@
 					<li>
 						<a
 							class="card-tint rounded-card border border-border bg-surface"
-							href={localizeHref(`/books/${ch.slug}/${ch.order}`)}
+							href={localizeHref(bookChapterPath(ch.slug, ch.order, false))}
 						>
 							<span class="ref">{ch.reference}</span>
 							{#if ch.summary}
