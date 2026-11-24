@@ -48,5 +48,35 @@
     "title": "Новый Завет за 90 дней",
     "description": "Весь Новый Завет в переводе Open Word Bible, от Матфея до Откровения по порядку: все 260 глав за 90 дней. В большинство дней читается от двух до четырёх глав, около десяти минут, и они распределены так, чтобы дни были примерно равной длины и не выходили за пределы одной книги; самые короткие послания получают свой день. Через четыре Евангелия, первые дни церкви в Деяниях, письма Павла и других апостолов, к новому небу и новой земле.",
     "note": ["Russian Bible reading plans (Open Word Bible, build_owb_book --language ru, New Testament 2026-11-23). AI-drafted; awaiting native review."]
+  },
+  "psalms-in-150-days": {
+    "title": "Псалмы за 150 дней",
+    "description": "По псалму в день в течение пяти месяцев в переводе Open Word Bible, напечатанных строка за строкой: собственный молитвенник Библии, хвала и плач, доверие и благодарность, от «Блажен тот, кто не следует советам нечестивых» до «Пусть каждое создание, которое дышит, хвалит ГОСПОДА!»",
+    "note": ["Russian Bible reading plans (Open Word Bible, build_owb_book --language ru, Old Testament 2026-11-24): the quotes of Psalm 1:1, Psalm 150:6 and Proverbs 1:7 are owb-ru's words. AI-drafted; awaiting native review."]
+  },
+  "proverbs-in-a-month": {
+    "title": "Притчи за месяц",
+    "description": "По главе Притчей на каждый день месяца в переводе Open Word Bible: тридцать одна глава мудрости для повседневной жизни, от слов «Знание начинается со страха перед ГОСПОДОМ» до достойной жены.",
+    "note": ["Russian Bible reading plans (Open Word Bible, build_owb_book --language ru, Old Testament 2026-11-24): the quotes of Psalm 1:1, Psalm 150:6 and Proverbs 1:7 are owb-ru's words. AI-drafted; awaiting native review."]
+  },
+  "advent-in-scripture": {
+    "title": "Адвент в Писании",
+    "description": "Двадцать пять дней, с 1 декабря до Рождества, по главе в день в переводе Open Word Bible. Сначала обещания: сокрушённый змей, благословение Аврааму, звезда от Иакова, вечный престол Давида, и Младенец, Раб и свет у Исаии, с Ростком Иеремии, Вифлеемом Михея и вестником Малахии. Потом Слово, ставшее плотью, Гавриил и Мария, сон Иосифа, рождение в сочельник и мудрецы в день Рождества. Около трёх минут в день.",
+    "note": ["Russian Bible reading plans (Open Word Bible, build_owb_book --language ru, Old Testament 2026-11-24): the quotes of Psalm 1:1, Psalm 150:6 and Proverbs 1:7 are owb-ru's words. AI-drafted; awaiting native review."]
+  },
+  "lent-the-road-to-the-cross": {
+    "title": "Великий пост: путь к кресту",
+    "description": "Сорок чтений на сорок дней Великого поста в переводе Open Word Bible. Начните в Пепельную среду и читайте с понедельника по субботу, отдыхая по воскресеньям, так что Страстная пятница и Великая суббота придутся на свои главы. От призыва вернуться всем сердцем, через агнца, Пасху и страдающего Раба, к Иисусу, твёрдо направившемуся в Иерусалим; Страсти у Матфея, Марка и Луки; то, что совершил крест, в посланиях к евреям, римлянам, филиппийцам и у Петра; и Страстная неделя день за днём у Иоанна. Около пяти минут в день.",
+    "note": ["Russian Bible reading plans (Open Word Bible, build_owb_book --language ru, Old Testament 2026-11-24): the quotes of Psalm 1:1, Psalm 150:6 and Proverbs 1:7 are owb-ru's words. AI-drafted; awaiting native review."]
+  },
+  "the-story-of-the-bible": {
+    "title": "История Библии",
+    "description": "Два месяца через единую историю, которую рассказывает вся Библия, по одной главе в день в переводе Open Word Bible: творение и грехопадение, обещание Аврааму, Пасха и море, закон и земля, Давид и обещание царя, пророки, изгнание и возвращение; затем Иисус рождается, учит, распят и воскресает, Дух излит на церковь, и новое творение, где Бог живёт со Своим народом. Шестьдесят ключевых глав, каждая минуты на четыре.",
+    "note": ["Russian Bible reading plans (Open Word Bible, build_owb_book --language ru, Old Testament 2026-11-24): the quotes of Psalm 1:1, Psalm 150:6 and Proverbs 1:7 are owb-ru's words. AI-drafted; awaiting native review."]
+  },
+  "bible-in-a-year": {
+    "title": "Библия за год",
+    "description": "Вся Библия в переводе Open Word Bible, от Бытия до Откровения по порядку: все 1189 глав за 365 дней. В большинство дней читается от двух до четырёх глав, около десяти минут, и они распределены так, чтобы дни были примерно равной длины и не выходили за пределы одной книги; псалмы идут по нескольку, а самые короткие послания получают свой день. Через закон и историю, поэтов и пророков, Евангелия, послания и новое творение.",
+    "note": ["Russian Bible reading plans (Open Word Bible, build_owb_book --language ru, Old Testament 2026-11-24): the quotes of Psalm 1:1, Psalm 150:6 and Proverbs 1:7 are owb-ru's words. AI-drafted; awaiting native review."]
   }
 }
