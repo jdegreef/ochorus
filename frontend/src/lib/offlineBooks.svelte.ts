@@ -11,6 +11,7 @@ import { newestFirst, OFFLINE_BOOKS_KEY, readOfflineList, type OfflineBook } fro
 import { writeJSON } from './persisted';
 import { APP_ASSET_ORIGIN, IS_APP, offlineDelete, offlineSaveFile, offlineWriteText } from './platform';
 import { apiFile, imageFile } from './platform/offlineFiles';
+import { chapterSegment } from '$lib/reading-schema';
 
 export type { OfflineBook };
 
@@ -88,7 +89,7 @@ const appSavesImage = (path: string) =>
  * because the route declares `trailingSlash = 'always'`; not localized, because
  * the module is the same one whatever locale prefixes the URL.
  */
-const chapterPath = (slug: string, order: number) => `/books/${slug}/${order}/`;
+const chapterPath = (slug: string, order: number) => `/books/${slug}/${chapterSegment(slug, order)}/`;
 
 /** `fn` over `items`, `n` at a time. */
 async function inPool<T>(items: T[], n: number, fn: (item: T) => Promise<void>): Promise<void> {

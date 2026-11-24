@@ -15,6 +15,7 @@ import { authorPath, isImprint } from '$lib/originals';
 import { sermonCoverFace } from '$lib/sermonArt';
 import { DEFAULT_WPM } from '$lib/readingPace.svelte';
 import { TONIGHT_MAX_MINUTES } from '$lib/tonightShelf';
+import { bookChapterPath } from '$lib/reading-schema';
 
 /**
  * "What do you need today?" — a situation-first way into the topic shelves.
@@ -173,7 +174,7 @@ export function choosePicks(need: Need, topic: TopicDetail, plans: readonly Plan
 		shortBook = pool.sort((a, b) => wordsPerChapter(a) - wordsPerChapter(b))[0];
 		picks.push({
 			kind: 'shortRead',
-			href: `/books/${shortBook.slug}/1`,
+			href: bookChapterPath(shortBook.slug, 1, false),
 			title: shortBook.title,
 			byline: shortBook.author.name,
 			chapter: 1,

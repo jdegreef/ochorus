@@ -11,6 +11,7 @@ import {
 	requireFields,
 	SERMON_FIELDS
 } from './payloadGuards';
+import { bookChapterPath } from '$lib/reading-schema';
 
 export interface Author {
 	slug: string;
@@ -1075,6 +1076,14 @@ export async function localizedWithLang<T>(
 
 export const listBooks = (language = 'en', f?: Fetch) =>
 	apiFetch<BookSummary[]>(`/api/library/books/?language=${language}`, {}, f);
+
+/** The slim book row the A–Z draws (`?fields=index`): title, link, writer, and
+ * the series that tells the Bible's books apart. A fraction of the full shelf,
+ * which the prerender would otherwise inline into /authors/ (bug #19). */
+export type BookIndexRow = Pick<BookSummary, 'slug' | 'title' | 'author' | 'series'>;
+
+export const listBookIndex = (language = 'en', f?: Fetch) =>
+	apiFetch<BookIndexRow[]>(`/api/library/books/?language=${language}&fields=index`, {}, f);
 
 export const listAuthors = (language = 'en', f?: Fetch) =>
 	apiFetch<AuthorBio[]>(`/api/library/authors/?language=${language}`, {}, f);
@@ -2480,7 +2489,7 @@ export const resolveQuotes = (slugs: string[]) =>
 export const quoteHref = (q: Quote): string =>
 	q.source.kind === 'sermon'
 		? `/sermons/${q.source.slug}/?p=${q.paragraph}`
-		: `/books/${q.source.slug}/${q.source.order}/?p=${q.paragraph}`;
+		: `${bookChapterPath(q.source.slug, q.source.order ?? 1, false)}/?p=${q.paragraph}`;
 
 /** A quote search hit's link: the same paragraph its card links to. */
 export const quoteHitHref = (h: QuoteHit): string =>

@@ -20,7 +20,15 @@ export async function orNotFound<T>(fn: () => Promise<T>): Promise<T> {
 
 /** One prerender entry per chapter of each book — the `entries` of the chapter
  *  routes (original and Modern English), which differ only in the books listed. */
-export const chapterEntries = (books: { slug: string; chapter_count: number }[]) =>
+export const chapterEntries = (
+	books: { slug: string; chapter_count: number }[],
+	/** The URL segment for an order: the original route passes `chapterSegment`
+	 *  (Bible books follow the Bible's numbering); the Modern route, the order. */
+	segment: (slug: string, order: number) => string = (_, order) => String(order)
+) =>
 	books.flatMap((b) =>
-		Array.from({ length: b.chapter_count }, (_, i) => ({ slug: b.slug, order: String(i + 1) }))
+		Array.from({ length: b.chapter_count }, (_, i) => ({
+			slug: b.slug,
+			order: segment(b.slug, i + 1)
+		}))
 	);

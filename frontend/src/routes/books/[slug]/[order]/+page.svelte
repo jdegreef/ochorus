@@ -180,7 +180,7 @@
 	// `seo.hreflang` still lists the editions this chapter exists in — for the
 	// fallback notice's "read it in …" links, never for the <head>.
 	const seo = $derived(
-		editionSeo(`/books/${slug}/${chapter.order}/`, chapter.available_languages, shownElsewhere)
+		editionSeo(`${bookChapterPath(slug, chapter.order, false)}/`, chapter.available_languages, shownElsewhere)
 	);
 	const canonical = $derived(
 		edition === 'modern' ? absUrl(modernChapterPath(slug, chapter.order)) : seo.canonical
@@ -188,7 +188,7 @@
 	const headHreflang = $derived(
 		edition || shownElsewhere
 			? null
-			: chapterHreflang(`/books/${slug}/${chapter.order}/`, chapter.indexed_languages ?? [], language)
+			: chapterHreflang(`${bookChapterPath(slug, chapter.order, false)}/`, chapter.indexed_languages ?? [], language)
 	);
 
 	// One trail feeds both the visible <Breadcrumb> and the JSON-LD (the reader
@@ -2423,7 +2423,7 @@
 			<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. Quotes
 			     are curled at render time, length-preserving ($lib/smartQuotes). -->
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<div class="reading" class:story={childrens} class:no-verse-numbers={!readerPrefs.verseNumbers} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html alignHeadingLevels(anchorParagraphs(assetHtml(markVerse(smartQuotesHtml(chapter.body_html, language)))))}</div>
+			<div class="reading" class:story={childrens} class:no-verse-numbers={!readerPrefs.verseNumbers} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-order={chapter.order} data-chapter-body>{@html alignHeadingLevels(anchorParagraphs(assetHtml(markVerse(smartQuotesHtml(chapter.body_html, language)))))}</div>
 			<!-- Parsed straight after the body — its previousElementSibling, so it
 			     stays INSIDE .par-wrap, next to the body — so it can put a returning
 			     reader at their paragraph before first paint (see $lib/earlyResume).

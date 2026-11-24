@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	import { onMount } from 'svelte';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
@@ -45,7 +46,7 @@
 			<p class="hook" dir="auto">{p.hook}</p>
 		</div>
 		<div class="cta">
-			<a href={localizeHref(`/books/${p.book}/${p.chapter}`)} class="btn btn-solid">{t('audience.readTonight')}</a>
+			<a href={localizeHref(bookChapterPath(p.book, p.chapter, false))} class="btn btn-solid">{t('audience.readTonight')}</a>
 			{#if p.words}<span class="time">{readingTime(p.words)}</span>{/if}
 		</div>
 	</section>

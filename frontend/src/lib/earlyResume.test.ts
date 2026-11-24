@@ -21,14 +21,21 @@ afterEach(() => {
  * same path). jsdom lays nothing out, so the geometry is supplied. Returns the
  * paragraph it scrolled to the top (-1 for none).
  */
-function run(url: string, store: Record<string, string>, n = 20, width = 375, lang = 'en') {
+function run(
+	url: string,
+	store: Record<string, string>,
+	n = 20,
+	width = 375,
+	lang = 'en',
+	order?: number
+) {
 	// Fresh per call: two runs in one test must not see each other's spies.
 	vi.restoreAllMocks();
 	localStorage.clear();
 	for (const [k, v] of Object.entries(store)) localStorage.setItem(k, v);
 	history.replaceState(null, '', url);
 	document.documentElement.lang = lang;
-	document.body.innerHTML = `<div class="reading">${'<p>x</p>'.repeat(n)}</div>`;
+	document.body.innerHTML = `<div class="reading"${order ? ` data-order="${order}"` : ''}>${'<p>x</p>'.repeat(n)}</div>`;
 	const body = document.querySelector('.reading')!;
 	const script = document.createElement('script');
 	body.after(script);
@@ -52,6 +59,13 @@ const anchor = (slug: string, order: number, p: number) => ({
 });
 
 describe('EARLY_RESUME_JS', () => {
+	it("reads a Bible chapter's spot by its stored order, not its URL number", () => {
+		// Leviticus 15 is /books/leviticus/15/, stored as order 16.
+		const spots = { [ANCHOR_KEY]: JSON.stringify({ 'leviticus:15': 3, 'leviticus:16': 9 }) };
+		expect(run('/books/leviticus/15/', spots, 20, 375, 'en', 16)).toBe(9);
+		expect(run('/books/leviticus/introduction/', anchor('leviticus', 1, 4), 20, 375, 'en', 1)).toBe(4);
+	});
+
 	it("scrolls to this device's anchor for the chapter, under the header", () => {
 		expect(run('/books/humility/3/', anchor('humility', 3, 7))).toBe(7);
 	});

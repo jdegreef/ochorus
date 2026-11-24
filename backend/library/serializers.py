@@ -764,6 +764,25 @@ class SermonListSerializer(LocalizedMixin, serializers.ModelSerializer):
         ]
 
 
+class BookIndexSerializer(BookListSerializer):
+    """The slim book row behind the A–Z (``/authors/``, ``?fields=index``).
+
+    The index lists each writer's books by title and links them; it draws no
+    cover, chip or count. It used to fetch the whole shelf, and the prerender
+    inlines every fetched response into the page, so /authors/ carried the
+    389 KB books list to show titles (bug review 2026-11-22, #19). ``series``
+    stays because the Bible's books are told apart by it (``$lib/bible``).
+    """
+
+    chapter_count = None
+    word_count = None
+    topics = None
+    has_modern_edition = None
+
+    class Meta(BookListSerializer.Meta):
+        fields = ["slug", "title", "author", "series"]
+
+
 class SermonPickSerializer(LocalizedMixin, serializers.ModelSerializer):
     """The slim sermon row behind "Sermon of the day" (``?fields=pick``).
 

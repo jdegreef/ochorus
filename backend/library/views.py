@@ -85,6 +85,7 @@ from .serializers import (
     AuthorDetailSerializer,
     AuthorListSerializer,
     BookDetailSerializer,
+    BookIndexSerializer,
     BookListSerializer,
     ChapterBatch,
     ChapterDetailSerializer,
@@ -339,6 +340,13 @@ class BookListView(PublicContentCacheMixin, generics.ListAPIView):
     serializer_class = BookListSerializer
     pagination_class = OptInLimitOffset
 
+    def _index_only(self) -> bool:
+        """``?fields=index``: only what the A–Z draws (BookIndexSerializer)."""
+        return self.request.query_params.get("fields") == "index"
+
+    def get_serializer_class(self):
+        return BookIndexSerializer if self._index_only() else BookListSerializer
+
     def get_queryset(self):
         return _book_shelf(_language(self.request)).defer(*BOOK_CARD_DEFER)
 
@@ -346,7 +354,8 @@ class BookListView(PublicContentCacheMixin, generics.ListAPIView):
         """Attach a ``book_slug -> [topic chip]`` map so each book's topics
         cost the shelf a fixed handful of queries, not one per book."""
         ctx = super().get_serializer_context()
-        ctx["book_topics"] = book_topic_map(_language(self.request))
+        if not self._index_only():
+            ctx["book_topics"] = book_topic_map(_language(self.request))
         return ctx
 
 

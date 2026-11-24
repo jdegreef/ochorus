@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	import { localizeHref } from '$lib/href';
 	import { assetSrcset, assetUrl } from '$lib/assetUrl';
 	import { hydrateSrc } from '$lib/hydrateSrc';
@@ -35,7 +36,7 @@
 	{#each items as p (p.src)}
 		{@const source = { src: assetUrl(p.src), srcset: assetSrcset(plateSrcset(p.src)) || undefined }}
 		<li>
-			<a href={localizeHref(`/books/${p.book}/${p.order}`)} class="plate">
+			<a href={localizeHref(bookChapterPath(p.book, p.order, false))} class="plate">
 				<img
 					src={source.src}
 					srcset={source.srcset}

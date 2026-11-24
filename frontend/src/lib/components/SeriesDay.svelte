@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bookChapterPath } from '$lib/reading-schema';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { numeral, volumeLabel } from '$lib/series';
@@ -69,7 +70,7 @@
 				<p class="day-prayer" dir="auto">{sample.prayer}</p>
 			</div>
 			<footer class="day-foot">
-				<a href={localizeHref(`/books/${firstSlug}/${sample.order}`)} class="btn btn-primary">
+				<a href={localizeHref(bookChapterPath(firstSlug, sample.order, false))} class="btn btn-primary">
 					{t('series.keepReading')}
 				</a>
 			</footer>
@@ -89,7 +90,7 @@
 		{#each Array.from({ length: days }, (_, i) => i + 1) as d (d)}
 			<li>
 				<a
-					href={localizeHref(`/books/${book.slug}/${d + 1}`)}
+					href={localizeHref(bookChapterPath(book.slug, d + 1, false))}
 					class="dot"
 					class:read={d <= read}
 					class:next={d === next && read < days}
@@ -101,7 +102,7 @@
 			</li>
 		{/each}
 	</ol>
-	<a href={localizeHref(`/books/${book.slug}/${next + 1}`)} class="btn btn-primary mt-4">
+	<a href={localizeHref(bookChapterPath(book.slug, next + 1, false))} class="btn btn-primary mt-4">
 		<!-- The day's own title ("Day 8 — The Sister Nobody Noticed") already
 		     names it; the bare "Day 8" only where the list is missing. -->
 		<span dir="auto">{nextTitle || dayLabel(next)}</span>
