@@ -1,0 +1,19 @@
+{
+    "kind": "bio",
+    "slug": "john-chrysostom",
+    "language": "ja",
+    "job_issue": 9709,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Psalm 24:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Job 1:21",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "kind": "bio",
+    "slug": "john-newton",
+    "language": "ja",
+    "job_issue": 9710,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "1 Corinthians 15:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        }
+    ]
+}

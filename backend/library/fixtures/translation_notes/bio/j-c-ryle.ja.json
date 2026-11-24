@@ -1,0 +1,14 @@
+{
+    "kind": "bio",
+    "slug": "j-c-ryle",
+    "language": "ja",
+    "job_issue": 9712,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Ephesians 2:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        }
+    ]
+}
