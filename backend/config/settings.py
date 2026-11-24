@@ -72,6 +72,10 @@ MIDDLEWARE = [
     # Outermost, so its measurement covers every other layer (config/memory.py).
     "config.memory.MemoryLogMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    # Gzip the API's JSON (not the admin's; config/compression.py says why).
+    # Outside every layer that writes the body, so it sees the final bytes;
+    # WhiteNoise's files arrive already compressed and are passed through.
+    "config.compression.ApiGZipMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",  # must come before CommonMiddleware
     # After CORS, so a refusal still carries the headers a browser needs to read
