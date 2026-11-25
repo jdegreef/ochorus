@@ -4998,7 +4998,7 @@
   {
    "reference": "Jeremiah 23:6",
    "status": "mined",
-   "block_index": -1,
+   "block_index": 0,
    "chapter_order": 14,
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
@@ -7726,7 +7726,7 @@
   {
    "reference": "Matthew 22:42",
    "status": "mined",
-   "block_index": -1,
+   "block_index": 0,
    "chapter_order": 24,
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
@@ -13094,7 +13094,7 @@
   {
    "reference": "John 16:8",
    "status": "mined",
-   "block_index": -1,
+   "block_index": 0,
    "chapter_order": 40,
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
