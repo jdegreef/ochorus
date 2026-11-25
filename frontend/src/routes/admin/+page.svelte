@@ -5,6 +5,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { type SourceType } from '$lib/library-public';
+	import { SOURCE_LABELS } from '$lib/adminCatalog';
 	import {
 		adminBookHref,
 		getAdminStats,
@@ -120,12 +121,6 @@
 	const timeFmt = (d: Date) => d.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' });
 	const dateFmt = (iso: string) =>
 		new Date(iso).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' });
-
-	const SOURCE_LABELS: Record<SourceType, string> = {
-		public_domain: 'Public domain',
-		ai_reviewed: 'AI · reviewed',
-		ai_unreviewed: 'AI · unreviewed'
-	};
 
 	// Headline numbers, in a fixed order.
 	const cards = $derived(
@@ -401,8 +396,7 @@
 				     Language administration is super-admin-only, so a language admin
 				     never sees this form (the create endpoint is gated too). -->
 				{#if auth.isAdmin}
-					<!-- A new language row isn't a content change the memo sees: recompute. -->
-					<AddLanguageForm oncreated={refresh} />
+					<AddLanguageForm oncreated={dashboard.load} />
 				{/if}
 			</section>
 

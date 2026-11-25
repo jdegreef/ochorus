@@ -18,10 +18,10 @@ from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import requires
 
 from .. import translation_staleness
-from ..admin_cache import revision_memo
 from ..audit import AdminAudited
 from ..corrections import RETIRED_BOOKS
 from ..demand import reading_elsewhere
+from ..invalidation import revision_cached
 from ..languages import known_codes
 from ..models import (
     AdminAction,
@@ -42,6 +42,10 @@ from ..views import _language_entry
 from .jobs import translation_blocked
 from .languages import language_settings
 
+#: The dashboard stats' memo (``invalidation.revision_cached`` on the admin
+#: alias) — named so a write the content revision doesn't see can drop it.
+STATS_MEMO = "admin-stats"
+
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminStatsView(APIView):
@@ -49,7 +53,7 @@ class AdminStatsView(APIView):
 
     About ten grouped counts over every book, chapter and sermon — the same
     answer until content changes, so it is memoised under the content revision
-    (``admin_cache.revision_memo``) and the dashboard opens on a cache read.
+    (``invalidation.revision_cached``) and the dashboard opens on a cache read.
     ``?refresh=1`` (the dashboard's Refresh button) recomputes; ``computed_at``
     says how old the figures are, since a memo is easy to misread as live.
     """
@@ -60,7 +64,9 @@ class AdminStatsView(APIView):
     def get(self, request):
         refresh = request.query_params.get("refresh") in ("1", "true", "yes")
         return Response(
-            revision_memo("admin-stats", self._compute, timeout=self.CACHE_SECONDS, refresh=refresh)
+            revision_cached(
+                "admin", STATS_MEMO, self._compute, timeout=self.CACHE_SECONDS, refresh=refresh
+            )
         )
 
     def _compute(self) -> dict:

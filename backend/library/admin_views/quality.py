@@ -15,7 +15,6 @@ from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import allowed_languages, has_capability, requires
 
 from .. import invalidation
-from ..admin_cache import admin_cache, revision_key, revision_memo
 from ..audit import AdminAudited
 from ..content_audit import (
     DISMISSIBLE_CHECKS,
@@ -28,6 +27,7 @@ from ..content_audit import (
     worst_books,
 )
 from ..corrections import RETIRED_BOOKS
+from ..invalidation import revision_cached
 from ..languages import entry as language_entry
 from ..models import (
     AdminAction,
@@ -1122,15 +1122,16 @@ class AdminAuditView(APIView):
         result, and it is not an alert baseline either (see
         ``content_audit.alert_baseline``), so it can't swallow the nightly
         alert for a defect it happened to see first."""
-        if refresh:
-            scan = {**scan_library(), "trigger": AuditScan.Trigger.MANUAL.value}
-            record_scan(scan, AuditScan.Trigger.MANUAL)
-            admin_cache().set(revision_key("audit:scan"), scan, self.SCAN_CACHE_SECONDS)
-            return scan
-        return revision_memo(
-            "audit:scan",
-            lambda: {**scan_library(), "trigger": "view"},
-            timeout=self.SCAN_CACHE_SECONDS,
+
+        def scan() -> dict:
+            if not refresh:
+                return {**scan_library(), "trigger": "view"}
+            fresh = {**scan_library(), "trigger": AuditScan.Trigger.MANUAL.value}
+            record_scan(fresh, AuditScan.Trigger.MANUAL)
+            return fresh
+
+        return revision_cached(
+            "admin", "audit:scan", scan, timeout=self.SCAN_CACHE_SECONDS, refresh=refresh
         )
 
 

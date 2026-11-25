@@ -262,6 +262,33 @@ def translation_blocked(job_type: str, slug: str) -> bool:
     return job_type == "book" and (slug in COPYRIGHT_BLOCKED_SLUGS or slug in RETIRED_BOOKS)
 
 
+def queue_response(request, read_queue, capability) -> Response:
+    """A job queue's GET: the cached GitHub read (``admin_cache.read_through``),
+    trimmed to the languages the viewer may see; a 502 only when GitHub fails
+    with nothing cached to fall back on."""
+    try:
+        read = read_queue()
+    except requests.RequestException:
+        return Response(
+            {"detail": "GitHub is unreachable — try again shortly."},
+            status=status.HTTP_502_BAD_GATEWAY,
+        )
+    jobs = read.value
+    # Least privilege: a language-scoped user sees only their languages' jobs.
+    allowed = allowed_languages(request, capability, AdminVerb.VIEW)
+    if allowed is not None:
+        jobs = [j for j in jobs if j["language"] in allowed]
+    return Response(
+        {
+            "configured": True,
+            "jobs": jobs,
+            "read_at": read.read_at.isoformat(),
+            # True: GitHub failed and this is the last queue it gave us.
+            "stale": read.stale,
+        }
+    )
+
+
 @requires(AdminCapability.TRANSLATE, verbs={"GET": AdminVerb.VIEW, "POST": AdminVerb.SUGGEST}, language_arg="language")
 class AdminTranslationJobsView(AdminAudited, APIView):
     """GET the open translation queue; POST to enqueue one item."""
@@ -287,27 +314,7 @@ class AdminTranslationJobsView(AdminAudited, APIView):
         # page: the dashboard, coverage matrix and language pages all ask, and a
         # paginated GitHub read is the slowest thing any of them wait on. The
         # duplicate-press guard in ``post`` still reads GitHub fresh.
-        try:
-            read = cached_translation_jobs()
-        except requests.RequestException:
-            return Response(
-                {"detail": "GitHub is unreachable — try again shortly."},
-                status=status.HTTP_502_BAD_GATEWAY,
-            )
-        jobs = read.value
-        # Least privilege: a language-scoped user sees only their languages' jobs.
-        allowed = allowed_languages(request, AdminCapability.TRANSLATE, AdminVerb.VIEW)
-        if allowed is not None:
-            jobs = [j for j in jobs if j["language"] in allowed]
-        return Response(
-            {
-                "configured": True,
-                "jobs": jobs,
-                "read_at": read.read_at.isoformat(),
-                # True: GitHub failed and this is the last queue it gave us.
-                "stale": read.stale,
-            }
-        )
+        return queue_response(request, cached_translation_jobs, AdminCapability.TRANSLATE)
 
     def post(self, request):
         # Filing a translation job is a super-admin-only lever: it spins up a

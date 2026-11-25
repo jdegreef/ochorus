@@ -8,6 +8,7 @@
  * Pure: no Svelte, no fetch — so the columns, labels and links are unit-tested
  * (`adminCatalog.test.ts`). Admin copy is English-only.
  */
+import { adminWorkHref } from './adminLinks';
 import type { SourceType } from './library-public';
 
 export type CatalogKind =
@@ -63,6 +64,8 @@ export interface CatalogConfig {
 	label: string;
 	/** Singular, for "1 book" / "No books match". */
 	noun: string;
+	/** The first column's header. */
+	titleLabel: string;
 	blurb: string;
 	/** Number columns after the title, in order. */
 	columns: CatalogColumn[];
@@ -93,6 +96,7 @@ export const CATALOG: Record<CatalogKind, CatalogConfig> = {
 	books: {
 		label: 'Books',
 		noun: 'book',
+		titleLabel: 'Title',
 		blurb: 'Every edition of every book — one row per language.',
 		columns: [
 			{ field: 'chapters', label: 'Chapters' },
@@ -100,13 +104,14 @@ export const CATALOG: Record<CatalogKind, CatalogConfig> = {
 		],
 		statusLabels: PUBLISHED,
 		sortLabels: { ...BASIC_SORTS, words: 'Longest', author: 'Author' },
-		adminHref: (r) => `/admin/books/${enc(r.slug)}`,
+		adminHref: (r) => adminWorkHref('book', r.slug),
 		siteHref: (r) => `/books/${enc(r.slug)}`,
 		meta: (r) => join(byline(r), r.series as string)
 	},
 	sermons: {
 		label: 'Sermons',
 		noun: 'sermon',
+		titleLabel: 'Title',
 		blurb: 'Every sermon, one row per language.',
 		columns: [
 			{ field: 'words', label: 'Words' },
@@ -114,13 +119,14 @@ export const CATALOG: Record<CatalogKind, CatalogConfig> = {
 		],
 		statusLabels: PUBLISHED,
 		sortLabels: { ...BASIC_SORTS, words: 'Longest', author: 'Author' },
-		adminHref: (r) => `/admin/sermons/${enc(r.slug)}`,
+		adminHref: (r) => adminWorkHref('sermon', r.slug),
 		siteHref: (r) => `/sermons/${enc(r.slug)}`,
 		meta: (r) => join(byline(r), r.scripture_ref as string)
 	},
 	authors: {
 		label: 'Authors',
 		noun: 'author',
+		titleLabel: 'Name',
 		blurb: 'The people (and imprints) behind the library, with what each still lacks.',
 		columns: [
 			{ field: 'books', label: 'Books' },
@@ -141,6 +147,7 @@ export const CATALOG: Record<CatalogKind, CatalogConfig> = {
 	plans: {
 		label: 'Plans',
 		noun: 'plan',
+		titleLabel: 'Title',
 		blurb: 'Reading plans, one row per language.',
 		columns: [{ field: 'days', label: 'Days' }],
 		statusLabels: PUBLISHED,
@@ -151,6 +158,7 @@ export const CATALOG: Record<CatalogKind, CatalogConfig> = {
 	topics: {
 		label: 'Topics',
 		noun: 'topic',
+		titleLabel: 'Title',
 		blurb: 'Topic shelves and how much each holds. Works are counted once, in any language.',
 		columns: [
 			{ field: 'books', label: 'Books' },
@@ -166,6 +174,7 @@ export const CATALOG: Record<CatalogKind, CatalogConfig> = {
 	articles: {
 		label: 'Articles',
 		noun: 'article',
+		titleLabel: 'Title',
 		blurb: 'Articles, one row per language.',
 		columns: [{ field: 'words', label: 'Words' }],
 		statusLabels: PUBLISHED,
@@ -176,6 +185,7 @@ export const CATALOG: Record<CatalogKind, CatalogConfig> = {
 	quotes: {
 		label: 'Quotes',
 		noun: 'quote',
+		titleLabel: 'Quote',
 		blurb: 'Every sourced quote, with the work it comes from.',
 		columns: [],
 		statusLabels: { reviewed: 'Reviewed', unreviewed: 'Not reviewed' },
@@ -186,6 +196,7 @@ export const CATALOG: Record<CatalogKind, CatalogConfig> = {
 	series: {
 		label: 'Series',
 		noun: 'series',
+		titleLabel: 'Title',
 		blurb: 'Named runs of works, with how far each has got.',
 		columns: [
 			{ field: 'books', label: 'Books' },

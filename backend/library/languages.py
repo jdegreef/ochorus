@@ -182,3 +182,10 @@ def live_codes() -> list[str]:
 @receiver(post_delete, sender=Language)
 def _invalidate_on_change(**_kwargs) -> None:
     invalidate()
+    # The dashboard stats list every registry row, and a language write doesn't
+    # move the content revision their memo is keyed on — so drop it here, where
+    # every write passes (the admin's add/rename, a shell, a seed).
+    from .admin_views.content import STATS_MEMO
+    from .invalidation import forget_cached
+
+    forget_cached("admin", STATS_MEMO)

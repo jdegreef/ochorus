@@ -89,21 +89,45 @@ def flush_deploy() -> golive.DeployResult | None:
     return _fire_deploy(ContentRevision.load().revision, force=True)
 
 
-def revision_cached(alias: str, name: str, compute, *key, timeout: int):
-    """``compute()``, cached in ``caches[alias]`` until content changes.
-
-    The read side of this module's channel: ``ContentRevision`` is in the key,
-    so a change made through ``mark_content_changed`` misses on the very next
-    call, and ``timeout`` bounds what the revision can't see (a raw edit in the
-    Django admin or the SQL editor). ``key`` is whatever the answer depends on
-    beyond the content; it is hashed, so arbitrary reader text (a search query)
-    fits a cache key's length and character budget. ``None`` is cached like any
-    other answer.
-    """
+def _memo_key(name: str, key: tuple) -> str:
     from hashlib import sha256
 
+    return f"{name}:{sha256(repr(key).encode()).hexdigest()}"
+
+
+def revision_cached(alias: str, name: str, compute, *key, timeout: int, refresh: bool = False):
+    """``compute()``, cached in ``caches[alias]`` until content changes.
+
+    The read side of this module's channel: the entry carries the
+    ``ContentRevision`` it was computed at, so a change made through
+    ``mark_content_changed`` misses on the very next call, and ``timeout``
+    bounds what the revision can't see (a raw edit in the Django admin or the
+    SQL editor). ``key`` is whatever the answer depends on beyond the content;
+    it is hashed, so arbitrary reader text (a search query) fits a cache key's
+    length and character budget. ``None`` is cached like any other answer.
+    ``refresh`` recomputes and overwrites (a Refresh / Re-run button).
+
+    The revision rides in the VALUE, not the key, so a content change overwrites
+    the one entry instead of leaving the old revision's beside it — on a
+    file-based alias those piled up until a cull deleted a random third.
+    """
     from django.core.cache import caches
 
-    raw = repr((ContentRevision.current(), *key))
-    cache_key = f"{name}:{sha256(raw.encode()).hexdigest()}"
-    return caches[alias].get_or_set(cache_key, compute, timeout)
+    cache = caches[alias]
+    cache_key = _memo_key(name, key)
+    revision = ContentRevision.current()
+    if not refresh:
+        hit = cache.get(cache_key)
+        if hit is not None and hit[0] == revision:
+            return hit[1]
+    value = compute()
+    cache.set(cache_key, (revision, value), timeout)
+    return value
+
+
+def forget_cached(alias: str, name: str, *key) -> None:
+    """Drop one ``revision_cached`` entry — for a change the content revision
+    doesn't track (a language's registry row) but the memo depends on."""
+    from django.core.cache import caches
+
+    caches[alias].delete(_memo_key(name, key))

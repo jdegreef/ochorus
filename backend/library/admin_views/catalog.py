@@ -19,6 +19,7 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass, field
+from functools import cache
 from typing import Any
 
 from django.db.models import Count, IntegerField, OuterRef, Q, QuerySet, Subquery, Sum
@@ -92,19 +93,19 @@ def _author(a: Author) -> dict:
     return {"slug": a.slug, "name": a.name}
 
 
-def _count(model, fk: str, of: str = "pk") -> Coalesce:
-    """How many ``model`` rows point at the outer row through ``fk`` (counting
-    distinct ``of``), as a correlated subquery.
+def _per_row(model, fk: str, agg) -> Coalesce:
+    """``agg`` over the ``model`` rows pointing at the outer row through ``fk``,
+    as a correlated subquery (0 when there are none).
 
-    Not ``Count("relation")``: two of those on one queryset join both relations
-    at once and count their product — an author with 50 book rows and 500
-    sermons is 25,000 rows before ``distinct`` sorts it out."""
+    Not ``Count("relation")`` on the outer queryset: two of those join both
+    relations at once and count their product — an author with 50 book rows and
+    500 sermons is 25,000 rows before ``distinct`` sorts it out."""
     sub = (
         model.objects.filter(**{fk: OuterRef("pk")})
         .order_by()
         .values(fk)
-        .annotate(c=Count(of, distinct=True))
-        .values("c")
+        .annotate(v=agg)
+        .values("v")
     )
     return Coalesce(Subquery(sub, output_field=IntegerField()), 0)
 
@@ -113,16 +114,9 @@ def _count(model, fk: str, of: str = "pk") -> Coalesce:
 
 
 def _books(qs: QuerySet) -> QuerySet:
-    words = (
-        Chapter.objects.filter(book=OuterRef("pk"))
-        .order_by()
-        .values("book")
-        .annotate(w=Sum("word_count"))
-        .values("w")
-    )
     return qs.select_related("author", "series").annotate(
-        num_chapters=_count(Chapter, "book"),
-        words=Coalesce(Subquery(words, output_field=IntegerField()), 0),
+        num_chapters=_per_row(Chapter, "book", Count("pk")),
+        words=_per_row(Chapter, "book", Sum("word_count")),
     )
 
 
@@ -166,9 +160,9 @@ def _sermon_row(s: Sermon) -> dict:
 
 def _authors(qs: QuerySet) -> QuerySet:
     return qs.annotate(
-        num_books=_count(Book, "author", "slug"),
-        num_sermons=_count(Sermon, "author", "slug"),
-        num_translations=_count(AuthorTranslation, "author"),
+        num_books=_per_row(Book, "author", Count("slug", distinct=True)),
+        num_sermons=_per_row(Sermon, "author", Count("slug", distinct=True)),
+        num_translations=_per_row(AuthorTranslation, "author", Count("pk")),
     )
 
 
@@ -193,7 +187,7 @@ def _author_row(a: Author) -> dict:
 
 
 def _plans(qs: QuerySet) -> QuerySet:
-    return qs.annotate(num_days=_count(PlanDay, "plan"))
+    return qs.annotate(num_days=_per_row(PlanDay, "plan", Count("pk")))
 
 
 def _plan_row(p: Plan) -> dict:
@@ -210,10 +204,10 @@ def _plan_row(p: Plan) -> dict:
 
 def _topics(qs: QuerySet) -> QuerySet:
     return qs.annotate(
-        num_books=_count(TopicBook, "topic"),
-        num_sermons=_count(TopicSermon, "topic"),
-        num_articles=_count(TopicArticle, "topic"),
-        num_translations=_count(TopicTranslation, "topic"),
+        num_books=_per_row(TopicBook, "topic", Count("pk")),
+        num_sermons=_per_row(TopicSermon, "topic", Count("pk")),
+        num_articles=_per_row(TopicArticle, "topic", Count("pk")),
+        num_translations=_per_row(TopicTranslation, "topic", Count("pk")),
     )
 
 
@@ -280,8 +274,8 @@ def _quote_row(q: Quote) -> dict:
 
 def _series(qs: QuerySet) -> QuerySet:
     return qs.annotate(
-        num_books=_count(Book, "series", "slug"),
-        num_translations=_count(SeriesTranslation, "series"),
+        num_books=_per_row(Book, "series", Count("slug", distinct=True)),
+        num_translations=_per_row(SeriesTranslation, "series", Count("pk")),
     )
 
 
@@ -417,6 +411,16 @@ KINDS: dict[str, Kind] = {
 }
 
 
+@cache
+def _derived(kind: str) -> frozenset[str]:
+    """The fields a kind's ``decorate`` adds — what ordering by needs it."""
+    spec = KINDS[kind]
+    plain = spec.queryset()
+    return frozenset(spec.decorate(plain).query.annotations) - set(
+        plain.query.annotations
+    )
+
+
 def _int(raw, default: int, lo: int, hi: int) -> int:
     try:
         return max(lo, min(hi, int(raw)))
@@ -470,7 +474,16 @@ class AdminCatalogView(APIView):
             ]
             if language:
                 qs = qs.filter(**{spec.language: language})
-        statuses = {key: qs.filter(cond).count() for key, cond in spec.statuses.items()}
+        # The total and every status pill's count in one query: each re-runs the
+        # whole filter (a quote search is a LIKE over every quote's text).
+        counts = qs.aggregate(
+            total=Count("pk", filter=status_q) if status_q is not None else Count("pk"),
+            **{
+                f"status_{key}": Count("pk", filter=cond)
+                for key, cond in spec.statuses.items()
+            },
+        )
+        statuses = {key: counts[f"status_{key}"] for key in spec.statuses}
         if status_q is not None:
             qs = qs.filter(status_q)
 
@@ -479,7 +492,7 @@ class AdminCatalogView(APIView):
             if params.get("sort") in spec.sorts
             else next(iter(spec.sorts))
         )
-        total = qs.count()
+        total = counts["total"]
         page_size = _int(params.get("page_size"), PAGE_SIZE, 1, MAX_PAGE_SIZE)
         pages = max(1, -(-total // page_size))
         page = _int(params.get("page"), 1, 1, pages)
@@ -489,7 +502,7 @@ class AdminCatalogView(APIView):
         # cost ~2 s on the books list. A sort BY one of them has to compute it
         # for every row to order them, so only that case orders the decorated set.
         order = spec.sorts[sort]
-        derived = set(spec.decorate(qs).query.annotations) - set(qs.query.annotations)
+        derived = _derived(kind)
         ordered = (
             spec.decorate(qs) if any(f.lstrip("-") in derived for f in order) else qs
         )
@@ -498,7 +511,7 @@ class AdminCatalogView(APIView):
                 start : start + page_size
             ]
         )
-        by_pk = {r.pk: r for r in spec.decorate(qs.filter(pk__in=pks))}
+        by_pk = {r.pk: r for r in spec.decorate(spec.queryset().filter(pk__in=pks))}
         rows = [by_pk[pk] for pk in pks]
 
         return Response(

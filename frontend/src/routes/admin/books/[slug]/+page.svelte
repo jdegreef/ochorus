@@ -7,7 +7,7 @@
 	import QueueFixButton from '$lib/components/QueueFixButton.svelte';
 	import ReachCurve from '$lib/components/ReachCurve.svelte';
 	import PublishToggle from '$lib/components/PublishToggle.svelte';
-	import { type SourceType } from '$lib/library-public';
+	import { SOURCE_LABELS } from '$lib/adminCatalog';
 	import {
 		adminChapterId,
 		adminEditionId,
@@ -93,11 +93,6 @@
 		}
 	}
 
-	const SOURCE_LABEL: Record<SourceType, string> = {
-		public_domain: 'Public domain',
-		ai_reviewed: 'AI · reviewed',
-		ai_unreviewed: 'AI · unreviewed'
-	};
 </script>
 
 <svelte:head><title>Admin · {book?.title ?? data.slug} — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
@@ -140,7 +135,7 @@
 								<h2 class="text-h3">{l.native_name} <span class="text-muted">· {l.name} ({l.code})</span></h2>
 								<p class="mt-1 text-body text-text">{l.title}{#if l.subtitle}<span class="text-muted"> — {l.subtitle}</span>{/if}</p>
 								<div class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-small text-muted">
-									<span>{SOURCE_LABEL[l.source_type]}</span>
+									<span>{SOURCE_LABELS[l.source_type]}</span>
 									<span>· {fmt(l.chapters.length)} ch · {fmt(l.word_count)} words</span>
 									{#if published(l)}<span class="text-accent">· live on site</span>{:else}<span class="text-warning">· unpublished</span>{/if}
 								</div>

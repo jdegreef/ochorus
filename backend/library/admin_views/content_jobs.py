@@ -44,7 +44,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import allowed_languages, requires
+from accounts.permissions import requires
 
 from ..admin_cache import forget, read_through
 from ..audit import AdminAudited
@@ -52,6 +52,7 @@ from ..content_audit import QUALITY_CHAPTER_CHECKS, dismissed_fingerprints
 from ..languages import entry as language_entry
 from ..languages import known_codes
 from ..models import AdminAction, Author, Book, Chapter
+from .jobs import queue_response
 from .quality import AdminAuditView
 
 GITHUB_API = os.getenv("GITHUB_API_BASE", "https://api.github.com")
@@ -199,27 +200,12 @@ class AdminContentEditJobsView(AdminAudited, APIView):
     def get(self, request):
         if not settings.GITHUB_TRANSLATION_TOKEN:
             return Response({"configured": False, "jobs": []})
-        # Cached like the translation queue (``admin_cache.read_through``); the
-        # duplicate-press guard in ``post`` still reads GitHub fresh.
-        try:
-            read = read_through(QUEUE_KEY, _list_open_jobs, fresh_seconds=QUEUE_SECONDS)
-        except requests.RequestException:
-            return Response(
-                {"detail": "GitHub is unreachable — try again shortly."},
-                status=status.HTTP_502_BAD_GATEWAY,
-            )
-        jobs = read.value
-        # Least privilege: a language-scoped user sees only their languages' jobs.
-        allowed = allowed_languages(request, AdminCapability.CONTENT_EDIT, AdminVerb.VIEW)
-        if allowed is not None:
-            jobs = [j for j in jobs if j["language"] in allowed]
-        return Response(
-            {
-                "configured": True,
-                "jobs": jobs,
-                "read_at": read.read_at.isoformat(),
-                "stale": read.stale,
-            }
+        # Cached like the translation queue; the duplicate-press guard in
+        # ``post`` still reads GitHub fresh.
+        return queue_response(
+            request,
+            lambda: read_through(QUEUE_KEY, _list_open_jobs, fresh_seconds=QUEUE_SECONDS),
+            AdminCapability.CONTENT_EDIT,
         )
 
     def post(self, request):

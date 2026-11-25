@@ -9,12 +9,14 @@ from django.test import SimpleTestCase, TestCase, override_settings
 from rest_framework.test import APIClient
 
 from . import admin_cache
+from .invalidation import forget_cached, revision_cached
 from .models import (
     Article,
     Author,
     AuthorTranslation,
     Book,
     Chapter,
+    Language,
     Plan,
     Quote,
     Sermon,
@@ -188,6 +190,15 @@ class AdminCacheTests(SimpleTestCase):
             (down.value, down.stale, down.read_at), (["job"], True, first.read_at)
         )
 
+        # Within the retry window GitHub isn't asked again: still the stale copy.
+        state[0] = ["recovered"]
+        again = admin_cache.read_through("k", fetcher, fresh_seconds=60)
+        self.assertEqual((again.value, again.stale), (["job"], True))
+        # The next real read replaces it and clears the flag.
+        admin_cache.forget("k")
+        ok = admin_cache.read_through("k", fetcher, fresh_seconds=60)
+        self.assertEqual((ok.value, ok.stale), (["recovered"], False))
+
     def test_read_through_raises_with_nothing_to_fall_back_on(self):
         def fetcher():
             raise requests.ConnectionError("down")
@@ -195,25 +206,43 @@ class AdminCacheTests(SimpleTestCase):
         with self.assertRaises(requests.RequestException):
             admin_cache.read_through("cold", fetcher, fresh_seconds=60)
 
-    def test_revision_memo_follows_the_content_revision(self):
+    def test_revision_cached_follows_the_content_revision(self):
         calls = []
 
         def compute():
             calls.append(1)
             return {"n": len(calls)}
 
+        def memo(**kw):
+            return revision_cached("admin", "s", compute, timeout=60, **kw)
+
         with patch("library.models.ContentRevision.current", return_value=1):
-            self.assertEqual(
-                admin_cache.revision_memo("s", compute, timeout=60), {"n": 1}
-            )
-            self.assertEqual(
-                admin_cache.revision_memo("s", compute, timeout=60), {"n": 1}
-            )
-            self.assertEqual(
-                admin_cache.revision_memo("s", compute, timeout=60, refresh=True),
-                {"n": 2},
-            )
+            self.assertEqual(memo(), {"n": 1})
+            self.assertEqual(memo(), {"n": 1})
+            self.assertEqual(memo(refresh=True), {"n": 2})
         with patch("library.models.ContentRevision.current", return_value=2):
-            self.assertEqual(
-                admin_cache.revision_memo("s", compute, timeout=60), {"n": 3}
-            )
+            self.assertEqual(memo(), {"n": 3})
+            # A new revision overwrites the one entry rather than adding a second.
+            self.assertEqual(len(caches["admin"]._cache), 1)
+            forget_cached("admin", "s")
+            self.assertEqual(memo(), {"n": 4})
+
+
+@override_settings(DEBUG=True, CACHES=_LOCMEM)
+class StatsMemoTests(TestCase):
+    def setUp(self):
+        caches["admin"].clear()
+
+    def test_a_language_write_drops_the_stats_memo(self):
+        client = APIClient()
+        before = {
+            lang["code"] for lang in client.get("/api/admin/stats/").data["languages"]
+        }
+        self.assertNotIn("zz", before)
+        # Not a content change (the revision doesn't move), but the registry is
+        # what the dashboard's language rows are seeded from.
+        Language.objects.create(code="zz", name="Zed", native_name="Zed")
+        after = {
+            lang["code"] for lang in client.get("/api/admin/stats/").data["languages"]
+        }
+        self.assertIn("zz", after)

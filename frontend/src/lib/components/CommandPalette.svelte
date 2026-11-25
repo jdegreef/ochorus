@@ -24,7 +24,8 @@
 	import { paletteUi } from '$lib/paletteUi.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { ADMIN_SECTIONS, opensSection } from '$lib/adminSections';
-	import { adminListHref, adminWorkHref, type AdminListKind } from '$lib/adminLinks';
+	import { adminListHref, adminWorkHref } from '$lib/adminLinks';
+	import type { CatalogKind } from '$lib/adminCatalog';
 
 	const t = i18n.t;
 
@@ -105,7 +106,7 @@
 		canOpenWork ? adminWorkHref(kind, slug) : undefined;
 	// A kind with no admin page of its own opens its admin list, searched for
 	// the hit — the same reporting gate as the work pages.
-	const adminList = (kind: AdminListKind, q: string) =>
+	const adminList = (kind: CatalogKind, q: string) =>
 		canOpenWork ? adminListHref(kind, q) : undefined;
 
 	function hitItem(h: SearchHit): Item {
