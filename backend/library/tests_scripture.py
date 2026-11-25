@@ -88,20 +88,22 @@ class ScriptureTests(TestCase):
         self.assertEqual(lookup("Psalm 13:6")["verses"][0]["number"], 5)
 
     def test_lookup_falls_back_to_the_asv_and_says_so(self):
-        # OWB's Greek ends Romans at 16:24; the reader still gets the
-        # doxology, under the label of the Bible it actually came from, and a
-        # range running into it is the ASV's whole rather than cut short.
+        # OWB follows a Hebrew text without Nehemiah 7:68, which many Hebrew
+        # manuscripts lack and the ASV prints; the reader still gets the verse,
+        # under the label of the Bible it actually came from, and a range
+        # running into it is the ASV's whole rather than cut short. (Romans
+        # 16:25-27, the example until OWB added the doxology, is OWB's now.)
         from library.scripture import lookup, reader_verse, verse_text
 
-        self.assertEqual(verse_text(45016025), "")
-        data = lookup("Romans 16:25")
+        self.assertEqual(verse_text(16007068), "")
+        data = lookup("Nehemiah 7:68")
         self.assertEqual(data["version"], "American Standard Version")
         self.assertTrue(data["verses"][0]["text"])
-        data = lookup("Romans 16:20-27")
+        data = lookup("Nehemiah 7:67-69")
         self.assertEqual(data["version"], "American Standard Version")
-        # (The ASV, in its turn, leaves out 16:24.)
-        self.assertEqual([v["number"] for v in data["verses"]], [20, 21, 22, 23, 25, 26, 27])
-        self.assertEqual(reader_verse(45016025)[1], "American Standard Version")
+        self.assertEqual([v["number"] for v in data["verses"]], [67, 68, 69])
+        self.assertEqual(reader_verse(16007068)[1], "American Standard Version")
+        self.assertEqual(reader_verse(45016025)[1], "Open Word Bible")
         self.assertEqual(reader_verse(43003016)[1], "Open Word Bible")
 
     def test_lookup_skips_a_verse_neither_bible_has(self):

@@ -8,11 +8,13 @@
  * read still goes to the resolver and then to search on submit, as before.
  *
  * The names are the canon's in the hub's language ($lib/bibleNames) and a few
- * common short forms; a Spanish reader's box also takes the English names.
+ * common short forms; a Spanish, French or Portuguese reader's box also takes
+ * the English names.
  * Accents are optional ("Genesis", "Exodo").
  */
 import { CANON } from '$lib/sermonCanon';
 import { canonIn } from '$lib/bibleNames';
+import { bibleIn, type BibleLocale } from '$lib/bibleLocales';
 import { bibleChapterCount, bibleChapterOrder } from '$lib/bible';
 import { chapterLabel } from '$lib/bibleNames';
 import { bookChapterPath } from '$lib/reading-schema';
@@ -67,14 +69,17 @@ export function quickPassages(books: readonly HubBook[], lang: string): PassageL
 	});
 }
 
-/** A name squashed for matching: lower case, no accents, dots or spaces
- *  ("1 Cor." → "1cor", "Éxodo" → "exodo"). */
-const squash = (s: string) =>
+/** A name folded for matching: lower case, no dots or spaces, accents kept
+ *  ("1 Cor." → "1cor", "Jó" → "jó"). */
+const fold = (s: string) =>
 	s
-		.normalize('NFD')
-		.replace(/\p{M}/gu, '')
+		.normalize('NFC')
 		.toLowerCase()
 		.replace(/[.\s]/g, '');
+
+/** A folded name without its accents ("éxodo" → "exodo"): what a reader who
+ *  skips them types. */
+const bare = (s: string) => s.normalize('NFD').replace(/\p{M}/gu, '').normalize('NFC');
 
 /** Short forms beyond the canon's own abbreviation, by canon position. */
 const ALIASES: Record<number, readonly string[]> = {
@@ -102,17 +107,44 @@ const ALIASES_ES: Record<number, readonly string[]> = {
 	66: ['Apoc', 'Revelación']
 };
 
+/** French short forms the canon's own names do not begin: the older or
+ *  Catholic names (Isaïe, Nahum, Haggaï) and the long titles. */
+const ALIASES_FR: Record<number, readonly string[]> = {
+	22: ['Cantique de Salomon'],
+	23: ['Isaïe'],
+	34: ['Nahum'],
+	37: ['Haggaï'],
+	44: ['Actes des Apôtres'],
+	66: ['Révélation']
+};
+
+/** Portuguese short forms the canon's own names do not begin: the spellings
+ *  before the 1990 agreement (Oséias, Miquéias) and the long titles. */
+const ALIASES_PT: Record<number, readonly string[]> = {
+	22: ['Cânticos', 'Cantares'],
+	28: ['Oséias'],
+	33: ['Miquéias'],
+	44: ['Atos dos Apóstolos'],
+	57: ['Filemon'],
+	66: ['Revelação']
+};
+
 type Names = readonly (readonly [position: number, names: readonly string[]])[];
 
-/** Every name each canon position goes by, squashed. */
+/** Every name each canon position goes by, folded. */
 const namesOf = (canon: typeof CANON, aliases: Record<number, readonly string[]>, also?: Names): Names =>
 	canon.map(
 		([name, abbr], i) =>
-			[i + 1, [name, abbr, ...(aliases[i + 1] ?? [])].map(squash).concat(also?.[i][1] ?? [])] as const
+			[i + 1, [name, abbr, ...(aliases[i + 1] ?? [])].map(fold).concat(also?.[i][1] ?? [])] as const
 	);
 const NAMES_EN = namesOf(CANON, ALIASES);
-/** A hub locale's names, by locale: Spanish adds the English ones. */
-const NAMES: Record<string, Names> = { en: NAMES_EN, es: namesOf(canonIn('es'), ALIASES_ES, NAMES_EN) };
+/** A hub locale's names, by locale: each adds the English ones. */
+const NAMES: Readonly<Record<BibleLocale, Names>> = {
+	en: NAMES_EN,
+	es: namesOf(canonIn('es'), ALIASES_ES, NAMES_EN),
+	fr: namesOf(canonIn('fr'), ALIASES_FR, NAMES_EN),
+	pt: namesOf(canonIn('pt'), ALIASES_PT, NAMES_EN)
+};
 
 /**
  * The edit distance between two short strings, counting two swapped letters
@@ -132,19 +164,27 @@ function distance(a: string, b: string): number {
 }
 
 /**
- * The canon positions a typed book name could mean, best first: names it
- * begins (in canon order), else — for a name of four letters or more that
- * begins none — the books one or two typos away ("Roamns", "Phillipians"),
- * unless `fuzzy` is false.
+ * The canon positions a typed book name could mean, best first: a name it is
+ * exactly (with its accents, then without: Portuguese "Jo" is João, "Jó" is
+ * Job), then names it begins, each in canon order; else, for a name of four
+ * letters or more that begins none, the books one or two typos away
+ * ("Roamns", "Phillipians"), unless `fuzzy` is false.
  */
 export function matchBooks(token: string, lang: string, fuzzy = true): number[] {
-	const q = squash(token);
+	const q = fold(token);
 	if (!q) return [];
-	const names = NAMES[lang] ?? NAMES_EN;
-	const prefix = names.filter(([, names]) => names.some((n) => n.startsWith(q))).map(([p]) => p);
-	if (prefix.length || q.length < 4 || !fuzzy) return prefix;
-	const close = names.map(([p, names]) => [p, Math.min(...names.map((n) => distance(q, n)))] as const)
-		.filter(([, d]) => d <= (q.length >= 7 ? 2 : 1))
+	const qb = bare(q);
+	const names = bibleIn(lang) ? NAMES[lang] : NAMES_EN;
+	const rank = (ns: readonly string[]) =>
+		ns.includes(q) ? 0 : ns.some((n) => bare(n) === qb) ? 1 : ns.some((n) => bare(n).startsWith(qb)) ? 2 : 3;
+	const prefix = names
+		.map(([p, ns]) => [p, rank(ns)] as const)
+		.filter(([, r]) => r < 3)
+		.sort((a, b) => a[1] - b[1] || a[0] - b[0])
+		.map(([p]) => p);
+	if (prefix.length || qb.length < 4 || !fuzzy) return prefix;
+	const close = names.map(([p, ns]) => [p, Math.min(...ns.map((n) => distance(qb, bare(n))))] as const)
+		.filter(([, d]) => d <= (qb.length >= 7 ? 2 : 1))
 		.sort((a, b) => a[1] - b[1] || a[0] - b[0]);
 	return close.map(([p]) => p);
 }
