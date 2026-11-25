@@ -170,10 +170,9 @@
   },
   {
    "reference": "Psalm 141:3",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 3,
-   "source_file": "clothed-with-strength-and-dignity.am.json"
+   "chapter_order": 3
   },
   {
    "reference": "Acts 2:2",

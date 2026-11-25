@@ -588,17 +588,15 @@
   },
   {
    "reference": "Psalm 119:11",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 27,
-   "source_file": "clothed-with-strength-and-dignity.am.json"
+   "chapter_order": 27
   },
   {
    "reference": "Psalm 119:11",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 15,
-   "chapter_order": 27,
-   "source_file": "clothed-with-strength-and-dignity.am.json"
+   "chapter_order": 27
   },
   {
    "reference": "James 1:22-24",
