@@ -11,10 +11,9 @@
  "references": [
   {
    "reference": "Matthew 28:19-20",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 1,
-   "source_file": "rooted-2.am.json"
+   "chapter_order": 1
   },
   {
    "reference": "Acts 1:8",
@@ -52,10 +51,9 @@
   },
   {
    "reference": "Matthew 28:20",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 2,
-   "source_file": "rooted-2.am.json"
+   "chapter_order": 2
   },
   {
    "reference": "Job 23:10",
@@ -381,10 +379,9 @@
   },
   {
    "reference": "Matthew 28:20",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 12,
-   "source_file": "rooted-2.am.json"
+   "chapter_order": 12
   },
   {
    "reference": "John 20:21",
@@ -402,10 +399,9 @@
   },
   {
    "reference": "Matthew 28:19-20",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 13,
-   "source_file": "rooted-2.am.json"
+   "chapter_order": 13
   },
   {
    "reference": "Acts 1:8",
@@ -436,10 +432,9 @@
   },
   {
    "reference": "Matthew 28:20",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 13,
-   "source_file": "rooted-2.am.json"
+   "chapter_order": 13
   },
   {
    "reference": "Job 23:10",
@@ -488,10 +483,9 @@
   },
   {
    "reference": "Matthew 28:20",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 13,
-   "source_file": "rooted-2.am.json"
+   "chapter_order": 13
   },
   {
    "reference": "Acts 2:17-18",
@@ -618,10 +612,9 @@
   },
   {
    "reference": "Matthew 28:20",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 43,
-   "chapter_order": 13,
-   "source_file": "rooted-2.am.json"
+   "chapter_order": 13
   },
   {
    "reference": "2 Timothy 2:2",
@@ -720,10 +713,9 @@
   },
   {
    "reference": "Matthew 28:20",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 62,
-   "chapter_order": 13,
-   "source_file": "rooted-2.am.json"
+   "chapter_order": 13
   },
   {
    "reference": "John 20:21",
