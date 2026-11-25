@@ -150,10 +150,10 @@
   },
   {
    "reference": "Psalms 104:27",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 6,
    "chapter_order": 4,
-   "source_file": "confessions.am.json"
+   "why": "wording first borrowed from confessions.am.json, which now quotes OWB; this work keeps the earlier wording until its own OWB re-quote"
   },
   {
    "reference": "2 Corinthians 4:7",
