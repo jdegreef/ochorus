@@ -143,10 +143,9 @@
   },
   {
    "reference": "Jeremiah 9:23",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 13,
-   "source_file": "the-unselfishness-of-god.am.json"
+   "chapter_order": 13
   },
   {
    "reference": "Isaiah 66:2",
