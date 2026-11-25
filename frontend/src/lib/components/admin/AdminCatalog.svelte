@@ -23,7 +23,8 @@
 		type CatalogQuery,
 		type CatalogRow
 	} from '$lib/adminCatalog';
-	import { getAdminCatalog } from '$lib/library-admin';
+	import { auth } from '$lib/auth.svelte';
+	import { getAdminCatalog, setBulkPublished } from '$lib/library-admin';
 	import { hrefInLocale } from '$lib/editionHref';
 	import { nameOfLanguage } from '$lib/languageNames';
 
@@ -87,6 +88,60 @@
 	// A row with a language opens in that language's pages; a language-agnostic
 	// kind (authors, topics, series) on the English ones.
 	const siteHref = (r: CatalogRow) => hrefInLocale(cfg.siteHref(r), r.language || 'en');
+	// ---- bulk publish (books and sermons) ----
+	// Shown to anyone with a publish grant in some language; the server checks
+	// each edition against the grant's languages and skips the rest with a reason.
+	const bulkKind = $derived(cfg.bulkPublish && auth.can('publish', 'act') ? cfg.bulkPublish : null);
+	const rowKey = (r: CatalogRow) => `${r.slug}:${r.language ?? ''}`;
+	// Tied to the URL it was made on: a new filter, sort or page is a new list,
+	// so the selection simply stops applying (no effect clearing it).
+	let selection = $state<{ url: string; rows: Record<string, CatalogRow> }>({ url: '', rows: {} });
+	const selected = $derived(selection.url === $page.url.search ? selection.rows : {});
+	const selectedRows = $derived(Object.values(selected));
+	function toggleRow(r: CatalogRow, on: boolean) {
+		const rows = { ...selected };
+		if (on) rows[rowKey(r)] = r;
+		else delete rows[rowKey(r)];
+		selection = { url: $page.url.search, rows };
+	}
+	function toggleAll(rows: CatalogRow[], on: boolean) {
+		selection = {
+			url: $page.url.search,
+			rows: on ? Object.fromEntries(rows.map((r) => [rowKey(r), r])) : {}
+		};
+	}
+	let confirming = $state<boolean | null>(null); // the `published` value awaiting confirm
+	let bulkBusy = $state(false);
+	let bulkMessage = $state('');
+	async function runBulk(published: boolean) {
+		if (!bulkKind) return;
+		bulkBusy = true;
+		bulkMessage = '';
+		try {
+			const out = await setBulkPublished(
+				bulkKind,
+				selectedRows.map((r) => ({ slug: r.slug, language: r.language ?? '' })),
+				published
+			);
+			const verb = published ? 'Published' : 'Unpublished';
+			const parts = [`${verb} ${out.changed.length}`];
+			if (out.unchanged.length) parts.push(`${out.unchanged.length} already were`);
+			if (out.skipped.length)
+				parts.push(
+					`${out.skipped.length} skipped — ` +
+						out.skipped.map((i) => `${i.slug} (${i.language}): ${i.reason}`).join('; ')
+				);
+			bulkMessage = parts.join(' · ') + '.';
+			selection = { url: '', rows: {} };
+			void res.load();
+		} catch (e) {
+			bulkMessage = e instanceof Error ? e.message : 'Could not change them.';
+		} finally {
+			bulkBusy = false;
+			confirming = null;
+		}
+	}
+
 	const pill = (on: boolean) =>
 		`rounded-full px-3 py-1 text-small ${on ? 'bg-accent-soft text-text' : 'text-muted hover:text-text'}`;
 </script>
@@ -197,11 +252,81 @@
 
 				{#if res.error}<p class="mb-3 text-body text-warning">{res.error}</p>{/if}
 
+				{#if bulkKind && (selectedRows.length || bulkMessage)}
+					<div
+						class="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2 rounded-sm bg-surface-2 px-3 py-2 text-small"
+						aria-live="polite"
+					>
+						{#if selectedRows.length}
+							<span class="font-semibold text-text">
+								{countLabel(selectedRows.length, cfg.noun)} selected
+							</span>
+							{#if confirming === null}
+								<button
+									type="button"
+									class="btn btn-sm btn-ghost"
+									onclick={() => (confirming = true)}
+								>
+									Publish
+								</button>
+								<button
+									type="button"
+									class="btn btn-sm btn-ghost"
+									onclick={() => (confirming = false)}
+								>
+									Unpublish
+								</button>
+								<button
+									type="button"
+									class="text-muted hover:text-text"
+									onclick={() => toggleAll([], false)}
+								>
+									Clear
+								</button>
+							{:else}
+								<span class="text-text">
+									{confirming ? 'Publish' : 'Unpublish'}
+									{countLabel(selectedRows.length, cfg.noun)}?
+									{#if !confirming}They disappear from the site at once.{/if}
+								</span>
+								<button
+									type="button"
+									class="btn btn-sm btn-primary"
+									disabled={bulkBusy}
+									aria-busy={bulkBusy ? 'true' : undefined}
+									onclick={() => runBulk(confirming!)}
+								>
+									{#if bulkBusy}<span class="btn-spinner" aria-hidden="true"></span>{/if}Confirm
+								</button>
+								<button
+									type="button"
+									class="text-muted hover:text-text"
+									onclick={() => (confirming = null)}
+								>
+									Cancel
+								</button>
+							{/if}
+						{/if}
+						{#if bulkMessage}<span class="text-muted">{bulkMessage}</span>{/if}
+					</div>
+				{/if}
+
 				{#if d.results.length}
 					<div class="overflow-x-auto">
 						<table class="w-full text-start text-small">
 							<thead class="text-micro uppercase text-muted">
 								<tr class="border-b border-border">
+									{#if bulkKind}
+										<th class="w-8 py-2">
+											<input
+												type="checkbox"
+												aria-label="Select every {cfg.noun} on this page"
+												checked={selectedRows.length > 0 &&
+													selectedRows.length === d.results.length}
+												onchange={(e) => toggleAll(d.results, e.currentTarget.checked)}
+											/>
+										</th>
+									{/if}
 									<th class="py-2 text-start font-semibold">
 										{cfg.titleLabel}
 									</th>
@@ -225,6 +350,16 @@
 							<tbody class="divide-y divide-border">
 								{#each d.results as r (`${r.slug}:${r.language ?? ''}`)}
 									<tr class="align-top hover:bg-surface-2">
+										{#if bulkKind}
+											<td class="py-2">
+												<input
+													type="checkbox"
+													aria-label="Select {r.title} ({r.language})"
+													checked={rowKey(r) in selected}
+													onchange={(e) => toggleRow(r, e.currentTarget.checked)}
+												/>
+											</td>
+										{/if}
 										<td class="py-2 pe-3">
 											{#if cfg.adminHref}
 												<a

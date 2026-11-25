@@ -194,6 +194,11 @@ urlpatterns = [
         name="admin-import-publish",
     ),
     path(
+        "api/admin/publish/bulk/",
+        lazy_view("library.admin_views.detail", "AdminBulkPublishView"),
+        name="admin-bulk-publish",
+    ),
+    path(
         "api/admin/books/<slug:slug>/publish/",
         lazy_view("library.admin_views.detail", "AdminBookPublishView"),
         name="admin-book-publish",

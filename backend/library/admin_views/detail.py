@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import requires
+from accounts.permissions import allowed_languages, requires
 
 from .. import dropoff, invalidation, job_status
 from ..audit import AdminAudited
@@ -169,6 +169,26 @@ def _untranslated(type_: str, slug: str, present: set[str]) -> dict:
     return {"blocked": translation_blocked(type_, slug), "languages": rows}
 
 
+def publish_refusal(model, slug: str, published: bool) -> str | None:
+    """Why ``slug`` may not be published, or None. Only publishing is ever
+    refused — unpublishing stays open (it is the takedown lever).
+
+    A publish grant is not a rights clearance (``COPYRIGHT_BLOCKED_SLUGS``), and
+    a retired duplicate's URLs forward to its successor (``RETIRED_BOOKS``), so
+    a published edition of one would be unreachable. Books only: neither list
+    names a sermon. Shared by the one-edition toggle and the bulk endpoint."""
+    if not published or model is not Book:
+        return None
+    if slug in COPYRIGHT_BLOCKED_SLUGS:
+        return f"“{slug}” is under copyright and cannot be published."
+    if slug in RETIRED_BOOKS:
+        return (
+            f"“{slug}” is retired as a duplicate of “{RETIRED_BOOKS[slug][0]}” "
+            "and cannot be published."
+        )
+    return None
+
+
 @requires(AdminCapability.PUBLISH, verb=AdminVerb.ACT, language_arg="language")
 class _EditionPublishView(AdminAudited, APIView):
     """Publish or unpublish one language edition of a per-language work.
@@ -191,13 +211,6 @@ class _EditionPublishView(AdminAudited, APIView):
 
     model = None
     target_kind = ""
-    #: Slugs that may never be published in any language, whoever asks — a
-    #: publish grant is not a rights clearance (see
-    #: ``corrections.COPYRIGHT_BLOCKED_SLUGS``). Unpublishing stays open.
-    blocked_slugs: frozenset[str] = frozenset()
-    #: Retired duplicates, by successor (``corrections.RETIRED_BOOKS``): the
-    #: reader forwards their URLs, so a published edition would be unreachable.
-    retired: dict[str, tuple[str, int]] = {}
 
     def audit_action_for(self, request):
         return (
@@ -227,17 +240,9 @@ class _EditionPublishView(AdminAudited, APIView):
         language, published = self._parse(request.data)
         if not language:
             return Response({"detail": "A language is required."}, status=400)
-        if published and slug in self.blocked_slugs:
-            return Response(
-                {"detail": f"“{slug}” is under copyright and cannot be published."},
-                status=409,
-            )
-        if published and slug in self.retired:
-            return Response(
-                {"detail": f"“{slug}” is retired as a duplicate of "
-                           f"“{self.retired[slug][0]}” and cannot be published."},
-                status=409,
-            )
+        refusal = publish_refusal(self.model, slug, published)
+        if refusal:
+            return Response({"detail": refusal}, status=409)
         obj = self.model.objects.filter(slug=slug, language=language).first()
         if obj is None:
             return Response(
@@ -259,8 +264,6 @@ class AdminBookPublishView(_EditionPublishView):
 
     model = Book
     target_kind = "book"
-    blocked_slugs = COPYRIGHT_BLOCKED_SLUGS
-    retired = RETIRED_BOOKS
 
 
 class AdminSermonPublishView(_EditionPublishView):
@@ -268,6 +271,95 @@ class AdminSermonPublishView(_EditionPublishView):
 
     model = Sermon
     target_kind = "sermon"
+
+
+#: How many editions one bulk request may touch — a page of a list, not the library.
+BULK_PUBLISH_MAX = 200
+_BULK_MODELS = {"book": Book, "sermon": Sermon}
+
+
+@requires(AdminCapability.PUBLISH, verb=AdminVerb.ACT)
+class AdminBulkPublishView(AdminAudited, APIView):
+    """Publish or unpublish many editions at once, from the admin lists.
+
+    ``POST /api/admin/publish/bulk/`` with ``{kind: book|sermon, published,
+    items: [{slug, language}]}``. Each item is held to the same rules as the
+    one-edition toggle (:class:`_EditionPublishView`): the caller's publish
+    grant must cover its language, and :func:`publish_refusal` applies. An item
+    that fails one is skipped with its reason rather than failing the batch —
+    the answer is 207 when any was. One ``mark_content_changed`` for the lot,
+    and one audit row per edition that actually changed (``audit_entries``), so
+    each edition's History shows it.
+    """
+
+    def audit_action_for(self, request):
+        return (
+            AdminAction.Action.CONTENT_PUBLISH
+            if _EditionPublishView._parse(request.data)[1]
+            else AdminAction.Action.CONTENT_UNPUBLISH
+        )
+
+    def audit_entries(self, request, response):
+        kind = response.data["kind"]
+        published = response.data["published"]
+        return [
+            (f"{kind}:{i['slug']}:{i['language']}", {"is_published": published, "bulk": True})
+            for i in response.data["changed"]
+        ]
+
+    def post(self, request):
+        kind = str(request.data.get("kind", "")).strip()
+        model = _BULK_MODELS.get(kind)
+        if model is None:
+            return Response({"detail": "kind must be book or sermon."}, status=400)
+        items = request.data.get("items")
+        if not isinstance(items, list) or not items:
+            return Response({"detail": "items must be a non-empty list."}, status=400)
+        if len(items) > BULK_PUBLISH_MAX:
+            return Response(
+                {"detail": f"At most {BULK_PUBLISH_MAX} editions at a time."}, status=400
+            )
+        published = _EditionPublishView._parse(request.data)[1]
+        allowed = allowed_languages(request, AdminCapability.PUBLISH, AdminVerb.ACT)
+
+        changed, unchanged, skipped = [], [], []
+        seen: set[tuple[str, str]] = set()
+        for raw in items:
+            slug = str((raw or {}).get("slug", "")).strip()
+            language = str((raw or {}).get("language", "")).strip()
+            if not slug or not language or (slug, language) in seen:
+                continue
+            seen.add((slug, language))
+            item = {"slug": slug, "language": language}
+            if allowed is not None and language not in allowed:
+                skipped.append({**item, "reason": "Your publish access doesn't cover this language."})
+                continue
+            refusal = publish_refusal(model, slug, published)
+            if refusal:
+                skipped.append({**item, "reason": refusal})
+                continue
+            obj = model.objects.filter(slug=slug, language=language).first()
+            if obj is None:
+                skipped.append({**item, "reason": "No such edition."})
+            elif obj.is_published == published:
+                unchanged.append(item)
+            else:
+                obj.is_published = published
+                # update_fields, as the toggle: a bare save() re-tokenises the text.
+                obj.save(update_fields=["is_published"])
+                changed.append(item)
+        if changed:
+            invalidation.mark_content_changed()
+        return Response(
+            {
+                "kind": kind,
+                "published": published,
+                "changed": changed,
+                "unchanged": unchanged,
+                "skipped": skipped,
+            },
+            status=207 if skipped else 200,
+        )
 
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)

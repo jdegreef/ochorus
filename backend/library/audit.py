@@ -73,14 +73,20 @@ class AdminAudited:
         """
         return "", {}
 
+    def audit_entries(self, request, response) -> list[tuple[str, dict]]:
+        """Every ``(target, detail)`` this request should record — one row each.
+
+        One by default (:meth:`audit_entry`). A batch endpoint overrides this
+        so each edition it changed gets its own row, and so its own History —
+        a single "12 items" row would leave every edition's history silent."""
+        return [self.audit_entry(request, response)]
+
     def finalize_response(self, request, response, *args, **kwargs):
         response = super().finalize_response(request, response, *args, **kwargs)
         if request.method in WRITE_METHODS and 200 <= response.status_code < 300:
-            target, detail = self.audit_entry(request, response)
-            AdminAction.objects.create(
-                action=self.audit_action_for(request),
-                actor=actor_email(request),
-                target=target[:200],
-                detail=detail or {},
+            action, actor = self.audit_action_for(request), actor_email(request)
+            AdminAction.objects.bulk_create(
+                AdminAction(action=action, actor=actor, target=target[:200], detail=detail or {})
+                for target, detail in self.audit_entries(request, response)
             )
         return response

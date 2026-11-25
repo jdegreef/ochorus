@@ -2795,6 +2795,28 @@ export interface AdminSermonDetail {
 export const getAdminSermon = (slug: string) =>
 	apiFetch<AdminSermonDetail>(`/api/admin/sermons/${encodeURIComponent(slug)}/`);
 
+/** What a bulk publish did: `changed` were flipped, `unchanged` already were,
+ *  `skipped` were refused (out of the caller's languages, copyright, retired,
+ *  missing) — each with its reason. */
+export interface BulkPublishResult {
+	kind: 'book' | 'sermon';
+	published: boolean;
+	changed: { slug: string; language: string }[];
+	unchanged: { slug: string; language: string }[];
+	skipped: { slug: string; language: string; reason: string }[];
+}
+
+/** Publish or unpublish many editions at once (the admin lists' bulk bar). */
+export const setBulkPublished = (
+	kind: 'book' | 'sermon',
+	items: { slug: string; language: string }[],
+	published: boolean
+) =>
+	apiFetch<BulkPublishResult>('/api/admin/publish/bulk/', {
+		method: 'POST',
+		body: JSON.stringify({ kind, items, published })
+	});
+
 /** Publish/unpublish one sermon edition — the sibling of setBookPublished. */
 export const setSermonPublished = (slug: string, language: string, published: boolean) =>
 	apiFetch<{ slug: string; language: string; is_published: boolean }>(

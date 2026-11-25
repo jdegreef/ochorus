@@ -71,6 +71,8 @@ export interface CatalogConfig {
 	columns: CatalogColumn[];
 	statusLabels: Record<string, string>;
 	sortLabels: Record<string, string>;
+	/** The work kind the bulk publish bar acts on, for kinds that have one. */
+	bulkPublish?: 'book' | 'sermon';
 	/** The row's admin page, when the kind has one. */
 	adminHref?: (row: CatalogRow) => string;
 	/** The row's page on the site (unlocalized — the page puts it in the row's language). */
@@ -104,6 +106,7 @@ export const CATALOG: Record<CatalogKind, CatalogConfig> = {
 		],
 		statusLabels: PUBLISHED,
 		sortLabels: { ...BASIC_SORTS, words: 'Longest', author: 'Author' },
+		bulkPublish: 'book',
 		adminHref: (r) => adminWorkHref('book', r.slug),
 		siteHref: (r) => `/books/${enc(r.slug)}`,
 		meta: (r) => join(byline(r), r.series as string)
@@ -119,6 +122,7 @@ export const CATALOG: Record<CatalogKind, CatalogConfig> = {
 		],
 		statusLabels: PUBLISHED,
 		sortLabels: { ...BASIC_SORTS, words: 'Longest', author: 'Author' },
+		bulkPublish: 'sermon',
 		adminHref: (r) => adminWorkHref('sermon', r.slug),
 		siteHref: (r) => `/sermons/${enc(r.slug)}`,
 		meta: (r) => join(byline(r), r.scripture_ref as string)
