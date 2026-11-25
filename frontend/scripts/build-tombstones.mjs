@@ -68,6 +68,9 @@ import {
 } from 'node:fs';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+// Node strips the types at runtime (as for local-api.mjs's buildApi.ts); only
+// the type-check, which reaches this file through tombstones.test.ts, objects.
+// @ts-expect-error -- a .ts import from a .mjs script
 import { BIBLE_CHAPTER_COUNTS } from '../src/lib/reading-schema.ts';
 
 export const MANIFEST = 'published-pages.txt';
@@ -135,7 +138,7 @@ export function tombstonesFor(known, built) {
 export function isMovedBibleChapter(path) {
 	const m = /^(?:[a-z]{2}(?:-[a-z]+)?\/)?books\/([^/]+)\/(\d+)\/index\.html$/.exec(path);
 	if (!m) return false;
-	const n = BIBLE_CHAPTER_COUNTS[m[1]];
+	const n = /** @type {Record<string, number>} */ (BIBLE_CHAPTER_COUNTS)[m[1]];
 	const order = Number(m[2]);
 	return Boolean(n) && (order === n + 1 || order === n + 2);
 }
@@ -255,6 +258,7 @@ async function previousGraves(candidates) {
  */
 async function livelyGraves(origin, paths) {
 	const shell = (await fetchFresh(`${origin}/200.html`)).text;
+	/** @type {string[]} */
 	const gone = [];
 	const queue = [...paths];
 	await Promise.all(
