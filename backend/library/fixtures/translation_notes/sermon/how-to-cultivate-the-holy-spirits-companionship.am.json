@@ -19,9 +19,9 @@
         },
         {
             "reference": "Amos 3:3",
-            "status": "mined",
-            "source_file": "catholic-spirit.am.json",
-            "block_index": 42
+            "status": "self_rendered",
+            "block_index": 42,
+            "why": "wording was borrowed from catholic-spirit.am's pre-OWB Amharic, which that work no longer carries (re-quoted to OWB 2026-11-25); not verbatim OWB here"
         },
         {
             "reference": "Isaiah 60:13",
