@@ -11,9 +11,8 @@
  "references": [
   {
    "reference": "John 16:24",
-   "status": "mined",
-   "block_index": 5,
-   "source_file": "the-unselfishness-of-god.am.json"
+   "status": "self_rendered",
+   "block_index": 5
   },
   {
    "reference": "Galatians 2:20",
@@ -23,9 +22,8 @@
   },
   {
    "reference": "Matthew 16:23",
-   "status": "mined",
-   "block_index": 17,
-   "source_file": "the-unselfishness-of-god.am.json"
+   "status": "self_rendered",
+   "block_index": 17
   }
  ]
 }
