@@ -385,8 +385,8 @@
    "reference": "Song of Songs 2:14",
    "block_index": 25,
    "chapter_order": 5,
-   "status": "mined",
-   "source_file": "union-and-communion.am.json"
+   "status": "self_rendered",
+   "why": "its wording was mined from union-and-communion.am, which now quotes OWB; no longer verbatim from that file, so the translator's (1962-register) wording until this work is re-quoted"
   },
   {
    "reference": "Hebrews 12:2",
