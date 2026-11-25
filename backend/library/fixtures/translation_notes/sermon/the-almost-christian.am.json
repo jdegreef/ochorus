@@ -5,356 +5,412 @@
  "job_issue": 3674,
  "pull_request": null,
  "note": [
-  "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
-  "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
-  "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled as library/data/bible/owb-am-b.json.gz and read offline (owb-am). Every Scripture quotation in this sermon was re-quoted to it verbatim (founder decision, 2026-11-18: Amharic quotes OWB everywhere), replacing the 1962/2003 UBS New Testament wording and the Old Testament wording the first translation carried.",
+  "A `mined` row is a verbatim OWB span in that block: the whole verse, verses joined, the shortest contiguous span carrying the quoted clause, or exact OWB pieces joined with '…'; a verbatim recitation without quote marks counts (founder rule, 2026-11-19). `self_rendered` rows each carry a `why`: allusions left in Wesley's prose and his own paraphrases.",
+  "The same sermon is chapter 3 of Sermons on Several Occasions, whose Amharic shares this translation's base text; it was re-quoted first (PR #9908), and this sermon follows its OWB wording and its calls quotation for quotation, so the two stay identical (the sermon keeps only its own opening: the text verse as a blockquote, without the book's chapter heading and Agrippa sentence). Calls carried over: 'Almost thou persuadest me' is OWB Acts 26:28 «በዚህ በአጭር ጊዜ ክርስቲያን እንድሆን ልታሳምነኝ ነው!»; the Name proclaimed to Moses is Exod 34:6-7 (not Ps 86:15) and 'make all his goodness pass before thee' Exod 33:19; Luke 1:47, Isa 26:8 and Gal 6:14 are quoted with their speakers (Mary, the prophet, the apostle) named in the prose; 1 Cor 13:4-7 follows OWB's wording throughout (Wesley's 'is not puffed up' = «በትዕቢት አይነፋም»)."
  ],
  "references": [
   {
    "reference": "Acts 26:28",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 0
-  },
-  {
-   "reference": "Matthew 5:37",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 7
+   "block_index": 0,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 5:4",
-   "status": "self_rendered",
-   "block_index": 7
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 4:29",
-   "status": "self_rendered",
-   "block_index": 7
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 4:30",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 7
+   "block_index": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 5:37",
+   "status": "self_rendered",
+   "block_index": 7,
+   "why": "allusion in Wesley's prose ('his communication is yea, yea; nay, nay'), not a quotation"
   },
   {
    "reference": "Ephesians 5:18",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 8
+   "block_index": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ecclesiastes 9:10",
-   "status": "self_rendered",
-   "block_index": 9
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 12:11",
-   "status": "self_rendered",
-   "block_index": 9
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Galatians 6:10",
-   "status": "self_rendered",
-   "block_index": 9
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Zechariah 13:1",
-   "status": "self_rendered",
-   "block_index": 9
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 18:13",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 10
+   "block_index": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 6:2",
-   "status": "self_rendered",
-   "block_index": 17
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 7:4",
-   "status": "self_rendered",
-   "block_index": 20
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 12:13",
-   "status": "self_rendered",
-   "block_index": 20
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Timothy 6:12",
-   "status": "self_rendered",
-   "block_index": 21
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Mark 12:30",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 23
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 1:47",
-   "status": "self_rendered",
-   "block_index": 23
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Thessalonians 5:18",
-   "status": "self_rendered",
-   "block_index": 23
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 26:8",
-   "status": "self_rendered",
-   "block_index": 23
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Psalms 73:25",
-   "status": "self_rendered",
-   "block_index": 23
+   "reference": "Psalm 73:25",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Galatians 6:14",
-   "status": "self_rendered",
-   "block_index": 23
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 2:16",
-   "status": "self_rendered",
-   "block_index": 23
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 13:4",
-   "status": "self_rendered",
-   "block_index": 23
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 4:16",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 23
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Mark 12:31",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 22:39",
    "status": "self_rendered",
-   "block_index": 24
+   "block_index": 24,
+   "why": "Wesley's 'the second, like unto it' introducing Mark 12:31; the quoted command itself is the Mark 12:31 row"
   },
   {
    "reference": "Luke 10:29",
-   "status": "self_rendered",
-   "block_index": 24
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 5:2",
-   "status": "self_rendered",
-   "block_index": 24
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 13:4",
-   "status": "self_rendered",
-   "block_index": 24
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 13:5",
-   "status": "self_rendered",
-   "block_index": 24
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 9:22",
-   "status": "self_rendered",
-   "block_index": 24
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 13:6",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 24
+   "block_index": 24,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 13:7",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 24
+   "block_index": 24,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 5:1",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 25
+   "block_index": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 1:12",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 25
+   "block_index": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 5:4",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 25
+   "block_index": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 3:36",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 25
+   "block_index": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 5:24",
-   "status": "self_rendered",
-   "block_index": 25
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 15:9",
    "status": "self_rendered",
-   "block_index": 28
+   "block_index": 28,
+   "why": "allusion in Wesley's own words ('purifying the heart by faith'), not a quotation"
   },
   {
    "reference": "2 Corinthians 7:1",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 28
+   "block_index": 28,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Galatians 5:6",
    "status": "self_rendered",
-   "block_index": 28
+   "block_index": 28,
+   "why": "allusion in Wesley's prose ('faith working by love'), not a quotation"
   },
   {
    "reference": "Proverbs 15:11",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Ecclesiastes 9:10",
    "status": "self_rendered",
-   "block_index": 29
+   "block_index": 29,
+   "why": "Wesley's own echo ('with all his might'), not a quotation of the verse"
   },
   {
    "reference": "Colossians 3:17",
-   "status": "self_rendered",
-   "block_index": 30
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Peter 2:5",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 30
+   "block_index": 30,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 4:21",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 31
+   "block_index": 31,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 5:5",
    "status": "self_rendered",
-   "block_index": 31
+   "block_index": 31,
+   "why": "Wesley's question 'Is the love of God shed abroad in your heart?' recasts the verse; not a quotation"
   },
   {
    "reference": "Galatians 2:20",
    "status": "self_rendered",
-   "block_index": 31
-  },
-  {
-   "reference": "John 1:29",
-   "status": "self_rendered",
-   "block_index": 31
-  },
-  {
-   "reference": "Micah 7:19",
-   "status": "self_rendered",
-   "block_index": 31
+   "block_index": 31,
+   "why": "allusion in Wesley's prose ('who loved me, and gave himself for me'), left as the translator's"
   },
   {
    "reference": "Colossians 2:14",
    "status": "self_rendered",
-   "block_index": 31
+   "block_index": 31,
+   "why": "allusion in Wesley's prose ('blotted out the handwriting'), not a quotation"
+  },
+  {
+   "reference": "John 1:29",
+   "status": "self_rendered",
+   "block_index": 31,
+   "why": "allusion in Wesley's question ('the Lamb of God taken away thy sins'), not a quotation"
+  },
+  {
+   "reference": "Micah 7:19",
+   "status": "self_rendered",
+   "block_index": 31,
+   "why": "allusion in Wesley's question ('cast them as a stone into the depth of the sea'), not a quotation"
   },
   {
    "reference": "Ephesians 1:7",
    "status": "self_rendered",
-   "block_index": 31
+   "block_index": 31,
+   "why": "allusion in Wesley's question ('redemption through his blood, even the remission of thy sins'), not a quotation"
   },
   {
    "reference": "Romans 8:16",
    "status": "self_rendered",
-   "block_index": 31
-  },
-  {
-   "reference": "Ephesians 5:14",
-   "status": "self_rendered",
-   "block_index": 32
-  },
-  {
-   "reference": "Isaiah 55:6",
-   "status": "self_rendered",
-   "block_index": 32
+   "block_index": 31,
+   "why": "allusion in Wesley's question ('his Spirit bear witness with thy spirit'), not a quotation"
   },
   {
    "reference": "Exodus 33:19",
-   "status": "self_rendered",
-   "block_index": 32
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Exodus 34:6",
-   "status": "self_rendered",
-   "block_index": 32
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Exodus 34:7",
-   "status": "self_rendered",
-   "block_index": 32
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 5:6",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 32
-  },
-  {
-   "reference": "2 Timothy 1:12",
-   "status": "self_rendered",
-   "block_index": 32
+   "block_index": 32,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 20:28",
-   "status": "self_rendered",
-   "block_index": 32
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 18:1",
-   "status": "self_rendered",
-   "block_index": 32
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 21:17",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 32
+   "block_index": 32,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Ephesians 5:14",
+   "status": "self_rendered",
+   "block_index": 32,
+   "why": "allusion in Wesley's appeal ('Awake, thou that sleepest'), not a quotation"
+  },
+  {
+   "reference": "Isaiah 55:6",
+   "status": "self_rendered",
+   "block_index": 32,
+   "why": "allusion in Wesley's appeal ('while he may be found'), not a quotation"
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "self_rendered",
+   "block_index": 32,
+   "why": "allusion in Wesley's appeal ('know in whom thou hast believed'), not a quotation"
   },
   {
    "reference": "Romans 3:24",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 33
+   "block_index": 33,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 5:1",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 33
+   "block_index": 33,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 5:2",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 33
+   "block_index": 33,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 5:5",
-   "status": "self_rendered",
-   "block_index": 33
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   }
  ]
 }
