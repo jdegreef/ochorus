@@ -542,10 +542,9 @@
   },
   {
    "reference": "2 Corinthians 9:8",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 11,
-   "source_file": "the-unselfishness-of-god.am.json"
+   "chapter_order": 11
   },
   {
    "reference": "1 John 3:22",
