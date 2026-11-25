@@ -831,14 +831,12 @@
         },
         {
             "reference": "2 Chronicles 5:13",
-            "status": "mined",
-            "source_file": "prevailing-prayer.am.json",
+            "status": "self_rendered",
             "block_index": 3
         },
         {
             "reference": "2 Chronicles 5:14",
-            "status": "mined",
-            "source_file": "prevailing-prayer.am.json",
+            "status": "self_rendered",
             "block_index": 3
         },
         {
