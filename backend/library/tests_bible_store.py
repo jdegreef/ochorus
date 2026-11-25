@@ -64,8 +64,9 @@ class AsvStoreMatchesPythonbibleTests(SimpleTestCase):
         for vid in ids:
             self.assertEqual(scripture._asv_text(vid), bible.get_verse_text(vid, version=scripture.VERSION), vid)
         self.assertEqual(scripture._asv_text(43003099), "")  # no such verse
-        # The Romans doxology OWB lacks still falls back to the ASV.
-        self.assertEqual(scripture.reader_verse(45016025)[1], scripture.ASV_LABEL)
+        # The verse OWB lacks (Nehemiah 7:68, not in the Hebrew it follows)
+        # still falls back to the ASV.
+        self.assertEqual(scripture.reader_verse(16007068)[1], scripture.ASV_LABEL)
 
 
 class StoreFileTests(SimpleTestCase):

@@ -7,7 +7,11 @@
  * Spanish edition's own: each name is the one its chapters are titled with
  * (`library/data/owb/<CODE>/es/book.json`, "Génesis 1", "Cantares 1", "Salmo
  * 1"), so a link here reads exactly as the chapter it opens; the
- * abbreviations are the usual Spanish ones (Gn, Éx … Ap).
+ * abbreviations are the usual Spanish ones (Gn, Éx … Ap). French and
+ * Portuguese are their editions' own in the same way (books/<slug>.<lang>.json:
+ * "Psaume 23", "Ésaïe 53", "Cântico dos Cânticos 1"), with the abbreviations
+ * French Bibles use (Gn, Ex … Es, Hé … Ap) and Portuguese ones (Gn, Êx … Sl,
+ * Jo … Ap).
  */
 import { CANON } from '$lib/sermonCanon';
 import { divisionOf } from '$lib/bible';
@@ -84,12 +88,160 @@ const CANON_ES: Canon = [
 	['Apocalipsis', 'Ap']
 ];
 
+const CANON_FR: Canon = [
+	['Genèse', 'Gn'],
+	['Exode', 'Ex'],
+	['Lévitique', 'Lv'],
+	['Nombres', 'Nb'],
+	['Deutéronome', 'Dt'],
+	['Josué', 'Jos'],
+	['Juges', 'Jg'],
+	['Ruth', 'Rt'],
+	['1 Samuel', '1 S'],
+	['2 Samuel', '2 S'],
+	['1 Rois', '1 R'],
+	['2 Rois', '2 R'],
+	['1 Chroniques', '1 Ch'],
+	['2 Chroniques', '2 Ch'],
+	['Esdras', 'Esd'],
+	['Néhémie', 'Né'],
+	['Esther', 'Est'],
+	['Job', 'Jb'],
+	['Psaumes', 'Ps'],
+	['Proverbes', 'Pr'],
+	['Ecclésiaste', 'Ec'],
+	['Cantique des cantiques', 'Ct'],
+	['Ésaïe', 'Es'],
+	['Jérémie', 'Jr'],
+	['Lamentations', 'Lm'],
+	['Ézéchiel', 'Ez'],
+	['Daniel', 'Dn'],
+	['Osée', 'Os'],
+	['Joël', 'Jl'],
+	['Amos', 'Am'],
+	['Abdias', 'Ab'],
+	['Jonas', 'Jon'],
+	['Michée', 'Mi'],
+	['Nahoum', 'Na'],
+	['Habacuc', 'Ha'],
+	['Sophonie', 'So'],
+	['Aggée', 'Ag'],
+	['Zacharie', 'Za'],
+	['Malachie', 'Ml'],
+	['Matthieu', 'Mt'],
+	['Marc', 'Mc'],
+	['Luc', 'Lc'],
+	['Jean', 'Jn'],
+	['Actes', 'Ac'],
+	['Romains', 'Rm'],
+	['1 Corinthiens', '1 Co'],
+	['2 Corinthiens', '2 Co'],
+	['Galates', 'Ga'],
+	['Éphésiens', 'Ep'],
+	['Philippiens', 'Ph'],
+	['Colossiens', 'Col'],
+	['1 Thessaloniciens', '1 Th'],
+	['2 Thessaloniciens', '2 Th'],
+	['1 Timothée', '1 Tm'],
+	['2 Timothée', '2 Tm'],
+	['Tite', 'Tt'],
+	['Philémon', 'Phm'],
+	['Hébreux', 'Hé'],
+	['Jacques', 'Jc'],
+	['1 Pierre', '1 P'],
+	['2 Pierre', '2 P'],
+	['1 Jean', '1 Jn'],
+	['2 Jean', '2 Jn'],
+	['3 Jean', '3 Jn'],
+	['Jude', 'Jd'],
+	['Apocalypse', 'Ap']
+];
+
+const CANON_PT: Canon = [
+	['Gênesis', 'Gn'],
+	['Êxodo', 'Êx'],
+	['Levítico', 'Lv'],
+	['Números', 'Nm'],
+	['Deuteronômio', 'Dt'],
+	['Josué', 'Js'],
+	['Juízes', 'Jz'],
+	['Rute', 'Rt'],
+	['1 Samuel', '1 Sm'],
+	['2 Samuel', '2 Sm'],
+	['1 Reis', '1 Rs'],
+	['2 Reis', '2 Rs'],
+	['1 Crônicas', '1 Cr'],
+	['2 Crônicas', '2 Cr'],
+	['Esdras', 'Ed'],
+	['Neemias', 'Ne'],
+	['Ester', 'Et'],
+	['Jó', 'Jó'],
+	['Salmos', 'Sl'],
+	['Provérbios', 'Pv'],
+	['Eclesiastes', 'Ec'],
+	['Cântico dos Cânticos', 'Ct'],
+	['Isaías', 'Is'],
+	['Jeremias', 'Jr'],
+	['Lamentações', 'Lm'],
+	['Ezequiel', 'Ez'],
+	['Daniel', 'Dn'],
+	['Oseias', 'Os'],
+	['Joel', 'Jl'],
+	['Amós', 'Am'],
+	['Obadias', 'Ob'],
+	['Jonas', 'Jn'],
+	['Miqueias', 'Mq'],
+	['Naum', 'Na'],
+	['Habacuque', 'Hc'],
+	['Sofonias', 'Sf'],
+	['Ageu', 'Ag'],
+	['Zacarias', 'Zc'],
+	['Malaquias', 'Ml'],
+	['Mateus', 'Mt'],
+	['Marcos', 'Mc'],
+	['Lucas', 'Lc'],
+	['João', 'Jo'],
+	['Atos', 'At'],
+	['Romanos', 'Rm'],
+	['1 Coríntios', '1 Co'],
+	['2 Coríntios', '2 Co'],
+	['Gálatas', 'Gl'],
+	['Efésios', 'Ef'],
+	['Filipenses', 'Fp'],
+	['Colossenses', 'Cl'],
+	['1 Tessalonicenses', '1 Ts'],
+	['2 Tessalonicenses', '2 Ts'],
+	['1 Timóteo', '1 Tm'],
+	['2 Timóteo', '2 Tm'],
+	['Tito', 'Tt'],
+	['Filemom', 'Fm'],
+	['Hebreus', 'Hb'],
+	['Tiago', 'Tg'],
+	['1 Pedro', '1 Pe'],
+	['2 Pedro', '2 Pe'],
+	['1 João', '1 Jo'],
+	['2 João', '2 Jo'],
+	['3 João', '3 Jo'],
+	['Judas', 'Jd'],
+	['Apocalipse', 'Ap']
+];
+
 /** Each hub locale's canon, 1 Genesis … 66 Revelation (index + 1). */
-export const CANON_NAMES: Readonly<Record<BibleLocale, Canon>> = { en: CANON, es: CANON_ES };
+export const CANON_NAMES: Readonly<Record<BibleLocale, Canon>> = {
+	en: CANON,
+	es: CANON_ES,
+	fr: CANON_FR,
+	pt: CANON_PT
+};
 
 /** What a single psalm is called ("Psalm 23", «Salmo 23»): the one book whose
  *  chapters are titled in the singular. */
-export const PSALM: Readonly<Record<BibleLocale, string>> = { en: 'Psalm', es: 'Salmo' };
+export const PSALM: Readonly<Record<BibleLocale, string>> = {
+	en: 'Psalm',
+	es: 'Salmo',
+	fr: 'Psaume',
+	pt: 'Salmo'
+};
 
 /** The canon in `locale`: a hub locale's own, else English (the pure helpers'
  *  callers outside the hub; a hub page only ever asks for its own). */

@@ -15003,11 +15003,7 @@ BODY_CORRECTIONS.setdefault("how-to-succeed-in-the-christian-life", {}).setdefau
     # [en] a direct question ended with a full stop — found translating to pt (#7749)
     ("will sooner or later encounter.</p>", "will sooner or later encounter?</p>"),
     # [am] citation fix mirrored from EN
-    (" ሊያበዛላችሁ ይችላል» (2ኛ ቆሮንቶስ 9:8, 9", " ሊያበዛላችሁ ይችላል» (2ኛ ቆሮንቶስ 9:6, 8"),
-    # [am] citation fix mirrored from EN
     ("ልጆች ሲጫወቱ ይመለከት ነበር (ማቴዎስ 12:16-19", "ልጆች ሲጫወቱ ይመለከት ነበር (ማቴዎስ 11:16-19"),
-    # [am] citation fix mirrored from EN
-    ("ነትም ያልሆነ ሁሉ ኃጢአት ነው» (ሮሜ 14:32", "ነትም ያልሆነ ሁሉ ኃጢአት ነው» (ሮሜ 14:23"),
 ])
 # Found while translating to French (2026-10-14): Bernard's On Loving God —
 # scan-split words, stray marks and running-header debris (EN only; paragraph
