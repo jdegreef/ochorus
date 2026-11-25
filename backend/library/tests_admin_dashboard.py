@@ -7,7 +7,7 @@ edited — on its own. Pure move: no test changed.
 
 import io
 
-from django.core.cache import cache
+from django.core.cache import cache, caches
 from django.test import TestCase, override_settings
 from django.utils import timezone
 from rest_framework.test import APIClient
@@ -1024,7 +1024,11 @@ class AdminAuditWorstBooksTests(TestCase):
 
 @override_settings(
     DEBUG=True,
-    CACHES={"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"}},
+    CACHES={
+        "default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"},
+        # The scan's memo lives in the admin alias (library.admin_cache).
+        "admin": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache", "LOCATION": "a"},
+    },
 )
 class AdminAuditCacheTests(TestCase):
     """The full scan is memoised on the content revision; dismissals and the
@@ -1032,6 +1036,7 @@ class AdminAuditCacheTests(TestCase):
 
     def setUp(self):
         cache.clear()
+        caches["admin"].clear()
         self.client = APIClient()
         author = Author.objects.create(slug="am", name="Andrew Murray")
         book = Book.objects.create(author=author, slug="humility", language="en", title="Humility")
@@ -1041,6 +1046,7 @@ class AdminAuditCacheTests(TestCase):
 
     def tearDown(self):
         cache.clear()
+        caches["admin"].clear()
 
     def _scanned_at(self, url="/api/admin/audit/"):
         return self.client.get(url).data["scanned_at"]
