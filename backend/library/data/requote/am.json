@@ -226,6 +226,28 @@
    "english": ["Enoch walked with God", "walked with God"],
    "old": ["ሄኖክም ከእግዚአብሔር ጋር አካሄደ", "ከእግዚአብሔር ጋር አካሄደ"],
    "decision": "OWB reads «ሄኖክ ከእግዚአብሔር ጋር ተመላለሰ». Quote that wherever the text is quoted; the author's subject 'walking with God' may stay «ከእግዚአብሔር ጋር መሄድ» in prose (OWB 1 John 2:6 uses the same ተመላለሰ)."
+  },
+  {
+   "id": "pure-in-heart",
+   "references": ["Matthew 5:8"],
+   "english": ["pure in heart"],
+   "old": ["ልበ ንጹሖች"],
+   "decision": "OWB Matt 5:8 reads «ልባቸው ንጹሕ የሆነ የተባረኩ ናቸው፤ እግዚአብሔርን ያያሉ». Quote that span wherever the beatitude is quoted, and 'blessed' as «የተባረኩ»; the running term «ንጹሕ ልብ» stays in the prose."
+  },
+  {
+   "id": "song-5-1-inebriated",
+   "references": ["Song of Solomon 5:1"],
+   "english": ["be inebriated", "dearly beloved"],
+   "old": ["ስከሩ"],
+   "decision": "Bernard (On Loving God) builds three states — eat, drink, be inebriated — and the friends/dearly-beloved distinction on the Vulgate. OWB pairs 'drink' with 'lovers' and ends «ጠጥታችሁም እርኩ». Keep the Vulgate rendering, self_rendered; the half-verse 'I have drunk my wine with my milk' is OWB «ወይን ጠጄንና ወተቴን ጠጥቻለሁ»."
+  },
+  {
+   "id": "jeremiah-only-a-child",
+   "references": ["Jeremiah 1:6", "Jeremiah 1:7"],
+   "english": ["I am only a child", "I'm only a kid"],
+   "old": ["ብላቴና ነኝ"],
+   "detect": true,
+   "decision": "OWB reads «ገና ልጅ ነኝ» in both verses; the refrain «ብላቴና ነኝ» is the 1962 wording. Quote OWB's phrase wherever it recurs, unmarked echoes included."
   }
  ]
 }
