@@ -661,10 +661,9 @@
   },
   {
    "reference": "1 Kings 17:1",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 6,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 6
   },
   {
    "reference": "Luke 1:19",
@@ -742,10 +741,9 @@
   },
   {
    "reference": "1 Kings 17:24",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 18,
-   "chapter_order": 6,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 6
   },
   {
    "reference": "Luke 4:25-26",
@@ -755,10 +753,9 @@
   },
   {
    "reference": "1 Kings 17:24",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 19,
-   "chapter_order": 6,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 6
   },
   {
    "reference": "1 Kings 18:19-35",

@@ -228,10 +228,9 @@
   },
   {
    "reference": "Psalm 46:10",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 9,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 9
   },
   {
    "reference": "Isaiah 57:10",
@@ -247,10 +246,9 @@
   },
   {
    "reference": "Habakkuk 2:20",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 10,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 10
   },
   {
    "reference": "Isaiah 51:4",

@@ -45,10 +45,9 @@
   },
   {
    "reference": "Colossians 4:12",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 25,
-   "chapter_order": 2,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 2
   },
   {
    "reference": "1 Thessalonians 5:17",
