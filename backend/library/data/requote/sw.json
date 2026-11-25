@@ -1,0 +1,245 @@
+{
+ "language": "sw",
+ "owb_source": "Open Word Bible (OWB), Balanced edition, Swahili",
+ "about": [
+  "Read by library.requote (manage.py requote_inventory). Same shape as am.json; see its `about` for what each key does.",
+  "book_names: how the Swahili library cites each book (Union-era names, counted across its fixtures and bios), mapped to USFM. A numbered book is keyed '1 Wakorintho' (Swahili writes no ordinal suffix); abbreviations the corpus uses are their own keys, without a trailing dot.",
+  "quote_marks: the marks a quotation stands in. The Swahili library quotes with “…” (a few older works with «…»); the validator reads the Scripture inside either, and keeps each pair balanced.",
+  "case_sensitive: OWB Swahili capitalises God's pronouns (Yako, Langu, Yeye) where the Union text has yako, langu, yeye, so a verbatim-OWB check compares with case. min_piece: a '…'-joined or sentence piece shorter than 8 letters proves nothing in a Latin script ('ni', 'kwa'), so it is not counted as OWB.",
+  "fold: none. Swahili spelling does not vary between the Union text and OWB the way Ethiopic syllable rows do.",
+  "decisions: the recurring words where the Union wording the corpus quotes differs from OWB Swahili, seeded from the corpus before the first wave. Waves add to it, as Amharic's did. OWB Swahili capitalises pronouns for God (Yako, Langu, Yeye): a quoted verse keeps OWB's capitals; the author's own prose follows the translation-worker rule."
+ ],
+ "cv_separators": ":",
+ "ordinal_suffix": "",
+ "quote_marks": [
+  [
+   "“",
+   "”"
+  ],
+  [
+   "«",
+   "»"
+  ]
+ ],
+ "case_sensitive": true,
+ "min_piece": 8,
+ "sentence_final": [
+  ".",
+  "?",
+  "!"
+ ],
+ "fold": [],
+ "book_names": {
+  "Mwanzo": "GEN",
+  "Kutoka": "EXO",
+  "Mambo ya Walawi": "LEV",
+  "Walawi": "LEV",
+  "Hesabu": "NUM",
+  "Kumbukumbu la Torati": "DEU",
+  "Kumbukumbu": "DEU",
+  "Yoshua": "JOS",
+  "Waamuzi": "JDG",
+  "Ruthu": "RUT",
+  "1 Samweli": "1SA",
+  "2 Samweli": "2SA",
+  "1 Wafalme": "1KI",
+  "2 Wafalme": "2KI",
+  "1 Mambo ya Nyakati": "1CH",
+  "2 Mambo ya Nyakati": "2CH",
+  "1 Nyakati": "1CH",
+  "2 Nyakati": "2CH",
+  "Ezra": "EZR",
+  "Nehemia": "NEH",
+  "Esta": "EST",
+  "Ayubu": "JOB",
+  "Zaburi": "PSA",
+  "Mithali": "PRO",
+  "Mhubiri": "ECC",
+  "Wimbo Ulio Bora": "SNG",
+  "Isaya": "ISA",
+  "Yeremia": "JER",
+  "Maombolezo": "LAM",
+  "Ezekieli": "EZK",
+  "Danieli": "DAN",
+  "Hosea": "HOS",
+  "Yoeli": "JOL",
+  "Amosi": "AMO",
+  "Obadia": "OBA",
+  "Yona": "JON",
+  "Mika": "MIC",
+  "Nahumu": "NAM",
+  "Habakuki": "HAB",
+  "Sefania": "ZEP",
+  "Hagai": "HAG",
+  "Zekaria": "ZEC",
+  "Malaki": "MAL",
+  "Mathayo": "MAT",
+  "Marko": "MRK",
+  "Luka": "LUK",
+  "Yohana": "JHN",
+  "Matendo ya Mitume": "ACT",
+  "Matendo": "ACT",
+  "Warumi": "ROM",
+  "1 Wakorintho": "1CO",
+  "2 Wakorintho": "2CO",
+  "Wagalatia": "GAL",
+  "Waefeso": "EPH",
+  "Wafilipi": "PHP",
+  "Wakolosai": "COL",
+  "1 Wathesalonike": "1TH",
+  "2 Wathesalonike": "2TH",
+  "1 Timotheo": "1TI",
+  "2 Timotheo": "2TI",
+  "Tito": "TIT",
+  "Filemoni": "PHM",
+  "Waebrania": "HEB",
+  "Yakobo": "JAS",
+  "1 Petro": "1PE",
+  "2 Petro": "2PE",
+  "1 Yohana": "1JN",
+  "2 Yohana": "2JN",
+  "3 Yohana": "3JN",
+  "Yuda": "JUD",
+  "Ufunuo": "REV",
+  "Kut": "EXO",
+  "Law": "LEV",
+  "Hes": "NUM",
+  "Kumb": "DEU",
+  "Yos": "JOS",
+  "Amu": "JDG",
+  "Neh": "NEH",
+  "Zab": "PSA",
+  "Mit": "PRO",
+  "Wim": "SNG",
+  "Isa": "ISA",
+  "Yer": "JER",
+  "Dan": "DAN",
+  "Hos": "HOS",
+  "Hab": "HAB",
+  "Zek": "ZEC",
+  "Mt": "MAT",
+  "Mk": "MRK",
+  "Lk": "LUK",
+  "Yn": "JHN",
+  "Mdo": "ACT",
+  "Rum": "ROM",
+  "1 Kor": "1CO",
+  "2 Kor": "2CO",
+  "1 Wakor": "1CO",
+  "2 Wakor": "2CO",
+  "Gal": "GAL",
+  "Efe": "EPH",
+  "Flp": "PHP",
+  "1 Tim": "1TI",
+  "2 Tim": "2TI",
+  "Tit": "TIT",
+  "Ebr": "HEB",
+  "1 Pet": "1PE",
+  "2 Pet": "2PE",
+  "1 Fal": "1KI",
+  "2 Fal": "2KI"
+ },
+ "decisions": [
+  {
+   "id": "comforter",
+   "references": [
+    "John 14:16",
+    "John 14:26",
+    "John 15:26",
+    "John 16:7"
+   ],
+   "english": [
+    "Comforter"
+   ],
+   "old": [
+    "Msaidizi",
+    "Mfariji"
+   ],
+   "decision": "OWB calls the Spirit Mtetezi (Advocate). Quote OWB; where the author argues from 'Comforter', add a one-time bridging gloss rather than rewriting his image."
+  },
+  {
+   "id": "jehovah",
+   "references": [],
+   "english": [
+    "Jehovah"
+   ],
+   "old": [
+    "Yehova"
+   ],
+   "decision": "OWB renders the divine name BWANA (Exodus 6:3 '…kwa jina Langu, BWANA'). A quoted verse keeps OWB; the author's own 'Jehovah' in prose follows the same word, as in Amharic."
+  },
+  {
+   "id": "convict",
+   "references": [
+    "John 16:8"
+   ],
+   "english": [
+    "convict the world",
+    "convince the world",
+    "reprove the world"
+   ],
+   "old": [
+    "atauhakikishia ulimwengu"
+   ],
+   "decision": "OWB John 16:8 reads 'atauonyesha ulimwengu kwamba umekosea'; reuse that gloss where the author argues from 'convict'."
+  },
+  {
+   "id": "pray-without-ceasing",
+   "references": [
+    "1 Thessalonians 5:17"
+   ],
+   "english": [
+    "pray without ceasing"
+   ],
+   "old": [
+    "ombeni bila kukoma",
+    "Ombeni bila kukoma"
+   ],
+   "detect": true,
+   "decision": "1 Thess 5:17 is OWB «Msiache kuomba». The Union «ombeni bila kukoma» is a refrain in prayer books; quote OWB and keep the refrain identical everywhere it recurs."
+  },
+  {
+   "id": "thy-will-be-done",
+   "references": [
+    "Matthew 26:42"
+   ],
+   "english": [
+    "Thy will be done",
+    "Your will be done"
+   ],
+   "old": [
+    "Mapenzi yako yatimizwe",
+    "mapenzi yako yatimizwe"
+   ],
+   "detect": true,
+   "decision": "The refrain «Mapenzi yako yatimizwe» is the Union wording. OWB Matt 26:42 ends «mapenzi Yako yafanyike»; Matt 6:10 has «Mapenzi Yako na yatendeke». Quote the span of the verse the author means, and keep a refrain identical everywhere it recurs."
+  },
+  {
+   "id": "teach-us-to-pray",
+   "references": [
+    "Luke 11:1"
+   ],
+   "english": [
+    "teach us to pray"
+   ],
+   "old": [
+    "tufundishe kuomba"
+   ],
+   "detect": true,
+   "decision": "Murray's refrain 'Lord, teach us to pray' is OWB Luke 11:1's «Bwana, tufundishe jinsi ya kuomba»; headings and body quote it identically."
+  },
+  {
+   "id": "compel",
+   "references": [
+    "Luke 14:23"
+   ],
+   "english": [
+    "compel"
+   ],
+   "old": [
+    "uwalazimishe"
+   ],
+   "decision": "OWB Luke 14:23 has 'uwahimize sana' ('urge them strongly'). Where the author argues from 'compel', add a one-time gloss."
+  }
+ ]
+}

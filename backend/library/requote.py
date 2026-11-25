@@ -45,7 +45,7 @@ VALIDATOR (``validate`` / ``apply``)
     ``old`` exactly once in its block, put only OWB words inside the quote
     marks (``«…»``-joined pieces and ``‹›``-converted inner marks allowed, and
     "…"-joined pieces per the translation-worker skill), and leave the chapter's
-    tag sequence, the block's «» balance and a sentence-final mark unchanged.
+    tag sequence, the block's quote-mark balance and a sentence-final mark unchanged.
     ``apply`` writes the result in the file's existing layout.
 
 Block indexes. A book or sermon block is what the admin's side-by-side view
@@ -672,22 +672,47 @@ _MIN_JOINED = 8
 _norm = lru_cache(maxsize=65536)(vc.normalise)
 
 
-def verbatim(quote: str, source: str) -> bool:
+@lru_cache(maxsize=65536)
+def _norm_cased(text: str) -> str:
+    """``vc.normalise`` without the casefold."""
+    return "".join(
+        c
+        for c in text
+        if not unicodedata.category(c).startswith("P") and not c.isspace()
+    )
+
+
+def _norm_for(language: str):
+    """The comparison key for a language's VERBATIM checks. Case-sensitive
+    where OWB's capitals are part of the wording (``case_sensitive`` in the
+    language data: Swahili OWB capitalises God's pronouns, Yako against the
+    Union's yako). The fuzzy same-verse match stays casefolded."""
+    return _norm_cased if language_data(language).get("case_sensitive") else _norm
+
+
+def _min_piece(language: str) -> int:
+    """The shortest joined piece that proves anything (``min_piece``): three
+    Ethiopic syllables are a word, three Latin letters are not."""
+    return int(language_data(language).get("min_piece", _MIN_PIECE))
+
+
+def verbatim(quote: str, source: str, language: str) -> bool:
     """``mined_verification.is_verbatim`` with a per-piece floor that suits a
     syllabic script: its 8-character floor rejects the «በእኔ ብትኖሩ … ለምኑ»
     joins the four rules allow. The pieces still have to be in OWB's order
     and together long enough to mean something."""
-    t, s = _norm(quote), _norm(source)
+    norm = _norm_for(language)
+    t, s = norm(quote), norm(source)
     if not t or not s:
         return False
     if t in s or s in t:
         return True
-    pieces = [_norm(p) for p in _ELLIPSIS.split(quote)]
+    pieces = [norm(p) for p in _ELLIPSIS.split(quote)]
     pieces = [p for p in pieces if p]
     if (
         len(pieces) < 2
         or not s
-        or any(len(p) < _MIN_PIECE for p in pieces)
+        or any(len(p) < _min_piece(language) for p in pieces)
         or sum(map(len, pieces)) < _MIN_JOINED
     ):
         return False
@@ -716,14 +741,15 @@ def is_owb(text: str, span: Span, language: str, slack: int = STATUS_SLACK) -> b
     source = owb_text(span, language, slack=slack)
     if not source:
         return False
-    if verbatim(text, source):
+    if verbatim(text, source, language):
         return True
+    norm, floor = _norm_for(language), _min_piece(language)
     pieces = [
-        p for part in _SENTENCES.split(text) for p in _ELLIPSIS.split(part) if _norm(p)
+        p for part in _SENTENCES.split(text) for p in _ELLIPSIS.split(part) if norm(p)
     ]
-    target = _norm(source)
+    target = norm(source)
     return len(pieces) > 1 and all(
-        len(_norm(p)) >= _MIN_PIECE and _norm(p) in target for p in pieces
+        len(norm(p)) >= floor and norm(p) in target for p in pieces
     )
 
 
@@ -760,7 +786,7 @@ def _best_verse(quote: str, vids, language: str) -> tuple[float, int | None]:
     best, at = 0.0, None
     for vid in sorted(vids):
         owb = scripture.owb_verse(vid, language)
-        if owb and verbatim(quote, owb[1]):
+        if owb and verbatim(quote, owb[1], language):
             return 2.0, vid
         for cand in _candidates_text(vid, language):
             s = similarity(quote, cand, language)
@@ -1089,7 +1115,7 @@ def _global_verbatim(quote: str, language: str) -> int | None:
             votes[v] += 1
     for vid, _ in sorted(votes.items(), key=lambda kv: -kv[1])[:10]:
         found = scripture.owb_verse(vid, language)
-        if found and verbatim(quote, found[1]):
+        if found and verbatim(quote, found[1], language):
             return vid
     return None
 
@@ -1288,7 +1314,9 @@ def notes_diff(rows: list[Row], notes: list[dict], work: Work) -> dict:
             return True
         source = owb_text(span, work.language, slack=1)
         return any(
-            r.kind != "english_only" and source and verbatim(r.text, source)
+            r.kind != "english_only"
+            and source
+            and verbatim(r.text, source, work.language)
             for r in groups[key]
         )
 
@@ -1452,12 +1480,22 @@ class Problem:
     message: str
 
 
-def _quoted_pieces(new_text: str) -> list[str]:
-    """The words a splice claims are Scripture: each «…» (pieces joined by
-    "…" split apart), or — with no quote marks — the whole replacement less
-    any trailing citation (a recitation)."""
+def _quote_marks(language: str) -> list[tuple[str, str]]:
+    """The language's quotation marks (``quote_marks`` in its data): «» unless
+    it says otherwise — Swahili quotes with “”."""
+    return [tuple(p) for p in language_data(language).get("quote_marks", [["«", "»"]])]
+
+
+def _quoted_pieces(new_text: str, language: str) -> list[str]:
+    """The words a splice claims are Scripture: each quotation in the
+    language's marks (pieces joined by "…" split apart), or — with no quote
+    marks — the whole replacement less any trailing citation (a recitation)."""
     text = re.sub(r"\s*\([^()]*\d[^()]*\)\s*$", "", new_text)
-    inner = re.findall(r"«(.*?)»", text, re.S)
+    inner = [
+        q
+        for o, c in _quote_marks(language)
+        for q in re.findall(rf"{re.escape(o)}(.*?){re.escape(c)}", text, re.S)
+    ]
     pieces = inner if inner else [text]
     return [p for piece in pieces for p in _ELLIPSIS.split(piece) if vc.normalise(p)]
 
@@ -1466,8 +1504,8 @@ def _tags(text: str) -> list[str]:
     return _TAG.findall(text)
 
 
-def _balance(text: str) -> int:
-    return text.count("«") - text.count("»")
+def _balance(text: str, language: str) -> int:
+    return sum(text.count(o) - text.count(c) for o, c in _quote_marks(language))
 
 
 def _final(text: str, marks: list[str]) -> bool:
@@ -1520,12 +1558,12 @@ def validate(work: Work, edits: list[dict]) -> tuple[list[Problem], dict[str, st
             problems.append(
                 Problem(k, "tags", f"{where}: the ordered tag sequence changes")
             )
-        if _balance(new_raw) != _balance(raw):
+        if _balance(new_raw, language) != _balance(raw, language):
             problems.append(
                 Problem(
                     k,
                     "balance",
-                    f"{where}: «» balance {_balance(raw)} → {_balance(new_raw)}",
+                    f"{where}: quote-mark balance {_balance(raw, language)} → {_balance(new_raw, language)}",
                 )
             )
         if render(new).count("‹") != render(new).count("›"):
@@ -1556,7 +1594,7 @@ def validate(work: Work, edits: list[dict]) -> tuple[list[Problem], dict[str, st
                     problems.append(
                         Problem(k, "owb", f"{where}: OWB has no text for {span.label}")
                     )
-                for piece in _quoted_pieces(render(new)):
+                for piece in _quoted_pieces(render(new), language):
                     if not is_owb(piece, span, language, slack=slack):
                         problems.append(
                             Problem(
