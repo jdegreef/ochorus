@@ -1652,10 +1652,9 @@
   },
   {
    "reference": "Ephesians 3:8",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 18,
-   "chapter_order": 10,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 10
   },
   {
    "reference": "Matthew 20:6",

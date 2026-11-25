@@ -378,8 +378,7 @@
         },
         {
             "reference": "Exodus 34:29",
-            "status": "mined",
-            "source_file": "the-inner-chamber.am.json",
+            "status": "self_rendered",
             "block_index": 30
         },
         {

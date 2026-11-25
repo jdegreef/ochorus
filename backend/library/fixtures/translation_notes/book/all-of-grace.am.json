@@ -471,10 +471,9 @@
   },
   {
    "reference": "Ezekiel 36:26",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 6,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 6
   },
   {
    "reference": "Jeremiah 13:23",
