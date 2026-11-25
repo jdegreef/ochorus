@@ -16271,6 +16271,18 @@
    "chapter_order": 50
   },
   {
+   "reference": "1 John 4:16",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 50
+  },
+  {
+   "reference": "1 John 5:10",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 50
+  },
+  {
    "reference": "1 John 5:10",
    "status": "self_rendered",
    "block_index": 9,
@@ -16284,7 +16296,7 @@
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Ephesians 2:22; 1 John 4:16; 1 John 5:10; Romans 8:16",
+   "reference": "Ephesians 2:22",
    "status": "self_rendered",
    "block_index": 9,
    "chapter_order": 50
@@ -16302,6 +16314,12 @@
    "block_index": 9,
    "chapter_order": 50,
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Romans 8:16",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 50
   },
   {
    "reference": "Romans 8:16",
@@ -16391,11 +16409,35 @@
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
+   "reference": "Ephesians 3:19",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 50
+  },
+  {
+   "reference": "Ephesians 4:30",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 50
+  },
+  {
+   "reference": "Isaiah 51:1",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 50
+  },
+  {
    "reference": "Isaiah 57:15",
    "status": "mined",
    "block_index": 14,
    "chapter_order": 50,
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 2:17",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 50
   },
   {
    "reference": "John 4:29",
@@ -16432,7 +16474,13 @@
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Psalm 115:1; Isaiah 51:1; John 2:17; Ephesians 3:19; Ephesians 4:30; Revelation 21:22-23",
+   "reference": "Psalm 115:1",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 50
+  },
+  {
+   "reference": "Revelation 21:22-23",
    "status": "self_rendered",
    "block_index": 14,
    "chapter_order": 50
@@ -16757,7 +16805,19 @@
    "chapter_order": 52
   },
   {
-   "reference": "Isaiah 5:11; Isaiah 56:12; Proverbs 23:35",
+   "reference": "Isaiah 56:12",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 52
+  },
+  {
+   "reference": "Isaiah 5:11",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 52
+  },
+  {
+   "reference": "Proverbs 23:35",
    "status": "self_rendered",
    "block_index": 4,
    "chapter_order": 52
@@ -17617,7 +17677,13 @@
    "chapter_order": 55
   },
   {
-   "reference": "Luke 14:26; Luke 14:33",
+   "reference": "Luke 14:26",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 55
+  },
+  {
+   "reference": "Luke 14:33",
    "status": "self_rendered",
    "block_index": 16,
    "chapter_order": 55
@@ -18515,6 +18581,12 @@
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
+   "reference": "John 20:17",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 58
+  },
+  {
    "reference": "John 20:19",
    "status": "mined",
    "block_index": 9,
@@ -18522,7 +18594,7 @@
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Mark 16:7; John 20:17",
+   "reference": "Mark 16:7",
    "status": "self_rendered",
    "block_index": 9,
    "chapter_order": 58
@@ -18556,6 +18628,12 @@
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
+   "reference": "Deuteronomy 18:15",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 59
+  },
+  {
    "reference": "John 10:19",
    "status": "mined",
    "block_index": 2,
@@ -18577,7 +18655,7 @@
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "John 6:14; Deuteronomy 18:15",
+   "reference": "John 6:14",
    "status": "self_rendered",
    "block_index": 2,
    "chapter_order": 59
@@ -18837,7 +18915,13 @@
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "John 10:28; John 14:2-3",
+   "reference": "John 10:28",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 59
+  },
+  {
+   "reference": "John 14:2-3",
    "status": "self_rendered",
    "block_index": 24,
    "chapter_order": 59
