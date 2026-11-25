@@ -4,190 +4,290 @@
     "language": "am",
     "job_issue": 7955,
     "pull_request": null,
+    "note": [
+        "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose, each with its `why`. Block indexes were realigned to the admin view's count."
+    ],
     "references": [
         {
             "reference": "Hosea 14:8",
             "status": "mined",
-            "source_file": "all-things-for-good.am.json",
-            "block_index": 0
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 0,
+            "why": "the text; OWB has no ወዲህ, and the refrain drops it everywhere"
+        },
+        {
+            "reference": "Hosea 14:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 1
         },
         {
             "reference": "Hosea 14:4",
             "status": "self_rendered",
-            "block_index": 2
+            "block_index": 2,
+            "why": "the heading and its echo re-person the verse ('God loves you freely')"
         },
         {
             "reference": "Romans 4:5",
             "status": "self_rendered",
-            "block_index": 2
+            "block_index": 2,
+            "why": "re-personed paraphrase"
         },
         {
             "reference": "Isaiah 53:11",
             "status": "self_rendered",
-            "block_index": 2
+            "block_index": 2,
+            "why": "recast as a relative clause about the Servant; an allusion"
         },
         {
             "reference": "Isaiah 54:5",
             "status": "self_rendered",
-            "block_index": 2
+            "block_index": 2,
+            "why": "OWB addresses Zion in the feminine (ባልሽ የሠራሽ); M'Cheyne's 'thy Maker is thine husband' to his hearer stays the translator's"
+        },
+        {
+            "reference": "Hosea 14:8",
+            "status": "self_rendered",
+            "block_index": 2,
+            "why": "refrain re-personed ('what have you…', twice); OWB's wording with the person changed"
         },
         {
             "reference": "Hosea 14:5",
             "status": "mined",
-            "source_file": "ten-commandments.am.json",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 3
         },
         {
             "reference": "Acts 5:32",
             "status": "self_rendered",
-            "block_index": 3
+            "block_index": 3,
+            "why": "allusion"
         },
         {
             "reference": "John 14:16",
             "status": "mined",
-            "source_file": "ten-commandments.am.json",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 3
         },
         {
             "reference": "John 16:7",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 3
         },
         {
-            "reference": "Isaiah 27:2-3",
+            "reference": "Isaiah 27:3",
             "status": "mined",
-            "source_file": "ten-commandments.am.json",
-            "block_index": 3
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 3,
+            "why": "per the every-moment decision: OWB's «በየጊዜው ውኃ አጠጣታለሁ» quoted, M'Cheyne's 'every moment' (በየቅጽበቱ) kept in his own prose after it"
         },
         {
             "reference": "Exodus 20:5",
             "status": "mined",
-            "source_file": "ten-commandments.am.json",
-            "block_index": 3
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 3,
+            "why": "Deut 5:9 reads the same in OWB"
         },
         {
             "reference": "John 2:14-15",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 4
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 4,
+            "why": "cited by the author as John 2:15"
         },
         {
-            "reference": "Luke 10:37",
-            "status": "self_rendered",
+            "reference": "Hosea 14:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 4,
+            "why": "recited refrain"
+        },
+        {
+            "reference": "Hosea 14:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 5
         },
         {
             "reference": "2 Chronicles 31:1",
-            "status": "self_rendered",
-            "block_index": 6
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 6,
+            "why": "OWB pieces joined with '…'; OWB's 'went home' falls at the verse's end, so it is not quoted"
+        },
+        {
+            "reference": "Hosea 14:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 6,
+            "why": "recited refrain"
         },
         {
             "reference": "Matthew 5:30",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 6
+        },
+        {
+            "reference": "Hosea 14:8",
+            "status": "self_rendered",
+            "block_index": 7,
+            "why": "refrain re-personed ('what have you…')"
         },
         {
             "reference": "2 Corinthians 6:14",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 7
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 7,
+            "why": "recited without marks in the English; given in OWB's words"
         },
         {
             "reference": "1 Corinthians 7:39",
             "status": "self_rendered",
-            "block_index": 7
+            "block_index": 7,
+            "why": "allusion ('Marry only in the Lord')"
         },
         {
             "reference": "1 Corinthians 7:29",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 7
+        },
+        {
+            "reference": "Hosea 14:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 7,
+            "why": "recited refrain"
         },
         {
             "reference": "1 Thessalonians 5:13",
             "status": "self_rendered",
-            "block_index": 8
+            "block_index": 8,
+            "why": "allusion"
         },
         {
             "reference": "Hebrews 13:17",
-            "status": "self_rendered",
-            "block_index": 8
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 8,
+            "why": "recited without marks in the English; given in OWB's words"
         },
         {
             "reference": "Galatians 4:19",
             "status": "self_rendered",
-            "block_index": 8
+            "block_index": 8,
+            "why": "re-personed ('they travail')"
         },
         {
             "reference": "2 Corinthians 12:15",
             "status": "self_rendered",
-            "block_index": 8
+            "block_index": 8,
+            "why": "re-personed ('they spend and are spent')"
         },
         {
             "reference": "1 Corinthians 4:15",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 8
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 8,
+            "why": "recited; the author's 'etc.' follows it"
         },
         {
             "reference": "1 Corinthians 3:21",
             "status": "self_rendered",
-            "block_index": 8
+            "block_index": 8,
+            "why": "allusion ('glory in man')"
+        },
+        {
+            "reference": "Hosea 14:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 8,
+            "why": "recited refrain"
         },
         {
             "reference": "2 Timothy 3:4",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 9
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 9,
+            "why": "recited; the Amharic already stood in OWB's words"
         },
         {
             "reference": "Revelation 18:2",
             "status": "self_rendered",
-            "block_index": 9
+            "block_index": 9,
+            "why": "adapted list applied to theatres and taverns; an allusion"
         },
         {
             "reference": "Proverbs 3:16-17",
             "status": "self_rendered",
-            "block_index": 9
+            "block_index": 9,
+            "why": "re-applied from Wisdom to Christ and reordered; OWB's feminine verse cannot carry it"
+        },
+        {
+            "reference": "Hosea 14:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 9,
+            "why": "recited refrain"
         },
         {
             "reference": "Proverbs 19:17",
             "status": "mined",
-            "source_file": "key-teachings-of-a-b-simpson.am.json",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 10
         },
         {
             "reference": "Matthew 25:40",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 10
         },
         {
             "reference": "2 Corinthians 9:8",
-            "status": "self_rendered",
-            "block_index": 10
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 10,
+            "why": "recited without marks in the English; given in OWB's words"
         },
         {
             "reference": "Isaiah 51:12",
             "status": "self_rendered",
-            "block_index": 11
+            "block_index": 11,
+            "why": "OWB addresses Zion in the feminine (የምትፈሪ … አንቺ ማን ነሽ); M'Cheyne turns it on his hearer, so OWB's words are given in the masculine"
         },
         {
             "reference": "Isaiah 41:14",
-            "status": "self_rendered",
-            "block_index": 11
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 11,
+            "why": "recited; given in OWB's words"
+        },
+        {
+            "reference": "Hosea 14:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 11,
+            "why": "recited refrain"
         },
         {
             "reference": "Psalm 118:27",
             "status": "self_rendered",
-            "block_index": 12
+            "block_index": 12,
+            "why": "allusion ('bind … to the horns of the altar')"
         },
         {
             "reference": "1 Peter 4:3",
             "status": "self_rendered",
-            "block_index": 12
+            "block_index": 12,
+            "why": "allusion"
+        },
+        {
+            "reference": "Hosea 14:8",
+            "status": "self_rendered",
+            "block_index": 12,
+            "why": "refrain re-personed ('what have we…')"
         }
     ]
 }

@@ -5,47 +5,59 @@
  "job_issue": 3729,
  "pull_request": null,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible, about self-rendered Old Testament quotations, and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block; `self_rendered` rows are allusions and paraphrases left as the translator's prose, each with its `why`.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
   "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
  ],
  "references": [
   {
    "reference": "Proverbs 13:15",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
    "chapter_order": 1
   },
   {
    "reference": "Luke 15:20",
    "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
-   "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "chapter_order": 2
   },
   {
    "reference": "Matthew 10:37",
    "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
-   "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "chapter_order": 3
   },
   {
    "reference": "Philippians 4:19",
    "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
-   "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "chapter_order": 4
   },
   {
    "reference": "2 Corinthians 9:7",
    "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 2,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "reported speech in OWB's words (…በደስታ የሚሰጠውን ሰው ይወዳል)"
+  },
+  {
+   "reference": "2 Chronicles 32:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 5,
+   "chapter_order": 4,
+   "why": "Müller's 'an arm of flesh'; «ሥጋ ክንድ» is OWB's phrase"
   },
   {
    "reference": "Matthew 6:11",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
    "chapter_order": 5
   },
@@ -53,95 +65,107 @@
    "reference": "Matthew 6:11",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "reported prayer ('their daily bread'), the translator's prose"
   },
   {
    "reference": "Matthew 6:11",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 7,
    "chapter_order": 5
   },
   {
    "reference": "Psalm 81:10",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
    "chapter_order": 6
   },
   {
    "reference": "Psalm 81:10",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 5,
    "chapter_order": 6
   },
   {
    "reference": "Zechariah 4:6",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
    "chapter_order": 7
   },
   {
    "reference": "Zechariah 4:6",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 7,
    "chapter_order": 7
   },
   {
    "reference": "Mark 12:43-44",
    "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
-   "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "chapter_order": 8
   },
   {
    "reference": "2 Corinthians 9:7",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "the giver's own words ('I give the five pounds cheerfully'), not a quotation"
   },
   {
    "reference": "Psalm 68:5",
    "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
-   "chapter_order": 9,
-   "source_file": "clothed-with-strength-and-dignity.am.json"
+   "chapter_order": 9
   },
   {
    "reference": "Romans 13:8",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 3,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "OWB's piece «በማንም ዘንድ ዕዳ አይቅርባችሁ»"
   },
   {
    "reference": "Psalm 68:5",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "allusion ('God calls himself the Father of the fatherless')"
   },
   {
    "reference": "Isaiah 65:24",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
    "chapter_order": 10
   },
   {
    "reference": "Matthew 6:20",
    "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
-   "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "chapter_order": 11
   },
   {
    "reference": "Matthew 6:19-20",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "allusion to the treasure verse; no words quoted"
   },
   {
    "reference": "Mark 1:35",
    "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
-   "chapter_order": 12,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "chapter_order": 12
   }
  ]
 }

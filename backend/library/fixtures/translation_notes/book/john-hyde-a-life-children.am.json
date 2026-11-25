@@ -62,10 +62,10 @@
   },
   {
    "reference": "Zechariah 4:6b",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
    "chapter_order": 7,
-   "source_file": "the-life-of-trust-teens.am.json"
+   "why": "wording borrowed from the-life-of-trust-teens.am.json, which now quotes OWB; this work's own quotation is not yet OWB, so the translator's until its re-quote"
   },
   {
    "reference": "Psalm 81:10b",

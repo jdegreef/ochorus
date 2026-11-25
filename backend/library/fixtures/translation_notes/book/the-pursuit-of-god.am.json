@@ -261,8 +261,8 @@
    "reference": "Genesis 22:16-18",
    "block_index": 14,
    "chapter_order": 4,
-   "status": "mined",
-   "source_file": "possibilities-of-prayer.am.json"
+   "status": "self_rendered",
+   "why": "its wording was mined from possibilities-of-prayer.am's pre-OWB (1962) text, which has since been re-quoted to OWB; this edition still carries the pre-OWB wording"
   },
   {
    "reference": "Luke 9:56",
