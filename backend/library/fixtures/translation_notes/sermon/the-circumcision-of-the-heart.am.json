@@ -412,9 +412,9 @@
   },
   {
    "reference": "1 Peter 1:3-4",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 18,
-   "source_file": "absolute-surrender.am.json"
+   "why": "absolute-surrender.am.json, which this row was mined from, has been re-quoted to the Open Word Bible; this wording is now the translator's own"
   },
   {
    "reference": "Matthew 25:24",
