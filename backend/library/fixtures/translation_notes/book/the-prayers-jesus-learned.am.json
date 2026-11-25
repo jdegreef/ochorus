@@ -1058,9 +1058,9 @@
         },
         {
             "reference": "2 Chronicles 20:15",
-            "status": "mined",
-            "source_file": "the-god-of-all-comfort.am.json",
-            "block_index": 10
+            "status": "self_rendered",
+            "block_index": 10,
+            "why": "mined from The God of All Comfort's 1962 wording, which that book's OWB re-quote replaced; this wording is now the translator's own"
         },
         {
             "reference": "2 Chronicles 20:19",
