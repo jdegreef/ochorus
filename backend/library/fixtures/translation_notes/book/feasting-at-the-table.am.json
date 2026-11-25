@@ -160,10 +160,10 @@
   },
   {
    "reference": "Isaiah 40:31",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 17,
    "chapter_order": 3,
-   "source_file": "rooted-4.am.json"
+   "why": "an allusion to Isa 40:31 in the author's own prayer (exchanging weakness for strength), not a quotation; translator's wording"
   },
   {
    "reference": "Ephesians 1:10",
