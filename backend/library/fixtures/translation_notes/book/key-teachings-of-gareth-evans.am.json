@@ -145,10 +145,9 @@
   },
   {
    "reference": "Isaiah 41:13",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 5,
-   "source_file": "thoughts-for-the-quiet-hour.am.json"
+   "chapter_order": 5
   },
   {
    "reference": "Hebrews 11:31",
@@ -946,10 +945,9 @@
   },
   {
    "reference": "Proverbs 4:18",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 18,
-   "chapter_order": 18,
-   "source_file": "thoughts-for-the-quiet-hour.am.json"
+   "chapter_order": 18
   }
  ]
 }

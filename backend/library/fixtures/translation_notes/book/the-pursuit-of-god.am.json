@@ -562,8 +562,7 @@
    "reference": "Genesis 28:16",
    "block_index": 9,
    "chapter_order": 7,
-   "status": "mined",
-   "source_file": "thoughts-for-the-quiet-hour.am.json"
+   "status": "self_rendered"
   },
   {
    "reference": "Exodus 34:5",
@@ -588,8 +587,7 @@
    "reference": "Ezekiel 37:3",
    "block_index": 22,
    "chapter_order": 7,
-   "status": "mined",
-   "source_file": "thoughts-for-the-quiet-hour.am.json"
+   "status": "self_rendered"
   },
   {
    "reference": "1 Timothy 4:7",
@@ -736,8 +734,7 @@
    "reference": "Isaiah 40:8 / 1 Peter 1:25",
    "block_index": 18,
    "chapter_order": 8,
-   "status": "mined",
-   "source_file": "thoughts-for-the-quiet-hour.am.json"
+   "status": "self_rendered"
   },
   {
    "reference": "Hosea 6:3",
