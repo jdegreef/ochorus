@@ -5,6 +5,7 @@
  "job_issue": 3735,
  "pull_request": null,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and borrowed corpus wording: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'). Psalm 68:31 keeps ኢትዮጵያ (OWB: ኩሽ) and is self_rendered, per the founder's call; Amanda's 'Let your men keep silence' (chapter 11) is her own counter-reading, worded to mirror the critics' OWB line.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
   "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
  ],
@@ -14,60 +15,73 @@
    "status": "mined",
    "block_index": 0,
    "chapter_order": 1,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Proverbs 24:11",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 119:130",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Colossians 2:8",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Jeremiah 29:13",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 5,
-   "source_file": "ministry-of-intercession.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "«በፍጹም ልባችሁ» ('with all your heart') echoes the chapter's epigraph in OWB's words"
   },
   {
    "reference": "Psalm 82:3",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 12:9",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the Lord's reply inside OWB's verse"
   },
   {
    "reference": "Galatians 3:28",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Galatians 3:28",
    "status": "mined",
    "block_index": 4,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "recited without marks; OWB's words"
   },
   {
    "reference": "1 John 1:7",
@@ -77,9 +91,10 @@
   },
   {
    "reference": "Exodus 4:12",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 10:1",
@@ -92,26 +107,37 @@
    "status": "mined",
    "block_index": 0,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 2:17",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB's opening of the verse, broken off with '…' as in the English"
   },
   {
    "reference": "1 Corinthians 14:34",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the critics' proof text, in OWB's words"
   },
   {
    "reference": "1 Corinthians 14:28",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "Amanda's pointed counter-reading ('Let your men keep silence'), not a verse: worded to mirror the critics' OWB line in block 1"
+  },
+  {
+   "reference": "1 Corinthians 14:34",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 11,
+   "why": "Amanda's rewording of the critics' verse with 'men' for 'women'; mirrors OWB's 14:34 but is hers"
   },
   {
    "reference": "Romans 9:21",
@@ -123,13 +149,15 @@
    "reference": "Psalm 68:31",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "OWB's verse with ኢትዮጵያ for its ኩሽ (Cush), per the founder's Psalm 68:31 call — for the founder"
   },
   {
    "reference": "Psalm 68:31",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "Amanda's own heard line arguing from 'Ethiopia'; worded as the full edition words it, ኢትዮጵያ kept per the founder's Psalm 68:31 call"
   }
  ]
 }

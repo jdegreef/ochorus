@@ -5,6 +5,7 @@
  "job_issue": 4080,
  "pull_request": null,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh); the mirror has no Old Testament, so OT quotations reuse a shipped Amharic work's wording where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
   "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited shipped work) inside that block. Shorter, re-personed, or bridged-range verses (the mirror merges some verse ranges into one entry holding only part of the text) are self_rendered."
  ],
@@ -18,7 +19,8 @@
    "reference": "Luke 22:42",
    "status": "mined",
    "block_index": 1,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB's order: 'your will be done, not mine'"
   },
   {
    "reference": "Numbers 15:17-21",
@@ -33,18 +35,28 @@
   {
    "reference": "Numbers 15:30-31",
    "status": "self_rendered",
-   "block_index": 5
+   "block_index": 5,
+   "why": "the presumptuous-sin narrative is the author's paraphrase; the quoted clause is the Numbers 15:31 row"
+  },
+  {
+   "reference": "Numbers 15:31",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "'that soul … his iniquity shall be upon him': OWB pieces joined with '…'"
   },
   {
    "reference": "1 John 1:9",
    "status": "mined",
    "block_index": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 1:7",
-   "status": "self_rendered",
-   "block_index": 6
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "«እርሱ በብርሃን እንዳለ» and the cleansing clause, two OWB spans"
   },
   {
    "reference": "Ephesians 4:30",
@@ -67,6 +79,13 @@
    "block_index": 8
   },
   {
+   "reference": "Numbers 15:38",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the title phrase «ሰማያዊ ፈትል»"
+  },
+  {
    "reference": "Numbers 15:38-41",
    "status": "self_rendered",
    "block_index": 11
@@ -80,30 +99,32 @@
    "reference": "Ephesians 5:1",
    "status": "mined",
    "block_index": 13,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 5:2",
    "status": "mined",
    "block_index": 13,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 5:48",
    "status": "mined",
    "block_index": 13,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 5:48",
    "status": "mined",
    "block_index": 14,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Numbers 15:39",
-   "status": "self_rendered",
-   "block_index": 17
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "framed as the privilege 'given us in the words «…»'"
   }
  ]
 }
