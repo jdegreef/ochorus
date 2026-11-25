@@ -5,6 +5,7 @@
  "job_issue": 3672,
  "pull_request": null,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose.",
   "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
   "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
   "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
@@ -12,175 +13,220 @@
  "references": [
   {
    "reference": "Psalm 23:6",
-   "status": "self_rendered",
-   "block_index": 1
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the AV reading; the Revised Version margin's «መልካምነትና ጽኑ ፍቅር ብቻ ይከተሉኛል» is the author's alternate reading, worded on OWB's nouns"
   },
   {
    "reference": "Romans 8:28",
-   "status": "self_rendered",
-   "block_index": 2
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "recited without marks"
   },
   {
    "reference": "Romans 5:3",
-   "status": "self_rendered",
-   "block_index": 2
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 5:4",
-   "status": "self_rendered",
-   "block_index": 2
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "recited without marks"
   },
   {
    "reference": "Romans 5:5",
-   "status": "self_rendered",
-   "block_index": 2
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Job 1:21",
-   "status": "self_rendered",
-   "block_index": 5
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Job 1:8",
-   "status": "self_rendered",
-   "block_index": 6
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Job 2:3",
-   "status": "self_rendered",
-   "block_index": 6
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Peter 5:8",
    "status": "self_rendered",
-   "block_index": 10
+   "block_index": 10,
+   "why": "allusion ('as a roaring lion') in the author's sentence"
   },
   {
    "reference": "Philippians 4:4",
-   "status": "self_rendered",
-   "block_index": 12
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB pieces joined with '…'"
   },
   {
    "reference": "Philippians 4:5",
-   "status": "self_rendered",
-   "block_index": 12
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the bracketed gloss [your gentleness, or yieldingness] is the author's, outside OWB's words"
   },
   {
    "reference": "Philippians 4:6",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 12
   },
   {
    "reference": "Philippians 4:7",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 12
   },
   {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "recited without marks: «በሁሉ ነገር», «በጸሎትና በልመና ከምስጋና ጋር»"
+  },
+  {
    "reference": "Job 1:9",
-   "status": "self_rendered",
-   "block_index": 15
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Job 1:12",
-   "status": "self_rendered",
-   "block_index": 16
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Job 2:9",
-   "status": "self_rendered",
-   "block_index": 19
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Job 1:21",
    "status": "self_rendered",
-   "block_index": 21
-  },
-  {
-   "reference": "Job 1:21",
-   "status": "self_rendered",
-   "block_index": 22
+   "block_index": 22,
+   "why": "the author's deliberate twist ('and Satan hath taken away'): OWB's «እግዚአብሔር ሰጠ» and verb, his substitution kept"
   },
   {
    "reference": "Job 1:11",
-   "status": "self_rendered",
-   "block_index": 22
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Job 2:5",
-   "status": "self_rendered",
-   "block_index": 22
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 2:23",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 23
+   "status": "self_rendered",
+   "block_index": 23,
+   "why": "allusion ('determinate counsel and foreknowledge') in the author's sentence"
   },
   {
    "reference": "John 18:11",
-   "status": "self_rendered",
-   "block_index": 24
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 8:28",
-   "status": "self_rendered",
-   "block_index": 25
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "«ሁሉም ነገር አብሮ እንደሚሠራና ወደ በጎ እንደሚመራ» inside the author's sentence"
   },
   {
    "reference": "Job 2:3",
-   "status": "self_rendered",
-   "block_index": 27
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the second challenge, «አገልጋዬን ኢዮብን አስተውለኸዋል?»"
   },
   {
    "reference": "Job 2:4",
-   "status": "self_rendered",
-   "block_index": 27
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "joined to Job 2:5 with '…'"
   },
   {
    "reference": "Job 2:5",
-   "status": "self_rendered",
-   "block_index": 27
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Job 19:17",
-   "status": "self_rendered",
-   "block_index": 29
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB's whole verse; its second line differs from the AV's 'for the children's sake'"
   },
   {
    "reference": "Psalm 30:5",
-   "status": "self_rendered",
-   "block_index": 34
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Genesis 1:5",
-   "status": "self_rendered",
-   "block_index": 34
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 6:12",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 35
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 35,
+   "why": "OWB pieces joined with '…'"
   },
   {
    "reference": "Ephesians 6:11",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 36
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 36,
+   "why": "OWB's «የእግዚአብሔርን ሙሉ የጦር ዕቃ» inside the author's sentence"
   },
   {
    "reference": "Romans 8:31",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 36
   },
   {
    "reference": "Romans 8:37",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 36
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 36,
+   "why": "recited without marks"
   }
  ]
 }
