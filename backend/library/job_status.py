@@ -82,11 +82,15 @@ def target_of(key: Key) -> str:
 
 
 class Queue:
-    """One read of the open queue: ``jobs`` by key, when it was read, and the
-    open PRs (empty when they couldn't be read)."""
+    """One read of the open queue: ``jobs`` by key, when it was read, the open
+    PRs (empty when they couldn't be read), and whether it is a last-good read
+    served because GitHub failed (``admin_cache.read_through``)."""
 
-    def __init__(self, jobs: list[dict], read_at, prs: list[dict] | None = None):
+    def __init__(
+        self, jobs: list[dict], read_at, prs: list[dict] | None = None, stale: bool = False
+    ):
         self.read_at = read_at
+        self.stale = stale
         self.prs = prs or []
         self.jobs: dict[Key, dict] = {}
         for job in jobs:
@@ -134,7 +138,7 @@ def open_jobs() -> Queue | str | None:
         from .admin_views.jobs import list_open_prs
 
         prs = read_through(PRS_KEY, list_open_prs, fresh_seconds=CACHE_SECONDS).value
-    return Queue(jobs.value, jobs.read_at, prs)
+    return Queue(jobs.value, jobs.read_at, prs, stale=jobs.stale)
 
 
 def cached_translation_jobs() -> Read:

@@ -148,6 +148,8 @@
 		const list = all ? adminCommands : adminCommands.filter((c) => c.label.toLowerCase().includes(term));
 		const sections: Item[] = list.map((c) => ({ key: 'admin:' + c.href, kind: 'cmd', label: 'Admin', title: c.label, meta: '', href: c.href }));
 		// A language by name or code opens its admin drill-down ("spanish", "sw").
+		// From the compiled UI locales: a registry language with no interface yet
+		// isn't offered here (the dashboard's By-language table reaches it).
 		const languages: Item[] =
 			canOpenWork && term.length >= 2
 				? lang.available

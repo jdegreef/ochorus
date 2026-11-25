@@ -133,14 +133,14 @@ export const CATALOG: Record<CatalogKind, CatalogConfig> = {
 			{ field: 'sermons', label: 'Sermons' },
 			{ field: 'translations', label: 'Bio translations' }
 		],
-		statusLabels: { no_bio: 'No biography', no_photo: 'No photo', imprint: 'Imprints' },
+		statusLabels: { no_long_bio: 'No long biography', no_photo: 'No photo', imprint: 'Imprints' },
 		sortLabels: { title: 'Name', works: 'Most works', newest: 'Newest' },
 		siteHref: (r) => `/authors/${enc(r.slug)}`,
 		meta: (r) =>
 			join(
 				r.years as string,
 				r.is_imprint ? 'imprint' : false,
-				!r.is_imprint && !r.has_bio && 'no biography',
+				!r.is_imprint && !r.has_bio && 'no long biography',
 				!r.is_imprint && !r.has_photo && 'no photo'
 			)
 	},

@@ -30,6 +30,8 @@ ALIAS = "admin"
 RETRY_AFTER_FAILURE = 60
 #: How long a read is kept to fall back on.
 KEEP_LAST_GOOD = 24 * 3600
+#: Held in place of a value when a fetch failed with nothing to fall back on.
+_FAILED = "__fetch_failed__"
 
 
 class Read(NamedTuple):
@@ -47,12 +49,17 @@ def read_through(key: str, fetch: Callable[[], Any], *, fresh_seconds: int) -> R
 
     One entry per key, ``(value, read_at, until, stale)``, kept for a day: it
     answers until ``until`` (``stale`` when that window follows a failed fetch),
-    and is the fallback after. Re-raises only when there
-    is nothing to fall back on (a cold cache during an outage) — the caller then
-    answers its usual "GitHub is unreachable"."""
+    and is the fallback after. With nothing to fall back on (a cold cache during
+    an outage) it raises — and remembers that for ``RETRY_AFTER_FAILURE`` too,
+    so the caller's "GitHub is unreachable" costs one timeout a minute, not one
+    per page load."""
     cache = caches[ALIAS]
     now = timezone.now()
     held = cache.get(key)
+    if held is not None and held[0] == _FAILED:
+        if now < held[2]:
+            raise requests.ConnectionError(f"{key}: failed within the last minute")
+        held = None  # the marker has expired: there is still nothing to fall back on
     if held is not None:
         value, read_at, until, stale = held
         if until and now < until:
@@ -60,12 +67,13 @@ def read_through(key: str, fetch: Callable[[], Any], *, fresh_seconds: int) -> R
     try:
         value = fetch()
     except requests.RequestException:
+        # Remember the failure briefly, so the next page load doesn't wait on the
+        # same timeout; the last-good copy (if any) answers meanwhile.
+        retry = now + timedelta(seconds=RETRY_AFTER_FAILURE)
         if held is None:
+            cache.set(key, (_FAILED, None, retry, True), RETRY_AFTER_FAILURE)
             raise
         value, read_at = held[:2]
-        # Remember the failure briefly, so the next page load doesn't wait on the
-        # same timeout; the last-good copy answers meanwhile.
-        retry = now + timedelta(seconds=RETRY_AFTER_FAILURE)
         cache.set(key, (value, read_at, retry, True), KEEP_LAST_GOOD)
         return Read(value, read_at, stale=True)
     cache.set(
@@ -79,5 +87,7 @@ def forget(key: str) -> None:
     stays as the outage fallback."""
     cache = caches[ALIAS]
     held = cache.get(key)
-    if held is not None:
+    if held is not None and held[0] == _FAILED:
+        cache.delete(key)
+    elif held is not None:
         cache.set(key, (*held[:2], None, held[3]), KEEP_LAST_GOOD)

@@ -8,6 +8,7 @@
 	a filtered list is a link: bookmark it, send it, come back to it with Back.
 -->
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { adminResource } from '$lib/adminResource.svelte';
@@ -39,14 +40,19 @@
 
 	// The search box is debounced into the URL, so typing doesn't fire a request
 	// (or a history entry) per keystroke. It follows the URL when that changes
-	// some other way (Back, a link), but not while the person is mid-typing.
+	// some other way (Back, a link), but not while the person is mid-typing —
+	// nor when the URL only says what the box already does, trimmed: copying it
+	// back would eat the space someone just typed ("grace " → "grace").
 	let search = $state('');
 	let typing = false;
 	$effect(() => {
 		const q = query.q ?? '';
-		if (!typing) search = q;
+		if (!typing && q !== untrack(() => search.trim())) search = q;
 	});
 	let timer: ReturnType<typeof setTimeout> | undefined;
+	// A search still pending when the list unmounts (a row clicked, another list
+	// opened) must not fire: it would navigate back to this list.
+	$effect(() => () => clearTimeout(timer));
 	function onSearch(v: string) {
 		search = v;
 		typing = true;

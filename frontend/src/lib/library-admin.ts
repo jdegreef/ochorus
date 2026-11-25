@@ -682,8 +682,9 @@ export interface AdminTranslationJobs {
 	stale?: boolean;
 }
 
-export const getAdminTranslationJobs = () =>
-	apiFetch<AdminTranslationJobs>('/api/admin/translation-jobs/');
+/** The open queue; `refresh` skips the server's ~2-minute cached read. */
+export const getAdminTranslationJobs = (refresh = false) =>
+	apiFetch<AdminTranslationJobs>(`/api/admin/translation-jobs/${refresh ? '?refresh=1' : ''}`);
 
 /**
  * Group open translation jobs into per-language, per-type counts — what the
@@ -2910,7 +2911,7 @@ export interface AdminActivitySummary {
 	 * Translation-job rows by stage. `github`: "ok"; "down" when it didn't
 	 * answer; "off" when no queue token is configured (not an outage).
 	 */
-	jobs?: { by_status: Record<JobStatus, number>; github: 'ok' | 'down' | 'off' };
+	jobs?: { by_status: Record<JobStatus, number>; github: 'ok' | 'stale' | 'down' | 'off' };
 }
 
 export interface AdminActivity {

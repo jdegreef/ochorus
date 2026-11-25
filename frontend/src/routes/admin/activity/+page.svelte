@@ -472,6 +472,10 @@
 								<p class="text-small text-warning">
 									GitHub couldn't be read — showing what the library knows; unshipped jobs read "status unknown".
 								</p>
+							{:else if summary?.jobs?.github === 'stale'}
+								<p class="text-small text-warning">
+									GitHub isn't answering — job states are from its last answer and may be behind.
+								</p>
 							{:else if summary?.jobs?.github === 'off'}
 								<p class="text-small text-muted">The GitHub queue isn't configured here, so unshipped jobs read "status unknown".</p>
 							{/if}

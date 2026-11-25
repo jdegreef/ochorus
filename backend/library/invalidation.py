@@ -127,7 +127,12 @@ def revision_cached(alias: str, name: str, compute, *key, timeout: int, refresh:
 
 def forget_cached(alias: str, name: str, *key) -> None:
     """Drop one ``revision_cached`` entry — for a change the content revision
-    doesn't track (a language's registry row) but the memo depends on."""
-    from django.core.cache import caches
+    doesn't track (a language's registry row) but the memo depends on. A no-op
+    where the alias isn't configured (a test's own CACHES): no memo to drop."""
+    from django.core.cache import InvalidCacheBackendError, caches
 
-    caches[alias].delete(_memo_key(name, key))
+    try:
+        cache = caches[alias]
+    except InvalidCacheBackendError:
+        return
+    cache.delete(_memo_key(name, key))

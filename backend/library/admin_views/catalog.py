@@ -338,7 +338,9 @@ KINDS: dict[str, Kind] = {
         statuses={
             # Imprints are bylines, not people: they never get a bio, so they
             # stay out of the "missing" lists (as on the dashboard's to-do).
-            "no_bio": Q(bio_html="", is_imprint=False),
+            # The LONG biography (``bio_html``, the write-biography deliverable)
+            # — not the dashboard's "without a bio", which is the short summary.
+            "no_long_bio": Q(bio_html="", is_imprint=False),
             "no_photo": Q(photo_url="", is_imprint=False),
             "imprint": Q(is_imprint=True),
         },
@@ -507,7 +509,9 @@ class AdminCatalogView(APIView):
             spec.decorate(qs) if any(f.lstrip("-") in derived for f in order) else qs
         )
         pks = list(
-            ordered.order_by(*order).values_list("pk", flat=True)[
+            # ``pk`` last: LIMIT/OFFSET needs a total order, and plan translations
+            # tie on (days, slug) — without it a row can repeat or vanish across pages.
+            ordered.order_by(*order, "pk").values_list("pk", flat=True)[
                 start : start + page_size
             ]
         )

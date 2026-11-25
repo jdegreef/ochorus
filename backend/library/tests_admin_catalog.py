@@ -130,7 +130,7 @@ class AdminCatalogTests(TestCase):
         self.assertEqual(rows["am"]["translations"], 1)
         self.assertEqual((rows["jcr"]["books"], rows["jcr"]["sermons"]), (1, 3))
         # The imprint never counts as missing a bio.
-        self.assertEqual(d["facets"]["statuses"]["no_bio"], 1)
+        self.assertEqual(d["facets"]["statuses"]["no_long_bio"], 1)
 
     def test_topics_count_each_relation(self):
         row = self.get("topics")["results"][0]
@@ -198,6 +198,24 @@ class AdminCacheTests(SimpleTestCase):
         admin_cache.forget("k")
         ok = admin_cache.read_through("k", fetcher, fresh_seconds=60)
         self.assertEqual((ok.value, ok.stale), (["recovered"], False))
+
+    def test_a_cold_failure_is_remembered_not_retried_per_request(self):
+        calls = []
+
+        def fetcher():
+            calls.append(1)
+            raise requests.ConnectionError("down")
+
+        for _ in range(3):
+            with self.assertRaises(requests.RequestException):
+                admin_cache.read_through("cold", fetcher, fresh_seconds=60)
+        # One timeout, not one per page load.
+        self.assertEqual(len(calls), 1)
+        # A write's forget clears the marker, so the next read tries again.
+        admin_cache.forget("cold")
+        with self.assertRaises(requests.RequestException):
+            admin_cache.read_through("cold", fetcher, fresh_seconds=60)
+        self.assertEqual(len(calls), 2)
 
     def test_read_through_raises_with_nothing_to_fall_back_on(self):
         def fetcher():

@@ -314,6 +314,9 @@ class AdminTranslationJobsView(AdminAudited, APIView):
         # page: the dashboard, coverage matrix and language pages all ask, and a
         # paginated GitHub read is the slowest thing any of them wait on. The
         # duplicate-press guard in ``post`` still reads GitHub fresh.
+        # ``?refresh=1`` (the dashboard's Refresh) skips the cached read.
+        if request.query_params.get("refresh") in ("1", "true", "yes"):
+            forget_queue()
         return queue_response(request, cached_translation_jobs, AdminCapability.TRANSLATE)
 
     def post(self, request):

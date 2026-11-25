@@ -62,7 +62,7 @@ describe('CATALOG', () => {
 
 	it('says what an author is missing, but never of an imprint', () => {
 		expect(CATALOG.authors.meta(row({ years: '1828–1917', has_bio: false, has_photo: true }))).toBe(
-			'1828–1917 · no biography'
+			'1828–1917 · no long biography'
 		);
 		expect(CATALOG.authors.meta(row({ is_imprint: true, has_bio: false, has_photo: false }))).toBe(
 			'imprint'

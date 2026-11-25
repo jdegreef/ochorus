@@ -42,24 +42,23 @@
 	// non-superseded payload, so the header says how fresh they are: a snapshot
 	// is easy to misread as live.
 	let loadedAt = $state<Date | null>(null);
-	// Refresh asks the server to recompute rather than answer from its memo; the
-	// automatic loads (sign-in settling, navigation) take the memo.
-	let recompute = false;
+	// Refresh asks the server to recompute the stats and re-read the GitHub queue
+	// rather than answer from its memos; the automatic loads (sign-in settling,
+	// navigation) take the memos. Set only for the synchronous span of
+	// `refresh()` — each load calls its fetcher before its first await.
+	let fresh = false;
 	const dashboard = adminResource(
-		() => {
-			const fresh = recompute;
-			recompute = false;
-			return getAdminStats(fresh);
-		},
+		() => getAdminStats(fresh),
 		'Something went wrong loading the dashboard.',
 		undefined,
 		(r) => (loadedAt = r.computed_at ? new Date(r.computed_at) : new Date())
 	);
 	function refresh() {
-		recompute = true;
+		fresh = true;
 		void dashboard.load();
 		void attentionRes.load();
 		void jobsRes.load();
+		fresh = false;
 	}
 	const stats = $derived(dashboard.data);
 
@@ -74,7 +73,10 @@
 	// resource so it NEVER blocks the (DB-fast) By-language table: the counts
 	// paint immediately and the "+N queued" overlay (countJobsByLanguageType,
 	// unit-tested) fills in when jobs arrive — or stays silent if it can't.
-	const jobsRes = adminResource(getAdminTranslationJobs, 'Something went wrong loading the queue.');
+	const jobsRes = adminResource(
+		() => getAdminTranslationJobs(fresh),
+		'Something went wrong loading the queue.'
+	);
 	const queued = $derived(countJobsByLanguageType(jobsRes.data?.jobs ?? []));
 
 	type HubTier = 'critical' | 'backlog' | 'demand';
