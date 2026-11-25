@@ -5,412 +5,864 @@
  "job_issue": 3710,
  "pull_request": null,
  "note": [
-  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
-  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled as library/data/bible/owb-am-b.json.gz and read offline (owb-am). Every Scripture quotation in this book was re-quoted to it verbatim (founder decision, 2026-11-18: Amharic quotes OWB everywhere), replacing the 1962/2003 UBS New Testament wording and the 1962-register Old Testament renderings the first translation carried.",
+  "A `mined` row is a verbatim OWB span in that block: the whole verse, verses joined, the shortest contiguous span carrying the quoted clause, or exact OWB pieces joined with '…'; a verbatim recitation without quote marks counts (founder rule, 2026-11-19), so the unmarked Matt 7:13, Matt 19:21, Ps 1:6 and James 1:5 in chapters 7-8 take OWB's words too. `self_rendered` rows each carry a `why`: allusions in Bernard's prose, his own paraphrases, the three Ecclesiasticus quotations (not in OWB), and Vulgate readings his argument rests on that OWB does not have.",
+  "Judgement calls: Bernard quotes the Vulgate, and where OWB still carries his point it is quoted as it stands — Ps 37:18 'keeps' (which suits his 'He keeps us' better than the Vulgate's 'knoweth'), Ps 73:28 'draw near' for 'adhere', Ps 77:2 «ማጽናኛም አልተቀበልኩም» for 'my soul refused to be comforted', Ps 17:15, Ps 88:13 (prayer 'arrives first'), Eccl 5:10, Ps 145:7 («ትዝታ», memory), Ps 68:16, Isa 38:14 and Ps 120:5 (joined pieces). Ps 62:11 keeps OWB's ብርታት / ጽኑ ፍቅር while Bernard's next lines keep 'power and mercy' (ኃይል / ምሕረት). The love commandment of 10.3 (heart, soul, strength) is Deut 6:5. John 14:26's Paraclete is OWB's ጠበቃ (decision 'comforter'; Bernard does not argue from the word). Matt 6:10 is OWB «ፈቃድህ በምድርም ይደረግ» (decision 'thy-will-be-done'). Psalm 36:4 and 145:16 are framed in the prose ('as it is said …') because OWB words them in another person. Kept as self_rendered because OWB cannot carry Bernard's argument: Ps 16:2, Song 1:8, Song 2:5, Ps 28:7, Gen 27:27, Ps 49:18, Ps 76:2, Ps 116:15, Song 5:1 (eat / drink / be inebriated) and Ps 23:5."
  ],
  "references": [
   {
-   "reference": "Psalm 130:7",
+   "reference": "Psalm 16:2",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 1,
+   "why": "Vulgate Ps 15:2 'Thou hast no need of my goods' carries Bernard's point that God's love gains nothing; OWB reads 'my good is in you alone', the opposite direction"
+  },
+  {
+   "reference": "1 Corinthians 13:5",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 1,
+   "why": "'love seeks not its own' is an allusion woven into Bernard's question"
+  },
+  {
+   "reference": "Romans 5:10",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 15:13",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Corinthians 10:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:8",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 2,
+   "why": "Vulgate 'If thou know not thyself, go forth' is the text Bernard argues self-knowledge from; OWB 'if you do not know [where]' has no 'thyself'"
+  },
+  {
+   "reference": "Psalm 36:4",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 115:1",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 115:1",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 2,
+   "why": "the second quotation in the block («ጌታ ሆይ፥ ማስተዋልም ሆነ ልዕልና …») is Bernard's own paraphrase of the verse, not Scripture"
+  },
+  {
+   "reference": "Matthew 5:45",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 2,
+   "why": "'makes his sun rise on the just and the unjust' is an allusion in Bernard's prose"
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Deuteronomy 6:5",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 2,
+   "why": "'loves not the Lord his God with all his heart …' is recast to the third person in Bernard's argument; an allusion"
+  },
+  {
+   "reference": "Philippians 2:21",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Genesis 8:21",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:5",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 5
+   "chapter_order": 3,
+   "why": "Vulgate 'Stay me up with flowers, compass me about with fruits'; the whole chapter allegorises the flowers and fruits, which OWB (raisin cakes, apples) lacks"
+  },
+  {
+   "reference": "Song of Solomon 2:5",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 3,
+   "why": "Vulgate 'flowers … fruits', as in block 0"
+  },
+  {
+   "reference": "Philippians 2:10",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 28:7",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 3,
+   "why": "Vulgate Ps 27:7 'My flesh hath flourished again' feeds the flowering image; OWB reads 'my heart is filled with joy'"
+  },
+  {
+   "reference": "Song of Solomon 1:15",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:11-12",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Revelation 21:5",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Genesis 27:27",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 3,
+   "why": "Vulgate 'a field FULL of flowers' — Bernard comments 'full indeed, for of His fulness we have all received'; OWB has no 'full' or 'flowers'"
+  },
+  {
+   "reference": "Psalm 62:11",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:6",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 6:63",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Sirach 24:20",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 3,
+   "why": "Ecclesiasticus is not in OWB"
+  },
+  {
+   "reference": "Sirach 24:28",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 3,
+   "why": "Ecclesiasticus is not in OWB"
+  },
+  {
+   "reference": "Psalm 145:7",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 145:4",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Luke 6:24",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 77:2",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Sirach 24:21",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4,
+   "why": "Ecclesiasticus is not in OWB"
+  },
+  {
+   "reference": "Psalm 17:15",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Timothy 6:9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 25:41",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 6:54",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 6:60",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Corinthians 5:9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 25:34",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4,
+   "why": "'the yoke and burden of Christ … light' is an allusion in Bernard's prose"
+  },
+  {
+   "reference": "Psalm 68:13",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:6",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 16:11",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 53:12",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 14:26",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 130:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 9:12",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 37:18",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 6:38",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 64:4",
-   "status": "self_rendered",
-   "block_index": 0,
-   "chapter_order": 5
-  },
-  {
-   "reference": "Philippians 3:20",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Philippians 3:21",
+   "reference": "Philippians 3:20-21",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 8:18",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "2 Corinthians 4:17-18",
-   "status": "self_rendered",
+   "reference": "2 Corinthians 4:17",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 116:12",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "'What shall I render to God' is Bernard's own question, an allusion"
   },
   {
    "reference": "Deuteronomy 6:5",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 5
-  },
-  {
-   "reference": "Psalm 49:12",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "the commandment is paraphrased in the third person ('man was commanded to love …'); an allusion"
   },
   {
    "reference": "Psalm 106:20",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "man become 'like an ox that eats grass' is an allusion in Bernard's prose"
   },
   {
    "reference": "Psalm 116:12",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "'What shall I render to God' is Bernard's own question, an allusion"
   },
   {
    "reference": "1 John 4:19",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 6
-  },
-  {
-   "reference": "Exodus 3:14",
-   "status": "self_rendered",
-   "block_index": 0,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "'He first loved us' is an allusion in Bernard's prose"
   },
   {
    "reference": "Philippians 4:7",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 18:1-2",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 6
-  },
-  {
-   "reference": "1 Corinthians 13:5",
-   "status": "self_rendered",
-   "block_index": 0,
-   "chapter_order": 7
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 9:14-18",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion to Paul's reward, in Bernard's prose"
   },
   {
    "reference": "Psalm 12:8",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "'the wicked walk round about' is an allusion in Bernard's prose"
   },
   {
    "reference": "Psalm 73:28",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 4,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 73:25",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 4,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 73:26",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 4,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Thessalonians 5:21",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 4,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 24:3",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "'ascending into the mountain of the Lord and dwelling in His holy place' is nominalised into Bernard's sentence; OWB's two questions cannot stand in it"
   },
   {
    "reference": "1 Corinthians 9:24",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "'they run, but without hope of winning' is an allusion"
   },
   {
    "reference": "Matthew 7:13",
    "status": "mined",
    "block_index": 5,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 26:7",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 7
-  },
-  {
-   "reference": "Matthew 19:21",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 7
-  },
-  {
-   "reference": "Matthew 5:3",
    "status": "mined",
    "block_index": 5,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 7,
+   "why": "'such poor are blessed, for theirs is the kingdom' is Bernard's restatement, an allusion"
   },
   {
    "reference": "Psalm 1:6",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 5,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ecclesiastes 5:10",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 5,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 5:6",
    "status": "mined",
    "block_index": 5,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Psalm 103:1",
-   "status": "self_rendered",
+   "reference": "Psalm 103:1-5",
+   "status": "mined",
    "block_index": 5,
-   "chapter_order": 7
-  },
-  {
-   "reference": "Psalm 103:5",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Lamentations 3:25",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "'God is good to the soul that seeks Him' is an allusion in Bernard's prose"
   },
   {
    "reference": "Psalm 88:13",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 6,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Matthew 22:37-38",
-   "status": "self_rendered",
+   "reference": "Matthew 22:37",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 15:46",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 5:29",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 22:39",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 1:5",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 145:16",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 6:33",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 50:15",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 15:5",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "'without Him he can do nothing' is an allusion in Bernard's prose"
   },
   {
    "reference": "John 4:42",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 34:8",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 9
-  },
-  {
-   "reference": "Matthew 22:39",
-   "status": "self_rendered",
-   "block_index": 0,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "'we have tasted how sweet He is' is an allusion in Bernard's prose"
   },
   {
    "reference": "1 Peter 1:22",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 9
-  },
-  {
-   "reference": "1 John 3:18",
-   "status": "self_rendered",
-   "block_index": 0,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 118:1",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 49:18",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "Vulgate 'He will praise Thee when Thou shalt do well to him' is addressed to God; OWB addresses the rich man ('people praise you when you prosper'), which loses Bernard's contrast"
+  },
+  {
+   "reference": "Psalm 36:6",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 68:16",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 24:3",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 55:6",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 76:2",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "Vulgate 'His place is in peace' (Salem read as peace) is Bernard's point; OWB reads 'His den is in Salem'"
+  },
+  {
+   "reference": "Psalm 120:5",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 6:17",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 73:26",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 38:14",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 7:24",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 6:10",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 27:8",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 10,
+   "why": "'When shall I come and appear before God?' is an allusion in Bernard's prose"
+  },
+  {
+   "reference": "Deuteronomy 6:5",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 116:15",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "OWB reads the saints' death as 'a grave thing' (ከባድ ነገር); Bernard argues from 'precious' ('if death is so praised, how much more life')"
   },
   {
    "reference": "Romans 8:28",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:1",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 11,
+   "why": "Vulgate 'Eat, O friends, and drink, and be inebriated, my dearly beloved': Bernard builds the three states (eat, drink, be inebriated) and the friends/dearly-beloved distinction on it; OWB pairs 'drink' with 'lovers' and ends 'drink your fill'"
+  },
+  {
+   "reference": "Genesis 3:19",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 4:34",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:1",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 23:5",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 11,
+   "why": "Vulgate 'my chalice which inebriateth me, how goodly is it' continues the inebriation thread; OWB 'my cup overflows' does not"
+  },
+  {
+   "reference": "Song of Solomon 5:1",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 11,
+   "why": "the same Vulgate verse as block 1, quoted identically"
   },
   {
    "reference": "Ephesians 5:27",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 36:8",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 12:37",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 46:4",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 11,
+   "why": "'the stream of delights makes glad the city of God' is an allusion in Bernard's prose"
   }
  ]
 }
