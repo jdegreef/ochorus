@@ -2335,10 +2335,10 @@
   },
   {
    "reference": "Isaiah 25:6",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 15,
    "chapter_order": 13,
-   "source_file": "the-immutability-of-god.am.json"
+   "why": "wording first borrowed from the-immutability-of-god.am.json, which now quotes OWB; this work keeps the earlier wording until its own OWB re-quote"
   },
   {
    "reference": "1 Corinthians 9:9",

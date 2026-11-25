@@ -5,6 +5,7 @@
  "job_issue": 4077,
  "pull_request": null,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose, each with its `why`.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh); the mirror has no Old Testament, so OT quotations reuse a shipped Amharic work's wording where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
   "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited shipped work) inside that block. Shorter, re-personed, or bridged-range verses (the mirror merges some verse ranges into one entry holding only part of the text) are self_rendered."
  ],
@@ -13,321 +14,381 @@
    "reference": "1 Peter 2:7",
    "status": "mined",
    "block_index": 0,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Peter 2:7",
    "status": "mined",
    "block_index": 1,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Numbers 23:23",
-   "status": "self_rendered",
-   "block_index": 1
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 60:22",
    "status": "self_rendered",
-   "block_index": 1
+   "block_index": 1,
+   "why": "allusion"
   },
   {
    "reference": "Zechariah 3:2",
    "status": "self_rendered",
-   "block_index": 1
+   "block_index": 1,
+   "why": "allusion"
   },
   {
    "reference": "Psalm 40:2-3",
    "status": "self_rendered",
-   "block_index": 1
+   "block_index": 1,
+   "why": "allusion"
   },
   {
    "reference": "1 Timothy 1:15",
    "status": "self_rendered",
-   "block_index": 1
+   "block_index": 1,
+   "why": "allusion"
   },
   {
    "reference": "Psalm 116:18-19",
    "status": "self_rendered",
-   "block_index": 2
+   "block_index": 2,
+   "why": "allusion"
   },
   {
    "reference": "Song of Solomon 5:16",
    "status": "self_rendered",
-   "block_index": 4
+   "block_index": 4,
+   "why": "allusion"
   },
   {
    "reference": "1 Corinthians 3:11",
    "status": "self_rendered",
-   "block_index": 4
+   "block_index": 4,
+   "why": "allusion"
   },
   {
    "reference": "Revelation 22:13",
    "status": "self_rendered",
-   "block_index": 4
+   "block_index": 4,
+   "why": "allusion"
   },
   {
    "reference": "Hebrews 12:2",
    "status": "self_rendered",
-   "block_index": 4
+   "block_index": 4,
+   "why": "allusion"
   },
   {
    "reference": "2 Samuel 23:5",
    "status": "self_rendered",
-   "block_index": 4
+   "block_index": 4,
+   "why": "allusion"
   },
   {
    "reference": "Mark 10:29",
    "status": "self_rendered",
-   "block_index": 5
+   "block_index": 5,
+   "why": "allusion"
   },
   {
    "reference": "Philippians 3:7-9",
    "status": "self_rendered",
-   "block_index": 5
+   "block_index": 5,
+   "why": "allusion"
   },
   {
    "reference": "Romans 5:3",
    "status": "self_rendered",
-   "block_index": 6
+   "block_index": 6,
+   "why": "allusion"
   },
   {
    "reference": "Job 2:4-5",
    "status": "self_rendered",
-   "block_index": 6
+   "block_index": 6,
+   "why": "allusion"
   },
   {
    "reference": "Philippians 3:8",
    "status": "self_rendered",
-   "block_index": 6
+   "block_index": 6,
+   "why": "allusion"
   },
   {
    "reference": "Luke 21:19",
    "status": "self_rendered",
-   "block_index": 7
+   "block_index": 7,
+   "why": "allusion"
   },
   {
    "reference": "Romans 8:35",
    "status": "self_rendered",
-   "block_index": 7
+   "block_index": 7,
+   "why": "allusion"
   },
   {
    "reference": "Romans 8:37",
    "status": "mined",
    "block_index": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 10:37-38",
    "status": "mined",
    "block_index": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 11:36",
    "status": "self_rendered",
-   "block_index": 9
+   "block_index": 9,
+   "why": "Spurgeon's phrase 'trial of cruel mockings' used as a title"
   },
   {
    "reference": "Hebrews 12:4",
    "status": "self_rendered",
-   "block_index": 9
+   "block_index": 9,
+   "why": "recast to the church ('she'), Spurgeon's sentence about the martyrs"
   },
   {
    "reference": "Zechariah 13:9",
    "status": "self_rendered",
-   "block_index": 10
+   "block_index": 10,
+   "why": "allusion"
   },
   {
    "reference": "Lamentations 4:1",
    "status": "self_rendered",
-   "block_index": 10
+   "block_index": 10,
+   "why": "allusion"
   },
   {
    "reference": "1 Samuel 4:21",
    "status": "self_rendered",
-   "block_index": 10
+   "block_index": 10,
+   "why": "allusion"
   },
   {
    "reference": "Lamentations 2:1",
    "status": "self_rendered",
-   "block_index": 10
+   "block_index": 10,
+   "why": "allusion"
   },
   {
    "reference": "1 Peter 2:7",
    "status": "mined",
    "block_index": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 20:13",
    "status": "mined",
    "block_index": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the hearer's lament: OWB's two clauses, then his own 'I heard nothing about Christ'"
   },
   {
    "reference": "1 Peter 2:7",
    "status": "mined",
    "block_index": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 1:4",
    "status": "self_rendered",
-   "block_index": 14
+   "block_index": 14,
+   "why": "allusion"
   },
   {
    "reference": "Romans 8:17",
    "status": "self_rendered",
-   "block_index": 14
+   "block_index": 14,
+   "why": "allusion"
   },
   {
    "reference": "1 Peter 1:5",
    "status": "self_rendered",
-   "block_index": 14
+   "block_index": 14,
+   "why": "allusion"
   },
   {
    "reference": "Colossians 2:10",
    "status": "self_rendered",
-   "block_index": 14
+   "block_index": 14,
+   "why": "allusion"
   },
   {
    "reference": "Colossians 3:1",
    "status": "self_rendered",
-   "block_index": 14
+   "block_index": 14,
+   "why": "allusion"
   },
   {
    "reference": "Ephesians 2:6",
    "status": "self_rendered",
-   "block_index": 14
+   "block_index": 14,
+   "why": "allusion"
   },
   {
    "reference": "Acts 26:29",
    "status": "mined",
    "block_index": 15,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Job 2:4",
    "status": "mined",
    "block_index": 15,
-   "source_file": "blessed-adversity.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Galatians 6:14",
    "status": "self_rendered",
-   "block_index": 16
+   "block_index": 16,
+   "why": "allusion"
   },
   {
    "reference": "Isaiah 40:15",
    "status": "self_rendered",
-   "block_index": 16
+   "block_index": 16,
+   "why": "allusion"
   },
   {
    "reference": "Psalm 63:1",
    "status": "self_rendered",
-   "block_index": 17
+   "block_index": 17,
+   "why": "allusion"
   },
   {
    "reference": "Psalm 84:2",
    "status": "self_rendered",
-   "block_index": 17
+   "block_index": 17,
+   "why": "allusion"
   },
   {
    "reference": "Luke 10:42",
    "status": "self_rendered",
-   "block_index": 17
+   "block_index": 17,
+   "why": "allusion"
   },
   {
    "reference": "1 John 2:1",
    "status": "self_rendered",
-   "block_index": 18
+   "block_index": 18,
+   "why": "allusion"
   },
   {
    "reference": "Psalm 23:1-2",
    "status": "self_rendered",
-   "block_index": 20
+   "block_index": 20,
+   "why": "allusion"
   },
   {
    "reference": "Isaiah 32:2",
    "status": "self_rendered",
-   "block_index": 20
+   "block_index": 20,
+   "why": "allusion"
   },
   {
    "reference": "Leviticus 25:9-10",
    "status": "self_rendered",
-   "block_index": 20
+   "block_index": 20,
+   "why": "allusion"
   },
   {
    "reference": "Hebrews 11:32",
    "status": "self_rendered",
-   "block_index": 20
+   "block_index": 20,
+   "why": "allusion"
   },
   {
    "reference": "Isaiah 61:10",
    "status": "self_rendered",
-   "block_index": 21
+   "block_index": 21,
+   "why": "allusion"
   },
   {
    "reference": "Luke 7:47-48",
    "status": "self_rendered",
-   "block_index": 22
+   "block_index": 22,
+   "why": "recast as Christ's word to the reader ('thy sins'); OWB speaks of the woman"
   },
   {
    "reference": "Psalm 41:3",
    "status": "self_rendered",
-   "block_index": 22
+   "block_index": 22,
+   "why": "recast as Christ's own promise ('I will make all thy bed')"
   },
   {
    "reference": "Romans 8:28",
    "status": "self_rendered",
-   "block_index": 22
+   "block_index": 22,
+   "why": "recast to the second person ('for thy good')"
   },
   {
    "reference": "John 11:25",
-   "status": "self_rendered",
-   "block_index": 22
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 46:4",
-   "status": "self_rendered",
-   "block_index": 22
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 23:4",
-   "status": "self_rendered",
-   "block_index": 22
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 3:2",
    "status": "self_rendered",
-   "block_index": 22
+   "block_index": 22,
+   "why": "allusion"
   },
   {
    "reference": "Revelation 14:2",
    "status": "self_rendered",
-   "block_index": 22
+   "block_index": 22,
+   "why": "allusion"
+  },
+  {
+   "reference": "John 21:15-17",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 25,
+   "why": "the minister's ‹ትወደኛለህ?›, Jesus' question in OWB's words"
   },
   {
    "reference": "Psalm 119:9",
    "status": "self_rendered",
-   "block_index": 25
+   "block_index": 25,
+   "why": "allusion"
   },
   {
    "reference": "John 3:18",
    "status": "self_rendered",
-   "block_index": 25
+   "block_index": 25,
+   "why": "allusion"
   },
   {
    "reference": "John 21:17",
    "status": "mined",
    "block_index": 25,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 4:19",
    "status": "self_rendered",
-   "block_index": 25
+   "block_index": 25,
+   "why": "the convert's own 'I love thee because thou first lovedst me'"
   }
  ]
 }
