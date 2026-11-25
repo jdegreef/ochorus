@@ -181,8 +181,8 @@
         },
         {
             "reference": "Genesis 32:28",
-            "status": "mined",
-            "source_file": "prayer-the-pulse-of-life.am.json",
+            "status": "self_rendered",
+            "why": "its wording was mined from prayer-the-pulse-of-life.am, which now quotes OWB; no longer verbatim from that file, so the translator's (1962-register) wording until this work is re-quoted",
             "block_index": 14
         },
         {
@@ -1423,14 +1423,14 @@
         },
         {
             "reference": "Nehemiah 1:5",
-            "status": "mined",
-            "source_file": "prayer-the-pulse-of-life.am.json",
+            "status": "self_rendered",
+            "why": "its wording was mined from prayer-the-pulse-of-life.am, which now quotes OWB; no longer verbatim from that file, so the translator's (1962-register) wording until this work is re-quoted",
             "block_index": 18
         },
         {
             "reference": "Nehemiah 1:11",
-            "status": "mined",
-            "source_file": "prayer-the-pulse-of-life.am.json",
+            "status": "self_rendered",
+            "why": "its wording was mined from prayer-the-pulse-of-life.am, which now quotes OWB; no longer verbatim from that file, so the translator's (1962-register) wording until this work is re-quoted",
             "block_index": 19
         },
         {

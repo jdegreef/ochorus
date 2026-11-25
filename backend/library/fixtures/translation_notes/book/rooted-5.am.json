@@ -711,10 +711,10 @@
   },
   {
    "reference": "1 Timothy 2:1-4",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
    "chapter_order": 30,
-   "source_file": "prayer-the-pulse-of-life.am.json"
+   "why": "its wording was mined from prayer-the-pulse-of-life.am, which now quotes OWB; no longer verbatim from that file, so the translator's (1962-register) wording until this work is re-quoted"
   },
   {
    "reference": "1 Timothy 2:1",
@@ -730,10 +730,10 @@
   },
   {
    "reference": "1 Timothy 2:4",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 7,
    "chapter_order": 30,
-   "source_file": "prayer-the-pulse-of-life.am.json"
+   "why": "its wording was mined from prayer-the-pulse-of-life.am, which now quotes OWB; no longer verbatim from that file, so the translator's (1962-register) wording until this work is re-quoted"
   },
   {
    "reference": "Ezekiel 22:30",
