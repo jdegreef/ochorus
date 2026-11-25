@@ -3442,12 +3442,12 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ('?"</b> (Olubereberye 3:2)', '?"</b> (Olubereberye 3:1)'),
             ("?»</b> (ዘፍጥረት 3:2)", "?»</b> (ዘፍጥረት 3:1)"),
             # Acts 17:24-28 quoted with verse 27 left out: "For in him we
-            # live" is verse 28, so only its label moves (lg already reads 28).
+            # live" is verse 28, so only its label moves (lg already reads 28;
+            # am quotes OWB with the gap shown as "…", no labels).
             ("habitations. (27) For in him", "habitations. (28) For in him"),
             ("habitación. (27) Porque en él", "habitación. (28) Porque en él"),
             ("demeure; (27) car en lui", "demeure; (28) car en lui"),
             ("habitações, (27) Pois nele", "habitações, (28) Pois nele"),
-            ("ወሰነ፤ (27) ከእናንተ", "ወሰነ፤ (28) ከእናንተ"),
             # Wording, English only.
             ("my Father will love him, and he will come unto him", "my Father will love him, and we will come unto him"),
             ("for a spirit not flesh and blood", "for a spirit hath not flesh and bones"),

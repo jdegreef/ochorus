@@ -672,14 +672,12 @@
         },
         {
             "reference": "2 Corinthians 5:8",
-            "status": "mined",
-            "source_file": "religious-affections.am.json",
+            "status": "self_rendered",
             "block_index": 6
         },
         {
             "reference": "Philippians 1:23",
-            "status": "mined",
-            "source_file": "religious-affections.am.json",
+            "status": "self_rendered",
             "block_index": 6
         },
         {
