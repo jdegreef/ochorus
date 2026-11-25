@@ -55,6 +55,14 @@ NO_SPACE_LANGUAGES = frozenset({"ja"})
 _UNSPACED_JOIN = re.compile(r"(?<![A-Za-z0-9]) (?![A-Za-z0-9])")
 
 
+#: Reader settings that differ from OWB's own defaults, per language: the same
+#: choices `build_owb_book.LANGUAGES` makes for the reading editions, so the
+#: popover quotes a verse exactly as the book prints it. English keeps the
+#: lower-case deity pronoun its 66 books are set in; OWB's default (and every
+#: other language's edition) capitalises it.
+SETTINGS = {"en": {"deity_pronoun": 0}}
+
+
 def out_path(language: str) -> Path:
     return BIBLE_DIR / f"owb-{language}-b.json.gz"
 
@@ -77,7 +85,10 @@ def main() -> None:
     commit = subprocess.run(
         ["git", "-C", str(root), "rev-parse", "HEAD"], capture_output=True, text=True, check=True
     ).stdout.strip()
-    _, _, body, manifest = export.build(records, args.language, "B", fmt="json", commit=commit)
+    _, _, body, manifest = export.build(
+        records, args.language, "B", fmt="json", commit=commit,
+        settings=SETTINGS.get(args.language),
+    )
 
     verses: dict[str, str] = {}
     joined: dict[str, str] = {}
