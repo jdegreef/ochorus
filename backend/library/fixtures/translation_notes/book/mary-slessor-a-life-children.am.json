@@ -13,10 +13,10 @@
  "references": [
   {
    "reference": "Psalm 103:13",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
    "chapter_order": 1,
-   "source_file": "all-things-for-good.am.json"
+   "why": "the wording was mined from all-things-for-good's 1962 text, which now quotes OWB; this work's quotation stands as translator's wording until it is itself re-quoted"
   },
   {
    "reference": "Psalm 119:105",
