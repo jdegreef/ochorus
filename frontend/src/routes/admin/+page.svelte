@@ -9,12 +9,14 @@
 	import {
 		adminBookHref,
 		getAdminStats,
+		getAdminTrends,
 		getAdminAttention,
 		getAdminTranslationJobs,
 		countJobsByLanguageType,
 		type TranslationJobType
 	} from '$lib/library-admin';
 	import AddLanguageForm from '$lib/components/AddLanguageForm.svelte';
+	import DashboardTrends from '$lib/components/admin/DashboardTrends.svelte';
 
 	let exporting = $state<'csv' | 'json' | null>(null);
 
@@ -53,9 +55,17 @@
 		undefined,
 		(r) => (loadedAt = r.computed_at ? new Date(r.computed_at) : new Date())
 	);
+	// How things are moving (pulse, Level 1 progress, review backlog): its own
+	// resource, so the time-based figures never wait on (or block) the stats.
+	const trendsRes = adminResource(
+		() => getAdminTrends(fresh),
+		'Something went wrong loading the trends.'
+	);
+
 	function refresh() {
 		fresh = true;
 		void dashboard.load();
+		void trendsRes.load();
 		void attentionRes.load();
 		void jobsRes.load();
 		fresh = false;
@@ -251,6 +261,12 @@
 				<p class="px-5 py-3 text-small text-muted">Nothing needs attention right now.</p>
 			{/if}
 		</section>
+	{/if}
+
+	{#if trendsRes.data}
+		<DashboardTrends trends={trendsRes.data} />
+	{:else if trendsRes.error}
+		<p class="mb-8 text-small text-muted">Trends unavailable: {trendsRes.error}</p>
 	{/if}
 
 	<AdminGate resource={dashboard} errorTitle="Couldn't load the dashboard">

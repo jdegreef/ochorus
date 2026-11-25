@@ -19,3 +19,11 @@ export const adminWorkHref = (kind: AdminWorkKind, slug: string): string =>
  *  own. (A type-only import: erased at build, so the bundle point above holds.) */
 export const adminListHref = (kind: CatalogKind, q: string): string =>
 	`/admin/${kind}?q=${encodeURIComponent(q)}`;
+
+/** One translation open in the review queue, its side-by-side panel showing
+ *  (the queue opens the item `slug` names). */
+export const adminReviewHref = (
+	kind: 'book' | 'sermon' | 'bio',
+	slug: string,
+	language: string
+): string => `/admin/review?${new URLSearchParams({ kind, language, slug })}`;

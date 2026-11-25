@@ -89,6 +89,11 @@ urlpatterns = [
         name="admin-search-decide",
     ),
     path(
+        "api/admin/trends/",
+        lazy_view("library.admin_views.trends", "AdminTrendsView"),
+        name="admin-trends",
+    ),
+    path(
         "api/admin/catalog/<slug:kind>/",
         lazy_view("library.admin_views.catalog", "AdminCatalogView"),
         name="admin-catalog",

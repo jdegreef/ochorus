@@ -95,6 +95,60 @@ export interface AdminStats {
 export const getAdminStats = (refresh = false) =>
 	apiFetch<AdminStats>(`/api/admin/stats/${refresh ? '?refresh=1' : ''}`);
 
+// The dashboard's "how things are moving": the reader pulse, each language's
+// progress toward Level 1, and the review backlog (backend admin_views/trends.py).
+export interface AdminPulseSeries {
+	d7: number;
+	d7_prev: number;
+	d30: number;
+	d30_prev: number;
+	/** One per week of `weeks`, oldest first, this (partial) week last. */
+	weekly: number[];
+}
+
+export interface AdminTrendLanguage {
+	code: string;
+	name: string;
+	is_live: boolean;
+	level1: { done: number; total: number };
+	ai_translations: number;
+	unreviewed: number;
+	/** Share of its AI translations a person has approved; null with none. */
+	reviewed_share: number | null;
+	/** Daily health scores, oldest first (from the Language health snapshots). */
+	health: number[];
+}
+
+export interface AdminTrends {
+	pulse: {
+		readers: AdminPulseSeries;
+		signups: AdminPulseSeries;
+		reading_seconds: AdminPulseSeries;
+		zero_searches: AdminPulseSeries;
+		weeks: string[];
+	};
+	languages: AdminTrendLanguage[];
+	review: {
+		waiting: number;
+		oldest: {
+			kind: 'book' | 'sermon';
+			slug: string;
+			language: string;
+			title: string;
+			created_at: string;
+		} | null;
+		weeks: string[];
+		arrived: number[];
+		approved: number[];
+		first_decision: string | null;
+	};
+	computed_at: string;
+}
+
+/** `refresh` recomputes rather than taking the server's five-minute memo. */
+export const getAdminTrends = (refresh = false) =>
+	apiFetch<AdminTrends>(`/api/admin/trends/${refresh ? '?refresh=1' : ''}`);
+
 // The dashboard's "needs attention" hub: cheap content-health + demand signals
 // aggregated across pages. The API returns raw numbers; the page ranks them and
 // owns the labels and links (admin is English-only).
