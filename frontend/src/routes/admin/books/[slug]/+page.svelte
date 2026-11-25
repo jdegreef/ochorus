@@ -18,6 +18,7 @@
 		fileBodyFixJob
 	} from '$lib/library-admin';
 	import UntranslatedPanel from '$lib/components/admin/UntranslatedPanel.svelte';
+	import { adminReviewHref } from '$lib/adminLinks';
 	import { hrefInLocale } from '$lib/editionHref';
 	import { lang } from '$lib/lang.svelte';
 	import { tick } from 'svelte';
@@ -124,6 +125,8 @@
 								{/if}
 								{#if l.source_url}<a href={l.source_url} class="text-muted hover:text-accent" target="_blank" rel="noopener">source ↗</a>{/if}
 								{#if l.pdf_url}<a href={assetUrl(l.pdf_url)} class="text-muted hover:text-accent" target="_blank" rel="noopener">PDF ↗</a>{/if}
+								<!-- An AI edition opens in the review queue's side-by-side, beside its English. -->
+								{#if l.source_type !== 'public_domain'}<a href={adminReviewHref('book', b.slug, l.code)} class="font-semibold text-accent hover:underline">Compare with English →</a>{/if}
 							</div>
 						</div>
 

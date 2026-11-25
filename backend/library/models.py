@@ -2494,6 +2494,39 @@ class VerseReview(models.Model):
         return f"{self.reference} [{self.language}] {self.outcome}"
 
 
+class ReviewNote(models.Model):
+    """A reviewer's free note on one CHAPTER of a translation under review.
+
+    The review queue already keeps a note per WORK (``ReviewOutcome.note``, the
+    "needs work" reason) and per flagged VERSE (``VerseReview``). Neither holds
+    what a reviewer actually notices while reading the side-by-side: "chapter 4
+    drops the second half of paragraph 3", "the hymn in chapter 7 should stay in
+    English". This is that — several per chapter if need be, kept in order, so
+    a second reviewer (or the next session) picks up where the first stopped.
+
+    Advisory: it gates nothing. A separate table, like ``VerseReview``, so no
+    reseed can touch it. ``chapter`` is the chapter's ``order``; a sermon, a
+    single body, uses 0.
+    """
+
+    kind = models.CharField(max_length=10, choices=ReviewOutcome.Kind.choices)
+    slug = models.SlugField(max_length=200)
+    language = models.CharField(max_length=10)
+    chapter = models.PositiveIntegerField(default=0)
+    note = models.TextField()
+    author = models.EmailField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["kind", "slug", "language", "chapter", "created_at"]
+        # The side-by-side asks "what has been noted on THIS translation" once
+        # per open, and the queue counts notes per item.
+        indexes = [models.Index(fields=["kind", "slug", "language"])]
+
+    def __str__(self) -> str:
+        return f"{self.kind}:{self.slug}:{self.language} ch{self.chapter}"
+
+
 class AdminAction(models.Model):
     """Who changed what, from the admin dashboard.
 
@@ -2529,6 +2562,8 @@ class AdminAction(models.Model):
         CONTENT_UNPUBLISH = "content.unpublish", "Document unpublished"
         REVIEW_DECIDE = "review.decide", "Review decision recorded"
         REVIEW_UNDO = "review.undo", "Review decision undone"
+        REVIEW_NOTE = "review.note", "Reviewer note added"
+        REVIEW_NOTE_DELETE = "review.note_delete", "Reviewer note removed"
         TRANSLATION_MARK_CURRENT = (
             "translation.mark_current",
             "Translation confirmed current with its English",

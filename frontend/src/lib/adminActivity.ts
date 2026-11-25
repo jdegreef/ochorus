@@ -52,6 +52,8 @@ const META: Record<string, ActionMeta> = {
 	'content.unpublish': { category: 'content', icon: 'document', loud: true },
 	'review.decide': { category: 'review', icon: 'approve', loud: false },
 	'review.undo': { category: 'review', icon: 'undo', loud: false },
+	'review.note': { category: 'review', icon: 'edit', loud: false },
+	'review.note_delete': { category: 'review', icon: 'undo', loud: false },
 	'role.grant': { category: 'access', icon: 'sliders', loud: true },
 	'role.revoke': { category: 'access', icon: 'sliders', loud: true },
 	'user.delete': { category: 'access', icon: 'sliders', loud: true }

@@ -5,6 +5,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import ReviewChapterNotes from '$lib/components/admin/ReviewChapterNotes.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import {
 		getReviewQueue,
@@ -86,6 +87,11 @@
 	// behaviour of splicing the row out of the list on success.
 	let settled = $state<Record<string, { outcome: string; title: string; lane: ReviewLane }>>({});
 	let selected = $state<Record<string, boolean>>({});
+	// Bulk approve asks once more, listing what it will approve: approving flips
+	// what readers are served, and a batch is the one path that skips reading
+	// each text through to its end. Held as the exact selection it was asked
+	// for, so picking or dropping a row withdraws the question.
+	let confirmingFor = $state('');
 
 	// Settling one verse. Keyed by reference within the open item, so two
 	// panels can never write each other's busy flag.
@@ -365,6 +371,10 @@
 	const selectedItems = $derived(
 		visible.filter((i) => selected[key(i.kind, i.slug, i.language)] && bulkEligible(i))
 	);
+	const selectionKey = $derived(
+		selectedItems.map((i) => key(i.kind, i.slug, i.language)).join('|')
+	);
+	const confirmingBulk = $derived(!!confirmingFor && confirmingFor === selectionKey);
 
 	const readyOnPage = $derived(visible.filter(bulkEligible));
 
@@ -631,17 +641,40 @@
 					class="sticky top-2 z-10 mb-4 flex flex-wrap items-center gap-3 rounded-card border border-accent-soft-border bg-accent-soft p-3 shadow-sm"
 				>
 					<span class="text-small font-semibold">{selectedItems.length} selected</span>
-					<span class="text-small text-muted">Read each one before approving.</span>
-					<button
-						class="btn btn-sm btn-primary ml-auto"
-						onclick={() => decide(selectedItems, 'approved')}
-					>
-						{selectedItems.every((i) => canApprove(i.language)) ? 'Approve' : 'Submit'}
-						{selectedItems.length} selected
-					</button>
-					<button class="btn btn-sm btn-ghost" onclick={() => (selected = {})}>
-						Clear
-					</button>
+					{#if !confirmingBulk}
+						<span class="text-small text-muted">Read each one before approving.</span>
+						<button class="btn btn-sm btn-primary ml-auto" onclick={() => (confirmingFor = selectionKey)}>
+							{selectedItems.every((i) => canApprove(i.language)) ? 'Approve' : 'Submit'}
+							{selectedItems.length} selected
+						</button>
+						<button class="btn btn-sm btn-ghost" onclick={() => (selected = {})}>
+							Clear
+						</button>
+					{:else}
+						<div class="w-full">
+							<p class="text-small font-semibold text-text">
+								{selectedItems.every((i) => canApprove(i.language)) ? 'Approve' : 'Submit'} these
+								{selectedItems.length}? Readers are served the approved text as reviewed.
+							</p>
+							<ul class="text-small mt-1 max-h-40 list-disc overflow-y-auto ps-5 text-muted">
+								{#each selectedItems as i (key(i.kind, i.slug, i.language))}
+									<li>{i.title} <span class="text-micro">({i.kind}, {i.language})</span></li>
+								{/each}
+							</ul>
+							<div class="mt-2 flex gap-2">
+								<button
+									class="btn btn-sm btn-primary"
+									onclick={() => {
+										confirmingFor = '';
+										void decide(selectedItems, 'approved');
+									}}>Confirm</button
+								>
+								<button class="btn btn-sm btn-ghost" onclick={() => (confirmingFor = '')}>
+									Cancel
+								</button>
+							</div>
+						</div>
+					{/if}
 				</div>
 			{/if}
 
@@ -826,6 +859,12 @@
 														{/each}
 													</div>
 												{/if}
+
+												<ReviewChapterNotes
+													target={target(i)}
+													chapter={detail.chapter ?? 0}
+													onpick={(c) => openDetail(i, c)}
+												/>
 
 												{#if !detail.aligned}
 													<p class="text-small mb-3 font-semibold text-warning">

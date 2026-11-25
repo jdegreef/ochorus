@@ -1049,6 +1049,37 @@ export interface ReviewDetail {
 	notes: ReviewVerse[];
 }
 
+/** A reviewer's note on one chapter of a translation (0 for a sermon or bio). */
+export interface ReviewNote {
+	id: number;
+	kind: ReviewKind;
+	slug: string;
+	language: string;
+	chapter: number;
+	note: string;
+	author: string;
+	created_at: string;
+	/** Written by the signed-in reviewer (so they may remove it). */
+	mine: boolean;
+}
+
+export const getReviewNotes = (t: ReviewTarget) =>
+	apiFetch<{ notes: ReviewNote[] }>(
+		`/api/admin/review-queue/notes/?${new URLSearchParams({ kind: t.kind, slug: t.slug, language: t.language })}`
+	);
+
+export const addReviewNote = (body: ReviewTarget & { chapter: number; note: string }) =>
+	apiFetch<ReviewNote>('/api/admin/review-queue/notes/', {
+		method: 'POST',
+		body: JSON.stringify(body)
+	});
+
+export const deleteReviewNote = (note: { id: number; language: string }) =>
+	apiFetch<ReviewNote>(
+		`/api/admin/review-queue/notes/?${new URLSearchParams({ id: String(note.id), language: note.language })}`,
+		{ method: 'DELETE' }
+	);
+
 /** Settle ONE flagged verse — the unit the review backlog actually moves in. */
 export const decideVerse = (
 	body: ReviewTarget & { reference: string; outcome: VerseOutcome; note?: string }

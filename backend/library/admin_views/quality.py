@@ -12,7 +12,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import allowed_languages, has_capability, requires
+from accounts.permissions import (
+    allowed_languages,
+    has_capability,
+    is_admin_user,
+    requires,
+)
 
 from .. import invalidation
 from ..audit import AdminAudited
@@ -37,6 +42,7 @@ from ..models import (
     AuthorTranslation,
     Book,
     Chapter,
+    ReviewNote,
     ReviewOutcome,
     Sermon,
     TranslationNote,
@@ -1055,6 +1061,117 @@ class AdminVerseReviewView(AdminAudited, APIView):
                 "outcome": None,
             }
         )
+
+
+#: A note is a few sentences about a chapter, not a re-translation.
+REVIEW_NOTE_MAX = 2000
+
+
+@requires(
+    AdminCapability.REVIEW,
+    verbs={"GET": AdminVerb.VIEW, "POST": AdminVerb.ACT, "DELETE": AdminVerb.ACT},
+    language_arg="language",
+)
+class AdminReviewNotesView(AdminAudited, APIView):
+    """Reviewers' notes on one translation, chapter by chapter (``ReviewNote``).
+
+    ``GET ?kind&slug&language`` lists them; ``POST {kind, slug, language,
+    chapter, note}`` adds one; ``DELETE ?id&language`` removes one — its own
+    author's, or any for a super admin. Notes are advisory and gate nothing; the
+    side-by-side shows them beside the chapter they are about.
+    """
+
+    def audit_action_for(self, request):
+        return (
+            AdminAction.Action.REVIEW_NOTE_DELETE
+            if request.method == "DELETE"
+            else AdminAction.Action.REVIEW_NOTE
+        )
+
+    def audit_entry(self, request, response):
+        d = response.data
+        return f"{d['kind']}:{d['slug']}:{d['language']}", {"chapter": d["chapter"]}
+
+    @staticmethod
+    def _row(note: ReviewNote, request) -> dict:
+        return {
+            "id": note.id,
+            "kind": note.kind,
+            "slug": note.slug,
+            "language": note.language,
+            "chapter": note.chapter,
+            "note": note.note,
+            "author": note.author,
+            "created_at": note.created_at.isoformat(),
+            "mine": note.author == (getattr(request.user, "email", "") or ""),
+        }
+
+    @staticmethod
+    def _target(params) -> tuple[str, str, str] | None:
+        kind = (params.get("kind") or "").strip()
+        slug = (params.get("slug") or "").strip()
+        language = (params.get("language") or "").strip()
+        if kind not in AdminReviewQueueView.KINDS or not slug or not language:
+            return None
+        return kind, slug, language
+
+    @staticmethod
+    def _exists(kind: str, slug: str, language: str) -> bool:
+        if kind == "bio":
+            return AuthorTranslation.objects.filter(author__slug=slug, language=language).exists()
+        model = Book if kind == "book" else Sermon
+        return model.objects.filter(slug=slug, language=language).exists()
+
+    def get(self, request):
+        target = self._target(request.query_params)
+        if target is None:
+            return Response({"detail": "kind, slug and language are required."}, status=400)
+        kind, slug, language = target
+        notes = ReviewNote.objects.filter(kind=kind, slug=slug, language=language)
+        return Response({"notes": [self._row(n, request) for n in notes]})
+
+    def post(self, request):
+        data = request.data or {}
+        target = self._target(data)
+        if target is None:
+            return Response({"detail": "kind, slug and language are required."}, status=400)
+        kind, slug, language = target
+        note = (data.get("note") or "").strip()
+        if not note:
+            return Response({"detail": "Write the note first."}, status=400)
+        if len(note) > REVIEW_NOTE_MAX:
+            return Response(
+                {"detail": f"Keep a note under {REVIEW_NOTE_MAX} characters."}, status=400
+            )
+        try:
+            chapter = max(0, int(data.get("chapter") or 0))
+        except (TypeError, ValueError):
+            return Response({"detail": "chapter must be a number."}, status=400)
+        if not self._exists(kind, slug, language):
+            return Response({"detail": "No such translation."}, status=404)
+        row = ReviewNote.objects.create(
+            kind=kind,
+            slug=slug,
+            language=language,
+            chapter=chapter,
+            note=note,
+            author=getattr(request.user, "email", "") or "",
+        )
+        return Response(self._row(row, request), status=201)
+
+    def delete(self, request):
+        try:
+            note = ReviewNote.objects.get(pk=int(request.query_params.get("id") or 0))
+        except (ValueError, ReviewNote.DoesNotExist):
+            return Response({"detail": "No such note."}, status=404)
+        # The language gate checked the request's ?language; hold the note to it.
+        if note.language != (request.query_params.get("language") or "").strip():
+            return Response({"detail": "No such note."}, status=404)
+        row = self._row(note, request)
+        if not row["mine"] and not is_admin_user(request.user, request):
+            return Response({"detail": "Only its author can remove a note."}, status=403)
+        note.delete()
+        return Response(row)
 
 
 @requires(AdminCapability.AUDIT, verb=AdminVerb.VIEW)

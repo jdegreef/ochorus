@@ -229,6 +229,11 @@ urlpatterns = [
         name="admin-review-detail",
     ),
     path(
+        "api/admin/review-queue/notes/",
+        lazy_view("library.admin_views.quality", "AdminReviewNotesView"),
+        name="admin-review-notes",
+    ),
+    path(
         "api/admin/review-queue/verse/",
         lazy_view("library.admin_views.quality", "AdminVerseReviewView"),
         name="admin-review-verse",
