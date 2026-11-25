@@ -5,6 +5,8 @@
  "job_issue": 7581,
  "pull_request": null,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose.",
+  "Isaiah 45:22: the verse itself is OWB (blocks 5 and 18; the 'modern translation' of block 18 now reads the same OWB words). Spurgeon heard the KJV 'Look unto me', and the chapter turns on 'look', so block 5 adds a one-time bridge after the verse («ዞር በሉ» read «ተመልከቱ» in that translation) and the refrain «ወደ እኔ ተመልከቱ» (blocks 5, 15 heading, 16) stays the word he heard — the Spurgeon bio's bridge, reused. The book row's about_html quotes the series verse 1 Timothy 4:12 as OWB «ወጣት በመሆንህ ማንም አይናቅህ»; series.json's am verse_text should match it.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003), the text the shipped Amharic house books quote. Its New Testament is on disk whole (ebible mirror, bibles/amh_amh via scripts/bible_mirror.py); the mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
   "The English quotes the BSB, except where a story gives the words a person heard (Spurgeon's KJV Isaiah 45:22). The Amharic keeps the 1962 wording throughout; Isaiah 45:22 uses the shipped cheque-book.am.json form with ተመልከቱ ('look'), which the chapter's whole point turns on. The 1962 printed text reads ወደ እኔ ዘወር በሉ (as talks-to-the-farmer.am.json quotes it) — a native reviewer should confirm the 'look' form. The chapter's second, 'modern translation' rendering of the verse is self_rendered and deliberately different.",
   "1 Timothy 4:12 is inside a bridged 4:11-13 entry in the mirror and has no shipped Amharic rendering, so it is self_rendered. Daniel 5:27 reuses Richard Allen's own Amharic edition (ጐድለህም); the 1962 Bible reads ቀልለህም.",
@@ -13,82 +15,133 @@
  "references": [
   {
    "reference": "1 Timothy 4:12",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 45:22",
    "status": "mined",
    "block_index": 5,
    "chapter_order": 2,
-   "source_file": "cheque-book.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB verse, followed by a one-time bridge: the KJV Spurgeon heard read «ተመልከቱ» for OWB's «ዞር በሉ»"
   },
   {
    "reference": "Isaiah 45:22",
    "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 2,
+   "why": "heading keeps the KJV word Spurgeon heard («ወደ እኔ ተመልከቱ»), bridged in block 5"
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 2,
+   "why": "the KJV word Spurgeon heard («ወደ እኔ ተመልከቱ»), bridged in block 5"
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "mined",
    "block_index": 18,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Peter 2:7a",
    "status": "mined",
    "block_index": 28,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Jeremiah 45:5a",
    "status": "mined",
    "block_index": 34,
    "chapter_order": 2,
-   "source_file": "days-of-heaven-upon-earth.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Jeremiah 23:6",
+   "status": "mined",
+   "block_index": 29,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Jeremiah 23:6b",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 30,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Jeremiah 23:6",
+   "status": "mined",
+   "block_index": 59,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Hosea 14:8",
+   "status": "mined",
+   "block_index": 62,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the title of M'Cheyne's sermon, in OWB's words"
   },
   {
    "reference": "John 14:6",
    "status": "mined",
    "block_index": 27,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 8:5b",
    "status": "mined",
    "block_index": 18,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 8:6",
    "status": "mined",
    "block_index": 18,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Hebrews 9:14",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 7,
+   "why": "Allen's own testimony («በክርስቶስ ደም ምሕረትን አገኘሁ»), not a quotation"
   },
   {
    "reference": "Acts 16:26",
    "status": "mined",
    "block_index": 13,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Genesis 28:17",
-   "status": "self_rendered",
-   "block_index": 32,
-   "chapter_order": 7
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Daniel 5:27",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 22,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the same OWB words as Richard Allen's own Amharic edition (life-experience-gospel-labours)"
+  },
+  {
+   "reference": "Genesis 28:17",
+   "status": "mined",
+   "block_index": 32,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "«የእግዚአብሔር ቤት» after it is the meaning of the name Bethel, not a second quotation"
   }
  ]
 }

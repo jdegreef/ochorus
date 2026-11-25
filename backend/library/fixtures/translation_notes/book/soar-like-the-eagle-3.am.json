@@ -25,10 +25,9 @@
   },
   {
    "reference": "Psalm 103:1",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 1,
-   "source_file": "gleanings-among-the-sheaves.am.json"
+   "chapter_order": 1
   },
   {
    "reference": "Psalm 103:3",

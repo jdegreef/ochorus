@@ -5,6 +5,7 @@
  "job_issue": 3787,
  "pull_request": null,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording reused from other shipped works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'), including the Old Testament verses Bunyan recites word for word that were self_rendered before (the founder's rule that a verbatim recitation is a quotation). The `self_rendered` rows are the allegory's allusions — characters' speech built round a verse, adapted or re-personed — each with its reason. Chapter 2's rows after block 47 were one block early and now point at their blocks.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
   "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
  ],
@@ -13,450 +14,544 @@
    "reference": "Acts 16:30",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "Christian's own cry ('What shall I do to save my soul?'), an echo of Acts 16:30, not a quotation"
   },
   {
    "reference": "Hebrews 9:27",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Isaiah 30:33",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Matthew 3:7",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "adapted into the scroll's command ('Fly from the wrath to come'); OWB words it as John's question"
   },
   {
    "reference": "1 Peter 1:4",
    "status": "self_rendered",
    "block_index": 25,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Luke 9:62",
    "status": "self_rendered",
    "block_index": 27,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Titus 1:2",
    "status": "self_rendered",
    "block_index": 31,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Matthew 13:43",
    "status": "self_rendered",
    "block_index": 41,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Revelation 21:4",
    "status": "self_rendered",
    "block_index": 43,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Revelation 22:17",
    "status": "self_rendered",
    "block_index": 47,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Matthew 3:7",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "allusion in Christian's own sentence"
   },
   {
    "reference": "1 Corinthians 7:29",
    "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "allusion in the allegory's own words, not a quotation"
+  },
+  {
+   "reference": "1 Kings 19:9",
+   "status": "self_rendered",
+   "block_index": 38,
+   "chapter_order": 2,
+   "why": "Evangelist's 'What dost thou here, Christian?' echoes God's word to Elijah; Bunyan's words, not a quotation"
   },
   {
    "reference": "Hebrews 10:38",
-   "status": "self_rendered",
-   "block_index": 48,
-   "chapter_order": 2
+   "status": "mined",
+   "block_index": 49,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 10:29",
    "status": "self_rendered",
-   "block_index": 48,
-   "chapter_order": 2
+   "block_index": 49,
+   "chapter_order": 2,
+   "why": "allusion: Evangelist's own question ('dost thou not spurn the most high God?')"
   },
   {
    "reference": "1 Corinthians 13:7",
    "status": "self_rendered",
-   "block_index": 50,
-   "chapter_order": 2
+   "block_index": 51,
+   "chapter_order": 2,
+   "why": "Evangelist's adaptation ('Faith hopes all things'), not a quotation"
   },
   {
    "reference": "Luke 13:24",
-   "status": "self_rendered",
-   "block_index": 52,
-   "chapter_order": 2
+   "status": "mined",
+   "block_index": 53,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 7:14",
-   "status": "self_rendered",
-   "block_index": 52,
-   "chapter_order": 2
+   "status": "mined",
+   "block_index": 53,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 16:25",
+   "status": "mined",
+   "block_index": 53,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Joshua 1:7",
    "status": "self_rendered",
-   "block_index": 52,
-   "chapter_order": 2
+   "block_index": 55,
+   "chapter_order": 2,
+   "why": "the stock phrase 'turn not to the right hand or to the left' in Evangelist's own sentence; its words happen to match OWB"
   },
   {
    "reference": "Matthew 7:7",
    "status": "self_rendered",
    "block_index": 56,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "allusion in the allegory's own words, not a quotation"
+  },
+  {
+   "reference": "Matthew 3:7",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 3,
+   "why": "allusion in Christian's own sentence"
+  },
+  {
+   "reference": "Revelation 3:8",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 3,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "John 6:37",
    "status": "mined",
    "block_index": 20,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Matthew 3:7",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Revelation 3:8",
-   "status": "self_rendered",
-   "block_index": 7,
-   "chapter_order": 3
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 7:13-14",
    "status": "self_rendered",
    "block_index": 22,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "allusion in the allegory's own words, not a quotation"
+  },
+  {
+   "reference": "Mark 2:5",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 4,
+   "why": "the Bright One's greeting, Bunyan's words echoing Mark 2:5"
+  },
+  {
+   "reference": "Judges 6:23",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 4,
+   "why": "the Bright One's greeting; its words happen to match OWB Judg 6:23, but it is Bunyan's speech, not a quotation"
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 4,
+   "why": "allusion in the allegory's own words, not a quotation"
+  },
+  {
+   "reference": "Proverbs 23:34",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 4,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "John 10:1",
    "status": "mined",
    "block_index": 8,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Mark 2:5",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 4
-  },
-  {
-   "reference": "Hebrews 12:2",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 4
-  },
-  {
-   "reference": "Proverbs 23:34",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 4
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Proverbs 6:6",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Proverbs 24:10",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Genesis 24:31",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 22,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the blessing clause is verbatim OWB Gen 24:31 in its own marks; the rest of the welcome is Bunyan's"
   },
   {
    "reference": "Psalm 23:4",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 28,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Jeremiah 31:21",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 13,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "two OWB pieces joined with '…'; OWB's words to virgin Israel keep their feminine forms"
   },
   {
    "reference": "Exodus 20:13",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 18,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 10:11",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Hosea 14:9",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "John 10:1",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "allusion ('you are a thief') in Christian's own sentence"
   },
   {
-   "reference": "Proverbs 26:12",
-   "status": "self_rendered",
+   "reference": "Proverbs 29:20",
+   "status": "mined",
    "block_index": 8,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the KJV clause ('more hope of a fool than of him') stands in both Prov 26:12 and 29:20; OWB's singular 29:20 fits Christian's 'than of him'"
   },
   {
    "reference": "Proverbs 29:5",
    "status": "self_rendered",
    "block_index": 16,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "2 Corinthians 11:14",
    "status": "self_rendered",
    "block_index": 20,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Revelation 3:19",
    "status": "self_rendered",
    "block_index": 25,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "adapted ('Those whom I love I serve thus'), the Shining One's words"
   },
   {
    "reference": "Ecclesiastes 5:12",
    "status": "self_rendered",
    "block_index": 29,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "1 Thessalonians 5:6",
    "status": "self_rendered",
    "block_index": 30,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Romans 6:21",
    "status": "self_rendered",
    "block_index": 37,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Song of Solomon 7:9",
    "status": "self_rendered",
    "block_index": 44,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Psalm 116:3",
    "status": "self_rendered",
    "block_index": 54,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Acts 9:34",
    "status": "self_rendered",
    "block_index": 57,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "adapted ('Christ will make thee whole'), Hopeful's words"
   },
   {
    "reference": "Isaiah 43:2",
    "status": "mined",
    "block_index": 58,
    "chapter_order": 10,
-   "source_file": "pilgrims-progress-teens.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the inner ‹…› is verbatim OWB; the outer marks hold Christian's own cry"
   },
   {
    "reference": "Exodus 15:16",
    "status": "self_rendered",
    "block_index": 59,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Revelation 22:2",
    "status": "self_rendered",
    "block_index": 61,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Revelation 21:4",
    "status": "self_rendered",
    "block_index": 62,
-   "chapter_order": 10
-  },
-  {
-   "reference": "Revelation 7:9",
-   "status": "self_rendered",
-   "block_index": 68,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Matthew 25:21",
    "status": "self_rendered",
    "block_index": 67,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "adapted ('Come ye in the joy of the Lord'), the shining host's words"
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "self_rendered",
+   "block_index": 68,
+   "chapter_order": 10,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Luke 10:5",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 126:5",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 28,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Titus 1:2",
    "status": "self_rendered",
    "block_index": 28,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Luke 1:45",
    "status": "mined",
    "block_index": 29,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 6:37",
    "status": "self_rendered",
    "block_index": 47,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "the Keeper's own words echoing John 6:37, not a quotation"
   },
   {
    "reference": "Matthew 24:41",
    "status": "self_rendered",
    "block_index": 52,
-   "chapter_order": 11
-  },
-  {
-   "reference": "Mark 7:37",
-   "status": "self_rendered",
-   "block_index": 60,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Judges 6:23",
    "status": "self_rendered",
    "block_index": 58,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "greeting re-personed to Mercy ('Peace be to thee; stand up'), Bunyan's words"
   },
   {
-   "reference": "Song of Solomon 6:10",
+   "reference": "Mark 7:37",
    "status": "self_rendered",
-   "block_index": 22,
-   "chapter_order": 12
+   "block_index": 60,
+   "chapter_order": 11,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Matthew 7:20",
    "status": "self_rendered",
    "block_index": 18,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "allusion in the allegory's own words, not a quotation"
+  },
+  {
+   "reference": "Song of Solomon 6:10",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 12,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 9:23",
    "status": "self_rendered",
    "block_index": 27,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "a verse of a hymn, not Scripture"
   },
   {
    "reference": "Psalm 2:11",
    "status": "self_rendered",
    "block_index": 27,
-   "chapter_order": 12
-  },
-  {
-   "reference": "Matthew 12:24",
-   "status": "self_rendered",
-   "block_index": 75,
-   "chapter_order": 13
-  },
-  {
-   "reference": "Romans 16:23",
-   "status": "self_rendered",
-   "block_index": 133,
-   "chapter_order": 13
+   "chapter_order": 12,
+   "why": "a verse of a hymn, not Scripture"
   },
   {
    "reference": "Luke 24:36",
    "status": "self_rendered",
    "block_index": 46,
-   "chapter_order": 13
+   "chapter_order": 13,
+   "why": "greeting re-personed to Mercy, Bunyan's words"
+  },
+  {
+   "reference": "Matthew 12:24",
+   "status": "self_rendered",
+   "block_index": 75,
+   "chapter_order": 13,
+   "why": "allusion in the allegory's own words, not a quotation"
+  },
+  {
+   "reference": "Romans 16:23",
+   "status": "self_rendered",
+   "block_index": 133,
+   "chapter_order": 13,
+   "why": "allusion in the allegory's own words, not a quotation"
+  },
+  {
+   "reference": "Luke 10:35",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 14,
+   "why": "allusion in the allegory's own words, not a quotation"
+  },
+  {
+   "reference": "Revelation 22:2",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 14,
+   "why": "allusion in the allegory's own words, not a quotation"
+  },
+  {
+   "reference": "Isaiah 40:11",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 14,
+   "why": "allusion in the allegory's own words, not a quotation"
+  },
+  {
+   "reference": "Ezekiel 34:16",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 14,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "1 Timothy 6:12",
    "status": "mined",
    "block_index": 13,
    "chapter_order": 14,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Luke 10:35",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 14
-  },
-  {
-   "reference": "Revelation 22:2",
-   "status": "self_rendered",
-   "block_index": 11,
-   "chapter_order": 14
-  },
-  {
-   "reference": "Isaiah 40:11",
-   "status": "self_rendered",
-   "block_index": 11,
-   "chapter_order": 14
-  },
-  {
-   "reference": "Ezekiel 34:16",
-   "status": "self_rendered",
-   "block_index": 12,
-   "chapter_order": 14
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 11:28",
    "status": "self_rendered",
    "block_index": 39,
-   "chapter_order": 14
+   "chapter_order": 14,
+   "why": "allusion in the allegory's own words, not a quotation"
   },
   {
    "reference": "Revelation 7:9",
    "status": "self_rendered",
    "block_index": 39,
-   "chapter_order": 14
+   "chapter_order": 14,
+   "why": "allusion in the allegory's own words, not a quotation"
   }
  ]
 }

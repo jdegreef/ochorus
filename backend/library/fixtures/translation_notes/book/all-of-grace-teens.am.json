@@ -57,10 +57,10 @@
   },
   {
    "reference": "Isaiah 45:22a",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 2,
    "chapter_order": 3,
-   "source_file": "all-of-grace.am.json"
+   "why": "was mined from all-of-grace.am.json's pre-OWB wording, which that work no longer carries; not verbatim OWB here"
   },
   {
    "reference": "1 Peter 2:24a",
@@ -90,10 +90,10 @@
   },
   {
    "reference": "2 Corinthians 5:7",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
    "chapter_order": 6,
-   "source_file": "all-of-grace.am.json"
+   "why": "was mined from all-of-grace.am.json's pre-OWB wording, which that work no longer carries; not verbatim OWB here"
   },
   {
    "reference": "Revelation 22:17b",
@@ -164,10 +164,10 @@
   },
   {
    "reference": "Ezekiel 18:4b",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 3,
    "chapter_order": 10,
-   "source_file": "all-of-grace.am.json"
+   "why": "was mined from all-of-grace.am.json's pre-OWB wording, which that work no longer carries; not verbatim OWB here"
   },
   {
    "reference": "Luke 22:61a",

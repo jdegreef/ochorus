@@ -228,6 +228,28 @@
    "decision": "OWB reads «ሄኖክ ከእግዚአብሔር ጋር ተመላለሰ». Quote that wherever the text is quoted; the author's subject 'walking with God' may stay «ከእግዚአብሔር ጋር መሄድ» in prose (OWB 1 John 2:6 uses the same ተመላለሰ)."
   },
   {
+   "id": "pure-in-heart",
+   "references": ["Matthew 5:8"],
+   "english": ["pure in heart"],
+   "old": ["ልበ ንጹሖች"],
+   "decision": "OWB Matt 5:8 reads «ልባቸው ንጹሕ የሆነ የተባረኩ ናቸው፤ እግዚአብሔርን ያያሉ». Quote that span wherever the beatitude is quoted, and 'blessed' as «የተባረኩ»; the running term «ንጹሕ ልብ» stays in the prose."
+  },
+  {
+   "id": "song-5-1-inebriated",
+   "references": ["Song of Solomon 5:1"],
+   "english": ["be inebriated", "dearly beloved"],
+   "old": ["ስከሩ"],
+   "decision": "Bernard (On Loving God) builds three states — eat, drink, be inebriated — and the friends/dearly-beloved distinction on the Vulgate. OWB pairs 'drink' with 'lovers' and ends «ጠጥታችሁም እርኩ». Keep the Vulgate rendering, self_rendered; the half-verse 'I have drunk my wine with my milk' is OWB «ወይን ጠጄንና ወተቴን ጠጥቻለሁ»."
+  },
+  {
+   "id": "jeremiah-only-a-child",
+   "references": ["Jeremiah 1:6", "Jeremiah 1:7"],
+   "english": ["I am only a child", "I'm only a kid"],
+   "old": ["ብላቴና ነኝ"],
+   "detect": true,
+   "decision": "OWB reads «ገና ልጅ ነኝ» in both verses; the refrain «ብላቴና ነኝ» is the 1962 wording. Quote OWB's phrase wherever it recurs, unmarked echoes included."
+  },
+  {
    "id": "restores-my-soul",
    "references": ["Psalm 23:3"],
    "english": ["He restores my soul", "restores the soul"],
@@ -240,6 +262,34 @@
    "english": ["keys of the kingdom", "key to the kingdom"],
    "old": ["የመንግሥተ ሰማያትንም መክፈቻዎች"],
    "decision": "OWB Matt 16:19 reads «የመንግሥተ ሰማያትን ቁልፎች». Quote OWB where the verse stands; an author's own 'key to the kingdom' image (The Key in My Hand, title በእጄ ያለው መክፈቻ) stays መክፈቻ and its row is self_rendered."
+  },
+  {
+   "id": "justifieth-the-ungodly",
+   "references": ["Romans 4:5"],
+   "english": ["justifieth the ungodly", "That justifieth the ungodly"],
+   "old": ["ኃጢአተኛውን የሚያጸድቅ", "ኃጢአተኛውን ያጸድቃል"],
+   "decision": "OWB Rom 4:5 reads «እግዚአብሔርን የማይፈሩትን በሚያጸድቅ». Quote OWB's exact phrase; Spurgeon builds All of Grace on 'the ungodly', so its first quotation carries a one-time gloss (— ማለትም ኃጢአተኛውን የሚያጸድቅ —) and the author's prose keeps ኃጢአተኛ."
+  },
+  {
+   "id": "without-strength",
+   "references": ["Romans 5:6"],
+   "english": ["without strength", "in due time Christ died for the ungodly"],
+   "old": ["ገና ደካሞች ሳለን", "ክርስቶስ ዘመኑ ሲደርስ ስለ ኃጢአተኞች ሞቶአል"],
+   "decision": "OWB Rom 5:6 reads «ገና አቅመ ቢሶች ሳለን እግዚአብሔር በወሰነው ጊዜ ክርስቶስ እግዚአብሔርን ለማይፈሩ ሰዎች ሞተ». አቅመ ቢሶች is 'without strength' itself, so quote it everywhere the verse stands; an author's foils ('comparatively weak') keep ደካሞች."
+  },
+  {
+   "id": "born-again",
+   "references": ["John 3:3", "John 3:7"],
+   "english": ["born again", "Ye must be born again"],
+   "old": ["ዳግመኛ ልትወለዱ ያስፈልጋችኋል", "ዳግመኛ ካልተወለደ"],
+   "decision": "OWB reads 'born from above' («ከላይ መወለድ አለባችሁ», «ከላይ ካልተወለደ»). Quote OWB; where the author argues from 'born again' / 'the new birth', give the chapter's first quotation the gloss (ማለትም ዳግመኛ መወለድ) and keep the author's prose."
+  },
+  {
+   "id": "look-unto-me",
+   "references": ["Isaiah 45:22"],
+   "english": ["Look unto me, and be ye saved"],
+   "old": ["ወደ እኔ ተመልከቱ፥ ትድኑማላችሁ"],
+   "decision": "OWB Isa 45:22 reads «ወደ እኔ ዞር በሉና ድኑ» ('turn to me'). Quote OWB; where Spurgeon tells of his conversion ('I looked'), bridge in his own sentence (ዞር ብዬ ተመለከትሁ)."
   }
  ]
 }
