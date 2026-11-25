@@ -430,8 +430,7 @@
         },
         {
             "reference": "1 Samuel 1:15",
-            "status": "mined",
-            "source_file": "daughters-of-the-king-1.am.json",
+            "status": "self_rendered",
             "block_index": 0
         },
         {

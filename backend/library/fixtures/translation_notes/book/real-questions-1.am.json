@@ -157,14 +157,12 @@
         },
         {
             "reference": "Joshua 2:11",
-            "status": "mined",
-            "source_file": "daughters-of-the-king-1.am.json",
+            "status": "self_rendered",
             "block_index": 9
         },
         {
             "reference": "Ezekiel 33:11",
-            "status": "mined",
-            "source_file": "daughters-of-the-king-1.am.json",
+            "status": "self_rendered",
             "block_index": 9
         },
         {

@@ -3124,10 +3124,9 @@
   },
   {
    "reference": "Isaiah 53:5",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 42,
-   "chapter_order": 16,
-   "source_file": "around-the-wicket-gate.am.json"
+   "chapter_order": 16
   },
   {
    "reference": "Luke 23:28",
