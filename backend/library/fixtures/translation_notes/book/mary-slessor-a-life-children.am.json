@@ -27,10 +27,10 @@
   },
   {
    "reference": "Isaiah 6:8b",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
    "chapter_order": 3,
-   "source_file": "key-teachings-of-a-b-simpson.am.json"
+   "why": "the wording was mined from key-teachings-of-a-b-simpson.am before that work's re-quote to OWB (founder decision, 2026-11-18); it is no longer in any shipped file"
   },
   {
    "reference": "Psalm 27:10",

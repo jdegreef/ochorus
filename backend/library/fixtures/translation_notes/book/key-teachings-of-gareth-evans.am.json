@@ -145,10 +145,9 @@
   },
   {
    "reference": "Isaiah 41:13",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 5,
-   "source_file": "thoughts-for-the-quiet-hour.am.json"
+   "chapter_order": 5
   },
   {
    "reference": "Hebrews 11:31",
@@ -497,10 +496,9 @@
   },
   {
    "reference": "Ephesians 2:6",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 13,
-   "chapter_order": 10,
-   "source_file": "key-teachings-of-watchman-nee.am.json"
+   "chapter_order": 10
   },
   {
    "reference": "Hebrews 4:9",
@@ -945,10 +943,9 @@
   },
   {
    "reference": "Proverbs 4:18",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 18,
-   "chapter_order": 18,
-   "source_file": "thoughts-for-the-quiet-hour.am.json"
+   "chapter_order": 18
   }
  ]
 }

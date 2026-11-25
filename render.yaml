@@ -90,6 +90,12 @@ services:
         sync: false
       - key: API_GUARD_MODE
         sync: false
+      # GET /api/build-facts/ (library/build_facts_view.py): the DB-owned facts
+      # the web build's local-API mode lays over its repo-seeded DB. A long
+      # random secret, the same value as ochorus-web's OCHORUS_BUILD_FACTS_TOKEN.
+      # Unset, the route 404s. docs/build-without-prod-api.md.
+      - key: BUILD_FACTS_TOKEN
+        sync: false
       # Optional: paste a Sentry DSN to turn on API error monitoring. Each report
       # is tagged with the deploy's commit automatically (Render sets
       # RENDER_GIT_COMMIT), so an error names the release that introduced it
@@ -958,3 +964,15 @@ services:
       # only static-build minutes, whereas failing ships nothing.
       - key: API_RELEASE_TIMEOUT_MS
         value: "900000"
+      # Prerender against a throwaway local API instead of crawling ochorus-api
+      # (docs/build-without-prod-api.md). OFF until OCHORUS_BUILD_API is "local".
+      # To switch on: OCHORUS_BUILD_API=local,
+      # OCHORUS_BUILD_FACTS=https://<the ochorus-api host>/api/build-facts/ and
+      # OCHORUS_BUILD_FACTS_TOKEN = ochorus-api's BUILD_FACTS_TOKEN. Rollback:
+      # clear OCHORUS_BUILD_API and redeploy.
+      - key: OCHORUS_BUILD_API
+        sync: false
+      - key: OCHORUS_BUILD_FACTS
+        sync: false
+      - key: OCHORUS_BUILD_FACTS_TOKEN
+        sync: false

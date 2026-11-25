@@ -62,6 +62,9 @@ EXEMPT = re.compile(
     # Render's health check, uptime monitors, and the web build's release gate
     # (frontend/scripts/await-api-release.mjs) — liveness + a content digest.
     r"health/"
+    # The web build's facts download (library/build_facts_view.py): a server
+    # with no Origin, gated by its own bearer token, and 404 without it.
+    r"|build-facts/$"
     # Resend's webhook (Svix-signed), and the unsubscribe / preferences links an
     # email client opens — token-gated, and a mail app sends no Origin.
     r"|emails/"
