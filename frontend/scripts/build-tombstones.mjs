@@ -45,7 +45,14 @@
  * It also fails when more than TOMBSTONE_MAX (default 300) pages would be
  * tombstoned at once: that is a build short of pages, not a withdrawal.
  */
-import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import {
+	copyFileSync,
+	existsSync,
+	mkdirSync,
+	readFileSync,
+	readdirSync,
+	writeFileSync
+} from 'node:fs';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -84,7 +91,9 @@ export function parsePageList(text, source) {
 		const line = raw.trim();
 		if (!line || line.startsWith('#')) continue;
 		if (!/^[^/\s][^\s]*\.html$/.test(line) || line.split('/').includes('..')) {
-			throw new Error(`${source}: not a build-relative .html path: ${JSON.stringify(line.slice(0, 120))}`);
+			throw new Error(
+				`${source}: not a build-relative .html path: ${JSON.stringify(line.slice(0, 120))}`
+			);
 		}
 		if (!SHELLS.has(line)) paths.push(line);
 	}
@@ -106,7 +115,9 @@ async function fetchFresh(url) {
 	let lastError;
 	for (let attempt = 1; attempt <= 3; attempt++) {
 		try {
-			const res = await fetch(`${url}?build=${Date.now()}`, { signal: AbortSignal.timeout(30_000) });
+			const res = await fetch(`${url}?build=${Date.now()}`, {
+				signal: AbortSignal.timeout(30_000)
+			});
 			if (res.status < 500) return { status: res.status, text: await res.text() };
 			lastError = new Error(`${url} answered ${res.status}`);
 		} catch (e) {
@@ -153,7 +164,8 @@ async function previousList(seed) {
 	if (!source) {
 		if (!process.env.RENDER) return [];
 		const site = (process.env.PUBLIC_SITE_URL || '').replace(/\/+$/, '');
-		if (!site) throw new Error('PUBLIC_SITE_URL is unset, so the live page list cannot be fetched.');
+		if (!site)
+			throw new Error('PUBLIC_SITE_URL is unset, so the live page list cannot be fetched.');
 		source = `${site}/${MANIFEST}`;
 	}
 	if (!/^https?:\/\//.test(source)) return parsePageList(readFileSync(source, 'utf8'), source);
@@ -189,9 +201,14 @@ export async function main(buildDir) {
 		throw Object.assign(
 			new Error(
 				`${graves.length} previously published pages are missing from this build ` +
-					`(limit ${max}), e.g. ${graves.slice(0, 5).map((p) => `/${p}`).join(', ')}.`
+					`(limit ${max}), e.g. ${graves
+						.slice(0, 5)
+						.map((p) => `/${p}`)
+						.join(', ')}.`
 			),
-			{ hint: 'If that many withdrawals are intended (a language taken offline), set TOMBSTONE_MAX above it for this deploy; otherwise find out why the build lost them.' }
+			{
+				hint: 'If that many withdrawals are intended (a language taken offline), set TOMBSTONE_MAX above it for this deploy; otherwise find out why the build lost them.'
+			}
 		);
 	}
 

@@ -42,7 +42,10 @@ describe('parsePageList', () => {
 describe('tombstonesFor', () => {
 	it('is every known path the build no longer has, never one it does', () => {
 		expect(
-			tombstonesFor(['gone/index.html', 'kept/index.html', 'gone/index.html', '404.html'], ['kept/index.html'])
+			tombstonesFor(
+				['gone/index.html', 'kept/index.html', 'gone/index.html', '404.html'],
+				['kept/index.html']
+			)
 		).toEqual(['gone/index.html']);
 	});
 });
@@ -66,7 +69,9 @@ describe('the committed seed', () => {
 });
 
 it('runs as the LAST postbuild step, after build-404 writes the shell it copies', () => {
-	const steps = JSON.parse(read('package.json')).scripts.postbuild.split('&&').map((s: string) => s.trim());
+	const steps = JSON.parse(read('package.json'))
+		.scripts.postbuild.split('&&')
+		.map((s: string) => s.trim());
 	expect(steps.at(-1)).toBe('node scripts/build-tombstones.mjs');
 	expect(steps.indexOf('node scripts/build-404.mjs')).toBeLessThan(steps.length - 1);
 });
@@ -92,7 +97,10 @@ describe('main, over a scratch build', () => {
 	it('overwrites withdrawn pages, leaves rebuilt ones, and lists everything', async () => {
 		dir = mkdtempSync(join(tmpdir(), 'tombstones-'));
 		const previous = join(dir, 'previous.txt');
-		writeFileSync(previous, 'books/gone/index.html\nbooks/gone/1/index.html\nbooks/back/index.html\n');
+		writeFileSync(
+			previous,
+			'books/gone/index.html\nbooks/gone/1/index.html\nbooks/back/index.html\n'
+		);
 		put('404.html', '<meta name="robots" content="noindex">SHELL');
 		put('200.html', 'SHELL');
 		put('books/back/index.html', 'REAL PAGE');
@@ -109,8 +117,14 @@ describe('main, over a scratch build', () => {
 		expect(page('sermons/the-marriage-tie/index.html')).toContain('SHELL');
 
 		const listed = parsePageList(page(MANIFEST), MANIFEST);
-		expect(listed).toEqual(htmlFiles(build()).filter((p) => !/^(200|404)\.html$/.test(p)).sort());
-		expect(listed).toEqual(expect.arrayContaining(['books/gone/index.html', 'books/new/index.html']));
+		expect(listed).toEqual(
+			htmlFiles(build())
+				.filter((p) => !/^(200|404)\.html$/.test(p))
+				.sort()
+		);
+		expect(listed).toEqual(
+			expect.arrayContaining(['books/gone/index.html', 'books/new/index.html'])
+		);
 	});
 
 	it('refuses a burst of withdrawals — a build short of pages, not a withdrawal', async () => {
