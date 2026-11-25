@@ -58,17 +58,15 @@
   },
   {
    "reference": "Matthew 28:20b",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 7,
-   "source_file": "rooted-2.am.json"
+   "chapter_order": 7
   },
   {
    "reference": "Matthew 28:20b",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 7,
-   "source_file": "rooted-2.am.json"
+   "chapter_order": 7
   },
   {
    "reference": "Isaiah 61:1",
