@@ -563,10 +563,9 @@
   },
   {
    "reference": "Acts 10:35",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 21,
-   "chapter_order": 4,
-   "source_file": "the-unselfishness-of-god.am.json"
+   "chapter_order": 4
   },
   {
    "reference": "Matthew 10:42",
