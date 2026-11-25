@@ -96,17 +96,15 @@
   },
   {
    "reference": "Proverbs 31:17",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 9,
-   "source_file": "clothed-with-strength-and-dignity.am.json"
+   "chapter_order": 9
   },
   {
    "reference": "Proverbs 31:17",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 9,
-   "source_file": "clothed-with-strength-and-dignity.am.json"
+   "chapter_order": 9
   },
   {
    "reference": "Luke 2:40",

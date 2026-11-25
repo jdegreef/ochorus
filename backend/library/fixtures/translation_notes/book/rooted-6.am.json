@@ -430,10 +430,9 @@
   },
   {
    "reference": "Genesis 1:27",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 18,
-   "source_file": "clothed-with-strength-and-dignity.am.json"
+   "chapter_order": 18
   },
   {
    "reference": "Genesis 1:27",

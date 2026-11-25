@@ -569,10 +569,9 @@
   },
   {
    "reference": "Psalm 119:11",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 22,
-   "chapter_order": 14,
-   "source_file": "clothed-with-strength-and-dignity.am.json"
+   "chapter_order": 14
   },
   {
    "reference": "Luke 4:16",
