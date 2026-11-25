@@ -304,6 +304,13 @@
    "english": ["Here am I; send me", "Here I am. Send me"],
    "old": ["እነሆኝ፥ እኔን ላከኝ", "እነሆኝ፤ እኔን ላከኝ"],
    "decision": "OWB Isa 6:8 answers «እኔ ዝግጁ ነኝ፤ ላከኝ». Quote it wherever the verse or its refrain is quoted, unmarked prayers included; a chapter title «እነሆኝ» stays the title."
+  },
+  {
+   "id": "backslider-in-heart",
+   "references": ["Proverbs 14:14"],
+   "english": ["backslider in heart", "filled with his own ways"],
+   "old": ["በልቡ ወደ ኋላ የተመለሰ"],
+   "decision": "OWB Prov 14:14 reads «ከእምነቱ የሚመለስ የገዛ መንገዱን ፍሬ ይጠግባል», with no 'in heart'. Where a work argues from 'in heart' (Finney's Revival Lectures 21: the text 'implies a backslidden heart' while the forms are kept, and twenty-one 'filled with his own …' heads), keep the AV sense, self_rendered, and list it for the founder; elsewhere quote OWB."
   }
  ]
 }
