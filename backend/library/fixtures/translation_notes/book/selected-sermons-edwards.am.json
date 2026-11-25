@@ -554,10 +554,9 @@
   },
   {
    "reference": "Ruth 1:16",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 4,
-   "source_file": "daughters-of-the-king-1.am.json"
+   "chapter_order": 4
   },
   {
    "reference": "Matthew 12:50",
@@ -719,10 +718,9 @@
   },
   {
    "reference": "Ruth 1:16",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 38,
-   "chapter_order": 4,
-   "source_file": "daughters-of-the-king-1.am.json"
+   "chapter_order": 4
   },
   {
    "reference": "John 14:2",
