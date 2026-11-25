@@ -322,10 +322,9 @@
   },
   {
    "reference": "Ezekiel 3:18",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 24,
-   "chapter_order": 7,
-   "source_file": "men-who-tended-the-flock-2.am.json"
+   "chapter_order": 7
   },
   {
    "reference": "1 Thessalonians 5:14",
