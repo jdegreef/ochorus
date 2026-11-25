@@ -758,10 +758,10 @@
   },
   {
    "reference": "Psalms 46:10",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 9,
    "chapter_order": 14,
-   "source_file": "the-power-of-stillness.am.json"
+   "why": "the wording was mined from the-power-of-stillness.am, which now quotes OWB (re-quoted 2026-11-25); this block still carries the pre-OWB Amharic wording"
   },
   {
    "reference": "Isaiah 30:18",
@@ -772,10 +772,10 @@
   },
   {
    "reference": "Isaiah 40:31",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 17,
    "chapter_order": 14,
-   "source_file": "burdens-and-gifts.am.json"
+   "why": "the wording was mined from burdens-and-gifts.am, which now quotes OWB (re-quoted 2026-11-25); this block still carries the pre-OWB Amharic wording"
   },
   {
    "reference": "Lamentations 3:26",

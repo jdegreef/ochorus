@@ -5,6 +5,7 @@
  "job_issue": 5745,
  "pull_request": 5766,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh, branch master, lowercase usfm/ codes; re-verified for this job 2026-10-09: mat/heb/2ti/act/luk return 200, gen/psa/ecc/isa/pro 404). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
   "The mirror bridges Matthew 28:18-20 into one entry holding only verse 18, so Matthew 28:20 could not be taken from it; it is pasted verbatim from rooted-2.am.json (the wording men-and-women-who-gave-everything-2.am.json also cites as mined from rooted-2).",
   "A `mined` row was re-measured against the finished text: an exact substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Wording reused from a shipped work whose own notes mark it self_rendered stays self_rendered here (the samuel-ajayi-crowther-a-life-children.am rule): Ecclesiastes 9:10 (key-teachings-of-richard-baxter.am), Psalm 19:1 (key-teachings-of-jonathan-edwards.am), Isaiah 35:1 (the-god-of-all-comfort.am), Isaiah 61:1 (samuel-ajayi-crowther-a-life-teens.am, one clause with … for omitted words) and Psalm 116:15 (on-loving-god.am) are verbatim from those files but self_rendered. Psalm 15:4 and Proverbs 25:25 have no shipped Amharic rendering and are self_rendered.",
@@ -14,22 +15,24 @@
  "references": [
   {
    "reference": "Ecclesiastes 9:10a",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 19:1",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Timothy 4:17",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 121:2",
@@ -42,63 +45,70 @@
    "status": "mined",
    "block_index": 0,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 35:1",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 15:4",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 28:20b",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 28:20b",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 4,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 61:1",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 34:18",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
    "chapter_order": 9,
-   "why": "wording was borrowed from growing-in-wisdom.am's pre-OWB Amharic, which that work no longer carries (re-quoted to OWB 2026-11-25); not verbatim OWB here"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 11:8",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Proverbs 25:25",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 116:15",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   }
  ]
 }
