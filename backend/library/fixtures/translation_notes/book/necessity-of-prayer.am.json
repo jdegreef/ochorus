@@ -549,10 +549,9 @@
   },
   {
    "reference": "Psalm 19:14",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 14,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 14
   },
   {
    "reference": "James 1:21",

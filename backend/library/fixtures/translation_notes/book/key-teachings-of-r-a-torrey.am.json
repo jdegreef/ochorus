@@ -958,8 +958,7 @@
   },
   {
    "reference": "Proverbs 11:30",
-   "status": "mined",
-   "source_file": "the-inner-chamber.am.json",
+   "status": "self_rendered",
    "block_index": 0,
    "chapter_order": 17
   },

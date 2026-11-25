@@ -2797,10 +2797,9 @@
   },
   {
    "reference": "Psalm 33:9",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 43,
-   "chapter_order": 16,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 16
   },
   {
    "reference": "Mark 11:22-24",
@@ -2811,10 +2810,9 @@
   },
   {
    "reference": "Romans 4:17",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 44,
-   "chapter_order": 16,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 16
   },
   {
    "reference": "Philippians 2:13",
