@@ -437,8 +437,7 @@
   },
   {
    "reference": "Matthew 25:21",
-   "status": "mined",
-   "source_file": "faithful-with-little.ja.json",
+   "status": "self_rendered",
    "chapter_order": 11,
    "block_index": 21
   },
