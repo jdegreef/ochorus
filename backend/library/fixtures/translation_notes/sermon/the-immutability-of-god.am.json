@@ -5,6 +5,7 @@
  "job_issue": 3565,
  "pull_request": null,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose, each with its `why`. The refrain 'sons of Jacob' quotes OWB Malachi 3:6's «የያዕቆብ ዘሮች» wherever it stands, so the text and its exposition read alike. Block 28's «እግዚአብሔር የተለወጠበትን…» is an objector's words, not Scripture (an inventory false positive).",
   "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
   "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
   "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
@@ -12,238 +13,291 @@
  "references": [
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 0
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Job 8:9",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Job 11:12",
    "status": "self_rendered",
-   "block_index": 1
+   "block_index": 1,
+   "why": "unquoted echo of the AV ('vain man would be wise… wild ass's colt'); OWB Job 11:12 reads the other way, so the translator's wording stands"
   },
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 4
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 5
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 6
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 1:17",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 7
   },
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 8
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 14:30",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 9
   },
   {
    "reference": "Hebrews 6:18",
-   "status": "self_rendered",
-   "block_index": 14
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 1:18",
    "status": "self_rendered",
-   "block_index": 14
+   "block_index": 14,
+   "why": "Spurgeon's own 'yea and nay' turn of phrase, not a quotation of the verse"
   },
   {
    "reference": "2 Corinthians 1:20",
    "status": "self_rendered",
-   "block_index": 14
+   "block_index": 14,
+   "why": "Spurgeon's own 'yea, yea' turn of phrase, not a quotation of the verse"
   },
   {
    "reference": "1 Corinthians 3:12",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 14
   },
   {
    "reference": "Mark 16:16",
-   "status": "self_rendered",
-   "block_index": 15
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "1 Peter 2:7",
+   "reference": "1 Peter 2:8",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 15
   },
   {
    "reference": "Luke 16:28",
-   "status": "self_rendered",
-   "block_index": 15
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 10:31",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 15
   },
   {
    "reference": "Numbers 23:19",
    "status": "self_rendered",
-   "block_index": 28
+   "block_index": 28,
+   "why": "Spurgeon's free paraphrase ('Hath he spoken… hath he sworn'), not the verse's wording"
   },
   {
    "reference": "Isaiah 14:31",
    "status": "self_rendered",
-   "block_index": 28
+   "block_index": 28,
+   "why": "Spurgeon's loose paraphrase naming Ashdod and Gaza, not the verse's wording"
   },
   {
    "reference": "Isaiah 38:1",
    "status": "self_rendered",
-   "block_index": 28
+   "block_index": 28,
+   "why": "the Hezekiah narrative retold in Spurgeon's words"
   },
   {
    "reference": "Isaiah 38:5",
    "status": "self_rendered",
-   "block_index": 28
+   "block_index": 28,
+   "why": "the Hezekiah narrative retold in Spurgeon's words"
   },
   {
    "reference": "2 Kings 20:5",
    "status": "self_rendered",
-   "block_index": 28
+   "block_index": 28,
+   "why": "the Hezekiah narrative retold in Spurgeon's words"
+  },
+  {
+   "reference": "Isaiah 46:10",
+   "status": "self_rendered",
+   "block_index": 28,
+   "why": "Spurgeon recasts the verse into the third person ('He hath done all his will'); OWB's first-person words would not fit"
+  },
+  {
+   "reference": "Numbers 24:18",
+   "status": "self_rendered",
+   "block_index": 28,
+   "why": "Spurgeon's loose 'Edom shall be a prey' paraphrase, not the verse's wording"
   },
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 29
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 9:13",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 30
   },
   {
    "reference": "Romans 9:11",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 30
   },
   {
    "reference": "Romans 9:12",
-   "status": "self_rendered",
-   "block_index": 30
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 30
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 35
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 36
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 1:12",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 36
   },
   {
    "reference": "Revelation 22:14",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 36
   },
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 37
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Exodus 33:11",
-   "status": "self_rendered",
-   "block_index": 38
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 38
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Genesis 42:36",
-   "status": "self_rendered",
-   "block_index": 39
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 39
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Lamentations 3:1",
-   "status": "self_rendered",
-   "block_index": 39
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 53:3",
-   "status": "self_rendered",
-   "block_index": 39
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 40
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ecclesiastes 3:1",
-   "status": "self_rendered",
-   "block_index": 41
+   "status": "mined",
+   "block_index": 41,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 21:8",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 41
   },
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 41
+   "status": "mined",
+   "block_index": 41,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 42
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 3:18",
-   "status": "self_rendered",
-   "block_index": 42
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 43
+   "status": "mined",
+   "block_index": 43,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 25:6",
-   "status": "self_rendered",
-   "block_index": 43
+   "status": "mined",
+   "block_index": 43,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   }
  ]
 }

@@ -2418,11 +2418,11 @@
 			]
 		},
 		"am/jesus-teacher-of-prayer": {
-			"ground": "d51feaf2eb45da62e321f126bf51296eb5af298990bfebfd79b7eb04d84d1236",
+			"ground": "f087a009f39f53b9147d01de799648e5f303cec93c2e88a039f67fc4b3a7974a",
 			"style": "originals",
 			"volume": "2",
 			"script": "ethiopic",
-			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
 			"art": true,
 			"scrim": 0.75,
 			"lift": 1.45,
@@ -2441,7 +2441,7 @@
 					[194, 392, 406, 468]
 				],
 				"subtitle": [
-					[154, 529, 446, 557]
+					[97, 529, 503, 557]
 				],
 				"mark": [
 					[232, 664, 368, 746]
