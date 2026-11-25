@@ -11,10 +11,10 @@
  "references": [
   {
    "reference": "Joel 2:28-29",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 1,
    "chapter_order": 1,
-   "source_file": "daughters-of-the-king-3.am.json"
+   "why": "the wording was mined from daughters-of-the-king-3.am, which now quotes OWB; this edition still carries the pre-OWB Amharic wording"
   },
   {
    "reference": "Acts 1:14",
