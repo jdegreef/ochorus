@@ -46,8 +46,8 @@
         },
         {
             "reference": "John 3:16",
-            "status": "mined",
-            "source_file": "all-of-grace.am.json",
+            "status": "self_rendered",
+            "why": "was mined from all-of-grace.am.json's pre-OWB wording, which that work no longer carries; not verbatim OWB here",
             "block_index": 2
         },
         {
@@ -144,8 +144,8 @@
         },
         {
             "reference": "John 19:30",
-            "status": "mined",
-            "source_file": "all-of-grace.am.json",
+            "status": "self_rendered",
+            "why": "was mined from all-of-grace.am.json's pre-OWB wording, which that work no longer carries; not verbatim OWB here",
             "block_index": 18
         },
         {

@@ -262,6 +262,34 @@
    "english": ["keys of the kingdom", "key to the kingdom"],
    "old": ["የመንግሥተ ሰማያትንም መክፈቻዎች"],
    "decision": "OWB Matt 16:19 reads «የመንግሥተ ሰማያትን ቁልፎች». Quote OWB where the verse stands; an author's own 'key to the kingdom' image (The Key in My Hand, title በእጄ ያለው መክፈቻ) stays መክፈቻ and its row is self_rendered."
+  },
+  {
+   "id": "justifieth-the-ungodly",
+   "references": ["Romans 4:5"],
+   "english": ["justifieth the ungodly", "That justifieth the ungodly"],
+   "old": ["ኃጢአተኛውን የሚያጸድቅ", "ኃጢአተኛውን ያጸድቃል"],
+   "decision": "OWB Rom 4:5 reads «እግዚአብሔርን የማይፈሩትን በሚያጸድቅ». Quote OWB's exact phrase; Spurgeon builds All of Grace on 'the ungodly', so its first quotation carries a one-time gloss (— ማለትም ኃጢአተኛውን የሚያጸድቅ —) and the author's prose keeps ኃጢአተኛ."
+  },
+  {
+   "id": "without-strength",
+   "references": ["Romans 5:6"],
+   "english": ["without strength", "in due time Christ died for the ungodly"],
+   "old": ["ገና ደካሞች ሳለን", "ክርስቶስ ዘመኑ ሲደርስ ስለ ኃጢአተኞች ሞቶአል"],
+   "decision": "OWB Rom 5:6 reads «ገና አቅመ ቢሶች ሳለን እግዚአብሔር በወሰነው ጊዜ ክርስቶስ እግዚአብሔርን ለማይፈሩ ሰዎች ሞተ». አቅመ ቢሶች is 'without strength' itself, so quote it everywhere the verse stands; an author's foils ('comparatively weak') keep ደካሞች."
+  },
+  {
+   "id": "born-again",
+   "references": ["John 3:3", "John 3:7"],
+   "english": ["born again", "Ye must be born again"],
+   "old": ["ዳግመኛ ልትወለዱ ያስፈልጋችኋል", "ዳግመኛ ካልተወለደ"],
+   "decision": "OWB reads 'born from above' («ከላይ መወለድ አለባችሁ», «ከላይ ካልተወለደ»). Quote OWB; where the author argues from 'born again' / 'the new birth', give the chapter's first quotation the gloss (ማለትም ዳግመኛ መወለድ) and keep the author's prose."
+  },
+  {
+   "id": "look-unto-me",
+   "references": ["Isaiah 45:22"],
+   "english": ["Look unto me, and be ye saved"],
+   "old": ["ወደ እኔ ተመልከቱ፥ ትድኑማላችሁ"],
+   "decision": "OWB Isa 45:22 reads «ወደ እኔ ዞር በሉና ድኑ» ('turn to me'). Quote OWB; where Spurgeon tells of his conversion ('I looked'), bridge in his own sentence (ዞር ብዬ ተመለከትሁ)."
   }
  ]
 }

@@ -4,93 +4,121 @@
     "language": "am",
     "job_issue": 7957,
     "pull_request": null,
+    "note": [
+        "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose."
+    ],
     "references": [
         {
             "reference": "Psalm 147:5",
             "status": "mined",
-            "source_file": "the-fundamental-doctrines-of-the-christian-faith.am.json",
-            "block_index": 0
+            "block_index": 0,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "why": "OWB's «ማስተዋሉ አይለካም» ('his understanding cannot be measured') carries the sermon's 'infinite'"
         },
         {
             "reference": "Isaiah 40:25",
-            "status": "self_rendered",
-            "block_index": 1
+            "status": "mined",
+            "block_index": 1,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "John 17:3",
             "status": "mined",
-            "source_file": "a-divine-and-supernatural-light.am.json",
-            "block_index": 9
+            "block_index": 9,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "1 Corinthians 2:9",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 12
+            "block_index": 12,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "1 Corinthians 2:10",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 12
+            "block_index": 12,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "1 Corinthians 2:11",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 13
+            "block_index": 13,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+        },
+        {
+            "reference": "1 Corinthians 2:11",
+            "status": "mined",
+            "block_index": 16,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "why": "the verse's first half, as the speaker recites it"
         },
         {
             "reference": "Malachi 3:6",
             "status": "self_rendered",
-            "block_index": 28
+            "block_index": 28,
+            "why": "allusion ('change not') in the speaker's sentence"
         },
         {
             "reference": "Acts 4:24",
             "status": "self_rendered",
-            "block_index": 65
+            "block_index": 65,
+            "why": "allusion ('who made heaven and earth and all that is in them')"
         },
         {
             "reference": "1 John 4:8",
             "status": "self_rendered",
-            "block_index": 95
+            "block_index": 95,
+            "why": "allusion ('God is love') in the speaker's sentence"
         },
         {
             "reference": "Jeremiah 31:3",
-            "status": "self_rendered",
-            "block_index": 98
+            "status": "mined",
+            "block_index": 98,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "why": "'an everlasting love', twice, as OWB words it"
         },
         {
             "reference": "Genesis 3:19",
             "status": "self_rendered",
-            "block_index": 101
+            "block_index": 101,
+            "why": "allusion ('back to the dust') re-personed"
         },
         {
             "reference": "Jeremiah 23:24",
             "status": "self_rendered",
-            "block_index": 104
+            "block_index": 104,
+            "why": "the speaker's paraphrase (with 1 Kings 8:27), left in his words"
         },
         {
             "reference": "Romans 5:20",
-            "status": "self_rendered",
-            "block_index": 105
+            "status": "mined",
+            "block_index": 105,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+        },
+        {
+            "reference": "Romans 5:20",
+            "status": "mined",
+            "block_index": 114,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Isaiah 6:2",
             "status": "self_rendered",
-            "block_index": 123
+            "block_index": 123,
+            "why": "allusion (angels veil their faces)"
         },
         {
             "reference": "Matthew 11:28",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 123
+            "block_index": 123,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
-            "reference": "Matthew 6:9-10",
+            "reference": "Matthew 6:9",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 124
+            "block_index": 124,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "why": "the speaker quotes verse 9 only"
         }
     ]
 }
