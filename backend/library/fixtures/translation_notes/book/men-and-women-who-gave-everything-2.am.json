@@ -349,10 +349,10 @@
   },
   {
    "reference": "Matthew 5:44-45",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 5,
    "chapter_order": 11,
-   "source_file": "godliness.am.json"
+   "why": "the godliness.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   },
   {
    "reference": "Romans 12:1",
@@ -694,10 +694,10 @@
   },
   {
    "reference": "Matthew 5:44-45",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 57,
    "chapter_order": 13,
-   "source_file": "godliness.am.json"
+   "why": "the godliness.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   },
   {
    "reference": "Romans 12:1",

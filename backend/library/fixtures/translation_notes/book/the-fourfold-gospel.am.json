@@ -1436,10 +1436,9 @@
   },
   {
    "reference": "Isaiah 27:2-3",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 43,
-   "chapter_order": 6,
-   "source_file": "true-vine.am.json"
+   "chapter_order": 6
   },
   {
    "reference": "Zechariah 1:18-21",
