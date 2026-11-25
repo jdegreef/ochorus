@@ -8,21 +8,20 @@
  * the Japanese and Russian shelves landed, and over an hour after. CI renders
  * the same site 8 at a time against a local API in about 11 minutes.
  *
- * So on Render the build overlaps its requests, but only 3 at a time. The API
- * runs one gunicorn worker with 4 threads (backend/Dockerfile): 3 keeps the
- * crawl inside that worker's threads, with one left for readers, and still
- * leaves the crawl's memory well under the 512 MB plan (the worry that kept
- * this at 1 after 2026-09-26, fixed since by the single-worker, threaded
- * layout and MALLOC_ARENA_MAX). Chapters come in batches of 25
- * ($lib/chapterBatch), so most pages make no API request of their own.
+ * #9879 (2026-11-24) overlapped 3 requests on Render, to fit the API's one
+ * gunicorn worker with 4 threads. Back to 1 on 2026-11-25: with 3 in flight
+ * the web deploys failed partway through the crawl (6, 17 and 18 minutes in)
+ * while CI built the same commits fine against its own API, the pattern of
+ * 2026-11-16..19 when the crawl knocked the 512 MB instance over. The faster
+ * route is building against a local API (docs/build-without-prod-api.md),
+ * not more pressure on production.
  *
  * An explicit PRERENDER_CONCURRENCY always wins: CI sets 8 against its own
- * API, and setting 1 on Render is the rollback if the API ever struggles.
- * Anywhere else (a local `npm run build` against production) stays at 1.
+ * API, and ochorus-web can set a higher value to try overlapping again.
  */
 
 /** Pages in flight on Render when nothing says otherwise. */
-export const RENDER_PRERENDER_CONCURRENCY = 3;
+export const RENDER_PRERENDER_CONCURRENCY = 1;
 
 /** @param {Record<string, string | undefined>} env */
 export function prerenderConcurrency(env) {
