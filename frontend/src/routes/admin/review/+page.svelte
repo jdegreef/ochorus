@@ -6,6 +6,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import ReviewChapterNotes from '$lib/components/admin/ReviewChapterNotes.svelte';
+	import { daysSince } from '$lib/adminDashboard';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import {
 		getReviewQueue,
@@ -415,11 +416,6 @@
 	// Whole days since a date, for "waiting 58 d". Amber from a month: the
 	// "Waiting longest" sort is about this number.
 	const STALE_DAYS = 30;
-	function daysSince(iso: string): number | null {
-		if (!iso) return null;
-		const t = Date.parse(iso);
-		return Number.isNaN(t) ? null : Math.max(0, Math.floor((Date.now() - t) / 86_400_000));
-	}
 
 	// The row's reader-impact figure, and on hover what it is made of. An
 	// estimate is marked "~": no reader has opened this edition yet.

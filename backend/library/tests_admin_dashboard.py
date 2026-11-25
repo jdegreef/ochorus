@@ -2337,6 +2337,16 @@ class AdminContentEditJobsTests(TestCase):
         )
         self.assertEqual(missing.status_code, 404)
 
+    def test_editable_fields_are_ones_the_seeds_carry_live(self):
+        # A field job is ONE fixture edit only because the seed re-syncs that
+        # field on every deploy. A field outside UPDATE_FIELDS would ship to the
+        # fixture and never reach an existing row.
+        from .admin_views.content_jobs import FIELD_EDITS
+        from .management.commands import seed_books, seed_sermons
+
+        self.assertLessEqual(set(FIELD_EDITS["book"]), set(seed_books.UPDATE_FIELDS))
+        self.assertLessEqual(set(FIELD_EDITS["sermon"]), set(seed_sermons.UPDATE_FIELDS))
+
     def test_a_field_title_must_name_an_allowed_field(self):
         from .admin_views.content_jobs import _issue_to_job
 

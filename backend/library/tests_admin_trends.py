@@ -103,6 +103,7 @@ class AdminTrendsTests(TestCase):
         )
         self.assertEqual(len(review["weeks"]), 8)
         self.assertEqual(review["approved"][-1], 1)  # confirmed only
+        self.assertTrue(review["has_decisions"])
         # Every AI edition in the 8 charted weeks (56 days, so the 40-day-old
         # one counts), reviewed or not — but never the retired duplicate.
         self.assertEqual(sum(review["arrived"]), 4)
@@ -129,7 +130,7 @@ class AdminTrendsTests(TestCase):
         sw = rows["sw"]
         self.assertEqual((sw["ai_translations"], sw["unreviewed"]), (3, 2))
         self.assertEqual(sw["reviewed_share"], round(1 / 3, 3))
-        self.assertEqual(sw["health"], [40])
+        self.assertEqual([p["health"] for p in sw["health"]], [40])
         self.assertIn("done", sw["level1"])
         # A language with no AI translations has no share, rather than 0%.
         no_ai = next(r for r in rows.values() if r["ai_translations"] == 0)

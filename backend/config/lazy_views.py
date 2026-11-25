@@ -23,12 +23,8 @@ It looks like the real callback to everything that inspects a routed view
   every view's permission classes.
 
 The first call imports the module and builds the real ``as_view()`` callable;
-later calls go straight to it. That first import is serialised by one lock
-across every lazy view. Without it, the dashboard's opening burst (stats,
-trends, attention, the queue — four first requests at once, on the worker's
-four threads) imported overlapping admin modules in parallel, and Python's
-import machinery answered the cycle with ``_DeadlockError``: a 500 on a cold
-worker's first dashboard load. The lock is taken only until a view resolves.
+later calls go straight to it. Two threads racing the first call each build
+one, which is harmless — ``as_view()`` is a pure function of the class.
 
 Only for DRF ``APIView`` subclasses (the attributes above are DRF's), and only
 for modules with no import-time side effects (signal receivers, admin
@@ -37,12 +33,7 @@ registrations, checks) — those must keep loading at startup, via ``AppConfig.r
 
 from __future__ import annotations
 
-import threading
 from importlib import import_module
-
-#: Held while a lazy view imports its module (see the module docstring).
-#: Re-entrant, because importing one view module can resolve another.
-_IMPORT_LOCK = threading.RLock()
 
 
 class LazyView:
@@ -58,12 +49,9 @@ class LazyView:
     def _resolve(self):
         view = self._view
         if view is None:
-            with _IMPORT_LOCK:
-                view = self._view
-                if view is None:
-                    view = self._view = getattr(
-                        import_module(self.__module__), self.__name__
-                    ).as_view()
+            view = self._view = getattr(
+                import_module(self.__module__), self.__name__
+            ).as_view()
         return view
 
     @property

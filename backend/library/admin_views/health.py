@@ -97,20 +97,29 @@ def record_snapshots(rows: list[dict], day: date) -> None:
     )
 
 
+def health_history(today: date) -> dict[str, list[dict]]:
+    """Each language's daily scores over the last ``_TREND_DAYS``, oldest first,
+    as ``{date, health}`` — only points scored by the current formula (see
+    ``SCORE_VERSION``). Read-only: shared with the dashboard's trends, which
+    must show the same line this page does without writing a snapshot."""
+    since = today - timedelta(days=_TREND_DAYS)
+    history: dict[str, list[dict]] = {}
+    for code, day, health in (
+        LanguageHealthSnapshot.objects.filter(date__gt=since, score_version=SCORE_VERSION)
+        .order_by("date")
+        .values_list("language", "date", "health")
+    ):
+        history.setdefault(code, []).append({"date": day.isoformat(), "health": health})
+    return history
+
+
 def attach_trend(rows: list[dict], today: date) -> None:
     """Give each row its last ``_TREND_DAYS`` of daily scores (``trend``, oldest
     first) and its change since a week ago (``week_change``: today's score minus
     the latest point 7–10 days old, or None with no such point — an older one
     would be a month's change shown as a week's). Only points scored by the
     current formula count; see ``SCORE_VERSION``."""
-    since = today - timedelta(days=_TREND_DAYS)
-    history: dict[str, list[dict]] = {}
-    for snap in LanguageHealthSnapshot.objects.filter(
-        date__gt=since, score_version=SCORE_VERSION
-    ).order_by("date"):
-        history.setdefault(snap.language, []).append(
-            {"date": snap.date.isoformat(), "health": snap.health}
-        )
+    history = health_history(today)
     week_ago = (today - timedelta(days=7)).isoformat()
     oldest_baseline = (today - timedelta(days=_WEEK_SLACK_DAYS + 7)).isoformat()
     for r in rows:

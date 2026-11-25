@@ -9,12 +9,11 @@
 	import { hrefInLocale } from '$lib/editionHref';
 	import { lang } from '$lib/lang.svelte';
 	import {
-		fileFieldEditJob,
 		getAdminSermon,
 		setSermonPublished,
 		type AdminSermonLang
 	} from '$lib/library-admin';
-	import QueueFixButton from '$lib/components/QueueFixButton.svelte';
+	import FieldEditButtons from '$lib/components/admin/FieldEditButtons.svelte';
 
 	let { data } = $props();
 
@@ -135,26 +134,7 @@
 									{l.native_name} <span class="text-muted">· {l.name} ({l.code})</span>
 								</h2>
 								<p class="mt-1 text-body text-text">{l.title}</p>
-								<!-- Fixture-owned text: each files a content-edit job (one fixture edit the seeds carry live). -->
-								<div class="mt-1 flex flex-wrap items-start gap-x-3 gap-y-1 text-small">
-									{#each [{ field: 'title', label: 'Edit title', value: l.title, multiline: false }, { field: 'scripture_ref', label: 'Edit Scripture', value: l.scripture_ref, multiline: false }, { field: 'summary', label: 'Edit summary', value: l.summary, multiline: true }] as const as f (f.field)}
-										<QueueFixButton
-											label={f.label}
-											seed={f.value}
-											multiline={f.multiline}
-											allowEmpty={f.field !== 'title'}
-											fieldLabel="New {f.field.replace('_', ' ')}"
-											saveLabel="Suggest"
-											filedLabel="edit queued"
-											submit={(next) =>
-												fileFieldEditJob(
-													{ entity: 'sermon', field: f.field, slug: s.slug, language: l.code },
-													f.value,
-													next
-												)}
-										/>
-									{/each}
-								</div>
+								<FieldEditButtons entity="sermon" slug={s.slug} language={l.code} values={l} />
 								<div class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-small text-muted">
 									<span>{SOURCE_LABELS[l.source_type]}</span>
 									<span>· {fmt(l.word_count)} words</span>

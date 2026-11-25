@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from django.db.models import Count, Sum
+from django.db.models import Count, Q, Sum
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -76,6 +76,7 @@ class AdminBookDetailView(APIView):
                     "title": b.title,
                     "subtitle": b.subtitle,
                     "description": b.description,
+                    "hook": b.hook,
                     "source_type": b.source_type,
                     "is_published": b.is_published,
                     "sort_order": b.sort_order,
@@ -322,32 +323,43 @@ class AdminBulkPublishView(AdminAudited, APIView):
         published = _EditionPublishView._parse(request.data)[1]
         allowed = allowed_languages(request, AdminCapability.PUBLISH, AdminVerb.ACT)
 
-        changed, unchanged, skipped = [], [], []
-        seen: set[tuple[str, str]] = set()
+        wanted: dict[tuple[str, str], dict] = {}
+        skipped = []
         for raw in items:
             slug = str((raw or {}).get("slug", "")).strip()
             language = str((raw or {}).get("language", "")).strip()
-            if not slug or not language or (slug, language) in seen:
+            if not slug or not language or (slug, language) in wanted:
                 continue
-            seen.add((slug, language))
             item = {"slug": slug, "language": language}
             if allowed is not None and language not in allowed:
                 skipped.append({**item, "reason": "Your publish access doesn't cover this language."})
-                continue
-            refusal = publish_refusal(model, slug, published)
-            if refusal:
+            elif refusal := publish_refusal(model, slug, published):
                 skipped.append({**item, "reason": refusal})
-                continue
-            obj = model.objects.filter(slug=slug, language=language).first()
-            if obj is None:
+            else:
+                wanted[(slug, language)] = item
+
+        # One read for every edition asked about, one write for those that flip.
+        # update(), not save(): is_published derives nothing, and a Sermon's
+        # save() re-parses its whole body — 200 of them was seconds of work.
+        match = Q(pk__in=[])
+        for slug, language in wanted:
+            match |= Q(slug=slug, language=language)
+        rows = {
+            (r["slug"], r["language"]): r
+            for r in model.objects.filter(match).values("pk", "slug", "language", "is_published")
+        }
+        changed, unchanged, flip = [], [], []
+        for key, item in wanted.items():
+            row = rows.get(key)
+            if row is None:
                 skipped.append({**item, "reason": "No such edition."})
-            elif obj.is_published == published:
+            elif row["is_published"] == published:
                 unchanged.append(item)
             else:
-                obj.is_published = published
-                # update_fields, as the toggle: a bare save() re-tokenises the text.
-                obj.save(update_fields=["is_published"])
                 changed.append(item)
+                flip.append(row["pk"])
+        if flip:
+            model.objects.filter(pk__in=flip).update(is_published=published)
         if changed:
             invalidation.mark_content_changed()
         return Response(
@@ -395,10 +407,12 @@ class AdminSermonDetailView(APIView):
         }
 
         def excerpt(text: str) -> str:
+            from ..search import to_word_end
+
             text = " ".join((text or "").split())
             if len(text) <= self.EXCERPT_CHARS:
                 return text
-            return text[: self.EXCERPT_CHARS].rsplit(" ", 1)[0] + "…"
+            return f"{to_word_end(text, self.EXCERPT_CHARS, 0)}…"
 
         def review(language: str) -> dict | None:
             r = reviews.get(language)

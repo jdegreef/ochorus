@@ -15,10 +15,10 @@
 		getAdminBook,
 		setBookPublished,
 		fileRetitleJob,
-		fileBodyFixJob,
-		fileFieldEditJob
+		fileBodyFixJob
 	} from '$lib/library-admin';
 	import UntranslatedPanel from '$lib/components/admin/UntranslatedPanel.svelte';
+	import FieldEditButtons from '$lib/components/admin/FieldEditButtons.svelte';
 	import { adminReviewHref } from '$lib/adminLinks';
 	import { hrefInLocale } from '$lib/editionHref';
 	import { lang } from '$lib/lang.svelte';
@@ -108,21 +108,7 @@
 								<h2 class="text-h3">{l.native_name} <span class="text-muted">· {l.name} ({l.code})</span></h2>
 								<p class="mt-1 text-body text-text">{l.title}{#if l.subtitle}<span class="text-muted"> — {l.subtitle}</span>{/if}</p>
 								{#if l.description}<p class="mt-1 max-w-prose text-small text-muted">{l.description}</p>{/if}
-								<!-- Fixture-owned text: each files a content-edit job (one fixture edit the seeds carry live). -->
-								<div class="mt-1 flex flex-wrap items-start gap-x-3 gap-y-1 text-small">
-									{#each [{ field: 'title', label: 'Edit title', value: l.title, multiline: false }, { field: 'subtitle', label: 'Edit subtitle', value: l.subtitle, multiline: false }, { field: 'description', label: 'Edit description', value: l.description, multiline: true }] as const as f (f.field)}
-										<QueueFixButton
-											label={f.label}
-											seed={f.value ?? ''}
-											multiline={f.multiline}
-											allowEmpty={f.field !== 'title'}
-											fieldLabel="New {f.field}"
-											saveLabel="Suggest"
-											filedLabel="edit queued"
-											submit={(next) => fileFieldEditJob({ entity: 'book', field: f.field, slug: b.slug, language: l.code }, f.value ?? '', next)}
-										/>
-									{/each}
-								</div>
+								<FieldEditButtons entity="book" slug={b.slug} language={l.code} values={l} />
 								<div class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-small text-muted">
 									<span>{SOURCE_LABELS[l.source_type]}</span>
 									<span>· {fmt(l.chapters.length)} ch · {fmt(l.word_count)} words</span>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { adminReviewHref } from '$lib/adminLinks';
 	import { browser } from '$app/environment';
 	import { replaceState } from '$app/navigation';
 	import { dismissable } from '$lib/actions/dismissable';
@@ -152,9 +153,7 @@
 	// text beside its English and settling its flagged verses, which lives there.
 	const reviewHref = (r: AdminCoverageRow, lang: string) => {
 		const kind = KIND[kindOf(r)].review;
-		return kind
-			? `/admin/review?${new URLSearchParams({ kind, language: lang, slug: r.slug })}`
-			: null;
+		return kind ? adminReviewHref(kind, r.slug, lang) : null;
 	};
 
 	// --- Planner controls: narrow and order the matrix to what you're working on.

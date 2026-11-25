@@ -11,6 +11,7 @@
 		addReviewNote,
 		deleteReviewNote,
 		getReviewNotes,
+		REVIEW_NOTE_MAX,
 		type ReviewNote,
 		type ReviewTarget
 	} from '$lib/library-admin';
@@ -127,7 +128,7 @@
 	<textarea
 		id="review-note-{targetKey}"
 		rows="2"
-		maxlength="2000"
+		maxlength={REVIEW_NOTE_MAX}
 		placeholder="What should the next reviewer know about this chapter?"
 		class="text-small w-full rounded-sm border border-border bg-surface px-2 py-1.5"
 		bind:value={draft}></textarea>

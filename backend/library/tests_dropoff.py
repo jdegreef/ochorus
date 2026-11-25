@@ -21,7 +21,7 @@ from accounts.models import UserProfile
 from reading.models import ReadingProgress, WorkKind
 
 from . import dropoff
-from .admin_views import AdminDropOffView
+from .admin_views.dropoff import AdminDropOffView
 from .models import Author, Book, Chapter
 
 NOW = timezone.now()

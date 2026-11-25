@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { levelProgress, pulseTiles, waitedFor, weekLabel } from './adminDashboard';
+import {
+	daysSince,
+	levelProgress,
+	pulseTiles,
+	shortDate,
+	waitedFor,
+	weekLabel
+} from './adminDashboard';
 
 const series = (d7: number, d7_prev: number, weekly = [1, 2]) => ({
 	d7,
@@ -52,5 +59,20 @@ describe('levelProgress / waitedFor', () => {
 		expect(waitedFor('2026-11-24T13:00:00Z', now)).toBe('0 days');
 		expect(waitedFor('2026-11-24T11:00:00Z', now)).toBe('1 day');
 		expect(waitedFor('2026-07-06T02:25:11Z', now)).toBe('142 days');
+	});
+});
+
+describe('daysSince / shortDate', () => {
+	it('counts whole days and survives a missing or bad time', () => {
+		const now = Date.parse('2026-11-25T12:00:00Z');
+		expect(daysSince('2026-11-23T12:00:00Z', now)).toBe(2);
+		expect(daysSince('', now)).toBeNull();
+		expect(daysSince('not a date', now)).toBeNull();
+		expect(daysSince('2026-12-01T00:00:00Z', now)).toBe(0); // never negative
+	});
+
+	it('formats a date or a moment as "Mon D"', () => {
+		expect(shortDate('2026-11-23')).toBe('Nov 23');
+		expect(shortDate('2026-11-23T15:00:00')).toBe('Nov 23');
 	});
 });

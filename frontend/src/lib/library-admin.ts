@@ -115,8 +115,8 @@ export interface AdminTrendLanguage {
 	unreviewed: number;
 	/** Share of its AI translations a person has approved; null with none. */
 	reviewed_share: number | null;
-	/** Daily health scores, oldest first (from the Language health snapshots). */
-	health: number[];
+	/** Daily health scores, oldest first (the Language health page's snapshots). */
+	health: { date: string; health: number }[];
 }
 
 export interface AdminTrends {
@@ -140,7 +140,8 @@ export interface AdminTrends {
 		weeks: string[];
 		arrived: number[];
 		approved: number[];
-		first_decision: string | null;
+		/** Whether the queue has recorded any decision at all yet. */
+		has_decisions: boolean;
 	};
 	computed_at: string;
 }
@@ -1073,6 +1074,9 @@ export const addReviewNote = (body: ReviewTarget & { chapter: number; note: stri
 		method: 'POST',
 		body: JSON.stringify(body)
 	});
+
+/** The longest note the API takes (backend `quality.REVIEW_NOTE_MAX`). */
+export const REVIEW_NOTE_MAX = 2000;
 
 export const deleteReviewNote = (note: { id: number; language: string }) =>
 	apiFetch<ReviewNote>(
@@ -2643,6 +2647,7 @@ export interface AdminBookLang extends Language {
 	title: string;
 	subtitle: string;
 	description: string;
+	hook: string;
 	source_type: SourceType;
 	is_published: boolean;
 	sort_order: number;
@@ -2737,7 +2742,7 @@ export interface ContentEditJob {
 	/** The audit check an `audit_fix` job repairs; null for every other kind. */
 	check: string | null;
 	/** The field a `field` job changes; null for every other kind. */
-	field?: string | null;
+	field: string | null;
 	url: string;
 	number: number | null;
 	state: 'queued' | 'in_progress';
@@ -2775,12 +2780,27 @@ export const fileBioJob = (slug: string, note: string, language = 'en') =>
 export const fileAuditFixJob = (slug: string, language: string, check: string) =>
 	fileContentEdit({ kind: 'audit_fix', slug, language, check });
 
-/** The plain-text work fields a "Suggest edit" may change (backend
- *  `content_jobs.FIELD_EDITS`): the seeds re-sync them, so the fix is one
- *  fixture edit. */
+/** The plain-text work fields a "Suggest edit" may change — the backend's
+ *  `content_jobs.FIELD_EDITS`, which a test holds to the fields the seeds
+ *  re-sync (so the fix is one fixture edit). `multiline` picks the editor;
+ *  only a title may not be emptied. */
+export const EDITABLE_FIELDS = {
+	book: [
+		{ field: 'title', label: 'Edit title', multiline: false },
+		{ field: 'subtitle', label: 'Edit subtitle', multiline: false },
+		{ field: 'description', label: 'Edit description', multiline: true },
+		{ field: 'hook', label: 'Edit hook', multiline: false }
+	],
+	sermon: [
+		{ field: 'title', label: 'Edit title', multiline: false },
+		{ field: 'scripture_ref', label: 'Edit Scripture', multiline: false },
+		{ field: 'summary', label: 'Edit summary', multiline: true }
+	]
+} as const;
+type FieldsOf<E extends keyof typeof EDITABLE_FIELDS> = (typeof EDITABLE_FIELDS)[E][number]['field'];
 export type EditableField =
-	| { entity: 'book'; field: 'title' | 'subtitle' | 'description' | 'hook' }
-	| { entity: 'sermon'; field: 'title' | 'scripture_ref' | 'summary' };
+	| { entity: 'book'; field: FieldsOf<'book'> }
+	| { entity: 'sermon'; field: FieldsOf<'sermon'> };
 
 /** File a "change this field" job for one book or sermon edition, proposing
  *  `value`. `null` when the proposal is what it already says (nothing to file). */

@@ -86,10 +86,11 @@ class StartupSkipsAdminModulesTests(SimpleTestCase):
         )
 
     def test_concurrent_first_requests_do_not_deadlock_on_import(self):
-        # A cold worker's dashboard fires several admin requests at once. Before
-        # the import lock, resolving overlapping admin modules on parallel
-        # threads raised _DeadlockError (a 500) every time this ran. A fresh
-        # interpreter, since this process has every module imported already.
+        # A cold worker's dashboard fires several admin requests at once. While
+        # library/admin_views/__init__.py re-exported every submodule, resolving
+        # them on parallel threads imported overlapping module sets and raised
+        # _DeadlockError (a 500) every time this ran. A fresh interpreter, since
+        # this process has every module imported already.
         script = (
             "import threading, django\n"
             "django.setup()\n"

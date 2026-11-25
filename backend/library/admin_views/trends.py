@@ -16,7 +16,7 @@ from __future__ import annotations
 from datetime import timedelta
 
 from django.core.cache import caches
-from django.db.models import Count, Min, Q, Sum
+from django.db.models import Count, Q, QuerySet, Sum
 from django.utils import timezone
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -27,18 +27,17 @@ from accounts.permissions import requires
 from ..admin_cache import ALIAS
 from ..content_targets import LEVEL_1
 from ..corrections import RETIRED_BOOKS
-from ..engagement_trends import distinct_readers, weekly_active, weekly_signups, window
+from ..engagement_trends import distinct_readers, latest_day, window
 from ..models import (
     Book,
     Language,
-    LanguageHealthSnapshot,
     ReviewOutcome,
     SearchQueryLog,
     Sermon,
 )
 from ..views import _language_entry
-from ..weeks import start_of, week_starts, weekly_counts, weekly_sums
-from .health import SCORE_VERSION
+from ..weeks import start_of, week_starts
+from .health import health_history
 from .targets import level_summary
 
 #: Weekly points per sparkline — the Engagement page's own span.
@@ -48,31 +47,43 @@ WEEKS = 8
 CACHE_SECONDS = 300
 _CACHE_KEY = "admin-trends"
 _AI = (Book.SourceType.AI_REVIEWED, Book.SourceType.AI_UNREVIEWED)
+#: Every pulse number's four windows: name → (days long, days back it ends).
+_WINDOWS = {"d7": (7, 0), "d7_prev": (7, 7), "d30": (30, 0), "d30_prev": (30, 30)}
 
 
-def _periods(now) -> dict[str, tuple]:
-    """The four windows every pulse number is given in, as moments."""
-    return {
-        "d7": (now - timedelta(days=7), now),
-        "d7_prev": (now - timedelta(days=14), now - timedelta(days=7)),
-        "d30": (now - timedelta(days=30), now),
-        "d30_prev": (now - timedelta(days=60), now - timedelta(days=30)),
-    }
+def _ai_editions(model) -> QuerySet:
+    """A model's AI-translated editions — the review queue's population. A
+    retired duplicate is unpublished and unreviewed for good, so it is never
+    in it (``corrections.RETIRED_BOOKS``; books only)."""
+    qs = model.objects.filter(source_type__in=_AI)
+    return qs.exclude(slug__in=RETIRED_BOOKS) if model is Book else qs
 
 
-def _in_periods(qs, field: str, now, *, total=None) -> dict[str, int]:
-    """``qs`` counted (or ``total`` summed) in each of the four windows, in one
-    query."""
+def _counted(qs, field: str, now, starts, *, total=None) -> dict:
+    """``qs`` counted (or ``total`` summed) in each pulse window and each
+    charted week, in ONE aggregate — bucketed in the database rather than
+    pulling every row of eight weeks into Python."""
     agg = (
         (lambda f: Sum(total, filter=f)) if total else (lambda f: Count("pk", filter=f))
     )
+    spans = {
+        name: (now - timedelta(days=days + back), now - timedelta(days=back))
+        for name, (days, back) in _WINDOWS.items()
+    }
+    edges = [start_of(s) for s in starts] + [now + timedelta(days=1)]
+    for n in range(len(starts)):
+        spans[f"w{n}"] = (edges[n], edges[n + 1])
     out = qs.aggregate(
         **{
             name: agg(Q(**{f"{field}__gte": a, f"{field}__lt": b}))
-            for name, (a, b) in _periods(now).items()
+            for name, (a, b) in spans.items()
         }
     )
-    return {k: v or 0 for k, v in out.items()}
+    out = {k: v or 0 for k, v in out.items()}
+    return {
+        **{name: out[name] for name in _WINDOWS},
+        "weekly": [out[f"w{n}"] for n in range(len(starts))],
+    }
 
 
 def _pulse(now) -> dict:
@@ -82,56 +93,41 @@ def _pulse(now) -> dict:
     from reading.models import ReadingSession
 
     starts = week_starts(now, WEEKS)
-    since = start_of(starts[0])
 
     # Readers come from the reading-day log, on its own day windows (the
-    # Engagement page's rule: a reader is someone who read that day).
-    reader_windows = {
-        "d7": window(now, 7),
-        "d7_prev": window(now, 7, 7),
-        "d30": window(now, 30),
-        "d30_prev": window(now, 30, 30),
-    }
-    readers = distinct_readers(reader_windows)
-
-    sessions = ReadingSession.objects.filter(seconds__gt=0)
-    zero = SearchQueryLog.objects.filter(result_count=0)
+    # Engagement page's rule: a reader is someone who read that day) — the four
+    # pulse windows and the eight weeks in one query.
+    ends = [s + timedelta(days=6) for s in starts]
+    ends[-1] = max(ends[-1], latest_day(now))
+    readers = distinct_readers(
+        {name: window(now, days, back) for name, (days, back) in _WINDOWS.items()}
+        | {f"w{n}": (s, e) for n, (s, e) in enumerate(zip(starts, ends, strict=True))}
+    )
     return {
         "readers": {
-            **readers,
-            "weekly": [w["readers"] for w in weekly_active(now, WEEKS)],
+            **{name: readers[name] for name in _WINDOWS},
+            "weekly": [readers[f"w{n}"] for n in range(WEEKS)],
         },
-        "signups": {
-            **_in_periods(UserProfile.objects.all(), "created_at", now),
-            "weekly": weekly_signups(starts),
-        },
-        "reading_seconds": {
-            **_in_periods(sessions, "last_seen_at", now, total="seconds"),
-            "weekly": weekly_sums(
-                sessions.filter(last_seen_at__gte=since).values_list(
-                    "last_seen_at", "seconds"
-                ),
-                starts,
-            ),
-        },
-        "zero_searches": {
-            **_in_periods(zero, "created_at", now),
-            "weekly": weekly_counts(
-                zero.filter(created_at__gte=since).values_list("created_at", flat=True),
-                starts,
-            ),
-        },
+        "signups": _counted(UserProfile.objects.all(), "created_at", now, starts),
+        "reading_seconds": _counted(
+            ReadingSession.objects.filter(seconds__gt=0),
+            "last_seen_at",
+            now,
+            starts,
+            total="seconds",
+        ),
+        "zero_searches": _counted(
+            SearchQueryLog.objects.filter(result_count=0), "created_at", now, starts
+        ),
         "weeks": [s.isoformat() for s in starts],
     }
 
 
 def _languages(today) -> list[dict]:
     """Every target language's Level 1 progress, the share of its AI
-    translations a person has approved, and its health line.
-
-    The health line is READ from the daily snapshots, never written: the
-    Language health page records them (and the deploy chain does), and a
-    dashboard load must not stamp a score of its own."""
+    translations a person has approved, and its health line — the Language
+    health page's own snapshots (``health_history``), read and never written:
+    a dashboard load must not stamp a score of its own."""
     languages = [lang for lang in Language.objects.all() if not lang.is_source]
     codes = [lang.code for lang in languages]
     if not codes:
@@ -140,9 +136,9 @@ def _languages(today) -> list[dict]:
 
     ai: dict[str, dict] = {c: {"ai": 0, "unreviewed": 0} for c in codes}
     for model in (Book, Sermon):
-        rows = (
-            model.objects.filter(language__in=codes, source_type__in=_AI)
-            .exclude(slug__in=RETIRED_BOOKS if model is Book else ())
+        for r in (
+            _ai_editions(model)
+            .filter(language__in=codes)
             .values("language")
             .annotate(
                 n=Count("pk"),
@@ -150,23 +146,11 @@ def _languages(today) -> list[dict]:
                     "pk", filter=Q(source_type=Book.SourceType.AI_UNREVIEWED)
                 ),
             )
-        )
-        for r in rows:
+        ):
             ai[r["language"]]["ai"] += r["n"]
             ai[r["language"]]["unreviewed"] += r["waiting"]
 
-    history: dict[str, list[int]] = {}
-    for code, health in (
-        LanguageHealthSnapshot.objects.filter(
-            language__in=codes,
-            score_version=SCORE_VERSION,
-            date__gt=today - timedelta(weeks=WEEKS),
-        )
-        .order_by("date")
-        .values_list("language", "health")
-    ):
-        history.setdefault(code, []).append(health)
-
+    history = health_history(today)
     out = []
     for lang in languages:
         counts = ai[lang.code]
@@ -202,15 +186,11 @@ def _review(now) -> dict:
     decision isn't an approval yet). Books and sermons — the queue's bios have
     no creation date that means "arrived for review"."""
     starts = week_starts(now, WEEKS)
-    since = start_of(starts[0])
-
     waiting = 0
     oldest = None
     arrivals = [0] * WEEKS
     for kind, model in (("book", Book), ("sermon", Sermon)):
-        ai = model.objects.filter(source_type__in=_AI)
-        if model is Book:
-            ai = ai.exclude(slug__in=RETIRED_BOOKS)
+        ai = _ai_editions(model)
         unreviewed = ai.filter(source_type=Book.SourceType.AI_UNREVIEWED)
         waiting += unreviewed.count()
         first = unreviewed.order_by("created_at", "pk").values(
@@ -219,20 +199,16 @@ def _review(now) -> dict:
         for row in first:
             if oldest is None or row["created_at"] < oldest["created_at"]:
                 oldest = {**row, "kind": kind}
-        weekly = weekly_counts(
-            ai.filter(created_at__gte=since).values_list("created_at", flat=True),
-            starts,
-        )
+        weekly = _counted(ai, "created_at", now, starts)["weekly"]
         arrivals = [a + b for a, b in zip(arrivals, weekly, strict=True)]
 
-    approvals = weekly_counts(
-        ReviewOutcome.objects.filter(
-            kind__in=("book", "sermon"),
-            outcome=ReviewOutcome.Outcome.APPROVED,
-            confirmed_at__gte=since,
-        ).values_list("confirmed_at", flat=True),
+    decisions = ReviewOutcome.objects.filter(kind__in=("book", "sermon"))
+    approvals = _counted(
+        decisions.filter(outcome=ReviewOutcome.Outcome.APPROVED),
+        "confirmed_at",
+        now,
         starts,
-    )
+    )["weekly"]
     if oldest:
         oldest["created_at"] = oldest["created_at"].isoformat()
     return {
@@ -241,14 +217,8 @@ def _review(now) -> dict:
         "weeks": [s.isoformat() for s in starts],
         "arrived": arrivals,
         "approved": approvals,
-        "first_decision": _first(
-            ReviewOutcome.objects.aggregate(at=Min("decided_at"))["at"]
-        ),
+        "has_decisions": decisions.exists(),
     }
-
-
-def _first(at) -> str | None:
-    return at.isoformat() if at else None
 
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)

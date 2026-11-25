@@ -17,11 +17,25 @@ export interface PulseTile {
 }
 
 const nf = new Intl.NumberFormat('en');
-const num = (n: number) => nf.format(n);
+export const num = (n: number) => nf.format(n);
+
+/** "Nov 23" for a date (`2026-11-23`) or a moment. */
+export const shortDate = (iso: string): string =>
+	new Date(iso.length === 10 ? iso + 'T00:00:00' : iso).toLocaleDateString('en', {
+		month: 'short',
+		day: 'numeric'
+	});
 
 /** "week of Nov 23" — what each sparkline point is, for screen readers. */
-export const weekLabel = (iso: string): string =>
-	`week of ${new Date(iso + 'T00:00:00').toLocaleDateString('en', { month: 'short', day: 'numeric' })}`;
+export const weekLabel = (iso: string): string => `week of ${shortDate(iso)}`;
+
+/** Whole days since `iso`; null for a missing or unparseable time. Shared by
+ *  the dashboard's backlog and the review queue's "oldest waiting". */
+export function daysSince(iso: string | null | undefined, now: number = Date.now()): number | null {
+	if (!iso) return null;
+	const t = Date.parse(iso);
+	return Number.isNaN(t) ? null : Math.max(0, Math.floor((now - t) / 86_400_000));
+}
 
 /** A rise where a rise is bad (searches that found nothing) reads red. */
 const inverted = (t: Trend): Trend => (t && t.dir !== 'flat' ? { ...t, bad: t.dir === 'up' } : t);
@@ -63,6 +77,6 @@ export function levelProgress(l: { done: number; total: number }): { pct: number
 
 /** How long the oldest item has waited, in days ("12 days"). */
 export function waitedFor(iso: string, now: Date = new Date()): string {
-	const days = Math.max(0, Math.floor((now.getTime() - Date.parse(iso)) / 86_400_000));
+	const days = daysSince(iso, now.getTime()) ?? 0;
 	return `${num(days)} day${days === 1 ? '' : 's'}`;
 }

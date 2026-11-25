@@ -20,7 +20,7 @@ from accounts.permissions import (
 )
 
 from .. import invalidation
-from ..audit import AdminAudited
+from ..audit import AdminAudited, actor_email
 from ..content_audit import (
     DISMISSIBLE_CHECKS,
     chapter_lengths,
@@ -1103,7 +1103,7 @@ class AdminReviewNotesView(AdminAudited, APIView):
             "note": note.note,
             "author": note.author,
             "created_at": note.created_at.isoformat(),
-            "mine": note.author == (getattr(request.user, "email", "") or ""),
+            "mine": note.author == actor_email(request),
         }
 
     @staticmethod
@@ -1155,7 +1155,7 @@ class AdminReviewNotesView(AdminAudited, APIView):
             language=language,
             chapter=chapter,
             note=note,
-            author=getattr(request.user, "email", "") or "",
+            author=actor_email(request),
         )
         return Response(self._row(row, request), status=201)
 

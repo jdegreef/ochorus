@@ -8,7 +8,15 @@
 	import Sparkline from '$lib/components/Sparkline.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import { adminReviewHref } from '$lib/adminLinks';
-	import { levelProgress, pulseTiles, waitedFor, weekLabel } from '$lib/adminDashboard';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import {
+		levelProgress,
+		num as fmt,
+		pulseTiles,
+		shortDate,
+		waitedFor,
+		weekLabel
+	} from '$lib/adminDashboard';
 	import type { AdminTrends } from '$lib/library-admin';
 
 	let { trends }: { trends: AdminTrends } = $props();
@@ -16,11 +24,7 @@
 	const tiles = $derived(pulseTiles(trends.pulse));
 	const review = $derived(trends.review);
 	const reviewMax = $derived(Math.max(1, ...review.arrived, ...review.approved));
-	const nf = new Intl.NumberFormat('en');
-	const fmt = (n: number) => nf.format(n);
 	const pct = (share: number) => `${Math.round(share * 100)}%`;
-	const shortWeek = (iso: string) =>
-		new Date(iso + 'T00:00:00').toLocaleDateString('en', { month: 'short', day: 'numeric' });
 </script>
 
 <!-- Pulse: the last 7 days against the 7 before, with eight weeks of line. -->
@@ -69,15 +73,8 @@
 							</a>
 							<span class="tabular-nums text-muted">{p.text} · {p.pct}%</span>
 						</div>
-						<div
-							class="mt-1 h-2 overflow-hidden rounded-full bg-surface-2"
-							role="progressbar"
-							aria-label="{l.name} Level 1 progress"
-							aria-valuemin={0}
-							aria-valuemax={l.level1.total}
-							aria-valuenow={l.level1.done}
-						>
-							<div class="h-full rounded-full bg-accent" style="width: {p.pct}%"></div>
+						<div class="mt-1">
+							<ProgressBar percent={p.pct} label="{l.name}: Level 1 progress" />
 						</div>
 						<div
 							class="mt-1 flex flex-wrap items-center justify-between gap-x-3 text-micro text-muted"
@@ -93,10 +90,11 @@
 								<span class="inline-flex items-center gap-1">
 									health
 									<Sparkline
-										values={l.health}
-										labels={l.health.map((_, i) => `day ${i + 1}`)}
+										values={l.health.map((h) => h.health)}
+										labels={l.health.map((h) => shortDate(h.date))}
 										name="{l.name} health"
-										description="{l.name} health score, latest {l.health[l.health.length - 1]}"
+										description="{l.name} health score, latest {l.health[l.health.length - 1]
+											.health}"
 										width={56}
 										height={16}
 									/>
@@ -179,10 +177,10 @@
 				{/each}
 			</ol>
 			<div class="mt-1 flex justify-between text-micro text-muted" aria-hidden="true">
-				<span>{shortWeek(review.weeks[0])}</span>
+				<span>{shortDate(review.weeks[0])}</span>
 				<span>this week</span>
 			</div>
-			{#if !review.first_decision}
+			{#if !review.has_decisions}
 				<p class="mt-2 text-micro text-muted">No review decisions recorded yet.</p>
 			{/if}
 		</div>
