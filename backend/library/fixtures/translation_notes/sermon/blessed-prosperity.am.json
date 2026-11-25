@@ -85,8 +85,8 @@
     },
     {
       "reference": "Matthew 12:34",
-      "status": "mined",
-      "source_file": "how-to-succeed-in-the-christian-life.am.json",
+      "status": "self_rendered",
+      "why": "was mined from how-to-succeed-in-the-christian-life.am.json's pre-OWB wording, which that work no longer carries; not verbatim OWB here",
       "block_index": 24
     },
     {
