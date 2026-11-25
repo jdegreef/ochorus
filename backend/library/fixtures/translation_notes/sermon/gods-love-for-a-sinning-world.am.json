@@ -5,6 +5,7 @@
  "job_issue": 3571,
  "pull_request": null,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose.",
   "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
   "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
   "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
@@ -18,49 +19,60 @@
   {
    "reference": "John 3:16",
    "status": "self_rendered",
-   "block_index": 8
+   "block_index": 8,
+   "why": "allusion ('he gave his only begotten Son') in the author's prose"
   },
   {
    "reference": "Jude 1:6",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 9
   },
   {
    "reference": "John 3:16",
-   "status": "self_rendered",
-   "block_index": 10
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "'God so loved the world' is OWB's «እግዚአብሔር ለዓለም ያለው ፍቅር እንዲህ ነበረና»"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "recited clause, OWB's words"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB's opening clause; 'to die for it' is the author's own addition, kept as prose"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 3:16",
    "status": "self_rendered",
-   "block_index": 11
-  },
-  {
-   "reference": "John 3:16",
-   "status": "self_rendered",
-   "block_index": 12
-  },
-  {
-   "reference": "John 3:16",
-   "status": "self_rendered",
-   "block_index": 14
-  },
-  {
-   "reference": "John 3:16",
-   "status": "self_rendered",
-   "block_index": 15
+   "block_index": 15,
+   "why": "the author's own sentence; the argued word «እንዲህ» follows OWB's 'so'"
   },
   {
    "reference": "Hebrews 2:11",
-   "status": "self_rendered",
-   "block_index": 18
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 4:14",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 29
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 29,
+   "why": "recited; OWB's «አብ ወልድን የዓለም አዳኝ አድርጎ» with the main verb ላከው"
   },
   {
    "reference": "Romans 10:10",
@@ -70,24 +82,28 @@
   {
    "reference": "Mark 12:7",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 35
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 35,
+   "why": "recited without marks"
   },
   {
    "reference": "John 19:15",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 36
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 36,
+   "why": "recited without marks"
   },
   {
    "reference": "Job 21:14",
-   "status": "self_rendered",
-   "block_index": 36
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "recited without marks"
   },
   {
    "reference": "2 Corinthians 8:9",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 37
   },
   {
@@ -103,8 +119,9 @@
   {
    "reference": "Hebrews 1:14",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 47
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 47,
+   "why": "OWB's description of the angels inside the author's sentence"
   },
   {
    "reference": "Job 20:12",
@@ -124,13 +141,16 @@
   {
    "reference": "Galatians 6:17",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 62
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 62,
+   "why": "recited without marks; OWB's verb without its closing -ና"
   },
   {
    "reference": "Isaiah 6:8",
-   "status": "self_rendered",
-   "block_index": 62
+   "status": "mined",
+   "block_index": 62,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "«እኔ ዝግጁ ነኝ፤ ላከኝ» ('Here am I! send me')"
   }
  ]
 }
