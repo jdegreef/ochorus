@@ -5,7 +5,7 @@
  "job_issue": 7416,
  "note": [
   "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled as library/data/bible/owb-am-b.json.gz and read offline (owb-am). Every Scripture quotation was re-quoted to it verbatim (founder decision, 2026-11-18: Amharic quotes OWB everywhere), replacing the 1962 UBS wording and translator-rendered verses the first edition carried.",
-  "A `mined` row is a verbatim OWB span in that chapter's block (block_index -1 is the chapter title): the whole verse, verses joined, the shortest contiguous span carrying the quoted clause, or OWB pieces joined with '…'. The Luke 11:1 refrain is «ጌታ ሆይ፣ … እንዴት መጸለይ እንዳለብን አስተምረን» everywhere.",
+  "A `mined` row is a verbatim OWB span in that chapter's block (a quotation in a chapter title is recorded at block 0): the whole verse, verses joined, the shortest contiguous span carrying the quoted clause, or OWB pieces joined with '…'. The Luke 11:1 refrain is «ጌታ ሆይ፣ … እንዴት መጸለይ እንዳለብን አስተምረን» everywhere.",
   "`self_rendered` rows are allusions and paraphrases in the author's own voice, the author's adaptations of a verse to 'me'/'us' (Lord, teach me to pray; Heb 7:25's 'always lives to intercede for us', worded with OWB's vocabulary), and the Lord's Prayer doxology, which OWB, following the critical text, does not carry."
  ],
  "references": [
@@ -248,13 +248,6 @@
   {
    "reference": "Luke 11:1",
    "status": "mined",
-   "block_index": -1,
-   "chapter_order": 4,
-   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
-  },
-  {
-   "reference": "Luke 11:1",
-   "status": "mined",
    "block_index": 0,
    "chapter_order": 4,
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
@@ -321,7 +314,7 @@
   {
    "reference": "Matthew 6:9",
    "status": "mined",
-   "block_index": -1,
+   "block_index": 0,
    "chapter_order": 5,
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
@@ -984,13 +977,6 @@
   {
    "reference": "Luke 18:13",
    "status": "mined",
-   "block_index": -1,
-   "chapter_order": 10,
-   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
-  },
-  {
-   "reference": "Luke 18:13",
-   "status": "mined",
    "block_index": 0,
    "chapter_order": 10,
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
@@ -1405,13 +1391,6 @@
   {
    "reference": "Mark 11:17",
    "status": "mined",
-   "block_index": -1,
-   "chapter_order": 13,
-   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
-  },
-  {
-   "reference": "Mark 11:17",
-   "status": "mined",
    "block_index": 0,
    "chapter_order": 13,
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
@@ -1509,7 +1488,7 @@
   {
    "reference": "Matthew 9:38",
    "status": "self_rendered",
-   "block_index": -1,
+   "block_index": 0,
    "chapter_order": 14
   },
   {
@@ -1867,7 +1846,7 @@
   {
    "reference": "Luke 22:32",
    "status": "mined",
-   "block_index": -1,
+   "block_index": 0,
    "chapter_order": 17,
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
@@ -1995,13 +1974,6 @@
   {
    "reference": "John 17:21",
    "status": "mined",
-   "block_index": -1,
-   "chapter_order": 18,
-   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
-  },
-  {
-   "reference": "John 17:21",
-   "status": "mined",
    "block_index": 0,
    "chapter_order": 18,
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
@@ -2123,13 +2095,6 @@
    "status": "mined",
    "block_index": 45,
    "chapter_order": 18,
-   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
-  },
-  {
-   "reference": "Matthew 26:39",
-   "status": "mined",
-   "block_index": -1,
-   "chapter_order": 19,
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
@@ -2519,12 +2484,6 @@
    "block_index": 45,
    "chapter_order": 20,
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
-  },
-  {
-   "reference": "Hebrews 7:25",
-   "status": "self_rendered",
-   "block_index": -1,
-   "chapter_order": 21
   },
   {
    "reference": "Hebrews 7:25",
