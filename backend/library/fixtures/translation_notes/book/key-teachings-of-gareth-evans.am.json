@@ -769,10 +769,9 @@
   },
   {
    "reference": "Matthew 5:44",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 20,
-   "chapter_order": 14,
-   "source_file": "sermons-on-several-occasions.am.json"
+   "chapter_order": 14
   },
   {
    "reference": "Matthew 18:35",

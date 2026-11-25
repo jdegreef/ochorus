@@ -89,8 +89,7 @@
    "reference": "PSA 42:1-2",
    "block_index": 4,
    "chapter_order": 3,
-   "status": "mined",
-   "source_file": "sermons-on-several-occasions.am.json"
+   "status": "self_rendered"
   },
   {
    "reference": "PSA 42:7",
@@ -350,8 +349,7 @@
    "reference": "Acts 17:27",
    "block_index": 13,
    "chapter_order": 5,
-   "status": "mined",
-   "source_file": "sermons-on-several-occasions.am.json"
+   "status": "self_rendered"
   },
   {
    "reference": "Matthew 5:8",
