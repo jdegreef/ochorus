@@ -12,10 +12,9 @@
  "references": [
   {
    "reference": "Isaiah 1:18",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 1,
-   "source_file": "prevailing-prayer.am.json"
+   "chapter_order": 1
   },
   {
    "reference": "Romans 4:5",
