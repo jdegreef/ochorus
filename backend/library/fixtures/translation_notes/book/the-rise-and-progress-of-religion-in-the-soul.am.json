@@ -2459,8 +2459,7 @@
         },
         {
             "reference": "1 Peter 5:2",
-            "status": "mined",
-            "source_file": "sermons-on-several-occasions.am.json",
+            "status": "self_rendered",
             "block_index": 2
         },
         {

@@ -85,8 +85,7 @@
         },
         {
             "reference": "Genesis 1:31",
-            "status": "mined",
-            "source_file": "sermons-on-several-occasions.am.json",
+            "status": "self_rendered",
             "block_index": 7
         },
         {
