@@ -13,7 +13,16 @@ from .. import dropoff, invalidation, job_status
 from ..audit import AdminAudited
 from ..corrections import COPYRIGHT_BLOCKED_SLUGS, RETIRED_BOOKS
 from ..languages import target_codes
-from ..models import AdminAction, Author, Book, Plan, Sermon
+from ..models import (
+    AdminAction,
+    Author,
+    Book,
+    Plan,
+    Quote,
+    ReviewOutcome,
+    Sermon,
+    TopicSermon,
+)
 from ..qa import chapter_flags
 from ..views import _language_entry
 
@@ -266,9 +275,15 @@ class AdminSermonDetailView(APIView):
     """A single canonical sermon across all its languages, for the admin.
 
     The sermon counterpart to :class:`AdminBookDetailView`, minus chapters — a
-    sermon is a single body, so each language row carries just its metadata and
-    the publish state the toggle acts on. English is listed first.
+    sermon is a single body, so each language row carries its metadata, its
+    study material (summary, main points, Q&A), an opening excerpt, its quotes
+    and review state, and the publish state the toggle acts on. The work as a
+    whole carries its topics and the languages it is still missing. English is
+    listed first.
     """
+
+    #: How much of the body a row previews — enough to recognise the text.
+    EXCERPT_CHARS = 600
 
 
     def get(self, request, slug):
@@ -277,17 +292,60 @@ class AdminSermonDetailView(APIView):
             return Response({"detail": "No such sermon."}, status=404)
         canonical = next((s for s in sermons if s.language == "en"), sermons[0])
 
+        quotes = dict(
+            Quote.objects.filter(sermon__slug=slug)
+            .values("sermon__language")
+            .annotate(n=Count("pk"))
+            .values_list("sermon__language", "n")
+        )
+        reviews = {
+            r.language: r for r in ReviewOutcome.objects.filter(kind="sermon", slug=slug)
+        }
+
+        def excerpt(text: str) -> str:
+            text = " ".join((text or "").split())
+            if len(text) <= self.EXCERPT_CHARS:
+                return text
+            return text[: self.EXCERPT_CHARS].rsplit(" ", 1)[0] + "…"
+
+        def review(language: str) -> dict | None:
+            r = reviews.get(language)
+            if r is None:
+                return None
+            return {
+                "outcome": r.outcome,
+                "confirmed": r.confirmed_at is not None,
+                "note": r.note,
+                "decided_at": r.decided_at.isoformat(),
+            }
+
         languages = [
             {
                 **_language_entry(s.language),
                 "title": s.title,
                 "scripture_ref": s.scripture_ref,
+                "preached_on": s.preached_on.isoformat() if s.preached_on else None,
                 "source_type": s.source_type,
                 "is_published": s.is_published,
                 "word_count": s.word_count,
                 "source_url": s.source_url,
+                "attribution": s.attribution,
+                "summary": s.summary,
+                "main_points": s.main_points or [],
+                "study_questions": s.study_questions or [],
+                "excerpt": excerpt(s.body_text),
+                "quotes": quotes.get(s.language, 0),
+                "review": review(s.language),
+                "created_at": s.created_at.isoformat(),
+                "updated_at": s.updated_at.isoformat() if s.updated_at else None,
             }
             for s in sorted(sermons, key=lambda x: (x.language != "en", x.language))
+        ]
+        topics = [
+            {"slug": t.topic.slug, "title": t.topic.title}
+            for t in TopicSermon.objects.filter(sermon_slug=slug)
+            .select_related("topic")
+            .order_by("topic__title")
         ]
         return Response(
             {
@@ -295,6 +353,8 @@ class AdminSermonDetailView(APIView):
                 "title": canonical.title,
                 "author": {"name": canonical.author.name, "slug": canonical.author.slug},
                 "languages": languages,
+                "topics": topics,
+                "untranslated": _untranslated("sermon", slug, {s.language for s in sermons}),
             }
         )
 

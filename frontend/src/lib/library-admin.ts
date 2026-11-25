@@ -2759,16 +2759,37 @@ export const setBookPublished = (slug: string, language: string, published: bool
 export interface AdminSermonLang extends Language {
 	title: string;
 	scripture_ref: string;
+	preached_on: string | null;
 	source_type: SourceType;
 	is_published: boolean;
 	word_count: number;
 	source_url: string;
+	attribution: string;
+	summary: string;
+	main_points: string[];
+	study_questions: { question: string; answer: string }[];
+	/** The body's opening, as plain text. */
+	excerpt: string;
+	/** Quotes taken from this edition. */
+	quotes: number;
+	/** The review queue's decision on this edition, when there is one. */
+	review: {
+		outcome: 'approved' | 'needs_work';
+		/** False while an approval is provisional (awaiting an approver). */
+		confirmed: boolean;
+		note: string;
+		decided_at: string;
+	} | null;
+	created_at: string;
+	updated_at: string | null;
 }
 export interface AdminSermonDetail {
 	slug: string;
 	title: string;
 	author: { name: string; slug: string };
 	languages: AdminSermonLang[];
+	topics: { slug: string; title: string }[];
+	untranslated: AdminUntranslated;
 }
 
 export const getAdminSermon = (slug: string) =>

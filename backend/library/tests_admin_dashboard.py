@@ -2099,6 +2099,41 @@ class AdminSermonDetailTests(TestCase):
         self.assertFalse(es["is_published"])
 
     @override_settings(DEBUG=True)
+    def test_carries_study_material_topics_review_and_gaps(self):
+        from .models import Quote, ReviewOutcome, Topic, TopicSermon
+
+        en = Sermon.objects.get(slug="grace", language="en")
+        en.summary = "Grace alone."
+        en.main_points = ["Grace is free", "Grace is enough"]
+        en.study_questions = [{"question": "What is grace?", "answer": "A gift."}]
+        en.save()
+        topic = Topic.objects.create(slug="grace", title="Grace")
+        TopicSermon.objects.create(topic=topic, sermon_slug="grace")
+        Quote.objects.create(slug="q1", author=self.author, text="By grace.", sermon=en, paragraph=1)
+        ReviewOutcome.objects.create(
+            kind="sermon", slug="grace", language="es",
+            outcome=ReviewOutcome.Outcome.NEEDS_WORK, note="Verse 8 is off.",
+        )
+
+        data = self.client.get("/api/admin/sermons/grace/").data
+        langs = {row["code"]: row for row in data["languages"]}
+        self.assertEqual(langs["en"]["summary"], "Grace alone.")
+        self.assertEqual(len(langs["en"]["main_points"]), 2)
+        self.assertEqual(langs["en"]["study_questions"][0]["answer"], "A gift.")
+        self.assertEqual(langs["en"]["excerpt"], "one two three")
+        self.assertEqual((langs["en"]["quotes"], langs["es"]["quotes"]), (1, 0))
+        self.assertIsNone(langs["en"]["review"])
+        self.assertEqual(
+            (langs["es"]["review"]["outcome"], langs["es"]["review"]["note"]),
+            ("needs_work", "Verse 8 is off."),
+        )
+        self.assertEqual(data["topics"], [{"slug": "grace", "title": "Grace"}])
+        # The languages it is still missing, for the Translate buttons.
+        missing = {row["code"] for row in data["untranslated"]["languages"]}
+        self.assertNotIn("es", missing)
+        self.assertNotIn("en", missing)
+
+    @override_settings(DEBUG=True)
     def test_unknown_slug_404(self):
         res = self.client.get("/api/admin/sermons/nope/")
         self.assertEqual(res.status_code, 404)
