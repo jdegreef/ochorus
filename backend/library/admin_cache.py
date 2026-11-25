@@ -7,7 +7,8 @@ shows the queue shares one read — and a GitHub outage shows the last queue it
 saw (marked stale) instead of a 502 after a timeout on every page that asks.
 
 (The admin's content-derived memos — dashboard stats, the audit scan — use
-``invalidation.revision_cached`` on the same alias.)
+``invalidation.revision_cached`` on the same alias; the stats' one is dropped
+below on a language write, which the content revision doesn't see.)
 
 The alias is ``"admin"`` (``config/settings.py``): on disk, so it survives the
 worker's recycle every ~500 requests, and a dummy under test like the others.
@@ -21,6 +22,8 @@ from typing import Any, NamedTuple
 
 import requests
 from django.core.cache import caches
+from django.db.models.signals import post_delete, post_save
+from django.dispatch import receiver
 from django.utils import timezone
 
 ALIAS = "admin"
@@ -30,6 +33,9 @@ ALIAS = "admin"
 RETRY_AFTER_FAILURE = 60
 #: How long a read is kept to fall back on.
 KEEP_LAST_GOOD = 24 * 3600
+#: The dashboard stats' memo (``AdminStatsView``).
+STATS_MEMO = "admin-stats"
+
 #: Held in place of a value when a fetch failed with nothing to fall back on.
 _FAILED = "__fetch_failed__"
 
@@ -91,3 +97,16 @@ def forget(key: str) -> None:
         cache.delete(key)
     elif held is not None:
         cache.set(key, (*held[:2], None, held[3]), KEEP_LAST_GOOD)
+
+
+@receiver(post_save, sender="library.Language")
+@receiver(post_delete, sender="library.Language")
+def _drop_stats_memo(**_kwargs) -> None:
+    """The dashboard stats list every registry row, and a language write doesn't
+    move the content revision their memo is keyed on — so drop it on every
+    write (the admin's add/rename, a shell, a seed). Connected from
+    ``LibraryConfig.ready``; kept here, not in ``languages``, so the reader's
+    import graph never reaches admin code."""
+    from .invalidation import forget_cached
+
+    forget_cached(ALIAS, STATS_MEMO)

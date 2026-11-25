@@ -18,6 +18,7 @@ from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import requires
 
 from .. import translation_staleness
+from ..admin_cache import STATS_MEMO
 from ..audit import AdminAudited
 from ..corrections import RETIRED_BOOKS
 from ..demand import reading_elsewhere
@@ -41,10 +42,6 @@ from ..text import is_blank_title
 from ..views import _language_entry
 from .jobs import translation_blocked
 from .languages import language_settings
-
-#: The dashboard stats' memo (``invalidation.revision_cached`` on the admin
-#: alias) — named so a write the content revision doesn't see can drop it.
-STATS_MEMO = "admin-stats"
 
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
