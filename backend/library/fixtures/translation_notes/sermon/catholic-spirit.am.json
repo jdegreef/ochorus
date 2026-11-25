@@ -6,272 +6,358 @@
  "references": [
   {
    "reference": "2 Kings 10:15",
-   "status": "self_rendered",
-   "block_index": 0
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "James 2:8",
+   "reference": "Mark 12:31",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 1
+   "block_index": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the royal law (Jas 2:8), quoted in its Gospel wording «ባልንጀራህን እንደ ራስህ ውደድ» as in ch40"
   },
   {
    "reference": "Matthew 5:43",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 1
+   "block_index": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 5:44",
    "status": "self_rendered",
-   "block_index": 1
+   "block_index": 1,
+   "why": "Wesley quotes the KJV's long Matt 5:44 (bless, do good, despitefully use), which OWB's text omits; kept as in sermons-on-several-occasions ch40, OWB's Luke 6:27-28 clauses joined into OWB Matt 5:44"
   },
   {
    "reference": "Matthew 5:45",
-   "status": "self_rendered",
-   "block_index": 1
-  },
-  {
-   "reference": "1 John 3:11",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 2
+   "block_index": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "1 John 3:16",
+   "reference": "Psalm 16:3",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 2
-  },
-  {
-   "reference": "1 John 4:10-11",
-   "status": "self_rendered",
-   "block_index": 2
-  },
-  {
-   "reference": "1 John 4:7-8",
-   "status": "self_rendered",
-   "block_index": 2
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB 'the saints … are my delight'; the KJV's 'excel in virtue' is not in OWB"
   },
   {
    "reference": "John 13:34-35",
    "status": "mined",
-   "source_file": "rooted-5.am.json",
-   "block_index": 2
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Psalm 16:3",
-   "status": "self_rendered",
-   "block_index": 2
+   "reference": "1 John 3:11",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 John 3:16",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "two OWB spans around Wesley's interjection"
+  },
+  {
+   "reference": "1 John 4:7-8",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB pieces joined with '…'"
+  },
+  {
+   "reference": "1 John 4:10-11",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 3:23",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 3
+   "block_index": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Kings 10:15",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Kings 10:15",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the question, the answer and the offer, each OWB"
+  },
+  {
+   "reference": "2 Kings 10:15",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Jeremiah 35:3-10",
-   "status": "self_rendered",
-   "block_index": 8
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB pieces joined with '…'; Wesley's reordered «ኢዮናዳብ አባታችን፣ የሬካብ ልጅ» is his own suggestion, framed as such (as in ch40)"
   },
   {
    "reference": "Acts 3:21",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 10
+   "block_index": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Kings 10:15",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Kings 10:28",
-   "status": "self_rendered",
-   "block_index": 14
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Kings 10:29",
-   "status": "self_rendered",
-   "block_index": 14
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Acts 24:16",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "Wesley's 'a conscience void of offence' given as Paul's OWB sentence, framed «ከሐዋርያው ጋር … ለማለት»"
   },
   {
    "reference": "1 Corinthians 1:21",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 15
-  },
-  {
-   "reference": "Acts 24:16",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 15
+   "block_index": 15,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 4:24",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 15
+   "block_index": 15,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Amos 3:3",
-   "status": "self_rendered",
-   "block_index": 17
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Kings 10:15",
-   "status": "self_rendered",
-   "block_index": 18
-  },
-  {
-   "reference": "2 Corinthians 5:7",
-   "status": "self_rendered",
-   "block_index": 20
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 1:3",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 20
+   "block_index": 20,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "1 Timothy 6:12",
+   "reference": "2 Corinthians 5:7",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 21
-  },
-  {
-   "reference": "Philippians 3:9",
-   "status": "self_rendered",
-   "block_index": 21
-  },
-  {
-   "reference": "Romans 3:22",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 21
+   "block_index": 20,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 9:5",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 21
+   "block_index": 21,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "1 Thessalonians 5:18",
-   "status": "self_rendered",
-   "block_index": 22
-  },
-  {
-   "reference": "Colossians 3:3",
+   "reference": "Romans 3:22",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 22
+   "block_index": 21,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB pieces joined with '…'"
   },
   {
-   "reference": "Luke 1:47",
+   "reference": "Philippians 3:9",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 22
+   "block_index": 21,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Timothy 6:12",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB 'run the good race' for 'fight the good fight', two spans"
   },
   {
    "reference": "Mark 12:30",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 22
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Luke 1:46-47",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "Mary's words quoted whole («ከማርያም ጋር … ትላለችን?»)"
+  },
+  {
+   "reference": "1 Thessalonians 5:18",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 147:1",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 6:38",
    "status": "self_rendered",
-   "block_index": 22
+   "block_index": 23,
+   "why": "'not thy own will, but the will of him that sent thee': Wesley's re-personed allusion, the translator's prose"
+  },
+  {
+   "reference": "Matthew 12:50",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "«በሰማይ ያለውን»"
   },
   {
    "reference": "Colossians 3:17",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 23
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Matthew 7:21",
+   "reference": "Psalm 2:11",
+   "status": "self_rendered",
+   "block_index": 24,
+   "why": "allusion ('rejoice unto him with reverence'), the translator's prose"
+  },
+  {
+   "reference": "Psalm 119:104",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 23
+   "block_index": 24,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB 'every false way' for 'all evil ways'"
   },
   {
    "reference": "Acts 24:16",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 24
-  },
-  {
-   "reference": "Psalm 119:104",
-   "status": "self_rendered",
-   "block_index": 24
-  },
-  {
-   "reference": "Luke 6:27",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 25
-  },
-  {
-   "reference": "Luke 6:28",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 25
+   "block_index": 24,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "framed «ከሐዋርያው ጋር … ማለት ትችላለህን?»"
   },
   {
    "reference": "Luke 6:32",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 25
+   "block_index": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "2 Kings 10:15",
+   "reference": "Luke 6:27",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "«ጠላቶቻችሁን ውደዱ»"
+  },
+  {
+   "reference": "Romans 9:3",
    "status": "self_rendered",
-   "block_index": 26
+   "block_index": 25,
+   "why": "allusion ('wish yourself accursed'), the translator's prose"
+  },
+  {
+   "reference": "Luke 6:28",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Galatians 6:10",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 26
+   "block_index": 26,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "«ለሰው ሁሉ»"
   },
   {
    "reference": "2 Kings 10:15",
-   "status": "self_rendered",
-   "block_index": 27
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Kings 10:15",
-   "status": "self_rendered",
-   "block_index": 28
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Kings 10:15",
-   "status": "self_rendered",
-   "block_index": 29
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 5:44",
    "status": "self_rendered",
-   "block_index": 29
+   "block_index": 29,
+   "why": "'despitefully use thee, and persecute thee': Wesley's re-personed form, now unmarked prose (as in ch40)"
+  },
+  {
+   "reference": "2 Kings 10:15",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Corinthians 13:4-7",
+   "status": "self_rendered",
+   "block_index": 30,
+   "why": "Wesley's KJV-worded love-attributes (#9908 founder call 3: 'thinketh no evil', 'believeth/hopeth all things'), the translator's prose"
   },
   {
    "reference": "Psalm 141:5",
    "status": "self_rendered",
-   "block_index": 32
+   "block_index": 32,
+   "why": "'smite me friendly, and reprove me' is the Prayer Book's wording; OWB «ጻድቅ ሰው ይምታኝ» does not carry 'friendly' (as in ch40)"
   },
   {
    "reference": "Ephesians 4:14",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 37
+   "block_index": 37,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 12:15",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 41
+   "block_index": 41,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   }
  ],
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose. The wording and the conservative calls follow the same sermon's re-quote in sermons-on-several-occasions.am (chapter 40, PR #9908).",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). NT verses are pasted from the ebible mirror (amh_amh); the mirror has no OT, so OT quotations are self_rendered in the 1962 register unless a shipped Amharic work already quotes the verse (source_file names it).",
   "Rows come from the translators' reports and every 'mined' claim was re-verified: each quoted fragment must be a byte-exact substring both of this body and of the NT file (or of the cited shipped work); a claim that fails is recorded as self_rendered. Some mirror entries are merged verse ranges holding only part of the text, so verses inside them are self_rendered."
  ]
