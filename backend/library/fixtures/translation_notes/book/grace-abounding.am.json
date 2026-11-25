@@ -654,10 +654,10 @@
   },
   {
    "reference": "Isaiah 26:19",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 237,
    "chapter_order": 3,
-   "source_file": "the-triumph-of-calvary.am.json"
+   "why": "the wording was mined from the-triumph-of-calvary.am, which now quotes OWB (re-quoted 2026-11-25); this block still carries the pre-OWB Amharic wording"
   },
   {
    "reference": "Hosea 6:2",
