@@ -5,8 +5,9 @@
  "job_issue": 3704,
  "pull_request": null,
  "note": [
-  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
-  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled as library/data/bible/owb-am-b.json.gz and read offline (owb-am). Every Scripture quotation was re-quoted to it verbatim (founder decision, 2026-11-18: Amharic quotes OWB everywhere), replacing the 1962/2003 UBS wording, the corpus-mined Old Testament verses and the translator-rendered Song of Songs the first edition carried.",
+  "Taylor sets the Song out line by line; each line now carries the OWB words that fall to it, split at OWB's own clause breaks, and a recurring verse is the same wherever it returns (2:3, 2:10/2:13, 2:17, 4:7, 5:2). Taylor's bracketed glosses ('(but)', '(the citron)', '(love-gifts)', '(or rather brilliant)', '(ardent love)', '(separation)') stay inside their lines; those lines are self_rendered. His quoted epithets follow OWB too: 'fairest among women' ከሴቶች ሁሉ ይልቅ ውብ የሆንሽ, 'Shulamite' ሱላማዊት, 'Prince's daughter' የመኳንንት ልጅ. Where his prose recites a line it follows OWB ('until the day breathe', 'among the lilies' በሱሰን አበቦች መካከል, 'mountains of spices' የቅመም ተራሮች, 'many waters'). Ecclesiastes 1:2 is OWB's 'breath' with a one-time gloss (ማለትም ከንቱ…), as other Amharic works have it. Joined OWB pieces use '…'.",
+  "`self_rendered` rows carry a `why`. Six places where OWB's Song reads differently from the text Taylor argues from are kept in the translator's wording and flagged as founder calls: 1:9 'a company of horses' (OWB 'a mare'), 3:6 'who is this' (OWB 'who is she'), the 2:7/3:5/8:4 refrain's 'My love … until she please' (OWB 'love … until it desires'), 6:12 'my willing people' (OWB 'Amminadib'), 8:5b's speaker, and 8:6 'a very flame of the LORD' (OWB 'a mighty flame')."
  ],
  "references": [
   {
@@ -14,962 +15,4767 @@
    "status": "mined",
    "block_index": 0,
    "chapter_order": 1,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 2:20",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Romans 7:4",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 1,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 15:28",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 17:3",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Timothy 3:16",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Isaiah 54:5",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 3:29",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 54:5",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 2,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Ephesians 5:22-32",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "1 Kings 10:1",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Song of Songs 7:10",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Ecclesiastes 1:2",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 4,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 4:13-14",
    "status": "mined",
    "block_index": 4,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 1:8",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 18,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 6:13",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 18,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 7:1",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 18,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:8",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 1:5",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 20,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:8",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:8",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 1:1",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Isaiah 55:9",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 3
+   "reference": "Song of Solomon 1:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 15:11",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 1:1",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 1:2",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 1:4",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 55:9",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 3,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Ephesians 2:1",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Isaiah 53:2",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Song of Songs 1:2",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 3,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:2",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 1:2",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 4,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:2",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 2:4",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Job 23:3",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 8,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 1:2",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 8,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:2",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 53:3",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Song of Songs 1:3",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 12,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Song of Songs 1:4",
-   "status": "self_rendered",
-   "block_index": 16,
-   "chapter_order": 4
+   "reference": "Song of Solomon 1:3",
+   "status": "mined",
+   "block_index": 12,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:3",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:3",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:3",
+   "status": "mined",
+   "block_index": 14,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Genesis 22:2",
    "status": "self_rendered",
    "block_index": 15,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Song of Songs 1:4",
-   "status": "self_rendered",
+   "status": "mined",
+   "block_index": 16,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "status": "mined",
    "block_index": 19,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:4",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 2:14",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 22,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:14",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:14",
+   "status": "mined",
+   "block_index": 23,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:14",
+   "status": "mined",
+   "block_index": 23,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 1:4",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 27,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:4",
+   "status": "mined",
+   "block_index": 27,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "status": "mined",
+   "block_index": 28,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:4",
+   "status": "mined",
+   "block_index": 28,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "status": "mined",
+   "block_index": 29,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 1:5",
    "status": "self_rendered",
    "block_index": 30,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "Taylor turns the verse into a dialogue (the bride says 'I am black', the Bridegroom 'but comely'); OWB's words stand where they fit (ጠይም ነኝ, እንደ ቄዳር ድንኳኖች), the re-voiced replies are the translator's"
+  },
+  {
+   "reference": "Song of Solomon 1:5",
+   "status": "mined",
+   "block_index": 30,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 1:6",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 31,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:6",
+   "status": "mined",
+   "block_index": 31,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:6",
+   "status": "mined",
+   "block_index": 32,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:6",
+   "status": "mined",
+   "block_index": 32,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:6",
+   "status": "mined",
+   "block_index": 33,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:6",
+   "status": "mined",
+   "block_index": 33,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:6",
+   "status": "mined",
+   "block_index": 34,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:6",
+   "status": "mined",
+   "block_index": 34,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:6",
+   "status": "mined",
+   "block_index": 35,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:6",
+   "status": "mined",
+   "block_index": 35,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 7:3-5",
    "status": "self_rendered",
    "block_index": 36,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Galatians 5:22",
    "status": "self_rendered",
    "block_index": 36,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Song of Songs 1:7",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 38,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:7",
+   "status": "mined",
+   "block_index": 38,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:7",
+   "status": "mined",
+   "block_index": 39,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:7",
+   "status": "mined",
+   "block_index": 39,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:7",
+   "status": "mined",
+   "block_index": 40,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:7",
+   "status": "mined",
+   "block_index": 40,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:7",
+   "status": "mined",
+   "block_index": 41,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:7",
+   "status": "mined",
+   "block_index": 41,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 1:8",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 43,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:8",
+   "status": "mined",
+   "block_index": 43,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:8",
+   "status": "mined",
+   "block_index": 44,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:8",
+   "status": "mined",
+   "block_index": 44,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:8",
+   "status": "mined",
+   "block_index": 45,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:8",
+   "status": "mined",
+   "block_index": 45,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Peter 5:4",
    "status": "self_rendered",
    "block_index": 46,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Matthew 25:40",
    "status": "mined",
    "block_index": 47,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 1:9",
    "status": "self_rendered",
    "block_index": 49,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "founder call: OWB reads 'a mare among Pharaoh's chariots' (ባዝራ); Taylor's whole commentary (4.51-53) argues from 'a company of horses' trained to one will, so the AV/RV image stays the translator's"
+  },
+  {
+   "reference": "Song of Songs 1:9",
+   "status": "self_rendered",
+   "block_index": 50,
+   "chapter_order": 4,
+   "why": "founder call: see 4.49: Taylor argues from 'a company of horses'"
   },
   {
    "reference": "1 John 5:19",
    "status": "self_rendered",
    "block_index": 53,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
-   "reference": "Song of Songs 1:10-11",
-   "status": "self_rendered",
+   "reference": "Song of Songs 1:10",
+   "status": "mined",
    "block_index": 55,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:10",
+   "status": "mined",
+   "block_index": 55,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:10",
+   "status": "mined",
+   "block_index": 56,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:10",
+   "status": "mined",
+   "block_index": 56,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:11",
+   "status": "mined",
+   "block_index": 57,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:11",
+   "status": "mined",
+   "block_index": 58,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 1:12",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 61,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:12",
+   "status": "mined",
+   "block_index": 62,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 11:36",
    "status": "self_rendered",
    "block_index": 63,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
-   "reference": "Song of Songs 1:13-14",
-   "status": "self_rendered",
+   "reference": "Song of Songs 1:13",
+   "status": "mined",
    "block_index": 64,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:13",
+   "status": "mined",
+   "block_index": 64,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:13",
+   "status": "mined",
+   "block_index": 65,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:13",
+   "status": "mined",
+   "block_index": 65,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:14",
+   "status": "mined",
+   "block_index": 66,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:14",
+   "status": "mined",
+   "block_index": 66,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:14",
+   "status": "mined",
+   "block_index": 67,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:14",
+   "status": "mined",
+   "block_index": 67,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 1:15",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 69,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:15",
+   "status": "mined",
+   "block_index": 69,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:15",
+   "status": "mined",
+   "block_index": 70,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:15",
+   "status": "mined",
+   "block_index": 70,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 1:5",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 72,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 4:7",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 74,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "2 Corinthians 3:7",
-   "status": "self_rendered",
-   "block_index": 76,
-   "chapter_order": 4
+   "reference": "Song of Songs 4:7",
+   "status": "mined",
+   "block_index": 75,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 3:18",
    "status": "mined",
    "block_index": 76,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Corinthians 3:7",
+   "status": "self_rendered",
+   "block_index": 76,
+   "chapter_order": 4,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
+  },
+  {
+   "reference": "Song of Songs 1:15",
+   "status": "mined",
+   "block_index": 78,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 1:15",
    "status": "self_rendered",
-   "block_index": 78,
-   "chapter_order": 4
+   "block_index": 80,
+   "chapter_order": 4,
+   "why": "Taylor's alternative rendering ('or, Thou hast dove's eyes') beside OWB's; translator's wording"
   },
   {
    "reference": "Matthew 3:16",
    "status": "self_rendered",
    "block_index": 81,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "John 12:32",
    "status": "self_rendered",
    "block_index": 82,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
+  },
+  {
+   "reference": "Song of Songs 1:16",
+   "status": "mined",
+   "block_index": 84,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:16",
+   "status": "mined",
+   "block_index": 84,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:16",
+   "status": "mined",
+   "block_index": 85,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:16",
+   "status": "mined",
+   "block_index": 85,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:17",
+   "status": "mined",
+   "block_index": 86,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 1:17",
+   "status": "mined",
+   "block_index": 87,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 2:1",
    "status": "self_rendered",
    "block_index": 88,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "OWB's words with Taylor's bracketed gloss '(but)' kept inside the line"
+  },
+  {
+   "reference": "Song of Songs 2:1",
+   "status": "mined",
+   "block_index": 89,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 2:2",
-   "status": "self_rendered",
-   "block_index": 91,
-   "chapter_order": 4
+   "status": "mined",
+   "block_index": 92,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:2",
+   "status": "mined",
+   "block_index": 93,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 2:3",
    "status": "self_rendered",
    "block_index": 95,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "OWB's words with Taylor's gloss '(the citron)' kept inside the line"
+  },
+  {
+   "reference": "Song of Songs 2:3",
+   "status": "mined",
+   "block_index": 96,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:3",
+   "status": "mined",
+   "block_index": 96,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:3",
+   "status": "mined",
+   "block_index": 97,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:3",
+   "status": "mined",
+   "block_index": 97,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:3",
+   "status": "mined",
+   "block_index": 98,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:3",
+   "status": "mined",
+   "block_index": 98,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 2:4",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 101,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:4",
+   "status": "mined",
+   "block_index": 102,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 2:5",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 104,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:5",
+   "status": "mined",
+   "block_index": 105,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 2:6",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 106,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:6",
+   "status": "mined",
+   "block_index": 106,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:6",
+   "status": "mined",
+   "block_index": 107,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:6",
+   "status": "mined",
+   "block_index": 107,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:7",
+   "status": "mined",
+   "block_index": 109,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:7",
+   "status": "mined",
+   "block_index": 110,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:7",
+   "status": "mined",
+   "block_index": 110,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 2:7",
    "status": "self_rendered",
-   "block_index": 109,
-   "chapter_order": 4
+   "block_index": 111,
+   "chapter_order": 4,
+   "why": "founder call: OWB reads 'do not arouse love until it desires'; Taylor reads 'My love … until she please' as the bride at rest (5.3, 5.74), so the refrain's last two lines stay the translator's in all three places (2:7, 3:5, 8:4); its first two lines are OWB"
   },
   {
-   "reference": "Hebrews 13:8",
-   "status": "mined",
-   "block_index": 118,
+   "reference": "Song of Songs 2:7",
+   "status": "self_rendered",
+   "block_index": 112,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "founder call: see 4.111 (refrain 'until she please')"
   },
   {
    "reference": "Hebrews 13:5",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 118,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 15:4",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 118,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 2:1",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 28:20",
    "status": "mined",
    "block_index": 3,
    "chapter_order": 5,
-   "source_file": "unfailing-springs.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 45:10",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 45:10",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 45:11",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 45:11",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 5:21",
    "status": "mined",
    "block_index": 8,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 2:15",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 9,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 4:4",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 6:14-15",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Corinthians 6:17",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Corinthians 6:17",
+   "status": "mined",
+   "block_index": 11,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Corinthians 6:17",
+   "status": "mined",
+   "block_index": 12,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Corinthians 6:18",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Corinthians 6:18",
+   "status": "mined",
+   "block_index": 14,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:8",
+   "status": "mined",
+   "block_index": 17,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:8",
+   "status": "mined",
+   "block_index": 17,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:8",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:8",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:9",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:9",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:9",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:9",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:9",
+   "status": "mined",
+   "block_index": 21,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:9",
+   "status": "mined",
+   "block_index": 21,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:9",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:10",
+   "status": "mined",
+   "block_index": 24,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:10",
+   "status": "mined",
+   "block_index": 24,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:10",
+   "status": "mined",
+   "block_index": 25,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:10",
+   "status": "mined",
+   "block_index": 25,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:11",
+   "status": "mined",
+   "block_index": 26,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:11",
+   "status": "mined",
+   "block_index": 27,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:12",
+   "status": "mined",
+   "block_index": 28,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:12",
+   "status": "mined",
+   "block_index": 28,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:12",
+   "status": "mined",
+   "block_index": 29,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:12",
+   "status": "mined",
+   "block_index": 30,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:12",
+   "status": "mined",
+   "block_index": 30,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:13",
+   "status": "mined",
+   "block_index": 31,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:13",
+   "status": "mined",
+   "block_index": 32,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:13",
+   "status": "mined",
+   "block_index": 33,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:13",
+   "status": "mined",
+   "block_index": 34,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:10",
+   "status": "mined",
+   "block_index": 34,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:13",
+   "status": "mined",
+   "block_index": 36,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:10",
+   "status": "mined",
+   "block_index": 36,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:14",
+   "status": "mined",
+   "block_index": 39,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:14",
+   "status": "mined",
+   "block_index": 39,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:14",
+   "status": "mined",
+   "block_index": 40,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:14",
+   "status": "mined",
+   "block_index": 40,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:14",
+   "status": "mined",
+   "block_index": 41,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:14",
+   "status": "mined",
+   "block_index": 41,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:15",
+   "status": "mined",
+   "block_index": 44,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:15",
+   "status": "mined",
+   "block_index": 44,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:15",
+   "status": "mined",
+   "block_index": 45,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:15",
+   "status": "mined",
+   "block_index": 45,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:16",
+   "status": "mined",
+   "block_index": 48,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:16",
+   "status": "mined",
+   "block_index": 48,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:16",
+   "status": "mined",
+   "block_index": 49,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:16",
+   "status": "mined",
+   "block_index": 49,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:17",
+   "status": "mined",
+   "block_index": 50,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "mined",
+   "block_index": 51,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:17",
+   "status": "mined",
+   "block_index": 51,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "mined",
+   "block_index": 52,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "mined",
+   "block_index": 53,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:17",
+   "status": "mined",
+   "block_index": 53,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:1",
+   "status": "mined",
+   "block_index": 57,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:1",
+   "status": "mined",
+   "block_index": 57,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:1",
+   "status": "mined",
+   "block_index": 58,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:1",
+   "status": "mined",
+   "block_index": 58,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:2",
+   "status": "mined",
+   "block_index": 60,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:2",
+   "status": "mined",
+   "block_index": 60,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:2",
+   "status": "mined",
+   "block_index": 61,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:2",
+   "status": "mined",
+   "block_index": 62,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:2",
+   "status": "mined",
+   "block_index": 62,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:2",
+   "status": "mined",
+   "block_index": 63,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:1",
+   "status": "mined",
+   "block_index": 63,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:3",
+   "status": "mined",
+   "block_index": 65,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:3",
+   "status": "mined",
+   "block_index": 65,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:3",
+   "status": "mined",
+   "block_index": 66,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:3",
+   "status": "mined",
+   "block_index": 66,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:4",
+   "status": "mined",
+   "block_index": 67,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:4",
+   "status": "mined",
+   "block_index": 67,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:4",
+   "status": "mined",
+   "block_index": 68,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:4",
+   "status": "mined",
+   "block_index": 68,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:10",
+   "status": "mined",
+   "block_index": 69,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:4",
+   "status": "mined",
+   "block_index": 70,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:4",
+   "status": "mined",
+   "block_index": 71,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:4",
+   "status": "mined",
+   "block_index": 71,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:4",
+   "status": "mined",
+   "block_index": 72,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:4",
+   "status": "mined",
+   "block_index": 72,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:5",
+   "status": "mined",
+   "block_index": 75,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:5",
+   "status": "mined",
+   "block_index": 76,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:7",
+   "status": "mined",
+   "block_index": 76,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:5",
+   "status": "self_rendered",
+   "block_index": 77,
+   "chapter_order": 5,
+   "why": "Taylor's own bracketed gloss '(By all that is loving and beautiful and constant)'"
+  },
+  {
+   "reference": "Song of Songs 3:5",
+   "status": "self_rendered",
+   "block_index": 78,
+   "chapter_order": 5,
+   "why": "founder call: see 4.111 (refrain 'My love … until she please')"
+  },
+  {
+   "reference": "Song of Songs 3:5",
+   "status": "self_rendered",
+   "block_index": 79,
+   "chapter_order": 5,
+   "why": "founder call: see 4.111; made identical to 4.112"
+  },
+  {
+   "reference": "Psalm 84:1",
+   "status": "mined",
+   "block_index": 81,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 84:1",
+   "status": "mined",
+   "block_index": 82,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 84:2",
+   "status": "mined",
+   "block_index": 83,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 84:2",
+   "status": "mined",
+   "block_index": 84,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 84:4",
+   "status": "mined",
+   "block_index": 85,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 84:4",
+   "status": "mined",
+   "block_index": 86,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 84:10",
+   "status": "mined",
+   "block_index": 87,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 84:10",
+   "status": "mined",
+   "block_index": 88,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 84:10",
+   "status": "mined",
+   "block_index": 89,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 84:11",
+   "status": "mined",
+   "block_index": 90,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 84:11",
+   "status": "mined",
+   "block_index": 91,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 84:11",
+   "status": "mined",
+   "block_index": 92,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 84:12",
+   "status": "mined",
+   "block_index": 93,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 84:12",
+   "status": "mined",
+   "block_index": 94,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:6",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 6,
+   "why": "founder call: OWB reads 'Who is SHE (ይህች) that comes up'; Taylor reads the procession as the King's ('the bride is not mentioned', 6.27; 9.8), so 3:6 stays the translator's here and at 9.8"
+  },
+  {
+   "reference": "Song of Songs 3:6",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 6,
+   "why": "founder call: see 6.11"
+  },
+  {
+   "reference": "Song of Songs 3:6",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 6,
+   "why": "founder call: see 6.11"
+  },
+  {
+   "reference": "Song of Songs 3:9",
+   "status": "mined",
+   "block_index": 15,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:9",
+   "status": "mined",
+   "block_index": 16,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:10",
+   "status": "mined",
+   "block_index": 17,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:10",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:10",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:10",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 6,
+   "why": "OWB's words with Taylor's gloss '(love-gifts)' kept inside the line"
+  },
+  {
+   "reference": "Song of Songs 3:10",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:7",
+   "status": "mined",
+   "block_index": 21,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:7",
+   "status": "mined",
+   "block_index": 21,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:7",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:7",
+   "status": "mined",
+   "block_index": 23,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:8",
+   "status": "mined",
+   "block_index": 24,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:8",
+   "status": "mined",
+   "block_index": 24,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:8",
+   "status": "mined",
+   "block_index": 25,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:8",
+   "status": "mined",
+   "block_index": 25,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:8",
+   "status": "mined",
+   "block_index": 26,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:8",
+   "status": "mined",
+   "block_index": 26,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 45:12",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 27,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:11",
+   "status": "mined",
+   "block_index": 29,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:11",
+   "status": "mined",
+   "block_index": 29,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:11",
+   "status": "mined",
+   "block_index": 30,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:11",
+   "status": "mined",
+   "block_index": 30,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 3:11",
+   "status": "mined",
+   "block_index": 31,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:11",
+   "status": "mined",
+   "block_index": 31,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:1",
+   "status": "mined",
+   "block_index": 33,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:15",
+   "status": "mined",
+   "block_index": 33,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:1",
+   "status": "mined",
+   "block_index": 34,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:1",
+   "status": "mined",
+   "block_index": 34,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:1",
+   "status": "mined",
+   "block_index": 35,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:1",
+   "status": "mined",
+   "block_index": 35,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:1",
+   "status": "mined",
+   "block_index": 36,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:1",
+   "status": "mined",
+   "block_index": 36,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:2",
+   "status": "mined",
+   "block_index": 37,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:2",
+   "status": "mined",
+   "block_index": 37,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:2",
+   "status": "mined",
+   "block_index": 38,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:2",
+   "status": "mined",
+   "block_index": 39,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:2",
+   "status": "mined",
+   "block_index": 40,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:3",
+   "status": "mined",
+   "block_index": 41,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:3",
+   "status": "mined",
+   "block_index": 41,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:3",
+   "status": "mined",
+   "block_index": 42,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:6",
+   "status": "mined",
+   "block_index": 44,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:17",
+   "status": "mined",
+   "block_index": 44,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:6",
+   "status": "mined",
+   "block_index": 46,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:17",
+   "status": "mined",
+   "block_index": 46,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:6",
+   "status": "mined",
+   "block_index": 47,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:6",
+   "status": "mined",
+   "block_index": 48,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:6",
+   "status": "mined",
+   "block_index": 48,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:7",
+   "status": "mined",
+   "block_index": 50,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:7",
+   "status": "mined",
+   "block_index": 51,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:8",
+   "status": "mined",
+   "block_index": 53,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:8",
+   "status": "mined",
+   "block_index": 54,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:8",
+   "status": "mined",
+   "block_index": 55,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:8",
+   "status": "mined",
+   "block_index": 56,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:8",
+   "status": "mined",
+   "block_index": 57,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:8",
+   "status": "mined",
+   "block_index": 58,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 28:19",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 59,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 28:18",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 59,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 28:20",
    "status": "mined",
    "block_index": 59,
    "chapter_order": 6,
-   "source_file": "unfailing-springs.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 23:4",
-   "status": "self_rendered",
+   "status": "mined",
+   "block_index": 59,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
    "block_index": 60,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:9",
+   "status": "mined",
+   "block_index": 61,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:9",
+   "status": "mined",
+   "block_index": 61,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:9",
+   "status": "mined",
+   "block_index": 62,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:9",
+   "status": "mined",
+   "block_index": 62,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:9",
+   "status": "mined",
+   "block_index": 63,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:9",
+   "status": "mined",
+   "block_index": 63,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:9",
+   "status": "self_rendered",
+   "block_index": 64,
+   "chapter_order": 6,
+   "why": "the RV margin's alternative 'Thou hast given me courage', which Taylor quotes beside OWB's 'Thou hast ravished My heart'"
+  },
+  {
+   "reference": "Song of Solomon 4:9",
+   "status": "mined",
+   "block_index": 64,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:10",
+   "status": "mined",
+   "block_index": 66,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:10",
+   "status": "mined",
+   "block_index": 66,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:10",
+   "status": "mined",
+   "block_index": 67,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:10",
+   "status": "mined",
+   "block_index": 67,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:10",
+   "status": "mined",
+   "block_index": 68,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:10",
+   "status": "mined",
+   "block_index": 68,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:11",
+   "status": "mined",
+   "block_index": 69,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:11",
+   "status": "mined",
+   "block_index": 69,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:11",
+   "status": "mined",
+   "block_index": 70,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:11",
+   "status": "mined",
+   "block_index": 70,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:11",
+   "status": "mined",
+   "block_index": 71,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:11",
+   "status": "mined",
+   "block_index": 71,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 4:12",
+   "status": "mined",
+   "block_index": 72,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:12",
+   "status": "mined",
+   "block_index": 72,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:12",
+   "status": "mined",
+   "block_index": 73,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:12",
+   "status": "mined",
+   "block_index": 73,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:13",
+   "status": "mined",
+   "block_index": 74,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:13",
+   "status": "mined",
+   "block_index": 75,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:14",
+   "status": "mined",
+   "block_index": 76,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:14",
+   "status": "mined",
+   "block_index": 77,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:14",
+   "status": "mined",
+   "block_index": 77,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:14",
+   "status": "mined",
+   "block_index": 78,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:14",
+   "status": "mined",
+   "block_index": 78,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:15",
+   "status": "mined",
+   "block_index": 79,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:15",
+   "status": "mined",
+   "block_index": 80,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:15",
+   "status": "mined",
+   "block_index": 81,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:15",
+   "status": "mined",
+   "block_index": 81,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:15",
+   "status": "mined",
+   "block_index": 82,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:16",
+   "status": "mined",
+   "block_index": 84,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:16",
+   "status": "mined",
+   "block_index": 84,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:16",
+   "status": "mined",
+   "block_index": 85,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:16",
+   "status": "mined",
+   "block_index": 85,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:16",
+   "status": "mined",
+   "block_index": 86,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:16",
+   "status": "mined",
+   "block_index": 86,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 4:16",
+   "status": "mined",
+   "block_index": 87,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:1",
+   "status": "mined",
+   "block_index": 90,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:1",
+   "status": "mined",
+   "block_index": 90,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:1",
+   "status": "mined",
+   "block_index": 91,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:1",
+   "status": "mined",
+   "block_index": 91,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:1",
+   "status": "mined",
+   "block_index": 92,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:1",
+   "status": "mined",
+   "block_index": 92,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:1",
+   "status": "mined",
+   "block_index": 93,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:1",
+   "status": "mined",
+   "block_index": 93,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:1",
+   "status": "mined",
+   "block_index": 96,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:1",
    "status": "self_rendered",
+   "block_index": 97,
+   "chapter_order": 6,
+   "why": "Taylor reads 5:1b as the bride inviting her Beloved ('O Beloved', singular); OWB has 'lovers' (plural). Translator's wording, as in the song-5-1-inebriated decision; 'Eat, O friends' (6.96) is OWB"
+  },
+  {
+   "reference": "Song of Songs 4:12",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 4:12",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:2",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
    "block_index": 6,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:2",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "block_index": 9,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:2",
+   "status": "mined",
+   "block_index": 9,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 3:20",
    "status": "mined",
-   "block_index": 12,
+   "block_index": 10,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 2:10",
-   "status": "self_rendered",
-   "block_index": 12,
-   "chapter_order": 7
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 5:2",
-   "status": "self_rendered",
-   "block_index": 12,
-   "chapter_order": 7
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:2",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 5:2",
-   "status": "self_rendered",
-   "block_index": 13,
-   "chapter_order": 7
+   "status": "mined",
+   "block_index": 11,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Romans 8:29",
+   "reference": "Song of Solomon 5:2",
+   "status": "mined",
+   "block_index": 11,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "block_index": 12,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:2",
    "status": "mined",
    "block_index": 13,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:2",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 5:17",
    "status": "mined",
-   "block_index": 16,
+   "block_index": 14,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Song of Songs 4:8",
-   "status": "self_rendered",
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "block_index": 15,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:2",
+   "status": "mined",
+   "block_index": 15,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
    "block_index": 16,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "block_index": 17,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:2",
+   "status": "mined",
+   "block_index": 17,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:3",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:3",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:3",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:3",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Timothy 6:12",
    "status": "self_rendered",
-   "block_index": 23,
-   "chapter_order": 7
+   "block_index": 21,
+   "chapter_order": 7,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
-   "reference": "Revelation 1:13",
-   "status": "mined",
-   "block_index": 67,
+   "reference": "Song of Songs 5:4",
+   "status": "self_rendered",
+   "block_index": 23,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "re-personed by Taylor ('her Beloved', split across his own sentence); OWB's words otherwise"
+  },
+  {
+   "reference": "Song of Solomon 5:4",
+   "status": "mined",
+   "block_index": 23,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:4",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 7,
+   "why": "re-personed by Taylor ('\"her\" heart')"
+  },
+  {
+   "reference": "Song of Songs 5:5",
+   "status": "mined",
+   "block_index": 26,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:5",
+   "status": "mined",
+   "block_index": 26,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:5",
+   "status": "mined",
+   "block_index": 27,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:5",
+   "status": "mined",
+   "block_index": 27,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:5",
+   "status": "mined",
+   "block_index": 28,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:5",
+   "status": "mined",
+   "block_index": 29,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:6",
+   "status": "mined",
+   "block_index": 30,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:6",
+   "status": "mined",
+   "block_index": 31,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:6",
+   "status": "mined",
+   "block_index": 31,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:6",
+   "status": "mined",
+   "block_index": 32,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:6",
+   "status": "mined",
+   "block_index": 34,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:6",
+   "status": "mined",
+   "block_index": 34,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:6",
+   "status": "mined",
+   "block_index": 35,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:6",
+   "status": "mined",
+   "block_index": 35,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:7",
+   "status": "mined",
+   "block_index": 36,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:3",
+   "status": "mined",
+   "block_index": 36,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:7",
+   "status": "mined",
+   "block_index": 37,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:7",
+   "status": "mined",
+   "block_index": 38,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:7",
+   "status": "mined",
+   "block_index": 38,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Proverbs 1:23",
+   "status": "mined",
+   "block_index": 40,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Proverbs 1:23",
+   "status": "mined",
+   "block_index": 41,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Proverbs 1:23",
+   "status": "mined",
+   "block_index": 42,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Proverbs 1:24",
+   "status": "mined",
+   "block_index": 43,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Proverbs 1:24",
+   "status": "mined",
+   "block_index": 44,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Proverbs 1:26",
+   "status": "mined",
+   "block_index": 45,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Proverbs 1:28",
+   "status": "mined",
+   "block_index": 46,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Proverbs 1:28",
+   "status": "mined",
+   "block_index": 47,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:8",
+   "status": "mined",
+   "block_index": 50,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:8",
+   "status": "mined",
+   "block_index": 50,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:8",
+   "status": "mined",
+   "block_index": 51,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:8",
+   "status": "mined",
+   "block_index": 51,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:9",
+   "status": "mined",
+   "block_index": 53,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:9",
+   "status": "mined",
+   "block_index": 53,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:9",
+   "status": "mined",
+   "block_index": 54,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:9",
+   "status": "mined",
+   "block_index": 54,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:9",
+   "status": "mined",
+   "block_index": 55,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:9",
+   "status": "mined",
+   "block_index": 55,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:9",
+   "status": "mined",
+   "block_index": 56,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:10",
+   "status": "mined",
+   "block_index": 58,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:10",
+   "status": "mined",
+   "block_index": 59,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:16",
+   "status": "mined",
+   "block_index": 61,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:16",
+   "status": "mined",
+   "block_index": 61,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:16",
+   "status": "mined",
+   "block_index": 62,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:16",
+   "status": "mined",
+   "block_index": 62,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:16",
+   "status": "mined",
+   "block_index": 63,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:16",
+   "status": "mined",
+   "block_index": 63,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Daniel 7:9",
+   "status": "mined",
+   "block_index": 64,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 5:11",
+   "status": "mined",
+   "block_index": 65,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 1:14",
-   "status": "self_rendered",
-   "block_index": 67,
-   "chapter_order": 7
+   "status": "mined",
+   "block_index": 65,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Song of Songs 5:11-15",
-   "status": "self_rendered",
-   "block_index": 67,
-   "chapter_order": 7
+   "reference": "Song of Songs 5:12",
+   "status": "mined",
+   "block_index": 65,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 1:15-16",
    "status": "mined",
-   "block_index": 67,
+   "block_index": 65,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 1:16",
    "status": "mined",
-   "block_index": 67,
+   "block_index": 65,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 1:17",
    "status": "mined",
-   "block_index": 67,
+   "block_index": 65,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Revelation 5:5",
+   "reference": "Song of Songs 5:15",
+   "status": "mined",
+   "block_index": 65,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 5:11",
+   "status": "mined",
+   "block_index": 65,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Daniel 7:9",
+   "status": "mined",
+   "block_index": 65,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:1",
+   "status": "mined",
+   "block_index": 66,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:1",
    "status": "mined",
    "block_index": 67,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:1",
+   "status": "mined",
+   "block_index": 68,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:1",
+   "status": "mined",
+   "block_index": 69,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:2",
+   "status": "mined",
+   "block_index": 71,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:2",
+   "status": "mined",
+   "block_index": 71,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:2",
+   "status": "mined",
+   "block_index": 72,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:2",
+   "status": "mined",
+   "block_index": 72,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:3",
+   "status": "mined",
+   "block_index": 73,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:3",
+   "status": "mined",
+   "block_index": 73,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:3",
+   "status": "mined",
+   "block_index": 74,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:16",
+   "status": "mined",
+   "block_index": 74,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:3",
+   "status": "mined",
+   "block_index": 75,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:16",
+   "status": "mined",
+   "block_index": 75,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:3",
+   "status": "mined",
+   "block_index": 75,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:16",
+   "status": "mined",
+   "block_index": 75,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 7:10",
+   "status": "mined",
+   "block_index": 76,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 7:10",
+   "status": "mined",
+   "block_index": 77,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:4",
+   "status": "mined",
+   "block_index": 80,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:4",
+   "status": "mined",
+   "block_index": 82,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:4",
+   "status": "self_rendered",
+   "block_index": 84,
+   "chapter_order": 7,
+   "why": "OWB's words with Taylor's gloss '(or rather brilliant)' kept inside the line"
+  },
+  {
+   "reference": "Song of Solomon 6:10",
+   "status": "mined",
+   "block_index": 84,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:5",
+   "status": "mined",
+   "block_index": 85,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:5",
+   "status": "mined",
+   "block_index": 86,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:8",
+   "status": "mined",
+   "block_index": 88,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:8",
+   "status": "mined",
+   "block_index": 89,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:9",
+   "status": "mined",
+   "block_index": 90,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:9",
+   "status": "mined",
+   "block_index": 90,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:9",
+   "status": "mined",
+   "block_index": 91,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:9",
+   "status": "mined",
+   "block_index": 91,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:9",
+   "status": "mined",
+   "block_index": 92,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:9",
+   "status": "mined",
+   "block_index": 92,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:9",
+   "status": "mined",
+   "block_index": 93,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:9",
+   "status": "mined",
+   "block_index": 93,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:9",
+   "status": "mined",
+   "block_index": 94,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:9",
+   "status": "mined",
+   "block_index": 94,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:10",
+   "status": "mined",
+   "block_index": 95,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:10",
+   "status": "mined",
+   "block_index": 95,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:10",
+   "status": "mined",
+   "block_index": 96,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:10",
+   "status": "mined",
+   "block_index": 97,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:10",
+   "status": "mined",
+   "block_index": 98,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:10",
+   "status": "mined",
+   "block_index": 98,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:11",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:11",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:11",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:11",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:11",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:11",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:11",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:11",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:12",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:12",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 8,
+   "why": "founder call: OWB keeps the name Amminadib; Taylor argues from its meaning 'my willing people' (8.10: 'her people as well as His'), so the line stays the translator's"
   },
   {
    "reference": "Matthew 28:20",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 8,
-   "source_file": "jesus-himself-2.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 5:2",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "re-personed by Taylor ('His head is filled with dew'); translator's wording"
   },
   {
    "reference": "John 21:15-17",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
+  },
+  {
+   "reference": "Song of Songs 6:13",
+   "status": "mined",
+   "block_index": 12,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:13",
+   "status": "mined",
+   "block_index": 12,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:13",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:13",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:13",
+   "status": "mined",
+   "block_index": 15,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 22:20",
    "status": "mined",
    "block_index": 15,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:13",
+   "status": "mined",
+   "block_index": 17,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 6:13",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 8,
+   "why": "the Authorized Version's alternative ('What will ye see in the Shulamite?'), which Taylor quotes beside the RV's"
+  },
+  {
+   "reference": "Song of Songs 6:13",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 6:13",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Exodus 34:29",
    "status": "self_rendered",
    "block_index": 20,
-   "chapter_order": 8
-  },
-  {
-   "reference": "Song of Songs 6:13",
-   "status": "self_rendered",
-   "block_index": 20,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Song of Songs 7:1",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 21,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 1:6",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 21,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 6:15",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 21,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 7:5",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 21,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 7:1",
+   "status": "mined",
+   "block_index": 21,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 6:13",
    "status": "self_rendered",
    "block_index": 22,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "the AV's alternative again (see 8.19)"
   },
   {
-   "reference": "John 12:13",
+   "reference": "Song of Songs 7:6",
    "status": "mined",
-   "block_index": 36,
+   "block_index": 23,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 7:6",
+   "status": "mined",
+   "block_index": 24,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 92:12",
+   "status": "mined",
+   "block_index": 26,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 92:12",
+   "status": "mined",
+   "block_index": 27,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 92:13",
+   "status": "mined",
+   "block_index": 28,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 92:13",
+   "status": "mined",
+   "block_index": 29,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 92:14",
+   "status": "mined",
+   "block_index": 30,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 92:14",
+   "status": "mined",
+   "block_index": 31,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 92:15",
+   "status": "mined",
+   "block_index": 33,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 92:15",
+   "status": "mined",
+   "block_index": 34,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 7:9",
    "status": "mined",
    "block_index": 36,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 7:10",
    "status": "mined",
    "block_index": 36,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 15:1",
    "status": "self_rendered",
    "block_index": 37,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Song of Songs 7:8",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 62,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "1 John 4:18",
+   "reference": "Song of Solomon 7:8",
    "status": "mined",
-   "block_index": 79,
+   "block_index": 62,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:3",
+   "status": "self_rendered",
+   "block_index": 63,
+   "chapter_order": 8,
+   "why": "OWB's words with Taylor's gloss '(the citron)' kept inside the line, identical to 4.95"
+  },
+  {
+   "reference": "Song of Songs 2:3",
+   "status": "mined",
+   "block_index": 64,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:3",
+   "status": "mined",
+   "block_index": 65,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:3",
+   "status": "mined",
+   "block_index": 65,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:3",
+   "status": "mined",
+   "block_index": 66,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 2:3",
+   "status": "mined",
+   "block_index": 66,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 7:9",
+   "status": "mined",
+   "block_index": 68,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 7:9",
+   "status": "mined",
+   "block_index": 69,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 7:9",
+   "status": "mined",
+   "block_index": 70,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 7:9",
+   "status": "mined",
+   "block_index": 72,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 7:10",
+   "status": "mined",
+   "block_index": 74,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 7:10",
+   "status": "mined",
+   "block_index": 75,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 7:11",
+   "status": "mined",
+   "block_index": 77,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 7:11",
+   "status": "mined",
+   "block_index": 77,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 7:11",
+   "status": "mined",
+   "block_index": 78,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:1",
+   "status": "mined",
+   "block_index": 80,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:1",
+   "status": "mined",
+   "block_index": 81,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:1",
+   "status": "mined",
+   "block_index": 82,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:1",
+   "status": "mined",
+   "block_index": 82,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:1",
+   "status": "mined",
+   "block_index": 83,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:1",
+   "status": "mined",
+   "block_index": 83,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Philippians 3:8",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 84,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Song of Songs 8:5-14",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 9
+   "reference": "Song of Songs 8:2",
+   "status": "mined",
+   "block_index": 86,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Song of Songs 4:8",
+   "reference": "Song of Solomon 8:2",
+   "status": "mined",
+   "block_index": 86,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:2",
+   "status": "mined",
+   "block_index": 87,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:2",
+   "status": "mined",
+   "block_index": 87,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:2",
+   "status": "mined",
+   "block_index": 88,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:2",
+   "status": "mined",
+   "block_index": 88,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:2",
+   "status": "mined",
+   "block_index": 89,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:3",
+   "status": "mined",
+   "block_index": 91,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:3",
+   "status": "mined",
+   "block_index": 91,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:3",
+   "status": "mined",
+   "block_index": 92,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:3",
+   "status": "mined",
+   "block_index": 92,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:4",
    "status": "self_rendered",
-   "block_index": 6,
-   "chapter_order": 9
+   "block_index": 94,
+   "chapter_order": 8,
+   "why": "founder call: see 4.111; Taylor's 8:4 asks 'why', as the RV does"
+  },
+  {
+   "reference": "Song of Songs 8:4",
+   "status": "self_rendered",
+   "block_index": 95,
+   "chapter_order": 8,
+   "why": "founder call: see 4.111"
   },
   {
    "reference": "Song of Songs 3:6",
    "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 9,
+   "why": "founder call: see 6.11: the daughters' question about the King's procession"
+  },
+  {
+   "reference": "Song of Songs 8:5",
+   "status": "mined",
+   "block_index": 9,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 3:6",
+   "status": "mined",
+   "block_index": 9,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:5",
+   "status": "mined",
    "block_index": 10,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 8:58",
+   "status": "mined",
+   "block_index": 12,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:5",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 9,
+   "why": "founder call: OWB makes 8:5b the bride speaking to him (ቀሰቀስኩህ … እናትህ); Taylor reads the Bridegroom claiming her from birth (2.20, 9.15), so the line stays the translator's"
+  },
+  {
+   "reference": "Song of Songs 8:5",
    "status": "self_rendered",
    "block_index": 14,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "founder call: see 9.13"
   },
   {
-   "reference": "Exodus 28:9-21",
-   "status": "self_rendered",
-   "block_index": 24,
-   "chapter_order": 9
+   "reference": "Song of Songs 8:6",
+   "status": "mined",
+   "block_index": 17,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Psalm 118:27",
-   "status": "self_rendered",
-   "block_index": 24,
-   "chapter_order": 9
+   "reference": "Song of Solomon 8:6",
+   "status": "mined",
+   "block_index": 17,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Matthew 23:19",
-   "status": "self_rendered",
-   "block_index": 25,
-   "chapter_order": 9
+   "reference": "Song of Songs 8:6",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:6",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 8:6",
    "status": "self_rendered",
-   "block_index": 27,
-   "chapter_order": 9
+   "block_index": 19,
+   "chapter_order": 9,
+   "why": "OWB's words with Taylor's glosses '(ardent love)', '(retentive)' kept inside the line"
+  },
+  {
+   "reference": "Song of Solomon 8:6",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:6",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 9,
+   "why": "founder call: OWB's 8:6 ends 'a mighty flame' (ብርቱ ነበልባል) without the divine name; Taylor argues (9.25) that 'LORD' occurs in the Song only here, so 8:6b stays the translator's at 9.20-21 and 9.25"
+  },
+  {
+   "reference": "Song of Songs 8:6",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 9,
+   "why": "founder call: see 9.20 ('a very flame of the LORD')"
+  },
+  {
+   "reference": "Psalm 118:27",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:6",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:6",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Exodus 28:9-21",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 9,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
+  },
+  {
+   "reference": "Matthew 23:19",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 9,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
+  },
+  {
+   "reference": "Song of Songs 8:6",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 9,
+   "why": "founder call: see 9.20: Taylor argues from 'of the LORD'"
   },
   {
    "reference": "1 John 4:7",
    "status": "self_rendered",
-   "block_index": 27,
-   "chapter_order": 9
+   "block_index": 25,
+   "chapter_order": 9,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "1 John 4:8",
    "status": "self_rendered",
-   "block_index": 27,
-   "chapter_order": 9
-  },
-  {
-   "reference": "Colossians 3:3",
-   "status": "mined",
-   "block_index": 33,
+   "block_index": 25,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Romans 8:35",
-   "status": "mined",
-   "block_index": 33,
-   "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Romans 8:37",
-   "status": "mined",
-   "block_index": 33,
-   "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Romans 8:38",
-   "status": "mined",
-   "block_index": 33,
-   "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Romans 8:39",
-   "status": "mined",
-   "block_index": 33,
-   "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Song of Songs 8:7",
-   "status": "self_rendered",
-   "block_index": 33,
-   "chapter_order": 9
+   "status": "mined",
+   "block_index": 27,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:7",
+   "status": "mined",
+   "block_index": 27,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:7",
+   "status": "mined",
+   "block_index": 28,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:7",
+   "status": "mined",
+   "block_index": 28,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:7",
+   "status": "mined",
+   "block_index": 29,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:7",
+   "status": "mined",
+   "block_index": 29,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:7",
+   "status": "mined",
+   "block_index": 30,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Romans 8:35-39",
+   "status": "mined",
+   "block_index": 31,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:7",
+   "status": "mined",
+   "block_index": 31,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:7",
+   "status": "mined",
+   "block_index": 31,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Song of Songs 8:8",
-   "status": "self_rendered",
-   "block_index": 39,
-   "chapter_order": 9
+   "status": "mined",
+   "block_index": 33,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Hebrews 5:12",
+   "reference": "Song of Solomon 8:8",
+   "status": "mined",
+   "block_index": 33,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:8",
+   "status": "mined",
+   "block_index": 34,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:8",
+   "status": "mined",
+   "block_index": 35,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:8",
+   "status": "mined",
+   "block_index": 35,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:8",
+   "status": "mined",
+   "block_index": 36,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:8",
+   "status": "mined",
+   "block_index": 36,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:8",
+   "status": "mined",
+   "block_index": 37,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:8",
+   "status": "mined",
+   "block_index": 37,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:9",
    "status": "mined",
    "block_index": 41,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Song of Songs 8:8-9",
-   "status": "self_rendered",
-   "block_index": 47,
-   "chapter_order": 9
+   "reference": "Song of Songs 8:9",
+   "status": "mined",
+   "block_index": 42,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Song of Songs 8:10",
-   "status": "self_rendered",
-   "block_index": 48,
-   "chapter_order": 9
+   "reference": "Song of Solomon 8:9",
+   "status": "mined",
+   "block_index": 42,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:9",
+   "status": "mined",
+   "block_index": 43,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:9",
+   "status": "mined",
+   "block_index": 44,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:8",
+   "status": "mined",
+   "block_index": 45,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:9",
+   "status": "mined",
+   "block_index": 45,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:8",
+   "status": "mined",
+   "block_index": 45,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Deuteronomy 33:23",
    "status": "self_rendered",
+   "block_index": 46,
+   "chapter_order": 9,
+   "why": "Naphtali's blessing re-personed by Taylor to the bride; translator's wording"
+  },
+  {
+   "reference": "Song of Solomon 8:10",
+   "status": "mined",
+   "block_index": 46,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:11",
+   "status": "mined",
    "block_index": 48,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "1 Timothy 5:17",
+   "reference": "Song of Solomon 8:11",
    "status": "mined",
-   "block_index": 56,
+   "block_index": 48,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "1 Timothy 5:18",
+   "reference": "Song of Songs 8:11",
    "status": "mined",
-   "block_index": 56,
+   "block_index": 49,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:11",
+   "status": "mined",
+   "block_index": 49,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:11",
+   "status": "mined",
+   "block_index": 50,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:11",
+   "status": "mined",
+   "block_index": 50,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:12",
+   "status": "mined",
+   "block_index": 51,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:12",
+   "status": "mined",
+   "block_index": 51,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:12",
+   "status": "mined",
+   "block_index": 52,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:12",
+   "status": "mined",
+   "block_index": 52,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:12",
+   "status": "mined",
+   "block_index": 53,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:12",
+   "status": "mined",
+   "block_index": 53,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Genesis 2:15",
    "status": "self_rendered",
-   "block_index": 57,
-   "chapter_order": 9
+   "block_index": 55,
+   "chapter_order": 9,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Matthew 20:12",
    "status": "self_rendered",
+   "block_index": 55,
+   "chapter_order": 9,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
+  },
+  {
+   "reference": "Song of Songs 8:13",
+   "status": "mined",
+   "block_index": 56,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:13",
+   "status": "mined",
+   "block_index": 56,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:13",
+   "status": "mined",
    "block_index": 57,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:13",
+   "status": "mined",
+   "block_index": 57,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:13",
+   "status": "mined",
+   "block_index": 58,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Timothy 4:7",
    "status": "self_rendered",
-   "block_index": 61,
-   "chapter_order": 9
-  },
-  {
-   "reference": "2 Timothy 4:8",
-   "status": "mined",
-   "block_index": 61,
+   "block_index": 59,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Genesis 15:1",
    "status": "self_rendered",
+   "block_index": 59,
+   "chapter_order": 9,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
+  },
+  {
+   "reference": "Song of Songs 8:14",
+   "status": "mined",
    "block_index": 61,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:14",
+   "status": "mined",
+   "block_index": 62,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:14",
+   "status": "mined",
+   "block_index": 62,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 8:14",
+   "status": "mined",
+   "block_index": 63,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 8:14",
+   "status": "mined",
+   "block_index": 63,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "mined",
+   "block_index": 65,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "self_rendered",
+   "block_index": 66,
+   "chapter_order": 9,
+   "why": "OWB's words with Taylor's gloss '(separation)' kept inside the line"
+  },
+  {
+   "reference": "Song of Solomon 2:17",
+   "status": "mined",
+   "block_index": 66,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 22:3",
    "status": "self_rendered",
-   "block_index": 69,
-   "chapter_order": 9
-  },
-  {
-   "reference": "Romans 8:17",
-   "status": "mined",
-   "block_index": 70,
+   "block_index": 67,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Revelation 7:16-17",
    "status": "mined",
-   "block_index": 70,
+   "block_index": 68,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 22:17",
-   "status": "self_rendered",
+   "status": "mined",
+   "block_index": 69,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "mined",
+   "block_index": 70,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "mined",
    "block_index": 71,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 14:4",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 10
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Luke 21:34-36",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 10
+   "reference": "Luke 21:36",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Philippians 3:8",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 10
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Philippians 3:11",
    "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 10
+   "block_index": 3,
+   "chapter_order": 10,
+   "why": "one word ('attain unto') woven into Taylor's sentence; translator's wording"
   },
   {
-   "reference": "1 Thessalonians 4:17",
+   "reference": "Luke 21:34-36",
    "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 10
-  },
-  {
-   "reference": "John 17:16",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 10
+   "block_index": 3,
+   "chapter_order": 10,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   },
   {
    "reference": "Hebrews 9:28",
    "status": "mined",
-   "block_index": 5,
+   "block_index": 4,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Thessalonians 4:17",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 10,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
+  },
+  {
+   "reference": "John 17:16",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 10,
+   "why": "an allusion, a bare citation, or Taylor's own wording around a verse; translator's wording"
   }
  ]
 }

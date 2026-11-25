@@ -32,10 +32,10 @@
   },
   {
    "reference": "Esther 4:14b",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
    "chapter_order": 4,
-   "source_file": "rooted-6.am.json"
+   "why": "the rooted-6.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   },
   {
    "reference": "Psalm 32:7",
@@ -55,7 +55,7 @@
    "status": "mined",
    "block_index": 0,
    "chapter_order": 7,
-   "source_file": "rooted-4.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Genesis 5:24a",
