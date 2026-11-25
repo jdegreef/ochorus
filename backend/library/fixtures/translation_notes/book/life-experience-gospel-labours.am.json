@@ -5,541 +5,612 @@
  "job_issue": 3768,
  "pull_request": null,
  "note": [
-  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
-  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled as library/data/bible/owb-am-b.json.gz and read offline (owb-am). Every Scripture quotation in this book was re-quoted to it verbatim (founder decision, 2026-11-18: Amharic quotes OWB everywhere), replacing the 1962/2003 UBS New Testament wording and the Old Testament wording borrowed from other Amharic works that the first edition carried; the UBS credit line this file once owed is no longer owed for this work.",
+  "A `mined` row is a verbatim OWB span in that block: the whole verse, verses joined, the shortest contiguous span carrying the quoted clause, or exact OWB pieces joined with '…'; a verbatim recitation without quote marks counts (founder rule, 2026-11-19). Quotations split across two blocks (Matthew 25:21 in chapter 11 blocks 34-35; Proverbs 19:17 opening at the end of block 27) are OWB across the join. `self_rendered` rows each carry a `why`: allusions and Allen's own paraphrases left as prose, and verses recast to another person.",
+  "Judgement calls: Acts 17:26 — OWB reads «ከአንድ ሰው» (from one man) where Allen's anti-slavery appeal rests on 'made of one blood', so his clause is rendered from the English and self_rendered (critical-text decision). Psalm 68:31 keeps ኢትዮጵያ (founder rule; OWB reads ኩሽ). Matthew 25:40 and 25:45 are joined with '…' under Allen's single conflated quotation. 2 Corinthians 1:20 quotes OWB's first sentence, which carries 'yea' but places 'Amen' in the next sentence, so Allen's 'yea and amen' reads as OWB's «አዎን». Psalm 41:1-3 is OWB's plural and 'the weak' (ለደካሞች) where the AV has 'the poor'."
  ],
  "references": [
   {
    "reference": "Acts 16:26",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "allusion: Allen's own conversion image (\"my dungeon shook, my chains flew off\"), not a quotation"
   },
   {
    "reference": "Daniel 5:27",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 3,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Joel 2:17",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "allusion: \"weep between the porch and the altar\" recast to Allen's own weeping"
   },
   {
    "reference": "Matthew 11:28",
    "status": "mined",
    "block_index": 8,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 16:30",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "allusion: reported question (\"what they should do to be saved\"), not a quotation"
   },
   {
    "reference": "Acts 2:37",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "allusion: \"cut to the heart\" woven into the narrative"
   },
   {
    "reference": "Hebrews 4:16",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "allusion: \"the throne of grace\" as Allen's own phrase"
   },
   {
    "reference": "Jeremiah 23:23",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "allusion: \"a God at hand and not afar off\" turned into Allen's statement; OWB's verse is a question"
   },
   {
    "reference": "Judges 5:7",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 8,
    "chapter_order": 2,
-   "source_file": "clothed-with-strength-and-dignity.am.json"
+   "why": "allusion: \"a father and mother of Israel\" said of the Bunns, not a quotation"
   },
   {
    "reference": "Isaiah 66:16",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "allusion: \"many were the slain of the Lord\" used figuratively of the convicted, re-tensed"
   },
   {
    "reference": "2 Timothy 3:5",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "allusion: \"scarcely a form of godliness\""
   },
   {
    "reference": "John 4:24",
    "status": "self_rendered",
    "block_index": 18,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "allusion: \"worship in spirit and truth\" inside the members' own reply; the inventory's match to «አዎን፣ እግዚአብሔር ረዳታችን ሆኖ» is detector noise"
   },
   {
    "reference": "Jeremiah 6:16",
    "status": "self_rendered",
    "block_index": 21,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "allusion: \"we would ask for the good old way\" recast to the first person plural"
   },
   {
    "reference": "Ephesians 4:3",
-   "status": "mined",
-   "block_index": 32,
+   "status": "self_rendered",
+   "block_index": 31,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "a phrase woven into the Conference's resolution, not a recitation of the verse; the prose borrows OWB's «መንፈስ የሚሰጠውን አንድነት»"
   },
   {
    "reference": "1 Peter 5:3",
    "status": "self_rendered",
-   "block_index": 32,
-   "chapter_order": 2
+   "block_index": 31,
+   "chapter_order": 2,
+   "why": "allusion: \"not to lord it over God's heritage\" recast as the Conference's resolve"
   },
   {
    "reference": "Isaiah 56:11",
    "status": "self_rendered",
-   "block_index": 32,
-   "chapter_order": 2
+   "block_index": 31,
+   "chapter_order": 2,
+   "why": "allusion: \"greedy dogs that can never have enough\" as Allen's simile"
   },
   {
    "reference": "Colossians 3:12",
    "status": "self_rendered",
-   "block_index": 32,
-   "chapter_order": 2
+   "block_index": 31,
+   "chapter_order": 2,
+   "why": "allusion: \"bowels of compassion\""
   },
   {
    "reference": "Galatians 6:2",
    "status": "self_rendered",
-   "block_index": 32,
-   "chapter_order": 2
+   "block_index": 31,
+   "chapter_order": 2,
+   "why": "recast to the first person plural as the Conference's purpose; the prose follows OWB's wording («ከባድ ሸክም … በዚህም የክርስቶስን ሕግ»)"
   },
   {
-   "reference": "Hebrews 12:4",
-   "status": "self_rendered",
-   "block_index": 7,
-   "chapter_order": 4
+   "reference": "Psalm 119:16",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 2:12",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "allusion: \"those that live without God in the world\""
   },
   {
    "reference": "Matthew 13:46",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "allusion: \"this jewel of great price\""
+  },
+  {
+   "reference": "Hebrews 12:4",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 4,
+   "why": "allusion: \"resist unto blood\" turned into Allen's question"
   },
   {
    "reference": "1 Corinthians 2:9",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "allusion: \"prepared for those that love thee\" inside Allen's creed"
   },
   {
    "reference": "John 14:2",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 4
-  },
-  {
-   "reference": "Psalm 119:16",
-   "status": "self_rendered",
-   "block_index": 6,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "allusion: \"everlasting mansions of glory\""
   },
   {
    "reference": "Job 19:25",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 6:40",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "recast to the first person (\"shall raise me up at the last day\"), joined to the Job recitation; the author's own clause"
   },
   {
    "reference": "Habakkuk 3:17-18",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 5,
-   "source_file": "gleanings-among-the-sheaves.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 15:58",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "recast to the first person (\"then I shall be steadfast and immoveable\"); the author's own vow"
+  },
+  {
+   "reference": "Exodus 20:3",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6,
+   "why": "allusion: \"let me have no other God, no other love, but only thee\""
   },
   {
    "reference": "1 John 4:20",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Exodus 20:3",
+   "reference": "1 John 4:16",
    "status": "self_rendered",
-   "block_index": 0,
-   "chapter_order": 6
+   "block_index": 4,
+   "chapter_order": 6,
+   "why": "indirect speech (\"remembering that God is love\"); OWB's «እግዚአብሔር ፍቅር» stands in it"
   },
   {
    "reference": "Daniel 3:6",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "allusion: \"in the midst of a burning fiery furnace\""
   },
   {
    "reference": "Acts 24:16",
    "status": "mined",
    "block_index": 38,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 38:1",
    "status": "self_rendered",
    "block_index": 47,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "allusion: \"they must die and not live\" recast to the third person plural"
   },
   {
    "reference": "Matthew 7:16",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Exodus 5:4-5",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 3,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Deuteronomy 23:7",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 4,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 5:44",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "recast to the first person plural (\"love our enemies, do good to them that hate and despitefully use us\"); OWB's Matthew 5:44 lacks the middle clauses (critical text)"
   },
   {
    "reference": "Matthew 6:12",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "allusion: \"forgive you, as we wish to be forgiven\""
   },
   {
    "reference": "Genesis 9:6",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 5,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 103:13",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "Allen's adaptation: \"so doth God pity them that love him\" where the Psalm has \"them that fear him\""
   },
   {
    "reference": "Romans 8:21",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "allusion: \"that freedom which the sons of God enjoy\""
   },
   {
    "reference": "1 Corinthians 2:9",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "allusion: \"the freedom which God hath prepared for those of all colours that love him\""
   },
   {
    "reference": "Revelation 21:4",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "allusion: \"all sorrow and fears are wiped away\""
   },
   {
    "reference": "Exodus 20:7",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "allusion: \"God, who will not hold you guiltless\""
   },
   {
    "reference": "Acts 17:26",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "OWB follows the critical text, «ከአንድ ሰው» (from one man); Allen's \"made of one blood all the nations of the earth\" is rendered from the English (critical-text decision)"
   },
   {
    "reference": "Psalm 68:31",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "Allen argues from \"Ethiopia\"; OWB reads ኩሽ, so ኢትዮጵያ is kept (founder rule, ps-68-31)"
   },
   {
    "reference": "Ezekiel 3:18",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "allusion inside a hymn stanza"
   },
   {
    "reference": "John 13:27",
    "status": "mined",
    "block_index": 8,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 13:29",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "Allen's paraphrase of the disciples' surmise"
   },
   {
    "reference": "John 13:34",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 13:35",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 15:12",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 15:13",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 6:27",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 6:28",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 6:35",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 6:36",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 13:35",
    "status": "mined",
    "block_index": 11,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 13:1",
    "status": "mined",
    "block_index": 12,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 13:2",
    "status": "mined",
    "block_index": 12,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 13:3",
    "status": "mined",
    "block_index": 12,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 17:28",
    "status": "mined",
    "block_index": 15,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Corinthians 10:26",
+   "status": "mined",
+   "block_index": 15,
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 6:20",
    "status": "self_rendered",
    "block_index": 18,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "allusion: \"laying up treasures in heaven\" inside Allen's question"
   },
   {
    "reference": "Matthew 25:40",
    "status": "mined",
    "block_index": 18,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 25:45",
    "status": "mined",
    "block_index": 18,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 2:15",
    "status": "self_rendered",
    "block_index": 22,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "indirect speech (\"he ought not to love the world, nor the things that are in the world\")"
   },
   {
    "reference": "James 4:4",
    "status": "mined",
    "block_index": 22,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 12:33",
    "status": "mined",
    "block_index": 23,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 5:7",
    "status": "mined",
    "block_index": 25,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 41:1-3",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 27,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Proverbs 19:17",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 28,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 12:15",
    "status": "self_rendered",
    "block_index": 29,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "allusion: \"beware of covetousness\" reported"
   },
   {
    "reference": "Matthew 6:33",
    "status": "self_rendered",
    "block_index": 29,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "recast to the first person (\"if I first seek the kingdom of God\") inside the giver's soliloquy"
   },
   {
    "reference": "Galatians 6:7-9",
    "status": "self_rendered",
    "block_index": 29,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "allusion: \"reap according to my sowing … if I grow not faint\""
   },
   {
    "reference": "Acts 10:4",
    "status": "self_rendered",
    "block_index": 29,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "allusion: \"my alms will ascend up before God for a memorial\""
   },
   {
    "reference": "Matthew 10:42",
    "status": "self_rendered",
    "block_index": 29,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "allusion: \"a cup of cold water … will not lose its reward\""
   },
   {
    "reference": "2 Corinthians 1:20",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 29,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Samuel 17:26",
    "status": "self_rendered",
    "block_index": 32,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "allusion: \"all the armies of the living God\""
   },
   {
    "reference": "1 Timothy 6:10",
    "status": "self_rendered",
    "block_index": 32,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "allusion: \"the root of all evil, as St. Paul expressly calls it\""
   },
   {
    "reference": "Matthew 25:21",
    "status": "mined",
    "block_index": 34,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 25:21",
    "status": "mined",
    "block_index": 35,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Titus 2:10",
    "status": "self_rendered",
    "block_index": 35,
-   "chapter_order": 11
-  },
-  {
-   "reference": "2 Corinthians 6:15",
-   "status": "self_rendered",
-   "block_index": 38,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "allusion: \"adorn the doctrine of the Lord your God in all things\""
   },
   {
    "reference": "Luke 23:43",
    "status": "self_rendered",
    "block_index": 36,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "allusion: \"which our Saviour calls Paradise\""
+  },
+  {
+   "reference": "2 Corinthians 6:15",
+   "status": "self_rendered",
+   "block_index": 38,
+   "chapter_order": 11,
+   "why": "allusion: \"what concord can there be\""
   }
  ]
 }

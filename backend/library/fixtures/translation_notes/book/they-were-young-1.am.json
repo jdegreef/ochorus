@@ -86,10 +86,9 @@
   },
   {
    "reference": "Daniel 5:27",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 22,
-   "chapter_order": 7,
-   "source_file": "life-experience-gospel-labours.am.json"
+   "chapter_order": 7
   }
  ]
 }
