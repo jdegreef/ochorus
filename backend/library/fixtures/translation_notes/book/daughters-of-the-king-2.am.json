@@ -11,10 +11,9 @@
  "references": [
   {
    "reference": "Psalm 27:1",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 1,
-   "source_file": "gleanings-among-the-sheaves.am.json"
+   "chapter_order": 1
   },
   {
    "reference": "Isaiah 41:10",

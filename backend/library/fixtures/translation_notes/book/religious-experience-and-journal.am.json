@@ -356,10 +356,9 @@
   },
   {
    "reference": "Malachi 4:2",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 31,
-   "chapter_order": 3,
-   "source_file": "gleanings-among-the-sheaves.am.json"
+   "chapter_order": 3
   },
   {
    "reference": "Matthew 22:42",

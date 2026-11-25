@@ -194,10 +194,9 @@
   },
   {
    "reference": "Song of Songs 1:2",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 4,
-   "source_file": "gleanings-among-the-sheaves.am.json"
+   "chapter_order": 4
   },
   {
    "reference": "Isaiah 53:3",
