@@ -132,9 +132,14 @@ class _Jobs:
 
     @property
     def github(self) -> str:
-        """"ok", "down" (didn't answer) or "off" (no token configured here)."""
+        """"ok", "stale" (didn't answer; its last answer is shown), "down"
+        (didn't answer, nothing to show) or "off" (no token configured here)."""
         q = self.queue
-        return "off" if q is None else "down" if q == "down" else "ok"
+        if q is None:
+            return "off"
+        if q == "down":
+            return "down"
+        return "stale" if q.stale else "ok"
 
     def pr_url(self, target: str) -> str | None:
         """The open PR for a job already found to be ``pr_open``."""

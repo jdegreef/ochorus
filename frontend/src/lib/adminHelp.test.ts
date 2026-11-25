@@ -66,7 +66,7 @@ describe('sectionRequirement', () => {
 	});
 
 	it('never names an undefined capability', () => {
-		expect(sectionRequirement({ href: '/x', label: 'X' }, label)).toBe('Needs any admin access');
+		expect(sectionRequirement({ href: '/x', label: 'X', group: 'Settings' }, label)).toBe('Needs any admin access');
 	});
 });
 

@@ -7,7 +7,15 @@
  * public bundle just to build a URL. `adminBookHref` there stays the admin's own
  * copy; `adminLinks.test.ts` holds the two to the same shape.
  */
+import type { CatalogKind } from './adminCatalog';
+
 export type AdminWorkKind = 'book' | 'sermon';
 
 export const adminWorkHref = (kind: AdminWorkKind, slug: string): string =>
 	`/admin/${kind}s/${encodeURIComponent(slug)}`;
+
+/** One admin inventory list (`/admin/books`, `/admin/authors`, …), searched
+ *  for `q` — the palette's way to an item whose kind has no admin page of its
+ *  own. (A type-only import: erased at build, so the bundle point above holds.) */
+export const adminListHref = (kind: CatalogKind, q: string): string =>
+	`/admin/${kind}?q=${encodeURIComponent(q)}`;

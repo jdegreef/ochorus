@@ -117,6 +117,36 @@ describe('CommandPalette admin shortcuts', () => {
 		expect(gotoSpy).toHaveBeenLastCalledWith(expect.stringMatching(/\/books\/humility\/?$/));
 		expect(gotoSpy.mock.lastCall![0]).not.toContain('/admin/');
 	});
+
+	it('sends an author hit to the admin author list, searched for them', async () => {
+		auth.isAdmin = true;
+		auth.scopes = 'all';
+		searchSpy.mockResolvedValue({
+			results: [{ type: 'author', author_slug: 'andrew-murray', author_name: 'Andrew Murray' }]
+		});
+		open();
+		type('murray');
+		await vi.advanceTimersByTimeAsync(250);
+		flushSync();
+		const link = document.querySelector<HTMLAnchorElement>('[aria-label="Open Andrew Murray in admin"]');
+		expect(link?.getAttribute('href')).toMatch(/\/admin\/authors\/?\?q=Andrew%20Murray$/);
+	});
+
+	it("opens a language's admin page by its English name or code", () => {
+		auth.isAdmin = true;
+		auth.scopes = 'all';
+		open();
+		type('spanish');
+		expect(rows()).toContain('Admin Language: Spanish es');
+		type('sw');
+		expect(rows().some((r) => r.startsWith('Admin Language: Swahili'))).toBe(true);
+	});
+
+	it('offers a reader no language shortcut', () => {
+		open();
+		type('spanish');
+		expect(rows().some((r) => r.includes('Language: Spanish'))).toBe(false);
+	});
 });
 
 describe('CommandPalette suggestions as you type', () => {
