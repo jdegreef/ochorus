@@ -6,7 +6,7 @@
  "pull_request": null,
  "note": [
   "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled as library/data/bible/owb-am-b.json.gz and read offline (owb-am). Every Scripture quotation was re-quoted to it verbatim (founder decision, 2026-11-18: Amharic quotes OWB everywhere), replacing the 1962 UBS wording and the translator-rendered OT verses the first edition carried: each day's heading verse, every repeat of it in the reading (kept identical to the heading), the other quotations, and verbatim recitations without marks.",
-  "A  row is a verbatim OWB span: the whole verse, verses joined, the shortest contiguous span carrying the quoted clause, or OWB pieces joined with '…'.  rows (each with a ) are allusions and bare citations, quotations Spurgeon recasts in person or number, places where a whole reading argues from a wording OWB does not use (e.g. Col 1:28 'perfect', Jer 31:3 'drawn', 1 Pet 2:3 'if', Col 2:6 'walk', Ps 65:11 'fatness', Ps 104:16 'sap', Eph 1:6 'accepted', Isa 7:14 'virgin', Amos 9:9 'grain'), critical-text words OWB lacks (Matt 6:13 doxology, Matt 23:14), and the calls Evening by Evening settled for the same verses (Song 1:4 'the upright'). Rows carry chapter_order (the month) and the requote block index."
+  "A `mined` row is a verbatim OWB span: the whole verse, verses joined, the shortest contiguous span carrying the quoted clause, or OWB pieces joined with '…'. `self_rendered` rows (each with a `why`) are allusions and bare citations, quotations Spurgeon recasts in person or number, places where a whole reading argues from a wording OWB does not use (e.g. Col 1:28 'perfect', Jer 31:3 'drawn', 1 Pet 2:3 'if', Col 2:6 'walk', Ps 65:11 'fatness', Ps 104:16 'sap', Eph 1:6 'accepted', Isa 7:14 'virgin', Amos 9:9 'grain'), critical-text words OWB lacks (Matt 6:13 doxology, Matt 23:14), and the calls Evening by Evening settled for the same verses (Song 1:4 'the upright'). Rows carry chapter_order (the month) and the requote block index."
  ],
  "references": [
   {
@@ -2285,7 +2285,7 @@
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Hebrews 2:14",
+   "reference": "Hebrews 2:14-15",
    "block_index": 92,
    "chapter_order": 4,
    "status": "mined",
@@ -3919,15 +3919,15 @@
    "reference": "Amos 9:9",
    "block_index": 103,
    "chapter_order": 6,
-   "status": "mined",
-   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+   "status": "self_rendered",
+   "why": "echo of the Jun 20 heading, whose last clause keeps the AV 'least grain' (OWB: 'not a pebble'); recorded with the heading"
   },
   {
    "reference": "Amos 9:9",
    "block_index": 105,
    "chapter_order": 6,
-   "status": "mined",
-   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+   "status": "self_rendered",
+   "why": "echo of the Jun 20 heading, whose last clause keeps the AV 'least grain' (OWB: 'not a pebble'); recorded with the heading"
   },
   {
    "reference": "Psalm 45:2",
