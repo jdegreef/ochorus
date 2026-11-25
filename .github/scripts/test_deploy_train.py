@@ -281,6 +281,39 @@ class FailedWebDeployTest(unittest.TestCase):
             self.check({"message": "unauthorized"})
 
 
+class SpendCapHintTest(unittest.TestCase):
+    def deploy(self, status, created, finished):
+        return {"status": status, "createdAt": created, "finishedAt": finished}
+
+    def test_a_build_that_fails_at_once_names_the_spend_limit(self):
+        d = self.deploy("build_failed", "2026-11-20T22:11:05Z", "2026-11-20T22:11:31Z")
+        hint = dt.spend_cap_hint(d)
+        self.assertIn("26s", hint)
+        self.assertIn("spend limit", hint)
+
+    def test_a_build_that_ran_and_failed_is_an_ordinary_failure(self):
+        d = self.deploy("build_failed", "2026-11-20T22:11:05Z", "2026-11-20T22:31:05Z")
+        self.assertIsNone(dt.spend_cap_hint(d))
+
+    def test_other_statuses_and_missing_times_give_no_hint(self):
+        quick = ("2026-11-20T22:11:05Z", "2026-11-20T22:11:06Z")
+        self.assertIsNone(dt.spend_cap_hint(self.deploy("update_failed", *quick)))
+        self.assertIsNone(dt.spend_cap_hint(self.deploy("build_failed", None, None)))
+        self.assertIsNone(dt.spend_cap_hint({}))
+
+    def test_the_failed_web_note_carries_it(self):
+        d = {
+            "id": "dep-cap",
+            "status": "build_failed",
+            "commit": {"id": "c" * 40},
+            "createdAt": "2026-11-20T22:11:05Z",
+            "finishedAt": "2026-11-20T22:11:20Z",
+        }
+        with mock.patch.object(dt, "render_get", return_value=[{"deploy": d}]):
+            note = dt.failed_web_deploy("srv-web", "k")
+        self.assertIn("spend limit", note)
+
+
 HOUR = 3600
 NOW = 1_800_000_000
 

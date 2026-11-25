@@ -10,7 +10,7 @@ people search ("how to trust God", "what does it mean to abide in Christ") and
 funnels them into the library via a **Read next** block. They live at `/articles`
 (footer, not header) and are per-language rows like books (English only for now).
 Model + API + frontend shipped in PRs #1395/#1396; the design brief is
-`docs/articles.pdf`. See also [[write-biography]] (the nearest sibling) and the
+`docs/articles.html`. See also [[write-biography]] (the nearest sibling) and the
 `articles-section` memory.
 
 **Attribution — the house, never a person.** An article has no per-article author

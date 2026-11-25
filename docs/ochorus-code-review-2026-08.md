@@ -2,7 +2,7 @@
 
 **50 issues, bugs, and improvements — with a fix prompt for each.** Reviewed 7 August 2026. Django REST API + SvelteKit static SPA, multilingual reader.
 
-Severity mix: **2 critical, 13 high, 29 medium, 6 low.** A cleanly formatted PDF of this report is at `docs/ochorus-code-review-2026-08.pdf`.
+Severity mix: **2 critical, 13 high, 29 medium, 6 low.** A formatted PDF of this report was moved out of the repo (2026-11) to the project's shared files, `docs-archive/ochorus-code-review-2026-08.pdf`.
 
 Six independent review passes (Django API, content/translation pipeline, frontend sync/offline libraries, routes & components, a security audit across both stacks, and CI/build/test infrastructure) produced ~98 raw findings, de-duplicated and curated to the 50 below. Several were reproduced against a live test database (noted in place).
 
