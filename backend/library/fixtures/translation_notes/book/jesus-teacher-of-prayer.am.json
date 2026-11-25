@@ -78,14 +78,12 @@
   },
   {
    "reference": "Psalm 5:3",
-   "status": "mined",
-   "source_file": "the-inner-chamber.am.json",
+   "status": "self_rendered",
    "block_index": 37
   },
   {
    "reference": "Isaiah 50:4",
-   "status": "mined",
-   "source_file": "the-inner-chamber.am.json",
+   "status": "self_rendered",
    "block_index": 39
   },
   {

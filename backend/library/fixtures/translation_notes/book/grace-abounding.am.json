@@ -817,10 +817,9 @@
   },
   {
    "reference": "Proverbs 11:30",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 21,
-   "chapter_order": 4,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 4
   },
   {
    "reference": "Daniel 12:3",

@@ -447,10 +447,9 @@
   },
   {
    "reference": "Psalm 46:10",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 13,
-   "chapter_order": 13,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 13
   },
   {
    "reference": "2 Corinthians 12:9",
