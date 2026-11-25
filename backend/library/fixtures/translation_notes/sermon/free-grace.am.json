@@ -1,187 +1,230 @@
 {
- "kind": "sermon",
- "slug": "free-grace",
- "language": "am",
- "job_issue": 3669,
- "pull_request": null,
- "note": [
-  "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
-  "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
-  "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
- ],
- "references": [
-  {
-   "reference": "Ezekiel 36:32",
-   "status": "self_rendered",
-   "block_index": 0
-  },
-  {
-   "reference": "Ezekiel 36:32",
-   "status": "self_rendered",
-   "block_index": 1
-  },
-  {
-   "reference": "Galatians 4:30",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 1
-  },
-  {
-   "reference": "Ezekiel 36:24",
-   "status": "self_rendered",
-   "block_index": 1
-  },
-  {
-   "reference": "Ezekiel 36:25",
-   "status": "self_rendered",
-   "block_index": 1
-  },
-  {
-   "reference": "Ezekiel 36:26",
-   "status": "self_rendered",
-   "block_index": 1
-  },
-  {
-   "reference": "Ezekiel 36:27",
-   "status": "self_rendered",
-   "block_index": 1
-  },
-  {
-   "reference": "Ezekiel 36:32",
-   "status": "self_rendered",
-   "block_index": 4
-  },
-  {
-   "reference": "Hebrews 2:16",
-   "status": "self_rendered",
-   "block_index": 4
-  },
-  {
-   "reference": "Matthew 11:26",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 8
-  },
-  {
-   "reference": "Matthew 11:26",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 9
-  },
-  {
-   "reference": "Ezekiel 36:32",
-   "status": "self_rendered",
-   "block_index": 10
-  },
-  {
-   "reference": "Ezekiel 36:32",
-   "status": "self_rendered",
-   "block_index": 11
-  },
-  {
-   "reference": "1 Peter 2:9",
-   "status": "self_rendered",
-   "block_index": 12
-  },
-  {
-   "reference": "1 Peter 1:5",
-   "status": "self_rendered",
-   "block_index": 13
-  },
-  {
-   "reference": "Psalm 115:1",
-   "status": "self_rendered",
-   "block_index": 19
-  },
-  {
-   "reference": "Romans 3:4",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 20
-  },
-  {
-   "reference": "Galatians 1:1",
-   "status": "self_rendered",
-   "block_index": 20
-  },
-  {
-   "reference": "John 1:13",
-   "status": "self_rendered",
-   "block_index": 20
-  },
-  {
-   "reference": "Romans 13:4",
-   "status": "self_rendered",
-   "block_index": 22
-  },
-  {
-   "reference": "Isaiah 1:18",
-   "status": "self_rendered",
-   "block_index": 22
-  },
-  {
-   "reference": "Acts 16:31",
-   "status": "self_rendered",
-   "block_index": 22
-  },
-  {
-   "reference": "Ezekiel 33:11",
-   "status": "self_rendered",
-   "block_index": 22
-  },
-  {
-   "reference": "Ezekiel 36:32",
-   "status": "self_rendered",
-   "block_index": 24
-  },
-  {
-   "reference": "Song of Solomon 5:2",
-   "status": "self_rendered",
-   "block_index": 26
-  },
-  {
-   "reference": "Ezekiel 36:32",
-   "status": "self_rendered",
-   "block_index": 27
-  },
-  {
-   "reference": "1 Timothy 1:15",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 27
-  },
-  {
-   "reference": "1 Timothy 1:15",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 28
-  },
-  {
-   "reference": "Luke 18:13",
-   "status": "self_rendered",
-   "block_index": 29
-  },
-  {
-   "reference": "Luke 5:32",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 29
-  },
-  {
-   "reference": "Luke 5:31",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 29
-  },
-  {
-   "reference": "Revelation 1:5",
-   "status": "self_rendered",
-   "block_index": 34
-  },
-  {
-   "reference": "Revelation 1:6",
-   "status": "self_rendered",
-   "block_index": 34
-  }
- ]
+    "kind": "sermon",
+    "slug": "free-grace",
+    "language": "am",
+    "job_issue": 3669,
+    "pull_request": null,
+    "note": [
+        "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose, each with its `why`. Block indexes were realigned to the admin view's count.",
+        "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
+        "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
+        "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
+    ],
+    "references": [
+        {
+            "reference": "Ezekiel 36:32",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 0,
+            "why": "the text"
+        },
+        {
+            "reference": "Galatians 4:30",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 1
+        },
+        {
+            "reference": "Ezekiel 36:32",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 1
+        },
+        {
+            "reference": "Ezekiel 36:24",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 1,
+            "why": "Spurgeon's italic 'I' moves to OWB's first-person verb (አወጣችኋለሁ), as in the next three"
+        },
+        {
+            "reference": "Ezekiel 36:25",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 1
+        },
+        {
+            "reference": "Ezekiel 36:26",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 1
+        },
+        {
+            "reference": "Ezekiel 36:27",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 1
+        },
+        {
+            "reference": "Ezekiel 36:32",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 4,
+            "why": "twice; the second joins OWB pieces with '…'"
+        },
+        {
+            "reference": "Hebrews 2:16",
+            "status": "self_rendered",
+            "block_index": 4,
+            "why": "Spurgeon's AV-sense paraphrase ('took upon Him the seed of Abraham'); OWB's verse speaks of helping, so it stays prose"
+        },
+        {
+            "reference": "Luke 10:21",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 8,
+            "why": "hymn line ‹አዎን፥ አባት ሆይ› is already OWB's words (also Matt 11:26)"
+        },
+        {
+            "reference": "Matthew 11:26",
+            "status": "self_rendered",
+            "block_index": 9,
+            "why": "the hymn's own paraphrase ('Because it seem'd good in thy sight'), translated as verse"
+        },
+        {
+            "reference": "Ezekiel 36:32",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 10,
+            "why": "OWB pieces joined with '…' ('Not for your sakes … O house of Israel')"
+        },
+        {
+            "reference": "Ezekiel 36:32",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 11,
+            "why": "OWB pieces joined with '…'"
+        },
+        {
+            "reference": "1 Peter 2:9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 12
+        },
+        {
+            "reference": "Ezekiel 37:4-5",
+            "status": "self_rendered",
+            "block_index": 12,
+            "why": "allusion ('Come forth and live' to the dry bones)"
+        },
+        {
+            "reference": "1 Peter 1:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 13,
+            "why": "OWB's second person kept inside the marks; the prose names who is meant"
+        },
+        {
+            "reference": "Psalm 115:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 19,
+            "why": "OWB pieces joined with '…'"
+        },
+        {
+            "reference": "Romans 3:4",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 20
+        },
+        {
+            "reference": "Galatians 1:1",
+            "status": "self_rendered",
+            "block_index": 20,
+            "why": "allusion ('not of men, neither by man'), now outside the marks"
+        },
+        {
+            "reference": "John 1:13",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 20
+        },
+        {
+            "reference": "Romans 13:4",
+            "status": "self_rendered",
+            "block_index": 22,
+            "why": "allusion ('beareth not the sword in vain')"
+        },
+        {
+            "reference": "Isaiah 1:18",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 22,
+            "why": "'Sinner!' moved outside the marks; OWB's scarlet→snow clause"
+        },
+        {
+            "reference": "Acts 16:31",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 22,
+            "why": "only «በጌታ በኢየሱስ እመን» inside the marks; 'and thou shalt be saved' is prose"
+        },
+        {
+            "reference": "Ezekiel 33:11",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 22,
+            "why": "Spurgeon blends Ezek 33:11 with 18:32; quoted as 33:11, which carries 'as I live … turn … live'"
+        },
+        {
+            "reference": "Ezekiel 36:32",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 24,
+            "why": "OWB pieces joined with '…'"
+        },
+        {
+            "reference": "Song of Solomon 5:2",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 26,
+            "why": "OWB's clause order ('open to me' first)"
+        },
+        {
+            "reference": "Ezekiel 36:32",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 27,
+            "why": "quoted twice; the second sits inside Christ's imagined reply, whose 'Get you gone!' is Spurgeon's"
+        },
+        {
+            "reference": "1 Timothy 1:15",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 27,
+            "why": "inside the sinner's prayer (‹›)"
+        },
+        {
+            "reference": "1 Timothy 1:15",
+            "status": "self_rendered",
+            "block_index": 28,
+            "why": "a hymn line (‹I the chief of sinners am›), translated as verse"
+        },
+        {
+            "reference": "Luke 18:13",
+            "status": "self_rendered",
+            "block_index": 29,
+            "why": "allusion: Spurgeon's own prayer ('Lord have mercy upon us for whom Jesus died')"
+        },
+        {
+            "reference": "Luke 5:32",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 29
+        },
+        {
+            "reference": "Luke 5:31",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 29,
+            "why": "two pieces («ጤነኞች» and the saying); Matt 9:12 reads the same"
+        },
+        {
+            "reference": "Revelation 1:5-6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 34,
+            "why": "OWB pieces joined with '…'; OWB reads 'freed' (ለፈታን) where the AV has 'washed'"
+        }
+    ]
 }

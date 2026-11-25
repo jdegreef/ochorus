@@ -5,6 +5,7 @@
  "job_issue": 3724,
  "pull_request": null,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about self-rendered Old Testament quotations: every `mined` row is now a verbatim OWB span in its block; `self_rendered` rows are allusions and paraphrases left as the translator's prose, each with its `why`. The Chinese scroll mottos in chapter 11 (Ebenezer, Jehovah-jireh) and 'owe no man anything' now quote OWB too.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
   "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
  ],
@@ -12,38 +13,45 @@
   {
    "reference": "John 19:30",
    "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
-   "chapter_order": 1,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "chapter_order": 1
   },
   {
    "reference": "John 19:30",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 3,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "«ተፈጸመ» is OWB's word"
   },
   {
    "reference": "John 19:30",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 5,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "«ተፈጸመ» is OWB's word"
   },
   {
    "reference": "Luke 18:1",
    "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
-   "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Luke 18:1",
-   "status": "self_rendered",
-   "block_index": 6,
    "chapter_order": 2
   },
   {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 6,
+   "chapter_order": 2,
+   "why": "the verse's span, as Jesus' words in the prose"
+  },
+  {
    "reference": "Proverbs 19:17",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
    "chapter_order": 3
   },
@@ -51,24 +59,27 @@
    "reference": "Matthew 5:42",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "unquoted paraphrase ('give to the one who asks')"
   },
   {
    "reference": "Philippians 4:19",
    "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
-   "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "chapter_order": 4
   },
   {
    "reference": "Philippians 4:19",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "allusion in the author's prose"
   },
   {
    "reference": "Psalm 118:17",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
    "chapter_order": 5
   },
@@ -76,17 +87,20 @@
    "reference": "Psalm 118:17",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "Taylor's own conviction ('shall not die'), not a quotation"
   },
   {
    "reference": "Psalm 107:29",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
    "chapter_order": 6
   },
   {
    "reference": "John 3:16",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 1,
    "chapter_order": 6
   },
@@ -94,48 +108,88 @@
    "reference": "Psalm 107:29",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "allusion ('the God who calms the storm')"
   },
   {
    "reference": "Matthew 18:19",
    "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
-   "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "chapter_order": 7
   },
   {
    "reference": "1 Corinthians 9:22",
    "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
-   "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "chapter_order": 8
+  },
+  {
+   "reference": "1 Corinthians 9:22",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 6,
+   "chapter_order": 8
   },
   {
    "reference": "Matthew 8:20",
    "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
-   "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "chapter_order": 9
   },
   {
    "reference": "Romans 12:21",
    "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
-   "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "chapter_order": 10
   },
   {
    "reference": "Psalm 34:10",
-   "status": "self_rendered",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Romans 13:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 1,
+   "chapter_order": 11,
+   "why": "OWB's piece «በማንም ዘንድ ዕዳ አይቅርባችሁ»"
+  },
+  {
+   "reference": "1 Samuel 7:12",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 1,
+   "chapter_order": 11,
+   "why": "Ebenezer scroll"
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 1,
+   "chapter_order": 11,
+   "why": "Jehovah-jireh scroll; «እግዚአብሔር ያዘጋጃል» is OWB's name for the place"
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 8,
    "chapter_order": 11
   },
   {
    "reference": "Matthew 9:37-38",
    "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 0,
-   "chapter_order": 12,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "chapter_order": 12
   }
  ]
 }
