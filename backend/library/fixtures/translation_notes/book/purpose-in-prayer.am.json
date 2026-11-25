@@ -5,1265 +5,1515 @@
  "job_issue": 3756,
  "pull_request": null,
  "note": [
-  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
-  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled as library/data/bible/owb-am-b.json.gz and read offline (owb-am). Every Scripture quotation was re-quoted to it verbatim (founder decision, 2026-11-18: Amharic quotes OWB everywhere), replacing the 1962/2003 UBS wording and the translator-rendered Old Testament verses the first edition carried.",
+  "A `mined` row is a verbatim OWB span in that block: the whole verse or range, the shortest contiguous span carrying the quoted clause, or exact OWB pieces joined with '…'. 'Ask, and it shall be given you…' is quoted from Luke 11:9-10, identically wherever it recurs; Ps 2:8 and Ps 72:15 likewise. OWB's inner quotation marks become ‹› inside the book's «». Where Bounds argues from God 'repenting' (Jonah 3:10), OWB's ተጸጸተ is quoted as it stands. The 'Jehovah' of the writers Bounds quotes follows OWB's እግዚአብሔር.",
+  "`self_rendered` rows (each with a `why`) are allusions, paraphrases and re-personed recitations, and Isa 45:11, where OWB's rebuking question reverses the AV's 'command ye me' that Bounds argues from: that quotation keeps the translator's wording, and the call is the founder's."
  ],
  "references": [
   {
    "reference": "2 Chronicles 16:9",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "2 Kings 2:14",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Isaiah 56:7",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
+  },
+  {
+   "reference": "Psalm 2:6",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 2:4",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 1
-  },
-  {
-   "reference": "Psalm 2:6",
-   "status": "self_rendered",
-   "block_index": 8,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Psalm 72:15",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 16,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Matthew 7:7",
+   "reference": "Luke 11:9",
    "status": "mined",
    "block_index": 17,
    "chapter_order": 1,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 1,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Genesis 20:17",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Genesis 20:18",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Job 42:8",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 12,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Job 42:10",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 13,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Jonah 1:4",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 14,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Jonah 1:17",
+   "status": "mined",
+   "block_index": 14,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Jonah 2:1",
+   "status": "mined",
+   "block_index": 14,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Jonah 2:10",
+   "status": "mined",
+   "block_index": 14,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Jonah 1:7",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 14,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Exodus 8:8",
    "status": "self_rendered",
    "block_index": 16,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
-   "reference": "Exodus 32:10",
-   "status": "self_rendered",
+   "reference": "Deuteronomy 9:14",
+   "status": "mined",
    "block_index": 17,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Deuteronomy 9:18",
+   "status": "mined",
+   "block_index": 17,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Deuteronomy 9:18-20",
    "status": "mined",
    "block_index": 17,
    "chapter_order": 2,
-   "source_file": "ministry-of-intercession.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Exodus 32:10",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 2,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Jonah 3:4",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 18,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Jonah 3:10",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Jonah 3:8",
    "status": "self_rendered",
    "block_index": 18,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Jonah 3:10",
-   "status": "self_rendered",
-   "block_index": 18,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Isaiah 38:1",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 19,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Isaiah 38:3",
-   "status": "self_rendered",
+   "reference": "2 Kings 20:3",
+   "status": "mined",
    "block_index": 19,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 38:5",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 19,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 11:33-34",
    "status": "mined",
    "block_index": 20,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 5:16",
    "status": "mined",
    "block_index": 24,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 5:17-18",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 24,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Genesis 32:26",
    "status": "self_rendered",
    "block_index": 26,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "1 Thessalonians 5:17",
    "status": "self_rendered",
    "block_index": 26,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 25:27",
    "status": "self_rendered",
    "block_index": 27,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "1 Thessalonians 5:17",
    "status": "self_rendered",
    "block_index": 27,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Psalm 72:15",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 8,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 56:7",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 8,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 45:11-12",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
+  },
+  {
+   "reference": "Isaiah 45:11-12",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 3,
+   "why": "FOR THE FOUNDER: OWB renders 45:11b as a rebuking question («ልታዝዙኝ ነውን?», 'would you command me?'); Bounds argues from the AV's invitation 'command ye me', so his quotation keeps the translator's wording"
   },
   {
    "reference": "Psalm 2:8",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 14,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 72:15",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 14,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 45:11-12",
    "status": "self_rendered",
    "block_index": 15,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 15:28",
    "status": "self_rendered",
    "block_index": 22,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Psalm 62:5",
-   "status": "self_rendered",
-   "block_index": 22,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Ecclesiastes 10:19",
    "status": "self_rendered",
    "block_index": 22,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "1 Thessalonians 5:17",
    "status": "self_rendered",
    "block_index": 23,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
+  },
+  {
+   "reference": "John 14:13",
+   "status": "mined",
+   "block_index": 28,
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 21:22",
    "status": "self_rendered",
    "block_index": 28,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Jeremiah 33:3",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 29,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 14:13-14",
+   "status": "mined",
+   "block_index": 29,
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 45:11",
    "status": "self_rendered",
    "block_index": 29,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 21:22",
    "status": "self_rendered",
    "block_index": 29,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "John 15:7",
    "status": "self_rendered",
    "block_index": 29,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
-   "reference": "John 14:13-14",
+   "reference": "Isaiah 45:11",
    "status": "self_rendered",
    "block_index": 29,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "the AV 'command ye me' Bounds argues from; OWB reads it as a rebuking question (see ch3 b9); translator's wording"
   },
   {
    "reference": "James 5:16-18",
    "status": "mined",
    "block_index": 30,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 4:2-3",
    "status": "mined",
    "block_index": 31,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Exodus 33:11",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Genesis 32:26",
    "status": "self_rendered",
    "block_index": 15,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 8:25",
    "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "1 Corinthians 15:52",
    "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Hebrews 9:3",
    "status": "self_rendered",
    "block_index": 21,
-   "chapter_order": 4
-  },
-  {
-   "reference": "John 4:24",
-   "status": "self_rendered",
-   "block_index": 26,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Song of Solomon 2:16",
    "status": "self_rendered",
    "block_index": 25,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
+  },
+  {
+   "reference": "John 4:24",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 4,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "1 Thessalonians 5:17",
    "status": "self_rendered",
    "block_index": 27,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "John 15:4-7",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "1 John 4:18",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 9:38",
    "status": "mined",
    "block_index": 11,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 18:1",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 11,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Hebrews 11:32",
-   "status": "self_rendered",
-   "block_index": 16,
-   "chapter_order": 5
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Hebrews 11:33-35",
    "status": "mined",
    "block_index": 16,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Hebrews 11:32",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 5,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Genesis 32:24",
    "status": "self_rendered",
    "block_index": 18,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Mark 7:26",
    "status": "self_rendered",
    "block_index": 18,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Luke 18:1-8",
    "status": "mined",
    "block_index": 5,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 18:1",
    "status": "mined",
    "block_index": 6,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 11:5-8",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
-   "reference": "Matthew 15:21-28",
-   "status": "self_rendered",
+   "reference": "Matthew 15:28",
+   "status": "mined",
    "block_index": 10,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 18:7",
    "status": "mined",
    "block_index": 10,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Luke 11:9",
+   "status": "mined",
+   "block_index": 12,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Luke 11:10",
+   "status": "mined",
+   "block_index": 12,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 7:7",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 12,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 7:8",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 12,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 6:7",
    "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Ephesians 6:18",
    "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "2 Kings 13:18-19",
    "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Deuteronomy 9:18",
    "status": "self_rendered",
    "block_index": 22,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "John 16:24",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 24,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 2:8",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 24,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Thessalonians 5:17",
    "status": "self_rendered",
    "block_index": 24,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 5:6",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Luke 18:1",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 25:6",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 4,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 6:4",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Exodus 28:29",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "John 5:35",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "1 John 2:1",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Mark 1:35",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "John 20:1",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Psalm 139:18",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Psalm 2:8",
    "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Ephesians 3:19",
    "status": "self_rendered",
    "block_index": 18,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Luke 21:19",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Ephesians 5:16",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 8
-  },
-  {
-   "reference": "1 Timothy 2:1-3",
-   "status": "self_rendered",
-   "block_index": 6,
    "chapter_order": 8,
-   "why": "its wording was mined from prayer-the-pulse-of-life.am, which now quotes OWB; no longer verbatim from that file, so the translator's (1962-register) wording until this work is re-quoted"
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
-   "reference": "1 Timothy 2:8",
+   "reference": "1 Timothy 2:1-8",
    "status": "mined",
    "block_index": 6,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 18:1",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 7,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Acts 9:11",
    "status": "self_rendered",
    "block_index": 12,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Luke 16:26",
    "status": "self_rendered",
    "block_index": 16,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "1 Corinthians 3:10",
    "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Judges 16:19",
    "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Habakkuk 3:4",
    "status": "self_rendered",
    "block_index": 18,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Isaiah 1:13",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 22,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 66:1-3",
-   "status": "self_rendered",
-   "block_index": 24,
-   "chapter_order": 8
-  },
-  {
-   "reference": "Isaiah 66:2b",
    "status": "mined",
    "block_index": 24,
    "chapter_order": 8,
-   "source_file": "ministry-of-intercession.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 66:2",
+   "status": "mined",
+   "block_index": 24,
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 35:8",
    "status": "self_rendered",
    "block_index": 29,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 6:33",
    "status": "self_rendered",
    "block_index": 32,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Luke 10:42",
    "status": "self_rendered",
    "block_index": 32,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "2 Peter 3:18",
    "status": "self_rendered",
    "block_index": 32,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Luke 11:13",
    "status": "self_rendered",
    "block_index": 33,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Romans 5:5",
    "status": "self_rendered",
    "block_index": 33,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Hosea 6:3",
    "status": "self_rendered",
    "block_index": 33,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "1 Peter 4:7",
    "status": "self_rendered",
    "block_index": 34,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Genesis 32:22-28",
    "status": "self_rendered",
    "block_index": 38,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Romans 13:13",
    "status": "self_rendered",
    "block_index": 41,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 26:38-40",
    "status": "self_rendered",
    "block_index": 41,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Hebrews 12:12",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Hebrews 4:16",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "James 5:4",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "John 16:21",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "John 18:11",
    "status": "mined",
    "block_index": 8,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 26:39",
    "status": "mined",
    "block_index": 8,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Judges 10:13",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 8,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Judges 10:16",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 9
-  },
-  {
-   "reference": "Isaiah 38:1",
-   "status": "self_rendered",
-   "block_index": 9,
-   "chapter_order": 9
-  },
-  {
-   "reference": "Isaiah 38:5",
-   "status": "self_rendered",
-   "block_index": 9,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Jonah 3:4",
-   "status": "self_rendered",
-   "block_index": 9,
-   "chapter_order": 9
-  },
-  {
-   "reference": "Acts 10:4",
-   "status": "self_rendered",
-   "block_index": 11,
-   "chapter_order": 9
-  },
-  {
-   "reference": "Hebrews 11:32",
    "status": "mined",
-   "block_index": 11,
+   "block_index": 9,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Jonah 3:10",
+   "status": "mined",
+   "block_index": 9,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 38:1",
+   "status": "mined",
+   "block_index": 9,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 38:5",
+   "status": "mined",
+   "block_index": 9,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 11:33-34",
    "status": "mined",
    "block_index": 11,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Isaiah 45:11",
+   "reference": "Hebrews 11:32",
+   "status": "mined",
+   "block_index": 11,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Acts 10:4",
    "status": "self_rendered",
-   "block_index": 12,
-   "chapter_order": 9
+   "block_index": 11,
+   "chapter_order": 9,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
+  },
+  {
+   "reference": "Acts 10:4",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 9,
+   "why": "Bounds's narrative paraphrase ('his prayers and alms had come up as a memorial'); translator's wording"
   },
   {
    "reference": "Luke 18:1",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 12,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Philippians 4:6",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 12,
-   "chapter_order": 9
-  },
-  {
-   "reference": "Romans 12:12",
-   "status": "self_rendered",
-   "block_index": 12,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Timothy 2:8",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 12,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 6:18",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 12,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 21:22",
    "status": "mined",
    "block_index": 12,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "John 14:13",
-   "status": "self_rendered",
-   "block_index": 12,
-   "chapter_order": 9
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 14:14",
    "status": "mined",
    "block_index": 12,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 15:7",
    "status": "mined",
    "block_index": 12,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 16:23",
    "status": "mined",
    "block_index": 12,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Romans 12:12",
+   "status": "mined",
+   "block_index": 12,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 45:11",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 9,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
+  },
+  {
+   "reference": "John 14:13",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 9,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
+  },
+  {
+   "reference": "Isaiah 45:11",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 9,
+   "why": "the AV 'command ye me' Bounds argues from; OWB reads it as a rebuking question (see ch3 b9); translator's wording"
   },
   {
    "reference": "Ephesians 3:20",
    "status": "mined",
    "block_index": 13,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Jeremiah 33:3",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 13,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 5:16",
    "status": "mined",
    "block_index": 14,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 5:17-18",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 14,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Revelation 8:5",
    "status": "mined",
    "block_index": 15,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 2:8",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 15,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 6:2",
    "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Acts 6:4",
    "status": "mined",
    "block_index": 3,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Thessalonians 3:10",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Colossians 4:12",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 26:41",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 10
-  },
-  {
-   "reference": "1 Thessalonians 3:10",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 10
-  },
-  {
-   "reference": "Colossians 4:12",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Daniel 6:10",
    "status": "mined",
    "block_index": 6,
    "chapter_order": 10,
-   "source_file": "rooted-4.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Daniel 6:10",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 10,
+   "why": "re-personed by Bounds ('as we did aforetime'); translator's wording"
   },
   {
    "reference": "Luke 18:1",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 20,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Luke 18:2-8",
    "status": "self_rendered",
    "block_index": 20,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "1 John 3:22",
    "status": "mined",
    "block_index": 28,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 58:9",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 30,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "block_index": 31,
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Timothy 2:8",
    "status": "mined",
    "block_index": 31,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "1 Peter 1:17",
-   "status": "self_rendered",
-   "block_index": 31,
-   "chapter_order": 10
-  },
-  {
-   "reference": "1 John 3:22",
-   "status": "mined",
-   "block_index": 31,
-   "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 4:3",
    "status": "mined",
    "block_index": 31,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Peter 1:17",
+   "status": "self_rendered",
+   "block_index": 31,
+   "chapter_order": 10,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 26:41",
    "status": "self_rendered",
    "block_index": 31,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Isaiah 1:16-17",
    "status": "self_rendered",
    "block_index": 32,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "James 4:2-3",
    "status": "mined",
    "block_index": 33,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 21:13",
    "status": "self_rendered",
    "block_index": 34,
-   "chapter_order": 10
-  },
-  {
-   "reference": "John 14:13-14",
-   "status": "self_rendered",
-   "block_index": 35,
-   "chapter_order": 10
-  },
-  {
-   "reference": "Genesis 32:26",
-   "status": "self_rendered",
-   "block_index": 38,
-   "chapter_order": 10
-  },
-  {
-   "reference": "Exodus 32:32",
-   "status": "self_rendered",
-   "block_index": 38,
-   "chapter_order": 10
-  },
-  {
-   "reference": "Isaiah 53:2",
-   "status": "self_rendered",
-   "block_index": 38,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 6:5",
    "status": "self_rendered",
    "block_index": 34,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
+  },
+  {
+   "reference": "John 14:13-14",
+   "status": "self_rendered",
+   "block_index": 35,
+   "chapter_order": 10,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "block_index": 38,
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Exodus 32:32",
+   "status": "mined",
+   "block_index": 38,
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 53:2",
+   "status": "self_rendered",
+   "block_index": 38,
+   "chapter_order": 10,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 6:6",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Ephesians 2:18",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 10:20",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Jude 1:20",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 11
-  },
-  {
-   "reference": "Ephesians 5:18",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 11
-  },
-  {
-   "reference": "Zechariah 12:10",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 7:7-8",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Philippians 4:6",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Malachi 3:10",
    "status": "self_rendered",
    "block_index": 23,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "John 3:16",
    "status": "mined",
    "block_index": 25,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 28:3",
    "status": "self_rendered",
    "block_index": 27,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "James 5:14",
    "status": "self_rendered",
    "block_index": 28,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Mark 16:20",
    "status": "self_rendered",
    "block_index": 28,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Philippians 4:7",
    "status": "self_rendered",
    "block_index": 53,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Isaiah 65:24",
    "status": "self_rendered",
    "block_index": 55,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Hebrews 4:16",
    "status": "self_rendered",
    "block_index": 66,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 8:27",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 68,
    "chapter_order": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Acts 2:36",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 5,
    "chapter_order": 12,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Hebrews 9:28",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 5,
    "chapter_order": 12,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Acts 17:31",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "2 Corinthians 4:8-9",
    "status": "self_rendered",
    "block_index": 12,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Jeremiah 2:31",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 17,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ezekiel 36:25-26",
    "status": "self_rendered",
    "block_index": 18,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "John 7:38",
    "status": "self_rendered",
    "block_index": 19,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Genesis 32:28",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 13
+   "chapter_order": 13,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "1 Corinthians 15:28",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 13
+   "chapter_order": 13,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
+  },
+  {
+   "reference": "Luke 11:9",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Luke 11:10",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 7:11",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 13
+   "chapter_order": 13,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 6:6",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 13
+   "chapter_order": 13,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 7:7",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 4,
    "chapter_order": 13,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
    "reference": "Matthew 7:8",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 4,
    "chapter_order": 13,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   },
   {
-   "reference": "John 14:12",
+   "reference": "John 14:12-14",
    "status": "mined",
    "block_index": 7,
    "chapter_order": 13,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "John 14:13",
-   "status": "mined",
-   "block_index": 7,
-   "chapter_order": 13,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "John 14:14",
-   "status": "mined",
-   "block_index": 7,
-   "chapter_order": 13,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 14:13",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 13
+   "chapter_order": 13,
+   "why": "an allusion, paraphrase or re-personed recitation in Bounds's own sentence (or in a writer he quotes), not a verbatim quotation; translator's wording"
   }
  ]
 }
