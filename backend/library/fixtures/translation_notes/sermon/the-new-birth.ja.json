@@ -4,129 +4,190 @@
     "language": "ja",
     "job_issue": 8006,
     "pull_request": null,
+    "note": [
+        "Scripture authority is the Open Word Bible (OWB), Japanese, Balanced edition (CC0), bundled as library/data/bible/owb-ja-b.json.gz and read offline (owb-ja). Every Scripture quotation was re-quoted to it verbatim (founder decision, 2026-11-19: Japanese quotes OWB everywhere), replacing the 口語訳 (japkougo) wording the first edition carried.",
+        "A `mined` row is a verbatim OWB span, the shortest contiguous span carrying the quoted clause, or exact OWB pieces joined with '……'; verbatim recitations without quote marks are quotations too. `self_rendered` rows are allusions and paraphrases in the preacher's own voice, left as prose, or places named in `why` where the preacher argues from wording OWB does not carry."
+    ],
     "references": [
         {
             "reference": "John 3:3",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 0
-        },
-        {
-            "reference": "John 4:24",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 13
-        },
-        {
-            "reference": "John 3:4",
-            "status": "self_rendered",
-            "block_index": 16
-        },
-        {
-            "reference": "John 3:5",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 16
-        },
-        {
-            "reference": "John 3:8",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 20
-        },
-        {
-            "reference": "Luke 7:14",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 33
-        },
-        {
-            "reference": "Romans 6:23",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 35
-        },
-        {
-            "reference": "John 3:14-15",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 37
-        },
-        {
-            "reference": "John 1:29",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 37
+            "block_index": 0,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Mark 8:24",
             "status": "self_rendered",
-            "block_index": 2
+            "block_index": 2,
+            "why": "allusion"
+        },
+        {
+            "reference": "John 3:3",
+            "status": "mined",
+            "block_index": 2,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "John 3:6",
+            "status": "mined",
+            "block_index": 4,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "John 3:3",
             "status": "self_rendered",
-            "block_index": 4
+            "block_index": 4,
+            "why": "Moody glosses 'born again' as 'born from above' (the AV margin); his own prose"
         },
         {
             "reference": "Matthew 13:19",
             "status": "self_rendered",
-            "block_index": 5
+            "block_index": 5,
+            "why": "allusion"
+        },
+        {
+            "reference": "John 3:3",
+            "status": "mined",
+            "block_index": 9,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "John 5:24",
             "status": "self_rendered",
-            "block_index": 11
+            "block_index": 11,
+            "why": "allusion"
+        },
+        {
+            "reference": "John 3:3",
+            "status": "mined",
+            "block_index": 11,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "John 4:24",
+            "status": "mined",
+            "block_index": 13,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Matthew 11:30",
-            "status": "self_rendered",
-            "block_index": 13
+            "status": "mined",
+            "block_index": 13,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Romans 8:7",
             "status": "self_rendered",
-            "block_index": 13
+            "block_index": 13,
+            "why": "allusion"
         },
         {
             "reference": "John 10:1",
-            "status": "self_rendered",
-            "block_index": 13
+            "status": "mined",
+            "block_index": 13,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Revelation 7:14",
-            "status": "self_rendered",
-            "block_index": 14
+            "status": "mined",
+            "block_index": 14,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "John 3:3",
+            "status": "mined",
+            "block_index": 16,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "John 3:4",
+            "status": "mined",
+            "block_index": 16,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "John 3:5",
+            "status": "mined",
+            "block_index": 16,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "1 Corinthians 2:14",
             "status": "self_rendered",
-            "block_index": 16
+            "block_index": 16,
+            "why": "allusion"
+        },
+        {
+            "reference": "John 3:8",
+            "status": "mined",
+            "block_index": 20,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "2 Corinthians 5:17",
             "status": "self_rendered",
-            "block_index": 23
+            "block_index": 23,
+            "why": "allusion"
         },
         {
             "reference": "Jeremiah 13:23",
             "status": "self_rendered",
-            "block_index": 33
+            "block_index": 33,
+            "why": "Moody argues from the Ethiopian's skin; OWB reads クシュ人, so エチオピヤびと is kept (as the Ps 68:31 rule does)"
+        },
+        {
+            "reference": "Luke 7:14",
+            "status": "mined",
+            "block_index": 33,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Ephesians 2:1",
-            "status": "self_rendered",
-            "block_index": 33
+            "status": "mined",
+            "block_index": 33,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Isaiah 55:1",
             "status": "self_rendered",
-            "block_index": 35
+            "block_index": 35,
+            "why": "allusion"
+        },
+        {
+            "reference": "Romans 6:23",
+            "status": "mined",
+            "block_index": 35,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "John 3:14-15",
+            "status": "mined",
+            "block_index": 37,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "John 1:29",
+            "status": "mined",
+            "block_index": 37,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Luke 19:10",
-            "status": "self_rendered",
-            "block_index": 38
+            "status": "mined",
+            "block_index": 38,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "John 3:14-15",
+            "status": "mined",
+            "block_index": 38,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "John 1:29",
+            "status": "mined",
+            "block_index": 39,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         }
     ]
 }
