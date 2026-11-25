@@ -84,3 +84,39 @@ class StartupSkipsAdminModulesTests(SimpleTestCase):
         self.assertEqual(
             out.stdout.strip(), "", f"loaded at startup: {out.stdout.strip()}"
         )
+
+    def test_concurrent_first_requests_do_not_deadlock_on_import(self):
+        # A cold worker's dashboard fires several admin requests at once. Before
+        # the import lock, resolving overlapping admin modules on parallel
+        # threads raised _DeadlockError (a 500) every time this ran. A fresh
+        # interpreter, since this process has every module imported already.
+        script = (
+            "import threading, django\n"
+            "django.setup()\n"
+            "import config.urls\n"
+            "from django.urls import get_resolver\n"
+            "from config.lazy_views import LazyView\n"
+            "views = [p.callback for p in get_resolver().url_patterns\n"
+            "         if isinstance(p.callback, LazyView)]\n"
+            "gate = threading.Barrier(len(views))\n"
+            "errors = []\n"
+            "def hit(v):\n"
+            "    gate.wait()\n"
+            "    try:\n"
+            "        v.cls\n"
+            "    except Exception as e:\n"
+            "        errors.append(type(e).__name__)\n"
+            "threads = [threading.Thread(target=hit, args=(v,)) for v in views]\n"
+            "[t.start() for t in threads]\n"
+            "[t.join() for t in threads]\n"
+            "print(','.join(sorted(set(errors))))\n"
+        )
+        out = subprocess.run(
+            [sys.executable, "-c", script],
+            cwd=settings.BASE_DIR,
+            capture_output=True,
+            text=True,
+            check=True,
+            env={**os.environ, "DJANGO_SETTINGS_MODULE": "config.settings"},
+        )
+        self.assertEqual(out.stdout.strip(), "", f"errors resolving views: {out.stdout.strip()}")

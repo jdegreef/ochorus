@@ -168,8 +168,9 @@
 										</span>{/if}
 								</div>
 								<div class="mt-1 text-micro text-muted">
-									Added {dayFmt(l.created_at)}{#if l.updated_at}
-										· changed {dayFmt(l.updated_at)}{/if}
+									Added {dayFmt(l.created_at)}{#if l.updated_at}{' '}· changed {dayFmt(
+											l.updated_at
+										)}{/if}
 								</div>
 							</div>
 							<div class="flex shrink-0 flex-col items-end gap-1.5 text-small">

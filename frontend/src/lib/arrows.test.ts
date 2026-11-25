@@ -37,7 +37,9 @@ describe('text arrows mirror in right-to-left locales', () => {
 		const offenders: string[] = [];
 		for (const file of svelteFiles(SRC)) {
 			const rel = relative(SRC, file);
-			if (rel.startsWith('routes/admin') || rel.endsWith('Arrow.svelte')) continue;
+			// The admin console — its routes and its own components — is English-only.
+			const admin = rel.startsWith('routes/admin') || rel.startsWith('lib/components/admin/');
+			if (admin || rel.endsWith('Arrow.svelte')) continue;
 			const markup = markupOf(readFileSync(file, 'utf8'));
 			markup.split('\n').forEach((line) => {
 				if (/[←→]/.test(line)) offenders.push(`${rel}: ${line.trim().slice(0, 80)}`);

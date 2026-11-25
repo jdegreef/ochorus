@@ -89,7 +89,9 @@
 
 <div class="mb-3 rounded-sm border border-border bg-bg p-3">
 	<p class="text-small mb-2 font-semibold">
-		Reviewer notes{#if chapter}<span class="font-normal text-muted"> · chapter {chapter}</span>{/if}
+		Reviewer notes{#if chapter}{' '}<span class="font-normal text-muted">
+				· chapter {chapter}
+			</span>{/if}
 	</p>
 	{#if here.length}
 		<ul class="mb-2 space-y-2">
