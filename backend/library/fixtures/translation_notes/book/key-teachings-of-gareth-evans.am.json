@@ -655,10 +655,10 @@
   },
   {
    "reference": "Genesis 4:7",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 7,
    "chapter_order": 13,
-   "source_file": "he-holds-my-tomorrows.am.json"
+   "why": "was mined from he-holds-my-tomorrows.am, which is now re-quoted to OWB; this wording is the translator's own until this work is re-quoted"
   },
   {
    "reference": "John 6:66",
