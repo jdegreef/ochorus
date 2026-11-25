@@ -4,112 +4,172 @@
     "language": "ja",
     "job_issue": 8008,
     "pull_request": null,
+    "note": [
+        "Scripture authority is the Open Word Bible (OWB), Japanese, Balanced edition (CC0), bundled as library/data/bible/owb-ja-b.json.gz and read offline (owb-ja). Every Scripture quotation was re-quoted to it verbatim (founder decision, 2026-11-19: Japanese quotes OWB everywhere), replacing the 口語訳 (japkougo) wording the first edition carried.",
+        "A `mined` row is a verbatim OWB span, the shortest contiguous span carrying the quoted clause, or exact OWB pieces joined with '……'; verbatim recitations without quote marks are quotations too. `self_rendered` rows are allusions and paraphrases in the preacher's own voice, left as prose, or places named in `why` where the preacher argues from wording OWB does not carry."
+    ],
     "references": [
         {
-            "reference": "Luke 23:39",
+            "reference": "Luke 23:39-43",
             "status": "self_rendered",
-            "block_index": 0
+            "block_index": 0,
+            "why": "the reading's citation heading, not a quotation"
         },
         {
             "reference": "Matthew 27:44",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 4
+            "block_index": 4,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Luke 23:40",
-            "status": "self_rendered",
-            "block_index": 4
+            "status": "mined",
+            "block_index": 4,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Proverbs 9:10",
+            "status": "mined",
+            "block_index": 4,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Matthew 27:39",
             "status": "self_rendered",
-            "block_index": 4
+            "block_index": 6,
+            "why": "allusion"
         },
         {
             "reference": "Matthew 27:37",
-            "status": "self_rendered",
-            "block_index": 6
+            "status": "mined",
+            "block_index": 6,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Luke 23:34",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 8
+            "block_index": 8,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "2 Kings 6:18",
+            "status": "self_rendered",
+            "block_index": 8,
+            "why": "allusion"
+        },
+        {
+            "reference": "Luke 23:34",
+            "status": "mined",
+            "block_index": 9,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Luke 23:41",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 11
+            "block_index": 11,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Hebrews 5:6",
-            "status": "self_rendered",
-            "block_index": 12
+            "status": "mined",
+            "block_index": 12,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Romans 10:10",
-            "status": "self_rendered",
-            "block_index": 14
+            "status": "mined",
+            "block_index": 14,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Galatians 3:13",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 16
+            "block_index": 16,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Matthew 3:17",
-            "status": "self_rendered",
-            "block_index": 16
+            "status": "mined",
+            "block_index": 16,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Luke 23:35",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 16
+            "block_index": 16,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Luke 23:42",
             "status": "self_rendered",
-            "block_index": 16
+            "block_index": 16,
+            "why": "Moody argues from the thief's 'Lord' (\"He called Him Lord there and then\"); OWB's critical text reads イエスよ, so 主よ is kept"
+        },
+        {
+            "reference": "Luke 23:41",
+            "status": "mined",
+            "block_index": 16,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Luke 23:42",
+            "status": "self_rendered",
+            "block_index": 17,
+            "why": "Moody argues from the thief's 'Lord' (\"He called Him Lord there and then\"); OWB's critical text reads イエスよ, so 主よ is kept"
+        },
+        {
+            "reference": "Luke 23:42",
+            "status": "self_rendered",
+            "block_index": 18,
+            "why": "Moody argues from the thief's 'Lord' (\"He called Him Lord there and then\"); OWB's critical text reads イエスよ, so 主よ is kept"
         },
         {
             "reference": "Luke 23:43",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 20
+            "block_index": 20,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Revelation 5:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 20
+            "block_index": 20,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Romans 8:1",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 20
+            "block_index": 20,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Revelation 15:3",
+            "status": "self_rendered",
+            "block_index": 23,
+            "why": "allusion"
         },
         {
             "reference": "Luke 2:14",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 23
+            "block_index": 23,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "John 19:30",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 23
+            "block_index": 23,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Hebrews 9:22",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 23
+            "block_index": 23,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Luke 23:42",
+            "status": "self_rendered",
+            "block_index": 25,
+            "why": "Moody argues from the thief's 'Lord' (\"He called Him Lord there and then\"); OWB's critical text reads イエスよ, so 主よ is kept"
         }
     ]
 }
