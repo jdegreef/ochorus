@@ -1035,17 +1035,15 @@
   },
   {
    "reference": "Psalm 30:6",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 35,
-   "source_file": "gleanings-among-the-sheaves.am.json"
+   "chapter_order": 35
   },
   {
    "reference": "Psalm 30:7",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 35,
-   "source_file": "gleanings-among-the-sheaves.am.json"
+   "chapter_order": 35
   },
   {
    "reference": "Psalm 30:8",
