@@ -128,3 +128,77 @@ describe('in Spanish', () => {
 		]);
 	});
 });
+
+describe('in French and Portuguese', () => {
+	const ALL = [
+		...BOOKS,
+		book('job', 'Job', 18, 42),
+		book('isaiah', 'Isaiah', 23, 66),
+		book('amos', 'Amos', 30, 9),
+		book('joshua', 'Joshua', 6, 24)
+	];
+
+	it('names the quick passages as each edition titles its chapters', () => {
+		expect(quickPassages(ALL, 'fr').map((p) => p.label)).toEqual([
+			'Jean 3',
+			'Psaume 23',
+			'Romains 8',
+			'1 Corinthiens 13',
+			'Ésaïe 53'
+		]);
+		expect(quickPassages(ALL, 'pt').map((p) => p.label)).toEqual([
+			'João 3',
+			'Salmo 23',
+			'Romanos 8',
+			'1 Coríntios 13',
+			'Isaías 53'
+		]);
+	});
+
+	it('reads each language’s names, with or without accents, and the English ones too', () => {
+		expect(matchBooks('Ésaïe', 'fr')).toEqual([23]);
+		expect(matchBooks('esaie', 'fr')).toEqual([23]);
+		expect(matchBooks('Isaïe', 'fr')).toEqual([23]);
+		expect(matchBooks('Psaume', 'fr')).toEqual([19]);
+		expect(matchBooks('Hé', 'fr')).toEqual([58]);
+		expect(matchBooks('Romans', 'fr')).toEqual([45]);
+		expect(matchBooks('João', 'pt')).toEqual([43]);
+		expect(matchBooks('joao', 'pt')).toEqual([43]);
+		expect(matchBooks('Gênesis', 'pt')).toEqual([1]);
+		expect(matchBooks('Oséias', 'pt')).toEqual([28]);
+		expect(matchBooks('Romans', 'pt')).toEqual([45]);
+	});
+
+	it('puts an exact name first: Portuguese "Jo" is João, "Jó" is Job', () => {
+		expect(matchBooks('Jo', 'pt')[0]).toBe(43);
+		expect(matchBooks('Jó', 'pt')[0]).toBe(18);
+		expect(passageSuggestions('Jo 3:16', ALL, 'pt')[0]).toEqual({
+			label: 'João 3:16',
+			href: `${bookChapterPath('gospel-of-john', 4, false)}#v16`
+		});
+		expect(passageSuggestions('Jó 38', ALL, 'pt')[0].label).toBe('Jó 38');
+	});
+
+	it('leaves a common word to search, rather than a book one typo away', () => {
+		for (const [w, lang] of [
+			['amour', 'fr'],
+			['grâce', 'fr'],
+			['amor', 'pt'],
+			['graça', 'pt']
+		])
+			expect(passageSuggestions(w, ALL, lang), w).toEqual([]);
+		expect(matchBooks('amor', 'pt')).toEqual([30]); // fuzzy: Amós
+		// With a chapter, a typo still reads as a reference.
+		expect(passageSuggestions('Romians 8', ALL, 'fr')[0].label).toBe('Romains 8');
+		expect(passageSuggestions('Romnaos 8', ALL, 'pt')[0].label).toBe('Romanos 8');
+	});
+
+	it('suggests chapters at a verse', () => {
+		expect(passageSuggestions('Jean 3:16', ALL, 'fr')).toEqual([
+			{ label: 'Jean 3:16', href: `${bookChapterPath('gospel-of-john', 4, false)}#v16` }
+		]);
+		expect(passageSuggestions('Psaume 23', ALL, 'fr')[0].label).toBe('Psaume 23');
+		expect(passageSuggestions('Salmo 23', ALL, 'pt')[0].label).toBe('Salmo 23');
+		expect(passageSuggestions('Es 53', ALL, 'fr')[0].label).toBe('Ésaïe 53');
+	});
+});

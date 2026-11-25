@@ -5,201 +5,220 @@
  "job_issue": 3670,
  "pull_request": null,
  "note": [
-  "Amharic (am) is new to the library and not yet in language_seed.py (added from the admin). Scripture authority is the 1962 Amharic Bible (United Bible Societies; NT revised 2003) — the text Amharic churches of every tradition quote. Its New Testament was fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, USFM; ebible id `amh`). The mirror carries the NT only, so every Old Testament quotation is necessarily self_rendered in the 1962 register.",
-  "Licence: the mirror records the 1962/2003 text as © UBS, attribution required, non-commercial, no derivatives. Verbatim quotation in this free library is neither commercial nor a derivative, but the credit line is owed wherever these verses render — see the PR; a founder decision before Amharic goes live.",
-  "A `mined` row means an exact byte substring of the 1962 NT of at least 20 characters, measured against the finished text — not a translator's claim; its source_file names the edition, not a corpus file (no Amharic corpus exists yet). Shorter or adapted quotations are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), read offline from the bundled owb-am text, per the founder decision of 2026-11-18 that every Amharic work quotes OWB. Every quotation was re-quoted to it verbatim, replacing the 1962 UBS wording and the OT renderings made in its register: Moody's cited verses (Luke 2:10-11, Isaiah 49:24-25, Job 33:24-28, Nehemiah 9:15, James 1:5, Matthew 11:28-29), the refrains he returns to (John 14:6, Psalm 23:1, Romans 8:32), and the phrases he quotes inside his own sentences.",
+  "A `mined` row is a verbatim OWB span in that block: the whole verse or range, the shortest span carrying the quoted clause, or exact OWB pieces joined with '…'. Inner quotations inside a speaker's words take ‹ ›. `self_rendered` rows (each with a `why`) are Moody's own adaptations of a verse.",
+  "Judgement calls. The sermon's theme word 'Saviour' stays መድኃኒት in Moody's prose, while Luke 2:11 is quoted as OWB has it («አዳኝ»). Job 33:24-28 is OWB's plural wording, joined with '…' over verse 27 as the English skips it. 'Our all in all' is quoted as Colossians 3:11, OWB «ክርስቶስ ሁሉ ነው፤ በሁሉም ውስጥ አለ». Moody's 'set your affections on things above' is OWB Colossians 3:2 whole. 'Living epistles, known and read of all men' quotes OWB 2 Corinthians 3:2's «ሰው ሁሉም ሊያውቀውና ሊያነበው» with Moody's 'living epistle' around it."
  ],
  "references": [
   {
    "reference": "Luke 2:10",
+   "block_index": 4,
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 4
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 2:11",
+   "block_index": 4,
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 4
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 8:32",
-   "status": "self_rendered",
-   "block_index": 5
+   "block_index": 5,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 22:17",
+   "block_index": 7,
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 7
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 2:10",
+   "block_index": 8,
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 8
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 2:11",
+   "block_index": 8,
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 8
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 2:14",
+   "block_index": 14,
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 14
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 49:24",
-   "status": "self_rendered",
-   "block_index": 18
+   "block_index": 18,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 49:25",
-   "status": "self_rendered",
-   "block_index": 18
+   "block_index": 18,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalms 116:8",
+   "block_index": 19,
    "status": "self_rendered",
-   "block_index": 19
+   "why": "Moody's own third-person adaptation ('He delivered my soul') of 'thou hast delivered my soul'; OWB Psalm 116:8 reads «ከሞት መልሰኸኛል» with no 'soul', so the adapted phrase stays the translator's"
   },
   {
    "reference": "Job 33:24",
-   "status": "self_rendered",
-   "block_index": 19
+   "block_index": 19,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Job 33:25",
-   "status": "self_rendered",
-   "block_index": 19
+   "block_index": 19,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Job 33:26",
-   "status": "self_rendered",
-   "block_index": 19
+   "block_index": 19,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Job 33:28",
-   "status": "self_rendered",
-   "block_index": 19
+   "block_index": 19,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Job 33:24",
-   "status": "self_rendered",
-   "block_index": 20
+   "block_index": 20,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 14:6",
+   "block_index": 22,
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 22
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 14:6",
+   "block_index": 24,
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 24
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Nehemiah 9:15",
-   "status": "self_rendered",
-   "block_index": 36
+   "block_index": 36,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Malachi 3:6",
-   "status": "self_rendered",
-   "block_index": 36
+   "block_index": 36,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 41:13",
+   "block_index": 36,
    "status": "self_rendered",
-   "block_index": 36
+   "why": "Moody's adapted recitation 'Fear not, I will lead thee; I will help thee' adds 'I will lead thee', which is not in Isaiah 41:13 (OWB «አትፍራ፤ እኔ ራሴ እረዳሃለሁ»); his sermon point is God as leader, so the adaptation stays the translator's"
   },
   {
    "reference": "John 8:12",
+   "block_index": 40,
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 40
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 5:14",
-   "status": "self_rendered",
-   "block_index": 45
+   "block_index": 45,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 3:2",
+   "block_index": 45,
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 45
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 1:5",
+   "block_index": 60,
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 60
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 1:5",
+   "block_index": 61,
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 61
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 11:28",
+   "block_index": 62,
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 62
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 11:29",
-   "status": "self_rendered",
-   "block_index": 62
+   "block_index": 62,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 3:2",
+   "block_index": 63,
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 63
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Mark 11:24",
+   "block_index": 70,
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 70
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalms 23:1",
-   "status": "self_rendered",
-   "block_index": 76
+   "block_index": 76,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalms 23:1",
-   "status": "self_rendered",
-   "block_index": 77
+   "block_index": 77,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 8:32",
-   "status": "self_rendered",
-   "block_index": 81
+   "block_index": 81,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Colossians 3:2",
-   "status": "self_rendered",
-   "block_index": 85
+   "block_index": 85,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 53:4",
-   "status": "self_rendered",
-   "block_index": 95
+   "block_index": 95,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Colossians 3:11",
+   "block_index": 100,
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 100
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   }
  ]
 }
