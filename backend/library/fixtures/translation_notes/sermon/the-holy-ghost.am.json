@@ -7,63 +7,67 @@
   {
    "reference": "Acts 1:8",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 11
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 11,
+   "why": "only «እስክትለበሱ ድረስ» and the single word «ኃይል» are quoted"
   },
   {
    "reference": "Luke 21:15",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 11
-  },
-  {
-   "reference": "Luke 24:49",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 11
-  },
-  {
-   "reference": "Luke 24:49",
-   "status": "self_rendered",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 11
   },
   {
    "reference": "Zechariah 4:6",
-   "status": "self_rendered",
-   "block_index": 13
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 13,
+   "why": "quoted in OWB's order; the author's own expansion that follows ends on OWB's «በመንፈሴ እንጂ»"
   },
   {
    "reference": "Philippians 3:13",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 14
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 14,
+   "why": "'this one thing I do' is OWB's «ብቸኛው ዓላማዬ ይህ ነው»"
   },
   {
    "reference": "Mark 16:7",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 17
-  },
-  {
-   "reference": "Luke 19:22",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 27
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 17,
+   "why": "OWB pieces joined with '…', twice"
   },
   {
    "reference": "Matthew 25:24",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 27
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 27,
+   "why": "OWB's clauses inside the servant's imagined plea; 'Thou wast a hard Master' and the plea about power are the author's"
   },
   {
    "reference": "Matthew 25:26",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 27
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 27,
+   "why": "«አንተ ክፉና ሰነፍ ባሪያ!» inside the Master's imagined answer; the rest of it is the author's"
+  },
+  {
+   "reference": "Luke 19:22",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "block_index": 27,
+   "why": "«የገዛ ቃልህ ይፈርድብሃል!» ('out of thine own mouth will I judge thee')"
   }
  ],
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'). In block 27 the servant's plea and the Master's answer are the author's imagined speech built round Scripture: the scriptural clauses are OWB's words, the rest is the translator's rendering of hers.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). NT verses are pasted from the ebible mirror (amh_amh); the mirror has no OT, so OT quotations are self_rendered in the 1962 register unless a shipped Amharic work already quotes the verse (source_file names it).",
   "Rows come from the translators' reports and every 'mined' claim was re-verified: each quoted fragment must be a byte-exact substring both of this body and of the NT file (or of the cited shipped work); a claim that fails is recorded as self_rendered. Some mirror entries are merged verse ranges holding only part of the text, so verses inside them are self_rendered."
  ]
