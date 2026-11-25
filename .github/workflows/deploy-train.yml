@@ -66,7 +66,14 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: main
+          # Full history (the train walks commits since the last deploy), but
+          # no file contents until a step asks for one: the scripts read only
+          # commit graphs, file NAMES and render.yaml. A plain fetch-depth: 0
+          # downloaded every version of every cover and fixture; the last 50
+          # commits alone were a 646 MB pack (2026-11-21).
           fetch-depth: 0
+          filter: blob:none
+          sparse-checkout: .github
 
       - name: Deploy if anything deployable changed
         env:
