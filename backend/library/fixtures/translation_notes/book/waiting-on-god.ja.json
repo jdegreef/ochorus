@@ -7,1878 +7,2383 @@
     "references": [
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
-            "block_index": 0
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 1,
+            "block_index": -1
         },
         {
-            "reference": "Psalms 62:5a",
+            "reference": "Psalms 62:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 1,
+            "block_index": -1
         },
         {
             "reference": "Isaiah 64:4",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 1,
             "block_index": 2
         },
         {
             "reference": "Psalms 62:5",
             "status": "self_rendered",
-            "block_index": 0
+            "chapter_order": 1,
+            "block_index": 2,
+            "why": "inside Frieda Hanbury's poem: a verse line, kept in the poem's rendering"
         },
         {
             "reference": "Psalms 37:7",
             "status": "self_rendered",
-            "block_index": 13
+            "chapter_order": 1,
+            "block_index": 13,
+            "why": "inside Frieda Hanbury's poem: a verse line, kept in the poem's rendering"
         },
         {
             "reference": "Isaiah 64:3",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 1,
             "block_index": 44
         },
         {
             "reference": "Psalms 62:1",
             "status": "self_rendered",
-            "block_index": 1
+            "chapter_order": 3,
+            "block_index": 1,
+            "why": "Murray cites the R.V. with its margin ('is silent unto God'); a version-specific epigraph"
         },
         {
             "reference": "Psalms 62:1",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 3,
             "block_index": 6
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 3,
             "block_index": 7
         },
         {
             "reference": "Genesis 49:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 4,
             "block_index": 1
+        },
+        {
+            "reference": "Philippians 2:13",
+            "status": "self_rendered",
+            "chapter_order": 4,
+            "block_index": 4,
+            "why": "a recitation in Murray's own sentence: OWB's words, person changed (あなたがた → わたしたち)"
         },
         {
             "reference": "Genesis 49:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 4,
+            "block_index": 4
         },
         {
-            "reference": "Psalms 62:1a",
+            "reference": "Psalms 62:1",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 4,
             "block_index": 4
         },
         {
             "reference": "Genesis 49:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 4,
+            "block_index": 6
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 4,
             "block_index": 7
         },
         {
             "reference": "Psalms 104:27",
-            "status": "self_rendered",
-            "block_index": 1
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 5,
+            "block_index": 0
         },
         {
             "reference": "Psalms 104:28",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 3
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 5,
+            "block_index": 0
         },
         {
-            "reference": "Psalms 104:27a",
-            "status": "self_rendered",
-            "block_index": 1
+            "reference": "Psalms 104:27",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 5,
+            "block_index": 6
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 5,
             "block_index": 9
         },
         {
             "reference": "Psalms 104:27",
-            "status": "self_rendered",
-            "block_index": 1
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 5,
+            "block_index": 10
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 5,
             "block_index": 12
         },
         {
             "reference": "Psalms 145:14",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 6,
+            "block_index": 0
         },
         {
             "reference": "Psalms 145:15",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 3
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 6,
+            "block_index": 0
         },
         {
-            "reference": "Psalms 104:27a",
-            "status": "self_rendered",
+            "reference": "Psalms 104:27",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 6,
             "block_index": 6
         },
         {
-            "reference": "Psalms 145:15a",
+            "reference": "Psalms 145:15",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 3
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 6,
+            "block_index": 6
         },
         {
             "reference": "Psalms 145:15",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 3
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 6,
+            "block_index": 12
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 6,
             "block_index": 13
         },
         {
             "reference": "Psalms 25:4",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 7,
+            "block_index": 0
         },
         {
             "reference": "Psalms 25:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 3
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 7,
+            "block_index": 0
         },
         {
-            "reference": "Psalms 25:5c",
+            "reference": "Psalms 25:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 5
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 7,
+            "block_index": 8
         },
         {
-            "reference": "Psalms 25:5c",
+            "reference": "Psalms 25:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 5
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 7,
+            "block_index": 8
         },
         {
-            "reference": "Psalms 25:9b",
+            "reference": "Psalms 25:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 7,
             "block_index": 10
         },
         {
-            "reference": "Psalms 25:5c",
+            "reference": "Psalms 25:9",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 5
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 7,
+            "block_index": 10
         },
         {
-            "reference": "Psalms 25:5c",
+            "reference": "Psalms 25:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 5
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 7,
+            "block_index": 11
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 7,
             "block_index": 12
-        },
-        {
-            "reference": "Psalms 25:3a",
-            "status": "self_rendered",
-            "block_index": 1
-        },
-        {
-            "reference": "Psalms 25:3a",
-            "status": "self_rendered",
-            "block_index": 1
-        },
-        {
-            "reference": "Psalms 25:3a",
-            "status": "self_rendered",
-            "block_index": 1
-        },
-        {
-            "reference": "John 17:26",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 5
-        },
-        {
-            "reference": "John 15:9a",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 5
-        },
-        {
-            "reference": "John 13:34b",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 5
-        },
-        {
-            "reference": "Psalms 25:3a",
-            "status": "self_rendered",
-            "block_index": 1
-        },
-        {
-            "reference": "Psalms 104:27a",
-            "status": "self_rendered",
-            "block_index": 6
-        },
-        {
-            "reference": "Psalms 145:15b",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 6
-        },
-        {
-            "reference": "Psalms 25:3a",
-            "status": "self_rendered",
-            "block_index": 1
         },
         {
             "reference": "Psalms 25:3",
             "status": "self_rendered",
+            "chapter_order": 8,
+            "block_index": 1,
+            "why": "Murray prays the AV's optative 'Let none that wait on Thee be ashamed' and the chapter argues from it as a prayer; OWB's Ps 25:3 is a statement"
+        },
+        {
+            "reference": "Psalms 25:3",
+            "status": "self_rendered",
+            "chapter_order": 8,
+            "block_index": 2,
+            "why": "Murray prays the AV's optative 'Let none that wait on Thee be ashamed' and the chapter argues from it as a prayer; OWB's Ps 25:3 is a statement"
+        },
+        {
+            "reference": "Psalms 25:3",
+            "status": "self_rendered",
+            "chapter_order": 8,
+            "block_index": 3,
+            "why": "Murray prays the AV's optative 'Let none that wait on Thee be ashamed' and the chapter argues from it as a prayer; OWB's Ps 25:3 is a statement"
+        },
+        {
+            "reference": "John 17:26",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 8,
+            "block_index": 5
+        },
+        {
+            "reference": "John 15:9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 8,
+            "block_index": 5
+        },
+        {
+            "reference": "John 13:34",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 8,
+            "block_index": 5
+        },
+        {
+            "reference": "Psalms 25:3",
+            "status": "self_rendered",
+            "chapter_order": 8,
+            "block_index": 6,
+            "why": "Murray prays the AV's optative 'Let none that wait on Thee be ashamed' and the chapter argues from it as a prayer; OWB's Ps 25:3 is a statement"
+        },
+        {
+            "reference": "Psalms 104:27",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 8,
+            "block_index": 6
+        },
+        {
+            "reference": "Psalms 145:15",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 8,
+            "block_index": 6
+        },
+        {
+            "reference": "Psalms 25:3",
+            "status": "self_rendered",
+            "chapter_order": 8,
+            "block_index": 6,
+            "why": "Murray prays the AV's optative 'Let none that wait on Thee be ashamed' and the chapter argues from it as a prayer; OWB's Ps 25:3 is a statement"
+        },
+        {
+            "reference": "Psalms 25:3",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 8,
             "block_index": 6
         },
         {
             "reference": "Psalms 27:14",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 8,
             "block_index": 6
         },
         {
             "reference": "Psalms 31:24",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 8,
             "block_index": 6
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 8,
             "block_index": 8
         },
         {
             "reference": "Psalms 25:21",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 9,
             "block_index": 1
         },
         {
-            "reference": "Psalms 25:5c",
+            "reference": "Psalms 25:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 9,
             "block_index": 2
         },
         {
             "reference": "Isaiah 49:23",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 9,
             "block_index": 2
         },
         {
             "reference": "Psalms 26:1",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 9,
             "block_index": 3
         },
         {
-            "reference": "Psalms 26:11a",
+            "reference": "Psalms 26:11",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 9,
             "block_index": 3
         },
         {
             "reference": "Psalms 36:10",
-            "status": "self_rendered",
-            "block_index": 3
-        },
-        {
-            "reference": "Psalms 25:21a",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "status": "allusion",
+            "chapter_order": 9,
+            "block_index": 3,
+            "why": "Murray's 'His righteousness is for the upright in heart' is his own gloss of Ps 36:10's prayer, not a verbatim verse"
         },
         {
             "reference": "Psalms 25:21",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 9,
+            "block_index": 3
         },
         {
-            "reference": "Psalms 25:21b",
-            "status": "self_rendered",
-            "block_index": 1
-        },
-        {
-            "reference": "Psalms 25:5c",
+            "reference": "Psalms 25:21",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 2
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 9,
+            "block_index": 3
         },
         {
-            "reference": "Psalms 25:21b",
-            "status": "self_rendered",
-            "block_index": 1
-        },
-        {
-            "reference": "Psalms 25:5c",
+            "reference": "Psalms 25:21",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 2
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 9,
+            "block_index": 5
         },
         {
-            "reference": "Psalms 25:5c",
+            "reference": "Psalms 25:21",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 2
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 9,
+            "block_index": 5
         },
         {
-            "reference": "Psalms 25:21b",
+            "reference": "Psalms 25:21",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 9,
+            "block_index": 5
         },
         {
-            "reference": "Psalms 25:21b",
+            "reference": "Psalms 25:21",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 9,
+            "block_index": 6
+        },
+        {
+            "reference": "Psalms 25:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 9,
+            "block_index": 7
+        },
+        {
+            "reference": "Psalms 25:21",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 9,
+            "block_index": 7
+        },
+        {
+            "reference": "Psalms 25:21",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 9,
+            "block_index": 7
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 9,
             "block_index": 8
         },
         {
             "reference": "Psalms 27:14",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 4
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 10,
+            "block_index": 0
         },
         {
             "reference": "Psalms 27:13",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 10,
             "block_index": 4
         },
         {
             "reference": "Psalms 27:14",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 10,
             "block_index": 4
         },
         {
             "reference": "Joshua 1:6",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 10,
             "block_index": 5
         },
         {
             "reference": "Psalms 27:14",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 4
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 10,
+            "block_index": 5
         },
         {
             "reference": "Psalms 27:14",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 4
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 10,
+            "block_index": 5
         },
         {
             "reference": "Psalms 27:14",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 4
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 10,
+            "block_index": 7
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 10,
             "block_index": 8
         },
         {
             "reference": "Psalms 31:24",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
-        },
-        {
-            "reference": "Psalms 31:24b",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 2
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 11,
+            "block_index": 0
         },
         {
             "reference": "Psalms 31:24",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 11,
+            "block_index": 3
+        },
+        {
+            "reference": "Psalms 31:24",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 11,
             "block_index": 3
         },
         {
             "reference": "Proverbs 3:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 11,
             "block_index": 5
         },
         {
             "reference": "Proverbs 3:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 11,
             "block_index": 5
         },
         {
             "reference": "Psalms 31:24",
-            "status": "self_rendered",
-            "block_index": 3
-        },
-        {
-            "reference": "Psalms 31:24",
-            "status": "self_rendered",
-            "block_index": 3
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 11,
+            "block_index": 7
         },
         {
             "reference": "Psalms 31:24",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 11,
+            "block_index": 7
+        },
+        {
+            "reference": "Psalms 31:24",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 11,
+            "block_index": 7
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 11,
             "block_index": 8
         },
         {
             "reference": "Psalms 33:18-22",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 12,
+            "block_index": 0
         },
         {
             "reference": "Psalms 33:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 12,
+            "block_index": 13
         },
         {
             "reference": "Revelation 15:4",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 12,
             "block_index": 13
         },
         {
             "reference": "Revelation 19:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 12,
             "block_index": 13
         },
         {
             "reference": "Deuteronomy 28:58",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 12,
             "block_index": 13
         },
         {
             "reference": "1 Corinthians 1:29",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 12,
             "block_index": 13
         },
         {
-            "reference": "Psalms 33:18a",
+            "reference": "Psalms 33:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 12,
+            "block_index": 13
         },
         {
-            "reference": "Psalms 33:18b",
+            "reference": "Psalms 33:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 2
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 12,
+            "block_index": 13
         },
         {
             "reference": "Psalms 33:18-19",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 12,
+            "block_index": 15
         },
         {
             "reference": "Psalms 33:20",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 5
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 12,
+            "block_index": 16
         },
         {
             "reference": "Psalms 33:22",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 9
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 12,
+            "block_index": 16
         },
         {
             "reference": "Psalms 33:20",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 5
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 12,
+            "block_index": 17
         },
         {
             "reference": "Isaiah 25:9",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 12,
             "block_index": 17
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 12,
             "block_index": 18
         },
         {
-            "reference": "Psalms 37:7a",
+            "reference": "Psalms 37:7",
             "status": "self_rendered",
-            "block_index": 1
+            "chapter_order": 13,
+            "block_index": 0,
+            "why": "Murray sets the AV's 'Rest in the Lord' beside its margin and the R.V.'s 'Be still before the Lord'; OWB already reads the R.V., so the comparison keeps the AV wording"
         },
         {
-            "reference": "Psalms 37:9b",
+            "reference": "Psalms 37:9",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 2
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 13,
+            "block_index": 1
         },
         {
             "reference": "Luke 21:19",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 13,
             "block_index": 3
         },
         {
             "reference": "Hebrews 10:36",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 13,
             "block_index": 3
         },
         {
             "reference": "James 1:4",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 13,
             "block_index": 3
         },
         {
             "reference": "Romans 9:16",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 13,
             "block_index": 4
         },
         {
             "reference": "John 1:13",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 13,
             "block_index": 4
         },
         {
-            "reference": "Romans 9:16b",
+            "reference": "Romans 9:16",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 13,
             "block_index": 4
         },
         {
-            "reference": "Psalms 37:7a",
+            "reference": "Psalms 37:7",
             "status": "self_rendered",
-            "block_index": 1
+            "chapter_order": 13,
+            "block_index": 5,
+            "why": "Murray sets the AV's 'Rest in the Lord' beside its margin and the R.V.'s 'Be still before the Lord'; OWB already reads the R.V., so the comparison keeps the AV wording"
         },
         {
-            "reference": "Psalms 37:7a",
+            "reference": "Psalms 37:7",
             "status": "self_rendered",
-            "block_index": 1
+            "chapter_order": 13,
+            "block_index": 5,
+            "why": "Murray sets the AV's 'Rest in the Lord' beside its margin and the R.V.'s 'Be still before the Lord'; OWB already reads the R.V., so the comparison keeps the AV wording"
         },
         {
-            "reference": "Psalms 37:7a (margin)",
+            "reference": "Psalms 37:7",
             "status": "self_rendered",
-            "block_index": 5
+            "chapter_order": 13,
+            "block_index": 5,
+            "why": "Murray sets the AV's 'Rest in the Lord' beside its margin and the R.V.'s 'Be still before the Lord'; OWB already reads the R.V., so the comparison keeps the AV wording"
         },
         {
-            "reference": "Psalms 37:7a (R.V.)",
+            "reference": "Psalms 37:7",
             "status": "self_rendered",
-            "block_index": 5
+            "chapter_order": 13,
+            "block_index": 5,
+            "why": "Murray sets the AV's 'Rest in the Lord' beside its margin and the R.V.'s 'Be still before the Lord'; OWB already reads the R.V., so the comparison keeps the AV wording"
         },
         {
-            "reference": "Isaiah 60:22b",
+            "reference": "Isaiah 60:22",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 13,
             "block_index": 6
         },
         {
-            "reference": "Psalms 37:7a",
+            "reference": "Psalms 37:7",
             "status": "self_rendered",
-            "block_index": 1
+            "chapter_order": 13,
+            "block_index": 7,
+            "why": "Murray sets the AV's 'Rest in the Lord' beside its margin and the R.V.'s 'Be still before the Lord'; OWB already reads the R.V., so the comparison keeps the AV wording"
         },
         {
-            "reference": "Psalms 37:9b",
+            "reference": "Psalms 37:9",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 2
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 13,
+            "block_index": 7
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 13,
             "block_index": 8
         },
         {
-            "reference": "Psalms 37:34a",
+            "reference": "Psalms 37:34",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
+            "block_index": 0
         },
         {
-            "reference": "Isaiah 64:5a",
+            "reference": "Isaiah 64:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
             "block_index": 3
         },
         {
-            "reference": "Psalms 37:34a",
+            "reference": "Psalms 37:34",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
+            "block_index": 3
         },
         {
-            "reference": "Psalms 37:34a",
+            "reference": "Psalms 37:34",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
+            "block_index": 4
         },
         {
-            "reference": "Psalms 37:34a",
+            "reference": "Psalms 37:34",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
+            "block_index": 4
         },
         {
-            "reference": "Psalms 37:1a",
+            "reference": "Psalms 37:1",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
             "block_index": 5
         },
         {
-            "reference": "Psalms 37:3a",
+            "reference": "Psalms 37:3",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
             "block_index": 5
         },
         {
-            "reference": "Psalms 37:7a",
+            "reference": "Psalms 37:7",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
             "block_index": 5
         },
         {
-            "reference": "Psalms 37:8a",
+            "reference": "Psalms 37:8",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
             "block_index": 5
         },
         {
-            "reference": "Psalms 37:27a",
+            "reference": "Psalms 37:27",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
             "block_index": 5
         },
         {
-            "reference": "Psalms 37:28a",
+            "reference": "Psalms 37:28",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
             "block_index": 5
         },
         {
-            "reference": "Psalms 37:29a",
+            "reference": "Psalms 37:29",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
             "block_index": 5
         },
         {
             "reference": "Psalms 37:31",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
             "block_index": 5
         },
         {
-            "reference": "Psalms 37:34a",
+            "reference": "Psalms 37:34",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
+            "block_index": 5
         },
         {
-            "reference": "Psalms 37:34a",
+            "reference": "Psalms 37:34",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
+            "block_index": 7
         },
         {
-            "reference": "Psalms 37:34a",
+            "reference": "Psalms 37:34",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
+            "block_index": 7
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 14,
             "block_index": 8
         },
         {
             "reference": "Psalms 39:7",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 15,
             "block_index": 1
         },
         {
-            "reference": "Psalms 39:8a",
-            "status": "self_rendered",
-            "block_index": 1
-        },
-        {
-            "reference": "Psalms 39:7a",
+            "reference": "Psalms 39:8",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
-        },
-        {
-            "reference": "Psalms 39:7b",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
-        },
-        {
-            "reference": "Psalms 78:19-20",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 3
-        },
-        {
-            "reference": "Psalms 39:7a",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
-        },
-        {
-            "reference": "Psalms 39:7b",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
-        },
-        {
-            "reference": "Psalms 39:8a",
-            "status": "self_rendered",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 15,
             "block_index": 1
         },
         {
             "reference": "Psalms 39:7",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 15,
+            "block_index": 2
+        },
+        {
+            "reference": "Psalms 39:7",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 15,
+            "block_index": 2
+        },
+        {
+            "reference": "Psalms 78:19-20",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 15,
+            "block_index": 3
+        },
+        {
+            "reference": "Psalms 39:7",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 15,
+            "block_index": 4
+        },
+        {
+            "reference": "Psalms 39:7",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 15,
+            "block_index": 4
+        },
+        {
+            "reference": "Psalms 39:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 15,
+            "block_index": 5
+        },
+        {
+            "reference": "Psalms 39:7",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 15,
+            "block_index": 5
         },
         {
             "reference": "Psalms 27:14",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 15,
             "block_index": 6
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 15,
             "block_index": 7
         },
         {
             "reference": "Psalms 40:1",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 16,
             "block_index": 1
         },
         {
-            "reference": "Psalms 40:3a",
+            "reference": "Psalms 40:3",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 16,
             "block_index": 1
         },
         {
             "reference": "Psalms 62:1",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 16,
             "block_index": 4
         },
         {
-            "reference": "Psalms 62:2a",
+            "reference": "Psalms 62:2",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 16,
             "block_index": 4
         },
         {
-            "reference": "Colossians 1:11a",
+            "reference": "Colossians 1:11",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 16,
             "block_index": 5
         },
         {
-            "reference": "Colossians 1:11b",
+            "reference": "Colossians 1:11",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 16,
             "block_index": 5
         },
         {
             "reference": "Psalms 40:1",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 16,
+            "block_index": 6
         },
         {
-            "reference": "Psalms 40:2-3a",
+            "reference": "Psalms 40:2",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 16,
+            "block_index": 6
+        },
+        {
+            "reference": "Psalms 40:3",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 16,
             "block_index": 6
         },
         {
             "reference": "2 Thessalonians 3:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 16,
             "block_index": 6
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 16,
             "block_index": 7
         },
         {
             "reference": "Psalms 106:13",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 17,
             "block_index": 1
         },
         {
-            "reference": "Psalms 106:13b",
+            "reference": "Psalms 106:13",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 17,
+            "block_index": 2
         },
         {
-            "reference": "Psalms 106:13b",
+            "reference": "Psalms 106:13",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 17,
+            "block_index": 2
         },
         {
             "reference": "Acts 10:44",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 17,
             "block_index": 6
         },
         {
-            "reference": "Acts 10:33b",
+            "reference": "Acts 10:33",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 17,
             "block_index": 6
         },
         {
-            "reference": "Psalms 106:13b",
+            "reference": "Psalms 106:13",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 17,
+            "block_index": 7
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 17,
             "block_index": 8
         },
         {
             "reference": "Psalms 130:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 18,
+            "block_index": 0
         },
         {
             "reference": "Psalms 130:6",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 6
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 18,
+            "block_index": 0
         },
         {
             "reference": "Psalms 130:6",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 18,
             "block_index": 6
         },
         {
-            "reference": "2 Corinthians 4:6b",
+            "reference": "2 Corinthians 4:6",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 18,
             "block_index": 7
         },
         {
-            "reference": "2 Corinthians 4:6a",
+            "reference": "2 Corinthians 4:6",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 18,
             "block_index": 7
         },
         {
-            "reference": "Isaiah 60:20a",
+            "reference": "Isaiah 60:20",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 18,
             "block_index": 7
         },
         {
-            "reference": "2 Corinthians 4:6b",
+            "reference": "2 Corinthians 4:6",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 7
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 18,
+            "block_index": 11
+        },
+        {
+            "reference": "Psalms 130:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 18,
+            "block_index": 11
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 18,
             "block_index": 12
         },
         {
             "reference": "Isaiah 8:17",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 19,
             "block_index": 1
         },
         {
             "reference": "Isaiah 8:17",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 19,
+            "block_index": 2
         },
         {
             "reference": "Isaiah 8:17",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 19,
+            "block_index": 4
         },
         {
             "reference": "Isaiah 8:17",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 19,
+            "block_index": 6
         },
         {
             "reference": "Psalms 130:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 19,
             "block_index": 6
         },
         {
             "reference": "Psalms 130:6",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 19,
             "block_index": 6
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 19,
             "block_index": 7
         },
         {
             "reference": "Isaiah 25:9",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 20,
             "block_index": 1
         },
         {
             "reference": "Isaiah 25:9",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 20,
+            "block_index": 4
         },
         {
             "reference": "Isaiah 25:9",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
-        },
-        {
-            "reference": "Isaiah 25:9",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
-        },
-        {
-            "reference": "Isaiah 25:9",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
-        },
-        {
-            "reference": "Isaiah 25:9",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
-        },
-        {
-            "reference": "Acts 10:33b",
-            "status": "self_rendered",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 20,
             "block_index": 6
         },
         {
             "reference": "Isaiah 25:9",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 20,
+            "block_index": 6
+        },
+        {
+            "reference": "Isaiah 25:9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 20,
+            "block_index": 6
+        },
+        {
+            "reference": "Isaiah 25:9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 20,
+            "block_index": 6
+        },
+        {
+            "reference": "Acts 10:33",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 20,
+            "block_index": 6
+        },
+        {
+            "reference": "Isaiah 25:9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 20,
+            "block_index": 7
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 20,
             "block_index": 8
         },
         {
-            "reference": "Isaiah 26:8a",
+            "reference": "Isaiah 26:8",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 21,
             "block_index": 1
         },
         {
-            "reference": "Isaiah 26:9b",
+            "reference": "Isaiah 26:9",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 21,
             "block_index": 1
         },
         {
-            "reference": "Isaiah 30:18b",
+            "reference": "Isaiah 30:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 21,
             "block_index": 2
         },
         {
-            "reference": "Isaiah 26:8a",
+            "reference": "Isaiah 26:8",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 21,
+            "block_index": 3
         },
         {
-            "reference": "Malachi 3:2a",
+            "reference": "Malachi 3:2",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 21,
             "block_index": 4
         },
         {
-            "reference": "Malachi 3:2c",
+            "reference": "Malachi 3:2",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 21,
             "block_index": 4
         },
         {
-            "reference": "Isaiah 64:2a",
+            "reference": "Isaiah 64:2",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 21,
             "block_index": 4
         },
         {
             "reference": "Numbers 10:35",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 21,
             "block_index": 4
         },
         {
-            "reference": "Isaiah 26:8a",
+            "reference": "Isaiah 26:8",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 21,
+            "block_index": 4
         },
         {
-            "reference": "Isaiah 1:27a",
+            "reference": "Isaiah 1:27",
             "status": "self_rendered",
-            "block_index": 5
+            "chapter_order": 21,
+            "block_index": 5,
+            "why": "Murray re-persons Isa 1:27 ('Zion' → 'thou shalt be redeemed with judgment'); OWB's 'justice will free Zion' cannot carry it"
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 21,
             "block_index": 7
         },
         {
             "reference": "Isaiah 30:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 22,
             "block_index": 1
         },
         {
-            "reference": "Isaiah 30:18a",
+            "reference": "Isaiah 30:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 22,
+            "block_index": 2
         },
         {
-            "reference": "Isaiah 30:18d",
+            "reference": "Isaiah 30:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 22,
+            "block_index": 2
         },
         {
             "reference": "James 5:7",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 22,
             "block_index": 4
         },
         {
-            "reference": "Isaiah 30:18a",
+            "reference": "Isaiah 30:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 22,
+            "block_index": 5
         },
         {
-            "reference": "Isaiah 30:18d",
+            "reference": "Isaiah 30:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 22,
+            "block_index": 6
         },
         {
             "reference": "Lamentations 3:25",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 22,
             "block_index": 6
         },
         {
-            "reference": "Isaiah 30:18d",
+            "reference": "Isaiah 30:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 22,
+            "block_index": 6
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 22,
             "block_index": 7
         },
         {
             "reference": "Isaiah 40:31",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 23,
             "block_index": 1
         },
         {
             "reference": "Isaiah 40:27",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 23,
             "block_index": 3
         },
         {
             "reference": "Isaiah 40:28",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 23,
             "block_index": 4
         },
         {
             "reference": "Isaiah 40:29",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 23,
             "block_index": 4
         },
         {
             "reference": "Isaiah 40:30",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 23,
             "block_index": 4
         },
         {
             "reference": "Proverbs 20:29",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 23,
             "block_index": 4
         },
         {
             "reference": "Isaiah 40:30",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 4
-        },
-        {
-            "reference": "Isaiah 40:31a",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 23,
             "block_index": 4
         },
         {
             "reference": "Isaiah 40:31",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
-        },
-        {
-            "reference": "Isaiah 40:31b",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
-        },
-        {
-            "reference": "Isaiah 40:31b",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 23,
+            "block_index": 4
         },
         {
             "reference": "Isaiah 40:31",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 23,
+            "block_index": 4
+        },
+        {
+            "reference": "Isaiah 40:31",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 23,
+            "block_index": 4
+        },
+        {
+            "reference": "Isaiah 40:31",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 23,
+            "block_index": 4
+        },
+        {
+            "reference": "Isaiah 40:31",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 23,
+            "block_index": 5
         },
         {
             "reference": "Deuteronomy 32:11",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 23,
             "block_index": 7
         },
         {
             "reference": "Deuteronomy 32:12",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 23,
             "block_index": 7
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 23,
             "block_index": 10
         },
         {
             "reference": "Isaiah 49:23",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 24,
             "block_index": 1
         },
         {
             "reference": "Isaiah 30:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 24,
             "block_index": 2
         },
         {
             "reference": "Isaiah 49:23",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 24,
+            "block_index": 3
         },
         {
             "reference": "Isaiah 30:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 2
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 24,
+            "block_index": 3
         },
         {
             "reference": "Psalms 25:3",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 3
+            "status": "self_rendered",
+            "chapter_order": 24,
+            "block_index": 3,
+            "why": "Murray prays the AV's optative 'Let none that wait on Thee be ashamed' and the chapter argues from it as a prayer; OWB's Ps 25:3 is a statement"
         },
         {
             "reference": "Isaiah 49:23",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 24,
             "block_index": 3
         },
         {
             "reference": "Isaiah 30:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 2
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 24,
+            "block_index": 3
         },
         {
             "reference": "Psalms 33:20",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 24,
             "block_index": 4
         },
         {
             "reference": "Isaiah 49:23",
-            "status": "self_rendered",
-            "block_index": 3
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 24,
+            "block_index": 5
         },
         {
             "reference": "Isaiah 30:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 2
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 24,
+            "block_index": 5
         },
         {
             "reference": "2 Corinthians 4:6",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 24,
             "block_index": 6
         },
         {
             "reference": "Isaiah 30:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 2
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 24,
+            "block_index": 6
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 24,
             "block_index": 7
         },
         {
             "reference": "Isaiah 64:4",
             "status": "self_rendered",
-            "block_index": 1
+            "chapter_order": 25,
+            "block_index": 1,
+            "why": "Murray says this meditation keeps to the AV's 'what He hath prepared for him that waiteth for Him'; OWB (like the R.V.) reads 'a God which worketh', so the AV wording stays"
         },
         {
             "reference": "Isaiah 64:4",
             "status": "self_rendered",
-            "block_index": 2
+            "chapter_order": 25,
+            "block_index": 2,
+            "why": "introduced as the R.V.'s reading, set against the AV's: a version comparison"
         },
         {
             "reference": "Isaiah 63:15",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 25,
             "block_index": 3
         },
         {
             "reference": "Isaiah 63:17",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 25,
             "block_index": 3
         },
         {
-            "reference": "Isaiah 64:1-2",
+            "reference": "Isaiah 64:1",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 25,
+            "block_index": 3
+        },
+        {
+            "reference": "Isaiah 64:2",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 25,
             "block_index": 3
         },
         {
             "reference": "Isaiah 64:3",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 25,
             "block_index": 3
         },
         {
             "reference": "Isaiah 64:4",
             "status": "self_rendered",
-            "block_index": 1
+            "chapter_order": 25,
+            "block_index": 3,
+            "why": "Murray says this meditation keeps to the AV's 'what He hath prepared for him that waiteth for Him'; OWB (like the R.V.) reads 'a God which worketh', so the AV wording stays"
+        },
+        {
+            "reference": "Isaiah 64:4",
+            "status": "self_rendered",
+            "chapter_order": 25,
+            "block_index": 3,
+            "why": "Murray says this meditation keeps to the AV's 'what He hath prepared for him that waiteth for Him'; OWB (like the R.V.) reads 'a God which worketh', so the AV wording stays"
         },
         {
             "reference": "1 Corinthians 2:11",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 25,
             "block_index": 3
         },
         {
             "reference": "1 Corinthians 2:10",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 25,
             "block_index": 3
         },
         {
             "reference": "Isaiah 64:2",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 3
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 25,
+            "block_index": 4
         },
         {
             "reference": "Isaiah 64:2",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 25,
             "block_index": 4
         },
         {
             "reference": "Isaiah 64:1",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 3
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 25,
+            "block_index": 5
         },
         {
             "reference": "Isaiah 30:18",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 25,
             "block_index": 6
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 25,
             "block_index": 7
         },
         {
             "reference": "Lamentations 3:25",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 26,
             "block_index": 1
         },
         {
             "reference": "Mark 10:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 26,
             "block_index": 2
         },
         {
             "reference": "Psalms 36:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 26,
             "block_index": 2
         },
         {
             "reference": "Psalms 31:19",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 26,
             "block_index": 2
         },
         {
             "reference": "Psalms 34:8",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 26,
             "block_index": 2
         },
         {
             "reference": "Lamentations 3:25",
-            "status": "self_rendered",
-            "block_index": 1
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 26,
+            "block_index": 2
         },
         {
             "reference": "Lamentations 3:26",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 26,
             "block_index": 3
         },
         {
             "reference": "Lamentations 3:25",
-            "status": "self_rendered",
-            "block_index": 1
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 26,
+            "block_index": 3
         },
         {
             "reference": "Lamentations 3:25",
-            "status": "self_rendered",
-            "block_index": 1
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 26,
+            "block_index": 5
         },
         {
             "reference": "Lamentations 3:25",
-            "status": "self_rendered",
-            "block_index": 1
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 26,
+            "block_index": 6
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 26,
             "block_index": 7
         },
         {
             "reference": "Lamentations 3:26",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 27,
             "block_index": 1
         },
         {
             "reference": "Isaiah 7:4",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 27,
             "block_index": 2
         },
         {
             "reference": "Isaiah 30:15",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 27,
             "block_index": 2
         },
         {
             "reference": "Isaiah 7:4",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 2
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 27,
+            "block_index": 3
         },
         {
             "reference": "Isaiah 30:15",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 27,
             "block_index": 3
         },
         {
             "reference": "Lamentations 3:26",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 27,
+            "block_index": 3
         },
         {
             "reference": "Habakkuk 2:20",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 27,
             "block_index": 5
         },
         {
             "reference": "Zephaniah 1:7",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 27,
             "block_index": 6
         },
         {
             "reference": "Zechariah 2:13",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 27,
             "block_index": 7
         },
         {
             "reference": "Isaiah 2:11",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 27,
             "block_index": 8
         },
         {
             "reference": "Isaiah 7:4",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 2
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 27,
+            "block_index": 9
         },
         {
             "reference": "Lamentations 3:26",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 27,
+            "block_index": 9
         },
         {
             "reference": "Lamentations 3:26",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 27,
+            "block_index": 10
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 27,
             "block_index": 11
         },
         {
             "reference": "Micah 7:7",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 28,
             "block_index": 1
         },
         {
             "reference": "Micah 7:7",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
-        },
-        {
-            "reference": "Micah 7:7b",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 28,
+            "block_index": 2
         },
         {
             "reference": "Micah 7:7",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 28,
+            "block_index": 3
         },
         {
-            "reference": "Micah 7:7b",
+            "reference": "Micah 7:7",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 28,
+            "block_index": 5
         },
         {
-            "reference": "Psalms 46:10",
+            "reference": "Micah 7:7",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 6
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 28,
+            "block_index": 5
         },
         {
             "reference": "Psalms 46:10",
             "status": "self_rendered",
-            "block_index": 7
+            "chapter_order": 28,
+            "block_index": 6,
+            "why": "Murray's section argues from 'Be still' (the stillness of the grave, of Jesus' 'Peace, be still'); OWB's Ps 46:10 reads 'stop fighting' (争いをやめて)"
         },
         {
             "reference": "Psalms 46:10",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 6
+            "status": "self_rendered",
+            "chapter_order": 28,
+            "block_index": 7,
+            "why": "Murray's section argues from 'Be still' (the stillness of the grave, of Jesus' 'Peace, be still'); OWB's Ps 46:10 reads 'stop fighting' (争いをやめて)"
+        },
+        {
+            "reference": "Psalms 46:10",
+            "status": "self_rendered",
+            "chapter_order": 28,
+            "block_index": 7,
+            "why": "Murray's section argues from 'Be still' (the stillness of the grave, of Jesus' 'Peace, be still'); OWB's Ps 46:10 reads 'stop fighting' (争いをやめて)"
         },
         {
             "reference": "Mark 4:39",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 28,
             "block_index": 7
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 28,
             "block_index": 8
         },
         {
             "reference": "Luke 2:25",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 29,
             "block_index": 1
         },
         {
             "reference": "Luke 2:38",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 29,
             "block_index": 1
         },
         {
             "reference": "John 14:20",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 29,
             "block_index": 4
         },
         {
-            "reference": "John 15:4a",
+            "reference": "John 15:4",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 29,
             "block_index": 4
         },
         {
             "reference": "Romans 6:11",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 29,
             "block_index": 4
         },
         {
             "reference": "Ephesians 1:3",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 29,
             "block_index": 4
         },
         {
             "reference": "Galatians 2:20",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 29,
             "block_index": 5
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 29,
             "block_index": 10
         },
         {
             "reference": "Luke 12:36",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 30,
             "block_index": 1
         },
         {
-            "reference": "1 Timothy 6:14b",
-            "status": "self_rendered",
+            "reference": "1 Timothy 6:14",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 30,
             "block_index": 2
         },
         {
             "reference": "1 Timothy 6:15",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 30,
             "block_index": 2
         },
         {
-            "reference": "1 Thessalonians 1:9-10",
-            "status": "self_rendered",
+            "reference": "1 Thessalonians 1:9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 30,
+            "block_index": 3
+        },
+        {
+            "reference": "1 Thessalonians 1:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 30,
             "block_index": 3
         },
         {
             "reference": "Titus 2:13",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 30,
             "block_index": 6
         },
         {
             "reference": "2 Thessalonians 1:10",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 30,
             "block_index": 6
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 30,
             "block_index": 10
         },
         {
             "reference": "Acts 1:4",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 31,
             "block_index": 1
         },
         {
             "reference": "Acts 10:33",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 31,
             "block_index": 5
         },
         {
             "reference": "Acts 13:2",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 31,
             "block_index": 5
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 31,
             "block_index": 11
         },
         {
             "reference": "Hosea 12:6",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 32,
             "block_index": 1
         },
         {
             "reference": "Hosea 12:6",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 32,
+            "block_index": 2
         },
         {
             "reference": "Psalms 25:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 32,
             "block_index": 8
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 32,
             "block_index": 9
         },
         {
-            "reference": "Isaiah 27:3a",
+            "reference": "Isaiah 27:3",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 33,
             "block_index": 1
         },
         {
             "reference": "Psalms 62:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 0
         },
         {
-            "reference": "Psalms 62:6a",
+            "reference": "Psalms 62:6",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 3
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 0
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
-            "block_index": 4
-        },
-        {
-            "reference": "Psalms 62:6a",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 3
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 4
         },
         {
-            "reference": "Psalms 62:5",
-            "status": "self_rendered",
+            "reference": "Psalms 62:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
             "block_index": 4
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
-            "block_index": 4
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 5
+        },
+        {
+            "reference": "Psalms 62:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 5
+        },
+        {
+            "reference": "Psalms 62:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 5
         },
         {
             "reference": "Mark 10:18",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
             "block_index": 5
         },
         {
             "reference": "1 Samuel 2:2",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
             "block_index": 5
         },
         {
             "reference": "Isaiah 40:28",
             "status": "self_rendered",
-            "block_index": 5
+            "chapter_order": 34,
+            "block_index": 5,
+            "why": "OWB's words, with Murray's own 'alone' set inside the quotation in marks"
         },
         {
             "reference": "Isaiah 40:29",
+            "status": "self_rendered",
+            "chapter_order": 34,
+            "block_index": 5,
+            "why": "OWB's words, with Murray's own 'alone' set inside the quotation in marks"
+        },
+        {
+            "reference": "Isaiah 40:31",
+            "status": "self_rendered",
+            "chapter_order": 34,
+            "block_index": 5,
+            "why": "OWB's words, with Murray's own 'alone' set inside the quotation in marks"
+        },
+        {
+            "reference": "Psalms 62:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
             "block_index": 5
         },
         {
-            "reference": "Isaiah 40:31a",
+            "reference": "Psalms 62:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 5
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 6
         },
         {
             "reference": "Psalms 62:5",
             "status": "self_rendered",
-            "block_index": 4
+            "chapter_order": 34,
+            "block_index": 6,
+            "why": "Murray's own adaptation ('wait thou only upon God Himself'), built on OWB's wording"
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
-            "block_index": 4
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 7
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
-            "block_index": 4
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 7
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
-            "block_index": 4
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 7
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
-            "block_index": 4
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 7
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
-            "block_index": 4
-        },
-        {
-            "reference": "Psalms 62:5",
-            "status": "self_rendered",
-            "block_index": 4
-        },
-        {
-            "reference": "Psalms 62:5",
-            "status": "self_rendered",
-            "block_index": 4
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 8
         },
         {
             "reference": "Psalms 43:4",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
             "block_index": 8
         },
         {
             "reference": "Matthew 16:24",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
             "block_index": 8
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
-            "block_index": 4
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 8
         },
         {
-            "reference": "Psalms 62:5b",
-            "status": "self_rendered",
+            "reference": "Psalms 62:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
             "block_index": 8
         },
         {
             "reference": "Psalms 62:6",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
             "block_index": 8
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
-            "block_index": 4
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 8
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
-            "block_index": 4
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 9
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
-            "block_index": 4
+            "status": "allusion",
+            "chapter_order": 34,
+            "block_index": 9,
+            "why": "Murray's own phrase 'waiting only', not a verse"
         },
         {
-            "reference": "Psalms 62:1",
+            "reference": "Psalms 62:5",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
-        },
-        {
-            "reference": "Psalms 25:5",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
             "block_index": 10
         },
         {
             "reference": "Psalms 62:5",
-            "status": "self_rendered",
-            "block_index": 4
+            "status": "allusion",
+            "chapter_order": 34,
+            "block_index": 10,
+            "why": "Murray's paraphrase 'Wait upon God'"
+        },
+        {
+            "reference": "Psalms 62:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 10
+        },
+        {
+            "reference": "Psalms 25:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 10
+        },
+        {
+            "reference": "Psalms 62:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "chapter_order": 34,
+            "block_index": 11
         }
     ]
 }
