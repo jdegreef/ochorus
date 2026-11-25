@@ -1435,10 +1435,10 @@
   },
   {
    "reference": "Hebrews 12:1",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 85,
    "chapter_order": 5,
-   "source_file": "the-key-in-my-hand.am.json"
+   "why": "was mined from the-key-in-my-hand.am.json's pre-OWB wording, which that work no longer carries; not verbatim OWB here"
   },
   {
    "reference": "Hebrews 12:2",
