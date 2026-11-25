@@ -963,10 +963,10 @@
   },
   {
    "reference": "Song 8:7",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 18,
    "chapter_order": 6,
-   "source_file": "godliness.am.json"
+   "why": "the godliness.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   },
   {
    "reference": "Ephesians 3:17",

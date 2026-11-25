@@ -1849,10 +1849,10 @@
   },
   {
    "reference": "James 1:7",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
    "chapter_order": 12,
-   "source_file": "godliness.am.json"
+   "why": "the godliness.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   },
   {
    "reference": "James 1:6",
@@ -1876,10 +1876,10 @@
   },
   {
    "reference": "James 1:7",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 20,
    "chapter_order": 12,
-   "source_file": "godliness.am.json"
+   "why": "the godliness.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   },
   {
    "reference": "Hebrews 3:18-19",

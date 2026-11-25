@@ -93,10 +93,10 @@
   },
   {
    "reference": "Matthew 5:44a",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
    "chapter_order": 12,
-   "source_file": "godliness.am.json"
+   "why": "the godliness.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   }
  ]
 }

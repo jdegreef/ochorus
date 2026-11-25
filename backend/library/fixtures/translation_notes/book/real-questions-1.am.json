@@ -1194,9 +1194,9 @@
         },
         {
             "reference": "Micah 6:8",
-            "status": "mined",
-            "source_file": "godliness.am.json",
-            "block_index": 6
+            "status": "self_rendered",
+            "block_index": 6,
+            "why": "the godliness.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
         },
         {
             "reference": "Romans 12:2",
