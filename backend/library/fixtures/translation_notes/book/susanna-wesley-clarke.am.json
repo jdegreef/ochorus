@@ -508,10 +508,9 @@
   },
   {
    "reference": "1 John 2:16",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 59,
-   "chapter_order": 13,
-   "source_file": "the-circumcision-of-the-heart.am.json"
+   "chapter_order": 13
   },
   {
    "reference": "Matthew 20:1",

@@ -803,8 +803,7 @@
         },
         {
             "reference": "Luke 11:4",
-            "status": "mined",
-            "source_file": "a-brand-plucked-from-the-fire.am.json",
+            "status": "self_rendered",
             "block_index": 32
         },
         {
@@ -961,8 +960,7 @@
         },
         {
             "reference": "1 Kings 17:1",
-            "status": "mined",
-            "source_file": "power-through-prayer.am.json",
+            "status": "self_rendered",
             "block_index": 15
         },
         {
