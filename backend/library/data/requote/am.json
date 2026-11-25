@@ -205,6 +205,13 @@
    "english": ["brand plucked from the burning", "plucked as a brand"],
    "old": ["ከእሳት የተነጠቀ ትንታግ", "ከእሳት እንደ ተነጠቀ ትንታግ"],
    "decision": "OWB Zech 3:2 reads «ከእሳት የተነጠቀ የሚነድ ጉማጅ». A book title built on the phrase stays the title; body quotations take OWB's words, with a one-time «(ትንታግ)» bridge where the title word must be recognised."
+  },
+  {
+   "id": "violent-take-it-by-force",
+   "references": ["Matthew 11:12"],
+   "english": ["suffereth violence", "the violent take it by force"],
+   "old": ["ትገፋለች", "ይናጠቋታል"],
+   "decision": "OWB reads the opposite sense (the kingdom suffers attack; violent men try to seize it). Where the author applies the AV to importunate prayer or holy violence (Bounds via Liddon; Wesley), render from the English and mark the row self_rendered."
   }
  ]
 }
