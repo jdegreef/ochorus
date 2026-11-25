@@ -227,7 +227,7 @@ class AdminContentEditJobsView(AdminAudited, APIView):
         if kind == "bio":
             target = f"author:{slug}"
         elif kind == "field":
-            entity = "sermon" if str(data.get("entity", "")).strip() == "sermon" else "book"
+            entity = "sermon" if str(data.get("entity", "")).strip().lower() == "sermon" else "book"
             target = f"{entity}:{slug}:{language}"
         else:
             target = f"book:{slug}:{language}"
@@ -279,8 +279,16 @@ class AdminContentEditJobsView(AdminAudited, APIView):
             return Response({"detail": "invalid slug."}, status=400)
         if language not in known_codes():
             return Response({"detail": "language must be a known code."}, status=400)
-        if len(value) > FIELD_VALUE_MAX:
-            return Response({"detail": "that text is too long."}, status=400)
+        # The column's own limit (a title is 300, a hook 200, a Scripture
+        # reference 160): a longer proposal would ship to the fixture and then
+        # fail the deploy's seed with a DataError. A one-line field takes no
+        # line breaks either.
+        column = _FIELD_MODELS[entity]._meta.get_field(field)
+        limit = column.max_length or FIELD_VALUE_MAX
+        if len(value) > limit:
+            return Response({"detail": f"keep it under {limit} characters."}, status=400)
+        if column.max_length and "\n" in value:
+            return Response({"detail": f"{field} is one line — no line breaks."}, status=400)
         if not value and field == "title":
             return Response({"detail": "a title can't be empty."}, status=400)
         row = (

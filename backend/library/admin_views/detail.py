@@ -323,14 +323,21 @@ class AdminBulkPublishView(AdminAudited, APIView):
         published = _EditionPublishView._parse(request.data)[1]
         allowed = allowed_languages(request, AdminCapability.PUBLISH, AdminVerb.ACT)
 
+        if not all(isinstance(raw, dict) for raw in items):
+            return Response({"detail": "each item must be {slug, language}."}, status=400)
+
         wanted: dict[tuple[str, str], dict] = {}
         skipped = []
         for raw in items:
-            slug = str((raw or {}).get("slug", "")).strip()
-            language = str((raw or {}).get("language", "")).strip()
-            if not slug or not language or (slug, language) in wanted:
-                continue
+            slug = str(raw.get("slug") or "").strip()
+            language = str(raw.get("language") or "").strip()
             item = {"slug": slug, "language": language}
+            if not slug or not language:
+                # Reported, not dropped: the caller's "N published" must add up.
+                skipped.append({**item, "reason": "Needs both a slug and a language."})
+                continue
+            if (slug, language) in wanted:
+                continue  # the same edition twice is one edition
             if allowed is not None and language not in allowed:
                 skipped.append({**item, "reason": "Your publish access doesn't cover this language."})
             elif refusal := publish_refusal(model, slug, published):
@@ -403,7 +410,8 @@ class AdminSermonDetailView(APIView):
             .values_list("sermon__language", "n")
         )
         reviews = {
-            r.language: r for r in ReviewOutcome.objects.filter(kind="sermon", slug=slug)
+            r.language: r
+            for r in ReviewOutcome.objects.filter(kind=ReviewOutcome.Kind.SERMON, slug=slug)
         }
 
         def excerpt(text: str) -> str:

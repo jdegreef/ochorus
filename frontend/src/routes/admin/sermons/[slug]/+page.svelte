@@ -8,11 +8,7 @@
 	import { adminReviewHref } from '$lib/adminLinks';
 	import { hrefInLocale } from '$lib/editionHref';
 	import { lang } from '$lib/lang.svelte';
-	import {
-		getAdminSermon,
-		setSermonPublished,
-		type AdminSermonLang
-	} from '$lib/library-admin';
+	import { getAdminSermon, setSermonPublished, type AdminSermonLang } from '$lib/library-admin';
 	import FieldEditButtons from '$lib/components/admin/FieldEditButtons.svelte';
 
 	let { data } = $props();
@@ -30,9 +26,15 @@
 
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
+	// A bare date ("1855-03-18", preached_on) is a calendar day, not UTC
+	// midnight — parsed as the latter it shows a day early west of UTC.
 	const dayFmt = (iso: string | null) =>
 		iso
-			? new Date(iso).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' })
+			? new Date(iso.length === 10 ? iso + 'T00:00:00' : iso).toLocaleDateString('en', {
+					year: 'numeric',
+					month: 'short',
+					day: 'numeric'
+				})
 			: '—';
 
 	// The publish state the toggle acts on, keyed by language code (one edition
@@ -192,12 +194,15 @@
 									{review}
 								</span>
 								{#if l.review?.note}<span class="min-w-0 text-muted">“{l.review.note}”</span>{/if}
-								<a
-									href={adminReviewHref('sermon', s.slug, l.code)}
-									class="ms-auto font-semibold text-accent hover:underline"
-								>
-									Compare with English →
-								</a>
+								<!-- Only while awaiting review: the queue lists unreviewed editions alone. -->
+								{#if l.source_type === 'ai_unreviewed'}
+									<a
+										href={adminReviewHref('sermon', s.slug, l.code)}
+										class="ms-auto font-semibold text-accent hover:underline"
+									>
+										Compare with English →
+									</a>
+								{/if}
 							</div>
 						{/if}
 

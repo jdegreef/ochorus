@@ -86,6 +86,20 @@ class AdminBulkPublishTests(TestCase):
         self.assertIn("retired", reasons["lord-teach-us-to-pray-2"])
         self.assertEqual(reasons["nope"], "No such edition.")
 
+    def test_an_incomplete_item_is_reported_not_dropped(self):
+        res = self.post(
+            self.superu,
+            {
+                "kind": "book",
+                "published": True,
+                "items": [{"slug": "one", "language": ""}],
+            },
+        )
+        self.assertEqual(res.status_code, 207)
+        self.assertEqual(
+            res.data["skipped"][0]["reason"], "Needs both a slug and a language."
+        )
+
     def test_unpublish_and_unchanged_rows_record_nothing(self):
         res = self.post(
             self.superu,
@@ -132,6 +146,9 @@ class AdminBulkPublishTests(TestCase):
         )
         self.assertEqual(
             self.post(self.superu, {"kind": "book", "items": []}).status_code, 400
+        )
+        self.assertEqual(
+            self.post(self.superu, {"kind": "book", "items": ["one"]}).status_code, 400
         )
         stranger = User.objects.create(
             username=str(uuid.uuid4()), email="reader@example.com"

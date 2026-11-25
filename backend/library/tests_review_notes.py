@@ -81,6 +81,14 @@ class ReviewNotesTests(TestCase):
         self.assertEqual(self.add(self.sw, note="  ").status_code, 400)
         self.assertEqual(self.add(self.sw, note="x" * 2001).status_code, 400)
         self.assertEqual(self.add(self.superu, language="fr").status_code, 404)
+        # A non-string value is coerced or refused — a 400, never a 500.
+        self.assertEqual(self.add(self.sw, note=123).status_code, 201)
+        res = self.client_for(self.sw).post(
+            URL,
+            {"kind": ["book"], "slug": "humility", "language": "sw", "note": "x"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 400)
 
     def test_only_the_author_or_a_super_admin_removes_a_note(self):
         note_id = self.add(self.superu).data["id"]

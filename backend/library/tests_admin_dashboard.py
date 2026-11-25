@@ -2329,6 +2329,11 @@ class AdminContentEditJobsTests(TestCase):
         self.assertEqual(post(field="title", value="Humility").status_code, 400)  # unchanged
         self.assertEqual(post(field="title", value="").status_code, 400)
         self.assertEqual(post(field="description", value="x" * 3001).status_code, 400)
+        # The column's own limit, not the generic one: a hook is 200, and a
+        # longer proposal would fail the deploy's seed. One-line fields take no
+        # line breaks.
+        self.assertEqual(post(field="hook", value="x" * 201).status_code, 400)
+        self.assertEqual(post(field="subtitle", value="Two\nlines").status_code, 400)
         missing = self.client.post(
             "/api/admin/content-edit-jobs/",
             {"kind": "field", "entity": "book", "slug": "nope", "language": "en",

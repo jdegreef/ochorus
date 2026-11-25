@@ -128,8 +128,9 @@
 								{/if}
 								{#if l.source_url}<a href={l.source_url} class="text-muted hover:text-accent" target="_blank" rel="noopener">source ↗</a>{/if}
 								{#if l.pdf_url}<a href={assetUrl(l.pdf_url)} class="text-muted hover:text-accent" target="_blank" rel="noopener">PDF ↗</a>{/if}
-								<!-- An AI edition opens in the review queue's side-by-side, beside its English. -->
-								{#if l.source_type !== 'public_domain'}<a href={adminReviewHref('book', b.slug, l.code)} class="font-semibold text-accent hover:underline">Compare with English →</a>{/if}
+								<!-- An edition awaiting review opens in the review queue's side-by-side, beside its
+								     English. Only then: the queue lists unreviewed editions alone. -->
+								{#if l.source_type === 'ai_unreviewed'}<a href={adminReviewHref('book', b.slug, l.code)} class="font-semibold text-accent hover:underline">Compare with English →</a>{/if}
 							</div>
 						</div>
 

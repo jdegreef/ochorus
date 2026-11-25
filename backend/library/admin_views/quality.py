@@ -1108,9 +1108,9 @@ class AdminReviewNotesView(AdminAudited, APIView):
 
     @staticmethod
     def _target(params) -> tuple[str, str, str] | None:
-        kind = (params.get("kind") or "").strip()
-        slug = (params.get("slug") or "").strip()
-        language = (params.get("language") or "").strip()
+        kind = str(params.get("kind") or "").strip()
+        slug = str(params.get("slug") or "").strip()
+        language = str(params.get("language") or "").strip()
         if kind not in AdminReviewQueueView.KINDS or not slug or not language:
             return None
         return kind, slug, language
@@ -1136,7 +1136,7 @@ class AdminReviewNotesView(AdminAudited, APIView):
         if target is None:
             return Response({"detail": "kind, slug and language are required."}, status=400)
         kind, slug, language = target
-        note = (data.get("note") or "").strip()
+        note = str(data.get("note") or "").strip()
         if not note:
             return Response({"detail": "Write the note first."}, status=400)
         if len(note) > REVIEW_NOTE_MAX:

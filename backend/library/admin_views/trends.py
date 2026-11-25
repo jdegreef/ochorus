@@ -183,8 +183,11 @@ def _review(now) -> dict:
 
     "Arrived" is when an AI edition's row was created (it enters the queue as
     unreviewed); "approved" is when an approver confirmed it (a provisional
-    decision isn't an approval yet). Books and sermons — the queue's bios have
-    no creation date that means "arrived for review"."""
+    decision isn't an approval yet). Approvals made with the ``approve_*``
+    management commands write no ``ReviewOutcome`` and record no time, so they
+    can't be placed in a week — the dashboard says so under the chart rather
+    than guess. Books and sermons — the queue's bios have no creation date
+    that means "arrived for review"."""
     starts = week_starts(now, WEEKS)
     waiting = 0
     oldest = None
@@ -202,7 +205,9 @@ def _review(now) -> dict:
         weekly = _counted(ai, "created_at", now, starts)["weekly"]
         arrivals = [a + b for a, b in zip(arrivals, weekly, strict=True)]
 
-    decisions = ReviewOutcome.objects.filter(kind__in=("book", "sermon"))
+    decisions = ReviewOutcome.objects.filter(
+        kind__in=(ReviewOutcome.Kind.BOOK, ReviewOutcome.Kind.SERMON)
+    )
     approvals = _counted(
         decisions.filter(outcome=ReviewOutcome.Outcome.APPROVED),
         "confirmed_at",

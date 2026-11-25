@@ -180,9 +180,12 @@
 				<span>{shortDate(review.weeks[0])}</span>
 				<span>this week</span>
 			</div>
-			{#if !review.has_decisions}
-				<p class="mt-2 text-micro text-muted">No review decisions recorded yet.</p>
-			{/if}
+			<!-- The approve_* management commands record no approval time, so their
+			     approvals can't be charted; saying so beats a line that looks stalled. -->
+			<p class="mt-2 text-micro text-muted">
+				{#if !review.has_decisions}No review-queue decisions recorded yet.{/if}
+				Approved counts approvals confirmed in the review queue, not ones made with the approve commands.
+			</p>
 		</div>
 	</section>
 </div>
