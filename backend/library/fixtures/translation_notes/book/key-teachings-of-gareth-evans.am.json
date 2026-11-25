@@ -497,10 +497,9 @@
   },
   {
    "reference": "Ephesians 2:6",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 13,
-   "chapter_order": 10,
-   "source_file": "key-teachings-of-watchman-nee.am.json"
+   "chapter_order": 10
   },
   {
    "reference": "Hebrews 4:9",
