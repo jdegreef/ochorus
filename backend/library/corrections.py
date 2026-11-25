@@ -10280,14 +10280,8 @@ BODY_CORRECTIONS.setdefault("a-call-to-the-unconverted", {}).setdefault("replace
     ("በስሙም ቍጥር 18 ላይ፦", "በስሙም ቍጥር 8 ላይ፦"),
     # [am] citation Luke 14:41 → 19:41 (matches English fix)
     ("እያለቀሰና እያዘነ (ሉቃስ 14:41-42)", "እያለቀሰና እያዘነ (ሉቃስ 19:41-42)"),
-    # [am] citation Ps 84:13 → 84:10 (matches English fix)
-    ("ከሺህ ይሻላል» (መዝሙር 84:13)", "ከሺህ ይሻላል» (መዝሙር 84:10)"),
     # [am] citation Jer 2:7 → 2:17 (matches English fix)
     ("በራስህ ላይ ታመጣዋለህ» (ኤርምያስ 2:7)", "በራስህ ላይ ታመጣዋለህ» (ኤርምያስ 2:17)"),
-    # [am] citation Rev 21:17 → 21:27 (matches English fix)
-    ("ከቶ አይገባም» (ራእይ 21:17)", "ከቶ አይገባም» (ራእይ 21:27)"),
-    # [am] citation Rom 10:25 → 10:21 (matches English fix)
-    ("እጆቼን ዘረጋሁ» (ሮሜ 10:25)", "እጆቼን ዘረጋሁ» (ሮሜ 10:21)"),
     # [am] citation Ps 145:19 → 145:9 (matches English fix)
     ("በሥራው ሁሉ ላይ ነው» (መዝሙር 145:17፣ 19)", "በሥራው ሁሉ ላይ ነው» (መዝሙር 145:17፣ 9)"),
     # [am] citation Ps 1:21 → 50:21 (matches English fix)
