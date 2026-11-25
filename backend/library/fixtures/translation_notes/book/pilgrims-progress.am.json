@@ -736,15 +736,15 @@
     },
     {
       "reference": "Psalm 120:3",
-      "status": "mined",
+      "status": "self_rendered",
       "block_index": 1818,
-      "source_file": "the-fourfold-gospel.am.json"
+      "why": "wording borrowed from the-fourfold-gospel.am.json, which now quotes OWB; this work's own quotation is not yet OWB, so the translator's until its re-quote"
     },
     {
       "reference": "Psalm 120:4",
-      "status": "mined",
+      "status": "self_rendered",
       "block_index": 1818,
-      "source_file": "the-fourfold-gospel.am.json"
+      "why": "wording borrowed from the-fourfold-gospel.am.json, which now quotes OWB; this work's own quotation is not yet OWB, so the translator's until its re-quote"
     },
     {
       "reference": "Job 33:14",
