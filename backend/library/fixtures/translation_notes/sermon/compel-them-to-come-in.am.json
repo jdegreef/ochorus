@@ -204,9 +204,9 @@
         },
         {
             "reference": "Isaiah 55:2",
-            "status": "mined",
-            "source_file": "salvation-by-faith.am.json",
-            "block_index": 22
+            "status": "self_rendered",
+            "block_index": 22,
+            "why": "was mined from salvation-by-faith.am.json's pre-OWB wording, which that work no longer carries; not verbatim OWB here"
         },
         {
             "reference": "Genesis 19:17",
