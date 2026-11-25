@@ -103,9 +103,9 @@ const config = {
 		// can surface an "update available" prompt instead of updating silently.
 		serviceWorker: { register: false },
 		prerender: APP ? APP_PRERENDER : {
-			// Pages rendered at once: 3 on Render, 1 elsewhere, unless the build
-			// sets PRERENDER_CONCURRENCY (CI uses 8 against its own API). Why 3 and
-			// what it costs the live API: prerender-concurrency.js. The build-time
+			// Pages rendered at once: 1, unless the build sets
+			// PRERENDER_CONCURRENCY (CI uses 8 against its own API). Why Render is
+			// back at 1: prerender-concurrency.js. The build-time
 			// fetch layer ($lib/buildFetch, $lib/chapterBatch) keys everything by
 			// URL, so a page built alongside others carries the same responses —
 			// only the ORDER of a page's inlined responses can differ, when its load
