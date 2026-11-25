@@ -324,8 +324,7 @@
         },
         {
             "reference": "Exodus 33:18",
-            "status": "mined",
-            "source_file": "key-teachings-of-gareth-evans.am.json",
+            "status": "self_rendered",
             "block_index": 0
         },
         {
@@ -350,8 +349,7 @@
         },
         {
             "reference": "Exodus 33:15",
-            "status": "mined",
-            "source_file": "key-teachings-of-gareth-evans.am.json",
+            "status": "self_rendered",
             "block_index": 11
         },
         {
