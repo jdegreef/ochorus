@@ -1080,10 +1080,10 @@
   },
   {
    "reference": "Psalm 90:12",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 6,
    "chapter_order": 21,
-   "source_file": "growing-in-wisdom.am.json"
+   "why": "wording was borrowed from growing-in-wisdom.am's pre-OWB Amharic, which that work no longer carries (re-quoted to OWB 2026-11-25); not verbatim OWB here"
   },
   {
    "reference": "James 4:13-14",
@@ -1100,10 +1100,10 @@
   },
   {
    "reference": "Proverbs 22:29",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 19,
    "chapter_order": 21,
-   "source_file": "growing-in-wisdom.am.json"
+   "why": "wording was borrowed from growing-in-wisdom.am's pre-OWB Amharic, which that work no longer carries (re-quoted to OWB 2026-11-25); not verbatim OWB here"
   },
   {
    "reference": "Zechariah 8:22",
