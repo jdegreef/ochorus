@@ -174,15 +174,15 @@
         },
         {
             "reference": "Psalm 55:17",
-            "status": "mined",
-            "source_file": "key-teachings-of-r-a-torrey.am.json",
-            "block_index": 17
+            "status": "self_rendered",
+            "block_index": 17,
+            "why": "the wording was lifted from key-teachings-of-r-a-torrey.am, which has since been re-quoted to OWB; this edition still carries the earlier Amharic wording"
         },
         {
             "reference": "Daniel 6:10",
-            "status": "mined",
-            "source_file": "key-teachings-of-r-a-torrey.am.json",
-            "block_index": 17
+            "status": "self_rendered",
+            "block_index": 17,
+            "why": "the wording was lifted from key-teachings-of-r-a-torrey.am, which has since been re-quoted to OWB; this edition still carries the earlier Amharic wording"
         },
         {
             "reference": "Luke 1:10",
@@ -1245,9 +1245,9 @@
         },
         {
             "reference": "Revelation 5:9",
-            "status": "mined",
-            "source_file": "key-teachings-of-r-a-torrey.am.json",
-            "block_index": 18
+            "status": "self_rendered",
+            "block_index": 18,
+            "why": "the wording was lifted from key-teachings-of-r-a-torrey.am, which has since been re-quoted to OWB; this edition still carries the earlier Amharic wording"
         },
         {
             "reference": "Revelation 8:1",
