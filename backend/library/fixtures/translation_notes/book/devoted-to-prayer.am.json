@@ -166,7 +166,6 @@
         {
             "reference": "Acts 2:42",
             "status": "self_rendered",
-            "block_index": -1,
             "chapter_order": 3,
             "why": "the title argues from 'the prayers' (plural); OWB Amharic reads ለጸሎት, so the translator's «በየጸሎቱ» stays"
         },
@@ -391,7 +390,6 @@
             "reference": "Acts 4:24",
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
-            "block_index": -1,
             "chapter_order": 5
         },
         {
@@ -671,7 +669,6 @@
             "reference": "Acts 7:60",
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
-            "block_index": -1,
             "chapter_order": 7
         },
         {
@@ -1749,7 +1746,6 @@
             "reference": "Philippians 4:6",
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
-            "block_index": -1,
             "chapter_order": 17
         },
         {
@@ -1889,7 +1885,6 @@
             "reference": "1 Thessalonians 5:17",
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
-            "block_index": -1,
             "chapter_order": 18
         },
         {
