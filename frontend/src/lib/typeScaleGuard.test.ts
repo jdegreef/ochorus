@@ -85,6 +85,8 @@ describe('type scale', () => {
 			const rel = file.replace(SRC, 'src');
 			if (
 				rel.includes('/admin/') ||
+				// The admin's inventory lists — admin surface, drawn by a shared component.
+				rel.endsWith('src/lib/components/AdminCatalog.svelte') ||
 				rel.endsWith('src/routes/+page.svelte') ||
 				rel.endsWith('src/lib/components/HomeIntro.svelte') ||
 				rel.endsWith('src/lib/components/HomeHero.svelte') ||

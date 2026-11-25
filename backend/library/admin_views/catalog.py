@@ -35,6 +35,7 @@ from ..models import (
     Author,
     AuthorTranslation,
     Book,
+    Chapter,
     Plan,
     PlanDay,
     Quote,
@@ -112,8 +113,16 @@ def _count(model, fk: str, of: str = "pk") -> Coalesce:
 
 
 def _books(qs: QuerySet) -> QuerySet:
+    words = (
+        Chapter.objects.filter(book=OuterRef("pk"))
+        .order_by()
+        .values("book")
+        .annotate(w=Sum("word_count"))
+        .values("w")
+    )
     return qs.select_related("author", "series").annotate(
-        num_chapters=Count("chapters"), words=Coalesce(Sum("chapters__word_count"), 0)
+        num_chapters=_count(Chapter, "book"),
+        words=Coalesce(Subquery(words, output_field=IntegerField()), 0),
     )
 
 
@@ -475,7 +484,22 @@ class AdminCatalogView(APIView):
         pages = max(1, -(-total // page_size))
         page = _int(params.get("page"), 1, 1, pages)
         start = (page - 1) * page_size
-        rows = spec.decorate(qs).order_by(*spec.sorts[sort])[start : start + page_size]
+        # Pick the page first, then decorate only its rows: the per-row counts
+        # are subqueries, and computing them for every row just to keep fifty
+        # cost ~2 s on the books list. A sort BY one of them has to compute it
+        # for every row to order them, so only that case orders the decorated set.
+        order = spec.sorts[sort]
+        derived = set(spec.decorate(qs).query.annotations) - set(qs.query.annotations)
+        ordered = (
+            spec.decorate(qs) if any(f.lstrip("-") in derived for f in order) else qs
+        )
+        pks = list(
+            ordered.order_by(*order).values_list("pk", flat=True)[
+                start : start + page_size
+            ]
+        )
+        by_pk = {r.pk: r for r in spec.decorate(qs.filter(pk__in=pks))}
+        rows = [by_pk[pk] for pk in pks]
 
         return Response(
             {

@@ -101,7 +101,7 @@
 			<section class="rounded-card border border-border bg-surface p-5">
 				<div class="mb-4 flex flex-wrap items-center justify-between gap-3">
 					<h2 class="text-h3" aria-live="polite">
-						{countLabel(d.total, cfg.noun)}{#if filtered}<span class="text-muted"> match</span>{/if}
+						{countLabel(d.total, cfg.noun)}{#if filtered}{" "}<span class="text-muted">match</span>{/if}
 						{#if res.loading}<span class="btn-spinner ms-2 align-middle" aria-label="Updating"
 							></span>{/if}
 					</h2>
