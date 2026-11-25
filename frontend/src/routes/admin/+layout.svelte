@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { auth } from '$lib/auth.svelte';
-	import { ADMIN_SECTIONS, opensSection } from '$lib/adminSections';
+	import { ADMIN_GROUPS, ADMIN_SECTIONS, opensSection } from '$lib/adminSections';
 	import { SCRIPT_FONTS, linkSheet } from '$lib/fontSheets';
 	import { onMount } from 'svelte';
 
@@ -14,6 +14,13 @@
 	// Only the sections the signed-in user can reach (the list and the rule live
 	// in $lib/adminSections, shared with the Help page's "Where things live").
 	const visible = $derived(ADMIN_SECTIONS.filter((s) => opensSection(s, auth)));
+	// Under their headings, in the groups' order; a group the viewer can open
+	// nothing in is left out entirely rather than drawn as an empty heading.
+	const groups = $derived(
+		ADMIN_GROUPS.map((g) => ({ name: g, sections: visible.filter((s) => s.group === g) })).filter(
+			(g) => g.sections.length
+		)
+	);
 
 	// Exact match for the dashboard root; prefix match for sections (so a future
 	// /admin/coverage/… detail page keeps its parent highlighted).
@@ -44,21 +51,28 @@
 			</a>
 		</div>
 
+		<!-- Mobile: one scrollable pill row, as before. Desktop: the same links
+		     under group headings — two dozen links in one column read as a wall. -->
 		<nav
 			aria-label="Admin sections"
-			class="flex gap-1 overflow-x-auto px-3 py-3 md:mt-2 md:flex-col md:overflow-visible"
+			class="flex gap-1 overflow-x-auto px-3 py-3 md:mt-1 md:flex-col md:gap-0 md:overflow-visible"
 		>
-			{#each visible as s (s.href)}
-				{@const active = isActive(s.href, s.exact)}
-				<a
-					href={s.href}
-					aria-current={active ? 'page' : undefined}
-					class="shrink-0 whitespace-nowrap rounded-sm px-3 py-2 text-small font-semibold transition-colors hover:no-underline {active
-						? 'bg-accent-soft text-accent'
-						: 'text-muted hover:bg-surface-2 hover:text-text'}"
-				>
-					{s.label}
-				</a>
+			{#each groups as g (g.name)}
+				<p class="hidden px-3 pb-1 pt-3 text-micro font-semibold uppercase tracking-wide text-muted md:block">
+					{g.name}
+				</p>
+				{#each g.sections as s (s.href)}
+					{@const active = isActive(s.href, s.exact)}
+					<a
+						href={s.href}
+						aria-current={active ? 'page' : undefined}
+						class="shrink-0 whitespace-nowrap rounded-sm px-3 py-2 text-small font-semibold transition-colors hover:no-underline md:py-1.5 {active
+							? 'bg-accent-soft text-accent'
+							: 'text-muted hover:bg-surface-2 hover:text-text'}"
+					>
+						{s.label}
+					</a>
+				{/each}
 			{/each}
 		</nav>
 

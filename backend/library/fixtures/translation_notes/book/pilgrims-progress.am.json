@@ -479,9 +479,8 @@
     },
     {
       "reference": "Genesis 6:5",
-      "status": "mined",
-      "block_index": 1170,
-      "source_file": "mortification-of-sin.am.json"
+      "status": "self_rendered",
+      "block_index": 1170
     },
     {
       "reference": "Genesis 8:21",
