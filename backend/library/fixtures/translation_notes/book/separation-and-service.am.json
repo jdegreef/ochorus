@@ -5,978 +5,1221 @@
  "job_issue": 3726,
  "pull_request": null,
  "note": [
-  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
-  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), read offline from the bundled owb-am text, per the founder decision of 2026-11-18 that every Amharic work quotes OWB. Every quotation was re-quoted to it verbatim, including the long Numbers 6 and 7 passages the book expounds, the Aaronic blessing (Num 6:24-27) wherever chapter 3 repeats it, and verbatim recitations without marks (Heb 9:22, Rom 5:15, Matt 17:2, Num 7:84).",
+  "A `mined` row is a verbatim OWB span in that block: the whole verse or range, the shortest span carrying the quoted clause, or exact OWB pieces joined with '…'. `self_rendered` rows (each with a `why`) are allusions, bare citations, and the author's own adaptations of a verse.",
+  "Judgement calls. Num 6:24 'keep' is OWB ይንከባከብህ and 6:25 'be gracious' is ሞገሱንም ያድልህ; the author's prose about keeping and favour reads naturally with both. The author's Trinitarian readings of the blessing ('Jehovah, the Father/Son/Spirit/Bridegroom') keep his inserted titles around OWB's words and are self_rendered; 'Jehovah' is እግዚአብሔር throughout (the `jehovah` decision), in the readings and in prose (3.42, 3.68). Num 6:13: OWB has ይቅረብ ('let him come'), but the author argues from 'He shall be brought, not he shall come'; the quotation is OWB and the later «ያምጡት» keeps a one-line gloss that this is the Hebrew's literal sense. Num 7:84-86: OWB gives the weights in kilograms, quoted as is. Dan 9:17 OWB has 'look with favour' (በሞገስ ተመልከት) where the author's KJV has 'cause thy face to shine'; quoted as OWB, the paragraph's point (favour) stands. Acts 9:6's question comes from Acts 22:10. Matt 5:44 OWB lacks 'bless … do good'; quoted as OWB with '…'. Rom 8:2 OWB reads 'set you free' where the KJV has 'me'. Ps 89:15-18 keeps the duplicated line the English source carries."
  ],
  "references": [
   {
    "reference": "Hebrews 10:14",
-   "status": "mined",
    "block_index": 2,
    "chapter_order": 1,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Psalm 51:11",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 1
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 14:16",
-   "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
   },
   {
-   "reference": "Numbers 6:1-21",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 2
+   "reference": "Psalm 51:11",
+   "block_index": 2,
+   "chapter_order": 1,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 1:17",
-   "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Numbers 6:1-21",
+   "block_index": 1,
+   "chapter_order": 2,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
   },
   {
    "reference": "Revelation 22:17",
-   "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Exodus 19:6",
-   "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Philippians 3:8",
-   "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "status": "self_rendered",
+   "why": "the author's own noun phrase 'the winning Christ', not a quotation of the verse"
   },
   {
    "reference": "Numbers 6:3-4",
-   "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Genesis 3:6",
-   "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Numbers 6:3",
+   "block_index": 9,
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 10:31",
-   "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
   },
   {
    "reference": "Song of Solomon 1:2",
-   "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Numbers 6:5",
-   "status": "self_rendered",
    "block_index": 14,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 12:2",
-   "status": "self_rendered",
    "block_index": 15,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Matthew 10:30",
-   "status": "mined",
-   "block_index": 17,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
   },
   {
    "reference": "1 Corinthians 6:19-20",
-   "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Matthew 10:30",
+   "block_index": 17,
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Numbers 6:6-8",
-   "status": "self_rendered",
    "block_index": 19,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 6:23",
-   "status": "self_rendered",
    "block_index": 20,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
   },
   {
    "reference": "Matthew 10:37",
-   "status": "mined",
    "block_index": 21,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 2:1",
-   "status": "self_rendered",
    "block_index": 23,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
   },
   {
    "reference": "Numbers 6:9-12",
-   "status": "self_rendered",
    "block_index": 25,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 9:22",
-   "status": "self_rendered",
    "block_index": 32,
-   "chapter_order": 2
-  },
-  {
-   "reference": "1 John 1:9",
-   "status": "mined",
-   "block_index": 33,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Numbers 6:13-15",
-   "status": "self_rendered",
-   "block_index": 35,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Numbers 6:13",
-   "status": "self_rendered",
-   "block_index": 58,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Numbers 6:21",
-   "status": "self_rendered",
-   "block_index": 58,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Jude 1:24",
    "status": "mined",
-   "block_index": 60,
-   "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Colossians 1:22",
-   "status": "self_rendered",
-   "block_index": 60,
-   "chapter_order": 2
-  },
-  {
-   "reference": "1 Kings 8:63",
-   "status": "self_rendered",
-   "block_index": 64,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Romans 4:25",
-   "status": "self_rendered",
-   "block_index": 65,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Romans 6:10",
-   "status": "self_rendered",
-   "block_index": 65,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Romans 6:11",
-   "status": "self_rendered",
-   "block_index": 65,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Romans 8:1",
-   "status": "self_rendered",
-   "block_index": 65,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Romans 8:2",
-   "status": "mined",
-   "block_index": 65,
-   "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Hebrews 10:10",
-   "status": "mined",
-   "block_index": 65,
-   "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Hebrews 10:14",
-   "status": "mined",
-   "block_index": 65,
-   "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Genesis 8:21",
-   "status": "self_rendered",
-   "block_index": 67,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Genesis 22:16-18",
-   "status": "self_rendered",
-   "block_index": 67,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Isaiah 53:4-10",
-   "status": "self_rendered",
-   "block_index": 70,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Hebrews 2:11",
-   "status": "self_rendered",
-   "block_index": 71,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Romans 5:15",
-   "status": "mined",
-   "block_index": 0,
-   "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Numbers 6:22-27",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Luke 15:11-24",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Psalm 89:15-18",
-   "status": "self_rendered",
-   "block_index": 7,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Philippians 4:7",
-   "status": "self_rendered",
-   "block_index": 8,
-   "chapter_order": 3
-  },
-  {
-   "reference": "1 Peter 1:8",
-   "status": "self_rendered",
-   "block_index": 8,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Malachi 3:8",
-   "status": "self_rendered",
-   "block_index": 8,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:27",
-   "status": "self_rendered",
-   "block_index": 10,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Ephesians 2:4",
-   "status": "self_rendered",
-   "block_index": 12,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Psalm 103:1",
-   "status": "self_rendered",
-   "block_index": 15,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:24-26",
-   "status": "self_rendered",
-   "block_index": 17,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:24-26",
-   "status": "self_rendered",
-   "block_index": 18,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:24-26",
-   "status": "self_rendered",
-   "block_index": 19,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:24-26",
-   "status": "self_rendered",
-   "block_index": 22,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:24-26",
-   "status": "self_rendered",
-   "block_index": 23,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:24-26",
-   "status": "self_rendered",
-   "block_index": 24,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:24",
-   "status": "self_rendered",
-   "block_index": 27,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Isaiah 66:13",
-   "status": "self_rendered",
-   "block_index": 27,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Isaiah 49:15",
-   "status": "self_rendered",
-   "block_index": 27,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Matthew 5:16",
-   "status": "self_rendered",
-   "block_index": 28,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Matthew 5:44-45",
-   "status": "self_rendered",
-   "block_index": 28,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Matthew 5:48",
-   "status": "mined",
-   "block_index": 28,
-   "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Matthew 6:6",
-   "status": "self_rendered",
-   "block_index": 28,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Matthew 6:8",
-   "status": "mined",
-   "block_index": 28,
-   "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Deuteronomy 33:26-27",
-   "status": "self_rendered",
-   "block_index": 30,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Hebrews 11:25",
-   "status": "self_rendered",
-   "block_index": 31,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:24",
-   "status": "self_rendered",
-   "block_index": 32,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Philippians 4:19",
-   "status": "mined",
-   "block_index": 32,
-   "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "2 Corinthians 9:8",
-   "status": "self_rendered",
-   "block_index": 32,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Jude 1:24",
-   "status": "self_rendered",
-   "block_index": 32,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Ephesians 1:3",
-   "status": "mined",
-   "block_index": 32,
-   "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Galatians 4:4",
-   "status": "self_rendered",
-   "block_index": 35,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Hebrews 1:3",
-   "status": "self_rendered",
-   "block_index": 35,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:25",
-   "status": "self_rendered",
-   "block_index": 40,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:25",
-   "status": "self_rendered",
-   "block_index": 41,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Proverbs 18:24",
-   "status": "self_rendered",
-   "block_index": 41,
-   "chapter_order": 3
-  },
-  {
-   "reference": "John 8:12",
-   "status": "self_rendered",
-   "block_index": 42,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:25",
-   "status": "self_rendered",
-   "block_index": 43,
-   "chapter_order": 3
-  },
-  {
-   "reference": "2 Corinthians 4:6",
-   "status": "mined",
-   "block_index": 43,
-   "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Daniel 9:16-17",
-   "status": "self_rendered",
-   "block_index": 44,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Psalm 80:3",
-   "status": "self_rendered",
-   "block_index": 44,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Psalm 67:2",
-   "status": "self_rendered",
-   "block_index": 44,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Psalm 30:5",
-   "status": "self_rendered",
-   "block_index": 45,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Song of Solomon 1:2",
-   "status": "self_rendered",
-   "block_index": 46,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Song of Solomon 1:4",
-   "status": "self_rendered",
-   "block_index": 46,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Proverbs 19:12",
-   "status": "self_rendered",
-   "block_index": 46,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Matthew 17:2",
-   "status": "self_rendered",
-   "block_index": 47,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Acts 7:55-60",
-   "status": "self_rendered",
-   "block_index": 47,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Acts 26:13",
-   "status": "mined",
-   "block_index": 47,
-   "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Romans 15:3",
-   "status": "self_rendered",
-   "block_index": 47,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Acts 9:6",
-   "status": "mined",
-   "block_index": 47,
-   "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "2 Corinthians 3:18",
-   "status": "mined",
-   "block_index": 47,
-   "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Luke 24:32",
-   "status": "self_rendered",
-   "block_index": 49,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Matthew 11:25",
-   "status": "self_rendered",
-   "block_index": 49,
-   "chapter_order": 3
-  },
-  {
-   "reference": "John 14:17",
-   "status": "mined",
-   "block_index": 50,
-   "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "John 16:7",
-   "status": "self_rendered",
-   "block_index": 51,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:26",
-   "status": "self_rendered",
-   "block_index": 53,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:26",
-   "status": "self_rendered",
-   "block_index": 56,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Ephesians 4:30",
-   "status": "self_rendered",
-   "block_index": 56,
-   "chapter_order": 3
-  },
-  {
-   "reference": "1 John 2:1",
-   "status": "self_rendered",
-   "block_index": 56,
-   "chapter_order": 3
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 1:7",
-   "status": "self_rendered",
-   "block_index": 56,
-   "chapter_order": 3
-  },
-  {
-   "reference": "John 14:27",
+   "block_index": 33,
+   "chapter_order": 2,
    "status": "mined",
-   "block_index": 58,
-   "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Romans 5:1",
-   "status": "self_rendered",
+   "reference": "1 John 1:9",
+   "block_index": 33,
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 6:13-15",
+   "block_index": 35,
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 6:13",
    "block_index": 58,
-   "chapter_order": 3
+   "chapter_order": 2,
+   "status": "self_rendered",
+   "why": "the author argues from 'He shall be brought, not he shall come' (KJV); OWB 6:13 reads ይቅረብ, so «ያምጡት» stays, with a one-line gloss that it is the Hebrew's literal sense"
+  },
+  {
+   "reference": "Numbers 6:21",
+   "block_index": 58,
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Colossians 1:22",
+   "block_index": 60,
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Jude 1:24",
+   "block_index": 60,
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Kings 8:63",
+   "block_index": 64,
+   "chapter_order": 2,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Hebrews 10:10",
+   "block_index": 65,
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Hebrews 10:14",
+   "block_index": 65,
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Romans 4:25",
+   "block_index": 65,
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Romans 6:10",
+   "block_index": 65,
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Romans 6:11",
+   "block_index": 65,
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Romans 8:2",
+   "block_index": 65,
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Genesis 22:16-18",
+   "block_index": 67,
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Genesis 8:21",
+   "block_index": 67,
+   "chapter_order": 2,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Romans 12:1",
+   "block_index": 68,
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 53:4-10",
+   "block_index": 70,
+   "chapter_order": 2,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Hebrews 2:11",
+   "block_index": 71,
+   "chapter_order": 2,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Romans 5:15",
+   "block_index": 0,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 6:22-27",
+   "block_index": 1,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Luke 15:13",
+   "block_index": 5,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 89:15-18",
+   "block_index": 7,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "block_index": 8,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Malachi 3:8",
+   "block_index": 8,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
   },
   {
    "reference": "Philippians 4:7",
-   "status": "mined",
-   "block_index": 58,
+   "block_index": 8,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Galatians 5:22",
+   "reference": "Numbers 6:22-27",
+   "block_index": 9,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 6:27",
+   "block_index": 10,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Ephesians 2:4",
+   "block_index": 12,
+   "chapter_order": 3,
    "status": "self_rendered",
-   "block_index": 58,
-   "chapter_order": 3
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
   },
   {
-   "reference": "Job 34:29",
-   "status": "self_rendered",
-   "block_index": 59,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Ephesians 1:17",
-   "status": "mined",
-   "block_index": 59,
+   "reference": "Psalm 103:1",
+   "block_index": 15,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Ephesians 1:18-19",
-   "status": "self_rendered",
-   "block_index": 59,
-   "chapter_order": 3
-  },
-  {
-   "reference": "John 4:14",
    "status": "mined",
-   "block_index": 60,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 6:24",
+   "block_index": 17,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "John 4:14",
-   "status": "self_rendered",
-   "block_index": 61,
-   "chapter_order": 3
-  },
-  {
-   "reference": "John 4:14",
    "status": "mined",
-   "block_index": 62,
-   "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "John 7:38",
-   "status": "mined",
-   "block_index": 62,
+   "reference": "Numbers 6:25",
+   "block_index": 18,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "John 7:39",
    "status": "mined",
-   "block_index": 62,
-   "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Numbers 6:26",
-   "status": "self_rendered",
-   "block_index": 63,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:27",
-   "status": "self_rendered",
-   "block_index": 65,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:27",
-   "status": "self_rendered",
-   "block_index": 66,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Hebrews 13:8",
-   "status": "mined",
-   "block_index": 68,
+   "block_index": 19,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "2 Peter 1:3",
-   "status": "self_rendered",
-   "block_index": 68,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Matthew 28:19",
-   "status": "self_rendered",
-   "block_index": 69,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:24-26",
-   "status": "self_rendered",
-   "block_index": 69,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Philippians 2:15",
-   "status": "self_rendered",
-   "block_index": 69,
-   "chapter_order": 3
-  },
-  {
-   "reference": "2 Corinthians 3:2",
    "status": "mined",
-   "block_index": 69,
-   "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Revelation 7:1-3",
-   "status": "self_rendered",
-   "block_index": 70,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Luke 21:34-36",
-   "status": "self_rendered",
-   "block_index": 71,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Matthew 25:1-13",
-   "status": "self_rendered",
-   "block_index": 71,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Revelation 7:14-17",
-   "status": "self_rendered",
-   "block_index": 71,
-   "chapter_order": 3
-  },
-  {
-   "reference": "2 Thessalonians 1:6-10",
-   "status": "self_rendered",
-   "block_index": 71,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Revelation 20:4",
-   "status": "self_rendered",
-   "block_index": 71,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:27",
-   "status": "self_rendered",
-   "block_index": 72,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Numbers 6:23",
-   "status": "self_rendered",
-   "block_index": 72,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Matthew 28:18",
-   "status": "mined",
-   "block_index": 72,
-   "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Matthew 28:19",
-   "status": "self_rendered",
-   "block_index": 72,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Matthew 28:20",
-   "status": "self_rendered",
-   "block_index": 72,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Ecclesiastes 8:4",
-   "status": "self_rendered",
-   "block_index": 72,
-   "chapter_order": 3
-  },
-  {
-   "reference": "1 Corinthians 15:28",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 4
-  },
-  {
-   "reference": "Mark 14:8",
-   "status": "self_rendered",
-   "block_index": 6,
-   "chapter_order": 4
-  },
-  {
-   "reference": "Mark 14:9",
-   "status": "mined",
-   "block_index": 6,
-   "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "John 12:6",
-   "status": "self_rendered",
-   "block_index": 6,
-   "chapter_order": 4
-  },
-  {
-   "reference": "Numbers 7:1-2",
-   "status": "self_rendered",
-   "block_index": 10,
-   "chapter_order": 4
-  },
-  {
-   "reference": "Romans 11:36",
-   "status": "mined",
-   "block_index": 12,
-   "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Numbers 7:3-5",
-   "status": "self_rendered",
-   "block_index": 15,
-   "chapter_order": 4
-  },
-  {
-   "reference": "Proverbs 23:26",
-   "status": "self_rendered",
+   "reference": "Numbers 6:24",
    "block_index": 22,
-   "chapter_order": 4
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "the author's own Trinitarian reading of the blessing ('Jehovah, the Father, bless thee'): OWB's words with እግዚአብሔር አብ inserted"
   },
   {
-   "reference": "Numbers 7:6-9",
+   "reference": "Numbers 6:25",
+   "block_index": 23,
+   "chapter_order": 3,
    "status": "self_rendered",
+   "why": "the author's Trinitarian reading ('Jehovah, the Son, the Bridegroom'): OWB's words with the author's inserted titles"
+  },
+  {
+   "reference": "Numbers 6:26",
    "block_index": 24,
-   "chapter_order": 4
-  },
-  {
-   "reference": "Numbers 7:9",
+   "chapter_order": 3,
    "status": "self_rendered",
-   "block_index": 30,
-   "chapter_order": 4
+   "why": "the author's Trinitarian reading ('Jehovah, the Spirit'): OWB's words with መንፈስ ቅዱስ inserted"
   },
   {
-   "reference": "Isaiah 63:3",
-   "status": "self_rendered",
-   "block_index": 31,
-   "chapter_order": 4
-  },
-  {
-   "reference": "2 Timothy 4:16-17",
+   "reference": "Isaiah 49:15",
+   "block_index": 27,
+   "chapter_order": 3,
    "status": "mined",
-   "block_index": 31,
-   "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Matthew 20:22",
-   "status": "self_rendered",
-   "block_index": 31,
-   "chapter_order": 4
-  },
-  {
-   "reference": "Philippians 3:7-8",
-   "status": "self_rendered",
-   "block_index": 34,
-   "chapter_order": 4
-  },
-  {
-   "reference": "Numbers 7:10-11",
-   "status": "self_rendered",
-   "block_index": 36,
-   "chapter_order": 4
-  },
-  {
-   "reference": "Hebrews 9:22",
-   "status": "self_rendered",
-   "block_index": 38,
-   "chapter_order": 4
-  },
-  {
-   "reference": "Numbers 7:11",
-   "status": "self_rendered",
-   "block_index": 41,
-   "chapter_order": 4
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 66:13",
-   "status": "self_rendered",
-   "block_index": 44,
-   "chapter_order": 4
+   "block_index": 27,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Numbers 7:12",
+   "reference": "Numbers 6:24",
+   "block_index": 27,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 5:16",
+   "block_index": 28,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 5:44-45",
+   "block_index": 28,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 5:48",
+   "block_index": 28,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 6:4",
+   "block_index": 28,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 6:8",
+   "block_index": 28,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Deuteronomy 33:26-27",
+   "block_index": 30,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Hebrews 11:25",
+   "block_index": 31,
+   "chapter_order": 3,
    "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "2 Corinthians 9:8",
+   "block_index": 32,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Ephesians 1:3",
+   "block_index": 32,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Jude 1:24",
+   "block_index": 32,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Numbers 6:24",
+   "block_index": 32,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "the author's 'Jehovah, the Father, bless thee': OWB's words with አብ inserted"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "block_index": 32,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Galatians 4:4",
+   "block_index": 35,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Hebrews 1:3",
+   "block_index": 35,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Numbers 6:25",
+   "block_index": 40,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "section heading in the author's Trinitarian form ('Jehovah, the Son'): OWB's words with ወልድ inserted"
+  },
+  {
+   "reference": "Numbers 6:25",
+   "block_index": 41,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Proverbs 18:24",
+   "block_index": 41,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "John 8:12",
+   "block_index": 42,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "block_index": 43,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 6:25",
+   "block_index": 43,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Daniel 9:16-17",
+   "block_index": 44,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 67:2",
+   "block_index": 44,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 80:3",
+   "block_index": 44,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 30:5",
+   "block_index": 45,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 6:25",
    "block_index": 46,
-   "chapter_order": 4
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "the author's 'JEHOVAH, the Bridegroom': OWB's words with ሙሽራው inserted"
+  },
+  {
+   "reference": "Proverbs 19:12",
+   "block_index": 46,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Song of Solomon 1:2",
+   "block_index": 46,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "block_index": 47,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Acts 22:10",
+   "block_index": 47,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Acts 26:13",
+   "block_index": 47,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Acts 7:55-60",
+   "block_index": 47,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Matthew 17:2",
+   "block_index": 47,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Romans 15:3",
+   "block_index": 47,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Luke 24:32",
+   "block_index": 49,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "block_index": 49,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 14:17",
+   "block_index": 50,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 16:7",
+   "block_index": 51,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Numbers 6:26",
+   "block_index": 53,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "section heading in the author's Trinitarian form ('Jehovah, the Spirit'): OWB's words with መንፈስ ቅዱስ inserted"
+  },
+  {
+   "reference": "1 John 1:7",
+   "block_index": 56,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "1 John 2:1",
+   "block_index": 56,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Ephesians 4:30",
+   "block_index": 56,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Numbers 6:26",
+   "block_index": 56,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Galatians 5:22",
+   "block_index": 58,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "John 14:27",
+   "block_index": 58,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "block_index": 58,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Romans 5:1",
+   "block_index": 58,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Ephesians 1:19",
+   "block_index": 59,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "«በሚያምኑ» is the word of the author's paraphrase of Paul's prayer ('them that believe'), not a quotation"
+  },
+  {
+   "reference": "Job 34:29",
+   "block_index": 59,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "block_index": 59,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "the author's adapted echo 'this peace which passes all understanding', reworded to OWB's phrase but re-cased"
+  },
+  {
+   "reference": "John 4:14",
+   "block_index": 60,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 4:14",
+   "block_index": 61,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 4:14",
+   "block_index": 62,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 7:38",
+   "block_index": 62,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 7:39",
+   "block_index": 62,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 6:26",
+   "block_index": 63,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 6:27",
+   "block_index": 65,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 6:27",
+   "block_index": 66,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Peter 1:3",
+   "block_index": 68,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "block_index": 68,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "the author's adapted echo 'the same yesterday, to-day, and for ever', reworded toward OWB but recast as a clause"
+  },
+  {
+   "reference": "Numbers 6:27",
+   "block_index": 68,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Corinthians 3:2",
+   "block_index": 69,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Matthew 28:19",
+   "block_index": 69,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Numbers 6:24",
+   "block_index": 69,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 6:25",
+   "block_index": 69,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 6:26",
+   "block_index": 69,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Philippians 2:15",
+   "block_index": 69,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Revelation 7:1-3",
+   "block_index": 70,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "2 Thessalonians 1:7",
+   "block_index": 71,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Luke 21:36",
+   "block_index": 71,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 25:1-13",
+   "block_index": 71,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Revelation 20:4",
+   "block_index": 71,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "the author proposes his own rendering of two clauses ('I saw also the souls…', 'They also lived and reigned…') against the received one; his renderings stay"
+  },
+  {
+   "reference": "Revelation 7:14-17",
+   "block_index": 71,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Ecclesiastes 8:4",
+   "block_index": 72,
+   "chapter_order": 3,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Matthew 28:18-19",
+   "block_index": 72,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "block_index": 72,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 6:23",
+   "block_index": 72,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 6:27",
+   "block_index": 72,
+   "chapter_order": 3,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Corinthians 15:28",
+   "block_index": 3,
+   "chapter_order": 4,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "John 12:6",
+   "block_index": 6,
+   "chapter_order": 4,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Mark 14:8",
+   "block_index": 6,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Mark 14:9",
+   "block_index": 6,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:1-2",
+   "block_index": 10,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Romans 11:36",
+   "block_index": 12,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:3-5",
+   "block_index": 15,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:5",
+   "block_index": 17,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Proverbs 23:26",
+   "block_index": 22,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:5-9",
+   "block_index": 24,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:5",
+   "block_index": 28,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:9",
+   "block_index": 28,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:9",
+   "block_index": 30,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Timothy 4:16-17",
+   "block_index": 31,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 63:3",
+   "block_index": 31,
+   "chapter_order": 4,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Matthew 20:22",
+   "block_index": 31,
+   "chapter_order": 4,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Philippians 3:7-8",
+   "block_index": 34,
+   "chapter_order": 4,
+   "status": "self_rendered",
+   "why": "allusion, the author's own wording around a verse, or a bare citation; not a quotation"
+  },
+  {
+   "reference": "Numbers 7:10-11",
+   "block_index": 36,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 9:22",
+   "block_index": 38,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:11",
+   "block_index": 41,
+   "chapter_order": 4,
    "status": "self_rendered",
-   "block_index": 61,
-   "chapter_order": 4
+   "why": "inside a quotation of Wordsworth, who gives his own and a literal rendering ('one prince a day'); left as the commentator's"
+  },
+  {
+   "reference": "Isaiah 66:13",
+   "block_index": 44,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:12",
+   "block_index": 46,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:17",
+   "block_index": 53,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:17",
+   "block_index": 54,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:84",
+   "block_index": 56,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:84-86",
+   "block_index": 56,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:86",
+   "block_index": 56,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:87-88",
+   "block_index": 57,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:88",
+   "block_index": 58,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 7:84",
+   "block_index": 60,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Galatians 6:14",
-   "status": "mined",
    "block_index": 61,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Hebrews 9:22",
+   "block_index": 61,
+   "chapter_order": 4,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 5:14-15",
-   "status": "mined",
    "block_index": 63,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Corinthians 5:15",
+   "block_index": 63,
+   "chapter_order": 4,
+   "status": "self_rendered",
+   "why": "the author's own preferred reading ('unto Him which died and rose again for them'), set against the verse; stays his"
   }
  ]
 }
