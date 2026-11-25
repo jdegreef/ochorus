@@ -412,8 +412,8 @@
         },
         {
             "reference": "John 17:24",
-            "status": "mined",
-            "source_file": "all-things-for-good.am.json",
+            "status": "self_rendered",
+            "why": "the wording was mined from all-things-for-good's 1962 text, which now quotes OWB; this work's quotation stands as translator's wording until it is itself re-quoted",
             "block_index": 37
         },
         {
