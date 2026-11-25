@@ -148,10 +148,9 @@
   },
   {
    "reference": "Psalm 73:25",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 7,
-   "source_file": "the-almost-christian.am.json"
+   "chapter_order": 7
   },
   {
    "reference": "Psalm 73:26",

@@ -6,315 +6,476 @@
  "references": [
   {
    "reference": "Genesis 5:24",
-   "status": "self_rendered",
-   "block_index": 0
-  },
-  {
-   "reference": "Genesis 5:24",
-   "status": "self_rendered",
-   "block_index": 1
-  },
-  {
-   "reference": "Hebrews 11:5",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 1
-  },
-  {
-   "reference": "Jude 1:14-15",
-   "status": "self_rendered",
-   "block_index": 1
+   "block_index": 0,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 25:24",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 1
+   "block_index": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Genesis 5:24",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Jude 1:14-15",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Hebrews 11:5",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Hebrews 11:5",
    "status": "self_rendered",
-   "block_index": 6
+   "block_index": 1,
+   "why": "«እግዚአብሔር ወስዶታልና» after the citation is Whitefield's own gloss ('for God had translated him'), not a quotation"
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Genesis 3:12",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Romans 8:7",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Acts 17:28",
    "status": "self_rendered",
-   "block_index": 7
+   "block_index": 7,
+   "why": "'in whom he lives, and moves, and hath his being' is woven into Whitefield's sentence; an allusion left in his prose"
   },
   {
    "reference": "Romans 7:21",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 7
+   "block_index": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Amos 3:3",
-   "status": "self_rendered",
-   "block_index": 8
-  },
-  {
-   "reference": "1 John 2:6",
-   "status": "self_rendered",
-   "block_index": 9
-  },
-  {
-   "reference": "1 John 2:6",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 9
+   "block_index": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Timothy 1:14",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 9
-  },
-  {
-   "reference": "Genesis 5:24",
-   "status": "self_rendered",
-   "block_index": 9
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 14:17",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 9
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "1 Timothy 4:15",
+   "reference": "1 John 2:6",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 10
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 84:7",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 3:18",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 10
+   "block_index": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Timothy 4:15",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Peter 3:18",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 10
-  },
-  {
-   "reference": "Psalm 84:7",
-   "status": "self_rendered",
-   "block_index": 10
+   "block_index": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Genesis 5:24",
-   "status": "self_rendered",
-   "block_index": 11
-  },
-  {
-   "reference": "1 Samuel 21:9",
-   "status": "self_rendered",
-   "block_index": 13
-  },
-  {
-   "reference": "1 Timothy 4:13",
-   "status": "self_rendered",
-   "block_index": 13
-  },
-  {
-   "reference": "2 Peter 1:18",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 13
-  },
-  {
-   "reference": "2 Peter 1:19",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 13
-  },
-  {
-   "reference": "Ephesians 6:17",
-   "status": "self_rendered",
-   "block_index": 13
+   "block_index": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 5:39",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 13
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 5:39",
+   "status": "self_rendered",
+   "block_index": 13,
+   "why": "'Search the scriptures' is the KJV imperative; OWB John 5:39 is indicative ('you study'), so «መጻሕፍትን መርምሩ» stays Whitefield's words outside the marks and only the second half is quoted"
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 1:2",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Timothy 4:13",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Joshua 1:8",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Romans 15:4",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Timothy 3:16-17",
    "status": "self_rendered",
-   "block_index": 13
+   "block_index": 13,
+   "why": "Whitefield's paraphrase of 2 Tim 3:16-17 ('profitable for reproof…thoroughly furnished'); an allusion, not a quotation"
   },
   {
    "reference": "Matthew 4:4",
    "status": "self_rendered",
-   "block_index": 13
+   "block_index": 13,
+   "why": "«ተጽፎአል» ('It is written') is Whitefield's tag for Christ's answers; OWB renders it «መጽሐፍ … ይላል», which cannot stand as a one-word quotation"
   },
   {
-   "reference": "Psalm 119:105",
-   "status": "self_rendered",
-   "block_index": 13
+   "reference": "Ephesians 6:17",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Psalm 1:2",
-   "status": "self_rendered",
-   "block_index": 13
+   "reference": "1 Samuel 21:9",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Peter 1:18",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Peter 1:19",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 6:18",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 14
+   "block_index": 14,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 26:41",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 14
+   "block_index": 14,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Genesis 24:63",
+   "status": "self_rendered",
+   "block_index": 15,
+   "why": "Isaac's meditating in the field, retold in Whitefield's words with the KJV margin's 'to pray'; an allusion"
+  },
+  {
+   "reference": "Psalm 39:3",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Timothy 3:16",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 15
-  },
-  {
-   "reference": "Psalm 39:3",
-   "status": "self_rendered",
-   "block_index": 15
-  },
-  {
-   "reference": "1 John 5:21",
-   "status": "self_rendered",
-   "block_index": 16
-  },
-  {
-   "reference": "Matthew 10:29",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 16
+   "block_index": 15,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 10:30",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 16
+   "block_index": 16,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 10:29",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 John 5:21",
+   "status": "self_rendered",
+   "block_index": 16,
+   "why": "«ልጄ ሆይ፣ ራስህን ከጣዖታት ጠብቅ» recasts the plural 'Little children' to God's singular 'My son' as the voice of affliction; Whitefield's adaptation, not OWB's verse"
   },
   {
    "reference": "Proverbs 23:26",
-   "status": "self_rendered",
-   "block_index": 16
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 8:14",
-   "status": "self_rendered",
-   "block_index": 17
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 1:6",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 18
+   "block_index": 18,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 122:1",
-   "status": "self_rendered",
-   "block_index": 18
-  },
-  {
-   "reference": "Proverbs 27:17",
-   "status": "self_rendered",
-   "block_index": 19
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 16:3",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Ecclesiastes 4:11",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Proverbs 27:17",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Hebrews 10:25",
    "status": "self_rendered",
-   "block_index": 19
+   "block_index": 19,
+   "why": "'not forsake the assembling of themselves together' is reported in Whitefield's prose; an allusion"
   },
   {
    "reference": "Esther 5:11",
-   "status": "self_rendered",
-   "block_index": 21
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Esther 5:12",
-   "status": "self_rendered",
-   "block_index": 21
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Esther 6:6",
-   "status": "self_rendered",
-   "block_index": 21
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Esther 6:8-9",
-   "status": "self_rendered",
-   "block_index": 21
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 25:14",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 15:15",
-   "status": "self_rendered",
-   "block_index": 21
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 84:10",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Proverbs 3:17",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 84:10",
    "status": "self_rendered",
-   "block_index": 21
+   "block_index": 22,
+   "why": "'Has not one day in the Lord's courts been better to you than a thousand?' turns the verse into Whitefield's own question to the hearers; an allusion"
   },
   {
-   "reference": "Proverbs 3:17",
+   "reference": "Matthew 11:30",
    "status": "self_rendered",
-   "block_index": 22
+   "block_index": 22,
+   "why": "'the yoke of Christ to be easy, and his burden light' is reported in Whitefield's prose; an allusion"
+  },
+  {
+   "reference": "John 3:9",
+   "status": "self_rendered",
+   "block_index": 23,
+   "why": "«ይህ እንዴት ሊሆን ይችላል?» opens an imagined objector's speech that echoes Nicodemus; not a quotation of the verse"
+  },
+  {
+   "reference": "John 7:24",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 9:2",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 23
-  },
-  {
-   "reference": "John 3:9",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 23
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 5:11",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 23
-  },
-  {
-   "reference": "Matthew 5:11",
-   "status": "self_rendered",
-   "block_index": 23
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 5:12",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 23
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 42:2",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Ecclesiastes 12:7",
    "status": "self_rendered",
-   "block_index": 24
+   "block_index": 24,
+   "why": "'the spirits … shall return to God that gave them' is recast to the plural for those who walk with God; Whitefield's adaptation"
+  },
+  {
+   "reference": "Romans 13:14",
+   "status": "self_rendered",
+   "block_index": 25,
+   "why": "'Come, put ye on the Lord Jesus … make no longer provision for the flesh' is Whitefield's exhortation interleaved with his own 'haste ye away and walk with God'; an allusion"
+  },
+  {
+   "reference": "Ezekiel 33:11",
+   "status": "self_rendered",
+   "block_index": 25,
+   "why": "'Turn ye, turn ye' is Whitefield's appeal to the unconverted; an allusion"
   },
   {
    "reference": "Isaiah 57:15",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 66:2",
    "status": "self_rendered",
-   "block_index": 25
+   "block_index": 25,
+   "why": "Whitefield joins Isa 57:15 to 66:2 and recasts both to God's first person ('will dwell with the humble and contrite heart, even with the man that trembleth at my word'); the 66:2 half stays his"
   },
   {
    "reference": "Revelation 3:16",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 26
+   "block_index": 26,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "James 5:9",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Hebrews 10:37",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Corinthians 4:1",
+   "status": "self_rendered",
+   "block_index": 27,
+   "why": "'ambassadors of Christ, and stewards of the mysteries of God' (2 Cor 5:20; 1 Cor 4:1) is Whitefield's description of ministers; an allusion"
   }
  ],
  "note": [
-  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). NT verses are pasted from the ebible mirror (amh_amh); the mirror has no OT, so OT quotations are self_rendered in the 1962 register unless a shipped Amharic work already quotes the verse (source_file names it).",
-  "Rows come from the translators' reports and every 'mined' claim was re-verified: each quoted fragment must be a byte-exact substring both of this body and of the NT file (or of the cited shipped work); a claim that fails is recorded as self_rendered. Some mirror entries are merged verse ranges holding only part of the text, so verses inside them are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled as library/data/bible/owb-am-b.json.gz and read offline (owb-am). Every Scripture quotation in this sermon was re-quoted to it verbatim (founder decision, 2026-11-18: Amharic quotes OWB everywhere), replacing the 1962/2003 UBS New Testament wording and the self_rendered Old Testament wording the first translation carried.",
+  "A `mined` row is a verbatim OWB span in that block: the whole verse, verses joined, the shortest contiguous span carrying the quoted clause, or exact OWB pieces joined with '…'; a verbatim recitation without quote marks counts (founder rule, 2026-11-19). `self_rendered` rows each carry a `why`: allusions left in Whitefield's prose, his own paraphrases, and verses he recasts to another person.",
+  "Judgement calls: the text 'And Enoch walked with God' is OWB Gen 5:24 «ሄኖክ ከእግዚአብሔር ጋር ተመላለሰ» wherever it is quoted, while the sermon's own subject 'walking with God' stays «ከእግዚአብሔር ጋር መሄድ» in the prose (OWB's 1 John 2:6 uses the same ተመላለሰ, so the link holds). 'Search the scriptures' (John 5:39) and 'It is written' (Matt 4:4) stay Whitefield's: OWB words the first as a statement and has no one-word form of the second. 'Come, let us go up to the house of the Lord' is cited from Ps 122:1 (where 'glad when they said' comes from), not Micah 4:2. 'Watch and pray, that ye enter not' is Matt 26:41. Whitefield's '(or, this woman)' gloss on Gen 3:12 stands between two OWB pieces, and the prose that follows takes OWB's 'placed with me'. The prose 'Jehovah' is እግዚአብሔር (am.json decision `jehovah`), and Esther's king is አሕሻዊሮስ as OWB names him (the first translation had Artaxerxes)."
  ]
 }
