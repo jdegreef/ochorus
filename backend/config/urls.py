@@ -7,6 +7,7 @@ from django.urls import include, path
 
 from accounts.views import MeView, PromptEventView, SignupSourceView, health
 from config.lazy_views import lazy_view
+from library.build_facts_view import build_facts
 
 
 def robots_txt(_request):
@@ -28,6 +29,8 @@ def robots_txt(_request):
 urlpatterns = [
     path("robots.txt", robots_txt, name="robots"),
     path("api/health/", health, name="health"),
+    # Token-gated, 404 unless BUILD_FACTS_TOKEN is set (library/build_facts_view.py).
+    path("api/build-facts/", build_facts, name="build-facts"),
     path("api/auth/me/", MeView.as_view(), name="me"),
     path("api/auth/signup-source/", SignupSourceView.as_view(), name="signup-source"),
     path("api/auth/prompt-event/", PromptEventView.as_view(), name="prompt-event"),
