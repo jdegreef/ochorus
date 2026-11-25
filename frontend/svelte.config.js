@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 
 import { APP, appAssetOrigin } from './app-target.js';
 import { cspDirectives } from './csp.config.js';
+import { prerenderConcurrency } from './prerender-concurrency.js';
 
 /** The origin of a URL-shaped build env var, or '' when unset/unparseable. */
 function originOf(value) {
@@ -102,17 +103,14 @@ const config = {
 		// can surface an "update available" prompt instead of updating silently.
 		serviceWorker: { register: false },
 		prerender: APP ? APP_PRERENDER : {
-			// Pages rendered at once: 1 (SvelteKit's default) unless the build asks
-			// for more, and only CI does — its API is a throwaway local gunicorn
-			// with a worker per spare core (.github/workflows/ci.yml). The production
-			// build stays at 1 on purpose: it crawls the LIVE API, whose memory the
-			// crawl once exhausted (2026-09-26), so raising it there is a decision
-			// about that server, not a build setting. The build-time fetch layer
-			// ($lib/buildFetch, $lib/chapterBatch) keys everything by URL, so a page
-			// built alongside others carries the same responses — only the ORDER of
-			// a page's inlined responses can differ, when its load makes two
-			// requests at once; hydration replays them by URL.
-			concurrency: Number(process.env.PRERENDER_CONCURRENCY) || 1,
+			// Pages rendered at once: 3 on Render, 1 elsewhere, unless the build
+			// sets PRERENDER_CONCURRENCY (CI uses 8 against its own API). Why 3 and
+			// what it costs the live API: prerender-concurrency.js. The build-time
+			// fetch layer ($lib/buildFetch, $lib/chapterBatch) keys everything by
+			// URL, so a page built alongside others carries the same responses —
+			// only the ORDER of a page's inlined responses can differ, when its load
+			// makes two requests at once; hydration replays them by URL.
+			concurrency: prerenderConcurrency(process.env),
 			// A prerendered page that errors still fails the build — never ship a
 			// half-broken page — but the default message buries the diagnosis. Say
 			// what died and where, and point at the build-time retry layer: apiFetch
