@@ -79,8 +79,8 @@
         },
         {
             "reference": "Genesis 1:1",
-            "status": "mined",
-            "source_file": "confessions.am.json",
+            "status": "self_rendered",
+            "why": "wording first borrowed from confessions.am.json, which now quotes OWB; this work keeps the earlier wording until its own OWB re-quote",
             "block_index": 5
         },
         {
