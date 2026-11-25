@@ -398,8 +398,7 @@
         },
         {
             "reference": "Deuteronomy 6:4",
-            "status": "mined",
-            "source_file": "jesus-teacher-of-prayer.am.json",
+            "status": "self_rendered",
             "block_index": 12
         },
         {
@@ -600,8 +599,7 @@
         },
         {
             "reference": "John 17:21",
-            "status": "mined",
-            "source_file": "jesus-teacher-of-prayer.am.json",
+            "status": "self_rendered",
             "block_index": 18
         },
         {
