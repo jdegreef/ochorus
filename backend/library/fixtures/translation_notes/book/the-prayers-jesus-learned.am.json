@@ -366,8 +366,8 @@
         },
         {
             "reference": "Exodus 34:6-7",
-            "status": "mined",
-            "source_file": "the-key-in-my-hand.am.json",
+            "status": "self_rendered",
+            "why": "was mined from the-key-in-my-hand.am.json's pre-OWB wording, which that work no longer carries; not verbatim OWB here",
             "block_index": 16
         },
         {
