@@ -1410,10 +1410,10 @@
   },
   {
    "reference": "Ephesians 3:20",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 12,
    "chapter_order": 9,
-   "source_file": "absolute-surrender.am.json"
+   "why": "absolute-surrender.am.json, which this row was mined from, has been re-quoted to the Open Word Bible; this wording is now the translator's own"
   },
   {
    "reference": "1 Corinthians 2:9",

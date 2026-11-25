@@ -763,15 +763,15 @@
         },
         {
             "reference": "Ephesians 3:16",
-            "status": "mined",
-            "source_file": "absolute-surrender.am.json",
-            "block_index": 11
+            "status": "self_rendered",
+            "block_index": 11,
+            "why": "absolute-surrender.am.json, which this row was mined from, has been re-quoted to the Open Word Bible; this wording is now the translator's own"
         },
         {
             "reference": "2 Corinthians 4:16",
-            "status": "mined",
-            "source_file": "absolute-surrender.am.json",
-            "block_index": 11
+            "status": "self_rendered",
+            "block_index": 11,
+            "why": "absolute-surrender.am.json, which this row was mined from, has been re-quoted to the Open Word Bible; this wording is now the translator's own"
         },
         {
             "reference": "Ephesians 3:17",
