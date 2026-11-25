@@ -4,94 +4,124 @@
     "language": "ja",
     "job_issue": 8002,
     "pull_request": null,
+    "note": [
+        "Scripture authority is the Open Word Bible (OWB), Japanese, Balanced edition (CC0), bundled as library/data/bible/owb-ja-b.json.gz and read offline (owb-ja). Every Scripture quotation was re-quoted to it verbatim (founder decision, 2026-11-19: Japanese quotes OWB everywhere), replacing the 口語訳 (japkougo) wording the first edition carried.",
+        "A `mined` row is a verbatim OWB span, the shortest contiguous span carrying the quoted clause, or exact OWB pieces joined with '……'; verbatim recitations without quote marks are quotations too. `self_rendered` rows are allusions and paraphrases in the preacher's own voice, left as prose, or places named in `why` where the preacher argues from wording OWB does not carry."
+    ],
     "references": [
         {
             "reference": "Numbers 15:3",
-            "status": "self_rendered",
-            "block_index": 1
+            "status": "mined",
+            "block_index": 1,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Luke 22:42",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 1
+            "block_index": 1,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Numbers 15:31",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 5
+            "block_index": 5,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "1 John 1:9",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 6
+            "block_index": 6,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "1 John 1:7",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 6
+            "block_index": 6,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Ephesians 4:30",
-            "status": "self_rendered",
-            "block_index": 7
+            "status": "mined",
+            "block_index": 7,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Acts 7:51",
-            "status": "self_rendered",
-            "block_index": 7
+            "status": "mined",
+            "block_index": 7,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "1 Thessalonians 5:19",
-            "status": "self_rendered",
-            "block_index": 7
+            "status": "mined",
+            "block_index": 7,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Numbers 15:38",
             "status": "self_rendered",
-            "block_index": 10
+            "block_index": 10,
+            "why": "the sermon's title phrase 青ひも (A Ribband of Blue), kept as the work's name"
         },
         {
-            "reference": "Numbers 15:38-41",
+            "reference": "Numbers 15:38-39",
+            "status": "mined",
+            "block_index": 11,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Numbers 15:40-41",
             "status": "self_rendered",
-            "block_index": 11
+            "block_index": 11,
+            "why": "allusion"
         },
         {
             "reference": "Exodus 34:29",
             "status": "self_rendered",
-            "block_index": 12
+            "block_index": 12,
+            "why": "allusion"
         },
         {
             "reference": "Ephesians 5:1",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 13
+            "block_index": 13,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Ephesians 5:2",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 13
+            "block_index": 13,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Matthew 5:48",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 13
+            "block_index": 13,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         },
         {
             "reference": "Matthew 5:13-14",
             "status": "self_rendered",
-            "block_index": 14
+            "block_index": 14,
+            "why": "allusion"
+        },
+        {
+            "reference": "Matthew 5:48",
+            "status": "mined",
+            "block_index": 14,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
+        },
+        {
+            "reference": "Numbers 15:38",
+            "status": "self_rendered",
+            "block_index": 17,
+            "why": "the sermon's title phrase 青ひも (A Ribband of Blue), kept as the work's name"
         },
         {
             "reference": "Numbers 15:39",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 17
+            "block_index": 17,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese"
         }
     ]
 }

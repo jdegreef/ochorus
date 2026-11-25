@@ -89,8 +89,7 @@
    "reference": "PSA 42:1-2",
    "block_index": 4,
    "chapter_order": 3,
-   "status": "mined",
-   "source_file": "sermons-on-several-occasions.am.json"
+   "status": "self_rendered"
   },
   {
    "reference": "PSA 42:7",
@@ -262,8 +261,8 @@
    "reference": "Genesis 22:16-18",
    "block_index": 14,
    "chapter_order": 4,
-   "status": "mined",
-   "source_file": "possibilities-of-prayer.am.json"
+   "status": "self_rendered",
+   "why": "its wording was mined from possibilities-of-prayer.am's pre-OWB (1962) text, which has since been re-quoted to OWB; this edition still carries the pre-OWB wording"
   },
   {
    "reference": "Luke 9:56",
@@ -350,8 +349,7 @@
    "reference": "Acts 17:27",
    "block_index": 13,
    "chapter_order": 5,
-   "status": "mined",
-   "source_file": "sermons-on-several-occasions.am.json"
+   "status": "self_rendered"
   },
   {
    "reference": "Matthew 5:8",
@@ -562,8 +560,7 @@
    "reference": "Genesis 28:16",
    "block_index": 9,
    "chapter_order": 7,
-   "status": "mined",
-   "source_file": "thoughts-for-the-quiet-hour.am.json"
+   "status": "self_rendered"
   },
   {
    "reference": "Exodus 34:5",
@@ -588,8 +585,7 @@
    "reference": "Ezekiel 37:3",
    "block_index": 22,
    "chapter_order": 7,
-   "status": "mined",
-   "source_file": "thoughts-for-the-quiet-hour.am.json"
+   "status": "self_rendered"
   },
   {
    "reference": "1 Timothy 4:7",
@@ -634,8 +630,7 @@
    "reference": "Psalm 33:9",
    "block_index": 4,
    "chapter_order": 8,
-   "status": "mined",
-   "source_file": "the-inner-chamber.am.json"
+   "status": "self_rendered"
   },
   {
    "reference": "Hebrews 11:3",
@@ -723,8 +718,7 @@
    "reference": "Psalm 46:10",
    "block_index": 14,
    "chapter_order": 8,
-   "status": "mined",
-   "source_file": "a-short-and-easy-method-of-prayer.am.json"
+   "status": "self_rendered"
   },
   {
    "reference": "Genesis 3:8",
@@ -736,8 +730,7 @@
    "reference": "Isaiah 40:8 / 1 Peter 1:25",
    "block_index": 18,
    "chapter_order": 8,
-   "status": "mined",
-   "source_file": "thoughts-for-the-quiet-hour.am.json"
+   "status": "self_rendered"
   },
   {
    "reference": "Hosea 6:3",
@@ -755,8 +748,8 @@
    "reference": "Hebrews 12:2",
    "block_index": 0,
    "chapter_order": 9,
-   "status": "mined",
-   "source_file": "key-teachings-of-richard-baxter.am.json"
+   "status": "self_rendered",
+   "why": "the key-teachings-of-richard-baxter.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   },
   {
    "reference": "2 Peter 1:21",

@@ -64,7 +64,7 @@ Knobs (all optional except the flag):
 | `OCHORUS_BUILD_API_DIR` | `$TMPDIR/ochorus-build-api` | venv, SQLite file, log |
 | `OCHORUS_BUILD_API_WORKERS` | `2` | gunicorn worker processes |
 | `OCHORUS_BUILD_API_TTL_MIN` | `120` | the supervisor kills the API after this, if `stop` never runs (a failed `vite build` skips postbuild) |
-| `PRERENDER_CONCURRENCY` | `1` | can rise with a local API (CI uses 8) |
+| `PRERENDER_CONCURRENCY` | `3` on Render, else `1` | pages in flight (`frontend/prerender-concurrency.js`); can rise with a local API (CI uses 8) |
 
 ## Step 1: what production has that a repo-seeded DB does not
 
@@ -108,7 +108,15 @@ Differences that remain by construction:
   and `search_vector` is unused on SQLite. Search is not prerendered.
 - **Facts are as fresh as the export.** See the transport decision below.
 
-## Step 2: the facts transport (founder decision)
+## Step 2: the facts transport (decided: A, built)
+
+**Option A is built** (2026-11-24): `GET /api/build-facts/`
+(`library/build_facts_view.py`). It 404s unless `BUILD_FACTS_TOKEN` is set on
+ochorus-api, and to any caller without `Authorization: Bearer <that token>`
+(constant-time compare), so the route is invisible until configured. It is
+exempt from the API guard (a server, no Origin; its own token gates it) and
+answers `Cache-Control: no-store`. `local-api.mjs` already sends
+`OCHORUS_BUILD_FACTS_TOKEN` as that bearer. The options as weighed:
 
 The facts are one small JSON document: 268 KB for today's 1,851 books, 1,440
 sermons, 985 articles, 584 quotes and 13 languages. `manage.py
@@ -141,8 +149,11 @@ it will do that on Render.
 
 ## Step 3: switch-on steps
 
-1. **Pick and build the transport** (A recommended). Until then, trial runs can
-   use option C.
+1. **Set the token.** Generate one long random secret and set it as
+   `BUILD_FACTS_TOKEN` on ochorus-api and `OCHORUS_BUILD_FACTS_TOKEN` on
+   ochorus-web (render.yaml declares both, `sync: false`). Set ochorus-web's
+   `OCHORUS_BUILD_FACTS` to `https://<ochorus-api host>/api/build-facts/`.
+   Check it: `curl -H "Authorization: Bearer $TOKEN" <that URL> | head -c 300`.
 2. **Prove it on a preview, not on production.** Open a manual Render preview
    (or a scratch static site on this branch) with `OCHORUS_BUILD_API=local`
    and `OCHORUS_BUILD_FACTS` set. Check its log for:

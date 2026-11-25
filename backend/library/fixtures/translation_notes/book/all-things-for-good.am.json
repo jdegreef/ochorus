@@ -820,10 +820,10 @@
   },
   {
    "reference": "Job 1:21",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 24,
    "chapter_order": 5,
-   "source_file": "blessed-adversity.am.json"
+   "why": "the shared wording came from a work since re-quoted to OWB; this block's text is not OWB verbatim"
   },
   {
    "reference": "Revelation 14:2",
@@ -963,10 +963,10 @@
   },
   {
    "reference": "Song 8:7",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 18,
    "chapter_order": 6,
-   "source_file": "godliness.am.json"
+   "why": "the godliness.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   },
   {
    "reference": "Ephesians 3:17",
@@ -1056,10 +1056,10 @@
   },
   {
    "reference": "Job 21:14",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 3,
    "chapter_order": 7,
-   "source_file": "gods-love-for-a-sinning-world.am.json"
+   "why": "the shared wording came from a work since re-quoted to OWB; this block's text is not OWB verbatim"
   },
   {
    "reference": "Matthew 26:75",

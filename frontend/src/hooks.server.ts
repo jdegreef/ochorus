@@ -77,10 +77,26 @@ const localApi = building && apiOrigin ? localBuildApiOrigin(privateEnv) : null;
 // recorded the load's request for inlining, so no page ever carries it.
 const serviceKey = building && apiOrigin ? serviceKeyHeaders(privateEnv) : {};
 
+// The build asks the API for UNCOMPRESSED bodies. The API gzips JSON for
+// browsers (backend config/compression.py), and under the prerender's crawl
+// Node's fetch (undici) crashed the whole build on gzip bodies with
+// `assert(!this.paused)` in its parser — buildFetch keeps clones of responses
+// it shares between identical requests, and a decoder stalled on an unread
+// clone is what that assert trips on. A build on the API's own network gains
+// nothing from compression anyway.
+const identityEncoding = (input: RequestInfo | URL, init?: RequestInit): [Request, undefined] => {
+	const req = new Request(input, init);
+	const headers = new Headers(req.headers);
+	headers.set('accept-encoding', 'identity');
+	return [new Request(req, { headers }), undefined];
+};
+
 export const handleFetch: HandleFetch = async ({ event, request, fetch: kitFetch }) => {
 	const fetch: typeof kitFetch = (input, init) => {
 		const [keyed, keyedInit] = withServiceKey(input, init, apiOrigin ?? '', serviceKey);
-		return kitFetch(localApi ? retarget(keyed, apiOrigin!, localApi) : keyed, keyedInit);
+		const target = localApi ? retarget(keyed, apiOrigin!, localApi) : keyed;
+		if (!building || !apiOrigin) return kitFetch(target, keyedInit);
+		return kitFetch(...identityEncoding(target, keyedInit));
 	};
 	const response = buildFetch ? await buildFetch(request, fetch) : await fetch(request);
 	if (!apiOrigin || new URL(request.url).origin !== apiOrigin) return response;

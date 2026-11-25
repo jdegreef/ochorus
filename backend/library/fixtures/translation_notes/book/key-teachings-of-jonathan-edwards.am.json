@@ -958,10 +958,10 @@
   },
   {
    "reference": "Micah 6:8",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 4,
    "chapter_order": 19,
-   "source_file": "godliness.am.json"
+   "why": "the godliness.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   },
   {
    "reference": "1 John 3:17",
@@ -972,10 +972,10 @@
   },
   {
    "reference": "Proverbs 19:17",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 9,
    "chapter_order": 19,
-   "source_file": "a-retrospect-teens.am.json"
+   "why": "wording borrowed from a-retrospect-teens.am.json, which now quotes OWB; this work's own quotation is not yet OWB, so the translator's until its re-quote"
   },
   {
    "reference": "Matthew 25:40",
@@ -1082,10 +1082,10 @@
   },
   {
    "reference": "Psalm 90:12",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 6,
    "chapter_order": 21,
-   "source_file": "growing-in-wisdom.am.json"
+   "why": "wording was borrowed from growing-in-wisdom.am's pre-OWB Amharic, which that work no longer carries (re-quoted to OWB 2026-11-25); not verbatim OWB here"
   },
   {
    "reference": "James 4:13-14",
@@ -1102,10 +1102,10 @@
   },
   {
    "reference": "Proverbs 22:29",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 19,
    "chapter_order": 21,
-   "source_file": "growing-in-wisdom.am.json"
+   "why": "wording was borrowed from growing-in-wisdom.am's pre-OWB Amharic, which that work no longer carries (re-quoted to OWB 2026-11-25); not verbatim OWB here"
   },
   {
    "reference": "Zechariah 8:22",

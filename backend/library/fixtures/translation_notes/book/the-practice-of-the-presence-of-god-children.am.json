@@ -5,6 +5,7 @@
  "job_issue": 5750,
  "pull_request": 5780,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording reused from other shipped works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'; OWB's closing '፤' may end a quotation as '።'). The epigraphs keep their `— ከ<Book> <chapter>` citations; every one is now OWB.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is in the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh/usfm/; re-verified for this job 2026-10-09: rom/mat/col/1co/1th/jas/1pe/1jn/jhn return 200, 1sa/psa 404, so no Old Testament). OT epigraphs reuse an already-shipped Amharic work's wording verbatim (source_file names it).",
   "The mirror's verse BRIDGES hide text: it carries 1 Thessalonians 5:17-18 and Romans 1:20 under bridged `\\v 17-19` / `\\v 20-22` markers whose text is a later verse, so neither is readable there. Romans 1:20 therefore reuses key-teachings-of-jonathan-edwards.am.json (a partial rendering of the verse) and 1 Thessalonians 5:16-18 reuses school-of-prayer.am.json. 1 Corinthians 10:31 sits under a bridged `\\v 31-33` marker, but its text is 10:31's own, so it is quoted from the mirror.",
   "The English epigraphs are simplified child paraphrases (\"— from Psalm 16\"); following the shipped am children's editions, each quotes the Bible's own wording for the part the English means, with … for words left out, and cites `— ከ<Book> <chapter>`. Every epigraph is an exact substring of its source; no epigraph was re-personed. The body quotes no further scripture.",
@@ -16,83 +17,87 @@
    "status": "mined",
    "block_index": 0,
    "chapter_order": 1,
-   "source_file": "growing-in-wisdom.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 1:20",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 2,
-   "source_file": "key-teachings-of-jonathan-edwards.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the verse's first sentence whole"
   },
   {
    "reference": "Psalm 16:11b",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 3,
-   "source_file": "key-teachings-of-jonathan-edwards.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 22:37",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Colossians 3:23",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 10:31",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Thessalonians 5:16-18",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "«መጸለይን አታቋርጡ» per the pray-without-ceasing decision"
   },
   {
    "reference": "James 4:8a",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Peter 5:7",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB's verse continues 5:6, so it opens with '…'"
   },
   {
    "reference": "1 John 1:9",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 23:4a",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 11,
-   "source_file": "the-god-of-all-comfort.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 14:2b",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 12,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   }
  ]
 }

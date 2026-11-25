@@ -267,10 +267,10 @@
   },
   {
    "reference": "2 Chronicles 16:9",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 25,
    "chapter_order": 6,
-   "source_file": "godliness.am.json"
+   "why": "the godliness.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   },
   {
    "reference": "Romans 15:30",
@@ -549,10 +549,9 @@
   },
   {
    "reference": "Psalm 19:14",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 14,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 14
   },
   {
    "reference": "James 1:21",

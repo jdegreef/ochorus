@@ -1,6 +1,6 @@
 # Ochorus TTS — implementation plan & spike checklist
 
-> **See also `tts-strategy.pdf`** — a wider strategy note covering Take Root and
+> **See also `tts-strategy.pdf`** (in the project's shared files, `docs-archive/`; `docs/build-tts-strategy-pdf.py` rebuilds it) — a wider strategy note covering Take Root and
 > Every Tongue as well. It keeps this plan intact and adds the one case this one
 > sets aside: Luganda and Swahili, where no neural voice exists to run in the
 > browser and pre-rendered audio (Phase 2's optional item here) is the only

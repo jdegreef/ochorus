@@ -784,10 +784,9 @@
   },
   {
    "reference": "Psalm 1:1-2",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 31,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 31
   },
   {
    "reference": "Psalm 1:3",

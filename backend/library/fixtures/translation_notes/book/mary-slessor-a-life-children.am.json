@@ -20,17 +20,17 @@
   },
   {
    "reference": "Psalm 119:105",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
    "chapter_order": 2,
-   "source_file": "growing-in-wisdom.am.json"
+   "why": "wording was borrowed from growing-in-wisdom.am's pre-OWB Amharic, which that work no longer carries (re-quoted to OWB 2026-11-25); not verbatim OWB here"
   },
   {
    "reference": "Isaiah 6:8b",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
    "chapter_order": 3,
-   "source_file": "key-teachings-of-a-b-simpson.am.json"
+   "why": "the wording was mined from key-teachings-of-a-b-simpson.am before that work's re-quote to OWB (founder decision, 2026-11-18); it is no longer in any shipped file"
   },
   {
    "reference": "Psalm 27:10",

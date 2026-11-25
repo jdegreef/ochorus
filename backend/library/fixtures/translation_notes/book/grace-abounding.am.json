@@ -668,10 +668,10 @@
   },
   {
    "reference": "Ephesians 2:6",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 237,
    "chapter_order": 3,
-   "source_file": "christ-precious-to-believers.am.json"
+   "why": "wording first borrowed from christ-precious-to-believers.am.json, which now quotes OWB; this work keeps the earlier wording until its own OWB re-quote"
   },
   {
    "reference": "Psalm 150:1-2",
@@ -817,10 +817,9 @@
   },
   {
    "reference": "Proverbs 11:30",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 21,
-   "chapter_order": 4,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 4
   },
   {
    "reference": "Daniel 12:3",

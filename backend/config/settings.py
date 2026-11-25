@@ -72,6 +72,10 @@ MIDDLEWARE = [
     # Outermost, so its measurement covers every other layer (config/memory.py).
     "config.memory.MemoryLogMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    # Gzip the API's JSON (not the admin's; config/compression.py says why).
+    # Outside every layer that writes the body, so it sees the final bytes;
+    # WhiteNoise's files arrive already compressed and are passed through.
+    "config.compression.ApiGZipMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",  # must come before CommonMiddleware
     # After CORS, so a refusal still carries the headers a browser needs to read
@@ -441,6 +445,10 @@ if API_GUARD_MODE not in {"off", "report", "enforce"}:
     )
 # Comma-separated, so a key can be rotated: add the new one, move the callers,
 # drop the old one. Each should be long and random (`openssl rand -hex 32`).
+# The shared secret for GET /api/build-facts/ (library/build_facts_view.py), the
+# same value as OCHORUS_BUILD_FACTS_TOKEN on ochorus-web. Unset → that route 404s.
+BUILD_FACTS_TOKEN = os.getenv("BUILD_FACTS_TOKEN", "").strip()
+
 API_SERVICE_KEYS = [
     k.strip() for k in os.getenv("API_SERVICE_KEYS", "").split(",") if k.strip()
 ]

@@ -150,10 +150,10 @@
   },
   {
    "reference": "Psalms 104:27",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 6,
    "chapter_order": 4,
-   "source_file": "confessions.am.json"
+   "why": "wording first borrowed from confessions.am.json, which now quotes OWB; this work keeps the earlier wording until its own OWB re-quote"
   },
   {
    "reference": "2 Corinthians 4:7",
@@ -492,10 +492,10 @@
   },
   {
    "reference": "1 Corinthians 1:30",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 13,
    "chapter_order": 10,
-   "source_file": "gods-love-for-a-sinning-world.am.json"
+   "why": "the shared wording came from a work since re-quoted to OWB; this block's text is not OWB verbatim"
   },
   {
    "reference": "Hebrews 13:12",
@@ -828,10 +828,10 @@
   },
   {
    "reference": "Psalms 16:8",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 16,
    "chapter_order": 15,
-   "source_file": "key-teachings-of-richard-baxter.am.json"
+   "why": "the key-teachings-of-richard-baxter.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   },
   {
    "reference": "James 4:8",
@@ -925,10 +925,10 @@
   },
   {
    "reference": "1 Samuel 12:23",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
    "chapter_order": 17,
-   "source_file": "possibilities-of-prayer.am.json"
+   "why": "its wording was mined from possibilities-of-prayer.am's pre-OWB (1962) text, which has since been re-quoted to OWB; this edition still carries the pre-OWB wording"
   },
   {
    "reference": "James 4:2",
