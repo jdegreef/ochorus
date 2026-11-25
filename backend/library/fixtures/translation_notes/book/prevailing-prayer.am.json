@@ -1207,10 +1207,10 @@
   },
   {
    "reference": "Psalm 84:11",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 12,
    "chapter_order": 11,
-   "source_file": "baptism-with-the-holy-spirit.am.json"
+   "why": "the wording was mined from baptism-with-the-holy-spirit.am, which now quotes OWB; this edition still carries the pre-OWB Amharic wording"
   },
   {
    "reference": "Hebrews 7:25",
