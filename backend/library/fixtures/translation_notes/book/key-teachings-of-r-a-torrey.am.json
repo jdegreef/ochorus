@@ -6,7 +6,7 @@
  "pull_request": null,
  "note": [
   "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled as library/data/bible/owb-am-b.json.gz and read offline (owb-am). Every Scripture quotation was re-quoted to it verbatim (founder decision, 2026-11-18: Amharic quotes OWB everywhere), replacing the 1962/2003 UBS wording, the wording borrowed from other shipped Amharic works for the Old Testament verses, and the translator-rendered verses the first edition carried.",
-  "A `mined` row is a verbatim OWB span in that block: the whole verse, verses joined, the shortest contiguous span carrying the quoted clause, or exact OWB pieces joined with '…'; verbatim recitations without quote marks count, and chapter 12's title is one (Matt 22:42). `self_rendered` rows (each with a `why`) are the places OWB's words stand in the translator's own sentence rather than as a quotation — prayers and prose that recast a verse — and Mark 9:43-44, where OWB follows the critical text and has no verse 44.",
+  "A `mined` row is a verbatim OWB span in that block: the whole verse, verses joined, the shortest contiguous span carrying the quoted clause, or exact OWB pieces joined with '…'; verbatim recitations without quote marks count. Chapter 12's title quotes Matt 22:42 and was re-quoted with it, but carries no row of its own: the rows are keyed by block index, which a title does not have. `self_rendered` rows (each with a `why`) are the places OWB's words stand in the translator's own sentence rather than as a quotation — prayers and prose that recast a verse — and Mark 9:43-44, where OWB follows the critical text and has no verse 44.",
   "Torrey's own words quoted in this companion were ported from the shipped Amharic editions of his books (the-person-and-work-of-the-holy-spirit, baptism-with-the-holy-spirit, how-to-succeed-in-the-christian-life, how-to-bring-men-to-christ, the-fundamental-doctrines-of-the-christian-faith) and his Amharic biography where the passage matched; otherwise translated fresh."
  ],
  "references": [
@@ -659,13 +659,6 @@
    "status": "mined",
    "block_index": 31,
    "chapter_order": 11,
-   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
-  },
-  {
-   "reference": "Matthew 22:42",
-   "status": "mined",
-   "block_index": -1,
-   "chapter_order": 12,
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
