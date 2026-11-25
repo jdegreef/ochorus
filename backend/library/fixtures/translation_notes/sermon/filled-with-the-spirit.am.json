@@ -115,9 +115,9 @@
         },
         {
             "reference": "Ephesians 5:18",
-            "status": "mined",
-            "source_file": "key-teachings-of-a-b-simpson.am.json",
-            "block_index": 22
+            "status": "self_rendered",
+            "block_index": 22,
+            "why": "the wording was mined from key-teachings-of-a-b-simpson.am before that work's re-quote to OWB (founder decision, 2026-11-18); it is no longer in any shipped file"
         },
         {
             "reference": "John 1:16",
