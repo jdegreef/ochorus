@@ -15895,7 +15895,7 @@ BODY_CORRECTIONS.setdefault("absolute-surrender", {}).setdefault("replacements",
     # en-modern
     ("<h2>SET APART FOR THE HOLY SPIRIT</h2><p><i>“Now there", "<p><i>“Now there"),
     # am
-    ("<h2>ለመንፈስ ቅዱስ የተለዩት</h2> <p><i>«በአንጾኪያም ባለችው", "<p><i>«በአንጾኪያም ባለችው"),
+    ("<h2>ለመንፈስ ቅዱስ የተለዩት</h2> <p><i>«በአንጾኪያ ያለችው", "<p><i>«በአንጾኪያ ያለችው"),
     # ar
     ("<h2>مُخَصَّصُونَ لِلرُّوحِ ٱلْقُدُسِ</h2> <p><i>«وَكَانَ فِي", "<p><i>«وَكَانَ فِي"),
     # es
