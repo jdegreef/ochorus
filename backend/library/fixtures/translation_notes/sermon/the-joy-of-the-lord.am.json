@@ -6,262 +6,308 @@
  "references": [
   {
    "reference": "Nehemiah 8:10",
-   "status": "self_rendered",
-   "block_index": 1
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the epigraph; OWB has ምሽጋችሁ ('your stronghold') for 'strength'"
   },
   {
    "reference": "1 John 1:5",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 3
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 1:9",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 3
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 35:10",
-   "status": "self_rendered",
-   "block_index": 3
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "'shall come to Zion with songs…'; OWB Isa 35:10 and 51:11 read alike"
   },
   {
    "reference": "Nehemiah 8:10",
-   "status": "self_rendered",
-   "block_index": 5
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB's «…ምሽጋችሁ ነውና», with a one-time gloss (ምሽጋችሁ ማለትም ኃይላችሁና ብርታታችሁ) so the sermon's refrain 'is our strength' (ኃይላችን) still follows"
   },
   {
-   "reference": "Colossians 3:17",
+   "reference": "Psalm 119:54",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 6
+   "block_index": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "a marked quotation the old notes counted as self_rendered"
   },
   {
    "reference": "Ephesians 5:19",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 6
+   "block_index": 12,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Psalm 119:54",
-   "status": "self_rendered",
-   "block_index": 6
+   "reference": "Colossians 3:17",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the whole verse, replacing the old three fragments"
   },
   {
    "reference": "Colossians 1:11",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 15
-  },
-  {
-   "reference": "Colossians 1:11",
-   "status": "self_rendered",
-   "block_index": 15
-  },
-  {
-   "reference": "Hebrews 10:34",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 15
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB's «በትዕግሥት» and «እንድትታገሡ» carry the author's patience/longsuffering distinction"
   },
   {
    "reference": "Philippians 2:17",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 15
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "1 Peter 1:6",
-   "status": "self_rendered",
-   "block_index": 23
-  },
-  {
-   "reference": "Habakkuk 3:18",
-   "status": "self_rendered",
-   "block_index": 23
-  },
-  {
-   "reference": "James 1:12",
+   "reference": "Hebrews 10:34",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 23
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered",
+   "block_index": 13,
+   "why": "allusion woven into the author's sentence ('endured the cross for the joy…'), no quotation"
   },
   {
    "reference": "James 1:2",
-   "status": "self_rendered",
-   "block_index": 23
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "quoted twice: the full clause, then «እንደ ታላቅ የደስታ ምክንያት»"
   },
   {
    "reference": "James 1:3-4",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 23
+   "block_index": 20,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "recited in the English with quote marks; now OWB's two sentences"
+  },
+  {
+   "reference": "James 1:12",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Peter 1:6",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "«በልዩ ልዩ ፈተናዎች»"
+  },
+  {
+   "reference": "Isaiah 61:10",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "'I will rejoice in the Lord … joyful in my God'"
+  },
+  {
+   "reference": "Proverbs 17:22",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 40:31",
    "status": "mined",
-   "source_file": "burdens-and-gifts.am.json",
-   "block_index": 29
+   "block_index": 26,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Philippians 4:4",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 29
-  },
-  {
-   "reference": "Proverbs 17:22",
-   "status": "self_rendered",
-   "block_index": 29
+   "block_index": 26,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 20:24",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 33
-  },
-  {
-   "reference": "Acts 4:13",
-   "status": "self_rendered",
-   "block_index": 33
+   "block_index": 28,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB (critical text) lacks 'none of these things move me' and 'with joy'; the translator's frame «ሩጫውን በደስታ ይፈጽም ዘንድ» keeps the author's point"
   },
   {
    "reference": "John 5:35",
    "status": "self_rendered",
-   "block_index": 33
+   "block_index": 30,
+   "why": "single words «የሚነድ», «የሚያበራ» ('burning', 'shining'); too short to claim"
+  },
+  {
+   "reference": "Acts 4:13",
+   "status": "self_rendered",
+   "block_index": 31,
+   "why": "re-personed allusion ('take knowledge of us that we have been with Jesus') in the author's sentence"
   },
   {
    "reference": "Galatians 5:22",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 51
-  },
-  {
-   "reference": "John 4:14",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 51
+   "block_index": 44,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 14:17",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 51
+   "block_index": 44,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Habakkuk 3:17-18",
-   "status": "self_rendered",
-   "block_index": 52
-  },
-  {
-   "reference": "Isaiah 26:3",
-   "status": "self_rendered",
-   "block_index": 52
-  },
-  {
-   "reference": "Isaiah 7:9",
-   "status": "self_rendered",
-   "block_index": 52
+   "reference": "John 4:14",
+   "status": "mined",
+   "block_index": 44,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "'well of water … springing up unto everlasting life': «ወደ ዘላለም ሕይወት እየፈለቀ የሚወጣ ምንጭ»"
   },
   {
    "reference": "Romans 15:13",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 52
+   "block_index": 45,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "1 Corinthians 2:12",
+   "reference": "Habakkuk 3:17-18",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 53
+   "block_index": 45,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB pieces joined with '…'"
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 7:9",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Peter 1:4",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 53
-  },
-  {
-   "reference": "Psalm 119:111",
-   "status": "self_rendered",
-   "block_index": 53
+   "block_index": 46,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 119:162",
-   "status": "self_rendered",
-   "block_index": 53
+   "status": "mined",
+   "block_index": 46,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Corinthians 2:12",
+   "status": "mined",
+   "block_index": 46,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 119:111",
+   "status": "mined",
+   "block_index": 46,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the whole OWB verse; OWB words the line differently from 'the joy and rejoicing of my heart'"
   },
   {
    "reference": "Isaiah 40:31",
    "status": "mined",
-   "source_file": "burdens-and-gifts.am.json",
-   "block_index": 55
+   "block_index": 47,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB pieces joined with '…'"
   },
   {
    "reference": "John 16:24",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 55
+   "block_index": 47,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 29:19",
+   "status": "mined",
+   "block_index": 51,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 20:35",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 60
-  },
-  {
-   "reference": "Isaiah 29:19",
-   "status": "self_rendered",
-   "block_index": 60
+   "block_index": 51,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 58:10-11",
-   "status": "self_rendered",
-   "block_index": 60
+   "status": "mined",
+   "block_index": 51,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB pieces joined with '…'"
   },
   {
    "reference": "Matthew 25:40",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 60
+   "block_index": 51,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "«ለእኔ አደረጋችሁት»"
+  },
+  {
+   "reference": "John 4:34",
+   "status": "self_rendered",
+   "block_index": 52,
+   "why": "allusion ('whose meat and drink it was to do the will of Him that sent Him'), the author's paraphrase"
   },
   {
    "reference": "Matthew 25:21",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 69
-  },
-  {
-   "reference": "2 Peter 1:19",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 70
-  },
-  {
-   "reference": "Luke 21:28",
-   "status": "self_rendered",
-   "block_index": 70
+   "block_index": 58,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB pieces joined with '…'"
   },
   {
    "reference": "Romans 5:2",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 70
+   "block_index": 59,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Peter 1:19",
+   "status": "mined",
+   "block_index": 59,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Luke 21:28",
+   "status": "mined",
+   "block_index": 59,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "quoted in the English but unmarked in the old Amharic; now OWB's words"
   },
   {
    "reference": "John 15:11",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 71
+   "block_index": 60,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 16:9-11",
-   "status": "self_rendered",
-   "block_index": 71
+   "status": "mined",
+   "block_index": 60,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   }
  ],
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose. Block indices were corrected to the requote_inventory numbering.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). NT verses are pasted from the ebible mirror (amh_amh); the mirror has no OT, so OT quotations are self_rendered in the 1962 register unless a shipped Amharic work already quotes the verse (source_file names it).",
   "Rows come from the translators' reports and every 'mined' claim was re-verified: each quoted fragment must be a byte-exact substring both of this body and of the NT file (or of the cited shipped work); a claim that fails is recorded as self_rendered. Some mirror entries are merged verse ranges holding only part of the text, so verses inside them are self_rendered."
  ]
