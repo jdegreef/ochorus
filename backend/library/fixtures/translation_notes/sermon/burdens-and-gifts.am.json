@@ -5,6 +5,7 @@
  "job_issue": 4076,
  "pull_request": null,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh); the mirror has no Old Testament, so OT quotations reuse a shipped Amharic work's wording where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
   "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited shipped work) inside that block. Shorter, re-personed, or bridged-range verses (the mirror merges some verse ranges into one entry holding only part of the text) are self_rendered."
  ],
@@ -13,17 +14,21 @@
    "reference": "Isaiah 40:28-31",
    "status": "mined",
    "block_index": 6,
-   "source_file": "waiting-on-god.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the read passage, OWB Isa 40:28-31 in full"
   },
   {
    "reference": "Isaiah 40:31",
-   "status": "self_rendered",
-   "block_index": 8
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB's «በተስፋ የሚጠባበቁ» keeps the 'wait' the preacher goes on to discuss"
   },
   {
    "reference": "Isaiah 40:31",
-   "status": "self_rendered",
-   "block_index": 9
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 15:4-5",
@@ -34,7 +39,7 @@
    "reference": "Matthew 11:29-30",
    "status": "mined",
    "block_index": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Kings 4:1-7",
@@ -50,13 +55,13 @@
    "reference": "Romans 8:9",
    "status": "mined",
    "block_index": 15,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 12:11",
    "status": "mined",
    "block_index": 15,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Galatians 6:5",
@@ -102,12 +107,13 @@
    "reference": "John 17:15",
    "status": "mined",
    "block_index": 54,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 17:20",
-   "status": "self_rendered",
-   "block_index": 54
+   "status": "mined",
+   "block_index": 54,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 17:21-23",
@@ -128,6 +134,18 @@
    "reference": "1 John 1:9",
    "status": "self_rendered",
    "block_index": 62
+  },
+  {
+   "reference": "Judges 17:6",
+   "block_index": 40,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 17:9",
+   "block_index": 53,
+   "status": "self_rendered",
+   "why": "the preacher's own paraphrase ('I thank you for these men'), not a recitation"
   }
  ]
 }
