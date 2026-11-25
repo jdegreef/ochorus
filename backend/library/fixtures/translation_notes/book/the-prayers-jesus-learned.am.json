@@ -518,8 +518,8 @@
         },
         {
             "reference": "1 Samuel 2:8",
-            "status": "mined",
-            "source_file": "samuel-ajayi-crowther-a-life-teens.am.json",
+            "status": "self_rendered",
+            "why": "wording first borrowed from samuel-ajayi-crowther-a-life-teens.am.json, which now quotes OWB; this work keeps the earlier wording until its own OWB re-quote",
             "block_index": 37
         },
         {

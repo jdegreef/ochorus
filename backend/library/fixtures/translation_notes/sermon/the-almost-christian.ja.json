@@ -4,12 +4,358 @@
     "language": "ja",
     "job_issue": 8004,
     "pull_request": null,
+    "note": [
+        "Scripture is the Open Word Bible (OWB), Japanese, Balanced edition (CC0), bundled as library/data/bible/owb-ja-b.json.gz and read offline (owb-ja). The edition was first translated quoting the 口語訳 (japkougo); every quotation was re-quoted to OWB per the founder decision that Japanese quotes OWB for every work (2026-11-19).",
+        "A `mined` row is a quotation (or verbatim recitation) whose every piece, pieces joined by '……' allowed, is a verbatim span of the cited OWB verse(s). A `self_rendered` row with a `why` is a quotation OWB cannot serve as Wesley adapts it; the rest are the original translator's allusion rows, unchanged. block_index counts the sermon's blocks (the opening blockquote is 0)."
+    ],
     "references": [
         {
             "reference": "Acts 26:28",
             "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "block_index": 0
+        },
+        {
+            "reference": "Matthew 5:37",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 7
+        },
+        {
+            "reference": "Exodus 20:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 7
+        },
+        {
+            "reference": "Ephesians 5:4",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 7
+        },
+        {
+            "reference": "Ephesians 4:29",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 7
+        },
+        {
+            "reference": "Ephesians 4:30",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 7
+        },
+        {
+            "reference": "Ephesians 5:18",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 8
+        },
+        {
+            "reference": "Ecclesiastes 9:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 9
+        },
+        {
+            "reference": "Romans 12:11",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 9
+        },
+        {
+            "reference": "Galatians 6:10",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 9
+        },
+        {
+            "reference": "Zechariah 13:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 9
+        },
+        {
+            "reference": "Luke 18:13",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 10
+        },
+        {
+            "reference": "2 Corinthians 7:4",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 20
+        },
+        {
+            "reference": "2 Corinthians 12:13",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 20
+        },
+        {
+            "reference": "1 Timothy 6:12",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 21
+        },
+        {
+            "reference": "Romans 9:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 21
+        },
+        {
+            "reference": "Mark 12:30",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 23
+        },
+        {
+            "reference": "Luke 1:47",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 23
+        },
+        {
+            "reference": "1 Thessalonians 5:18",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 23
+        },
+        {
+            "reference": "Psalms 73:25",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 23
+        },
+        {
+            "reference": "Galatians 6:14",
+            "status": "self_rendered",
+            "block_index": 23,
+            "why": "Wesley turns the apostle's first person to the third ('he is crucified to the world'); the translator's rendering in OWB's words"
+        },
+        {
+            "reference": "1 John 2:16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 23
+        },
+        {
+            "reference": "1 Corinthians 13:4",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 23
+        },
+        {
+            "reference": "1 John 4:16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 23
+        },
+        {
+            "reference": "Matthew 22:39",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 24
+        },
+        {
+            "reference": "Luke 10:29",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 24
+        },
+        {
+            "reference": "1 Corinthians 13:4-7",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 24
+        },
+        {
+            "reference": "1 Corinthians 13:4-7",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 24
+        },
+        {
+            "reference": "1 Corinthians 9:22",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 24
+        },
+        {
+            "reference": "1 Corinthians 13:4-7",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 24
+        },
+        {
+            "reference": "1 Corinthians 13:4-7",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 24
+        },
+        {
+            "reference": "1 John 5:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 25
+        },
+        {
+            "reference": "John 1:12",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 25
+        },
+        {
+            "reference": "1 John 5:4",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 25
+        },
+        {
+            "reference": "John 3:36",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 25
+        },
+        {
+            "reference": "John 5:24",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 25
+        },
+        {
+            "reference": "2 Corinthians 7:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 28
+        },
+        {
+            "reference": "Acts 15:9",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 28
+        },
+        {
+            "reference": "Proverbs 15:11",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 29
+        },
+        {
+            "reference": "Ecclesiastes 9:10",
+            "status": "self_rendered",
+            "block_index": 29,
+            "why": "Wesley's own question to the hearer ('Do I, whatever good my hand findeth to do, do it with my might?'), echoing the verse quoted from OWB in §6"
+        },
+        {
+            "reference": "1 Peter 2:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 30
+        },
+        {
+            "reference": "Colossians 3:17",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 30
+        },
+        {
+            "reference": "Romans 5:5",
+            "status": "self_rendered",
+            "block_index": 31,
+            "why": "turned to the second person ('in your heart'); OWB's vocabulary, the translator's adaptation"
+        },
+        {
+            "reference": "1 John 4:21",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 31
+        },
+        {
+            "reference": "Galatians 2:20",
+            "status": "self_rendered",
+            "block_index": 31,
+            "why": "turned to the second person ('loved thee, and gave himself for thee'); OWB's vocabulary"
+        },
+        {
+            "reference": "Colossians 2:14",
+            "status": "self_rendered",
+            "block_index": 31,
+            "why": "Wesley's questions turn Col 2:14, Micah 7:19, Eph 1:7 and Rom 8:16 to the second person; reworded in OWB's vocabulary, out of the 口語訳's"
+        },
+        {
+            "reference": "Ephesians 5:14",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 32
+        },
+        {
+            "reference": "Isaiah 55:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 32
+        },
+        {
+            "reference": "Exodus 33:19",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 32
+        },
+        {
+            "reference": "Exodus 34:6-7",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 32
+        },
+        {
+            "reference": "Romans 5:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 32
+        },
+        {
+            "reference": "John 20:28",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 32
+        },
+        {
+            "reference": "Luke 18:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 32
+        },
+        {
+            "reference": "John 21:17",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 32
+        },
+        {
+            "reference": "Romans 3:24",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 33
+        },
+        {
+            "reference": "Romans 5:1",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 33
+        },
+        {
+            "reference": "Romans 5:2",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 33
+        },
+        {
+            "reference": "Romans 5:5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
+            "block_index": 33
         },
         {
             "reference": "Exodus 20:7",
@@ -22,41 +368,6 @@
             "block_index": 7
         },
         {
-            "reference": "Matthew 5:37",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 7
-        },
-        {
-            "reference": "Exodus 20:10",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 7
-        },
-        {
-            "reference": "Ephesians 5:4",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 7
-        },
-        {
-            "reference": "Ephesians 4:29",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 7
-        },
-        {
-            "reference": "Ephesians 4:30",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 7
-        },
-        {
-            "reference": "Ephesians 5:18",
-            "status": "self_rendered",
-            "block_index": 8
-        },
-        {
             "reference": "Romans 12:18",
             "status": "self_rendered",
             "block_index": 8
@@ -67,43 +378,10 @@
             "block_index": 8
         },
         {
-            "reference": "1 Corinthians 9:22",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 24
-        },
-        {
-            "reference": "Ecclesiastes 9:10",
-            "status": "self_rendered",
-            "block_index": 9
-        },
-        {
-            "reference": "Romans 12:11",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 9
-        },
-        {
-            "reference": "Galatians 6:10",
-            "status": "self_rendered",
-            "block_index": 9
-        },
-        {
-            "reference": "Zechariah 13:1",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 9
-        },
-        {
-            "reference": "Luke 18:13",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 10
-        },
-        {
             "reference": "Matthew 6:2",
             "status": "self_rendered",
-            "block_index": 17
+            "block_index": 17,
+            "why": "Wesley turns the verse to the second person singular ('thou hast thy reward'); the translator's rendering"
         },
         {
             "reference": "Acts 24:16",
@@ -116,89 +394,10 @@
             "block_index": 21
         },
         {
-            "reference": "1 Timothy 6:12",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 21
-        },
-        {
-            "reference": "Romans 9:1",
-            "status": "self_rendered",
-            "block_index": 21
-        },
-        {
-            "reference": "2 Corinthians 7:4",
-            "status": "self_rendered",
-            "block_index": 20
-        },
-        {
-            "reference": "2 Corinthians 12:13",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 20
-        },
-        {
-            "reference": "Mark 12:30",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 23
-        },
-        {
-            "reference": "Luke 1:47",
-            "status": "self_rendered",
-            "block_index": 23
-        },
-        {
-            "reference": "1 Thessalonians 5:18",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 23
-        },
-        {
             "reference": "Isaiah 26:8",
             "status": "self_rendered",
-            "block_index": 23
-        },
-        {
-            "reference": "Psalms 73:25",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 23
-        },
-        {
-            "reference": "Galatians 6:14",
-            "status": "self_rendered",
-            "block_index": 23
-        },
-        {
-            "reference": "1 John 2:16",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 23
-        },
-        {
-            "reference": "1 Corinthians 13:4",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 23
-        },
-        {
-            "reference": "1 John 4:16",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 23
-        },
-        {
-            "reference": "Matthew 22:39",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 24
-        },
-        {
-            "reference": "Luke 10:29",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 24
+            "block_index": 23,
+            "why": "Wesley's third-person adaptation ('All his desire is unto God, and to the remembrance of his name'); the translator's rendering"
         },
         {
             "reference": "Hebrews 12:9",
@@ -211,54 +410,6 @@
             "block_index": 24
         },
         {
-            "reference": "1 Corinthians 13:4-7",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 24
-        },
-        {
-            "reference": "1 John 5:1",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 25
-        },
-        {
-            "reference": "John 1:12",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 25
-        },
-        {
-            "reference": "1 John 5:4",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 25
-        },
-        {
-            "reference": "John 3:36",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 25
-        },
-        {
-            "reference": "John 5:24",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 25
-        },
-        {
-            "reference": "Acts 15:9",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 28
-        },
-        {
-            "reference": "2 Corinthians 7:1",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 28
-        },
-        {
             "reference": "Hebrews 11:26",
             "status": "self_rendered",
             "block_index": 28
@@ -269,41 +420,6 @@
             "block_index": 28
         },
         {
-            "reference": "Proverbs 15:11",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 29
-        },
-        {
-            "reference": "Colossians 3:17",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 30
-        },
-        {
-            "reference": "1 Peter 2:5",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 30
-        },
-        {
-            "reference": "Romans 5:5",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 33
-        },
-        {
-            "reference": "1 John 4:21",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 31
-        },
-        {
-            "reference": "Galatians 2:20",
-            "status": "self_rendered",
-            "block_index": 31
-        },
-        {
             "reference": "John 1:29",
             "status": "self_rendered",
             "block_index": 31
@@ -311,59 +427,30 @@
         {
             "reference": "Micah 7:19",
             "status": "self_rendered",
-            "block_index": 31
-        },
-        {
-            "reference": "Colossians 2:14",
-            "status": "self_rendered",
-            "block_index": 31
+            "block_index": 31,
+            "why": "turned to the second person in Wesley's questions ('cast them as a stone into the depth of the sea'); reworded in OWB's vocabulary"
         },
         {
             "reference": "Ephesians 1:7",
             "status": "self_rendered",
-            "block_index": 31
+            "block_index": 31,
+            "why": "turned to the second person in Wesley's questions; OWB's wording 血によって贖い、すなわち過ちの赦しを得ています kept inside the question"
         },
         {
             "reference": "Romans 8:16",
             "status": "self_rendered",
-            "block_index": 31
+            "block_index": 31,
+            "why": "turned to the second person ('with thy spirit, that thou art a child of God'); reworded in OWB's vocabulary"
         },
         {
             "reference": "Matthew 26:24",
             "status": "self_rendered",
-            "block_index": 32
-        },
-        {
-            "reference": "Ephesians 5:14",
-            "status": "self_rendered",
-            "block_index": 32
-        },
-        {
-            "reference": "Isaiah 55:6",
-            "status": "self_rendered",
-            "block_index": 32
-        },
-        {
-            "reference": "Exodus 33:19",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 32
-        },
-        {
-            "reference": "Exodus 34:6-7",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 32
+            "block_index": 32,
+            "why": "Wesley's general application ('good it were for him that he had never been born'); OWB's words 生まれて来なければよかった in the preacher's register"
         },
         {
             "reference": "Philippians 3:14",
             "status": "self_rendered",
-            "block_index": 32
-        },
-        {
-            "reference": "Romans 5:6",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
             "block_index": 32
         },
         {
@@ -372,44 +459,9 @@
             "block_index": 32
         },
         {
-            "reference": "John 20:28",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 32
-        },
-        {
-            "reference": "Luke 18:1",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 32
-        },
-        {
             "reference": "Revelation 4:9",
             "status": "self_rendered",
             "block_index": 32
-        },
-        {
-            "reference": "John 21:17",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 32
-        },
-        {
-            "reference": "Romans 3:24",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 33
-        },
-        {
-            "reference": "Romans 5:1",
-            "status": "mined",
-            "source_file": "口語訳聖書 (japkougo) Bible text",
-            "block_index": 33
-        },
-        {
-            "reference": "Romans 5:2",
-            "status": "self_rendered",
-            "block_index": 33
         }
     ]
 }
