@@ -701,8 +701,8 @@
         },
         {
             "reference": "Psalm 51:10",
-            "status": "mined",
-            "source_file": "revival-lectures.am.json",
+            "status": "self_rendered",
+            "why": "the revival-lectures.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering",
             "block_index": 0
         },
         {
