@@ -367,10 +367,9 @@
   },
   {
    "reference": "Jeremiah 29:13",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 12,
-   "source_file": "ministry-of-intercession.am.json"
+   "chapter_order": 12
   },
   {
    "reference": "Matthew 7:7-8",
@@ -720,10 +719,9 @@
   },
   {
    "reference": "Jeremiah 29:13",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 64,
-   "chapter_order": 13,
-   "source_file": "ministry-of-intercession.am.json"
+   "chapter_order": 13
   }
  ]
 }
