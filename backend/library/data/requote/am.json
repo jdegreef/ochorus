@@ -212,6 +212,20 @@
    "english": ["suffereth violence", "the violent take it by force"],
    "old": ["ትገፋለች", "ይናጠቋታል"],
    "decision": "OWB reads the opposite sense (the kingdom suffers attack; violent men try to seize it). Where the author applies the AV to importunate prayer or holy violence (Bounds via Liddon; Wesley), render from the English and mark the row self_rendered."
+  },
+  {
+   "id": "restores-my-soul",
+   "references": ["Psalm 23:3"],
+   "english": ["He restores my soul", "restores the soul"],
+   "old": ["ነፍሴን መለሳት"],
+   "decision": "OWB Ps 23:3 reads «ሕይወቴን ይመልስልኛል» ('my life'). Quote OWB; where the author argues from 'soul' (The Key in My Hand's soul wounds), give the first full quotation a one-time gloss (ማለትም ነፍሴን) and keep ነፍስ in the author's prose."
+  },
+  {
+   "id": "keys-of-the-kingdom",
+   "references": ["Matthew 16:19"],
+   "english": ["keys of the kingdom", "key to the kingdom"],
+   "old": ["የመንግሥተ ሰማያትንም መክፈቻዎች"],
+   "decision": "OWB Matt 16:19 reads «የመንግሥተ ሰማያትን ቁልፎች». Quote OWB where the verse stands; an author's own 'key to the kingdom' image (The Key in My Hand, title በእጄ ያለው መክፈቻ) stays መክፈቻ and its row is self_rendered."
   }
  ]
 }
