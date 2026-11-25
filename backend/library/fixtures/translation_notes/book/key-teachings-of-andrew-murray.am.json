@@ -964,10 +964,10 @@
   },
   {
    "reference": "Psalms 103:13",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 22,
    "chapter_order": 17,
-   "source_file": "marks-of-a-true-conversion.am.json"
+   "why": "the wording was mined from marks-of-a-true-conversion.am, which now quotes OWB; this edition still carries the pre-OWB Amharic wording"
   },
   {
    "reference": "Psalms 103:14",
