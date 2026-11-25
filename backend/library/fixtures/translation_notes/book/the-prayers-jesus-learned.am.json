@@ -238,7 +238,6 @@
   },
   {
    "reference": "Genesis 32:26",
-   "block_index": -1,
    "chapter_order": 3,
    "status": "mined",
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
@@ -623,7 +622,6 @@
   },
   {
    "reference": "Exodus 33:18",
-   "block_index": -1,
    "chapter_order": 5,
    "status": "mined",
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
@@ -1869,7 +1867,6 @@
   },
   {
    "reference": "2 Chronicles 20:12",
-   "block_index": -1,
    "chapter_order": 12,
    "status": "mined",
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
@@ -2737,7 +2734,6 @@
   },
   {
    "reference": "Psalm 13:1",
-   "block_index": -1,
    "chapter_order": 17,
    "status": "mined",
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
