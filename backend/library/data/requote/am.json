@@ -212,6 +212,34 @@
    "english": ["suffereth violence", "the violent take it by force"],
    "old": ["ትገፋለች", "ይናጠቋታል"],
    "decision": "OWB reads the opposite sense (the kingdom suffers attack; violent men try to seize it). Where the author applies the AV to importunate prayer or holy violence (Bounds via Liddon; Wesley), render from the English and mark the row self_rendered."
+  },
+  {
+   "id": "all-things-possible",
+   "references": ["Mark 9:23", "Matthew 19:26", "Mark 10:27"],
+   "english": ["All things are possible to him that believeth", "All things are possible with God"],
+   "old": ["ለሚያምን ሁሉ ይቻላል", "በእግዚአብሔር ዘንድ ሁሉ ይቻላል"],
+   "decision": "The refrain is OWB Mark 9:23 «ለሚያምን ሰው ሁሉ ነገር ይቻላል», identical wherever it recurs, unmarked recitations included. Its twin 'All things are possible with God' quotes OWB Matt 19:26 «ለእግዚአብሔር ግን ሁሉ ይቻላል», because OWB Mark 10:27 («እግዚአብሔር ሁሉን ማድረግ ይችላል») loses the parallel the author argues from."
+  },
+  {
+   "id": "walked-with-god",
+   "references": ["Genesis 5:22", "Genesis 5:24"],
+   "english": ["Enoch walked with God", "walked with God"],
+   "old": ["ሄኖክም ከእግዚአብሔር ጋር አካሄደ", "ከእግዚአብሔር ጋር አካሄደ"],
+   "decision": "OWB reads «ሄኖክ ከእግዚአብሔር ጋር ተመላለሰ». Quote that wherever the text is quoted; the author's subject 'walking with God' may stay «ከእግዚአብሔር ጋር መሄድ» in prose (OWB 1 John 2:6 uses the same ተመላለሰ)."
+  },
+  {
+   "id": "restores-my-soul",
+   "references": ["Psalm 23:3"],
+   "english": ["He restores my soul", "restores the soul"],
+   "old": ["ነፍሴን መለሳት"],
+   "decision": "OWB Ps 23:3 reads «ሕይወቴን ይመልስልኛል» ('my life'). Quote OWB; where the author argues from 'soul' (The Key in My Hand's soul wounds), give the first full quotation a one-time gloss (ማለትም ነፍሴን) and keep ነፍስ in the author's prose."
+  },
+  {
+   "id": "keys-of-the-kingdom",
+   "references": ["Matthew 16:19"],
+   "english": ["keys of the kingdom", "key to the kingdom"],
+   "old": ["የመንግሥተ ሰማያትንም መክፈቻዎች"],
+   "decision": "OWB Matt 16:19 reads «የመንግሥተ ሰማያትን ቁልፎች». Quote OWB where the verse stands; an author's own 'key to the kingdom' image (The Key in My Hand, title በእጄ ያለው መክፈቻ) stays መክፈቻ and its row is self_rendered."
   }
  ]
 }
