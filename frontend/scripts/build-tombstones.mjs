@@ -43,13 +43,39 @@
  * TOMBSTONE_PREVIOUS=none to deploy anyway, knowing that.
  *
  * It also fails when more than TOMBSTONE_MAX (default 300) pages would be
- * tombstoned at once: that is a build short of pages, not a withdrawal.
+ * NEWLY tombstoned at once: that is a build short of pages, not a withdrawal.
+ *
+ * NEWLY is the point. The manifest lists the tombstones too (that is what keeps
+ * them tombstoned), so every page ever withdrawn turns up again as "known and
+ * not built" on every deploy. Counting those against the limit made it a
+ * running total: once the withdrawals of a few weeks plus the Bible's chapter
+ * renumbering passed 300, every deploy failed from 2026-11-24 on, each one
+ * reporting the same old graves. So each deploy also publishes the paths it
+ * tombstoned (`tombstoned-pages.txt`), and the limit counts only paths that the
+ * previous deploy served as real pages. The first deploy to read that list finds
+ * none live: it asks the live site instead, a grave being byte-identical to the
+ * live shell. A Bible chapter's address that moved when the URLs took the
+ * Bible's numbering (`/books/genesis/51/`, `/52/`) is a redirect, not a
+ * withdrawal ([slug]/[order]/+page.ts sends it on), so it doesn't count either.
  */
-import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import {
+	copyFileSync,
+	existsSync,
+	mkdirSync,
+	readFileSync,
+	readdirSync,
+	writeFileSync
+} from 'node:fs';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+// Node strips the types at runtime (as for local-api.mjs's buildApi.ts); only
+// the type-check, which reaches this file through tombstones.test.ts, objects.
+// @ts-expect-error -- a .ts import from a .mjs script
+import { BIBLE_CHAPTER_COUNTS } from '../src/lib/reading-schema.ts';
 
 export const MANIFEST = 'published-pages.txt';
+/** The paths this deploy tombstoned: the next one's "already withdrawn". */
+export const GRAVES = 'tombstoned-pages.txt';
 const SEED = join(dirname(fileURLToPath(import.meta.url)), 'withdrawn-pages.txt');
 /** The two shells are the host's fallbacks, not pages: never listed, never tombstoned. */
 const SHELLS = new Set(['200.html', '404.html']);
@@ -84,7 +110,9 @@ export function parsePageList(text, source) {
 		const line = raw.trim();
 		if (!line || line.startsWith('#')) continue;
 		if (!/^[^/\s][^\s]*\.html$/.test(line) || line.split('/').includes('..')) {
-			throw new Error(`${source}: not a build-relative .html path: ${JSON.stringify(line.slice(0, 120))}`);
+			throw new Error(
+				`${source}: not a build-relative .html path: ${JSON.stringify(line.slice(0, 120))}`
+			);
 		}
 		if (!SHELLS.has(line)) paths.push(line);
 	}
@@ -100,13 +128,41 @@ export function tombstonesFor(known, built) {
 	return [...new Set(known)].filter((p) => !have.has(p) && !SHELLS.has(p)).sort();
 }
 
+/**
+ * A Bible chapter's address from before the URLs took the Bible's numbering:
+ * one or two past the book's last chapter (its last chapter and its Conclusion
+ * as stored orders). The chapter route redirects these, so they moved rather
+ * than vanished. Any locale prefix.
+ * @param {string} path
+ */
+export function isMovedBibleChapter(path) {
+	const m = /^(?:[a-z]{2}(?:-[a-z]+)?\/)?books\/([^/]+)\/(\d+)\/index\.html$/.exec(path);
+	if (!m) return false;
+	const n = /** @type {Record<string, number>} */ (BIBLE_CHAPTER_COUNTS)[m[1]];
+	const order = Number(m[2]);
+	return Boolean(n) && (order === n + 1 || order === n + 2);
+}
+
+/**
+ * The paths this deploy is withdrawing for the first time — what the burst
+ * limit is about. Not the seed, not a path an earlier deploy already
+ * tombstoned, not a Bible chapter address that moved.
+ * @param {string[]} graves @param {string[]} seed @param {Iterable<string>} alreadyGone
+ */
+export function freshWithdrawals(graves, seed, alreadyGone) {
+	const old = new Set([...seed, ...alreadyGone]);
+	return graves.filter((p) => !old.has(p) && !isMovedBibleChapter(p));
+}
+
 /** GET with a cache-busting query (the CDN holds responses ~5 minutes), retried. */
 /** @param {string} url */
 async function fetchFresh(url) {
 	let lastError;
 	for (let attempt = 1; attempt <= 3; attempt++) {
 		try {
-			const res = await fetch(`${url}?build=${Date.now()}`, { signal: AbortSignal.timeout(30_000) });
+			const res = await fetch(`${url}?build=${Date.now()}`, {
+				signal: AbortSignal.timeout(30_000)
+			});
 			if (res.status < 500) return { status: res.status, text: await res.text() };
 			lastError = new Error(`${url} answered ${res.status}`);
 		} catch (e) {
@@ -153,7 +209,8 @@ async function previousList(seed) {
 	if (!source) {
 		if (!process.env.RENDER) return [];
 		const site = (process.env.PUBLIC_SITE_URL || '').replace(/\/+$/, '');
-		if (!site) throw new Error('PUBLIC_SITE_URL is unset, so the live page list cannot be fetched.');
+		if (!site)
+			throw new Error('PUBLIC_SITE_URL is unset, so the live page list cannot be fetched.');
 		source = `${site}/${MANIFEST}`;
 	}
 	if (!/^https?:\/\//.test(source)) return parsePageList(readFileSync(source, 'utf8'), source);
@@ -168,6 +225,58 @@ async function previousList(seed) {
 	}
 	if (status !== 200) throw new Error(`${source} answered ${status}.`);
 	return parsePageList(text, source);
+}
+
+/**
+ * The paths the previous deploy tombstoned. Only on Render, where the previous
+ * deploy is the live site (or from TOMBSTONE_PREVIOUS_GRAVES, a URL or a file).
+ * Before any deploy published the list, the live site is asked page by page
+ * which of `candidates` it already serves as a grave.
+ * @param {string[]} candidates
+ * @returns {Promise<string[]>}
+ */
+async function previousGraves(candidates) {
+	let source = process.env.TOMBSTONE_PREVIOUS_GRAVES;
+	if (source === 'none') return [];
+	const site = (process.env.PUBLIC_SITE_URL || '').replace(/\/+$/, '');
+	if (!source) {
+		if (!process.env.RENDER || !site) return [];
+		source = `${site}/${GRAVES}`;
+	}
+	if (!/^https?:\/\//.test(source)) return parsePageList(readFileSync(source, 'utf8'), source);
+	const { status, text } = await fetchFresh(source);
+	if (status === 200) return parsePageList(text, source);
+	if (status !== 404) throw new Error(`${source} answered ${status}.`);
+	return livelyGraves(new URL(source).origin, candidates);
+}
+
+/**
+ * Which of `paths` the live site serves as a grave (a byte copy of its shell).
+ * The one-time bridge for the first deploy that reads GRAVES. A path that can't
+ * be fetched counts as a real page, so the limit errs on the side of stopping.
+ * @param {string} origin @param {string[]} paths
+ */
+async function livelyGraves(origin, paths) {
+	const shell = (await fetchFresh(`${origin}/200.html`)).text;
+	/** @type {string[]} */
+	const gone = [];
+	const queue = [...paths];
+	await Promise.all(
+		Array.from({ length: 8 }, async () => {
+			for (let p = queue.shift(); p !== undefined; p = queue.shift()) {
+				try {
+					const { status, text } = await fetchFresh(`${origin}/${p.replace(/index\.html$/, '')}`);
+					if (status === 200 && text === shell) gone.push(p);
+				} catch {
+					/* unreadable: treat as a real page */
+				}
+			}
+		})
+	);
+	console.log(
+		`build-tombstones: no ${GRAVES} live yet — ${gone.length} of ${paths.length} already graves`
+	);
+	return gone;
 }
 
 /** @param {string} buildDir */
@@ -185,13 +294,20 @@ export async function main(buildDir) {
 	// burst means something upstream is wrong. Withdrawing a whole language is
 	// the legitimate exception: raise TOMBSTONE_MAX for that one deploy.
 	const max = Number(process.env.TOMBSTONE_MAX) || DEFAULT_MAX;
-	if (graves.length > max) {
+	const candidates = graves.filter((p) => !seed.includes(p) && !isMovedBibleChapter(p));
+	const fresh = freshWithdrawals(graves, seed, await previousGraves(candidates));
+	if (fresh.length > max) {
 		throw Object.assign(
 			new Error(
-				`${graves.length} previously published pages are missing from this build ` +
-					`(limit ${max}), e.g. ${graves.slice(0, 5).map((p) => `/${p}`).join(', ')}.`
+				`${fresh.length} previously published pages are missing from this build ` +
+					`(limit ${max}), e.g. ${fresh
+						.slice(0, 5)
+						.map((p) => `/${p}`)
+						.join(', ')}.`
 			),
-			{ hint: 'If that many withdrawals are intended (a language taken offline), set TOMBSTONE_MAX above it for this deploy; otherwise find out why the build lost them.' }
+			{
+				hint: 'If that many withdrawals are intended (a language taken offline), set TOMBSTONE_MAX above it for this deploy; otherwise find out why the build lost them.'
+			}
 		);
 	}
 
@@ -202,13 +318,14 @@ export async function main(buildDir) {
 	}
 	const published = [...new Set([...built, ...graves])].sort();
 	writeFileSync(join(buildDir, MANIFEST), published.join('\n') + '\n');
+	writeFileSync(join(buildDir, GRAVES), graves.length ? graves.join('\n') + '\n' : '');
 
 	console.log(
-		`build-tombstones: ${graves.length} withdrawn page(s) overwritten with the not-found shell; ` +
-			`${published.length} paths in ${MANIFEST}`
+		`build-tombstones: ${graves.length} withdrawn page(s) overwritten with the not-found shell ` +
+			`(${fresh.length} new this deploy); ${published.length} paths in ${MANIFEST}`
 	);
-	for (const p of graves.slice(0, 20)) console.log(`  ✝ /${p.replace(/index\.html$/, '')}`);
-	if (graves.length > 20) console.log(`  … and ${graves.length - 20} more`);
+	for (const p of fresh.slice(0, 20)) console.log(`  ✝ /${p.replace(/index\.html$/, '')}`);
+	if (fresh.length > 20) console.log(`  … and ${fresh.length - 20} more`);
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {

@@ -7,13 +7,13 @@
   {
    "reference": "Matthew 11:28",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 9
   },
   {
    "reference": "Philippians 3:20",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 11
   },
   {
@@ -24,7 +24,7 @@
   {
    "reference": "Revelation 21:5",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 14
   },
   {
@@ -35,7 +35,7 @@
   {
    "reference": "John 16:33",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 21
   },
   {
@@ -46,7 +46,7 @@
   {
    "reference": "John 16:33",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 22
   },
   {
@@ -62,7 +62,7 @@
   {
    "reference": "Matthew 11:28",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 45
   },
   {
@@ -73,7 +73,7 @@
   {
    "reference": "Ephesians 5:18",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 49
   },
   {
@@ -89,7 +89,7 @@
   {
    "reference": "1 Corinthians 7:17",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 54
   },
   {
@@ -125,13 +125,13 @@
   {
    "reference": "Revelation 12:11",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 70
   },
   {
    "reference": "Matthew 6:15",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 82
   },
   {
@@ -147,47 +147,48 @@
   {
    "reference": "Revelation 22:11",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 114
   },
   {
    "reference": "1 Peter 4:12",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 122
   },
   {
    "reference": "1 Peter 4:13",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 123
   },
   {
    "reference": "1 Peter 4:14",
-   "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-   "block_index": 123
+   "status": "self_rendered",
+   "block_index": 123,
+   "why": "paraphrased in the author's prose, not quoted"
   },
   {
    "reference": "Philippians 3:20",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 132
   },
   {
    "reference": "1 Thessalonians 5:23",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 133
   },
   {
    "reference": "1 Thessalonians 5:24",
    "status": "mined",
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
    "block_index": 134
   }
  ],
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT rev. 2003) — NT only, from the ebible mirror amh; the mirror has no OT, so OT quotations are self_rendered.",
   "Rows come from the translators' reports, and every 'mined' claim was re-verified: each quoted fragment must be a byte-exact substring of both this body and the Bible text; a claim that fails is recorded as self_rendered. Several verses are read by the speaker from a modern paraphrase or quoted loosely from memory; only the Bible's own words are presented as the Bible's, so those rows are self_rendered."
  ]
