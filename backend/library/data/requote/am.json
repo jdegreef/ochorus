@@ -290,6 +290,20 @@
    "english": ["Look unto me, and be ye saved"],
    "old": ["ወደ እኔ ተመልከቱ፥ ትድኑማላችሁ"],
    "decision": "OWB Isa 45:22 reads «ወደ እኔ ዞር በሉና ድኑ» ('turn to me'). Quote OWB; where Spurgeon tells of his conversion ('I looked'), bridge in his own sentence (ዞር ብዬ ተመለከትሁ)."
+  },
+  {
+   "id": "ps-4-4",
+   "references": ["Psalm 4:4"],
+   "english": ["Be angry, yet do not sin", "Be angry, and sin not"],
+   "old": ["ተቆጡ ኃጢአትንም አታድርጉ"],
+   "decision": "OWB Ps 4:4 reads «ተንቀጥቀጡ፤ ኃጢአትም አትሥሩ» ('tremble'). Where a work teaches from 'be angry' (Daughters of the King 3, day 2), keep the translator's «ተቆጡ» rendering, self_rendered, and list it for the founder; elsewhere quote OWB."
+  },
+  {
+   "id": "here-am-i",
+   "references": ["Isaiah 6:8"],
+   "english": ["Here am I; send me", "Here I am. Send me"],
+   "old": ["እነሆኝ፥ እኔን ላከኝ", "እነሆኝ፤ እኔን ላከኝ"],
+   "decision": "OWB Isa 6:8 answers «እኔ ዝግጁ ነኝ፤ ላከኝ». Quote it wherever the verse or its refrain is quoted, unmarked prayers included; a chapter title «እነሆኝ» stays the title."
   }
  ]
 }

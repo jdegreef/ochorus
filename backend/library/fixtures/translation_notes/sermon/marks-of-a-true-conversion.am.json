@@ -5,6 +5,7 @@
  "job_issue": 4084,
  "pull_request": null,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh); the mirror has no Old Testament, so OT quotations reuse a shipped Amharic work's wording where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
   "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited shipped work) inside that block. Shorter, re-personed, or bridged-range verses (the mirror merges some verse ranges into one entry holding only part of the text) are self_rendered."
  ],
@@ -13,13 +14,13 @@
    "reference": "Matthew 18:3",
    "status": "mined",
    "block_index": 0,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 9:27",
    "status": "mined",
    "block_index": 1,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Jude 1:13",
@@ -45,30 +46,32 @@
    "reference": "Matthew 25:12",
    "status": "mined",
    "block_index": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 3:3",
-   "status": "self_rendered",
-   "block_index": 2
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "Whitefield's 'born again, and from above' keeps ዳግመኛና outside the marks; «ከላይ ካልተወለደ» is OWB's"
   },
   {
    "reference": "John 3:5",
    "status": "mined",
    "block_index": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 18:3",
    "status": "mined",
    "block_index": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 18:1",
    "status": "mined",
    "block_index": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Jeremiah 17:9",
@@ -84,13 +87,13 @@
    "reference": "Matthew 18:3",
    "status": "mined",
    "block_index": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 18:3",
    "status": "mined",
    "block_index": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 51:5",
@@ -99,8 +102,9 @@
   },
   {
    "reference": "Jeremiah 17:9",
-   "status": "self_rendered",
-   "block_index": 8
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 2:3",
@@ -116,7 +120,7 @@
    "reference": "Matthew 18:1",
    "status": "mined",
    "block_index": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 18:2",
@@ -137,12 +141,14 @@
    "reference": "Romans 8:14",
    "status": "mined",
    "block_index": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "1 John 2:13",
-   "status": "self_rendered",
-   "block_index": 12
+   "reference": "1 John 2:14",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the AV's 1 John 2:13 'I write unto you, little children' is OWB 2:14 («ልጆች ሆይ፣ የጻፍኩላችሁ»)"
   },
   {
    "reference": "Luke 12:32",
@@ -151,8 +157,9 @@
   },
   {
    "reference": "Ephesians 3:8",
-   "status": "self_rendered",
-   "block_index": 12
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 1:47",
@@ -173,7 +180,7 @@
    "reference": "Matthew 18:3",
    "status": "mined",
    "block_index": 14,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Daniel 6:8",
@@ -229,7 +236,7 @@
    "reference": "2 Peter 3:18",
    "status": "mined",
    "block_index": 15,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 6:1",
@@ -238,14 +245,15 @@
   },
   {
    "reference": "Philippians 3:14",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 15,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "the author turns Paul's 'I press toward the mark' into a question to his hearers; the clause borrows OWB's words but the verb is the author's"
   },
   {
    "reference": "Psalm 103:13",
-   "status": "self_rendered",
-   "block_index": 16
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 8:15",
@@ -266,13 +274,15 @@
    "reference": "Hebrews 12:7",
    "status": "mined",
    "block_index": 17,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "two exact OWB pieces of Heb 12:7-8 joined with '…'"
   },
   {
    "reference": "Hebrews 12:8",
    "status": "mined",
    "block_index": 17,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "two exact OWB pieces of Heb 12:7-8 joined with '…'"
   },
   {
    "reference": "Exodus 20:5",
@@ -308,12 +318,13 @@
    "reference": "1 John 4:16",
    "status": "mined",
    "block_index": 19,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Genesis 45:24",
-   "status": "self_rendered",
-   "block_index": 19
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 7:6",
@@ -329,7 +340,7 @@
    "reference": "Matthew 18:3",
    "status": "mined",
    "block_index": 20,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Mark 9:48",
