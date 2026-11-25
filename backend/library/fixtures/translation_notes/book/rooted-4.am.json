@@ -499,10 +499,9 @@
   },
   {
    "reference": "Ephesians 6:14-15",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 21,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 21
   },
   {
    "reference": "Ephesians 6:16-17",
@@ -596,10 +595,9 @@
   },
   {
    "reference": "Isaiah 55:9",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 27,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 27
   },
   {
    "reference": "Isaiah 55:8",
