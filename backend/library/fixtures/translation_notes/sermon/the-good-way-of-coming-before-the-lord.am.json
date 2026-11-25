@@ -7,29 +7,36 @@
     "references": [
         {
             "reference": "Micah 6:6-8",
-            "status": "self_rendered",
-            "block_index": 0
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 0,
+            "why": "the text whole; 'love mercy' is OWB's «ታማኝነትን እንድትወድ» — the author's head 2 (block 17) keeps his 'mercy' in prose"
         },
         {
             "reference": "Micah 6:6",
-            "status": "self_rendered",
-            "block_index": 2
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 2,
+            "why": "'Wherewith shall I come before the Lord?' is OWB's «በእግዚአብሔር ፊት ስቀርብ … ምን ይዤ ልምጣ?» (exact pieces joined with '…')"
         },
         {
             "reference": "Romans 8:7",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 2
         },
         {
             "reference": "Exodus 5:2",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 2
         },
         {
             "reference": "Job 21:14",
-            "status": "self_rendered",
-            "block_index": 2
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 2,
+            "why": "OWB's plural «ተወን! … አንፈልግም» suits the author's 'you say to God'"
         },
         {
             "reference": "Jeremiah 2:13",
@@ -44,13 +51,29 @@
         {
             "reference": "Matthew 18:10",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 3
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 3,
+            "why": "OWB: the angels 'stand before' the Father's face"
         },
         {
             "reference": "Psalm 42:1-2",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 3
+        },
+        {
+            "reference": "Micah 6:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 4,
+            "why": "the head word 'Wherewith' as «ምን ይዤ»"
+        },
+        {
+            "reference": "Micah 6:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 5,
+            "why": "«ምን ይዤ ልምጣ? …» for 'Wherewith, &c.', then 'Wherewith shall I come before the Lord?' is OWB's «በእግዚአብሔር ፊት ስቀርብ … ምን ይዤ ልምጣ?» (exact pieces joined with '…')"
         },
         {
             "reference": "Genesis 6:5",
@@ -63,14 +86,38 @@
             "block_index": 5
         },
         {
-            "reference": "Isaiah 6:1-3",
-            "status": "self_rendered",
-            "block_index": 6
+            "reference": "Micah 6:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 6,
+            "why": "'the High God' is OWB's «በላይ ላለው አምላክ»; the closing question is 6:6a whole"
+        },
+        {
+            "reference": "Isaiah 6:1-5",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 6,
+            "why": "OWB pieces joined with '…'"
         },
         {
             "reference": "Job 42:5-6",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 6
+        },
+        {
+            "reference": "Micah 6:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 7,
+            "why": "«ምን ይዤ?» for 'Wherewith?'; the unmarked recitation and 'Wherewith shall I come?' follow OWB too"
+        },
+        {
+            "reference": "Luke 10:42",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 7,
+            "why": "OWB pieces joined with '…'"
         },
         {
             "reference": "Amos 6:1",
@@ -79,18 +126,21 @@
         },
         {
             "reference": "Amos 4:12",
-            "status": "self_rendered",
-            "block_index": 7
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 7,
+            "why": "verbatim recitation without marks"
         },
         {
             "reference": "1 Peter 4:18",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 7
         },
         {
             "reference": "Micah 6:8",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 8
         },
         {
@@ -100,13 +150,28 @@
         },
         {
             "reference": "Zechariah 3:4",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 10,
+            "why": "both clauses, and the author's 'change of raiment' after them, follow OWB's «ያማረ ልብስ»"
+        },
+        {
+            "reference": "Micah 6:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 10
         },
         {
             "reference": "Jeremiah 6:16",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 10
+        },
+        {
+            "reference": "Micah 6:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 11
         },
         {
             "reference": "1 Timothy 1:15",
@@ -115,8 +180,21 @@
         },
         {
             "reference": "Romans 5:19",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 12
+        },
+        {
+            "reference": "Micah 6:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 12
+        },
+        {
+            "reference": "Jeremiah 6:16",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 13
         },
         {
             "reference": "Romans 4:16",
@@ -131,39 +209,50 @@
         {
             "reference": "John 5:14",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 14
         },
         {
             "reference": "John 8:11",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 14
         },
         {
+            "reference": "Micah 6:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 14,
+            "why": "'what doth the Lord require of thee?' is OWB's «እግዚአብሔር ከአንተ የሚጠይቀው …»"
+        },
+        {
             "reference": "Genesis 18:25",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 16
         },
         {
             "reference": "Psalm 92:15",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 16
         },
         {
             "reference": "Proverbs 20:14",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 16
         },
         {
             "reference": "Luke 6:36",
             "status": "self_rendered",
-            "block_index": 17
+            "block_index": 17,
+            "why": "the author's own 'be merciful, as your Father in heaven is merciful', arguing from 'mercy'"
         },
         {
             "reference": "Matthew 11:29",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 18
         },
         {
@@ -178,8 +267,10 @@
         },
         {
             "reference": "2 Timothy 2:1",
-            "status": "self_rendered",
-            "block_index": 20
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 20,
+            "why": "verbatim recitation without marks"
         },
         {
             "reference": "Ephesians 3:8",
@@ -189,8 +280,12 @@
         {
             "reference": "Philippians 4:19",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 20
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 20,
+            "why": "verbatim recitation without marks"
         }
+    ],
+    "note": [
+        "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). Every `mined` row is a verbatim OWB span in its block (exact OWB pieces may be joined with '…'), including recitations without marks; it supersedes the earlier 1962 UBS wording and the self-rendered Old Testament. The sermon's text, Micah 6:6, turns on 'Wherewith shall I come…?': OWB's «… ምን ይዤ ልምጣ?» now carries it everywhere it is quoted or echoed. Allusions and the author's own paraphrases stay self_rendered."
     ]
 }

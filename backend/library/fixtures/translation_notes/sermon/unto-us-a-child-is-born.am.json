@@ -7,13 +7,21 @@
     "references": [
         {
             "reference": "Isaiah 9:6",
-            "status": "self_rendered",
-            "block_index": 0
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 0,
+            "why": "the text whole, in the blockquote"
         },
         {
             "reference": "Hebrews 11:1",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 1
+        },
+        {
+            "reference": "Isaiah 9:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 1
         },
         {
@@ -27,20 +35,42 @@
             "block_index": 2
         },
         {
+            "reference": "Isaiah 9:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 2
+        },
+        {
+            "reference": "Isaiah 9:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 6,
+            "why": "«ልጅ ተወልዶልናልና» and «ወንድ ልጅ ለእኛ ተሰጥቶአል», each exact OWB"
+        },
+        {
             "reference": "1 Timothy 3:16",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 6
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 6,
+            "why": "'the mystery of godliness' is OWB's «የእምነታችን ምሥጢር»; «ያለ ጥርጥር ታላቅ» is OWB too"
         },
         {
             "reference": "1 Timothy 3:15",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 6
         },
         {
             "reference": "Philippians 2:7",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 6
+        },
+        {
+            "reference": "Isaiah 9:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 8
         },
         {
             "reference": "Romans 8:31",
@@ -51,6 +81,13 @@
             "reference": "Matthew 28:18",
             "status": "self_rendered",
             "block_index": 8
+        },
+        {
+            "reference": "Isaiah 9:6",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 12,
+            "why": "«ስሙም ድንቅ … ተብሎ ተጠርቷል»: OWB's own «ድንቅ» carries the author's 'Wonderful'"
         },
         {
             "reference": "Judges 13:18",
@@ -65,13 +102,21 @@
         {
             "reference": "Matthew 11:27",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 12
         },
         {
             "reference": "Philippians 3:8",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 12,
+            "why": "OWB pieces joined with '…' ('loss … dung')"
+        },
+        {
+            "reference": "Isaiah 9:6",
             "status": "self_rendered",
-            "block_index": 12
+            "block_index": 14,
+            "why": "the five names the sermon expounds (Wonderful, Counsellor, Mighty God, Everlasting Father, Prince of Peace) stay the traditional names in the author's prose; OWB fuses 'Wonderful, Counsellor' into «ድንቅ ነገሮችን የሚያቅድ», and the blockquote gives OWB's wording"
         },
         {
             "reference": "1 John 2:1",
@@ -95,13 +140,15 @@
         },
         {
             "reference": "Hebrews 2:11",
-            "status": "self_rendered",
-            "block_index": 18
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 18,
+            "why": "OWB has «ወንድሞቹና እኅቶቹ»"
         },
         {
             "reference": "Hebrews 13:8",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 18
         },
         {
@@ -110,15 +157,22 @@
             "block_index": 18
         },
         {
-            "reference": "Psalm 102:25",
+            "reference": "Psalm 102:25-27",
+            "status": "self_rendered",
+            "block_index": 18,
+            "why": "cited for the Psalm the apostle applies to Christ; the words quoted are OWB's Hebrews 1:10-12 (rows below)"
+        },
+        {
+            "reference": "Hebrews 1:10",
             "status": "mined",
-            "source_file": "blessed-prosperity.am.json",
-            "block_index": 18
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 18,
+            "why": "the author says the apostle applies Ps 102:25-27 to Christ, so both quotations give OWB's Hebrews 1:10-12; the Psalm citation stays"
         },
         {
             "reference": "Hebrews 1:11-12",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 18
         },
         {
@@ -128,34 +182,33 @@
         },
         {
             "reference": "Isaiah 57:21",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 20
         },
         {
             "reference": "Philippians 4:7",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 20
         },
         {
             "reference": "Colossians 1:20",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 20
         },
         {
-            "reference": "Matthew 11:28",
-            "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 24
-        },
-        {
             "reference": "Mark 4:39",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 20
         },
         {
             "reference": "Romans 5:1",
             "status": "self_rendered",
-            "block_index": 20
+            "block_index": 20,
+            "why": "recast in the third person ('they have peace'), the author's paraphrase"
         },
         {
             "reference": "1 Peter 5:7",
@@ -184,7 +237,8 @@
         },
         {
             "reference": "Psalm 37:37",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 21
         },
         {
@@ -194,7 +248,14 @@
         },
         {
             "reference": "Isaiah 45:22",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 24
+        },
+        {
+            "reference": "Matthew 11:28",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 24
         },
         {
@@ -209,23 +270,31 @@
         },
         {
             "reference": "Hebrews 3:13",
-            "status": "self_rendered",
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
             "block_index": 25
         },
         {
             "reference": "Proverbs 13:15",
-            "status": "self_rendered",
-            "block_index": 27
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 27,
+            "why": "already OWB's wording"
         },
         {
             "reference": "Proverbs 9:6",
-            "status": "self_rendered",
-            "block_index": 28
+            "status": "mined",
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "block_index": 28,
+            "why": "verbatim recitation without marks"
         },
         {
             "reference": "Proverbs 29:1",
             "status": "self_rendered",
             "block_index": 28
         }
+    ],
+    "note": [
+        "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). Every `mined` row is a verbatim OWB span in its block (exact OWB pieces may be joined with '…'), including recitations without marks; it supersedes the earlier 1962 UBS wording and the self-rendered Old Testament. The text, Isaiah 9:6, is quoted in OWB's words wherever it is quoted (the blockquote, blocks 1, 2, 6, 8, 12; also the first study question); the names the sermon expounds one by one stay the traditional names in the author's prose, as do the title, summary and the other study questions. Allusions and the author's own paraphrases stay self_rendered."
     ]
 }
