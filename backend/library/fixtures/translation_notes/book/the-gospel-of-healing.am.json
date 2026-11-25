@@ -299,10 +299,9 @@
   },
   {
    "reference": "Lamentations 3:25",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 2,
-   "source_file": "gleanings-among-the-sheaves.am.json"
+   "chapter_order": 2
   },
   {
    "reference": "John 5:8",

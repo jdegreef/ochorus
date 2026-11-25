@@ -1004,10 +1004,9 @@
   },
   {
    "reference": "1 Timothy 2:1",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 18,
-   "chapter_order": 18,
-   "source_file": "gleanings-among-the-sheaves.am.json"
+   "chapter_order": 18
   },
   {
    "reference": "1 Peter 2:9",
