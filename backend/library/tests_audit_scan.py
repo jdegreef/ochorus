@@ -12,7 +12,7 @@ from datetime import UTC, datetime, timedelta
 from io import StringIO
 from unittest import mock
 
-from django.core.cache import cache
+from django.core.cache import cache, caches
 from django.core.management import call_command
 from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
@@ -239,12 +239,18 @@ class AuditScanScheduleTests(TestCase):
 
 @override_settings(
     DEBUG=True,
-    CACHES={"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"}},
+    CACHES={
+        "default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"},
+        # The scan's memo lives in the admin alias (library.admin_cache).
+        "admin": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache", "LOCATION": "a"},
+    },
 )
 class AuditPayloadTests(TestCase):
     def setUp(self):
         cache.clear()
+        caches["admin"].clear()
         self.addCleanup(cache.clear)
+        self.addCleanup(caches["admin"].clear)
         author = Author.objects.create(slug="am", name="Andrew Murray")
         book = Book.objects.create(author=author, slug="humility", language="en", title="Humility")
         Chapter.objects.create(book=book, order=1, title="One", body_html="<p>Fine.</p>")

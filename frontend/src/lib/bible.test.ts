@@ -22,6 +22,8 @@ import {
 	testamentKey
 } from './bible';
 import { canonName, chapterLabel } from './bibleNames';
+import type { BibleLocale } from './bibleLocales';
+import { BIBLE_SLUGS } from './bibleStory';
 import {
 	BIBLE_PATHS,
 	BIBLE_STARTS,
@@ -144,6 +146,10 @@ describe('canonName', () => {
 		expect(canonName(66, 'es')).toBe('Apocalipsis');
 		expect(chapterLabel(19, 23, 'es')).toBe('Salmo 23');
 		expect(chapterLabel(22, 1, 'es')).toBe('Cantares 1');
+		expect(chapterLabel(19, 23, 'fr')).toBe('Psaume 23');
+		expect(chapterLabel(23, 53, 'fr')).toBe('Ésaïe 53');
+		expect(chapterLabel(19, 23, 'pt')).toBe('Salmo 23');
+		expect(canonName(66, 'pt')).toBe('Apocalipse');
 		expect([canonName(0, 'en'), canonName(67, 'en'), canonName(null, 'en')]).toEqual([null, null, null]);
 	});
 });
@@ -490,7 +496,7 @@ describe('bibleTopics', () => {
 });
 
 describe('biblePathSteps', () => {
-	const W = { en: 'w', es: 'v' };
+	const W = { en: 'w', es: 'v', fr: 'f', pt: 'p' };
 	const ps = { slug: 'psalms', title: 'The Psalms', series_position: 19, chapter_count: 152 };
 	const john = { slug: 'gospel-of-john', title: 'The Gospel of John', series_position: 43, chapter_count: 23 };
 
@@ -527,22 +533,49 @@ describe('biblePathSteps', () => {
 	});
 });
 
-describe('Spanish quotations on the hub', () => {
-	it('quote the Open Word Bible (owb-es-b) word for word', async () => {
+describe('the hub locales’ book names', () => {
+	it('are the names each edition titles its chapters with', async () => {
+		const { openSync, readSync, closeSync } = await import('node:fs');
+		const { resolve } = await import('node:path');
+		// The book row and its introduction come first; chapter 1's title is
+		// within the file's first few dozen kilobytes.
+		const firstChapter = (slug: string, lang: string) => {
+			const fd = openSync(
+				resolve(__dirname, `../../../backend/library/fixtures/content/books/${slug}.${lang}.json`),
+				'r'
+			);
+			const buf = Buffer.alloc(1 << 17);
+			const n = readSync(fd, buf, 0, buf.length, 0);
+			closeSync(fd);
+			return /"title": "(.+ 1)"/.exec(buf.toString('utf8', 0, n))?.[1];
+		};
+		for (const lang of BIBLE_LOCALES.filter((l) => l !== 'en'))
+			BIBLE_SLUGS.forEach((slug, i) =>
+				expect(chapterLabel(i + 1, 1, lang), `${slug} ${lang}`).toBe(firstChapter(slug, lang))
+			);
+	});
+});
+
+describe('quotations on the hub', () => {
+	// Each language's quotation marks: «…» in Spanish, « … » in French, “…” in Portuguese.
+	const MARKS: Record<string, RegExp> = { es: /«([^»]+)»/g, fr: /«\s([^»]+?)\s»/g, pt: /“([^”]+)”/g };
+
+	it.each(Object.keys(MARKS))('quote the Open Word Bible (owb-%s-b) word for word', async (lang) => {
 		const { readFileSync } = await import('node:fs');
 		const { gunzipSync } = await import('node:zlib');
 		const { resolve } = await import('node:path');
 		const owb = JSON.parse(
 			gunzipSync(
-				readFileSync(resolve(__dirname, '../../../backend/library/data/bible/owb-es-b.json.gz'))
+				readFileSync(resolve(__dirname, `../../../backend/library/data/bible/owb-${lang}-b.json.gz`))
 			).toString('utf8')
 		) as { verses: Record<string, string> };
 		const text = Object.values(owb.verses).join(' ');
+		const l = lang as BibleLocale;
 		const reasons = [
-			...BIBLE_STARTS.map((s) => s.why.es),
-			...BIBLE_PATHS.flatMap((p) => p.steps.map((s) => s.why.es))
+			...BIBLE_STARTS.map((s) => s.why[l]),
+			...BIBLE_PATHS.flatMap((p) => p.steps.map((s) => s.why[l]))
 		];
-		const quoted = reasons.flatMap((r) => [...r.matchAll(/«([^»]+)»/g)].map((m) => m[1]));
+		const quoted = reasons.flatMap((r) => [...r.matchAll(MARKS[lang])].map((m) => m[1]));
 		expect(quoted.length).toBeGreaterThan(0);
 		for (const q of quoted) expect(text, q).toContain(q);
 	});

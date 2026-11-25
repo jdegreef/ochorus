@@ -1,5 +1,6 @@
 import { apiFetch, apiFetchRaw } from './api';
 import type { AdminScope } from './adminAccess';
+import { catalogPath, type CatalogKind, type CatalogPage, type CatalogQuery } from './adminCatalog';
 import type { FavoriteKind } from './favorites.svelte';
 import type { Language, SearchHit, SearchType, SourceType } from './library-public';
 import type { WorkKind } from './reading-schema';
@@ -83,9 +84,16 @@ export interface AdminStats {
 	author_translations: { total: number; reviewed: number; unreviewed: number };
 	attention: AdminAttention;
 	recent_books: AdminRecentBook[];
+	/** When the server computed these figures — they are memoised until content
+	 *  changes (or five minutes pass), so they can be older than the request.
+	 *  Absent from an API that predates the memo. */
+	computed_at?: string;
 }
 
-export const getAdminStats = () => apiFetch<AdminStats>('/api/admin/stats/');
+/** The dashboard figures; `refresh` asks the server to recompute rather than
+ *  answer from its memo (the Refresh button). */
+export const getAdminStats = (refresh = false) =>
+	apiFetch<AdminStats>(`/api/admin/stats/${refresh ? '?refresh=1' : ''}`);
 
 // The dashboard's "needs attention" hub: cheap content-health + demand signals
 // aggregated across pages. The API returns raw numbers; the page ranks them and
@@ -226,6 +234,12 @@ export interface AdminUnpublished {
 
 /** Unpublished books and sermons — the worklist for the "unpublished" chips. */
 export const getAdminUnpublished = () => apiFetch<AdminUnpublished>('/api/admin/unpublished/');
+
+// --- Inventory lists (/admin/books, /admin/authors, …) ------------------------
+// One page of one kind, filtered and sorted server-side; the per-kind columns
+// and links live in `$lib/adminCatalog`.
+export const getAdminCatalog = (kind: CatalogKind, query: CatalogQuery = {}) =>
+	apiFetch<CatalogPage>(catalogPath(kind, query));
 
 export interface AdminAuthorWithoutBio {
 	slug: string;
@@ -662,10 +676,15 @@ export interface AdminTranslationJob {
 export interface AdminTranslationJobs {
 	configured: boolean;
 	jobs: AdminTranslationJob[];
+	/** When the queue was read from GitHub (the server reuses a read for ~2 min). */
+	read_at?: string;
+	/** True when GitHub failed and this is the last queue it answered with. */
+	stale?: boolean;
 }
 
-export const getAdminTranslationJobs = () =>
-	apiFetch<AdminTranslationJobs>('/api/admin/translation-jobs/');
+/** The open queue; `refresh` skips the server's ~2-minute cached read. */
+export const getAdminTranslationJobs = (refresh = false) =>
+	apiFetch<AdminTranslationJobs>(`/api/admin/translation-jobs/${refresh ? '?refresh=1' : ''}`);
 
 /**
  * Group open translation jobs into per-language, per-type counts — what the
@@ -2892,7 +2911,7 @@ export interface AdminActivitySummary {
 	 * Translation-job rows by stage. `github`: "ok"; "down" when it didn't
 	 * answer; "off" when no queue token is configured (not an outage).
 	 */
-	jobs?: { by_status: Record<JobStatus, number>; github: 'ok' | 'down' | 'off' };
+	jobs?: { by_status: Record<JobStatus, number>; github: 'ok' | 'stale' | 'down' | 'off' };
 }
 
 export interface AdminActivity {
