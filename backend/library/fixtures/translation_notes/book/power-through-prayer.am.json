@@ -5,8 +5,9 @@
  "job_issue": 3755,
  "pull_request": null,
  "note": [
-  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
-  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled as library/data/bible/owb-am-b.json.gz and read offline (owb-am). Every Scripture quotation in this book was re-quoted to it verbatim (founder decision, 2026-11-18: Amharic quotes OWB everywhere), replacing the 1962/2003 UBS New Testament wording the first edition carried and the Old Testament wording it had self-rendered or borrowed from other shipped Amharic works; the UBS credit line this file once owed is no longer owed for this work.",
+  "A `mined` row is a verbatim OWB span in that block: the whole verse, verses joined, the shortest contiguous span carrying the quoted clause, or exact OWB pieces joined with '…' (Ephesians 4:13, Acts 6:4 in chapter 19); a verbatim recitation without quote marks counts (founder rule, 2026-11-19) — the good shepherd (John 10:11), «the man of sorrows» (Isaiah 53:3), «God is love» (1 John 4:8), and the Scripture Alexander Knox recites (Luke 24:32, James 1:27, Acts 26:25). The chapter titles «ብቃታችን ከእግዚአብሔር ነው» and «ፊደል ይገድላል» are OWB's own words (2 Corinthians 3:5, 3:6). `self_rendered` rows each carry a `why`: allusions and the author's own paraphrases left as prose, many of them inside the words of the men Bounds quotes.",
+  "Judgement calls: Matthew 11:12 — Canon Liddon applies the AV's «the violent take it by force» to importunate prayer, while OWB reads the opposite sense (the kingdom suffers attack and violent men try to seize it); the clause is rendered from the English and marked self_rendered. Psalm 63:1 — McCheyne's «Early will I seek thee» is quoted as OWB has it («አጥብቄም እሻሃለሁ», earnestly), the paired Psalm 5:3 («ጎሕ ሲቀድ ድምፄን ትሰማለህ») carrying his point about the morning. Luke 18:7 — OWB makes the AV's question a statement, so the quotation runs on into OWB's own question «እነርሱን ለመርዳት ይዘገያልን?», which keeps Bounds's «asks». Paul's «My gospel» is quoted as OWB words it at Romans 16:25 («ወንጌሌ»). Acts 9:6, Psalm 68:31 and the critical-text verses do not occur in this book."
  ],
  "references": [
   {
@@ -14,755 +15,866 @@
    "status": "mined",
    "block_index": 1,
    "chapter_order": 1,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 9:6",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Chronicles 16:9",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
    "chapter_order": 1,
-   "why": "the godliness.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
-  },
-  {
-   "reference": "2 Corinthians 4:7",
-   "status": "mined",
-   "block_index": 5,
-   "chapter_order": 1,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Romans 2:16",
-   "status": "self_rendered",
-   "block_index": 6,
-   "chapter_order": 1
-  },
-  {
-   "reference": "Exodus 28:36",
-   "status": "self_rendered",
-   "block_index": 7,
-   "chapter_order": 1
-  },
-  {
-   "reference": "Matthew 10:16",
-   "status": "self_rendered",
-   "block_index": 7,
-   "chapter_order": 1
-  },
-  {
-   "reference": "1 Peter 5:5",
-   "status": "self_rendered",
-   "block_index": 7,
-   "chapter_order": 1
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Zechariah 4:12",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "an allusion in the author's prose (the preacher as the golden pipe the oil flows through), not quoted"
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 1,
+   "why": "an allusion in the author's prose («the treasure is in earthen vessels»), not quoted"
+  },
+  {
+   "reference": "Romans 16:25",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Exodus 28:36",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 10:16",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 1,
+   "why": "recast to the preacher in the singular («wise as a serpent, harmless as a dove»); worded after OWB, but not a quotation"
+  },
+  {
+   "reference": "1 Peter 5:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 1,
+   "why": "an allusion in the author's prose («clothed with humility»), not quoted"
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "mined",
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 2:16",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 3:5-6",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 2,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 6:22",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion in the author's prose («whose eye is single to God»), not quoted"
   },
   {
    "reference": "Galatians 6:14",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion in the author's prose (the flesh and the world crucified), not quoted"
   },
   {
-   "reference": "Isaiah 6:1",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Isaiah 6:6-7",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Jeremiah 18:6",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 3
-  },
-  {
-   "reference": "1 Corinthians 2:10",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Psalm 51:6",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 3
+   "reference": "2 Corinthians 3:6",
+   "status": "mined",
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 4:19",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "an allusion inside Bishop McKendree's words («Him who first loved me»), not quoted"
   },
   {
    "reference": "Revelation 2:4",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "an allusion inside Bishop McKendree's words («declined from first zeal and love»), not quoted"
+  },
+  {
+   "reference": "Isaiah 6:1",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 6:6-7",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 3,
+   "why": "an allusion in the author's prose (the live coal from God's altar), not quoted"
+  },
+  {
+   "reference": "Jeremiah 18:6",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 3,
+   "why": "an allusion in the author's prose («like clay in the hands of the potter»), not quoted"
+  },
+  {
+   "reference": "1 Corinthians 2:10",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 3,
+   "why": "an allusion in the author's prose («the deep things of God»), not quoted"
+  },
+  {
+   "reference": "Psalm 51:6",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 3,
+   "why": "an allusion in the author's prose («truth in the inward parts»), not quoted"
   },
   {
    "reference": "Hebrews 5:7",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 6,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 5:16",
    "status": "mined",
    "block_index": 6,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 6:12",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Mark 1:35",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 13:1",
    "status": "mined",
    "block_index": 10,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 5:7",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 5,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 6:18",
    "status": "mined",
    "block_index": 5,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 5:16",
    "status": "mined",
    "block_index": 5,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 5:17",
    "status": "mined",
    "block_index": 5,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 5:18",
    "status": "mined",
    "block_index": 5,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 12:12",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion inside the biographer's words («continuing instant in prayer»), not quoted"
   },
   {
    "reference": "Genesis 32:24",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion inside Canon Liddon's words (Jacob wrestling till daybreak), not quoted"
   },
   {
    "reference": "Romans 15:30",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion inside Canon Liddon's words (intercession with St. Paul as a concerted struggle), not quoted"
   },
   {
    "reference": "Luke 22:44",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion inside Canon Liddon's words (the drops of blood in Gethsemane), not quoted"
   },
   {
    "reference": "Matthew 11:12",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 10,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "Canon Liddon recites the AV («the kingdom of heaven suffereth violence, and the violent take it by force») as a promise to importunate prayer; OWB reads the opposite sense (the kingdom suffers attack and violent men try to seize it), so the clause is rendered from the English, not from OWB and not in the 1962 wording"
   },
   {
    "reference": "Mark 1:35",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "an allusion inside McCheyne's words («Christ arose before day»), not quoted"
   },
   {
    "reference": "Psalm 63:1",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 5:3",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 63:1",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "an allusion in the author's prose (David seeking God early, athirst for him), not quoted"
   },
   {
    "reference": "Mark 1:35",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "an allusion in the author's prose (Christ rising before day to pray), not quoted"
   },
   {
    "reference": "Luke 16:8",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "the author's own paraphrase («the children of this world are far wiser than we»), not a quotation"
   },
   {
    "reference": "Hosea 14:5",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "an allusion in the author's prose (God himself as dew), not quoted"
   },
   {
    "reference": "Psalm 63:8",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "an allusion in the author's prose («follow hard after God»), not quoted"
   },
   {
    "reference": "Ephesians 3:18",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "an allusion in the author's prose (the height, breadth and depth of holiness), not quoted"
   },
   {
    "reference": "Ephesians 3:19",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Colossians 4:12",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 4:13",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 92:14",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "an allusion in the author's prose (the old «fat and flourishing»), not quoted"
   },
   {
    "reference": "Hosea 6:4",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "an allusion in the author's prose («as the morning cloud and the early dew»), not quoted"
   },
   {
    "reference": "Matthew 15:8",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "an allusion in the author's prose (lip service and heart service), not quoted"
   },
   {
    "reference": "Jeremiah 32:17",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion in the author's prose (nothing too hard for God), not quoted"
   },
   {
    "reference": "Psalm 4:6",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion inside Brainerd's diary («the light of his countenance»), not quoted"
   },
   {
    "reference": "Luke 22:44",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion inside Brainerd's diary («such an agony»), not quoted"
   },
   {
    "reference": "Hebrews 11:4",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion in the author's prose («being dead, he yet speaketh»), not quoted"
   },
   {
    "reference": "1 Corinthians 9:24",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion inside Jonathan Edwards's words (one who runs a race for a great prize), not quoted"
   },
   {
    "reference": "1 Timothy 5:17",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion inside Jonathan Edwards's words («in word and doctrine»), not quoted"
   },
   {
    "reference": "Romans 8:26",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion inside Jonathan Edwards's words («groanings unutterable»), not quoted"
   },
   {
    "reference": "Galatians 4:19",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion inside Jonathan Edwards's words («in travail … till Christ were formed»), not quoted"
   },
   {
    "reference": "Genesis 32:24-26",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion inside Jonathan Edwards's words (Jacob wrestling through the night till break of day), not quoted"
   },
   {
    "reference": "John 10:11-12",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "an allusion in the author's prose (the hireling and the good shepherd), not quoted"
   },
   {
    "reference": "2 Timothy 2:15",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "an allusion in the author's prose («a workman that needeth not to be ashamed»), not quoted"
   },
   {
    "reference": "Philippians 2:7",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "an allusion in the author's prose («took on him the form of a servant»), not quoted"
   },
   {
    "reference": "Matthew 11:29",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "an allusion in the author's prose («meek and lowly»), not quoted"
   },
   {
    "reference": "Galatians 6:14",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "an allusion in the author's prose (crucifixion to the world), not quoted"
   },
   {
    "reference": "John 10:11",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "an allusion in the author's prose (the shepherd giving his life for the sheep), not quoted"
+  },
+  {
+   "reference": "1 Corinthians 15:10",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 12,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Proverbs 4:23",
    "status": "self_rendered",
    "block_index": 12,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "an allusion in the author's prose (keeping the heart with all diligence), not quoted"
   },
   {
    "reference": "Joshua 6:4-20",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 13
+   "chapter_order": 13,
+   "why": "an allusion inside Berridge's words (Jericho falling to rams' horns), not quoted"
   },
   {
    "reference": "1 John 4:8",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 13
+   "chapter_order": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 10:11",
    "status": "mined",
    "block_index": 3,
    "chapter_order": 13,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 53:3",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 4,
-   "chapter_order": 13
+   "chapter_order": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Proverbs 23:26",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 5,
-   "chapter_order": 13
+   "chapter_order": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 11:35",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 6,
-   "chapter_order": 13
+   "chapter_order": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 126:6",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 13
+   "chapter_order": 13,
+   "why": "the author's adaptation (singular, with his own aside «not preaching great sermons»), not a quotation"
   },
   {
    "reference": "1 John 2:20",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 14
+   "chapter_order": 14,
+   "why": "an allusion inside Spurgeon's words («an unction from the Holy One»), not quoted"
   },
   {
    "reference": "Romans 12:12",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 14
+   "chapter_order": 14,
+   "why": "an allusion inside Spurgeon's words («continue instant»), not quoted"
   },
   {
    "reference": "Judges 6:37-40",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 14
+   "chapter_order": 14,
+   "why": "an allusion inside Spurgeon's words (Gideon's fleece wet with dew), not quoted"
   },
   {
    "reference": "Luke 24:32",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 14,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 1:27",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 14,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 26:25",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 14,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Kings 6:25",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 14
+   "chapter_order": 14,
+   "why": "an allusion inside Spurgeon's words (Samaria in famine), not quoted"
   },
   {
    "reference": "Isaiah 25:6",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 14
+   "chapter_order": 14,
+   "why": "an allusion inside Spurgeon's words (Jerusalem's «feast of fat things, full of marrow»), not quoted"
   },
   {
    "reference": "Hebrews 4:12",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 15,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 3:6",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 15
+   "chapter_order": 15,
+   "why": "an allusion in the author's prose («the strictness of the letter»), not quoted"
   },
   {
    "reference": "Deuteronomy 32:2",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 15
+   "chapter_order": 15,
+   "why": "an allusion in the author's prose (unction distilling as the dew), not quoted"
   },
   {
    "reference": "Exodus 16:20",
    "status": "self_rendered",
    "block_index": 12,
-   "chapter_order": 16
+   "chapter_order": 16,
+   "why": "an allusion in the author's prose (the manna overkept breeding worms), not quoted"
   },
   {
    "reference": "Acts 6:4",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 17
+   "chapter_order": 17,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 6:4",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 17,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Thessalonians 3:10",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 17,
-   "source_file": "ministry-of-intercession.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 3:19",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 5,
-   "chapter_order": 17
+   "chapter_order": 17,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 3:14",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 5,
-   "chapter_order": 17
+   "chapter_order": 17,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Colossians 4:12",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 5,
-   "chapter_order": 17
+   "chapter_order": 17,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 4:7",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 17
+   "chapter_order": 17,
+   "why": "an allusion in the author's prose («the treasure is in earthen vessels»), not quoted"
   },
   {
    "reference": "Isaiah 3:4",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 17
+   "chapter_order": 17,
+   "why": "an allusion in the author's prose (children given to be princes), not quoted"
   },
   {
    "reference": "Isaiah 3:12",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 17
+   "chapter_order": 17,
+   "why": "an allusion in the author's prose (children oppressing and women ruling), not quoted"
   },
   {
    "reference": "Isaiah 5:14",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 17
+   "chapter_order": 17,
+   "why": "an allusion in the author's prose (hell enlarging herself), not quoted"
   },
   {
    "reference": "1 Thessalonians 5:17",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 12,
-   "chapter_order": 17
+   "chapter_order": 17,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 21:1",
    "status": "self_rendered",
    "block_index": 12,
-   "chapter_order": 17
+   "chapter_order": 17,
+   "why": "an allusion in the author's prose (a new heaven and a new earth), not quoted"
   },
   {
    "reference": "Romans 15:30",
    "status": "mined",
    "block_index": 4,
    "chapter_order": 18,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 6:18-19",
    "status": "mined",
    "block_index": 4,
    "chapter_order": 18,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Colossians 4:3-4",
    "status": "mined",
    "block_index": 4,
    "chapter_order": 18,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Thessalonians 5:25",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 4,
-   "chapter_order": 18
+   "chapter_order": 18,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 1:11",
    "status": "mined",
    "block_index": 4,
    "chapter_order": 18,
-   "source_file": "ministry-of-intercession.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Thessalonians 3:1-2",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 4,
-   "chapter_order": 18
+   "chapter_order": 18,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Philippians 1:19",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 18
+   "chapter_order": 18,
+   "why": "an allusion in the author's prose (the Philippians' prayers serving the gospel), not quoted"
   },
   {
    "reference": "Philemon 1:22",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 18
+   "chapter_order": 18,
+   "why": "an allusion in the author's prose (Philemon preparing a lodging), not quoted"
   },
   {
    "reference": "Exodus 17:12",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 18
+   "chapter_order": 18,
+   "why": "an allusion in the author's prose (Aaron and Hur holding up Moses' hands), not quoted"
   },
   {
    "reference": "Matthew 9:38",
    "status": "mined",
    "block_index": 8,
    "chapter_order": 18,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 18:1",
    "status": "mined",
    "block_index": 8,
    "chapter_order": 18,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Deuteronomy 9:18",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 19
+   "chapter_order": 19,
+   "why": "an allusion in the author's prose (Moses' forty days and nights), not quoted"
   },
   {
    "reference": "James 5:17",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 3,
-   "chapter_order": 19
+   "chapter_order": 19,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Kings 17:1",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 3,
-   "chapter_order": 19
+   "chapter_order": 19,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Thessalonians 3:10",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 3,
-   "chapter_order": 19
+   "chapter_order": 19,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 18:7",
    "status": "mined",
    "block_index": 7,
    "chapter_order": 19,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 63:5",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 19
+   "chapter_order": 19,
+   "why": "an allusion in the author's prose («marrow and fatness»), not quoted"
   },
   {
    "reference": "Isaiah 64:7",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 9,
-   "chapter_order": 19
+   "chapter_order": 19,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Genesis 32:28",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 19
+   "chapter_order": 19,
+   "why": "an allusion in the author's prose (Jacob as a prevailing, princely intercessor), not quoted"
   },
   {
    "reference": "Luke 6:12",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 19,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 6:4",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 9,
-   "chapter_order": 19
+   "chapter_order": 19,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 58:12",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 20
+   "chapter_order": 20,
+   "why": "an allusion in the author's prose («Who will restore this breach?»), not quoted"
   },
   {
    "reference": "Acts 17:6",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 20
+   "chapter_order": 20,
+   "why": "an allusion in the author's prose (the Spirit that «turned the world upside down»), not quoted"
   },
   {
-   "reference": "John 14:12-13",
+   "reference": "John 14:12",
    "status": "mined",
    "block_index": 8,
    "chapter_order": 20,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   }
  ]
 }

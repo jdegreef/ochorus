@@ -2305,17 +2305,15 @@
   },
   {
    "reference": "2 Thessalonians 3:1",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 25,
-   "chapter_order": 17,
-   "source_file": "power-through-prayer.am.json"
+   "chapter_order": 17
   },
   {
    "reference": "2 Thessalonians 3:2",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 26,
-   "chapter_order": 17,
-   "source_file": "power-through-prayer.am.json"
+   "chapter_order": 17
   },
   {
    "reference": "2 Thessalonians 3:1",
@@ -2337,10 +2335,9 @@
   },
   {
    "reference": "2 Thessalonians 3:2",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 32,
-   "chapter_order": 17,
-   "source_file": "power-through-prayer.am.json"
+   "chapter_order": 17
   },
   {
    "reference": "Hebrews 13:18",

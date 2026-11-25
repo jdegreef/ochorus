@@ -932,10 +932,9 @@
   },
   {
    "reference": "Colossians 4:12",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 10,
-   "source_file": "power-through-prayer.am.json"
+   "chapter_order": 10
   },
   {
    "reference": "Daniel 6:10",

@@ -198,6 +198,20 @@
    "english": ["every moment", "water it every moment"],
    "old": ["በየቅጽበቱም አጠጣታለሁ"],
    "decision": "OWB Isa 27:3 reads «እኔ እግዚአብሔር የምንከባከባት ነኝ። በየጊዜው ውኃ አጠጣታለሁ» — 'continually', not 'every moment'. Murray argues from 'every moment' (Absolute Surrender, Abide in Christ). Quote OWB as it stands and let the author's own question carry the gloss («በየጊዜው» በእርግጥ በየቅጽበቱ ማለት ነውን?); his prose keeps በየቅጽበቱ."
+  },
+  {
+   "id": "brand-plucked",
+   "references": ["Zechariah 3:2", "Amos 4:11"],
+   "english": ["brand plucked from the burning", "plucked as a brand"],
+   "old": ["ከእሳት የተነጠቀ ትንታግ", "ከእሳት እንደ ተነጠቀ ትንታግ"],
+   "decision": "OWB Zech 3:2 reads «ከእሳት የተነጠቀ የሚነድ ጉማጅ». A book title built on the phrase stays the title; body quotations take OWB's words, with a one-time «(ትንታግ)» bridge where the title word must be recognised."
+  },
+  {
+   "id": "violent-take-it-by-force",
+   "references": ["Matthew 11:12"],
+   "english": ["suffereth violence", "the violent take it by force"],
+   "old": ["ትገፋለች", "ይናጠቋታል"],
+   "decision": "OWB reads the opposite sense (the kingdom suffers attack; violent men try to seize it). Where the author applies the AV to importunate prayer or holy violence (Bounds via Liddon; Wesley), render from the English and mark the row self_rendered."
   }
  ]
 }
