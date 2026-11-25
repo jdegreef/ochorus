@@ -9,35 +9,81 @@
  ],
  "cv_separators": ":፥",
  "ordinal_suffix": "ኛ",
- "sentence_final": ["።", "?", "!", "፧"],
- "fold": [["ሐ", "ሀ"], ["ኀ", "ሀ"], ["ሠ", "ሰ"], ["ዐ", "አ"], ["ፀ", "ጸ"]],
+ "sentence_final": [
+  "።",
+  "?",
+  "!",
+  "፧"
+ ],
+ "fold": [
+  [
+   "ሐ",
+   "ሀ"
+  ],
+  [
+   "ኀ",
+   "ሀ"
+  ],
+  [
+   "ሠ",
+   "ሰ"
+  ],
+  [
+   "ዐ",
+   "አ"
+  ],
+  [
+   "ፀ",
+   "ጸ"
+  ]
+ ],
  "book_names": {
-  "ዘፍጥረት": "GEN", "ዘፍ": "GEN",
-  "ዘጸአት": "EXO", "ዘጸ": "EXO",
-  "ዘሌዋውያን": "LEV", "ዘሌ": "LEV",
-  "ዘኍልቍ": "NUM", "ዘኁልቁ": "NUM", "ዘኍ": "NUM", "ዘኁ": "NUM",
-  "ዘዳግም": "DEU", "ዘዳ": "DEU",
+  "ዘፍጥረት": "GEN",
+  "ዘፍ": "GEN",
+  "ዘጸአት": "EXO",
+  "ዘጸ": "EXO",
+  "ዘሌዋውያን": "LEV",
+  "ዘሌ": "LEV",
+  "ዘኍልቍ": "NUM",
+  "ዘኁልቁ": "NUM",
+  "ዘኍ": "NUM",
+  "ዘኁ": "NUM",
+  "ዘዳግም": "DEU",
+  "ዘዳ": "DEU",
   "ኢያሱ": "JOS",
   "መሳፍንት": "JDG",
   "ሩት": "RUT",
-  "1ኛ ሳሙኤል": "1SA", "2ኛ ሳሙኤል": "2SA",
-  "1ኛ ነገሥት": "1KI", "2ኛ ነገሥት": "2KI",
-  "1ኛ ዜና መዋዕል": "1CH", "2ኛ ዜና መዋዕል": "2CH",
+  "1ኛ ሳሙኤል": "1SA",
+  "2ኛ ሳሙኤል": "2SA",
+  "1ኛ ነገሥት": "1KI",
+  "2ኛ ነገሥት": "2KI",
+  "1ኛ ዜና መዋዕል": "1CH",
+  "2ኛ ዜና መዋዕል": "2CH",
   "ዕዝራ": "EZR",
   "ነህምያ": "NEH",
   "አስቴር": "EST",
   "ኢዮብ": "JOB",
-  "መዝሙር": "PSA", "መዝሙረ ዳዊት": "PSA", "መዝ": "PSA",
-  "ምሳሌ": "PRO", "ምሳ": "PRO",
+  "መዝሙር": "PSA",
+  "መዝሙረ ዳዊት": "PSA",
+  "መዝ": "PSA",
+  "ምሳሌ": "PRO",
+  "ምሳ": "PRO",
   "መክብብ": "ECC",
-  "መኃልየ መኃልይ": "SNG", "መኃልይ": "SNG",
-  "ኢሳይያስ": "ISA", "ኢሳ": "ISA",
-  "ኤርምያስ": "JER", "ኤር": "JER",
-  "ሰቆቃው ኤርምያስ": "LAM", "ሰቆቃወ ኤርምያስ": "LAM",
-  "ሕዝቅኤል": "EZK", "ሕዝ": "EZK",
-  "ዳንኤል": "DAN", "ዳን": "DAN",
+  "መኃልየ መኃልይ": "SNG",
+  "መኃልይ": "SNG",
+  "ኢሳይያስ": "ISA",
+  "ኢሳ": "ISA",
+  "ኤርምያስ": "JER",
+  "ኤር": "JER",
+  "ሰቆቃው ኤርምያስ": "LAM",
+  "ሰቆቃወ ኤርምያስ": "LAM",
+  "ሕዝቅኤል": "EZK",
+  "ሕዝ": "EZK",
+  "ዳንኤል": "DAN",
+  "ዳን": "DAN",
   "ሆሴዕ": "HOS",
-  "ኢዩኤል": "JOL", "ኢዮኤል": "JOL",
+  "ኢዩኤል": "JOL",
+  "ኢዮኤል": "JOL",
   "አሞጽ": "AMO",
   "አብድዩ": "OBA",
   "ዮናስ": "JON",
@@ -48,170 +94,366 @@
   "ሐጌ": "HAG",
   "ዘካርያስ": "ZEC",
   "ሚልክያስ": "MAL",
-  "ማቴዎስ": "MAT", "ማቴ": "MAT",
-  "ማርቆስ": "MRK", "ማር": "MRK",
-  "ሉቃስ": "LUK", "ሉቃ": "LUK",
-  "ዮሐንስ": "JHN", "ዮሐ": "JHN",
-  "የሐዋርያት ሥራ": "ACT", "ሐዋርያት ሥራ": "ACT", "ሐዋ": "ACT",
+  "ማቴዎስ": "MAT",
+  "ማቴ": "MAT",
+  "ማርቆስ": "MRK",
+  "ማር": "MRK",
+  "ሉቃስ": "LUK",
+  "ሉቃ": "LUK",
+  "ዮሐንስ": "JHN",
+  "ዮሐ": "JHN",
+  "የሐዋርያት ሥራ": "ACT",
+  "ሐዋርያት ሥራ": "ACT",
+  "ሐዋ": "ACT",
   "ሮሜ": "ROM",
-  "1ኛ ቆሮንቶስ": "1CO", "2ኛ ቆሮንቶስ": "2CO", "1ኛ ቆሮ": "1CO", "2ኛ ቆሮ": "2CO",
-  "ገላትያ": "GAL", "ገላ": "GAL",
-  "ኤፌሶን": "EPH", "ኤፌ": "EPH",
-  "ፊልጵስዩስ": "PHP", "ፊል": "PHP",
-  "ቆላስይስ": "COL", "ቈላስይስ": "COL", "ቆላ": "COL",
-  "1ኛ ተሰሎንቄ": "1TH", "2ኛ ተሰሎንቄ": "2TH", "1ኛ ተሰ": "1TH", "2ኛ ተሰ": "2TH",
-  "1ኛ ጢሞቴዎስ": "1TI", "2ኛ ጢሞቴዎስ": "2TI", "1ኛ ጢሞ": "1TI", "2ኛ ጢሞ": "2TI",
+  "1ኛ ቆሮንቶስ": "1CO",
+  "2ኛ ቆሮንቶስ": "2CO",
+  "1ኛ ቆሮ": "1CO",
+  "2ኛ ቆሮ": "2CO",
+  "ገላትያ": "GAL",
+  "ገላ": "GAL",
+  "ኤፌሶን": "EPH",
+  "ኤፌ": "EPH",
+  "ፊልጵስዩስ": "PHP",
+  "ፊል": "PHP",
+  "ቆላስይስ": "COL",
+  "ቈላስይስ": "COL",
+  "ቆላ": "COL",
+  "1ኛ ተሰሎንቄ": "1TH",
+  "2ኛ ተሰሎንቄ": "2TH",
+  "1ኛ ተሰ": "1TH",
+  "2ኛ ተሰ": "2TH",
+  "1ኛ ጢሞቴዎስ": "1TI",
+  "2ኛ ጢሞቴዎስ": "2TI",
+  "1ኛ ጢሞ": "1TI",
+  "2ኛ ጢሞ": "2TI",
   "ቲቶ": "TIT",
   "ፊልሞና": "PHM",
-  "ዕብራውያን": "HEB", "ዕብ": "HEB",
-  "ያዕቆብ": "JAS", "ያዕ": "JAS",
-  "1ኛ ጴጥሮስ": "1PE", "2ኛ ጴጥሮስ": "2PE", "1ኛ ጴጥ": "1PE", "2ኛ ጴጥ": "2PE",
-  "1ኛ ዮሐንስ": "1JN", "2ኛ ዮሐንስ": "2JN", "3ኛ ዮሐንስ": "3JN", "1ኛ ዮሐ": "1JN",
+  "ዕብራውያን": "HEB",
+  "ዕብ": "HEB",
+  "ያዕቆብ": "JAS",
+  "ያዕ": "JAS",
+  "1ኛ ጴጥሮስ": "1PE",
+  "2ኛ ጴጥሮስ": "2PE",
+  "1ኛ ጴጥ": "1PE",
+  "2ኛ ጴጥ": "2PE",
+  "1ኛ ዮሐንስ": "1JN",
+  "2ኛ ዮሐንስ": "2JN",
+  "3ኛ ዮሐንስ": "3JN",
+  "1ኛ ዮሐ": "1JN",
   "ይሁዳ": "JUD",
-  "ራእይ": "REV", "የዮሐንስ ራእይ": "REV", "ራእ": "REV"
+  "ራእይ": "REV",
+  "የዮሐንስ ራእይ": "REV",
+  "ራእ": "REV"
  },
  "decisions": [
   {
    "id": "comforter",
-   "references": ["John 14:16", "John 14:26", "John 15:26", "John 16:7"],
-   "english": ["Comforter"],
-   "old": ["አጽናኝ"],
+   "references": [
+    "John 14:16",
+    "John 14:26",
+    "John 15:26",
+    "John 16:7"
+   ],
+   "english": [
+    "Comforter"
+   ],
+   "old": [
+    "አጽናኝ"
+   ],
    "decision": "OWB calls the Spirit ጠበቃ (Advocate). Quote OWB; where the author argues from 'Comforter', add a one-time bridging gloss rather than rewriting his image."
   },
   {
    "id": "jehovah",
    "references": [],
-   "english": ["Jehovah"],
-   "old": ["ይሖዋ"],
+   "english": [
+    "Jehovah"
+   ],
+   "old": [
+    "ይሖዋ"
+   ],
    "decision": "OWB renders the divine name እግዚአብሔር. A quoted verse keeps OWB; the author's own 'Jehovah' in prose follows the same word."
   },
   {
    "id": "convict",
-   "references": ["John 16:8"],
-   "english": ["convict the world", "convince the world", "reprove the world"],
-   "old": ["ይወቅሰዋል", "ይወቅሳል"],
+   "references": [
+    "John 16:8"
+   ],
+   "english": [
+    "convict the world",
+    "convince the world",
+    "reprove the world"
+   ],
+   "old": [
+    "ይወቅሰዋል",
+    "ይወቅሳል"
+   ],
    "decision": "OWB John 16:8 reads መሳሳቱን ያረጋግጣል; reuse that gloss where the author argues from 'convict'."
   },
   {
    "id": "might",
-   "references": ["Isaiah 11:2"],
-   "english": ["spirit of might", "counsel and might"],
+   "references": [
+    "Isaiah 11:2"
+   ],
+   "english": [
+    "spirit of might",
+    "counsel and might"
+   ],
    "old": [],
    "decision": "Isa 11:2 'might' is OWB ብርታት (የምክርና የብርታት መንፈስ)."
   },
   {
    "id": "the-promise",
-   "references": ["Acts 1:4", "Acts 2:33", "Acts 2:39", "Galatians 3:14", "Ephesians 1:13", "Luke 24:49"],
-   "english": ["the promise of the Father", "the promise of the Spirit"],
+   "references": [
+    "Acts 1:4",
+    "Acts 2:33",
+    "Acts 2:39",
+    "Galatians 3:14",
+    "Ephesians 1:13",
+    "Luke 24:49"
+   ],
+   "english": [
+    "the promise of the Father",
+    "the promise of the Spirit"
+   ],
    "old": [],
    "decision": "'The promise' is ተስፋ, as OWB words it."
   },
   {
    "id": "repent-god",
-   "references": ["Genesis 6:6", "Numbers 23:19", "1 Samuel 15:29"],
-   "english": ["it repented the Lord", "repented the Lord", "God is not a man, that he should lie"],
-   "old": ["ተጸጸተ", "ይጸጸት"],
+   "references": [
+    "Genesis 6:6",
+    "Numbers 23:19",
+    "1 Samuel 15:29"
+   ],
+   "english": [
+    "it repented the Lord",
+    "repented the Lord",
+    "God is not a man, that he should lie"
+   ],
+   "old": [
+    "ተጸጸተ",
+    "ይጸጸት"
+   ],
    "decision": "OWB gives three different verbs for God 'repenting' (ተጸጸተ, አቋሙንም የሚለውጥ, ሐሳቡንም አይለውጥም). Quote each verbatim; one gloss in the author's prose covers all three."
   },
   {
    "id": "pray-without-ceasing",
-   "references": ["1 Thessalonians 5:17", "Colossians 4:2"],
-   "english": ["pray without ceasing"],
-   "old": ["ሳታቋርጡ ጸልዩ"],
+   "references": [
+    "1 Thessalonians 5:17",
+    "Colossians 4:2"
+   ],
+   "english": [
+    "pray without ceasing"
+   ],
+   "old": [
+    "ሳታቋርጡ ጸልዩ"
+   ],
    "decision": "1 Thess 5:17 is OWB «መጸለይን አታቋርጡ». The old «ሳታቋርጡ ጸልዩ» is OWB Colossians 4:2, so a block holding it under a 1 Thess 5:17 citation is NOT already OWB."
   },
   {
    "id": "teach-us-to-pray",
-   "references": ["Luke 11:1"],
-   "english": ["teach us to pray"],
-   "old": ["እንድንጸልይ አስተምረን", "መጸለይ አስተምረን"],
+   "references": [
+    "Luke 11:1"
+   ],
+   "english": [
+    "teach us to pray"
+   ],
+   "old": [
+    "እንድንጸልይ አስተምረን",
+    "መጸለይ አስተምረን"
+   ],
    "detect": true,
    "decision": "Murray's refrain 'Lord, teach us to pray' is OWB Luke 11:1's span «ጌታ ሆይ፣ … እንዴት መጸለይ እንዳለብን አስተምረን»; headings and body quote it identically."
   },
   {
    "id": "thy-will-be-done",
-   "references": ["Matthew 26:42"],
-   "english": ["Thy will be done", "Your will be done"],
-   "old": ["ፈቃድህ ትሁን"],
+   "references": [
+    "Matthew 26:42"
+   ],
+   "english": [
+    "Thy will be done",
+    "Your will be done"
+   ],
+   "old": [
+    "ፈቃድህ ትሁን"
+   ],
    "detect": true,
    "decision": "The refrain «ፈቃድህ ትሁን» is the old wording. OWB Matt 26:42 ends «ፈቃድህ ይሁን»; Matt 6:10 has «ፈቃድህ በምድርም ይደረግ»; Luke 22:42 «የአንተ ፈቃድ ይሁን». Quote the span of the verse the author means, and keep a refrain identical everywhere it recurs."
   },
   {
    "id": "compel",
-   "references": ["Luke 14:23"],
-   "english": ["compel"],
-   "old": ["ግድ በላቸው"],
+   "references": [
+    "Luke 14:23"
+   ],
+   "english": [
+    "compel"
+   ],
+   "old": [
+    "ግድ በላቸው"
+   ],
    "decision": "OWB Luke 14:23 has አጥብቀህ ለምናቸው ('press them'). Where the author argues from 'compel', add a one-time gloss."
   },
   {
    "id": "ps-141-5",
-   "references": ["Psalm 141:5"],
+   "references": [
+    "Psalm 141:5"
+   ],
    "english": [],
    "old": [],
    "decision": "OWB Ps 141:5 says the opposite of the AV the author follows; Spurgeon's quotation stays self_rendered."
   },
   {
    "id": "acts-9-6",
-   "references": ["Acts 9:6"],
-   "english": ["what wilt thou have me to do"],
+   "references": [
+    "Acts 9:6"
+   ],
+   "english": [
+    "what wilt thou have me to do"
+   ],
    "old": [],
    "decision": "OWB Acts 9:6 lacks the KJV question. Quote OWB Acts 22:10 and cite Acts 22:10."
   },
   {
    "id": "ps-68-31",
-   "references": ["Psalm 68:31"],
-   "english": ["Ethiopia"],
+   "references": [
+    "Psalm 68:31"
+   ],
+   "english": [
+    "Ethiopia"
+   ],
    "old": [],
    "decision": "OWB reads ኩሽ. Where the author argues from 'Ethiopia', keep ኢትዮጵያ and mark the row self_rendered."
   },
   {
    "id": "good-gift",
-   "references": ["James 1:17"],
-   "english": ["good gift"],
+   "references": [
+    "James 1:17"
+   ],
+   "english": [
+    "good gift"
+   ],
    "old": [],
    "decision": "OWB reorders: 'good gift' becomes 'perfect gift'. Read the paragraph after the quote and adjust prose that argues from the old word."
   },
   {
    "id": "bruised-reed",
-   "references": ["Isaiah 42:3", "Matthew 12:20"],
-   "english": ["bruised reed", "smoking flax"],
+   "references": [
+    "Isaiah 42:3",
+    "Matthew 12:20"
+   ],
+   "english": [
+    "bruised reed",
+    "smoking flax"
+   ],
    "old": [],
    "decision": "OWB has 'bent reed / wick about to go out'. A one-time bridging gloss beats rewriting a recurring image."
   },
   {
    "id": "critical-text",
-   "references": ["Matthew 5:44", "Matthew 6:13", "Matthew 17:21", "Matthew 18:11", "Matthew 23:14", "Mark 9:44", "Mark 9:46", "Mark 11:26", "Mark 15:28", "Luke 17:36", "Luke 23:17", "John 5:4", "Acts 8:37", "Acts 15:34", "Acts 24:7", "Acts 28:29", "Romans 16:24", "1 John 5:7"],
+   "references": [
+    "Matthew 5:44",
+    "Matthew 6:13",
+    "Matthew 17:21",
+    "Matthew 18:11",
+    "Matthew 23:14",
+    "Mark 9:44",
+    "Mark 9:46",
+    "Mark 11:26",
+    "Mark 15:28",
+    "Luke 17:36",
+    "Luke 23:17",
+    "John 5:4",
+    "Acts 8:37",
+    "Acts 15:34",
+    "Acts 24:7",
+    "Acts 28:29",
+    "Romans 16:24",
+    "1 John 5:7"
+   ],
    "english": [],
    "old": [],
    "decision": "OWB follows the critical text and lacks some or all of these words. Quote what OWB has; render the missing words from the English yourself and mark the row self_rendered (never keep the 1962 wording)."
   },
   {
    "id": "doth-not-commit-sin",
-   "references": ["1 John 3:6", "1 John 3:8", "1 John 3:9", "1 John 5:18"],
-   "english": ["doth not commit sin", "sinneth not", "keepeth himself"],
-   "old": ["ኃጢአትን አያደርግም"],
+   "references": [
+    "1 John 3:6",
+    "1 John 3:8",
+    "1 John 3:9",
+    "1 John 5:18"
+   ],
+   "english": [
+    "doth not commit sin",
+    "sinneth not",
+    "keepeth himself"
+   ],
+   "old": [
+    "ኃጢአትን አያደርግም"
+   ],
    "decision": "OWB reads «በኃጢአት አይቀጥልም» ('does not continue in sin'). Quote OWB wherever the author's sentence stays true. Where he argues AGAINST the 'continue/habitually' reading (Wesley's Christian Perfection, Great Privilege, Marks of the New Birth), render from the English («ከእግዚአብሔር የተወለደ ሁሉ ኃጢአትን አያደርግም፤ … ከእግዚአብሔርም ስለ ተወለደ ኃጢአትን ማድረግ አይችልም») and mark the row self_rendered. 1 John 5:18 'keepeth himself': OWB has 'the Son keeps him'; quote only «ክፉውም አይዘውም»."
   },
   {
    "id": "every-moment",
-   "references": ["Isaiah 27:3"],
-   "english": ["every moment", "water it every moment"],
-   "old": ["በየቅጽበቱም አጠጣታለሁ"],
+   "references": [
+    "Isaiah 27:3"
+   ],
+   "english": [
+    "every moment",
+    "water it every moment"
+   ],
+   "old": [
+    "በየቅጽበቱም አጠጣታለሁ"
+   ],
    "decision": "OWB Isa 27:3 reads «እኔ እግዚአብሔር የምንከባከባት ነኝ። በየጊዜው ውኃ አጠጣታለሁ» — 'continually', not 'every moment'. Murray argues from 'every moment' (Absolute Surrender, Abide in Christ). Quote OWB as it stands and let the author's own question carry the gloss («በየጊዜው» በእርግጥ በየቅጽበቱ ማለት ነውን?); his prose keeps በየቅጽበቱ."
   },
   {
    "id": "brand-plucked",
-   "references": ["Zechariah 3:2", "Amos 4:11"],
-   "english": ["brand plucked from the burning", "plucked as a brand"],
-   "old": ["ከእሳት የተነጠቀ ትንታግ", "ከእሳት እንደ ተነጠቀ ትንታግ"],
+   "references": [
+    "Zechariah 3:2",
+    "Amos 4:11"
+   ],
+   "english": [
+    "brand plucked from the burning",
+    "plucked as a brand"
+   ],
+   "old": [
+    "ከእሳት የተነጠቀ ትንታግ",
+    "ከእሳት እንደ ተነጠቀ ትንታግ"
+   ],
    "decision": "OWB Zech 3:2 reads «ከእሳት የተነጠቀ የሚነድ ጉማጅ». A book title built on the phrase stays the title; body quotations take OWB's words, with a one-time «(ትንታግ)» bridge where the title word must be recognised."
   },
   {
    "id": "violent-take-it-by-force",
-   "references": ["Matthew 11:12"],
-   "english": ["suffereth violence", "the violent take it by force"],
-   "old": ["ትገፋለች", "ይናጠቋታል"],
+   "references": [
+    "Matthew 11:12"
+   ],
+   "english": [
+    "suffereth violence",
+    "the violent take it by force"
+   ],
+   "old": [
+    "ትገፋለች",
+    "ይናጠቋታል"
+   ],
    "decision": "OWB reads the opposite sense (the kingdom suffers attack; violent men try to seize it). Where the author applies the AV to importunate prayer or holy violence (Bounds via Liddon; Wesley), render from the English and mark the row self_rendered."
+  },
+  {
+   "id": "all-things-possible",
+   "references": [
+    "Mark 9:23",
+    "Matthew 19:26",
+    "Mark 10:27"
+   ],
+   "english": [
+    "All things are possible to him that believeth",
+    "All things are possible with God"
+   ],
+   "old": [
+    "ለሚያምን ሁሉ ይቻላል",
+    "በእግዚአብሔር ዘንድ ሁሉ ይቻላል"
+   ],
+   "decision": "The refrain is OWB Mark 9:23 «ለሚያምን ሰው ሁሉ ነገር ይቻላል», identical wherever it recurs, unmarked recitations included. Its twin 'All things are possible with God' quotes OWB Matt 19:26 «ለእግዚአብሔር ግን ሁሉ ይቻላል», because OWB Mark 10:27 («እግዚአብሔር ሁሉን ማድረግ ይችላል») loses the parallel the author argues from."
   }
  ]
 }
