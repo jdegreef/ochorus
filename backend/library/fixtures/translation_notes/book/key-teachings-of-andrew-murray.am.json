@@ -492,10 +492,10 @@
   },
   {
    "reference": "1 Corinthians 1:30",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 13,
    "chapter_order": 10,
-   "source_file": "gods-love-for-a-sinning-world.am.json"
+   "why": "the shared wording came from a work since re-quoted to OWB; this block's text is not OWB verbatim"
   },
   {
    "reference": "Hebrews 13:12",

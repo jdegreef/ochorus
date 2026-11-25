@@ -254,10 +254,10 @@
   },
   {
    "reference": "Psalm 30:5",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 8,
    "chapter_order": 11,
-   "source_file": "blessed-adversity.am.json"
+   "why": "the shared wording came from a work since re-quoted to OWB; this block's text is not OWB verbatim"
   },
   {
    "reference": "Psalm 104:14",
@@ -358,10 +358,10 @@
   },
   {
    "reference": "Psalm 30:5",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 7,
    "chapter_order": 16,
-   "source_file": "blessed-adversity.am.json"
+   "why": "the shared wording came from a work since re-quoted to OWB; this block's text is not OWB verbatim"
   },
   {
    "reference": "Matthew 13:30",
