@@ -51,7 +51,7 @@ from ..audit import AdminAudited
 from ..content_audit import QUALITY_CHAPTER_CHECKS, dismissed_fingerprints
 from ..languages import entry as language_entry
 from ..languages import known_codes
-from ..models import AdminAction, Author, Book, Chapter
+from ..models import AdminAction, Author, Book, Chapter, Sermon
 from .jobs import queue_response
 from .quality import AdminAuditView
 
@@ -67,19 +67,38 @@ IN_PROGRESS_LABEL = "in-progress"
 #   [edit] revise      book:<slug>/<lang>#<order>   → body
 #   [edit] rewrite-bio author:<slug>/<lang>         → bio
 #   [edit] audit-fix   book:<slug>/<lang> check:<check> → audit_fix
+#   [edit] edit-field  book|sermon:<slug>/<lang> field:<field> → field
 _TITLE_RE = re.compile(
-    r"^\[edit\] (?P<verb>retitle|revise|rewrite-bio|audit-fix) "
-    r"(?P<entity>book|author):(?P<slug>[a-z0-9-]+)/(?P<lang>[a-z-]{2,10})"
-    r"(?:#(?P<order>\d+))?(?: check:(?P<check>[a-z_]+))?$"
+    r"^\[edit\] (?P<verb>retitle|revise|rewrite-bio|audit-fix|edit-field) "
+    r"(?P<entity>book|author|sermon):(?P<slug>[a-z0-9-]+)/(?P<lang>[a-z-]{2,10})"
+    r"(?:#(?P<order>\d+))?(?: check:(?P<check>[a-z_]+))?(?: field:(?P<field>[a-z_]+))?$"
 )
 
 # kind ↔ (verb, entity). A chapter job needs an order; a bio job must not have
 # one; an audit fix names a book edition and a check, never one order.
 _VERB_FOR = {
-    "title": "retitle", "body": "revise", "bio": "rewrite-bio", "audit_fix": "audit-fix"
+    "title": "retitle",
+    "body": "revise",
+    "bio": "rewrite-bio",
+    "audit_fix": "audit-fix",
+    "field": "edit-field",
 }
 _KIND_FOR = {v: k for k, v in _VERB_FOR.items()}
 _CHAPTER_KINDS = ("title", "body")
+
+#: The work-level fields a "field" job may change, per entity: plain-text
+#: fields the fixture owns and the seeds re-sync on every deploy
+#: (``seed_books`` / ``seed_sermons`` ``UPDATE_FIELDS``), so the fix is one
+#: fixture edit and nothing else. HTML (``about_html``, a body) and structured
+#: fields (``qa``, ``main_points``) are deliberately out: they have rules a
+#: one-line proposal can't honour, and their own job kinds.
+FIELD_EDITS: dict[str, tuple[str, ...]] = {
+    "book": ("title", "subtitle", "description", "hook"),
+    "sermon": ("title", "scripture_ref", "summary"),
+}
+_FIELD_MODELS = {"book": Book, "sermon": Sermon}
+#: The longest proposal a field job carries (a description is a paragraph).
+FIELD_VALUE_MAX = 3000
 
 _PAGE_SIZE = 100
 _MAX_PAGES = 20
@@ -93,8 +112,16 @@ _AUDIT_FIX_MAX_ROWS = 200
 
 
 def _job_title(
-    kind: str, slug: str, language: str, order: int | None, check: str | None = None
+    kind: str,
+    slug: str,
+    language: str,
+    order: int | None,
+    check: str | None = None,
+    field: str | None = None,
+    entity: str = "book",
 ) -> str:
+    if kind == "field":
+        return f"[edit] {_VERB_FOR[kind]} {entity}:{slug}/{language} field:{field}"
     if kind == "bio":
         return f"[edit] {_VERB_FOR[kind]} author:{slug}/{language}"
     if kind == "audit_fix":
@@ -115,10 +142,18 @@ def _issue_to_job(issue: dict) -> dict | None:
         return None
     kind = _KIND_FOR[m.group("verb")]
     entity, order, check = m.group("entity"), m.group("order"), m.group("check")
+    field = m.group("field")
     # Reject a title that pairs a verb with the wrong entity or order-ness — a
     # chapter kind must be a `book:…#order`, a bio must be an author with none,
     # and only an audit fix carries a check (on a book, without an order).
     if (kind == "audit_fix") != (check is not None):
+        return None
+    # Only a field job names a field, and only one its entity allows.
+    if (kind == "field") != (field is not None):
+        return None
+    if kind == "field" and (field not in FIELD_EDITS.get(entity, ()) or order is not None):
+        return None
+    if kind != "field" and entity == "sermon":
         return None
     if kind in _CHAPTER_KINDS and (entity != "book" or order is None):
         return None
@@ -134,6 +169,7 @@ def _issue_to_job(issue: dict) -> dict | None:
         "language": m.group("lang"),
         "order": int(order) if order is not None else None,
         "check": check,
+        "field": field,
         "url": issue.get("html_url", ""),
         "number": issue.get("number"),
         "state": "in_progress" if IN_PROGRESS_LABEL in labels else "queued",
@@ -188,11 +224,18 @@ class AdminContentEditJobsView(AdminAudited, APIView):
         kind = str(data.get("kind", "title")).strip().lower()
         slug = str(data.get("slug", "")).strip().lower()
         language = str(data.get("language", "")).strip().lower()
-        target = f"author:{slug}" if kind == "bio" else f"book:{slug}:{language}"
+        if kind == "bio":
+            target = f"author:{slug}"
+        elif kind == "field":
+            entity = "sermon" if str(data.get("entity", "")).strip() == "sermon" else "book"
+            target = f"{entity}:{slug}:{language}"
+        else:
+            target = f"book:{slug}:{language}"
         return target, {
             "kind": kind,
             "chapter": data.get("order", "") if kind in _CHAPTER_KINDS else "",
             "check": str(data.get("check", "")) if kind == "audit_fix" else "",
+            "field": str(data.get("field", "")) if kind == "field" else "",
             "created": response.data.get("created", False),
             "issue": (response.data.get("job") or {}).get("url", ""),
         }
@@ -216,7 +259,48 @@ class AdminContentEditJobsView(AdminAudited, APIView):
             return self._file_bio_job(request)
         if kind == "audit_fix":
             return self._file_audit_fix_job(request)
+        if kind == "field":
+            return self._file_field_job(request)
         return Response({"detail": "unknown edit kind."}, status=400)
+
+    # --- work-level field jobs (a description, a summary…) ---------------------
+
+    def _file_field_job(self, request):
+        data = request.data
+        entity = str(data.get("entity", "")).strip().lower()
+        slug = str(data.get("slug", "")).strip().lower()
+        language = str(data.get("language", "")).strip().lower()
+        field = str(data.get("field", "")).strip().lower()
+        value = str(data.get("value", "")).strip()
+        if field not in FIELD_EDITS.get(entity, ()):
+            allowed = "; ".join(f"{e}: {', '.join(f)}" for e, f in FIELD_EDITS.items())
+            return Response({"detail": f"editable fields are {allowed}."}, status=400)
+        if not re.fullmatch(r"[a-z0-9-]+", slug or ""):
+            return Response({"detail": "invalid slug."}, status=400)
+        if language not in known_codes():
+            return Response({"detail": "language must be a known code."}, status=400)
+        if len(value) > FIELD_VALUE_MAX:
+            return Response({"detail": "that text is too long."}, status=400)
+        if not value and field == "title":
+            return Response({"detail": "a title can't be empty."}, status=400)
+        row = (
+            _FIELD_MODELS[entity]
+            .objects.filter(slug=slug, language=language)
+            .values("title", field)
+            .first()
+        )
+        if row is None:
+            return Response(
+                {"detail": f"no {language} {entity} {slug!r}."}, status=status.HTTP_404_NOT_FOUND
+            )
+        current = row[field] or ""
+        if value == current.strip():
+            return Response({"detail": "that is what it already says."}, status=400)
+        if not settings.GITHUB_TRANSLATION_TOKEN:
+            return self._unconfigured()
+        lang_name = language_entry(language)["name"]
+        body = self._field_body(entity, slug, language, lang_name, field, row["title"], current, value)
+        return self._file("field", slug, language, None, body, field=field, entity=entity)
 
     # --- chapter jobs (title / body) -------------------------------------------
 
@@ -381,15 +465,20 @@ class AdminContentEditJobsView(AdminAudited, APIView):
         order: int | None,
         body: str,
         check: str | None = None,
+        field: str | None = None,
+        entity: str = "book",
     ):
-        """Duplicate-guard on (kind, slug, language, order, check), then open the
-        issue."""
-        title = _job_title(kind, slug, language, order, check)
-        identity = (kind, slug, language, order, check)
+        """Duplicate-guard on (kind, entity, slug, language, order, check,
+        field), then open the issue."""
+        if kind == "bio":
+            entity = "author"
+        title = _job_title(kind, slug, language, order, check, field, entity)
+        identity = (kind, entity, slug, language, order, check, field)
         try:
             for job in _list_open_jobs():
                 if (
-                    job["kind"], job["slug"], job["language"], job["order"], job["check"]
+                    job["kind"], job["entity"], job["slug"], job["language"],
+                    job["order"], job["check"], job.get("field"),
                 ) == identity:
                     return Response({"job": job, "created": False})
             r = requests.post(
@@ -421,6 +510,31 @@ class AdminContentEditJobsView(AdminAudited, APIView):
         )
 
     # --- issue bodies (the worker's instructions) ------------------------------
+
+    @staticmethod
+    def _field_body(entity, slug, language, lang_name, field, work_title, current, proposed) -> str:
+        """A work-level field is plain text the fixture owns and the seeds
+        re-sync on every deploy, so the fix is ONE edit: the fixture."""
+        folder = "books" if entity == "book" else "sermons"
+        return (
+            f"Change the **{field}** of the {entity} **{work_title}** "
+            f"({lang_name}, `{language}`).\n\n"
+            f"- Current: {current or '(empty)'!r}\n"
+            f"- Proposed: {proposed or '(empty)'!r}\n\n"
+            "```json\n"
+            f'{{"job": "edit-field", "type": "{entity}", "slug": "{slug}", '
+            f'"language": "{language}", "field": "{field}"}}\n'
+            "```\n\n"
+            "**One edit:** in "
+            f"`library/fixtures/content/{folder}/{slug}.{language}.json`, set the "
+            f"`library.{entity}` row's `\"{field}\"` to the proposed text (plain text — "
+            "no HTML). `seed_"
+            f"{folder}` re-syncs `{field}` on every deploy (`UPDATE_FIELDS`) through "
+            "`save()`, so no data migration is needed and the search vector follows.\n\n"
+            "Read the proposal before applying it: fix an obvious slip in it, and if it "
+            "would make the text wrong, comment on this issue instead of shipping it.\n\n"
+            "Filed from the Ochorus admin dashboard. Ship via the normal PR flow."
+        )
 
     @staticmethod
     def _title_body(slug, language, lang_name, order, book_title, current, proposed) -> str:

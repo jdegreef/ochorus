@@ -2288,6 +2288,69 @@ class AdminContentEditJobsTests(TestCase):
         self.assertEqual(act.detail["chapter"], 2)
 
     @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_field_job_files_a_one_edit_fixture_issue(self):
+        from unittest.mock import MagicMock, patch
+
+        Sermon.objects.create(
+            author=self.book.author, slug="humility", language="en", title="Humility (sermon)",
+            body_html="<p>x</p>", summary="Old summary.",
+        )
+        created = self._issue("[edit] edit-field sermon:humility/en field:summary")
+        with patch("library.admin_views.content_jobs.requests") as gh:
+            # An open BOOK job on the same slug must not read as a duplicate.
+            book_job = self._issue("[edit] edit-field book:humility/en field:description", 3)
+            gh.get.return_value = MagicMock(json=lambda: [book_job], raise_for_status=lambda: None)
+            gh.post.return_value = MagicMock(json=lambda: created, raise_for_status=lambda: None)
+            res = self.client.post(
+                "/api/admin/content-edit-jobs/",
+                {"kind": "field", "entity": "sermon", "slug": "humility", "language": "en",
+                 "field": "summary", "value": "A clearer summary."},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 201, res.content)
+        self.assertEqual((res.data["job"]["entity"], res.data["job"]["field"]), ("sermon", "summary"))
+        payload = gh.post.call_args.kwargs["json"]
+        self.assertEqual(payload["title"], "[edit] edit-field sermon:humility/en field:summary")
+        self.assertIn("A clearer summary.", payload["body"])
+        self.assertIn("fixtures/content/sermons/humility.en.json", payload["body"])
+        act = AdminAction.objects.latest("id")
+        self.assertEqual((act.target, act.detail["field"]), ("sermon:humility:en", "summary"))
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_field_job_refuses_other_fields_and_no_change(self):
+        def post(**body):
+            return self.client.post(
+                "/api/admin/content-edit-jobs/",
+                {"kind": "field", "entity": "book", "slug": "humility", "language": "en", **body},
+                format="json",
+            )
+
+        self.assertEqual(post(field="about_html", value="<p>x</p>").status_code, 400)
+        self.assertEqual(post(field="title", value="Humility").status_code, 400)  # unchanged
+        self.assertEqual(post(field="title", value="").status_code, 400)
+        self.assertEqual(post(field="description", value="x" * 3001).status_code, 400)
+        missing = self.client.post(
+            "/api/admin/content-edit-jobs/",
+            {"kind": "field", "entity": "book", "slug": "nope", "language": "en",
+             "field": "description", "value": "New."},
+            format="json",
+        )
+        self.assertEqual(missing.status_code, 404)
+
+    def test_a_field_title_must_name_an_allowed_field(self):
+        from .admin_views.content_jobs import _issue_to_job
+
+        ok = self._issue("[edit] edit-field book:humility/en field:description")
+        self.assertEqual(_issue_to_job(ok)["field"], "description")
+        for bad in (
+            "[edit] edit-field book:humility/en field:about_html",
+            "[edit] edit-field book:humility/en",
+            "[edit] retitle sermon:humility/en#2",
+            "[edit] retitle book:humility/en#2 field:title",
+        ):
+            self.assertIsNone(_issue_to_job(self._issue(bad)), bad)
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
     def test_post_duplicate_returns_existing(self):
         from unittest.mock import MagicMock, patch
 

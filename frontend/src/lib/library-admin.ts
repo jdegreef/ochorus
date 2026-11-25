@@ -2727,15 +2727,17 @@ export const getAdminBook = (slug: string) =>
 // PR (a title, a chapter body and an author bio are all fixture-owned prose, not
 // live DB writes). Four kinds share the one endpoint — a chapter title/body
 // carries an `order`; an author bio does not; an audit fix carries a `check`.
-export type ContentEditKind = 'title' | 'body' | 'bio' | 'audit_fix';
+export type ContentEditKind = 'title' | 'body' | 'bio' | 'audit_fix' | 'field';
 export interface ContentEditJob {
 	kind: ContentEditKind;
-	entity: 'book' | 'author';
+	entity: 'book' | 'author' | 'sermon';
 	slug: string;
 	language: string;
 	order: number | null;
 	/** The audit check an `audit_fix` job repairs; null for every other kind. */
 	check: string | null;
+	/** The field a `field` job changes; null for every other kind. */
+	field?: string | null;
 	url: string;
 	number: number | null;
 	state: 'queued' | 'in_progress';
@@ -2772,6 +2774,24 @@ export const fileBioJob = (slug: string, note: string, language = 'en') =>
  *  for the same book, language and check was already open. */
 export const fileAuditFixJob = (slug: string, language: string, check: string) =>
 	fileContentEdit({ kind: 'audit_fix', slug, language, check });
+
+/** The plain-text work fields a "Suggest edit" may change (backend
+ *  `content_jobs.FIELD_EDITS`): the seeds re-sync them, so the fix is one
+ *  fixture edit. */
+export type EditableField =
+	| { entity: 'book'; field: 'title' | 'subtitle' | 'description' | 'hook' }
+	| { entity: 'sermon'; field: 'title' | 'scripture_ref' | 'summary' };
+
+/** File a "change this field" job for one book or sermon edition, proposing
+ *  `value`. `null` when the proposal is what it already says (nothing to file). */
+export const fileFieldEditJob = (
+	target: EditableField & { slug: string; language: string },
+	current: string,
+	value: string
+) =>
+	value.trim() === current.trim()
+		? Promise.resolve(null)
+		: fileContentEdit({ kind: 'field', ...target, value });
 
 /**
  * Publish or unpublish one language edition of a book. `is_published` is the

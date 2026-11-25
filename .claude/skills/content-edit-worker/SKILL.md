@@ -37,7 +37,7 @@ Backend that files these: `library/admin_views/content_jobs.py`.
 Every job is a **`content-edit`**-labelled issue with a deterministic title and a
 JSON block in the body naming the target. One open job per `(kind, target)` — the
 filer guards duplicates, per kind (a title and a body job for the same chapter can
-coexist). Four kinds share the queue:
+coexist). Five kinds share the queue:
 
 - **`retitle`** — a chapter title. Title `[edit] retitle book:<slug>/<lang>#<order>`,
   JSON `{"job": "retitle", "type": "book", "slug": …, "language": …, "order": N}`.
@@ -87,7 +87,26 @@ coexist). Four kinds share the queue:
   are advisory — skip a false positive and name it in the PR (an admin can then
   "accept" it on the audit page). Done = the next audit scan no longer lists them.
 
-The retitle protocol below is the template; a `revise`/`rewrite-bio`/`audit-fix` job
+- **`edit-field`** — one plain-text field of a **book or sermon** edition, filed by
+  the "Suggest edit" buttons on the admin book/sermon pages. Title
+  `[edit] edit-field <book|sermon>:<slug>/<lang> field:<field>` (no `#order`); JSON
+  `{"job": "edit-field", "type": "book"|"sermon", "slug": …, "language": …, "field": …}`.
+  The body quotes the current and proposed text. Fields (`content_jobs.FIELD_EDITS`):
+  book `title` / `subtitle` / `description` / `hook`; sermon `title` /
+  `scripture_ref` / `summary` — plain text, no HTML.
+  - **One edit (fixture):** set the field on the `library.book` / `library.sermon`
+    row in `books/<slug>.<lang>.json` / `sermons/<slug>.<lang>.json`. `seed_books` /
+    `seed_sermons` re-sync these fields on every deploy (`UPDATE_FIELDS`) through
+    `save()`, so **no data migration** and the search vector follows. (Contrast a
+    chapter title, which no seed syncs.)
+  - The proposal is a person's draft, not an instruction to paste blind: fix an
+    obvious slip; if it would make the text wrong (a mistranslated title, a summary
+    that misstates the work), comment on the issue and hand it back instead.
+  - A translated edition's field is reviewed copy: changing it doesn't reset the
+    edition's review state (`source_type` is create-only), so say in the PR what
+    changed and why.
+
+The retitle protocol below is the template; a `revise`/`rewrite-bio`/`audit-fix`/`edit-field` job
 follows the same claim → worktree → edit → verify → ship loop, with the per-kind edits
 above.
 
