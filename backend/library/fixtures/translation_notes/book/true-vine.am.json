@@ -578,13 +578,6 @@
   },
   {
    "reference": "John 15:5",
-   "block_index": -1,
-   "chapter_order": 14,
-   "status": "mined",
-   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
-  },
-  {
-   "reference": "John 15:5",
    "block_index": 0,
    "chapter_order": 14,
    "status": "mined",
@@ -984,13 +977,6 @@
   },
   {
    "reference": "John 15:12",
-   "block_index": -1,
-   "chapter_order": 25,
-   "status": "mined",
-   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
-  },
-  {
-   "reference": "John 15:12",
    "block_index": 0,
    "chapter_order": 25,
    "status": "mined",
@@ -1042,13 +1028,6 @@
    "reference": "1 Peter 3:8",
    "block_index": 8,
    "chapter_order": 25,
-   "status": "mined",
-   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
-  },
-  {
-   "reference": "John 15:12",
-   "block_index": -1,
-   "chapter_order": 26,
    "status": "mined",
    "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
