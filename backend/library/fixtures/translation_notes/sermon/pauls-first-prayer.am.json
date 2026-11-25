@@ -4,120 +4,233 @@
     "language": "am",
     "job_issue": 7950,
     "pull_request": null,
+    "note": [
+        "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose."
+    ],
     "references": [
         {
             "reference": "Acts 9:11",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 0
+            "block_index": 0,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "why": "the text's refrain, quoted as OWB Acts 9:11's «እርሱ አሁን እየጸለየ ነው»; OWB has neither the AV's 'Behold' nor its 'for'"
         },
         {
             "reference": "Acts 9:4",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 1
+            "block_index": 1,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+        },
+        {
+            "reference": "Acts 9:11",
+            "status": "mined",
+            "block_index": 1,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+        },
+        {
+            "reference": "Acts 9:11",
+            "status": "mined",
+            "block_index": 2,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+        },
+        {
+            "reference": "Acts 9:11",
+            "status": "mined",
+            "block_index": 3,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "why": "the author's shortened recital ('Go to the house of Saul of Tarsus'), given as OWB's own clause"
+        },
+        {
+            "reference": "Acts 9:11",
+            "status": "mined",
+            "block_index": 4,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "why": "the author takes the verse clause by clause; OWB pieces joined with '…'"
+        },
+        {
+            "reference": "Acts 9:11",
+            "status": "mined",
+            "block_index": 9,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Luke 18:13",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 9
+            "block_index": 9,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Isaiah 65:24",
-            "status": "self_rendered",
-            "why": "wording borrowed from the-life-of-trust-teens.am.json, which now quotes OWB; this work's own quotation is not yet OWB, so the translator's until its re-quote",
-            "block_index": 9
+            "status": "mined",
+            "block_index": 9,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Luke 10:21",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 10
+            "block_index": 10,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+        },
+        {
+            "reference": "Acts 9:11",
+            "status": "mined",
+            "block_index": 10,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "why": "the author argues from the AV's opening 'Behold'; one-time bridge «ጽሑፋችን በሰባኪው እንግሊዝኛ መጽሐፍ ቅዱስ «እነሆ» በሚለው ቃል ይጀምራል», the refrain itself stays OWB"
         },
         {
             "reference": "Luke 15:10",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 10
+            "block_index": 10,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+        },
+        {
+            "reference": "Acts 9:11",
+            "status": "mined",
+            "block_index": 11,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Matthew 11:28",
             "status": "self_rendered",
-            "block_index": 11
+            "block_index": 11,
+            "why": "the two words «ወደ እኔ ኑ» are OWB's, but as an allusion in the author's question"
         },
         {
             "reference": "Isaiah 53:1",
             "status": "mined",
-            "source_file": "talks-to-the-farmer.am.json",
-            "block_index": 12
+            "block_index": 12,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+        },
+        {
+            "reference": "Acts 9:11",
+            "status": "mined",
+            "block_index": 12,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Hebrews 2:13",
             "status": "self_rendered",
-            "block_index": 12
+            "block_index": 12,
+            "why": "allusion: the minister's own cry «የሰጠኸኝን ልጅ እይ!» before the refrain"
         },
         {
             "reference": "Matthew 3:9",
             "status": "mined",
-            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
-            "block_index": 13
+            "block_index": 13,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+        },
+        {
+            "reference": "Acts 9:11",
+            "status": "mined",
+            "block_index": 15,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Luke 18:11-12",
+            "status": "mined",
+            "block_index": 15,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "why": "put in Saul's mouth by the author; OWB 18:11 and 18:12 joined"
+        },
+        {
+            "reference": "Job 38:17",
             "status": "self_rendered",
-            "block_index": 15
+            "block_index": 15,
+            "why": "allusion ('the watchword at the gates of death')"
+        },
+        {
+            "reference": "Acts 9:11",
+            "status": "mined",
+            "block_index": 16,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "why": "the author argues from the AV's 'for'; prose now says the word gives a reason («ቃሉ ምክንያት የሚሰጥ መሆኑን ልብ በሉ»), the quotation stays OWB"
+        },
+        {
+            "reference": "Acts 9:11",
+            "status": "mined",
+            "block_index": 17,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+        },
+        {
+            "reference": "Acts 9:11",
+            "status": "self_rendered",
+            "block_index": 17,
+            "why": "the author's counterfactual 'Behold, he preacheth', shaped on the OWB refrain («እርሱ አሁን እየሰበከ ነው»)"
         },
         {
             "reference": "Matthew 7:15",
             "status": "self_rendered",
-            "block_index": 17
+            "block_index": 17,
+            "why": "allusion (a wolf in sheep's clothing)"
         },
         {
             "reference": "Acts 9:15",
-            "status": "self_rendered",
-            "block_index": 18
+            "status": "mined",
+            "block_index": 18,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "why": "«መሣሪያ አድርጌ መርጬዋለሁ» also carries the author's 'Behold, he is a chosen vessel' application"
+        },
+        {
+            "reference": "Acts 9:11",
+            "status": "mined",
+            "block_index": 18,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Isaiah 49:4",
-            "status": "self_rendered",
-            "block_index": 19
+            "status": "mined",
+            "block_index": 19,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+        },
+        {
+            "reference": "Acts 9:11",
+            "status": "mined",
+            "block_index": 20,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Isaiah 66:8",
-            "status": "self_rendered",
-            "block_index": 28
+            "status": "mined",
+            "block_index": 28,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Psalm 7:11",
             "status": "mined",
-            "source_file": "till-he-come.am.json",
-            "block_index": 29
+            "block_index": 29,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Luke 16:24",
             "status": "self_rendered",
-            "block_index": 29
+            "block_index": 29,
+            "why": "the author's own paraphrase of the rich man's cry"
         },
         {
             "reference": "Ezekiel 33:11",
-            "status": "self_rendered",
-            "block_index": 34
+            "status": "mined",
+            "block_index": 34,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+            "why": "the author recites Ezek 33:11 with 18:32's 'him that dieth'; OWB 33:11's pieces joined with '…'"
         },
         {
             "reference": "Psalm 145:8",
-            "status": "self_rendered",
-            "block_index": 34
+            "status": "mined",
+            "block_index": 34,
+            "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
         },
         {
             "reference": "Hosea 14:4",
             "status": "self_rendered",
-            "block_index": 34
+            "block_index": 34,
+            "why": "the author's adaptation ('He shall heal our backslidings … for his Son's name's sake')"
         },
         {
             "reference": "Psalm 115:1",
             "status": "self_rendered",
-            "block_index": 34
+            "block_index": 34,
+            "why": "the author's adaptation ('Not unto me, but unto thy name be all the glory, forever')"
         }
     ]
 }

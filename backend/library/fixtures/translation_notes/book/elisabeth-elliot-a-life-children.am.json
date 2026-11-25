@@ -5,6 +5,7 @@
  "job_issue": 5746,
  "pull_request": 5767,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose.",
   "Amharic (am) is not in library/language_seed.py (added from the admin), so system_prompt('am') raises locally; the translators were briefed with the same template by hand, plus a names table taken from the shipped Amharic Elisabeth Elliot bio (author_bios_am/elisabeth-elliot.html) and the anthologies that tell her story (men-and-women-who-gave-everything-2, brave-for-god-3): ኤልሳቤት ኤሊየት, ጂም ኤሊየት, ኢኳዶር, ዋኦራኒ, ኪቹዋ, ሻንዲያ, ኩራራይ, ኔት ሴይንት, ሬቸል ሴይንት, ቫለሪ, ጊካሪ, «የደስታ መግቢያ በር», «ቀጣዩን ነገር አድርግ». No full or teen Amharic edition of this life exists yet.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Re-verified for this job 2026-10-09: the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh/usfm/<code>.usfm, lower-case codes) returns 200 for heb/2ti/rom and 404 for gen/psa/isa/deu/ecc/jer (no usx/ either); api.takeroot.bible is unreachable from the container. So the five NT epigraphs are the 1962 wording lifted by script from the USFM, and every `mined` row is an exact substring of at least 20 characters of that verse inside block 0.",
   "The mirror carries no Old Testament, so the seven OT epigraphs are self_rendered. Each reuses wording the am corpus already ships, so the editions agree: Deuteronomy 6:6-7 = clothed-with-strength-and-dignity.am.json (opening clause elided with …); Isaiah 55:8 = a-retrospect.am.json; Isaiah 43:2a = the first half of pilgrims-progress-teens.am.json's verse; Psalm 62:8 = men-who-moved-heaven.am.json; Isaiah 46:4a = the first clause of daughters-of-the-king-3.am.json. Ecclesiastes 4:9 follows the clause order pilgrims-progress-teens.am.json uses in prose («ሁለት ከአንድ ይሻላሉ»; watchman-nee-a-life.am.json has «ከአንድ ሁለት ይሻላል»), and Isaiah 42:16 has no shipped Amharic rendering. They stay self_rendered even where verbatim, because the source wording was never checked against a 1962 OT text either.",
@@ -14,80 +15,93 @@
  "references": [
   {
    "reference": "Deuteronomy 6:6-7",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "opening clause of 6:6 elided with '…', as the English epigraph begins at 'These words'"
   },
   {
    "reference": "Hebrews 12:11",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Timothy 2:15",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 12:1",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the clause the child's paraphrase means; Paul's appeal before it elided with '…'"
   },
   {
    "reference": "Isaiah 55:8",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ecclesiastes 4:9",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Romans 10:14b",
+   "reference": "Romans 10:14",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "10:14's last two questions, the ones the English epigraph gives"
   },
   {
-   "reference": "Isaiah 43:2a",
-   "status": "self_rendered",
+   "reference": "Isaiah 43:2",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the first half of the verse, as the English epigraph"
   },
   {
    "reference": "Isaiah 42:16",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the verse's middle clause elided with '…', as the English"
   },
   {
    "reference": "Romans 12:21",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 62:8",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Isaiah 46:4a",
-   "status": "self_rendered",
+   "reference": "Isaiah 46:4",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the verse's first sentence, as the English epigraph"
   }
  ]
 }

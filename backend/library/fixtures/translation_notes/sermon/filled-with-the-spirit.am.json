@@ -99,8 +99,8 @@
         },
         {
             "reference": "Psalm 138:8",
-            "status": "mined",
-            "source_file": "elisabeth-elliot-a-life-children.am.json",
+            "status": "self_rendered",
+            "why": "its wording was mined from elisabeth-elliot-a-life-children, which now quotes OWB; this work keeps the wording until its own OWB re-quote",
             "block_index": 13
         },
         {
