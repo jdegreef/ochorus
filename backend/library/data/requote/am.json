@@ -184,6 +184,13 @@
    "english": [],
    "old": [],
    "decision": "OWB follows the critical text and lacks some or all of these words. Quote what OWB has; render the missing words from the English yourself and mark the row self_rendered (never keep the 1962 wording)."
+  },
+  {
+   "id": "doth-not-commit-sin",
+   "references": ["1 John 3:6", "1 John 3:8", "1 John 3:9", "1 John 5:18"],
+   "english": ["doth not commit sin", "sinneth not", "keepeth himself"],
+   "old": ["ኃጢአትን አያደርግም"],
+   "decision": "OWB reads «በኃጢአት አይቀጥልም» ('does not continue in sin'). Quote OWB wherever the author's sentence stays true. Where he argues AGAINST the 'continue/habitually' reading (Wesley's Christian Perfection, Great Privilege, Marks of the New Birth), render from the English («ከእግዚአብሔር የተወለደ ሁሉ ኃጢአትን አያደርግም፤ … ከእግዚአብሔርም ስለ ተወለደ ኃጢአትን ማድረግ አይችልም») and mark the row self_rendered. 1 John 5:18 'keepeth himself': OWB has 'the Son keeps him'; quote only «ክፉውም አይዘውም»."
   }
  ]
 }
