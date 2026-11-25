@@ -23,10 +23,9 @@
   },
   {
    "reference": "Psalm 73:25",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 2,
-   "source_file": "the-almost-christian.am.json"
+   "chapter_order": 2
   },
   {
    "reference": "1 Timothy 1:17",
@@ -811,10 +810,9 @@
   },
   {
    "reference": "Psalm 73:25",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 16,
-   "source_file": "the-almost-christian.am.json"
+   "chapter_order": 16
   },
   {
    "reference": "Job 42:5-6",

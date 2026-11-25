@@ -633,10 +633,9 @@
   },
   {
    "reference": "Romans 5:5",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 12,
-   "source_file": "the-almost-christian.am.json"
+   "chapter_order": 12
   },
   {
    "reference": "John 13:35",
