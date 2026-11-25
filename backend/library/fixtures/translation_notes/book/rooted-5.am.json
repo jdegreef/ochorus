@@ -65,10 +65,9 @@
   },
   {
    "reference": "Ephesians 6:2",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 12,
-   "chapter_order": 3,
-   "source_file": "clothed-with-strength-and-dignity.am.json"
+   "chapter_order": 3
   },
   {
    "reference": "Psalm 133:1",

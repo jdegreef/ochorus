@@ -5,624 +5,696 @@
  "job_issue": 3751,
  "pull_request": null,
  "note": [
-  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
-  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled as library/data/bible/owb-am-b.json.gz and read offline (owb-am). Every Scripture quotation was re-quoted to it verbatim (founder decision, 2026-11-18: Amharic quotes OWB everywhere), replacing the 1962/2003 UBS wording and the translator-rendered Old Testament verses the first edition carried.",
+  "A `mined` row is a verbatim OWB span in that block: the whole verse, the shortest contiguous span carrying the quoted clause, or exact OWB pieces joined with '…' (Gal 5:19-20 with 2 Cor 12:20's vices, 2 Tim 2:25-26, Num 11:15). Where the quoted words stand in another verse the citation names it: the plural 'whatsoever ye shall bind' is Matt 18:18, 'ruler over all his goods' Matt 24:47, and 'Thou knowest that I love thee' John 21:16. Where Chrysostom's next words dwell on a quoted word, the echo follows OWB: Matt 24:45's 'faithful and wise' (ታማኝና አስተዋይ), 1 Tim 3:7's 'good report' and 'them without', Matt 5:19's 'keeps' (የሚጠብቅ) for 'doeth', and the bare 'tend my sheep' (ለበጎቼ እረኛ ሁን). Acts 6:4 now stands as the apostles' own words («በጸሎትና ቃሉን በማገልገል ጸንተን እንቀጥላለን»), and 2 Cor 2:7 as a clause the sentence frames.",
+  "`self_rendered` rows (each with a `why`) are allusions and Chrysostom's own paraphrases woven into his sentences, the Septuagint's Prov 15:1 ('wrath destroys even the prudent'), and Ecclesiasticus (Sir 4:8; 18:15-17), which OWB does not carry. Jer 3:3, Ps 36:6 and Ps 107:42 quote OWB: Chrysostom's point (shamelessness; the depth of God's judgments; the silenced mouth) stands in its wording."
  ],
  "references": [
   {
    "reference": "Galatians 5:2",
    "status": "self_rendered",
    "block_index": 12,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Philippians 3:7",
    "status": "self_rendered",
    "block_index": 12,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "John 21:16",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "John 21:17",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 3
-  },
-  {
-   "reference": "Romans 8:32",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 3
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 24:45",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 24:47",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 21:17",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "Chrysostom's own conditional paraphrase of the charge to Peter («if thou lovest me, tend my sheep»); its last words follow OWB John 21:16 «ለበጎቼ እረኛ ሁን»"
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 3,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "John 21:15",
    "status": "mined",
    "block_index": 3,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "John 21:17",
-   "status": "self_rendered",
+   "reference": "John 21:16",
+   "status": "mined",
    "block_index": 3,
-   "chapter_order": 3
-  },
-  {
-   "reference": "1 Samuel 9:2",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 6:12",
    "status": "mined",
    "block_index": 3,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Galatians 5:19-20",
    "status": "mined",
    "block_index": 3,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 12:20",
    "status": "mined",
    "block_index": 3,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 21:17",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 3,
+   "why": "Chrysostom's imagined alternative charge («if thou lovest me practise fasting…»), not Scripture's words"
+  },
+  {
+   "reference": "1 Samuel 9:2",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 3,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "1 Corinthians 2:11",
    "status": "mined",
    "block_index": 4,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 1:24",
    "status": "mined",
    "block_index": 4,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Jeremiah 5:5",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 3
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Jeremiah 3:3",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 5,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Timothy 2:25-26",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 5,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 24:45",
    "status": "mined",
    "block_index": 5,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Jeremiah 5:5",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 3,
+   "why": "applied to a single patient who throws off the treatment (re-personed from the verse's plural), so OWB's words cannot stand in the sentence"
   },
   {
    "reference": "1 Timothy 3:7",
    "status": "mined",
    "block_index": 11,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 13:35",
    "status": "mined",
    "block_index": 13,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 15:13",
    "status": "mined",
    "block_index": 15,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 107:42",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 21,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Timothy 3:6",
    "status": "self_rendered",
    "block_index": 21,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "2 Corinthians 3:10",
    "status": "mined",
    "block_index": 4,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 18:18",
    "status": "mined",
    "block_index": 6,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 20:23",
    "status": "mined",
    "block_index": 6,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 5:22",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 6,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 3:5",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "John 6:53",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "James 5:14-15",
    "status": "mined",
    "block_index": 7,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 11:3",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 2:3",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 11:29",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 9:3",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Timothy 3:1",
    "status": "mined",
    "block_index": 15,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 5:11-12",
    "status": "mined",
    "block_index": 15,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Proverbs 15:1",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 4,
+   "why": "the Septuagint's 'wrath destroys even the prudent', which Chrysostom quotes; OWB follows the Hebrew ('a gentle answer turns away wrath'), so his words are rendered from the English"
   },
   {
    "reference": "1 Corinthians 12:26",
    "status": "mined",
    "block_index": 22,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 2:11",
    "status": "mined",
    "block_index": 23,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Sirach 4:8",
+   "status": "self_rendered",
+   "block_index": 28,
+   "chapter_order": 4,
+   "why": "Ecclesiasticus, which OWB does not carry; rendered from the English"
+  },
+  {
+   "reference": "Sirach 18:15-17",
+   "status": "self_rendered",
+   "block_index": 28,
+   "chapter_order": 4,
+   "why": "Ecclesiasticus, which OWB does not carry; rendered from the English"
   },
   {
    "reference": "Matthew 7:19",
    "status": "mined",
    "block_index": 31,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 2:7",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 35,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 13:17",
    "status": "mined",
    "block_index": 35,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Samuel 9:21",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "Saul's words as Chrysostom gives them («Who am I, and what is my father's house»), a composite of 1 Sam 9:21 and 18:18 that OWB words differently in each; translator's wording"
   },
   {
    "reference": "Numbers 11:15",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 4,
-   "chapter_order": 5
-  },
-  {
-   "reference": "Numbers 12:3",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 5
-  },
-  {
-   "reference": "Exodus 33:11",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 15:22",
    "status": "mined",
    "block_index": 4,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 15:24",
    "status": "mined",
    "block_index": 4,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 12:3",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 5,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
+  },
+  {
+   "reference": "Exodus 33:11",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 5,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "1 Timothy 5:22",
    "status": "mined",
    "block_index": 6,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 5:27",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 9,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "'spot or wrinkle' woven into Chrysostom's sentence about the Church; an allusion, not a quotation"
   },
   {
    "reference": "Ephesians 6:12",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "1 Peter 3:15",
    "status": "mined",
    "block_index": 10,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Acts 6:4",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 6:2-4",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Colossians 3:16",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Psalm 36:6",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 12,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 11:6",
    "status": "self_rendered",
    "block_index": 13,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Romans 9:3",
    "status": "self_rendered",
    "block_index": 16,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "2 Corinthians 11:6",
    "status": "mined",
    "block_index": 17,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 10:5",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 19,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "woven into Chrysostom's sentence about Paul's epistles (re-personed to 'he'); an allusion, not a quotation"
   },
   {
    "reference": "2 Corinthians 11:2",
    "status": "self_rendered",
    "block_index": 19,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "1 Timothy 4:13",
    "status": "mined",
    "block_index": 20,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Timothy 4:16",
    "status": "mined",
    "block_index": 20,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Timothy 2:24",
    "status": "mined",
    "block_index": 20,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "2 Timothy 3:14",
+   "reference": "2 Timothy 3:14-15",
    "status": "mined",
    "block_index": 20,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "2 Timothy 3:15",
-   "status": "mined",
-   "block_index": 20,
-   "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Timothy 3:16-17",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 20,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Titus 1:9",
    "status": "mined",
    "block_index": 20,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Colossians 3:16",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 20,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Colossians 4:6",
    "status": "mined",
    "block_index": 20,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Peter 3:15",
    "status": "mined",
    "block_index": 20,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Thessalonians 5:11",
    "status": "mined",
    "block_index": 20,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Timothy 5:17",
    "status": "mined",
    "block_index": 20,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 5:19",
    "status": "mined",
    "block_index": 20,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 20:31",
    "status": "mined",
    "block_index": 20,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Colossians 4:6",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Galatians 6:10",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Hebrews 13:17",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 18:6",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Ezekiel 33:6",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 8:12",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Ezekiel 33:2-7",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 7
-  },
-  {
-   "reference": "Ezekiel 33:6",
-   "status": "self_rendered",
-   "block_index": 0,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Galatians 2:20",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 5:20",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Matthew 22:11-13",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Matthew 5:13",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "1 Corinthians 3:13",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "2 Corinthians 8:20",
    "status": "mined",
    "block_index": 12,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 8:21",
    "status": "mined",
    "block_index": 12,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 25:24-30",
    "status": "self_rendered",
    "block_index": 16,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Amos 3:2",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 17,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Amos 2:11",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 17,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Leviticus 21:9",
    "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Ezekiel 34:17",
    "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "an allusion or paraphrase in Chrysostom's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Philippians 2:1",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 27,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "Chrysostom's own plea to Basil built on the verse's 'if there be any…' clauses, re-personed; an allusion, not a quotation"
   }
  ]
 }
