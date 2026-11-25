@@ -332,10 +332,9 @@
   },
   {
    "reference": "Psalm 5:3",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 17,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 17
   },
   {
    "reference": "Psalm 119:105",
@@ -414,10 +413,9 @@
   },
   {
    "reference": "Joshua 1:8",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 23,
-   "chapter_order": 18,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 18
   },
   {
    "reference": "Proverbs 1:7",

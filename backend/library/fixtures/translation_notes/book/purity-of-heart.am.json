@@ -356,10 +356,9 @@
   },
   {
    "reference": "Ephesians 3:17-19",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 8,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 8
   },
   {
    "reference": "Ephesians 4:30",
