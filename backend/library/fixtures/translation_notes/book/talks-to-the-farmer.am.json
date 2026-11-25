@@ -1562,10 +1562,9 @@
   },
   {
    "reference": "Isaiah 27:3",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 10,
-   "source_file": "true-vine.am.json"
+   "chapter_order": 10
   },
   {
    "reference": "Isaiah 5:5",
@@ -3537,10 +3536,9 @@
   },
   {
    "reference": "Isaiah 27:3",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 32,
-   "chapter_order": 18,
-   "source_file": "true-vine.am.json"
+   "chapter_order": 18
   },
   {
    "reference": "Psalm 16:3",
