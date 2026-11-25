@@ -138,8 +138,8 @@
         },
         {
             "reference": "Isaiah 1:18",
-            "status": "mined",
-            "source_file": "prayer-and-praying-men.am.json",
+            "status": "self_rendered",
+            "why": "was mined from prayer-and-praying-men.am.json's pre-OWB wording, which that work no longer carries; not verbatim OWB here",
             "block_index": 27
         },
         {
