@@ -136,10 +136,10 @@
   },
   {
    "reference": "Revelation 4:11",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
    "chapter_order": 4,
-   "source_file": "humility-2.am.json"
+   "why": "the wording was mined from humility-2's 1962 text, which now quotes OWB; this work's quotation stands as translator's wording until it is itself re-quoted"
   },
   {
    "reference": "Hebrews 1:3",
