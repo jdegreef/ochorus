@@ -1217,9 +1217,9 @@
         },
         {
             "reference": "Jonah 2:1",
-            "status": "mined",
-            "source_file": "purpose-in-prayer.am.json",
-            "block_index": 7
+            "status": "self_rendered",
+            "block_index": 7,
+            "why": "its wording was mined from Purpose in Prayer (am), whose Scripture is now re-quoted to OWB; the 1962 wording here no longer has a mined source"
         },
         {
             "reference": "Jonah 2:3-6",
@@ -1233,9 +1233,9 @@
         },
         {
             "reference": "Jonah 2:10",
-            "status": "mined",
-            "source_file": "purpose-in-prayer.am.json",
-            "block_index": 13
+            "status": "self_rendered",
+            "block_index": 13,
+            "why": "its wording was mined from Purpose in Prayer (am), whose Scripture is now re-quoted to OWB; the 1962 wording here no longer has a mined source"
         },
         {
             "reference": "Jonah 4:2",
