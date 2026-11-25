@@ -1130,10 +1130,10 @@
   },
   {
    "reference": "Lamentations 3:33",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 15,
    "chapter_order": 10,
-   "source_file": "divine-healing.am.json"
+   "why": "first mined from divine-healing.am's pre-OWB wording (1962 register); that work now quotes OWB and this edition still carries the old wording"
   },
   {
    "reference": "Lamentations 3:37-41",
