@@ -10,14 +10,14 @@
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 1,
-            "block_index": -1
+            "block_index": 0
         },
         {
             "reference": "Psalms 62:5",
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 1,
-            "block_index": -1
+            "block_index": 1
         },
         {
             "reference": "Isaiah 64:4",
@@ -30,7 +30,7 @@
             "reference": "Psalms 62:5",
             "status": "self_rendered",
             "chapter_order": 1,
-            "block_index": 2,
+            "block_index": 3,
             "why": "inside Frieda Hanbury's poem: a verse line, kept in the poem's rendering"
         },
         {
@@ -115,14 +115,14 @@
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 5,
-            "block_index": 0
+            "block_index": 1
         },
         {
             "reference": "Psalms 104:28",
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 5,
-            "block_index": 0
+            "block_index": 1
         },
         {
             "reference": "Psalms 104:27",
@@ -157,14 +157,14 @@
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 6,
-            "block_index": 0
+            "block_index": 1
         },
         {
             "reference": "Psalms 145:15",
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 6,
-            "block_index": 0
+            "block_index": 1
         },
         {
             "reference": "Psalms 104:27",
@@ -199,14 +199,14 @@
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 7,
-            "block_index": 0
+            "block_index": 1
         },
         {
             "reference": "Psalms 25:5",
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 7,
-            "block_index": 0
+            "block_index": 1
         },
         {
             "reference": "Psalms 25:5",
@@ -465,7 +465,7 @@
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 10,
-            "block_index": 0
+            "block_index": 1
         },
         {
             "reference": "Psalms 27:13",
@@ -521,7 +521,7 @@
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 11,
-            "block_index": 0
+            "block_index": 1
         },
         {
             "reference": "Psalms 31:24",
@@ -584,7 +584,7 @@
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 12,
-            "block_index": 0
+            "block_index": 1
         },
         {
             "reference": "Psalms 33:18",
@@ -681,7 +681,7 @@
             "reference": "Psalms 37:7",
             "status": "self_rendered",
             "chapter_order": 13,
-            "block_index": 0,
+            "block_index": 1,
             "why": "Murray sets the AV's 'Rest in the Lord' beside its margin and the R.V.'s 'Be still before the Lord'; OWB already reads the R.V., so the comparison keeps the AV wording"
         },
         {
@@ -689,7 +689,7 @@
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 13,
-            "block_index": 1
+            "block_index": 2
         },
         {
             "reference": "Luke 21:19",
@@ -794,7 +794,7 @@
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 14,
-            "block_index": 0
+            "block_index": 1
         },
         {
             "reference": "Isaiah 64:5",
@@ -1116,14 +1116,14 @@
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 18,
-            "block_index": 0
+            "block_index": 1
         },
         {
             "reference": "Psalms 130:6",
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 18,
-            "block_index": 0
+            "block_index": 1
         },
         {
             "reference": "Psalms 130:6",
@@ -1312,7 +1312,7 @@
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 21,
-            "block_index": 3
+            "block_index": 4
         },
         {
             "reference": "Malachi 3:2",
@@ -2159,14 +2159,14 @@
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 34,
-            "block_index": 0
+            "block_index": 1
         },
         {
             "reference": "Psalms 62:6",
             "status": "mined",
             "source_file": "Open Word Bible (OWB), Balanced edition, Japanese",
             "chapter_order": 34,
-            "block_index": 0
+            "block_index": 1
         },
         {
             "reference": "Psalms 62:5",
