@@ -32,7 +32,7 @@ from accounts.permissions import allowed_languages, is_admin_user, requires
 
 from ..audit import AdminAudited
 from ..corrections import COPYRIGHT_BLOCKED_SLUGS, RETIRED_BOOKS
-from ..job_status import forget_queue
+from ..job_status import cached_translation_jobs, forget_queue
 from ..languages import entry as language_entry
 from ..languages import known_codes
 from ..models import (
@@ -283,18 +283,31 @@ class AdminTranslationJobsView(AdminAudited, APIView):
     def get(self, request):
         if not settings.GITHUB_TRANSLATION_TOKEN:
             return Response({"configured": False, "jobs": []})
+        # Through the admin cache, shared with the Activity log and the book
+        # page: the dashboard, coverage matrix and language pages all ask, and a
+        # paginated GitHub read is the slowest thing any of them wait on. The
+        # duplicate-press guard in ``post`` still reads GitHub fresh.
         try:
-            jobs = _list_open_jobs()
+            read = cached_translation_jobs()
         except requests.RequestException:
             return Response(
                 {"detail": "GitHub is unreachable — try again shortly."},
                 status=status.HTTP_502_BAD_GATEWAY,
             )
+        jobs = read.value
         # Least privilege: a language-scoped user sees only their languages' jobs.
         allowed = allowed_languages(request, AdminCapability.TRANSLATE, AdminVerb.VIEW)
         if allowed is not None:
             jobs = [j for j in jobs if j["language"] in allowed]
-        return Response({"configured": True, "jobs": jobs})
+        return Response(
+            {
+                "configured": True,
+                "jobs": jobs,
+                "read_at": read.read_at.isoformat(),
+                # True: GitHub failed and this is the last queue it gave us.
+                "stale": read.stale,
+            }
+        )
 
     def post(self, request):
         # Filing a translation job is a super-admin-only lever: it spins up a

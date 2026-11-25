@@ -11,7 +11,8 @@
 		AZ_INDEX_DEST,
 		hubDests
 	} from '$lib/contentNav';
-	import { getLang } from '$lib/lang.svelte';
+	import { getLang, lang } from '$lib/lang.svelte';
+	import { nameOfLanguage } from '$lib/languageNames';
 	import { minQueryLength } from '$lib/searchHits';
 	import { FOR_EYEBROW, FOR_LINKS, forInline } from '$lib/forLinks';
 	import { promoLocale } from '$lib/forPromos';
@@ -23,7 +24,7 @@
 	import { paletteUi } from '$lib/paletteUi.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { ADMIN_SECTIONS, opensSection } from '$lib/adminSections';
-	import { adminWorkHref } from '$lib/adminLinks';
+	import { adminListHref, adminWorkHref, type AdminListKind } from '$lib/adminLinks';
 
 	const t = i18n.t;
 
@@ -78,7 +79,8 @@
 		];
 	}
 
-	/** `admin`: the work's admin page, on a book/sermon hit for a viewer who can open it. */
+	/** `admin`: the hit's admin page (a book or sermon) or admin list (any other
+	 *  kind that has one), for a viewer who can open it. */
 	type Item = {
 		key: string;
 		kind: 'cmd' | 'hit';
@@ -101,25 +103,29 @@
 	const canOpenWork = $derived(auth.can('reporting'));
 	const adminHref = (kind: 'book' | 'sermon', slug: string) =>
 		canOpenWork ? adminWorkHref(kind, slug) : undefined;
+	// A kind with no admin page of its own opens its admin list, searched for
+	// the hit — the same reporting gate as the work pages.
+	const adminList = (kind: AdminListKind, q: string) =>
+		canOpenWork ? adminListHref(kind, q) : undefined;
 
 	function hitItem(h: SearchHit): Item {
 		switch (h.type) {
 			case 'author':
-				return { key: 'author:' + h.author_slug, kind: 'hit', label: t('search.typeAuthor'), title: h.author_name, meta: '', href: authorPath(h.author_slug) };
+				return { key: 'author:' + h.author_slug, kind: 'hit', label: t('search.typeAuthor'), title: h.author_name, meta: '', href: authorPath(h.author_slug), admin: adminList('authors', h.author_name) };
 			case 'book':
 				return { key: 'book:' + h.book_slug, kind: 'hit', label: t('search.typeBook'), title: h.book_title, meta: h.author_name, href: `/books/${h.book_slug}`, admin: adminHref('book', h.book_slug) };
 			case 'topic':
-				return { key: 'topic:' + h.topic_slug, kind: 'hit', label: t('search.typeTopic'), title: h.topic_title, meta: '', href: `/topics/${h.topic_slug}` };
+				return { key: 'topic:' + h.topic_slug, kind: 'hit', label: t('search.typeTopic'), title: h.topic_title, meta: '', href: `/topics/${h.topic_slug}`, admin: adminList('topics', h.topic_slug) };
 			case 'plan':
-				return { key: 'plan:' + h.plan_slug, kind: 'hit', label: t('search.typePlan'), title: h.plan_title, meta: '', href: `/plans/${h.plan_slug}` };
+				return { key: 'plan:' + h.plan_slug, kind: 'hit', label: t('search.typePlan'), title: h.plan_title, meta: '', href: `/plans/${h.plan_slug}`, admin: adminList('plans', h.plan_slug) };
 			case 'article':
-				return { key: 'article:' + h.article_slug, kind: 'hit', label: t('search.typeArticle'), title: h.article_title, meta: '', href: `/articles/${h.article_slug}` };
+				return { key: 'article:' + h.article_slug, kind: 'hit', label: t('search.typeArticle'), title: h.article_title, meta: '', href: `/articles/${h.article_slug}`, admin: adminList('articles', h.article_slug) };
 			case 'scripture':
 				return { key: `scripture:${h.book_slug}:${h.chapter}:${h.verse ?? ''}`, kind: 'hit', label: t('search.typeScripture'), title: h.reference, meta: '', href: scripturePageHref(h.book_slug, h.chapter, h.verse) };
 			case 'answer':
 				return { key: `answer:${h.work_kind}-${h.work_slug}`, kind: 'hit', label: t('search.typeAnswer'), title: h.question, meta: h.work_title, href: answerHref(h) };
 			case 'quote':
-				return { key: 'quote:' + h.quote_slug, kind: 'hit', label: t('nav.quotes'), title: h.text, meta: h.author_name, href: quoteHitHref(h) };
+				return { key: 'quote:' + h.quote_slug, kind: 'hit', label: t('nav.quotes'), title: h.text, meta: h.author_name, href: quoteHitHref(h), admin: adminList('quotes', h.text.slice(0, 60)) };
 			case 'sermon':
 				return { key: 'sermon:' + h.sermon_slug, kind: 'hit', label: t('search.typeSermon'), title: h.sermon_title, meta: h.author_name, href: `/sermons/${h.sermon_slug}`, admin: adminHref('sermon', h.sermon_slug) };
 			default:
@@ -139,7 +145,16 @@
 		if (!term || !adminCommands.length) return [];
 		const all = 'admin'.startsWith(term) || term.startsWith('admin');
 		const list = all ? adminCommands : adminCommands.filter((c) => c.label.toLowerCase().includes(term));
-		return list.map((c) => ({ key: 'admin:' + c.href, kind: 'cmd', label: 'Admin', title: c.label, meta: '', href: c.href }));
+		const sections: Item[] = list.map((c) => ({ key: 'admin:' + c.href, kind: 'cmd', label: 'Admin', title: c.label, meta: '', href: c.href }));
+		// A language by name or code opens its admin drill-down ("spanish", "sw").
+		const languages: Item[] =
+			canOpenWork && term.length >= 2
+				? lang.available
+						.map((l) => ({ code: l.code, names: [nameOfLanguage(l.code, 'en') ?? l.name, l.name] }))
+						.filter((l) => l.code === term || l.names.some((n) => n.toLowerCase().includes(term)))
+						.map((l) => ({ key: 'admin:lang:' + l.code, kind: 'cmd', label: 'Admin', title: `Language: ${l.names[0]}`, meta: l.code, href: `/admin/languages/${l.code}` }))
+				: [];
+		return [...sections, ...languages];
 	});
 	// Suggestions lead the instant hits: after two letters of "moody" the full
 	// search (whole words only) has nothing yet, but the person is already clear.

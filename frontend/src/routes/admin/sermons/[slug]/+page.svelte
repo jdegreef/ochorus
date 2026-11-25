@@ -38,7 +38,7 @@
 <svelte:head><title>Admin · {sermon?.title ?? data.slug} — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
 
 <div class="mx-auto max-w-4xl px-5 py-10">
-	<a href="/admin" class="text-small text-accent hover:underline">← Back to dashboard</a>
+	<a href="/admin/sermons" class="text-small text-accent hover:underline">← All sermons</a>
 
 	<AdminGate resource={detail} errorTitle="Couldn't load this sermon" loadingText="Loading…" panelClass="mt-6">
 		{#snippet children(s)}

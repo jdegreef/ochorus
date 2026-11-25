@@ -10,6 +10,7 @@ language's configuration beside its content.
 from __future__ import annotations
 
 from django.db.models import Count, F, Q, Sum
+from django.utils import timezone
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -17,6 +18,7 @@ from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import requires
 
 from .. import translation_staleness
+from ..admin_cache import revision_memo
 from ..audit import AdminAudited
 from ..corrections import RETIRED_BOOKS
 from ..demand import reading_elsewhere
@@ -43,20 +45,34 @@ from .languages import language_settings
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminStatsView(APIView):
-    """Library-wide content statistics for the admin dashboard."""
+    """Library-wide content statistics for the admin dashboard.
 
+    About ten grouped counts over every book, chapter and sermon — the same
+    answer until content changes, so it is memoised under the content revision
+    (``admin_cache.revision_memo``) and the dashboard opens on a cache read.
+    ``?refresh=1`` (the dashboard's Refresh button) recomputes; ``computed_at``
+    says how old the figures are, since a memo is easy to misread as live.
+    """
+
+    #: A bound on what the revision can't see (a SQL-editor edit, a command).
+    CACHE_SECONDS = 300
 
     def get(self, request):
+        refresh = request.query_params.get("refresh") in ("1", "true", "yes")
         return Response(
-            {
-                "totals": self._totals(),
-                "languages": self._languages(),
-                "source_types": self._source_types(),
-                "author_translations": self._author_translations(),
-                "attention": self._attention(),
-                "recent_books": self._recent_books(),
-            }
+            revision_memo("admin-stats", self._compute, timeout=self.CACHE_SECONDS, refresh=refresh)
         )
+
+    def _compute(self) -> dict:
+        return {
+            "totals": self._totals(),
+            "languages": self._languages(),
+            "source_types": self._source_types(),
+            "author_translations": self._author_translations(),
+            "attention": self._attention(),
+            "recent_books": self._recent_books(),
+            "computed_at": timezone.now().isoformat(),
+        }
 
     # -- sections --------------------------------------------------------------
 

@@ -34,10 +34,10 @@ from datetime import timedelta
 
 import requests
 from django.conf import settings
-from django.core.cache import cache
 from django.utils import timezone
 from django.utils.dateparse import parse_datetime
 
+from .admin_cache import Read, forget, read_through
 from .models import Article, AuthorTranslation, Book, Plan, Sermon, TopicTranslation
 
 #: A claim older than this is a crashed run (translation-worker, conflict gate).
@@ -56,10 +56,14 @@ STATUSES = (QUEUED, IN_PROGRESS, STALLED, PR_OPEN, CLOSED, REVIEW, DONE, UNKNOWN
 NEEDS_ME = (PR_OPEN, CLOSED, REVIEW)
 
 #: How long one read of the open queue is reused. The page is reloaded on every
-#: filter change; the queue moves on the scale of minutes. A failed read is
-#: remembered as long, so an outage doesn't stall every page load on a timeout.
-CACHE_SECONDS = 60
-_CACHE_KEY = "activity:open-translation-jobs"
+#: filter change; the queue moves on the scale of minutes. When GitHub fails, the
+#: last good read answers (``admin_cache.read_through``) — so an outage neither
+#: blanks the queue nor stalls every page load on a timeout.
+CACHE_SECONDS = 120
+#: The shared reads (``admin_cache``): the open job issues — the same read the
+#: dashboard's queue endpoint serves — and the open PRs.
+JOBS_KEY = "github:translation-jobs"
+PRS_KEY = "github:open-prs"
 _DOWN = "down"
 
 Key = tuple[str, str, str]  # (type, slug, language) — a job's identity
@@ -114,33 +118,36 @@ def _rank(job: dict) -> tuple:
 
 
 def open_jobs() -> Queue | str | None:
-    """The open queue; ``"down"`` when GitHub didn't answer; None when no token
-    is configured (the queue isn't set up here, which isn't an outage)."""
+    """The open queue; ``"down"`` when GitHub didn't answer and there is no
+    earlier read to fall back on; None when no token is configured (the queue
+    isn't set up here, which isn't an outage)."""
     if not settings.GITHUB_TRANSLATION_TOKEN:
         return None
-    read = cache.get(_CACHE_KEY)
-    if read is None:
-        from .admin_views.jobs import (  # the view module imports models
-            _list_open_jobs,
-            list_open_prs,
-        )
+    try:
+        jobs = cached_translation_jobs()
+    except requests.RequestException:
+        return _DOWN
+    # Its own try: a token without pull-request read access, or a PR listing
+    # that fails, costs the pr_open split — never the queue.
+    prs = None
+    with contextlib.suppress(requests.RequestException):
+        from .admin_views.jobs import list_open_prs
 
-        try:
-            read = (_list_open_jobs(), timezone.now())
-        except requests.RequestException:
-            read = _DOWN
-        else:
-            # Its own try: a token without pull-request read access, or a PR
-            # listing that fails, costs the pr_open split — never the queue.
-            with contextlib.suppress(requests.RequestException):
-                read = (*read, list_open_prs())
-        cache.set(_CACHE_KEY, read, CACHE_SECONDS)
-    return _DOWN if read == _DOWN else Queue(*read)
+        prs = read_through(PRS_KEY, list_open_prs, fresh_seconds=CACHE_SECONDS).value
+    return Queue(jobs.value, jobs.read_at, prs)
+
+
+def cached_translation_jobs() -> Read:
+    """Every open translation-job issue, through the admin cache. Raises
+    ``requests.RequestException`` only when GitHub fails with nothing cached."""
+    from .admin_views.jobs import _list_open_jobs  # the view module imports models
+
+    return read_through(JOBS_KEY, _list_open_jobs, fresh_seconds=CACHE_SECONDS)
 
 
 def forget_queue() -> None:
     """Drop the cached read — after filing a job, so it shows up as queued."""
-    cache.delete(_CACHE_KEY)
+    forget(JOBS_KEY)
 
 
 def _editions(keys: set[Key]) -> dict[Key, str]:

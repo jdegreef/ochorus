@@ -11,3 +11,21 @@ export type AdminWorkKind = 'book' | 'sermon';
 
 export const adminWorkHref = (kind: AdminWorkKind, slug: string): string =>
 	`/admin/${kind}s/${encodeURIComponent(slug)}`;
+
+/** The admin inventory lists (`/admin/books`, `/admin/authors`, … — see
+ *  `$lib/adminCatalog`). Mirrors its `CatalogKind`; kept here for the same
+ *  bundle reason as above. */
+export type AdminListKind =
+	| 'books'
+	| 'sermons'
+	| 'authors'
+	| 'plans'
+	| 'topics'
+	| 'articles'
+	| 'quotes'
+	| 'series';
+
+/** One admin list, searched for `q` — the palette's way to an item whose kind
+ *  has no admin page of its own. */
+export const adminListHref = (kind: AdminListKind, q: string): string =>
+	`/admin/${kind}?q=${encodeURIComponent(q)}`;

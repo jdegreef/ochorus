@@ -522,6 +522,27 @@ CACHES = {
         "TIMEOUT": 7 * 24 * 3600,
         "OPTIONS": {"MAX_ENTRIES": 3000},
     },
+    # The admin's own memo (library.admin_cache): the dashboard stats, the
+    # content audit's full-library scan and the GitHub job-queue reads. On disk
+    # rather than in "default" because the one gunicorn worker recycles every
+    # ~500 requests (Dockerfile), and each fresh worker used to start the admin
+    # cold: a ~10-query stats rebuild, a full chapter scan, a paginated GitHub
+    # read with a 15 s timeout per page. Disk outlives the recycle (a deploy
+    # still starts it empty), and an entry costs no resident memory between
+    # reads. Every entry carries its own timeout; this is only the fallback.
+    "admin": {
+        "BACKEND": (
+            "django.core.cache.backends.dummy.DummyCache"
+            if _TESTING
+            else "django.core.cache.backends.filebased.FileBasedCache"
+        ),
+        "LOCATION": os.getenv(
+            "ADMIN_CACHE_DIR",
+            os.path.join(tempfile.gettempdir(), "ochorus-admin-cache"),
+        ),
+        "TIMEOUT": 3600,
+        "OPTIONS": {"MAX_ENTRIES": 300},
+    },
     # Memoised search responses (library.search.memoized). Their own alias so a
     # burst of distinct queries evicts other searches, not the shelves and
     # rosters sharing "default" (LocMemCache culls at MAX_ENTRIES). An entry is
