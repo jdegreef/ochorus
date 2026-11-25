@@ -106,10 +106,10 @@
   },
   {
    "reference": "Isaiah 44:3",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 3,
    "chapter_order": 3,
-   "source_file": "baptism-with-the-holy-spirit.am.json"
+   "why": "the wording was mined from baptism-with-the-holy-spirit.am, which now quotes OWB; this edition still carries the pre-OWB Amharic wording"
   },
   {
    "reference": "Ezekiel 36:26",

@@ -18,10 +18,10 @@
   },
   {
    "reference": "Ezekiel 33:11",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 1,
    "chapter_order": 3,
-   "source_file": "key-teachings-of-richard-baxter.am.json"
+   "why": "the key-teachings-of-richard-baxter.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   },
   {
    "reference": "Romans 11:33",
@@ -159,10 +159,10 @@
   },
   {
    "reference": "Ezekiel 33:11",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 1,
    "chapter_order": 4,
-   "source_file": "key-teachings-of-richard-baxter.am.json"
+   "why": "the key-teachings-of-richard-baxter.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   },
   {
    "reference": "2 Corinthians 5:17-21",
@@ -365,10 +365,10 @@
   },
   {
    "reference": "Ezekiel 33:11",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 1,
    "chapter_order": 5,
-   "source_file": "key-teachings-of-richard-baxter.am.json"
+   "why": "the key-teachings-of-richard-baxter.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   },
   {
    "reference": "Isaiah 59:8",

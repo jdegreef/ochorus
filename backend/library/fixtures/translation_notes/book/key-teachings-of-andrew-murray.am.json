@@ -828,10 +828,10 @@
   },
   {
    "reference": "Psalms 16:8",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 16,
    "chapter_order": 15,
-   "source_file": "key-teachings-of-richard-baxter.am.json"
+   "why": "the key-teachings-of-richard-baxter.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   },
   {
    "reference": "James 4:8",
@@ -925,10 +925,10 @@
   },
   {
    "reference": "1 Samuel 12:23",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
    "chapter_order": 17,
-   "source_file": "possibilities-of-prayer.am.json"
+   "why": "its wording was mined from possibilities-of-prayer.am's pre-OWB (1962) text, which has since been re-quoted to OWB; this edition still carries the pre-OWB wording"
   },
   {
    "reference": "James 4:2",

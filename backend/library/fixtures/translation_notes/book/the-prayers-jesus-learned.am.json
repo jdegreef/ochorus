@@ -1345,9 +1345,9 @@
         },
         {
             "reference": "Daniel 9:3",
-            "status": "mined",
-            "source_file": "possibilities-of-prayer.am.json",
-            "block_index": 22
+            "status": "self_rendered",
+            "block_index": 22,
+            "why": "its wording was mined from possibilities-of-prayer.am's pre-OWB (1962) text, which has since been re-quoted to OWB; this edition still carries the pre-OWB wording"
         },
         {
             "reference": "Daniel 9:5",

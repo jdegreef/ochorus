@@ -715,9 +715,9 @@
     },
     {
       "reference": "Proverbs 13:15",
-      "status": "mined",
+      "status": "self_rendered",
       "block_index": 1802,
-      "source_file": "the-life-of-trust-teens.am.json"
+      "why": "wording borrowed from the-life-of-trust-teens.am.json, which now quotes OWB; this work's own quotation is not yet OWB, so the translator's until its re-quote"
     },
     {
       "reference": "Jeremiah 44:16",
