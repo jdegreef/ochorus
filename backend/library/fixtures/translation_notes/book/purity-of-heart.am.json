@@ -5,8 +5,9 @@
  "job_issue": 3689,
  "pull_request": null,
  "note": [
-  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
-  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled as library/data/bible/owb-am-b.json.gz and read offline (owb-am). Every Scripture quotation in this book was re-quoted to it verbatim (founder decision, 2026-11-18: Amharic quotes OWB everywhere), replacing the 1962/2003 UBS New Testament wording and the 1962-register Old Testament renderings the first translation carried.",
+  "A `mined` row is a verbatim OWB span in that block: the whole verse, verses joined, the shortest contiguous span carrying the quoted clause, or exact OWB pieces joined with '…'; a verbatim recitation without quote marks counts (founder rule, 2026-11-19). `self_rendered` rows each carry a `why`: allusions woven into Brengle's prose, his summaries of Bible lives, the seeker's own words, and two hymn quotations (Charles Wesley) that echo a verse without quoting it.",
+  "Judgement calls: 'Pure in Heart' (Matt 5:8) is OWB's «ልባቸው ንጹሕ የሆነ» wherever the beatitude is quoted, and 'blessed' its «የተባረኩ»; the book's running term «ንጹሕ ልብ» stays in the prose. 'He was without sin' is OWB Heb 4:15 «ነገር ግን ኃጢአት አልሠራም»; 'The Man of Sorrows' is OWB Isa 53:3 «የሥቃይ ሰው»; 'in heaviness through manifold temptations' (which Brengle gives to Paul; it is 1 Pet 1:6) quotes OWB's «በልዩ ልዩ ፈተናዎች» with the prose carrying the heaviness. The sow 'washed … wallowing in the mire' is OWB 2 Pet 2:22 «አሳማ ከታጠበ በኋላ በጭቃ ወደ መንከባለል ይመለሳል». 'Not that we loved God, but that He loved us' joins two OWB pieces of 1 John 4:10. 'Enoch walked with God three hundred years' is OWB Gen 5:22 «ሄኖክ 300 ዓመት ከእግዚአብሔር ጋር ተመላለሰ» (am.json decision `walked-with-god`). 'What must I do to be pure?' (ch. 7) is the reader's question, not Acts 22:10, and stays the translator's. The hymn line 'All things are possible to him / That can in Jesus' name believe' is not Mark 9:23 and is not forced to the `all-things-possible` refrain."
  ],
  "references": [
   {
@@ -14,499 +15,574 @@
    "status": "mined",
    "block_index": 0,
    "chapter_order": 1,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 13:46",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "'this Pearl of Great Price' is the author's image for the blessing, woven into his prose; an allusion"
   },
   {
    "reference": "2 Corinthians 7:1",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "'filthiness … of the body, mind, or spirit' is the author's summary of Scripture's language, not a quotation"
   },
   {
    "reference": "Hebrews 10:22",
    "status": "mined",
    "block_index": 14,
    "chapter_order": 1,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 7:14",
    "status": "self_rendered",
    "block_index": 20,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "'washed their hearts in the Blood of the Lamb' recasts Rev 7:14 to hearts; an allusion"
   },
   {
    "reference": "1 John 1:7",
    "status": "self_rendered",
    "block_index": 21,
-   "chapter_order": 1
+   "chapter_order": 1,
+   "why": "'the Blood of Jesus Christ has made you clean' is the author's restatement; an allusion"
   },
   {
    "reference": "Hebrews 12:14",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 5:8",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 3,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Proverbs 23:26",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 8,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 4:1",
    "status": "self_rendered",
    "block_index": 12,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "the temptation in the wilderness is narrated, not quoted"
   },
   {
    "reference": "Hebrews 4:15",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 12,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 8:37",
    "status": "self_rendered",
    "block_index": 13,
-   "chapter_order": 2
-  },
-  {
-   "reference": "Isaiah 53:3",
-   "status": "self_rendered",
-   "block_index": 14,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "'more than a conqueror' is woven into the author's exhortation; an allusion"
   },
   {
    "reference": "Acts 24:16",
    "status": "self_rendered",
    "block_index": 14,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "Paul's 'conscience void of offence' is reported in the author's own words; an allusion"
   },
   {
    "reference": "1 Peter 1:6",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 14,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "James 1:27",
+   "reference": "Isaiah 53:3",
+   "status": "mined",
+   "block_index": 14,
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Corinthians 13:2",
    "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "'faith so that you can remove mountains' is the author's echo; an allusion"
   },
   {
    "reference": "Galatians 4:9",
    "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "'the beggarly elements of the world' is woven into the author's sentence; an allusion"
   },
   {
    "reference": "2 Peter 2:22",
    "status": "mined",
    "block_index": 17,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "1 Corinthians 13:2",
+   "reference": "James 1:27",
    "status": "self_rendered",
    "block_index": 17,
-   "chapter_order": 2
-  },
-  {
-   "reference": "1 Corinthians 9:27",
-   "status": "self_rendered",
-   "block_index": 18,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "'kept their garments unspotted from the world' is the author's image; an allusion"
   },
   {
    "reference": "1 Corinthians 10:12",
    "status": "mined",
    "block_index": 18,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 2,
+   "why": "'after saving others, become castaways' is the author's paraphrase; an allusion"
   },
   {
    "reference": "Luke 1:74-75",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 22:37-39",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "loving God fully and others as oneself is the author's summary; an allusion"
   },
   {
    "reference": "1 John 3:3",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "'pure, just as He is pure' is the author's echo; an allusion"
   },
   {
    "reference": "Hebrews 12:15",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 14,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ezekiel 36:25-27",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 18,
-   "chapter_order": 3
-  },
-  {
-   "reference": "1 Thessalonians 5:23",
-   "status": "self_rendered",
-   "block_index": 21,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 1:7",
    "status": "self_rendered",
    "block_index": 21,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "'Walk in His light' is the author's exhortation; an allusion"
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 3,
+   "why": "'spirit, soul, and body' kept pure is the author's restatement; an allusion"
   },
   {
    "reference": "Hebrews 13:20-21",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 5:6",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 2,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 4:3",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "'entered into God's rest' is the author's image; an allusion"
   },
   {
    "reference": "Isaiah 48:18",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "the author recasts Isa 48:18 as a promise to the reader (future tense, plural); an adapted allusion, not a quotation"
   },
   {
    "reference": "1 Kings 8:27",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 4
-  },
-  {
-   "reference": "Isaiah 57:15",
-   "status": "self_rendered",
-   "block_index": 13,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "'the One whom heaven cannot contain' is the author's echo; an allusion"
   },
   {
    "reference": "Revelation 3:20",
    "status": "mined",
    "block_index": 13,
    "chapter_order": 4,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 57:15",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 6:22",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 4:10",
    "status": "mined",
    "block_index": 3,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Philippians 4:7",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 14,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 13:12",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 1:9",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 6
-  },
-  {
-   "reference": "1 John 5:17",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "'cleanse us from all unrighteousness' is reported indirectly inside the author's own affirmation; an allusion"
   },
   {
    "reference": "Matthew 1:21",
    "status": "mined",
    "block_index": 3,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 John 5:17",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 27:46",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "Christ's sense of abandonment is described, not quoted"
   },
   {
    "reference": "Mark 9:23",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "«በኢየሱስ ስም ማመን ለሚችል ሁሉ ይቻለዋል…» renders a hymn couplet (Charles Wesley, 'All things are possible to him / That can in Jesus' name believe'), not the verse"
   },
   {
    "reference": "Ephesians 4:24",
    "status": "mined",
    "block_index": 10,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 5:48",
    "status": "mined",
    "block_index": 11,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Thessalonians 4:3",
    "status": "mined",
    "block_index": 12,
    "chapter_order": 6,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "1 John 3:8",
-   "status": "self_rendered",
-   "block_index": 13,
-   "chapter_order": 6
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 5:27",
    "status": "self_rendered",
    "block_index": 13,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "'holy and without fault' is the author's summary; an allusion"
   },
   {
-   "reference": "Psalm 51:10",
+   "reference": "1 John 3:8",
    "status": "self_rendered",
-   "block_index": 14,
-   "chapter_order": 6
+   "block_index": 13,
+   "chapter_order": 6,
+   "why": "'He came to destroy the works of the devil' is reported indirectly; an allusion"
+  },
+  {
+   "reference": "1 Thessalonians 4:3",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 6:17",
    "status": "self_rendered",
    "block_index": 14,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "'separate yourself … receive you' is the author's summary; an allusion"
+  },
+  {
+   "reference": "Psalm 51:10",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 6,
+   "why": "'a clean heart' as God's promise is the author's statement; an allusion"
   },
   {
    "reference": "Acts 10:34",
    "status": "self_rendered",
    "block_index": 14,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "'He shows no favouritism' is the author's echo; an allusion"
   },
   {
    "reference": "Isaiah 4:4",
    "status": "self_rendered",
    "block_index": 20,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "'Spirit of burning' is a hymn prayer's title for the Spirit; an allusion"
   },
   {
    "reference": "2 Corinthians 4:7",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 7,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Acts 22:10",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 7,
+   "why": "«ንጹሕ ለመሆን ምን ማድረግ አለብኝ?» is the reader's own question ('What must I do to be pure?'), not Paul's; it stays the translator's"
   },
   {
    "reference": "Acts 15:9",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 7
+   "chapter_order": 7,
+   "why": "no quotation in the block: the seeker's «አሁን የእኔ ነው» is the author's words; the verse stands behind the teaching only"
   },
   {
    "reference": "Ephesians 3:17-19",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 0,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 4:30",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "the seeker's prayer is the author's words; the verse is not quoted"
   },
   {
    "reference": "Ezekiel 36:25",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 9,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 6:2",
    "status": "mined",
    "block_index": 10,
    "chapter_order": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 1:8",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Genesis 5:22",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 9
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 11:5",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "'and pleased Him' is the author's summary of Heb 11:5; an allusion"
+  },
+  {
+   "reference": "Genesis 5:22",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Genesis 6:9",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 9
-  },
-  {
-   "reference": "Job 1:1",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "'Noah was called righteous in his generation' is the author's summary; an allusion"
   },
   {
    "reference": "Isaiah 6:7-8",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "Isaiah's cleansing and sending are summarised, not quoted"
+  },
+  {
+   "reference": "Job 1:1",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 9,
+   "why": "Job's uprightness is summarised, not quoted"
   },
   {
    "reference": "Luke 1:6",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 9
-  },
-  {
-   "reference": "1 John 4:18",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "Zacharias and Elizabeth 'walking blamelessly' is the author's summary; an allusion"
   },
   {
    "reference": "1 Thessalonians 2:10",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 9
+   "chapter_order": 9,
+   "why": "Paul's appeal to witnesses is summarised, not quoted"
+  },
+  {
+   "reference": "1 John 4:18",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 9,
+   "why": "'John spoke of perfect love' names the verse without quoting it"
   },
   {
    "reference": "James 1:12",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 35:8",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "'the holy sanctuary / highway' is the author's image; an allusion"
   },
   {
    "reference": "Matthew 13:46",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "'the Pearl of Great Price' is the author's image; an allusion"
   },
   {
    "reference": "Romans 14:17",
    "status": "mined",
    "block_index": 8,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 1:7",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "'the blood cleanses' is the author's phrase; an allusion"
   },
   {
    "reference": "Ephesians 4:30",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "'grieved the Holy Spirit' is woven into the author's sentence; an allusion"
   },
   {
    "reference": "Matthew 5:15",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 10
-  },
-  {
-   "reference": "1 Timothy 6:12",
-   "status": "self_rendered",
-   "block_index": 16,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "'hide your light under a bushel' is the author's image; an allusion"
   },
   {
    "reference": "Hebrews 3:14",
    "status": "self_rendered",
    "block_index": 16,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "'the beginning of your confidence' is woven into the author's sentence; an allusion"
+  },
+  {
+   "reference": "1 Timothy 6:12",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 10,
+   "why": "'fight the fight of faith' is woven into the author's sentence; an allusion"
   },
   {
    "reference": "Matthew 26:41",
    "status": "self_rendered",
    "block_index": 26,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "'Watch as well as pray' is the author's counsel; an allusion"
   },
   {
    "reference": "Zechariah 13:1",
    "status": "self_rendered",
    "block_index": 28,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "'the fountain opened for sin and uncleanness' is the author's image; an allusion"
   },
   {
    "reference": "John 20:28",
    "status": "self_rendered",
    "block_index": 30,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "why": "the closing verse is a hymn stanza ('Me to retrieve from Satan's hands…'); 'My Lord and God' is the hymn's, not a quotation"
   }
  ]
 }
