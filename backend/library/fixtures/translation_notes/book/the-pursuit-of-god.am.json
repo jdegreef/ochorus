@@ -748,8 +748,8 @@
    "reference": "Hebrews 12:2",
    "block_index": 0,
    "chapter_order": 9,
-   "status": "mined",
-   "source_file": "key-teachings-of-richard-baxter.am.json"
+   "status": "self_rendered",
+   "why": "the key-teachings-of-richard-baxter.am wording this was mined from was re-quoted to OWB (2026-11-25); this block keeps the earlier Amharic rendering"
   },
   {
    "reference": "2 Peter 1:21",
