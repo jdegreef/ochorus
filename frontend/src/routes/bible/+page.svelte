@@ -80,22 +80,26 @@
 	 * locale (`BibleText`), rather than as 14-locale catalogue keys.
 	 */
 	const COPY = {
-		balanced: { en: 'Balanced', es: 'Equilibrado' },
-		freeToShare: { en: 'Free to share', es: 'Libre para compartir' },
+		balanced: { en: 'Balanced', es: 'Equilibrado', fr: 'Équilibré', pt: 'Equilibrado' },
+		freeToShare: { en: 'Free to share', es: 'Libre para compartir', fr: 'Libre à partager', pt: 'Livre para compartilhar' },
 		noteWhat: {
 			en: "A new translation of the Bible from the Hebrew and Greek, in today's English. Every sentence is translated three ways, from word-for-word to plain; Ochorus prints the Balanced one, faithful to the original and easy to read.",
-			es: 'Una nueva traducción de la Biblia hecha directamente del hebreo y el griego, en el español de hoy. Ochorus imprime su nivel Equilibrado: fiel al original y fácil de leer.'
+			es: 'Una nueva traducción de la Biblia hecha directamente del hebreo y el griego, en el español de hoy. Ochorus imprime su nivel Equilibrado: fiel al original y fácil de leer.',
+			fr: 'Une nouvelle traduction de la Bible faite directement à partir de l’hébreu et du grec, dans le français d’aujourd’hui. Ochorus en publie le niveau Équilibré : fidèle à l’original et facile à lire.',
+			pt: 'Uma nova tradução da Bíblia feita diretamente do hebraico e do grego, no português de hoje. O Ochorus publica o seu nível Equilibrado: fiel ao original e fácil de ler.'
 		},
 		noteFree: {
 			en: 'It is given to the public domain, so anyone may read, copy, print and share it, free.',
-			es: 'Está cedida al dominio público, así que cualquiera puede leerla, copiarla, imprimirla y compartirla, gratis.'
+			es: 'Está cedida al dominio público, así que cualquiera puede leerla, copiarla, imprimirla y compartirla, gratis.',
+			fr: 'Elle est versée au domaine public : chacun peut la lire, la copier, l’imprimer et la partager, gratuitement.',
+			pt: 'Ela foi cedida ao domínio público, então qualquer pessoa pode lê-la, copiá-la, imprimi-la e compartilhá-la, de graça.'
 		},
-		moreAbout: { en: 'More about the translation', es: 'Más sobre la traducción' },
-		passagesOn: { en: 'Passages on', es: 'Pasajes sobre' },
-		chooseWay: { en: 'Choose a way in', es: 'Elegir por dónde entrar' },
-		newToBible: { en: 'New to the Bible', es: 'Nuevo en la Biblia' },
-		showCovers: { en: 'Show covers', es: 'Ver portadas' },
-		aboutOwb: { en: 'About the Open Word Bible', es: 'Acerca de la Open Word Bible' }
+		moreAbout: { en: 'More about the translation', es: 'Más sobre la traducción', fr: 'En savoir plus sur la traduction', pt: 'Mais sobre a tradução' },
+		passagesOn: { en: 'Passages on', es: 'Pasajes sobre', fr: 'Passages sur', pt: 'Passagens sobre' },
+		chooseWay: { en: 'Choose a way in', es: 'Elegir por dónde entrar', fr: 'Choisir par où entrer', pt: 'Escolher por onde entrar' },
+		newToBible: { en: 'New to the Bible', es: 'Nuevo en la Biblia', fr: 'Nouveau dans la Bible', pt: 'Novo na Bíblia' },
+		showCovers: { en: 'Show covers', es: 'Ver portadas', fr: 'Afficher les couvertures', pt: 'Ver capas' },
+		aboutOwb: { en: 'About the Open Word Bible', es: 'Acerca de la Open Word Bible', fr: 'À propos de l’Open Word Bible', pt: 'Sobre a Open Word Bible' }
 	} satisfies Record<string, BibleText>;
 	const say = (text: BibleText) => bibleText(text, lang);
 
@@ -199,7 +203,7 @@
 		if (q.length < 2) return;
 		const seq = ++jumpSeq;
 		jumping = true;
-		// The resolver reads English names alone; a Spanish name ("Juan 3:16")
+		// The resolver reads English names alone; a name in another hub language ("Juan 3:16")
 		// is the suggestions' to read, so it is asked only where they found none.
 		const own = lang !== 'en' ? (suggestions[0]?.href ?? null) : null;
 		const found = !own && mayBePassage(q) ? await lookupScripture(q) : null;
