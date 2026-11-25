@@ -230,24 +230,21 @@
   },
   {
    "reference": "Ezekiel 36:25",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 3,
-   "source_file": "a-brand-plucked-from-the-fire.am.json"
+   "chapter_order": 3
   },
   {
    "reference": "Ezekiel 36:26",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 3,
-   "source_file": "a-brand-plucked-from-the-fire.am.json"
+   "chapter_order": 3
   },
   {
    "reference": "Ezekiel 36:27",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 3,
-   "source_file": "a-brand-plucked-from-the-fire.am.json"
+   "chapter_order": 3
   },
   {
    "reference": "Ezekiel 36:28",

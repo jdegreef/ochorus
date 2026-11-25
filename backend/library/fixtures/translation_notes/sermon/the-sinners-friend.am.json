@@ -121,14 +121,12 @@
         },
         {
             "reference": "1 John 4:10",
-            "status": "mined",
-            "source_file": "life-experience-gospel-labours.am.json",
+            "status": "self_rendered",
             "block_index": 12
         },
         {
             "reference": "Romans 5:8",
-            "status": "mined",
-            "source_file": "life-experience-gospel-labours.am.json",
+            "status": "self_rendered",
             "block_index": 12
         },
         {

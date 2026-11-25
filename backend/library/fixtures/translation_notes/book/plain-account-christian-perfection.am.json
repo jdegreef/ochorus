@@ -38,17 +38,15 @@
   },
   {
    "reference": "Matthew 5:48",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 1,
-   "source_file": "the-circumcision-of-the-heart.am.json"
+   "chapter_order": 1
   },
   {
    "reference": "Ephesians 4:23",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 1,
-   "source_file": "the-circumcision-of-the-heart.am.json"
+   "chapter_order": 1
   },
   {
    "reference": "Romans 13:10",
@@ -64,10 +62,9 @@
   },
   {
    "reference": "Matthew 22:38",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 1,
-   "source_file": "the-circumcision-of-the-heart.am.json"
+   "chapter_order": 1
   },
   {
    "reference": "Philippians 4:8",
@@ -98,10 +95,9 @@
   },
   {
    "reference": "John 6:38",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 1,
-   "source_file": "the-circumcision-of-the-heart.am.json"
+   "chapter_order": 1
   },
   {
    "reference": "1 Corinthians 10:31",
