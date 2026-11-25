@@ -3,7 +3,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import PublishToggle from '$lib/components/PublishToggle.svelte';
-	import { type SourceType } from '$lib/library-public';
+	import { SOURCE_LABELS } from '$lib/adminCatalog';
 	import { getAdminSermon, setSermonPublished } from '$lib/library-admin';
 
 	let { data } = $props();
@@ -28,17 +28,12 @@
 	const published = (l: { code: string; is_published: boolean }) =>
 		override[l.code] ?? l.is_published;
 
-	const SOURCE_LABEL: Record<SourceType, string> = {
-		public_domain: 'Public domain',
-		ai_reviewed: 'AI · reviewed',
-		ai_unreviewed: 'AI · unreviewed'
-	};
 </script>
 
 <svelte:head><title>Admin · {sermon?.title ?? data.slug} — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
 
 <div class="mx-auto max-w-4xl px-5 py-10">
-	<a href="/admin" class="text-small text-accent hover:underline">← Back to dashboard</a>
+	<a href="/admin/sermons" class="text-small text-accent hover:underline">← All sermons</a>
 
 	<AdminGate resource={detail} errorTitle="Couldn't load this sermon" loadingText="Loading…" panelClass="mt-6">
 		{#snippet children(s)}
@@ -62,7 +57,7 @@
 								<h2 class="text-h3">{l.native_name} <span class="text-muted">· {l.name} ({l.code})</span></h2>
 								<p class="mt-1 text-body text-text">{l.title}</p>
 								<div class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-small text-muted">
-									<span>{SOURCE_LABEL[l.source_type]}</span>
+									<span>{SOURCE_LABELS[l.source_type]}</span>
 									<span>· {fmt(l.word_count)} words</span>
 									{#if l.scripture_ref}<span>· {l.scripture_ref}</span>{/if}
 									{#if published(l)}<span class="text-accent">· live on site</span>{:else}<span class="text-warning">· unpublished</span>{/if}

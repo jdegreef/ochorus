@@ -5,8 +5,9 @@
  "job_issue": 3747,
  "pull_request": null,
  "note": [
-  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
-  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled as library/data/bible/owb-am-b.json.gz and read offline (owb-am). Every Scripture quotation was re-quoted to it verbatim (founder decision, 2026-11-18: Amharic quotes OWB everywhere), replacing the 1962/2003 UBS wording and the translator-rendered Old Testament verses the first edition carried.",
+  "A `mined` row is a verbatim OWB span in that block: the whole verse, the shortest contiguous span carrying the quoted clause, or exact OWB pieces joined with '…'; verbatim recitations without quote marks count (2 Cor 6:2, 1 Sam 16:7, Rom 8:18, Ps 27:1-3, Ps 27:14, Luke 18:19, James 1:17, Ps 8:4, 2 Cor 12:5, Acts 20:35, John 14:6, Matt 10:24, John 14:21). Citations follow the verse that holds the words: 'Watch and pray' Matt 26:41, 'all flesh is grass… and all its glory' 1 Pet 1:24, 'Be ye holy' Lev 19:2, 'there is no peace to the wicked' Isa 48:22, 'What is man that thou art mindful of him' Ps 8:4. The refrain 'Your will be done' is OWB's «ፈቃድህ ይሁን». Where Thomas's own sentence dwells on a quoted word the echo follows OWB (Luke 17:10's 'unprofitable servant', 1 Sam 3:9's 'Speak, Lord, for thy servant heareth').",
+  "`self_rendered` rows (each with a `why`) are the many allusions and Vulgate echoes woven into Thomas's sentences, and the places where his point rests on a Vulgate wording OWB (from the Hebrew) does not carry: Job 7:1 'warfare', Ps 85:8 'speak in me', Job 7:18 'visitest', Ps 30:10's past tense, Ps 120:5 'my sojourn is prolonged', Ps 25:17 'necessities', Isa 45:2-3, Ps 4:4. Same calls as the Japanese re-quote (PR #9897)."
  ],
  "references": [
   {
@@ -14,3252 +15,3752 @@
    "status": "mined",
    "block_index": 0,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 2:17",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Ecclesiastes 1:2",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 6:33",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Ecclesiastes 1:8",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 4,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 13:2",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Ecclesiastes 1:18",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 12:48",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 25:15",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Mark 8:18",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 1:1-3",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 8:25",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 1:21",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Philippians 3:8",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Acts 10:34",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 6
+   "chapter_order": 6,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Jeremiah 17:5",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 8
+   "chapter_order": 8,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 2:25",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 8
-  },
-  {
-   "reference": "Psalm 68:10",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 100
-  },
-  {
-   "reference": "Psalm 86:4",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 100
-  },
-  {
-   "reference": "Luke 19:5-9",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 100
-  },
-  {
-   "reference": "Matthew 15:32",
-   "status": "mined",
-   "block_index": 3,
-   "chapter_order": 100,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Genesis 8:21",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 100
-  },
-  {
-   "reference": "Genesis 18:27",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 101
-  },
-  {
-   "reference": "1 Peter 1:12",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 101
-  },
-  {
-   "reference": "Matthew 11:28",
-   "status": "mined",
-   "block_index": 8,
-   "chapter_order": 101,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Genesis 3:19",
-   "status": "self_rendered",
-   "block_index": 9,
-   "chapter_order": 101
-  },
-  {
-   "reference": "John 6:55",
-   "status": "self_rendered",
-   "block_index": 9,
-   "chapter_order": 101
-  },
-  {
-   "reference": "Matthew 11:11",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 102
-  },
-  {
-   "reference": "Psalm 78:25",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 102
-  },
-  {
-   "reference": "1 Peter 2:21",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 102
-  },
-  {
-   "reference": "Hebrews 5:1",
-   "status": "self_rendered",
-   "block_index": 6,
-   "chapter_order": 102
-  },
-  {
-   "reference": "1 Corinthians 11:27-29",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 103
-  },
-  {
-   "reference": "Ezekiel 33:11",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 104
-  },
-  {
-   "reference": "Romans 12:1",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 104
-  },
-  {
-   "reference": "Ephesians 5:2",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 105
-  },
-  {
-   "reference": "Luke 14:33",
-   "status": "mined",
-   "block_index": 5,
-   "chapter_order": 105,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "1 Chronicles 29:11",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 106
-  },
-  {
-   "reference": "Hebrews 13:15",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 106
-  },
-  {
-   "reference": "Psalm 79:9",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 106
-  },
-  {
-   "reference": "Psalm 31:5",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 106
-  },
-  {
-   "reference": "Psalm 25:7",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 106
-  },
-  {
-   "reference": "Ephesians 4:31",
-   "status": "self_rendered",
-   "block_index": 8,
-   "chapter_order": 106
-  },
-  {
-   "reference": "Job 1:6",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 107
-  },
-  {
-   "reference": "Luke 7:38",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 108
-  },
-  {
-   "reference": "1 Corinthians 13:12",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 108
-  },
-  {
-   "reference": "2 Corinthians 5:7",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 108
-  },
-  {
-   "reference": "1 Corinthians 13:10",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 108
-  },
-  {
-   "reference": "2 Corinthians 3:18",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 108
-  },
-  {
-   "reference": "John 1:14",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 108
-  },
-  {
-   "reference": "John 1:1",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 108
-  },
-  {
-   "reference": "Psalm 119:105",
-   "status": "self_rendered",
-   "block_index": 8,
-   "chapter_order": 108
-  },
-  {
-   "reference": "John 6:35",
-   "status": "self_rendered",
-   "block_index": 8,
-   "chapter_order": 108
-  },
-  {
-   "reference": "Hebrews 6:19",
-   "status": "self_rendered",
-   "block_index": 9,
-   "chapter_order": 108
-  },
-  {
-   "reference": "Hebrews 9:3",
-   "status": "self_rendered",
-   "block_index": 9,
-   "chapter_order": 108
-  },
-  {
-   "reference": "Luke 14:16",
-   "status": "self_rendered",
-   "block_index": 11,
-   "chapter_order": 108
-  },
-  {
-   "reference": "Psalm 116:13",
-   "status": "self_rendered",
-   "block_index": 11,
-   "chapter_order": 108
-  },
-  {
-   "reference": "1 Corinthians 5:7",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 109
-  },
-  {
-   "reference": "Psalm 102:7",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 109
-  },
-  {
-   "reference": "Isaiah 38:15",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 109
-  },
-  {
-   "reference": "Matthew 7:7",
-   "status": "self_rendered",
-   "block_index": 8,
-   "chapter_order": 109
-  },
-  {
-   "reference": "Matthew 15:27",
-   "status": "self_rendered",
-   "block_index": 8,
-   "chapter_order": 109
+   "chapter_order": 8,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 26:41",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Ephesians 4:29",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 141:3",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 11
-  },
-  {
-   "reference": "Exodus 33:11",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 110
-  },
-  {
-   "reference": "Song of Songs 5:10",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 110
-  },
-  {
-   "reference": "Isaiah 45:15",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 110
-  },
-  {
-   "reference": "Proverbs 3:32",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 110
-  },
-  {
-   "reference": "Wisdom 12:1",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 110
-  },
-  {
-   "reference": "Deuteronomy 4:7",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 110
-  },
-  {
-   "reference": "Psalm 116:12",
-   "status": "self_rendered",
-   "block_index": 7,
-   "chapter_order": 110
-  },
-  {
-   "reference": "Psalm 31:19",
-   "status": "mined",
-   "block_index": 1,
-   "chapter_order": 111,
-   "source_file": "waiting-on-god.am.json"
-  },
-  {
-   "reference": "Psalm 36:9",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 111
-  },
-  {
-   "reference": "Luke 24:32",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 111
-  },
-  {
-   "reference": "Luke 24:35",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 111
-  },
-  {
-   "reference": "John 6:31",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 111
-  },
-  {
-   "reference": "Isaiah 60:5",
-   "status": "self_rendered",
-   "block_index": 6,
-   "chapter_order": 112
-  },
-  {
-   "reference": "Psalm 24:4",
-   "status": "self_rendered",
-   "block_index": 6,
-   "chapter_order": 112
-  },
-  {
-   "reference": "1 Corinthians 6:17",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 113
-  },
-  {
-   "reference": "Hebrews 12:29",
-   "status": "self_rendered",
-   "block_index": 7,
-   "chapter_order": 113
-  },
-  {
-   "reference": "Luke 1:38",
-   "status": "mined",
-   "block_index": 4,
-   "chapter_order": 114,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "John 3:29",
-   "status": "mined",
-   "block_index": 5,
-   "chapter_order": 114,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Luke 1:41-44",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 114
-  },
-  {
-   "reference": "Revelation 7:9",
-   "status": "self_rendered",
-   "block_index": 8,
-   "chapter_order": 114
-  },
-  {
-   "reference": "James 4:7",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 115
-  },
-  {
-   "reference": "Matthew 11:25",
-   "status": "self_rendered",
-   "block_index": 6,
-   "chapter_order": 115
+   "chapter_order": 11,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 3:10",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Revelation 2:4",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 12
+   "chapter_order": 12,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Philippians 1:23",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 13
+   "chapter_order": 13,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 15:5",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 13
+   "chapter_order": 13,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Job 7:1",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 14
+   "chapter_order": 14,
+   "why": "Thomas quotes the Vulgate and his chapter rests on its wording, which OWB (from the Hebrew) does not carry; rendered from the English ('the life of man upon earth is a warfare', Vulgate militia; OWB 'hard service')"
   },
   {
    "reference": "1 Peter 5:8",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 14
+   "chapter_order": 14,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 51:5",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 14
+   "chapter_order": 14,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 10:13",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 14
+   "chapter_order": 14,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Peter 5:6",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 14
+   "chapter_order": 14,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 7:47",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 16
+   "chapter_order": 16,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Galatians 6:2",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 17
+   "chapter_order": 17,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Hebrews 11:13",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 18
+   "chapter_order": 18,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 4:10",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 18
+   "chapter_order": 18,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Mark 9:35",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 18
+   "chapter_order": 18,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 20:28",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 18
+   "chapter_order": 18,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Corinthians 11:27",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 19
+   "chapter_order": 19,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 12:25",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 19
+   "chapter_order": 19,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Proverbs 16:9",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 20
+   "chapter_order": 20,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Isaiah 55:8",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 20
+   "chapter_order": 20,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 8:18",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 20
+   "chapter_order": 20,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 24:46",
    "status": "mined",
    "block_index": 10,
    "chapter_order": 20,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 24:47",
    "status": "mined",
    "block_index": 10,
    "chapter_order": 20,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Mark 6:31",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 21
+   "chapter_order": 21,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Corinthians 1:12",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 21
+   "chapter_order": 21,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 4:4",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 21
+   "chapter_order": 21,
+   "why": "Thomas quotes the Vulgate and his chapter rests on its wording, which OWB (from the Hebrew) does not carry; rendered from the English ('In your chamber bewail your sins')"
   },
   {
    "reference": "1 John 2:17",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 10,
-   "chapter_order": 21
+   "chapter_order": 21,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ecclesiastes 1:9",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 21
+   "chapter_order": 21,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 6:6",
    "status": "self_rendered",
    "block_index": 12,
-   "chapter_order": 21
+   "chapter_order": 21,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 80:5",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 22
+   "chapter_order": 22,
+   "why": "turned from the psalm's statement into Thomas's own prayer ('Feed me… give me to drink'); re-personed"
   },
   {
    "reference": "Luke 12:15",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 23
+   "chapter_order": 23,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 25:17",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 23
+   "chapter_order": 23,
+   "why": "Thomas quotes the Vulgate and his chapter rests on its wording, which OWB (from the Hebrew) does not carry; rendered from the English ('From my necessities deliver me': Thomas argues from bodily necessities; OWB 'from my distress')"
   },
   {
    "reference": "Luke 24:25",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 23
+   "chapter_order": 23,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Corinthians 4:18",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 23
+   "chapter_order": 23,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Corinthians 6:2",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 23
+   "chapter_order": 23,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 66:12",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 23
+   "chapter_order": 23,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 11:12",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 23
+   "chapter_order": 23,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Corinthians 5:4",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 23
+   "chapter_order": 23,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 12:40",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 24
+   "chapter_order": 24,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Corinthians 6:2",
    "status": "mined",
    "block_index": 7,
    "chapter_order": 24,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Job 14:2",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 24
+   "chapter_order": 24,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 16:9",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 24
+   "chapter_order": 24,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Hebrews 13:14",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 24
+   "chapter_order": 24,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Peter 2:11",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 24
+   "chapter_order": 24,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 9:27",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 25
+   "chapter_order": 25,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Wisdom 11:16",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 25
+   "chapter_order": 25,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Wisdom 5:1",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 25
+   "chapter_order": 25,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 3:18",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 25
+   "chapter_order": 25,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Timothy 2:12",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 25
+   "chapter_order": 25,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 John 4:18",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 25
+   "chapter_order": 25,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 12:2",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 26
+   "chapter_order": 26,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 37:3",
    "status": "mined",
    "block_index": 3,
    "chapter_order": 26,
-   "source_file": "waiting-on-god.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 15:28",
    "status": "self_rendered",
    "block_index": 14,
-   "chapter_order": 26
+   "chapter_order": 26,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 20:38",
    "status": "self_rendered",
    "block_index": 14,
-   "chapter_order": 26
+   "chapter_order": 26,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 17:21",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 27,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 14:17",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 1,
    "chapter_order": 27,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 14:23",
    "status": "mined",
    "block_index": 3,
    "chapter_order": 27,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 13:14",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 27
+   "chapter_order": 27,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Peter 2:11",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 27
+   "chapter_order": 27,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Colossians 3:2",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 27
+   "chapter_order": 27,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Thessalonians 5:17",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 27
+   "chapter_order": 27,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 8:17",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 27
+   "chapter_order": 27,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "James 4:6",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 28
+   "chapter_order": 28,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 11:25",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 28
+   "chapter_order": 28,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 5:8",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 30
+   "chapter_order": 30,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Ephesians 4:24",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 30
+   "chapter_order": 30,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 7:3",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 31
+   "chapter_order": 31,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Corinthians 1:12",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 32
+   "chapter_order": 32,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 John 3:21",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 32
+   "chapter_order": 32,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Isaiah 48:22",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 2,
-   "chapter_order": 32
+   "chapter_order": 32,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Galatians 6:14",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 32
+   "chapter_order": 32,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Samuel 16:7",
    "status": "mined",
    "block_index": 6,
    "chapter_order": 32,
-   "source_file": "he-holds-my-tomorrows.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Proverbs 16:2",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 32
+   "chapter_order": 32,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Corinthians 10:18",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 7,
-   "chapter_order": 32
-  },
-  {
-   "reference": "Matthew 11:7",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 33
+   "chapter_order": 32,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Peter 1:24",
    "status": "mined",
    "block_index": 4,
    "chapter_order": 33,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 11:7",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 33,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 7:7",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 33
+   "chapter_order": 33,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 11:28",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 34
+   "chapter_order": 34,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 16:26",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 34
+   "chapter_order": 34,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 13:44",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 34
+   "chapter_order": 34,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 6:68",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 34
+   "chapter_order": 34,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 34:8",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 34
+   "chapter_order": 34,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 8:26",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 34
+   "chapter_order": 34,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 30:6",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 6,
-   "chapter_order": 35
+   "chapter_order": 35,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 30:7",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 6,
-   "chapter_order": 35
+   "chapter_order": 35,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 30:8",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 6,
-   "chapter_order": 35
+   "chapter_order": 35,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 30:11",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 35,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 30:10",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 35
-  },
-  {
-   "reference": "Psalm 30:11",
-   "status": "self_rendered",
-   "block_index": 6,
-   "chapter_order": 35
+   "chapter_order": 35,
+   "why": "Thomas quotes the Vulgate and his chapter rests on its wording, which OWB (from the Hebrew) does not carry; rendered from the English (the Vulgate's past tense 'The Lord hath heard… became my helper', Thomas's proof that the prayer was answered; OWB is the plea itself)"
   },
   {
    "reference": "Job 7:18",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 35
+   "chapter_order": 35,
+   "why": "Thomas quotes the Vulgate and his chapter rests on its wording, which OWB (from the Hebrew) does not carry; rendered from the English ('Thou visitest him early in the morning': the chapter is about God's visits of consolation; OWB reads 'examine')"
   },
   {
    "reference": "John 3:8",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 35
+   "chapter_order": 35,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Revelation 2:7",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 9,
-   "chapter_order": 35
+   "chapter_order": 35,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Peter 5:8",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 35
+   "chapter_order": 35,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Job 5:7",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 36
+   "chapter_order": 36,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 9:23",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 36
+   "chapter_order": 36,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "James 4:6",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 36
+   "chapter_order": 36,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 25:29",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 36
+   "chapter_order": 36,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 22:21",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 36
+   "chapter_order": 36,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 14:10",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 36
+   "chapter_order": 36,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 5:44",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 36
+   "chapter_order": 36,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Hebrews 12:6",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 36
+   "chapter_order": 36,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 20:22",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 37
+   "chapter_order": 37,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 5:3",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 37
+   "chapter_order": 37,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Proverbs 31:10",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 37
-  },
-  {
-   "reference": "1 Corinthians 13:2-3",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 37
-  },
-  {
-   "reference": "Luke 10:42",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 37
+   "chapter_order": 37,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 17:10",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 37,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Corinthians 13:2-3",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 37,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Luke 10:42",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 37,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 25:16",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 37
-  },
-  {
-   "reference": "Matthew 16:24",
    "status": "mined",
-   "block_index": 0,
-   "chapter_order": 38,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "block_index": 3,
+   "chapter_order": 37,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 25:41",
    "status": "mined",
    "block_index": 0,
    "chapter_order": 38,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 38,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 24:30",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 38
+   "chapter_order": 38,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Timothy 2:11",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 38
+   "chapter_order": 38,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 8:17",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 38
+   "chapter_order": 38,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 24:46",
    "status": "mined",
    "block_index": 6,
    "chapter_order": 38,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 24:26",
    "status": "mined",
    "block_index": 6,
    "chapter_order": 38,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 9:27",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 38
-  },
-  {
-   "reference": "Matthew 20:22",
-   "status": "self_rendered",
-   "block_index": 12,
-   "chapter_order": 38
+   "chapter_order": 38,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 8:18",
    "status": "mined",
    "block_index": 12,
    "chapter_order": 38,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "2 Corinthians 12:2",
+   "reference": "Matthew 20:22",
    "status": "self_rendered",
-   "block_index": 14,
-   "chapter_order": 38
+   "block_index": 12,
+   "chapter_order": 38,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Acts 9:16",
    "status": "mined",
    "block_index": 14,
    "chapter_order": 38,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Luke 9:21-23",
+   "reference": "2 Corinthians 12:2",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 38,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Luke 9:23",
    "status": "mined",
    "block_index": 19,
    "chapter_order": 38,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 14:22",
    "status": "self_rendered",
    "block_index": 20,
-   "chapter_order": 38
+   "chapter_order": 38,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 85:8",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 39
+   "chapter_order": 39,
+   "why": "Thomas quotes the Vulgate and his chapter rests on its wording, which OWB (from the Hebrew) does not carry; rendered from the English ('what the Lord God will speak in me': Book III is built on that inward speaking; OWB has no 'in me')"
+  },
+  {
+   "reference": "Psalm 35:3",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 39,
+   "why": "spoken to the soul (feminine) as Christ's word, re-personed from the psalm; OWB's «መዳንህ እኔ ነኝ» is masculine and cannot stand in the sentence"
+  },
+  {
+   "reference": "1 Samuel 3:9",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 40,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 119:125",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 40,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 119:36",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 40,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Samuel 3:10",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 40
-  },
-  {
-   "reference": "Psalm 119:125",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 40
-  },
-  {
-   "reference": "Psalm 119:36",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 40
+   "chapter_order": 40,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Deuteronomy 32:2",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 40
+   "chapter_order": 40,
+   "why": "re-personed into prayer ('Let Thy speech distil as the dew'; Moses says 'my speech'), joined to the Ps 119 pieces quoted from OWB"
   },
   {
    "reference": "Exodus 20:19",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 2,
-   "chapter_order": 40
+   "chapter_order": 40,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Samuel 3:9",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 40,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Samuel 3:10",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 40
+   "chapter_order": 40,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 3:7",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 40
-  },
-  {
-   "reference": "1 Samuel 3:10",
-   "status": "self_rendered",
-   "block_index": 6,
-   "chapter_order": 40
+   "chapter_order": 40,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 6:68",
    "status": "mined",
    "block_index": 6,
    "chapter_order": 40,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Samuel 3:10",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 40,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 6:63",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 41
+   "chapter_order": 41,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 94:12-13",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 3,
-   "chapter_order": 41
+   "chapter_order": 41,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 23:4",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 6,
-   "chapter_order": 41
+   "chapter_order": 41,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 12:48",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 41
+   "chapter_order": 41,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 22:6",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 41
+   "chapter_order": 41,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 25:6",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 41
+   "chapter_order": 41,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 143:6",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 41
+   "chapter_order": 41,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 143:10",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 41
+   "chapter_order": 41,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Genesis 17:1",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 42
+   "chapter_order": 42,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 8:32",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 42
+   "chapter_order": 42,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 8:36",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 42
+   "chapter_order": 42,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 25:5",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 42
+   "chapter_order": 42,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Isaiah 29:13",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 42
+   "chapter_order": 42,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 14:17",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 42
+   "chapter_order": 42,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Corinthians 1:3",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 1,
    "chapter_order": 43,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 59:16",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 43
+   "chapter_order": 43,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 John 4:7",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 43
+   "chapter_order": 43,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 13:4",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 43
+   "chapter_order": 43,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 13:5",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 43
+   "chapter_order": 43,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 13:7",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 43
+   "chapter_order": 43,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Psalm 27:1",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 44,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 27:3",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 44,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 4:10",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 44
-  },
-  {
-   "reference": "Psalm 27:1",
-   "status": "self_rendered",
-   "block_index": 10,
-   "chapter_order": 44
-  },
-  {
-   "reference": "Psalm 27:3",
-   "status": "self_rendered",
-   "block_index": 10,
-   "chapter_order": 44
+   "chapter_order": 44,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 19:14",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 44
+   "chapter_order": 44,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Timothy 2:3",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 44
+   "chapter_order": 44,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Jeremiah 10:23",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 45
+   "chapter_order": 45,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Genesis 18:27",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 46
+   "chapter_order": 46,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Ephesians 3:20",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 46
+   "chapter_order": 46,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 1:16",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 47
+   "chapter_order": 47,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 4:7",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 47
+   "chapter_order": 47,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 18:19",
    "status": "mined",
    "block_index": 6,
    "chapter_order": 47,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 31:19",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 48
+   "chapter_order": 48,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Hebrews 1:14",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 48
+   "chapter_order": 48,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 20:28",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 48
+   "chapter_order": 48,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 7:14",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 48
+   "chapter_order": 48,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Galatians 5:17",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 49
+   "chapter_order": 49,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 9:27",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 49
+   "chapter_order": 49,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 37:20",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 50
+   "chapter_order": 50,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Peter 2:12",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 50
+   "chapter_order": 50,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 37:4",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 7,
-   "chapter_order": 50
+   "chapter_order": 50,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 12:9",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 50
+   "chapter_order": 50,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Philippians 2:8",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 51
+   "chapter_order": 51,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Isaiah 43:4",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 51
+   "chapter_order": 51,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Job 15:15",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 52
+   "chapter_order": 52,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 78:25",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 52
+   "chapter_order": 52,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 15:16",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 52
+   "chapter_order": 52,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 117:2",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 52
+   "chapter_order": 52,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "James 4:15",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 53
+   "chapter_order": 53,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 John 4:1",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 53
+   "chapter_order": 53,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 4:8",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 53
+   "chapter_order": 53,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Philippians 3:20",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 54
+   "chapter_order": 54,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 103:9",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 54
+   "chapter_order": 54,
+   "why": "re-personed into Thomas's prayer ('You will not always be angry'); translator's wording"
   },
   {
    "reference": "1 Peter 5:7",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 55
+   "chapter_order": 55,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Revelation 3:5",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 55
+   "chapter_order": 55,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Philippians 2:7-8",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 56
+   "chapter_order": 56,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 14:6",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 56
+   "chapter_order": 56,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Hebrews 12:4",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 57
+   "chapter_order": 57,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Timothy 2:5",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 57
+   "chapter_order": 57,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 32:5",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 58
+   "chapter_order": 58,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 69:14",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 58
+   "chapter_order": 58,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Corinthians 4:16",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 58
+   "chapter_order": 58,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Galatians 5:17",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 58
+   "chapter_order": 58,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 John 2:16",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 58
+   "chapter_order": 58,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Colossians 1:16",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 59
+   "chapter_order": 59,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 55:6",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 59
+   "chapter_order": 59,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 34:8",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 59
+   "chapter_order": 59,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Hebrews 1:3",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 59
+   "chapter_order": 59,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 51:1",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 59
+   "chapter_order": 59,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 86:8",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 59
+   "chapter_order": 59,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Genesis 1:31",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 59
+   "chapter_order": 59,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 119:18",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 60
+   "chapter_order": 60,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 2:11",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 60
+   "chapter_order": 60,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 1:27-28",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 60
+   "chapter_order": 60,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 45:16",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 60
+   "chapter_order": 60,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Acts 5:41",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 60
+   "chapter_order": 60,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Philippians 2:12",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 61
+   "chapter_order": 61,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 71:12",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 61
+   "chapter_order": 61,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Isaiah 45:2-3",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 61
+   "chapter_order": 61,
+   "why": "Thomas quotes the Vulgate and his chapter rests on its wording, which OWB (from the Hebrew) does not carry; rendered from the English ('I will humble the great ones of earth')"
   },
   {
    "reference": "Psalm 68:1",
    "status": "self_rendered",
    "block_index": 12,
-   "chapter_order": 61
+   "chapter_order": 61,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Mark 4:39",
    "status": "self_rendered",
    "block_index": 14,
-   "chapter_order": 61
+   "chapter_order": 61,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 43:3",
    "status": "self_rendered",
    "block_index": 15,
-   "chapter_order": 61
+   "chapter_order": 61,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Genesis 1:2",
    "status": "self_rendered",
    "block_index": 15,
-   "chapter_order": 61
+   "chapter_order": 61,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 21:22",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 62
+   "chapter_order": 62,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 14:12",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 62
+   "chapter_order": 62,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Ecclesiastes 1:14",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 62
+   "chapter_order": 62,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Revelation 3:20",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 62
+   "chapter_order": 62,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Peter 4:7",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 62
+   "chapter_order": 62,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 14:27",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 63,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 11:29",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 63
+   "chapter_order": 63,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 145:17",
    "status": "self_rendered",
    "block_index": 12,
-   "chapter_order": 63
+   "chapter_order": 63,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 21:34",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 64
+   "chapter_order": 64,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 8:21",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 64
+   "chapter_order": 64,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Galatians 5:17",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 64
+   "chapter_order": 64,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Ecclesiastes 1:14",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 65
+   "chapter_order": 65,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Galatians 5:16",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 66
+   "chapter_order": 66,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Amos 5:13",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 66
+   "chapter_order": 66,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 12:27",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 67
+   "chapter_order": 67,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 26:42",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 67
+   "chapter_order": 67,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 77:10",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 67
+   "chapter_order": 67,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Nahum 1:7",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 68
+   "chapter_order": 68,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 8:25",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 68
+   "chapter_order": 68,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Genesis 18:14",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 68
+   "chapter_order": 68,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 6:34",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 68
+   "chapter_order": 68,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 14:27",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 68
+   "chapter_order": 68,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 14:1",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 68
+   "chapter_order": 68,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "James 1:17",
    "status": "mined",
    "block_index": 7,
    "chapter_order": 68,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 16:20",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 68
+   "chapter_order": 68,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 15:9",
    "status": "mined",
    "block_index": 9,
    "chapter_order": 68,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 8:15",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 68
+   "chapter_order": 68,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 55:6",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 69
+   "chapter_order": 69,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Genesis 6:12",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 69
+   "chapter_order": 69,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 5:3",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 69
+   "chapter_order": 69,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Samuel 16:7",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 69
+   "chapter_order": 69,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Philippians 2:21",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 70
+   "chapter_order": 70,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Revelation 3:18",
    "status": "mined",
    "block_index": 8,
    "chapter_order": 70,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 13:46",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 70
+   "chapter_order": 70,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 12:9",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 71
+   "chapter_order": 71,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 6:22",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 71
+   "chapter_order": 71,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 John 2:15",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 72
+   "chapter_order": 72,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 8:6",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 72
+   "chapter_order": 72,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 144:6",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 72
+   "chapter_order": 72,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 15:28",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 72
+   "chapter_order": 72,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 15:11",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 72
+   "chapter_order": 72,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 6:6",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 72
+   "chapter_order": 72,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Galatians 5:17",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 72
+   "chapter_order": 72,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 89:9",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 72
+   "chapter_order": 72,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 68:30",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 72
+   "chapter_order": 72,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 144:6",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 72
+   "chapter_order": 72,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 118:16",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 72
+   "chapter_order": 72,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Corinthians 6:7",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 73
+   "chapter_order": 73,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Ephesians 6:16",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 73
+   "chapter_order": 73,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Revelation 2:17",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 73
+   "chapter_order": 73,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Timothy 4:8",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 73
+   "chapter_order": 73,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 8:18",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 4,
    "chapter_order": 73,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 27:14",
    "status": "mined",
    "block_index": 5,
    "chapter_order": 73,
-   "source_file": "waiting-on-god.am.json"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 91:15",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 73
+   "chapter_order": 73,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 10:33",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 74
+   "chapter_order": 74,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 9:22",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 2,
    "chapter_order": 74,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 4:3",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 74
+   "chapter_order": 74,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 15:10",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 74
+   "chapter_order": 74,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Isaiah 51:12",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 74
+   "chapter_order": 74,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Maccabees 2:63",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 74
+   "chapter_order": 74,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 2:6",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 74
+   "chapter_order": 74,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 16:24",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 75
+   "chapter_order": 75,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 8:21",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 76
+   "chapter_order": 76,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Exodus 33:7-11",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 76
+   "chapter_order": 76,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Joshua 9:14",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 76
+   "chapter_order": 76,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 26:41",
    "status": "mined",
    "block_index": 6,
    "chapter_order": 77,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Hebrews 2:6",
+   "reference": "Psalm 8:4",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 78,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 1:31",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 78
-  },
-  {
-   "reference": "Psalm 3:3",
-   "status": "self_rendered",
-   "block_index": 4,
-   "chapter_order": 78
+   "chapter_order": 78,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Corinthians 12:5",
    "status": "mined",
    "block_index": 4,
    "chapter_order": 78,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 3:3",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 78,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 5:44",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 5,
    "chapter_order": 78,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "James 4:6",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 80
+   "chapter_order": 80,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 4:20",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 81
+   "chapter_order": 81,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 94:10",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 81
+   "chapter_order": 81,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 11:25",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 81
+   "chapter_order": 81,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Zephaniah 1:12",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 81
+   "chapter_order": 81,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 4:5",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 81
+   "chapter_order": 81,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 12:11",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 81
+   "chapter_order": 81,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Galatians 6:14",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 82
+   "chapter_order": 82,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 16:26",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 82
+   "chapter_order": 82,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 60:11",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 83
+   "chapter_order": 83,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 37:39",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 83
-  },
-  {
-   "reference": "Romans 3:4",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 83
-  },
-  {
-   "reference": "Matthew 10:17",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 83
-  },
-  {
-   "reference": "Matthew 10:36",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 83
+   "chapter_order": 83,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 24:23",
    "status": "mined",
    "block_index": 5,
    "chapter_order": 83,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Romans 3:4",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 83,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Matthew 10:17",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 83,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Matthew 10:36",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 83,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Ephesians 4:14",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 83
+   "chapter_order": 83,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Revelation 2:23",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 83
+   "chapter_order": 83,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Galatians 6:14",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 84
+   "chapter_order": 84,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 21:18",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 84
+   "chapter_order": 84,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 2:35",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 84
+   "chapter_order": 84,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Proverbs 12:21",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 84
+   "chapter_order": 84,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Revelation 2:23",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 84
+   "chapter_order": 84,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 7:24",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 84
+   "chapter_order": 84,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 4:4",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 84
+   "chapter_order": 84,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 143:2",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 84
+   "chapter_order": 84,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Hebrews 10:37",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 85
-  },
-  {
-   "reference": "Matthew 20:4",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 85
-  },
-  {
-   "reference": "Genesis 15:1",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 85
-  },
-  {
-   "reference": "Zechariah 14:7",
-   "status": "self_rendered",
-   "block_index": 3,
-   "chapter_order": 85
+   "chapter_order": 85,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 7:24",
    "status": "mined",
    "block_index": 3,
    "chapter_order": 85,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 20:4",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 85,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Genesis 15:1",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 85,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Zechariah 14:7",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 85,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 120:5",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 85
+   "chapter_order": 85,
+   "why": "Thomas quotes the Vulgate and his chapter rests on its wording, which OWB (from the Hebrew) does not carry; rendered from the English ('my sojourn is prolonged'; OWB names Meshech and Kedar)"
   },
   {
    "reference": "Revelation 21:4",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 85
+   "chapter_order": 85,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 13:12",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 86
+   "chapter_order": 86,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Genesis 47:9",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 86
+   "chapter_order": 86,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 15:28",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 86
+   "chapter_order": 86,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 25:34",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 86
+   "chapter_order": 86,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 7:24",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 86
+   "chapter_order": 86,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 71:12",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 86
+   "chapter_order": 86,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 27:9",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 86
+   "chapter_order": 86,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 144:6",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 86
+   "chapter_order": 86,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 6:21",
    "status": "mined",
    "block_index": 6,
    "chapter_order": 86,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Galatians 5:24",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 86
+   "chapter_order": 86,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Corinthians 5:1-4",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 87
+   "chapter_order": 87,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 8:21",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 4,
    "chapter_order": 87,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 2:4",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 87
+   "chapter_order": 87,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 22:18",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 4,
    "chapter_order": 87,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Ephesians 4:24",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 87
+   "chapter_order": 87,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Samuel 10:6",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 87
+   "chapter_order": 87,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 13:1",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 87
+   "chapter_order": 87,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Isaiah 61:3",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 87
+   "chapter_order": 87,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Philippians 1:20",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 87
+   "chapter_order": 87,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 4:7",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 88
+   "chapter_order": 88,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 88:15",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 88
+   "chapter_order": 88,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 17:8",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 88
+   "chapter_order": 88,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Job 29:3",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 88
+   "chapter_order": 88,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 119:71",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 88
+   "chapter_order": 88,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 69:7",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 88
+   "chapter_order": 88,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 5:45",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 88
+   "chapter_order": 88,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Deuteronomy 32:39",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 88
+   "chapter_order": 88,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Samuel 2:6",
    "status": "self_rendered",
    "block_index": 8,
-   "chapter_order": 88
+   "chapter_order": 88,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Hebrews 4:13",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 88
+   "chapter_order": 88,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 15:14",
    "status": "self_rendered",
    "block_index": 12,
-   "chapter_order": 88
-  },
-  {
-   "reference": "Psalm 119:32",
-   "status": "self_rendered",
-   "block_index": 2,
-   "chapter_order": 89
+   "chapter_order": 88,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 8:18",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 89,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 119:32",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 89,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 9:23",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 90
+   "chapter_order": 90,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Job 10:20-21",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 90
+   "chapter_order": 90,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 3:7",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 90
+   "chapter_order": 90,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 141:2",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 90
+   "chapter_order": 90,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 7:38",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 90
+   "chapter_order": 90,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 51:17",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 90
+   "chapter_order": 90,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Peter 2:11",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 91
+   "chapter_order": 91,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 2:14-15",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 91
+   "chapter_order": 91,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 3:10",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 91
+   "chapter_order": 91,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Thessalonians 5:22",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 92
+   "chapter_order": 92,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Peter 2:13",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 92
+   "chapter_order": 92,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 6:20",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 92
+   "chapter_order": 92,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Acts 20:35",
    "status": "mined",
    "block_index": 6,
    "chapter_order": 92,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 5:44",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 92
+   "chapter_order": 92,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 12:31",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 92
+   "chapter_order": 92,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Ecclesiastes 1:9",
    "status": "self_rendered",
    "block_index": 13,
-   "chapter_order": 92
+   "chapter_order": 92,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Corinthians 4:16",
    "status": "self_rendered",
    "block_index": 15,
-   "chapter_order": 92
+   "chapter_order": 92,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Colossians 3:10",
    "status": "self_rendered",
    "block_index": 15,
-   "chapter_order": 92
+   "chapter_order": 92,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Genesis 1:26",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 93
+   "chapter_order": 93,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 7:23",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 1,
    "chapter_order": 93,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Genesis 8:21",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 93
+   "chapter_order": 93,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 5:12",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 93
+   "chapter_order": 93,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 7:22",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 93
+   "chapter_order": 93,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 7:12",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 93
+   "chapter_order": 93,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 7:25",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 93
+   "chapter_order": 93,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 7:18",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 93
+   "chapter_order": 93,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 15:5",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 93
+   "chapter_order": 93,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Philippians 4:13",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 93
+   "chapter_order": 93,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 13:2",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 93
+   "chapter_order": 93,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 5:3",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 93
+   "chapter_order": 93,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Exodus 33:13",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 93
+   "chapter_order": 93,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Corinthians 12:9",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 93
+   "chapter_order": 93,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 23:4",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 93
+   "chapter_order": 93,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 15:6",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 93
+   "chapter_order": 93,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 14:6",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 94,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 8:31",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 94
+   "chapter_order": 94,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 8:32",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 94
+   "chapter_order": 94,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 19:17",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 94
+   "chapter_order": 94,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 19:21",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 94
+   "chapter_order": 94,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 16:24",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 94
+   "chapter_order": 94,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 23:12",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 94
-  },
-  {
-   "reference": "Matthew 7:14",
-   "status": "self_rendered",
-   "block_index": 5,
-   "chapter_order": 94
+   "chapter_order": 94,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 10:24",
    "status": "mined",
    "block_index": 5,
    "chapter_order": 94,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "John 13:17",
+   "reference": "Matthew 7:14",
    "status": "self_rendered",
-   "block_index": 7,
-   "chapter_order": 94
+   "block_index": 5,
+   "chapter_order": 94,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 14:21",
    "status": "mined",
    "block_index": 7,
    "chapter_order": 94,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 13:17",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 94,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 22:30",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 94
+   "chapter_order": 94,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Deuteronomy 1:30",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 94
+   "chapter_order": 94,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Maccabees 9:10",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 94
+   "chapter_order": 94,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Numbers 14:21",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 95
+   "chapter_order": 95,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 19:10",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 95
+   "chapter_order": 95,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 107:30",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 95
+   "chapter_order": 95,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 23:42",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 95
+   "chapter_order": 95,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 107:7",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 95
+   "chapter_order": 95,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 11:33",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 119:137",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 2,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 19:9",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 2,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 14:33",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 21:3",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 15:16",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 15:19",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 8:30",
    "status": "self_rendered",
    "block_index": 4,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Wisdom 6:7",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 25:40",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 18:1",
    "status": "self_rendered",
    "block_index": 7,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Revelation 4:10",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Revelation 5:8",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Revelation 5:14",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Matthew 18:3-4",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 96,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 John 3:1",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Isaiah 60:22",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Isaiah 65:20",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 96
-  },
-  {
-   "reference": "Matthew 18:3",
-   "status": "mined",
-   "block_index": 10,
    "chapter_order": 96,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Matthew 18:4",
-   "status": "mined",
-   "block_index": 10,
-   "chapter_order": 96,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 7:14",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 6:24",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 13:28",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 6:20",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 11,
    "chapter_order": 96,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "3 John 1:4",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 96
+   "chapter_order": 96,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 40:5",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 97
+   "chapter_order": 97,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Philippians 2:21",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 97
+   "chapter_order": 97,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Romans 8:28",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 97
+   "chapter_order": 97,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Peter 5:7",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 97
+   "chapter_order": 97,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "2 Corinthians 1:3",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 97
+   "chapter_order": 97,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 3:16",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 97
+   "chapter_order": 97,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 51:1",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 97
+   "chapter_order": 97,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Luke 1:79",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 97
+   "chapter_order": 97,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Isaiah 9:2",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 97
+   "chapter_order": 97,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "John 13:8",
    "status": "self_rendered",
    "block_index": 3,
-   "chapter_order": 98
+   "chapter_order": 98,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 11:28",
    "status": "mined",
    "block_index": 4,
    "chapter_order": 98,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Kings 8:27",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 98
+   "chapter_order": 98,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 11:28",
    "status": "self_rendered",
    "block_index": 5,
-   "chapter_order": 98
+   "chapter_order": 98,
+   "why": "Thomas's own short form ('Come, all of you, to Me'), not the verse's words"
   },
   {
    "reference": "Matthew 11:28",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 98
+   "chapter_order": 98,
+   "why": "Thomas's own short form ('Come to Me: all of you!'), not the verse's words"
   },
   {
    "reference": "Hebrews 10:1",
    "status": "self_rendered",
    "block_index": 11,
-   "chapter_order": 98
+   "chapter_order": 98,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Timothy 2:5",
    "status": "self_rendered",
    "block_index": 15,
-   "chapter_order": 98
+   "chapter_order": 98,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Philippians 4:7",
    "status": "self_rendered",
    "block_index": 16,
-   "chapter_order": 98
+   "chapter_order": 98,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "1 Corinthians 1:30",
    "status": "self_rendered",
    "block_index": 18,
-   "chapter_order": 98
+   "chapter_order": 98,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Matthew 11:28",
    "status": "mined",
    "block_index": 20,
    "chapter_order": 98,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 1:43",
    "status": "self_rendered",
    "block_index": 2,
-   "chapter_order": 99
+   "chapter_order": 99,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 78:25",
    "status": "self_rendered",
    "block_index": 6,
-   "chapter_order": 99
+   "chapter_order": 99,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Acts 17:25",
    "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 99
+   "chapter_order": 99,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   },
   {
    "reference": "Psalm 84:6",
    "status": "self_rendered",
    "block_index": 10,
-   "chapter_order": 99
+   "chapter_order": 99,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Psalm 68:10",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 100,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Psalm 86:4",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 100,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Luke 19:5-9",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 100,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Matthew 15:32",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 100,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Genesis 8:21",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 100,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Genesis 18:27",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 101,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "1 Peter 1:12",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 101,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 101,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Genesis 3:19",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 101,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "John 6:55",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 101,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Matthew 11:11",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 102,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Psalm 78:25",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 102,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "1 Peter 2:21",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 102,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Hebrews 5:1",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 102,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "1 Corinthians 11:27-29",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 103,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 104,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Ezekiel 33:11",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 104,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Ephesians 5:2",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 105,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Luke 14:33",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 105,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Chronicles 29:11",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 106,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Hebrews 13:15",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 106,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Psalm 79:9",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 106,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Psalm 31:5",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 106,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Psalm 25:7",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 106,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Ephesians 4:31",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 106,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Job 1:6",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 107,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Luke 7:38",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 108,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 108,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 108,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "1 Corinthians 13:10",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 108,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 108,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 108,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "John 1:1",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 108,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 108,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "John 6:35",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 108,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Hebrews 6:19",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 108,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Hebrews 9:3",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 108,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Luke 14:16",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 108,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Psalm 116:13",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 108,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Leviticus 19:2",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 108,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "1 Corinthians 5:7",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 109,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Psalm 102:7",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 109,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Isaiah 38:15",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 109,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 109,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Matthew 15:27",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 109,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Exodus 33:11",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 110,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Song of Songs 5:10",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 110,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Isaiah 45:15",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 110,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Proverbs 3:32",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 110,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Wisdom 12:1",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 110,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Deuteronomy 4:7",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 110,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Psalm 116:12",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 110,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Psalm 31:19",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 111,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Psalm 36:9",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 111,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Luke 24:32",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 111,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Luke 24:35",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 111,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "John 6:31",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 111,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Isaiah 60:5",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 112,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Psalm 24:4",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 112,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "1 Corinthians 6:17",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 113,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Hebrews 12:29",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 113,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Luke 1:38",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 114,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "John 3:29",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 114,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Luke 1:41-44",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 114,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 114,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "James 4:7",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 115,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 115,
+   "why": "an allusion, a Vulgate echo or Thomas's own wording woven around a verse (re-personed or folded into his sentence); translator's wording"
   }
  ]
 }

@@ -5,6 +5,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { type SourceType } from '$lib/library-public';
+	import { SOURCE_LABELS } from '$lib/adminCatalog';
 	import {
 		adminBookHref,
 		getAdminStats,
@@ -36,16 +37,29 @@
 	}
 
 	// Internal tool: copy is English-only (not run through Paraglide).
-	// `loadedAt` is stamped by onLoad (only on a non-superseded payload), so the
-	// header can say how fresh the figures are — a snapshot is easy to misread as
-	// live.
+	// `loadedAt` is when the server computed the figures (it memoises them until
+	// content changes — `computed_at`), stamped by onLoad only on a
+	// non-superseded payload, so the header says how fresh they are: a snapshot
+	// is easy to misread as live.
 	let loadedAt = $state<Date | null>(null);
+	// Refresh asks the server to recompute the stats and re-read the GitHub queue
+	// rather than answer from its memos; the automatic loads (sign-in settling,
+	// navigation) take the memos. Set only for the synchronous span of
+	// `refresh()` — each load calls its fetcher before its first await.
+	let fresh = false;
 	const dashboard = adminResource(
-		getAdminStats,
+		() => getAdminStats(fresh),
 		'Something went wrong loading the dashboard.',
 		undefined,
-		() => (loadedAt = new Date())
+		(r) => (loadedAt = r.computed_at ? new Date(r.computed_at) : new Date())
 	);
+	function refresh() {
+		fresh = true;
+		void dashboard.load();
+		void attentionRes.load();
+		void jobsRes.load();
+		fresh = false;
+	}
 	const stats = $derived(dashboard.data);
 
 	// The "needs attention" hub — its own resource so it paints as soon as it
@@ -59,7 +73,10 @@
 	// resource so it NEVER blocks the (DB-fast) By-language table: the counts
 	// paint immediately and the "+N queued" overlay (countJobsByLanguageType,
 	// unit-tested) fills in when jobs arrive — or stays silent if it can't.
-	const jobsRes = adminResource(getAdminTranslationJobs, 'Something went wrong loading the queue.');
+	const jobsRes = adminResource(
+		() => getAdminTranslationJobs(fresh),
+		'Something went wrong loading the queue.'
+	);
 	const queued = $derived(countJobsByLanguageType(jobsRes.data?.jobs ?? []));
 
 	type HubTier = 'critical' | 'backlog' | 'demand';
@@ -106,12 +123,6 @@
 	const timeFmt = (d: Date) => d.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' });
 	const dateFmt = (iso: string) =>
 		new Date(iso).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' });
-
-	const SOURCE_LABELS: Record<SourceType, string> = {
-		public_domain: 'Public domain',
-		ai_reviewed: 'AI · reviewed',
-		ai_unreviewed: 'AI · unreviewed'
-	};
 
 	// Headline numbers, in a fixed order.
 	const cards = $derived(
@@ -192,7 +203,7 @@
 				<button class="btn btn-sm btn-ghost" onclick={() => exportInventory('json')} disabled={!!exporting} aria-busy={exporting === 'json' ? 'true' : undefined}>
 					{#if exporting === 'json'}<span class="btn-spinner" aria-hidden="true"></span>{/if}Export JSON
 				</button>
-				<button class="btn btn-ghost" onclick={dashboard.load} disabled={dashboard.loading} aria-busy={dashboard.loading ? 'true' : undefined}>
+				<button class="btn btn-ghost" onclick={refresh} disabled={dashboard.loading} aria-busy={dashboard.loading ? 'true' : undefined}>
 					{#if dashboard.loading}<span class="btn-spinner" aria-hidden="true"></span>{/if}Refresh
 				</button>
 			</div>
@@ -306,7 +317,10 @@
 					<h2 class="text-h2">By language</h2>
 					<a href="/admin/coverage" class="text-small font-semibold text-accent hover:underline">Coverage matrix →</a>
 				</div>
-				<p class="mb-3 text-small text-muted">Select a language to see what's translated and what to work on next.</p>
+				<p class="mb-3 text-small text-muted">
+					Select a language to see what's translated and what to work on next.
+					{#if jobsRes.data?.stale}<span class="text-warning">GitHub isn't answering — the queued counts are from its last answer{#if jobsRes.data.read_at} at {timeFmt(new Date(jobsRes.data.read_at))}{/if}.</span>{/if}
+				</p>
 				<!-- The gold "+N" beside a count is items queued to translate into this
 				     language but not yet live — additive, so "25 +11" is 25 live and 11
 				     coming. Parentheses stay reserved for the "(N pub)" published subset.

@@ -5,7 +5,6 @@ from __future__ import annotations
 import re
 from html import unescape
 
-from django.core.cache import cache
 from django.db import transaction
 from django.db.models import Count
 from django.utils import timezone
@@ -28,6 +27,7 @@ from ..content_audit import (
     worst_books,
 )
 from ..corrections import RETIRED_BOOKS
+from ..invalidation import revision_cached
 from ..languages import entry as language_entry
 from ..models import (
     AdminAction,
@@ -37,7 +37,6 @@ from ..models import (
     AuthorTranslation,
     Book,
     Chapter,
-    ContentRevision,
     ReviewOutcome,
     Sermon,
     TranslationNote,
@@ -1080,10 +1079,9 @@ class AdminAuditView(APIView):
     #: revision — a direct SQL-editor edit or a management command — without a
     #: worker restart; Re-run forces a fresh scan.
     #:
-    #: The cache is per-process (LocMemCache across several gunicorn workers), so
-    #: "Scanned …" can differ between workers and one Re-run refreshes only the
-    #: worker it lands on — acceptable jitter for an admin view, not worth a
-    #: shared cache.
+    #: It lives in the admin's on-disk cache (``library.admin_cache``), so it
+    #: survives the worker's recycle every ~500 requests: before, a recycle
+    #: dropped it from memory and the next visit paid for a full scan.
     SCAN_CACHE_SECONDS = 600
 
     def get(self, request):
@@ -1117,21 +1115,23 @@ class AdminAuditView(APIView):
 
     def _cached_scan(self, *, refresh: bool) -> dict:
         """The full library scan, memoised under the content revision. Re-run
-        (``refresh``) recomputes, overwrites this worker's entry, and records an
+        (``refresh``) recomputes, overwrites the cached entry, and records an
         ``AuditScan`` (trigger "manual") so the run joins the scan history.
 
         A manual scan never emails: whoever pressed Re-run is looking at the
         result, and it is not an alert baseline either (see
         ``content_audit.alert_baseline``), so it can't swallow the nightly
         alert for a defect it happened to see first."""
-        key = f"audit:scan:{ContentRevision.current()}"
-        if refresh:
-            scan = {**scan_library(), "trigger": AuditScan.Trigger.MANUAL.value}
-            record_scan(scan, AuditScan.Trigger.MANUAL)
-            cache.set(key, scan, self.SCAN_CACHE_SECONDS)
-            return scan
-        return cache.get_or_set(
-            key, lambda: {**scan_library(), "trigger": "view"}, self.SCAN_CACHE_SECONDS
+
+        def scan() -> dict:
+            if not refresh:
+                return {**scan_library(), "trigger": "view"}
+            fresh = {**scan_library(), "trigger": AuditScan.Trigger.MANUAL.value}
+            record_scan(fresh, AuditScan.Trigger.MANUAL)
+            return fresh
+
+        return revision_cached(
+            "admin", "audit:scan", scan, timeout=self.SCAN_CACHE_SECONDS, refresh=refresh
         )
 
 
