@@ -64,7 +64,7 @@ Knobs (all optional except the flag):
 | `OCHORUS_BUILD_API_DIR` | `$TMPDIR/ochorus-build-api` | venv, SQLite file, log |
 | `OCHORUS_BUILD_API_WORKERS` | `2` | gunicorn worker processes |
 | `OCHORUS_BUILD_API_TTL_MIN` | `120` | the supervisor kills the API after this, if `stop` never runs (a failed `vite build` skips postbuild) |
-| `PRERENDER_CONCURRENCY` | `3` on Render, else `1` | pages in flight (`frontend/prerender-concurrency.js`); can rise with a local API (CI uses 8) |
+| `PRERENDER_CONCURRENCY` | `1` (Render too, since 2026-11-25) | pages in flight (`frontend/prerender-concurrency.js`); can rise with a local API (CI uses 8) |
 
 ## Step 1: what production has that a repo-seeded DB does not
 

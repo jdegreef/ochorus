@@ -2,12 +2,12 @@ import { describe, expect, it } from 'vitest';
 import { prerenderConcurrency, RENDER_PRERENDER_CONCURRENCY } from '../../prerender-concurrency.js';
 
 describe('prerenderConcurrency', () => {
-	it('overlaps a few requests on Render, where the build crawls the live API', () => {
+	it('keeps Render at one page at a time, where the build crawls the live API', () => {
 		expect(prerenderConcurrency({ RENDER_GIT_COMMIT: 'c28eecd' })).toBe(
 			RENDER_PRERENDER_CONCURRENCY
 		);
-		// One gunicorn worker with 4 threads serves the crawl and readers alike.
-		expect(RENDER_PRERENDER_CONCURRENCY).toBeLessThan(4);
+		// 3 in flight knocked the 512 MB API over mid-crawl (2026-11-25).
+		expect(RENDER_PRERENDER_CONCURRENCY).toBe(1);
 	});
 
 	it('stays at one page at a time anywhere else', () => {
