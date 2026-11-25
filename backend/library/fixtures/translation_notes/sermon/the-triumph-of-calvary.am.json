@@ -5,14 +5,17 @@
  "job_issue": 4083,
  "pull_request": null,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh); the mirror has no Old Testament, so OT quotations reuse a shipped Amharic work's wording where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
   "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited shipped work) inside that block. Shorter, re-personed, or bridged-range verses (the mirror merges some verse ranges into one entry holding only part of the text) are self_rendered."
  ],
  "references": [
   {
-   "reference": "Isaiah 63:1-6",
-   "status": "self_rendered",
-   "block_index": 0
+   "reference": "Isaiah 63:1-2",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the text quotes OWB Isa 63:1-2, 3a and 4-5; vv.3b and 6 keep the translator's wording (self_rendered rows below)"
   },
   {
    "reference": "Exodus 3:2",
@@ -28,12 +31,14 @@
    "reference": "Matthew 2:23",
    "status": "mined",
    "block_index": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 63:1",
-   "status": "self_rendered",
-   "block_index": 5
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "Evans's glosses (red earth, tribulation) stand between the two OWB pieces"
   },
   {
    "reference": "Revelation 12:11",
@@ -42,18 +47,22 @@
   },
   {
    "reference": "Isaiah 26:19",
-   "status": "self_rendered",
-   "block_index": 8
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Peter 1:8",
-   "status": "self_rendered",
-   "block_index": 9
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "two exact OWB pieces joined with '…'"
   },
   {
    "reference": "Hebrews 7:16",
-   "status": "self_rendered",
-   "block_index": 9
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Colossians 2:15",
@@ -64,7 +73,7 @@
    "reference": "1 Peter 1:11",
    "status": "mined",
    "block_index": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 15:26",
@@ -80,17 +89,19 @@
    "reference": "Revelation 6:2",
    "status": "mined",
    "block_index": 11,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 63:3",
    "status": "self_rendered",
-   "block_index": 11
+   "block_index": 11,
+   "why": "'the fulfilment of his declaration in our text'. Evans reads Isa 63:3b-6 as a prophecy of Armageddon and argues from the AV's future tense ('I will tread them…') and from the blood on the garments; OWB reads past tense ('ረገጥኳቸው') and 'juice' (ጭማቂያቸው), so this future-tense wording stays the translator's (founder call)"
   },
   {
    "reference": "Isaiah 55:11",
    "status": "self_rendered",
-   "block_index": 11
+   "block_index": 11,
+   "why": "re-personed into the third person in Evans's prose"
   },
   {
    "reference": "Genesis 3:15",
@@ -99,8 +110,9 @@
   },
   {
    "reference": "Genesis 3:15",
-   "status": "self_rendered",
-   "block_index": 13
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 11:21-22",
@@ -124,9 +136,9 @@
   },
   {
    "reference": "Revelation 11:15",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 13,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "why": "woven into Evans's sentence ('until the kingdoms of this world become…'): OWB's words (ግዛት, የጌታችንና የክርስቶሱ) in his construction, not a verbatim span"
   },
   {
    "reference": "Psalm 47:5",
@@ -214,9 +226,10 @@
    "block_index": 18
   },
   {
-   "reference": "Isaiah 63:1-6",
-   "status": "self_rendered",
-   "block_index": 18
+   "reference": "Isaiah 63:1",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 1:15",
@@ -242,6 +255,72 @@
    "reference": "Luke 14:17",
    "status": "self_rendered",
    "block_index": 19
+  },
+  {
+   "reference": "Isaiah 63:3",
+   "block_index": 0,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 63:4-5",
+   "block_index": 0,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 63:1",
+   "block_index": 10,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 63:2",
+   "block_index": 18,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 63:3",
+   "block_index": 18,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 63:4",
+   "block_index": 18,
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 63:3",
+   "block_index": 0,
+   "status": "self_rendered",
+   "why": "v.3b. Evans reads Isa 63:3b-6 as a prophecy of Armageddon and argues from the AV's future tense ('I will tread them…') and from the blood on the garments; OWB reads past tense ('ረገጥኳቸው') and 'juice' (ጭማቂያቸው), so this future-tense wording stays the translator's (founder call)"
+  },
+  {
+   "reference": "Isaiah 63:6",
+   "block_index": 0,
+   "status": "self_rendered",
+   "why": "Evans reads Isa 63:3b-6 as a prophecy of Armageddon and argues from the AV's future tense ('I will tread them…') and from the blood on the garments; OWB reads past tense ('ረገጥኳቸው') and 'juice' (ጭማቂያቸው), so this future-tense wording stays the translator's (founder call)"
+  },
+  {
+   "reference": "Isaiah 63:3",
+   "block_index": 10,
+   "status": "self_rendered",
+   "why": "Evans's dramatized dialogue. Evans reads Isa 63:3b-6 as a prophecy of Armageddon and argues from the AV's future tense ('I will tread them…') and from the blood on the garments; OWB reads past tense ('ረገጥኳቸው') and 'juice' (ጭማቂያቸው), so this future-tense wording stays the translator's (founder call)"
+  },
+  {
+   "reference": "Isaiah 63:5",
+   "block_index": 10,
+   "status": "self_rendered",
+   "why": "Evans re-tenses the verse to the future ('mine own arm shall bring salvation') inside his dramatized dialogue; OWB's past tense would break it"
+  },
+  {
+   "reference": "Isaiah 63:3",
+   "block_index": 18,
+   "status": "self_rendered",
+   "why": "the closing speech's 'I will tread them in mine anger … stain all my raiment with their blood'. Evans reads Isa 63:3b-6 as a prophecy of Armageddon and argues from the AV's future tense ('I will tread them…') and from the blood on the garments; OWB reads past tense ('ረገጥኳቸው') and 'juice' (ጭማቂያቸው), so this future-tense wording stays the translator's (founder call)"
   }
  ]
 }

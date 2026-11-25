@@ -17,10 +17,9 @@
   },
   {
    "reference": "Isaiah 41:10",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 2,
-   "source_file": "clothed-with-strength-and-dignity.am.json"
+   "chapter_order": 2
   },
   {
    "reference": "Isaiah 41:10",
@@ -48,10 +47,9 @@
   },
   {
    "reference": "Isaiah 41:10",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 9,
-   "chapter_order": 2,
-   "source_file": "clothed-with-strength-and-dignity.am.json"
+   "chapter_order": 2
   },
   {
    "reference": "Psalm 94:19",

@@ -481,10 +481,9 @@
   },
   {
    "reference": "Psalm 119:18",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 45,
-   "chapter_order": 3,
-   "source_file": "clothed-with-strength-and-dignity.am.json"
+   "chapter_order": 3
   },
   {
    "reference": "Psalm 25:14",
