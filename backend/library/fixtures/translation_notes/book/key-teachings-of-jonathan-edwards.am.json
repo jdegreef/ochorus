@@ -972,10 +972,10 @@
   },
   {
    "reference": "Proverbs 19:17",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 9,
    "chapter_order": 19,
-   "source_file": "a-retrospect-teens.am.json"
+   "why": "wording borrowed from a-retrospect-teens.am.json, which now quotes OWB; this work's own quotation is not yet OWB, so the translator's until its re-quote"
   },
   {
    "reference": "Matthew 25:40",
