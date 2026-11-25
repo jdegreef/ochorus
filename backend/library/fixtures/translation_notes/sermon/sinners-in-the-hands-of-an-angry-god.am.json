@@ -5,244 +5,321 @@
  "job_issue": 4085,
  "pull_request": null,
  "note": [
+  "Re-quoted 2026-11-25 to the Open Word Bible (OWB), Amharic, Balanced edition (CC0; library/data/bible/owb-am-b.json.gz, read offline as owb-am), per the founder decision of 2026-11-18 (Amharic quotes OWB everywhere). This supersedes what the notes below say about the 1962 UBS Bible and about wording borrowed from other Amharic works: every `mined` row is now a verbatim OWB span in its block (exact OWB pieces may be joined with '…'); `self_rendered` rows are allusions and paraphrases left as the translator's prose.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh); the mirror has no Old Testament, so OT quotations reuse a shipped Amharic work's wording where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
   "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited shipped work) inside that block. Shorter, re-personed, or bridged-range verses (the mirror merges some verse ranges into one entry holding only part of the text) are self_rendered."
  ],
  "references": [
   {
    "reference": "Deuteronomy 32:35",
-   "status": "self_rendered",
-   "block_index": 0
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "Edwards' text; OWB's «እግራቸው በሚንሸራተትበት ጊዜ» ('at the time their foot slides', the day of calamity at hand) still names the appointed time he argues from"
+  },
+  {
+   "reference": "Deuteronomy 32:35",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the text restated in bold, OWB's words"
   },
   {
    "reference": "Deuteronomy 32:28",
    "status": "self_rendered",
-   "block_index": 1
+   "block_index": 1,
+   "why": "allusion ('void of counsel, having no understanding') worked into the author's sentence"
   },
   {
    "reference": "Psalm 73:18",
-   "status": "self_rendered",
-   "block_index": 2
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 73:18-19",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Deuteronomy 32:35",
    "status": "self_rendered",
-   "block_index": 3
+   "block_index": 5,
+   "why": "the author's own restatement of his text ('when that due time comes, their foot shall slide'), left in his prose"
   },
   {
    "reference": "Luke 13:7",
    "status": "mined",
    "block_index": 8,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 3:18",
    "status": "mined",
    "block_index": 9,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 8:23",
-   "status": "self_rendered",
-   "block_index": 9
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Peter 2:3",
    "status": "self_rendered",
-   "block_index": 11
+   "block_index": 11,
+   "why": "allusion ('their damnation does not slumber') in the author's sentence"
   },
   {
    "reference": "Luke 11:21",
    "status": "self_rendered",
-   "block_index": 12
+   "block_index": 12,
+   "why": "bare citation; no words quoted"
   },
   {
    "reference": "Isaiah 57:20",
    "status": "self_rendered",
-   "block_index": 13
+   "block_index": 13,
+   "why": "bare citation; the image is the author's"
   },
   {
    "reference": "Job 38:11",
-   "status": "self_rendered",
-   "block_index": 13
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "James 3:6",
    "status": "self_rendered",
-   "block_index": 13
+   "block_index": 13,
+   "why": "allusion in the author's sentence"
   },
   {
    "reference": "Ecclesiastes 2:16",
-   "status": "self_rendered",
-   "block_index": 15
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB words the AV's question as an exclamation ('see how the wise die like fools'); the author's point stands"
   },
   {
    "reference": "1 Thessalonians 5:2-3",
    "status": "self_rendered",
-   "block_index": 17
+   "block_index": 17,
+   "why": "allusion ('as a thief', 'peace and safety') inside the imagined speech of the lost"
   },
   {
    "reference": "2 Corinthians 1:20",
    "status": "self_rendered",
-   "block_index": 18
+   "block_index": 18,
+   "why": "allusion ('yea and amen') in the author's sentence"
   },
   {
    "reference": "Romans 8:20-22",
    "status": "self_rendered",
-   "block_index": 24
+   "block_index": 24,
+   "why": "allusion in the author's sentence"
   },
   {
    "reference": "Daniel 2:35",
    "status": "self_rendered",
-   "block_index": 24
+   "block_index": 24,
+   "why": "allusion in the author's sentence"
   },
   {
    "reference": "Romans 2:5",
    "status": "self_rendered",
-   "block_index": 25
+   "block_index": 25,
+   "why": "allusion ('treasuring up wrath') in the author's sentence"
   },
   {
    "reference": "1 Thessalonians 5:3",
    "status": "self_rendered",
-   "block_index": 26
+   "block_index": 26,
+   "why": "allusion ('peace and safety … sudden destruction') re-personed in the author's sentence"
   },
   {
    "reference": "Habakkuk 1:13",
    "status": "self_rendered",
-   "block_index": 27
+   "block_index": 27,
+   "why": "allusion ('eyes … too pure') in the author's sentence"
   },
   {
    "reference": "Proverbs 20:2",
-   "status": "self_rendered",
-   "block_index": 29
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 12:4-5",
    "status": "mined",
    "block_index": 29,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 59:18",
-   "status": "self_rendered",
-   "block_index": 30
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 66:15",
-   "status": "self_rendered",
-   "block_index": 30
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Revelation 19:15",
    "status": "mined",
    "block_index": 30,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the wine-press phrase, and the author's two echoes of it («የእግዚአብሔርን የብርቱ ቁጣ», «የሁሉን ቻዩን የእግዚአብሔርን የብርቱ ቁጣ») taken from the same OWB span"
+  },
+  {
+   "reference": "John 3:36",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "the bare phrase 'the wrath of God' («የእግዚአብሔር ቁጣ»), OWB's wording"
   },
   {
    "reference": "Ezekiel 22:14",
    "status": "self_rendered",
-   "block_index": 30
+   "block_index": 30,
+   "why": "allusion ('whose hands can be strong? whose heart can endure?') as the author's questions"
   },
   {
    "reference": "Ezekiel 8:18",
-   "status": "self_rendered",
-   "block_index": 31
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 9:22",
    "status": "self_rendered",
-   "block_index": 31
+   "block_index": 31,
+   "why": "allusion in the author's sentence"
   },
   {
    "reference": "Proverbs 1:26",
-   "status": "self_rendered",
-   "block_index": 31
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "'laugh and mock' as two exact OWB pieces joined with '…'"
   },
   {
    "reference": "Isaiah 63:3",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB is past tense and has 'juice' (the wine-press image) where the AV has 'blood'; the author's following prose keeps his future tense and 'blood'"
+  },
+  {
+   "reference": "Micah 7:10",
    "status": "self_rendered",
-   "block_index": 32
+   "block_index": 32,
+   "why": "allusion ('trodden as the mire of the streets') in the author's sentence"
   },
   {
    "reference": "Daniel 3:19",
    "status": "self_rendered",
-   "block_index": 33
+   "block_index": 33,
+   "why": "allusion (the furnace heated seven times) retold in the author's words"
   },
   {
    "reference": "Romans 9:22",
-   "status": "self_rendered",
-   "block_index": 33
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 33:12-14",
-   "status": "self_rendered",
-   "block_index": 33
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "verses 12-13 and the first clause of 14, as the author breaks off with 'etc.'"
   },
   {
    "reference": "Revelation 14:10",
    "status": "self_rendered",
-   "block_index": 34
+   "block_index": 34,
+   "why": "allusion ('tormented in the presence of the holy angels and of the Lamb') re-personed"
   },
   {
    "reference": "Isaiah 66:23-24",
-   "status": "self_rendered",
-   "block_index": 34
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 90:11",
-   "status": "self_rendered",
-   "block_index": 35
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "OWB addresses God ('the power of your anger'); the author's 'God's anger' follows OWB"
   },
   {
    "reference": "2 Peter 2:3",
    "status": "self_rendered",
-   "block_index": 36
+   "block_index": 36,
+   "why": "allusion ('your damnation does not slumber') re-personed"
   },
   {
    "reference": "Revelation 1:5",
    "status": "self_rendered",
-   "block_index": 37
+   "block_index": 37,
+   "why": "allusion ('washed them from their sins in his own blood') re-personed"
   },
   {
    "reference": "Romans 5:2",
    "status": "self_rendered",
-   "block_index": 37
+   "block_index": 37,
+   "why": "allusion ('rejoicing in hope of the glory of God') in the author's sentence"
   },
   {
    "reference": "Isaiah 65:14",
    "status": "self_rendered",
-   "block_index": 37
+   "block_index": 37,
+   "why": "allusion ('singing for joy of heart … howl for vexation of spirit') re-personed"
   },
   {
    "reference": "Ephesians 2:12",
    "status": "self_rendered",
-   "block_index": 38
+   "block_index": 38,
+   "why": "allusion ('aliens from the commonwealth of Israel') in the author's sentence"
   },
   {
    "reference": "Romans 2:5",
    "status": "self_rendered",
-   "block_index": 38
+   "block_index": 38,
+   "why": "allusion ('treasure up wrath against the day of wrath') in the author's sentence"
   },
   {
    "reference": "Romans 11:7",
    "status": "self_rendered",
-   "block_index": 39
+   "block_index": 39,
+   "why": "allusion ('the election will obtain, and the rest will be blinded')"
   },
   {
    "reference": "Luke 3:9",
    "status": "mined",
    "block_index": 39,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "exact OWB pieces joined with '…'; the author's 'in an extraordinary manner' stands outside the marks"
   },
   {
    "reference": "Matthew 3:7",
    "status": "self_rendered",
-   "block_index": 40
+   "block_index": 40,
+   "why": "allusion ('fly from the wrath to come') in the author's call"
   },
   {
    "reference": "Genesis 19:17",
-   "status": "self_rendered",
-   "block_index": 40
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic",
+   "why": "exact OWB pieces joined with '…' (the author omits 'stay not in all the plain')"
   }
  ]
 }
