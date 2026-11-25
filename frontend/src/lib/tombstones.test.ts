@@ -10,8 +10,11 @@ import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import {
+	GRAVES,
 	MANIFEST,
+	freshWithdrawals,
 	htmlFiles,
+	isMovedBibleChapter,
 	main,
 	parsePageList,
 	tombstonesFor
@@ -50,6 +53,42 @@ describe('tombstonesFor', () => {
 	});
 });
 
+describe('freshWithdrawals', () => {
+	// The limit is about what THIS deploy withdraws. Counting every grave ever
+	// dug made it a running total, and every deploy failed once it passed 300.
+	it('leaves out the seed and what an earlier deploy already tombstoned', () => {
+		expect(
+			freshWithdrawals(
+				['books/new-gone/index.html', 'books/old-gone/index.html', 'sermons/seeded/index.html'],
+				['sermons/seeded/index.html'],
+				['books/old-gone/index.html']
+			)
+		).toEqual(['books/new-gone/index.html']);
+	});
+
+	it('leaves out Bible chapter addresses that moved rather than vanished', () => {
+		expect(
+			freshWithdrawals(['books/genesis/51/index.html', 'es/books/genesis/52/index.html'], [], [])
+		).toEqual([]);
+	});
+});
+
+describe('isMovedBibleChapter', () => {
+	it("is the two addresses past a Bible book's last chapter, in any locale", () => {
+		expect(isMovedBibleChapter('books/genesis/51/index.html')).toBe(true);
+		expect(isMovedBibleChapter('books/genesis/52/index.html')).toBe(true);
+		expect(isMovedBibleChapter('fr/books/genesis/51/index.html')).toBe(true);
+		expect(isMovedBibleChapter('en-modern/books/genesis/51/index.html')).toBe(true);
+	});
+
+	it('is never a real chapter, a further number, or a book that is not the Bible', () => {
+		expect(isMovedBibleChapter('books/genesis/50/index.html')).toBe(false);
+		expect(isMovedBibleChapter('books/genesis/53/index.html')).toBe(false);
+		expect(isMovedBibleChapter('books/genesis/index.html')).toBe(false);
+		expect(isMovedBibleChapter('books/humility/51/index.html')).toBe(false);
+	});
+});
+
 describe('the committed seed', () => {
 	const seed = parsePageList(read('scripts/withdrawn-pages.txt'), 'seed');
 
@@ -84,11 +123,16 @@ describe('main, over a scratch build', () => {
 		writeFileSync(join(build(), p), body);
 	};
 	const page = (p: string) => readFileSync(join(build(), p), 'utf8');
-	const saved = { previous: process.env.TOMBSTONE_PREVIOUS, render: process.env.RENDER };
+	const saved = {
+		previous: process.env.TOMBSTONE_PREVIOUS,
+		graves: process.env.TOMBSTONE_PREVIOUS_GRAVES,
+		render: process.env.RENDER
+	};
 	const restore = (key: string, value: string | undefined) =>
 		value === undefined ? delete process.env[key] : (process.env[key] = value);
 	afterEach(() => {
 		restore('TOMBSTONE_PREVIOUS', saved.previous);
+		restore('TOMBSTONE_PREVIOUS_GRAVES', saved.graves);
 		restore('RENDER', saved.render);
 		delete process.env.TOMBSTONE_MAX;
 		if (dir) rmSync(dir, { recursive: true, force: true });
@@ -125,6 +169,12 @@ describe('main, over a scratch build', () => {
 		expect(listed).toEqual(
 			expect.arrayContaining(['books/gone/index.html', 'books/new/index.html'])
 		);
+		// …and says which of them are graves, for the next deploy's limit.
+		const graves = parsePageList(page(GRAVES), GRAVES);
+		expect(graves).toEqual(
+			expect.arrayContaining(['books/gone/index.html', 'sermons/the-marriage-tie/index.html'])
+		);
+		expect(graves).not.toContain('books/back/index.html');
 	});
 
 	it('refuses a burst of withdrawals — a build short of pages, not a withdrawal', async () => {
@@ -134,11 +184,31 @@ describe('main, over a scratch build', () => {
 		put('404.html', 'SHELL');
 		put('a/index.html', 'REAL');
 		process.env.TOMBSTONE_PREVIOUS = previous;
-		process.env.TOMBSTONE_MAX = '2';
+		process.env.TOMBSTONE_MAX = '1';
 		delete process.env.RENDER;
 
-		// b, c and every seed path would be tombstoned: over the limit.
-		await expect(main(build())).rejects.toThrow(/missing from this build \(limit 2\)/);
+		// b and c are newly missing: over the limit.
+		await expect(main(build())).rejects.toThrow(/2 previously published pages .* \(limit 1\)/);
+		expect(page('a/index.html')).toBe('REAL');
+	});
+
+	it('does not count again what an earlier deploy already tombstoned', async () => {
+		dir = mkdtempSync(join(tmpdir(), 'tombstones-'));
+		const previous = join(dir, 'previous.txt');
+		const graves = join(dir, 'graves.txt');
+		writeFileSync(previous, 'a/index.html\nb/index.html\nc/index.html\n');
+		writeFileSync(graves, 'b/index.html\nc/index.html\n');
+		put('404.html', 'SHELL');
+		put('a/index.html', 'REAL');
+		process.env.TOMBSTONE_PREVIOUS = previous;
+		process.env.TOMBSTONE_PREVIOUS_GRAVES = graves;
+		process.env.TOMBSTONE_MAX = '1';
+		delete process.env.RENDER;
+
+		await main(build());
+
+		expect(page('b/index.html')).toBe('SHELL');
+		expect(page('c/index.html')).toBe('SHELL');
 		expect(page('a/index.html')).toBe('REAL');
 	});
 });
