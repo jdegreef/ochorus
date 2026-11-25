@@ -13,14 +13,14 @@
         },
         {
             "reference": "Psalm 66:18",
-            "status": "mined",
-            "source_file": "baptism-with-the-holy-spirit.am.json",
+            "status": "self_rendered",
+            "why": "the wording was mined from baptism-with-the-holy-spirit.am, which now quotes OWB; this edition still carries the pre-OWB Amharic wording",
             "block_index": 1
         },
         {
             "reference": "Psalm 84:11",
-            "status": "mined",
-            "source_file": "baptism-with-the-holy-spirit.am.json",
+            "status": "self_rendered",
+            "why": "the wording was mined from baptism-with-the-holy-spirit.am, which now quotes OWB; this edition still carries the pre-OWB Amharic wording",
             "block_index": 1
         },
         {

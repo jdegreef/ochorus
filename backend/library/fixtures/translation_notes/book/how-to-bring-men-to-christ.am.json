@@ -659,10 +659,10 @@
   },
   {
    "reference": "James 1:7",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 17,
    "chapter_order": 13,
-   "source_file": "baptism-with-the-holy-spirit.am.json"
+   "why": "the wording was mined from baptism-with-the-holy-spirit.am, which now quotes OWB; this edition still carries the pre-OWB Amharic wording"
   },
   {
    "reference": "1 John 5:14-15",
