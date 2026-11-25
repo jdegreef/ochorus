@@ -1996,10 +1996,9 @@
   },
   {
    "reference": "Ezekiel 36:25-26",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 83,
-   "chapter_order": 5,
-   "source_file": "the-inner-chamber.am.json"
+   "chapter_order": 5
   },
   {
    "reference": "Matthew 5:39",
