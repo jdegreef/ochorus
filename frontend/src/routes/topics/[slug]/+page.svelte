@@ -5,7 +5,7 @@
 	import { onMount } from 'svelte';
 	import { authorPath } from '$lib/originals';
 	import { afterNavigate } from '$app/navigation';
-	import type { TopicDetail } from '$lib/library-public';
+	import { onPhrase, type TopicDetail } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { readJSON, writeJSON } from '$lib/persisted';
 	import { absUrl, jsonLd, breadcrumbLd, hreflangExact, pickQa, toQa } from '$lib/seo';
@@ -584,6 +584,24 @@
 					<PersonCard {person} />
 				{/each}
 			</div>
+		</section>
+	{/if}
+
+	<!-- The quote themes this shelf reads as ($lib/topicQuotes): the lines these
+	     writers are remembered for, on the same theme. English only, as the
+	     quote pages are. -->
+	{#if data.quoteThemes?.length}
+		<section class="mb-10" aria-labelledby="topic-quotes">
+			<h2 id="topic-quotes" class="section-heading">{t('quotes.byTopic')}</h2>
+			<ul class="flex flex-wrap gap-2">
+				{#each data.quoteThemes as q (q.slug)}
+					<li>
+						<a class="tag" href={`/quotes/topics/${q.slug}/`}
+							>{t('quotes.topicH1').replace('%phrase%', onPhrase(q.title))}</a
+						>
+					</li>
+				{/each}
+			</ul>
 		</section>
 	{/if}
 

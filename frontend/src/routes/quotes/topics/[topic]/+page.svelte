@@ -142,6 +142,19 @@
 		</section>
 	{/each}
 
+	<!-- The book-and-sermon shelves on the same theme ($lib/topicQuotes): from
+	     the lines back to the works they come from. -->
+	{#if data.shelves?.length}
+		<section class="mb-10" aria-labelledby="quote-shelves">
+			<h2 id="quote-shelves" class="section-heading">{t('quotes.topicShelves')}</h2>
+			<ul class="flex flex-wrap gap-2">
+				{#each data.shelves as tp (tp.slug)}
+					<li><a class="tag" href={`/topics/${tp.slug}/`}>{tp.title}</a></li>
+				{/each}
+			</ul>
+		</section>
+	{/if}
+
 	<AccountCta source="quote" />
 </div>
 

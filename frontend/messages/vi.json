@@ -1245,6 +1245,7 @@
   "quotes_topics_empty": "Chưa có chủ đề nào ở đây.",
   "quotes_by_topic_crumb": "Theo chủ đề",
   "quotes_topic_h1": "Trích dẫn về %phrase%",
+  "quotes_topic_shelves": "Sách và bài giảng về chủ đề này",
   "quotes_topic_count_one": "%count% trích dẫn từ %writers% tác giả, mỗi câu đều được truy đến đúng đoạn văn gốc.",
   "quotes_topic_count_many": "%count% trích dẫn từ %writers% tác giả, mỗi câu đều được truy đến đúng đoạn văn gốc.",
   "quotes_jump_to_writer": "Đi đến một tác giả",

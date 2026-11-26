@@ -1245,6 +1245,7 @@
   "quotes_topics_empty": "まだテーマはありません。",
   "quotes_by_topic_crumb": "テーマ別",
   "quotes_topic_h1": "%phrase%についての名言",
+  "quotes_topic_shelves": "このテーマの本と説教",
   "quotes_topic_count_one": "%writers%人の著者による名言%count%件。一つひとつ、出てくる段落まで正確にたどっています。",
   "quotes_topic_count_many": "%writers%人の著者による名言%count%件。一つひとつ、出てくる段落まで正確にたどっています。",
   "quotes_jump_to_writer": "著者へ移動",

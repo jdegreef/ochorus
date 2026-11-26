@@ -1245,6 +1245,7 @@
   "quotes_topics_empty": "Здесь пока нет тем.",
   "quotes_by_topic_crumb": "По темам",
   "quotes_topic_h1": "Цитаты о теме «%phrase%»",
+  "quotes_topic_shelves": "Книги и проповеди на эту тему",
   "quotes_topic_count_one": "%count% цитата от писателей (%writers%), прослеженная до точного абзаца, из которого она взята.",
   "quotes_topic_count_many": "Цитат: %count%, писателей: %writers%; каждая прослежена до точного абзаца, из которого она взята.",
   "quotes_jump_to_writer": "Перейти к писателю",

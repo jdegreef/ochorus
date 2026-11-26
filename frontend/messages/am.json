@@ -1245,6 +1245,7 @@
   "quotes_topics_empty": "እስካሁን እዚህ ምንም ርዕስ የለም።",
   "quotes_by_topic_crumb": "በርዕስ",
   "quotes_topic_h1": "ስለ %phrase% ጥቅሶች",
+  "quotes_topic_shelves": "በዚህ ርዕስ ላይ መጻሕፍትና ስብከቶች",
   "quotes_topic_count_one": "ከ%writers% ጸሐፊዎች የተገኘ %count% ጥቅስ፣ ከመጣበት ትክክለኛ አንቀጽ ጋር የተገናኘ።",
   "quotes_topic_count_many": "ከ%writers% ጸሐፊዎች የተገኙ %count% ጥቅሶች፣ እያንዳንዳቸው ከመጡበት ትክክለኛ አንቀጽ ጋር የተገናኙ።",
   "quotes_jump_to_writer": "ወደ አንድ ጸሐፊ ይሂዱ",

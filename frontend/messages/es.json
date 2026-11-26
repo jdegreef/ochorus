@@ -1245,6 +1245,7 @@
   "quotes_topics_empty": "Aún no hay temas aquí.",
   "quotes_by_topic_crumb": "Por tema",
   "quotes_topic_h1": "Citas sobre %phrase%",
+  "quotes_topic_shelves": "Libros y sermones sobre este tema",
   "quotes_topic_count_one": "%count% cita de %writers% escritores, cada una rastreada hasta el párrafo exacto del que proviene.",
   "quotes_topic_count_many": "%count% citas de %writers% escritores, cada una rastreada hasta el párrafo exacto del que proviene.",
   "quotes_jump_to_writer": "Ir a un escritor",
