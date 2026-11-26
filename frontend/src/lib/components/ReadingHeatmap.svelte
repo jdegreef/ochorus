@@ -77,7 +77,7 @@
 	class="w-full overflow-x-auto"
 	use:showLatest={weeks}
 	role="img"
-	aria-label="{t('settings.heatmapTitle')}: {readCount} {t('settings.streakDaysRead')}"
+	aria-label="{t('settings.heatmapTitle')}: {i18n.unit('settings.streakDaysRead', readCount)}"
 >
 	<div
 		class="grid items-center"

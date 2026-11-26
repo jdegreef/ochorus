@@ -821,9 +821,7 @@
 											{@const ch = book.chapters[i]}
 											<span
 												style:height="{h}%"
-												title="{chapterNameIn(ch.order, ch.title, book.title)} · {readingMinutes(ch.word_count)} {t(
-													'common.min'
-												)}"
+												title="{chapterNameIn(ch.order, ch.title, book.title)} · {i18n.unit('common.min', readingMinutes(ch.word_count))}"
 											></span>
 										{/each}
 									</div>
@@ -909,7 +907,7 @@
 							class="btn {book.daily ? 'btn-ghost' : 'btn-primary btn-solid'} flex-col gap-0"
 							>{readLabel}{#if fresh && readChapter}{' '}<span class="btn-sub" dir="auto"
 									>{chapterNameIn(readOrder, readChapter.title, book.title)}{readChapter.word_count
-										? ` · ${readingMinutes(readChapter.word_count)} ${t('common.min')}`
+										? ` · ${i18n.unit('common.min', readingMinutes(readChapter.word_count))}`
 										: ''}</span
 								>{/if}</a
 						>
@@ -1266,7 +1264,7 @@
 						class:current
 						aria-current={current ? 'step' : undefined}
 						aria-label="{chapterName(ch.order, ch.title)}{read ? `, ${t('settings.heatmapRead')}` : ''}"
-						title="{chapterName(ch.order, ch.title)} · {readingMinutes(ch.word_count)} {t('common.min')}"
+						title="{chapterName(ch.order, ch.title)} · {i18n.unit('common.min', readingMinutes(ch.word_count))}"
 						dir="auto">{n ?? chapterName(ch.order, ch.title)}</a
 					>
 				</li>
@@ -1332,7 +1330,7 @@
 						{#if current}
 							<span class="whitespace-nowrap text-small font-semibold text-accent">{t('book.continue')} <Arrow /></span>
 						{:else}
-							<span class="text-small text-muted">{readingMinutes(ch.word_count)} {t('common.min')}</span>
+							<span class="text-small text-muted">{i18n.unit('common.min', readingMinutes(ch.word_count))}</span>
 						{/if}
 					</a>
 				</li>

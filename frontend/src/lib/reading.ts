@@ -157,7 +157,7 @@ export function bookTimeLeft(minutes: number): string {
  * "140 min left in chapter" next to "15 hr 44 min left in book").
  */
 export function chapterTimeLeft(minutes: number): string {
-	if (minutes < 60) return `${minutes} ${i18n.t('progress.minLeft')}`;
+	if (minutes < 60) return i18n.unit('progress.minLeft', minutes);
 	return durationLabel(minutes, {
 		min: 'progress.minLeft',
 		hr: 'progress.chapterHr',
@@ -220,7 +220,7 @@ export function chapterNameIn(
 
 /** "9 chapters" / "1 chapter". */
 export function chapterCount(n: number): string {
-	return `${n} ${i18n.tn(n, 'book.chapterOne', 'book.chaptersMany')}`;
+	return i18n.count(n, 'book.chapterOne', 'book.chaptersMany');
 }
 
 /**

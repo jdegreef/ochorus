@@ -31,7 +31,6 @@
 	const t = i18n.t;
 	// Looked up once per card, not per use: i18n.t is an uncached lookup.
 	const OF = t('plans.of');
-	const DAYS = t('plans.days');
 
 	const covers = $derived(plan.covers.slice(0, 2));
 	// The plan's curated accent: the hue of a cover with no colour of its own,
@@ -42,7 +41,7 @@
 	/** Rounded minutes of reading in an average day of the plan. */
 	const perDay = $derived(planMinutesPerDay(plan));
 	/** The progress bar's accessible name — the visible caption, in words. */
-	const dayLabel = $derived(`${plan.title}: ${done} ${OF} ${plan.day_count} ${DAYS}`);
+	const dayLabel = $derived(`${plan.title}: ${i18n.unit('plans.days', `${done} ${OF} ${plan.day_count}`)}`);
 </script>
 
 <a class="plan-card group" href={localizeHref(`/plans/${plan.slug}`)}>
@@ -69,7 +68,7 @@
 	<div class="flex min-w-0 flex-col self-stretch">
 		<svelte:element this={`h${headingLevel}`} class="plan-card-title">{plan.title}</svelte:element>
 		<p class="mt-1 text-small text-muted">
-			{plan.day_count} {DAYS}{#if perDay}<span class="sep">{' · '}</span>~{perDay} {t('plans.minPerDay')}{/if}
+			{i18n.unit('plans.days', plan.day_count)}{#if perDay}<span class="sep">{' · '}</span>{i18n.unit('plans.minPerDay', `~${perDay}`)}{/if}
 		</p>
 		<p class="mt-1.5 line-clamp-2 text-small text-muted">{plan.description}</p>
 		{#if started}

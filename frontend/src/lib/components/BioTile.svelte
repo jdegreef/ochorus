@@ -42,13 +42,11 @@
 	{#if works > 0}
 		<span class="text-micro font-semibold text-accent">
 			{#if author.book_count > 0}
-				{author.book_count}
-				{i18n.tn(author.book_count, 'common.bookOne', 'common.bookMany')}
+				{i18n.count(author.book_count, 'common.bookOne', 'common.bookMany')}
 			{/if}
 			{#if author.book_count > 0 && author.sermon_count > 0}·{/if}
 			{#if author.sermon_count > 0}
-				{author.sermon_count}
-				{i18n.tn(author.sermon_count, 'bios.sermonsOne', 'bios.sermonsMany')}
+				{i18n.count(author.sermon_count, 'bios.sermonsOne', 'bios.sermonsMany')}
 			{/if}
 		</span>
 	{/if}

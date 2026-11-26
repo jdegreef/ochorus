@@ -205,8 +205,7 @@
 	     keeps a row so its series stays indexed. No book count: the Originals
 	     live on /originals, so any count here fell short of the library's. -->
 	{#snippet counts()}
-		{data.people}
-		{i18n.tn(data.people, 'common.authorOne', 'common.authorMany')}
+		{i18n.count(data.people, 'common.authorOne', 'common.authorMany')}
 	{/snippet}
 	<!-- The library tabs sit under the title, as on /books (design review #4). -->
 	<LibraryTabs current="az" />
@@ -297,8 +296,7 @@
 								<div class="min-w-0 flex-1">
 									<a class="font-semibold hover:text-accent" href={localizeHref(BIBLE_PATH)}>{entry.name}</a>
 									<span class="text-small text-muted">
-										· {entry.count}
-										{i18n.tn(entry.count, 'common.bookOne', 'common.bookMany')}</span
+										· {i18n.count(entry.count, 'common.bookOne', 'common.bookMany')}</span
 									>
 								</div>
 							</li>
@@ -375,8 +373,7 @@
 											<a
 												class="inline-flex items-center gap-1 text-muted hover:text-accent"
 												href={localizeHref(`/authors/${author.slug}#sermons`)}
-												><Icon name="mic" size={14} />{w.sermons}
-												{i18n.tn(w.sermons, 'common.sermonOne', 'common.sermonMany')}</a
+												><Icon name="mic" size={14} />{i18n.count(w.sermons, 'common.sermonOne', 'common.sermonMany')}</a
 											>
 										{/if}
 										{#if w.quotes}

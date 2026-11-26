@@ -59,6 +59,9 @@ const toSnake = (key: string) =>
 function usedKeys(): Set<string> {
 	const out = new Set<string>();
 	const re = /\bt\(\s*['"`]([a-zA-Z0-9_.]+)['"`]\s*\)/g;
+	// i18n.unit('key', n) and the one/many pair of i18n.count / i18n.tn.
+	const unitRe = /\bunit\(\s*['"`]([a-zA-Z0-9_.]+)['"`]\s*,/g;
+	const pairRe = /\b(?:count|tn)\(\s*[^,()]+(?:\([^()]*\))?,\s*['"`]([a-zA-Z0-9_.]+)['"`]\s*,\s*['"`]([a-zA-Z0-9_.]+)['"`]/g;
 	const walk = (dir: string) => {
 		for (const name of fs.readdirSync(dir)) {
 			const p = path.join(dir, name);
@@ -68,6 +71,8 @@ function usedKeys(): Set<string> {
 			} else if (/\.(svelte|ts)$/.test(name) && !name.endsWith('.test.ts')) {
 				const src = fs.readFileSync(p, 'utf8');
 				for (let m; (m = re.exec(src)); ) out.add(toSnake(m[1]));
+				for (let m; (m = unitRe.exec(src)); ) out.add(toSnake(m[1]));
+				for (let m; (m = pairRe.exec(src)); ) out.add(toSnake(m[1])).add(toSnake(m[2]));
 			}
 		}
 	};

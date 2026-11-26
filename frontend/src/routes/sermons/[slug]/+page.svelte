@@ -835,9 +835,9 @@
 					     listening, as the pill: the Listen bar owns progress then. -->
 					{#if listen.status === 'idle'}
 						<div class="rail-progress">
-							<ProgressBar percent={frac * 100} label="{minsLeft} {t('sermon.minLeft')}" />
+							<ProgressBar percent={frac * 100} label="{i18n.unit('sermon.minLeft', minsLeft)}" />
 						</div>
-						<p class="rail-left count" aria-hidden="true">{minsLeft} {t('sermon.minLeft')}</p>
+						<p class="rail-left count" aria-hidden="true">{i18n.unit('sermon.minLeft', minsLeft)}</p>
 					{/if}
 				</nav>
 			</div>
@@ -1038,7 +1038,7 @@
      the pill steps aside rather than show the same number twice (design #29). -->
 {#if !isPhone && besideText.matches && !showRail && !readerUi.focus && listen.status === 'idle' && frac < 0.99}
 	<div class="min-left beside-text" style={readerPrefs.style} aria-hidden="true">
-		{minsLeft} {t('sermon.minLeft')}
+		{i18n.unit('sermon.minLeft', minsLeft)}
 	</div>
 {/if}
 
@@ -1059,9 +1059,9 @@
 			value={frac}
 			oninput={(e) => scrubTo(Number(e.currentTarget.value))}
 			aria-label={t('progress.scrub')}
-			aria-valuetext="{minsLeft} {t('sermon.minLeft')}"
+			aria-valuetext="{i18n.unit('sermon.minLeft', minsLeft)}"
 		/>
-		<p class="sermon-foot-meta" aria-hidden="true">{minsLeft} {t('sermon.minLeft')}</p>
+		<p class="sermon-foot-meta" aria-hidden="true">{i18n.unit('sermon.minLeft', minsLeft)}</p>
 		<div class="foot-actions" class:folded={foldActions}>
 			{#if sermon.prev}
 				<a href={localizeHref(`/sermons/${sermon.prev.slug}`)} class="foot-btn"
