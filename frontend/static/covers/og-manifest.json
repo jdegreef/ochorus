@@ -5657,6 +5657,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ar/a-retrospect-children": {
+			"ground": "8bcdf218d8e8d900cbc063e27798884b7113002b345dd9917e8c33dff33665d2",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[154, 102, 446, 131]
+				],
+				"title": [
+					[117, 318, 483, 424]
+				],
+				"edition": [
+					[273, 450, 327, 475]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				255,
+				540
+			]
+		},
 		"ar/a-short-and-easy-method-of-prayer": {
 			"ground": "18d07c743280652c3e7c1e4a7de064de738eac2c93a31ea35b1838eb66f5962f",
 			"style": "devotional",
@@ -22582,6 +22615,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"hi/a-retrospect-children": {
+			"ground": "e3267bebb8bc0b733c8911414290b923de0338a59192508a2397703577bdfe33",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "f36feae5363a90b83288a44fbd3d4f2a1b774d41f412b88d508596e52f368b4b",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[154, 102, 446, 131]
+				],
+				"title": [
+					[99, 337, 501, 413]
+				],
+				"edition": [
+					[238, 435, 362, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
+		},
 		"hi/a-short-and-easy-method-of-prayer": {
 			"ground": "9813e56eb2f75ca10c26788415dbfb1a6c6f0071f2b4c6f74a62d9382494605f",
 			"style": "devotional",
@@ -32587,6 +32653,40 @@
 			"middle": [
 				286,
 				509
+			]
+		},
+		"lg/a-retrospect-children": {
+			"ground": "c3f635bdee82227aacce7319d1907208e56d3c4bd1d9ebca128bd0b1d0981691",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[154, 102, 446, 131]
+				],
+				"title": [
+					[149, 300, 451, 382],
+					[172, 371, 428, 453]
+				],
+				"edition": [
+					[214, 464, 386, 489]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				250,
+				545
 			]
 		},
 		"lg/a-serious-call": {
@@ -51180,6 +51280,39 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"uk/a-retrospect-children": {
+			"ground": "11faca10402a361a0b5e3e17ae207041ab75c9d351c1686dfbb779f9e908db84",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[154, 102, 446, 131]
+				],
+				"title": [
+					[70, 327, 530, 424]
+				],
+				"edition": [
+					[227, 435, 373, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				278,
+				517
+			]
 		},
 		"uk/a-short-and-easy-method-of-prayer": {
 			"ground": "f26854b943d7dcc665255a8bc4e4bf9d437d2563ed84d09fec2dab16fb9098b6",
