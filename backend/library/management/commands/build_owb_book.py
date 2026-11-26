@@ -435,6 +435,33 @@ LANGUAGES = {
         ),
         defaults={"deity_pronoun": 1},
     ),
+    # OWB's own Amharic notes (`i18n/am.json` disputed_note, disputed_note_mark).
+    "am": Language(
+        introduction="መግቢያ",
+        conclusion="ማጠቃለያ",
+        attribution=(
+            "ቅዱሳት መጻሕፍት ከOpen Word Bible ({site})፣ በአማርኛ፣ «ሚዛናዊ» ደረጃ፣ "
+            "commit {commit}፦ በCC0 1.0 ለሕዝብ ይዞታ የተሰጠ። "
+            "መግቢያውና ማጠቃለያው በOchorus የተጻፉ ናቸው።"
+        ),
+        disputed_note=(
+            "የ{book} ቀደምት የእጅ ጽሑፎች {ref} የላቸውም። "
+            "አብዛኞቹ መጽሐፍ ቅዱሶች እንደዚህ በቅንፍ ለይተው ያትሙታል።"
+        ),
+        own_notes={"MRK.16.8.s2": (
+            "የማርቆስ ወንጌል ቀደምት የእጅ ጽሑፎች በ16:8 ያበቃሉ። ቀጥለው የሚመጡት ሁለት "
+            "መደምደሚያዎች፣ አጭሩና በ16:9–20 ያለው ረጅሙ፣ በኋላ የተጨመሩ ናቸው። "
+            "አብዛኞቹ መጽሐፍ ቅዱሶች እንደዚህ በቅንፍ ለይተው ያትሟቸዋል።"
+        )},
+        # "ለመዘምራን አለቃ።", "የዳዊት መዝሙር።", "የመውጣት መዝሙር።", "የዳዊት።",
+        # "በሸሚኒት።": one Ethiopic sentence each, ending in ።.
+        psalm_title=re.compile(
+            r"(?:ለመዘምራን አለቃ|[^።!?\n]*(?:መዝሙር|ጸሎት|ማስኪል|ሚክታም|ቅኔ)"
+            r"|የ\S+(?: ልጆች)?|በ\S+)።[ \n]*"
+        ),
+        defaults={"deity_pronoun": 1},
+        outer_guillemets=True,
+    ),
 }
 
 

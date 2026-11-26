@@ -45,6 +45,13 @@
         "html": "<p>Maandiko ya kitabu hiki ni Open Word Bible, tafsiri mpya ya Biblia iliyotafsiriwa kutoka Kiebrania na Kigiriki, kwa Kiswahili cha leo.</p><p>Kila sentensi yake imetafsiriwa katika viwango vitatu: <em>Halisi</em>, kinachofuata asili kwa karibu na kuweka katika mabano kila neno kinachoongeza; <em>Uwiano</em>, sahihi na cha kawaida; na <em>Rahisi</em>, kwa lugha rahisi ya kisasa, kikieleza wazi pale inaposaidia. Kitabu hiki kinachapisha kiwango cha Uwiano.</p><p>Nyuma ya kila sentensi kuna kumbukumbu ya maneno ya asili, tafsiri ya neno kwa neno, tafsiri zile tatu na kila uamuzi wa watafsiri pamoja na sababu yake. Pale usomaji una shaka, kumbukumbu inasema hivyo.</p><p>Hiki ni toleo la kusoma: sura na aya, namba za mistari zikiwa ndogo, na mashairi yakiwa yamepangwa mstari kwa mstari. “BWANA” kwa herufi kubwa linasimama badala ya jina binafsi la Mungu. Utangulizi na hitimisho viliandikwa kwa ajili ya toleo hili na Ochorus.</p><p>Open Word Bible imetolewa kwa umma chini ya CC0 1.0. Mtu yeyote anaweza kuisoma, kuinakili, kuichapisha na kuishiriki, bure.</p>",
         "more": "Kila sentensi inaweza kusomwa pamoja na maelezo yake, katika viwango vyote vitatu, kwenye",
         "edition": "Toleo hili limeandaliwa na Ochorus, maktaba ya bure ya vitabu vya Kikristo vya zamani."
+      },
+      "am": {
+        "title": "ስለ ትርጉሙ",
+        "name": "Open Word Bible",
+        "html": "<p>የዚህ መጽሐፍ ቅዱሳት መጻሕፍት Open Word Bible ናቸው፤ ይህም ከዕብራይስጥና ከግሪክኛ በቀጥታ ወደ ዛሬው አማርኛ የተተረጎመ አዲስ የመጽሐፍ ቅዱስ ትርጉም ነው።</p><p>እያንዳንዱ ዓረፍተ ነገሩ በሦስት ደረጃዎች ተተርጉሟል፦ <em>ቃል በቃል</em>፣ የመጀመሪያውን ጽሑፍ በቅርበት የሚከተልና የሚጨምረውን ቃል ሁሉ በቅንፍ ውስጥ የሚያስቀምጥ፤ <em>ሚዛናዊ</em>፣ ትክክለኛና ተፈጥሯዊ፤ እንዲሁም <em>ቀላል</em>፣ ግልጽ በሆነ ዘመናዊ ቋንቋ የተጻፈና በሚረዳበት ቦታ ሐሳቡን ገልጦ የሚያስቀምጥ። ይህ መጽሐፍ የሚያትመው የ«ሚዛናዊ» ደረጃውን ነው።</p><p>ከእያንዳንዱ ዓረፍተ ነገር በስተጀርባ መዝገብ አለ፦ የመጀመሪያዎቹ ቃላት፣ የቃል በቃል ፍቺ፣ ሦስቱ ትርጉሞች፣ እንዲሁም ተርጓሚዎቹ የወሰኑት እያንዳንዱ ውሳኔ ከምክንያቱ ጋር። አንድ ንባብ እርግጠኛ ባልሆነበት ቦታ መዝገቡ ይህንኑ ይናገራል።</p><p>ይህ የንባብ እትም ነው፦ ምዕራፎችና አንቀጾች፣ የቁጥሮቹ አኃዞች በትንሹ ተጽፈው፣ ቅኔውም በስንኝ በስንኝ ተቀምጦ። የእግዚአብሔር የግል ስም «እግዚአብሔር» ተብሎ ተጽፏል። መግቢያውና ማጠቃለያው ለዚህ እትም በOchorus የተጻፉ ናቸው።</p><p>Open Word Bible በCC0 1.0 መሠረት የሕዝብ ሀብት እንዲሆን የተሰጠ ነው። ማንኛውም ሰው በነጻ ሊያነበው፣ ሊገለብጠው፣ ሊያትመውና ሊያጋራው ይችላል።</p>",
+        "more": "እያንዳንዱ ዓረፍተ ነገር ከምክንያቱ ጋር፣ በሦስቱም ደረጃዎች፣ የሚነበበው በዚህ ድረ ገጽ ነው፦",
+        "edition": "ይህን እትም ያዘጋጀው የክርስቲያን ክላሲኮች ነጻ ቤተ መጻሕፍት የሆነው Ochorus ነው።"
       }
     }
   }

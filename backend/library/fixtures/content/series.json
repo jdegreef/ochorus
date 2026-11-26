@@ -1668,6 +1668,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "the-bible"
+  ],
+  "language": "am",
+  "title": "መጽሐፍ ቅዱስ",
+  "description": "የመጽሐፍ ቅዱስ መጻሕፍት በOpen Word Bible፣ ከዕብራይስጥና ከግሪክኛ የተተረጎመና የሕዝብ ሀብት እንዲሆን በነጻ የተሰጠ አዲስ ትርጉም፣ ከዘፍጥረት እስከ ዮሐንስ ራእይ በቅደም ተከተላቸው። እያንዳንዱ መጽሐፍ ስለ አወቃቀሩና ስለ ትርጉሙ የሚናገር መግቢያ፣ እንዲሁም ቀጥሎ ምን ማንበብ እንደሚገባ የሚጠቁም ማጠቃለያ አለው።",
+  "created_at": "2026-11-26T00:00:00Z",
+  "updated_at": "2026-11-26T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "the-lamplighters-of-gloamhaven"
   ],
   "language": "am",

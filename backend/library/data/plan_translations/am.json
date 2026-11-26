@@ -264,5 +264,68 @@
   "note": [
    "The title quotes the shipped am edition faithful-with-little.am.json verbatim (በትንሽ ነገር ታማኝ), and the themes reuse its part and chapter titles, so the card and the book agree. Written with the translation (Ochorus Original, 2026-11)."
   ]
+ },
+ "john-in-21-days": {
+  "title": "የዮሐንስ ወንጌል በ21 ቀናት",
+  "description": "ከአራተኛው ወንጌል ጋር ሦስት ሳምንት በOpen Word Bible፣ በየቀኑ አንድ ምዕራፍ፦ ሥጋ የሆነው ቃል፣ ሰባቱ ምልክቶች፣ «እኔ … ነኝ» የሚሉት ቃላቱ፣ በላይኛው ክፍል የተነገረው ረጅሙ የስንብት ንግግር፣ የክብር ሰዓት የሆነው መስቀል፣ እንዲሁም በሐይቁ አጠገብ የቀረበው ቁርስ።",
+  "note": [
+   "Amharic Bible plan prose (Open Word Bible, build_owb_book --language am): book names as OWB Amharic names them (data/books.json), and the quotations (Psalm 1:1 and 150:6, Proverbs 1:7 and 31:10) are owb-am's words. Season names reuse the library's settled terms (messages/am.json liturgical_*: የምጽአት ወቅት, ዐቢይ ጾም, ሰሙነ ሕማማት), with የስቅለት ዓርብ, የትንሣኤ እሑድ and የገና ዋዜማ as the am books write them."
+  ]
+ },
+ "psalms-in-150-days": {
+  "title": "መዝሙረ ዳዊት በ150 ቀናት",
+  "description": "ለአምስት ወራት በየቀኑ አንድ መዝሙር በOpen Word Bible፣ በስንኝ በስንኝ ተቀምጦ፦ የመጽሐፍ ቅዱስ የራሱ የጸሎት መጽሐፍ፣ የውዳሴና የልቅሶ፣ የመታመንና የምስጋና፤ ከ«የተባረከ ነው» አንሥቶ እስከ «የሚተነፍስ ፍጥረት ሁሉ እግዚአብሔርን ያመስግን!» ድረስ።",
+  "note": [
+   "Amharic Bible plan prose (Open Word Bible, build_owb_book --language am): book names as OWB Amharic names them (data/books.json), and the quotations (Psalm 1:1 and 150:6, Proverbs 1:7 and 31:10) are owb-am's words. Season names reuse the library's settled terms (messages/am.json liturgical_*: የምጽአት ወቅት, ዐቢይ ጾም, ሰሙነ ሕማማት), with የስቅለት ዓርብ, የትንሣኤ እሑድ and የገና ዋዜማ as the am books write them."
+  ]
+ },
+ "proverbs-in-a-month": {
+  "title": "ምሳሌ በአንድ ወር",
+  "description": "ለወሩ ለእያንዳንዱ ቀን አንድ የምሳሌ ምዕራፍ በOpen Word Bible፦ ለዕለት ተዕለት ኑሮ የሚሆኑ ሠላሳ አንድ የጥበብ ምዕራፎች፣ የእውቀት መጀመሪያ ከሆነው እግዚአብሔርን መፍራት አንሥቶ እስከ ምግባረ መልካሟ ሚስት ድረስ።",
+  "note": [
+   "Amharic Bible plan prose (Open Word Bible, build_owb_book --language am): book names as OWB Amharic names them (data/books.json), and the quotations (Psalm 1:1 and 150:6, Proverbs 1:7 and 31:10) are owb-am's words. Season names reuse the library's settled terms (messages/am.json liturgical_*: የምጽአት ወቅት, ዐቢይ ጾም, ሰሙነ ሕማማት), with የስቅለት ዓርብ, የትንሣኤ እሑድ and የገና ዋዜማ as the am books write them."
+  ]
+ },
+ "advent-in-scripture": {
+  "title": "የምጽአት ወቅት በቅዱሳት መጻሕፍት",
+  "description": "ከዲሴምበር 1 እስከ የገና ዕለት (ዲሴምበር 25) ሃያ አምስት ቀናት፣ በOpen Word Bible በየቀኑ አንድ ምዕራፍ። መጀመሪያ ተስፋዎቹ ይመጣሉ፦ ራሱ የሚመታው እባብ፣ ለአብርሃም የተሰጠው በረከት፣ ከያዕቆብ የሚወጣው ኮከብ፣ የዳዊት የዘላለም ዙፋን፣ እንዲሁም ኢሳይያስ የተናገረላቸው ሕፃኑ፣ አገልጋዩና ብርሃኑ፣ ከኤርምያስ ቅርንጫፍ፣ ከሚክያስ ቤተ ልሔምና ከሚልክያስ መልእክተኛ ጋር። ከዚያም ሥጋ የሆነው ቃል፣ ገብርኤልና ማርያም፣ የዮሴፍ ሕልም፣ በገና ዋዜማ የሆነው ልደት፣ በገና ዕለትም ሰብአ ሰገል። በቀን ሦስት ደቂቃ ገደማ።",
+  "note": [
+   "Amharic Bible plan prose (Open Word Bible, build_owb_book --language am): book names as OWB Amharic names them (data/books.json), and the quotations (Psalm 1:1 and 150:6, Proverbs 1:7 and 31:10) are owb-am's words. Season names reuse the library's settled terms (messages/am.json liturgical_*: የምጽአት ወቅት, ዐቢይ ጾም, ሰሙነ ሕማማት), with የስቅለት ዓርብ, የትንሣኤ እሑድ and የገና ዋዜማ as the am books write them."
+  ]
+ },
+ "lent-the-road-to-the-cross": {
+  "title": "ዐቢይ ጾም፦ ወደ መስቀሉ የሚወስደው መንገድ",
+  "description": "ለዐቢይ ጾም አርባ ቀናት አርባ ንባቦች በOpen Word Bible። በአመድ ረቡዕ ይጀምሩ፤ ከሰኞ እስከ ቅዳሜ ያንብቡ፤ እሑዶች የዕረፍት ቀናት ናቸው፤ የስቅለት ዓርብና ቀዳም ሥዑርም የየራሳቸው ምዕራፍ አላቸው። በፍጹም ልብ ወደ እግዚአብሔር እንድንመለስ ከቀረበው ጥሪ አንሥቶ፣ በበጉ፣ በፋሲካውና መከራን በተቀበለው አገልጋይ በኩል፣ ኢየሱስ ፊቱን ወደ ኢየሩሳሌም እስካቀና ድረስ፤ ሕማማቱ በማቴዎስ፣ በማርቆስና በሉቃስ፤ መስቀሉ የፈጸመው ነገር በዕብራውያን፣ በሮሜ፣ በፊልጵስዩስና በጴጥሮስ፤ እንዲሁም ሰሙነ ሕማማት ቀን በቀን በዮሐንስ። በቀን አምስት ደቂቃ ገደማ።",
+  "note": [
+   "Amharic Bible plan prose (Open Word Bible, build_owb_book --language am): book names as OWB Amharic names them (data/books.json), and the quotations (Psalm 1:1 and 150:6, Proverbs 1:7 and 31:10) are owb-am's words. Season names reuse the library's settled terms (messages/am.json liturgical_*: የምጽአት ወቅት, ዐቢይ ጾም, ሰሙነ ሕማማት), with የስቅለት ዓርብ, የትንሣኤ እሑድ and የገና ዋዜማ as the am books write them."
+  ]
+ },
+ "easter-the-risen-lord": {
+  "title": "ትንሣኤ፦ ከሙታን የተነሣው ጌታ",
+  "description": "ከትንሣኤ እሑድ እስከ ቀጣዩ እሑድ ስምንት ቀናት፣ በOpen Word Bible በየቀኑ ስለ ትንሣኤ የሚናገር አንድ ምዕራፍ፦ ባዶው መቃብርና ማርያም በአትክልቱ ስፍራ፣ ወደ ኤማሁስ የሚወስደው መንገድ፣ ታላቁ ተልእኮ፣ በመቃብሩ ውስጥ የተቀመጠው ወጣት፣ በሐይቁ አጠገብ የቀረበው ቁርስ፣ ጳውሎስ ስለ ሙታን በኩራት የተናገረው፣ ወደ አዲስ ሕይወት የሚያስገባው ጥምቀት፣ እንዲሁም በመቅረዞቹ መካከል ያለው ሕያው። በቀን አራት ደቂቃ ገደማ።",
+  "note": [
+   "Amharic Bible plan prose (Open Word Bible, build_owb_book --language am): book names as OWB Amharic names them (data/books.json), and the quotations (Psalm 1:1 and 150:6, Proverbs 1:7 and 31:10) are owb-am's words. Season names reuse the library's settled terms (messages/am.json liturgical_*: የምጽአት ወቅት, ዐቢይ ጾም, ሰሙነ ሕማማት), with የስቅለት ዓርብ, የትንሣኤ እሑድ and የገና ዋዜማ as the am books write them."
+  ]
+ },
+ "the-story-of-the-bible": {
+  "title": "የመጽሐፍ ቅዱስ ታሪክ",
+  "description": "መጽሐፍ ቅዱስ በሙሉ በሚተርከው በአንዱ ታሪክ ውስጥ የሚያልፉበት ሁለት ወራት፣ በOpen Word Bible በየቀኑ አንድ ምዕራፍ ብቻ፦ ፍጥረትና ውድቀት፣ ለአብርሃም የተሰጠው ተስፋ፣ ፋሲካውና ባሕሩ፣ ሕጉና ምድሪቱ፣ ዳዊትና የንጉሥ ተስፋ፣ ነቢያቱ፣ ምርኮና ከምርኮ መመለስ፤ ከዚያም ኢየሱስ ሲወለድ፣ ሲያስተምር፣ ሲሰቀልና ከሙታን ሲነሣ፣ መንፈስ ቅዱስ በቤተ ክርስቲያን ላይ ሲፈስስ፣ እንዲሁም እግዚአብሔር ከሕዝቡ ጋር የሚኖርበት አዲሱ ፍጥረት። ስድሳ ቁልፍ ምዕራፎች፣ እያንዳንዳቸው አራት ደቂቃ ገደማ።",
+  "note": [
+   "Amharic Bible plan prose (Open Word Bible, build_owb_book --language am): book names as OWB Amharic names them (data/books.json), and the quotations (Psalm 1:1 and 150:6, Proverbs 1:7 and 31:10) are owb-am's words. Season names reuse the library's settled terms (messages/am.json liturgical_*: የምጽአት ወቅት, ዐቢይ ጾም, ሰሙነ ሕማማት), with የስቅለት ዓርብ, የትንሣኤ እሑድ and የገና ዋዜማ as the am books write them."
+  ]
+ },
+ "bible-in-a-year": {
+  "title": "መጽሐፍ ቅዱስ በአንድ ዓመት",
+  "description": "መጽሐፍ ቅዱስ በሙሉ በOpen Word Bible፣ ከዘፍጥረት እስከ ዮሐንስ ራእይ በቅደም ተከተል፦ ሁሉም 1,189 ምዕራፎች በ365 ቀናት። አብዛኞቹ ቀናት ከሁለት እስከ አራት ምዕራፎች ናቸው፤ ይህም አሥር ደቂቃ ገደማ ነው። እያንዳንዱ ቀን ተመሳሳይ ርዝመት እንዲኖረውና በአንድ መጽሐፍ ውስጥ እንዲቆይ ተደርጎ ተከፋፍሏል፤ መዝሙራቱ በአንድ ጊዜ በርከት ብለው ይመጣሉ፤ በጣም አጫጭሮቹ መልእክቶችም የራሳቸው ቀን አላቸው። በሕጉና በታሪኩ፣ በባለ ቅኔዎቹና በነቢያቱ፣ በወንጌላቱ፣ በመልእክቶቹና በአዲሱ ፍጥረት ውስጥ ያልፋል።",
+  "note": [
+   "Amharic Bible plan prose (Open Word Bible, build_owb_book --language am): book names as OWB Amharic names them (data/books.json), and the quotations (Psalm 1:1 and 150:6, Proverbs 1:7 and 31:10) are owb-am's words. Season names reuse the library's settled terms (messages/am.json liturgical_*: የምጽአት ወቅት, ዐቢይ ጾም, ሰሙነ ሕማማት), with የስቅለት ዓርብ, የትንሣኤ እሑድ and የገና ዋዜማ as the am books write them."
+  ]
+ },
+ "new-testament-in-90-days": {
+  "title": "አዲስ ኪዳን በ90 ቀናት",
+  "description": "አዲስ ኪዳን በሙሉ በOpen Word Bible፣ ከማቴዎስ እስከ ዮሐንስ ራእይ በቅደም ተከተል፦ ሁሉም 260 ምዕራፎች በ90 ቀናት። አብዛኞቹ ቀናት ከሁለት እስከ አራት ምዕራፎች ናቸው፤ ይህም አሥር ደቂቃ ገደማ ነው። እያንዳንዱ ቀን ተመሳሳይ ርዝመት እንዲኖረውና በአንድ መጽሐፍ ውስጥ እንዲቆይ ተደርጎ ተከፋፍሏል፤ በጣም አጫጭሮቹ መልእክቶችም የራሳቸው ቀን አላቸው። በአራቱ ወንጌላት፣ በሐዋርያት ሥራ ውስጥ ባሉት የቤተ ክርስቲያን የመጀመሪያ ቀናት፣ በጳውሎስና በሌሎቹ ሐዋርያት መልእክቶች፣ እንዲሁም በአዲሱ ሰማይና በአዲሲቱ ምድር ውስጥ ያልፋል።",
+  "note": [
+   "Amharic Bible plan prose (Open Word Bible, build_owb_book --language am): book names as OWB Amharic names them (data/books.json), and the quotations (Psalm 1:1 and 150:6, Proverbs 1:7 and 31:10) are owb-am's words. Season names reuse the library's settled terms (messages/am.json liturgical_*: የምጽአት ወቅት, ዐቢይ ጾም, ሰሙነ ሕማማት), with የስቅለት ዓርብ, የትንሣኤ እሑድ and የገና ዋዜማ as the am books write them."
+  ]
  }
 }

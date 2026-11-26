@@ -46,7 +46,7 @@ FIELDS = ("author", "date", "key_verse", "theme")
 OPEN, CLOSE = "“", "”"
 
 #: The languages whose OWB sets « » outside (as ``build_owb_book`` does).
-GUILLEMETS = frozenset({"es", "fr", "ru"})
+GUILLEMETS = frozenset({"am", "es", "fr", "ru"})
 
 WORDS = Path(__file__).resolve().parent / "data" / "bible"
 
