@@ -1240,6 +1240,7 @@
   "quotes_topics_empty": "لا توجد مواضيع هنا بعد.",
   "quotes_by_topic_crumb": "حسب الموضوع",
   "quotes_topic_h1": "اقتباسات عن %phrase%",
+  "quotes_topic_shelves": "كتب وعظات في هذا الموضوع",
   "quotes_topic_count_one": "%count% اقتباس من %writers% كُتّاب، كلٌّ منها مُتتبَّع إلى الفقرة المحددة التي جاء منها.",
   "quotes_topic_count_many": "%count% اقتباسات من %writers% كُتّاب، كلٌّ منها مُتتبَّع إلى الفقرة المحددة التي جاء منها.",
   "quotes_jump_to_writer": "الانتقال إلى كاتب",

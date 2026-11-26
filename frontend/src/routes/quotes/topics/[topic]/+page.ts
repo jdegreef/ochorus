@@ -1,4 +1,5 @@
-import { getQuoteTopicPage, listQuoteTopics } from '$lib/library-public';
+import { getQuoteTopicPage, listQuoteTopics, listTopics } from '$lib/library-public';
+import { topicsForTheme } from '$lib/topicQuotes';
 import { orNotFound } from '$lib/loadHelpers';
 import type { EntryGenerator, PageLoad } from './$types';
 
@@ -16,6 +17,15 @@ export const entries: EntryGenerator = async () => {
 	}
 };
 
-export const load: PageLoad = async ({ params, fetch }) => ({
-	page: await orNotFound(() => getQuoteTopicPage(params.topic, fetch))
-});
+export const load: PageLoad = async ({ params, fetch }) => {
+	// The book-and-sermon shelves that read as this theme ($lib/topicQuotes),
+	// for the way back to the works. Global fetch, so the shelf list is not
+	// inlined; a failure just drops the links.
+	const [page, shelves] = await Promise.all([
+		orNotFound(() => getQuoteTopicPage(params.topic, fetch)),
+		listTopics('en')
+			.then((all) => topicsForTheme(params.topic, all).map(({ slug, title }) => ({ slug, title })))
+			.catch(() => [])
+	]);
+	return { page, shelves };
+};

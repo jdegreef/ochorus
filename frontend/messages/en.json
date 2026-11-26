@@ -1240,6 +1240,7 @@
   "quotes_topics_empty": "No topics here yet.",
   "quotes_by_topic_crumb": "By topic",
   "quotes_topic_h1": "Quotes on %phrase%",
+  "quotes_topic_shelves": "Books and sermons on this theme",
   "quotes_topic_count_one": "%count% quotation from %writers% writers, each traced to the exact paragraph it comes from.",
   "quotes_topic_count_many": "%count% quotations from %writers% writers, each traced to the exact paragraph it comes from.",
   "quotes_jump_to_writer": "Jump to a writer",

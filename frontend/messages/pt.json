@@ -1240,6 +1240,7 @@
   "quotes_topics_empty": "Ainda não há temas aqui.",
   "quotes_by_topic_crumb": "Por tema",
   "quotes_topic_h1": "Citações sobre %phrase%",
+  "quotes_topic_shelves": "Livros e sermões sobre este tema",
   "quotes_topic_count_one": "%count% citação de %writers% escritores, cada uma rastreada até o parágrafo exato de onde vem.",
   "quotes_topic_count_many": "%count% citações de %writers% escritores, cada uma rastreada até o parágrafo exato de onde vem.",
   "quotes_jump_to_writer": "Ir para um escritor",

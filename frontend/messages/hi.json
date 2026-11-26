@@ -1240,6 +1240,7 @@
   "quotes_topics_empty": "यहाँ अभी कोई विषय नहीं।",
   "quotes_by_topic_crumb": "विषय के अनुसार",
   "quotes_topic_h1": "%phrase% पर उद्धरण",
+  "quotes_topic_shelves": "इस विषय पर पुस्तकें और उपदेश",
   "quotes_topic_count_one": "%writers% लेखकों से %count% उद्धरण, हर एक उस सटीक अनुच्छेद तक खोजा गया जहाँ से वह आता है।",
   "quotes_topic_count_many": "%writers% लेखकों से %count% उद्धरण, हर एक उस सटीक अनुच्छेद तक खोजा गया जहाँ से वह आता है।",
   "quotes_jump_to_writer": "किसी लेखक पर जाएँ",

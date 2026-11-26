@@ -1240,6 +1240,7 @@
   "quotes_topics_empty": "아직 주제가 없습니다.",
   "quotes_by_topic_crumb": "주제별",
   "quotes_topic_h1": "%phrase%에 관한 명언",
+  "quotes_topic_shelves": "이 주제에 관한 책과 설교",
   "quotes_topic_count_one": "저자 %writers%명의 명언 %count%개를 각각 그 문장이 나온 단락까지 정확히 밝혔습니다.",
   "quotes_topic_count_many": "저자 %writers%명의 명언 %count%개를 각각 그 문장이 나온 단락까지 정확히 밝혔습니다.",
   "quotes_jump_to_writer": "저자로 이동",

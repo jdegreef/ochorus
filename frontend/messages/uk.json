@@ -1240,6 +1240,7 @@
   "quotes_topics_empty": "Тут поки немає тем.",
   "quotes_by_topic_crumb": "За темою",
   "quotes_topic_h1": "Цитати про %phrase%",
+  "quotes_topic_shelves": "Книги та проповіді на цю тему",
   "quotes_topic_count_one": "%count% цитата від %writers% письменників, кожну простежено до точного абзацу, звідки вона походить.",
   "quotes_topic_count_many": "%count% цитат від %writers% письменників, кожну простежено до точного абзацу, звідки вона походить.",
   "quotes_jump_to_writer": "Перейти до письменника",
