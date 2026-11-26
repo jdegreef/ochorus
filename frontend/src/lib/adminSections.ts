@@ -15,6 +15,8 @@ export interface AdminSection {
 	group: AdminGroup;
 	exact?: boolean;
 	capability?: string;
+	/** How far up the verb ladder `capability` must go (default `view`). */
+	verb?: string;
 	superOnly?: boolean;
 	anyAccess?: boolean;
 }
@@ -42,11 +44,11 @@ export const ADMIN_SECTIONS: AdminSection[] = [
 	{ href: '/admin/articles', label: 'Articles', group: 'Library', capability: 'reporting' },
 	{ href: '/admin/quotes', label: 'Quotes', group: 'Library', capability: 'reporting' },
 	{ href: '/admin/series', label: 'Series', group: 'Library', capability: 'reporting' },
-	// Undelegated, super-admin-only levers (a founder decision, 2026-09-21):
-	// document import and the reader-email broadcast section. Language admins do
-	// content QA in their languages, not raw ingestion or outbound email — the
-	// backend gates these on IsAdminEmail too, so hiding the nav only tidies UX.
-	{ href: '/admin/import', label: 'Import document', group: 'Library', superOnly: true },
+	// Document import and the Emails section are above a language admin (a
+	// founder decision, 2026-09-21): they do content QA in their languages, not
+	// raw ingestion or outbound email. Import takes publish:approve and email the
+	// email capability — held by super admins and the Content admin role.
+	{ href: '/admin/import', label: 'Import document', group: 'Library', capability: 'publish', verb: 'approve' },
 
 	{ href: '/admin/review', label: 'Review queue', group: 'Quality', capability: 'review' },
 	{ href: '/admin/audit', label: 'Content audit', group: 'Quality', capability: 'audit' },
@@ -57,11 +59,11 @@ export const ADMIN_SECTIONS: AdminSection[] = [
 	{ href: '/admin/search', label: 'Search', group: 'Audience', capability: 'reporting' },
 	{ href: '/admin/users', label: 'Users', group: 'Audience', capability: 'users' },
 
-	{ href: '/admin/emails', label: 'Emails', group: 'Outreach', superOnly: true, exact: true },
-	{ href: '/admin/emails/compose', label: 'Compose email', group: 'Outreach', superOnly: true },
-	{ href: '/admin/emails/automations', label: 'Automated emails', group: 'Outreach', superOnly: true },
+	{ href: '/admin/emails', label: 'Emails', group: 'Outreach', capability: 'email', exact: true },
+	{ href: '/admin/emails/compose', label: 'Compose email', group: 'Outreach', capability: 'email', verb: 'act' },
+	{ href: '/admin/emails/automations', label: 'Automated emails', group: 'Outreach', capability: 'email' },
 	// The day's post for the WhatsApp channel: outbound, like the emails.
-	{ href: '/admin/whatsapp', label: 'WhatsApp post', group: 'Outreach', superOnly: true },
+	{ href: '/admin/whatsapp', label: 'WhatsApp post', group: 'Outreach', capability: 'email' },
 
 	// Managing access is undelegated — super admins only (auth.isAdmin is the
 	// super-admin flag; a scoped grantee is not is_admin).
@@ -75,7 +77,7 @@ export const ADMIN_SECTIONS: AdminSection[] = [
 export interface SectionViewer {
 	isAdmin: boolean;
 	hasAdminAccess: boolean;
-	can(capability: string): boolean;
+	can(capability: string, verb?: string): boolean;
 }
 
 /**
@@ -88,7 +90,7 @@ export const opensSection = (section: AdminSection, viewer: SectionViewer): bool
 		? viewer.hasAdminAccess
 		: section.superOnly
 			? viewer.isAdmin
-			: viewer.can(section.capability!);
+			: viewer.can(section.capability!, section.verb);
 
 /** What opening `section` needs, in words — the same ladder as `opensSection`. */
 export const sectionRequirement = (
@@ -98,5 +100,9 @@ export const sectionRequirement = (
 	section.superOnly
 		? 'Super admin only'
 		: section.capability && !section.anyAccess
-			? `Needs ${capabilityLabel(section.capability)}`
+			? `Needs ${capabilityLabel(section.capability)}${
+					section.verb && section.verb !== 'view'
+						? ` · ${section.verb[0].toUpperCase()}${section.verb.slice(1)}`
+						: ''
+				}`
 			: 'Needs any admin access';

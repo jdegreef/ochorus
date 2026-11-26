@@ -158,7 +158,7 @@
 	// Revealing is super-admin-only: for a language admin the backend already sends
 	// every address masked (see analytics.mask_email), so there is nothing to
 	// reveal — the toggle and per-row buttons are hidden and the cell is static.
-	const canReveal = $derived(auth.isAdmin);
+	const canReveal = $derived(auth.canRevealPii);
 	let showAllEmails = $state(false);
 	let revealedRows = $state<Record<number, boolean>>({});
 	const emailShown = (i: number) => canReveal && (showAllEmails || revealedRows[i] === true);

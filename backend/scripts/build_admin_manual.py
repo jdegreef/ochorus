@@ -39,8 +39,8 @@ ASSETS = ROOT / "library" / "assets"
 SHOTS = ASSETS / "manual" / "admin"
 OUT = ASSETS / "admin-manual.pdf"
 
-VERSION = "2.0"
-UPDATED = "October 2026"
+VERSION = "2.1"
+UPDATED = "November 2026"
 
 CSS = (
     BASE_CSS.replace(
@@ -272,9 +272,10 @@ with the access it needs.</p>
   <li><strong>Reader feedback.</strong> A triage queue for suggestions sent from the reader,
     including highlighted-text corrections, with a one-click route into the content-edit queue
     (Chapter 16).</li>
-  <li><strong>Super-admin-only levers.</strong> Importing documents, queuing translations, email and
-    team management are now reserved for super admins (a founder decision, 21 September). Language
-    admins do reader-facing content QA in their languages.</li>
+  <li><strong>Levers above a language admin.</strong> Importing documents, queuing translations and
+    email are reserved for super admins and, since November (version 2.1), the new
+    <strong>Content admin</strong> role. Team management stays with super admins alone. Language
+    admins do reader-facing content QA in their languages (a founder decision, 21 September).</li>
   <li><strong>A richer review queue</strong> — lanes, per-verse checks, mechanical checks, bulk
     approval of the clean lane, and an approve button that waits until you have scrolled to the end
     (Chapter 14).</li>
@@ -367,6 +368,11 @@ languages — provisionally, until an approver confirms (Chapter 14).</td></tr>
 <tr><td>Language admin</td><td>Runs their languages: publishes and unpublishes editions, confirms
 reviews, triages feedback, accepts audit findings, files fixes. Sees a language's readiness but
 cannot change its bar, its settings, or take it live. No user data, no email.</td></tr>
+<tr><td>Content admin</td><td>Runs the whole library and outreach, usually in every language:
+everything a language admin can, plus importing documents, queuing translations, adding languages and
+editing their settings and bar, the whole Emails section including sending, and user analytics with
+readers' emails in the clear. Cannot grant access, take a language live, or delete a reader's
+account.</td></tr>
 <tr><td>Super admin</td><td>Everything, in every language — including importing, queuing
 translations, email, user analytics, granting access and taking a language live.</td></tr></table>
 {callout("indigo", "Language scope", "Every grant below super admin names its languages (or “all languages, including ones added later”). A reviewer for Swahili sees only Swahili in their queues and has no reach into Spanish unless separately granted. Reader feedback with no language goes to super admins only.")}
@@ -382,14 +388,15 @@ translations, email, user analytics, granting access and taking a language live.
 holds any access. Everything hangs off a single left-hand rail.</p>
 <h3>The navigation rail</h3>
 <p>The rail is capability-aware: it lists only what your access opens. Its heading reads
-<em>Admin</em> for a super admin and <em>Language Admin</em> for everyone else. In order:</p>
+<em>Admin</em> for a super admin, <em>Content Admin</em> for a content admin and <em>Language Admin</em>
+for everyone else. In order:</p>
 <table><tr><th>Section</th><th>Needs</th></tr>
 <tr><td>Dashboard · Coverage matrix · Language health · Activity · Engagement · Search</td><td>Reporting</td></tr>
-<tr><td>Import document</td><td>Super admin</td></tr>
+<tr><td>Import document</td><td>Publishing · Approve (super and content admins)</td></tr>
 <tr><td>Review queue</td><td>Content review</td></tr>
 <tr><td>Feedback</td><td>Reader feedback</td></tr>
 <tr><td>Content audit</td><td>Content audit</td></tr>
-<tr><td>Emails · Compose email</td><td>Super admin</td></tr>
+<tr><td>Emails · Compose email · Automated emails · WhatsApp post</td><td>Email (super and content admins)</td></tr>
 <tr><td>Users</td><td>User analytics</td></tr>
 <tr><td>Team &amp; access</td><td>Super admin</td></tr>
 <tr><td>Help &amp; roles</td><td>Any admin access</td></tr></table>
@@ -488,11 +495,11 @@ completeness, group by type, author or series, choose which languages show, comp
 link to the current view, and <strong>Download CSV</strong> of it.</p>
 <h3>Translate next, and queuing</h3>
 <p>The <strong>Translate next</strong> panel ranks open gaps by readers × failed searches, each with a
-<strong>Queue</strong> button. Super admins can also click an empty cell to queue it, use
+<strong>Queue</strong> button. Super admins and content admins can also click an empty cell to queue it, use
 <strong>+N</strong> on a row or column to queue all its gaps, or ⇧-click / ⌘-click to select a range
 and <strong>Queue N</strong>. A bulk queue confirms first and shows progress you can stop.</p>
 {callout("indigo", "Out-of-date translations (↻)", "When an English text moves on, its translations are marked ↻. If you have checked that the translation still matches — the change was a typo fix, say — <strong>mark still current</strong> re-baselines it and clears the mark (needs Review · Act in that language).")}
-{access("viewing, <strong>Reporting · View</strong>; queuing, super admin only.")}
+{access("viewing, <strong>Reporting · View</strong>; queuing, <strong>Translation queue · Approve</strong> (super and content admins).")}
 """,
             new=False,
         ),
@@ -540,7 +547,7 @@ parsed, previewed, edited, then published.</p>
   <li><strong>Publish book</strong> / <strong>Publish sermon</strong> — or <strong>Start over</strong>.</li>
 </ol>
 {callout("stop", "Publishing here is immediate", "Unlike most prose changes, an import creates a live, public-domain edition at once and triggers a rebuild. Confirm the work is genuinely public domain and the source is clean first — the parser structures what you give it but cannot rescue a poor scan. Titles on the copyright blocklist are imported unpublished.")}
-{access("super admin only (adding an author is logged as <em>Author created</em>).")}
+{access("<strong>Publishing · Approve</strong> — super and content admins (adding an author is logged as <em>Author created</em>).")}
 """,
         ),
         ch(
@@ -742,7 +749,7 @@ results nobody clicked, each with <strong>Pin a result…</strong>.</p>
 <h3>Answering an unanswered search</h3>
 <table><tr><th>Action</th><th>Effect</th></tr>
 <tr><td>Elsewhere?</td><td>Checks other languages for a match and offers <strong>Queue
-&lt;Language&gt;</strong> to file the translation (super admin).</td></tr>
+&lt;Language&gt;</strong> to file the translation (super or content admin).</td></tr>
 <tr><td>Synonym…</td><td>Maps the query to a word that does match — preview, then save. Immediate.</td></tr>
 <tr><td>Pin a result…</td><td>Puts the right work at the top for that query. Immediate.</td></tr>
 <tr><td>Wanted · Out of scope</td><td>Records the decision so the query leaves the open list.</td></tr></table>
@@ -826,12 +833,12 @@ interface catalogue. Once live, <strong>Has it shipped?</strong> checks the live
   <li><strong>Readers are asking for</strong> — the top works people read in another language or
     searched for here and didn't find.</li>
   <li><strong>Next to work on</strong>, per type, with <strong>Translate</strong> and <strong>Queue all
-    N</strong> buttons (super admin); a queued item becomes a link to its job.</li>
+    N</strong> buttons (super or content admin); a queued item becomes a link to its job.</li>
   <li><strong>Translation settings</strong> — Bible code, credit line, names, direction and glossary.
     Languages defined in the project's code are read-only here.</li>
 </ul>
 {callout("indigo", "The Bible check makes a live call", "Readiness verifies scripture against an external service, so it can take a moment. If that service is unreachable the check reports unknown rather than failing.")}
-{access("readiness, <strong>Language admin · View</strong>; the bar and settings, <strong>Act</strong>; going live, <strong>Approve</strong>. Language admins hold only View, so these stay with the super admin.")}
+{access("readiness, <strong>Language admin · View</strong>; the bar and settings, <strong>Act</strong>; going live, <strong>Approve</strong>. Language admins hold only View; content admins hold Act, so going live stays with the super admin.")}
 """,
         ),
         ch(
@@ -857,7 +864,7 @@ coverage matrix with honest zeros. Then:</p>
   <li><strong>Tune the bar</strong> and watch the checks clear (Chapter 20).</li>
   <li><strong>Go live.</strong></li>
 </ol>
-{access("<strong>Language admin · Act</strong> — in practice, a super admin.")}
+{access("<strong>Language admin · Act</strong> — super and content admins.")}
 """,
         ),
         ch(
@@ -884,8 +891,8 @@ bookmarks and a recent-activity timeline. It is read-only, except for email.</p>
 optional button — and sends it immediately in the standard layout with the unsubscribe footer. It is
 blocked for readers who bounced, complained or unsubscribed from everything. The panel lists the last
 50 emails they were sent and how each landed.</p>
-{callout("stop", "Personal data — handle with care", "This section shows identifiable people, which is why it has its own capability. Emails are masked on screen until you choose <em>Reveal emails</em>; anyone other than a super admin receives them masked by the server, cannot search by email, and gets a masked export. Grant it only to those who need it.")}
-{access("<strong>User analytics · View</strong>; email, super admin only.")}
+{callout("stop", "Personal data — handle with care", "This section shows identifiable people, which is why it has its own capability. Emails are masked on screen until you choose <em>Reveal emails</em>; anyone other than a super admin or content admin (<strong>User analytics · Approve</strong>) receives them masked by the server, cannot search by email, and gets a masked export. Grant it only to those who need it.")}
+{access("<strong>User analytics · View</strong>; emails in the clear, <strong>Approve</strong>; the email panel, <strong>Email</strong>; deleting an account, super admin only.")}
 """,
         ),
         ch(
@@ -905,7 +912,7 @@ individual recipients.</p>
 </ul>
 <p>Test sends are excluded. Open and click rates are over delivered mail; bounce and complaint rates
 over sent.</p>
-{access("super admin only.")}
+{access("<strong>Email · View</strong> — super and content admins.")}
 """,
             new=True,
         ),
@@ -945,7 +952,7 @@ written, no test sent, a changed source, sending switched off, and poor sender h
     sending</strong>. Once sending starts, the content and audience are locked.</li>
 </ul>
 {callout("stop", "The guardrail", "After 100 sends, a broadcast pauses itself if complaints pass 0.3% or bounces pass 5%. Resuming asks you to confirm and turns the guardrail off for that broadcast — read the numbers first.")}
-{access("super admin only. Every create, edit, test, schedule, send, pause and cancel is in the activity log.")}
+{access("drafting and editing, <strong>Email · Act</strong>; testing, scheduling, sending and switching an automation live, <strong>Approve</strong> — super and content admins. Every create, edit, test, schedule, send, pause and cancel is in the activity log.")}
 """,
             new=True,
         ),
@@ -982,7 +989,7 @@ access. It is the only place grants are managed.</p>
 <ol class="steps">
   <li><strong>Enter the person's email.</strong> Access is tied to it; it works once they sign in with
     that email verified.</li>
-  <li><strong>Choose a role</strong> — Contributor, Reviewer or Language admin. <em>Compare roles</em>
+  <li><strong>Choose a role</strong> — Contributor, Reviewer, Language admin or Content admin. <em>Compare roles</em>
     opens the table on the Help page.</li>
   <li><strong>Choose the languages</strong> — at least one, or <em>All languages, including ones added
     later</em>.</li>
@@ -1032,30 +1039,32 @@ most usefully — of the viewer's own access. Anyone with admin access can open 
 <h3>Capabilities</h3>
 <table><tr><th>Capability</th><th>Governs</th></tr>
 <tr><td>Reporting &amp; analytics</td><td>Dashboard, coverage, language health, engagement, search statistics, activity.</td></tr>
-<tr><td>User analytics (PII)</td><td>The Users directory and reader pages.</td></tr>
+<tr><td>User analytics (PII)</td><td>The Users directory and reader pages (view, emails masked); emails in the clear (approve).</td></tr>
 <tr><td>Content audit &amp; quality</td><td>The audit report; accepting findings.</td></tr>
 <tr><td>Content review</td><td>The review queue; marking a translation still current.</td></tr>
-<tr><td>Publishing &amp; imports</td><td>The publish toggles.</td></tr>
-<tr><td>Translation queue</td><td>Search triage (queuing itself is super-admin only).</td></tr>
+<tr><td>Publishing &amp; imports</td><td>The publish toggles (act); document import and the full Admin Manual (approve).</td></tr>
+<tr><td>Translation queue</td><td>Search triage (suggest/act); queuing translation work (approve).</td></tr>
 <tr><td>Content-edit queue</td><td>Title, text, audit and biography fixes.</td></tr>
 <tr><td>Author records</td><td>Creating authors.</td></tr>
 <tr><td>Language administration</td><td>Readiness (view), the bar and settings (act), go-live (approve).</td></tr>
-<tr><td>Email campaigns</td><td>Reserved — email is super-admin only.</td></tr>
+<tr><td>Email campaigns</td><td>The Emails section: reading (view), drafting and editing (act), sending, testing and switching automations live (approve).</td></tr>
 <tr><td>Reader feedback queue</td><td>Reading (view) and triaging (act) feedback.</td></tr></table>
 <h3>Roles as bundles</h3>
-<table><tr><th>Area</th><th>Contributor</th><th>Reviewer</th><th>Language admin</th></tr>
-<tr><td>Reporting</td><td>View</td><td>View</td><td>View</td></tr>
-<tr><td>Content audit</td><td>View</td><td>View</td><td>Act</td></tr>
-<tr><td>Content review</td><td>View</td><td>Act</td><td>Approve</td></tr>
-<tr><td>Translation queue</td><td>Suggest</td><td>Suggest</td><td>Act</td></tr>
-<tr><td>Content-edit queue</td><td>Suggest</td><td>Suggest</td><td>Act</td></tr>
-<tr><td>Publishing</td><td>—</td><td>—</td><td>Act</td></tr>
-<tr><td>Author records</td><td>—</td><td>—</td><td>Act</td></tr>
-<tr><td>Reader feedback</td><td>—</td><td>—</td><td>Act</td></tr>
-<tr><td>Language administration</td><td>—</td><td>—</td><td>View</td></tr>
-<tr><td>User analytics · Email</td><td>—</td><td>—</td><td>—</td></tr></table>
+<table><tr><th>Area</th><th>Contributor</th><th>Reviewer</th><th>Language admin</th><th>Content admin</th></tr>
+<tr><td>Reporting</td><td>View</td><td>View</td><td>View</td><td>View</td></tr>
+<tr><td>Content audit</td><td>View</td><td>View</td><td>Act</td><td>Act</td></tr>
+<tr><td>Content review</td><td>View</td><td>Act</td><td>Approve</td><td>Approve</td></tr>
+<tr><td>Translation queue</td><td>Suggest</td><td>Suggest</td><td>Act</td><td>Approve</td></tr>
+<tr><td>Content-edit queue</td><td>Suggest</td><td>Suggest</td><td>Act</td><td>Act</td></tr>
+<tr><td>Publishing</td><td>—</td><td>—</td><td>Act</td><td>Approve</td></tr>
+<tr><td>Author records</td><td>—</td><td>—</td><td>Act</td><td>Act</td></tr>
+<tr><td>Reader feedback</td><td>—</td><td>—</td><td>Act</td><td>Act</td></tr>
+<tr><td>Language administration</td><td>—</td><td>—</td><td>View</td><td>Act</td></tr>
+<tr><td>User analytics</td><td>—</td><td>—</td><td>—</td><td>Approve</td></tr>
+<tr><td>Email</td><td>—</td><td>—</td><td>—</td><td>Approve</td></tr></table>
 <p>A super admin holds every capability at Approve, in every language, plus the super-admin-only
-levers: importing, queuing translations, email, and Team &amp; access.</p>
+levers: Team &amp; access and deleting a reader's account. Taking a language live (Language
+administration · Approve) is held by no role.</p>
 """,
         ),
         app(

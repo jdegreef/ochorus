@@ -18,7 +18,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import is_admin_user, requires
+from accounts.permissions import requires, reveals_pii
 
 from ..views import _language_entry
 from .analytics import _profile_summary, mask_email
@@ -48,12 +48,13 @@ class AdminUserDirectoryView(APIView):
 
 
     def get(self, request):
-        # Reader emails are PII: only a super admin sees them in the clear; a
-        # scoped USERS grantee (a language admin) gets them masked at the source.
+        # Reader emails are PII: only a super admin or a users:approve grantee (a
+        # Content admin) sees them in the clear; a users:view grantee gets them
+        # masked at the source.
         # Computed first because `_queryset` also uses it — a non-super caller must
         # not be able to search or sort on the cleartext column (an oracle that
         # would defeat the display masking), so the email filter/sort is theirs only.
-        reveal = is_admin_user(request.user, request)
+        reveal = reveals_pii(request)
         qs, sort, q = self._queryset(request, reveal=reveal)
 
         # ``?fmt=csv`` downloads every matching row (the whole filtered/sorted

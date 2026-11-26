@@ -290,7 +290,7 @@
 	// Queueing translation work is super-admin-only: a language admin sees this
 	// language's todo lists and any jobs already queued, but files none itself. UX
 	// only — the POST is gated server-side (admin_views/jobs.py).
-	const canQueue = $derived(auth.isAdmin);
+	const canQueue = $derived(auth.canQueueTranslations);
 
 	async function queueBulk(type: TranslationJobType, rows: { slug: string }[]) {
 		const pending = rows.filter((r) => !jobFor(type, r.slug));

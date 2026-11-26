@@ -33,7 +33,7 @@
 	// Queueing translation work is super-admin-only: a language admin reads the
 	// matrix (state + what's already queued) but never files jobs from it. UX only
 	// — the POST is gated server-side too (see admin_views/jobs.py).
-	const canQueue = $derived(auth.isAdmin);
+	const canQueue = $derived(auth.canQueueTranslations);
 
 	// A kind is one content type (one key of the API's payload); a tab is a kind,
 	// or "all" — every kind's works in one matrix.

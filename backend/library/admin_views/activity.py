@@ -18,7 +18,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import is_admin_user, requires
+from accounts.permissions import requires, reveals_pii
 
 from .. import job_status
 from ..models import AdminAction, Article, Author, Book, Plan, Sermon
@@ -272,7 +272,7 @@ class AdminActivityView(APIView):
         export = params.get("export") == "1"
         jobs = _Jobs()
 
-        reveal = is_admin_user(request.user, request)
+        reveal = reveals_pii(request)
         scope = AdminAction.objects.all()
         if target:
             # A person's history is keyed by their email; letting a non-super

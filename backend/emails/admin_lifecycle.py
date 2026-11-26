@@ -1,7 +1,8 @@
 """Admin API for editing the automated emails (emails/lifecycle_copy.py): the
 onboarding drip, the series nudge, milestones and plan reminders.
 
-Super-admin-only like the rest of the Emails section. Saving changes only the
+Gated on the ``email`` capability like the rest of the Emails section
+(super admins and the Content admin role hold it). Saving changes only the
 working copy; Publish is what readers see; Reset goes back to the code's words.
 AI drafts of a language go through the same translation queue as broadcasts.
 """
@@ -13,7 +14,8 @@ from rest_framework import status as http_status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.permissions import IsAdminEmail
+from accounts.models import AdminCapability, AdminVerb
+from accounts.permissions import requires
 from library.audit import AdminAudited, AdminNotAudited, actor_email
 from library.languages import entry as language_entry
 from library.models import AdminAction
@@ -59,10 +61,10 @@ def _get_step(key: str):
     return lc.row(key)
 
 
+@requires(AdminCapability.EMAIL, verbs={"GET": AdminVerb.VIEW})
 class AdminLifecycleListView(AdminNotAudited, APIView):
     """Every editable automated email, with where its languages stand."""
 
-    permission_classes = [IsAdminEmail]
     audit_exempt = "Read-only list."
 
     def get(self, request):
@@ -86,11 +88,11 @@ class AdminLifecycleListView(AdminNotAudited, APIView):
         return Response({"steps": rows})
 
 
+@requires(AdminCapability.EMAIL, verbs={"GET": AdminVerb.VIEW, "PATCH": AdminVerb.ACT})
 class AdminLifecycleDetailView(AdminAudited, APIView):
     """``GET`` one email's working copy, statuses and history; ``PATCH
     {"subject", "content"}`` saves the working copy (readers see nothing yet)."""
 
-    permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.EMAIL_LIFECYCLE_EDIT
 
     def audit_entry(self, request, response):
@@ -112,14 +114,13 @@ class AdminLifecycleDetailView(AdminAudited, APIView):
         return Response(_detail(copy))
 
 
+@requires(AdminCapability.EMAIL, verbs={"POST": AdminVerb.APPROVE})
 class AdminLifecycleActionView(AdminAudited, APIView):
     """Act on one automated email: ``publish`` (``languages``: the ones to
     publish, or every edited one), ``reset`` (``language``, or all), ``restore``
     (``version``), or an AI draft — ``request`` / ``fetch`` / ``approve``
     (``language``) and ``request_stale`` (every language left behind by an
     English change)."""
-
-    permission_classes = [IsAdminEmail]
 
     _AUDIT = {
         "publish": AdminAction.Action.EMAIL_LIFECYCLE_PUBLISH,

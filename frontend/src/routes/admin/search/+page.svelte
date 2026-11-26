@@ -779,7 +779,7 @@
 																			title={queued[qk]}
 																			onclick={() => queueWork(lang.code, w, q.query)}>Retry</button
 																		>
-																	{:else if auth.isAdmin}
+																	{:else if auth.canQueueTranslations}
 																		<button
 																			class="btn btn-sm btn-ghost shrink-0"
 																			disabled={queued[qk] === 'busy'}

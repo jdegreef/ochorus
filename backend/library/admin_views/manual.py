@@ -2,9 +2,9 @@
 
 Two handbooks, two audiences:
 
-* :class:`AdminManualView` — the whole-console operators' manual, gated by
-  ``IsAdminEmail`` (the ``ADMIN_EMAILS`` super-admin allowlist) — deliberately NOT
-  ``RequireCapability``, which would let a scoped grantee read it.
+* :class:`AdminManualView` — the whole-console operators' manual, gated on
+  ``publish:approve``: super admins and the Content admin role, never a language
+  admin (who holds ``publish:act``) or anyone below.
 * :class:`AdminLanguageManualView` — the handbook written *for* language admins
   (any non-super admin), so it is gated on the ``REPORTING/view`` capability every
   admin role preset holds (a super admin passes ``RequireCapability`` outright).
@@ -22,7 +22,7 @@ from django.http import FileResponse, Http404
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import IsAdminEmail, requires
+from accounts.permissions import requires
 
 # backend/library/assets/*.pdf (this module is backend/library/admin_views/).
 _ASSETS = Path(__file__).resolve().parent.parent / "assets"
@@ -43,10 +43,9 @@ def _serve_pdf(path: Path, *, filename: str, what: str) -> FileResponse:
     )
 
 
+@requires(AdminCapability.PUBLISH, verb=AdminVerb.APPROVE)
 class AdminManualView(APIView):
-    """GET the Admin Manual PDF. Super admins only."""
-
-    permission_classes = [IsAdminEmail]
+    """GET the Admin Manual PDF. Super admins and content admins."""
 
     def get(self, request):
         return _serve_pdf(_MANUAL, filename="Ochorus-Admin-Manual.pdf", what="admin manual")

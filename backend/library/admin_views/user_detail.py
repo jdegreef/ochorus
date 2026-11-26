@@ -18,7 +18,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import is_admin_user, requires
+from accounts.permissions import requires, reveals_pii
 
 from ..views import _language_entry
 from .analytics import THEME_LABELS, _prefer_en, _provider_label, mask_email
@@ -368,7 +368,7 @@ class AdminUserDetailView(APIView):
                     # PII: cleartext only for a super admin; masked for a scoped
                     # USERS grantee (a language admin) — see analytics.mask_email.
                     "email": profile.email
-                    if is_admin_user(request.user, request)
+                    if reveals_pii(request)
                     else mask_email(profile.email),
                     "providers": [
                         {"code": c, "label": _provider_label(c)}

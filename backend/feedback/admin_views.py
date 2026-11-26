@@ -22,7 +22,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import allowed_languages, is_admin_user, requires
+from accounts.permissions import allowed_languages, requires, reveals_pii
 from library.admin_views.analytics import mask_email
 from library.audit import AdminAudited
 from library.models import AdminAction
@@ -100,7 +100,7 @@ class AdminFeedbackListView(APIView):
         if source in FeedbackSource.values:
             qs = qs.filter(source=source)
 
-        reveal = is_admin_user(request.user, request)
+        reveal = reveals_pii(request)
         items = [_serialize(f, reveal=reveal) for f in qs[:PAGE_SIZE]]
         # A dedup nudge: how many other shown items flag the same passage, so ten
         # reports of one broken paragraph read as a cluster rather than ten rows.
@@ -174,4 +174,4 @@ class AdminFeedbackDetailView(AdminAudited, APIView):
                 return Response({"detail": "Invalid duplicate_of."}, status=400)
 
         item.save()
-        return Response(_serialize(item, reveal=is_admin_user(request.user, request)))
+        return Response(_serialize(item, reveal=reveals_pii(request)))

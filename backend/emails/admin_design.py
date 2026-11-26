@@ -2,7 +2,8 @@
 saved templates.
 
 Kept apart from ``admin_views`` (sending, metrics, readers) so neither grows into
-a god-module. Super-admin-only like the rest of the Emails section.
+a god-module. Gated on the ``email`` capability like the rest of the Emails section
+(super admins and the Content admin role hold it).
 """
 
 from __future__ import annotations
@@ -14,8 +15,8 @@ from rest_framework.parsers import MultiPartParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.models import UserProfile
-from accounts.permissions import IsAdminEmail
+from accounts.models import AdminCapability, AdminVerb, UserProfile
+from accounts.permissions import requires
 from library.audit import AdminAudited, AdminNotAudited, actor_email
 from library.models import AdminAction
 
@@ -30,6 +31,7 @@ from .rendering import render_blocks
 LIBRARY_LIMIT = 20
 
 
+@requires(AdminCapability.EMAIL, verbs={"POST": AdminVerb.ACT})
 class AdminEmailPreviewView(AdminNotAudited, APIView):
     """Render one language of a design exactly as a reader would receive it —
     the unsaved editor state, so the preview follows every keystroke.
@@ -43,7 +45,6 @@ class AdminEmailPreviewView(AdminNotAudited, APIView):
     footer links in a preview go nowhere.
     """
 
-    permission_classes = [IsAdminEmail]
     audit_exempt = "Read-only: renders a preview and writes nothing (POST because the design is a JSON body)."
 
     def post(self, request):
@@ -70,6 +71,7 @@ class AdminEmailPreviewView(AdminNotAudited, APIView):
         return Response({"subject": rendered.subject, "html": rendered.html})
 
 
+@requires(AdminCapability.EMAIL, verbs={"GET": AdminVerb.VIEW})
 class AdminEmailLibraryView(AdminNotAudited, APIView):
     """Search the library for the picker: ``?type=<block type>&q=…`` (book,
     sermon, plan, article, author or topic), or look up exact items with
@@ -78,7 +80,6 @@ class AdminEmailLibraryView(AdminNotAudited, APIView):
     One row per item (slug), with every language it reaches, so the designer
     can show at a glance which emails a block will appear in."""
 
-    permission_classes = [IsAdminEmail]
     audit_exempt = "Read-only search."
 
     def get(self, request):
@@ -115,11 +116,11 @@ class AdminEmailLibraryView(AdminNotAudited, APIView):
         return Response({"results": list(works.values())})
 
 
+@requires(AdminCapability.EMAIL, verbs={"GET": AdminVerb.VIEW})
 class AdminEmailMergeTagsView(AdminNotAudited, APIView):
     """The merge tags the designer offers, with a sample value and what each
     means (emails/merge_tags.py)."""
 
-    permission_classes = [IsAdminEmail]
     audit_exempt = "Read-only list."
 
     def get(self, request):
@@ -133,12 +134,12 @@ class AdminEmailMergeTagsView(AdminNotAudited, APIView):
         )
 
 
+@requires(AdminCapability.EMAIL, verbs={"GET": AdminVerb.VIEW})
 class AdminEmailLibrarySearchView(AdminNotAudited, APIView):
     """The "Insert from the library" panel: ``?q=…`` across books, sermons,
     plans, articles, authors, topics and quotes, each result with the block
     that inserts it (emails/library_search.py)."""
 
-    permission_classes = [IsAdminEmail]
     audit_exempt = "Read-only search."
 
     def get(self, request):
@@ -158,11 +159,11 @@ def _serialize_template(t: EmailTemplate) -> dict:
     }
 
 
+@requires(AdminCapability.EMAIL, verbs={"GET": AdminVerb.VIEW, "POST": AdminVerb.ACT})
 class AdminEmailTemplatesView(AdminAudited, APIView):
     """List the starter templates and the team's saved ones, or save a broadcast
     as one (``{"name", "from_broadcast": id, "category"?, "description"?}``)."""
 
-    permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.EMAIL_TEMPLATE_SAVE
 
     def audit_entry(self, request, response):
@@ -208,12 +209,11 @@ def _described(data) -> dict:
     return out
 
 
+@requires(AdminCapability.EMAIL, verbs={"PATCH": AdminVerb.ACT, "DELETE": AdminVerb.ACT})
 class AdminEmailTemplateDetailView(AdminAudited, APIView):
     """Rename or re-describe a saved template (``PATCH {"name"?, "category"?,
     "description"?}``), or delete it — broadcasts made from it are copies,
     unaffected either way."""
-
-    permission_classes = [IsAdminEmail]
 
     def audit_action_for(self, request):
         if request.method == "DELETE":
@@ -247,15 +247,14 @@ class AdminEmailTemplateDetailView(AdminAudited, APIView):
         return Response(status=http_status.HTTP_204_NO_CONTENT)
 
 
+@requires(AdminCapability.EMAIL, verbs={"POST": AdminVerb.ACT})
 class AdminBroadcastTranslationView(AdminAudited, APIView):
     """AI-drafted translations of a broadcast (emails/translation_jobs.py).
 
     ``POST {"action": "request", "language": "es", "source": "en"}`` files the
     job; ``"fetch"`` pulls the worker's draft in once it's back; ``"approve"``
-    marks a draft reviewed. Super-admin-only, like the rest of the Emails
-    section — and queueing translation work is a super-admin lever anyway."""
-
-    permission_classes = [IsAdminEmail]
+    marks a draft reviewed. Gated on ``email:act``, like the rest of the
+    Emails section's edits."""
 
     _AUDIT = {
         "request": AdminAction.Action.EMAIL_TRANSLATION_REQUEST,
@@ -317,11 +316,11 @@ class AdminBroadcastTranslationView(AdminAudited, APIView):
         return Response(data)
 
 
+@requires(AdminCapability.EMAIL, verbs={"POST": AdminVerb.ACT})
 class AdminEmailImageView(AdminAudited, APIView):
     """Upload a picture for an email (multipart ``file``); returns its public
     ``url`` for an image or hero block (emails/images.py)."""
 
-    permission_classes = [IsAdminEmail]
     parser_classes = [MultiPartParser]
     audit_action = AdminAction.Action.EMAIL_IMAGE_UPLOAD
 
