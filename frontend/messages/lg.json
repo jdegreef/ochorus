@@ -1187,6 +1187,7 @@
   "scripture_empty": "Olukalala lw'Ebyawandiikibwa lukyakolebwa.",
   "scripture_passages_count": "ebitundu %count%",
   "scripture_treated": "Kikwatiddwako mu bitundu %count% mu tterekero.",
+  "scripture_read_text": "Soma %ref% mu Open Word Bible",
   "scripture_verses_heading": "Ennyiriri abawandiisi bano ze bayimirirako",
   "scripture_preached_heading": "Awabuulirwa",
   "scripture_showing_rest": "Eraga %shown% ku %total%; ebisigaddewo bituukirirwa okuyita mu kunoonya.",

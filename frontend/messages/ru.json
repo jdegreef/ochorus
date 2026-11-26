@@ -1187,6 +1187,7 @@
   "scripture_empty": "Указатель Писания ещё составляется.",
   "scripture_passages_count": "Отрывков: %count%",
   "scripture_treated": "Разбирается в отрывках по всей библиотеке: %count%.",
+  "scripture_read_text": "Читать %ref% в Open Word Bible",
   "scripture_verses_heading": "Стихи, на которых останавливаются эти писатели",
   "scripture_preached_heading": "Где это проповедуется",
   "scripture_showing_rest": "Показано %shown% из %total%; остальные доступны через поиск.",

@@ -1187,6 +1187,7 @@
   "scripture_empty": "Покажчик Писання ще формується.",
   "scripture_passages_count": "%count% уривків",
   "scripture_treated": "Розглянуто в %count% уривках по всій бібліотеці.",
+  "scripture_read_text": "Читати %ref% в Open Word Bible",
   "scripture_verses_heading": "Вірші, на яких зупиняються ці письменники",
   "scripture_preached_heading": "Де це проповідується",
   "scripture_showing_rest": "Показано %shown% з %total%; решту можна знайти через пошук.",

@@ -1187,6 +1187,7 @@
   "scripture_empty": "성경 색인을 아직 만드는 중입니다.",
   "scripture_passages_count": "본문 %count%곳",
   "scripture_treated": "도서관 전체에서 %count%곳의 본문이 다룹니다.",
+  "scripture_read_text": "Open Word Bible에서 %ref% 읽기",
   "scripture_verses_heading": "저자들이 머무는 구절",
   "scripture_preached_heading": "설교된 곳",
   "scripture_showing_rest": "%total%곳 중 %shown%곳을 표시합니다. 나머지는 검색으로 찾을 수 있습니다.",

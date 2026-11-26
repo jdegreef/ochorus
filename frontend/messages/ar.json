@@ -1187,6 +1187,7 @@
   "scripture_empty": "فهرس الكتاب المقدس لا يزال قيد الإنشاء.",
   "scripture_passages_count": "%count% مقاطع",
   "scripture_treated": "يُعالَج في %count% مقاطع عبر المكتبة.",
+  "scripture_read_text": "اقرأ %ref% في Open Word Bible",
   "scripture_verses_heading": "الآيات التي يتوقّف عندها هؤلاء الكُتّاب",
   "scripture_preached_heading": "أين يُبشَّر به",
   "scripture_showing_rest": "عرض %shown% من %total%؛ ويمكن الوصول إلى الباقي عبر البحث.",

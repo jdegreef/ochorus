@@ -1187,6 +1187,7 @@
   "scripture_empty": "聖書索引はまだ作成中です。",
   "scripture_passages_count": "%count%箇所",
   "scripture_treated": "ライブラリー全体で%count%箇所が取り上げています。",
+  "scripture_read_text": "Open Word Bibleで%ref%を読む",
   "scripture_verses_heading": "著者たちが立ち止まる聖句",
   "scripture_preached_heading": "説教されている箇所",
   "scripture_showing_rest": "%total%件中%shown%件を表示しています。残りは検索で見つけられます。",

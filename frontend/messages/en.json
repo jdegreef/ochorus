@@ -1187,6 +1187,7 @@
   "scripture_empty": "The scripture index is still being built.",
   "scripture_passages_count": "%count% passages",
   "scripture_treated": "Treated in %count% passages across the library.",
+  "scripture_read_text": "Read %ref% in the Open Word Bible",
   "scripture_verses_heading": "The verses these writers stop at",
   "scripture_preached_heading": "Where it is preached",
   "scripture_showing_rest": "Showing %shown% of %total%; the rest are reachable through search.",
