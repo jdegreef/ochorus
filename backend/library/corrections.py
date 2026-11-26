@@ -24965,7 +24965,6 @@ BODY_CORRECTIONS.setdefault("the-fourfold-gospel", {}).setdefault("replacements"
 # Numbers 7:86: the incense spoons weighed ten shekels apiece (12 x 10 = 120).
 BODY_CORRECTIONS.setdefault("separation-and-service", {}).setdefault("replacements", []).extend([
     ('full of incense, weighing twelve shekels apiece', 'full of incense, weighing ten shekels apiece'),
-    ('እያንዳንዳቸው አሥራ ሁለት አሥራ ሁለት ሰቅል ይመዝኑ', 'እያንዳንዳቸው አሥር አሥር ሰቅል ይመዝኑ'),
     ('llenos de incienso, pesando cada uno doce siclos', 'llenos de incienso, pesando cada uno diez siclos'),
 ])
 # 1 Samuel 18:14 is said of David, not Jonathan.
