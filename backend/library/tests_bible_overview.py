@@ -171,7 +171,7 @@ class OtherLanguageOverviewTests(TestCase):
     def setUp(self):
         owb = Author.objects.create(slug="open-word-bible", name="Open Word Bible")
         bible = Series.objects.create(slug="the-bible", title="The Bible")
-        for lang, title in [("es", "Romanos"), ("fr", "Romains"), ("pt", "Romanos")]:
+        for lang, title in [("es", "Romanos"), ("fr", "Romains"), ("pt", "Romanos"), ("sw", "Warumi")]:
             book = Book.objects.create(
                 author=owb, slug="romans", language=lang, title=title,
                 series=bible, series_position=45, is_published=True,
@@ -193,7 +193,7 @@ class OtherLanguageOverviewTests(TestCase):
         from .bible_overview import OVERVIEWS, words
         from .scripture import owb_verse
 
-        for lang, name in [("es", "Romanos"), ("fr", "Romains"), ("pt", "Romanos")]:
+        for lang, name in [("es", "Romanos"), ("fr", "Romains"), ("pt", "Romanos"), ("sw", "Warumi")]:
             with self.subTest(lang):
                 card = self.detail(lang)
                 self.assertEqual(card["theme"], words(lang)["romans"]["theme"])
@@ -208,9 +208,52 @@ class OtherLanguageOverviewTests(TestCase):
     def test_every_language_file_covers_the_66_books(self):
         from .bible_overview import OVERVIEWS, words
 
-        for lang in ("es", "fr", "pt"):
+        for lang in ("es", "fr", "pt", "sw"):
             with self.subTest(lang):
                 self.assertEqual(list(words(lang)), list(OVERVIEWS))
                 for slug, card in words(lang).items():
                     self.assertEqual(set(card), {"author", "date", "theme"}, slug)
                     self.assertTrue(all(v.strip() for v in card.values()), slug)
+
+
+class SwahiliOverviewTests(TestCase):
+    """Every Swahili Bible book's card: its words, and a key verse quoted from
+    the Swahili OWB under the edition's own book name."""
+
+    def setUp(self):
+        bible_overview.key_verse.cache_clear()
+        self.addCleanup(bible_overview.key_verse.cache_clear)
+        owb = Author.objects.create(slug="open-word-bible", name="Open Word Bible")
+        self.names = {}
+        for path in FIXTURE.glob("*.sw.json"):
+            rows = json.loads(path.read_text("utf-8"))
+            if rows[0]["fields"].get("series") != ["the-bible"]:
+                continue
+            slug = rows[0]["fields"]["slug"]
+            book = Book.objects.create(
+                author=owb, slug=slug, language="sw", title=rows[0]["fields"]["title"],
+                is_published=True,
+            )
+            for row in rows[1:]:
+                Chapter.objects.create(
+                    book=book, order=row["fields"]["order"], title=row["fields"]["title"],
+                    body_html=row["fields"]["body_html"],
+                )
+            self.names[slug] = rows[2]["fields"]["title"].rsplit(" ", 1)[0]
+
+    def test_every_book_has_a_swahili_card_with_a_resolving_key_verse(self):
+        self.assertEqual(set(self.names), set(OVERVIEWS))
+        for slug, meta in OVERVIEWS.items():
+            with self.subTest(slug):
+                card = overview(slug, "sw")
+                self.assertIsNotNone(card)
+                verse = card["key_verse"]
+                self.assertIsNotNone(verse, "the Swahili OWB cannot resolve it")
+                # The reference reads in Swahili: the edition's book name, the
+                # English chapter and verse.
+                english_ref = meta["key_verse"].rsplit(" ", 1)[1]
+                self.assertEqual(verse["reference"], f"{self.names[slug]} {english_ref}")
+                self.assertTrue(verse["text"].strip())
+                self.assertNotIn('"', verse["text"])
+                self.assertNotEqual(card["theme"], meta["theme"])
+                self.assertTrue(card["theme"].endswith("."))

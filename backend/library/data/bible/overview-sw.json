@@ -1,0 +1,332 @@
+{
+ "genesis": {
+  "author": "Kwa mapokeo, Musa",
+  "date": "Tarehe haijulikani kwa hakika",
+  "theme": "Mungu anaumba ulimwengu, na anaanza kuuokoa kupitia familia ya Abrahamu."
+ },
+ "exodus": {
+  "author": "Kwa mapokeo, Musa",
+  "date": "Tarehe haijulikani kwa hakika",
+  "theme": "Mungu anawaweka Israeli huru kutoka utumwani, anawapa sheria Yake, na anakuja kukaa kati yao."
+ },
+ "leviticus": {
+  "author": "Kwa mapokeo, Musa",
+  "date": "Tarehe haijulikani kwa hakika",
+  "theme": "Jinsi Mungu mtakatifu anavyoweza kukaa kati ya watu Wake: dhabihu, utakaso na maisha matakatifu."
+ },
+ "numbers": {
+  "author": "Kwa mapokeo, Musa",
+  "date": "Tarehe haijulikani kwa hakika",
+  "theme": "Miaka arobaini ya Israeli jangwani, kati ya Sinai na nchi ya ahadi."
+ },
+ "deuteronomy": {
+  "author": "Kwa mapokeo, Musa",
+  "date": "Tarehe haijulikani kwa hakika",
+  "theme": "Maneno ya mwisho ya Musa kwa Israeli: mpende BWANA Mungu wako na ulishike agano Lake."
+ },
+ "joshua": {
+  "author": "Kwa mapokeo, Yoshua",
+  "date": "Tarehe haijulikani kwa hakika",
+  "theme": "Israeli wanavuka Yordani na kuipokea nchi ambayo Mungu aliahidi."
+ },
+ "judges": {
+  "author": "Mwandishi hajulikani",
+  "date": "Tarehe haijulikani kwa hakika",
+  "theme": "Mzunguko wa Israeli wa kumwacha Mungu na kuokolewa, katika siku ambazo hapakuwa na mfalme."
+ },
+ "ruth": {
+  "author": "Mwandishi hajulikani",
+  "date": "Habari zake ni za wakati wa waamuzi",
+  "theme": "Uaminifu wa mjane Mmoabu, na jamaa anayemkomboa na kumwingiza katika ukoo wa Daudi."
+ },
+ "1-samuel": {
+  "author": "Mwandishi hajulikani",
+  "date": "Habari zake ni za karne ya kumi na moja K.K.",
+  "theme": "Israeli wanaomba mfalme: Samweli, Sauli, na Daudi aliyechaguliwa na Mungu."
+ },
+ "2-samuel": {
+  "author": "Mwandishi hajulikani",
+  "date": "Habari zake ni za karne ya kumi K.K.",
+  "theme": "Utawala wa Daudi: ahadi ya Mungu kwa nyumba yake, dhambi yake, na gharama ya dhambi hiyo."
+ },
+ "1-kings": {
+  "author": "Mwandishi hajulikani",
+  "date": "Kilikamilishwa wakati wa uhamisho, karne ya sita K.K.",
+  "theme": "Utukufu wa Sulemani, ufalme uliogawanyika, na msimamo wa Eliya dhidi ya Baali."
+ },
+ "2-kings": {
+  "author": "Mwandishi hajulikani",
+  "date": "Kilikamilishwa wakati wa uhamisho, karne ya sita K.K.",
+  "theme": "Wafalme wa Israeli na wa Yuda, hadi kuanguka kwa falme zote mbili."
+ },
+ "1-chronicles": {
+  "author": "Kwa mapokeo, Ezra",
+  "date": "Baada ya uhamisho",
+  "theme": "Historia ya Israeli imesimuliwa upya kuhusu Daudi, hekalu na ibada ya kweli."
+ },
+ "2-chronicles": {
+  "author": "Kwa mapokeo, Ezra",
+  "date": "Baada ya uhamisho",
+  "theme": "Kuanzia hekalu la Sulemani hadi uhamisho, na amri ya kujenga upya."
+ },
+ "ezra": {
+  "author": "Kwa mapokeo, Ezra",
+  "date": "Karne ya tano K.K.",
+  "theme": "Waliohamishwa wanarudi kulijenga upya hekalu na kuishi kwa sheria ya Mungu."
+ },
+ "nehemiah": {
+  "author": "Nehemia",
+  "date": "Karne ya tano K.K.",
+  "theme": "Kuta za Yerusalemu zinajengwa upya, na watu wanafanywa upya katika agano la Mungu."
+ },
+ "esther": {
+  "author": "Mwandishi hajulikani",
+  "date": "Habari zake ni za karne ya tano K.K.",
+  "theme": "Mkono wa Mungu usioonekana unawaokoa watu Wake huko Uajemi kupitia malkia Myahudi."
+ },
+ "job": {
+  "author": "Mwandishi hajulikani",
+  "date": "Tarehe haijulikani",
+  "theme": "Mateso ya mtu mwenye haki, na jibu la Mungu kutoka katika dhoruba."
+ },
+ "psalms": {
+  "author": "Daudi na wengine",
+  "date": "Ziliandikwa katika kipindi cha karne nyingi",
+  "theme": "Nyimbo na maombi ya Israeli: sifa, maombolezo, tumaini na shukrani."
+ },
+ "proverbs": {
+  "author": "Hasa Sulemani",
+  "date": "Kuanzia karne ya kumi K.K.",
+  "theme": "Hekima kwa maisha ya kila siku, inayoanza kwa kumcha BWANA."
+ },
+ "ecclesiastes": {
+  "author": "Mwalimu, kwa mapokeo Sulemani",
+  "date": "Tarehe haijulikani kwa hakika",
+  "theme": "Maisha chini ya jua ni pumzi tu; mche Mungu na uzishike amri Zake."
+ },
+ "song-of-songs": {
+  "author": "Kwa mapokeo, Sulemani",
+  "date": "Tarehe haijulikani kwa hakika",
+  "theme": "Wimbo wa upendo kati ya bibi arusi na mpendwa wake."
+ },
+ "isaiah": {
+  "author": "Isaya mwana wa Amozi",
+  "date": "Karne ya nane K.K.",
+  "theme": "Mtakatifu wa Israeli anahukumu na kukomboa, kupitia mtumishi Wake anayeteseka."
+ },
+ "jeremiah": {
+  "author": "Yeremia",
+  "date": "Mwishoni mwa karne ya saba hadi karne ya sita K.K.",
+  "theme": "Maonyo kabla ya kuanguka kwa Yerusalemu, na ahadi ya agano jipya."
+ },
+ "lamentations": {
+  "author": "Kwa mapokeo, Yeremia",
+  "date": "Muda mfupi baada ya mwaka 586 K.K.",
+  "theme": "Huzuni juu ya magofu ya Yerusalemu, na tumaini katika upendo usiokoma wa BWANA."
+ },
+ "ezekiel": {
+  "author": "Ezekieli",
+  "date": "Karne ya sita K.K.",
+  "theme": "Kuhani aliye uhamishoni anauona utukufu wa Mungu, na ahadi ya moyo mpya."
+ },
+ "daniel": {
+  "author": "Kwa mapokeo, Danieli",
+  "date": "Habari zake ni za karne ya sita K.K.",
+  "theme": "Uaminifu uhamishoni, na ufalme wa Mungu unaodumu kuliko milki zote."
+ },
+ "hosea": {
+  "author": "Hosea",
+  "date": "Karne ya nane K.K.",
+  "theme": "Upendo usiokoma wa Mungu kwa Israeli asiye mwaminifu, unaoonyeshwa katika ndoa ya Hosea."
+ },
+ "joel": {
+  "author": "Yoeli mwana wa Pethueli",
+  "date": "Tarehe haijulikani kwa hakika",
+  "theme": "Pigo la nzige, mwito wa kurudi kwa Mungu, na ahadi ya Roho."
+ },
+ "amos": {
+  "author": "Amosi, mfugaji wa kondoo wa Tekoa",
+  "date": "Karne ya nane K.K.",
+  "theme": "Haki itiririke: hukumu juu ya watu wanaowaonea maskini."
+ },
+ "obadiah": {
+  "author": "Obadia",
+  "date": "Tarehe haijulikani kwa hakika",
+  "theme": "Hukumu juu ya Edomu kwa kumsaliti Yuda; ufalme utakuwa wa BWANA."
+ },
+ "jonah": {
+  "author": "Kwa mapokeo, Yona",
+  "date": "Habari zake ni za karne ya nane K.K.",
+  "theme": "Nabii asiyetaka kutii anajifunza jinsi rehema ya Mungu inavyofika mbali."
+ },
+ "micah": {
+  "author": "Mika wa Moreshethi",
+  "date": "Karne ya nane K.K.",
+  "theme": "Hukumu na tumaini kwa Yuda, na mtawala atakayetoka Bethlehemu."
+ },
+ "nahum": {
+  "author": "Nahumu wa Elkoshi",
+  "date": "Karne ya saba K.K.",
+  "theme": "Kuanguka kwa Ninawi, na BWANA ni kimbilio la wale wanaomtumaini."
+ },
+ "habakkuk": {
+  "author": "Habakuki",
+  "date": "Mwishoni mwa karne ya saba K.K.",
+  "theme": "Nabii anamhoji Mungu, na kujifunza kwamba mwenye haki ataishi kwa imani."
+ },
+ "zephaniah": {
+  "author": "Sefania",
+  "date": "Karne ya saba K.K.",
+  "theme": "Siku ya BWANA iko karibu, lakini Yeye atafurahi juu ya watu Wake."
+ },
+ "haggai": {
+  "author": "Hagai",
+  "date": "Mwaka 520 K.K.",
+  "theme": "Mwito kwa waliorudi kutoka uhamishoni wajenge upya nyumba ya BWANA."
+ },
+ "zechariah": {
+  "author": "Zekaria",
+  "date": "Kuanzia mwaka 520 K.K.",
+  "theme": "Maono kwa ajili ya kujenga upya, na mfalme anayekuja kwa unyenyekevu, amepanda punda."
+ },
+ "malachi": {
+  "author": "Malaki",
+  "date": "Karne ya tano K.K.",
+  "theme": "Upendo wa Mungu kwa watu waliochoka, na mjumbe atakayeiandaa njia Yake."
+ },
+ "gospel-of-matthew": {
+  "author": "Kwa mapokeo, Mathayo",
+  "date": "Karne ya kwanza BK",
+  "theme": "Yesu, Kristo aliyeahidiwa, anayatimiza Maandiko na kuleta ufalme wa mbinguni."
+ },
+ "gospel-of-mark": {
+  "author": "Kwa mapokeo, Marko",
+  "date": "Karibu miaka ya 60 BK",
+  "theme": "Yesu, Mwana wa Mungu, alikuja kutumikia na kutoa uhai Wake kuwa fidia."
+ },
+ "gospel-of-luke": {
+  "author": "Kwa mapokeo, Luka",
+  "date": "Karne ya kwanza BK",
+  "theme": "Habari za Yesu zilizopangwa kwa utaratibu, Mwokozi anayetafuta na kuokoa waliopotea."
+ },
+ "gospel-of-john": {
+  "author": "Kwa mapokeo, mtume Yohana",
+  "date": "Mwishoni mwa karne ya kwanza BK",
+  "theme": "Yesu, Neno aliyefanyika mwili, ili kwa kuamini mpate uzima katika jina Lake."
+ },
+ "acts-of-the-apostles": {
+  "author": "Kwa mapokeo, Luka",
+  "date": "Karne ya kwanza BK",
+  "theme": "Roho anaipeleka Injili ya Yesu kutoka Yerusalemu hadi Roma."
+ },
+ "romans": {
+  "author": "Paulo",
+  "date": "Karibu mwaka 57 BK",
+  "theme": "Injili ya haki ya Mungu, inayopokelewa kwa imani."
+ },
+ "1-corinthians": {
+  "author": "Paulo",
+  "date": "Karibu mwaka 54 BK",
+  "theme": "Paulo analijibu kanisa lililogawanyika: msalaba, upendo, na ufufuo."
+ },
+ "2-corinthians": {
+  "author": "Paulo",
+  "date": "Karibu mwaka 56 BK",
+  "theme": "Nguvu ya Mungu inakamilika katika udhaifu, Paulo anapoitetea huduma yake."
+ },
+ "galatians": {
+  "author": "Paulo",
+  "date": "Karibu mwaka 48 hadi 55 BK",
+  "theme": "Uhuru katika Kristo: kuhesabiwa haki mbele za Mungu kwa imani, si kwa matendo ya sheria."
+ },
+ "ephesians": {
+  "author": "Paulo",
+  "date": "Karibu mwaka 60 BK",
+  "theme": "Watu wapya wamoja katika Kristo, waliookolewa kwa neema na kuitwa kuenenda katika upendo."
+ },
+ "philippians": {
+  "author": "Paulo",
+  "date": "Karibu mwaka 61 BK",
+  "theme": "Furaha katika Kristo, iliyoandikwa gerezani, na nia ya Kristo aliyejinyenyekeza."
+ },
+ "colossians": {
+  "author": "Paulo",
+  "date": "Karibu mwaka 60 BK",
+  "theme": "Kristo, sura ya Mungu asiyeonekana, yu juu ya yote na Yeye anatosha."
+ },
+ "1-thessalonians": {
+  "author": "Paulo",
+  "date": "Karibu mwaka 51 BK",
+  "theme": "Faraja kwa kanisa changa: maisha matakatifu na kuja kwa Bwana."
+ },
+ "2-thessalonians": {
+  "author": "Paulo",
+  "date": "Karibu mwaka 51 BK",
+  "theme": "Simameni imara, endeleeni kufanya kazi, na msitikiswe kuhusu siku ya Bwana."
+ },
+ "1-timothy": {
+  "author": "Paulo",
+  "date": "Karibu mwaka 63 BK",
+  "theme": "Mwongozo kwa Timotheo kuhusu mafundisho sahihi, ibada na uongozi wa kanisa."
+ },
+ "2-timothy": {
+  "author": "Paulo",
+  "date": "Karibu mwaka 66 BK",
+  "theme": "Barua ya mwisho ya Paulo: ilinde Injili, vumilia, na lihubiri neno."
+ },
+ "titus": {
+  "author": "Paulo",
+  "date": "Karibu mwaka 63 BK",
+  "theme": "Mafundisho sahihi na matendo mema kwa makanisa ya Krete."
+ },
+ "philemon": {
+  "author": "Paulo",
+  "date": "Karibu mwaka 60 BK",
+  "theme": "Paulo anamwomba Filemoni ampokee tena Onesimo, si kama mtumwa tena bali kama ndugu."
+ },
+ "hebrews": {
+  "author": "Mwandishi hajulikani",
+  "date": "Huenda kabla ya mwaka 70 BK",
+  "theme": "Yesu, Mwana, ni mkuu zaidi: kuhani mkuu wa agano lililo bora zaidi."
+ },
+ "james": {
+  "author": "Kwa mapokeo, Yakobo, ndugu wa Bwana",
+  "date": "Katikati ya karne ya kwanza BK",
+  "theme": "Imani inayotenda kazi: hekima, uvumilivu, na kulitenda neno, si kulisikia tu."
+ },
+ "1-peter": {
+  "author": "Petro",
+  "date": "Karibu mwaka 63 BK",
+  "theme": "Tumaini lililo hai kwa Wakristo wanaoteseka kama wageni ulimwenguni."
+ },
+ "2-peter": {
+  "author": "Kwa mapokeo, Petro",
+  "date": "Karibu mwaka 65 BK",
+  "theme": "Endeleeni kukua katika neema, jihadharini na walimu wa uongo, na mngojee siku ya Bwana."
+ },
+ "1-john": {
+  "author": "Kwa mapokeo, mtume Yohana",
+  "date": "Mwishoni mwa karne ya kwanza BK",
+  "theme": "Mungu ni nuru na upendo: uhakika kwa wale wanaoenenda katika kweli Yake."
+ },
+ "2-john": {
+  "author": "Mzee, kwa mapokeo Yohana",
+  "date": "Mwishoni mwa karne ya kwanza BK",
+  "theme": "Enendeni katika kweli na upendo, wala msiwakaribishe walimu wa uongo."
+ },
+ "3-john": {
+  "author": "Mzee, kwa mapokeo Yohana",
+  "date": "Mwishoni mwa karne ya kwanza BK",
+  "theme": "Sifa kwa Gayo kwa kuwakaribisha walimu wasafiri wa kweli."
+ },
+ "jude": {
+  "author": "Yuda, ndugu yake Yakobo",
+  "date": "Karne ya kwanza BK",
+  "theme": "Shindaneni kwa ajili ya imani dhidi ya wale wanaoigeuza neema kuwa kisingizio cha maisha yasiyo na haya."
+ },
+ "revelation": {
+  "author": "Yohana, kwa mapokeo yule mtume",
+  "date": "Karibu mwaka 95 BK",
+  "theme": "Kristo anatawala, na atarudi kufanya vitu vyote kuwa vipya."
+ }
+}
