@@ -94,11 +94,8 @@ async function draw(locale, series, msg, build) {
 	}
 
 	const count = series.books.length;
-	// The badge stacks the number over its noun, so a noun-first locale's %n%
-	// ("vitabu %n%") has no place in the label.
-	const noun = (count === 1 ? msg.common_book_one : msg.common_book_many).replace(/\s*%n%\s*/, ' ').trim();
 	parts.push({
-		input: await badge(locale, count, noun),
+		input: await badge(locale, count, count === 1 ? msg.common_book_one : msg.common_book_many),
 		left: rtl ? 72 : W - 72 - BADGE.d,
 		top: BADGE.top
 	});

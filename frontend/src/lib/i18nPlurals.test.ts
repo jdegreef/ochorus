@@ -103,4 +103,32 @@ describe('no count is glued number-first in code', () => {
 			.map(([path]) => path);
 		expect(offenders).toEqual([]);
 	});
+
+	it('a noun that places its own number (%n%) is only read through count / unit', async () => {
+		// "vitabu %n%" read with t() or a bare tn() would print a literal %n%.
+		const { readFileSync } = await import('node:fs');
+		const cat = (l: string) => JSON.parse(readFileSync(`messages/${l}.json`, 'utf8')) as Record<string, string>;
+		const en = cat('en');
+		const placed = new Set(
+			['sw', 'lg'].flatMap((l) => Object.entries(cat(l)))
+				.filter(([k, v]) => v.includes('%n%') && !en[k]?.includes('%n%'))
+				.map(([k]) => k)
+		);
+		const snake = (key: string) => key.replace(/([a-z0-9])([A-Z])/g, '$1_$2').replace(/\./g, '_').toLowerCase();
+		const sources = import.meta.glob<string>(
+			['/src/**/*.svelte', '/src/**/*.ts', '!/src/**/*.test.ts', '!/src/lib/paraglide/**', '!/src/lib/i18n.svelte.ts'],
+			{ query: '?raw', import: 'default', eager: true }
+		);
+		// count / unit, or a durationLabel key (reading.ts places %n% itself).
+		const ok = /(?:\bmin:\s*|\b(?:count|unit)\(\s*(?:[^,()]+(?:\([^()]*\))?,\s*)?(?:'[a-zA-Z0-9_.]+',\s*)?)$/;
+		const offenders: string[] = [];
+		for (const [path, src] of Object.entries(sources)) {
+			for (const m of src.matchAll(/'([a-zA-Z0-9_]+\.[a-zA-Z0-9_.]+)'/g)) {
+				if (!placed.has(snake(m[1]))) continue;
+				if (!ok.test(src.slice(Math.max(0, m.index! - 200), m.index))) offenders.push(`${path}: ${m[1]}`);
+			}
+		}
+		expect(placed.size).toBeGreaterThan(30);
+		expect(offenders).toEqual([]);
+	});
 });

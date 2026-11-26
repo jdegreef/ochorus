@@ -68,7 +68,7 @@
 	<div class="flex min-w-0 flex-col self-stretch">
 		<svelte:element this={`h${headingLevel}`} class="plan-card-title">{plan.title}</svelte:element>
 		<p class="mt-1 text-small text-muted">
-			{i18n.unit('plans.days', plan.day_count)}{#if perDay}<span class="sep">{' · '}</span>~{i18n.unit('plans.minPerDay', perDay)}{/if}
+			{i18n.unit('plans.days', plan.day_count)}{#if perDay}<span class="sep">{' · '}</span>{i18n.unit('plans.minPerDay', `~${perDay}`)}{/if}
 		</p>
 		<p class="mt-1.5 line-clamp-2 text-small text-muted">{plan.description}</p>
 		{#if started}

@@ -950,7 +950,7 @@
 	     count; the second is what ↑/↓ landed on. Merged into one, each arrow key
 	     would re-announce the count as well. -->
 	<p id="search-help" class="sr-only" aria-live="polite">
-		{ran ? i18n.unit('search.resultsMany', shownCount) : ''}
+		{ran ? i18n.count(shownCount, 'search.resultsOne', 'search.resultsMany') : ''}
 	</p>
 	<p class="sr-only" aria-live="polite">{activeAnnouncement}</p>
 

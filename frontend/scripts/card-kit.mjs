@@ -188,7 +188,15 @@ const SHELF = { max: 6, tall: 250, short: 234, gap: 26 };
 
 /** The gold badge: a number, its label in spaced capitals, and an optional
  *  line under them (a plan's "~9 min/day"). */
+/** A count in the locale's order — $lib/i18n's placeCount: a noun holding %n%
+ *  ("vitabu %n%", Swahili and Luganda count noun-first) places its own number. */
+export const placeCount = (noun, shown) =>
+	noun.includes('%n%') ? noun.replace('%n%', String(shown)) : `${shown} ${noun}`;
+
 export async function badge(locale, n, label, sub = '') {
+	// The badge stacks the number over its noun, so a noun-first locale's %n%
+	// ("vitabu %n%") has no place in the label.
+	label = label.replace(/\s*%n%\s*/, ' ').trim();
 	// Spaced capitals are a Latin idea: spacing Arabic letters breaks the joins
 	// between them, and Devanagari's headline, so those scripts set it plain.
 	const spacing = UPRIGHT.has(locale) ? '' : ' letter_spacing="2800"';
