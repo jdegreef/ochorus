@@ -672,3 +672,35 @@ describe('build() sermons on a book of the Bible', () => {
 		}
 	});
 });
+
+describe('build() book hubs', () => {
+	beforeEach(() => resetSitemapData());
+
+	const book = (slug: string, author: string, birth: number) => ({
+		slug,
+		chapter_count: 1,
+		updated_at: `2026-09-0${slug.length % 9}T00:00:00Z`,
+		topics: [],
+		series: null,
+		author: { slug: author, name: author, photo_url: '', birth_year: birth }
+	});
+
+	it('advertises an era’s book page only where enough of its books, by two writers, are', async () => {
+		english.books = [
+			book('a', 'owen', 1616),
+			book('bb', 'owen', 1616),
+			book('ccc', 'baxter', 1615),
+			book('dddd', 'baxter', 1615),
+			book('e', 'murray', 1828)
+		];
+		try {
+			const { pages } = await sitemapData();
+			const find = (path: string) => pages.find((e) => [...e.byLocale.values()].includes(path));
+			expect([...find('/books/era/puritans/')!.byLocale.keys()]).toEqual(['en']);
+			expect(find('/books/era/puritans/')!.lastmods?.get('en')).toBe('2026-09-04T00:00:00Z');
+			expect(find('/books/era/missionary/')).toBeUndefined();
+		} finally {
+			english.books = [];
+		}
+	});
+});

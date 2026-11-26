@@ -10,6 +10,7 @@
 	import { SITE_URL } from '$lib/config';
 	import { localizeHref } from '$lib/href';
 	import { hubPath, hubShelf, hubWriters, relatedPlaces } from '$lib/hubs';
+	import { bookTraditionPath, hasPage, traditionBooks } from '$lib/bookHubs';
 	import { i18n } from '$lib/i18n.svelte';
 	import {
 		fullLifeDiscriminates,
@@ -50,6 +51,9 @@
 		return m;
 	});
 	const shelf = $derived(hubShelf(writers, books));
+	const booksPage = $derived(
+		hub.kind === 'tradition' && hasPage(traditionBooks(hub, books)) ? bookTraditionPath(hub.slug) : null
+	);
 	// Judged over the whole roster, as the biographies index and the era pages do.
 	const showFullLife = $derived(fullLifeDiscriminates(authors));
 	const span = $derived.by(() => {
@@ -131,6 +135,14 @@
 			</p>
 		{/if}
 		<p class="max-w-2xl text-body text-muted">{hub.intro}</p>
+		<!-- The same writers' books, on their own page once there are enough. -->
+		{#if booksPage}
+			<p class="mt-4">
+				<a href={localizeHref(booksPage)} class="text-small font-semibold text-accent hover:underline"
+					>{t('books.hubTheirBooks')} <Arrow /></a
+				>
+			</p>
+		{/if}
 	</header>
 
 	{#if loadError}
