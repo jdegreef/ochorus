@@ -2587,10 +2587,11 @@ class ChapterBatch:
         self._pages = pages
         # A Bible chapter's related passages (library/bible_crossrefs): the
         # published Bible books they may link, looked up once per run.
-        from .bible_crossrefs import is_bible_book
+        from .bible_crossrefs import is_bible_edition
 
-        self._is_bible = is_bible_book(book)
+        self._is_bible = is_bible_edition(book)
         self._bible_slugs = None
+        self._bible_names = None
 
         # A Bible book's chapters link the scripture page of the passage they
         # ARE ("what the classics say"); every other book has none.
@@ -2616,17 +2617,23 @@ class ChapterBatch:
         return [{"ref": r, "page": self._pages.get(r)} for r in self._cited[chapter.pk]]
 
     def related_passages(self, chapter):
-        from .bible_crossrefs import published_bible_slugs, related_passages
+        from .bible_crossrefs import chapter_names, published_bible_slugs, related_passages
 
         if not self._is_bible:
             return []
+        language = chapter.book.language
 
         def published():
             if self._bible_slugs is None:
-                self._bible_slugs = published_bible_slugs()
+                self._bible_slugs = published_bible_slugs(language)
             return self._bible_slugs
 
-        return related_passages(chapter.book, chapter, published)
+        def names():
+            if self._bible_names is None:
+                self._bible_names = chapter_names(language)
+            return self._bible_names
+
+        return related_passages(chapter.book, chapter, published, names)
 
     def classics_page(self, chapter):
         if self._bible is None:
