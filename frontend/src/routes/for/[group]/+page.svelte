@@ -22,7 +22,7 @@
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
 	import { FOR_CHROME } from '$lib/forChrome';
 	import { FOR_EYEBROW, FOR_LINKS, FOR_LOCALES, forIndexPath, forLabel, forPath } from '$lib/forLinks';
-	import { FOR_META, forPhrase } from '$lib/forMeta';
+	import { FOR_META, forIndexCard, forPhrase } from '$lib/forMeta';
 	import { localizeHref } from '$lib/href';
 	import { linkScriptFonts } from '$lib/fontSheets';
 	import { countsLine, forHref, inviteMessage } from '$lib/forPages';
@@ -33,7 +33,7 @@
 	import { LIVE_LOCALES } from '$lib/live-locales.generated';
 	import { citeLine, guideCardLink, quoteHref, toBookTile } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
-	import { hreflangFor, itemList, jsonLd, pickQa } from '$lib/seo';
+	import { breadcrumbLd, hreflangFor, itemList, jsonLd, pickQa } from '$lib/seo';
 
 	/**
 	 * An "Ochorus for …" page ($lib/forPages) — a landing page for one group of
@@ -68,6 +68,16 @@
 	const ogImage = $derived(`${SITE_URL}/og/for/${locale === 'en' ? '' : `${locale}/`}${page.slug}.png`);
 	const fan = $derived(shelf.shelves[0]?.books ?? []);
 	const qa = $derived(pickQa(page.questions, []));
+	// Home › Ochorus for … › this group, as JSON-LD only: the page head stays
+	// plain (design review #4), and the group chips above the hero are already
+	// the visible way sideways and back to the index.
+	const crumbsLd = $derived(
+		breadcrumbLd([
+			{ name: i18n.t('common.home'), href: locale === 'en' ? '/' : `/${locale}/` },
+			{ name: forIndexCard(locale).title, href: forIndexPath(locale) },
+			{ name: `${FOR_EYEBROW[locale]} ${phrase}`, href: forPath(page.slug, locale) }
+		])
+	);
 	const invite = $derived(inviteMessage({ ...page.invite, href: localizeHref(page.invite.href) }, SITE_URL));
 	const inviteLink = $derived(`${SITE_URL}${localizeHref(page.invite.href)}`);
 	const order = $derived(forSectionOrder(page.slug, shelf));
@@ -127,7 +137,7 @@
 	ogImageAlt="{FOR_EYEBROW[locale]} {phrase}"
 	ogImageWidth={1200}
 	ogImageHeight={630}
-	structuredData={[pageLd, ...shelvesLd, ...(qa.ld ? [qa.ld] : [])]}
+	structuredData={[pageLd, crumbsLd, ...shelvesLd, ...(qa.ld ? [qa.ld] : [])]}
 />
 
 <div class="page-col px-5 py-10" lang={locale} style="--group: {meta.accent}; --pinned-offset: calc(var(--appnav-h, 4rem) + var(--section-bar-h, 0px))">
