@@ -67,6 +67,7 @@
 	import type { BookSummary } from '$lib/library-public';
 	import PersonCard from '$lib/components/PersonCard.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
+	import { sermonsOnHref } from '$lib/sermonsOn';
 	import Portrait from '$lib/components/Portrait.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -1491,9 +1492,12 @@
 				{/each}
 			</div>
 			{#if shelf.count > shelf.sermons.length}
+				<!-- Its own page (/sermons/on/<book>/) once it has enough sermons;
+				     the shelf's facet otherwise. -->
+				{@const onPage = sermonsOnHref(book.series_position, shelf.count)}
 				<p class="mt-3">
 					<a
-						href={localizeHref(`/sermons?book=${encodeURIComponent(shelf.book)}`)}
+						href={localizeHref(onPage ?? `/sermons?book=${encodeURIComponent(shelf.book)}`)}
 						class="text-small font-semibold text-accent hover:underline"
 						>{t('bible.sermonsAll').replace('%count%', String(shelf.count)).replace('%book%', shelf.book)}
 						<Arrow /></a

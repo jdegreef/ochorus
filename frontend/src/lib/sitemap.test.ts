@@ -32,6 +32,8 @@ const english = vi.hoisted(() => ({ books: [] as unknown[] }));
 // Whether the Swahili Humility is a REVIEWED translation; unreviewed unless a
 // test says so, reset by each such test.
 const swahili = vi.hoisted(() => ({ reviewed: false, bible: [] as unknown[] }));
+// English sermons, empty unless a test fills it; reset by each such test.
+const englishSermons = vi.hoisted(() => ({ rows: [] as unknown[] }));
 
 vi.mock('$lib/advertised-locales', () => ({
 	ADVERTISED_LOCALES: ['en', 'es', 'sw'],
@@ -109,7 +111,7 @@ vi.mock('$lib/library-public', () => {
 		listQuoteTopicPages: empty,
 		// Swahili has the Bible series; English and Spanish have none.
 		listSeries: async (l = 'en') => (l === 'sw' ? [{ slug: 'rooted' }, { slug: 'the-bible' }] : []),
-		listSermons: empty,
+		listSermons: async (l = 'en') => (l === 'en' ? englishSermons.rows : []),
 		// Indexable in Swahili; on the Spanish shelf but below the API's works
 		// floor, so served there yet not advertised.
 		listTopics: async (l = 'en') =>
@@ -637,4 +639,36 @@ describe('build() the Bible hub', () => {
 		expect(story).toBeUndefined();
 	});
 
+});
+
+describe('build() sermons on a book of the Bible', () => {
+	beforeEach(() => resetSitemapData());
+
+	const sermon = (slug: string, order: number, updated_at: string) => ({
+		slug,
+		scripture_book_order: order,
+		updated_at,
+		topics: [],
+		author: { slug: 'spurgeon', name: 'Spurgeon', photo_url: '' }
+	});
+
+	it('advertises a book’s page only where enough sermons preach from it, dated by the newest', async () => {
+		englishSermons.rows = [
+			sermon('a', 43, '2026-09-01T00:00:00Z'),
+			sermon('b', 43, '2026-09-03T00:00:00Z'),
+			sermon('c', 43, '2026-09-02T00:00:00Z'),
+			sermon('d', 1, '2026-09-04T00:00:00Z'),
+			sermon('e', 1, '2026-09-04T00:00:00Z')
+		];
+		try {
+			const { sermons } = await sitemapData();
+			const john = sermons.find((e) => e.byLocale.get('en') === '/sermons/on/john/');
+			expect([...john!.byLocale.keys()]).toEqual(['en']);
+			expect(john!.lastmods?.get('en')).toBe('2026-09-03T00:00:00Z');
+			// Genesis has two: below the floor, so the route builds no page for it.
+			expect(sermons.some((e) => e.byLocale.get('en') === '/sermons/on/genesis/')).toBe(false);
+		} finally {
+			englishSermons.rows = [];
+		}
+	});
 });
