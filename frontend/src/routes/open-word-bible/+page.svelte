@@ -156,7 +156,7 @@
 			es: 'En Juan la palabra suele significar «así, de esta manera», y se acaba de usar en 3:14: «del mismo modo el Hijo del Hombre tiene que ser levantado en alto». Así es como Dios amó al mundo: dando al Hijo.',
 			fr: 'Chez Jean, le mot signifie d’ordinaire « ainsi, de cette manière », et il vient d’être employé en 3:14 : « de la même manière, il faut que le Fils de l’homme soit élevé ». Voilà comment Dieu a aimé le monde : en donnant le Fils.',
 			pt: 'Em João a palavra normalmente significa “assim, desta maneira”, e acabou de ser usada em 3:14: “do mesmo modo o Filho do Homem precisa ser elevado”. É assim que Deus amou o mundo: dando o Filho.',
-			sw: 'Katika Yohana neno hili kwa kawaida linamaanisha “hivyo, kwa njia hii”, na limetumika punde katika 3:14: “vivyo hivyo Mwana wa Adamu lazima ainuliwe”. Hivi ndivyo Mungu alivyoupenda ulimwengu: kwa kumtoa Mwana.'
+			sw: 'Katika Yohana neno hili kwa kawaida linamaanisha “hivyo, kwa njia hii”, na limetumika punde katika 3:14: “vivyo hivyo Mwana wa Adamu lazima ainuliwe”. Hivi ndivyo Mungu alivyoupenda ulimwengu: kwa kumtoa Mwana. Uamuzi huu ni wa maandishi ya Kigiriki; maandishi ya Kiswahili hapo juu yanasema “kiasi kwamba alimtoa Mwana Wake”, yaani upendo huo unapimwa kwa kumtoa Mwana.'
 		},
 		sourcesEyebrow: { en: 'From the original languages', es: 'Desde las lenguas originales', fr: 'À partir des langues originales', pt: 'Das línguas originais', sw: 'Kutoka katika lugha za asili' },
 		sourcesHeading: { en: 'Translated from the source texts', es: 'Traducida de los textos fuente', fr: 'Traduite des textes sources', pt: 'Traduzida dos textos-fonte', sw: 'Imetafsiriwa kutoka katika maandiko ya asili' },
