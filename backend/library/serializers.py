@@ -2617,7 +2617,11 @@ class ChapterBatch:
         return [{"ref": r, "page": self._pages.get(r)} for r in self._cited[chapter.pk]]
 
     def related_passages(self, chapter):
-        from .bible_crossrefs import chapter_names, published_bible_slugs, related_passages
+        from .bible_crossrefs import (
+            chapter_names,
+            published_bible_slugs,
+            related_passages,
+        )
 
         if not self._is_bible:
             return []
