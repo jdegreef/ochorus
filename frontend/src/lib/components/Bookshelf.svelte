@@ -183,8 +183,7 @@
 						<span class="text-gold-ink" aria-hidden="true">✓</span>
 						{t('fav.shelfFinished')}
 					{:else}
-						{book.chapter_count}
-						{i18n.tn(book.chapter_count, 'book.chapterOne', 'book.chaptersMany')}{#if book.word_count}
+						{i18n.count(book.chapter_count, 'book.chapterOne', 'book.chaptersMany')}{#if book.word_count}
 							· {readingTime(book.word_count)}{/if}
 					{/if}
 				</div>

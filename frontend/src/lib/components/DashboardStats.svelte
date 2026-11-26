@@ -87,8 +87,7 @@
 								</div>
 								<div class="text-small text-muted">
 									{t('settings.streakLongest')}
-									{longest}<span class="sep"> · </span>{days.length}
-									{t('settings.streakDaysRead')}
+									{longest}<span class="sep"> · </span>{i18n.unit('settings.streakDaysRead', days.length)}
 								</div>
 								<!-- A streak that today would end: say so while there's time. -->
 								{#if !days.includes(today)}
@@ -107,7 +106,7 @@
 							{#if goalMet}
 								{t('settings.goalMet')}
 							{:else}
-								{weekCount} {t('settings.goalOf')} {goal} {t('settings.goalDaysThisWeek')}
+								{i18n.unit('settings.goalDaysThisWeek', `${weekCount} ${t('settings.goalOf')} ${goal}`)}
 							{/if}
 						</div>
 						<!-- The week as lamps: which days were read, not only how many. -->

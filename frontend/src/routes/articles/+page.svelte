@@ -127,12 +127,10 @@
 	<!-- "130 articles · 73 book guides" — the shelf's size, and how much of it is
 	     guides (the switch below splits them). -->
 	{#snippet counts()}
-		{articles.length}
-		{i18n.tn(articles.length, 'common.articleOne', 'common.articleMany')}
+		{i18n.count(articles.length, 'common.articleOne', 'common.articleMany')}
 		{#if guides.length}
 			<span class="sep">·</span>
-			{guides.length}
-			{i18n.tn(guides.length, 'articles.guideOne', 'articles.guideMany')}
+			{i18n.count(guides.length, 'articles.guideOne', 'articles.guideMany')}
 		{/if}
 	{/snippet}
 

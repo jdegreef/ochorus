@@ -390,7 +390,7 @@ export function seriesCountLabel(count: number, planned: number | null | undefin
 	if (volumesToCome(count, planned)) {
 		return i18n.t('series.booksPlanned').replace('%n%', n).replace('%total%', numeral(planned!, language));
 	}
-	return `${n} ${i18n.tn(count, 'common.bookOne', 'common.bookMany')}`;
+	return i18n.count(count, 'common.bookOne', 'common.bookMany', n);
 }
 
 /** A number in the page's digits (`volumeNumeral`), or plain digits where the

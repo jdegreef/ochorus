@@ -154,7 +154,13 @@ const lifespan = (a, born) =>
  *  same size, so Arabic takes a step more. */
 const lineSize = (locale, quoting) => (quoting ? 29 : locale === 'ar' ? 40 : 34);
 
-const count = (n, one, many) => (n ? `${n} ${n === 1 ? one : many}` : '');
+// A noun with %n% places its own number ("vitabu %n%": Swahili and Luganda
+// count noun-first) — the rule $lib/i18n's placeCount applies on the site.
+const count = (n, one, many) => {
+	if (!n) return '';
+	const noun = n === 1 ? one : many;
+	return noun.includes('%n%') ? noun.replace('%n%', String(n)) : `${n} ${noun}`;
+};
 
 async function draw(locale, author, own, msg, quote, portraitFile) {
 	const { base, ax, col, rtl } = await ground(locale, msg.author_share_footer);

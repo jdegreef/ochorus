@@ -83,11 +83,9 @@
 		<h1 class="text-h1 mb-2">{title}</h1>
 		<p class="mb-3 text-small text-muted">
 			<span class="whitespace-nowrap">
-				{data.sermons.length}
-				{i18n.tn(data.sermons.length, 'common.sermonOne', 'common.sermonMany')}
+				{i18n.count(data.sermons.length, 'common.sermonOne', 'common.sermonMany')}
 			</span>{' · '}<span class="whitespace-nowrap">
-				{preachers}
-				{i18n.tn(preachers, 'common.authorOne', 'common.authorMany')}
+				{i18n.count(preachers, 'common.authorOne', 'common.authorMany')}
 			</span>
 		</p>
 		<p class="max-w-2xl text-body text-muted">{description}</p>

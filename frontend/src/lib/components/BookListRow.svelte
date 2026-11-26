@@ -36,7 +36,7 @@
 		showSeries ? cardSeriesLine(book) : ''
 	);
 	const chapters = $derived(
-		`${book.chapter_count} ${i18n.tn(book.chapter_count, 'book.chapterOne', 'book.chaptersMany')}`
+		i18n.count(book.chapter_count, 'book.chapterOne', 'book.chaptersMany')
 	);
 </script>
 

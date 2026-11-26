@@ -121,8 +121,8 @@
 						<div class="read-card-body">
 							<p class="read-card-title">{plan.title}</p>
 							<p class="text-small text-muted">
-								<span class="whitespace-nowrap">{plan.day_count} {t('plans.days')}</span
-								>{#if perDay}{' · '}<span class="whitespace-nowrap">~{perDay} {t('plans.minPerDay')}</span>{/if}{' · '}<span
+								<span class="whitespace-nowrap">{i18n.unit('plans.days', plan.day_count)}</span
+								>{#if perDay}{' · '}<span class="whitespace-nowrap">~{i18n.unit('plans.minPerDay', perDay)}</span>{/if}{' · '}<span
 									>Begin on {longDate(advent.start)}, finish on {dayMonth(dayOf(plan.day_count))}</span
 								>
 							</p>

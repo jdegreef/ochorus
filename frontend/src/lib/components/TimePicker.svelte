@@ -79,7 +79,7 @@
 		load();
 	});
 
-	const label = (m: TimeChoice) => (m === 60 ? t('today.timeHour') : `${m} ${t('common.min')}`);
+	const label = (m: TimeChoice) => (m === 60 ? t('today.timeHour') : i18n.unit('common.min', m));
 </script>
 
 <section aria-labelledby="time-picker">
