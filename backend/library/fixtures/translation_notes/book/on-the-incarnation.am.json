@@ -5,8 +5,10 @@
  "job_issue": 3752,
  "pull_request": null,
  "note": [
-  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
-  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
+  "Scripture authority is the Open Word Bible (OWB), Amharic, Balanced edition (CC0), bundled as library/data/bible/owb-am-b.json.gz and read offline (owb-am). Every Scripture quotation was re-quoted to it verbatim (founder decision, 2026-11-18: Amharic quotes OWB everywhere), replacing the 1962/2003 UBS wording and the self-rendered Old Testament verses the first edition carried.",
+  "A `mined` row is a verbatim OWB span in that block: the whole verse, the shortest contiguous span carrying the quoted clause, or exact OWB pieces joined with '…'. OWB's inner quotation marks become ‹› inside the book's «». Heb 2:9 (§10) joins OWB pieces around its 'apart from God' (χωρὶς θεοῦ), where Athanasius reads 'by the grace of God'. Isa 7:14 (§33) is quoted as Matthew 1:23 gives it ('the virgin', with its 'God with us'), Hos 11:1 as Matthew 2:15, Isa 11:10 (§35) as Romans 15:12. §56's 'in the glory of the Father' (from Matt 16:27) is not in OWB Matt 26:64 and is dropped. John 3:3 (§14) is OWB 'born from above' with the gloss (ማለትም ዳግመኛ ካልተወለደ).",
+  "Athanasius quotes the Greek Old Testament (Septuagint). Where OWB's wording serves his point, the quotation is OWB. Where his argument rests on the Septuagint's own wording (Gen 2:17 'dying ye shall die'; Num 24:7, 24:17 'a man'; Isa 8:4; Isa 53:8-9 'who shall declare his generation'; Deut 28:66 'your Life hanging'; Jer 11:19 'a tree upon his bread'; Ps 22:16 'they pierced'; Dan 9:24-25 'a Holy of Holies'; Gen 49:10 'the expectation of the nations'; Isa 63:9 'the Lord Himself'), the translator's rendering of the Septuagint stands, self_rendered with the reason in `why`. Wisdom of Solomon (§4, §5) is outside OWB.",
+  "Other `self_rendered` rows are allusions or paraphrases in the author's own sentence. Translations of this book are ai_unreviewed until a reviewer approves them."
  ],
  "references": [
   {
@@ -14,685 +16,763 @@
    "status": "mined",
    "block_index": 2,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 19:6",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 1:3",
    "status": "mined",
    "block_index": 2,
    "chapter_order": 2,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Genesis 1:1",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 11:3",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 3,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Genesis 2:16-17",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 3
+   "chapter_order": 3,
+   "why": "Athanasius quotes the Septuagint and argues from its wording ('dying ye shall die'), which he expounds as abiding in death's corruption; OWB 'you will surely die' cannot carry it"
+  },
+  {
+   "reference": "Psalm 82:6-7",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Wisdom 6:18",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 4
-  },
-  {
-   "reference": "Psalm 82:6-7",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 4
+   "chapter_order": 4,
+   "why": "Wisdom of Solomon: deuterocanonical, outside OWB; translator's wording"
   },
   {
    "reference": "Wisdom 2:23-24",
    "status": "self_rendered",
    "block_index": 0,
-   "chapter_order": 5
+   "chapter_order": 5,
+   "why": "Wisdom of Solomon: deuterocanonical, outside OWB; translator's wording"
   },
   {
    "reference": "Romans 1:26-27",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 5,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 5:14-15",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 2:9",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 2:10",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 2:14-15",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 15:21-22",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 10,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Timothy 6:15",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 10
+   "chapter_order": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 1:25",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 11
+   "chapter_order": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 19:10",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 14
+   "chapter_order": 14,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 3:3",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 14
+   "chapter_order": 14,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 1:21",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 15,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 19:10",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 15
+   "chapter_order": 15,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 3:17-19",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 16
+   "chapter_order": 16,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Peter 2:22",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 17
+   "chapter_order": 17,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 10:37-38",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 18,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 1:24",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 19
+   "chapter_order": 19,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Hebrews 2:14-15",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 20
+   "chapter_order": 20,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 15:53-55",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 21,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Genesis 2:17",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 21
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 26:26",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 23
+   "chapter_order": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 28:11-15",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 23
+   "chapter_order": 23,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Matthew 14:10",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 24
+   "chapter_order": 24,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Hebrews 11:37",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 24
+   "chapter_order": 24,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
+  },
+  {
+   "reference": "Ephesians 2:2",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Galatians 3:13",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 25,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 2:14",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 25
+   "chapter_order": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "John 12:32",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 25,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Ephesians 2:2",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 25
+   "chapter_order": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Hebrews 10:20",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 25
+   "chapter_order": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 10:18",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 25,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 24:7",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 25
-  },
-  {
-   "reference": "Acts 2:24",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 27
+   "chapter_order": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 15:55",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 27,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Acts 2:24",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 27,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Hebrews 4:12",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 31
+   "chapter_order": 31,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 4:34",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 32,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Luke 8:28",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 32
+   "chapter_order": 32,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 15:20",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 32
+   "chapter_order": 32,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Matthew 1:23",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 33,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Numbers 24:5-6",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 33,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 19:1",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 33,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Matthew 2:15",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 33,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Numbers 24:17",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 33
+   "chapter_order": 33,
+   "why": "Athanasius quotes the Septuagint and argues from its wording ('a man out of Israel'): 'that a man shall appear is foretold in those words'; OWB reads 'a sceptre'"
   },
   {
-   "reference": "Numbers 24:5-7",
+   "reference": "Numbers 24:7",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 33
+   "chapter_order": 33,
+   "why": "Athanasius quotes the Septuagint and argues from its wording ('a man shall come forth out of his seed, and shall be Lord over many peoples'); OWB's Hebrew text has no such clause. Verses 5-6 before it are OWB"
   },
   {
    "reference": "Isaiah 8:4",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 33
-  },
-  {
-   "reference": "Isaiah 19:1",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 33
+   "chapter_order": 33,
+   "why": "Athanasius quotes the Septuagint and argues from its wording ('he shall take the power of Damascus'): §36 argues from a child reigning and spoiling his enemies before he can call father or mother; OWB's passive loses it"
   },
   {
    "reference": "Isaiah 53:3-5",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 34
-  },
-  {
-   "reference": "Acts 8:32",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 34,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "Acts 8:33",
+   "reference": "Isaiah 53:6-8",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 34,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Isaiah 53:8-9",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 34
+   "chapter_order": 34,
+   "why": "Athanasius quotes the Septuagint and argues from its wording: 'who shall declare his generation?' (argued in §37) and 'I will give the wicked instead of his burial'; OWB's Hebrew text differs"
   },
   {
-   "reference": "Deuteronomy 28:66",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 35
-  },
-  {
-   "reference": "Jeremiah 11:19",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 35
-  },
-  {
-   "reference": "Psalm 22:16-17",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 35
-  },
-  {
-   "reference": "John 19:24",
+   "reference": "Psalm 22:18",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 35,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Romans 15:12",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 35,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
-  },
-  {
-   "reference": "Isaiah 7:14",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 35
-  },
-  {
-   "reference": "1 Samuel 16:11",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 35
-  },
-  {
-   "reference": "Matthew 2:2",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 35
-  },
-  {
-   "reference": "Isaiah 8:4",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 36
-  },
-  {
-   "reference": "Isaiah 11:10",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 36
-  },
-  {
-   "reference": "Isaiah 53:5",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 36
-  },
-  {
-   "reference": "Isaiah 19:1",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 36
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Deuteronomy 28:66",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 37
+   "chapter_order": 35,
+   "why": "Athanasius quotes the Septuagint and argues from its wording ('ye shall see your Life hanging before your eyes'): the Cross and Christ as the Life of all (§35, §37)"
   },
   {
-   "reference": "Acts 8:33",
+   "reference": "Jeremiah 11:19",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 37
+   "chapter_order": 35,
+   "why": "Athanasius quotes the Septuagint and argues from its wording ('let us cast a tree upon his bread'): 'a death that takes place on a tree'; OWB reads 'destroy the tree with its fruit'"
   },
   {
-   "reference": "Psalm 22:16",
+   "reference": "Psalm 22:16-17",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 37
+   "chapter_order": 35,
+   "why": "Athanasius quotes the Septuagint and argues from its wording ('they pierced my hands and my feet'): 'in no other death are the hands and feet pierced'; OWB reads 'like a lion'. Verse 18 after it is OWB"
   },
   {
-   "reference": "Genesis 49:33",
+   "reference": "Isaiah 7:14",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 37
+   "chapter_order": 35,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
-   "reference": "Hebrews 11:37",
+   "reference": "1 Samuel 16:11",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 37
+   "chapter_order": 35,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
-   "reference": "Matthew 2:1-2",
+   "reference": "Matthew 2:2",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 37
+   "chapter_order": 35,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
+  },
+  {
+   "reference": "Isaiah 8:4",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 36,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
+  },
+  {
+   "reference": "Isaiah 11:10",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 36,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 36,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Isaiah 19:1",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 37
+   "chapter_order": 36,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
+  },
+  {
+   "reference": "Deuteronomy 28:66",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 37,
+   "why": "Athanasius quotes the Septuagint and argues from its wording ('your Life hanging'), repeated from §35"
+  },
+  {
+   "reference": "Isaiah 53:8",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 37,
+   "why": "Athanasius quotes the Septuagint and argues from its wording ('who shall declare his generation?'): the Saviour's generation not to be declared"
+  },
+  {
+   "reference": "Psalm 22:16",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 37,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
+  },
+  {
+   "reference": "Genesis 49:33",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 37,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
+  },
+  {
+   "reference": "Hebrews 11:37",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 37,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
+  },
+  {
+   "reference": "Matthew 2:1-2",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 37,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
+  },
+  {
+   "reference": "Isaiah 19:1",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 37,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Isaiah 53:7",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 37
+   "chapter_order": 37,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
-   "reference": "Isaiah 65:1",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 38
-  },
-  {
-   "reference": "Romans 10:21",
+   "reference": "Isaiah 65:1-2",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 38,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Isaiah 35:3-6",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 38
-  },
-  {
-   "reference": "John 9:32",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 38,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
-   "reference": "John 9:33",
+   "reference": "John 9:32-33",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 38,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Kings 5:14",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 38
+   "chapter_order": 38,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "1 Kings 17:22",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 38
+   "chapter_order": 38,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Daniel 9:24-25",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 39
+   "chapter_order": 39,
+   "why": "Athanasius quotes the Septuagint and argues from its wording (Theodotion: 'to anoint a Holy of Holies', 'unto Christ the Prince'): he argues the one anointed is 'not man simply, but Holy of Holies'; OWB reads 'the most holy place'"
   },
   {
    "reference": "Matthew 11:3",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 39
-  },
-  {
-   "reference": "Genesis 49:10",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 40
+   "chapter_order": 39,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Matthew 11:13",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 40,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 118:27",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 40
+   "chapter_order": 40,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Psalm 107:20",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 40,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "Genesis 49:10",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 40
+   "chapter_order": 40,
+   "why": "Athanasius quotes the Septuagint and argues from its wording ('he is the expectation of the nations'): the nations placing their hope in Christ"
   },
   {
    "reference": "Isaiah 63:9",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 40
-  },
-  {
-   "reference": "Isaiah 11:9",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 40
-  },
-  {
-   "reference": "Isaiah 11:1",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 40
+   "chapter_order": 40,
+   "why": "Athanasius quotes the Septuagint and argues from its wording ('not a messenger, not an angel, but the Lord Himself saved them'); OWB reads 'the angel of his presence saved them'"
   },
   {
    "reference": "Daniel 9:24",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 40
+   "chapter_order": 40,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
+  },
+  {
+   "reference": "Isaiah 11:9",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 40,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
+  },
+  {
+   "reference": "Isaiah 11:1",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 40,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Acts 17:28",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 42,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 15:53-54",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 44
+   "chapter_order": 44,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Isaiah 11:9",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 45
+   "chapter_order": 45,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Colossians 2:15",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 45,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 1:20",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 46
+   "chapter_order": 46,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "John 1:14",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 47
+   "chapter_order": 47,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "1 Corinthians 1:24",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 48
+   "chapter_order": 48,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "John 12:32",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 50
+   "chapter_order": 50,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "1 Corinthians 2:14",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 50
+   "chapter_order": 50,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Isaiah 2:4",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 52
+   "chapter_order": 52,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 2:8",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 53,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Acts 19:19",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 53
+   "chapter_order": 53,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Romans 9:5",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 55
+   "chapter_order": 55,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "1 Corinthians 1:24",
    "status": "self_rendered",
    "block_index": 1,
-   "chapter_order": 55
-  },
-  {
-   "reference": "2 Peter 1:21",
-   "status": "self_rendered",
-   "block_index": 1,
-   "chapter_order": 56
+   "chapter_order": 55,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "Matthew 26:64",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 56,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "Matthew 24:42-44",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 1,
-   "chapter_order": 56
+   "chapter_order": 56,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   },
   {
    "reference": "2 Corinthians 5:10",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 56,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  },
+  {
+   "reference": "2 Peter 1:21",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 56,
+   "why": "an allusion, retelling or paraphrase in the author's own sentence, not a quotation; translator's wording"
   },
   {
    "reference": "1 Corinthians 2:9",
    "status": "mined",
    "block_index": 1,
    "chapter_order": 57,
-   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
   }
  ]
 }
