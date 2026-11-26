@@ -95,6 +95,27 @@ def has_capability(request, capability, verb, language=None) -> bool:
     return AdminGrant.allows(email, capability, verb, language)
 
 
+def reveals_pii(request) -> bool:
+    """True if this request may see readers' and admins' email addresses in the
+    clear. A super admin always may; otherwise it takes ``users:approve`` — held
+    by the Content admin role, never by a language admin (whose ``users`` access,
+    if any, stays masked). The one home for that bar, so the Users directory, a
+    reader's page, the activity log and the feedback queue cannot disagree."""
+    from .models import AdminCapability, AdminVerb
+
+    return has_capability(request, AdminCapability.USERS, AdminVerb.APPROVE)
+
+
+def may_queue_translations(request) -> bool:
+    """True if this request may file translation work (a worker session). A
+    super admin always may; otherwise it takes ``translate:approve`` — held by
+    the Content admin role. Language admins (``translate:act``) review and
+    approve translations but do not queue them (founder decision, 2026-09-21)."""
+    from .models import AdminCapability, AdminVerb
+
+    return has_capability(request, AdminCapability.TRANSLATE, AdminVerb.APPROVE)
+
+
 class HasAnyAdminAccess(permissions.BasePermission):
     """Allow any admin at all: a super admin, or anyone holding a grant of any
     kind. Only for READ-ONLY surfaces that explain the console itself (the Help

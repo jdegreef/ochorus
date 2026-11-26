@@ -1,7 +1,8 @@
 """Admin API for automations (emails/automations.py): build a flow, write its
 emails, switch it on, send yourself a test run, and see how it is doing.
 
-Super-admin-only like the rest of the Emails section. A flow's step list is
+Gated on the ``email`` capability like the rest of the Emails section
+(super admins and the Content admin role hold it). A flow's step list is
 frozen while it is on (readers mid-way are pinned to a step number); its
 emails' words can still be edited.
 """
@@ -17,8 +18,8 @@ from rest_framework import status as http_status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.models import UserProfile
-from accounts.permissions import IsAdminEmail
+from accounts.models import AdminCapability, AdminVerb, UserProfile
+from accounts.permissions import requires
 from library.audit import AdminAudited, AdminNotAudited, actor_email
 from library.models import AdminAction
 
@@ -87,11 +88,11 @@ def _shape(steps: list[dict]) -> list[tuple]:
     return [(s.get("type"), s.get("id")) for s in steps or []]
 
 
+@requires(AdminCapability.EMAIL, verbs={"GET": AdminVerb.VIEW, "POST": AdminVerb.ACT})
 class AdminAutomationsView(AdminAudited, APIView):
     """``GET`` every automation plus the builder's vocabulary; ``POST {"name"}``
     makes a new, empty one (off)."""
 
-    permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.EMAIL_AUTOMATION_SAVE
 
     def audit_entry(self, request, response):
@@ -110,11 +111,10 @@ class AdminAutomationsView(AdminAudited, APIView):
         return Response(_detail(automation), status=http_status.HTTP_201_CREATED)
 
 
+@requires(AdminCapability.EMAIL, verbs={"GET": AdminVerb.VIEW, "PATCH": AdminVerb.ACT, "DELETE": AdminVerb.ACT})
 class AdminAutomationDetailView(AdminAudited, APIView):
     """Read, edit (``name``, ``trigger``, ``steps``, ``exit``, ``stream``) or
     delete one automation."""
-
-    permission_classes = [IsAdminEmail]
 
     def audit_action_for(self, request):
         if request.method == "DELETE":
@@ -185,12 +185,11 @@ class AdminAutomationDetailView(AdminAudited, APIView):
         return Response(status=http_status.HTTP_204_NO_CONTENT if deleted else http_status.HTTP_404_NOT_FOUND)
 
 
+@requires(AdminCapability.EMAIL, verbs={"POST": AdminVerb.APPROVE})
 class AdminAutomationActionView(AdminAudited, APIView):
     """``POST {"action": "enable" | "disable" | "test"}``. ``enable`` refuses a
     flow that couldn't run (its problems are returned); ``test`` sends every
     email in the flow to you, now."""
-
-    permission_classes = [IsAdminEmail]
 
     def audit_action_for(self, request):
         if str(request.data.get("action")) == "test":
@@ -263,11 +262,11 @@ class AdminAutomationActionView(AdminAudited, APIView):
         return Response({"sent": sent, "sent_to": profile.email, **_detail(a)})
 
 
+@requires(AdminCapability.EMAIL, verbs={"POST": AdminVerb.ACT})
 class AdminAutomationEmailsView(AdminAudited, APIView):
     """``POST {"template"?: "starter-key" | template id}`` adds an email to the
     automation (blank, or copied from a template) and returns it."""
 
-    permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.EMAIL_AUTOMATION_SAVE
 
     def audit_entry(self, request, response):
@@ -292,11 +291,10 @@ class AdminAutomationEmailsView(AdminAudited, APIView):
         return Response(_email(email), status=http_status.HTTP_201_CREATED)
 
 
+@requires(AdminCapability.EMAIL, verbs={"PATCH": AdminVerb.ACT, "DELETE": AdminVerb.ACT})
 class AdminAutomationEmailDetailView(AdminAudited, APIView):
     """``PATCH {"subject", "content"}`` edits an automation email's words;
     ``DELETE`` removes it (a step pointing at it then sends nothing)."""
-
-    permission_classes = [IsAdminEmail]
 
     def audit_action_for(self, request):
         if request.method == "DELETE":
@@ -322,12 +320,11 @@ class AdminAutomationEmailDetailView(AdminAudited, APIView):
         return Response(status=http_status.HTTP_204_NO_CONTENT if deleted else http_status.HTTP_404_NOT_FOUND)
 
 
+@requires(AdminCapability.EMAIL, verbs={"POST": AdminVerb.ACT})
 class AdminAutomationEmailTranslationView(AdminAudited, APIView):
     """AI drafts of an automation email: ``POST {"action": "request" | "fetch" |
     "approve", "language", "source"?}`` — the same queue and review as a
     broadcast's (emails/translation_jobs.py)."""
-
-    permission_classes = [IsAdminEmail]
 
     _AUDIT = {
         "request": AdminAction.Action.EMAIL_TRANSLATION_REQUEST,
@@ -363,10 +360,10 @@ class AdminAutomationEmailTranslationView(AdminAudited, APIView):
         return Response(_email(email))
 
 
+@requires(AdminCapability.EMAIL, verbs={"GET": AdminVerb.VIEW})
 class AdminAutomationVocabularyView(AdminNotAudited, APIView):
     """The builder's triggers, conditions and streams."""
 
-    permission_classes = [IsAdminEmail]
     audit_exempt = "Read-only list."
 
     def get(self, request):

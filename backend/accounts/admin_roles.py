@@ -59,6 +59,29 @@ PRESETS: dict[str, list[tuple[str, str]]] = {
         (C.FEEDBACK, V.ACT),
         (C.LANGUAGE_ADMIN, V.VIEW),
     ],
+    # The tier between a language admin and the super admin (added 2026-11-26
+    # for a staff hire). Everything a language admin does, meant to be granted
+    # over all languages, plus: the whole Emails section including sending
+    # (email:approve), readers' emails in the clear (users:approve), document
+    # import and the full Admin Manual (publish:approve), queuing translation
+    # work (translate:approve), and adding/editing languages and their readiness
+    # bar (language_admin:act). Still the super admin's alone: taking a
+    # language live (language_admin:approve, it fires a deploy), Team & access
+    # (granting anyone anything), deleting a reader's account, and everything
+    # outside the console (deploys, secrets, billing).
+    "content_admin": [
+        (C.REPORTING, V.VIEW),
+        (C.USERS, V.APPROVE),
+        (C.AUDIT, V.ACT),
+        (C.REVIEW, V.APPROVE),
+        (C.PUBLISH, V.APPROVE),
+        (C.TRANSLATE, V.APPROVE),
+        (C.CONTENT_EDIT, V.ACT),
+        (C.AUTHORS, V.ACT),
+        (C.FEEDBACK, V.ACT),
+        (C.LANGUAGE_ADMIN, V.ACT),
+        (C.EMAIL, V.APPROVE),
+    ],
 }
 
 ROLE_NAMES = tuple(PRESETS)
@@ -79,6 +102,10 @@ ROLE_INFO: dict[str, tuple[str, str]] = {
     "language_admin": (
         "Language admin",
         "Runs their languages: publishes, confirms reviews, triages feedback.",
+    ),
+    "content_admin": (
+        "Content admin",
+        "Runs the whole library and email in every language: imports, queues translations, sends email, sees readers. Can't grant access or take a language live.",
     ),
     "super_admin": (
         "Super admin",

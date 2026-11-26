@@ -395,9 +395,9 @@
 				</p>
 				<!-- Starting a language begins here: the row is what the translate_*
 				     commands read, so it has to exist before any work can be queued.
-				     Language administration is super-admin-only, so a language admin
-				     never sees this form (the create endpoint is gated too). -->
-				{#if auth.isAdmin}
+				     It takes language_admin:act (super and content admins), so a
+				     language admin never sees this form (the endpoint is gated too). -->
+				{#if auth.can('language_admin', 'act')}
 					<AddLanguageForm oncreated={dashboard.load} />
 				{/if}
 			</section>

@@ -85,9 +85,10 @@
 							>{auth.adminLabel}</a
 						>
 					{/if}
-					{#if auth.isAdmin}
-						<!-- Super admins only (auth.isAdmin is the super-admin flag). The
-						     manual PDF is bearer-gated, so this fetches it and opens the blob. -->
+					{#if auth.canImport}
+						<!-- Super admins and content admins (publish:approve, the endpoint's
+						     gate). The manual PDF is bearer-gated, so this fetches it and opens
+						     the blob. -->
 						<button class="account-item" onclick={() => openManual(adminManual)} disabled={manualLoading}>
 							{manualLoading ? 'Opening…' : 'Admin Manual PDF'}
 						</button>

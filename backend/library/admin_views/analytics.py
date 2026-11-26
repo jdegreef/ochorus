@@ -10,7 +10,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import is_admin_user, requires
+from accounts.permissions import may_queue_translations, requires, reveals_pii
 
 from .. import dropoff
 from ..audit import AdminAudited, actor_email
@@ -867,7 +867,7 @@ class AdminUsersView(APIView):
                 "by_method": self._by_method(),
                 "by_signup_variant": self._by_signup_variant(),
                 "prompt_funnel": self._prompt_funnel(),
-                "recent": self._recent(reveal=is_admin_user(request.user, request)),
+                "recent": self._recent(reveal=reveals_pii(request)),
                 "by_locale": self._by_locale(),
                 **self._geography(),
                 "by_theme": [
@@ -1496,13 +1496,13 @@ class AdminSearchDecisionView(AdminAudited, APIView):
     def _guard_translate(request, query, language):
         """A queued translation is a super admin's record — the job behind it is
         theirs to file — so only a super admin may replace or undo it."""
-        if is_admin_user(request.user, request):
+        if may_queue_translations(request):
             return None
         if SearchDecision.objects.filter(
             query=query, language=language, outcome=SearchDecision.Outcome.TRANSLATE
         ).exists():
             return Response(
-                {"detail": "A queued translation can only be changed by a super admin."},
+                {"detail": "A queued translation can only be changed by someone who can queue translations."},
                 status=status.HTTP_403_FORBIDDEN,
             )
         return None
@@ -1521,11 +1521,9 @@ class AdminSearchDecisionView(AdminAudited, APIView):
                 },
                 status=status.HTTP_400_BAD_REQUEST,
             )
-        if outcome == SearchDecision.Outcome.TRANSLATE and not is_admin_user(
-            request.user, request
-        ):
+        if outcome == SearchDecision.Outcome.TRANSLATE and not may_queue_translations(request):
             return Response(
-                {"detail": "Only a super admin can queue translation work."},
+                {"detail": "Only a super admin or content admin can queue translation work."},
                 status=status.HTTP_403_FORBIDDEN,
             )
         query, language = key

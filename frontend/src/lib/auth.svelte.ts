@@ -160,14 +160,30 @@ class Auth {
 	// A sign-out is getting this device's changes to the account first — the
 	// sign-out buttons say so instead of doing nothing for a slow request.
 	signingOut = $state(false);
-	// A "Language Admin": has admin access but isn't a super admin. Drives the
-	// role-specific relabelling ("Language Admin" vs "Admin"), the trimmed
-	// dashboard, and the language-admin manual link. UX only — the API enforces
-	// every request regardless (import / queueing / PII are gated server-side).
-	isLanguageAdmin = $derived(this.hasAdminAccess && !this.isAdmin);
+	// A "Content Admin": holds the content_admin role — the tier between a
+	// language admin and the super admin (email, users, imports, the full manual).
+	isContentAdmin = $derived(
+		!this.isAdmin && this.scopes !== 'all' && this.scopes.some((s) => s.role === 'content_admin')
+	);
+	// A "Language Admin": has admin access but isn't a super or content admin.
+	// Drives the role-specific relabelling ("Language Admin" vs "Admin"), the
+	// trimmed dashboard, and the language-admin manual link. UX only — the API
+	// enforces every request regardless (import / queueing / PII are gated
+	// server-side).
+	isLanguageAdmin = $derived(this.hasAdminAccess && !this.isAdmin && !this.isContentAdmin);
 	// The reader-facing name for this user's admin access — one source of truth for
 	// the account-menu link, the nav-rail header and the dashboard heading.
-	adminLabel = $derived(this.isLanguageAdmin ? 'Language Admin' : 'Admin');
+	adminLabel = $derived(
+		this.isContentAdmin ? 'Content Admin' : this.isLanguageAdmin ? 'Language Admin' : 'Admin'
+	);
+	// The high-privilege levers below super admin, each mirroring its backend
+	// gate (accounts.permissions). A super admin ('all') passes every one.
+	/** Readers' emails in the clear (users:approve, `reveals_pii`). */
+	canRevealPii = $derived(canDo(this.scopes, 'users', 'approve'));
+	/** File translation work (translate:approve, `may_queue_translations`). */
+	canQueueTranslations = $derived(canDo(this.scopes, 'translate', 'approve'));
+	/** Document import and the full Admin Manual (publish:approve). */
+	canImport = $derived(canDo(this.scopes, 'publish', 'approve'));
 	// True once the initial session has been resolved (or auth is unconfigured),
 	// so callers can wait before making authenticated requests rather than firing
 	// a premature unauthenticated one on a fresh page load.

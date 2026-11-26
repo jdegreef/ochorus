@@ -396,10 +396,15 @@
 				{/if}
 			</section>
 
-			<!-- Super admins only: the reader's email (like the Emails section), and
-			     deleting the account — the Supabase sign-in and all Ochorus data. -->
-			{#if auth.isAdmin}
+			<!-- The reader's email history and a direct email: the Emails section's
+			     gate (email capability — super admins and content admins). -->
+			{#if auth.can('email')}
 				<ReaderEmailPanel uid={data.uid} name={d.profile.display_name || 'this reader'} />
+			{/if}
+
+			<!-- Super admins only: deleting the account — the Supabase sign-in and
+			     all Ochorus data. -->
+			{#if auth.isAdmin}
 
 				<section class="mt-8 rounded-card border border-danger/40 p-5">
 					<div class="mb-2 text-small font-semibold text-danger">Delete account</div>

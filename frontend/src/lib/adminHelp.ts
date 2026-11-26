@@ -62,10 +62,50 @@ export const ABILITIES: Ability[] = [
 		href: '/admin/feedback'
 	},
 	{
-		label: 'See user analytics (names, emails)',
+		label: 'See user analytics',
 		capability: 'users',
 		verb: 'view',
 		href: '/admin/users'
+	},
+	{
+		label: 'See readers’ email addresses',
+		capability: 'users',
+		verb: 'approve',
+		href: '/admin/users'
+	},
+	{
+		label: 'Queue translation work',
+		capability: 'translate',
+		verb: 'approve',
+		href: '/admin/coverage'
+	},
+	{
+		label: 'Import books and sermons',
+		capability: 'publish',
+		verb: 'approve',
+		href: '/admin/import'
+	},
+	{
+		label: 'Add languages and edit their settings',
+		capability: 'language_admin',
+		verb: 'act'
+	},
+	{
+		label: 'Write and edit emails',
+		capability: 'email',
+		verb: 'act',
+		href: '/admin/emails'
+	},
+	{
+		label: 'Send emails to readers',
+		capability: 'email',
+		verb: 'approve',
+		href: '/admin/emails'
+	},
+	{
+		label: 'Take a language live',
+		capability: 'language_admin',
+		verb: 'approve'
 	},
 	{
 		label: 'Grant access to others',

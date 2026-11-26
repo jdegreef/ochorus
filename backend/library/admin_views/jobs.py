@@ -28,7 +28,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import allowed_languages, is_admin_user, requires
+from accounts.permissions import allowed_languages, may_queue_translations, requires
 
 from ..audit import AdminAudited
 from ..corrections import COPYRIGHT_BLOCKED_SLUGS, RETIRED_BOOKS
@@ -320,14 +320,15 @@ class AdminTranslationJobsView(AdminAudited, APIView):
         return queue_response(request, cached_translation_jobs, AdminCapability.TRANSLATE)
 
     def post(self, request):
-        # Filing a translation job is a super-admin-only lever: it spins up a
-        # worker session and shapes the pipeline. Language admins (any non-super
-        # admin) review and approve translations but do NOT queue them — a founder
-        # product decision (2026-09-21). GET stays open to a TRANSLATE/view grant,
-        # so language admins still SEE queued state; only the enqueue is reserved.
-        if not is_admin_user(request.user, request):
+        # Filing a translation job is a high-privilege lever: it spins up a
+        # worker session and shapes the pipeline. It takes translate:approve
+        # (super admins and Content admins). Language admins review and approve
+        # translations but do NOT queue them — a founder product decision
+        # (2026-09-21). GET stays open to a TRANSLATE/view grant, so language
+        # admins still SEE queued state; only the enqueue is reserved.
+        if not may_queue_translations(request):
             return Response(
-                {"detail": "Only a super admin can queue translation work."},
+                {"detail": "Only a super admin or content admin can queue translation work."},
                 status=status.HTTP_403_FORBIDDEN,
             )
         type_ = str(request.data.get("type", "")).strip().lower()

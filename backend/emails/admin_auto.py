@@ -2,7 +2,8 @@
 "new in your language" (emails/auto_emails.py): their switches and settings,
 the campaigns they have built, and "build a draft now".
 
-Super-admin-only like the rest of the Emails section. A built campaign is an
+Gated on the ``email`` capability like the rest of the Emails section
+(super admins and the Content admin role hold it). A built campaign is an
 ordinary broadcast; it is opened, approved (scheduled) and sent from Compose.
 """
 
@@ -12,7 +13,8 @@ from rest_framework import status as http_status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.permissions import IsAdminEmail
+from accounts.models import AdminCapability, AdminVerb
+from accounts.permissions import requires
 from library.audit import AdminAudited, actor_email
 from library.models import AdminAction
 
@@ -51,11 +53,11 @@ def _payload() -> dict:
     }
 
 
+@requires(AdminCapability.EMAIL, verbs={"GET": AdminVerb.VIEW, "PATCH": AdminVerb.ACT})
 class AdminAutoEmailsView(AdminAudited, APIView):
     """``GET`` the switches and what they built; ``PATCH {"key", "enabled"?,
     "require_approval"?, "sections"?}`` changes one."""
 
-    permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.EMAIL_AUTO_SETTINGS
 
     def audit_entry(self, request, response):
@@ -94,12 +96,12 @@ class AdminAutoEmailsView(AdminAudited, APIView):
         return Response(_payload())
 
 
+@requires(AdminCapability.EMAIL, verbs={"POST": AdminVerb.ACT})
 class AdminAutoEmailBuildView(AdminAudited, APIView):
     """``POST {"key": "digest"}`` builds the next digest now, as a draft that
     waits for approval — to see it before its date, or to send one early. It
     holds only what is published so far, and the cron won't rebuild it."""
 
-    permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.EMAIL_AUTO_BUILD
 
     def audit_entry(self, request, response):

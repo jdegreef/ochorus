@@ -49,8 +49,8 @@ def _profile(request) -> UserProfile:
 def submitter_role(request) -> str:
     """A snapshot label of the submitter's standing, for the queue's trust badge.
 
-    Super admin wins; otherwise the strongest role they hold (``language_admin``
-    preferred), or a bare ``"admin"`` for a raw-capability grant, or ``""`` for an
+    Super admin wins; otherwise the strongest role they hold (``content_admin``,
+    then ``language_admin``, preferred), or a bare ``"admin"`` for a raw-capability grant, or ``""`` for an
     ordinary reader.
     """
     if is_admin_user(request.user, request):
@@ -63,8 +63,9 @@ def submitter_role(request) -> str:
         return ""
     grants = list(AdminGrant.objects.filter(email=verified))
     labels = {g.role_label for g in grants if g.role_label}
-    if "language_admin" in labels:
-        return "language_admin"
+    for strongest in ("content_admin", "language_admin"):
+        if strongest in labels:
+            return strongest
     if labels:
         return sorted(labels)[0]
     if grants:
