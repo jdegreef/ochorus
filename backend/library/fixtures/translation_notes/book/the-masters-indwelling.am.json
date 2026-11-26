@@ -518,10 +518,10 @@
   },
   {
    "reference": "Isaiah 7:4",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 29,
    "chapter_order": 4,
-   "source_file": "waiting-on-god.am.json"
+   "why": "mined from Waiting on God's 1962 wording, which that book no longer carries (re-quoted to OWB); this work is not yet re-quoted, so its wording is the translator's for now"
   },
   {
    "reference": "Matthew 6:33",
