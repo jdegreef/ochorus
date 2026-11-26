@@ -182,7 +182,7 @@ Then God spoke: "Return to your fathers' land and to your own people. I will be 
 
 Four hundred men. "Jacob was badly frightened and anxious" (Genesis 32:7). He divided his people into two camps, so that if Esau attacked one, the other might escape. Then he prayed. It is one of the most honest prayers in the Bible:
 
-> "I am far too small for all the steadfast love and faithfulness You have shown Your servant. I had only a staff in my hand when I crossed this Jordan, and now I have become two camps. Rescue me from my brother, from Esau's hand." (Genesis 32:10-11)
+> "I am far too small for all the faithful love and truth You have shown Your servant. I had only a staff in my hand when I crossed this Jordan, and now I have become two camps. Rescue me from my brother, from Esau's hand." (Genesis 32:10-11)
 
 He sent large gifts of animals ahead to his brother. That night he took his family across the ford of the Jabbok, a stream east of the Jordan River, and sent over everything he owned.
 
