@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { glossaryHref, glossaryTermsIn, titleCase } from '$lib/glossary';
 	import { assetHtml } from '$lib/assetUrl';
 	import { hasVerseNumbers, markVerse } from '$lib/verse';
 	import { anchorParagraphs, paragraphFromHash } from '$lib/paragraphAnchor';
@@ -1955,6 +1956,11 @@
 	// the Aa panel offer to hide them. Read off the body itself, so it is right
 	// before the book fetch lands — and on the introduction, which has none.
 	const verseNumbered = $derived(hasVerseNumbers(chapter.body_html));
+	// "Words in this chapter" (see the chip row under the text): the glossary is
+	// English, so only an English text gets the row.
+	const glossaryWords = $derived(
+		language === 'en' || edition === 'modern' ? glossaryTermsIn(chapter.body_html ?? '') : []
+	);
 	$effect.pre(() => {
 		readerPrefs.scripture = verseNumbered;
 	});
@@ -2669,6 +2675,22 @@
 							target="_blank">OpenBible.info</a
 						>{creditAfter ?? ''}
 					</p>
+				</section>
+			{/if}
+
+			<!-- The glossary words this chapter uses, as plain links to their pages.
+			     The tap-to-define popover reaches the same pages, but only after a
+			     tap, which a crawler never makes; this is the term pages' path in
+			     from the text. English only, like the glossary. Same quiet chip row
+			     as the passages above. -->
+			{#if glossaryWords.length}
+				<section class="mt-10 border-t border-border pt-6" aria-label={t('reader.glossaryWords')}>
+					<div class="flex flex-wrap items-center gap-2">
+						<span class="eyebrow text-muted" aria-hidden="true">{t('reader.glossaryWords')}</span>
+						{#each glossaryWords as term (term)}
+							<a href={glossaryHref(term)} class="tag" lang="en">{titleCase(term)}</a>
+						{/each}
+					</div>
 				</section>
 			{/if}
 

@@ -11,6 +11,7 @@
 	import { pager, pagedSnapshot } from '$lib/paging.svelte';
 	import { featuredOrder, startWith } from '$lib/sermonPicks';
 	import { canonGrid } from '$lib/sermonCanon';
+	import { sermonsOnBooks, sermonsOnHref, sermonsOnPath } from '$lib/sermonsOn';
 	import { isPlainPrimaryClick } from '$lib/plainClick';
 	import { tick } from 'svelte';
 	import Portrait from '$lib/components/Portrait.svelte';
@@ -282,11 +283,20 @@
 
 	// --- Browse by Scripture (design review #21) ----------------------------------
 	// The 66 books, each shaded by how many sermons on this shelf preach from
-	// it; a cell sets the book filter. Built from `bookFacets`, so a cell's
+	// it; a cell opens the book's own page (/sermons/on/<book>/, $lib/sermonsOn)
+	// when it has one, else sets the book filter. Built from `bookFacets`, so a cell's
 	// count is the select's count. Null (no grid) where the shelf's references
 	// don't resolve to enough books, and off the English shelf: the cells'
 	// abbreviations and names are English ($lib/sermonCanon).
 	const canon = $derived(getLang() === 'en' ? canonGrid(bookFacets) : null);
+	/** The books with a /sermons/on/ page on this shelf, named as the facet
+	 *  names them — the same floor the page and the sitemap apply. */
+	const onBooks = $derived(
+		sermonsOnBooks(sermons).map((position) => ({
+			position,
+			name: sermons.find((s) => s.scripture_book_order === position)?.scripture_book ?? ''
+		}))
+	);
 	/** A cell's link: this view (group, sort) narrowed to the book, so a new
 	 *  tab opens what a plain click shows. Built from the filter VALUES, never
 	 *  the query string, which the prerender may not read. */
@@ -654,6 +664,20 @@
 			     printed in the cell and in its name, so the shade is never the only
 			     signal). An empty book is muted text, not a link. A secondary section:
 			     hidden while filtering — the chosen book shows as a chip instead. -->
+			<!-- Off the grid (another language's shelf, or too few books for it), the
+			     books with their own page as plain links: the only way a crawler
+			     reaches a localized /sermons/on/<book>/ (the sitemap lists it). -->
+			{#if !canon && onBooks.length && !filtering && !loadError}
+				<section class="mb-10" aria-labelledby="by-scripture-links">
+					<h2 id="by-scripture-links" class="section-label mb-3">{t('sermons.byScripture')}</h2>
+					<ul class="flex flex-wrap gap-2">
+						{#each onBooks as b (b.position)}
+							<li><a class="tag" href={localizeHref(sermonsOnPath(b.position)!)}>{b.name}</a></li>
+						{/each}
+					</ul>
+				</section>
+			{/if}
+
 			{#if canon && !filtering && !loadError}
 				<section class="mb-10" class:canon-open={canonOpen} aria-labelledby="by-scripture">
 					<h2 id="by-scripture" class="section-label mb-4">
@@ -678,6 +702,7 @@
 							</h3>
 							<ul class="canon">
 								{#each cells as c (c.name)}
+									{@const onPage = sermonsOnHref(c.position, c.count)}
 									<!-- The visible label is the abbreviation (and count); the
 									     accessible name is the full book and "N sermons". -->
 									{#snippet label()}<span aria-hidden="true" class="canon-abbr">{c.abbr}</span
@@ -685,7 +710,13 @@
 											>{/if}<span class="sr-only">{c.name}, {sermonsLabel(c.count)}</span
 										>{/snippet}
 									<li>
-										{#if c.count}
+										{#if onPage}
+											<!-- A book with its own page (/sermons/on/<book>/) opens it:
+											     the crawlable view, grouped by chapter. -->
+											<a href={localizeHref(onPage)} class="canon-cell heat-{c.heat}"
+												>{@render label()}</a
+											>
+										{:else if c.count}
 											<a
 												href={bookHref(c.name)}
 												rel="nofollow"

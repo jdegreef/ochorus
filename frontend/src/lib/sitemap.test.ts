@@ -31,7 +31,9 @@ import type { Entry, SitemapData } from './sitemap';
 const english = vi.hoisted(() => ({ books: [] as unknown[] }));
 // Whether the Swahili Humility is a REVIEWED translation; unreviewed unless a
 // test says so, reset by each such test.
-const swahili = vi.hoisted(() => ({ reviewed: false }));
+const swahili = vi.hoisted(() => ({ reviewed: false, bible: [] as unknown[] }));
+// English sermons, empty unless a test fills it; reset by each such test.
+const englishSermons = vi.hoisted(() => ({ rows: [] as unknown[] }));
 
 vi.mock('$lib/advertised-locales', () => ({
 	ADVERTISED_LOCALES: ['en', 'es', 'sw'],
@@ -91,7 +93,8 @@ vi.mock('$lib/library-public', () => {
 							updated_at: '2026-09-02T10:00:00Z',
 							topics: [],
 							series: null
-						}
+						},
+						...swahili.bible
 					]
 				: l === 'en'
 					? english.books
@@ -108,7 +111,7 @@ vi.mock('$lib/library-public', () => {
 		listQuoteTopicPages: empty,
 		// Swahili has the Bible series; English and Spanish have none.
 		listSeries: async (l = 'en') => (l === 'sw' ? [{ slug: 'rooted' }, { slug: 'the-bible' }] : []),
-		listSermons: empty,
+		listSermons: async (l = 'en') => (l === 'en' ? englishSermons.rows : []),
 		// Indexable in Swahili; on the Spanish shelf but below the API's works
 		// floor, so served there yet not advertised.
 		listTopics: async (l = 'en') =>
@@ -257,7 +260,7 @@ describe('sections', () => {
 	// still selects the chapters that locale has — so the reversal stays cheap.
 	it('still resolves a chapter section to that locale, and a type section to none', () => {
 		expect(sectionLocale('chapters-sw')).toBe('sw');
-		expect(sectionLocale('books')).toBeUndefined();
+		expect(sectionLocale('modern')).toBeUndefined();
 	});
 
 	it('still selects only the chapters a locale actually has', () => {
@@ -280,11 +283,32 @@ describe('sections', () => {
 		expect(sectionLocale('modern')).toBeUndefined();
 	});
 
-	it('gives the Bible’s chapters their own section, carrying only English', () => {
-		const d = data({ bible: [entry({ en: '/books/psalms/24/' })] });
-		expect(sections()).toContain('bible');
-		expect(sectionEntries(d, 'bible')).toHaveLength(1);
-		expect(sectionLocale('bible')).toBeUndefined();
+	it('splits books, the Bible, sermons and authors into one child per language', () => {
+		// Search Console reports indexing per sitemap: a mixed-language child
+		// can't say whether the Spanish shelf is indexing.
+		for (const type of ['books', 'bible', 'sermons', 'authors']) {
+			expect(sections()).not.toContain(type);
+			for (const l of ['en', 'es', 'sw']) expect(sections()).toContain(`${type}-${l}`);
+		}
+		const both = entry({ en: '/books/psalms/23/', sw: '/books/psalms/23/' });
+		const d = data({ bible: [both, entry({ en: '/books/psalms/24/' })] });
+		expect(sectionEntries(d, 'bible-en')).toHaveLength(2);
+		expect(sectionEntries(d, 'bible-sw')).toEqual([both]);
+		expect(sectionEntries(d, 'bible-es')).toEqual([]);
+		expect(sectionLocale('bible-sw')).toBe('sw');
+		expect(sectionLocale('books-es')).toBe('es');
+	});
+
+	it('claims only its own language’s URLs but keeps every alternate', () => {
+		const both = entry({ en: '/books/humility/', sw: '/books/humility/' });
+		const xml = urlsetXml([both], sectionLocale('books-sw'));
+		expect([...xml.matchAll(/<loc>/g)]).toHaveLength(1);
+		expect(xml).toContain(`<loc>${loc('sw', '/books/humility/')}</loc>`);
+		expect(xml).toContain('hreflang="en"');
+	});
+
+	it('refuses a per-language child for a language that is not advertised', () => {
+		expect(sectionEntries(data(), 'books-zz')).toBeNull();
 	});
 
 	it('gives the leader’s guides their own section', () => {
@@ -413,6 +437,30 @@ describe('build() chapter entries', () => {
 			expect(openings.map((e) => e.byLocale.get('en'))).toContain('/books/psalms/introduction/');
 		} finally {
 			english.books = [];
+			resetSitemapData();
+		}
+	});
+
+	it('lists a translated Bible’s chapters though the edition is unreviewed, but not its introduction', async () => {
+		// Past the introduction a Bible chapter is the Open Word Bible's own text
+		// in that language, not an AI translation, so the review gate that keeps
+		// other translated chapters out doesn't apply. The AI-written introduction
+		// (chapter 1) stays gated.
+		const bible = { slug: 'the-bible', title: 'Biblia', position: 19, total: 66 };
+		swahili.bible = [
+			{ slug: 'psalms', chapter_count: 3, series: bible, source_type: 'ai_unreviewed', updated_at: '2026-11-02T00:00:00Z', topics: [], author: { slug: 'open-word-bible', name: 'Open Word Bible' } }
+		];
+		resetSitemapData();
+		try {
+			const { bible: listed, openings } = await sitemapData();
+			expect(listed.map((e) => [...e.byLocale])).toEqual([
+				[['sw', '/books/psalms/1/']],
+				[['sw', '/books/psalms/2/']]
+			]);
+			expect(listed[0].lastmods?.get('sw')).toBe('2026-11-02T00:00:00Z');
+			expect(openings).toEqual([]);
+		} finally {
+			swahili.bible = [];
 			resetSitemapData();
 		}
 	});
@@ -591,6 +639,38 @@ describe('build() the Bible hub', () => {
 		expect(story).toBeUndefined();
 	});
 
+});
+
+describe('build() sermons on a book of the Bible', () => {
+	beforeEach(() => resetSitemapData());
+
+	const sermon = (slug: string, order: number, updated_at: string) => ({
+		slug,
+		scripture_book_order: order,
+		updated_at,
+		topics: [],
+		author: { slug: 'spurgeon', name: 'Spurgeon', photo_url: '' }
+	});
+
+	it('advertises a book’s page only where enough sermons preach from it, dated by the newest', async () => {
+		englishSermons.rows = [
+			sermon('a', 43, '2026-09-01T00:00:00Z'),
+			sermon('b', 43, '2026-09-03T00:00:00Z'),
+			sermon('c', 43, '2026-09-02T00:00:00Z'),
+			sermon('d', 1, '2026-09-04T00:00:00Z'),
+			sermon('e', 1, '2026-09-04T00:00:00Z')
+		];
+		try {
+			const { sermons } = await sitemapData();
+			const john = sermons.find((e) => e.byLocale.get('en') === '/sermons/on/john/');
+			expect([...john!.byLocale.keys()]).toEqual(['en']);
+			expect(john!.lastmods?.get('en')).toBe('2026-09-03T00:00:00Z');
+			// Genesis has two: below the floor, so the route builds no page for it.
+			expect(sermons.some((e) => e.byLocale.get('en') === '/sermons/on/genesis/')).toBe(false);
+		} finally {
+			englishSermons.rows = [];
+		}
+	});
 });
 
 describe('build() book hubs', () => {

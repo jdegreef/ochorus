@@ -62,6 +62,7 @@ import { absUrl } from '$lib/seo';
 import { xmlEscape } from '$lib/xml';
 import { ORIGINALS_PATH, ORIGINALS_SLUG, hasBylinePage } from '$lib/originals';
 import { BIBLE_PATH, BIBLE_SERIES, BIBLE_STORY_PATH, bibleIn, isBibleBook } from '$lib/bible';
+import { BIBLE_PATHS, bibleStartPath } from '$lib/bibleHub';
 import { OWB_PATH } from '$lib/openWordBible';
 import { ADVENT_PLAN } from '$lib/advent';
 import { FOR_INDEX, FOR_LINKS, FOR_LOCALES, forPath } from '$lib/forLinks';
@@ -71,6 +72,7 @@ import { APP_ONLY } from '$lib/robots';
 import { withTrailingSlash } from '$lib/href';
 import { chapterSegment, modernChapterPath } from '$lib/reading-schema';
 import { GLOSSARY_TERMS, glossaryHref } from '$lib/glossary';
+import { sermonsOnBooks, sermonsOnPath } from '$lib/sermonsOn';
 
 /** Locale-prefixed absolute URL ('' prefix for the default locale, en). */
 export const loc = (locale: string, path: string) =>
@@ -263,26 +265,46 @@ export interface SitemapData {
  * chapter is the landing page — and the Open Word Bible's wording is a new
  * translation few other sites carry, not the duplicate pile above. Each
  * book's opening (its introduction) stays in `chapters`, so no URL is listed
- * twice. English only, like the books.
+ * twice. Every advertised language whose Bible has shipped, reviewed or not:
+ * past the introduction the text is the Open Word Bible's own translation, not
+ * an AI rendering of ours (see the `byBibleChapter` loop in build()).
  *
  * The remaining order is DELIBERATELY not the reader-facing nav order
  * (`$lib/contentNav`). It answers a crawl/coverage question, not "what order
  * does a reader meet these in", so it does not track nav/footer/palette (F2).
  */
 export const sections = (): string[] => [
-	'books',
+	...localeChildren('books'),
 	'chapters',
-	'bible',
+	...localeChildren('bible'),
 	'modern',
 	'guides',
-	'sermons',
-	'authors',
+	...localeChildren('sermons'),
+	...localeChildren('authors'),
 	'scripture',
 	'quotes',
 	'glossary',
 	'articles',
 	'pages'
 ];
+
+/**
+ * The sections split ONE CHILD PER LANGUAGE (`books-es`, `sermons-sw`, …).
+ *
+ * Search Console reports submitted-vs-indexed per sitemap, so a `books` child
+ * mixing every language can't say whether the Spanish shelf is indexing, or
+ * whether a go-live or a batch of reviews moved anything. These four are the
+ * types every advertised language carries in volume. Each URL still lists its
+ * full alternate set (see `urlXml`'s `only`), so the split narrows what a file
+ * CLAIMS, never the hreflang. A language with no rows of a type gets no child:
+ * the index lists only non-empty sections.
+ */
+export const PER_LOCALE_SECTIONS = ['books', 'bible', 'sermons', 'authors'] as const;
+type PerLocaleSection = (typeof PER_LOCALE_SECTIONS)[number];
+
+const localeChildren = (type: PerLocaleSection): string[] => ADVERTISED_LOCALES.map((l) => `${type}-${l}`);
+
+const PER_LOCALE_RE = new RegExp(`^(${PER_LOCALE_SECTIONS.join('|')})-(.+)$`);
 
 /**
  * How many citing passages a chapter-level scripture page needs before the
@@ -303,13 +325,15 @@ export function sectionEntries(data: SitemapData, section: string): Entry[] | nu
 		if (!(ADVERTISED_LOCALES as readonly string[]).includes(locale)) return null;
 		return data.chapters.filter((e) => e.byLocale.has(locale));
 	}
-	if (section === 'books') return data.books;
+	const split = section.match(PER_LOCALE_RE);
+	if (split) {
+		const [, type, locale] = split as unknown as [string, PerLocaleSection, string];
+		if (!(ADVERTISED_LOCALES as readonly string[]).includes(locale)) return null;
+		return data[type].filter((e) => e.byLocale.has(locale));
+	}
 	if (section === 'chapters') return data.openings;
-	if (section === 'bible') return data.bible;
 	if (section === 'modern') return data.modern;
 	if (section === 'guides') return data.guides;
-	if (section === 'sermons') return data.sermons;
-	if (section === 'authors') return data.authors;
 	if (section === 'scripture') return data.scripture;
 	if (section === 'quotes') return data.quotes;
 	if (section === 'glossary') return data.glossary;
@@ -320,7 +344,7 @@ export function sectionEntries(data: SitemapData, section: string): Entry[] | nu
 
 /** The locale a section's rows are restricted to, if it is a per-locale one. */
 export const sectionLocale = (section: string): string | undefined =>
-	section.match(/^chapters-(.+)$/)?.[1];
+	section.match(/^chapters-(.+)$/)?.[1] ?? section.match(PER_LOCALE_RE)?.[2];
 
 async function build(): Promise<SitemapData> {
 	// Per-locale content: a language with no row simply doesn't have the page
@@ -610,6 +634,11 @@ async function build(): Promise<SitemapData> {
 		// The Bible in story order ($lib/bibleStory), wherever the hub is: the
 		// hub links it. Undated, for the same reason: its prose is its own.
 		pages.push({ byLocale: new Map(bibleLocales.map(([l]) => [l, `${BIBLE_STORY_PATH}/`])) });
+		// Each "Where to start" path's own page ($lib/bibleHub), wherever the hub
+		// is: the hub's path chips link them. Undated, like the story.
+		for (const p of BIBLE_PATHS) {
+			pages.push({ byLocale: new Map(bibleLocales.map(([l]) => [l, bibleStartPath(p.slug)])) });
+		}
 	}
 
 	// The young-reader hubs, in each advertised locale where the hub has
@@ -828,6 +857,22 @@ async function build(): Promise<SitemapData> {
 			return photo ? absUrl(photo) : null;
 		}
 	);
+	// "Sermons on <book>" (/sermons/on/<book>/): each locale where enough of its
+	// own sermons preach from the book — the route's floor, so every URL here
+	// is a page the build made. Dated by the newest sermon it lists.
+	const byBook = new Map<number, Entry>();
+	for (const slice of advertisedSlices) {
+		for (const position of sermonsOnBooks(slice.sermons)) {
+			let e = byBook.get(position);
+			if (!e) byBook.set(position, (e = { byLocale: new Map() }));
+			e.byLocale.set(slice.locale, sermonsOnPath(position)!);
+			const lm = newest(
+				slice.sermons.filter((s) => s.scripture_book_order === position).map((s) => s.updated_at)
+			);
+			if (lm) (e.lastmods ??= new Map()).set(slice.locale, lm);
+		}
+	}
+	sermons.push(...byBook.values());
 	// A shelf below the API's works floor in a locale is served but noindexed
 	// there (`indexable`, see the topic page), so it is not promised here.
 	pages.push(
@@ -965,9 +1010,16 @@ async function build(): Promise<SitemapData> {
 	}
 
 	// The Bible's chapters (see sections()): its books by their series, past the
-	// opening chapter `openings` already lists.
+	// opening chapter `openings` already lists. From `advertisedSlices`, NOT the
+	// review-gated `chapterSlices`: a translated Bible book is marked
+	// `ai_unreviewed` because its introduction (chapter 1, which stays gated in
+	// `openings`) was written with AI, but every chapter after it is the Open Word
+	// Bible's own published text in that language (CC0), not an AI translation of
+	// anything. So "Salmo 23" is advertised in every language whose Bible shipped.
+	// The chapter page's hreflang follows the same rule (backend
+	// `serializers._book_languages`).
 	const byBibleChapter = new Map<string, Entry>();
-	for (const slice of chapterSlices) {
+	for (const slice of advertisedSlices) {
 		for (const b of slice.books) {
 			if (!isBibleBook(b)) continue;
 			for (let order = 2; order <= b.chapter_count; order++) {
@@ -1008,7 +1060,7 @@ async function build(): Promise<SitemapData> {
 		chapters: [...byChapter.values()],
 		openings: [...byOpening.values()],
 		// Every chapter of the Bible's books after their opening, in each
-		// advertised locale whose Bible has it (English today), dated per edition.
+		// advertised locale whose Bible has it, dated per edition.
 		bible: [...byBibleChapter.values()],
 		// EVERY modern chapter, not just the opening: this is the text no other
 		// library carries, so it is not the duplicate pile the original chapters

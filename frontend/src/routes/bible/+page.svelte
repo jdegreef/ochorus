@@ -28,7 +28,7 @@
 		passageHref,
 		testamentKey
 	} from '$lib/bible';
-	import { BIBLE_PATHS, bibleStarts, biblePathSteps } from '$lib/bibleHub';
+	import { BIBLE_PATHS, bibleStarts, biblePathSteps, bibleStartPath } from '$lib/bibleHub';
 	import { goto } from '$app/navigation';
 	import { lookupScripture } from '$lib/scripture.svelte';
 	import { passageSuggestions, quickPassages } from '$lib/biblePassage';
@@ -237,7 +237,7 @@
 </script>
 
 <Seo
-	title={`${t('nav.bible')} — Ochorus`}
+	title={`${t('bible.metaTitle')} — Ochorus`}
 	description={t('bible.tagline')}
 	{canonical}
 	{hreflang}
@@ -446,13 +446,20 @@
 					<button type="button" class="chip" class:active={!startPath} aria-pressed={!startPath} onclick={() => (pathId = 'first')}
 						>{say(COPY.newToBible)}</button
 					>
+					<!-- Each path is a link to its own page (/bible/start/<slug>/), so
+					     the prerendered hub links all four and the crawl reaches them; a
+					     plain click shows the path in place instead, as before. -->
 					{#each BIBLE_PATHS as p (p.id)}
-						<button
-							type="button"
+						<a
+							href={localizeHref(bibleStartPath(p.slug))}
 							class="chip"
 							class:active={pathId === p.id}
-							aria-pressed={pathId === p.id}
-							onclick={() => (pathId = p.id)}>{say(p.label)}</button
+							aria-current={pathId === p.id ? 'true' : undefined}
+							onclick={(e) => {
+								if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+								e.preventDefault();
+								pathId = p.id;
+							}}>{say(p.label)}</a
 						>
 					{/each}
 				</div>
@@ -514,7 +521,9 @@
 					{/if}
 				</div>
 				{#each testament.divisions as group (group.division.id)}
-					<section class="bible-division">
+					<!-- Its own anchor (/bible/#gospels), so a division can be linked and
+					     the canon strip's division names can jump to it. -->
+					<section class="bible-division" id={group.division.id}>
 						<GroupHeading as="h3" name={t(divisionKey(group.division.id))} count={group.books.length} />
 						{#if asCovers}
 							<BibleCoverGrid books={group.books} bind:open={openBook} {placeOf} {linksOf} />
@@ -744,6 +753,9 @@
 	}
 	.bible-testament + .bible-testament {
 		margin-top: 3rem;
+	}
+	.bible-division {
+		scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem);
 	}
 	.bible-division + .bible-division {
 		margin-top: 2.25rem;

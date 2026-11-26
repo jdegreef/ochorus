@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { bookChapterPath } from '$lib/reading-schema';
+	import { bibleTextPath, bookChapterPath } from '$lib/reading-schema';
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { scriptureBookHref, type ScripturePage } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
@@ -17,6 +18,8 @@
 	// (F3), as on the chapter page beside this one.
 	let { data } = $props();
 	const page = $derived<ScripturePage>(data.page);
+	// The verse's chapter in the library's Bible, to read it in its place.
+	const textPath = $derived(bibleTextPath(page.book.order, page.chapter));
 
 	const chapterPath = $derived(`/scripture/${page.book.slug}/${page.chapter}/`);
 	const path = $derived(`${chapterPath}${page.verse}/`);
@@ -88,6 +91,11 @@
 		<p class="mt-3 text-small text-muted">
 			{t('scripture.treated').replace('%count%', String(page.citing_count))}
 		</p>
+		{#if textPath}
+			<a href={`${textPath}/`} class="read-text mt-4">
+				{t('scripture.readText').replace('%ref%', `${page.book.title} ${page.chapter}`)} <Arrow />
+			</a>
+		{/if}
 	</header>
 
 	<section>
@@ -110,6 +118,14 @@
 </div>
 
 <style>
+	/* The way to the passage's own text: a plain accent link under the count. */
+	.read-text {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		font-weight: 600;
+		color: var(--accent);
+	}
 	/* Logical inline-start, not a physical side, so the rule stays on the reading
 	   edge if this page is ever served under an RTL locale. (Spelling the
 	   physical property here would trip rtl.test.ts, which scans style blocks

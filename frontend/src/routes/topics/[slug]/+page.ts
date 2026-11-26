@@ -20,7 +20,8 @@
 // "If") as included works; replaced with published shelf titles (Growing in Wisdom, etc.)
 // and dropped the two dead slugs from the shelf membership. Topic pages are prerendered
 // per topic, so /topics/for-teens/ must rebuild to bake the corrected grounded Q&A.
-import { getTopic, listTopics } from '$lib/library-public';
+import { getTopic, listQuoteTopics, listTopics } from '$lib/library-public';
+import { quoteThemesFor } from '$lib/topicQuotes';
 import { orNotFound } from '$lib/loadHelpers';
 import { getLang } from '$lib/lang.svelte';
 import type { EntryGenerator, PageLoad } from './$types';
@@ -86,5 +87,20 @@ export const load: PageLoad = async ({ params, fetch }) => {
 	// generic "something went wrong — try again" shell, which offers a retry for
 	// a page that will never exist. Books, chapters, sermons and authors have
 	// always done this; topics and plans were the two that missed it.
-	return { topic: await orNotFound(() => getTopic(params.slug, getLang(), fetch)) };
+	const lang = getLang();
+	// The quote themes this shelf reads as ($lib/topicQuotes), for its "Quotes
+	// on …" links: English only, as the quote pages are, and only themes with a
+	// page (the list the quote route prerenders from). Global fetch, so the list
+	// is not inlined; a failure just drops the links.
+	const [topic, quoteThemes] = await Promise.all([
+		orNotFound(() => getTopic(params.slug, lang, fetch)),
+		lang === 'en'
+			? listQuoteTopics()
+					.then((all) =>
+						quoteThemesFor(params.slug, all).map(({ slug, title }) => ({ slug, title }))
+					)
+					.catch(() => [])
+			: Promise.resolve([])
+	]);
+	return { topic, quoteThemes };
 };

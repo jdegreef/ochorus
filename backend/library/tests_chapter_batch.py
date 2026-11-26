@@ -174,3 +174,20 @@ class IndexedLanguagesTests(TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.data["indexed_languages"], ["en", "es", "fr"])
         self.assertEqual(res.data["available_languages"], ["en", "es", "fr", "sw"])
+
+    def test_every_edition_of_a_bible_book_is_indexed_reviewed_or_not(self):
+        # Past its introduction a Bible book is the Open Word Bible's own text in
+        # that language, not an AI translation, so the review gate doesn't apply.
+        from .models import Series
+
+        owb = Author.objects.create(slug="open-word-bible", name="Open Word Bible")
+        bible = Series.objects.create(slug="the-bible", title="The Bible")
+        en = Book.objects.create(author=owb, slug="psalms", language="en", title="Psalms", series=bible)
+        Chapter.objects.create(book=en, order=2, title="Psalm 1", body_html="<p>a</p>")
+        Book.objects.create(
+            author=owb, slug="psalms", language="es", title="Salmos", series=bible,
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        res = APIClient().get("/api/library/books/psalms/chapters/2/?language=en")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["indexed_languages"], ["en", "es"])

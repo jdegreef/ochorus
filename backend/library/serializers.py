@@ -323,6 +323,9 @@ def _available_languages(model, slug: str) -> list[str]:
 #: The editions whose chapters are offered to search besides English.
 _INDEXED_SOURCES = (Book.SourceType.AI_REVIEWED, Book.SourceType.PUBLIC_DOMAIN)
 
+#: The series the Bible's books are in (``build_owb_book.SERIES_SLUG``).
+_BIBLE_SERIES = "the-bible"
+
 
 def _book_languages(slug: str) -> tuple[list[str], list[str]]:
     """(available, indexed) locales of book ``slug``, in ONE query.
@@ -333,15 +336,28 @@ def _book_languages(slug: str) -> tuple[list[str], list[str]]:
     ``approve_translation``) or written in its language (``public_domain``).
     The chapter page's hreflang follows it, as the sitemap's chapter rule does
     (frontend ``advertisesChapters``). Admin-only state, never shown to readers.
+
+    A book of the Bible is indexed in every language it has: past its
+    introduction its text is the Open Word Bible's own published translation in
+    that language, not an AI rendering of ours, so the review gate doesn't apply
+    (the sitemap's ``bible`` section lists the same chapters). The set is per
+    book, so the book's introduction carries these alternates too, though the
+    sitemap still leaves an unreviewed introduction out: one page per book.
     """
     rows = set(
         Book.objects.filter(is_published=True, slug=slug)
         .exclude(language=MODERN_LANGUAGE)
         .order_by()
-        .values_list("language", "source_type")
+        .values_list("language", "source_type", "series__slug")
     )
-    available = sorted({lang for lang, _ in rows})
-    indexed = sorted({lang for lang, src in rows if lang == "en" or src in _INDEXED_SOURCES})
+    available = sorted({lang for lang, _, _ in rows})
+    indexed = sorted(
+        {
+            lang
+            for lang, src, series in rows
+            if lang == "en" or src in _INDEXED_SOURCES or series == _BIBLE_SERIES
+        }
+    )
     return available, indexed
 
 

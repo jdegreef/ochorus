@@ -192,6 +192,9 @@ const config = {
 					// (or when the web build lags the backend deploy that adds it) —
 					// same case as /sermons/[slug]. The index still prerenders.
 					'/articles/[slug]',
+					// A book's sermons page needs SERMONS_ON_FLOOR sermons on it
+					// ($lib/sermonsOn): none against an empty or lagging sermons API.
+					'/sermons/on/[book]',
 					// Biography hubs exist only once the hubs API serves them (and a
 					// hub needs enough listed writers), so a build against an API that
 					// lags this deploy, or a fresh seed, can legitimately reach none.
