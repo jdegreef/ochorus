@@ -1,10 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import {
+	FAITH_WORDS,
 	GLOSSARY_TERMS,
+	OLD_WORDS,
 	byLetter,
 	definitionOf,
 	glossaryHref,
 	glossaryTermFor,
+	glossaryTermsIn,
 	isGlossaryTerm,
 	relatedTerms,
 	titleCase
@@ -72,5 +75,22 @@ describe('dictionary heads and shelves', () => {
 	it("a word's family", async () => {
 		const { wordFamily } = await import('./glossary');
 		expect(wordFamily('abase')).toEqual(['abasement']);
+	});
+});
+
+describe('glossaryTermsIn', () => {
+	it('finds the glossary words a chapter uses, doctrine before old English', () => {
+		const faith = FAITH_WORDS[0];
+		const old = OLD_WORDS[0];
+		const html = `<p>${old} ${old} ${old} and ${faith}.</p>`;
+		expect(glossaryTermsIn(html)).toEqual([faith, old]);
+	});
+
+	it('ranks by use, caps the list, and ignores markup and unknown words', () => {
+		const [a, b] = FAITH_WORDS;
+		const html = `<p class="${a}">${b} ${b} ${a} zzyzx</p>`;
+		expect(glossaryTermsIn(html)).toEqual([b, a]);
+		expect(glossaryTermsIn(html, 1)).toEqual([b]);
+		expect(glossaryTermsIn('<p>nothing here</p>')).toEqual([]);
 	});
 });

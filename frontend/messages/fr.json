@@ -105,6 +105,7 @@
   "reader_scripture_unavailable": "Le texte du verset n’a pas pu être chargé.",
   "reader_scripture_omitted": "Ce verset ne figure pas dans l’Open Word Bible, qui suit les manuscrits les plus anciens. Des traductions plus anciennes, comme la Segond, l’incluent.",
   "reader_scripture_page": "Ce que disent les classiques sur ce passage",
+  "reader_glossary_words": "Mots de ce chapitre",
   "reader_related_passages": "Passages liés",
   "reader_crossrefs_credit": "Références croisées de %source%, CC BY",
   "reader_catena_heading": "Ce qu’a dit l’Église",

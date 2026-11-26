@@ -105,6 +105,7 @@
   "reader_scripture_unavailable": "Não foi possível carregar o texto do versículo.",
   "reader_scripture_omitted": "Este versículo não está na Open Word Bible, que segue os manuscritos mais antigos. Traduções mais antigas, como a Almeida, o incluem.",
   "reader_scripture_page": "O que os clássicos dizem sobre esta passagem",
+  "reader_glossary_words": "Palavras deste capítulo",
   "reader_related_passages": "Passagens relacionadas",
   "reader_crossrefs_credit": "Referências cruzadas de %source%, CC BY",
   "reader_catena_heading": "O que a Igreja disse",

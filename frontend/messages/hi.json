@@ -105,6 +105,7 @@
   "reader_scripture_unavailable": "पद का पाठ लोड नहीं हो सका।",
   "reader_scripture_omitted": "यह पद Open Word Bible में नहीं है, जो सबसे पुरानी पांडुलिपियों का अनुसरण करती है। किंग जेम्स जैसे पुराने अनुवादों में यह मिलता है।",
   "reader_scripture_page": "इस खंड पर क्लासिक पुस्तकें क्या कहती हैं",
+  "reader_glossary_words": "इस अध्याय के शब्द",
   "reader_related_passages": "संबंधित खंड",
   "reader_crossrefs_credit": "%source% से प्रति-संदर्भ, CC BY",
   "reader_catena_heading": "कलीसिया ने क्या कहा है",
