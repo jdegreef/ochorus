@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { isSermonTile, type BookTile, type TopicSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { itemList, hreflangAll } from '$lib/seo';
+	import { breadcrumbLd, itemList, hreflangAll } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -69,16 +69,25 @@
 	// correctly omitted them — two contradictory claims, with the wrong one on
 	// the site's most-crawled pages.
 	const hreflang = hreflangAll('/topics');
+	// Home › Topics, as JSON-LD: the shelf's head stays plain (design review #4),
+	// so the trail is for the result snippet, where Google shows it in place of
+	// the bare URL.
+	const crumbsLd = $derived(
+		breadcrumbLd([
+			{ name: t('common.home'), href: localizeHref('/') },
+			{ name: t('topics.title'), href: localizeHref('/topics') }
+		])
+	);
 	const canonical = `${SITE_URL}${localizeHref('/topics')}`;
 </script>
 
 <Seo
-	title={`${t('topics.title')} — Ochorus`}
+	title={`${t('topics.metaTitle')} — Ochorus`}
 	description={t('topics.tagline')}
 	{canonical}
 	{hreflang}
 	ogImage={`${SITE_URL}/og/topics.png`}
-	structuredData={topics.length ? [topicsLd] : []}
+	structuredData={topics.length ? [topicsLd, crumbsLd] : [crumbsLd]}
 />
 
 <div class="page-col px-5 py-10">

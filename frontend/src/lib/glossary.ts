@@ -116,3 +116,27 @@ export const FAITH_WORDS: string[] = cut > 0 ? CURATED.slice(cut) : [];
 
 /** The word of the day, the same for every reader on a date (`dayIndex`). */
 export const wordOfTheDay = (index: number): string => GLOSSARY_TERMS[index % GLOSSARY_TERMS.length];
+
+/**
+ * The glossary words a chapter uses, for the "Words in this chapter" links at
+ * its end — the crawlable path to the term pages, which the reader otherwise
+ * reaches only by tapping a word (`define.svelte.ts`). Doctrine first (the
+ * words people search the meaning of: "sanctification", "propitiation"), then
+ * the old English that fills a slot left over; each group by how often the
+ * chapter uses it. `text` is plain text, or HTML (tags are dropped).
+ */
+export function glossaryTermsIn(text: string, max = 5): string[] {
+	const counts = new Map<string, number>();
+	const plain = text.replace(/<[^>]*>/g, ' ').toLowerCase();
+	for (const word of plain.match(/[a-z][a-z'’-]*[a-z]|[a-z]/g) ?? []) {
+		const term = glossaryTermFor(word);
+		if (term) counts.set(term, (counts.get(term) ?? 0) + 1);
+	}
+	const faith = new Set(FAITH_WORDS);
+	const ranked = (inFaith: boolean) =>
+		[...counts.entries()]
+			.filter(([term]) => faith.has(term) === inFaith)
+			.sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'en'))
+			.map(([term]) => term);
+	return [...ranked(true), ...ranked(false)].slice(0, max);
+}

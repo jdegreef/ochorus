@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
+	import { bibleTextPath } from '$lib/reading-schema';
 	import { scriptureBookHref, scripturePageHref, type ScriptureBookPage } from '$lib/library-public';
 	import { scriptureBookCardUrl } from '$lib/verseCard';
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
@@ -60,6 +62,8 @@
 		{ name: book.title, href: path }
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
+	// The book itself in the library's Bible (its introduction and chapters).
+	const textPath = $derived(bibleTextPath(book.order, null));
 	const collectionLd = $derived(
 		collectionPage({
 			name: `${book.title} in the Christian classics`,
@@ -98,6 +102,11 @@
 		<!-- The house overview: what the book is, before what the library does
 		     with it. English, like the rest of the scripture data. -->
 		{#if page.intro}<p class="mt-4 max-w-2xl text-body">{page.intro}</p>{/if}
+		{#if textPath}
+			<a href={`${textPath}/`} class="read-text mt-4">
+				{t('scripture.readText').replace('%ref%', book.title)} <Arrow />
+			</a>
+		{/if}
 	</header>
 
 	<section class="mb-10">
@@ -184,6 +193,14 @@
 </div>
 
 <style>
+	/* The way to the passage's own text: a plain accent link under the count. */
+	.read-text {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		font-weight: 600;
+		color: var(--accent);
+	}
 	/* The verse rows are the chapter page's, for the same job. */
 	.verses,
 	.works {

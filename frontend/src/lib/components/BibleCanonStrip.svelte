@@ -282,7 +282,9 @@
 						     stands on the row's one shelf line); the phone's tiles name it.
 						     Visual only: the list's aria-label names it for a screen reader. -->
 						<span class="canon-label" class:single={group.slots.length === 1} aria-hidden="true">
-							<span class="canon-label-name">{divisionName}</span>
+							<!-- A jump to the division's books below. No tab stop: the label is
+							     visual (aria-hidden), and the spines are the keyboard's way in. -->
+							<a class="canon-label-name" href="#{group.division.id}" tabindex="-1">{divisionName}</a>
 							<span class="canon-label-meta"
 								>{#if sum.books > 1}{booksLabel(sum.books)}{#if sum.words}{` · ${readingTime(sum.words)}`}{/if}{:else}&nbsp;{/if}</span
 							>
@@ -433,6 +435,11 @@
 		font-weight: 600;
 		color: var(--text);
 		white-space: nowrap;
+		text-decoration: none;
+	}
+	.canon-label-name:hover {
+		color: var(--accent);
+		text-decoration: underline;
 	}
 	.canon-label-meta {
 		white-space: nowrap;

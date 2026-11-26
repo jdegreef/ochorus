@@ -393,6 +393,29 @@ const bibleCount = (slug: string): number | undefined =>
 /** Is `slug` a Bible book, whose chapter URLs follow the Bible's numbering? */
 export const isBibleBookSlug = (slug: string): boolean => bibleCount(slug) !== undefined;
 
+/**
+ * The reader slug of the Bible book at canonical position `order` (1 Genesis …
+ * 66 Revelation), or null past the 66 (the apocrypha the scripture index also
+ * knows). `BIBLE_CHAPTER_COUNTS` is listed in canonical order, the order the
+ * scripture pages number their books in (pythonbible), so the position is the
+ * whole key: the slugs differ (`john` there, `gospel-of-john` here).
+ */
+export function bibleBookSlugAt(order: number): string | null {
+	const slugs = Object.keys(BIBLE_CHAPTER_COUNTS);
+	return Number.isInteger(order) && order >= 1 && order <= slugs.length ? slugs[order - 1] : null;
+}
+
+/** Where the library's Bible prints chapter `chapter` of the book at canonical
+ *  position `order` (unlocalized, no trailing slash), or the book itself when
+ *  `chapter` is null; null for a book the library's Bible doesn't have. */
+export function bibleTextPath(order: number, chapter: number | null): string | null {
+	const slug = bibleBookSlugAt(order);
+	if (!slug) return null;
+	if (chapter === null) return `/books/${slug}`;
+	if (chapter < 1 || chapter > BIBLE_CHAPTER_COUNTS[slug]) return null;
+	return bookChapterPath(slug, chapter + BIBLE_INTRO_CHAPTERS, false);
+}
+
 /** The URL segment for stored chapter `order` of book `slug`. */
 export function chapterSegment(slug: string, order: number): string {
 	const n = bibleCount(slug);
