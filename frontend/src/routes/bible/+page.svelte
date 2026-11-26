@@ -28,7 +28,7 @@
 		passageHref,
 		testamentKey
 	} from '$lib/bible';
-	import { BIBLE_PATHS, bibleStarts, biblePathSteps } from '$lib/bibleHub';
+	import { BIBLE_PATHS, bibleStarts, biblePathSteps, bibleStartPath } from '$lib/bibleHub';
 	import { goto } from '$app/navigation';
 	import { lookupScripture } from '$lib/scripture.svelte';
 	import { passageSuggestions, quickPassages } from '$lib/biblePassage';
@@ -446,13 +446,20 @@
 					<button type="button" class="chip" class:active={!startPath} aria-pressed={!startPath} onclick={() => (pathId = 'first')}
 						>{say(COPY.newToBible)}</button
 					>
+					<!-- Each path is a link to its own page (/bible/start/<slug>/), so
+					     the prerendered hub links all four and the crawl reaches them; a
+					     plain click shows the path in place instead, as before. -->
 					{#each BIBLE_PATHS as p (p.id)}
-						<button
-							type="button"
+						<a
+							href={localizeHref(bibleStartPath(p.slug))}
 							class="chip"
 							class:active={pathId === p.id}
-							aria-pressed={pathId === p.id}
-							onclick={() => (pathId = p.id)}>{say(p.label)}</button
+							aria-current={pathId === p.id ? 'true' : undefined}
+							onclick={(e) => {
+								if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+								e.preventDefault();
+								pathId = p.id;
+							}}>{say(p.label)}</a
 						>
 					{/each}
 				</div>

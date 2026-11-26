@@ -580,3 +580,16 @@ describe('quotations on the hub', () => {
 		for (const q of quoted) expect(text, q).toContain(q);
 	});
 });
+
+describe('the "Where to start" paths’ own pages', () => {
+	it('gives every path a distinct, URL-safe slug and a title in every hub locale', async () => {
+		const { BIBLE_PATHS, bibleStartPath } = await import('./bibleHub');
+		const slugs = BIBLE_PATHS.map((p) => p.slug);
+		expect(new Set(slugs).size).toBe(slugs.length);
+		for (const p of BIBLE_PATHS) {
+			expect(p.slug).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+			expect(bibleStartPath(p.slug)).toBe(`/bible/start/${p.slug}/`);
+			for (const l of ['en', 'es', 'fr', 'pt'] as const) expect(p.title[l].length).toBeGreaterThan(10);
+		}
+	});
+});

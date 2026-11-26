@@ -54,6 +54,7 @@ import { absUrl } from '$lib/seo';
 import { xmlEscape } from '$lib/xml';
 import { ORIGINALS_PATH, ORIGINALS_SLUG, hasBylinePage } from '$lib/originals';
 import { BIBLE_PATH, BIBLE_SERIES, BIBLE_STORY_PATH, bibleIn, isBibleBook } from '$lib/bible';
+import { BIBLE_PATHS, bibleStartPath } from '$lib/bibleHub';
 import { OWB_PATH } from '$lib/openWordBible';
 import { ADVENT_PLAN } from '$lib/advent';
 import { FOR_INDEX, FOR_LINKS, FOR_LOCALES, forPath } from '$lib/forLinks';
@@ -602,6 +603,11 @@ async function build(): Promise<SitemapData> {
 		// The Bible in story order ($lib/bibleStory), wherever the hub is: the
 		// hub links it. Undated, for the same reason: its prose is its own.
 		pages.push({ byLocale: new Map(bibleLocales.map(([l]) => [l, `${BIBLE_STORY_PATH}/`])) });
+		// Each "Where to start" path's own page ($lib/bibleHub), wherever the hub
+		// is: the hub's path chips link them. Undated, like the story.
+		for (const p of BIBLE_PATHS) {
+			pages.push({ byLocale: new Map(bibleLocales.map(([l]) => [l, bibleStartPath(p.slug)])) });
+		}
 	}
 
 	// The young-reader hubs, in each advertised locale where the hub has
