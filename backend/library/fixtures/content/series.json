@@ -1655,6 +1655,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "the-bible"
+  ],
+  "language": "sw",
+  "title": "Biblia",
+  "description": "Vitabu vya Biblia katika Open Word Bible, tafsiri mpya kutoka Kiebrania na Kigiriki iliyotolewa bure kwa umma, kwa mpangilio wake kuanzia Mwanzo hadi Ufunuo. Kila kitabu kina utangulizi kuhusu muundo na maana yake, na hitimisho kuhusu kinachofaa kusomwa baadaye.",
+  "created_at": "2026-11-26T00:00:00Z",
+  "updated_at": "2026-11-26T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "the-lamplighters-of-gloamhaven"
   ],
   "language": "am",

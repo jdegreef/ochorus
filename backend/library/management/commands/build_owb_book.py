@@ -411,6 +411,30 @@ LANGUAGES = {
         ),
         defaults={"deity_pronoun": 1},
     ),
+    "sw": Language(
+        introduction="Utangulizi",
+        conclusion="Hitimisho",
+        attribution=(
+            "Maandiko kutoka Open Word Bible ({site}), kwa Kiswahili, kiwango cha Uwiano, "
+            "commit {commit}: imetolewa kwa umma chini ya CC0 1.0. "
+            "Utangulizi na hitimisho vimeandikwa na Ochorus."
+        ),
+        disputed_note=(
+            "Nakala za zamani zaidi za {book} hazina {ref}. Biblia nyingi huichapisha, "
+            "kama hapa, peke yake na ndani ya mabano."
+        ),
+        own_notes={"MRK.16.8.s2": (
+            "Nakala za zamani zaidi za Marko zinaishia 16:8. Miisho miwili inayofuata, "
+            "mmoja mfupi na mrefu zaidi katika 16:9–20, iliongezwa baadaye. Biblia "
+            "nyingi huichapisha, kama hapa, peke yake na ndani ya mabano."
+        )},
+        psalm_title=re.compile(
+            r"(?:Kwa kiongozi wa kwaya|(?:[Zz]aburi|[Ww]imbo|[Mm]aombi|[Mm]askili|[Mm]ikitamu"
+            r"|[Ss]higaioni)\b[^.!?\n]*"
+            r"|(?:Ya|Wa) (?:wana wa Kora|[A-Z][a-z]+))\.[ \n]*"
+        ),
+        defaults={"deity_pronoun": 1},
+    ),
 }
 
 
