@@ -237,7 +237,7 @@
 </script>
 
 <Seo
-	title={`${t('nav.bible')} — Ochorus`}
+	title={`${t('bible.metaTitle')} — Ochorus`}
 	description={t('bible.tagline')}
 	{canonical}
 	{hreflang}
