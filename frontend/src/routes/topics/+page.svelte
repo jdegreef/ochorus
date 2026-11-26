@@ -82,7 +82,7 @@
 </script>
 
 <Seo
-	title={`${t('topics.title')} — Ochorus`}
+	title={`${t('topics.metaTitle')} — Ochorus`}
 	description={t('topics.tagline')}
 	{canonical}
 	{hreflang}

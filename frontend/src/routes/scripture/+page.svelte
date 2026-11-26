@@ -143,7 +143,8 @@
 	const path = '/scripture/';
 	const canonical = `${SITE_URL}${path}`;
 	const hreflang = hreflangFor(path, ['en']);
-	const title = 'Scripture in the Christian classics — Ochorus';
+	// Named for the query ("bible commentary"), not the section's own label.
+	const title = 'Bible Commentary from the Christian Classics — Ochorus';
 	const description = $derived(
 		`Browse ${pages.length - verseCount} chapters of the Bible and see which passages ` +
 			'in the classics treat them — every citation quoted and linked to its source.'

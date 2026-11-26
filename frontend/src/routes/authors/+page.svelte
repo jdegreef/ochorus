@@ -185,7 +185,7 @@
 </script>
 
 <Seo
-	title={`${title} — Ochorus`}
+	title={`${t('authors.metaTitle')} — Ochorus`}
 	description={t('authors.indexTagline')}
 	{canonical}
 	{hreflang}
