@@ -1,0 +1,332 @@
+{
+ "genesis": {
+  "author": "Tradicionalmente, Moisés",
+  "date": "Fecha incierta",
+  "theme": "Dios crea el mundo y comienza su rescate por medio de la familia de Abraham."
+ },
+ "exodus": {
+  "author": "Tradicionalmente, Moisés",
+  "date": "Fecha incierta",
+  "theme": "Dios libera a Israel de la esclavitud, le da su ley y viene a habitar en medio de ellos."
+ },
+ "leviticus": {
+  "author": "Tradicionalmente, Moisés",
+  "date": "Fecha incierta",
+  "theme": "Cómo un Dios santo puede habitar en medio de su pueblo: sacrificio, purificación y vida santa."
+ },
+ "numbers": {
+  "author": "Tradicionalmente, Moisés",
+  "date": "Fecha incierta",
+  "theme": "Los cuarenta años de Israel en el desierto, entre el Sinaí y la tierra prometida."
+ },
+ "deuteronomy": {
+  "author": "Tradicionalmente, Moisés",
+  "date": "Fecha incierta",
+  "theme": "Las últimas palabras de Moisés a Israel: ama al SEÑOR tu Dios y guarda su pacto."
+ },
+ "joshua": {
+  "author": "Tradicionalmente, Josué",
+  "date": "Fecha incierta",
+  "theme": "Israel cruza el Jordán y recibe la tierra que Dios prometió."
+ },
+ "judges": {
+  "author": "Autor desconocido",
+  "date": "Fecha incierta",
+  "theme": "El ciclo de alejamiento y rescate de Israel, en los días antes de que hubiera rey."
+ },
+ "ruth": {
+  "author": "Autor desconocido",
+  "date": "Ambientado en la época de los jueces",
+  "theme": "La lealtad de una viuda moabita, y el pariente que la redime y la integra en el linaje de David."
+ },
+ "1-samuel": {
+  "author": "Autor desconocido",
+  "date": "Ambientado en el siglo XI a. C.",
+  "theme": "Israel pide un rey: Samuel, Saúl y David, el escogido de Dios."
+ },
+ "2-samuel": {
+  "author": "Autor desconocido",
+  "date": "Ambientado en el siglo X a. C.",
+  "theme": "El reinado de David: la promesa de Dios a su casa, su pecado y lo que le costó."
+ },
+ "1-kings": {
+  "author": "Autor desconocido",
+  "date": "Completado en el exilio, siglo VI a. C.",
+  "theme": "La gloria de Salomón, el reino dividido y la firmeza de Elías frente a Baal."
+ },
+ "2-kings": {
+  "author": "Autor desconocido",
+  "date": "Completado en el exilio, siglo VI a. C.",
+  "theme": "Los reyes de Israel y de Judá, hasta la caída de ambos reinos."
+ },
+ "1-chronicles": {
+  "author": "Tradicionalmente, Esdras",
+  "date": "Después del exilio",
+  "theme": "La historia de Israel contada de nuevo en torno a David, el templo y la verdadera adoración."
+ },
+ "2-chronicles": {
+  "author": "Tradicionalmente, Esdras",
+  "date": "Después del exilio",
+  "theme": "Del templo de Salomón al exilio, y el decreto para reconstruir."
+ },
+ "ezra": {
+  "author": "Tradicionalmente, Esdras",
+  "date": "Siglo V a. C.",
+  "theme": "Los exiliados regresan para reconstruir el templo y vivir conforme a la ley de Dios."
+ },
+ "nehemiah": {
+  "author": "Nehemías",
+  "date": "Siglo V a. C.",
+  "theme": "Los muros de Jerusalén reconstruidos, y un pueblo renovado en el pacto de Dios."
+ },
+ "esther": {
+  "author": "Autor desconocido",
+  "date": "Ambientado en el siglo V a. C.",
+  "theme": "La mano invisible de Dios salva a su pueblo en Persia por medio de una reina judía."
+ },
+ "job": {
+  "author": "Autor desconocido",
+  "date": "Fecha desconocida",
+  "theme": "El sufrimiento de un hombre justo, y la respuesta de Dios desde el torbellino."
+ },
+ "psalms": {
+  "author": "David y otros",
+  "date": "Escrito a lo largo de muchos siglos",
+  "theme": "Los cantos y oraciones de Israel: alabanza, lamento, confianza y acción de gracias."
+ },
+ "proverbs": {
+  "author": "Principalmente Salomón",
+  "date": "Del siglo X a. C. en adelante",
+  "theme": "Sabiduría para la vida diaria, que comienza con el temor del SEÑOR."
+ },
+ "ecclesiastes": {
+  "author": "El Predicador, tradicionalmente Salomón",
+  "date": "Fecha incierta",
+  "theme": "La vida bajo el sol es pasajera; teme a Dios y guarda sus mandamientos."
+ },
+ "song-of-songs": {
+  "author": "Tradicionalmente, Salomón",
+  "date": "Fecha incierta",
+  "theme": "Un canto de amor entre una novia y su amado."
+ },
+ "isaiah": {
+  "author": "Isaías, hijo de Amoz",
+  "date": "Siglo VIII a. C.",
+  "theme": "El Santo de Israel juzga y redime, por medio de su siervo sufriente."
+ },
+ "jeremiah": {
+  "author": "Jeremías",
+  "date": "Finales del siglo VII al siglo VI a. C.",
+  "theme": "Advertencias antes de la caída de Jerusalén, y la promesa de un nuevo pacto."
+ },
+ "lamentations": {
+  "author": "Tradicionalmente, Jeremías",
+  "date": "Poco después del 586 a. C.",
+  "theme": "Duelo por la ruina de Jerusalén, y esperanza en el amor inagotable del SEÑOR."
+ },
+ "ezekiel": {
+  "author": "Ezequiel",
+  "date": "Siglo VI a. C.",
+  "theme": "Un sacerdote en el exilio ve la gloria de Dios, y la promesa de un corazón nuevo."
+ },
+ "daniel": {
+  "author": "Tradicionalmente, Daniel",
+  "date": "Ambientado en el siglo VI a. C.",
+  "theme": "Fidelidad en el exilio, y el reino de Dios que sobrevive a los imperios."
+ },
+ "hosea": {
+  "author": "Oseas",
+  "date": "Siglo VIII a. C.",
+  "theme": "El amor inquebrantable de Dios por el Israel infiel, reflejado en el matrimonio de Oseas."
+ },
+ "joel": {
+  "author": "Joel, hijo de Petuel",
+  "date": "Fecha incierta",
+  "theme": "Una plaga de langostas, un llamado a volver y la promesa del Espíritu."
+ },
+ "amos": {
+  "author": "Amós, pastor de Tecoa",
+  "date": "Siglo VIII a. C.",
+  "theme": "Que corra la justicia: juicio sobre un pueblo que oprime al pobre."
+ },
+ "obadiah": {
+  "author": "Abdías",
+  "date": "Fecha incierta",
+  "theme": "Juicio sobre Edom por traicionar a Judá; el reino será del SEÑOR."
+ },
+ "jonah": {
+  "author": "Tradicionalmente, Jonás",
+  "date": "Ambientado en el siglo VIII a. C.",
+  "theme": "Un profeta reacio aprende hasta dónde llega la misericordia de Dios."
+ },
+ "micah": {
+  "author": "Miqueas de Moréset",
+  "date": "Siglo VIII a. C.",
+  "theme": "Juicio y esperanza para Judá, y un gobernante que vendrá de Belén."
+ },
+ "nahum": {
+  "author": "Nahúm de Elcós",
+  "date": "Siglo VII a. C.",
+  "theme": "La caída de Nínive, y el SEÑOR, refugio de los que confían en él."
+ },
+ "habakkuk": {
+  "author": "Habacuc",
+  "date": "Finales del siglo VII a. C.",
+  "theme": "Un profeta cuestiona a Dios y aprende que el justo vivirá por la fe."
+ },
+ "zephaniah": {
+  "author": "Sofonías",
+  "date": "Siglo VII a. C.",
+  "theme": "El día del SEÑOR está cerca, pero él se regocijará por su pueblo."
+ },
+ "haggai": {
+  "author": "Hageo",
+  "date": "520 a. C.",
+  "theme": "Un llamado a los exiliados que regresaron para que reconstruyan la casa del SEÑOR."
+ },
+ "zechariah": {
+  "author": "Zacarías",
+  "date": "Desde el 520 a. C.",
+  "theme": "Visiones para la reconstrucción, y un rey que viene humilde, montado en un asno."
+ },
+ "malachi": {
+  "author": "Malaquías",
+  "date": "Siglo V a. C.",
+  "theme": "El amor de Dios por un pueblo cansado, y el mensajero que preparará su camino."
+ },
+ "gospel-of-matthew": {
+  "author": "Tradicionalmente, Mateo",
+  "date": "Siglo I d. C.",
+  "theme": "Jesús, el Mesías, cumple las Escrituras y trae el reino de los cielos."
+ },
+ "gospel-of-mark": {
+  "author": "Tradicionalmente, Marcos",
+  "date": "c. años 60 d. C.",
+  "theme": "Jesús, el Hijo de Dios, vino a servir y a dar su vida en rescate."
+ },
+ "gospel-of-luke": {
+  "author": "Tradicionalmente, Lucas",
+  "date": "Siglo I d. C.",
+  "theme": "Un relato ordenado de Jesús, el Salvador que busca y salva a los perdidos."
+ },
+ "gospel-of-john": {
+  "author": "Tradicionalmente, el apóstol Juan",
+  "date": "Finales del siglo I d. C.",
+  "theme": "Jesús, el Verbo hecho carne, para que creyendo tengan vida en su nombre."
+ },
+ "acts-of-the-apostles": {
+  "author": "Tradicionalmente, Lucas",
+  "date": "Siglo I d. C.",
+  "theme": "El Espíritu lleva las buenas nuevas de Jesús desde Jerusalén hasta Roma."
+ },
+ "romans": {
+  "author": "Pablo",
+  "date": "c. 57 d. C.",
+  "theme": "El evangelio de la justicia de Dios, recibida por la fe."
+ },
+ "1-corinthians": {
+  "author": "Pablo",
+  "date": "c. 54 d. C.",
+  "theme": "Pablo responde a una iglesia dividida: la cruz, el amor y la resurrección."
+ },
+ "2-corinthians": {
+  "author": "Pablo",
+  "date": "c. 56 d. C.",
+  "theme": "El poder de Dios se perfecciona en la debilidad, en la defensa que Pablo hace de su ministerio."
+ },
+ "galatians": {
+  "author": "Pablo",
+  "date": "c. 48 a 55 d. C.",
+  "theme": "Libertad en Cristo: justificados ante Dios por la fe, no por las obras de la ley."
+ },
+ "ephesians": {
+  "author": "Pablo",
+  "date": "c. 60 d. C.",
+  "theme": "Un solo pueblo nuevo en Cristo, salvado por gracia y llamado a andar en amor."
+ },
+ "philippians": {
+  "author": "Pablo",
+  "date": "c. 61 d. C.",
+  "theme": "Gozo en Cristo, escrito desde la cárcel, y el sentir de Cristo, que se humilló a sí mismo."
+ },
+ "colossians": {
+  "author": "Pablo",
+  "date": "c. 60 d. C.",
+  "theme": "Cristo, la imagen del Dios invisible, es supremo sobre todo y es suficiente."
+ },
+ "1-thessalonians": {
+  "author": "Pablo",
+  "date": "c. 51 d. C.",
+  "theme": "Ánimo para una iglesia joven: vida santa y la venida del Señor."
+ },
+ "2-thessalonians": {
+  "author": "Pablo",
+  "date": "c. 51 d. C.",
+  "theme": "Manténganse firmes, sigan trabajando y no se dejen sacudir en cuanto al día del Señor."
+ },
+ "1-timothy": {
+  "author": "Pablo",
+  "date": "c. 63 d. C.",
+  "theme": "Orientación para Timoteo sobre la sana doctrina, la adoración y el liderazgo de una iglesia."
+ },
+ "2-timothy": {
+  "author": "Pablo",
+  "date": "c. 66 d. C.",
+  "theme": "La última carta de Pablo: guarda el evangelio, persevera y predica la palabra."
+ },
+ "titus": {
+  "author": "Pablo",
+  "date": "c. 63 d. C.",
+  "theme": "Sana doctrina y buenas obras para las iglesias de Creta."
+ },
+ "philemon": {
+  "author": "Pablo",
+  "date": "c. 60 d. C.",
+  "theme": "Pablo pide a Filemón que reciba de nuevo a Onésimo, ya no como esclavo, sino como hermano."
+ },
+ "hebrews": {
+  "author": "Autor desconocido",
+  "date": "Probablemente antes del 70 d. C.",
+  "theme": "Jesús, el Hijo, es superior: el sumo sacerdote de un pacto mejor."
+ },
+ "james": {
+  "author": "Tradicionalmente, Santiago, el hermano del Señor",
+  "date": "Mediados del siglo I d. C.",
+  "theme": "Una fe que obra: sabiduría, paciencia y poner en práctica la palabra, no solo oírla."
+ },
+ "1-peter": {
+  "author": "Pedro",
+  "date": "c. 63 d. C.",
+  "theme": "Una esperanza viva para los cristianos que sufren como extranjeros en el mundo."
+ },
+ "2-peter": {
+  "author": "Tradicionalmente, Pedro",
+  "date": "c. 65 d. C.",
+  "theme": "Crezcan en la gracia, cuídense de los falsos maestros y esperen el día del Señor."
+ },
+ "1-john": {
+  "author": "Tradicionalmente, el apóstol Juan",
+  "date": "Finales del siglo I d. C.",
+  "theme": "Dios es luz y amor: seguridad para quienes andan en su verdad."
+ },
+ "2-john": {
+  "author": "El anciano, tradicionalmente Juan",
+  "date": "Finales del siglo I d. C.",
+  "theme": "Anden en la verdad y el amor, y no reciban a los falsos maestros."
+ },
+ "3-john": {
+  "author": "El anciano, tradicionalmente Juan",
+  "date": "Finales del siglo I d. C.",
+  "theme": "Elogio a Gayo por acoger a los maestros itinerantes de la verdad."
+ },
+ "jude": {
+  "author": "Judas, hermano de Santiago",
+  "date": "Siglo I d. C.",
+  "theme": "Contender por la fe frente a quienes convierten la gracia en libertinaje."
+ },
+ "revelation": {
+  "author": "Juan, tradicionalmente el apóstol",
+  "date": "c. 95 d. C.",
+  "theme": "Cristo reina, y volverá para hacer nuevas todas las cosas."
+ }
+}

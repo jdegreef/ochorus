@@ -1,0 +1,332 @@
+{
+ "genesis": {
+  "author": "Traditionnellement Moïse",
+  "date": "Date incertaine",
+  "theme": "Dieu crée le monde et commence à le sauver par la famille d’Abraham."
+ },
+ "exodus": {
+  "author": "Traditionnellement Moïse",
+  "date": "Date incertaine",
+  "theme": "Dieu libère Israël de l’esclavage, donne sa loi et vient habiter au milieu de son peuple."
+ },
+ "leviticus": {
+  "author": "Traditionnellement Moïse",
+  "date": "Date incertaine",
+  "theme": "Comment un Dieu saint peut habiter au milieu de son peuple : sacrifice, purification et vie sainte."
+ },
+ "numbers": {
+  "author": "Traditionnellement Moïse",
+  "date": "Date incertaine",
+  "theme": "Les quarante ans d’Israël au désert, entre le Sinaï et la terre promise."
+ },
+ "deuteronomy": {
+  "author": "Traditionnellement Moïse",
+  "date": "Date incertaine",
+  "theme": "Les dernières paroles de Moïse à Israël : aime le SEIGNEUR ton Dieu et garde son alliance."
+ },
+ "joshua": {
+  "author": "Traditionnellement Josué",
+  "date": "Date incertaine",
+  "theme": "Israël traverse le Jourdain et reçoit le pays que Dieu avait promis."
+ },
+ "judges": {
+  "author": "Auteur inconnu",
+  "date": "Date incertaine",
+  "theme": "Le cycle d’égarement et de délivrance d’Israël, au temps où il n’y avait pas de roi."
+ },
+ "ruth": {
+  "author": "Auteur inconnu",
+  "date": "Récit situé à l’époque des juges",
+  "theme": "La fidélité d’une veuve moabite, et le parent qui la rachète et l’intègre à la lignée de David."
+ },
+ "1-samuel": {
+  "author": "Auteur inconnu",
+  "date": "Récit situé au XIe siècle av. J.-C.",
+  "theme": "Israël demande un roi : Samuel, Saül, et David choisi par Dieu."
+ },
+ "2-samuel": {
+  "author": "Auteur inconnu",
+  "date": "Récit situé au Xe siècle av. J.-C.",
+  "theme": "Le règne de David : la promesse de Dieu à sa maison, son péché et ce qu’il lui coûta."
+ },
+ "1-kings": {
+  "author": "Auteur inconnu",
+  "date": "Achevé pendant l’exil, VIe siècle av. J.-C.",
+  "theme": "La gloire de Salomon, le royaume divisé et le combat d’Élie contre Baal."
+ },
+ "2-kings": {
+  "author": "Auteur inconnu",
+  "date": "Achevé pendant l’exil, VIe siècle av. J.-C.",
+  "theme": "Les rois d’Israël et de Juda, jusqu’à la chute des deux royaumes."
+ },
+ "1-chronicles": {
+  "author": "Traditionnellement Esdras",
+  "date": "Après l’exil",
+  "theme": "L’histoire d’Israël racontée à nouveau autour de David, du temple et du vrai culte."
+ },
+ "2-chronicles": {
+  "author": "Traditionnellement Esdras",
+  "date": "Après l’exil",
+  "theme": "Du temple de Salomon à l’exil, et le décret pour rebâtir."
+ },
+ "ezra": {
+  "author": "Traditionnellement Esdras",
+  "date": "Ve siècle av. J.-C.",
+  "theme": "Les exilés reviennent pour rebâtir le temple et vivre selon la loi de Dieu."
+ },
+ "nehemiah": {
+  "author": "Néhémie",
+  "date": "Ve siècle av. J.-C.",
+  "theme": "Les murailles de Jérusalem rebâties, et un peuple renouvelé dans l’alliance de Dieu."
+ },
+ "esther": {
+  "author": "Auteur inconnu",
+  "date": "Récit situé au Ve siècle av. J.-C.",
+  "theme": "La main invisible de Dieu sauve son peuple en Perse par une reine juive."
+ },
+ "job": {
+  "author": "Auteur inconnu",
+  "date": "Date inconnue",
+  "theme": "La souffrance d’un homme juste, et la réponse de Dieu du milieu de la tempête."
+ },
+ "psalms": {
+  "author": "David et d’autres",
+  "date": "Écrit sur de nombreux siècles",
+  "theme": "Les chants et les prières d’Israël : louange, lamentation, confiance et action de grâce."
+ },
+ "proverbs": {
+  "author": "Principalement Salomon",
+  "date": "À partir du Xe siècle av. J.-C.",
+  "theme": "La sagesse pour la vie de tous les jours, qui commence par la crainte du SEIGNEUR."
+ },
+ "ecclesiastes": {
+  "author": "Le Prédicateur, traditionnellement Salomon",
+  "date": "Date incertaine",
+  "theme": "La vie sous le soleil est passagère ; crains Dieu et garde ses commandements."
+ },
+ "song-of-songs": {
+  "author": "Traditionnellement Salomon",
+  "date": "Date incertaine",
+  "theme": "Un chant d’amour entre une fiancée et son bien-aimé."
+ },
+ "isaiah": {
+  "author": "Ésaïe, fils d’Amots",
+  "date": "VIIIe siècle av. J.-C.",
+  "theme": "Le Saint d’Israël juge et rachète, par son serviteur souffrant."
+ },
+ "jeremiah": {
+  "author": "Jérémie",
+  "date": "De la fin du VIIe au VIe siècle av. J.-C.",
+  "theme": "Des avertissements avant la chute de Jérusalem, et la promesse d’une nouvelle alliance."
+ },
+ "lamentations": {
+  "author": "Traditionnellement Jérémie",
+  "date": "Peu après 586 av. J.-C.",
+  "theme": "Le deuil sur la ruine de Jérusalem, et l’espérance dans l’amour fidèle du SEIGNEUR."
+ },
+ "ezekiel": {
+  "author": "Ézéchiel",
+  "date": "VIe siècle av. J.-C.",
+  "theme": "Un prêtre en exil voit la gloire de Dieu, et la promesse d’un cœur nouveau."
+ },
+ "daniel": {
+  "author": "Traditionnellement Daniel",
+  "date": "Récit situé au VIe siècle av. J.-C.",
+  "theme": "La fidélité en exil, et le royaume de Dieu qui survit aux empires."
+ },
+ "hosea": {
+  "author": "Osée",
+  "date": "VIIIe siècle av. J.-C.",
+  "theme": "L’amour indéfectible de Dieu pour Israël infidèle, illustré par le mariage d’Osée."
+ },
+ "joel": {
+  "author": "Joël, fils de Pethuel",
+  "date": "Date incertaine",
+  "theme": "Une invasion de sauterelles, un appel au retour et la promesse de l’Esprit."
+ },
+ "amos": {
+  "author": "Amos, berger de Tekoa",
+  "date": "VIIIe siècle av. J.-C.",
+  "theme": "Que la justice coule : jugement sur un peuple qui opprime le pauvre."
+ },
+ "obadiah": {
+  "author": "Abdias",
+  "date": "Date incertaine",
+  "theme": "Jugement sur Édom pour sa trahison envers Juda ; le règne appartiendra au SEIGNEUR."
+ },
+ "jonah": {
+  "author": "Traditionnellement Jonas",
+  "date": "Récit situé au VIIIe siècle av. J.-C.",
+  "theme": "Un prophète réticent apprend jusqu’où va la miséricorde de Dieu."
+ },
+ "micah": {
+  "author": "Michée de Moréscheth",
+  "date": "VIIIe siècle av. J.-C.",
+  "theme": "Jugement et espérance pour Juda, et un chef qui viendra de Bethléhem."
+ },
+ "nahum": {
+  "author": "Nahum d’Elkosch",
+  "date": "VIIe siècle av. J.-C.",
+  "theme": "La chute de Ninive, et le SEIGNEUR, refuge de ceux qui se confient en lui."
+ },
+ "habakkuk": {
+  "author": "Habacuc",
+  "date": "Fin du VIIe siècle av. J.-C.",
+  "theme": "Un prophète interroge Dieu et apprend que le juste vivra par la foi."
+ },
+ "zephaniah": {
+  "author": "Sophonie",
+  "date": "VIIe siècle av. J.-C.",
+  "theme": "Le jour du SEIGNEUR est proche, mais il se réjouira au sujet de son peuple."
+ },
+ "haggai": {
+  "author": "Aggée",
+  "date": "520 av. J.-C.",
+  "theme": "Un appel aux exilés revenus pour qu’ils rebâtissent la maison du SEIGNEUR."
+ },
+ "zechariah": {
+  "author": "Zacharie",
+  "date": "À partir de 520 av. J.-C.",
+  "theme": "Des visions pour la reconstruction, et un roi qui vient humble, monté sur un âne."
+ },
+ "malachi": {
+  "author": "Malachie",
+  "date": "Ve siècle av. J.-C.",
+  "theme": "L’amour de Dieu pour un peuple las, et le messager qui préparera son chemin."
+ },
+ "gospel-of-matthew": {
+  "author": "Traditionnellement Matthieu",
+  "date": "Ier siècle apr. J.-C.",
+  "theme": "Jésus le Messie accomplit les Écritures et apporte le royaume des cieux."
+ },
+ "gospel-of-mark": {
+  "author": "Traditionnellement Marc",
+  "date": "vers les années 60 apr. J.-C.",
+  "theme": "Jésus, le Fils de Dieu, est venu servir et donner sa vie en rançon."
+ },
+ "gospel-of-luke": {
+  "author": "Traditionnellement Luc",
+  "date": "Ier siècle apr. J.-C.",
+  "theme": "Un récit ordonné de Jésus, le Sauveur qui cherche et sauve ceux qui sont perdus."
+ },
+ "gospel-of-john": {
+  "author": "Traditionnellement l’apôtre Jean",
+  "date": "Fin du Ier siècle apr. J.-C.",
+  "theme": "Jésus, la Parole faite chair, afin qu’en croyant vous ayez la vie en son nom."
+ },
+ "acts-of-the-apostles": {
+  "author": "Traditionnellement Luc",
+  "date": "Ier siècle apr. J.-C.",
+  "theme": "L’Esprit porte la bonne nouvelle de Jésus de Jérusalem jusqu’à Rome."
+ },
+ "romans": {
+  "author": "Paul",
+  "date": "vers 57 apr. J.-C.",
+  "theme": "L’Évangile de la justice de Dieu, reçue par la foi."
+ },
+ "1-corinthians": {
+  "author": "Paul",
+  "date": "vers 54 apr. J.-C.",
+  "theme": "Paul répond à une Église divisée : la croix, l’amour et la résurrection."
+ },
+ "2-corinthians": {
+  "author": "Paul",
+  "date": "vers 56 apr. J.-C.",
+  "theme": "La puissance de Dieu accomplie dans la faiblesse, dans la défense que Paul fait de son ministère."
+ },
+ "galatians": {
+  "author": "Paul",
+  "date": "vers 48 à 55 apr. J.-C.",
+  "theme": "La liberté en Christ : justifiés devant Dieu par la foi, non par les œuvres de la loi."
+ },
+ "ephesians": {
+  "author": "Paul",
+  "date": "vers 60 apr. J.-C.",
+  "theme": "Un seul peuple nouveau en Christ, sauvé par grâce et appelé à marcher dans l’amour."
+ },
+ "philippians": {
+  "author": "Paul",
+  "date": "vers 61 apr. J.-C.",
+  "theme": "La joie en Christ, écrite depuis la prison, et la pensée de Christ qui s’est humilié lui-même."
+ },
+ "colossians": {
+  "author": "Paul",
+  "date": "vers 60 apr. J.-C.",
+  "theme": "Christ, l’image du Dieu invisible, est au-dessus de tout et il suffit."
+ },
+ "1-thessalonians": {
+  "author": "Paul",
+  "date": "vers 51 apr. J.-C.",
+  "theme": "Un encouragement pour une jeune Église : la vie sainte et la venue du Seigneur."
+ },
+ "2-thessalonians": {
+  "author": "Paul",
+  "date": "vers 51 apr. J.-C.",
+  "theme": "Tenez ferme, continuez à travailler et ne vous laissez pas ébranler au sujet du jour du Seigneur."
+ },
+ "1-timothy": {
+  "author": "Paul",
+  "date": "vers 63 apr. J.-C.",
+  "theme": "Des conseils à Timothée sur la saine doctrine, le culte et la conduite d’une Église."
+ },
+ "2-timothy": {
+  "author": "Paul",
+  "date": "vers 66 apr. J.-C.",
+  "theme": "La dernière lettre de Paul : garde l’Évangile, persévère et prêche la parole."
+ },
+ "titus": {
+  "author": "Paul",
+  "date": "vers 63 apr. J.-C.",
+  "theme": "La saine doctrine et les bonnes œuvres pour les Églises de Crète."
+ },
+ "philemon": {
+  "author": "Paul",
+  "date": "vers 60 apr. J.-C.",
+  "theme": "Paul demande à Philémon d’accueillir de nouveau Onésime, non plus comme un esclave, mais comme un frère."
+ },
+ "hebrews": {
+  "author": "Auteur inconnu",
+  "date": "Probablement avant 70 apr. J.-C.",
+  "theme": "Jésus le Fils est plus grand : le souverain sacrificateur d’une alliance meilleure."
+ },
+ "james": {
+  "author": "Traditionnellement Jacques, frère du Seigneur",
+  "date": "Milieu du Ier siècle apr. J.-C.",
+  "theme": "Une foi agissante : sagesse, patience, et mettre la parole en pratique, pas seulement l’écouter."
+ },
+ "1-peter": {
+  "author": "Pierre",
+  "date": "vers 63 apr. J.-C.",
+  "theme": "Une espérance vivante pour les chrétiens qui souffrent comme des exilés dans le monde."
+ },
+ "2-peter": {
+  "author": "Traditionnellement Pierre",
+  "date": "vers 65 apr. J.-C.",
+  "theme": "Croissez dans la grâce, gardez-vous des faux docteurs et attendez le jour du Seigneur."
+ },
+ "1-john": {
+  "author": "Traditionnellement l’apôtre Jean",
+  "date": "Fin du Ier siècle apr. J.-C.",
+  "theme": "Dieu est lumière et amour : l’assurance pour ceux qui marchent dans sa vérité."
+ },
+ "2-john": {
+  "author": "L’ancien, traditionnellement Jean",
+  "date": "Fin du Ier siècle apr. J.-C.",
+  "theme": "Marchez dans la vérité et l’amour, et n’accueillez pas les faux docteurs."
+ },
+ "3-john": {
+  "author": "L’ancien, traditionnellement Jean",
+  "date": "Fin du Ier siècle apr. J.-C.",
+  "theme": "Un éloge de Gaïus pour son accueil des prédicateurs itinérants de la vérité."
+ },
+ "jude": {
+  "author": "Jude, frère de Jacques",
+  "date": "Ier siècle apr. J.-C.",
+  "theme": "Combattre pour la foi contre ceux qui changent la grâce en dérèglement."
+ },
+ "revelation": {
+  "author": "Jean, traditionnellement l’apôtre",
+  "date": "vers 95 apr. J.-C.",
+  "theme": "Christ règne, et il reviendra pour faire toutes choses nouvelles."
+ }
+}

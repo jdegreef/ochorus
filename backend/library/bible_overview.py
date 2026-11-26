@@ -19,20 +19,45 @@ Read at serialize time, so this module is a content root
 (``content_sources.json``): editing a theme rebuilds the prerendered page. The
 words live here, not in the books' editorial folder, so an edit to an
 introduction (which reaches readers only through ``build_owb_book``'s fixture)
-does not count as a release of its own. English only, as the Bible books are.
+does not count as a release of its own.
+
+OTHER LANGUAGES. A Bible edition in another language gets the same card in its
+own words: ``author``, ``date`` and ``theme`` from
+``data/bible/overview-<lang>.json`` (translated from ``OVERVIEWS``, same
+slugs), the key verse quoted from that language's bundled OWB text
+(``owb-<lang>``) and its reference in the edition's own book name ("Romanos
+1:16"), from its chapter titles. A language with no file has no card — never
+the English one.
 """
 
 from __future__ import annotations
 
+import json
+import re
 from functools import lru_cache
+from pathlib import Path
 
 from .quote_marks import convert, curl_singles
-from .scripture import lookup, reference_verse_ids
+from .scripture import lookup, owb_verse, reference_verse_ids
 
 #: The fields every overview carries.
 FIELDS = ("author", "date", "key_verse", "theme")
 
 OPEN, CLOSE = "“", "”"
+
+#: The languages whose OWB sets « » outside (as ``build_owb_book`` does).
+GUILLEMETS = frozenset({"es", "fr", "ru"})
+
+WORDS = Path(__file__).resolve().parent / "data" / "bible"
+
+
+@lru_cache(maxsize=16)
+def words(language: str) -> dict[str, dict[str, str]]:
+    """``{slug: {author, date, theme}}`` in ``language`` ({} where there is none)."""
+    if language == "en":
+        return OVERVIEWS
+    path = WORDS / f"overview-{language}.json"
+    return json.loads(path.read_text("utf-8")) if path.is_file() else {}
 
 
 def table() -> dict[str, dict[str, str]]:
@@ -40,13 +65,13 @@ def table() -> dict[str, dict[str, str]]:
     return OVERVIEWS
 
 
-def set_quotes(text: str) -> str:
+def set_quotes(text: str, language: str = "en") -> str:
     """Straight quotes curled as the book's reader curls them (``build_owb_book``
     curls singles, then doubles, the same two steps)."""
-    return convert(curl_singles(text), outer_guillemets=False)[0]
+    return convert(curl_singles(text), outer_guillemets=language in GUILLEMETS)[0]
 
 
-def trim_borrowed_quotes(text: str) -> str:
+def trim_borrowed_quotes(text: str, open_: str = OPEN, close: str = CLOSE) -> str:
     """Drop the quotation marks a verse borrows from its neighbours.
 
     Read by direction, on curled text: a closing mark with no opening mark
@@ -59,65 +84,109 @@ def trim_borrowed_quotes(text: str) -> str:
     out: list[str] = []
     depth = 0
     for ch in text:
-        if ch == OPEN:
+        if ch == open_:
             depth += 1
-        elif ch == CLOSE:
+        elif ch == close:
             if depth == 0:
                 continue  # closes a speech from an earlier verse
             depth -= 1
         out.append(ch)
     result = "".join(out).strip()
-    if result.endswith(OPEN):
+    if result.endswith(open_):
         result = result[:-1].rstrip()
     return result
 
 
-def _anchor_exists(slug: str, order: int, verse: int) -> bool:
+def _chapter_title(slug: str, order: int, language: str) -> str:
+    from .models import Chapter
+
+    return (
+        Chapter.objects.filter(book__slug=slug, book__language=language, order=order)
+        .values_list("title", flat=True)
+        .first()
+        or ""
+    )
+
+
+_REFERENCE = re.compile(r"^(?P<name>.+?) (?P<ref>\d.*)$")
+_TRAILING_NUMBER = re.compile(r"\s\d+$")
+
+
+def local_reference(reference: str, slug: str, chapter: int, language: str) -> str | None:
+    """``reference`` ("Romans 1:16") with the book named as ``language``'s
+    edition titles its chapter ("Romanos 1" -> "Romanos 1:16"); None when that
+    edition has no such chapter."""
+    m = _REFERENCE.match(reference)
+    title = _chapter_title(slug, chapter + 1, language)
+    name = _TRAILING_NUMBER.sub("", title)
+    if not m or not title or name == title:
+        return None
+    return f"{name} {m['ref']}"
+
+
+def _anchor_exists(slug: str, order: int, verse: int, language: str = "en") -> bool:
     """Whether reader chapter ``order`` of ``slug`` carries ``id="v<verse>"``:
     a verse OWB prints inside another chapter (Isaiah 64:1, at the end of 63)
     or inside a range ("33–34", whose number is only v33) has none."""
     from .models import Chapter
 
     body = (
-        Chapter.objects.filter(book__slug=slug, book__language="en", order=order)
+        Chapter.objects.filter(book__slug=slug, book__language=language, order=order)
         .values_list("body_html", flat=True)
         .first()
     )
     return bool(body) and f'id="v{verse}"' in body
 
 
-@lru_cache(maxsize=128)
-def key_verse(slug: str, reference: str) -> dict | None:
+@lru_cache(maxsize=512)
+def key_verse(slug: str, reference: str, language: str = "en") -> dict | None:
     """``{reference, text, chapter, verse}`` for a key verse, or None when the
     Bible lookup cannot resolve it. ``chapter`` is its ENGLISH chapter (the
     reader prints English chapter ``n`` as reader chapter ``n + 1``); ``verse``
     is the reader's ``#v<n>`` anchor there, or None where the reader prints no
     such anchor in that chapter — the card then links the chapter's top."""
     ref = reference.replace("–", "-")
-    found = lookup(ref)
     ids = sorted(reference_verse_ids(ref))
-    if not found or not found.get("verses") or not ids:
+    if not ids:
         return None
     chapter, verse = ids[0] // 1000 % 1000, ids[0] % 1000
-    text = " ".join(v["text"] for v in found["verses"])
+    if language == "en":
+        found = lookup(ref)
+        if not found or not found.get("verses"):
+            return None
+        text = " ".join(v["text"] for v in found["verses"])
+        label = reference
+    else:
+        # That language's OWB text, each printed verse once (Psalm 13:5-6).
+        printed: dict[int, str] = {}
+        for vid in ids:
+            if hit := owb_verse(vid, language):
+                printed.setdefault(hit[0], hit[1])
+        label = local_reference(reference, slug, chapter, language)
+        if not printed or not label:
+            return None
+        text = " ".join(printed.values())
+    marks = ("«", "»") if language in GUILLEMETS else (OPEN, CLOSE)
     return {
-        "reference": reference,
-        "text": trim_borrowed_quotes(set_quotes(text)),
+        "reference": label,
+        "text": trim_borrowed_quotes(set_quotes(text, language), *marks),
         "chapter": chapter,
-        "verse": verse if _anchor_exists(slug, chapter + 1, verse) else None,
+        "verse": verse if _anchor_exists(slug, chapter + 1, verse, language) else None,
     }
 
 
-def overview(slug: str) -> dict | None:
-    """The overview card for the Bible book ``slug``, or None when it has none."""
+def overview(slug: str, language: str = "en") -> dict | None:
+    """The overview card for the Bible book ``slug`` in ``language``, or None
+    when it has none there."""
     meta = table().get(slug)
-    if not meta:
+    local = words(language).get(slug)
+    if not meta or not local:
         return None
     return {
-        "author": meta["author"],
-        "date": meta["date"],
-        "theme": meta["theme"],
-        "key_verse": key_verse(slug, meta["key_verse"]),
+        "author": local["author"],
+        "date": local["date"],
+        "theme": local["theme"],
+        "key_verse": key_verse(slug, meta["key_verse"], language),
     }
 
 
