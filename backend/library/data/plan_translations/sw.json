@@ -239,5 +239,68 @@
   "cheque-book-year": {
     "title": "Mwaka Mmoja na Kitabu cha Hundi cha Benki ya Imani",
     "description": "Ahadi za kila siku za Charles Spurgeon: ahadi moja ya Mungu kwa kila siku ya mwaka, pamoja na neno fupi la jinsi ya kuipokea kwa imani. Anza siku yoyote: siku ya kwanza ni somo la tarehe 1 Januari, na kila siku inayofuata huchukua somo linalofuata. Dakika moja au mbili kwa siku."
+  },
+  "john-in-21-days": {
+    "title": "Injili ya Yohana kwa Siku 21",
+    "description": "Wiki tatu pamoja na Injili ya nne katika Open Word Bible, sura moja kila siku: Neno aliyefanyika mwili, ishara saba, maneno ya “Mimi ndimi”, maagano marefu katika chumba cha juu, msalaba kama saa ya utukufu, na kifungua kinywa kando ya ziwa.",
+    "note": [
+      "Mipango ya kusoma Biblia kwa Kiswahili (Open Word Bible, build_owb_book --language sw): nukuu za Zaburi 1:1 na 150:6 ni maneno ya owb-sw."
+    ]
+  },
+  "psalms-in-150-days": {
+    "title": "Zaburi kwa Siku 150",
+    "description": "Zaburi moja kila siku kwa miezi mitano katika Open Word Bible, zikiwa zimepangwa mstari kwa mstari: kitabu cha sala cha Biblia yenyewe, cha sifa na maombolezo, cha kutumaini na kushukuru, kuanzia “Ana heri kweli mtu” hadi “Kila kiumbe kinachopumua na kimsifu BWANA!”",
+    "note": [
+      "Mipango ya kusoma Biblia kwa Kiswahili (Open Word Bible, build_owb_book --language sw): nukuu za Zaburi 1:1 na 150:6 ni maneno ya owb-sw."
+    ]
+  },
+  "proverbs-in-a-month": {
+    "title": "Mithali kwa Mwezi Mmoja",
+    "description": "Sura moja ya Mithali kwa kila siku ya mwezi katika Open Word Bible: sura thelathini na moja za hekima kwa maisha ya kila siku, kuanzia kumcha BWANA kama mwanzo wa maarifa hadi mwanamke mwema.",
+    "note": [
+      "Mipango ya kusoma Biblia kwa Kiswahili (Open Word Bible, build_owb_book --language sw): nukuu za Zaburi 1:1 na 150:6 ni maneno ya owb-sw."
+    ]
+  },
+  "advent-in-scripture": {
+    "title": "Majilio katika Maandiko",
+    "description": "Siku ishirini na tano kuanzia tarehe 1 Desemba hadi Siku ya Krismasi, sura moja kila siku katika Open Word Bible. Kwanza zinakuja ahadi: nyoka aliyepondwa, baraka kwa Abrahamu, nyota itokayo kwa Yakobo, kiti cha enzi cha milele cha Daudi, na mtoto, mtumishi na nuru ya Isaya, pamoja na Chipukizi la Yeremia, Bethlehemu ya Mika na mjumbe wa Malaki. Kisha Neno aliyefanyika mwili, Gabrieli na Mariamu, ndoto ya Yusufu, kuzaliwa usiku wa kuamkia Krismasi na wenye hekima Siku ya Krismasi. Takriban dakika tatu kwa siku.",
+    "note": [
+      "Mipango ya kusoma Biblia kwa Kiswahili (Open Word Bible, build_owb_book --language sw): nukuu za Zaburi 1:1 na 150:6 ni maneno ya owb-sw."
+    ]
+  },
+  "lent-the-road-to-the-cross": {
+    "title": "Kwaresima: Njia ya Msalaba",
+    "description": "Masomo arobaini kwa siku arobaini za Kwaresima katika Open Word Bible. Kuanzia Jumatano ya Majivu, kusoma Jumatatu hadi Jumamosi na kupumzika Jumapili; Ijumaa Kuu na Jumamosi Kuu zina sura zake. Kuanzia mwito wa kurudi kwa moyo wote, kupitia mwanakondoo, Pasaka na mtumishi anayeteseka, hadi Yesu akielekeza uso wake Yerusalemu; Mateso katika Mathayo, Marko na Luka; kile ambacho msalaba ulitimiza, katika Waebrania, Warumi, Wafilipi na Petro; na Wiki Takatifu siku kwa siku katika Yohana. Takriban dakika tano kwa siku.",
+    "note": [
+      "Mipango ya kusoma Biblia kwa Kiswahili (Open Word Bible, build_owb_book --language sw): nukuu za Zaburi 1:1 na 150:6 ni maneno ya owb-sw."
+    ]
+  },
+  "easter-the-risen-lord": {
+    "title": "Pasaka: Bwana Aliyefufuka",
+    "description": "Siku nane kuanzia Jumapili ya Pasaka hadi Jumapili inayofuata, sura moja ya ufufuo kila siku katika Open Word Bible: kaburi tupu na Mariamu bustanini, njia ya Emau, agizo kuu, kijana kaburini, kifungua kinywa kando ya ziwa, Paulo kuhusu malimbuko ya wafu, ubatizo katika uzima mpya, na Aliye hai kati ya vinara. Takriban dakika nne kwa siku.",
+    "note": [
+      "Mipango ya kusoma Biblia kwa Kiswahili (Open Word Bible, build_owb_book --language sw): nukuu za Zaburi 1:1 na 150:6 ni maneno ya owb-sw."
+    ]
+  },
+  "the-story-of-the-bible": {
+    "title": "Hadithi ya Biblia",
+    "description": "Miezi miwili katika hadithi moja ambayo Biblia nzima inaisimulia, sura moja kila siku katika Open Word Bible: uumbaji na anguko, ahadi kwa Abrahamu, Pasaka na bahari, sheria na nchi, Daudi na ahadi ya mfalme, manabii, uhamisho na kurudi; kisha Yesu akizaliwa, akifundisha, akisulubiwa na kufufuka, Roho akimiminwa juu ya kanisa, na uumbaji mpya ambapo Mungu anakaa na watu wake. Sura sitini muhimu, takriban dakika nne kila moja.",
+    "note": [
+      "Mipango ya kusoma Biblia kwa Kiswahili (Open Word Bible, build_owb_book --language sw): nukuu za Zaburi 1:1 na 150:6 ni maneno ya owb-sw."
+    ]
+  },
+  "bible-in-a-year": {
+    "title": "Biblia kwa Mwaka Mmoja",
+    "description": "Biblia nzima katika Open Word Bible, kuanzia Mwanzo hadi Ufunuo kwa mpangilio: sura zote 1,189 kwa siku 365. Siku nyingi ni sura mbili hadi nne, takriban dakika kumi, zimegawanywa ili kila siku iwe na urefu unaofanana na ibaki katika kitabu kimoja; Zaburi huja kadhaa kwa pamoja na nyaraka fupi zaidi zina siku yake. Kupitia sheria na historia, washairi na manabii, Injili, nyaraka na uumbaji mpya.",
+    "note": [
+      "Mipango ya kusoma Biblia kwa Kiswahili (Open Word Bible, build_owb_book --language sw): nukuu za Zaburi 1:1 na 150:6 ni maneno ya owb-sw."
+    ]
+  },
+  "new-testament-in-90-days": {
+    "title": "Agano Jipya kwa Siku 90",
+    "description": "Agano Jipya lote katika Open Word Bible, kuanzia Mathayo hadi Ufunuo kwa mpangilio: sura zote 260 kwa siku 90. Siku nyingi ni sura mbili hadi nne, takriban dakika kumi, zimegawanywa ili kila siku iwe na urefu unaofanana na ibaki katika kitabu kimoja; nyaraka fupi zaidi zina siku yake. Kupitia Injili nne, siku za kwanza za kanisa katika Matendo, nyaraka za Paulo na mitume, na mbingu mpya na nchi mpya.",
+    "note": [
+      "Mipango ya kusoma Biblia kwa Kiswahili (Open Word Bible, build_owb_book --language sw): nukuu za Zaburi 1:1 na 150:6 ni maneno ya owb-sw."
+    ]
   }
 }

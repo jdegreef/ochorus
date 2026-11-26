@@ -1,0 +1,133 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "open-word-bible"
+  ],
+  "slug": "titus",
+  "language": "sw",
+  "title": "Barua kwa Tito",
+  "subtitle": "Pros Titon, “Kwa Tito”",
+  "cover_title": "Tito",
+  "cover_byline": "",
+  "description": "Barua fupi ya Paulo kwa Tito, mtenda kazi mwenzake kutoka Mataifa, aliyeachwa katika kisiwa cha Krete ili kuyapanga makanisa vizuri na kuweka wazee katika kila mji. Ni ya moja kwa moja na ya kivitendo: inaeleza mzee anavyopaswa kuwa, inaonya dhidi ya walimu ambao “wanaharibu familia nzima”, na inaonyesha jinsi wazee na vijana, wanaume na wanawake, watumwa na raia, wanavyoweza kuyafanya mafundisho kuhusu Mungu Mwokozi wetu yavutie. Na mara mbili inasimama kueleza sababu yake: neema ya Mungu imeonekana, ikiwaletea watu wote wokovu, nayo inatufundisha jinsi ya kuishi tukingojea kuonekana kwa Mungu wetu mkuu na Mwokozi, Yesu Kristo; na Mungu alituokoa, si kwa sababu ya mambo ya haki tuliyotenda, bali kwa sababu ya rehema Zake. Katika Open Word Bible, tafsiri mpya kutoka Kigiriki iliyotolewa bure kuwa mali ya umma, pamoja na utangulizi kuhusu muundo na maana ya barua hii na hitimisho kuhusu nini cha kusoma baadaye.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Barua kwa Tito ni nini?",
+    "answer": "Ni barua fupi katika Agano Jipya kutoka kwa mtume Paulo kwa Tito, mtenda kazi mwenzake, ambaye alikuwa amemwacha Krete ili kuyapanga vizuri makanisa machanga na kuweka wazee katika kila mji (1:5). Pamoja na 1 na 2 Timotheo ni mojawapo ya Barua tatu za Kichungaji. Inaeleza mzee anavyopaswa kuwa, inaonya dhidi ya walimu wa uongo, inatoa maagizo kwa waumini wa kila umri na kila hali, na inayajenga juu ya muhtasari miwili mikuu ya Injili (2:11–14; 3:4–7)."
+   },
+   {
+    "question": "Tito alikuwa nani, na nani aliandika barua hii?",
+    "answer": "Tito alikuwa mwamini Mgiriki ambaye Paulo alimpeleka Yerusalemu kama mwongofu wa Mataifa asiyetahiriwa (Wagalatia 2:1–3) na baadaye akamtuma kwa kanisa la Korintho, akimwita “mshirika wangu” (2 Wakorintho 8:23). Barua inamtaja Paulo kuwa mwandishi wake, na kanisa liliipokea kuwa yake, iliyoandikwa katika miaka ya 60 BK baada ya kazi ya kimisionari huko Krete ambayo haijaandikwa katika kitabu cha Matendo. Wasomi wengi wa kisasa wanafikiri kwamba Barua za Kichungaji ziliandikwa na mfuasi wa Paulo baada ya kifo chake; wengine wengi wanatetea kwamba Paulo ndiye mwandishi."
+   },
+   {
+    "question": "Je, Tito 2:13 inamwita Yesu Mungu?",
+    "answer": "Inazungumzia “kuonekana kwa utukufu wa Mungu wetu mkuu na Mwokozi, Yesu Kristo.” Kwa sababu katika Kigiriki kibainishi kimoja kinatawala maneno yote mawili, “Mungu” na “Mwokozi”, kirai hicho kwa kawaida kabisa kinamtaja mtu mmoja, Yesu Kristo, kuwa Mungu wetu mkuu na Mwokozi, na tafsiri nyingi, ikiwemo hii, zinakisoma hivyo. Wengine wanasoma watu wawili, Mungu Baba na Kristo, kwa kuwa mahali pengine barua inamwita Baba “Mungu Mwokozi wetu”. Vyovyote vile, mstari huu unaweka kuja kwa Kristo katika utukufu katikati ya tumaini la Kikristo."
+   },
+   {
+    "question": "Barua kwa Tito inatoa sifa gani kwa wazee wa kanisa?",
+    "answer": "Mzee lazima awe asiye na lawama, “mume wa mke mmoja, mwenye watoto wanaoamini”, na nyumba iliyo katika mpangilio mzuri (1:6). Paulo anamwita kiongozi huyo huyo mwangalizi, anayesimamia nyumba ya Mungu, na anasema kwamba hapaswi kuwa mwenye kiburi wala mwepesi wa hasira, mlevi, mgomvi wala mwenye tamaa ya fedha, bali mkarimu kwa wageni, mwenye kiasi, mwenye haki, mtakatifu na mwenye kujitawala, akishika kwa uthabiti ujumbe wa kuaminika ili aweze kutia moyo kwa mafundisho mazima na kuwarekebisha wale wanaoyapinga (1:7–9). Orodha hii inakaribiana na ile ya 1 Timotheo 3. Wakristo wanatofautiana kuhusu kile ambacho “mume wa mke mmoja” kinadai: uaminifu katika ndoa, kutokuwa na wake wengi, au kutooa tena."
+   },
+   {
+    "question": "“Kuoshwa kunakoleta kuzaliwa upya” katika Tito 3:5 kunamaanisha nini?",
+    "answer": "Paulo anasema kwamba Mungu alituokoa “si kwa sababu ya mambo ya haki tuliyotenda, bali kwa sababu ya rehema Zake”, kupitia kuoshwa kunakoleta kuzaliwa upya na kufanywa wapya na Roho Mtakatifu, ambaye alimmimina juu yetu kwa ukarimu kupitia Yesu Kristo Mwokozi wetu (3:5–6). Neno la Kigiriki linamaanisha “kuwa tena”, na Biblia za zamani hulitafsiri kwa neno la kitheolojia la kuzaliwa upya. Wakristo wengi wanaona katika kuoshwa huko rejeo la ubatizo; wengine wanaona utakaso ambao ubatizo unauonyesha kwa picha. Wote wanakubali kwamba ni kazi ya Mungu wala si yetu, na kwamba tunda lake ni watu waliohesabiwa haki kwa neema Yake, warithi wenye tumaini la uzima wa milele, waliojitoa kutenda mema."
+   },
+   {
+    "question": "Hii ni tafsiri gani ya Biblia?",
+    "answer": "Ni Open Word Bible, tafsiri mpya iliyofanywa moja kwa moja kutoka Kigiriki na kutolewa kuwa mali ya umma, iliyochapishwa hapa katika kiwango cha Uwiano, kinacholenga kuwa sahihi na kusomeka kwa urahisi kwa sauti. Sababu za uchaguzi wa kila sentensi yake, pamoja na Kigiriki kando yake, zimechapishwa kwenye openwordbible.org. Utangulizi na hitimisho viliandikwa kwa ajili ya toleo hili."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "https://openwordbible.org/read/#tit",
+  "attribution": "Maandiko kutoka Open Word Bible (https://openwordbible.org), kwa Kiswahili, kiwango cha Uwiano, commit b239700145bb: imetolewa kwa umma chini ya CC0 1.0. Utangulizi na hitimisho vimeandikwa na Ochorus.",
+  "cover_url": "/covers/art/titus.jpg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/titus.sw.pdf?download=titus.sw.pdf",
+  "cover_color": "#2e3a4a",
+  "series": [
+   "the-bible"
+  ],
+  "series_position": 56,
+  "sort_order": 303,
+  "is_published": true,
+  "created_at": "2026-11-22T00:00:00Z",
+  "updated_at": "2026-11-22T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "titus",
+   "sw"
+  ],
+  "order": 1,
+  "title": "Utangulizi",
+  "body_html": "<blockquote><p>Kwa maana neema ya Mungu imeonekana, ikileta wokovu kwa watu wote. Inatufundisha kukataa maisha yasiyomcha Mungu na tamaa za ulimwengu, na kuishi maisha ya kiasi, ya haki na ya kumcha Mungu katika nyakati hizi za sasa, huku tukingojea tumaini la heri, yaani kuonekana kwa utukufu wa Mungu wetu mkuu na Mwokozi, Yesu Kristo. Yeye alijitoa kwa ajili yetu ili atuweke huru kutoka katika uovu wote, na ajitakasie watu walio Wake, wenye hamu ya kutenda mema.</p><p>— Tito 2:11–14</p></blockquote> <p>Paulo alikuwa amemwacha mtenda kazi mwenzake Tito katika kisiwa cha Krete na kazi ambayo haikuwa imekamilika: kuyapanga vizuri makanisa ya huko na kuweka wazee katika kila mji. Barua hii fupi inamweleza jinsi ya kufanya hivyo. Ni ya moja kwa moja na ya kivitendo, imejaa maagizo kwa wazee wa kiume na wanawake vijana, kwa watumwa, na kuhusu jinsi ya kuishi chini ya watawala, tena ni kali kuhusu wasumbufu. Lakini mara mbili inasimama kueleza kwa nini yoyote kati ya hayo ni muhimu, na vifungu hivyo viwili, kuhusu neema ya Mungu iliyoonekana, ni miongoni mwa muhtasari tajiri zaidi wa Injili mahali popote katika barua za Paulo.</p> <h3>Tito</h3> <p>Tito hatajwi kamwe katika kitabu cha Matendo, lakini barua za Paulo zinaonyesha jinsi alivyomwamini sana. Alikuwa Mgiriki, asiyetahiriwa, na Paulo alimpeleka Yerusalemu kama ushahidi hai kwamba waumini wa Mataifa hawahitaji kuwa Wayahudi (Wagalatia 2:1–3). Baadaye alikuwa mjumbe wa Paulo kwa kanisa lenye matatizo la Korintho, ambako huenda alipeleka barua ya kuumiza, akarudi na habari njema, na akapanga mchango kwa ajili ya Yerusalemu (2 Wakorintho 7–8). “Yeye ni mshirika wangu, anayefanya kazi pamoja nami kwa ajili yenu,” Paulo aliandika kumhusu huko (8:23). Habari ya mwisho tunayoisikia ni kwamba amekwenda Dalmatia, katika pwani ya Adriatiki (2 Timotheo 4:10). Eusebio anaandika mapokeo kwamba alikuwa askofu wa kwanza wa makanisa ya Krete.</p> <h3>Krete</h3> <p>Kitabu cha Matendo kinaitaja Krete tu kama pwani ambayo meli ya Paulo ilipita kando yake ikielekea Rumi (Matendo 27). Barua inaashiria kazi ya kimisionari huko ambayo Matendo haiiandiki, labda baada ya kifungo cha kwanza cha Paulo, ingawa kisiwa hicho kilikuwa na wakazi Wayahudi na Wakrete walikuwepo Yerusalemu siku ya Pentekoste (Matendo 2:11). Kama 1 na 2 Timotheo, Tito ni mojawapo ya Barua za Kichungaji, na wasomi wanatofautiana kuhusu kama Paulo aliiandika mwenyewe au mfuasi aliiandika kwa jina lake; utangulizi wa 1 Timotheo katika toleo hili unaeleza zaidi.</p> <p>Makanisa yalikabili walimu “wa kundi la tohara”, waliojaa maneno matupu, ngano za Kiyahudi na magomvi kuhusu sheria, ambao “wanaharibu familia nzima” kwa ajili ya faida. Paulo ananukuu mstari unaohusishwa na mshairi Mkrete Epimenide: “Wakrete ni waongo daima, hayawani waovu, walafi wazembe.” “Alichosema ni kweli,” Paulo anaongeza, akitumia waziwazi tusi maarufu. Lakini mwishowe barua haiwahusu Wakrete. Inahusu kile ambacho neema ya Mungu inaweza kumfanya mtu yeyote kuwa.</p> <h3>Muundo wa barua</h3> <ul> <li><strong>Sura ya 1: wazee na wapinzani.</strong> Salamu, mzee anavyopaswa kuwa, na kwa nini walimu wa uongo lazima wanyamazishwe.</li> <li><strong>Sura ya 2: mafundisho yanayopatana.</strong> Jinsi waumini wa kila umri na kila hali wanavyopaswa kuishi, na neema inayowafundisha.</li> <li><strong>Sura ya 3: raia wema, waliofanywa wapya.</strong> Maisha kati ya watu wa nje, wema wa Mungu Mwokozi wetu, na maagizo ya mwisho.</li> </ul> <h3>Wazee katika kila mji</h3> <p>Mzee lazima awe “mtu asiye na lawama, mume wa mke mmoja”, mwenye nyumba iliyo katika mpangilio mzuri. Kisha Paulo anamwita kiongozi huyo huyo mwangalizi, na anaorodhesha asivyopaswa kuwa, “Asiwe mwenye kiburi wala mwepesi wa hasira, asiwe mlevi wala mgomvi, asiwe na tamaa ya fedha”, na anavyopaswa kuwa: mkarimu kwa wageni, mwenye kiasi, mtakatifu, na akishika kwa uthabiti ujumbe wa kuaminika, aweze kutia moyo kwa mafundisho mazima na kuwarekebisha wale wanaoyapinga. Orodha hii inakaribiana na ile ya 1 Timotheo 3. Tabia inakuja kwanza; uwezo wa kuifundisha kweli unafuata.</p> <h3>Mafundisho yanayopatana</h3> <p>“Lakini wewe yakupasa kufundisha yanayopatana na mafundisho mazima,” Paulo anamwambia Tito, naye anapitia kanisa lote: wazee wa kiume na wanawake wazee, wanawake vijana na vijana wa kiume, watumwa. Maagizo hayo yanaakisi mpangilio wa nyumba katika ulimwengu wa karne ya kwanza, ikiwemo mwito kwa wake kuwatii waume zao. Wakristo wanatofautiana kuhusu jinsi maagizo kama hayo yanavyotumika katika nyakati na tamaduni nyingine. Kile ambacho barua inakiweka wazi ni lengo lake. Kila kundi linapaswa kuishi ili “mtu yeyote asilinene vibaya neno la Mungu”, na watumwa, watu wenye hadhi ya chini kuliko wote, wanapaswa kuishi ili “wayafanye mafundisho kuhusu Mungu Mwokozi wetu yavutie”.</p> <h3>Neema ya Mungu imeonekana</h3> <p>Kisha unakuja muhtasari wa kwanza kati ya miwili mikuu ya barua hii. Neema imeonekana katika Yesu Kristo, ikiwaletea watu wote wokovu. Na neema si zawadi tu; ni mwalimu pia. Inawazoeza waumini kukataa maisha yasiyomcha Mungu na kuishi “maisha ya kiasi, ya haki na ya kumcha Mungu katika nyakati hizi za sasa”, huku wakingojea “tumaini la heri, yaani kuonekana kwa utukufu wa Mungu wetu mkuu na Mwokozi, Yesu Kristo.” Maisha ya Kikristo yanasimama kati ya kuonekana mara mbili, kwa kwanza katika unyenyekevu na kwa pili katika utukufu.</p> <h3>Alituokoa</h3> <p>Katika sura ya 3 Paulo anawakumbusha waumini walivyokuwa zamani, “wapumbavu, wakaidi na waliopotoshwa”, na kisha anageukia kile ambacho Mungu amefanya:</p> <blockquote><p>Lakini wema na upendo wa Mungu Mwokozi wetu ulipodhihirishwa, alituokoa, si kwa sababu ya mambo ya haki tuliyotenda, bali kwa sababu ya rehema Zake. Alituokoa kupitia kuoshwa kunakoleta kuzaliwa upya na kufanywa wapya na Roho Mtakatifu, ambaye alimmimina juu yetu kwa ukarimu kupitia Yesu Kristo Mwokozi wetu, ili, tukiwa tumehesabiwa haki kwa neema Yake, tuwe warithi wenye tumaini la uzima wa milele.</p><p>— Tito 3:4–7</p></blockquote> <p>Hapa, katika mistari michache, kuna karibu Injili nzima: wema na upendo wa Mungu, rehema wala si kustahili, kuzaliwa upya na Roho aliyemiminwa, neema na tumaini la uzima wa milele. Baba, Mwana na Roho wote wanatajwa. Wengi wanaona katika “kuoshwa kunakoleta kuzaliwa upya” rejeo la ubatizo; wengine utakaso ambao ubatizo unauonyesha kwa picha. Wote wanakubali kwamba ni kazi ya Mungu, “si kwa sababu ya mambo ya haki tuliyotenda”.</p> <p>Kisha kiitikio cha barua: wale waliomwamini Mungu lazima wawe waangalifu “kujitoa kutenda mema.” Maneno hayo, au yanayofanana nayo, yanarudi tena na tena katika sura hizi tatu. Neema inayookoa bila matendo mema inazaa watu “wenye hamu ya kutenda mema.”</p> <h3>Jinsi ya kusoma Tito</h3> <p>Ni vizuri kuisoma kwa kikao kimoja; inachukua kama dakika kumi. Kisha kusoma 2:11–14 na 3:4–7 polepole, na kuona jinsi kila agizo la kivitendo linalovizunguka linavyovitegemea. Tunaona pia jinsi cheo “Mwokozi” kinavyopita huku na huko kati ya Mungu na Yesu Kristo (1:3–4; 2:10, 2:13; 3:4, 3:6).</p> <h3>Kuhusu tafsiri hii</h3> <p>Maandiko katika toleo hili ni ya Open Word Bible, tafsiri mpya iliyofanywa moja kwa moja kutoka Kigiriki na kutolewa bure kuwa mali ya umma. Imechapishwa hapa katika kiwango cha Uwiano, kinacholenga kuwa sahihi na kusomeka kwa urahisi kwa sauti. Machaguo yake machache katika Tito yanafaa kujulikana kabla ya kuanza.</p> <p><strong>“Mungu wetu mkuu na Mwokozi, Yesu Kristo” (2:13).</strong> Kwa kuwa kibainishi kimoja kinatawala nomino zote mbili, Kigiriki kwa kawaida kabisa kinamtaja mtu mmoja, Yesu Kristo, kuwa Mungu na Mwokozi, kama katika 2 Petro 1:1. Wengine wanasoma watu wawili, Mungu Baba na Kristo. Tafsiri hii inafuata maana ya kwanza.</p> <p><strong>“Kuoshwa kunakoleta kuzaliwa upya” (3:5).</strong> Biblia za zamani hutumia hapa neno la kitheolojia. Kigiriki kinamaanisha “kuwa tena”, na tafsiri hii inatumia maneno ya Kiswahili yaliyo rahisi zaidi.</p> <p><strong>“Mume wa mke mmoja” (1:6).</strong> Kihalisi “mwanamume wa mwanamke mmoja”, kama katika 1 Timotheo 3:2. Huenda linadai uaminifu katika ndoa, linakataza kuwa na wake wengi au linakataza kuoa tena. Hapa tafsiri inabaki na maneno yanayojulikana.</p> <p>Kwa sababu zilizo nyuma ya kila sentensi ya tafsiri, pamoja na Kigiriki kando yake, tazama Open Word Bible yenyewe kwenye openwordbible.org.</p>",
+  "study_questions": [],
+  "word_count": 1210
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "titus",
+   "sw"
+  ],
+  "order": 2,
+  "title": "Tito 1",
+  "body_html": "<h3>Salamu</h3><p><sup class=\"v\" id=\"v1\">1</sup>Kutoka kwa Paulo, mtumishi wa Mungu na mtume wa Yesu Kristo. Nilitumwa kuwaleta wateule wa Mungu kwenye imani na kwenye ujuzi wa kweli inayoongoza kwenye uchaji wa Mungu, <sup class=\"v\" id=\"v2\">2</sup>imani na ujuzi ambavyo vinategemea tumaini la uzima wa milele. Mungu, ambaye hasemi uongo kamwe, aliahidi uzima huu kabla nyakati za milele hazijaanza, <sup class=\"v\" id=\"v3\">3</sup>na kwa wakati uliofaa alilifanya neno Lake lijulikane kupitia mahubiri niliyokabidhiwa kwa agizo la Mungu Mwokozi wetu. <sup class=\"v\" id=\"v4\">4</sup>Kwa Tito, mwanangu halisi katika imani tunayoshiriki: neema na amani kutoka kwa Mungu Baba na Kristo Yesu Mwokozi wetu.</p><h3>Kuteua wazee huko Krete</h3><p><sup class=\"v\" id=\"v5\">5</sup>Nilikuacha Krete ili uweke sawa mambo yaliyobaki bila kukamilika, na uwateue wazee katika kila mji, kama nilivyokuagiza. <sup class=\"v\" id=\"v6\">6</sup>Mzee awe mtu asiye na lawama, mume wa mke mmoja, mwenye watoto wanaoamini, ambao hawawezi kushtakiwa kwa maisha ya ufisadi au kwa ukaidi. <sup class=\"v\" id=\"v7\">7</sup>Kwa kuwa mwangalizi anasimamia nyumba ya Mungu, ni lazima awe bila lawama. Asiwe mwenye kiburi wala mwepesi wa hasira, asiwe mlevi wala mgomvi, asiwe na tamaa ya fedha. <sup class=\"v\" id=\"v8\">8</sup>Awe mkarimu kwa wageni, apende yaliyo mema, awe na kiasi, mwenye haki, mtakatifu na mwenye kujitawala. <sup class=\"v\" id=\"v9\">9</sup>Ashike kwa uthabiti ujumbe wa kuaminika kama ulivyofundishwa, ili aweze kuwatia moyo wengine kwa mafundisho mazima na kuwarekebisha wale wanaoyapinga.</p><h3>Waasi lazima wanyamazishwe</h3><p><sup class=\"v\" id=\"v10\">10</sup>Kwa maana wapo watu wengi waasi, wenye maneno matupu na udanganyifu, hasa wale wa kundi la tohara. <sup class=\"v\" id=\"v11\">11</sup>Ni lazima wanyamazishwe, kwa sababu wanaharibu familia nzima kwa kufundisha mambo wasiyopaswa kufundisha, na wanafanya hivyo kwa ajili ya faida isiyo halali. <sup class=\"v\" id=\"v12\">12</sup>Mmoja wa manabii wao wenyewe amesema, “Wakrete ni waongo daima, hayawani waovu, walafi wazembe.” <sup class=\"v\" id=\"v13\">13</sup>Alichosema ni kweli. Kwa hiyo uwakemee vikali, ili imani yao iwe nzima, <sup class=\"v\" id=\"v14\">14</sup>wasijali tena ngano za Kiyahudi wala amri za watu wanaoikataa kweli. <sup class=\"v\" id=\"v15\">15</sup>Kwa walio safi, kila kitu ni safi; lakini kwa watu walioharibika na wasioamini, hakuna kitu kilicho safi. Kwa kweli, nia zao na dhamiri zao zimechafuka. <sup class=\"v\" id=\"v16\">16</sup>Wanadai kwamba wanamjua Mungu, lakini kwa wanayoyatenda wanamkana. Ni watu wa kuchukiza na wakaidi, wasiofaa kufanya jambo lolote jema.</p>",
+  "study_questions": [],
+  "word_count": 319,
+  "summary": "Paulo anamwandikia Tito, aliyemwacha Krete ili awateue wazee katika kila mji. Anaeleza mzee anapaswa kuwa mtu wa namna gani na kuonya dhidi ya walimu waasi ambao lazima wanyamazishwe."
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "titus",
+   "sw"
+  ],
+  "order": 3,
+  "title": "Tito 2",
+  "body_html": "<h3>Fundisha yanayolingana na mafundisho mazima</h3><p><sup class=\"v\" id=\"v1\">1</sup>Lakini wewe yakupasa kufundisha yanayopatana na mafundisho mazima. <sup class=\"v\" id=\"v2\">2</sup>Wafundishe wanaume wazee wawe na akili timamu, wanaostahili heshima na wenye kiasi, wakiwa wazima katika imani, katika upendo na katika uvumilivu.</p><h3>Wanawake wazee na wanawake vijana</h3><p><sup class=\"v\" id=\"v3\">3</sup>Vivyo hivyo, wafundishe wanawake wazee waishi kwa namna inayomheshimu Mungu. Wasiwe wachongezi wala watumwa wa divai nyingi, bali wafundishe yaliyo mema. <sup class=\"v\" id=\"v4\">4</sup>Ndipo wataweza kuwazoeza wanawake vijana kuwapenda waume zao na watoto wao, <sup class=\"v\" id=\"v5\">5</sup>kuwa na kiasi na usafi, kufanya kazi za nyumbani, kuwa wema, na kuwatii waume zao wenyewe, ili mtu yeyote asilinene vibaya neno la Mungu.</p><h3>Vijana wa kiume, na mfano kwa Tito</h3><p><sup class=\"v\" id=\"v6\">6</sup>Vivyo hivyo, wahimize vijana wa kiume wawe na kiasi. <sup class=\"v\" id=\"v7\">7</sup>Katika kila jambo uwe kielelezo kwao kwa kutenda mema. Katika mafundisho yako onyesha uadilifu na umakini, <sup class=\"v\" id=\"v8\">8</sup>na maneno mazima yasiyoweza kukosolewa, ili yeyote anayekupinga aone aibu, kwa sababu hana neno baya la kusema juu yetu.</p><h3>Watumwa na mabwana</h3><p><sup class=\"v\" id=\"v9\">9</sup>Wafundishe watumwa wawatii mabwana zao katika kila jambo, wajitahidi kuwapendeza, wasibishane nao <sup class=\"v\" id=\"v10\">10</sup>wala wasiwaibie, bali waonyeshe kwamba wanaweza kuaminiwa kabisa, ili kwa kila namna wayafanye mafundisho kuhusu Mungu Mwokozi wetu yavutie.</p><h3>Neema ya Mungu imeonekana</h3><p><sup class=\"v\" id=\"v11\">11</sup>Kwa maana neema ya Mungu imeonekana, ikileta wokovu kwa watu wote. <sup class=\"v\" id=\"v12\">12</sup>Inatufundisha kukataa maisha yasiyomcha Mungu na tamaa za ulimwengu, na kuishi maisha ya kiasi, ya haki na ya kumcha Mungu katika nyakati hizi za sasa, <sup class=\"v\" id=\"v13\">13</sup>huku tukingojea tumaini la heri, yaani kuonekana kwa utukufu wa Mungu wetu mkuu na Mwokozi, Yesu Kristo. <sup class=\"v\" id=\"v14\">14</sup>Yeye alijitoa kwa ajili yetu ili atuweke huru kutoka katika uovu wote, na ajitakasie watu walio Wake, wenye hamu ya kutenda mema.</p><h3>Fundisha kwa mamlaka yote</h3><p><sup class=\"v\" id=\"v15\">15</sup>Fundisha mambo haya. Himiza na ukemee kwa mamlaka kamili. Usimwache mtu yeyote akudharau.</p>",
+  "study_questions": [],
+  "word_count": 276,
+  "summary": "Tito anapaswa kuwafundisha wanaume na wanawake wazee, vijana wa kiume na watumwa waishi kwa namna inayolingana na mafundisho sahihi. Neema ya Mungu imeonekana, ikiwafundisha waamini kuishi maisha ya kiasi wanapongojea tumaini lao lenye baraka."
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "titus",
+   "sw"
+  ],
+  "order": 4,
+  "title": "Tito 3",
+  "body_html": "<h3>Tumeokolewa kwa rehema Zake, tuko tayari kwa mema</h3><p><sup class=\"v\" id=\"v1\">1</sup>Uwakumbushe watu wajinyenyekeze kwa watawala na wenye mamlaka, wawe watiifu, wawe tayari kutenda kila jambo jema, <sup class=\"v\" id=\"v2\">2</sup>wasimseme mtu yeyote vibaya, waepuke ugomvi, wawe wapole na wawe na adabu kwa kila mtu. <sup class=\"v\" id=\"v3\">3</sup>Kwa maana wakati fulani sisi pia tulikuwa wapumbavu, wakaidi na waliopotoshwa, watumwa wa kila aina ya tamaa na starehe. Tuliishi katika ubaya na wivu, tukichukiwa na wengine na kuchukiana sisi kwa sisi. <sup class=\"v\" id=\"v4\">4</sup>Lakini wema na upendo wa Mungu Mwokozi wetu ulipodhihirishwa, <sup class=\"v\" id=\"v5\">5</sup>alituokoa, si kwa sababu ya mambo ya haki tuliyotenda, bali kwa sababu ya rehema Zake. Alituokoa kupitia kuoshwa kunakoleta kuzaliwa upya na kufanywa wapya na Roho Mtakatifu, <sup class=\"v\" id=\"v6\">6</sup>ambaye alimmimina juu yetu kwa ukarimu kupitia Yesu Kristo Mwokozi wetu, <sup class=\"v\" id=\"v7\">7</sup>ili, tukiwa tumehesabiwa haki kwa neema Yake, tuwe warithi wenye tumaini la uzima wa milele.</p><h3>Kujitoa kwa mema, kuepuka mabishano ya kijinga</h3><p><sup class=\"v\" id=\"v8\">8</sup>Msemo huu ni wa kuaminika. Nataka usisitize mambo haya, ili wale waliomwamini Mungu wawe waangalifu kujitoa kutenda mema. Mambo haya ni bora na yanafaa kwa kila mtu. <sup class=\"v\" id=\"v9\">9</sup>Lakini epuka mabishano ya kijinga, nasaba, ugomvi na mapigano kuhusu sheria, kwa sababu hayana faida wala maana. <sup class=\"v\" id=\"v10\">10</sup>Mwonye mtu anayeleta mafarakano mara moja, kisha mara ya pili. Baada ya hapo usijihusishe naye tena. <sup class=\"v\" id=\"v11\">11</sup>Unaweza kuwa na hakika kwamba mtu wa namna hiyo amepotoka, ni mwenye dhambi, na anajihukumu mwenyewe.</p><h3>Maombi ya mwisho</h3><p><sup class=\"v\" id=\"v12\">12</sup>Nitakapomtuma Artema au Tikiko kwako, fanya kila uwezalo uje kwangu Nikopoli, kwa sababu nimeamua kukaa huko kipindi cha baridi. <sup class=\"v\" id=\"v13\">13</sup>Fanya kila uwezalo kuwasaidia Zena mtaalamu wa sheria na Apolo katika safari yao, na uhakikishe kwamba wana kila kitu wanachohitaji. <sup class=\"v\" id=\"v14\">14</sup>Watu wetu pia wajifunze kujitoa kutenda mema, ili waweze kukidhi mahitaji ya dharura na wasiwe bila matunda.</p><h3>Salamu za mwisho</h3><p><sup class=\"v\" id=\"v15\">15</sup>Wote walio hapa pamoja nami wanakutumia salamu. Wasalimie wanaotupenda katika imani. Neema iwe pamoja nanyi nyote.</p>",
+  "study_questions": [],
+  "word_count": 294,
+  "summary": "Waamini wanapaswa kuwatii watawala na kuwa wapole kwa kila mtu, kwa maana Mungu aliwaokoa si kwa sababu ya matendo bali kwa rehema, kupitia kuoshwa kunakoleta kuzaliwa upya na Roho Mtakatifu. Tito lazima aepuke mabishano ya kipumbavu, naye Paulo anamalizia kwa maagizo na salamu."
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "titus",
+   "sw"
+  ],
+  "order": 5,
+  "title": "Hitimisho",
+  "body_html": "<blockquote><p>Msemo huu ni wa kuaminika. Nataka usisitize mambo haya, ili wale waliomwamini Mungu wawe waangalifu kujitoa kutenda mema. Mambo haya ni bora na yanafaa kwa kila mtu.</p><p>— Tito 3:8</p></blockquote> <p>Tito inamalizika pale ambapo imekuwa ikielekea tangu mwanzo: kwa watu waliomwamini Mungu, wanaojitoa kutenda mema. Barua hii haina subira na imani iliyo ya maneno matupu tu. Wapinzani wake “Wanadai kwamba wanamjua Mungu, lakini kwa wanayoyatenda wanamkana.” Tumaini lake ni kanisa katika kisiwa chenye sifa mbaya, ambalo maisha yake ya kawaida, nyumbani na kazini na mbele ya mamlaka, yanayafanya mafundisho kuhusu Mungu Mwokozi wetu yavutie.</p> <h3>Swali ambalo barua inaliacha</h3> <p>Je, kile tunachokiamini kinaonekana? Tito inajibu kwamba lazima kionekane, na inaeleza kwa nini kinaweza kuonekana. Matendo mema si mzizi wa wokovu; barua haingeweza kusema hivyo kwa uwazi zaidi: “si kwa sababu ya mambo ya haki tuliyotenda, bali kwa sababu ya rehema Zake.” Ni tunda lake. Neema inayookoa ndiyo neema ile ile inayofundisha. Watu walioshwa, waliofanywa wapya na kupewa Roho wanafanywa kuwa watu “wenye hamu ya kutenda mema”, nao wanangoja, huku wakifanya kazi, kuonekana kwa Mungu wao mkuu na Mwokozi.</p> <h3>Wapi pa kwenda kutoka hapa</h3> <p>Mahali machache katika maktaba hii pa kuipeleka barua mbele zaidi:</p> <ul> <li><strong>Kuhusu neema iliyoonekana (2:11–15).</strong> Hubiri la Martin Luther la mkesha wa Krismasi, <em>Kufunuliwa kwa Neema ya Mungu</em>, kutoka katika Postila yake ya Kanisa, linaloanza kwa kuonyesha agizo la Paulo katika 1:9 kwamba mchungaji lazima afundishe na pia akanushe makosa.</li> <li><strong>Kuhusu wokovu kwa rehema, si kwa matendo (3:4–7).</strong> Hubiri la John Wesley, <em>Wokovu kwa Imani</em>, na kitabu cha Charles H. Spurgeon, <em>Yote kwa Neema</em>.</li> <li><strong>Kuhusu kuzaliwa upya (3:5).</strong> Hubiri la J. C. Ryle, <em>Je, Umezaliwa Mara ya Pili?</em>, na hubiri la Dwight L. Moody, <em>Kuzaliwa Upya</em>, yote mawili juu ya maneno ya Yesu kwa Nikodemo katika Yohana 3.</li> <li><strong>Kuhusu wazee na kazi yao (1:5–9).</strong> <em>Waraka wa Kwanza wa Clement kwa Wakorintho</em>, unaoeleza jinsi mitume walivyoweka waangalizi na mashemasi katika makanisa waliyoyaanzisha; kitabu cha Yohane Krisostomo, <em>Kuhusu Ukuhani</em>, kinachonukuu agizo la Paulo kwa Tito kwamba mwangalizi lazima ashike kwa uthabiti ujumbe wa kuaminika; na kitabu cha Gregori Mkuu, <em>Kitabu cha Kanuni ya Kichungaji</em>.</li> </ul> <p>Na ni vizuri kusoma 1 na 2 Timotheo, katika toleo hili hili, barua mbili zinazofanana zaidi na hii.</p> <p>Kila rejeo la Tito katika maktaba hii linaweza kuguswa ili kusoma mstari wenyewe, na kurasa za Maandiko zinakusanya yale ambayo waandishi wakuu wa kanisa wamesema kuhusu kila kifungu. Lakini huenda hatua bora inayofuata ni kuisoma barua tena, na kuyapokea maneno yake ya mwisho kana kwamba yaliandikwa kwa ajili yetu:</p> <blockquote><p>Wasalimie wanaotupenda katika imani. Neema iwe pamoja nanyi nyote.</p><p>— Tito 3:15</p></blockquote>",
+  "study_questions": [],
+  "word_count": 430
+ }
+}
+]

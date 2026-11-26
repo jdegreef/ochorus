@@ -38,6 +38,13 @@
         "html": "<p>As Escrituras deste livro são a Open Word Bible, uma nova tradução da Bíblia feita diretamente do hebraico e do grego para o português de hoje.</p><p>Cada frase é traduzida em três níveis: <em>Literal</em>, que segue de perto o original e coloca entre colchetes toda palavra acrescentada; <em>Equilibrado</em>, preciso e natural; e <em>Legível</em>, em linguagem simples e atual, explícito onde isso ajuda. Este livro traz o nível Equilibrado.</p><p>Por trás de cada frase há um registro das palavras originais, uma glosa literal, as três traduções e cada decisão dos tradutores, com a sua razão. Onde uma leitura é incerta, o registro diz isso.</p><p>Esta é uma edição de leitura: capítulos e parágrafos, com os números dos versículos em tamanho pequeno, e a poesia disposta verso a verso. “SENHOR” em maiúsculas representa o nome pessoal de Deus. A introdução e a conclusão foram escritas para esta edição pela Ochorus.</p><p>A Open Word Bible é dedicada ao domínio público sob CC0 1.0. Qualquer pessoa pode lê-la, copiá-la, imprimi-la e compartilhá-la livremente.</p>",
         "more": "Cada frase pode ser lida com o seu raciocínio, nos três níveis, em",
         "edition": "Esta edição foi preparada pela Ochorus, uma biblioteca gratuita de clássicos cristãos."
+      },
+      "sw": {
+        "title": "Kuhusu Tafsiri",
+        "name": "Open Word Bible",
+        "html": "<p>Maandiko ya kitabu hiki ni Open Word Bible, tafsiri mpya ya Biblia iliyotafsiriwa kutoka Kiebrania na Kigiriki, kwa Kiswahili cha leo.</p><p>Kila sentensi yake imetafsiriwa katika viwango vitatu: <em>Halisi</em>, kinachofuata asili kwa karibu na kuweka katika mabano kila neno kinachoongeza; <em>Uwiano</em>, sahihi na cha kawaida; na <em>Rahisi</em>, kwa lugha rahisi ya kisasa, kikieleza wazi pale inaposaidia. Kitabu hiki kinachapisha kiwango cha Uwiano.</p><p>Nyuma ya kila sentensi kuna kumbukumbu ya maneno ya asili, tafsiri ya neno kwa neno, tafsiri zile tatu na kila uamuzi wa watafsiri pamoja na sababu yake. Pale usomaji una shaka, kumbukumbu inasema hivyo.</p><p>Hiki ni toleo la kusoma: sura na aya, namba za mistari zikiwa ndogo, na mashairi yakiwa yamepangwa mstari kwa mstari. “BWANA” kwa herufi kubwa linasimama badala ya jina binafsi la Mungu. Utangulizi na hitimisho viliandikwa kwa ajili ya toleo hili na Ochorus.</p><p>Open Word Bible imetolewa kwa umma chini ya CC0 1.0. Mtu yeyote anaweza kuisoma, kuinakili, kuichapisha na kuishiriki, bure.</p>",
+        "more": "Kila sentensi inaweza kusomwa pamoja na maelezo yake, katika viwango vyote vitatu, kwenye",
+        "edition": "Toleo hili limeandaliwa na Ochorus, maktaba ya bure ya vitabu vya Kikristo vya zamani."
       }
     }
   }
