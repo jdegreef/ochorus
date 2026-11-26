@@ -46,6 +46,14 @@ import {
 	type Hub
 } from '$lib/library-public';
 import { hubPath } from '$lib/hubs';
+import {
+	bookEraPath,
+	bookTraditionPath,
+	eraBooks,
+	erasWithBooks,
+	traditionBooks,
+	traditionsWithBooks
+} from '$lib/bookHubs';
 import { locales } from '$lib/paraglide/runtime';
 import { ADVERTISED_LOCALES, UNADVERTISED_LOCALES } from '$lib/advertised-locales';
 import { ERAS, eraOf } from '$lib/eras';
@@ -740,6 +748,25 @@ async function build(): Promise<SitemapData> {
 			)
 		});
 	}
+
+	// Book hubs (/books/tradition/<slug>/, /books/era/<era>/): in each locale
+	// where the hub clears $lib/bookHubs' floor on that locale's own books — the
+	// rule the routes and every link to them apply. Dated by the newest book.
+	const bookHubs = new Map<string, Entry>();
+	const addBookHub = (path: string, locale: string, listed: { updated_at?: string }[]) => {
+		let e = bookHubs.get(path);
+		if (!e) bookHubs.set(path, (e = { byLocale: new Map() }));
+		e.byLocale.set(locale, path);
+		const lm = newest(listed.map((b) => b.updated_at));
+		if (lm) (e.lastmods ??= new Map()).set(locale, lm);
+	};
+	for (const x of advertisedSlices) {
+		for (const h of traditionsWithBooks(x.hubs, x.books))
+			addBookHub(bookTraditionPath(h.slug), x.locale, traditionBooks(h, x.books));
+		for (const era of erasWithBooks(x.books))
+			addBookHub(bookEraPath(era), x.locale, eraBooks(era, x.books));
+	}
+	pages.push(...bookHubs.values());
 
 	// Books / sermons / topics / plans: one entry per work, listing only the
 	// locales that actually have that work. Detail pages canonicalize to a

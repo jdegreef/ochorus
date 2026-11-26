@@ -6,6 +6,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { eraOf, eraById } from '$lib/eras';
+	import { bookEraPath, eraBooks, hasPage } from '$lib/bookHubs';
 	import AuthorBioCard from '$lib/components/AuthorBioCard.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -18,6 +19,7 @@
 	const authors = $derived<AuthorBio[]>(data.authors);
 	const loadError = $derived<boolean>(data.loadError);
 	const books = $derived<BookSummary[]>(data.books ?? []);
+	const booksPage = $derived(hasPage(eraBooks(era.id, books)) ? bookEraPath(era.id) : null);
 
 	// Group the library's books by author slug for the per-writer cover strips.
 	const booksByAuthor = $derived.by(() => {
@@ -123,6 +125,14 @@
 			{#if era.range}<span class="text-h3 font-normal text-muted">{era.range}</span>{/if}
 		</h1>
 		<p class="max-w-2xl text-body text-muted">{t('bios.tagline')}</p>
+		<!-- The era's books, on their own page once there are enough. -->
+		{#if booksPage}
+			<p class="mt-4">
+				<a href={localizeHref(booksPage)} class="text-small font-semibold text-accent hover:underline"
+					>{t('books.hubTheirBooks')} <Arrow /></a
+				>
+			</p>
+		{/if}
 	</header>
 
 	{#if loadError}
