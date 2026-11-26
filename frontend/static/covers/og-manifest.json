@@ -7396,6 +7396,39 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"ar/the-life-of-trust-children": {
+			"ground": "330d5ee79e08dda4abf38033d595615ed40c12dd1a77c7f768b8af5dbaa63a7a",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[155, 102, 445, 131]
+				],
+				"title": [
+					[175, 318, 425, 424]
+				],
+				"edition": [
+					[273, 450, 327, 475]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				255,
+				540
+			]
+		},
 		"ar/the-masters-indwelling": {
 			"ground": "45b1af0b52f595f73eedad08ffde0d4fb2577a13207fa6560f685d4c3a54bde5",
 			"style": "devotional",
@@ -24405,6 +24438,39 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"hi/the-life-of-trust-children": {
+			"ground": "b5a2fb526cf68209df2f39c634edf8f4f6e8ab755db69c1e048d08422eaebfa6",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "f36feae5363a90b83288a44fbd3d4f2a1b774d41f412b88d508596e52f368b4b",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[155, 102, 445, 131]
+				],
+				"title": [
+					[93, 330, 507, 420]
+				],
+				"edition": [
+					[238, 443, 362, 468]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				266,
+				528
+			]
+		},
 		"hi/the-masters-indwelling": {
 			"ground": "816c7f25929f98aa0a7a3c8c0ee6b3823ea55cea58cf5aed7f04375ccf6e4e9b",
 			"style": "devotional",
@@ -34574,6 +34640,40 @@
 			"bar": 0,
 			"caps": true,
 			"sitemark": null
+		},
+		"lg/the-life-of-trust-children": {
+			"ground": "6d65c57071cf9ea2adf8744854173047452ed1017bc684afc9972e2f87024a59",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[155, 102, 445, 131]
+				],
+				"title": [
+					[169, 300, 431, 382],
+					[98, 371, 502, 453]
+				],
+				"edition": [
+					[214, 464, 386, 489]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				250,
+				545
+			]
 		},
 		"lg/the-masters-indwelling": {
 			"ground": "d193efb56c4fc37f166e85a86a41ebf8d4d74a06f4dfee8514addecf75a88fb0",
