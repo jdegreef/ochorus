@@ -2655,7 +2655,8 @@
 			     scripture row and as quiet — the same chips, an aid to study a reader
 			     in flow scrolls straight past. Each opens that chapter of the
 			     library's own Bible. CC BY: the credit sits with the list, always.
-			     English only, as the Bible books are. -->
+			     In every language with the Bible, labelled in that edition's own book
+			     names (library/bible_crossrefs). -->
 			{#if chapter.related_passages?.length}
 				{@const [creditBefore, creditAfter] = t('reader.crossrefsCredit').split('%source%')}
 				<section class="mt-10 border-t border-border pt-6" aria-label={t('reader.relatedPassages')}>

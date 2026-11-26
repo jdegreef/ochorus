@@ -94,3 +94,46 @@ class ChapterApiTests(TestCase):
         res = self.client.get("/api/library/books/psalms/chapters/?language=en")
         for chapter in res.data:
             self.assertEqual(chapter["related_passages"], self._related("psalms", chapter["order"]))
+
+
+class OtherLanguageTests(TestCase):
+    """A Spanish edition of the Bible gets the same cross-references, labelled
+    with its own book names and linking only books that edition has."""
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="owb", name="Open Word Bible")
+        series = Series.objects.create(slug=BIBLE_SERIES, title="The Bible")
+        psalms = Book.objects.create(
+            author=author, slug="psalms", language="es", title="Los Salmos",
+            series=series, series_position=19,
+        )
+        for order, title in [(1, "Introducción"), (2, "Salmo 1"), (24, "Salmo 23")]:
+            Chapter.objects.create(book=psalms, order=order, title=title, body_html="<p>x</p>")
+        john = Book.objects.create(
+            author=author, slug="gospel-of-john", language="es", title="El Evangelio según Juan",
+            series=series, series_position=43,
+        )
+        Chapter.objects.create(book=john, order=2, title="Juan 1", body_html="<p>x</p>")
+        # An English-only Bible book: the Spanish chapter must not link it.
+        Book.objects.create(
+            author=author, slug="ezekiel", language="en", title="Ezekiel",
+            series=series, series_position=26,
+        )
+
+    def test_a_spanish_chapter_lists_passages_with_spanish_names(self):
+        res = self.client.get("/api/library/books/psalms/chapters/24/?language=es")
+        self.assertEqual(res.status_code, 200)
+        related = res.data["related_passages"]
+        self.assertIn({"reference": "Juan 10:11", "book": "gospel-of-john", "order": 11}, related)
+        self.assertTrue({r["book"] for r in related} <= {"psalms", "gospel-of-john"})
+        for r in related:
+            self.assertFalse(r["reference"].startswith(("John", "Psalm ")), r)
+
+    def test_the_label_keeps_its_reference_and_falls_back_whole(self):
+        from .bible_crossrefs import localized_label
+
+        names = {"1-samuel": "1 Samuel", "psalms": "Psaume"}
+        self.assertEqual(localized_label("Psalm 23:1-3", "psalms", names), "Psaume 23:1-3")
+        self.assertEqual(localized_label("1 Samuel 31:1-13", "1-samuel", names), "1 Samuel 31:1-13")
+        self.assertEqual(localized_label("Luke 3:35", "gospel-of-luke", names), "Luke 3:35")
