@@ -19,6 +19,27 @@ review- and import-friendly companion. Regenerate the CSVs from the long tab.
 | `topics-en.xlsx` | 30 topic shelves | `/topics/<slug>` | 156 |
 | `topics-localized.xlsx` | translated shelves, es/sw/pt/hi | `/<lang>/topics/<slug>` | 150 |
 
+## The next languages (fr, am, ko, vi)
+
+`build_localized.py` writes one CSV per entity and language, `books-<lang>.csv`,
+`authors-<lang>.csv` and `topics-<lang>.csv`, in the `*-localized.csv`
+columns, straight from the fixtures:
+
+    python3 seo/keyword-matrices/build_localized.py fr am ko vi
+
+Re-run it before a language goes live, and after a batch of translations
+lands, so the sheet matches what ships. CSV only (no workbook). Bible books
+are left out: their searches are passages ("psaume 23"), which belong to the
+Bible pages. The modifiers are natural phrasings, **not volume-validated**.
+Have a native speaker read the tier-1 rows before they set a title tag.
+
+| File | Phrases (2026-11-26) |
+|---|---|
+| `books-fr.csv` / `authors-fr.csv` / `topics-fr.csv` | 1,282 / 473 / 99 |
+| `books-am.csv` / `authors-am.csv` / `topics-am.csv` | 1,155 / 371 / 99 |
+| `books-ko.csv` / `authors-ko.csv` / `topics-ko.csv` | 907 / 302 / 99 |
+| `books-vi.csv` / `authors-vi.csv` / `topics-vi.csv` | 719 / 373 / 99 |
+
 ## Conventions
 
 - **Access-intent tiers** — Tier 1 = transactional/navigational (optimize the
