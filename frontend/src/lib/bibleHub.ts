@@ -8,6 +8,7 @@
 
 import {
 	BIBLE_DIVISIONS,
+	BIBLE_PATH,
 	bibleChapterCount,
 	byTestament,
 	bibleChapterOrder,
@@ -220,13 +221,19 @@ export interface BiblePathStep {
  */
 export const BIBLE_PATHS: readonly {
 	id: string;
+	/** Its own page's segment: /bible/start/<slug>/ (`bibleStartPath`). */
+	slug: string;
 	label: BibleText;
+	/** Its own page's title, worded for the search that page answers. */
+	title: BibleText;
 	lede: BibleText;
 	steps: readonly BiblePathStep[];
 }[] = [
 	{
 		id: 'jesus',
+		slug: 'who-jesus-is',
 		label: { en: 'Who Jesus is', es: 'Quién es Jesús', fr: 'Qui est Jésus', pt: 'Quem é Jesus' },
+		title: { en: 'Who Is Jesus? Four Bible Chapters to Read', es: '¿Quién es Jesús? Cuatro capítulos de la Biblia', fr: 'Qui est Jésus ? Quatre chapitres de la Bible', pt: 'Quem é Jesus? Quatro capítulos da Bíblia' },
 		lede: {
 			en: 'Four chapters on who Jesus is, from the people who knew him.',
 			es: 'Cuatro capítulos sobre quién es Jesús, contados por quienes lo conocieron.',
@@ -278,7 +285,9 @@ export const BIBLE_PATHS: readonly {
 	},
 	{
 		id: 'grief',
+		slug: 'grief-and-hard-times',
 		label: { en: 'Grief and hard times', es: 'Duelo y tiempos difíciles', fr: 'Deuil et temps difficiles', pt: 'Luto e tempos difíceis' },
+		title: { en: 'Bible Chapters for Grief and Hard Times', es: 'Capítulos de la Biblia para el duelo y los tiempos difíciles', fr: 'Chapitres de la Bible pour le deuil et les temps difficiles', pt: 'Capítulos da Bíblia para o luto e os tempos difíceis' },
 		lede: {
 			en: 'For a heavy day: chapters to read slowly, and more than once.',
 			es: 'Para un día pesado: capítulos para leer despacio, y más de una vez.',
@@ -330,7 +339,9 @@ export const BIBLE_PATHS: readonly {
 	},
 	{
 		id: 'wisdom',
+		slug: 'wisdom-for-daily-life',
 		label: { en: 'Wisdom for daily life', es: 'Sabiduría para cada día', fr: 'La sagesse au quotidien', pt: 'Sabedoria para o dia a dia' },
+		title: { en: 'Bible Chapters for Wisdom in Daily Life', es: 'Capítulos de la Biblia con sabiduría para cada día', fr: 'Chapitres de la Bible pour la sagesse au quotidien', pt: 'Capítulos da Bíblia com sabedoria para cada dia' },
 		lede: {
 			en: 'Four chapters for ordinary days: work, worry, words and people.',
 			es: 'Cuatro capítulos para los días comunes: el trabajo, las preocupaciones, las palabras y la gente.',
@@ -382,7 +393,9 @@ export const BIBLE_PATHS: readonly {
 	},
 	{
 		id: 'story',
+		slug: 'the-big-story',
 		label: { en: 'The big story', es: 'La gran historia', fr: 'La grande histoire', pt: 'A grande história' },
+		title: { en: 'The Big Story of the Bible in Five Chapters', es: 'La gran historia de la Biblia en cinco capítulos', fr: 'La grande histoire de la Bible en cinq chapitres', pt: 'A grande história da Bíblia em cinco capítulos' },
 		lede: {
 			en: 'The whole Bible in five chapters, from the first day to the new creation.',
 			es: 'Toda la Biblia en cinco capítulos, del primer día a la nueva creación.',
@@ -473,3 +486,9 @@ export function biblePathSteps<
 		];
 	});
 }
+
+/** Where the "Where to start" paths each have a page of their own. */
+export const BIBLE_START_PATH = `${BIBLE_PATH}/start`;
+
+/** A path's own page (unlocalized, slashed: it prerenders to …/index.html). */
+export const bibleStartPath = (slug: string): string => `${BIBLE_START_PATH}/${slug}/`;
