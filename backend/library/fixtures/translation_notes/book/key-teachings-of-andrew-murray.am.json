@@ -402,10 +402,10 @@
   },
   {
    "reference": "Ephesians 3:16",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 18,
    "chapter_order": 8,
-   "source_file": "waiting-on-god.am.json"
+   "why": "mined from Waiting on God's 1962 wording, which that book no longer carries (re-quoted to OWB); this work is not yet re-quoted, so its wording is the translator's for now"
   },
   {
    "reference": "2 Peter 3:18",
@@ -745,10 +745,10 @@
   },
   {
    "reference": "Psalms 62:1",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
    "chapter_order": 14,
-   "source_file": "waiting-on-god.am.json"
+   "why": "mined from Waiting on God's 1962 wording, which that book no longer carries (re-quoted to OWB); this work is not yet re-quoted, so its wording is the translator's for now"
   },
   {
    "reference": "Genesis 49:18",
@@ -765,10 +765,10 @@
   },
   {
    "reference": "Isaiah 30:18",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 13,
    "chapter_order": 14,
-   "source_file": "waiting-on-god.am.json"
+   "why": "mined from Waiting on God's 1962 wording, which that book no longer carries (re-quoted to OWB); this work is not yet re-quoted, so its wording is the translator's for now"
   },
   {
    "reference": "Isaiah 40:31",
@@ -779,10 +779,10 @@
   },
   {
    "reference": "Lamentations 3:26",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 20,
    "chapter_order": 14,
-   "source_file": "waiting-on-god.am.json"
+   "why": "mined from Waiting on God's 1962 wording, which that book no longer carries (re-quoted to OWB); this work is not yet re-quoted, so its wording is the translator's for now"
   },
   {
    "reference": "Psalms 62:5",
