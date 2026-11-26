@@ -162,3 +162,55 @@ class OverviewApiTests(TestCase):
     def test_null_on_every_other_book(self):
         self.assertIsNone(self.detail("anchored")["bible_overview"])
         self.assertIsNone(self.detail("romans", "sw")["bible_overview"])
+
+
+class OtherLanguageOverviewTests(TestCase):
+    """A Bible edition in another language gets the card in its own words, its
+    key verse from that language's OWB, and no English anywhere."""
+
+    def setUp(self):
+        owb = Author.objects.create(slug="open-word-bible", name="Open Word Bible")
+        bible = Series.objects.create(slug="the-bible", title="The Bible")
+        for lang, title in [("es", "Romanos"), ("fr", "Romains"), ("pt", "Romanos")]:
+            book = Book.objects.create(
+                author=owb, slug="romans", language=lang, title=title,
+                series=bible, series_position=45, is_published=True,
+            )
+            Chapter.objects.create(
+                book=book, order=2, title=f"{title} 1",
+                body_html='<p><sup class="v" id="v16">16</sup>x</p>',
+            )
+        # A Bible edition in a language with no overview words: no card.
+        Book.objects.create(
+            author=owb, slug="romans", language="ko", title="로마서",
+            series=bible, series_position=45, is_published=True,
+        )
+
+    def detail(self, language):
+        return self.client.get(f"/api/library/books/romans/?language={language}").json()["bible_overview"]
+
+    def test_each_language_has_its_own_card(self):
+        from .bible_overview import OVERVIEWS, words
+        from .scripture import owb_verse
+
+        for lang, name in [("es", "Romanos"), ("fr", "Romains"), ("pt", "Romanos")]:
+            with self.subTest(lang):
+                card = self.detail(lang)
+                self.assertEqual(card["theme"], words(lang)["romans"]["theme"])
+                self.assertNotEqual(card["theme"], OVERVIEWS["romans"]["theme"])
+                self.assertEqual(card["key_verse"]["reference"], f"{name} 1:16")
+                self.assertEqual(card["key_verse"]["verse"], 16)
+                self.assertIn(owb_verse(45001016, lang)[1][:20], card["key_verse"]["text"])
+
+    def test_a_language_without_words_has_no_card(self):
+        self.assertIsNone(self.detail("ko"))
+
+    def test_every_language_file_covers_the_66_books(self):
+        from .bible_overview import OVERVIEWS, words
+
+        for lang in ("es", "fr", "pt"):
+            with self.subTest(lang):
+                self.assertEqual(list(words(lang)), list(OVERVIEWS))
+                for slug, card in words(lang).items():
+                    self.assertEqual(set(card), {"author", "date", "theme"}, slug)
+                    self.assertTrue(all(v.strip() for v in card.values()), slug)

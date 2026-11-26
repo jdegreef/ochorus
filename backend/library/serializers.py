@@ -2012,15 +2012,15 @@ class BookDetailSerializer(BookListSerializer):
 
     # A book of the Bible: its overview card — traditional author, date, key
     # verse quoted live from the bundled Open Word Bible, theme
-    # (library/bible_overview.py). Null on every other book and every other
-    # language: the editorial is English, as the Bible books are.
+    # (library/bible_overview.py), in the edition's own language. Null on every
+    # other book, and in a language with no overview words.
     bible_overview = serializers.SerializerMethodField()
 
     def get_bible_overview(self, obj) -> dict | None:
-        from .bible_crossrefs import is_bible_book
         from .bible_overview import overview
 
-        return overview(obj.slug) if is_bible_book(obj) else None
+        bible = obj.series_id is not None and obj.series.slug == _BIBLE_SERIES
+        return overview(obj.slug, obj.language) if bible else None
 
     def get_daily(self, obj) -> bool:
         return obj.slug in DATED_BOOKS
