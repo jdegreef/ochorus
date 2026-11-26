@@ -514,7 +514,9 @@
 					{/if}
 				</div>
 				{#each testament.divisions as group (group.division.id)}
-					<section class="bible-division">
+					<!-- Its own anchor (/bible/#gospels), so a division can be linked and
+					     the canon strip's division names can jump to it. -->
+					<section class="bible-division" id={group.division.id}>
 						<GroupHeading as="h3" name={t(divisionKey(group.division.id))} count={group.books.length} />
 						{#if asCovers}
 							<BibleCoverGrid books={group.books} bind:open={openBook} {placeOf} {linksOf} />
@@ -744,6 +746,9 @@
 	}
 	.bible-testament + .bible-testament {
 		margin-top: 3rem;
+	}
+	.bible-division {
+		scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem);
 	}
 	.bible-division + .bible-division {
 		margin-top: 2.25rem;
