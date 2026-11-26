@@ -1191,6 +1191,7 @@
   "scripture_empty": "የቅዱሳት መጻሕፍት ማውጫው ገና በመዘጋጀት ላይ ነው።",
   "scripture_passages_count": "%count% ክፍሎች",
   "scripture_treated": "በቤተ መጻሕፍቱ ውስጥ በ%count% ክፍሎች ተዳሷል።",
+  "scripture_read_text": "%ref%ን በOpen Word Bible ያንብቡ",
   "scripture_verses_heading": "እነዚህ ጸሐፊዎች የሚያተኩሩባቸው ቁጥሮች",
   "scripture_preached_heading": "የተሰበከበት ቦታ",
   "scripture_showing_rest": "ከ%total% ውስጥ %shown% እየታዩ ነው፤ የቀሩትን በፍለጋ ማግኘት ይችላሉ።",

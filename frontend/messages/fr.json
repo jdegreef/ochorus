@@ -1191,6 +1191,7 @@
   "scripture_empty": "L’index de l’Écriture est encore en construction.",
   "scripture_passages_count": "%count% passages",
   "scripture_treated": "Abordé dans %count% passages à travers la bibliothèque.",
+  "scripture_read_text": "Lire %ref% dans l’Open Word Bible",
   "scripture_verses_heading": "Les versets où ces auteurs s’arrêtent",
   "scripture_preached_heading": "Où il est prêché",
   "scripture_showing_rest": "Affichage de %shown% sur %total% ; les autres sont accessibles par la recherche.",

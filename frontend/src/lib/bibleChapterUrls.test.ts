@@ -4,6 +4,8 @@ import { describe, expect, it } from 'vitest';
 import { allBookRows } from '../test/bookRows';
 import {
 	BIBLE_CHAPTER_COUNTS,
+	bibleBookSlugAt,
+	bibleTextPath,
 	bookChapterPath,
 	chapterOrder,
 	chapterSegment,
@@ -55,6 +57,30 @@ describe('Bible chapter URLs follow the Bible numbering', () => {
 			const text = readFileSync(join(BOOKS, `${slug}.en.json`), 'utf8');
 			const chapters = text.match(/"model":\s*"library\.chapter"/g)?.length ?? 0;
 			expect(chapters, slug).toBe(n + 2);
+		}
+	});
+});
+
+describe('the Bible text a scripture page links to', () => {
+	it('finds a book by its canonical position, whatever the scripture slug', () => {
+		expect(bibleBookSlugAt(1)).toBe('genesis');
+		expect(bibleBookSlugAt(43)).toBe('gospel-of-john');
+		expect(bibleBookSlugAt(66)).toBe('revelation');
+		expect(bibleBookSlugAt(67)).toBeNull();
+		expect(bibleBookSlugAt(0)).toBeNull();
+	});
+
+	it('links a chapter to its reader page and a book to its book page', () => {
+		expect(bibleTextPath(45, 8)).toBe('/books/romans/8');
+		expect(bibleTextPath(19, 23)).toBe('/books/psalms/23');
+		expect(bibleTextPath(45, null)).toBe('/books/romans');
+		expect(bibleTextPath(45, 17)).toBeNull();
+		expect(bibleTextPath(70, 1)).toBeNull();
+	});
+
+	it('numbers the books in the fixture’s canonical order', () => {
+		for (const b of bibleRows().filter((r) => r.language === 'en')) {
+			expect(bibleBookSlugAt(b.series_position as number)).toBe(b.slug);
 		}
 	});
 });

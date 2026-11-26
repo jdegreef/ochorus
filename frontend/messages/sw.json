@@ -1191,6 +1191,7 @@
   "scripture_empty": "Faharasa ya Andiko bado inajengwa.",
   "scripture_passages_count": "vifungu %count%",
   "scripture_treated": "Limeshughulikiwa katika vifungu %count% kote maktabani.",
+  "scripture_read_text": "Soma %ref% katika Open Word Bible",
   "scripture_verses_heading": "Mistari ambayo waandishi hawa husimama",
   "scripture_preached_heading": "Mahali linapohubiriwa",
   "scripture_showing_rest": "Inaonyesha %shown% kati ya %total%; vingine vinapatikana kupitia utafutaji.",

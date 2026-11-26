@@ -1191,6 +1191,7 @@
   "scripture_empty": "Chỉ mục Kinh Thánh vẫn đang được xây dựng.",
   "scripture_passages_count": "%count% đoạn",
   "scripture_treated": "Được bàn đến trong %count% đoạn trên toàn thư viện.",
+  "scripture_read_text": "Đọc %ref% trong Open Word Bible",
   "scripture_verses_heading": "Những câu các tác giả dừng lại suy ngẫm",
   "scripture_preached_heading": "Nơi phân đoạn này được giảng",
   "scripture_showing_rest": "Đang hiển thị %shown% / %total%; bạn có thể tìm các đoạn còn lại bằng tìm kiếm.",

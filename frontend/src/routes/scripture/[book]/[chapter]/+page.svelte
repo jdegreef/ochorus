@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { bookChapterPath } from '$lib/reading-schema';
+	import { bibleTextPath, bookChapterPath } from '$lib/reading-schema';
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { scriptureBookHref, type ScripturePage, SCRIPTURE_OG } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
@@ -40,6 +41,12 @@
 			`Christian classics that treat ${page.reference}, each quoted and linked to its source.`
 	);
 
+	// The chapter's own text in the library's Bible. This page is what the
+	// classics say about Romans 8; the reader page is Romans 8 itself. The text
+	// page already links here (`chapter.classics_page`); this is the way back,
+	// so the two read as a pair rather than as rivals for the same search.
+	const textPath = $derived(bibleTextPath(page.book.order, page.chapter));
+
 	const crumbs = $derived([
 		{ name: t('common.home'), href: '/' },
 		{ name: t('reader.scripture'), href: '/scripture' },
@@ -56,6 +63,7 @@
 			name: `${page.reference} in the Christian classics`,
 			description,
 			url: canonical,
+			...(textPath ? { relatedLink: `${SITE_URL}${textPath}/` } : {}),
 			hasPart: page.passages.slice(0, 40).map((p) => ({
 				'@type': 'Quotation',
 				spokenByCharacter: p.author_name,
@@ -83,6 +91,11 @@
 		<p class="mt-2 text-small text-muted">
 			{t('scripture.treated').replace('%count%', String(page.citing_count))}
 		</p>
+		{#if textPath}
+			<a href={`${textPath}/`} class="read-text mt-4">
+				{t('scripture.readText').replace('%ref%', page.reference)} <Arrow />
+			</a>
+		{/if}
 	</header>
 
 	{#if page.verses?.length}
@@ -153,6 +166,14 @@
 </div>
 
 <style>
+	/* The way to the passage's own text: a plain accent link under the count. */
+	.read-text {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		font-weight: 600;
+		color: var(--accent);
+	}
 	.verses {
 		list-style: none;
 		margin: 0;

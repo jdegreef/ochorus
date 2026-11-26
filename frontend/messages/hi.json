@@ -1191,6 +1191,7 @@
   "scripture_empty": "पवित्रशास्त्र की अनुक्रमणिका अभी बन रही है।",
   "scripture_passages_count": "%count% अंश",
   "scripture_treated": "पुस्तकालय भर में %count% अंशों में विवेचित।",
+  "scripture_read_text": "%ref% को Open Word Bible में पढ़ें",
   "scripture_verses_heading": "वे पद जिन पर ये लेखक ठहरते हैं",
   "scripture_preached_heading": "इसका प्रचार कहाँ होता है",
   "scripture_showing_rest": "%total% में से %shown% दिखाए जा रहे हैं; शेष खोज के माध्यम से पहुँचे जा सकते हैं।",
