@@ -28,8 +28,8 @@
 	 * BIBLE_LOCALES (the loader 404s elsewhere), so a language joins the list
 	 * with its words here. The sample verses and the decision are the
 	 * translation's own (John 3:16, record JHN.3.16.s1), not paraphrase: in
-	 * English all three levels; in Spanish, French and Portuguese the Balanced
-	 * text Ochorus prints (`owb-es-b`, `owb-fr-b`, `owb-pt-b`), the one level
+	 * English all three levels; in Spanish, French, Portuguese and Swahili the
+	 * Balanced text Ochorus prints (`owb-es-b` … `owb-sw-b`), the one level
 	 * bundled in each, so the other two cards there describe their level
 	 * without a sample.
 	 */
@@ -67,161 +67,185 @@
 		pt: {
 			'OWB-B':
 				'Pois o amor de Deus pelo mundo foi tal que Ele deu o Seu Filho único, para que todo aquele que crê Nele não pereça, mas tenha a vida eterna.'
+		},
+		sw: {
+			'OWB-B':
+				'Kwa maana Mungu aliupenda ulimwengu kiasi kwamba alimtoa Mwana Wake wa pekee, ili kila anayemwamini asiangamie, bali apate uzima wa milele.'
 		}
 	};
 	const samples = SAMPLE[lang] ?? {};
 
 	/** The page's words, one per hub locale. */
 	const COPY = {
-		title: { en: 'The Open Word Bible — Ochorus', es: 'La Open Word Bible — Ochorus', fr: 'L’Open Word Bible — Ochorus', pt: 'A Open Word Bible — Ochorus' },
+		title: { en: 'The Open Word Bible — Ochorus', es: 'La Open Word Bible — Ochorus', fr: 'L’Open Word Bible — Ochorus', pt: 'A Open Word Bible — Ochorus', sw: 'Open Word Bible — Ochorus' },
 		description: {
 			en: 'The Open Word Bible is a new, free translation of the Bible from Hebrew and Greek, at three levels, with every decision explained. Ochorus prints its Balanced text.',
 			es: 'La Open Word Bible es una nueva traducción gratuita de la Biblia desde el hebreo y el griego, en tres niveles, con cada decisión explicada. Ochorus imprime en español su nivel Equilibrado.',
 			fr: 'L’Open Word Bible est une nouvelle traduction gratuite de la Bible à partir de l’hébreu et du grec, en trois niveaux, où chaque décision est expliquée. Ochorus en publie en français le niveau Équilibré.',
-			pt: 'A Open Word Bible é uma nova tradução gratuita da Bíblia a partir do hebraico e do grego, em três níveis, com cada decisão explicada. O Ochorus publica em português o seu nível Equilibrado.'
+			pt: 'A Open Word Bible é uma nova tradução gratuita da Bíblia a partir do hebraico e do grego, em três níveis, com cada decisão explicada. O Ochorus publica em português o seu nível Equilibrado.',
+			sw: 'Open Word Bible ni tafsiri mpya ya bure ya Biblia kutoka Kiebrania na Kigiriki, katika viwango vitatu, na kila uamuzi umeelezwa. Ochorus inachapisha kwa Kiswahili kiwango chake cha Uwiano.'
 		},
-		eyebrow: { en: 'The translation', es: 'La traducción', fr: 'La traduction', pt: 'A tradução' },
-		heading: { en: 'The Open Word Bible', es: 'La Open Word Bible', fr: 'L’Open Word Bible', pt: 'A Open Word Bible' },
+		eyebrow: { en: 'The translation', es: 'La traducción', fr: 'La traduction', pt: 'A tradução', sw: 'Tafsiri' },
+		heading: { en: 'The Open Word Bible', es: 'La Open Word Bible', fr: 'L’Open Word Bible', pt: 'A Open Word Bible', sw: 'Open Word Bible' },
 		lede: {
 			en: "A new translation of the Bible from the Hebrew and Greek, in today's English. Every sentence is translated three ways, from word-for-word to plain, and every choice the translators made is written down with its reason, so you can see why it reads as it does. It is free for anyone to read, copy and share.",
 			es: 'Una nueva traducción de la Biblia hecha directamente del hebreo y el griego. Traduce cada oración en tres niveles, de la palabra por palabra a la más sencilla, y deja por escrito cada decisión de los traductores con su razón, para que se pueda ver por qué dice lo que dice. En Ochorus se lee en español, en su nivel Equilibrado, y cualquiera puede leerla, copiarla y compartirla, gratis.',
 			fr: 'Une nouvelle traduction de la Bible faite directement à partir de l’hébreu et du grec. Chaque phrase y est traduite à trois niveaux, du mot à mot au plus simple, et chaque choix des traducteurs est consigné avec sa raison, pour qu’on puisse voir pourquoi le texte dit ce qu’il dit. Sur Ochorus, on la lit en français, au niveau Équilibré, et chacun peut la lire, la copier et la partager, gratuitement.',
-			pt: 'Uma nova tradução da Bíblia feita diretamente do hebraico e do grego. Cada frase é traduzida em três níveis, da palavra por palavra à mais simples, e cada decisão dos tradutores fica registrada com a sua razão, para que se possa ver por que o texto diz o que diz. No Ochorus ela é lida em português, no nível Equilibrado, e qualquer pessoa pode lê-la, copiá-la e compartilhá-la, de graça.'
+			pt: 'Uma nova tradução da Bíblia feita diretamente do hebraico e do grego. Cada frase é traduzida em três níveis, da palavra por palavra à mais simples, e cada decisão dos tradutores fica registrada com a sua razão, para que se possa ver por que o texto diz o que diz. No Ochorus ela é lida em português, no nível Equilibrado, e qualquer pessoa pode lê-la, copiá-la e compartilhá-la, de graça.',
+			sw: 'Tafsiri mpya ya Biblia, moja kwa moja kutoka Kiebrania na Kigiriki. Kila sentensi imetafsiriwa katika viwango vitatu, kuanzia neno kwa neno hadi lugha rahisi kabisa, na kila uamuzi wa watafsiri umeandikwa pamoja na sababu yake, ili uweze kuona kwa nini andiko linasema linavyosema. Katika Ochorus inasomwa kwa Kiswahili, katika kiwango cha Uwiano, na mtu yeyote anaweza kuisoma, kuinakili na kuishiriki, bure.'
 		},
-		onOchorus: { en: 'on Ochorus', es: 'en Ochorus', fr: 'sur Ochorus', pt: 'no Ochorus' },
-		languages: { en: 'Hebrew & Greek', es: 'Hebreo y griego', fr: 'Hébreu et grec', pt: 'Hebraico e grego' },
-		publicDomain: { en: 'Public domain (CC0)', es: 'Dominio público (CC0)', fr: 'Domaine public (CC0)', pt: 'Domínio público (CC0)' },
-		readBible: { en: 'Read the Bible', es: 'Leer la Biblia', fr: 'Lire la Bible', pt: 'Ler a Bíblia' },
-		visit: { en: 'Visit OpenWordBible.org', es: 'Visitar OpenWordBible.org', fr: 'Visiter OpenWordBible.org', pt: 'Visitar OpenWordBible.org' },
-		levelsEyebrow: { en: 'Three levels', es: 'Tres niveles', fr: 'Trois niveaux', pt: 'Três níveis' },
-		levelsHeading: { en: 'One verse, translated three ways', es: 'Tres maneras de traducir', fr: 'Trois manières de traduire', pt: 'Três maneiras de traduzir' },
+		onOchorus: { en: 'on Ochorus', es: 'en Ochorus', fr: 'sur Ochorus', pt: 'no Ochorus', sw: 'katika Ochorus' },
+		languages: { en: 'Hebrew & Greek', es: 'Hebreo y griego', fr: 'Hébreu et grec', pt: 'Hebraico e grego', sw: 'Kiebrania na Kigiriki' },
+		publicDomain: { en: 'Public domain (CC0)', es: 'Dominio público (CC0)', fr: 'Domaine public (CC0)', pt: 'Domínio público (CC0)', sw: 'Kikoa cha umma (CC0)' },
+		readBible: { en: 'Read the Bible', es: 'Leer la Biblia', fr: 'Lire la Bible', pt: 'Ler a Bíblia', sw: 'Soma Biblia' },
+		visit: { en: 'Visit OpenWordBible.org', es: 'Visitar OpenWordBible.org', fr: 'Visiter OpenWordBible.org', pt: 'Visitar OpenWordBible.org', sw: 'Tembelea OpenWordBible.org' },
+		levelsEyebrow: { en: 'Three levels', es: 'Tres niveles', fr: 'Trois niveaux', pt: 'Três níveis', sw: 'Viwango vitatu' },
+		levelsHeading: { en: 'One verse, translated three ways', es: 'Tres maneras de traducir', fr: 'Trois manières de traduire', pt: 'Três maneiras de traduzir', sw: 'Njia tatu za kutafsiri' },
 		levelsLede: {
 			en: 'Translations usually pick one point between word-for-word and thought-for-thought. The Open Word Bible gives you three, side by side. Here is John 3:16.',
 			es: 'Las traducciones suelen escoger un punto entre la palabra por palabra y el sentido por sentido. La Open Word Bible ofrece tres, lado a lado. Ochorus imprime el Equilibrado; aquí está Juan 3:16 en él.',
 			fr: 'Les traductions choisissent d’ordinaire un point entre le mot à mot et le sens pour sens. L’Open Word Bible en propose trois, côte à côte. Ochorus publie le niveau Équilibré ; voici Jean 3:16 dans ce niveau.',
-			pt: 'As traduções costumam escolher um ponto entre a palavra por palavra e o sentido por sentido. A Open Word Bible oferece três, lado a lado. O Ochorus publica o Equilibrado; aqui está João 3:16 nesse nível.'
+			pt: 'As traduções costumam escolher um ponto entre a palavra por palavra e o sentido por sentido. A Open Word Bible oferece três, lado a lado. O Ochorus publica o Equilibrado; aqui está João 3:16 nesse nível.',
+			sw: 'Kwa kawaida tafsiri huchagua nafasi moja kati ya neno kwa neno na maana kwa maana. Open Word Bible inakupa nafasi tatu, sambamba. Ochorus inachapisha kiwango cha Uwiano; hiki hapa Yohana 3:16 katika kiwango hicho.'
 		},
-		ours: { en: 'On Ochorus', es: 'En Ochorus', fr: 'Sur Ochorus', pt: 'No Ochorus' },
-		workingEyebrow: { en: 'Open reasoning', es: 'Razonamiento abierto', fr: 'Un raisonnement ouvert', pt: 'Raciocínio aberto' },
-		workingHeading: { en: 'Every sentence shows its working', es: 'Cada oración muestra su razonamiento', fr: 'Chaque phrase montre son raisonnement', pt: 'Cada frase mostra o seu raciocínio' },
+		ours: { en: 'On Ochorus', es: 'En Ochorus', fr: 'Sur Ochorus', pt: 'No Ochorus', sw: 'Katika Ochorus' },
+		workingEyebrow: { en: 'Open reasoning', es: 'Razonamiento abierto', fr: 'Un raisonnement ouvert', pt: 'Raciocínio aberto', sw: 'Hoja zilizo wazi' },
+		workingHeading: { en: 'Every sentence shows its working', es: 'Cada oración muestra su razonamiento', fr: 'Chaque phrase montre son raisonnement', pt: 'Cada frase mostra o seu raciocínio', sw: 'Kila sentensi inaonyesha hoja zake' },
 		working1: {
 			en: 'Behind each sentence is a record: the original words, a literal gloss, the three translations, and every decision the translators made, with the options they set aside and the reason for their choice. Where a reading is uncertain, the record says so.',
 			es: 'Detrás de cada oración hay un registro: las palabras originales, una glosa literal, las tres traducciones y cada decisión que tomaron los traductores, con las opciones que descartaron y la razón de su elección. Donde una lectura es incierta, el registro lo dice.',
 			fr: 'Derrière chaque phrase, il y a une fiche : les mots originaux, une glose littérale, les trois traductions et chaque décision des traducteurs, avec les options écartées et la raison de leur choix. Là où une lecture est incertaine, la fiche le dit.',
-			pt: 'Por trás de cada frase há um registro: as palavras originais, uma glosa literal, as três traduções e cada decisão que os tradutores tomaram, com as opções que deixaram de lado e a razão da escolha. Onde uma leitura é incerta, o registro diz isso.'
+			pt: 'Por trás de cada frase há um registro: as palavras originais, uma glosa literal, as três traduções e cada decisão que os tradutores tomaram, com as opções que deixaram de lado e a razão da escolha. Onde uma leitura é incerta, o registro diz isso.',
+			sw: 'Nyuma ya kila sentensi kuna kumbukumbu: maneno ya asili, tafsiri ya neno kwa neno, tafsiri zile tatu, na kila uamuzi wa watafsiri, pamoja na machaguo waliyoyaacha na sababu ya uchaguzi wao. Pale usomaji una shaka, kumbukumbu inasema hivyo.'
 		},
 		working2: {
 			en: 'On OpenWordBible.org you can open any verse and read its record, compare the three levels, and follow the cross-references in the margin.',
 			es: 'En OpenWordBible.org se puede abrir cualquier versículo y leer su registro, comparar los tres niveles y seguir las referencias cruzadas del margen.',
 			fr: 'Sur OpenWordBible.org, on peut ouvrir n’importe quel verset et lire sa fiche, comparer les trois niveaux et suivre les renvois de la marge.',
-			pt: 'No OpenWordBible.org é possível abrir qualquer versículo e ler o seu registro, comparar os três níveis e seguir as referências cruzadas da margem.'
+			pt: 'No OpenWordBible.org é possível abrir qualquer versículo e ler o seu registro, comparar os três níveis e seguir as referências cruzadas da margem.',
+			sw: 'Katika OpenWordBible.org unaweza kufungua mstari wowote na kusoma kumbukumbu yake, kulinganisha viwango vitatu, na kufuata marejeo yaliyo pembeni.'
 		},
 		readReasoning: {
 			en: 'Read with the reasoning on OpenWordBible.org',
 			es: 'Leer con el razonamiento en OpenWordBible.org',
 			fr: 'Lire avec le raisonnement sur OpenWordBible.org',
-			pt: 'Ler com o raciocínio no OpenWordBible.org'
+			pt: 'Ler com o raciocínio no OpenWordBible.org',
+			sw: 'Soma pamoja na hoja zake katika OpenWordBible.org'
 		},
-		recordCaption: { en: 'John 3:16 · a decision', es: 'Juan 3:16 · una decisión', fr: 'Jean 3:16 · une décision', pt: 'João 3:16 · uma decisão' },
-		chosen: { en: 'Chosen', es: 'Elegido', fr: 'Retenu', pt: 'Escolhido' },
+		recordCaption: { en: 'John 3:16 · a decision', es: 'Juan 3:16 · una decisión', fr: 'Jean 3:16 · une décision', pt: 'João 3:16 · uma decisão', sw: 'Yohana 3:16 · uamuzi mmoja' },
+		chosen: { en: 'Chosen', es: 'Elegido', fr: 'Retenu', pt: 'Escolhido', sw: 'Kilichochaguliwa' },
 		chosenText: {
 			en: '“in this way”: God’s love took the form of giving the Son',
 			es: '«de esta manera»: el amor de Dios tomó la forma de dar al Hijo',
 			fr: '« de cette manière » : l’amour de Dieu a pris la forme du don du Fils',
-			pt: '“desta maneira”: o amor de Deus tomou a forma de dar o Filho'
+			pt: '“desta maneira”: o amor de Deus tomou a forma de dar o Filho',
+			sw: '“kwa njia hii”: upendo wa Mungu ulichukua umbo la kumtoa Mwana'
 		},
-		setAside: { en: 'Set aside', es: 'Descartado', fr: 'Écarté', pt: 'Deixado de lado' },
+		setAside: { en: 'Set aside', es: 'Descartado', fr: 'Écarté', pt: 'Deixado de lado', sw: 'Kilichoachwa' },
 		setAsideText: {
 			en: '“so much”: God loved the world to such a degree',
 			es: '«tanto»: Dios amó al mundo en tal grado',
 			fr: '« tant » : Dieu a aimé le monde à un tel degré',
-			pt: '“tanto”: Deus amou o mundo a tal ponto'
+			pt: '“tanto”: Deus amou o mundo a tal ponto',
+			sw: '“kiasi kikubwa hivyo”: Mungu aliupenda ulimwengu kwa kiwango hicho'
 		},
-		why: { en: 'Why', es: 'Por qué', fr: 'Pourquoi', pt: 'Por quê' },
+		why: { en: 'Why', es: 'Por qué', fr: 'Pourquoi', pt: 'Por quê', sw: 'Kwa nini' },
 		// The quotation of 3:14 is the Open Word Bible's, in each language.
 		whyText: {
 			en: 'In John the word normally means “thus, in this way”, and it has just been used in 3:14: “so must the Son of Man be lifted up”. This is how God loved the world: by giving the Son.',
 			es: 'En Juan la palabra suele significar «así, de esta manera», y se acaba de usar en 3:14: «del mismo modo el Hijo del Hombre tiene que ser levantado en alto». Así es como Dios amó al mundo: dando al Hijo.',
 			fr: 'Chez Jean, le mot signifie d’ordinaire « ainsi, de cette manière », et il vient d’être employé en 3:14 : « de la même manière, il faut que le Fils de l’homme soit élevé ». Voilà comment Dieu a aimé le monde : en donnant le Fils.',
-			pt: 'Em João a palavra normalmente significa “assim, desta maneira”, e acabou de ser usada em 3:14: “do mesmo modo o Filho do Homem precisa ser elevado”. É assim que Deus amou o mundo: dando o Filho.'
+			pt: 'Em João a palavra normalmente significa “assim, desta maneira”, e acabou de ser usada em 3:14: “do mesmo modo o Filho do Homem precisa ser elevado”. É assim que Deus amou o mundo: dando o Filho.',
+			sw: 'Katika Yohana neno hili kwa kawaida linamaanisha “hivyo, kwa njia hii”, na limetumika punde katika 3:14: “vivyo hivyo Mwana wa Adamu lazima ainuliwe”. Hivi ndivyo Mungu alivyoupenda ulimwengu: kwa kumtoa Mwana.'
 		},
-		sourcesEyebrow: { en: 'From the original languages', es: 'Desde las lenguas originales', fr: 'À partir des langues originales', pt: 'Das línguas originais' },
-		sourcesHeading: { en: 'Translated from the source texts', es: 'Traducida de los textos fuente', fr: 'Traduite des textes sources', pt: 'Traduzida dos textos-fonte' },
+		sourcesEyebrow: { en: 'From the original languages', es: 'Desde las lenguas originales', fr: 'À partir des langues originales', pt: 'Das línguas originais', sw: 'Kutoka katika lugha za asili' },
+		sourcesHeading: { en: 'Translated from the source texts', es: 'Traducida de los textos fuente', fr: 'Traduite des textes sources', pt: 'Traduzida dos textos-fonte', sw: 'Imetafsiriwa kutoka katika maandiko ya asili' },
 		oldSource: {
 			en: 'the Westminster Leningrad Codex, with the MACULA Hebrew word data, numbered as in the Hebrew.',
 			es: 'el Códice de Leningrado de Westminster, con los datos de palabras hebreas de MACULA, numerado como en el hebreo.',
 			fr: 'le Codex de Leningrad de Westminster, avec les données lexicales hébraïques de MACULA, numéroté comme dans l’hébreu.',
-			pt: 'o Códice de Leningrado de Westminster, com os dados de palavras hebraicas do MACULA, numerado como no hebraico.'
+			pt: 'o Códice de Leningrado de Westminster, com os dados de palavras hebraicas do MACULA, numerado como no hebraico.',
+			sw: 'Westminster Leningrad Codex, pamoja na data ya maneno ya Kiebrania ya MACULA, kwa mpangilio wa namba wa Kiebrania.'
 		},
 		newSource: {
 			en: 'the SBL Greek New Testament, whose sentences and paragraphs the translation follows.',
 			es: 'el Nuevo Testamento Griego de la SBL, cuyas oraciones y párrafos sigue la traducción.',
 			fr: 'le Nouveau Testament grec de la SBL, dont la traduction suit les phrases et les paragraphes.',
-			pt: 'o Novo Testamento Grego da SBL, cujas frases e parágrafos a tradução segue.'
+			pt: 'o Novo Testamento Grego da SBL, cujas frases e parágrafos a tradução segue.',
+			sw: 'Agano Jipya la Kigiriki la SBL, ambalo sentensi na aya zake tafsiri inazifuata.'
 		},
 		noTyping: {
 			en: 'No Hebrew or Greek is typed by hand: every original word is loaded from the source data, and checked against it.',
 			es: 'Ninguna palabra hebrea o griega se escribe a mano: cada palabra original se carga desde los datos fuente y se coteja con ellos.',
 			fr: 'Aucun mot hébreu ou grec n’est saisi à la main : chaque mot original est chargé depuis les données sources, et vérifié par rapport à elles.',
-			pt: 'Nenhuma palavra hebraica ou grega é digitada à mão: cada palavra original é carregada dos dados-fonte e conferida com eles.'
+			pt: 'Nenhuma palavra hebraica ou grega é digitada à mão: cada palavra original é carregada dos dados-fonte e conferida com eles.',
+			sw: 'Hakuna neno la Kiebrania wala la Kigiriki linaloandikwa kwa mkono: kila neno la asili linachukuliwa kutoka kwenye data ya asili, na kukaguliwa dhidi yake.'
 		},
-		freeEyebrow: { en: 'Free for everyone', es: 'Libre para todos', fr: 'Libre pour tous', pt: 'Livre para todos' },
-		freeHeading: { en: 'Given to the public domain', es: 'Cedida al dominio público', fr: 'Versée au domaine public', pt: 'Cedida ao domínio público' },
+		freeEyebrow: { en: 'Free for everyone', es: 'Libre para todos', fr: 'Libre pour tous', pt: 'Livre para todos', sw: 'Huru kwa kila mtu' },
+		freeHeading: { en: 'Given to the public domain', es: 'Cedida al dominio público', fr: 'Versée au domaine public', pt: 'Cedida ao domínio público', sw: 'Imetolewa kwa umma' },
 		freeText: {
 			en: 'The translation is released under CC0: no permission to ask, no fee, no limit on copies. Print it, quote it at length, put it in an app or a church bulletin. That is why it can sit in a free library like this one.',
 			es: 'La traducción se publica bajo CC0: sin permisos que pedir, sin costo, sin límite de copias. Se puede imprimir, citar extensamente, poner en una aplicación o en el boletín de una iglesia. Por eso puede estar en una biblioteca gratuita como esta.',
 			fr: 'La traduction est publiée sous CC0 : aucune permission à demander, aucun frais, aucune limite au nombre de copies. On peut l’imprimer, la citer longuement, la mettre dans une application ou dans le bulletin d’une Église. C’est pourquoi elle peut figurer dans une bibliothèque gratuite comme celle-ci.',
-			pt: 'A tradução é publicada sob CC0: sem permissão a pedir, sem custo, sem limite de cópias. Pode ser impressa, citada extensamente, colocada num aplicativo ou no boletim de uma igreja. Por isso ela pode estar numa biblioteca gratuita como esta.'
+			pt: 'A tradução é publicada sob CC0: sem permissão a pedir, sem custo, sem limite de cópias. Pode ser impressa, citada extensamente, colocada num aplicativo ou no boletim de uma igreja. Por isso ela pode estar numa biblioteca gratuita como esta.',
+			sw: 'Tafsiri hii imetolewa chini ya CC0: hakuna ruhusa ya kuomba, hakuna malipo, hakuna kikomo cha nakala. Ichapishe, inukuu kwa urefu, iweke katika programu au katika tangazo la kanisa. Ndiyo sababu inaweza kukaa katika maktaba ya bure kama hii.'
 		},
 		follow: {
 			en: 'English comes first, and these languages follow:',
 			es: 'El inglés va primero, y le siguen estos idiomas:',
 			fr: 'L’anglais vient en premier, et ces langues suivent :',
-			pt: 'O inglês vem primeiro, e estas línguas vêm em seguida:'
+			pt: 'O inglês vem primeiro, e estas línguas vêm em seguida:',
+			sw: 'Kiingereza kinatangulia, na lugha hizi zinafuata:'
 		},
-		languagesLabel: { en: 'Languages', es: 'Idiomas', fr: 'Langues', pt: 'Idiomas' },
-		hereEyebrow: { en: 'On Ochorus', es: 'En Ochorus', fr: 'Sur Ochorus', pt: 'No Ochorus' },
+		languagesLabel: { en: 'Languages', es: 'Idiomas', fr: 'Langues', pt: 'Idiomas', sw: 'Lugha' },
+		hereEyebrow: { en: 'On Ochorus', es: 'En Ochorus', fr: 'Sur Ochorus', pt: 'No Ochorus', sw: 'Katika Ochorus' },
 		hereHeading: {
 			en: 'Read it here like any book in the library',
 			es: 'Se lee aquí como cualquier libro de la biblioteca',
 			fr: 'Elle se lit ici comme n’importe quel livre de la bibliothèque',
-			pt: 'Ela é lida aqui como qualquer livro da biblioteca'
+			pt: 'Ela é lida aqui como qualquer livro da biblioteca',
+			sw: 'Isome hapa kama kitabu kingine chochote cha maktaba'
 		},
-		everyBook: { en: 'Every book, in order', es: 'Todos los libros, en orden', fr: 'Tous les livres, dans l’ordre', pt: 'Todos os livros, em ordem' },
+		everyBook: { en: 'Every book, in order', es: 'Todos los libros, en orden', fr: 'Tous les livres, dans l’ordre', pt: 'Todos os livros, em ordem', sw: 'Kila kitabu, kwa mpangilio' },
 		everyBookText: {
 			en: 'Genesis to Revelation, grouped by testament and division, each with its own cover in its Hebrew or Greek name.',
 			es: 'De Génesis a Apocalipsis, agrupados por testamento y división, cada uno con su portada en su nombre hebreo o griego.',
 			fr: 'De la Genèse à l’Apocalypse, regroupés par testament et par section, chacun avec sa couverture à son nom hébreu ou grec.',
-			pt: 'De Gênesis a Apocalipse, agrupados por testamento e divisão, cada um com a sua capa no seu nome hebraico ou grego.'
+			pt: 'De Gênesis a Apocalipse, agrupados por testamento e divisão, cada um com a sua capa no seu nome hebraico ou grego.',
+			sw: 'Kuanzia Mwanzo hadi Ufunuo, vikiwa vimepangwa kwa agano na kwa sehemu, kila kimoja na jalada lake lenye jina lake la Kiebrania au la Kigiriki.'
 		},
-		through: { en: 'Straight through', es: 'De principio a fin', fr: 'Du début à la fin', pt: 'Do começo ao fim' },
+		through: { en: 'Straight through', es: 'De principio a fin', fr: 'Du début à la fin', pt: 'Do começo ao fim', sw: 'Mwanzo hadi mwisho' },
 		throughText: {
 			en: 'Genesis to Revelation as one reading, with your place kept from book to book.',
 			es: 'De Génesis a Apocalipsis como una sola lectura, con el lugar de lectura guardado de un libro a otro.',
 			fr: 'De la Genèse à l’Apocalypse en une seule lecture, la page où l’on en est gardée d’un livre à l’autre.',
-			pt: 'De Gênesis a Apocalipse como uma só leitura, com o ponto de leitura guardado de um livro para outro.'
+			pt: 'De Gênesis a Apocalipse como uma só leitura, com o ponto de leitura guardado de um livro para outro.',
+			sw: 'Kuanzia Mwanzo hadi Ufunuo kama usomaji mmoja, mahali ulipofikia pakihifadhiwa kutoka kitabu kimoja hadi kingine.'
 		},
-		daily: { en: 'A chapter a day', es: 'Un capítulo al día', fr: 'Un chapitre par jour', pt: 'Um capítulo por dia' },
+		daily: { en: 'A chapter a day', es: 'Un capítulo al día', fr: 'Un chapitre par jour', pt: 'Um capítulo por dia', sw: 'Sura moja kila siku' },
 		dailyText: {
 			en: 'Reading plans such as John in 21 days, Proverbs in a month and Psalms in 150 days.',
 			es: 'Planes de lectura que recorren la Biblia, o uno de sus libros, un capítulo a la vez.',
 			fr: 'Des plans de lecture qui parcourent la Bible, ou l’un de ses livres, un chapitre à la fois.',
-			pt: 'Planos de leitura que percorrem a Bíblia, ou um dos seus livros, um capítulo de cada vez.'
+			pt: 'Planos de leitura que percorrem a Bíblia, ou um dos seus livros, um capítulo de cada vez.',
+			sw: 'Mipango ya kusoma inayopitia Biblia, au kitabu kimoja chake, sura moja baada ya nyingine.'
 		},
-		plansLink: { en: 'Reading plans', es: 'Planes de lectura', fr: 'Plans de lecture', pt: 'Planos de leitura' },
-		intro: { en: 'An introduction to each book', es: 'Una introducción a cada libro', fr: 'Une introduction à chaque livre', pt: 'Uma introdução a cada livro' },
+		plansLink: { en: 'Reading plans', es: 'Planes de lectura', fr: 'Plans de lecture', pt: 'Planos de leitura', sw: 'Mipango ya kusoma' },
+		intro: { en: 'An introduction to each book', es: 'Una introducción a cada libro', fr: 'Une introduction à chaque livre', pt: 'Uma introdução a cada livro', sw: 'Utangulizi wa kila kitabu' },
 		introText: {
 			en: 'Who wrote it, when and why, before you begin; and a closing note on what to carry away. Poetry is set line by line, as the Hebrew divides it.',
 			es: 'Quién lo escribió, cuándo y por qué, antes de empezar; y una nota final sobre lo que conviene llevarse. La poesía se presenta línea por línea, como la divide el hebreo.',
 			fr: 'Qui l’a écrit, quand et pourquoi, avant de commencer ; et une note finale sur ce qu’il faut en retenir. La poésie est présentée vers par vers, comme l’hébreu la divise.',
-			pt: 'Quem o escreveu, quando e por quê, antes de começar; e uma nota final sobre o que levar consigo. A poesia é apresentada linha por linha, como o hebraico a divide.'
+			pt: 'Quem o escreveu, quando e por quê, antes de começar; e uma nota final sobre o que levar consigo. A poesia é apresentada linha por linha, como o hebraico a divide.',
+			sw: 'Nani aliandika, lini na kwa nini, kabla hujaanza; na neno la mwisho kuhusu cha kubeba moyoni. Mashairi yamepangwa mstari kwa mstari, kama Kiebrania kinavyoyagawa.'
 		},
-		whole: { en: 'See the whole translation', es: 'Ver la traducción completa', fr: 'Voir toute la traduction', pt: 'Ver a tradução completa' },
+		whole: { en: 'See the whole translation', es: 'Ver la traducción completa', fr: 'Voir toute la traduction', pt: 'Ver a tradução completa', sw: 'Tazama tafsiri nzima' },
 		wholeText: {
 			en: 'All three levels, every reasoning record, the interlinear view and the other languages as they are drafted live at OpenWordBible.org.',
 			es: 'Los tres niveles, cada registro de razonamiento, la vista interlineal y los demás idiomas, a medida que se redactan, están en OpenWordBible.org.',
 			fr: 'Les trois niveaux, chaque fiche de raisonnement, la vue interlinéaire et les autres langues, au fil de leur rédaction, se trouvent sur OpenWordBible.org.',
-			pt: 'Os três níveis, cada registro de raciocínio, a visão interlinear e os outros idiomas, à medida que são redigidos, estão no OpenWordBible.org.'
+			pt: 'Os três níveis, cada registro de raciocínio, a visão interlinear e os outros idiomas, à medida que são redigidos, estão no OpenWordBible.org.',
+			sw: 'Viwango vyote vitatu, kila kumbukumbu ya hoja, mwonekano wa mistari sambamba na lugha nyingine, kadiri zinavyoandaliwa, viko katika OpenWordBible.org.'
 		}
 	} satisfies Record<string, BibleText>;
 

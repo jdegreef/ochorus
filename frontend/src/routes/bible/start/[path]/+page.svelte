@@ -24,7 +24,7 @@
 	const t = i18n.t;
 	const lang = getLang();
 	const say = (text: BibleText) => bibleText(text, lang);
-	const OTHER = { en: 'Other ways in', es: 'Otros caminos', fr: 'Autres chemins', pt: 'Outros caminhos' };
+	const OTHER = { en: 'Other ways in', es: 'Otros caminos', fr: 'Autres chemins', pt: 'Outros caminhos', sw: 'Njia nyingine za kuanzia' };
 
 	const startPath = $derived(BIBLE_PATHS.find((p) => p.id === data.pathId)!);
 	const steps = $derived(biblePathSteps(startPath.steps, data.books, lang));

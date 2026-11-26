@@ -109,7 +109,7 @@ vi.mock('$lib/library-public', () => {
 		listQuoteAuthors: empty,
 		listQuoteTopics: empty,
 		listQuoteTopicPages: empty,
-		// Swahili has the Bible series; English and Spanish have none.
+		// Swahili has the Bible series (and the hub); English and Spanish have none.
 		listSeries: async (l = 'en') => (l === 'sw' ? [{ slug: 'rooted' }, { slug: 'the-bible' }] : []),
 		listSermons: async (l = 'en') => (l === 'en' ? englishSermons.rows : []),
 		// Indexable in Swahili; on the Spanish shelf but below the API's works
@@ -625,18 +625,14 @@ describe('build() the Bible hub', () => {
 	beforeEach(() => resetSitemapData());
 
 	it('lists /bible/ only where the series has books AND the chrome links it', async () => {
-		// The mock gives the series to Swahili alone, which is not in
-		// BIBLE_LOCALES: nothing links /sw/bible/, so the crawl would never
-		// prerender it, and the sitemap must not advertise it.
-		const bible = (await sitemapData()).pages.find((e) =>
-			[...e.byLocale.values()].includes('/bible/')
-		);
-		expect(bible).toBeUndefined();
-		// Nor the story page the hub links, which lives where the hub does.
-		const story = (await sitemapData()).pages.find((e) =>
-			[...e.byLocale.values()].includes('/bible/story/')
-		);
-		expect(story).toBeUndefined();
+		// The mock gives the series to Swahili alone. Swahili is in
+		// BIBLE_LOCALES, so the hub and the pages it links are listed there;
+		// Spanish is too, but has no Bible books (the page 404s), and English
+		// has none in this mock either.
+		const { pages } = await sitemapData();
+		const at = (path: string) => pages.find((e) => [...e.byLocale.values()].includes(path));
+		for (const path of ['/bible/', '/bible/story/', '/open-word-bible/'])
+			expect([...at(path)!.byLocale.keys()], path).toEqual(['sw']);
 	});
 
 });

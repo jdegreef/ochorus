@@ -20,32 +20,35 @@ export const OWB_READ_URL = 'https://openwordbible.org/read/';
 export const OWB_LEVELS: readonly { code: 'OWB-L' | 'OWB-B' | 'OWB-R'; name: BibleText; aim: BibleText }[] = [
 	{
 		code: 'OWB-L',
-		name: { en: 'Literal', es: 'Literal', fr: 'Littéral', pt: 'Literal' },
+		name: { en: 'Literal', es: 'Literal', fr: 'Littéral', pt: 'Literal', sw: 'Halisi' },
 		aim: {
 			en: 'Follows the Hebrew and Greek closely, with any word it supplies in brackets: for study beside the original.',
 			es: 'Sigue de cerca el hebreo y el griego, con entre corchetes toda palabra que añade: para estudiar junto al original.',
 			fr: 'Suit de près l’hébreu et le grec, en mettant entre crochets tout mot ajouté : pour l’étude, à côté de l’original.',
-			pt: 'Segue de perto o hebraico e o grego, com entre colchetes toda palavra que acrescenta: para estudar ao lado do original.'
+			pt: 'Segue de perto o hebraico e o grego, com entre colchetes toda palavra que acrescenta: para estudar ao lado do original.',
+			sw: 'Inafuata Kiebrania na Kigiriki kwa karibu, na kila neno inaloongeza liko ndani ya mabano: kwa kujifunza sambamba na asili.'
 		}
 	},
 	{
 		code: 'OWB-B',
-		name: { en: 'Balanced', es: 'Equilibrado', fr: 'Équilibré', pt: 'Equilibrado' },
+		name: { en: 'Balanced', es: 'Equilibrado', fr: 'Équilibré', pt: 'Equilibrado', sw: 'Uwiano' },
 		aim: {
 			en: 'Accurate and natural: faithful to the original, and easy to read. This is the text you read on Ochorus.',
 			es: 'Exacto y natural: fiel al original y fácil de leer. Es el texto que se lee en Ochorus.',
 			fr: 'Exact et naturel : fidèle à l’original et facile à lire. C’est le texte qu’on lit sur Ochorus.',
-			pt: 'Exato e natural: fiel ao original e fácil de ler. É o texto que se lê no Ochorus.'
+			pt: 'Exato e natural: fiel ao original e fácil de ler. É o texto que se lê no Ochorus.',
+			sw: 'Sahihi na ya kawaida: aminifu kwa asili, na rahisi kusoma. Hili ndilo andiko unalosoma katika Ochorus.'
 		}
 	},
 	{
 		code: 'OWB-R',
-		name: { en: 'Readable', es: 'Sencillo', fr: 'Simple', pt: 'Simples' },
+		name: { en: 'Readable', es: 'Sencillo', fr: 'Simple', pt: 'Simples', sw: 'Rahisi' },
 		aim: {
 			en: 'Plain modern language, made explicit where it helps: for a first reading, or a young reader.',
 			es: 'Lenguaje moderno y sencillo, explícito donde ayuda: para una primera lectura o un lector joven.',
 			fr: 'Une langue moderne et simple, explicite là où cela aide : pour une première lecture, ou un jeune lecteur.',
-			pt: 'Linguagem moderna e simples, explícita onde ajuda: para uma primeira leitura ou um leitor jovem.'
+			pt: 'Linguagem moderna e simples, explícita onde ajuda: para uma primeira leitura ou um leitor jovem.',
+			sw: 'Lugha rahisi ya kisasa, inayoeleza wazi pale inaposaidia: kwa usomaji wa kwanza, au kwa msomaji kijana.'
 		}
 	}
 ];
@@ -53,18 +56,18 @@ export const OWB_LEVELS: readonly { code: 'OWB-L' | 'OWB-B' | 'OWB-R'; name: Bib
 /** The languages OWB is translating into, English first (its README's list),
  *  named in each hub locale. */
 export const OWB_LANGUAGES: readonly BibleText[] = [
-	{ en: 'English', es: 'Inglés', fr: 'Anglais', pt: 'Inglês' },
-	{ en: 'Spanish', es: 'Español', fr: 'Espagnol', pt: 'Espanhol' },
-	{ en: 'French', es: 'Francés', fr: 'Français', pt: 'Francês' },
-	{ en: 'Swahili', es: 'Suajili', fr: 'Swahili', pt: 'Suaíli' },
-	{ en: 'Vietnamese', es: 'Vietnamita', fr: 'Vietnamien', pt: 'Vietnamita' },
-	{ en: 'Korean', es: 'Coreano', fr: 'Coréen', pt: 'Coreano' },
-	{ en: 'Portuguese', es: 'Portugués', fr: 'Portugais', pt: 'Português' },
-	{ en: 'Amharic', es: 'Amárico', fr: 'Amharique', pt: 'Amárico' },
-	{ en: 'Hindi', es: 'Hindi', fr: 'Hindi', pt: 'Híndi' },
-	{ en: 'Russian', es: 'Ruso', fr: 'Russe', pt: 'Russo' },
-	{ en: 'Ukrainian', es: 'Ucraniano', fr: 'Ukrainien', pt: 'Ucraniano' },
-	{ en: 'Japanese', es: 'Japonés', fr: 'Japonais', pt: 'Japonês' }
+	{ en: 'English', es: 'Inglés', fr: 'Anglais', pt: 'Inglês', sw: 'Kiingereza' },
+	{ en: 'Spanish', es: 'Español', fr: 'Espagnol', pt: 'Espanhol', sw: 'Kihispania' },
+	{ en: 'French', es: 'Francés', fr: 'Français', pt: 'Francês', sw: 'Kifaransa' },
+	{ en: 'Swahili', es: 'Suajili', fr: 'Swahili', pt: 'Suaíli', sw: 'Kiswahili' },
+	{ en: 'Vietnamese', es: 'Vietnamita', fr: 'Vietnamien', pt: 'Vietnamita', sw: 'Kivietinamu' },
+	{ en: 'Korean', es: 'Coreano', fr: 'Coréen', pt: 'Coreano', sw: 'Kikorea' },
+	{ en: 'Portuguese', es: 'Portugués', fr: 'Portugais', pt: 'Português', sw: 'Kireno' },
+	{ en: 'Amharic', es: 'Amárico', fr: 'Amharique', pt: 'Amárico', sw: 'Kiamhari' },
+	{ en: 'Hindi', es: 'Hindi', fr: 'Hindi', pt: 'Híndi', sw: 'Kihindi' },
+	{ en: 'Russian', es: 'Ruso', fr: 'Russe', pt: 'Russo', sw: 'Kirusi' },
+	{ en: 'Ukrainian', es: 'Ucraniano', fr: 'Ukrainien', pt: 'Ucraniano', sw: 'Kiukreni' },
+	{ en: 'Japanese', es: 'Japonés', fr: 'Japonais', pt: 'Japonês', sw: 'Kijapani' }
 ];
 
 /** The three covers fanned beside the page's heading (the fan shows three):
