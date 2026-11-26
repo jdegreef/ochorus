@@ -11,6 +11,7 @@
 	import { pager, pagedSnapshot } from '$lib/paging.svelte';
 	import { featuredOrder, startWith } from '$lib/sermonPicks';
 	import { canonGrid } from '$lib/sermonCanon';
+	import { sermonsOnHref } from '$lib/sermonsOn';
 	import { isPlainPrimaryClick } from '$lib/plainClick';
 	import { tick } from 'svelte';
 	import Portrait from '$lib/components/Portrait.svelte';
@@ -282,7 +283,8 @@
 
 	// --- Browse by Scripture (design review #21) ----------------------------------
 	// The 66 books, each shaded by how many sermons on this shelf preach from
-	// it; a cell sets the book filter. Built from `bookFacets`, so a cell's
+	// it; a cell opens the book's own page (/sermons/on/<book>/, $lib/sermonsOn)
+	// when it has one, else sets the book filter. Built from `bookFacets`, so a cell's
 	// count is the select's count. Null (no grid) where the shelf's references
 	// don't resolve to enough books, and off the English shelf: the cells'
 	// abbreviations and names are English ($lib/sermonCanon).
@@ -678,6 +680,7 @@
 							</h3>
 							<ul class="canon">
 								{#each cells as c (c.name)}
+									{@const onPage = sermonsOnHref(c.position, c.count)}
 									<!-- The visible label is the abbreviation (and count); the
 									     accessible name is the full book and "N sermons". -->
 									{#snippet label()}<span aria-hidden="true" class="canon-abbr">{c.abbr}</span
@@ -685,7 +688,13 @@
 											>{/if}<span class="sr-only">{c.name}, {sermonsLabel(c.count)}</span
 										>{/snippet}
 									<li>
-										{#if c.count}
+										{#if onPage}
+											<!-- A book with its own page (/sermons/on/<book>/) opens it:
+											     the crawlable view, grouped by chapter. -->
+											<a href={localizeHref(onPage)} class="canon-cell heat-{c.heat}"
+												>{@render label()}</a
+											>
+										{:else if c.count}
 											<a
 												href={bookHref(c.name)}
 												rel="nofollow"

@@ -4,10 +4,12 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { bibleText } from '$lib/bibleLocales';
+	import { sermonsOnHref } from '$lib/sermonsOn';
 
 	/**
 	 * Where a book of the Bible leads in the rest of the library, as one line:
-	 * its sermons (the sermons shelf filtered to it) and the classics' passages
+	 * its sermons (their own page, /sermons/on/<book>/, once there are enough of
+	 * them; the sermons shelf filtered to it before that) and the classics' passages
 	 * on it (`/scripture/<book>/`). Draws nothing when it has neither. The
 	 * API sends the classics' page in English alone (the scripture pages are
 	 * English only), so only English ever draws that link.
@@ -20,7 +22,11 @@
 {#if links && (links.sermons || links.scripture)}
 	<p class="bible-more {cls}">
 		{#if links.sermons}
-			<a href={localizeHref(`/sermons?book=${encodeURIComponent(links.sermon_book)}`)}
+			<a
+				href={localizeHref(
+					sermonsOnHref(links.position, links.sermons) ??
+						`/sermons?book=${encodeURIComponent(links.sermon_book)}`
+				)}
 				>{links.sermons} {i18n.tn(links.sermons, 'common.sermonOne', 'common.sermonMany')}</a
 			>
 		{/if}

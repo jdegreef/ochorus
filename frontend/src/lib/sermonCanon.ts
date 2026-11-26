@@ -100,6 +100,8 @@ export interface CanonCell {
 	count: number;
 	/** `.heat-N` shade (app.css): 0 for an empty book, else 1 to HEAT_LEVELS - 1. */
 	heat: number;
+	/** Canonical position, 1 Genesis … 66 Revelation. */
+	position: number;
 }
 
 export interface CanonGrid {
@@ -139,7 +141,7 @@ export function canonGrid(facets: readonly BookFacet[]): CanonGrid | null {
 		const f = byOrder.get(i + 1);
 		const count = f?.count ?? 0;
 		const heat = count ? 1 + Math.round((top - 1) * Math.sqrt(count / max)) : 0;
-		return { name: f?.name ?? name, abbr, count, heat };
+		return { name: f?.name ?? name, abbr, count, heat, position: i + 1 };
 	});
 	return { old: cells.slice(0, LAST_OT), new: cells.slice(LAST_OT) };
 }

@@ -63,6 +63,7 @@ import { APP_ONLY } from '$lib/robots';
 import { withTrailingSlash } from '$lib/href';
 import { chapterSegment, modernChapterPath } from '$lib/reading-schema';
 import { GLOSSARY_TERMS, glossaryHref } from '$lib/glossary';
+import { sermonsOnBooks, sermonsOnPath } from '$lib/sermonsOn';
 
 /** Locale-prefixed absolute URL ('' prefix for the default locale, en). */
 export const loc = (locale: string, path: string) =>
@@ -801,6 +802,22 @@ async function build(): Promise<SitemapData> {
 			return photo ? absUrl(photo) : null;
 		}
 	);
+	// "Sermons on <book>" (/sermons/on/<book>/): each locale where enough of its
+	// own sermons preach from the book — the route's floor, so every URL here
+	// is a page the build made. Dated by the newest sermon it lists.
+	const byBook = new Map<number, Entry>();
+	for (const slice of advertisedSlices) {
+		for (const position of sermonsOnBooks(slice.sermons)) {
+			let e = byBook.get(position);
+			if (!e) byBook.set(position, (e = { byLocale: new Map() }));
+			e.byLocale.set(slice.locale, sermonsOnPath(position)!);
+			const lm = newest(
+				slice.sermons.filter((s) => s.scripture_book_order === position).map((s) => s.updated_at)
+			);
+			if (lm) (e.lastmods ??= new Map()).set(slice.locale, lm);
+		}
+	}
+	sermons.push(...byBook.values());
 	// A shelf below the API's works floor in a locale is served but noindexed
 	// there (`indexable`, see the topic page), so it is not promised here.
 	pages.push(
