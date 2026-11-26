@@ -159,10 +159,10 @@
 	const worksBits = $derived(
 		[
 			author.books.length
-				? `${author.books.length} ${i18n.tn(author.books.length, 'common.bookOne', 'common.bookMany')}`
+				? i18n.count(author.books.length, 'common.bookOne', 'common.bookMany')
 				: '',
 			author.sermons.length
-				? `${author.sermons.length} ${i18n.tn(author.sermons.length, 'common.sermonOne', 'common.sermonMany')}`
+				? i18n.count(author.sermons.length, 'common.sermonOne', 'common.sermonMany')
 				: ''
 		].filter(Boolean)
 	);
@@ -632,7 +632,7 @@
 					<a class="start-item start-link" href={localizeHref(`/plans/${authorPlan.slug}`)}>
 						<span class="text-small text-muted">{t('search.typePlan')}</span>
 						<span class="start-title" dir="auto">{authorPlan.title}</span>
-						<span class="text-small text-muted">{authorPlan.day_count} {t('plans.days')} <Arrow /></span>
+						<span class="text-small text-muted">{i18n.unit('plans.days', authorPlan.day_count)} <Arrow /></span>
 					</a>
 				{/if}
 				{#if startSermon}
@@ -1022,7 +1022,7 @@
      claiming "N min left" while scrolling those would be measuring the wrong
      thing. <Reader> supplies `frac` for the prose alone. -->
 {#if !readerUi.focus && !bioFolded && listen.status === 'idle' && frac > 0.01 && frac < 0.99}
-	<div class="min-left" aria-hidden="true">{minutesLeft} {t('sermon.minLeft')}</div>
+	<div class="min-left" aria-hidden="true">{i18n.unit('sermon.minLeft', minutesLeft)}</div>
 {/if}
 
 <!-- Bookmark the spot: floats, because this page's header scrolls away. -->

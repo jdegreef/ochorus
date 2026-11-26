@@ -30,10 +30,10 @@
 	<div class="mt-2.5">
 		<ProgressBar
 			percent={row.pct}
-			label="{row.title}: {row.done} {t('plans.of')} {row.total} {t('plans.days')}"
+			label="{row.title}: {i18n.unit('plans.days', `${row.done} ${t('plans.of')} ${row.total}`)}"
 		/>
 	</div>
 	<p class="mt-1.5 text-small text-muted">
-		{row.done} {t('plans.of')} {row.total} {t('plans.days')}
+		{i18n.unit('plans.days', `${row.done} ${t('plans.of')} ${row.total}`)}
 	</p>
 </a>

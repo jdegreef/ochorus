@@ -31,8 +31,7 @@
 		<span class="line-clamp-2 text-small font-semibold text-text sm:block sm:truncate">{author.name}</span>
 		{#if author.book_count}
 			<span class="block text-small text-muted">
-				{author.book_count}
-				{i18n.tn(author.book_count, 'common.bookOne', 'common.bookMany')}
+				{i18n.count(author.book_count, 'common.bookOne', 'common.bookMany')}
 			</span>
 		{/if}
 	</span>

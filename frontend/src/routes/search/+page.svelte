@@ -950,7 +950,7 @@
 	     count; the second is what ↑/↓ landed on. Merged into one, each arrow key
 	     would re-announce the count as well. -->
 	<p id="search-help" class="sr-only" aria-live="polite">
-		{ran ? `${shownCount} ${t('search.resultsMany')}` : ''}
+		{ran ? i18n.count(shownCount, 'search.resultsOne', 'search.resultsMany') : ''}
 	</p>
 	<p class="sr-only" aria-live="polite">{activeAnnouncement}</p>
 
@@ -1091,22 +1091,17 @@
 					{#if hasFacets}
 						<p class="text-small text-muted">
 							{#if typeFilter !== 'all' && remaining > 0}
-								{shownCount}
-								{t('search.of')}
-								{totalFor(typeFilter as SearchType, shownCount)}{isCapped(
-									typeFilter as SearchType
-								)
-									? '+'
-									: ''}
-								{t('search.resultsMany')}
+								{i18n.unit(
+									'search.resultsMany',
+									`${shownCount} ${t('search.of')} ${totalFor(typeFilter as SearchType, shownCount)}${isCapped(typeFilter as SearchType) ? '+' : ''}`
+								)}
 							{:else if typeFilter === 'all' && grandTotal > shownCount}
-								{shownCount}
-								{t('search.of')}
-								{grandTotal}{anyCapped ? '+' : ''}
-								{t('search.resultsMany')}
+								{i18n.unit(
+									'search.resultsMany',
+									`${shownCount} ${t('search.of')} ${grandTotal}${anyCapped ? '+' : ''}`
+								)}
 							{:else}
-								{shownCount}
-								{i18n.tn(shownCount, 'search.resultsOne', 'search.resultsMany')}
+								{i18n.count(shownCount, 'search.resultsOne', 'search.resultsMany')}
 							{/if}
 						</p>
 					{/if}

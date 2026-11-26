@@ -244,7 +244,7 @@
 							<CoverStrip covers={plan.covers} max={3} />
 							<span class="min-w-0">
 								<span class="block font-semibold" dir="auto">{plan.title}</span>
-								<span class="block text-small text-muted">{plan.day_count} {t('plans.days')}</span>
+								<span class="block text-small text-muted">{i18n.unit('plans.days', plan.day_count)}</span>
 							</span>
 						</a>
 					</li>

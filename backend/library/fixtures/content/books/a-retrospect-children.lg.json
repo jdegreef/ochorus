@@ -1,0 +1,376 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "hudson-taylor"
+  ],
+  "slug": "a-retrospect-children",
+  "language": "lg",
+  "title": "Okutunula Emabega (Eri Abaana)",
+  "subtitle": "",
+  "description": "Hudson Taylor yava mu Bungereza okutwala amawulire amalungi aga Yesu munda mu China, nga yeesiga Katonda ku buli kimu kye yali yeetaaga. Ekitabo kino eky’abaana kizzaawo emboozi entuufu ey’obulamu bwe mu ssuula ennyimpi ez’okusomera abaana mu ddoboozi: olunyiriri lwa Bayibuli, emboozi ey’ekyewuunyo oba essaala eyaddibwamu, ekintu kimu kye kitegeeza gy’oli, n’essaala ennyimpi.",
+  "qa": [
+   {
+    "question": "Ekitabo Okutunula Emabega (Eri Abaana) kyogera ku ki?",
+    "answer": "Ye mboozi y’obulamu bwa Hudson Taylor yennyini, ng’etegekeddwa abaana. Taylor yasaabala okuva mu Bungereza n’agenda e China okubuulira abantu ebya Yesu, era yeesiga Katonda okumuwa buli kimu kye yali yeetaaga mu lugendo lwe lwonna. Buli ssuula ennyimpi enyumya emboozi emu entuufu ey’ekyewuunyo oba essaala emu eyaddibwamu okuva mu bulamu bwe."
+   },
+   {
+    "question": "Hudson Taylor yali ani?",
+    "answer": "Yali Mungereza eyafuuka omuminsani mu China edda ennyo, era n’atandika ekibiina ky’obuminsani ekyasindika abakozi bangi munda ddala mu nsi eyo okubuulira abantu ebya Yesu. Yali amanyiddwa nnyo olw’okwesiga Katonda ku mmere ye, ku ssente ze, ne ku bukuumi bwe, era n’olw’okwambala engoye z’Abachina asobole okutuuka ku bantu be yali ayagala."
+   },
+   {
+    "question": "Buli ssuula etegekeddwa etya?",
+    "answer": "Buli ssuula nnyimpi era ekoleddwa okusomebwa mu ddoboozi. Etandika n’olunyiriri lwa Bayibuli, n’enyumya emboozi entuufu okuva mu bulamu bwa Hudson Taylor, n’eraga ekintu kimu ekyangu kye kitegeeza gy’oli, n’ekomekkereza n’essaala ennyimpi."
+   },
+   {
+    "question": "Ekitabo kino kya baani?",
+    "answer": "Kya baana — okusomerwa omukulu mu ddoboozi, oba okusomebwa omwana omukulu ku lulwe. Ekitabo kya Hudson Taylor ekijjuvu ekyogera ku bulamu bwe, Okutunula Emabega, nakyo kiriwo eri abasomi abakulu."
+   },
+   {
+    "question": "Kintu ki ekikulu ekitabo kino kye kiyigiriza?",
+    "answer": "Nti Katonda asobola okwesigibwa ddala — ku ssente, ku bukuumi, ne ku buyambi — buli muntu yenna amugoberera. Obulamu bwa Hudson Taylor mboozi ntuufu ey’okusaba Katonda n’okulaba ng’abigaba, abaana nabo balyoke bayige okumwesiga."
+   },
+   {
+    "question": "Emboozi zino ntuufu?",
+    "answer": "Yee. Zinyumizibwa mu ngeri ennyangu eri abaana, naye ziva mu mboozi Hudson Taylor yennyini gye yawandiika ku bulamu bwe — olugendo olwa ddala ku nnyanja, essaala ezaddibwamu ddala, n’entandikwa entuufu ey’obuminsani bwe mu China."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of Hudson Taylor’s A Retrospect, which is in the public domain. The telling is our own, free to read and share.",
+  "cover_url": "/covers/art/a-retrospect-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 24,
+  "is_published": true,
+  "created_at": "2026-11-26T00:00:00Z",
+  "updated_at": "2026-11-26T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "lg"
+  ],
+  "order": 1,
+  "title": "Akatabo Akatono mu Kakapu",
+  "body_html": "<blockquote>“Kiwedde.” — okuva mu Yokaana 19</blockquote> <p>Hudson Taylor bwe yali nga wa myaka nga kkumi n’etaano, lumu yalina olweggulo oluwanvu nga talina ky’akola. Maama we yali wala ng’agenze okukyalira emikwano. Hudson n’atambulatambula n’ayingira mu kisenge kya kitaawe eky’ebitabo, ng’anoonya ekintu — kyonna kyonna — eky’okusoma. Mu kakapu akatono akaali kajjudde obupapula, n’aggyamu akatabo akatono ak’Enjiri.</p> <p>N’alowooza nti, “Nja kusoma kitundu kya mboozi kyokka, ekitundu eky’okubuulira ekiri ku nkomerero nkibuuke.”</p> <p>Naye bwe yali asoma, ebigambo ebimu ne bimwesimbamu: “omulimu gwa Kristo ogwaggwa.” Ne mu birowoozo bye ne mujjamu ebigambo bya Yesu bye yayogera ng’ali ku Musaalaba: “Kiwedde.” Amangwago Hudson n’ategeera. Yesu yali yamala dda okusasulira ebibi bye byonna — ddala ddala, omulundi gumu ogw’olubeerera. Tewaali kintu kyonna Hudson kye yali asigazza kukola oba kwongerako. Kye yali yeetaaga kyokka kwe kwebaza n’akkiriza.</p> <p>Awo wennyini, ng’ali yekka mu sitoowa enkadde esirifu gye yali agenze okusomera, Hudson n’afukamira n’awaayo obulamu bwe eri Yesu.</p> <p>Gano ge mawulire amalungi Hudson ge yazuula, era nago gago: Yesu bwe yagamba nti “Kiwedde,” yali ategeeza ekyo ddala. Tokyetaaga kuba mulungi ekimala okufuna okwagala kwa Katonda. Yesu yamala dda okukola buli kimu. Kye weetaaga kyokka kwe kukkiriza, ng’ekirabo.</p> <p><em>Yesu omwagalwa, weebale okumaliriza omulimu gw’okundokola ku Musaalaba. Nkkiriza ekirabo kyo n’omutima gwange gwonna. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kiki Hudson kye yasanga mu kakapu akatono mu kisenge kya kitaawe eky’ebitabo?",
+    "answer": "Akatabo akatono ak’Enjiri. Yali ayagala kusoma kitundu kya mboozi kyokka, n’abuuka “ekitundu eky’okubuulira” ekyali ku nkomerero."
+   },
+   {
+    "question": "Bigambo ki okuva ku Musaalaba ebyajja mu birowoozo bya Hudson, era kiki kye yategeera?",
+    "answer": "“Kiwedde.” Yategeera nti Yesu yali yamala dda okusasulira ebibi bye byonna, n’olwekyo tewaali kintu kyonna kye yali asigazza kukola oba kwongerako."
+   },
+   {
+    "question": "Mwogere wamu: Olowooza oteekwa okuba omulungi ekimala Katonda alyoke akwagale?",
+    "answer": "Essuula eno etuyigiriza nti: tokola kufuna kwagala kwa Katonda. Yesu yamala dda okukola buli kimu; ffe tukkiriza bukkiriza, ng’ekirabo."
+   }
+  ],
+  "word_count": 203
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "lg"
+  ],
+  "order": 2,
+  "title": "Oluggi lwa Maama Olwasibibwa",
+  "body_html": "<blockquote>“Okusaba n’omutima omumalirivu ogw’omuntu omutuukirivu, kubeera n’obuyinza bungi, era n’ebivaamu biba bya ttendo.” — okuva mu Yakobo 5</blockquote> <p>Kale wuliriza ekitundu ekyewuunyisa. Mu kiseera kyennyini Hudson we yali asomera akatabo kali akatono, waliwo ekintu ekyali kibaawo wala nnyo nnyo.</p> <p>Maama we, eyali agenze okukyalira emikwano mayiro nnyingi okuva ewaka, amangwago n’awulira nti ateekwa okusabira omwana we. N’ayambuka mu kisenge kye, n’asiba oluggi n’ekisumuluzo waleme kubaawo amutawaanya, n’asaba — n’asaba — okumala essaawa nnyingi. Yeeyongera okusaba okutuusa lwe yawulira mu mutima gwe munda nti Katonda awulidde, era nti Hudson kaakano mulamu bulungi mu mikono gya Katonda. Olwo n’alekera awo okusaba n’atandika okumwebaza.</p> <p>Wiiki bbiri oluvannyuma n’akomawo ewaka. Hudson n’amudduukira, ng’ayagala nnyo okumubuulira amawulire ge amalungi ennyo. Naye nga tannayogera, maama we n’amwenyamu n’agamba nti, “Mmanyi, mwana wange. Mmaze wiiki bbiri nnamba nga nsanyuka!” Katonda yennyini ye yali amubuulidde, era yali tabuulirangako muntu n’omu.</p> <p>Oluvannyuma Hudson n’asanga akatabo akatono mwannyina Amelia mwe yawandiikanga ebibye. Omwo yali awandiise nti ajja kusabira mwannyina buli lunaku okutuusa lw’alijja eri Katonda. Era ddala nga wayise omwezi gumu gwokka, n’ajja.</p> <p>Waliwo omuntu, awalala, ayinza okuba ng’akusabira kaakano — era Katonda awulira buli emu ku ssaala ezo. Era naawe osobola okusabira bw’otyo abantu b’oyagala. Katonda awuliriza ddala.</p> <p><em>Katonda omwagalwa, weebale olw’abantu abansabira. Nnyamba okusabira n’obwesigwa abantu be njagala. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Maama wa Hudson yakola ki bwe yali wala ng’agenze okukyalira emikwano?",
+    "answer": "Yeggalira mu kisenge kye n’asabira Hudson okumala essaawa nnyingi, okutuusa lwe yawulira nga mukakafu nti Katonda awulidde. Olwo n’alekera awo okusaba n’atandika okumwebaza."
+   },
+   {
+    "question": "Maama we yagamba ki Hudson bwe yadduka okumubuulira amawulire ge?",
+    "answer": "“Mmanyi, mwana wange. Mmaze wiiki bbiri nnamba nga nsanyuka!” Katonda yennyini ye yali amubuulidde. (Ne mwannyina Amelia yali amusabira buli lunaku.)"
+   },
+   {
+    "question": "Mwogere wamu: Ani gw’oyinza okusabira, nga maama wa Hudson ne mwannyina bwe baamusabira?",
+    "answer": "Essuula eno etuyigiriza nti: waliwo ayinza okuba ng’akusabira kaakano, era naawe osobola okusabira n’obwesigwa abantu b’oyagala, kubanga Katonda awuliriza ddala."
+   }
+  ],
+  "word_count": 211
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "lg"
+  ],
+  "order": 3,
+  "title": "Half-Crown Esembayo",
+  "body_html": "<blockquote>“Akusaba omuwanga.” — okuva mu Matayo 5</blockquote> <p>Hudson yali ayagala okuba omuminsani mu China ewala, gye yandibadde yeetaaga okwesiga Katonda ku buli kimu. N’olwekyo n’asalawo okutandikirawo okwegezaamu okwesiga Katonda.</p> <p>Lumu ekiro yali asigazza ssente emu yokka mu nsi yonna — half-crown emu. Ekiro ekyo, ng’obudde buyise nnyo, omusajja omwavu n’amwegayirira ajje asabire mukazi we, eyali omulwadde ennyo. Mu kisenge kyabwe ekyereere era ekinnyogovu, Hudson n’asangamu abaana abaali balumwa enjala, ne maama waabwe eyali n’omwana omuwere omutono ennyo, era nga tebalina mmere n’akatono.</p> <p>Hudson yali ayagala okubayamba — naye bwe yandibawadde ssente ye eyo emu, ye yennyini teyandisigazza kintu! N’agezaako okubabuulira ku Kitaffe ow’okwagala ali mu ggulu, naye ebigambo ne bimulema. Yandisobodde atya okwogera ku kulabirira kwa Katonda ng’akwatiridde ssente ye esembayo? N’olwekyo n’assa omukka omungi, n’awa amaka ago amaavu half-crown ye yonna. Amangwago essanyu lye ne limukomawo nga lyanjaala, n’atambula okudda ewaka ng’ayimba.</p> <p>Enkeera ku makya, omukozi wa posita n’amuleetera ebbaluwa. Munda mwalimu ggalavu — era mu zo ne muvaamu ssente ezaali zisinga emirundi ena ezo Hudson ze yali awaddeyo! Hudson n’aseka nti, “Kyewuunyisa nnyo!” Katonda yali amuddizza bingi nnyo okusinga bye yali awaddeyo.</p> <p>Tosobola kusinga Katonda mu kugaba. Bw’ogabira omuntu abyetaaga ebyo by’olina, osobola okwesiga Kitaawo akwagala okukulabirira.</p> <p><em>Katonda omwagalwa, nnyamba okugaba n’essanyu, ne bwe kiba nga kizibu, era nkwesige okundabirira. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lwaki Hudson yawaayo ssente ye esembayo ddala?",
+    "answer": "Amaka agamu amaavu gaali tegalina mmere n’akatono. Teyali asobola kwogera ku kulabirira kwa Katonda ng’akwatiridde ssente ye esembayo, n’olwekyo n’abawa half-crown ye yonna."
+   },
+   {
+    "question": "Kiki ekyajja mu bbaluwa enkeera ku makya?",
+    "answer": "Ebbaluwa nga mulimu ggalavu, era mu zo ne muvaamu ssente ezaali zisinga emirundi ena ezo Hudson ze yali awaddeyo."
+   },
+   {
+    "question": "Mwogere wamu: Wali okizudde nga kizibu okugabana ekintu? Kiki ekiyinza okukuyamba?",
+    "answer": "Essuula eno etuyigiriza nti: tosobola kusinga Katonda mu kugaba. Bw’ogabira omuntu eyeetaaga, osobola okwesiga Kitaawo akwagala okukulabirira."
+   }
+  ],
+  "word_count": 213
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "lg"
+  ],
+  "order": 4,
+  "title": "Omusaala Ogwerabirwa",
+  "body_html": "<blockquote>“Kitammwe amanyidde ddala byonna bye mwetaaga ne bwe muba nga temunnamusaba.” — okuva mu Matayo 6</blockquote> <p>Hudson yakolera omusawo eyali n’emirimu mingi, era omusawo oyo yamusasulanga omusaala. Naye Hudson yali ayagala okweyongera okutendeka okwesiga kwe mu Katonda. N’olwekyo n’akola entegeka: omusaala gwe bwe gunaatuuka, <em>tagenda</em> kujjukiza musawo. Wabula ajja kusaba Katonda amujjukize.</p> <p>Olunaku lw’omusaala ne lutuuka ne luyita — era omusawo, eyali omwerabizi ennyo, n’erabira bwerabizi. Hudson teyamugamba kintu, naye Katonda n’amubuulira byonna, era ssente ze ne zeeyongera okukendeera.</p> <p>Awo lumu omusawo n’agamba amangwago nti, “Ate, Taylor — omusaala gwo tegunnatuuka nate?” Omutima gwa Hudson ne gubuuka! Naye omusawo n’ajjukira nti yali yaakatwala ssente ze zonna ezaali zifisseewo mu bbanka. Woowe. Hudson n’asirika, ne yeeyongera okusaba.</p> <p>Ekiro ky’Olwomukaaga ekyo nga kikutte — ku ssaawa nga nnya ez’ekiro — omusawo n’akomawo mu kisenge ng’aseka mpola. Omu ku balwadde be abasinga obugagga yali yaakajja mu kiseera ekyo ekyewuunyisa okusasula ebbanja lye! Omusawo n’akwasa Hudson ssente ezo n’agamba nti, “Oyinza okuzitwala ggwe.”</p> <p>Katonda ye yali akikoze — ng’asiikiriza mpola abantu abalala, mu kiseera ddala ekituufu, nga Hudson tasabye muntu mulala yenna wabula Katonda.</p> <p>Tekikwetaagisa bulijjo kwekolera buli kimu ku bubwo oba okutawaanya abantu okukuwa by’weetaaga. Kitaawo ali mu ggulu amanyi dda, era asobola okutegeka ebintu mu ngeri gy’otandisuubidde. Musabe.</p> <p><em>Katonda omwagalwa, weebale nti omanyi dda bye neetaaga. Nnyamba okusooka okubikuleetera ggwe, era nneesige ekiseera kyo. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Hudson yalina ntegeka ki ng’omusaala gwe gutuuse?",
+    "answer": "Yali tagenda kujjukiza musawo eyali omwerabizi. Wabula yali agenda kusaba Katonda amujjukize."
+   },
+   {
+    "question": "Hudson yafuna atya ssente ze ku nkomerero?",
+    "answer": "Ekiro ku Lwomukaaga nga kikutte, omulwadde omu omugagga n’ajja okusasula ebbanja lye, omusawo n’akwasa Hudson ssente ezo ng’agamba nti, “Oyinza okuzitwala ggwe.”"
+   },
+   {
+    "question": "Mwogere wamu: Bw’oba weetaaga ekintu, osooka kusaba ani?",
+    "answer": "Essuula eno etuyigiriza nti: Kitaawo ali mu ggulu amanyi dda by’weetaaga, era asobola okutegeka ebintu mu ngeri gy’otandisuubidde. Sooka obimuleetere ye, era wesige ekiseera kye."
+   }
+  ],
+  "word_count": 223
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "lg"
+  ],
+  "order": 5,
+  "title": "“Sijja Kufa”",
+  "body_html": "<blockquote>“Sijja kufa, wabula nzija kuba mulamu, ndyoke ntegeeze ebyo byonna Mukama by’akoze.” — okuva mu Zabbuli 118</blockquote> <p>Bwe yali ayiga okuba omusawo mu London, Hudson yali mwavu nnyo era emirundi mingi yalyanga mugaati omuddugavu n’amazzi byokka. Akawungeezi akamu empiso n’emufumita ku lugalo, n’atakifaako. Naye enkeera, bwe yali ayamba mu mulimu gw’obujjanjabi omuzibu era ogw’akabi, akawundu ako akatono ne kayingiza endwadde ey’amaanyi, Hudson n’alwala nnyo ddala.</p> <p>Omusawo omukulu n’amutunuulira nga munakuwavu nnyo n’agamba nti, “Ggwe oli muntu mufu.”</p> <p>Olowooza kirowoozo ki Hudson kye yasooka okulowooza? Tekyali kutya ku lulwe. Yali nnaku nti kaakano oboolyawo yali tagenda kutuuka China! Naye oluvannyuma obukakafu obw’amaanyi era obw’emirembe ne bujjula omutima gwe: “Nnina omulimu gwe nteekwa okukola mu China, era sijja kufa.”</p> <p>Yali talina ssente za kupangisa kigaali ky’embalaasi, n’olwekyo, newakubadde nga yali munafu, n’addayo eka mpola ng’ayita mu bbaasi n’ebigere. Abasajja abalala babiri abaalwala endwadde y’emu mu kiseera kye kimu bombi baafa. Naye Hudson n’asigala nga mulamu. Katonda yali amukuumye — kubanga Katonda yali akyalina omulimu gw’ayagala akole ewala mu China.</p> <p>Katonda alina enteekateeka ku bulamu bwo, era ajja kukulabirira okutuusa lw’erituukirira. Oli mirembe mu mikono gye.</p> <p><em>Katonda omwagalwa, weebale nti obulamu bwange buli mu mikono gyo era nti olina enteekateeka ennungi ku nze. Nnyamba okukwesiga, ka kibe ki ekijja. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Hudson yalwala atya bw’atyo?",
+    "answer": "Empiso yamufumita ku lugalo, era enkeera, bwe yali akola omulimu gw’obujjanjabi ogw’akabi, akawundu ako akatono ne kayingiza endwadde ey’amaanyi."
+   },
+   {
+    "question": "Kirowoozo ki Hudson kye yasooka okulowooza omusawo bwe yagamba nti, “Ggwe oli muntu mufu”?",
+    "answer": "Si kutya ku lulwe, wabula ennaku nti oboolyawo yali tagenda kutuuka China. Olwo n’awulira emirembe n’obukakafu: “Nnina omulimu gwe nteekwa okukola mu China, era sijja kufa.”"
+   },
+   {
+    "question": "Mwogere wamu: Owulira otya okumanya nti obulamu bwo buli mu mikono gya Katonda?",
+    "answer": "Essuula eno etuyigiriza nti: Katonda alina enteekateeka ku bulamu bwo era ajja kukulabirira okutuusa lw’erituukirira. Oli mirembe mu mikono gye."
+   }
+  ],
+  "word_count": 207
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "lg"
+  ],
+  "order": 6,
+  "title": "Omuyaga Okumpi n’Amayinja",
+  "body_html": "<blockquote>“Omuyaga yagusirisa … n’abakulembera n’abatuusa bulungi ku mwalo gwabwe.” — okuva mu Zabbuli 107</blockquote> <p>Ku nkomerero olunaku olukulu ne lutuuka. Hudson n’alinnya emmeeri ey’amatanga eyali egenda e China. Maama we n’ajja okumusiibula, n’amulongooseza akatanda ke akatono, n’asaba naye omulundi ogusembayo. Emmeeri bwe yatandika okugenda, okukaaba kwa maama we olw’ennaku “kwampyita mu mutima ng’akambe,” bw’atyo Hudson bwe yagamba. Naye yali agenda Katonda gye yali amuyise.</p> <p>Awo ebizibu ne bijja. Kibuyaga ow’amaanyi n’akunta n’asiba emmeeri okumala ennaku kkumi na bbiri ez’omuyaga. Ekiro kimu ku Ssande empewo n’egisindika butereevu ku lubalama olw’amayinja — kumpi, kumpi nnyo, okutuusa emmeeri lwe yali kumpi okukwata ku mayinja. Kyalabika ng’enkomerero etuuse.</p> <p>Kapiteeni, naye eyali ayagala Katonda, n’akyukira Hudson n’agamba nti, “Kaakano tetusobola kuwangaala wadde ekitundu ky’essaawa. Ate kuyitibwa kwo okuweereza Mukama mu China?” Hudson n’amuddamu nti yandiyagadde okubeera wano, ng’agondera Katonda, okusinga okubeera awalala wonna — era nti yali akyakkiriza nti ajja kutuuka mu China.</p> <p>Nga wayiseewo eddakiika ntono, kapiteeni n’akomawo ng’ayanguwa era ng’aleekaana: “Empewo ekyuse! Tusobola okusaabala ne tuva mu kikono ky’ennyanja!” Era bwe batyo bwe baakola. Amayinja ne gasigala emabega, nga tebalina kabi.</p> <p>Ne wakati mu muyaga ogutiisa, osobola okuba n’emirembe bw’omanya nti oli Katonda w’ayagala obeere. Ye Mukama w’empewo n’amayengo.</p> <p><em>Katonda omwagalwa, obulamu bwe bunfuukira ng’omuyaga, nnyamba okusigala n’emirembe, nga mmanyi nti oli nange era nti ggwe ofuga byonna. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kabi ki emmeeri ke yasanga mu muyaga?",
+    "answer": "Kibuyaga ow’amaanyi yagisiba okumala ennaku kkumi na bbiri, era ekiro ku Ssande empewo n’egisindika kumpi okutomera amayinja."
+   },
+   {
+    "question": "Hudson yagamba ki kapiteeni bwe kyalabika ng’enkomerero etuuse?",
+    "answer": "Nti yandiyagadde okubeera awo, ng’agondera Katonda, okusinga okubeera awalala wonna, era nti yali akyakkiriza nti ajja kutuuka mu China. Amangu ddala empewo n’ekyuka ne basaabala ne bava mu kikono ky’ennyanja."
+   },
+   {
+    "question": "Mwogere wamu: Bw’oba otidde, kiki ekikuyamba okuwulira emirembe?",
+    "answer": "Essuula eno etuyigiriza nti: ne mu muyaga ogutiisa, osobola okuba n’emirembe bw’omanya nti oli Katonda w’ayagala obeere, kubanga ye Mukama w’empewo n’amayengo."
+   }
+  ],
+  "word_count": 216
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "lg"
+  ],
+  "order": 7,
+  "title": "Okusabira Empewo",
+  "body_html": "<blockquote>“Mumpite n’abayitaba.” — okuva mu Yeremiya 33</blockquote> <p>Mu lugendo olwo lwennyini oluwanvu ku nnyanja, akabi akalala ne kajja — ekyali kikontana ddala n’omuyaga. Emmeeri yatuuka mu kifo <em>awataali mpewo n’akatono.</em> Amatanga ne gasigala nga gaddiridde, era amazzi agakulukuta n’amaanyi ne gatandika okuwalula mpola emmeeri nga gagitwala ku mayinja ag’akabi agakwese wansi w’amazzi, ng’eno bw’omuliro gwaka ku lubalama olwali okumpi.</p> <p>Abalunnyanja ne bagezaako buli kimu okukyusa emmeeri, naye tekyakola. Ku nkomerero kapiteeni n’agamba n’ennaku nti, “Tusobola kulinda kyokka tulabe ekinaabaawo.”</p> <p>Hudson n’agamba nti, “Nedda. Waliwo ekintu kimu kye tutannakola.” N’anoonya abantu abalala abaali ku mmeeri abaali baagala Katonda — bana bokka, nga naye mw’abalibwa — n’asaba buli omu agende asabe Katonda aweereze empewo.</p> <p>Hudson n’asaba essaala ennyimpi, n’awulira nga mukakafu nnyo nti Katonda ajja kuddamu, n’ayambuka waggulu ku mmeeri n’asaba omukungu omu eyali omukambwe ateeketeeke amatanga. Omukungu n’amunyooma n’agamba nti, “Nandisinze <em>okulaba</em> empewo okusinga okugiwulirako obuwulizi!” Naye nga akyayogera — laba! — ettanga ery’okungulu ne litandika okuwuuba. Akawewo kaali kajja! Amangu ddala emmeeri n’etandika okusaabala ennyo, n’eva ku mayinja nga terina kabi.</p> <p>Oluusi tugezaako buli kimu okuggyako ekintu ekisinga obukulu. Bw’oba tomanyi kya kukola kirala, jjukira ebigambo bya Hudson: “Waliwo ekintu kimu kye tutannakola.” Saba. Katonda ayagala nnyo okuddamu.</p> <p><em>Katonda omwagalwa, nnyamba okusooka okusaba, so si kusembyayo. Weebale nti ompulira era onziramu mu kiseera ddala ekituufu. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kiki ekyali kitali bulungi omulundi guno mu lugendo ku nnyanja?",
+    "answer": "Tewaaliwo mpewo n’akatono, era amazzi agakulukuta n’amaanyi gaali gawalula emmeeri nga gagitwala ku mayinja ag’akabi agakwese wansi w’amazzi."
+   },
+   {
+    "question": "“Ekintu kimu kye tutannakola” kyali ki?",
+    "answer": "Okusaba. Hudson yasaba abantu abana abaali ku mmeeri abaali baagala Katonda basabe Katonda aweereze empewo, era amangu ddala ettanga ery’okungulu ne litandika okuwuuba."
+   },
+   {
+    "question": "Mwogere wamu: Bwe wabaawo ekizibu, emirundi egisinga osooka kusaba oba osembyayo?",
+    "answer": "Essuula eno etuyigiriza nti: oluusi tugezaako buli kimu okuggyako ekintu ekisinga obukulu. Bw’oba tomanyi kya kukola kirala, saba. Katonda ayagala nnyo okuddamu."
+   }
+  ],
+  "word_count": 216
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "lg"
+  ],
+  "order": 8,
+  "title": "Okwambala ng’Abantu be Yali Ayagala",
+  "body_html": "<blockquote>“Eri abantu bonna nfuuse byonna, mu ngeri yonna ndyoke mbeeko beentusa ku kulokolebwa.” — okuva mu 1 Abakkolinso 9</blockquote> <p>Hudson bwe yatuuka mu China, yali ayagala abantu baayo bawulirize amawulire ge amalungi agakwata ku Yesu. Naye waaliwo ekizibu: yali afaanana mu ngeri ya njawulo nnyo! Mu ngoye ze ez’Abangereza, ebibiina by’abantu byamugobereranga, nga bamusonga ennwe, nga bamusekerera, era nga bamuyita n’amannya amavume. Kyali kizibu okuwulirwa wakati mu kujerega kwonna okwo.</p> <p>N’olwekyo Hudson n’akola ekintu eky’obuvumu. N’asalawo okwambala nga Abachina bwe baayambalanga, era n’akkiriza ne bamumwa enviiri ze ne bazikola nga ezaabwe. Kaakano, bwe yatambulanga mu kibuga, abantu tebaamwekalirizanga maaso wadde okumujerega. Baawulirizanga mu kasirise, era nga n’okumuyita bamuyita mu maka gaabwe.</p> <p>Hudson yalina mukwano gwe, Mw. Burns, eyali akyayambala engoye ze ez’Abangereza. Mw. Burns n’akiraba nti Hudson yafunanga ebibiina by’abantu abakkakkamu era ab’omukwano, so nga ye yennyini yagobererwanga abalenzi abatalina mpisa abaamujereganga. Bwe yamala wiiki ntono ng’alaba kino, Mw. Burns naye n’ayambala engoye z’Abachina!</p> <p>Hudson teyakyusa ngoye ze lwa kuba nti yali awaliriziddwa. Yakikola lwa kwagala — yali mwetegefu okulekayo okwewulira obulungi kwe n’amalala ge abantu balyoke bawulirize era bamanye Yesu.</p> <p>Okwagala bwe kukola bwe kutyo. Kusooka kulowooza ku balala. Waliwo engeri gy’oyinza okulekayo akantu akatono — okuba omutuufu, okuba omubereberye, okwewulira obulungi — okuyamba omuntu omulala okuwulira nti ayanirizibwa?</p> <p><em>Katonda omwagalwa, mpa omutima omwetegefu okulekayo okwewulira obulungi kwange olw’okwagala, abalala balyoke balabe ekisa kyo mu nze. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lwaki abantu mu China baasooka kusekerera Hudson?",
+    "answer": "Yali afaanana mu ngeri ya njawulo nnyo mu ngoye ze ez’Abangereza, ne kiba nti ebibiina by’abantu byamugobereranga, nga bamusonga ennwe, nga bamusekerera era nga bamuyita amannya amavume."
+   },
+   {
+    "question": "Kiki ekyakyuka Hudson bwe yatandika okwambala ng’Abachina?",
+    "answer": "Abantu ne balekera awo okumwekaliriza amaaso n’okumujerega. Ne bawuliriza mu kasirise era ne bamuyita mu maka gaabwe, era amangu ddala ne mukwano gwe Mw. Burns n’atandika okwambala engoye z’Abachina."
+   },
+   {
+    "question": "Mwogere wamu: Oyinza okulekayo akantu akatono okuyamba omuntu okuwulira nti ayanirizibwa?",
+    "answer": "Essuula eno etuyigiriza nti: Hudson yakikola lwa kwagala. Okwagala kusooka kulowooza ku balala era kwetegefu okulekayo okwewulira obulungi oba amalala, ng’okwagala okuba omutuufu oba okuba omubereberye."
+   }
+  ],
+  "word_count": 228
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "lg"
+  ],
+  "order": 9,
+  "title": "Ekiro ku Madaala ga Yeekaalu",
+  "body_html": "<blockquote>“Sirikuleka era sirikwabulira n’akatono.” — okuva mu Abaebbulaniya 13</blockquote> <p>Lumu omuweereza wa Hudson yennyini yadduka — era n’atwala n’emigugu gya Hudson gyonna! Amangwago Hudson n’asigala nga kumpi talina kintu, ewala n’ewaka mu kifo ekitamanyiddwa. Ng’ebigere bimuluma era ng’akooye, n’anoonya buli wamu ekifo w’ayinza okusula, naye tewaali muntu yenna eyakkiriza okumusuza.</p> <p>Ku nkomerero n’agalamira ku madaala ag’amayinja amannyogovu mu maaso ga yeekaalu eyali esibiddwa, n’ateeka akasente ke akatono wansi w’omutwe gwe ng’omutto. Mu kizikiza, omusabiriza n’amusemberera mpola, ng’asuubira okumubba. Hudson n’amubuuza mpola nti, “Oyagala ki?” — omusajja n’agenda mu kasirise. Oluvannyuma abasajja abalala ne bakuŋŋaanira ku bigere bye, nga beefuula nti baagala kumubeera naye bubeezi.</p> <p>Hudson teyabuzaabuzibwa, era yali tali yekka. N’abagamba nti, “Nsinza Katonda. Ye Kitange, era mmwesiga.” Okusobola okusigala nga tasumagira era nga talina kabi, n’ayimba ennyimba z’okutendereza, n’ayogera mu ddoboozi ennyiriri za Bayibuli, n’asaba — okutuusa abasajja abo lwe baakoowa ne bagenda obudde nga tebunnakya.</p> <p>Ekiro ekyo kyonna eky’ekizikiza era ekitiisa, Katonda yali akuuma Hudson, nga bwe yali asuubizza: “Sirikuleka era sirikwabulira n’akatono.”</p> <p>Bw’owulira ng’oli wekka, oba ebintu ne bitatambula bulungi n’otya, jjukira: Katonda ali naawe ddala, ne mu kizikiza. Yasuubiza obutakuleka n’akatono.</p> <p><em>Katonda omwagalwa, weebale nti tondeka n’akatono, ne mu biseera eby’ekizikiza era ebitiisa. Nnyamba okwesiga nti bulijjo oli kumpi nange. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lwaki Hudson yeebaka ku madaala ga yeekaalu?",
+    "answer": "Omuweereza we yadduka n’emigugu gye gyonna, era tewaali muntu yenna eyakkiriza okumusuza."
+   },
+   {
+    "question": "Hudson yasigala atya nga talina kabi okuva ku basajja abaali baagala okumubba?",
+    "answer": "Yasigala nga tasumagira, ng’ayimba ennyimba z’okutendereza, ng’ayogera mu ddoboozi ennyiriri za Bayibuli era ng’asaba, okutuusa abasajja abo lwe baakoowa ne bagenda obudde nga tebunnakya."
+   },
+   {
+    "question": "Mwogere wamu: Kiki ky’oyinza okujjukira bw’owulira ng’oli wekka oba ng’otidde mu kizikiza?",
+    "answer": "Essuula eno etuyigiriza nti: Katonda ali naawe ddala, ne mu kizikiza. Yasuubiza nti, “Sirikuleka era sirikwabulira n’akatono.”"
+   }
+  ],
+  "word_count": 205
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "lg"
+  ],
+  "order": 10,
+  "title": "Okusonyiwa Omubbi",
+  "body_html": "<blockquote>“Musonyiwenga era nammwe mulisonyiyibwa.” — okuva mu Lukka 6</blockquote> <p>Amangu ddala Hudson n’azuula ekintu ekyamunakuwaza: yali omuweereza we yennyini eyateekateeka n’abba buli kimu kye yalina mu China — ebintu eby’omuwendo gwa pawundi nga amakumi ana, nga ssente nnyingi nnyo.</p> <p>Hudson yandisobodde okukwasisa omubbi ne bamubonereza. Kyandibadde kyangu, era tewali yandimunenyezza. Naye omuweereza ono yali muntu Hudson gwe yali asabidde. Era Hudson n’ajjukira okuyigiriza kwa Yesu — ebigambo byennyini bye baali basomye wamu edda — obutasasula kibi olw’ekibi.</p> <p>N’olwekyo Hudson n’asalawo ekintu ekyewuunyisa. Emmeeme y’omusajja oyo, bwe yalowooza, yali ya mugaso nnyo okusinga entuumu y’ebintu ebyabbibwa. Mu kifo ky’okumubonereza, Hudson n’awandiikira omubbi ebbaluwa ey’ekisa, ng’amwegayirira yeenenye era yeesige Mukama Yesu.</p> <p>Era wuliriza enkomerero ennungi: mukwano gwe omu eyali e Bungereza, eyasanyuka okuwulira nga Hudson bwe yasonyiwa omubbi, n’amuweereza ekirabo — ceeke ya pawundi amakumi ana nnamba, omuwendo gwe gumu gwe yali afiiriddwa. Ekyo kye kyali ekirabo ekisooka ku birabo bingi okuva eri mukwano gwe oyo.</p> <p>Okusonyiwa omuntu eyakulumya kye kimu ku bintu ebisinga obuzibu era ebisinga obuvumu by’osobola okukola. Naye Yesu bwe yatukolera bw’atyo, era Katonda alabirira abo abasonyiwa.</p> <p><em>Katonda omwagalwa, omuntu bw’andumya, nnyamba okusonyiwa nga Yesu bw’ansonyiwa. Ebisigadde nkukwasa ggwe. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ani eyabba buli kimu Hudson kye yalina mu China?",
+    "answer": "Omuweereza we yennyini, omusajja Hudson gwe yali asabidde. Ebintu ebyo byali bya muwendo gwa pawundi nga amakumi ana."
+   },
+   {
+    "question": "Hudson yakola ki mu kifo ky’okubonereza omubbi?",
+    "answer": "Yawandiikira omubbi ebbaluwa ey’ekisa, ng’amwegayirira yeenenye era yeesige Mukama Yesu. Oluvannyuma mukwano gwe omu n’amuweereza pawundi amakumi ana nnamba."
+   },
+   {
+    "question": "Mwogere wamu: Lwaki kizibu nnyo okusonyiwa omuntu eyakulumya?",
+    "answer": "Essuula eno etuyigiriza nti: okusonyiwa kye kimu ku bintu ebisinga obuzibu era ebisinga obuvumu by’osobola okukola, naye Yesu bwe yatukolera, era Katonda alabirira abo abasonyiwa."
+   }
+  ],
+  "word_count": 191
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "lg"
+  ],
+  "order": 11,
+  "title": "Ssente Emu Esigadde, n’Ekikopo kya Kokoa",
+  "body_html": "<blockquote>“Mukama alitugabirira.” — okuva mu Olubereberye 22</blockquote> <p>Mu kibuga Ningpo, Hudson ne mukwano gwe Mw. Jones baawanga abantu abaavu nga nsanvu eky’enkya buli lunaku. Ku kisenge kyabwe kwali kuwanikiddwa obupande bubiri obutono okubajjukiza ani eyasasulira byonna ebyo. Akamu kaali kagamba nti, “Mukama atuyambye okutuusa kaakano.” Akalala kaali kagamba nti, “Mukama alitugabirira.”</p> <p>Lumu ku makya baali basigazza ssente emu yokka entono ennyo — nga tewera wadde peni emu. Ne basalawo okugenda okutunda ssigiri yaabwe ey’ekyuma bagule emmere. Naye bwe baasitula okugenda, ne basanga nti olutindo oluyita ku mugga lwali lutwaliddwa amazzi mu kiro! Ekyombo ekitono ekisomosa kyali kya ssente bbiri, so nga bo baalina emu yokka. N’olwekyo ne baddayo eka, nga tebalina kye bafunye.</p> <p>Ewaka ne bazuula akapapula akatono aka kokoa. Ne bagitabula n’amazzi agookya ne baginywa, era n’ebawa amaanyi agaabamala okweyongera mu maaso. Awo — nga bakyafukamidde nga basaba — ebbaluwa n’etuuka okuva e Bungereza. Munda mwalimu ssente, ezaaweerezebwa mukwano gwabwe eyali ewala ennyo, eyali tamanyi n’akatono nti zaali zeetaagibwa nnyo ku makya ago gennyini.</p> <p>Katonda teyazisindika lunaku lumu nga bukyali. Naye era teyazisindika kaseera na kamu nga kikeerezi. Ebigambo “Mukama alitugabirira” byakakasibwa nti bituufu ddala.</p> <p>Katonda atuwa bye twetaaga olwa leero, mu kiseera ddala we tubyetaagira. Naawe osobola okumwesiga okukuwa “emmere yaffe eya buli lunaku.”</p> <p><em>Katonda omwagalwa, weebale nti ongaba ddala bye neetaaga, mu kiseera ekituufu. Nnyamba okukwesiga lunaku ku lunaku. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lwaki Hudson ne Mw. Jones tebaasobola kutunda ssigiri yaabwe?",
+    "answer": "Olutindo lwali lutwaliddwa amazzi mu kiro, era ekyombo ekisomosa kyali kya ssente bbiri. Baalina emu yokka, n’olwekyo ne baddayo eka."
+   },
+   {
+    "question": "Kiki ekyabaawo nga bakyafukamidde nga basaba?",
+    "answer": "Ebbaluwa yatuuka okuva e Bungereza nga mulimu ssente, ezaaweerezebwa mukwano gwabwe eyali tamanyi n’akatono nti zaali zeetaagibwa nnyo ku makya ago gennyini."
+   },
+   {
+    "question": "Mwogere wamu: Ebigambo “Mukama alitugabirira” bitegeeza ki eri amaka gaffe leero?",
+    "answer": "Essuula eno etuyigiriza nti: Katonda atuwa bye twetaaga olwa leero, mu kiseera ddala we tubyetaagira, si mangu nnyo era si kikeerezi nnyo. Tusobola okumwesiga lunaku ku lunaku."
+   }
+  ],
+  "word_count": 223
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "lg"
+  ],
+  "order": 12,
+  "title": "Ebigambo Bibiri ku Musenyu",
+  "body_html": "<blockquote>“Noolwekyo musabe nannyini nnimiro, aweereze abakozi mu nnimiro ye.” — okuva mu Matayo 9</blockquote> <p>Nga wayise emyaka, Hudson yali akomyewo e Bungereza, ng’akooye nnyo era nga mulwadde. Lumu yali ayimiridde ng’atunuulira maapu ennene ennyo eya China. N’alowooza ku bukadde n’obukadde bw’abantu abaali babeera munda ddala mu nsi eyo, ewala n’olubalama lw’ennyanja, abaali batawulirangako ku Yesu wadde omulundi gumu — omutima gwe ne gubulako katono okumenyeka.</p> <p>Hudson yali amanyi ekyali kyetaagibwa: abakozi abalala, bangi nnyo, okugenda okubuulira abantu abo amawulire amalungi. Naye yali atya okubasaba Katonda — kubanga Katonda bwe yandibasindise, Hudson ye yandibadde n’obuvunaanyizibwa okubalabirira bonna! Okweraliikirira okwo kwamulabikira nga kunene nnyo.</p> <p>Ku Ssande emu, mu kibuga ekiyitibwa Brighton, yalemwa ddala okutuula obulungi mu kkanisa wakati mu bantu lukumi abaali beewulira obulungi. N’olwekyo n’afuluma yekka n’agenda ku lubalama lw’ennyanja olw’omusenyu. Eyo, amayengo nga gakulukuta nga gajja, ku nkomerero n’alekera awo okutya n’awaayo omulimu gwonna omunene eri Katonda.</p> <p>Awo n’asaba essaala ey’obuvumu era entegeerekeka: yasaba Katonda <strong>abakozi banne amakumi abiri mu bana</strong> okugenda mu bitundu bya China ebitaalina muminsani n’omu. Essaala ye eyo n’agiwandiika ku mabbali g’olupapula mu Bayibuli gye yali akutte. Olwo n’addayo eka, era omulundi ogwasooka mu myezi mingi, omutima gwe ne gujjula emirembe.</p> <p>Essaala eyo ku lubalama lw’ennyanja ye yali entandikwa y’obuminsani obunene obwandisindise abakozi bikumi na bikumi mu China.</p> <p>Bw’olekera awo okutya n’okwasa Katonda okweraliikirira kwo okusinga obunene, akuwa emirembe — era asobola okukola ebisingira ddala by’otosobola na kuloota. N’olwekyo totya kumusaba bintu binene.</p> <p><em>Katonda omwagalwa, nnyamba okulekera awo okutya n’okukuwa okweraliikirira kwange okusinga obunene. Weebale nti osobola okukola ebintu ebinene. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lwaki Hudson yawulira ennaku nnyingi bwe yali atunuulira maapu ennene eya China?",
+    "answer": "Yalowooza ku bukadde n’obukadde bw’abantu abaali babeera munda ddala mu nsi eyo, abaali batawulirangako ku Yesu wadde omulundi gumu."
+   },
+   {
+    "question": "Hudson yasaba ki ku lubalama lw’ennyanja e Brighton?",
+    "answer": "Yawaayo omulimu gwonna omunene eri Katonda, n’amusaba abakozi amakumi abiri mu bana okugenda mu bitundu bya China ebitaalina muminsani. Essaala eyo n’agiwandiika ku mabbali g’olupapula mu Bayibuli ye."
+   },
+   {
+    "question": "Mwogere wamu: Kweraliikirira ki okunene ky’oyinza okukwasa Katonda?",
+    "answer": "Essuula eno etuyigiriza nti: bw’olekera awo okutya n’owa Katonda okweraliikirira kwo okusinga obunene, akuwa emirembe era asobola okukola ebisingira ddala by’otosobola na kuloota. Totya kumusaba bintu binene."
+   }
+  ],
+  "word_count": 255
+ }
+}
+]

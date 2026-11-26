@@ -109,7 +109,7 @@
 					{#if goalMet}
 						{t('settings.goalMet')}
 					{:else}
-						{weekCount} {t('settings.goalOf')} {goal} {t('settings.goalDaysThisWeek')}
+						{i18n.unit('settings.goalDaysThisWeek', `${weekCount} ${t('settings.goalOf')} ${goal}`)}
 					{/if}
 				</div>
 				<GoalPips {goal} {weekCount} />

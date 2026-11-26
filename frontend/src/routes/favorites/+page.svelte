@@ -522,12 +522,10 @@
 						>
 							{#snippet aside()}
 								{#if topic.book_count}
-									{topic.book_count}
-									{i18n.tn(topic.book_count, 'common.bookOne', 'common.bookMany')}
+									{i18n.count(topic.book_count, 'common.bookOne', 'common.bookMany')}
 								{/if}
 								{#if topic.sermon_count}
-									{#if topic.book_count}· {/if}{topic.sermon_count}
-									{i18n.tn(topic.sermon_count, 'common.sermonOne', 'common.sermonMany')}
+									{#if topic.book_count}· {/if}{i18n.count(topic.sermon_count, 'common.sermonOne', 'common.sermonMany')}
 								{/if}
 							{/snippet}
 							<p class="shelf-card-desc mt-1.5 text-small text-muted">{topic.description}</p>
@@ -556,8 +554,7 @@
 								<span class="min-w-0">
 									<span class="block text-body font-semibold text-text">{plan.title}</span>
 									<span class="block text-small text-muted">
-										{plan.day_count}
-										{t('plans.days')}
+										{i18n.unit('plans.days', plan.day_count)}
 									</span>
 								</span>
 								<CoverStrip covers={plan.covers} max={3} />

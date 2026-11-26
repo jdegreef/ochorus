@@ -81,7 +81,27 @@ class I18n {
 		const form = forms?.[rulesFor(locale).select(n)];
 		return form ?? this.t(n === 1 ? oneKey : manyKey);
 	};
+	/**
+	 * A count, number and noun in the locale's order: `count(66, 'common.bookOne',
+	 * 'common.bookMany')` is "66 books" but "vitabu 66" — Swahili and Luganda put
+	 * the number after its noun. `shown` is the number as printed, when it isn't
+	 * just `n` ("1,189", "3 of 30", "~10"). See `placeCount`.
+	 */
+	count = (n: number, oneKey: string, manyKey: string, shown: string | number = n): string =>
+		placeCount(this.tn(n, oneKey, manyKey), shown);
+	/** `count` for a unit with one form: `unit('plans.days', 30)` → "30 days" / "siku 30". */
+	unit = (key: string, shown: string | number): string => placeCount(this.t(key), shown);
 }
+
+/**
+ * Put a count into its noun. A noun whose catalogue string holds `%n%` says
+ * where its number goes ("vitabu %n%", "vitabu %n% katika maktaba"); one that
+ * doesn't takes it in front, as most of the locales do ("66 books", "66 冊").
+ * So a noun-first language reorders by editing its own catalogue, and every
+ * other locale's strings stay as they are.
+ */
+export const placeCount = (text: string, shown: string | number): string =>
+	text.includes('%n%') ? text.replace('%n%', String(shown)) : `${shown} ${text}`;
 
 export const i18n = new I18n();
 

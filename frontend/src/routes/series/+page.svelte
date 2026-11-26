@@ -119,11 +119,9 @@
 		meta={series.length ? counts : undefined}
 	/>
 	{#snippet counts()}
-		{series.length}
-		{i18n.tn(series.length, 'common.seriesOne', 'common.seriesMany')}
+		{i18n.count(series.length, 'common.seriesOne', 'common.seriesMany')}
 		<span class="sep">·</span>
-		{bookTotal}
-		{i18n.tn(bookTotal, 'common.bookOne', 'common.bookMany')}
+		{i18n.count(bookTotal, 'common.bookOne', 'common.bookMany')}
 	{/snippet}
 	<!-- The library tabs sit under the title, as on /books (design review #4). -->
 	<LibraryTabs current="series" />
@@ -174,8 +172,7 @@
 						<span class="door-covers" aria-hidden="true"><CoverStrip covers={doorCovers(g)} max={3} /></span>
 						<span class="door-name font-display">{audienceName(g.audience)}</span>
 						<span class="text-small text-muted"
-							>{g.series.length}
-							{i18n.tn(g.series.length, 'common.seriesOne', 'common.seriesMany')} <Arrow /></span
+							>{i18n.count(g.series.length, 'common.seriesOne', 'common.seriesMany')} <Arrow /></span
 						>
 					</a>
 				{/each}

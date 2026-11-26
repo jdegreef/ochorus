@@ -27,7 +27,7 @@
 					sermonsOnHref(links.position, links.sermons) ??
 						`/sermons?book=${encodeURIComponent(links.sermon_book)}`
 				)}
-				>{links.sermons} {i18n.tn(links.sermons, 'common.sermonOne', 'common.sermonMany')}</a
+				>{i18n.count(links.sermons, 'common.sermonOne', 'common.sermonMany')}</a
 			>
 		{/if}
 		{#if links.sermons && links.scripture}<span class="sep" aria-hidden="true"> · </span>{/if}

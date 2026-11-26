@@ -43,7 +43,8 @@ import {
 	UPRIGHT,
 	badge,
 	ledge,
-	shelf
+	shelf,
+	placeCount
 } from './card-kit.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -100,7 +101,7 @@ async function draw(locale, plan, msg, build) {
 
 	const perDay = minutesPerDay(plan);
 	parts.push({
-		input: await badge(locale, plan.day_count, msg.plans_days, perDay ? `~${perDay} ${msg.plans_min_per_day}` : ''),
+		input: await badge(locale, plan.day_count, msg.plans_days, perDay ? placeCount(msg.plans_min_per_day, `~${perDay}`) : ''),
 		left: rtl ? 72 : W - 72 - BADGE.d,
 		top: BADGE.top
 	});

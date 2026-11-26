@@ -661,7 +661,7 @@
 									<div class="text-body text-text">{t('settings.streakNone')}</div>
 								{/if}
 								<div class="mt-0.5 text-small text-muted">
-									{t('settings.streakLongest')} {longest} · {activityDays.length} {t('settings.streakDaysRead')}
+									{t('settings.streakLongest')} {longest} · {i18n.unit('settings.streakDaysRead', activityDays.length)}
 								</div>
 							</div>
 						</div>
@@ -675,7 +675,7 @@
 										{#if goalMet}
 											{t('settings.goalMet')}
 										{:else}
-											{weekCount} {t('settings.goalOf')} {goal} {t('settings.goalDaysThisWeek')}
+											{i18n.unit('settings.goalDaysThisWeek', `${weekCount} ${t('settings.goalOf')} ${goal}`)}
 										{/if}
 									</div>
 								</div>

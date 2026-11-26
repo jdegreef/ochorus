@@ -406,8 +406,7 @@
 	{#snippet bookCounts()}
 		<!-- Works, as the grid shows them; and, where young-reader editions fold
 		     into their full texts, every edition too, so neither number hides. -->
-		{slotCount}
-		{i18n.tn(slotCount, 'common.bookOne', 'common.bookMany')}
+		{i18n.count(slotCount, 'common.bookOne', 'common.bookMany')}
 		{#if slotCount < editionCount}
 			<span class="sep" aria-hidden="true">·</span>
 			{t('books.editionsCount').replace('%n%', String(editionCount))}
@@ -635,7 +634,7 @@
 						<BookListRow
 							book={biblePin}
 							href={`${BIBLE_PATH}/`}
-							meta={`${bibleBooks.length} ${i18n.tn(bibleBooks.length, 'common.bookOne', 'common.bookMany')}`}
+							meta={i18n.count(bibleBooks.length, 'common.bookOne', 'common.bookMany')}
 						/>
 					</div>
 				{/if}

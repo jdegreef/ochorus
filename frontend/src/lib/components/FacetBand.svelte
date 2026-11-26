@@ -34,8 +34,6 @@
 		cols?: number;
 	} = $props();
 
-	const t = i18n.t;
-	const authors = (n: number) => t(n === 1 ? 'common.authorOne' : 'common.authorMany');
 </script>
 
 {#snippet face(c: BandCard)}
@@ -55,7 +53,9 @@
 				/>
 			{/each}
 		</span>
-		<span class="band-count">{c.count}<span class="sr-only"> {authors(c.count)}</span></span>
+		<span class="band-count"><span aria-hidden="true">{c.count}</span><span class="sr-only"
+			>{i18n.count(c.count, 'common.authorOne', 'common.authorMany')}</span
+		></span>
 	</span>
 {/snippet}
 

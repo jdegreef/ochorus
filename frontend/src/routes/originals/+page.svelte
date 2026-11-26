@@ -58,7 +58,7 @@
 	const visibleBooks = (books: BookSummary[]) =>
 		books.length > SERIES_ROW_COVERS ? books.slice(0, SERIES_ROW_COVERS - 1) : books;
 	const totalWords = $derived(shelf.books.reduce((n, b) => n + (b.word_count ?? 0), 0));
-	const count = (n: number, one: string, many: string) => `${n} ${i18n.tn(n, one, many)}`;
+	const count = i18n.count;
 
 	// Three covers fanned in the hero: one from each kind of Original, falling
 	// back to whatever this language has.
