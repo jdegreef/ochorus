@@ -31,11 +31,10 @@
 	// Hoisted for the "Continue your plans" rows (i18n.t is an uncached lookup);
 	// the shelf's own cards are PlanShelfCard, which hoists its own.
 	const OF = t('plans.of');
-	const DAYS = t('plans.days');
 	const DAY = t('plans.day');
 	/** The progress bar's accessible name — the visible caption, in words. */
 	const dayLabel = (plan: PlanSummary, done: number) =>
-		`${plan.title}: ${done} ${OF} ${plan.day_count} ${DAYS}`;
+		`${plan.title}: ${i18n.unit('plans.days', `${done} ${OF} ${plan.day_count}`)}`;
 
 	// Length: the question a reader brings to this shelf is how much time they
 	// have, so the shelf is grouped by it (design review #19) — "A week or two"
@@ -215,8 +214,7 @@
 		meta={plans.length ? planCounts : undefined}
 	/>
 	{#snippet planCounts()}
-		{plans.length}
-		{i18n.tn(plans.length, 'common.planOne', 'common.planMany')}
+		{i18n.count(plans.length, 'common.planOne', 'common.planMany')}
 	{/snippet}
 
 	{#if loadError}

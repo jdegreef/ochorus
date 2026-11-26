@@ -182,9 +182,9 @@
 	 *  mounted; a started plan counts from the days still to read. */
 	const factsLine = $derived(
 		[
-			`${plan.day_count} ${t('plans.days')}`,
+			i18n.unit('plans.days', plan.day_count),
 			// "1 book" says nothing the cover beside it doesn't.
-			planBooks.length > 1 ? `${planBooks.length} ${i18n.tn(planBooks.length, 'common.bookOne', 'common.bookMany')}` : '',
+			planBooks.length > 1 ? i18n.count(planBooks.length, 'common.bookOne', 'common.bookMany') : '',
 			perDay ? t('plans.aboutMinPerDay').replace('%n%', String(perDay)) : '',
 			next !== null && finishDate
 				? t(started ? 'plans.finishReadingDaily' : 'plans.finishIfStart').replace('%d%', () => finishDate)
@@ -401,7 +401,7 @@
 										<!-- The separator as an expression: literal spaces at an {#if}
 										     boundary are compiler-trimmed ("Prayer·9 min"). -->
 										{daySource(nextDay)}{#if nextDay.word_count}<span class="opacity-60">{' · '}</span
-											>{readingMinutes(nextDay.word_count)} {t('common.min')}{/if}
+											>{i18n.unit('common.min', readingMinutes(nextDay.word_count))}{/if}
 									</p>
 									{#if nextDay.key_verse}
 										<span class="tag verse-chip mt-2">{nextDay.key_verse}</span>
@@ -419,7 +419,7 @@
 									{next}
 									grow={justRead}
 									hue={planMeta(plan.slug).accent}
-									label="{plan.title}: {doneCount} {t('plans.of')} {plan.day_count} {t('plans.days')}"
+									label="{plan.title}: {i18n.unit('plans.days', `${doneCount} ${t('plans.of')} ${plan.day_count}`)}"
 								/>
 							</div>
 						{/if}
@@ -458,7 +458,7 @@
 						next={null}
 						grow={justRead}
 						hue={planMeta(plan.slug).accent}
-						label="{plan.title}: {doneCount} {t('plans.of')} {plan.day_count} {t('plans.days')}"
+						label="{plan.title}: {i18n.unit('plans.days', `${doneCount} ${t('plans.of')} ${plan.day_count}`)}"
 					/>
 				</div>
 				<ForPromo place="plan-done" class="mt-2" />
@@ -577,7 +577,7 @@
 											{#if started && read}
 												{t('plans.readOf').replace('%n%', String(read)).replace('%m%', String(g.days.length))}
 											{:else}
-												{g.days.length} {t('plans.days')} · {readingTime(groupWords(g))}
+												{i18n.unit('plans.days', g.days.length)} · {readingTime(groupWords(g))}
 											{/if}
 										</span>
 									</span>
@@ -618,7 +618,7 @@
 									<span class="min-w-0 flex-1">
 										<span class="block truncate text-body text-text" dir="auto">{dayTitle(d)}</span>
 										<span class="block text-small text-muted"
-											>{t('plans.day')} {d.day} · {readingMinutes(d.word_count || 0)} {t('common.min')}</span
+											>{t('plans.day')} {d.day} · {i18n.unit('common.min', readingMinutes(d.word_count || 0))}</span
 										>
 									</span>
 								</a>
@@ -707,7 +707,7 @@
 							<span class="block text-small text-muted">
 								{#if d.article_slug}{t('search.typeArticle')}<span class="sep">{' · '}</span>{/if}{#if d.key_verse}<span
 										class="sm:hidden">{d.key_verse}<span class="sep">{' · '}</span></span
-									>{/if}{readingMinutes(d.word_count || 0)} {t('common.min')}
+									>{/if}{i18n.unit('common.min', readingMinutes(d.word_count || 0))}
 							</span>
 						</span>
 						{#if d.key_verse}

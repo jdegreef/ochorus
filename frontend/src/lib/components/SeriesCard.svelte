@@ -153,8 +153,7 @@
 	action={hasAction || (!compact && companion) ? footer : undefined}
 >
 	{#snippet aside()}
-		{series.book_count}
-		{i18n.tn(series.book_count, 'common.bookOne', 'common.bookMany')}
+		{i18n.count(series.book_count, 'common.bookOne', 'common.bookMany')}
 	{/snippet}
 	{#if series.tagline}
 		<!-- The series' promise, as its page leads with it. -->

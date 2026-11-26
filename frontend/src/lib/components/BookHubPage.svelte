@@ -79,11 +79,9 @@
 		<h1 class="text-h1 mb-2">{title}</h1>
 		<p class="mb-3 text-small text-muted">
 			<span class="whitespace-nowrap">
-				{books.length}
-				{i18n.tn(books.length, 'common.bookOne', 'common.bookMany')}
+				{i18n.count(books.length, 'common.bookOne', 'common.bookMany')}
 			</span>{' · '}<span class="whitespace-nowrap">
-				{writers}
-				{i18n.tn(writers, 'common.authorOne', 'common.authorMany')}
+				{i18n.count(writers, 'common.authorOne', 'common.authorMany')}
 			</span>
 		</p>
 		<p class="max-w-2xl text-body text-muted">{lede || description}</p>

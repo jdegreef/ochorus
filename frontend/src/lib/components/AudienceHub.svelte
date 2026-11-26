@@ -219,10 +219,9 @@
 	</section>
 	{#snippet meta()}
 		<span class="whitespace-nowrap"
-			>{counts.books} {i18n.tn(counts.books, 'common.bookOne', 'common.bookMany')}</span
+			>{i18n.count(counts.books, 'common.bookOne', 'common.bookMany')}</span
 		>{#if counts.series}{' '}<span class="sep">·</span>{' '}<span class="whitespace-nowrap"
-				>{counts.series}
-				{i18n.tn(counts.series, 'common.seriesOne', 'common.seriesMany')}</span
+				>{i18n.count(counts.series, 'common.seriesOne', 'common.seriesMany')}</span
 			>{/if}
 	{/snippet}
 

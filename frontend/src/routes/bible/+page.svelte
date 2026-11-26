@@ -260,11 +260,9 @@
 		meta={books.length ? counts : undefined}
 	/>
 	{#snippet counts()}
-		{books.length}
-		{i18n.tn(books.length, 'common.bookOne', 'common.bookMany')}
+		{i18n.count(books.length, 'common.bookOne', 'common.bookMany')}
 		{#if chapters}
-			· {chapters.toLocaleString(lang)}
-			{i18n.tn(chapters, 'book.chapterOne', 'book.chaptersMany')}
+			· {i18n.count(chapters, 'book.chapterOne', 'book.chaptersMany', chapters.toLocaleString(lang))}
 		{/if}
 	{/snippet}
 	<!-- What the translation is, where a reader first wonders: who made it, what
@@ -405,7 +403,7 @@
 							{#snippet progress()}
 								<ProgressBar
 									percent={(done / plan.day_count) * 100}
-									label={`${plan.title}: ${done} ${t('plans.of')} ${plan.day_count} ${t('plans.days')}`}
+									label={`${plan.title}: ${i18n.unit('plans.days', `${done} ${t('plans.of')} ${plan.day_count}`)}`}
 								/>
 							{/snippet}
 						</ContinueRow>

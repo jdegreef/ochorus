@@ -48,7 +48,8 @@ import {
 	sharp,
 	text,
 	wordmark,
-	UPRIGHT
+	UPRIGHT,
+	placeCount
 } from './card-kit.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -154,7 +155,7 @@ const lifespan = (a, born) =>
  *  same size, so Arabic takes a step more. */
 const lineSize = (locale, quoting) => (quoting ? 29 : locale === 'ar' ? 40 : 34);
 
-const count = (n, one, many) => (n ? `${n} ${n === 1 ? one : many}` : '');
+const count = (n, one, many) => (n ? placeCount(n === 1 ? one : many, n) : '');
 
 async function draw(locale, author, own, msg, quote, portraitFile) {
 	const { base, ax, col, rtl } = await ground(locale, msg.author_share_footer);

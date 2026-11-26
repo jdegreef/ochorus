@@ -307,8 +307,7 @@
 			<p class="facts mt-5 text-small text-muted">
 				{#if books.length}
 					<span
-						>{books.length}
-						{i18n.tn(books.length, 'common.bookOne', 'common.bookMany')}
+						>{i18n.count(books.length, 'common.bookOne', 'common.bookMany')}
 						{say(COPY.onOchorus)}</span
 					>
 					<span class="sep" aria-hidden="true">·</span>
