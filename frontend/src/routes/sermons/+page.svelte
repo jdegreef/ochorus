@@ -11,7 +11,7 @@
 	import { pager, pagedSnapshot } from '$lib/paging.svelte';
 	import { featuredOrder, startWith } from '$lib/sermonPicks';
 	import { canonGrid } from '$lib/sermonCanon';
-	import { sermonsOnHref } from '$lib/sermonsOn';
+	import { sermonsOnBooks, sermonsOnHref, sermonsOnPath } from '$lib/sermonsOn';
 	import { isPlainPrimaryClick } from '$lib/plainClick';
 	import { tick } from 'svelte';
 	import Portrait from '$lib/components/Portrait.svelte';
@@ -289,6 +289,14 @@
 	// don't resolve to enough books, and off the English shelf: the cells'
 	// abbreviations and names are English ($lib/sermonCanon).
 	const canon = $derived(getLang() === 'en' ? canonGrid(bookFacets) : null);
+	/** The books with a /sermons/on/ page on this shelf, named as the facet
+	 *  names them — the same floor the page and the sitemap apply. */
+	const onBooks = $derived(
+		sermonsOnBooks(sermons).map((position) => ({
+			position,
+			name: sermons.find((s) => s.scripture_book_order === position)?.scripture_book ?? ''
+		}))
+	);
 	/** A cell's link: this view (group, sort) narrowed to the book, so a new
 	 *  tab opens what a plain click shows. Built from the filter VALUES, never
 	 *  the query string, which the prerender may not read. */
@@ -656,6 +664,20 @@
 			     printed in the cell and in its name, so the shade is never the only
 			     signal). An empty book is muted text, not a link. A secondary section:
 			     hidden while filtering — the chosen book shows as a chip instead. -->
+			<!-- Off the grid (another language's shelf, or too few books for it), the
+			     books with their own page as plain links: the only way a crawler
+			     reaches a localized /sermons/on/<book>/ (the sitemap lists it). -->
+			{#if !canon && onBooks.length && !filtering && !loadError}
+				<section class="mb-10" aria-labelledby="by-scripture-links">
+					<h2 id="by-scripture-links" class="section-label mb-3">{t('sermons.byScripture')}</h2>
+					<ul class="flex flex-wrap gap-2">
+						{#each onBooks as b (b.position)}
+							<li><a class="tag" href={localizeHref(sermonsOnPath(b.position)!)}>{b.name}</a></li>
+						{/each}
+					</ul>
+				</section>
+			{/if}
+
 			{#if canon && !filtering && !loadError}
 				<section class="mb-10" class:canon-open={canonOpen} aria-labelledby="by-scripture">
 					<h2 id="by-scripture" class="section-label mb-4">
