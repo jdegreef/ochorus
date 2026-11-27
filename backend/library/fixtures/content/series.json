@@ -1605,6 +1605,19 @@
   "series": [
    "the-bible"
   ],
+  "language": "am",
+  "title": "መጽሐፍ ቅዱስ",
+  "description": "የመጽሐፍ ቅዱስ መጻሕፍት በOpen Word Bible፣ ከዕብራይስጥና ከግሪክኛ የተተረጎመና የሕዝብ ሀብት እንዲሆን በነጻ የተሰጠ አዲስ ትርጉም፣ ከዘፍጥረት እስከ ዮሐንስ ራእይ በቅደም ተከተላቸው። እያንዳንዱ መጽሐፍ ስለ አወቃቀሩና ስለ ትርጉሙ የሚናገር መግቢያ፣ እንዲሁም ቀጥሎ ምን ማንበብ እንደሚገባ የሚጠቁም ማጠቃለያ አለው።",
+  "created_at": "2026-11-26T00:00:00Z",
+  "updated_at": "2026-11-26T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "the-bible"
+  ],
   "language": "es",
   "title": "La Biblia",
   "description": "Los libros de la Biblia en la Open Word Bible, una nueva traducción del hebreo y del griego entregada libremente al dominio público, en su orden de Génesis a Apocalipsis. Cada libro tiene una introducción a su forma y su sentido, y una conclusión sobre qué leer después.",

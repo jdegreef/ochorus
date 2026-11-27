@@ -171,7 +171,7 @@ class OtherLanguageOverviewTests(TestCase):
     def setUp(self):
         owb = Author.objects.create(slug="open-word-bible", name="Open Word Bible")
         bible = Series.objects.create(slug="the-bible", title="The Bible")
-        for lang, title in [("es", "Romanos"), ("fr", "Romains"), ("pt", "Romanos"), ("sw", "Warumi")]:
+        for lang, title in [("es", "Romanos"), ("fr", "Romains"), ("pt", "Romanos"), ("sw", "Warumi"), ("am", "ሮሜ")]:
             book = Book.objects.create(
                 author=owb, slug="romans", language=lang, title=title,
                 series=bible, series_position=45, is_published=True,
@@ -193,7 +193,7 @@ class OtherLanguageOverviewTests(TestCase):
         from .bible_overview import OVERVIEWS, words
         from .scripture import owb_verse
 
-        for lang, name in [("es", "Romanos"), ("fr", "Romains"), ("pt", "Romanos"), ("sw", "Warumi")]:
+        for lang, name in [("es", "Romanos"), ("fr", "Romains"), ("pt", "Romanos"), ("sw", "Warumi"), ("am", "ሮሜ")]:
             with self.subTest(lang):
                 card = self.detail(lang)
                 self.assertEqual(card["theme"], words(lang)["romans"]["theme"])
@@ -208,7 +208,7 @@ class OtherLanguageOverviewTests(TestCase):
     def test_every_language_file_covers_the_66_books(self):
         from .bible_overview import OVERVIEWS, words
 
-        for lang in ("es", "fr", "pt", "sw"):
+        for lang in ("es", "fr", "pt", "sw", "am"):
             with self.subTest(lang):
                 self.assertEqual(list(words(lang)), list(OVERVIEWS))
                 for slug, card in words(lang).items():
@@ -257,3 +257,54 @@ class SwahiliOverviewTests(TestCase):
                 self.assertNotIn('"', verse["text"])
                 self.assertNotEqual(card["theme"], meta["theme"])
                 self.assertTrue(card["theme"].endswith("."))
+
+
+def bible_editions(language: str) -> list[list[dict]]:
+    """Every Bible book the fixture ships in ``language``: its rows (book first)."""
+    out = []
+    for path in sorted(FIXTURE.glob(f"*.{language}.json")):
+        rows = json.loads(path.read_text("utf-8"))
+        if rows[0]["fields"].get("series") == ["the-bible"]:
+            out.append(rows)
+    return out
+
+
+class AmharicOverviewTests(TestCase):
+    """Every Amharic Bible book's card: its words, and a key verse quoted from
+    the Amharic OWB under the edition's own book name, in « » as its reader
+    prints it."""
+
+    def setUp(self):
+        bible_overview.key_verse.cache_clear()
+        self.addCleanup(bible_overview.key_verse.cache_clear)
+        owb = Author.objects.create(slug="open-word-bible", name="Open Word Bible")
+        self.names = {}
+        for rows in bible_editions("am"):
+            slug = rows[0]["fields"]["slug"]
+            book = Book.objects.create(
+                author=owb, slug=slug, language="am", title=rows[0]["fields"]["title"],
+                is_published=True,
+            )
+            for row in rows[1:]:
+                Chapter.objects.create(
+                    book=book, order=row["fields"]["order"], title=row["fields"]["title"],
+                    body_html=row["fields"]["body_html"],
+                )
+            self.names[slug] = rows[2]["fields"]["title"].rsplit(" ", 1)[0]
+
+    def test_every_book_has_an_amharic_card_with_a_resolving_key_verse(self):
+        self.assertEqual(set(self.names), set(OVERVIEWS))
+        for slug, meta in OVERVIEWS.items():
+            with self.subTest(slug):
+                card = overview(slug, "am")
+                self.assertIsNotNone(card)
+                verse = card["key_verse"]
+                self.assertIsNotNone(verse, "the Amharic OWB cannot resolve it")
+                # The reference reads in Amharic: the edition's book name, the
+                # English chapter and verse.
+                english_ref = meta["key_verse"].rsplit(" ", 1)[1]
+                self.assertEqual(verse["reference"], f"{self.names[slug]} {english_ref}")
+                self.assertTrue(verse["text"].strip())
+                self.assertNotIn('"', verse["text"])
+                self.assertNotEqual(card["theme"], meta["theme"])
+                self.assertTrue(card["theme"].endswith("።"))
