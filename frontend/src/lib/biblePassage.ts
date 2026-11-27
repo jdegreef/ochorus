@@ -8,8 +8,8 @@
  * read still goes to the resolver and then to search on submit, as before.
  *
  * The names are the canon's in the hub's language ($lib/bibleNames) and a few
- * common short forms; a Spanish, French or Portuguese reader's box also takes
- * the English names.
+ * common short forms; a Spanish, French, Portuguese or Swahili reader's box
+ * also takes the English names.
  * Accents are optional ("Genesis", "Exodo").
  */
 import { CANON } from '$lib/sermonCanon';
@@ -129,6 +129,21 @@ const ALIASES_PT: Record<number, readonly string[]> = {
 	66: ['Revelação']
 };
 
+/** Swahili short forms the canon's own names and abbreviations do not begin:
+ *  the books' second words (Walawi, Nyakati) and the long titles. */
+const ALIASES_SW: Record<number, readonly string[]> = {
+	3: ['Walawi'],
+	13: ['1 Nyakati'],
+	14: ['2 Nyakati'],
+	22: ['Wimbo wa Sulemani'],
+	40: ['Mat'],
+	41: ['Mar'],
+	42: ['Luk'],
+	43: ['Yoh'],
+	44: ['Matendo ya Mitume'],
+	66: ['Ufunuo wa Yohana']
+};
+
 type Names = readonly (readonly [position: number, names: readonly string[]])[];
 
 /** Every name each canon position goes by, folded. */
@@ -143,7 +158,8 @@ const NAMES: Readonly<Record<BibleLocale, Names>> = {
 	en: NAMES_EN,
 	es: namesOf(canonIn('es'), ALIASES_ES, NAMES_EN),
 	fr: namesOf(canonIn('fr'), ALIASES_FR, NAMES_EN),
-	pt: namesOf(canonIn('pt'), ALIASES_PT, NAMES_EN)
+	pt: namesOf(canonIn('pt'), ALIASES_PT, NAMES_EN),
+	sw: namesOf(canonIn('sw'), ALIASES_SW, NAMES_EN)
 };
 
 /**

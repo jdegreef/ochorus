@@ -1487,7 +1487,7 @@ _HOLY_IN_CHRIST_PSALM_99: list[str] = [
     "Amawanga gonna gatendereze erinnya lyo",
     "वे तेरे महान और भययोग्य",
     "يَحْمَدُونَ ٱسْمَكَ ٱلْعَظِيمَ وَٱلْمَهُوبَ، قُدُّوسٌ",
-    "ታላቁንና የሚያስፈራውን ስምህን ያመስግኑ። እርሱ",
+    "ሕዝቦች ታላቅና የሚያስፈራ ስምህን ያመስግኑ። እርሱ",
 ]
 
 # ch33's printer's colophon, per edition (`back_matter` seams).

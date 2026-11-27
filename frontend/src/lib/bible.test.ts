@@ -150,6 +150,10 @@ describe('canonName', () => {
 		expect(chapterLabel(23, 53, 'fr')).toBe('Ésaïe 53');
 		expect(chapterLabel(19, 23, 'pt')).toBe('Salmo 23');
 		expect(canonName(66, 'pt')).toBe('Apocalipse');
+		expect(chapterLabel(19, 23, 'sw')).toBe('Zaburi 23');
+		expect(canonName(19, 'sw')).toBe('Zaburi');
+		expect(chapterLabel(22, 1, 'sw')).toBe('Wimbo Ulio Bora 1');
+		expect(canonName(66, 'sw')).toBe('Ufunuo');
 		expect([canonName(0, 'en'), canonName(67, 'en'), canonName(null, 'en')]).toEqual([null, null, null]);
 	});
 });
@@ -496,7 +500,7 @@ describe('bibleTopics', () => {
 });
 
 describe('biblePathSteps', () => {
-	const W = { en: 'w', es: 'v', fr: 'f', pt: 'p' };
+	const W = { en: 'w', es: 'v', fr: 'f', pt: 'p', sw: 's' };
 	const ps = { slug: 'psalms', title: 'The Psalms', series_position: 19, chapter_count: 152 };
 	const john = { slug: 'gospel-of-john', title: 'The Gospel of John', series_position: 43, chapter_count: 23 };
 
@@ -557,8 +561,14 @@ describe('the hub locales’ book names', () => {
 });
 
 describe('quotations on the hub', () => {
-	// Each language's quotation marks: «…» in Spanish, « … » in French, “…” in Portuguese.
-	const MARKS: Record<string, RegExp> = { es: /«([^»]+)»/g, fr: /«\s([^»]+?)\s»/g, pt: /“([^”]+)”/g };
+	// Each language's quotation marks: «…» in Spanish, « … » in French, “…” in
+	// Portuguese and Swahili.
+	const MARKS: Record<string, RegExp> = {
+		es: /«([^»]+)»/g,
+		fr: /«\s([^»]+?)\s»/g,
+		pt: /“([^”]+)”/g,
+		sw: /“([^”]+)”/g
+	};
 
 	it.each(Object.keys(MARKS))('quote the Open Word Bible (owb-%s-b) word for word', async (lang) => {
 		const { readFileSync } = await import('node:fs');
@@ -589,7 +599,7 @@ describe('the "Where to start" paths’ own pages', () => {
 		for (const p of BIBLE_PATHS) {
 			expect(p.slug).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
 			expect(bibleStartPath(p.slug)).toBe(`/bible/start/${p.slug}/`);
-			for (const l of ['en', 'es', 'fr', 'pt'] as const) expect(p.title[l].length).toBeGreaterThan(10);
+			for (const l of BIBLE_LOCALES) expect(p.title[l].length).toBeGreaterThan(10);
 		}
 	});
 });
