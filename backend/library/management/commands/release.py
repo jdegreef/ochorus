@@ -107,3 +107,9 @@ class Command(BaseCommand):
             call_command("snapshot_language_health")
         except Exception as e:  # noqa: BLE001
             self.stderr.write(f"  snapshot_language_health skipped: {e}")
+        # Last: a deploy whose release chain reached here worked. The table is
+        # there by now (migrate ran first), and beat() never fails a deploy.
+        from library.heartbeat import beat
+
+        with beat("release"):
+            pass
