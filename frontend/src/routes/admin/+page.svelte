@@ -15,6 +15,7 @@
 		type TranslationJobType
 	} from '$lib/library-admin';
 	import AddLanguageForm from '$lib/components/AddLanguageForm.svelte';
+	import StartHere from '$lib/components/admin/StartHere.svelte';
 
 	let exporting = $state<'csv' | 'json' | null>(null);
 
@@ -209,6 +210,9 @@
 			</div>
 		{/if}
 	</header>
+
+	<!-- A new admin's first steps (nothing for a super admin, or once done). -->
+	<StartHere />
 
 	<!-- Needs attention hub: what to act on, aggregated across the admin. Its own
 	     resource, so it paints before the heavier stats call and never blocks it. -->
