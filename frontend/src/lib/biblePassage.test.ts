@@ -202,3 +202,54 @@ describe('in French and Portuguese', () => {
 		expect(passageSuggestions('Es 53', ALL, 'fr')[0].label).toBe('Ésaïe 53');
 	});
 });
+
+describe('in Swahili', () => {
+	const ALL = [
+		...BOOKS,
+		book('isaiah', 'Isaya', 23, 66),
+		book('jonah', 'Yona', 32, 4),
+		book('gospel-of-matthew', 'Mathayo', 40, 28),
+		book('acts-of-the-apostles', 'Matendo', 44, 28)
+	];
+
+	it('names the quick passages as the edition titles its chapters', () => {
+		expect(quickPassages(ALL, 'sw').map((p) => p.label)).toEqual([
+			'Yohana 3',
+			'Zaburi 23',
+			'Warumi 8',
+			'1 Wakorintho 13',
+			'Isaya 53',
+			'Mathayo 5'
+		]);
+	});
+
+	it('reads the Swahili names and abbreviations, and the English ones too', () => {
+		expect(matchBooks('Zaburi', 'sw')).toEqual([19]);
+		expect(matchBooks('Yn', 'sw')[0]).toBe(43);
+		expect(matchBooks('Yon', 'sw')[0]).toBe(32);
+		expect(matchBooks('Mdo', 'sw')).toEqual([44]);
+		expect(matchBooks('Walawi', 'sw')).toEqual([3]);
+		expect(matchBooks('Law', 'sw')).toEqual([3]);
+		expect(matchBooks('Mwa', 'sw')).toEqual([1]);
+		expect(matchBooks('Ufu', 'sw')).toEqual([66]);
+		expect(matchBooks('Romans', 'sw')).toEqual([45]);
+	});
+
+	it('jumps to a typed chapter, at a verse', () => {
+		expect(passageSuggestions('Zaburi 23', ALL, 'sw')[0]).toEqual({
+			label: 'Zaburi 23',
+			href: bookChapterPath('psalms', 24, false)
+		});
+		expect(passageSuggestions('Yn 3:16', ALL, 'sw')[0]).toEqual({
+			label: 'Yohana 3:16',
+			href: `${bookChapterPath('gospel-of-john', 4, false)}#v16`
+		});
+		expect(passageSuggestions('1 Kor 13', ALL, 'sw')[0].label).toBe('1 Wakorintho 13');
+		expect(passageSuggestions('Waroumi 8', ALL, 'sw')[0].label).toBe('Warumi 8');
+	});
+
+	it('leaves a common word to search, rather than a book one typo away', () => {
+		for (const w of ['upendo', 'neema', 'imani', 'amani', 'maombi', 'Yesu'])
+			expect(passageSuggestions(w, ALL, 'sw'), w).toEqual([]);
+	});
+});

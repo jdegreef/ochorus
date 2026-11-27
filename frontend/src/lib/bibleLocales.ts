@@ -9,9 +9,9 @@
  * the hub's own copy (/bible, /bible/story, /open-word-bible) is in it: every
  * `BibleText` then fails to type-check until it has that language's words.
  * Spanish joined on 2026-11-23, the day after its books; French and Portuguese
- * on 2026-11-25.
+ * on 2026-11-25; Swahili on 2026-11-26.
  */
-export const BIBLE_LOCALES = ['en', 'es', 'fr', 'pt'] as const;
+export const BIBLE_LOCALES = ['en', 'es', 'fr', 'pt', 'sw'] as const;
 
 /** A locale the hub is drawn in. */
 export type BibleLocale = (typeof BIBLE_LOCALES)[number];
