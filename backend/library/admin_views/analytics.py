@@ -1349,6 +1349,14 @@ class AdminSearchView(APIView):
                 "top_queries": answered,
                 "unanswered_by_language": unanswered,
                 "daily": daily,
+                # What the team did in those 14 days, for markers under the
+                # daily chart — the same events the Engagement page marks,
+                # keyed by the UTC day the bars use, so a spike after an email
+                # or a new language explains itself.
+                "events": [
+                    {**e, "day": e.pop("at").date().isoformat()}
+                    for e in team_events(days[0])
+                ],
                 "by_language": [
                     {
                         **_language_entry(r["language"]),

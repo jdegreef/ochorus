@@ -248,6 +248,7 @@ class BatchedSendTests(_AdminClientMixin, TestCase):
 
     def test_a_canceled_schedule_can_be_rescheduled_but_a_canceled_send_cannot(self):
         b = _broadcast(status=BroadcastStatus.CANCELED)
+        Broadcast.objects.filter(pk=b.pk).update(tested_digest=b.content_digest())
         res = self._act(b, "schedule", scheduled_at="2099-01-01T09:00:00Z")
         self.assertEqual(res.status_code, 200)
         c = _broadcast(status=BroadcastStatus.CANCELED, send_started_at=timezone.now())
@@ -352,12 +353,18 @@ class PreflightTests(_AdminClientMixin, TestCase):
     @mock.patch("emails.sending.send_email", return_value="rid")
     def test_test_send_check_tracks_the_tested_version(self, send):
         b = _broadcast()
-        self.assertIn("test", _codes(run_checks(b), "warning"))
+        # With sending on, an untested copy BLOCKS send and schedule.
+        self.assertIn("test", _codes(run_checks(b), "error"))
         admin = _make_profile(email="admin@example.com")
         self.assertTrue(send_test(b, admin))
         self.assertIn("test", _codes(run_checks(b), "ok"))
         b.subject = {"en": "A new subject"}
         b.save()
+        self.assertIn("test", _codes(run_checks(b), "error"))
+
+    def test_with_sending_off_an_untested_copy_only_warns(self):
+        # A test can't be delivered with sending off, so it can't be required.
+        b = _broadcast()
         self.assertIn("test", _codes(run_checks(b), "warning"))
 
     @SENDING

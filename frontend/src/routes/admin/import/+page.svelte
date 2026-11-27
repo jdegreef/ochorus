@@ -58,6 +58,18 @@
 	let busy = $state(false);
 	let error = $state<string | null>(null);
 	let published = $state<Published | null>(null);
+	// Works the server thinks this upload copies (a 409 from publish). Shown
+	// with a "Publish anyway" — the admin decides, having seen them.
+	type Duplicate = {
+		slug: string;
+		title: string;
+		author: string;
+		same_author: boolean;
+		is_published: boolean;
+		match: number;
+		admin_path: string;
+	};
+	let duplicates = $state<Duplicate[]>([]);
 
 	onMount(async () => {
 		authors = await listAuthors().catch(() => authors);
@@ -130,7 +142,7 @@
 			);
 	}
 
-	async function publish() {
+	async function publish(allowDuplicate = false) {
 		if (!preview) return;
 		if (!authorSlug) {
 			error = 'Pick the author.';
@@ -143,7 +155,13 @@
 		busy = true;
 		error = null;
 		try {
-			const base = { author_slug: authorSlug, title, language, source_url: sourceUrl };
+			const base = {
+				author_slug: authorSlug,
+				title,
+				language,
+				source_url: sourceUrl,
+				...(allowDuplicate ? { allow_duplicate: true } : {})
+			};
 			const payload =
 				preview.kind === 'book'
 					? {
@@ -165,7 +183,10 @@
 				method: 'POST',
 				body: JSON.stringify(payload)
 			});
+			duplicates = [];
 		} catch (e) {
+			const found = e instanceof ApiError ? (e.body as { duplicates?: Duplicate[] })?.duplicates : undefined;
+			duplicates = found ?? [];
 			error = errMsg(e, 'Could not publish.');
 		} finally {
 			busy = false;
@@ -175,6 +196,7 @@
 	function reset() {
 		preview = null;
 		published = null;
+		duplicates = [];
 		file = null;
 		title = '';
 		scriptureRef = '';
@@ -457,10 +479,26 @@
 
 				{#if error}<p class="mb-3 text-small text-danger">{error}</p>{/if}
 
+				{#if duplicates.length}
+					<div class="mb-4 rounded-card border border-warning bg-warning/10 p-4 text-small">
+						<p class="mb-2 font-semibold text-warning">Already in the library?</p>
+						<ul class="mb-3 space-y-1">
+							{#each duplicates as d (d.slug)}
+								<li>
+									<a href={d.admin_path} target="_blank" rel="noopener" class="font-semibold text-text hover:text-accent">{d.title}</a>
+									<span class="text-muted">· {d.author}{d.same_author ? ' (same author)' : ''} · {d.is_published ? 'published' : 'unpublished'} · {Math.round(d.match * 100)}% title match</span>
+								</li>
+							{/each}
+						</ul>
+						<p class="mb-3 text-muted">Publishing makes a second copy with its own address. If this is a different work, or a deliberate new edition, go ahead.</p>
+						<button class="btn btn-ghost btn-sm" onclick={() => publish(true)} disabled={busy}>Publish anyway</button>
+					</div>
+				{/if}
+
 				<div class="flex flex-wrap gap-3">
 					<button
 						class="btn btn-primary"
-						onclick={publish}
+						onclick={() => publish()}
 						disabled={busy || (preview.kind === 'book' && preview.chapters.length === 0)}
 					>
 						{busy ? 'Publishing…' : `Publish ${preview.kind}`}
