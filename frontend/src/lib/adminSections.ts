@@ -30,6 +30,9 @@ export type AdminGroup = (typeof ADMIN_GROUPS)[number];
 // the dashboard or the palette), so it isn't a top-level item itself.
 export const ADMIN_SECTIONS: AdminSection[] = [
 	{ href: '/admin', label: 'Dashboard', group: 'Overview', exact: true, capability: 'reporting' },
+	// What is waiting on the viewer (assigned feedback, reviews to confirm,
+	// unsent emails). Anyone with admin access; it shows only what they can open.
+	{ href: '/admin/my-work', label: 'My work', group: 'Overview', anyAccess: true },
 	{ href: '/admin/coverage', label: 'Coverage matrix', group: 'Overview', capability: 'reporting' },
 	{ href: '/admin/language-health', label: 'Language health', group: 'Overview', capability: 'reporting' },
 	{ href: '/admin/activity', label: 'Activity', group: 'Overview', capability: 'reporting' },

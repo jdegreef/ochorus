@@ -134,6 +134,11 @@ urlpatterns = [
         name="admin-audit-dismiss",
     ),
     path(
+        "api/admin/my-work/",
+        lazy_view("library.admin_views.my_work", "AdminMyWorkView"),
+        name="admin-my-work",
+    ),
+    path(
         "api/admin/activity/",
         lazy_view("library.admin_views.activity", "AdminActivityView"),
         name="admin-activity",
