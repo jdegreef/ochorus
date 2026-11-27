@@ -1,0 +1,13 @@
+{
+ "kind": "book",
+ "slug": "the-practice-of-the-presence-of-god",
+ "language": "am",
+ "job_issue": 8265,
+ "references": [
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Amharic"
+  }
+ ]
+}
