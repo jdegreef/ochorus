@@ -6684,6 +6684,54 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ar/mortification-of-sin": {
+			"ground": "4b5d785b9b82931c7399061e64c8f97e93312e78aa32c24e7ae977049e3d4c3b",
+			"style": "press",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[61, 325, 539, 410]
+				],
+				"subtitle": [
+					[225, 474, 375, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				284,
+				511
+			]
+		},
+		"ar/necessity-of-prayer": {
+			"ground": "ce8f983e3edf0e25358e46d40fc96a1c7739f70d75fe5f0c486b1a7b49924d38",
+			"style": "devotional",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.05,
+			"caps": false,
+			"sitemark": null
+		},
 		"ar/pilgrims-progress": {
 			"ground": "9e0a4426d01ec0414ece972b8d364cf3de899d5eabe0454eb42ab30f468d8fe7",
 			"style": "press",
@@ -7274,6 +7322,39 @@
 			"middle": [
 				256,
 				539
+			]
+		},
+		"ar/the-bruised-reed": {
+			"ground": "c8dc65ebeca95d7b3e3092fcd8a1dbdd9611049fa135a8ac1977eca573fe9354",
+			"style": "press",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[86, 317, 514, 418]
+				],
+				"subtitle": [
+					[246, 484, 354, 523]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
 			]
 		},
 		"ar/the-christians-secret-of-a-happy-life-4": {
