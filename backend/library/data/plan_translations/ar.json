@@ -110,5 +110,34 @@
     "note": [
       "AI-drafted (2026-11-12); awaiting native review. Job #7647 (talks-to-the-farmer-children → ar) ships one of this plan's two source books; pilgrims-progress-children has no ar edition yet, so this is prose-ahead, as hi did in #7740: seed_plans creates the ar row only once both are published. Like the English it describes the books rather than quoting their titles; the title echoes pilgrims-progress.ar «سياحة المسيحي», and السائح / بنيان / المدينة السماوية are that edition's own words; سبرجن as in talks-to-the-farmer.ar. Plural address (اقرأوا) because the plan speaks to a family. It promises the prayer and three talk-about-it questions: talks-to-the-farmer-children.ar ships study_questions (3 per chapter)."
     ]
+  },
+  "praying-men": {
+    "title": "رجال الصلاة: مدرسة الصلاة مع إ. م. باوندز",
+    "description": "سبعة أسابيع في أتون الشفاعة مع رسول الصلاة العظيم. يبدأ إ. م. باوندز بحاجة الواعظ نفسه إلى القوة، ثم يكشف القصد الذي يجعل الصلاة تغلب، والضرورة التي تجعلها عمل الحياة المسيحية كلّه."
+  },
+  "the-puritan-heart": {
+    "title": "القلب البيوريتاني",
+    "description": "ثمانية أسابيع مع ثلاثة من أساتذة الحياة الداخلية. ريتشارد سِبس يجبر القصبة المرضوضة، وجون أوين يشنّ الحرب على الخطية التي ما زالت ساكنة فينا، وتوماس واطسون يُريح الصراع كلّه على الوعد بأن كل الأشياء تعمل معًا للخير."
+  },
+  "the-pilgrims-way": {
+    "title": "طريق الحاجّ",
+    "description": "الطريق إلى البيت في ثلاثة كتب كلاسيكية. يلقى تشارلز سبرجن الباحث عند الباب الضيق، وتتبع قصة جون بنيان الخالدة الحاجّ في الطريق كلّه حتى المدينة السماوية، وتُظهر شهادة بنيان نفسه «نعمة فائضة لأول الخطاة».",
+    "note": [
+      "Prose ahead of grace-abounding.ar (job #8431), which completes the plan's ar set (around-the-wicket-gate.ar and pilgrims-progress.ar already ship)."
+    ]
+  },
+  "new-to-the-faith": {
+    "title": "جديد في الإيمان",
+    "description": "خمسة أسابيع ونصف لكل من يبدأ للتوّ مع المسيح. يلقاك تشارلز سبرجن عند الباب الضيق بأبسط عون على الثقة بيسوع، ثم يُريك ر. أ. توري، الذي كتب للمؤمنين الجدد، كيف تبدأ بداية صحيحة: اليقين، والروح القدس، والكنيسة، والكتاب المقدس، والصلاة، والشهادة. ومقالات قصيرة على الطريق تجيب عن الأسئلة التي يسألها كل مسيحي جديد: ما هو الإنجيل، ولماذا مات يسوع، وما معنى المعمودية وعشاء الرب، وكيف تستمر في النمو.",
+    "note": [
+      "Queue job #8433. Prose ahead: every article and around-the-wicket-gate.ar already ship, but how-to-succeed-in-the-christian-life.ar (job #8488) does not yet, so seed_plans creates the ar row once that book lands."
+    ]
+  },
+  "family-devotions-heroes-who-trusted-god": {
+    "title": "عبادات عائلية: أبطال وثقوا بالله",
+    "description": "خمسة أسابيع من عبادات عائلية في خمس دقائق: قصص حقيقية لثلاثة أشخاص وثقوا بالله في كل شيء، تُقرأ بصوت عالٍ فصلًا قصيرًا كل ليلة — جورج مولر وأيتامه، وهدسون تايلور في طريقه إلى الصين، وأماندا سميث التي وُلدت في العبودية وصلّت من أجل زوج من الأحذية. ينتهي كل فصل بصلاة وثلاثة أسئلة للحديث معًا.",
+    "note": [
+      "Prose ahead: the-life-of-trust-children.ar and a-retrospect-children.ar ship; amanda-smith-autobiography-children.ar is not yet in the library."
+    ]
   }
 }
