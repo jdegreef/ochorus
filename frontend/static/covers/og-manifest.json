@@ -1312,6 +1312,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"am/at-the-masters-feet": {
+			"ground": "27a7b23862fce5edd2fc8e17a4553a7f2abb4f7e3b080c199e44854aa0707821",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[104, 102, 496, 131]
+				],
+				"title": [
+					[74, 314, 526, 411]
+				],
+				"subtitle": [
+					[149, 485, 451, 506],
+					[185, 509, 415, 530]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				264,
+				531
+			]
+		},
 		"am/baptism-with-the-holy-spirit": {
 			"ground": "3bd9f33bc25ded7576456c963215aaa56491e8f52d9c5d9875da69a99879b7dd",
 			"style": "revival",
@@ -1951,6 +1985,37 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"am/ever-increasing-faith": {
+			"ground": "52b5f8bff7c306280553bd8bcc43f7046ca1dc14cf224aaa810d0ce5aef320b2",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
+			"art": true,
+			"scrim": 0.55,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[96, 102, 504, 131]
+				],
+				"title": [
+					[151, 222, 449, 319],
+					[76, 306, 524, 403]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				454
+			]
 		},
 		"am/faithful-with-little": {
 			"ground": "c24b844779ce6151a0e316a45c144b2db95864277c53466774ac38123e3635d0",
@@ -3189,6 +3254,36 @@
 				460
 			]
 		},
+		"am/orthodoxy": {
+			"ground": "5720f0135f311824d82155df7f7fec8e63088bc3e65d830570134bfa8f9494b7",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
+			"art": true,
+			"scrim": 0.4,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[120, 342, 480, 452]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				294,
+				501
+			]
+		},
 		"am/our-daily-walk": {
 			"ground": "c3e4d05ed98b916cd68c1e31613f9e851e8a52d553ba571fb29cce617cb92d40",
 			"style": "devotional",
@@ -3254,6 +3349,39 @@
 			"middle": [
 				326,
 				469
+			]
+		},
+		"am/pensees": {
+			"ground": "d8bfc30b0d4790fbe1ee3afcd4813269707d89e6c1ed2a24a13837ce4f52035f",
+			"style": "press",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[186, 319, 414, 424]
+				],
+				"subtitle": [
+					[154, 477, 446, 498]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				296,
+				499
 			]
 		},
 		"am/pilgrims-progress": {
@@ -4755,6 +4883,40 @@
 			"middle": [
 				270,
 				525
+			]
+		},
+		"am/the-practice-of-the-presence-of-god": {
+			"ground": "330606fbbd40db369d2d11e8fa1c92ce2fb67a0d543146908d3d12605a7c1ca4",
+			"style": "press",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[115, 301, 485, 379],
+					[81, 365, 519, 443]
+				],
+				"subtitle": [
+					[169, 498, 431, 519]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
 			]
 		},
 		"am/the-practice-of-the-presence-of-god-children": {
