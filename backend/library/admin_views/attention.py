@@ -27,10 +27,66 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import requires
+from accounts.permissions import allowed_languages, has_capability, requires
 
 from ..corrections import RETIRED_BOOKS
 from ..models import Author, Book, Chapter, Language, Plan, SearchQueryLog, Sermon
+
+#: A queue item older than this is "aging" (amber); twice it, "stale" (red).
+AGING_DAYS = 7
+
+
+def _age(oldest, now) -> dict:
+    days = (now - oldest).days if oldest else 0
+    tone = "stale" if days >= 2 * AGING_DAYS else "aging" if days >= AGING_DAYS else "fresh"
+    return {"oldest_at": oldest, "oldest_days": days, "tone": tone}
+
+
+def queue_ages(request) -> list[dict]:
+    """Each work queue the viewer can open: how many items wait, and how long
+    the oldest has. A count alone hides the item that has waited a month.
+
+    Only queues the viewer's grants open, each scoped to the grant's languages
+    (the same rule as the queue's own page). Cheap: one count and one MIN each.
+    """
+    from django.db.models import Min
+
+    from emails.models import Broadcast, BroadcastStatus
+    from feedback.models import Feedback, FeedbackStatus
+
+    now = timezone.now()
+    out = []
+
+    if has_capability(request, AdminCapability.FEEDBACK, AdminVerb.VIEW):
+        allowed = allowed_languages(request, AdminCapability.FEEDBACK, AdminVerb.VIEW)
+        qs = Feedback.objects.filter(status__in=[FeedbackStatus.NEW, FeedbackStatus.TRIAGING])
+        if allowed is not None:
+            qs = qs.filter(content_language__in=allowed)
+        agg = qs.aggregate(n=Count("id"), oldest=Min("created_at"))
+        if agg["n"]:
+            out.append({"key": "feedback", "label": "Feedback waiting for triage", "href": "/admin/feedback", "count": agg["n"], **_age(agg["oldest"], now)})
+
+    if has_capability(request, AdminCapability.REVIEW, AdminVerb.VIEW):
+        allowed = allowed_languages(request, AdminCapability.REVIEW, AdminVerb.VIEW)
+        qs = Book.objects.filter(source_type=Book.SourceType.AI_UNREVIEWED).exclude(slug__in=RETIRED_BOOKS)
+        if allowed is not None:
+            qs = qs.filter(language__in=allowed)
+        # A translation's age in the queue is the age of its row: it lands
+        # unreviewed and leaves the queue when approved.
+        agg = qs.aggregate(n=Count("id"), oldest=Min("created_at"))
+        if agg["n"]:
+            out.append({"key": "review", "label": "AI translations waiting for review", "href": "/admin/review", "count": agg["n"], **_age(agg["oldest"], now)})
+
+    if has_capability(request, AdminCapability.EMAIL, AdminVerb.VIEW):
+        soon = Broadcast.objects.filter(
+            status=BroadcastStatus.SCHEDULED, scheduled_at__lte=now + timedelta(hours=24)
+        ).count()
+        if soon:
+            out.append({"key": "scheduled", "label": "Emails scheduled in the next 24 hours", "href": "/admin/emails", "count": soon, "oldest_at": None, "oldest_days": 0, "tone": "fresh"})
+        paused = Broadcast.objects.filter(status=BroadcastStatus.PAUSED).count()
+        if paused:
+            out.append({"key": "paused", "label": "Emails paused mid-send", "href": "/admin/emails", "count": paused, "oldest_at": None, "oldest_days": 0, "tone": "stale"})
+    return out
 
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
@@ -39,34 +95,52 @@ class AdminAttentionView(APIView):
 
 
     def get(self, request):
+        # Scoped to the viewer: a language admin's dashboard counts THEIR
+        # languages (their reporting grant's scope), so "12 empty chapters" is
+        # work they can do rather than a global number. None = everything.
+        langs = allowed_languages(request, AdminCapability.REPORTING, AdminVerb.VIEW)
+
+        def scoped(qs, field="language"):
+            return qs if langs is None else qs.filter(**{f"{field}__in": langs})
+
+        books = scoped(Book.objects.exclude(slug__in=RETIRED_BOOKS))
         return Response(
             {
-                "unreviewed_translations": Book.objects.filter(
+                "scope": None if langs is None else sorted(langs),
+                "unreviewed_translations": books.filter(
                     source_type=Book.SourceType.AI_UNREVIEWED
-                ).exclude(slug__in=RETIRED_BOOKS).count(),
+                ).count(),
                 # A retired duplicate is unpublished for good — not a to-do.
-                "unpublished_books": Book.objects.filter(is_published=False)
-                .exclude(slug__in=RETIRED_BOOKS)
-                .count(),
-                "unpublished_sermons": Sermon.objects.filter(is_published=False).count(),
+                "unpublished_books": books.filter(is_published=False).count(),
+                "unpublished_sermons": scoped(
+                    Sermon.objects.filter(is_published=False)
+                ).count(),
                 # Imprints are bylines, not people — they never get a bio, so
                 # counting them would leave this to-do permanently unfinishable
-                # (mirrors AdminStatsView._attention).
+                # (mirrors AdminStatsView._attention). Authors aren't per
+                # language, so this one stays whole-library.
                 "authors_without_bio": Author.objects.filter(
                     bio="", is_imprint=False
                 ).count(),
                 # Integrity — cheap structural defects readers hit directly. The
                 # fuller audit (broken plan days, chapter-order gaps) stays on
                 # /api/admin/audit/; these two are counts, so they belong here.
-                "empty_chapters": Chapter.objects.filter(word_count=0).count(),
+                "empty_chapters": scoped(
+                    Chapter.objects.filter(word_count=0), "book__language"
+                ).count(),
                 # Published only: a published book with no chapters renders an
                 # empty reading page (a defect); an unpublished draft with none
                 # yet is just work in progress.
-                "empty_books": Book.objects.filter(is_published=True)
+                "empty_books": books.filter(is_published=True)
                 .exclude(id__in=Chapter.objects.values("book_id"))
                 .count(),
-                "languages_missing_books": self._languages_missing_books(),
+                "languages_missing_books": [
+                    row
+                    for row in self._languages_missing_books()
+                    if langs is None or row["code"] in langs
+                ],
                 "searches": self._searches(),
+                "queues": queue_ages(request),
             }
         )
 

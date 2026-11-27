@@ -840,6 +840,12 @@ class BroadcastAdminTests(TestCase):
     def test_send_action_queues_and_the_cron_sends(self, send):
         _make_profile()
         b = _broadcast()
+        # With sending on, an untested copy is refused (preflight "test")…
+        res = self._post(f"/api/admin/broadcasts/{b.pk}/action/", {"action": "send"})
+        self.assertEqual(res.status_code, 409)
+        self.assertIn("test", res.json()["detail"])
+        # …and goes once this exact version has been tested.
+        Broadcast.objects.filter(pk=b.pk).update(tested_digest=b.content_digest())
         res = self._post(f"/api/admin/broadcasts/{b.pk}/action/", {"action": "send"})
         self.assertEqual(res.status_code, 200)
         b.refresh_from_db()
