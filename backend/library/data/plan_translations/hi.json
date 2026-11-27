@@ -208,5 +208,13 @@
   "note": [
    "AI-drafted (2026-11-11); awaiting native review. Job #7637 (talks-to-the-farmer-children → hi) ships one of this plan's two source books; pilgrims-progress-children has no hi edition yet, so this is prose-ahead: seed_plans creates the hi row only once both are published. Series name ‘पारिवारिक भक्ति’ as in family-devotions-brave-and-faithful (#7522) and -boy-from-osogun (#7523). Like the English it describes the books rather than quoting their titles; तीर्थयात्री (title echoes pilgrims-progress.hi «तीर्थयात्री की यात्रा»), बनियन and स्वर्गीय नगर as in pilgrims-progress.hi, स्पर्जन as in the hi Spurgeon editions. It promises the prayer and three talk-about-it questions: talks-to-the-farmer-children.hi ships study_questions (3 per chapter)."
   ]
+ },
+ "the-puritan-heart": {
+  "title": "प्यूरिटन हृदय",
+  "description": "भीतरी जीवन के तीन गुरुओं के साथ आठ सप्ताह। रिचर्ड सिब्स कुचले हुए नरकट को सँभालते हैं, जॉन ओवेन उस पाप से युद्ध छेड़ते हैं जो अब भी भीतर बसा है, और थॉमस वॉटसन इस सारे संघर्ष को उस प्रतिज्ञा पर टिका देते हैं कि सब बातें मिलकर भलाई ही को उत्पन्न करती हैं।"
+ },
+ "the-pilgrims-way": {
+  "title": "तीर्थयात्री का मार्ग",
+  "description": "तीन क्लासिक पुस्तकों में घर की ओर का मार्ग। चार्ल्स स्पर्जन खोजी से छोटे फाटक के पास मिलते हैं, जॉन बनियन की अमर रूपक-कथा तीर्थयात्री के साथ स्वर्गीय नगर तक पूरा मार्ग चलती है, और बनियन की अपनी गवाही दिखाती है कि पापियों के प्रधान पर अनुग्रह कैसे उमड़ पड़ा।"
  }
 }
