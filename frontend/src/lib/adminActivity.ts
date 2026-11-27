@@ -54,7 +54,11 @@ const META: Record<string, ActionMeta> = {
 	'review.undo': { category: 'review', icon: 'undo', loud: false },
 	'role.grant': { category: 'access', icon: 'sliders', loud: true },
 	'role.revoke': { category: 'access', icon: 'sliders', loud: true },
-	'user.delete': { category: 'access', icon: 'sliders', loud: true }
+	'user.delete': { category: 'access', icon: 'sliders', loud: true },
+	// Privacy-sensitive reads (a reader's email in the clear, a reader-list
+	// export): quiet rows, but in the access family where an access review looks.
+	'user.view': { category: 'access', icon: 'document', loud: false },
+	'user.export': { category: 'access', icon: 'document', loud: false }
 };
 
 /**
@@ -115,6 +119,11 @@ export function parseTarget(target: string): ParsedTarget {
 	// Articles and plans are per-language editions too, without an admin page.
 	if ((kind === 'article' || kind === 'plan') && slug)
 		return { kind: 'document', slug, lang: lang || undefined, href: null };
+	// A reader (`user:<uid>`): their admin page. The server titles the row with
+	// their display name; 'A reader' is the fallback.
+	if (kind === 'user' && slug) return { kind: 'other', slug: 'A reader', href: `/admin/users/${slug}` };
+	// The reader list as a whole (an export).
+	if (target === 'users') return { kind: 'other', slug: 'Reader list', href: '/admin/users' };
 	return { kind: 'other', slug: target ?? '', href: null };
 }
 

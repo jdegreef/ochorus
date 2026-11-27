@@ -20,6 +20,8 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import requires, reveals_pii
 
+from ..audit import record_read
+from ..models import AdminAction
 from ..views import _language_entry
 from .analytics import THEME_LABELS, _prefer_en, _provider_label, mask_email
 
@@ -184,6 +186,11 @@ class AdminUserDetailView(APIView):
         profile = UserProfile.objects.filter(supabase_uid=uid).first()
         if profile is None:
             return Response({"detail": "No such user."}, status=404)
+        reveal = reveals_pii(request)
+        if reveal:
+            # This page shows the reader's email in the clear: leave a trace of
+            # who looked (folded per person per half hour — see record_read).
+            record_read(request, AdminAction.Action.USER_VIEW, f"user:{profile.supabase_uid}")
 
         # --- Reading progress (in-progress vs finished) ----------------------
         progress = list(profile.progress.all())
@@ -367,9 +374,7 @@ class AdminUserDetailView(APIView):
                     "display_name": profile.display_name,
                     # PII: cleartext only for a super admin; masked for a scoped
                     # USERS grantee (a language admin) — see analytics.mask_email.
-                    "email": profile.email
-                    if reveals_pii(request)
-                    else mask_email(profile.email),
+                    "email": profile.email if reveal else mask_email(profile.email),
                     "providers": [
                         {"code": c, "label": _provider_label(c)}
                         for c in profile.provider_list

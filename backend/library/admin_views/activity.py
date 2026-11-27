@@ -8,6 +8,7 @@ report about chapter quality.
 
 from __future__ import annotations
 
+import uuid
 from datetime import timedelta
 from functools import cached_property
 
@@ -76,12 +77,27 @@ def _titles(rows) -> dict[str, str]:
     wanted: dict[str, set[str]] = {}
     for row in rows:
         kind, _, rest = row.target.partition(":")
-        if kind in _TITLED or kind == "author":
+        if kind in _TITLED or kind in ("author", "user"):
             wanted.setdefault(kind, set()).add(rest.split(":", 1)[0])
     out: dict[str, str] = {}
     if slugs := wanted.pop("author", None):
         for slug, name in Author.objects.filter(slug__in=slugs).values_list("slug", "name"):
             out[f"author:{slug}"] = name
+    if uids := wanted.pop("user", None):
+        # A reader's page view (``user:<uid>``): their display name, which the
+        # masked views show too — never their email.
+        from accounts.models import UserProfile
+
+        valid = set()
+        for uid in uids:
+            try:
+                valid.add(str(uuid.UUID(uid)))
+            except ValueError:
+                continue
+        for uid, name in UserProfile.objects.filter(supabase_uid__in=valid).values_list(
+            "supabase_uid", "display_name"
+        ):
+            out[f"user:{uid}"] = name or "A reader"
     for kind, slugs in wanted.items():
         model, field = _TITLED[kind]
         by_slug: dict[str, dict[str, str]] = {}
