@@ -1597,6 +1597,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"am/at-the-masters-feet": {
+			"ground": "27a7b23862fce5edd2fc8e17a4553a7f2abb4f7e3b080c199e44854aa0707821",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[104, 102, 496, 131]
+				],
+				"title": [
+					[74, 314, 526, 411]
+				],
+				"subtitle": [
+					[149, 485, 451, 506],
+					[185, 509, 415, 530]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				264,
+				531
+			]
+		},
 		"am/baptism-with-the-holy-spirit": {
 			"ground": "3bd9f33bc25ded7576456c963215aaa56491e8f52d9c5d9875da69a99879b7dd",
 			"style": "revival",
@@ -2327,13 +2361,20 @@
 			"caps": false,
 			"sitemark": null
 		},
+<<<<<<< HEAD
 		"am/exodus": {
 			"ground": "647d0810fbbbac0231b5070c3f23b6aaccb9a7787cd91e2e16d57e4fedf1e353",
 			"style": "devotional",
+=======
+		"am/ever-increasing-faith": {
+			"ground": "52b5f8bff7c306280553bd8bcc43f7046ca1dc14cf224aaa810d0ce5aef320b2",
+			"style": "revival",
+>>>>>>> origin/main
 			"volume": null,
 			"script": "ethiopic",
 			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
 			"art": true,
+<<<<<<< HEAD
 			"scrim": 1,
 			"lift": 1,
 			"medallion": null,
@@ -2371,6 +2412,31 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": "OpenWordBible.org"
+=======
+			"scrim": 0.55,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[96, 102, 504, 131]
+				],
+				"title": [
+					[151, 222, 449, 319],
+					[76, 306, 524, 403]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				454
+			]
+>>>>>>> origin/main
 		},
 		"am/faithful-with-little": {
 			"ground": "c24b844779ce6151a0e316a45c144b2db95864277c53466774ac38123e3635d0",
@@ -4014,6 +4080,36 @@
 				460
 			]
 		},
+		"am/orthodoxy": {
+			"ground": "5720f0135f311824d82155df7f7fec8e63088bc3e65d830570134bfa8f9494b7",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
+			"art": true,
+			"scrim": 0.4,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[120, 342, 480, 452]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				294,
+				501
+			]
+		},
 		"am/our-daily-walk": {
 			"ground": "c3e4d05ed98b916cd68c1e31613f9e851e8a52d553ba571fb29cce617cb92d40",
 			"style": "devotional",
@@ -4081,13 +4177,20 @@
 				469
 			]
 		},
+<<<<<<< HEAD
 		"am/philemon": {
 			"ground": "4b4ebb7e9b270e2ce9d7b1c47bae8a3e823597dfd142b58d1899ab78221c9121",
 			"style": "devotional",
+=======
+		"am/pensees": {
+			"ground": "d8bfc30b0d4790fbe1ee3afcd4813269707d89e6c1ed2a24a13837ce4f52035f",
+			"style": "press",
+>>>>>>> origin/main
 			"volume": null,
 			"script": "ethiopic",
 			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
 			"art": true,
+<<<<<<< HEAD
 			"scrim": 1,
 			"lift": 1,
 			"medallion": null,
@@ -4110,6 +4213,33 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": "OpenWordBible.org"
+=======
+			"scrim": 0.25,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[186, 319, 414, 424]
+				],
+				"subtitle": [
+					[154, 477, 446, 498]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				296,
+				499
+			]
+>>>>>>> origin/main
 		},
 		"am/pilgrims-progress": {
 			"ground": "6b94bd42e5b82ef3462f3a942c03ccced08dd6edf311006de63a27309cd74a53",
@@ -5700,6 +5830,40 @@
 			"middle": [
 				270,
 				525
+			]
+		},
+		"am/the-practice-of-the-presence-of-god": {
+			"ground": "330606fbbd40db369d2d11e8fa1c92ce2fb67a0d543146908d3d12605a7c1ca4",
+			"style": "press",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[115, 301, 485, 379],
+					[81, 365, 519, 443]
+				],
+				"subtitle": [
+					[169, 498, 431, 519]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
 			]
 		},
 		"am/the-practice-of-the-presence-of-god-children": {
@@ -7674,6 +7838,54 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ar/mortification-of-sin": {
+			"ground": "4b5d785b9b82931c7399061e64c8f97e93312e78aa32c24e7ae977049e3d4c3b",
+			"style": "press",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[61, 325, 539, 410]
+				],
+				"subtitle": [
+					[225, 474, 375, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				284,
+				511
+			]
+		},
+		"ar/necessity-of-prayer": {
+			"ground": "ce8f983e3edf0e25358e46d40fc96a1c7739f70d75fe5f0c486b1a7b49924d38",
+			"style": "devotional",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.05,
+			"caps": false,
+			"sitemark": null
+		},
 		"ar/pilgrims-progress": {
 			"ground": "9e0a4426d01ec0414ece972b8d364cf3de899d5eabe0454eb42ab30f468d8fe7",
 			"style": "press",
@@ -8266,6 +8478,39 @@
 				539
 			]
 		},
+		"ar/the-bruised-reed": {
+			"ground": "c8dc65ebeca95d7b3e3092fcd8a1dbdd9611049fa135a8ac1977eca573fe9354",
+			"style": "press",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[86, 317, 514, 418]
+				],
+				"subtitle": [
+					[246, 484, 354, 523]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
+		},
 		"ar/the-christians-secret-of-a-happy-life-4": {
 			"ground": "6162c6864a9d095720f7695166bc7fb204d1191a2af40338e15f2f9745ce8b21",
 			"style": "devotional",
@@ -8418,6 +8663,39 @@
 			"bar": 0,
 			"caps": true,
 			"sitemark": null
+		},
+		"ar/the-life-of-trust-children": {
+			"ground": "330d5ee79e08dda4abf38033d595615ed40c12dd1a77c7f768b8af5dbaa63a7a",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[155, 102, 445, 131]
+				],
+				"title": [
+					[175, 318, 425, 424]
+				],
+				"edition": [
+					[273, 450, 327, 475]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				255,
+				540
+			]
 		},
 		"ar/the-masters-indwelling": {
 			"ground": "45b1af0b52f595f73eedad08ffde0d4fb2577a13207fa6560f685d4c3a54bde5",
@@ -25461,6 +25739,39 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"hi/the-life-of-trust-children": {
+			"ground": "b5a2fb526cf68209df2f39c634edf8f4f6e8ab755db69c1e048d08422eaebfa6",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "f36feae5363a90b83288a44fbd3d4f2a1b774d41f412b88d508596e52f368b4b",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[155, 102, 445, 131]
+				],
+				"title": [
+					[93, 330, 507, 420]
+				],
+				"edition": [
+					[238, 443, 362, 468]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				266,
+				528
+			]
+		},
 		"hi/the-masters-indwelling": {
 			"ground": "816c7f25929f98aa0a7a3c8c0ee6b3823ea55cea58cf5aed7f04375ccf6e4e9b",
 			"style": "devotional",
@@ -35664,6 +35975,40 @@
 			"bar": 0,
 			"caps": true,
 			"sitemark": null
+		},
+		"lg/the-life-of-trust-children": {
+			"ground": "6d65c57071cf9ea2adf8744854173047452ed1017bc684afc9972e2f87024a59",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[155, 102, 445, 131]
+				],
+				"title": [
+					[169, 300, 431, 382],
+					[98, 371, 502, 453]
+				],
+				"edition": [
+					[214, 464, 386, 489]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				250,
+				545
+			]
 		},
 		"lg/the-masters-indwelling": {
 			"ground": "d193efb56c4fc37f166e85a86a41ebf8d4d74a06f4dfee8514addecf75a88fb0",

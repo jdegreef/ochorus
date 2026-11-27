@@ -1,0 +1,376 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "george-muller"
+  ],
+  "slug": "the-life-of-trust-children",
+  "language": "lg",
+  "title": "Obulamu obw’Okwesiga (Eri Abaana)",
+  "subtitle": "",
+  "description": "George Müller yalabirira bamulekwa enkumi n’enkumi mu Bungereza, era ekyo yakikola nga tasaba muntu yenna wabula Katonda yekka okumuwa ssente, emmere, n’obuyambi bwe yali yeetaaga — era ng’asaba. Ekitabo kino eky’abaana kizzaawo emboozi entuufu ey’obulamu bwe mu ssuula ennyimpi ez’okusomera abaana mu ddoboozi: olunyiriri lwa Bayibuli, emboozi y’essaala Katonda gye yaddamu, ekintu kimu kye kitegeeza gy’oli, n’essaala ennyimpi.",
+  "qa": [
+   {
+    "question": "Ekitabo Obulamu obw’Okwesiga (Eri Abaana) kyogera ku ki?",
+    "answer": "Ye mboozi y’obulamu bwa George Müller, gye yawandiika yennyini, etegekeddwa abaana. Müller yalabirira bamulekwa enkumi n’enkumi mu Bungereza, era mu kifo ky’okusaba abantu ssente, yasabanga Katonda — era Katonda n’amuwanga emirundi n’emirundi. Buli ssuula ennyimpi enyumya emboozi emu entuufu ey’essaala Katonda gye yaddamu."
+   },
+   {
+    "question": "George Müller yali ani?",
+    "answer": "Yali musajja eyabeeranga mu Bungereza edda ennyo, n’azimba amaka agaalabirira bamulekwa enkumi n’enkumi — abaana abatalina maama wadde taata. Yasalawo obutasaba muntu yenna wabula Katonda yekka okuwa abaana bye beetaaga, era yawandiikanga engeri Katonda gye yaddangamu essaala ze, abalala nabo balyoke beesige Katonda."
+   },
+   {
+    "question": "Buli ssuula etegekeddwa etya?",
+    "answer": "Buli ssuula nnyimpi era ekoleddwa okusomebwa mu ddoboozi. Etandika n’olunyiriri lwa Bayibuli, n’enyumya emboozi entuufu okuva mu bulamu bwa George Müller, n’eraga ekintu kimu ekyangu kye kitegeeza gy’oli, n’ekomekkereza n’essaala ennyimpi."
+   },
+   {
+    "question": "Ekitabo kino kya baani?",
+    "answer": "Kya baana — okusomerwa omukulu mu ddoboozi, oba okusomebwa omwana omukulu ku lulwe. Ekitabo kya George Müller ekijjuvu ekikwata ku bulamu bwe, Obulamu obw’Okwesiga, nakyo kiriwo eri abasomi abakulu."
+   },
+   {
+    "question": "Ekintu ekikulu ekitabo kino kye kiyigiriza kye kiruwa?",
+    "answer": "Nti Katonda awulira era addamu essaala, era nti asobola okwesigibwa okutuwa bye twetaaga ddala. Obulamu bwa George Müller mboozi mpanvu entuufu ey’okusaba Katonda obuyambi n’okulaba nga Katonda awa, abaana nabo balyoke bayige okumwesiga."
+   },
+   {
+    "question": "Emboozi zino ntuufu?",
+    "answer": "Yee. Zinyumizibwa mu ngeri ennyangu eri abaana, naye ziva mu mboozi George Müller gye yawandiika yennyini ku bulamu bwe — amaka ga bamulekwa amatuufu ge yazimba n’essaala entuufu Katonda ze yaddamu, ze yawandiikanga nga bwe zibaddewo."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of George Müller’s The Life of Trust, which is in the public domain. The telling is our own, free to read and share.",
+  "cover_url": "/covers/art/the-life-of-trust-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 22,
+  "is_published": true,
+  "created_at": "2026-11-26T00:00:00Z",
+  "updated_at": "2026-11-26T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "lg"
+  ],
+  "order": 1,
+  "title": "Akasente mu Ngatto",
+  "body_html": "<blockquote>“Ffenna twawaba ng’endiga” — okuva mu Isaaya 53</blockquote> <p>Wandikkirizza nti omusajja eyalabirira bamulekwa enkumi n’enkumi yali mubbi bwe yali akyali mulenzi muto? Ge mazima. Erinnya lye yali George Müller, era bwe yali omuto teyali mulungi n’akatono.</p> <p>George yali ayagala okutwala ssente ezitali zize. Lumu kitaawe yayagala okumanya oba George abadde abba. N’abala ssente ezimu, n’azireka mu kisenge, n’agenda, alabe oba waliwo ezinaabula.</p> <p>George n’asigala yekka ne ssente ezo. Era omanyi kye yakola? Yatwalako ezimu — n’akweka akasente kamu wansi w’ekigere kye, munda mu ngatto ye! Naye kitaawe bwe yakomawo n’abala, ssente nga zibulako. Ne bakebera George, era laba, akasente nga kekwese mu ngatto ye.</p> <p>George teyakoma awo. Bwe yagenda akula, yayogeranga obulimba, era yasaasaanyanga ssente ze yali talina, okutuusa lumu, bwe yali wa myaka kkumi na mukaaga, ne bamuteeka ne mu kkomera okumala akaseera.</p> <p>Kaakano, lwaki emboozi ye entuufu etandika n’ebintu byonna ebibi bye yakola? Kubanga bifuula ebirala byonna okuba eby’ekitalo ennyo. Katonda yali tannamala na George. Katonda asobola okutwala omulenzi alimba era abba n’amukyusa ddala — era lumu n’amukozesa okuyamba abaana bangi okusinga George be yandisobodde okubala.</p> <p>N’olwekyo bw’oba ng’okoze ebintu ebibi, tolowoozanga n’akatono nti oli mubi nnyo Katonda n’atakwagala. Tewali n’omu ali bw’atyo. Katonda ayagala nnyo okukyusa emitima.</p> <p><em>Katonda omwagalwa, weebale nti osobola okukyusa omuntu yenna, nange nzennyini. Nkwegayiridde fuula omutima gwange omulungi era omulongoofu. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "George omuto yakweka wa akasente ke yatwala ku kitaawe?",
+    "answer": "Yakakweka wansi w’ekigere kye, munda mu ngatto ye. Kitaawe bwe yabala ssente n’amukebera, akasente ne kazuulibwa omwo."
+   },
+   {
+    "question": "Lwaki emboozi ya George etandika n’ebintu byonna ebibi bye yakola?",
+    "answer": "Kubanga bifuula ebirala byonna okuba eby’ekitalo: Katonda yali tannamala na George, era Katonda asobola okukyusa ddala omulenzi alimba era abba."
+   },
+   {
+    "question": "Wali owuliddeko nga oli mukyamu nnyo Katonda n’atasobola kukwagala? Emboozi ya George eyogera ki ku ekyo?",
+    "answer": "Ensonga y’essuula eno: tewali muntu mubi nnyo eri Katonda. Katonda ayagala nnyo okukyusa emitima, era asobola okufuula emitima gyaffe emirungi era emirongoofu."
+   }
+  ],
+  "word_count": 218
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "lg"
+  ],
+  "order": 2,
+  "title": "Oluggi Oluggule",
+  "body_html": "<blockquote>“Naye bwe yali ng’akyaliko wala n’awaka, kitaawe n’amulengera ng’ajja, … n’amusisinkana” — okuva mu Lukka 15</blockquote> <p>Ku Lwomukaaga lumu akawungeezi, George bwe yali omuvubuka, mukwano gwe yamutwala mu nnyumba Abakristaayo abamu gye baali bakuŋŋaanidde. George n’awulira ensonyi. Yali tagendangako mu kifo ekiri bwe kityo.</p> <p>Munda, abantu baasoma Bayibuli wamu, ne bayimba, oluvannyuma ne wabaawo ekintu George ky’ateerabira n’akatono. Omusajja omu yafukamira okusaba. George yali talabangako muntu yenna ng’afukamira okusaba — era ye kennyini yali tasabangako ng’afukamidde. Kyamukwata nnyo mu mutima gwe munda ddala.</p> <p>Omusajja ow’ekisa nannyini nnyumba eyo yalaba nga George awulira nga si wa mu kifo ekyo. Kyeyava amugamba ekigambo ekisinga obulungi: “Jjangu buli lw’oyagala. Ennyumba yange n’omutima gwange biggule gy’oli.”</p> <p>George yaddayo eka ekiro ekyo — era mu kifo ky’okuwulira obwereere n’obutateredde nga bwe yawuliranga bulijjo, yagalamira ku kitanda kye ng’ali mu mirembe era nga musanyufu. Waaliwo ekintu ekiggya ddala ekyali kitandise munda mu ye. Oluvannyuma yagamba nti ekiro ekyo kye kyakyusa obulamu bwe bwonna. Ekyo kye kiro George lwe yakomawo eka eri Katonda.</p> <p>Katonda alinga omusajja oyo ow’ekisa ku luggi, naye ye wa kisa okusingawo nnyo nnyo. Ne bw’oba ng’owabye wala nnyo okuva gy’ali, omutima gwe muggule gy’oli. Tekikwetaagisa kusooka kuba mulungi ekimala. Kye weetaaga kwe kujja bujja.</p> <p><em>Katonda omwagalwa, weebale nti omutima gwo bulijjo muggule gye ndi. Njagala okujja gy’oli. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "George yalaba ki mu nnyumba y’Abakristaayo ky’atalabangako?",
+    "answer": "Omusajja omu yafukamira okusaba. George yali talabangako muntu yenna ng’afukamira okusaba, era kyamukwata nnyo mu mutima gwe munda ddala."
+   },
+   {
+    "question": "Omusajja nannyini nnyumba yagamba George bigambo ki eby’ekisa?",
+    "answer": "Yagamba nti, “Jjangu buli lw’oyagala. Ennyumba yange n’omutima gwange biggule gy’oli.” George n’addayo eka ng’ali mu mirembe era nga musanyufu."
+   },
+   {
+    "question": "Kikwetaagisa okusooka okuba omulungi ekimala nga tonnajja eri Katonda?",
+    "answer": "Ensonga y’essuula eno: Katonda alinga omusajja oyo ow’ekisa ku luggi, naye ye wa kisa okusingawo nnyo. Omutima gwe muggule gy’oli, era kye weetaaga kwe kujja bujja."
+   }
+  ],
+  "word_count": 215
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "lg"
+  ],
+  "order": 3,
+  "title": "Okusabira Mikwano Gye Okutuusa Lwe Baakaaba",
+  "body_html": "<blockquote>“Buli omu asabirenga munne” — okuva mu Yakobo 5</blockquote> <p>Kaakano George bwe yali nga musanyufu nnyo olw’okumanya Katonda, yayagala ne mikwano gye nabo babe basanyufu. Kyeyava abuulira mikwano gye ebiri egy’edda byonna ebikwata ku ekyo.</p> <p>Naye bo ne basitula bisitula ebibegabega. Ne bagamba nti, “Tetuwulira nti tuli boonoonyi. Tetuwulira nti waliwo kye twakola ekyetaaga okusonyiyibwa.”</p> <p>George yandikoze ki? Yali tasobola kubaleetera kutegeera. Kyeyava akola ekintu kyokka kye yali alowoozezzaako — yasaba. Awo wennyini, yafukamira n’asaba Katonda alage mikwano gye ebiri amazima agakwata ku mitima gyabwe. Oluvannyuma n’agenda mu kisenge kye n’agenda mu maaso n’okubasabira.</p> <p>Era George bwe yakomawo — mikwano gye ebiri nga bakaaba. Bombi! Katonda yali akoze George ky’atasobola kukola. Ne bamugamba nti kaakano bamanyi nti boonoonyi, era nti nabo beetaaga Katonda.</p> <p>George yali ayiga ekintu kye yandikozesezza obulamu bwe bwonna: <strong>bwe tuba nga tetusobola kukyusa kintu ffekka, tusobola okusaba, era Katonda asobola.</strong></p> <p>Waliwo omuntu gw’oyagala amanye Katonda — mukwano gwo, muganda wo oba mwannyoko, omuntu omu mu maka go? Tekikwetaagisa kumuwaliriza kukkiriza. Osobola okukola nga George bwe yakola. Osobola okumusabira, n’ebirala n’obirekera Katonda.</p> <p><em>Katonda omwagalwa, nkwegayiridde yamba abantu be njagala bakumanye. Nze sisobola kukikola, naye ggwe osobola. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mikwano gya George ebiri baagamba ki bwe yababuulira ebikwata ku Katonda?",
+    "answer": "Baasitula bisitula ebibegabega ne bagamba nti tebawulira nti boonoonyi, era nti tebawulira nti waliwo kye baakola ekyetaaga okusonyiyibwa."
+   },
+   {
+    "question": "George yakola ki bwe yalemwa okuleetera mikwano gye okutegeera?",
+    "answer": "Yafukamira n’abasabira, oluvannyuma n’agenda mu maaso n’okusaba ng’ali mu kisenge kye. Bwe yakomawo, mikwano gye bombi baali bakaaba, ne bagamba nti nabo beetaaga Katonda."
+   },
+   {
+    "question": "Waliwo omuntu gw’oyagala amanye Katonda? Tuyinza kumukolera ki?",
+    "answer": "Ensonga y’essuula eno: tekitwetaagisa kuwaliriza muntu yenna kukkiriza. Bwe tuba nga tetusobola kukyusa kintu ffekka, tusobola okusaba, era Katonda asobola."
+   }
+  ],
+  "word_count": 190
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "lg"
+  ],
+  "order": 4,
+  "title": "Tewakyali Musaala, Katonda Yekka",
+  "body_html": "<blockquote>“Katonda wange alibawa buli kye mwetaaga” — okuva mu Abafiripi 4</blockquote> <p>George bwe yakula, n’afuuka omubuulizi, era ekkanisa n’emusasulanga omusaala, ng’omulimu omulala gwonna. Naye George yalina ekirowoozo eky’enjawulo. Yasalawo okulekera ddala awo okutwala omusaala!</p> <p>Mu kifo ky’ekyo, yandyesize Katonda okumuwa by’ayetaaga. Yateeka akasanduuko akatono ku kisenge ky’ekkanisa, buli ayagala okuwaayo awaayo — naye n’akola etteeka ekkakafu: teyandisabye muntu n’omu ssente. Yandisabye <em>Katonda</em> yekka. Bwe yandibadde n’ekyetaago, yandikibuulidde Katonda, so si muntu mulala yenna.</p> <p>Kiwulikika ng’ekitiisa katono, si bwe kiri? Era mangu ddala ne kigezesebwa. George ne mukyala we baali basigazza ssente ntono nnyo — obusente butono bwokka. Kyebaava bakola kye baali basuubizza: ne bafukamira ne babuulira Katonda.</p> <p>Nga wayise essaawa ntono, omukazi omu n’ajja ku luggi lwabwe n’abuuza nti, “Mwetaaga ssente?” N’abawaako ezimu — era wano we wali ekitundu eky’ekitalo. Yagamba nti Katonda yali amuteeka ku mutima okuziwaayo wiiki bbiri emabega! Katonda yali atandise okuddamu nga George tannaba na kusaba. Era George yali tamubuuliranga nti balina ekyetaago. Katonda yekka ye yali amanyi.</p> <p>Katonda amanyi ddala ky’oyetaaga nga tonnaba na kukimusaba. Osobola okumubuulira ku kintu kyonna, n’omwesiga okukulabirira.</p> <p><em>Katonda omwagalwa, weebale nti dda omanyi bye nneetaaga. Nnyamba okukwesiga n’okukubuulira buli kimu. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Etteeka ekkakafu George lye yakola ku ssente nga amaze okulekera awo okutwala omusaala lye liruwa?",
+    "answer": "Teyandisabye muntu n’omu ssente. Yandisabye Katonda yekka, era ebyetaago bye teyandibibuulidde muntu mulala yenna."
+   },
+   {
+    "question": "Kiki ekyali eky’ekitalo ku mukazi eyajja ku luggi ne ssente?",
+    "answer": "Yagamba nti Katonda yali amuteeka ku mutima okuziwaayo wiiki bbiri emabega, kale Katonda yali atandise okuddamu nga George tannaba na kusaba. George yali tamubuuliranga ku kyetaago kyabwe."
+   },
+   {
+    "question": "Bintu ki by’oyinza okubuulira Katonda leero?",
+    "answer": "Ensonga y’essuula eno: Katonda amanyi ddala ky’oyetaaga nga tonnaba na kumusaba. Osobola okumubuulira ku kintu kyonna n’omwesiga okukulabirira."
+   }
+  ],
+  "word_count": 191
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "lg"
+  ],
+  "order": 5,
+  "title": "Okukonkona ku Luggi",
+  "body_html": "<blockquote>“Otuwenga emmere yaffe eya buli lunaku.” — okuva mu Matayo 6</blockquote> <p>Ku Ssande emu, George ne mukyala we baali basigazza obusente obusembayo obutono ennyo. Omugaati ogwali mu nnyumba gwali gwa kumala lunaku olwo lwokka, nga tewali ssente za kugula mulala gwa kawungeezi.</p> <p>Kyeyava George asaba. Teyasaba ssaala ya bigambo binene. Yasaba Katonda, mu ngeri ennyangu ddala, abaweereze omugaati ogw’akawungeezi ako — omugaati ddala, ogw’oku mmeeza yaabwe, ku lunaku olwo lwennyini.</p> <p>Era laba ekyabaawo. <strong>George bwe yali akyasaba</strong> — nga tannaba na kumaliriza — ne wabaawo akonkona ku luggi!</p> <p>Omukazi omwavu yali ayimiridde awo. Yali aleese ku mmere ye okugigabana nabo, n’ensimbi ntono okuva ku mukwano gwe omulala omwavu. Era olweggulo olwo lwennyini, n’akomawo nate, ku mulundi guno ng’akutte omugaati omunene.</p> <p>Katonda yali awulidde. Mazima ddala, Katonda yali aweerezza dda omukazi oyo n’omugaati nga George tannamaliriza kusaba. Okuddamu kwali kujja dda nga akyafukamidde.</p> <p>Yesu bwe yatuyigiriza okusaba, yatugamba okusaba “emmere yaffe eya buli lunaku” — ebintu bye twetaaga buli lunaku. George ekyo yakitwala nga kikulu nnyo, era Katonda n’amulabirira. Naawe osobola okusaba Katonda ebintu ebya bulijjo by’oyetaaga. Afaayo ku byonna, ne ku mugaati ogw’eky’ekiro.</p> <p><em>Katonda omwagalwa, weebale nti ofaayo ne ku bintu ebitono, ebya buli lunaku. Nkwegayiridde mpa bye nneetaaga leero. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kintu ki ekyangu George kye yasaba Katonda ku Ssande eyo?",
+    "answer": "Yasaba Katonda abaweereze omugaati ogw’akawungeezi ako, kubanga omugaati ogwali mu nnyumba gwali gwa kumala lunaku olwo lwokka, nga tewali ssente za kugula mulala."
+   },
+   {
+    "question": "Kiki ekyabaawo George bwe yali akyasaba?",
+    "answer": "Ne wabaawo akonkona ku luggi. Omukazi omwavu yaleeta ku mmere ye n’ensimbi ntono, era oluvannyuma n’akomawo ng’akutte omugaati omunene."
+   },
+   {
+    "question": "Katonda afaayo ku bintu ebya bulijjo ng’eky’ekiro kyaffe? Kiki ky’oyinza okumusaba?",
+    "answer": "Ensonga y’essuula eno: Yesu yatuyigiriza okusaba “emmere yaffe eya buli lunaku.” Katonda afaayo ku byonna, ne ku mugaati ogw’eky’ekiro, kale tusobola okumusaba bye twetaaga buli lunaku."
+   }
+  ],
+  "word_count": 201
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "lg"
+  ],
+  "order": 6,
+  "title": "Yasamya Akamwa Ko",
+  "body_html": "<blockquote>“Yasamya akamwa ko, nange nnaakajjuza.” — okuva mu Zabbuli 81</blockquote> <p>Lumu George yasoma ku musajja eyaliwo edda eyazimba amaka ga bamulekwa — abaana abatalina maama wadde taata — ng’ayesiga Katonda yekka. Ekirowoozo ekinene ne kitandika okukula mu mutima gwa George. Kale singa <em>naye</em> atandika amaka ga bamulekwa?</p> <p>George yasaba nnyo nnyo ku nsonga eyo. Yasaba ne Katonda akiggyewo ekirowoozo ekyo bwe kiba nga tekyava gy’ali. Oluvannyuma, bwe yali asoma Bayibuli ye, n’asanga ebigambo bino: “Yasamya akamwa ko, nange nnaakajjuza.” Kyali nga Katonda agamba nti, “Nsaba ebintu ebinene, George. Nsobola okubikola.”</p> <p>Kyeyava George asaba Katonda ebintu bisatu ebinene: ennyumba y’abaana, ssente nnyingi nnyo, n’abantu ab’ekisa okubalabirira.</p> <p>Oluvannyuma n’alinda okulaba Katonda ky’anaakola. Ekirabo ekyasooka kyali siringi emu yokka — akasente kamu akatono. Olunaku olwaddako, omuntu omu n’aweereza kabada y’engoye ennene. Oluvannyuma omukazi omu ne yeewaayo okujja okuyamba. Ate omusajja ne mukyala we ne beewaayo okulabirira abaana nga tebasasulwa n’akatono.</p> <p>Mpola mpola, Katonda n’ajjuza buli kyetaago. Era ku lunaku lumu mu kiseera ky’okumera, amaka ga bamulekwa ne gaggulawo enzigi zaago — nga mulimu abaana kkumi na musanvu!</p> <p>George ebyo byonna teyabikola kweraga nti mugezi. Yabikola buli muntu alabe n’amaaso ge nti <strong>Katonda wa ddala, era Katonda akyawulira essaala.</strong></p> <p><em>Katonda omwagalwa, oli mukulu nnyo, osobola buli kimu. Nnyamba okukuleetera essuubi lyange erisinga obunene, n’okukwesiga nalyo. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kirowoozo ki ekinene ekyakula mu mutima gwa George ng’amaze okusoma ku musajja eyaliwo edda?",
+    "answer": "Okutandika amaka ga bamulekwa, abaana abatalina maama wadde taata, ng’ayesiga Katonda yekka nga omusajja oyo bwe yakola."
+   },
+   {
+    "question": "Bintu ki ebinene ebisatu George bye yasaba Katonda?",
+    "answer": "Ennyumba y’abaana, ssente nnyingi nnyo, n’abantu ab’ekisa okubalabirira. Mpola mpola Katonda n’ajjuza buli kyetaago, era abaana kkumi na musanvu ne bayingira."
+   },
+   {
+    "question": "Ssuubi ki eddene ly’oyinza okuleeta eri Katonda?",
+    "answer": "Ensonga y’essuula eno: “Yasamya akamwa ko, nange nnaakajjuza” kitegeeza nti Katonda mukulu nnyo, asobola buli kimu, kale tusobola okumuleetera essuubi lyaffe erisinga obunene ne tumwesiga."
+   }
+  ],
+  "word_count": 212
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "lg"
+  ],
+  "order": 7,
+  "title": "Omuwala Eyawaayo Byonna",
+  "body_html": "<blockquote>“Katonda ayagala oyo agaba n’essanyu.” — okuva mu 2 Abakkolinso 9</blockquote> <p>Ekimu ku birabo ebisinga obulungi bamulekwa bye baali bafunye kyava ku mukazi omuvubuka omwavu eyatungaga engoye okwefunira obulamu. Yafunanga obusente butono bwokka buli wiiki, era teyeemulugunyanga n’akatono.</p> <p>Lumu n’afuna ssente ezize ku lulwe — nnyingi ddala. Kaakano, ggwe wandikoze ki ng’ofunye ekyewuunyo ng’ekyo? Okugula engoye empya ennungi? Okuzikuuma zonna nga zizo?</p> <p>Laba kye yakola. Okusooka yasasula amabanja ge ag’edda. Oluvannyuma n’awaako maama we ekitundu. Era oluvannyuma n’aleetera George ekirabo ekinene — pawundi kikumi! — ku lwa bamulekwa.</p> <p>George yeewuunya nnyo n’amubuuza emirundi egiwera, okukakasa nti ddala ayagala okuwaayo bingi bwe bityo. N’amuddamu n’ebigambo ebisaanidde okujjukirwa: “Mukama Yesu yawaayo ettondo ly’omusaayi gwe erisembayo ku lwange. Kale nze sisaanidde kumuwa kino?”</p> <p>Era omanyi — ekyo kyonna yakikuuma nga kya kyama. Yagenda mu maaso n’okwambala engoye ze ze zimu ennyangu enkadde, n’addayo butereevu ku kutunga, ng’akola nnyo nga bulijjo, ne bwe yali awaayo bingi nnyo mu kasirise.</p> <p>Yali ayagala Yesu, kale okuwaayo kwamuleeteranga essanyu, so si nnaku. Tekikwetaagisa kuba mugagga okubeera omugabi. Kye weetaaga kwe kuba n’omutima ogwagala. Kiki ky’oyinza okuwa — mu kasirise, n’essanyu — omuntu akyetaaga?</p> <p><em>Katonda omwagalwa, weebale okumpa Yesu. Mfuula omugabi omusanyufu ow’ekyama, ng’omukazi oyo ow’ekisa. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Omukazi omuvubuka eyatungaga engoye yakola ki ne ssente ze yafuna?",
+    "answer": "Yasasula amabanja ge ag’edda, n’awaako maama we ekitundu, n’aleetera George pawundi kikumi ku lwa bamulekwa."
+   },
+   {
+    "question": "Lwaki yagamba nti ayagala okuwaayo bingi bwe bityo?",
+    "answer": "Yagamba nti, “Mukama Yesu yawaayo ettondo ly’omusaayi gwe erisembayo ku lwange. Kale nze sisaanidde kumuwa kino?” Yali ayagala Yesu, kale okuwaayo kwamuleeteranga essanyu."
+   },
+   {
+    "question": "Kiki ky’oyinza okuwa, mu kasirise n’essanyu, omuntu akyetaaga?",
+    "answer": "Ensonga y’essuula eno: tekikwetaagisa kuba mugagga okubeera omugabi, kye weetaaga kwe kuba n’omutima ogwagala. Omukazi oyo yakuuma okugaba kwe nga kwa kyama, era yagaba n’essanyu."
+   }
+  ],
+  "word_count": 199
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "lg"
+  ],
+  "order": 8,
+  "title": "Ekirabo ky’Omukozi w’Emigaati",
+  "body_html": "<blockquote>“Ye Kitaawe w’abataliiko bakitaabwe” — okuva mu Zabbuli 68</blockquote> <p>Bamulekwa bwe beeyongera okujja okubeera ne George, n’emimwa egy’okuliisa ne gyeyongera obungi. Era oluusi emmere yabanga kumpi okuggwaawo.</p> <p>Ku makya agamu kyali kizibu nnyo nga bulijjo. Emmere yaliwo ya kumala lunaku olwo lwokka. Omukazi ow’ekisa eyafumbiranga abalenzi yali asigazza obusente bubiri bwokka, n’ayimirira awo nga yeebuuza: abukozese kugula mugaati oba nnyama? Tebyali bimala kugula byombi.</p> <p>Era mu kaseera ako ddala — konko, konko — omukozi w’emigaati n’atuuka ku luggi. Naye teyali azze kusasulwa. Yali azze <em>kuwa.</em> N’aleka emigaati esatu eminene emiggya ng’ekirabo, bw’atyo bw’atyo!</p> <p>George yalaba ekintu, bwe yatunuulira emabega ennaku zino zonna. Yakiwandiika aleme kukyerabira: <strong>obuyambi bulijjo bwajjanga ng’enjala ddala tennabaawo.</strong> Katonda teyaleka abaana n’olumu kubulwa mmere ddala. Teyalwangako.</p> <p>Bayibuli eyita Katonda “Kitaawe w’abataliiko bakitaabwe” — ekitegeeza nti Katonda alinga taata omulungi, ow’okwagala, eri abaana abatalina taata. Bamulekwa abo baali tebalina bakitaabwe. Naye baalina Kitaabwe asinga obulungi, ng’alabirira buli kyakulya kyabwe.</p> <p>Katonda ne gy’oli Kitaawo omulungi. Alaba by’oyetaaga, era talwawo.</p> <p><em>Katonda omwagalwa, weebale okuba Kitange ow’okwagala atanneerabiranga. Nnyamba okwesiga nti bulijjo otuuka mu kiseera kyennyini. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lwaki omukazi eyafumbanga emmere yali yeeraliikirira ku makya ago?",
+    "answer": "Emmere yaliwo ya kumala lunaku olwo lwokka, era yali asigazza obusente bubiri bwokka. Yali yeebuuza oba agule mugaati oba nnyama, kubanga tebyali bimala kugula byombi."
+   },
+   {
+    "question": "Omukozi w’emigaati yaleeta ki, era lwaki kyali kyewuunyisa?",
+    "answer": "Teyali azze kusasulwa wabula kuwa. N’aleka emigaati esatu eminene emiggya ng’ekirabo."
+   },
+   {
+    "question": "Kitegeeza ki nti Katonda ye “Kitaawe w’abataliiko bakitaabwe”? Akubeerera atya Kitaawo?",
+    "answer": "Ensonga y’essuula eno: Katonda alinga taata omulungi ow’okwagala. Alaba by’oyetaaga, takwerabira n’akatono, era talwawo."
+   }
+  ],
+  "word_count": 176
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "lg"
+  ],
+  "order": 9,
+  "title": "Ensawo Ssatu eza Lumonde",
+  "body_html": "<blockquote>“Nga tebanakoowoola ndibaddamu” — okuva mu Isaaya 65</blockquote> <p>Ate ne wabaawo enkya endala nga mu nnyumba kumpi tewali kintu kyonna, ate nga ssente nnyingi ddala zaali zeetaagibwa okuliisa abaana bonna. Kyeyava George akola kye yakolanga bulijjo. Yagenda okusaba.</p> <p>Era bwe yali akyasaba — nga ziri nga essaawa nnya ez’oku makya — omusajja omu n’ajja ku luggi n’obubaka. Omukyala omu yali alagidde <strong>ensawo ssatu enzijuvu eza lumonde</strong> zitwalibwe mu maka ga bamulekwa!</p> <p>Ensawo ssatu ennene eza lumonde, nga zituuse mu kaseera kennyini akatuufu. George yagamba nti tezaandisobodde kutuuka mu kiseera ekisinga ako.</p> <p>Ebiringa ebyo byabangawo emirundi n’emirundi. Lumu, George yasisinkana omusajja mu kkubo eyamuwa ssente za bamulekwa — era George n’akitegeera nti singa yayitawo nga wayiseewo wadde ekitundu kya dakiika emu kyokka, yandimusubwa ddala! Naye teyalwawo wadde ekitundu kya dakiika. Katonda yali ategese ekiseera bulungi ddala.</p> <p>Ekyo tekyewuunyisa? Katonda tatuweereza bye twetaaga kyokka. Abituweereza mu dakiika yennyini entuufu — oluusi nga tukyasaba, oluusi nga tetunnayitawo. Tayanguyiriza, era talwawo n’akatono.</p> <p>Tewali kintu kitono nnyo nti Katonda tayinza kukitegeka. Afaayo ku bintu ebitonotono eby’olunaku lwo, okutuuka ne ku dakiika.</p> <p><em>Katonda omwagalwa, weebale nti omanyi ekiseera ekituufu ekya buli kintu. Nnyamba okukulindirira n’obuteeraliikirira. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kiki ekyatuuka ku luggi George bwe yali asaba ku ssaawa nga nnya ez’oku makya?",
+    "answer": "Obubaka nti omukyala omu yali alagidde ensawo ssatu enzijuvu eza lumonde zitwalibwe mu maka ga bamulekwa, mu kaseera kennyini akatuufu."
+   },
+   {
+    "question": "Kiki ekyabaawo George bwe yasisinkana omusajja mu kkubo?",
+    "answer": "Omusajja yamuwa ssente za bamulekwa. Singa George yayitawo nga wayiseewo wadde ekitundu kya dakiika, yandimusubwa."
+   },
+   {
+    "question": "Waliwo ekintu ekitono ennyo Katonda ky’atasobola kulabirira? Kiki kye tuyinza okulekera awo okweraliikirira?",
+    "answer": "Ensonga y’essuula eno: Katonda atuweereza bye twetaaga mu dakiika yennyini entuufu. Tewali kintu kitono nnyo gy’ali, kale tusobola okumulindirira ne tuteeraliikirira."
+   }
+  ],
+  "word_count": 190
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "lg"
+  ],
+  "order": 10,
+  "title": "Amata ag’Ekyenkya",
+  "body_html": "<blockquote>“…naye abo abanoonya Mukama, ebirungi tebiibaggwengako.” — okuva mu Zabbuli 34</blockquote> <p>Buli ku makya bamulekwa baalyanga ekyenkya kye kimu ekibasanyusa: obuugi obubuguma nga buliko amata. Naye amata gagulwa ssente — era akawungeezi akamu gaali kumpi tegaliiwo n’akatono.</p> <p>Omusajja aleeta amata yandizze ku makya ennyo enkeera, nga essaawa bbiri tezinnatuuka, era tewandibaddewo ssente za kumusasula, wadde amata ag’obuugi bw’abaana. Kiki ekyali kiyinza okukolebwa?</p> <p>Kyebaava bakola bwe bati: akawungeezi ako, ku ssaawa kkumi na bbiri, George n’abayambi be babiri ne bafukamira wamu ne basaba Katonda aweereze ekyetaagisa ng’obudde tebunnakya.</p> <p>Baali <strong>bakyasituka okuva ku maviivi gaabwe</strong> ebbaluwa n’etuuka. Munda yalimu ekirabo ky’abamulekwa! Omuntu ow’ekisa eyagiweereza yali awandiise n’ekintu eky’ekitalo awamu nayo: “Njagala nnyo okuweereza ebirabo bino ebitono. Emirundi mingi bituuka mu kiseera kyennyini ekituufu.”</p> <p>Yali tamanyi kintu kyonna ku mata, wadde ku makya, wadde ku nsawo ya ssente etaliimu kintu. Naye Katonda yali amanyi. Era yali aweerezza dda ebbaluwa ye mu kkubo, n’etuuka akawungeezi kennyini we yali yeetaagibwa — mu budde okufuna amata ku makya.</p> <p>Katonda ayagala nnyo okuddamu essaala bw’atyo: essaala ey’akawungeezi, eddibwamu enjuba nga tennavaayo. Bw’onoonya Katonda n’omwesiga, tojja kubulwa birungi by’oyetaaga ddala.</p> <p><em>Katonda omwagalwa, weebale nti oddamu essaala, ne obudde nga tebunnakya. Nja kukwesiga ku lw’enkya. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lwaki George n’abayambi be baali beetaaga okusaba akawungeezi ako?",
+    "answer": "Amata gaali kumpi tegaliiwo, era omusajja aleeta amata yali ajja ku makya ennyo enkeera nga tewali ssente za kumusasula, wadde amata ag’obuugi bw’abaana."
+   },
+   {
+    "question": "Kiki ekyatuuka nga baakasituka okuva ku maviivi gaabwe?",
+    "answer": "Ebbaluwa erimu ekirabo ky’abamulekwa. Eyagiweereza yawandiika nti, “Njagala nnyo okuweereza ebirabo bino ebitono. Emirundi mingi bituuka mu kiseera kyennyini ekituufu.”"
+   },
+   {
+    "question": "Kiki ky’oyinza okwesiga Katonda nakyo ekiro kino, ng’obudde tebunnakya?",
+    "answer": "Ensonga y’essuula eno: Katonda ayagala nnyo okuddamu essaala, ne obudde nga tebunnakya. Abo abamunoonya tebajja kubulwa birungi bye beetaaga ddala."
+   }
+  ],
+  "word_count": 197
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "lg"
+  ],
+  "order": 11,
+  "title": "Bbanka Etayinza Kugwa",
+  "body_html": "<blockquote>“Mweterekerenga obugagga bwammwe mu ggulu gye butayinza kwonoonebwa” — okuva mu Matayo 6</blockquote> <p>Lumu abagenyi abamu bajja okulambula amaka g’abalenzi bamulekwa. Beewuunya nnyo engeri abaana gye baali balabirirwamu obulungi. Naye era baali beebuuza katono.</p> <p>Omukyala omu n’agamba nti, “Kya lwatu, temuyinza kuddukanya bino byonna nga temulina ssente nnyingi ezaterekebwa mu bbanka. Muteekwa okuba nga mulina ensimbi nnyingi ezitereke.”</p> <p>Ate omwami omu n’abuuza omukazi eyaddukanyanga amaka ago nti, “Mulina ssente nnyingi ze mwatereka?”</p> <p>Kaakano, amazima gaali nti mu kiseera ekyo ssente zaali kumpi tezaliiwo n’akatono. Naye wuliriza okuddamu okulungi kwe yawa: “Ssente zaffe ziterekebwa mu bbanka etayinza kugwa.”</p> <p>Yali ategeeza ki? Yali ategeeza <strong>Katonda yennyini.</strong> Bbanka eza bulijjo zisobola okuggwaamu ssente. Naye Katonda taggwaamu, era Katonda talekerera bantu be. Ye yali bbanka yaabwe — bbanka yokka mu nsi yonna etayinza, emirembe gyonna, kugwa.</p> <p>Omukyala yakwatibwako nnyo n’amaziga ne gajja mu maaso ge. Era abagenyi bwe baali bagenda, omwami n’awaayo pawundi ttaano — ne zituuka mu kaseera kennyini George bwe yali talina wadde ssente emu.</p> <p>Naawe osobola okutereka eby’obugagga byo mu kifo ekyo kye kimu ekitaliimu kabi. Ssente zisobola okubula oba okusaasaanyizibwa, naye ebirungi by’okolera Katonda, n’okumwesiga kwo, biterekebwa mu kifo awatali kintu kiyinza kubyonoona.</p> <p><em>Katonda omwagalwa, toggwaamu era tolemererwa. Nnyamba okutereka eby’obugagga byange nga bikuumibwa mu ggwe. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Abagenyi baalowooza nti amaka ga bamulekwa gateekwa okuba na ki?",
+    "answer": "Baalowooza nti gateekwa okuba ne ssente nnyingi ezaterekebwa mu bbanka, ensimbi nnyingi ezitereke."
+   },
+   {
+    "question": "Omukazi yali ategeeza ki bwe yayogera ku “bbanka etayinza kugwa”?",
+    "answer": "Yali ategeeza Katonda yennyini. Bbanka eza bulijjo zisobola okuggwaamu ssente, naye Katonda taggwaamu era talekerera bantu be."
+   },
+   {
+    "question": "Bintu ki eby’obugagga ebitayinza kubula?",
+    "answer": "Ensonga y’essuula eno: ssente zisobola okubula oba okusaasaanyizibwa, naye ebirungi by’okolera Katonda n’okumwesiga kwo biterekebwa awatali kintu kiyinza kubyonoona."
+   }
+  ],
+  "word_count": 207
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "lg"
+  ],
+  "order": 12,
+  "title": "Ennyumba ku Lusozi, Eyazimbibwa n’Okusaba",
+  "body_html": "<blockquote>“Omulimu gw’okugumiikiriza bwe gutuukirira” — okuva mu Yakobo 1</blockquote> <p>Amaka ga bamulekwa gajjula nnyo era ne gaba n’emirimu mingi nnyo ne kiba nti George yasalawo okukola ekintu ekinene ennyo: okuzimba ennyumba emu ennene ennyo ebweru mu kyalo, ennene ekimala okugyamu abaana <em>ebikumi bisatu</em>. Era yandigisasulidde yonna mu ngeri y’emu nga bulijjo — ng’asaba bwokka.</p> <p>Ennyumba ennene ennyo yeetaaga ssente nnyingi nnyo. Kyeyava George atandika okugisabira, buli lunaku. Era ku lunaku olw’amakumi asatu mu mukaaga ng’asaba, ekirabo kya pawundi lukumi ne kituuka! Zaali ssente nnyingi ez’ekitalo — naye George yawulira nga mukkakkamu ng’alinga omuntu amukwasizza akasente kamu akatono, kubanga ku kiseera ekyo yali asuubira bulijjo nti Katonda ajja kuddamu.</p> <p>Oluvannyuma omusajja eyakubanga pulaani z’ennyumba — omuntu George gwe yali tasisinkananga n’akatono — ne yeewaayo okukuba pulaani y’ennyumba yonna n’okulabirira okuzimba kwayo ku bwereere!</p> <p>Ekiddako, George yali yeetaaga ettaka. Yawulira ku nnimiro ennungi ku lusozi oluyitibwa Ashley Down. Naye akawungeezi akasooka, nannyini yo yali tasobola kulabika wonna. George teyanyiiga; yawulira nti Katonda alina ensonga. Era yali mutuufu. Ekiro ekyo kyennyini, nannyini nnimiro yazuukuka ku ssaawa mwenda ez’ekiro n’atasobola kuddamu kwebaka — ebirowoozo bye byali bijjudde ennimiro eyo. N’asalawo nti George bw’aba ng’agyagala, ajja kugimutundira — era ku muwendo mutono nnyo okusinga gwe yali ateekateeka okusaba!</p> <p>Awo George n’agula ennimiro ennene, era bwe waayitawo ekiseera, ennyumba ennene ne ziyimirira ku lusozi olwo, nga zijjudde bamulekwa ebikumi n’ebikumi abasanyufu era abalya obulungi — buli ttofaali lyazo nga lyazimbibwa n’okusaba.</p> <p>Katonda asobola okukola okusinga bye tulootako. Weeyongere okusaba, weeyongere okulinda, olabe ky’asobola okuzimba.</p> <p><em>Katonda omwagalwa, osobola okukola ebintu ebinene ennyo. Njigiriza okweyongera okusaba n’okukulindirira n’obugumiikiriza. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "George yali ateekateeka kusasula atya ennyumba ennene ey’abaana ebikumi bisatu?",
+    "answer": "Mu ngeri y’emu nga bulijjo, ng’asaba bwokka. Ku lunaku olw’amakumi asatu mu mukaaga ng’asaba, ekirabo kya pawundi lukumi ne kituuka."
+   },
+   {
+    "question": "Lwaki nannyini nnimiro ku Ashley Down yasalawo okugitunda?",
+    "answer": "Yazuukuka ku ssaawa mwenda ez’ekiro ng’ebirowoozo bye bijjudde ennimiro eyo, n’asalawo okugitundira George ku muwendo mutono nnyo okusinga gwe yali ateekateeka."
+   },
+   {
+    "question": "Kintu ki kye tuyinza okweyongera okusabira, ne bwe kiba nti tulina okulinda?",
+    "answer": "Ensonga y’essuula eno: Katonda asobola okukola okusinga bye tulootako. Weeyongere okusaba, olinde n’obugumiikiriza, olabe ky’asobola okuzimba."
+   }
+  ],
+  "word_count": 262
+ }
+}
+]
