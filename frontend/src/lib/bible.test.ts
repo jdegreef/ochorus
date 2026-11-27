@@ -154,6 +154,10 @@ describe('canonName', () => {
 		expect(canonName(19, 'sw')).toBe('Zaburi');
 		expect(chapterLabel(22, 1, 'sw')).toBe('Wimbo Ulio Bora 1');
 		expect(canonName(66, 'sw')).toBe('Ufunuo');
+		expect(chapterLabel(19, 23, 'am')).toBe('መዝሙር 23');
+		expect(canonName(19, 'am')).toBe('መዝሙረ ዳዊት');
+		expect(chapterLabel(44, 2, 'am')).toBe('የሐዋርያት ሥራ 2');
+		expect(canonName(66, 'am')).toBe('የዮሐንስ ራእይ');
 		expect([canonName(0, 'en'), canonName(67, 'en'), canonName(null, 'en')]).toEqual([null, null, null]);
 	});
 });
@@ -500,7 +504,7 @@ describe('bibleTopics', () => {
 });
 
 describe('biblePathSteps', () => {
-	const W = { en: 'w', es: 'v', fr: 'f', pt: 'p', sw: 's' };
+	const W = { en: 'w', es: 'v', fr: 'f', pt: 'p', sw: 's', am: 'a' };
 	const ps = { slug: 'psalms', title: 'The Psalms', series_position: 19, chapter_count: 152 };
 	const john = { slug: 'gospel-of-john', title: 'The Gospel of John', series_position: 43, chapter_count: 23 };
 
@@ -561,13 +565,14 @@ describe('the hub locales’ book names', () => {
 });
 
 describe('quotations on the hub', () => {
-	// Each language's quotation marks: «…» in Spanish, « … » in French, “…” in
-	// Portuguese and Swahili.
+	// Each language's quotation marks: «…» in Spanish and Amharic, « … » in
+	// French, “…” in Portuguese and Swahili.
 	const MARKS: Record<string, RegExp> = {
 		es: /«([^»]+)»/g,
 		fr: /«\s([^»]+?)\s»/g,
 		pt: /“([^”]+)”/g,
-		sw: /“([^”]+)”/g
+		sw: /“([^”]+)”/g,
+		am: /«([^»]+)»/g
 	};
 
 	it.each(Object.keys(MARKS))('quote the Open Word Bible (owb-%s-b) word for word', async (lang) => {

@@ -37,7 +37,7 @@
 	const t = i18n.t;
 	const lang = getLang();
 	const tagline = bibleText(STORY_TAGLINE, lang);
-	const ABOUT = { en: 'The Bible', es: 'La Biblia', fr: 'La Bible', pt: 'A Bíblia', sw: 'Biblia' };
+	const ABOUT = { en: 'The Bible', es: 'La Biblia', fr: 'La Bible', pt: 'A Bíblia', sw: 'Biblia', am: 'መጽሐፍ ቅዱስ' };
 
 	const eras = storyEras();
 	// Numbered through both testaments, so the New Testament list starts where

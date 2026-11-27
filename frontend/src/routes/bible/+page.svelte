@@ -80,28 +80,30 @@
 	 * locale (`BibleText`), rather than as 14-locale catalogue keys.
 	 */
 	const COPY = {
-		balanced: { en: 'Balanced', es: 'Equilibrado', fr: 'Équilibré', pt: 'Equilibrado', sw: 'Uwiano' },
-		freeToShare: { en: 'Free to share', es: 'Libre para compartir', fr: 'Libre à partager', pt: 'Livre para compartilhar', sw: 'Huru kushirikiwa' },
+		balanced: { en: 'Balanced', es: 'Equilibrado', fr: 'Équilibré', pt: 'Equilibrado', sw: 'Uwiano', am: 'ሚዛናዊ' },
+		freeToShare: { en: 'Free to share', es: 'Libre para compartir', fr: 'Libre à partager', pt: 'Livre para compartilhar', sw: 'Huru kushirikiwa', am: 'ለማካፈል ነጻ' },
 		noteWhat: {
 			en: "A new translation of the Bible from the Hebrew and Greek, in today's English. Every sentence is translated three ways, from word-for-word to plain; Ochorus prints the Balanced one, faithful to the original and easy to read.",
 			es: 'Una nueva traducción de la Biblia hecha directamente del hebreo y el griego, en el español de hoy. Ochorus imprime su nivel Equilibrado: fiel al original y fácil de leer.',
 			fr: 'Une nouvelle traduction de la Bible faite directement à partir de l’hébreu et du grec, dans le français d’aujourd’hui. Ochorus en publie le niveau Équilibré : fidèle à l’original et facile à lire.',
 			pt: 'Uma nova tradução da Bíblia feita diretamente do hebraico e do grego, no português de hoje. O Ochorus publica o seu nível Equilibrado: fiel ao original e fácil de ler.',
-			sw: 'Tafsiri mpya ya Biblia kutoka Kiebrania na Kigiriki, kwa Kiswahili cha leo. Ochorus inachapisha kiwango chake cha Uwiano: aminifu kwa asili, na rahisi kusoma.'
+			sw: 'Tafsiri mpya ya Biblia kutoka Kiebrania na Kigiriki, kwa Kiswahili cha leo. Ochorus inachapisha kiwango chake cha Uwiano: aminifu kwa asili, na rahisi kusoma.',
+			am: 'በቀጥታ ከዕብራይስጥና ከግሪክ በዛሬው አማርኛ የተተረጎመ አዲስ የመጽሐፍ ቅዱስ ትርጉም። Ochorus ሚዛናዊ ደረጃውን ያቀርባል፦ ለመጀመሪያው ጽሑፍ ታማኝ፣ ለማንበብም ቀላል።'
 		},
 		noteFree: {
 			en: 'It is given to the public domain, so anyone may read, copy, print and share it, free.',
 			es: 'Está cedida al dominio público, así que cualquiera puede leerla, copiarla, imprimirla y compartirla, gratis.',
 			fr: 'Elle est versée au domaine public : chacun peut la lire, la copier, l’imprimer et la partager, gratuitement.',
 			pt: 'Ela foi cedida ao domínio público, então qualquer pessoa pode lê-la, copiá-la, imprimi-la e compartilhá-la, de graça.',
-			sw: 'Imetolewa kwa umma, kwa hiyo mtu yeyote anaweza kuisoma, kuinakili, kuichapisha na kuishiriki, bure.'
+			sw: 'Imetolewa kwa umma, kwa hiyo mtu yeyote anaweza kuisoma, kuinakili, kuichapisha na kuishiriki, bure.',
+			am: 'ለሕዝብ የተሰጠ ስለ ሆነ ማንም ሰው በነጻ ሊያነበው፣ ሊገለብጠው፣ ሊያትመውና ሊያካፍለው ይችላል።'
 		},
-		moreAbout: { en: 'More about the translation', es: 'Más sobre la traducción', fr: 'En savoir plus sur la traduction', pt: 'Mais sobre a tradução', sw: 'Zaidi kuhusu tafsiri hii' },
-		passagesOn: { en: 'Passages on', es: 'Pasajes sobre', fr: 'Passages sur', pt: 'Passagens sobre', sw: 'Vifungu kuhusu' },
-		chooseWay: { en: 'Choose a way in', es: 'Elegir por dónde entrar', fr: 'Choisir par où entrer', pt: 'Escolher por onde entrar', sw: 'Chagua pa kuanzia' },
-		newToBible: { en: 'New to the Bible', es: 'Nuevo en la Biblia', fr: 'Nouveau dans la Bible', pt: 'Novo na Bíblia', sw: 'Mgeni katika Biblia' },
-		showCovers: { en: 'Show covers', es: 'Ver portadas', fr: 'Afficher les couvertures', pt: 'Ver capas', sw: 'Onyesha majalada' },
-		aboutOwb: { en: 'About the Open Word Bible', es: 'Acerca de la Open Word Bible', fr: 'À propos de l’Open Word Bible', pt: 'Sobre a Open Word Bible', sw: 'Kuhusu Open Word Bible' }
+		moreAbout: { en: 'More about the translation', es: 'Más sobre la traducción', fr: 'En savoir plus sur la traduction', pt: 'Mais sobre a tradução', sw: 'Zaidi kuhusu tafsiri hii', am: 'ስለ ትርጉሙ ተጨማሪ' },
+		passagesOn: { en: 'Passages on', es: 'Pasajes sobre', fr: 'Passages sur', pt: 'Passagens sobre', sw: 'Vifungu kuhusu', am: 'ክፍሎች በርዕስ' },
+		chooseWay: { en: 'Choose a way in', es: 'Elegir por dónde entrar', fr: 'Choisir par où entrer', pt: 'Escolher por onde entrar', sw: 'Chagua pa kuanzia', am: 'የመግቢያ መንገድ ይምረጡ' },
+		newToBible: { en: 'New to the Bible', es: 'Nuevo en la Biblia', fr: 'Nouveau dans la Bible', pt: 'Novo na Bíblia', sw: 'Mgeni katika Biblia', am: 'ለመጽሐፍ ቅዱስ አዲስ ከሆኑ' },
+		showCovers: { en: 'Show covers', es: 'Ver portadas', fr: 'Afficher les couvertures', pt: 'Ver capas', sw: 'Onyesha majalada', am: 'ሽፋኖችን አሳይ' },
+		aboutOwb: { en: 'About the Open Word Bible', es: 'Acerca de la Open Word Bible', fr: 'À propos de l’Open Word Bible', pt: 'Sobre a Open Word Bible', sw: 'Kuhusu Open Word Bible', am: 'ስለ Open Word Bible' }
 	} satisfies Record<string, BibleText>;
 	const say = (text: BibleText) => bibleText(text, lang);
 

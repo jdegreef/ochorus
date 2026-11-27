@@ -14,6 +14,9 @@
  * Jo … Ap). Swahili likewise ("Zaburi 23", "Wimbo Ulio Bora 1", "Yohana 3"),
  * with the abbreviations Swahili Bibles use (Mwa, Kut … Zab … Mt, Yn, Mdo …
  * Ufu). Its psalms are "Zaburi" in the singular and the plural alike.
+ * Amharic is its edition's own too ("መዝሙር 23", "ዮሐንስ 3", "የሐዋርያት ሥራ 2"),
+ * with the abbreviations Amharic Bibles use (ዘፍ, ዘጸ … መዝ … ማቴ, ዮሐ, ሐዋ … ራእ);
+ * its Psalms are "መዝሙረ ዳዊት" as a book and "መዝሙር" for one psalm.
  */
 import { CANON } from '$lib/sermonCanon';
 import { divisionOf } from '$lib/bible';
@@ -297,13 +300,83 @@ const CANON_SW: Canon = [
 	['Ufunuo', 'Ufu']
 ];
 
+const CANON_AM: Canon = [
+	['ዘፍጥረት', 'ዘፍ'],
+	['ዘጸአት', 'ዘጸ'],
+	['ዘሌዋውያን', 'ዘሌ'],
+	['ዘኍልቍ', 'ዘኍ'],
+	['ዘዳግም', 'ዘዳ'],
+	['ኢያሱ', 'ኢያ'],
+	['መሳፍንት', 'መሳ'],
+	['ሩት', 'ሩት'],
+	['1 ሳሙኤል', '1 ሳሙ'],
+	['2 ሳሙኤል', '2 ሳሙ'],
+	['1 ነገሥት', '1 ነገ'],
+	['2 ነገሥት', '2 ነገ'],
+	['1 ዜና መዋዕል', '1 ዜና'],
+	['2 ዜና መዋዕል', '2 ዜና'],
+	['ዕዝራ', 'ዕዝ'],
+	['ነህምያ', 'ነህ'],
+	['አስቴር', 'አስ'],
+	['ኢዮብ', 'ኢዮ'],
+	['መዝሙረ ዳዊት', 'መዝ'],
+	['ምሳሌ', 'ምሳ'],
+	['መክብብ', 'መክ'],
+	['መኃልየ መኃልይ', 'መኃ'],
+	['ኢሳይያስ', 'ኢሳ'],
+	['ኤርምያስ', 'ኤር'],
+	['ሰቆቃው ኤርምያስ', 'ሰቆ'],
+	['ሕዝቅኤል', 'ሕዝ'],
+	['ዳንኤል', 'ዳን'],
+	['ሆሴዕ', 'ሆሴ'],
+	['ኢዩኤል', 'ኢዩ'],
+	['አሞጽ', 'አሞ'],
+	['አብድዩ', 'አብ'],
+	['ዮናስ', 'ዮና'],
+	['ሚክያስ', 'ሚክ'],
+	['ናሆም', 'ናሆ'],
+	['ዕንባቆም', 'ዕን'],
+	['ሶፎንያስ', 'ሶፎ'],
+	['ሐጌ', 'ሐጌ'],
+	['ዘካርያስ', 'ዘካ'],
+	['ሚልክያስ', 'ሚል'],
+	['ማቴዎስ', 'ማቴ'],
+	['ማርቆስ', 'ማር'],
+	['ሉቃስ', 'ሉቃ'],
+	['ዮሐንስ', 'ዮሐ'],
+	['የሐዋርያት ሥራ', 'ሐዋ'],
+	['ሮሜ', 'ሮሜ'],
+	['1 ቆሮንቶስ', '1 ቆሮ'],
+	['2 ቆሮንቶስ', '2 ቆሮ'],
+	['ገላትያ', 'ገላ'],
+	['ኤፌሶን', 'ኤፌ'],
+	['ፊልጵስዩስ', 'ፊል'],
+	['ቈላስይስ', 'ቈላ'],
+	['1 ተሰሎንቄ', '1 ተሰ'],
+	['2 ተሰሎንቄ', '2 ተሰ'],
+	['1 ጢሞቴዎስ', '1 ጢሞ'],
+	['2 ጢሞቴዎስ', '2 ጢሞ'],
+	['ቲቶ', 'ቲቶ'],
+	['ፊልሞና', 'ፊልሞ'],
+	['ዕብራውያን', 'ዕብ'],
+	['ያዕቆብ', 'ያዕ'],
+	['1 ጴጥሮስ', '1 ጴጥ'],
+	['2 ጴጥሮስ', '2 ጴጥ'],
+	['1 ዮሐንስ', '1 ዮሐ'],
+	['2 ዮሐንስ', '2 ዮሐ'],
+	['3 ዮሐንስ', '3 ዮሐ'],
+	['ይሁዳ', 'ይሁ'],
+	['የዮሐንስ ራእይ', 'ራእ']
+];
+
 /** Each hub locale's canon, 1 Genesis … 66 Revelation (index + 1). */
 export const CANON_NAMES: Readonly<Record<BibleLocale, Canon>> = {
 	en: CANON,
 	es: CANON_ES,
 	fr: CANON_FR,
 	pt: CANON_PT,
-	sw: CANON_SW
+	sw: CANON_SW,
+	am: CANON_AM
 };
 
 /** What a single psalm is called ("Psalm 23", «Salmo 23»): the one book whose
@@ -313,7 +386,8 @@ export const PSALM: Readonly<Record<BibleLocale, string>> = {
 	es: 'Salmo',
 	fr: 'Psaume',
 	pt: 'Salmo',
-	sw: 'Zaburi'
+	sw: 'Zaburi',
+	am: 'መዝሙር'
 };
 
 /** The canon in `locale`: a hub locale's own, else English (the pure helpers'
