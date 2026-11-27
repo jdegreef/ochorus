@@ -17,6 +17,8 @@ import logging
 from django.core.management import call_command
 from django.core.management.base import BaseCommand
 
+from library.heartbeat import beat
+
 logger = logging.getLogger(__name__)
 
 
@@ -30,24 +32,32 @@ class Command(BaseCommand):
         # Order is priority: every lifecycle-kind sweep shares the 20h min-gap, so
         # whichever runs first claims a reader's slot for the day. Onboarding, then
         # the "keep reading" series nudge, then the milestone celebration.
-        call_command("send_lifecycle_emails")
+        with beat("send_lifecycle_emails"):
+            call_command("send_lifecycle_emails")
         # Plan reminders keep their own time and don't take the shared slot
         # (lifecycle.UNGATED_STEPS), so their place in the order doesn't matter.
-        call_command("send_plan_reminders")
-        call_command("send_series_nudges")
-        call_command("send_milestone_cards")
+        with beat("send_plan_reminders"):
+            call_command("send_plan_reminders")
+        with beat("send_series_nudges"):
+            call_command("send_series_nudges")
+        with beat("send_milestone_cards"):
+            call_command("send_milestone_cards")
         # Admin-built automations share the 20h gap too, so they come after the
         # built-in emails have had their turn.
-        call_command("run_automations")
+        with beat("run_automations"):
+            call_command("run_automations")
         # The digest and "new in your language" are built as broadcasts, so they
         # go first: one built without approval is then sent on this same pass.
-        call_command("build_auto_emails")
-        call_command("send_due_broadcasts")
+        with beat("build_auto_emails"):
+            call_command("build_auto_emails")
+        with beat("send_due_broadcasts"):
+            call_command("send_due_broadcasts")
         # The nightly content audit rides this cron rather than a second paid
         # Render cron service: `--if-due` makes it a no-op on all but one tick a
         # day. Isolated so an audit failure can never fail the email sweep (and
         # the next tick simply retries — "due" holds until a scan is recorded).
         try:
-            call_command("audit_scan", "--if-due")
+            with beat("audit_scan"):
+                call_command("audit_scan", "--if-due")
         except Exception:
             logger.exception("audit_scan failed")
