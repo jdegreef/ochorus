@@ -2566,6 +2566,11 @@ class AdminAction(models.Model):
         SEARCH_DECIDE = "search.decide", "Unanswered search triaged"
         SEARCH_UNDO = "search.undo", "Search triage undone"
         USER_DELETE = "user.delete", "Reader account deleted"
+        # Privacy-sensitive READS — the only GETs this log records (see
+        # ``audit.record_read``). A reader's email in the clear, or the reader
+        # list leaving the building, is worth a row; a dashboard refresh is not.
+        USER_VIEW = "user.view", "Reader's record opened with their email shown"
+        USER_EXPORT = "user.export", "Reader list exported"
 
     action = models.CharField(max_length=32, choices=Action.choices)
     #: Who, by email — the identity `IsAdminEmail` gates on. Blank only when a

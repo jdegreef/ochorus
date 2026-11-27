@@ -105,6 +105,15 @@ describe('parseTarget', () => {
 		});
 	});
 
+	it('links a reader and the reader list to their admin pages', () => {
+		expect(parseTarget('user:0b9e')).toEqual({
+			kind: 'other',
+			slug: 'A reader',
+			href: '/admin/users/0b9e'
+		});
+		expect(parseTarget('users').href).toBe('/admin/users');
+	});
+
 	it('leaves an off-shape target as an unlinked label', () => {
 		expect(parseTarget('')).toEqual({ kind: 'other', slug: '', href: null });
 		expect(parseTarget('weird').href).toBeNull();

@@ -84,3 +84,54 @@ class AdminAudited:
                 detail=detail or {},
             )
         return response
+
+
+#: How long a repeat of the same privacy-sensitive read by the same person is
+#: folded into the row already written. Opening a reader's page, going back and
+#: opening it again is one look, not two; a refresh loop shouldn't bury the log.
+READ_DEDUPE_MINUTES = 30
+
+
+def record_read(
+    request,
+    action: str,
+    target: str = "",
+    detail: dict | None = None,
+    *,
+    dedupe: bool = True,
+) -> None:
+    """Append an :class:`AdminAction` for a privacy-sensitive READ.
+
+    The log deliberately skips GETs (``WRITE_METHODS``), but two reads deserve a
+    trace because they hand someone readers' personal data: a reader's page
+    with their email in the clear (``user.view``) and a reader-list export
+    (``user.export``). Nothing else should call this — a row per ordinary page
+    view is the noise ``WRITE_METHODS`` exists to keep out.
+
+    A repeat of the same ``(action, actor, target)`` inside
+    :data:`READ_DEDUPE_MINUTES` writes nothing, unless ``dedupe=False`` (an
+    export: each download is another copy of the data). Never raises: a logging hiccup
+    must not cost an admin the page they asked for.
+    """
+    from datetime import timedelta
+
+    from django.utils import timezone
+
+    actor = actor_email(request)
+    target = (target or "")[:200]
+    try:
+        since = timezone.now() - timedelta(minutes=READ_DEDUPE_MINUTES)
+        if (
+            dedupe
+            and AdminAction.objects.filter(
+                action=action, actor=actor, target=target, at__gte=since
+            ).exists()
+        ):
+            return
+        AdminAction.objects.create(
+            action=action, actor=actor, target=target, detail=detail or {}
+        )
+    except Exception:  # noqa: BLE001 — see docstring: the read must still succeed
+        import logging
+
+        logging.getLogger(__name__).exception("could not record %s", action)

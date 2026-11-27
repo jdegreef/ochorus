@@ -20,6 +20,8 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import requires, reveals_pii
 
+from ..audit import record_read
+from ..models import AdminAction
 from ..views import _language_entry
 from .analytics import _profile_summary, mask_email
 from .csv_export import csv_response, csv_safe
@@ -61,7 +63,17 @@ class AdminUserDirectoryView(APIView):
         # set, no pagination) — see AdminExportView for the same convention and
         # why it isn't the DRF-reserved ``format`` param.
         if request.query_params.get("fmt", "").lower() == "csv":
-            return self._csv(qs, reveal=reveal)
+            response = self._csv(qs, reveal=reveal)
+            # Every export is logged, masked or not: it is the reader list
+            # leaving the console. Who, how many, with what filter.
+            record_read(
+                request,
+                AdminAction.Action.USER_EXPORT,
+                "users",
+                {"rows": qs.count(), "emails": "clear" if reveal else "masked", "q": q, "sort": sort},
+                dedupe=False,
+            )
+            return response
 
         total = qs.count()
         pages = max(1, (total + PAGE_SIZE - 1) // PAGE_SIZE)
