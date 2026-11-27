@@ -2361,20 +2361,44 @@
 			"caps": false,
 			"sitemark": null
 		},
-<<<<<<< HEAD
-		"am/exodus": {
-			"ground": "647d0810fbbbac0231b5070c3f23b6aaccb9a7787cd91e2e16d57e4fedf1e353",
-			"style": "devotional",
-=======
 		"am/ever-increasing-faith": {
 			"ground": "52b5f8bff7c306280553bd8bcc43f7046ca1dc14cf224aaa810d0ce5aef320b2",
 			"style": "revival",
->>>>>>> origin/main
 			"volume": null,
 			"script": "ethiopic",
 			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
 			"art": true,
-<<<<<<< HEAD
+			"scrim": 0.55,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[96, 102, 504, 131]
+				],
+				"title": [
+					[151, 222, 449, 319],
+					[76, 306, 524, 403]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				454
+			]
+		},
+		"am/exodus": {
+			"ground": "647d0810fbbbac0231b5070c3f23b6aaccb9a7787cd91e2e16d57e4fedf1e353",
+			"style": "devotional",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
+			"art": true,
 			"scrim": 1,
 			"lift": 1,
 			"medallion": null,
@@ -2412,31 +2436,6 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": "OpenWordBible.org"
-=======
-			"scrim": 0.55,
-			"lift": 1,
-			"medallion": null,
-			"layout": "framed-top",
-			"bar": 0,
-			"caps": false,
-			"sitemark": null,
-			"rows": {
-				"byline": [
-					[96, 102, 504, 131]
-				],
-				"title": [
-					[151, 222, 449, 319],
-					[76, 306, 524, 403]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				173,
-				454
-			]
->>>>>>> origin/main
 		},
 		"am/faithful-with-little": {
 			"ground": "c24b844779ce6151a0e316a45c144b2db95864277c53466774ac38123e3635d0",
@@ -4177,43 +4176,13 @@
 				469
 			]
 		},
-<<<<<<< HEAD
-		"am/philemon": {
-			"ground": "4b4ebb7e9b270e2ce9d7b1c47bae8a3e823597dfd142b58d1899ab78221c9121",
-			"style": "devotional",
-=======
 		"am/pensees": {
 			"ground": "d8bfc30b0d4790fbe1ee3afcd4813269707d89e6c1ed2a24a13837ce4f52035f",
 			"style": "press",
->>>>>>> origin/main
 			"volume": null,
 			"script": "ethiopic",
 			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
 			"art": true,
-<<<<<<< HEAD
-			"scrim": 1,
-			"lift": 1,
-			"medallion": null,
-			"layout": "framed-light",
-			"bar": 0,
-			"caps": false,
-			"sitemark": "OpenWordBible.org"
-		},
-		"am/philippians": {
-			"ground": "49b47ce8a89c3e37442ba0cc0f10254538edd115797c97c9aba80b4182f38fe0",
-			"style": "devotional",
-			"volume": null,
-			"script": "ethiopic",
-			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
-			"art": true,
-			"scrim": 1,
-			"lift": 1,
-			"medallion": null,
-			"layout": "framed-light",
-			"bar": 0,
-			"caps": false,
-			"sitemark": "OpenWordBible.org"
-=======
 			"scrim": 0.25,
 			"lift": 1,
 			"medallion": null,
@@ -4239,7 +4208,36 @@
 				296,
 				499
 			]
->>>>>>> origin/main
+		},
+		"am/philemon": {
+			"ground": "4b4ebb7e9b270e2ce9d7b1c47bae8a3e823597dfd142b58d1899ab78221c9121",
+			"style": "devotional",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
+		"am/philippians": {
+			"ground": "49b47ce8a89c3e37442ba0cc0f10254538edd115797c97c9aba80b4182f38fe0",
+			"style": "devotional",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "1d53539530e3f3aa0022c795cc93e7184802c3d79b1b74e96792b100aa0caf82",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
 		},
 		"am/pilgrims-progress": {
 			"ground": "6b94bd42e5b82ef3462f3a942c03ccced08dd6edf311006de63a27309cd74a53",
