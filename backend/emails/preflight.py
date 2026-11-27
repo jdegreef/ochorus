@@ -420,10 +420,20 @@ def _translation_checks(broadcast) -> list[dict]:
 
 
 def _test_check(broadcast) -> dict:
+    """Whether the exact copy about to go out was tested first.
+
+    An ERROR — it blocks send and schedule — whenever sending is on: with two
+    people able to send, nobody should mail every reader a version nobody has
+    looked at in an inbox. With sending off a test can't be delivered either,
+    so it stays a warning there (everything is recorded as skipped anyway).
+    """
+    level = ERROR if emails_enabled() else WARNING
     if not broadcast.tested_digest:
-        return _check("test", WARNING, "No test email has been sent yet.")
+        return _check("test", level, "Send yourself a test first: no test email has been sent yet.")
     if broadcast.tested_digest != broadcast.content_digest():
-        return _check("test", WARNING, "The email has changed since the last test send.")
+        return _check(
+            "test", level, "Send yourself a test first: the email has changed since the last test."
+        )
     return _check("test", OK, "A test of this exact version was sent.")
 
 
