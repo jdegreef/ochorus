@@ -2601,6 +2601,33 @@ class AdminAction(models.Model):
         return f"{self.action} {self.target} by {self.actor or 'unknown'}"
 
 
+class JobHeartbeat(models.Model):
+    """When each scheduled job last ran, and whether it worked.
+
+    The email cron (``send_email_cron`` and the steps it chains), the nightly
+    content audit and the deploy's ``release`` chain run outside any request,
+    so nothing recorded them: a cron that stopped, or a step that started
+    failing every tick, was invisible until a reader noticed the missing
+    email. One row per job, updated in place — this table never grows — and
+    read by the admin's System status page (``admin_views.status``).
+
+    Written through :func:`library.heartbeat.beat`, never directly.
+    """
+
+    #: The job's stable name, e.g. ``"send_lifecycle_emails"`` or ``"release"``.
+    name = models.CharField(max_length=60, unique=True)
+    last_started_at = models.DateTimeField(null=True, blank=True)
+    last_finished_at = models.DateTimeField(null=True, blank=True)
+    #: The last run that finished without raising.
+    last_ok_at = models.DateTimeField(null=True, blank=True)
+    #: The last run's outcome: blank when it succeeded, else the error's text.
+    last_error = models.TextField(blank=True)
+    runs = models.PositiveIntegerField(default=0)
+
+    def __str__(self) -> str:
+        return f"{self.name} (last ok {self.last_ok_at})"
+
+
 class ContentRevision(models.Model):
     """A monotonic counter of reader-visible content changed THROUGH the API.
 

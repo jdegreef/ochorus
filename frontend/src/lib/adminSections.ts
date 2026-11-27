@@ -68,6 +68,9 @@ export const ADMIN_SECTIONS: AdminSection[] = [
 	// Managing access is undelegated — super admins only (auth.isAdmin is the
 	// super-admin flag; a scoped grantee is not is_admin).
 	{ href: '/admin/team', label: 'Team & access', group: 'Settings', superOnly: true },
+	// Whether the jobs that run on their own (the email cron, the nightly
+	// audit, the deploy chain) are running. A reporting view.
+	{ href: '/admin/status', label: 'System status', group: 'Settings', capability: 'reporting' },
 	// Help explains the admin system itself — shown to anyone with any admin
 	// access, whatever their capabilities.
 	{ href: '/admin/help', label: 'Help & roles', group: 'Settings', anyAccess: true }

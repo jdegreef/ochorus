@@ -13,7 +13,8 @@ describe('authorPath', () => {
 		// A hub locale has the page; a language without the hub goes through the
 		// author route.
 		expect(authorPath(OWB_SLUG, 'es')).toBe('/open-word-bible');
-		expect(authorPath(OWB_SLUG, 'sw')).toBe('/authors/open-word-bible');
+		expect(authorPath(OWB_SLUG, 'sw')).toBe('/open-word-bible');
+		expect(authorPath(OWB_SLUG, 'lg')).toBe('/authors/open-word-bible');
 		expect(authorPath('john-bunyan')).toBe('/authors/john-bunyan');
 	});
 });

@@ -292,10 +292,10 @@
   },
   {
    "reference": "Luke 9:23",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 23,
    "chapter_order": 6,
-   "source_file": "holy-in-christ.am.json"
+   "why": "mined from Holy in Christ's 1962 wording, which that book no longer carries (re-quoted to OWB); this work is not yet re-quoted, so its wording is the translator's for now"
   },
   {
    "reference": "Luke 18:27",
@@ -471,10 +471,10 @@
   },
   {
    "reference": "1 Peter 1:15",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 0,
    "chapter_order": 10,
-   "source_file": "holy-in-christ.am.json"
+   "why": "mined from Holy in Christ's 1962 wording, which that book no longer carries (re-quoted to OWB); this work is not yet re-quoted, so its wording is the translator's for now"
   },
   {
    "reference": "Ephesians 1:4",
@@ -485,10 +485,10 @@
   },
   {
    "reference": "Isaiah 6:3",
-   "status": "mined",
+   "status": "self_rendered",
    "block_index": 8,
    "chapter_order": 10,
-   "source_file": "holy-in-christ.am.json"
+   "why": "mined from Holy in Christ's 1962 wording, which that book no longer carries (re-quoted to OWB); this work is not yet re-quoted, so its wording is the translator's for now"
   },
   {
    "reference": "1 Corinthians 1:30",
