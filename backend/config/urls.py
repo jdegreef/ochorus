@@ -244,6 +244,11 @@ urlpatterns = [
         name="admin-team",
     ),
     path(
+        "api/admin/onboarding/",
+        lazy_view("library.admin_views.onboarding", "AdminOnboardingView"),
+        name="admin-onboarding",
+    ),
+    path(
         "api/admin/roles/",
         lazy_view("library.admin_views.team", "AdminRolesView"),
         name="admin-roles",

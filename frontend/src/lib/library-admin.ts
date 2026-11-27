@@ -258,6 +258,18 @@ export interface AdminUnpublished {
 /** Unpublished books and sermons — the worklist for the "unpublished" chips. */
 export const getAdminUnpublished = () => apiFetch<AdminUnpublished>('/api/admin/unpublished/');
 
+// --- Start here (the dashboard's first-steps card) ----------------------------
+export interface OnboardingStep {
+	key: string;
+	title: string;
+	why: string;
+	href: string;
+	/** Ticked from the admin log: the viewer has done this at least once. */
+	done: boolean;
+}
+export const getOnboarding = () =>
+	apiFetch<{ steps: OnboardingStep[] }>('/api/admin/onboarding/');
+
 // --- My work (/admin/my-work) -------------------------------------------------
 // What is waiting on the signed-in admin, gathered from the existing queues.
 export interface MyWorkItem {
