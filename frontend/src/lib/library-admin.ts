@@ -191,8 +191,16 @@ export const grantAdminAccess = (payload: {
 	languages?: string[];
 	/** Put back exactly these rows (Undo after a revoke) instead of granting. */
 	restore?: AdminScope[];
+	/** Email the grantee about a role grant (the grant form's checkbox). */
+	notify?: boolean;
 }) =>
-	apiFetch<{ email: string; scopes: AdminScope[]; removed: string[] }>('/api/admin/team/', {
+	apiFetch<{
+		email: string;
+		scopes: AdminScope[];
+		removed: string[];
+		/** What happened to the note: '' when none was asked for. */
+		notified: '' | 'sent' | 'skipped' | 'failed';
+	}>('/api/admin/team/', {
 		method: 'POST',
 		body: JSON.stringify(payload)
 	});
