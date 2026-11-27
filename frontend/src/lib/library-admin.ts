@@ -107,6 +107,21 @@ export interface AdminAttentionSignals {
 	empty_books: number;
 	languages_missing_books: { code: string; name: string; sermons: number }[];
 	searches: { total_30d: number; zero_30d: number; zero_rate: number };
+	/** The viewer's language scope for these counts; null = every language. */
+	scope: string[] | null;
+	/** The work queues the viewer can open, with how long the oldest has waited. */
+	queues: AttentionQueue[];
+}
+
+/** `fresh` under a week, `aging` from 7 days, `stale` from 14 (or paused sends). */
+export interface AttentionQueue {
+	key: 'feedback' | 'review' | 'scheduled' | 'paused';
+	label: string;
+	href: string;
+	count: number;
+	oldest_at: string | null;
+	oldest_days: number;
+	tone: 'fresh' | 'aging' | 'stale';
 }
 
 // The team / access console — super admin only. Grant/revoke scoped admin
