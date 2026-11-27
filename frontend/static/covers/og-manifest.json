@@ -6205,6 +6205,21 @@
 				522
 			]
 		},
+		"ar/grace-abounding": {
+			"ground": "80f7a535980e09ab513dc1761b0fedd4d8474f0ee817aef237b44643ceef12bb",
+			"style": "press",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/teal",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null
+		},
 		"ar/growing-in-wisdom": {
 			"ground": "d60c1539e72a35847ab4fdc9e058e2f76a4e69fcc405b6928f3f54076d552177",
 			"style": "originals",
@@ -23171,6 +23186,21 @@
 				513
 			]
 		},
+		"hi/grace-abounding": {
+			"ground": "92c9f517ddb01b9d1bb5781b60edc5d939016054f02af62bcda30692783887e0",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "f36feae5363a90b83288a44fbd3d4f2a1b774d41f412b88d508596e52f368b4b",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/teal",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null
+		},
 		"hi/growing-in-wisdom": {
 			"ground": "29d3460135d6e9fa1de115e5ab4a69bc8757b06f32385baa7772a47391b95a68",
 			"style": "originals",
@@ -24347,6 +24377,39 @@
 			"middle": [
 				262,
 				533
+			]
+		},
+		"hi/the-bruised-reed": {
+			"ground": "196ab72927daceaf1f34e079f263494e09a1bcabf2c628291ddf446b43298097",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "f36feae5363a90b83288a44fbd3d4f2a1b774d41f412b88d508596e52f368b4b",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[75, 324, 525, 410]
+				],
+				"subtitle": [
+					[224, 484, 376, 506]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				282,
+				513
 			]
 		},
 		"hi/the-christians-secret-of-a-happy-life-4": {
@@ -53038,6 +53101,40 @@
 			"middle": [
 				244,
 				551
+			]
+		},
+		"uk/the-bruised-reed": {
+			"ground": "c0abae534ef38d3c69293f848d602abbeba1313eff3d30c089b917acef90a2e6",
+			"style": "press",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[135, 302, 465, 380],
+					[178, 366, 422, 444]
+				],
+				"subtitle": [
+					[177, 497, 423, 518]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				276,
+				519
 			]
 		},
 		"uk/the-fourfold-gospel": {
