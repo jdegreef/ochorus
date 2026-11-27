@@ -2858,6 +2858,8 @@ export interface AdminSearchStats {
 	top_queries: SearchTopQuery[];
 	unanswered_by_language: SearchUnanswered[];
 	daily: { day: string; searches: number; zero: number }[];
+	/** What the team did in those 14 days, keyed by `day` (Engagement's markers). Absent from an older API. */
+	events?: (Omit<EngagementEvent, 'week' | 'date' | 'recent'> & { day: string })[];
 	by_language: (Language & { searches: number; zero: number })[];
 }
 
