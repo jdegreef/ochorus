@@ -127,3 +127,29 @@ class EngagementEventsTests(TestCase):
         weeks = {w["week"] for w in res["weekly_active"]}
         self.assertTrue(res["events"])
         self.assertTrue(all(e["week"] in weeks for e in res["events"]))
+
+
+@override_settings(DEBUG=True)
+class SearchChartEventsTests(TestCase):
+    """The Search page's daily chart carries the same markers, by UTC day."""
+
+    def test_a_sent_email_marks_its_day_and_an_old_one_does_not(self):
+        now = timezone.now()
+        Broadcast.objects.create(
+            name="Advent letter",
+            status=BroadcastStatus.SENT,
+            send_started_at=now,
+            send_tally={"sent": 3},
+        )
+        Broadcast.objects.create(
+            name="Old letter",
+            status=BroadcastStatus.SENT,
+            send_started_at=now - timedelta(days=40),
+            send_tally={"sent": 3},
+        )
+        res = APIClient().get("/api/admin/search-stats/")
+        self.assertEqual(res.status_code, 200)
+        events = res.data["events"]
+        self.assertEqual([e["title"] for e in events], ["Advent letter"])
+        self.assertEqual(events[0]["day"], now.date().isoformat())
+        self.assertIn(events[0]["day"], [d["day"] for d in res.data["daily"]])
