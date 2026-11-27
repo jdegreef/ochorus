@@ -245,12 +245,41 @@
 	}
 
 	const CONFIRM: Partial<Record<BroadcastActionName, string>> = {
-		send: 'Send this broadcast to its whole audience? It goes out in batches, starting on the next email run.',
 		cancel: 'Cancel this broadcast? Anyone already emailed stays emailed; nobody else will get it.'
 	};
 
+	/** At or above this many readers, sending takes typing the number back. */
+	const TYPE_TO_SEND = 500;
+
+	/**
+	 * The last step before an email leaves: say exactly who it goes to (the
+	 * audience count and the languages it's written in), and for a big send ask
+	 * for the number to be typed back, so a mis-set audience can't go out on a
+	 * reflex click. Returns false to stop.
+	 */
+	function confirmSend(action: 'send' | 'schedule'): boolean {
+		if (!draft) return false;
+		const n = audienceCount ?? draft.audience_count;
+		const count = n.toLocaleString('en');
+		const langs = draftLocales.map(localeLabel).join(', ') || 'no language yet';
+		const when =
+			action === 'send'
+				? 'now (in batches, starting on the next email run)'
+				: `at ${scheduleAt ? new Date(scheduleAt).toLocaleString() : 'the chosen time'}`;
+		const summary = `“${draft.name || 'Untitled'}” will go to about ${count} reader${n === 1 ? '' : 's'}, written in ${langs}, ${when}.`;
+		if (n < TYPE_TO_SEND) return confirm(`${summary}\n\n${action === 'send' ? 'Send it?' : 'Schedule it?'}`);
+		const typed = prompt(`${summary}\n\nType ${count} to confirm.`);
+		if (typed === null) return false;
+		if (typed.replace(/[,\s]/g, '') !== String(n)) {
+			error = `Not sent: you typed “${typed}”, not ${count}.`;
+			return false;
+		}
+		return true;
+	}
+
 	async function act(action: BroadcastActionName, extra: { override_guardrail?: boolean } = {}) {
 		if (!draft) return;
+		if ((action === 'send' || action === 'schedule') && !confirmSend(action)) return;
 		if (CONFIRM[action] && !confirm(CONFIRM[action])) return;
 		busy = true;
 		error = '';
