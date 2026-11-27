@@ -270,6 +270,26 @@ export interface OnboardingStep {
 export const getOnboarding = () =>
 	apiFetch<{ steps: OnboardingStep[] }>('/api/admin/onboarding/');
 
+// --- My work (/admin/my-work) -------------------------------------------------
+// What is waiting on the signed-in admin, gathered from the existing queues.
+export interface MyWorkItem {
+	id: string;
+	label: string;
+	meta: string;
+	at: string;
+	href: string;
+}
+export interface MyWorkSection {
+	key: 'feedback' | 'confirm' | 'proposed' | 'emails';
+	title: string;
+	/** What to say when the section has nothing in it. */
+	empty: string;
+	href: string;
+	items: MyWorkItem[];
+}
+export const getMyWork = () =>
+	apiFetch<{ me: string; sections: MyWorkSection[]; total: number }>('/api/admin/my-work/');
+
 // --- System status (/admin/status) -------------------------------------------
 // When each scheduled job last ran (JobHeartbeat) and whether email goes out.
 export type JobState = 'ok' | 'late' | 'failing' | 'paused' | 'never';

@@ -144,6 +144,11 @@ urlpatterns = [
         name="admin-activity",
     ),
     path(
+        "api/admin/my-work/",
+        lazy_view("library.admin_views.my_work", "AdminMyWorkView"),
+        name="admin-my-work",
+    ),
+    path(
         "api/admin/engagement/",
         lazy_view("library.admin_views.analytics", "AdminEngagementView"),
         name="admin-engagement",
