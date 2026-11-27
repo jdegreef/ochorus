@@ -11,7 +11,9 @@
  * Portuguese are their editions' own in the same way (books/<slug>.<lang>.json:
  * "Psaume 23", "Ésaïe 53", "Cântico dos Cânticos 1"), with the abbreviations
  * French Bibles use (Gn, Ex … Es, Hé … Ap) and Portuguese ones (Gn, Êx … Sl,
- * Jo … Ap).
+ * Jo … Ap). Swahili likewise ("Zaburi 23", "Wimbo Ulio Bora 1", "Yohana 3"),
+ * with the abbreviations Swahili Bibles use (Mwa, Kut … Zab … Mt, Yn, Mdo …
+ * Ufu). Its psalms are "Zaburi" in the singular and the plural alike.
  */
 import { CANON } from '$lib/sermonCanon';
 import { divisionOf } from '$lib/bible';
@@ -226,12 +228,82 @@ const CANON_PT: Canon = [
 	['Apocalipse', 'Ap']
 ];
 
+const CANON_SW: Canon = [
+	['Mwanzo', 'Mwa'],
+	['Kutoka', 'Kut'],
+	['Mambo ya Walawi', 'Law'],
+	['Hesabu', 'Hes'],
+	['Kumbukumbu la Torati', 'Kum'],
+	['Yoshua', 'Yos'],
+	['Waamuzi', 'Amu'],
+	['Ruthu', 'Rut'],
+	['1 Samweli', '1 Sam'],
+	['2 Samweli', '2 Sam'],
+	['1 Wafalme', '1 Fal'],
+	['2 Wafalme', '2 Fal'],
+	['1 Mambo ya Nyakati', '1 Nya'],
+	['2 Mambo ya Nyakati', '2 Nya'],
+	['Ezra', 'Ezr'],
+	['Nehemia', 'Neh'],
+	['Esta', 'Est'],
+	['Ayubu', 'Ayu'],
+	['Zaburi', 'Zab'],
+	['Mithali', 'Mit'],
+	['Mhubiri', 'Mhu'],
+	['Wimbo Ulio Bora', 'Wim'],
+	['Isaya', 'Isa'],
+	['Yeremia', 'Yer'],
+	['Maombolezo', 'Omb'],
+	['Ezekieli', 'Eze'],
+	['Danieli', 'Dan'],
+	['Hosea', 'Hos'],
+	['Yoeli', 'Yoe'],
+	['Amosi', 'Amo'],
+	['Obadia', 'Oba'],
+	['Yona', 'Yon'],
+	['Mika', 'Mik'],
+	['Nahumu', 'Nah'],
+	['Habakuki', 'Hab'],
+	['Sefania', 'Sef'],
+	['Hagai', 'Hag'],
+	['Zekaria', 'Zek'],
+	['Malaki', 'Mal'],
+	['Mathayo', 'Mt'],
+	['Marko', 'Mk'],
+	['Luka', 'Lk'],
+	['Yohana', 'Yn'],
+	['Matendo', 'Mdo'],
+	['Warumi', 'Rum'],
+	['1 Wakorintho', '1 Kor'],
+	['2 Wakorintho', '2 Kor'],
+	['Wagalatia', 'Gal'],
+	['Waefeso', 'Efe'],
+	['Wafilipi', 'Flp'],
+	['Wakolosai', 'Kol'],
+	['1 Wathesalonike', '1 The'],
+	['2 Wathesalonike', '2 The'],
+	['1 Timotheo', '1 Tim'],
+	['2 Timotheo', '2 Tim'],
+	['Tito', 'Tit'],
+	['Filemoni', 'Flm'],
+	['Waebrania', 'Ebr'],
+	['Yakobo', 'Yak'],
+	['1 Petro', '1 Pet'],
+	['2 Petro', '2 Pet'],
+	['1 Yohana', '1 Yn'],
+	['2 Yohana', '2 Yn'],
+	['3 Yohana', '3 Yn'],
+	['Yuda', 'Yud'],
+	['Ufunuo', 'Ufu']
+];
+
 /** Each hub locale's canon, 1 Genesis … 66 Revelation (index + 1). */
 export const CANON_NAMES: Readonly<Record<BibleLocale, Canon>> = {
 	en: CANON,
 	es: CANON_ES,
 	fr: CANON_FR,
-	pt: CANON_PT
+	pt: CANON_PT,
+	sw: CANON_SW
 };
 
 /** What a single psalm is called ("Psalm 23", «Salmo 23»): the one book whose
@@ -240,7 +312,8 @@ export const PSALM: Readonly<Record<BibleLocale, string>> = {
 	en: 'Psalm',
 	es: 'Salmo',
 	fr: 'Psaume',
-	pt: 'Salmo'
+	pt: 'Salmo',
+	sw: 'Zaburi'
 };
 
 /** The canon in `locale`: a hub locale's own, else English (the pure helpers'

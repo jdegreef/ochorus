@@ -255,6 +255,40 @@ export interface MyWorkSection {
 export const getMyWork = () =>
 	apiFetch<{ me: string; sections: MyWorkSection[]; total: number }>('/api/admin/my-work/');
 
+// --- System status (/admin/status) -------------------------------------------
+// When each scheduled job last ran (JobHeartbeat) and whether email goes out.
+export type JobState = 'ok' | 'late' | 'failing' | 'paused' | 'never';
+export interface StatusJob {
+	name: string;
+	label: string;
+	group: 'email_cron' | 'deploy';
+	state: JobState;
+	late_after_minutes: number | null;
+	last_started_at: string | null;
+	last_ok_at: string | null;
+	last_error: string;
+	runs: number;
+}
+export interface AdminStatus {
+	now: string;
+	sending: {
+		enabled: boolean;
+		switch_on: boolean;
+		provider_key_set: boolean;
+		base_urls_set: boolean;
+		allowlist_size: number;
+	};
+	jobs: StatusJob[];
+	content: {
+		unbuilt_changes: number;
+		deploy_fired_at: string | null;
+		last_audit_scan_at: string | null;
+		last_health_snapshot: string | null;
+	};
+	worst: 'ok' | 'late' | 'failing' | 'never';
+}
+export const getAdminStatus = () => apiFetch<AdminStatus>('/api/admin/status/');
+
 // --- Inventory lists (/admin/books, /admin/authors, …) ------------------------
 // One page of one kind, filtered and sorted server-side; the per-kind columns
 // and links live in `$lib/adminCatalog`.
