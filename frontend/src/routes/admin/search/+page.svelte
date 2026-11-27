@@ -4,6 +4,7 @@
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import ColumnChart from '$lib/components/ColumnChart.svelte';
+	import EventMarker from '$lib/components/EventMarker.svelte';
 	import {
 		type SearchHit,
 		type SearchType
@@ -13,6 +14,7 @@
 		type AdminSearchGap,
 		type AdminSearchGapWork,
 		getAdminSearchStats,
+		type AdminSearchStats,
 		createAdminTranslationJob,
 		decideSearch,
 		getAdminSearchDecisions,
@@ -52,6 +54,8 @@
 	type Period = '7d' | '30d';
 	const PERIODS: Record<Period, string> = { '7d': '7 days', '30d': '30 days' };
 	let period = $state<Period>('30d');
+	// The daily chart's marker being pointed at, named in the line under it.
+	let pointedEvent = $state<NonNullable<AdminSearchStats['events']>[number] | null>(null);
 
 	// Searches that found something, and how many of them led to an open. Opens
 	// are rows, not searches (one search can open several results), so they're
@@ -494,7 +498,25 @@
 							part: day.zero,
 							title: `${dayLabel(day.day)} · ${fmt(day.searches)} search${day.searches === 1 ? '' : 'es'}${day.zero ? `, ${fmt(day.zero)} zero-result` : ''}`
 						}))}
-					/>
+					>
+						{#snippet foot(col)}
+							<!-- What the team did that day (an email, a language live, works added). -->
+							<div class="flex h-5 items-center justify-center gap-1">
+								{#each (d.events ?? []).filter((e) => e.day === col.key) as e (e.id)}
+									<EventMarker kind={e.kind} label="{e.title}, {e.detail}" active={pointedEvent?.id === e.id} onpoint={() => (pointedEvent = e)} />
+								{/each}
+							</div>
+						{/snippet}
+					</ColumnChart>
+					{#if d.events?.length}
+						<p class="mt-2 min-h-[1.6em] text-small text-muted" aria-live="polite">
+							{#if pointedEvent}
+								<span class="font-semibold text-text">{pointedEvent.title}</span> · {dayLabel(pointedEvent.day)} · {pointedEvent.detail}
+							{:else}
+								Markers show what the team did that day. Hover or tap one.
+							{/if}
+						</p>
+					{/if}
 				</section>
 
 				<div class="grid gap-6 lg:grid-cols-2">

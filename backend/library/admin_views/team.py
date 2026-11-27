@@ -73,6 +73,8 @@ class AdminTeamView(AdminAudited, APIView):
             # A role grant drops the previous role's other rows — record them,
             # so the log shows when that access went.
             detail["removed"] = (getattr(response, "data", None) or {}).get("removed", [])
+            if notified := (getattr(response, "data", None) or {}).get("notified"):
+                detail["notified"] = notified
         return (f"user:{email}", detail)
 
     def get(self, request):
@@ -228,7 +230,38 @@ class AdminTeamView(AdminAudited, APIView):
             return Response({"detail": str(exc)}, status=400)
         scopes = AdminGrant.scopes_for(email)
         removed = sorted(before - {s["capability"] for s in scopes})
-        return Response({"email": email, "scopes": scopes, "removed": removed}, status=201)
+        notified = self._notify(request, email, changed=bool(before))
+        return Response(
+            {"email": email, "scopes": scopes, "removed": removed, "notified": notified},
+            status=201,
+        )
+
+    @staticmethod
+    def _notify(request, email: str, *, changed: bool) -> str:
+        """Email the grantee about a ROLE grant when the form asked to
+        (``notify``). An Undo (``restore``) or a single-capability grant sends
+        nothing — the first puts back what they had, the second has no role to
+        describe. Returns ``"sent"``, ``"skipped"``, ``"failed"`` or ``""``."""
+        from emails.admin_invite import send_grant_note
+
+        role = request.data.get("role")
+        if not request.data.get("notify") or not role or request.data.get("restore") is not None:
+            return ""
+        label, summary = ROLE_INFO.get(role, (role, ""))
+        languages = AdminTeamView._languages(request.data.get("languages"))
+        names = (
+            ["*"]
+            if languages == ALL_LANGUAGES
+            else [entry(c).get("name") or c for c in languages.split(",")]
+        )
+        return send_grant_note(
+            email,
+            role_label=label,
+            summary=summary,
+            languages=names,
+            changed=changed,
+            granted_by=(getattr(request.user, "email", "") or "").strip().lower(),
+        )
 
     def delete(self, request):
         """Revoke a grantee's access — all of it, or just one capability."""

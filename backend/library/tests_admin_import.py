@@ -15,7 +15,7 @@ from __future__ import annotations
 from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
 
-from .models import Author, Book, Sermon
+from .models import AdminAction, Author, Book, Sermon
 
 
 @override_settings(DEBUG=True)
@@ -170,10 +170,30 @@ class AdminImportPublishTests(TestCase):
             "chapters": [{"title": "One", "html": "<p>Consider the grace of humility, and the Lord who taught it.</p>"}],
         }
         first = self._publish(**payload)
-        second = self._publish(**payload)
+        # The second is stopped as a likely copy, naming the first…
+        warned = self._publish(**payload)
+        self.assertEqual(warned.status_code, 409)
+        self.assertEqual(warned.data["duplicates"][0]["slug"], first.data["slug"])
+        self.assertTrue(warned.data["duplicates"][0]["same_author"])
+        # …and, once the admin chooses to go ahead, still gets its own slug.
+        second = self._publish(**payload, allow_duplicate=True)
         self.assertEqual(first.status_code, 201)
         self.assertEqual(second.status_code, 201)
         self.assertNotEqual(first.data["slug"], second.data["slug"])
+        row = AdminAction.objects.filter(action=AdminAction.Action.CONTENT_PUBLISH).first()
+        self.assertTrue(row.detail.get("allowed_duplicate"))
+
+    def test_near_titles_match_but_a_young_reader_edition_does_not(self):
+        from .duplicates import normalise, similar_works
+
+        self.assertEqual(normalise("The Pilgrim’s Progress!"), "pilgrims progress")
+        Book.objects.create(
+            author=Author.objects.get(slug="am"), slug="humility", language="en", title="Humility"
+        )
+        self.assertEqual(len(similar_works("book", "HUMILITY.", "en", "am")), 1)
+        self.assertEqual(similar_works("book", "Humility (For Teens)", "en", "am"), [])
+        # Another language is a translation, not a copy.
+        self.assertEqual(similar_works("book", "Humility", "es", "am"), [])
 
     # -- the language gap -----------------------------------------------------
 

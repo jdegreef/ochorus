@@ -107,6 +107,21 @@ export interface AdminAttentionSignals {
 	empty_books: number;
 	languages_missing_books: { code: string; name: string; sermons: number }[];
 	searches: { total_30d: number; zero_30d: number; zero_rate: number };
+	/** The viewer's language scope for these counts; null = every language. */
+	scope: string[] | null;
+	/** The work queues the viewer can open, with how long the oldest has waited. */
+	queues: AttentionQueue[];
+}
+
+/** `fresh` under a week, `aging` from 7 days, `stale` from 14 (or paused sends). */
+export interface AttentionQueue {
+	key: 'feedback' | 'review' | 'scheduled' | 'paused';
+	label: string;
+	href: string;
+	count: number;
+	oldest_at: string | null;
+	oldest_days: number;
+	tone: 'fresh' | 'aging' | 'stale';
 }
 
 // The team / access console — super admin only. Grant/revoke scoped admin
@@ -191,8 +206,16 @@ export const grantAdminAccess = (payload: {
 	languages?: string[];
 	/** Put back exactly these rows (Undo after a revoke) instead of granting. */
 	restore?: AdminScope[];
+	/** Email the grantee about a role grant (the grant form's checkbox). */
+	notify?: boolean;
 }) =>
-	apiFetch<{ email: string; scopes: AdminScope[]; removed: string[] }>('/api/admin/team/', {
+	apiFetch<{
+		email: string;
+		scopes: AdminScope[];
+		removed: string[];
+		/** What happened to the note: '' when none was asked for. */
+		notified: '' | 'sent' | 'skipped' | 'failed';
+	}>('/api/admin/team/', {
 		method: 'POST',
 		body: JSON.stringify(payload)
 	});
@@ -2878,6 +2901,8 @@ export interface AdminSearchStats {
 	top_queries: SearchTopQuery[];
 	unanswered_by_language: SearchUnanswered[];
 	daily: { day: string; searches: number; zero: number }[];
+	/** What the team did in those 14 days, keyed by `day` (Engagement's markers). Absent from an older API. */
+	events?: (Omit<EngagementEvent, 'week' | 'date' | 'recent'> & { day: string })[];
 	by_language: (Language & { searches: number; zero: number })[];
 }
 

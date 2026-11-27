@@ -30,6 +30,10 @@
 	let form = $state<RoleChoice>(freshChoice());
 	let granting = $state(false);
 	let formError = $state('');
+	// Email the person about their new access. On by default: a grant is keyed
+	// by email and otherwise sits silently until they happen to sign in.
+	let notify = $state(true);
+	let formNote = $state('');
 
 	// Per-member row state, keyed by email.
 	let busy = $state<Record<string, boolean>>({}); // a request in flight
@@ -96,8 +100,10 @@
 		}
 		granting = true;
 		formError = '';
+		formNote = '';
 		try {
-			await grantAdminAccess({ email: addr, role: form.role, languages: newLangs });
+			const granted = await grantAdminAccess({ email: addr, role: form.role, languages: newLangs, notify });
+			formNote = grantNote(addr, granted.notified);
 			email = '';
 			emailTouched = false;
 			form = freshChoice();
@@ -107,6 +113,15 @@
 		} finally {
 			granting = false;
 		}
+	}
+
+	/** The line under the form after a grant: did the note go? */
+	function grantNote(addr: string, notified: string): string {
+		if (notified === 'sent') return `Access granted. We emailed ${addr} to let them know.`;
+		if (notified === 'skipped')
+			return `Access granted. No email went to ${addr}: sending is off here, or the address isn't on the review allowlist.`;
+		if (notified === 'failed') return `Access granted, but the email to ${addr} didn't send. Let them know yourself.`;
+		return `Access granted to ${addr}.`;
 	}
 
 	async function runForRow(addr: string, work: () => Promise<unknown>, failure: string) {
@@ -273,9 +288,15 @@
 					</p>
 				{/if}
 
+				<label class="mt-4 flex items-center gap-2 text-small text-text">
+					<input id="grant-notify" type="checkbox" bind:checked={notify} />
+					Email them about it (their role, languages and where to start)
+				</label>
+
 				<div class="mt-4 flex flex-wrap items-center gap-3">
 					<button type="button" onclick={grant} disabled={granting} class="btn btn-sm rounded bg-accent px-3 py-1.5 text-small font-semibold text-white disabled:opacity-50">{granting ? 'Granting…' : existing ? 'Replace access' : `Grant ${L.role(form.role)}`}</button>
 					{#if formError}<p class="text-small text-danger" role="alert">{formError}</p>{/if}
+					{#if formNote && !formError}<p class="text-small text-muted" role="status">{formNote}</p>{/if}
 				</div>
 			</section>
 

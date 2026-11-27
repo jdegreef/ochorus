@@ -174,3 +174,64 @@ class AdminAuthorsWithoutBioTests(TestCase):
     def test_requires_admin(self):
         res = self.client.get("/api/admin/authors-without-bio/")
         self.assertIn(res.status_code, (401, 403))
+
+
+class AttentionScopeAndQueueTests(TestCase):
+    """The hub counts what the VIEWER can act on, and says how old each queue is."""
+
+    def setUp(self):
+        from datetime import timedelta
+
+        from django.contrib.auth import get_user_model
+        from django.utils import timezone
+
+        from accounts.admin_roles import apply_grant
+        from feedback.models import Feedback
+
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray", bio="b")
+        for lang in ("es", "sw"):
+            b = Book.objects.create(
+                author=author,
+                slug="humility",
+                language=lang,
+                title=f"H {lang}",
+                source_type=Book.SourceType.AI_UNREVIEWED,
+            )
+            Chapter.objects.create(book=b, order=1, title="x", body_html="", word_count=0)
+        import uuid
+
+        from accounts.models import UserProfile
+
+        reader = UserProfile.objects.create(
+            user=get_user_model().objects.create(username="r"), supabase_uid=uuid.uuid4()
+        )
+        old = Feedback.objects.create(
+            submitter=reader, category="language", content_language="es", body="m"
+        )
+        Feedback.objects.filter(pk=old.pk).update(created_at=timezone.now() - timedelta(days=20))
+        Feedback.objects.create(
+            submitter=reader, category="language", content_language="sw", body="m"
+        )
+        apply_grant("es@example.com", role="language_admin", languages="es")
+        self.es = get_user_model().objects.create(username="es", email="es@example.com")
+
+    def test_a_language_admin_sees_only_their_languages(self):
+        self.client.force_authenticate(user=self.es, token={"email_verified": True})
+        d = self.client.get("/api/admin/attention/").json()
+        self.assertEqual(d["scope"], ["es"])
+        self.assertEqual(d["unreviewed_translations"], 1)
+        self.assertEqual(d["empty_chapters"], 1)
+        queues = {q["key"]: q for q in d["queues"]}
+        self.assertEqual(queues["feedback"]["count"], 1)
+        self.assertEqual(queues["feedback"]["tone"], "stale")
+        self.assertGreaterEqual(queues["feedback"]["oldest_days"], 20)
+        # No email grant, so no email queues.
+        self.assertNotIn("scheduled", queues)
+
+    @override_settings(DEBUG=True)
+    def test_a_super_admin_sees_everything(self):
+        d = self.client.get("/api/admin/attention/").json()
+        self.assertIsNone(d["scope"])
+        self.assertEqual(d["unreviewed_translations"], 2)
+        self.assertEqual({q["key"]: q["count"] for q in d["queues"]}["feedback"], 2)

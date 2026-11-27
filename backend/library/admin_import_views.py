@@ -18,6 +18,7 @@ from accounts.permissions import requires
 
 from . import invalidation, upload_import
 from .audit import AdminAudited, AdminNotAudited
+from .duplicates import similar_works
 from .languages import known_codes, language_map
 from .models import AdminAction, Author
 from .serializers import AuthorSerializer
@@ -132,6 +133,8 @@ class AdminImportPublishView(AdminAudited, APIView):
             "title": data.get("title", ""),
             "chapters": data.get("chapters"),
             "source_url": (request.data.get("source_url") or "").strip(),
+            # Published past a "looks like a duplicate" warning.
+            **({"allowed_duplicate": True} if request.data.get("allow_duplicate") is True else {}),
         }
 
     def post(self, request):
@@ -170,6 +173,23 @@ class AdminImportPublishView(AdminAudited, APIView):
         author = Author.objects.filter(slug=text("author_slug")).first()
         if not author:
             return Response({"detail": "Unknown author — pick one from the list."}, status=400)
+
+        # Likely a copy of a work we already have? Show it and stop, unless the
+        # admin has seen the matches and chosen to go ahead (``allow_duplicate``).
+        if d.get("allow_duplicate") is not True:
+            matches = similar_works(kind, title, language, author.slug)
+            if matches:
+                return Response(
+                    {
+                        "detail": (
+                            f"This looks like {len(matches)} {kind}"
+                            f"{'s' if len(matches) > 1 else ''} already in the library. "
+                            "Check before publishing a second copy."
+                        ),
+                        "duplicates": matches,
+                    },
+                    status=409,
+                )
 
         if kind == "book":
             chapters = d.get("chapters") or []

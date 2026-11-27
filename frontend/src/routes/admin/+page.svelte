@@ -12,8 +12,10 @@
 		getAdminAttention,
 		getAdminTranslationJobs,
 		countJobsByLanguageType,
+		type AttentionQueue,
 		type TranslationJobType
 	} from '$lib/library-admin';
+	import { localeName } from '$lib/lang.svelte';
 	import AddLanguageForm from '$lib/components/AddLanguageForm.svelte';
 
 	let exporting = $state<'csv' | 'json' | null>(null);
@@ -97,14 +99,36 @@
 			rows.push({ tier: 'critical', value: fmt(att.empty_chapters), big: true, label: 'Empty chapters', why: 'Published chapters with no body text.', href: '/admin/audit' });
 		if (att.empty_books)
 			rows.push({ tier: 'critical', value: fmt(att.empty_books), big: true, label: 'Books with no chapters', why: 'A published book that opens to nothing.', href: '/admin/audit' });
-		if (att.unreviewed_translations)
-			rows.push({ tier: 'backlog', value: fmt(att.unreviewed_translations), big: true, label: 'AI translations awaiting review', why: 'AI translations a native speaker has not yet checked. Readers never see this state.', href: '/admin/review' });
+		if (att.unreviewed_translations) {
+			// The review queue's age rides on its own row rather than repeating it.
+			const review = att.queues?.find((q) => q.key === 'review');
+			const age = review && review.oldest_days >= 1 ? ` The oldest has waited ${review.oldest_days} day${review.oldest_days === 1 ? '' : 's'}.` : '';
+			rows.push({ tier: 'backlog', value: fmt(att.unreviewed_translations), big: true, label: 'AI translations awaiting review', why: `AI translations a native speaker has not yet checked. Readers never see this state.${age}`, href: '/admin/review' });
+		}
 		if (att.searches.zero_30d)
 			rows.push({ tier: 'demand', value: fmt(att.searches.zero_30d), big: true, label: 'Searches that found nothing · 30d', why: `Readers asked; the library had no answer — ${Math.round(att.searches.zero_rate * 100)}% of searches.`, href: '/admin/search' });
 		for (const l of att.languages_missing_books)
 			rows.push({ tier: 'demand', value: l.name, big: false, label: `${l.name} live with 0 books`, why: `${fmt(l.sermons)} sermon${l.sermons === 1 ? '' : 's'}, but nothing for a book reader to open.`, href: `/admin/languages/${l.code}` });
 		return rows;
 	});
+	// Each queue, with how long its oldest item has waited: a count alone hides
+	// the item that has sat for a month. Tone comes from the server's cut-offs.
+	const queueTone: Record<AttentionQueue['tone'], string> = {
+		fresh: 'text-muted',
+		aging: 'text-warning',
+		stale: 'text-danger'
+	};
+	const queueAge = (q: AttentionQueue) =>
+		q.oldest_at === null
+			? ''
+			: q.oldest_days < 1
+				? 'oldest from today'
+				: `oldest waiting ${q.oldest_days} day${q.oldest_days === 1 ? '' : 's'}`;
+	const stripQueues = $derived((att?.queues ?? []).filter((q) => q.key !== 'review'));
+	const scopeLabel = $derived(
+		att?.scope ? `In your languages: ${att.scope.map((c) => localeName(c)).join(', ') || 'none'}` : ''
+	);
+
 	// Integrity is "clean" when neither structural count is set — shown as
 	// reassurance rather than an empty gap.
 	const integrityClean = $derived(!!att && att.empty_chapters === 0 && att.empty_books === 0);
@@ -212,15 +236,26 @@
 
 	<!-- Needs attention hub: what to act on, aggregated across the admin. Its own
 	     resource, so it paints before the heavier stats call and never blocks it. -->
-	{#if att && (hubRows.length || alsoCounts.length || integrityClean)}
+	{#if att && (hubRows.length || alsoCounts.length || integrityClean || stripQueues.length)}
 		<section class="mb-8 overflow-hidden rounded-card border border-border bg-surface">
 			<div class="flex flex-wrap items-baseline justify-between gap-3 border-b border-border px-5 py-3">
 				<div class="flex items-baseline gap-2">
 					<h2 class="text-h3">Needs attention</h2>
 					{#if hubRows.length}<span class="text-small text-muted">{hubRows.length} to act on</span>{/if}
 				</div>
-				<span class="text-small text-muted">Ranked by reader impact</span>
+				<span class="text-small text-muted">{scopeLabel || 'Ranked by reader impact'}</span>
 			</div>
+
+			{#if stripQueues.length}
+				<ul class="flex flex-wrap gap-x-6 gap-y-1 border-b border-border px-5 py-2.5 text-small" aria-label="Work queues">
+					{#each stripQueues as q (q.key)}
+						<li>
+							<a href={q.href} class="font-semibold text-text hover:text-accent">{fmt(q.count)} {q.label.toLowerCase()}</a>
+							{#if queueAge(q)}<span class="{queueTone[q.tone]}"> · {queueAge(q)}</span>{:else if q.tone === 'stale'}<span class="text-danger"> · needs a look</span>{/if}
+						</li>
+					{/each}
+				</ul>
+			{/if}
 
 			{#if integrityClean}
 				<p class="flex items-center gap-2 border-b border-border px-5 py-2 text-small text-muted">
