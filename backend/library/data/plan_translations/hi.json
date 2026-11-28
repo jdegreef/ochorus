@@ -209,6 +209,14 @@
    "AI-drafted (2026-11-11); awaiting native review. Job #7637 (talks-to-the-farmer-children → hi) ships one of this plan's two source books; pilgrims-progress-children has no hi edition yet, so this is prose-ahead: seed_plans creates the hi row only once both are published. Series name ‘पारिवारिक भक्ति’ as in family-devotions-brave-and-faithful (#7522) and -boy-from-osogun (#7523). Like the English it describes the books rather than quoting their titles; तीर्थयात्री (title echoes pilgrims-progress.hi «तीर्थयात्री की यात्रा»), बनियन and स्वर्गीय नगर as in pilgrims-progress.hi, स्पर्जन as in the hi Spurgeon editions. It promises the prayer and three talk-about-it questions: talks-to-the-farmer-children.hi ships study_questions (3 per chapter)."
   ]
  },
+ "family-devotions-heroes-who-trusted-god": {
+  "title": "पारिवारिक भक्ति: परमेश्वर पर भरोसा करनेवाले नायक",
+  "description": "पाँच सप्ताह की पाँच मिनट की पारिवारिक भक्ति: ऐसे तीन लोगों की सच्ची कहानियाँ जिन्होंने हर बात के लिए परमेश्वर पर भरोसा किया, हर रात एक छोटा अध्याय ज़ोर से पढ़कर — जॉर्ज म्यूलर और उनके अनाथ बच्चे (‘भरोसे का जीवन (बच्चों के लिए)’), चीन की ओर जाते हुए हडसन टेलर (‘पीछे मुड़कर देखना (बच्चों के लिए)’), और दासता में जन्मी अमांडा स्मिथ, जिसने जूतों की एक जोड़ी के लिए प्रार्थना की (‘अमांडा स्मिथ की कहानी (बच्चों के लिए)’)। हर अध्याय एक प्रार्थना और साथ बैठकर बात करने के लिए तीन प्रश्नों के साथ समाप्त होता है।",
+  "note": [
+   "AI-drafted (2026-11-28); awaiting native review. amanda-smith-autobiography-children.hi (job #8443) completes the plan's three hi source books (the-life-of-trust-children.hi and a-retrospect-children.hi ship), so seed_plans creates the hi row and this prose ships in the same PR.",
+   "Series name ‘पारिवारिक भक्ति’ as in the other hi family-devotions plans; titles quoted verbatim from the three hi editions; names (जॉर्ज म्यूलर, हडसन टेलर, अमांडा स्मिथ) as in their text."
+  ]
+ },
  "the-puritan-heart": {
   "title": "प्यूरिटन हृदय",
   "description": "भीतरी जीवन के तीन गुरुओं के साथ आठ सप्ताह। रिचर्ड सिब्स कुचले हुए नरकट को सँभालते हैं, जॉन ओवेन उस पाप से युद्ध छेड़ते हैं जो अब भी भीतर बसा है, और थॉमस वॉटसन इस सारे संघर्ष को उस प्रतिज्ञा पर टिका देते हैं कि सब बातें मिलकर भलाई ही को उत्पन्न करती हैं।"

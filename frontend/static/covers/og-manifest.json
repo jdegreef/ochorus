@@ -6954,6 +6954,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ar/amanda-smith-autobiography-children": {
+			"ground": "224696ce3af5a1a7748ecc6fd5d272411735465e174aa04b19a66a57d9cd4038",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[84, 318, 516, 424]
+				],
+				"edition": [
+					[273, 450, 327, 475]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				255,
+				540
+			]
+		},
 		"ar/around-the-wicket-gate": {
 			"ground": "4af94a4e0217fe54ffa3731833b3c8eb052d52b46f798e15bd4d4d74d5382d73",
 			"style": "revival",
@@ -7913,6 +7946,39 @@
 			"bar": 0.03,
 			"caps": false,
 			"sitemark": null
+		},
+		"ar/pilgrims-progress-children": {
+			"ground": "4c0fc37d3a4baeb782136055bc72190782d5208425232f0b1333b1e9c2832b50",
+			"style": "press",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[177, 102, 423, 131]
+				],
+				"title": [
+					[107, 320, 493, 421]
+				],
+				"edition": [
+					[273, 449, 327, 474]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				278,
+				517
+			]
 		},
 		"ar/power-through-prayer": {
 			"ground": "e04c38459dc7643bdd19628cbd9fb4fb149672d267063e1a0494303afd8b44a8",
@@ -24041,6 +24107,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"hi/amanda-smith-autobiography-children": {
+			"ground": "868df141f42530d36b13b724530db9fe863279f89addda0cb39d2a2745ca1387",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "f36feae5363a90b83288a44fbd3d4f2a1b774d41f412b88d508596e52f368b4b",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[159, 293, 441, 369],
+					[185, 381, 415, 457]
+				],
+				"edition": [
+					[238, 479, 362, 504]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				230,
+				564
+			]
+		},
 		"hi/answers-to-prayer": {
 			"ground": "173cee95d57f1cb570fc2e07f76b89398851e261e9b85e39dd4b5def32384dae",
 			"style": "revival",
@@ -25203,6 +25303,39 @@
 			"bar": 0.03,
 			"caps": false,
 			"sitemark": null
+		},
+		"hi/pilgrims-progress-children": {
+			"ground": "11b68796b862fc72f01deedd2621156592abc84a240a8b128ac47705c1cdec7f",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "f36feae5363a90b83288a44fbd3d4f2a1b774d41f412b88d508596e52f368b4b",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[177, 102, 423, 131]
+				],
+				"title": [
+					[119, 337, 481, 410]
+				],
+				"edition": [
+					[238, 434, 362, 459]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				297,
+				498
+			]
 		},
 		"hi/power-through-prayer": {
 			"ground": "54263128fd280791463794320ec4f8598ae2b31dfc4813792080dab41df7aec2",
@@ -34275,6 +34408,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"lg/amanda-smith-autobiography-children": {
+			"ground": "8e26a31f9f8302184a738226846a0b5a738f195f110bacc3611db4eff8abc3f5",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[139, 300, 461, 382],
+					[93, 371, 507, 453]
+				],
+				"edition": [
+					[214, 464, 386, 489]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				250,
+				545
+			]
+		},
 		"lg/around-the-wicket-gate": {
 			"ground": "1b257a847092cab8af4f7c6d5b1f6827fa059678ba1805331c20bff58f2d4d6c",
 			"style": "revival",
@@ -35363,6 +35530,40 @@
 			"bar": 0.03,
 			"caps": false,
 			"sitemark": null
+		},
+		"lg/pilgrims-progress-children": {
+			"ground": "83495c53953e8fe833aa905e35dccefe79d42fe0474e9ec4c0cdf7e2b7e02676",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[177, 102, 423, 131]
+				],
+				"title": [
+					[170, 305, 430, 383],
+					[90, 369, 510, 447]
+				],
+				"edition": [
+					[214, 456, 386, 481]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				279,
+				516
+			]
 		},
 		"lg/pilgrims-progress-words-of-one-syllable": {
 			"ground": "e7a5caf5b7386b46154377fb6492c2d52b679ffa68b061f112ce550f4c794c34",
