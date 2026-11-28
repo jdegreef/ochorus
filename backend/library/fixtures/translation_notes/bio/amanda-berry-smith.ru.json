@@ -7,8 +7,9 @@
   {
    "reference": "Isaiah 41:13",
    "status": "mined",
-   "block_index": 17,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "block_index": 15,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   }
- ]
+ ],
+ "note": "Re-quoted 2026-11-28 from the Synodal translation to the Open Word Bible (OWB), Balanced, Russian (founder decision: Russian quotes OWB everywhere). Mined rows are verbatim owb-ru at English verse numbering; self_rendered rows are allusions, the author's paraphrase, or quotations the translator renders."
 }

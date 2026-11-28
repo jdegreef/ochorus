@@ -5,6 +5,36 @@
  "job_issue": 9133,
  "references": [
   {
+   "reference": "Acts 8:30",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Jeremiah 2:2-3",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 69:9",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Colossians 1:24",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "John 10:34-35",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
    "reference": "Romans 16:4",
    "status": "self_rendered",
    "block_index": 1
@@ -25,12 +55,6 @@
    "block_index": 1
   },
   {
-   "reference": "Acts 8:30b",
-   "status": "mined",
-   "block_index": 2,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
    "reference": "Genesis 4:9",
    "status": "self_rendered",
    "block_index": 2
@@ -46,18 +70,6 @@
    "block_index": 7
   },
   {
-   "reference": "Jeremiah 2:2b",
-   "status": "mined",
-   "block_index": 7,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Jeremiah 2:3a",
-   "status": "mined",
-   "block_index": 7,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
    "reference": "Revelation 2:5",
    "status": "self_rendered",
    "block_index": 7
@@ -68,33 +80,19 @@
    "block_index": 10
   },
   {
-   "reference": "Psalm 69:9a",
-   "status": "mined",
-   "block_index": 10,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
    "reference": "1 Timothy 2:8",
    "status": "self_rendered",
    "block_index": 17
   },
   {
    "reference": "Ephesians 6:18",
-   "status": "mined",
-   "block_index": 17,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 17
   },
   {
    "reference": "Jude 1:20",
-   "status": "mined",
-   "block_index": 17,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Colossians 1:24",
-   "status": "mined",
-   "block_index": 18,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 17
   },
   {
    "reference": "1 Peter 2:21",
@@ -108,32 +106,18 @@
   },
   {
    "reference": "Isaiah 53:3",
-   "status": "mined",
-   "block_index": 19,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 19
   },
   {
    "reference": "Mark 10:45",
-   "status": "mined",
-   "block_index": 19,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 19
   },
   {
    "reference": "Philippians 2:7",
    "status": "self_rendered",
    "block_index": 19
-  },
-  {
-   "reference": "John 10:34b",
-   "status": "mined",
-   "block_index": 20,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "John 10:35b",
-   "status": "mined",
-   "block_index": 20,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
   },
   {
    "reference": "1 John 2:2",
@@ -144,6 +128,17 @@
    "reference": "Luke 9:62",
    "status": "self_rendered",
    "block_index": 24
+  },
+  {
+   "reference": "Mark 10:45",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "self_rendered",
+   "block_index": 17
   }
- ]
+ ],
+ "note": "Re-quoted 2026-11-28 from the Synodal translation to the Open Word Bible (OWB), Balanced, Russian (founder decision: Russian quotes OWB everywhere). Mined rows are verbatim owb-ru at English verse numbering; self_rendered rows are allusions, the author's paraphrase, or quotations the translator renders."
 }
