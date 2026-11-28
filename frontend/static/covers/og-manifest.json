@@ -7980,6 +7980,54 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ar/on-loving-god": {
+			"ground": "89d5c1560e162f4fc99ed2a85cac29ffdadbf8ff59c8c268aa6ea46aa5d65a3c",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 0.55,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[85, 102, 515, 131]
+				],
+				"title": [
+					[147, 308, 453, 416]
+				],
+				"subtitle": [
+					[198, 456, 402, 495]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				303,
+				492
+			]
+		},
+		"ar/on-the-incarnation": {
+			"ground": "a516e27d76507770c3e16add684ee2c74425322b9617f0cf6581f423f876fbac",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/indigo",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ar/pilgrims-progress": {
 			"ground": "9e0a4426d01ec0414ece972b8d364cf3de899d5eabe0454eb42ab30f468d8fe7",
 			"style": "press",
@@ -35666,6 +35714,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"lg/on-loving-god": {
+			"ground": "56f26ddf0370e1cd1d45187dafce805ede87f718a491d544704dcf1a72c05237",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.55,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[85, 102, 515, 131]
+				],
+				"title": [
+					[110, 311, 490, 377],
+					[162, 360, 438, 426]
+				],
+				"subtitle": [
+					[188, 454, 412, 475]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				320,
+				475
+			]
+		},
 		"lg/on-the-incarnation": {
 			"ground": "28e8c05edb69100560bb55aa2861226ce7bf43849e7d8cb51a7008ab1b7088fb",
 			"style": "inscriptional",
@@ -54478,6 +54560,21 @@
 				313,
 				482
 			]
+		},
+		"uk/on-the-incarnation": {
+			"ground": "8e54faf0f19e2d5bcde6466297a2513664f09959dbc5e84d02fab747b2720c92",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/indigo",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
 		},
 		"uk/pilgrims-progress": {
 			"ground": "3a15ca7b869df47ff721b290a360bc2a19c6d2e1e668e7eda915e727264a74e1",
