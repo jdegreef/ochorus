@@ -1,0 +1,13 @@
+{
+ "kind": "book",
+ "slug": "the-practice-of-the-presence-of-god",
+ "language": "uk",
+ "job_issue": 8493,
+ "references": [
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  }
+ ]
+}

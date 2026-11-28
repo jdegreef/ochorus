@@ -1,0 +1,13 @@
+{
+ "kind": "book",
+ "slug": "the-practice-of-the-presence-of-god",
+ "language": "lg",
+ "job_issue": 8491,
+ "references": [
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  }
+ ]
+}
