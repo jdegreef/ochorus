@@ -5,39 +5,63 @@
  "job_issue": 9115,
  "references": [
   {
-   "reference": "Luke 22:42b",
+   "reference": "Luke 22:42",
    "status": "mined",
    "block_index": 1,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Numbers 15:30",
-   "status": "self_rendered",
-   "block_index": 5
-  },
-  {
-   "reference": "Numbers 15:31b",
+   "reference": "Numbers 15:31",
    "status": "mined",
    "block_index": 5,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
    "reference": "1 John 1:9",
    "status": "mined",
    "block_index": 6,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "1 John 1:7a",
+   "reference": "1 John 1:7",
    "status": "mined",
    "block_index": 6,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "1 John 1:7b",
+   "reference": "Ephesians 5:1",
    "status": "mined",
-   "block_index": 6,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Ephesians 5:2",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Matthew 5:48",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Matthew 5:48",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Numbers 15:39",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Numbers 15:30",
+   "status": "self_rendered",
+   "block_index": 5
   },
   {
    "reference": "Ephesians 4:30; Acts 7:51; 1 Thessalonians 5:19",
@@ -50,34 +74,10 @@
    "block_index": 11
   },
   {
-   "reference": "Ephesians 5:1",
-   "status": "mined",
-   "block_index": 13,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Ephesians 5:2a",
-   "status": "mined",
-   "block_index": 13,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Matthew 5:48",
-   "status": "mined",
-   "block_index": 13,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
    "reference": "Matthew 5:48 (repeat)",
-   "status": "mined",
-   "block_index": 13,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Numbers 15:39",
-   "status": "mined",
-   "block_index": 17,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 13
   }
- ]
+ ],
+ "note": "Re-quoted 2026-11-28 from the Synodal translation to the Open Word Bible (OWB), Balanced, Russian (founder decision: Russian quotes OWB everywhere). Mined rows are verbatim owb-ru at English verse numbering; self_rendered rows are allusions, the author's paraphrase, or quotations the translator renders."
 }

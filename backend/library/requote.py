@@ -320,7 +320,7 @@ def _citation_regex(language: str) -> re.Pattern:
     )
     sep = re.escape(data.get("cv_separators", ":"))
     return re.compile(
-        rf"(?:(?P<num>[1-3])\s*{suffix}?\s*)?(?P<book>{'|'.join(map(re.escape, bases))})\.?\s*"
+        rf"(?:(?P<num>[1-3])\s*(?:{suffix})?\s*)?(?P<book>{'|'.join(map(re.escape, bases))})\.?\s*"
         rf"|(?P<cv>(?P<ch>\d{{1,3}})\s*[{sep}]\s*(?P<v1>\d{{1,3}})(?:\s*[-–]\s*(?P<v2>\d{{1,3}})(?!\s*[{sep}]))?"
         rf"(?P<more>(?:\s*[,፣]\s*\d{{1,3}}(?!\d|\s*[{sep}]))*))"
     )
@@ -338,12 +338,10 @@ def local_citations(text: str, language: str) -> list[Span]:
     book: str | None = None
     for m in _citation_regex(language).finditer(text):
         if m.group("book"):
-            key = (
-                f"{m.group('num')}{suffix} {m.group('book')}"
-                if m.group("num")
-                else m.group("book")
-            )
-            book = names.get(key) or names.get(m.group("book"))
+            num, base = m.group("num"), m.group("book")
+            # "1-е Коринфянам" and "1 Коринфянам" are the same book.
+            keys = [f"{num}{suffix} {base}", f"{num} {base}"] if num else []
+            book = next((names[k] for k in keys if k in names), None) or names.get(base)
         elif m.group("cv") and book:
             first = int(m.group("v1"))
             last = max(first, int(m.group("v2") or first))
@@ -474,7 +472,7 @@ def load_work(kind: str, slug: str, language: str, read: Reader = read_file) -> 
     """A work's blocks in one language, from the shipped files (or from ``read``)."""
     if kind == "bio":
         return _load_bio(slug, language, read)
-    sub = {"book": "books", "sermon": "sermons"}[kind]
+    sub = {"book": "books", "sermon": "sermons", "article": "articles"}[kind]
     path = CONTENT / sub / f"{slug}.{language}.json"
     raw = read(path)
     if raw is None:
@@ -500,7 +498,7 @@ def load_work(kind: str, slug: str, language: str, read: Reader = read_file) -> 
                 )
             containers[f"body:{i}"] = f.get("body_html") or ""
             blocks += _blocks_of(containers[f"body:{i}"], f"body:{i}", order)
-        elif row["model"] == "library.sermon":
+        elif row["model"] in ("library.sermon", "library.article"):
             containers[f"body:{i}"] = f.get("body_html") or ""
             blocks += _blocks_of(containers[f"body:{i}"], f"body:{i}", None)
     return Work(kind, slug, language, containers, blocks, {"fixture": path})

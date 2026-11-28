@@ -5,118 +5,132 @@
  "job_issue": 9126,
  "references": [
   {
+   "reference": "Luke 23:40",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Proverbs 9:10",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Matthew 27:37",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Hebrews 7:17",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Mark 9:7",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Luke 23:35",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Luke 23:41",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Luke 23:43",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Luke 2:14",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Hebrews 9:22",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
    "reference": "Matthew 27:44",
    "status": "mined",
    "block_index": 4,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Luke 23:40a",
-   "status": "mined",
-   "block_index": 4,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Proverbs 9:10a",
-   "status": "mined",
-   "block_index": 4,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Matthew 27:37b",
-   "status": "mined",
-   "block_index": 6,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Luke 23:34a",
-   "status": "mined",
-   "block_index": 8,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Luke 23:41a",
+   "reference": "Luke 23:41",
    "status": "mined",
    "block_index": 11,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Hebrews 7:17b",
-   "status": "mined",
-   "block_index": 12,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Romans 10:10a",
+   "reference": "Romans 10:10",
    "status": "mined",
    "block_index": 14,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Galatians 3:13b",
-   "status": "mined",
-   "block_index": 16,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
    "reference": "Matthew 3:17b",
-   "status": "mined",
-   "block_index": 16,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Luke 23:35b",
-   "status": "mined",
-   "block_index": 16,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Luke 23:42",
-   "status": "mined",
-   "block_index": 18,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Luke 23:41b",
-   "status": "mined",
-   "block_index": 16,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Luke 23:43b",
-   "status": "mined",
-   "block_index": 20,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 16
   },
   {
    "reference": "Revelation 5:5b",
-   "status": "mined",
-   "block_index": 20,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Romans 8:1a",
-   "status": "mined",
-   "block_index": 20,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Luke 2:14a",
-   "status": "mined",
-   "block_index": 23,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 20
   },
   {
    "reference": "John 19:30a",
-   "status": "mined",
-   "block_index": 23,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 23
   },
   {
-   "reference": "Hebrews 9:22b",
-   "status": "mined",
-   "block_index": 23,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "reference": "Luke 23:42",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Revelation 5:5",
+   "status": "self_rendered",
+   "block_index": 20
   }
- ]
+ ],
+ "note": "Re-quoted 2026-11-28 from the Synodal translation to the Open Word Bible (OWB), Balanced, Russian (founder decision: Russian quotes OWB everywhere). Mined rows are verbatim owb-ru at English verse numbering; self_rendered rows are allusions, the author's paraphrase, or quotations the translator renders."
 }

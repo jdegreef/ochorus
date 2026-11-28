@@ -8,13 +8,25 @@
    "reference": "Matthew 8:17",
    "status": "mined",
    "block_index": 0,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
    "reference": "1 Peter 2:24",
    "status": "mined",
    "block_index": 0,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Colossians 1:27",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
    "reference": "Matthew 13:43",
@@ -22,34 +34,24 @@
    "block_index": 1
   },
   {
-   "reference": "Ephesians 3:19",
-   "status": "mined",
-   "block_index": 1,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
    "reference": "Matthew 22:42",
-   "status": "mined",
-   "block_index": 5,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 5
   },
   {
    "reference": "1 Peter 5:8",
-   "status": "mined",
-   "block_index": 5,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 5
   },
   {
    "reference": "Mark 11:22",
-   "status": "mined",
-   "block_index": 5,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 5
   },
   {
    "reference": "Galatians 2:20a",
-   "status": "mined",
-   "block_index": 5,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 5
   },
   {
    "reference": "Galatians 2:20b",
@@ -67,21 +69,14 @@
    "block_index": 7
   },
   {
-   "reference": "Colossians 1:27",
-   "status": "mined",
-   "block_index": 7,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
    "reference": "1 Corinthians 1:30",
    "status": "self_rendered",
    "block_index": 10
   },
   {
    "reference": "1 Corinthians 2:16",
-   "status": "mined",
-   "block_index": 10,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 10
   },
   {
    "reference": "2 Corinthians 10:5",
@@ -90,33 +85,44 @@
   },
   {
    "reference": "Philippians 2:13",
-   "status": "mined",
-   "block_index": 11,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 11
   },
   {
    "reference": "John 1:16",
-   "status": "mined",
-   "block_index": 12,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 12
   },
   {
    "reference": "Psalm 84:7",
-   "status": "mined",
-   "block_index": 12,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 12
   },
   {
    "reference": "2 Corinthians 3:18",
-   "status": "mined",
-   "block_index": 12,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 12
   },
   {
    "reference": "Psalm 121:8",
-   "status": "mined",
-   "block_index": 12,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Colossians 1:26",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 13:43",
+   "status": "self_rendered",
+   "block_index": 1
   }
- ]
+ ],
+ "note": "Re-quoted 2026-11-28 from the Synodal translation to the Open Word Bible (OWB), Balanced, Russian (founder decision: Russian quotes OWB everywhere). Mined rows are verbatim owb-ru at English verse numbering; self_rendered rows are allusions, the author's paraphrase, or quotations the translator renders."
 }

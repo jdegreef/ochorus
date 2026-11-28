@@ -5,34 +5,35 @@
  "job_issue": 9118,
  "references": [
   {
-   "reference": "Isaiah 6:5a",
-   "status": "mined",
-   "block_index": 8,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Luke 18:13b",
-   "status": "mined",
-   "block_index": 11,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "John 3:16",
-   "status": "mined",
-   "block_index": 14,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Acts 2:12b",
+   "reference": "Acts 2:12",
    "status": "mined",
    "block_index": 31,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
    "reference": "Acts 2:2",
    "status": "mined",
    "block_index": 32,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Isaiah 6:5",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   }
- ]
+ ],
+ "note": "Re-quoted 2026-11-28 from the Synodal translation to the Open Word Bible (OWB), Balanced, Russian (founder decision: Russian quotes OWB everywhere). Mined rows are verbatim owb-ru at English verse numbering; self_rendered rows are allusions, the author's paraphrase, or quotations the translator renders."
 }

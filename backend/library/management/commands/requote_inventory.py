@@ -43,7 +43,7 @@ class Command(BaseCommand):
     help = "Inventory a translated work's Scripture quotations against OWB; validate or apply a splice spec."
 
     def add_arguments(self, parser):
-        parser.add_argument("kind", choices=["book", "sermon", "bio"])
+        parser.add_argument("kind", choices=["book", "sermon", "article", "bio"])
         parser.add_argument("slug")
         parser.add_argument("--language", default="am")
         parser.add_argument(

@@ -8,18 +8,18 @@
    "reference": "Hebrews 13:8",
    "status": "mined",
    "block_index": 2,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Exodus 3:7",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
    "reference": "Daniel 3:17",
    "status": "self_rendered",
    "block_index": 20
-  },
-  {
-   "reference": "Exodus 3:7a",
-   "status": "mined",
-   "block_index": 28,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
   },
   {
    "reference": "Exodus 3:7",
@@ -46,5 +46,6 @@
    "status": "self_rendered",
    "block_index": 32
   }
- ]
+ ],
+ "note": "Re-quoted 2026-11-28 from the Synodal translation to the Open Word Bible (OWB), Balanced, Russian (founder decision: Russian quotes OWB everywhere). Mined rows are verbatim owb-ru at English verse numbering; self_rendered rows are allusions, the author's paraphrase, or quotations the translator renders."
 }
