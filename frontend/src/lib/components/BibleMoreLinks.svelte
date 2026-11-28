@@ -15,7 +15,7 @@
 	 * English only), so only English ever draws that link.
 	 */
 	let { links, class: cls = '' }: { links: BibleBookLinks | undefined; class?: string } = $props();
-	const IN_CLASSICS = { en: 'In the classics', es: 'En los clásicos', fr: 'Dans les classiques', pt: 'Nos clássicos', sw: 'Katika vitabu vya kale' };
+	const IN_CLASSICS = { en: 'In the classics', es: 'En los clásicos', fr: 'Dans les classiques', pt: 'Nos clássicos', sw: 'Katika vitabu vya kale', am: 'በጥንታውያን መጻሕፍት' };
 	const lang = getLang();
 </script>
 

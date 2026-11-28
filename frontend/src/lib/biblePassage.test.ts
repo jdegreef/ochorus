@@ -253,3 +253,54 @@ describe('in Swahili', () => {
 			expect(passageSuggestions(w, ALL, 'sw'), w).toEqual([]);
 	});
 });
+
+describe('in Amharic', () => {
+	const ALL = [
+		...BOOKS,
+		book('isaiah', 'ኢሳይያስ', 23, 66),
+		book('jonah', 'ዮናስ', 32, 4),
+		book('gospel-of-matthew', 'የማቴዎስ ወንጌል', 40, 28),
+		book('acts-of-the-apostles', 'የሐዋርያት ሥራ', 44, 28)
+	];
+
+	it('names the quick passages as the edition titles its chapters', () => {
+		expect(quickPassages(ALL, 'am').map((p) => p.label)).toEqual([
+			'ዮሐንስ 3',
+			'መዝሙር 23',
+			'ሮሜ 8',
+			'1 ቆሮንቶስ 13',
+			'ኢሳይያስ 53',
+			'ማቴዎስ 5'
+		]);
+	});
+
+	it('reads the Amharic names and abbreviations, and the English ones too', () => {
+		expect(matchBooks('መዝሙር', 'am')).toEqual([19]);
+		expect(matchBooks('መዝ', 'am')).toEqual([19]);
+		expect(matchBooks('ዮሐ', 'am')[0]).toBe(43);
+		expect(matchBooks('ዮና', 'am')[0]).toBe(32);
+		expect(matchBooks('ሐዋ', 'am')).toEqual([44]);
+		expect(matchBooks('ዘፍ', 'am')).toEqual([1]);
+		expect(matchBooks('ራእይ', 'am')).toEqual([66]);
+		expect(matchBooks('የዮሐንስ ወንጌል', 'am')).toEqual([43]);
+		expect(matchBooks('Romans', 'am')).toEqual([45]);
+	});
+
+	it('jumps to a typed chapter, at a verse', () => {
+		expect(passageSuggestions('መዝሙር 23', ALL, 'am')[0]).toEqual({
+			label: 'መዝሙር 23',
+			href: bookChapterPath('psalms', 24, false)
+		});
+		expect(passageSuggestions('ዮሐ 3:16', ALL, 'am')[0]).toEqual({
+			label: 'ዮሐንስ 3:16',
+			href: `${bookChapterPath('gospel-of-john', 4, false)}#v16`
+		});
+		expect(passageSuggestions('1 ቆሮ 13', ALL, 'am')[0].label).toBe('1 ቆሮንቶስ 13');
+		expect(passageSuggestions('ኢሳያስ 53', ALL, 'am')[0].label).toBe('ኢሳይያስ 53');
+	});
+
+	it('leaves a common word to search, rather than a book one typo away', () => {
+		for (const w of ['ፍቅር', 'ጸጋ', 'እምነት', 'ሰላም', 'ጸሎት', 'ኢየሱስ'])
+			expect(passageSuggestions(w, ALL, 'am'), w).toEqual([]);
+	});
+});

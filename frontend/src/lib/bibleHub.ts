@@ -121,7 +121,8 @@ export const BIBLE_STARTS: readonly BibleStart[] = [
 			es: 'El Evangelio más breve y el más ágil: la vida de Jesús de una sentada.',
 			fr: 'L’Évangile le plus court et le plus vif : la vie de Jésus d’une seule traite.',
 			pt: 'O Evangelho mais curto e o mais ágil: a vida de Jesus de uma só vez.',
-			sw: 'Injili fupi kuliko zote, na ya haraka zaidi: maisha ya Yesu kwa kikao kimoja.'
+			sw: 'Injili fupi kuliko zote, na ya haraka zaidi: maisha ya Yesu kwa kikao kimoja.',
+			am: 'ከወንጌላት ሁሉ አጭሩና ፈጣኑ፦ የኢየሱስን ሕይወት በአንድ ጊዜ ቁጭ ብለው ያንብቡ።'
 		}
 	},
 	{
@@ -132,7 +133,8 @@ export const BIBLE_STARTS: readonly BibleStart[] = [
 			es: 'Escrito «para que ustedes crean»: quién es Jesús, en sus propias palabras.',
 			fr: 'Écrit « pour que vous croyiez » : qui est Jésus, dans ses propres paroles.',
 			pt: 'Escrito “para que vocês creiam”: quem é Jesus, nas suas próprias palavras.',
-			sw: 'Iliandikwa “ili mwamini”: Yesu ni nani, kwa maneno yake mwenyewe.'
+			sw: 'Iliandikwa “ili mwamini”: Yesu ni nani, kwa maneno yake mwenyewe.',
+			am: '«እንድታምኑ» ተብሎ የተጻፈ፦ ኢየሱስ ማን እንደ ሆነ፣ በራሱ ቃል።'
 		}
 	},
 	{
@@ -142,7 +144,8 @@ export const BIBLE_STARTS: readonly BibleStart[] = [
 			es: 'El principio: la creación, la caída y la promesa de Dios a Abraham.',
 			fr: 'Le commencement : la création, la chute et la promesse de Dieu à Abraham.',
 			pt: 'O princípio: a criação, a queda e a promessa de Deus a Abraão.',
-			sw: 'Mwanzo wa yote: uumbaji, anguko, na ahadi ya Mungu kwa Abrahamu.'
+			sw: 'Mwanzo wa yote: uumbaji, anguko, na ahadi ya Mungu kwa Abrahamu.',
+			am: 'የሁሉ ነገር መጀመሪያ፦ ፍጥረት፣ ውድቀት፣ እና እግዚአብሔር ለአብርሃም የሰጠው የተስፋ ቃል።'
 		}
 	},
 	{
@@ -152,7 +155,8 @@ export const BIBLE_STARTS: readonly BibleStart[] = [
 			es: 'El libro de oración de la Biblia. Conviene leer un salmo al día, en voz alta si se puede.',
 			fr: 'Le livre de prière de la Bible. Un psaume par jour, à voix haute si possible.',
 			pt: 'O livro de oração da Bíblia. Vale a pena ler um salmo por dia, em voz alta se possível.',
-			sw: 'Kitabu cha maombi cha Biblia. Soma zaburi moja kila siku, kwa sauti ikiwezekana.'
+			sw: 'Kitabu cha maombi cha Biblia. Soma zaburi moja kila siku, kwa sauti ikiwezekana.',
+			am: 'የመጽሐፍ ቅዱስ የጸሎት መጽሐፍ። በቀን አንድ መዝሙር ያንብቡ፤ ከተቻለም ድምፅዎን አሰምተው።'
 		}
 	},
 	{
@@ -162,7 +166,8 @@ export const BIBLE_STARTS: readonly BibleStart[] = [
 			es: 'El evangelio expuesto paso a paso: el pecado, la gracia, la fe y la vida nueva.',
 			fr: 'L’Évangile exposé pas à pas : le péché, la grâce, la foi et la vie nouvelle.',
 			pt: 'O evangelho explicado passo a passo: o pecado, a graça, a fé e a vida nova.',
-			sw: 'Injili ikielezwa hatua kwa hatua: dhambi, neema, imani na maisha mapya.'
+			sw: 'Injili ikielezwa hatua kwa hatua: dhambi, neema, imani na maisha mapya.',
+			am: 'ወንጌል ደረጃ በደረጃ ሲብራራ፦ ኃጢአት፣ ጸጋ፣ እምነትና አዲስ ሕይወት።'
 		}
 	}
 ];
@@ -237,14 +242,15 @@ export const BIBLE_PATHS: readonly {
 	{
 		id: 'jesus',
 		slug: 'who-jesus-is',
-		label: { en: 'Who Jesus is', es: 'Quién es Jesús', fr: 'Qui est Jésus', pt: 'Quem é Jesus', sw: 'Yesu ni nani' },
-		title: { en: 'Who Is Jesus? Four Bible Chapters to Read', es: '¿Quién es Jesús? Cuatro capítulos de la Biblia', fr: 'Qui est Jésus ? Quatre chapitres de la Bible', pt: 'Quem é Jesus? Quatro capítulos da Bíblia', sw: 'Yesu ni nani? Sura nne za Biblia' },
+		label: { en: 'Who Jesus is', es: 'Quién es Jesús', fr: 'Qui est Jésus', pt: 'Quem é Jesus', sw: 'Yesu ni nani', am: 'ኢየሱስ ማን ነው' },
+		title: { en: 'Who Is Jesus? Four Bible Chapters to Read', es: '¿Quién es Jesús? Cuatro capítulos de la Biblia', fr: 'Qui est Jésus ? Quatre chapitres de la Bible', pt: 'Quem é Jesus? Quatro capítulos da Bíblia', sw: 'Yesu ni nani? Sura nne za Biblia', am: 'ኢየሱስ ማን ነው? የሚነበቡ አራት የመጽሐፍ ቅዱስ ምዕራፎች' },
 		lede: {
 			en: 'Four chapters on who Jesus is, from the people who knew him.',
 			es: 'Cuatro capítulos sobre quién es Jesús, contados por quienes lo conocieron.',
 			fr: 'Quatre chapitres sur qui est Jésus, racontés par ceux qui l’ont connu.',
 			pt: 'Quatro capítulos sobre quem é Jesus, contados por quem o conheceu.',
-			sw: 'Sura nne kuhusu Yesu ni nani, kutoka kwa watu waliomjua.'
+			sw: 'Sura nne kuhusu Yesu ni nani, kutoka kwa watu waliomjua.',
+			am: 'ኢየሱስ ማን እንደ ሆነ የሚናገሩ አራት ምዕራፎች፣ እርሱን ካወቁት ሰዎች።'
 		},
 		steps: [
 			{
@@ -255,7 +261,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'El Verbo, que estaba con Dios y era Dios, vino a vivir entre nosotros.',
 					fr: 'Le Verbe, qui était auprès de Dieu et qui était Dieu, est venu vivre parmi nous.',
 					pt: 'O Verbo, que estava junto de Deus e era Deus, veio viver entre nós.',
-					sw: 'Neno aliyekuwa pamoja na Mungu, naye alikuwa Mungu, alikuja kuishi kati yetu.'
+					sw: 'Neno aliyekuwa pamoja na Mungu, naye alikuwa Mungu, alikuja kuishi kati yetu.',
+					am: 'ከእግዚአብሔር ጋር የነበረውና አምላክ የሆነው ቃል፣ በመካከላችን ሊኖር መጣ።'
 				}
 			},
 			{
@@ -266,7 +273,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'Jesús les hace a sus amigos la pregunta: ¿quién dicen que soy yo?',
 					fr: 'Jésus pose la question à ses amis : « qui dites-vous que je suis ? »',
 					pt: 'Jesus faz a pergunta aos seus amigos: “quem vocês dizem que eu sou?”',
-					sw: 'Yesu anawauliza rafiki zake swali: “mnasema Mimi ni nani?”'
+					sw: 'Yesu anawauliza rafiki zake swali: “mnasema Mimi ni nani?”',
+					am: 'ኢየሱስ ለወዳጆቹ ጥያቄ ያቀርባል፦ «እናንተስ እኔ ማን እንደ ሆንኩ ትላላችሁ?»'
 				}
 			},
 			{
@@ -277,7 +285,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'No se aferró a ser igual a Dios: «se vació a Sí mismo».',
 					fr: 'Il ne s’est pas accroché à l’égalité avec Dieu : « Il s’est vidé Lui-même ».',
 					pt: 'Ele não se apegou à igualdade com Deus: “Ele esvaziou a Si mesmo”.',
-					sw: 'Hakung’ang’ania kuwa sawa na Mungu, bali “alijifanya Mwenyewe kuwa mtupu”.'
+					sw: 'Hakung’ang’ania kuwa sawa na Mungu, bali “alijifanya Mwenyewe kuwa mtupu”.',
+					am: 'ከእግዚአብሔር ጋር መተካከሉን የሙጥኝ አላለም፤ ይልቁንም «ራሱን ባዶ አደረገ»።'
 				}
 			},
 			{
@@ -288,7 +297,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'Es «la imagen del Dios que no se ve», y todas las cosas se mantienen unidas en Él.',
 					fr: 'Il est « l’image du Dieu qu’on ne voit pas », et en lui « tout tient ensemble ».',
 					pt: 'Ele é “a imagem do Deus invisível”, e nele “todas as coisas se mantêm unidas”.',
-					sw: 'Yeye ni “sura ya Mungu asiyeonekana”, na “vitu vyote vinashikamana pamoja ndani Yake”.'
+					sw: 'Yeye ni “sura ya Mungu asiyeonekana”, na “vitu vyote vinashikamana pamoja ndani Yake”.',
+					am: 'እርሱ «የማይታየው እግዚአብሔር አምሳል» ነው፤ «ሁሉም ነገር በእርሱ ተያይዞ ይጸናል»።'
 				}
 			}
 		]
@@ -296,14 +306,15 @@ export const BIBLE_PATHS: readonly {
 	{
 		id: 'grief',
 		slug: 'grief-and-hard-times',
-		label: { en: 'Grief and hard times', es: 'Duelo y tiempos difíciles', fr: 'Deuil et temps difficiles', pt: 'Luto e tempos difíceis', sw: 'Huzuni na nyakati ngumu' },
-		title: { en: 'Bible Chapters for Grief and Hard Times', es: 'Capítulos de la Biblia para el duelo y los tiempos difíciles', fr: 'Chapitres de la Bible pour le deuil et les temps difficiles', pt: 'Capítulos da Bíblia para o luto e os tempos difíceis', sw: 'Sura za Biblia kwa wakati wa huzuni na nyakati ngumu' },
+		label: { en: 'Grief and hard times', es: 'Duelo y tiempos difíciles', fr: 'Deuil et temps difficiles', pt: 'Luto e tempos difíceis', sw: 'Huzuni na nyakati ngumu', am: 'ሐዘንና አስቸጋሪ ጊዜያት' },
+		title: { en: 'Bible Chapters for Grief and Hard Times', es: 'Capítulos de la Biblia para el duelo y los tiempos difíciles', fr: 'Chapitres de la Bible pour le deuil et les temps difficiles', pt: 'Capítulos da Bíblia para o luto e os tempos difíceis', sw: 'Sura za Biblia kwa wakati wa huzuni na nyakati ngumu', am: 'ለሐዘንና ለአስቸጋሪ ጊዜያት የመጽሐፍ ቅዱስ ምዕራፎች' },
 		lede: {
 			en: 'For a heavy day: chapters to read slowly, and more than once.',
 			es: 'Para un día pesado: capítulos para leer despacio, y más de una vez.',
 			fr: 'Pour un jour lourd à porter : des chapitres à lire lentement, et plus d’une fois.',
 			pt: 'Para um dia pesado: capítulos para ler devagar, e mais de uma vez.',
-			sw: 'Kwa siku nzito: sura za kusoma polepole, na zaidi ya mara moja.'
+			sw: 'Kwa siku nzito: sura za kusoma polepole, na zaidi ya mara moja.',
+			am: 'ለከባድ ቀን፦ በዝግታ፣ ከአንድ ጊዜም በላይ የሚነበቡ ምዕራፎች።'
 		},
 		steps: [
 			{
@@ -314,7 +325,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'El pastor que acompaña a los suyos por el valle más oscuro.',
 					fr: 'Le berger qui accompagne les siens dans la vallée la plus sombre.',
 					pt: 'O pastor que acompanha os seus pelo vale mais escuro.',
-					sw: 'Mchungaji anayetembea nawe katika bonde lenye giza kuu kabisa.'
+					sw: 'Mchungaji anayetembea nawe katika bonde lenye giza kuu kabisa.',
+					am: 'እጅግ በጨለመው ሸለቆ ውስጥ ከእርስዎ ጋር የሚሄድ እረኛ።'
 				}
 			},
 			{
@@ -325,7 +337,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'Jesús llora ante la tumba de su amigo, y luego lo llama a salir de ella.',
 					fr: 'Jésus pleure devant le tombeau de son ami, puis l’appelle à en sortir.',
 					pt: 'Jesus chora diante do túmulo do amigo e depois o chama para fora dele.',
-					sw: 'Yesu analia kwenye kaburi la rafiki yake, kisha anamwita atoke nje.'
+					sw: 'Yesu analia kwenye kaburi la rafiki yake, kisha anamwita atoke nje.',
+					am: 'ኢየሱስ በወዳጁ መቃብር አጠገብ ያለቅሳል፤ ከዚያም ከመቃብሩ ይጠራዋል።'
 				}
 			},
 			{
@@ -336,7 +349,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'Un duelo con esperanza: los que han muerto en Cristo no están perdidos.',
 					fr: 'Un deuil plein d’espérance : ceux qui sont morts en Christ ne sont pas perdus.',
 					pt: 'Um luto com esperança: os que morreram em Cristo não estão perdidos.',
-					sw: 'Huzuni yenye tumaini: waliokufa katika Kristo hawajapotea.'
+					sw: 'Huzuni yenye tumaini: waliokufa katika Kristo hawajapotea.',
+					am: 'ተስፋ ያለው ሐዘን፦ በክርስቶስ ሆነው የሞቱት አልጠፉም።'
 				}
 			},
 			{
@@ -347,7 +361,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'El final de la historia: la muerte, el llanto y el dolor quedan atrás para siempre.',
 					fr: 'La fin de l’histoire : la mort, le deuil et la douleur laissés derrière pour toujours.',
 					pt: 'O fim da história: a morte, o choro e a dor ficam para trás para sempre.',
-					sw: 'Mwisho wa hadithi: hakuna tena kifo, maombolezo, kilio wala maumivu.'
+					sw: 'Mwisho wa hadithi: hakuna tena kifo, maombolezo, kilio wala maumivu.',
+					am: 'የታሪኩ መጨረሻ፦ ከእንግዲህ ሞት፣ ሐዘን፣ ጩኸትና ሥቃይ የለም።'
 				}
 			}
 		]
@@ -355,14 +370,15 @@ export const BIBLE_PATHS: readonly {
 	{
 		id: 'wisdom',
 		slug: 'wisdom-for-daily-life',
-		label: { en: 'Wisdom for daily life', es: 'Sabiduría para cada día', fr: 'La sagesse au quotidien', pt: 'Sabedoria para o dia a dia', sw: 'Hekima kwa maisha ya kila siku' },
-		title: { en: 'Bible Chapters for Wisdom in Daily Life', es: 'Capítulos de la Biblia con sabiduría para cada día', fr: 'Chapitres de la Bible pour la sagesse au quotidien', pt: 'Capítulos da Bíblia com sabedoria para cada dia', sw: 'Sura za Biblia zenye hekima kwa maisha ya kila siku' },
+		label: { en: 'Wisdom for daily life', es: 'Sabiduría para cada día', fr: 'La sagesse au quotidien', pt: 'Sabedoria para o dia a dia', sw: 'Hekima kwa maisha ya kila siku', am: 'ለዕለት ተዕለት ሕይወት ጥበብ' },
+		title: { en: 'Bible Chapters for Wisdom in Daily Life', es: 'Capítulos de la Biblia con sabiduría para cada día', fr: 'Chapitres de la Bible pour la sagesse au quotidien', pt: 'Capítulos da Bíblia com sabedoria para cada dia', sw: 'Sura za Biblia zenye hekima kwa maisha ya kila siku', am: 'ለዕለት ተዕለት ሕይወት ጥበብ የሚሰጡ የመጽሐፍ ቅዱስ ምዕራፎች' },
 		lede: {
 			en: 'Four chapters for ordinary days: work, worry, words and people.',
 			es: 'Cuatro capítulos para los días comunes: el trabajo, las preocupaciones, las palabras y la gente.',
 			fr: 'Quatre chapitres pour les jours ordinaires : le travail, les soucis, les paroles et les autres.',
 			pt: 'Quatro capítulos para os dias comuns: o trabalho, as preocupações, as palavras e as pessoas.',
-			sw: 'Sura nne kwa siku za kawaida: kazi, wasiwasi, maneno na watu.'
+			sw: 'Sura nne kwa siku za kawaida: kazi, wasiwasi, maneno na watu.',
+			am: 'ለተራ ቀናት አራት ምዕራፎች፦ ሥራ፣ ጭንቀት፣ ንግግርና ሰዎች።'
 		},
 		steps: [
 			{
@@ -373,7 +389,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'Confiar en el SEÑOR de todo corazón, y no en el propio entendimiento.',
 					fr: 'Se remettre au SEIGNEUR de tout son cœur, sans compter sur sa propre intelligence.',
 					pt: 'Entregar a confiança ao SENHOR com o coração inteiro, sem se escorar no próprio entendimento.',
-					sw: 'Kumwamini BWANA kwa moyo wote, bila kujiegemeza kwenye busara yako mwenyewe.'
+					sw: 'Kumwamini BWANA kwa moyo wote, bila kujiegemeza kwenye busara yako mwenyewe.',
+					am: 'እግዚአብሔርን በሙሉ ልብ መታመን፣ በራስ ማስተዋል አለመመካት።'
 				}
 			},
 			{
@@ -384,7 +401,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'La oración, el dinero y la ansiedad, del Sermón del Monte.',
 					fr: 'La prière, l’argent et l’inquiétude, dans le Sermon sur la montagne.',
 					pt: 'A oração, o dinheiro e a ansiedade, no Sermão do Monte.',
-					sw: 'Maombi, fedha na wasiwasi, kutoka katika Mahubiri ya Mlimani.'
+					sw: 'Maombi, fedha na wasiwasi, kutoka katika Mahubiri ya Mlimani.',
+					am: 'ጸሎት፣ ገንዘብና ጭንቀት፣ ከተራራው ስብከት።'
 				}
 			},
 			{
@@ -395,7 +413,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'Pedir sabiduría a Dios, estar dispuesto a escuchar y ser lento para hablar.',
 					fr: 'Demander la sagesse à Dieu, être prompt à écouter et lent à parler.',
 					pt: 'Pedir sabedoria a Deus, estar pronto para ouvir e ser lento para falar.',
-					sw: 'Kumwomba Mungu hekima, kuwa tayari kusikiliza na kuchelewa kusema.'
+					sw: 'Kumwomba Mungu hekima, kuwa tayari kusikiliza na kuchelewa kusema.',
+					am: 'ከእግዚአብሔር ጥበብን መለመን፣ ለመስማት የፈጠኑ፣ ለመናገርም የዘገዩ መሆን።'
 				}
 			},
 			{
@@ -406,7 +425,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'Una vida entregada a Dios, y el amor puesto en práctica con los demás.',
 					fr: 'Une vie offerte à Dieu, et l’amour mis en pratique avec les autres.',
 					pt: 'Uma vida entregue a Deus, e o amor posto em prática com os outros.',
-					sw: 'Maisha yaliyotolewa kwa Mungu, na upendo unaotendwa kwa watu wanaokuzunguka.'
+					sw: 'Maisha yaliyotolewa kwa Mungu, na upendo unaotendwa kwa watu wanaokuzunguka.',
+					am: 'ለእግዚአብሔር የተሰጠ ሕይወት፣ እና በዙሪያዎ ካሉ ሰዎች ጋር በተግባር የሚገለጥ ፍቅር።'
 				}
 			}
 		]
@@ -414,14 +434,15 @@ export const BIBLE_PATHS: readonly {
 	{
 		id: 'story',
 		slug: 'the-big-story',
-		label: { en: 'The big story', es: 'La gran historia', fr: 'La grande histoire', pt: 'A grande história', sw: 'Hadithi kuu' },
-		title: { en: 'The Big Story of the Bible in Five Chapters', es: 'La gran historia de la Biblia en cinco capítulos', fr: 'La grande histoire de la Bible en cinq chapitres', pt: 'A grande história da Bíblia em cinco capítulos', sw: 'Hadithi kuu ya Biblia katika sura tano' },
+		label: { en: 'The big story', es: 'La gran historia', fr: 'La grande histoire', pt: 'A grande história', sw: 'Hadithi kuu', am: 'ታላቁ ታሪክ' },
+		title: { en: 'The Big Story of the Bible in Five Chapters', es: 'La gran historia de la Biblia en cinco capítulos', fr: 'La grande histoire de la Bible en cinq chapitres', pt: 'A grande história da Bíblia em cinco capítulos', sw: 'Hadithi kuu ya Biblia katika sura tano', am: 'የመጽሐፍ ቅዱስ ታላቅ ታሪክ በአምስት ምዕራፎች' },
 		lede: {
 			en: 'The whole Bible in five chapters, from the first day to the new creation.',
 			es: 'Toda la Biblia en cinco capítulos, del primer día a la nueva creación.',
 			fr: 'Toute la Bible en cinq chapitres, du premier jour à la création nouvelle.',
 			pt: 'A Bíblia inteira em cinco capítulos, do primeiro dia à nova criação.',
-			sw: 'Biblia yote katika sura tano, kuanzia siku ya kwanza hadi uumbaji mpya.'
+			sw: 'Biblia yote katika sura tano, kuanzia siku ya kwanza hadi uumbaji mpya.',
+			am: 'መጽሐፍ ቅዱስ በሙሉ በአምስት ምዕራፎች፣ ከመጀመሪያው ቀን እስከ አዲሱ ፍጥረት።'
 		},
 		steps: [
 			{
@@ -432,7 +453,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'En el principio: Dios hace el mundo y lo llama muy bueno.',
 					fr: 'Au commencement : Dieu fait le monde et le déclare très bon.',
 					pt: 'No princípio: Deus faz o mundo e o declara muito bom.',
-					sw: 'Mwanzoni: Mungu anaumba ulimwengu, na kuuona kuwa mwema sana.'
+					sw: 'Mwanzoni: Mungu anaumba ulimwengu, na kuuona kuwa mwema sana.',
+					am: 'በመጀመሪያ፦ እግዚአብሔር ዓለምን ይፈጥራል፤ እጅግ መልካም እንደ ሆነም ያያል።'
 				}
 			},
 			{
@@ -443,7 +465,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'Dios llama a Abram y promete bendecir por medio de él a todas las naciones.',
 					fr: 'Dieu appelle Abram et promet de bénir par lui toutes les nations.',
 					pt: 'Deus chama Abrão e promete abençoar por meio dele todas as nações.',
-					sw: 'Mungu anamwita Abramu, na kuahidi kubariki kila taifa kupitia kwake.'
+					sw: 'Mungu anamwita Abramu, na kuahidi kubariki kila taifa kupitia kwake.',
+					am: 'እግዚአብሔር አብራምን ይጠራል፤ በእርሱም በኩል ሕዝቦችን ሁሉ እንደሚባርክ ተስፋ ይሰጣል።'
 				}
 			},
 			{
@@ -454,7 +477,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'El siervo que sufre por los pecados de otros.',
 					fr: 'Le serviteur qui souffre pour les péchés des autres.',
 					pt: 'O servo que sofre pelos pecados dos outros.',
-					sw: 'Mtumishi anayeteswa kwa ajili ya dhambi za wengine.'
+					sw: 'Mtumishi anayeteswa kwa ajili ya dhambi za wengine.',
+					am: 'ስለ ሌሎች ኃጢአት መከራን የሚቀበል አገልጋይ።'
 				}
 			},
 			{
@@ -465,7 +489,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'La tumba vacía, y Jesús resucitado en el camino a Emaús.',
 					fr: 'Le tombeau vide, et Jésus ressuscité sur le chemin d’Emmaüs.',
 					pt: 'O túmulo vazio, e Jesus ressuscitado no caminho de Emaús.',
-					sw: 'Kaburi tupu, na Yesu aliyefufuka njiani kwenda Emau.'
+					sw: 'Kaburi tupu, na Yesu aliyefufuka njiani kwenda Emau.',
+					am: 'ባዶው መቃብር፣ እና ከሙታን የተነሣው ኢየሱስ ወደ ኤማሁስ በሚወስደው መንገድ ላይ።'
 				}
 			},
 			{
@@ -476,7 +501,8 @@ export const BIBLE_PATHS: readonly {
 					es: 'Todas las cosas hechas nuevas, y Dios viviendo con su pueblo.',
 					fr: 'Toutes choses faites nouvelles, et Dieu qui vit avec son peuple.',
 					pt: 'Todas as coisas feitas novas, e Deus vivendo com o seu povo.',
-					sw: 'Vitu vyote vimefanywa vipya, na Mungu anaishi pamoja na watu wake.'
+					sw: 'Vitu vyote vimefanywa vipya, na Mungu anaishi pamoja na watu wake.',
+					am: 'ሁሉም ነገር አዲስ ሆነ፤ እግዚአብሔርም ከሕዝቡ ጋር ይኖራል።'
 				}
 			}
 		]
