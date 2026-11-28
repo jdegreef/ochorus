@@ -118,6 +118,8 @@
   "reader_scripture_omitted": "Câu này không có trong Open Word Bible, bản dịch theo các bản chép tay cổ nhất. Các bản dịch xưa hơn như King James có câu này.",
   "reader_scripture_page": "Các tác phẩm kinh điển nói gì về đoạn này",
   "reader_glossary_words": "Từ ngữ trong chương này",
+  "reader_table_question": "Một câu hỏi bên bàn ăn",
+  "reader_table_note": "Hãy hỏi trong bữa tối, và để mọi người cùng trả lời.",
   "reader_related_passages": "Các đoạn liên quan",
   "reader_crossrefs_credit": "Tham chiếu chéo từ %source%, CC BY",
   "reader_catena_heading": "Điều Hội Thánh đã nói",
