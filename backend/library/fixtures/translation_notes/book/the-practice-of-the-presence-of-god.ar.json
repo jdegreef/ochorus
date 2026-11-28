@@ -1,0 +1,13 @@
+{
+ "kind": "book",
+ "slug": "the-practice-of-the-presence-of-god",
+ "language": "ar",
+ "job_issue": 8492,
+ "references": [
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  }
+ ]
+}
