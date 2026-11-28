@@ -1,0 +1,384 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "amanda-berry-smith"
+  ],
+  "slug": "amanda-smith-autobiography-children",
+  "language": "lg",
+  "title": "Emboozi ya Amanda Smith (Eri Abaana)",
+  "subtitle": "",
+  "description": "Sisinkana Amanda Berry Smith, eyazaalibwa mu buddu mu Maryland edda ennyo, n’akula nga yeesiga Katonda mu buli kintu — ne ku ngatto ze yali yeetaaga! Mu mboozi ze entuufu, ezinyumizibwa mu ngeri ennyangu eri abaana, taata omuzira agula eddembe ly’ab’omu maka ge, omusajja eyali akwekeddwa akuumibwa nga tali mu kabi, era omukazi omwozi w’engoye omu atwala amawulire amalungi aga Yesu okutuuka e Bungereza, e Buyindi, ne mu Afirika.",
+  "qa": [
+   {
+    "question": "Amanda Berry Smith yali ani?",
+    "answer": "Yali mukazi muddugavu, eyazaalibwa mu buddu mu Maryland awo nga mu mwaka 1837, n’akula n’afuuka omubuulizi eyatambulanga ennyo era eyamanyibwa abantu bangi. Yeesiga Katonda mu buli kintu, era yabuulira abantu ebya Yesu mu Amerika, mu Bungereza, mu Buyindi, ne mu Afirika."
+   },
+   {
+    "question": "Ddala Amanda yazaalibwa nga muddu?",
+    "answer": "Yee, bwe kityo bwe kyali. Naye kitaawe, Samuel Berry, yakolanga ekiro n’ekiro okufuna ssente n’agula eddembe — okusooka erirye, oluvannyuma ery’omukyala we n’abaana be. Amanda yali akyali muto nnyo kitaawe bwe yamugulira eddembe lye."
+   },
+   {
+    "question": "Amanda yakolanga mulimu ki nga tannafuuka mubuulizi?",
+    "answer": "Okumala emyaka mingi yali mwozi wa ngoye. Yayimiriranga ku bbaafu lye ng’ayoza engoye z’abantu abalala, oluusi ekiro kyonna, okufuna ssente n’okulabirira ab’omu maka ge."
+   },
+   {
+    "question": "Ebyamagero ebiri mu mboozi zino byayiiyizibwa?",
+    "answer": "Nedda. Buli mboozi eva mu kitabo Amanda kye yawandiika ku bulamu bwe yennyini. Tetwongeddeemu byamagero bya kwefuula — bino bye bintu ebituufu bye yagamba nti Katonda yamukolera."
+   },
+   {
+    "question": "Lwaki Amanda ayogera ne Katonda ku bintu ebitono, ng’engatto?",
+    "answer": "Amanda yakkiriza nti Katonda afaayo ku buli kitundu ky’obulamu bwe, ka kibe kinene oba kitono. Engatto ze bwe zaayulika, yasaba busabi Katonda, era mangu ddala mukwano gwe n’amukwasa ssente nnyini ze yali yeetaaga."
+   },
+   {
+    "question": "Amanda yalina obulamu obw’essanyu?",
+    "answer": "Yamanya essanyu lingi mu Katonda, naye era yamanya n’ennaku nnyingi. Abamu ku baana be abato baafa nga bakyali bato nnyo, era abantu emirundi mingi baamuyisanga bubi. Naye bulijjo yagambanga nti Katonda yamubudaabudanga era teyamulekanga yekka."
+   },
+   {
+    "question": "Bob omuto yali ani?",
+    "answer": "Bob yali mulenzi muto mu Afirika. Kitaawe yasaba Amanda amukuze era amuyigirize ebya Katonda. Amanda yali munafu era ng’alina ssente ntono nnyo, naye yeesiga Katonda n’atwala Bob ng’omwana we ddala."
+   },
+   {
+    "question": "Abaana bayinza kuyiga ki okuva mu bulamu bwa Amanda?",
+    "answer": "Nti Katonda asobola okwesigibwa mu kizikiza nga bw’asobola okwesigibwa mu kitangaala, nti obwesigwa n’ekisa bisinga nnyo ssente omuwendo, era nti Katonda awulira ne bwe tusaba essaala esinga obutono."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of Amanda Berry Smith’s autobiography, which is in the public domain. The telling is our own, free to read and share.",
+  "cover_url": "/covers/art/amanda-smith-autobiography-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 25,
+  "is_published": true,
+  "created_at": "2026-11-28T00:00:00Z",
+  "updated_at": "2026-11-28T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "lg"
+  ],
+  "order": 1,
+  "title": "Olunaku Taata lwe Yatugulira Eddembe",
+  "body_html": "<blockquote><p><em>“Kale nga Kristo bwe yatufuula ab’eddembe, bwe mutyo munywerere mu ddembe eryo”</em> — Abaggalatiya 5:1</p></blockquote> <p>Edda ennyo, mu kifo ekiyitibwa Maryland, omuwala omuto ayitibwa Amanda yazaalibwa. Mu biseera ebyo eby’ennaku, amaka g’abantu abaddugavu nga gage gaali tegalina ddembe. Baali basobola okugulibwa n’okutundibwa, ng’embalaasi oba ensawo y’emmere ey’empeke, era baakozesebwanga emirimu nga tebasasulwa kantu.</p> <p>Naye Amanda yalina kitaawe ow’ekitalo ayitibwa Samuel Berry. Yali wa maanyi, yali mugumiikiriza, era yalina ekirooto kimu ekinene — okuwa ab’omu maka ge bonna eddembe.</p> <p>Bw’atyo Samuel n’akola. Olunaku lwonna yakoleranga omukazi eyali amulinako obwannannyini. Awo, enjuba bwe yagwanga ng’abantu abalala beebase, n’ayongera okukola. Yakolanga efagio. Yalukanga emikeeka mu bikuta bya kasooli. Yayokyanga amayinja okukolamu ennoni. Mu biseera by’amakungula, yatambulanga mayiro ssatu oba nnya ng’obudde buzibye okugenda okukola mu nnimiro okutuusa ku ssaawa musanvu oba munaana ez’ekiro, n’oluvannyuma ne yeebaka essaawa emu yokka n’atandika buto.</p> <p>Akasente ku kasente, omwaka ku mwaka, yaterekanga. Yasooka kwegulira ddembe lye. Oluvannyuma n’agula mukyala we. Awo, omu ku omu, n’agula abaana be — okutuusa ku nkomerero Amanda omuto naye n’afuna eddembe.</p> <p>Yali muto nnyo nga tasobola na kujjukira nti yali muddu. Naye obulamu bwe bwonna yayagalanga nnyo okugamba nti Katonda ye yamuwa eddembe.</p> <p>Olaba engeri kitaawe wa Amanda gye yakolamu ennyo ku lw’abantu be yali ayagala? Kitaawo ow’omu ggulu yakola n’okusingawo okukuwa eddembe — yawaayo Omwana we yennyini, Yesu. Tewalikolera; kirabo kye gy’oli.</p> <p>Katonda omwagalwa, weebale okunjagala ennyo bw’otyo n’oteekawo ekkubo okumpa eddembe. Nnyamba nange njagalenga abalala nga kitaawe wa Amanda bwe yayagala ab’omu maka ge. Amiina.</p>",
+  "study_questions": [
+   {
+    "question": "Kitaawe wa Amanda, Samuel Berry, yakolanga ki ng’amaze emirimu gye egy’emisana egy’olunaku olulamba?",
+    "answer": "Yeeyongeranga okukola ekiro — ng’akola efagio, ng’aluka emikeeka mu bikuta bya kasooli, ng’ayokya amayinja okukolamu ennoni, era ng’atambula mayiro nnyingi okugenda okukola mu nnimiro okutuusa ku ssaawa musanvu oba munaana ez’ekiro."
+   },
+   {
+    "question": "Lwaki Samuel yaterekanga ssente ze akasente ku kasente okumala emyaka emingi bwe giti?",
+    "answer": "Yayagala okuwa ab’omu maka ge bonna eddembe. Yasooka kwegulira ddembe lye, oluvannyuma n’agula mukyala we, n’alyoka agula abaana be omu ku omu, okutuusa Amanda naye lwe yafuna eddembe."
+   },
+   {
+    "question": "Kitaawe wa Amanda yakola nnyo okuwa ab’omu maka ge eddembe. Katonda akoze ki okukuwa ggwe eddembe?",
+    "answer": "Ensonga y’essuula eno: Kitaawo ow’omu ggulu yawaayo Omwana we yennyini, Yesu, okukuwa eddembe. Tewalikolera; kirabo kye gy’oli."
+   }
+  ],
+  "word_count": 245
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "lg"
+  ],
+  "order": 2,
+  "title": "Essaala za Jjajja Okumpi n’Ekiyumba ky’Amata",
+  "body_html": "<blockquote><p><em>“Okusaba n’omutima omumalirivu ogw’omuntu omutuukirivu, kubeera n’obuyinza bungi”</em> — Yakobo 5:16</p></blockquote> <p>Kitaawe wa Amanda nga tannasobola kugula ab’omu maka ge, waaliwo ekintu ekyali kiteekwa okukyuka. Era kyakyuka olw’omukazi omukadde eyali amanyi okusaba — jjajjaawe wa Amanda.</p> <p>Jjajja yali ayagala Katonda n’omutima gwe gwonna. Emirundi n’emirundi yamusabanga aggulewo ekkubo abazzukulu be balyoke bafune eddembe. Bwe yabanga n’ekintu ekinene ennyo ky’atasobola kwetikka, yeemulukukanga n’agenda mu bisaka, era nga Amanda bwe yagamba, n’“abuulira Yesu” buli kimu.</p> <p>Lumu, omukazi omuvubuka ayitibwa Miss Celie yagenda mu lukuŋŋaana lw’okusinza olw’omu weema ng’agenda kulaba bulabi. Naye eyo n’awulira ebya Yesu, n’amuwa omutima gwe. Ab’omu maka ge tekyabasanyusa n’akatono. Baagezaako buli kimu okumukyusa endowooza.</p> <p>Awo Miss Celie n’alwala nnyo omusujja. Bwe yali agalamidde ku kitanda ng’afa, yakuŋŋaanya ab’omu maka ge okumpi n’abasaba bamusuubize ekintu kimu: nti bajja kukkiriza Samuel agule mukyala we n’abaana be. Yasaba emirundi esatu, era ku nkomerero ne bamusuubiza.</p> <p>Buli Miss Celie lwe yayogeranga, maama wa Amanda yaddukanga okubuulira Jjajja, era buli mulundi Jjajja yayanguwanga okugenda ebweru okwebaza Katonda. Emyaka gye emingi egy’okusaba gyali giddibwamu.</p> <p>Bw’osaba ekintu, eky’okuddamu ne kitajjira mangu, tolekeranga awo. Jjajjaawe wa Amanda yasaba okumala emyaka mingi, era Katonda yawulira buli kigambo. Naawe akuwulira.</p> <p>Katonda omwagalwa, weebale nti tokoowa kumpuliriza. Njigiriza okweyongera okusaba, ne bwe kiba nti eky’okuddamu kirwawo nnyo. Amiina.</p>",
+  "study_questions": [
+   {
+    "question": "Jjajja bwe yabanga n’ekintu ekinene ennyo ky’atasobola kwetikka, yakolanga ki?",
+    "answer": "Yeemulukukanga n’agenda mu bisaka, era nga Amanda bwe yagamba, n’“abuulira Yesu” buli kimu. Yasabanga emirundi n’emirundi abazzukulu be bafune eddembe."
+   },
+   {
+    "question": "Miss Celie yasaba ab’omu maka ge kumusuubiza ki nga tannafa?",
+    "answer": "Yabasaba bakkirize Samuel agule mukyala we n’abaana be. Yasaba emirundi esatu, era ku nkomerero ne bamusuubiza."
+   },
+   {
+    "question": "Wali osabyeko ekintu ne kitatuukirira mangu? Kiki ky’oyinza okukola ng’olindirira?",
+    "answer": "Ensonga y’essuula eno: tolekeranga awo kusaba. Jjajja yasaba okumala emyaka mingi, era Katonda yawulira buli kigambo — naawe akuwulira."
+   }
+  ],
+  "word_count": 209
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "lg"
+  ],
+  "order": 3,
+  "title": "Omusajja Eyakwekebwa mu Kitanda",
+  "body_html": "<blockquote><p><em>“nnali mugenyi ne munnyaniriza”</em> — Matayo 25:35</p></blockquote> <p>Ab’omu maka ga Amanda bwe baamala okufuna eddembe, baabeeranga ku faamu mu Pennsylvania. Akayumba kaabwe akatono kaafuuka ekifo kya kyama eky’obukuumi. Abantu bwe baddukanga obuddu, nga bakooye era nga batidde, bajjanga eri Samuel Berry, n’abayamba okweyongerayo okutuuka mu ddembe, emirundi mingi mu kizikiza eky’ekiro.</p> <p>Gwali mulimu gwa kabi, era abasajja abakambwe baalabiriranga ennyumba eyo n’obwegendereza, nga basuubira okukwata omuntu.</p> <p>Lumu ku makya, nga bukyali nnyo, kitaawe wa Amanda yali ebweru ng’aliisa embizzi. Bwe yayimusa amaaso, n’alaba abasajja bana nga beebagadde embalaasi nga bajja nga boolekedde ennyumba. Tewaaliwo budde bwa kudduka munda. Kyeyava akoowoola mukyala we nti, “Maama, ndaba abasajja bana nga bajja; kola kyonna ky’osobola.”</p> <p>Maama wa Amanda yali wa bwangu era muzira. Waaliwo omusajja eyali adduse ng’akwekeddwa waggulu. Mu kaseera katono nnyo yamuserengesa wansi n’amukweka munda mu kitanda, wansi w’omufaliso. Awo n’agalamiza waggulu mutabani we omuto ow’emyaka ebiri, nga yeebase.</p> <p>Abasajja baanoonya buli wantu. Baatunuulira waggulu ne mu ffumbiro. Baatuuka n’okulingiza ku mwana eyali yeebase mu kitanda — naye tebaalaba musajja eyali akwekeddwa wansi. Ne beebagala ne bagenda, era mangu ddala omusajja n’agenda mirembe ng’ayolekera obukiikakkono.</p> <p>Maama wa Amanda yakozesa obuzira bwe n’amagezi ge okukuuma omuntu eyali yeetaaga obuyambi. Katonda bw’akuwa omukisa okulaga ekisa omuntu ali mu buzibu, naawe osobola okuba omuzira era omuyambi.</p> <p>Katonda omwagalwa, mfuula omuzira era ow’ekisa nga maama wa Amanda. Nnyamba okulabirira buli muntu eyeetaaga mukwano gwe ow’obukuumi era omukkakkamu. Amiina.</p>",
+  "study_questions": [
+   {
+    "question": "Ab’omu maka ga Amanda baakolanga ki okuyamba abantu abaddukanga obuddu?",
+    "answer": "Ennyumba yaabwe yali kifo kya kyama eky’obukuumi. Samuel Berry yayambanga abantu abakooye era abatidde okweyongerayo okutuuka mu ddembe, emirundi mingi mu kizikiza eky’ekiro."
+   },
+   {
+    "question": "Abasajja bana bwe bajja nga beebagadde embalaasi, maama wa Amanda yakuuma atya omusajja eyali akwekeddwa?",
+    "answer": "Yamukweka munda mu kitanda wansi w’omufaliso, n’agalamiza waggulu mutabani we ow’emyaka ebiri eyali yeebase. Abasajja baanoonya naye tebaamulaba."
+   },
+   {
+    "question": "Osobola okulowooza ku muntu ayinza okwetaaga mukwano gwe ow’ekisa era omuzira? Wandimuyambye otya?",
+    "answer": "Ensonga y’essuula eno: maama wa Amanda yakozesa obuzira n’amagezi okukuuma omuntu eyali mu bwetaavu. Katonda bw’atuwa omukisa okulaga ekisa omuntu ali mu buzibu, naffe tusobola okuba abazira era abayambi."
+   }
+  ],
+  "word_count": 233
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "lg"
+  ],
+  "order": 4,
+  "title": "Okuyiga Okusoma ku Ddirisa",
+  "body_html": "<blockquote><p><em>“Ddala amagezi kye kintu ekisingira ddala obukulu; noolwekyo fuba ofune amagezi”</em> — Engero 4:7</p></blockquote> <p>Amanda yeegombanga nnyo okugenda ku ssomero. Naye bwe yali omuwala omuto, abaana abaddugavu baali tebakkirizibwa nnyo kuyiga. Essomero eryali libasinga okumpi nalyo lyali wala nnyo, era ne bwe yatuukangayo, yalagirwanga okulindira emabega ng’abaana abalala bonna basooka okuyigirizibwa. Mu bulamu bwe bwonna, Amanda yasoma emyezi nga esatu gyokka.</p> <p>Lumu ku makya ga ttoggo agaali gannyogoga ennyo, yeegayirira bamukkirize atambule mayiro bbiri n’ekitundu okutuuka ku ssomero. Omuzira gwali mungi nnyo, era yawulira obunnyogovu bungi nnyo nga tasobola na kwogera bwe yatuuka ku luggi. Omulenzi omu yalina okumuggulira, era munda emikono egy’ekisa ne gimubugumya.</p> <p>Naye Amanda teyalekera awo kuyiga. Kitaawe yaleetanga empapula z’amawulire awaka, era Amanda n’afuna ekirowoozo eky’amagezi. Yasalangamu ennukuta ennene n’amakansi. Awo n’aziteeka ku mbiriizi z’eddirisa, n’asaba maama we amuyambe okugatta ennukuta zifuuke ebigambo.</p> <p>Omutima gwe gwabuuka nnyo olw’essanyu ku lunaku lwe yasoma sentensi ye esooka: “Ennyumba, omuti, embwa, ente.” Yali musanyufu nnyo! Yakuŋŋaanya abaana abalala okumwetooloola abalage nga bw’asobola okusoma.</p> <p>Amanda yayagalanga okuyiga, era yakola nnyo, ne bwe kyabanga kizibu. Okuyiga kirabo okuva eri Katonda. Ekintu bwe kikukaluubirira, weeyongere okugezaako — omutima omugumiikiriza gusobola okukola ebintu eby’ekitalo.</p> <p>Katonda omwagalwa, weebale olw’obwongo bwange n’olw’ebintu ebirungi by’ompa okuyiga. Nnyamba obutalekera awo ng’okuyiga kunkaluubirira. Amiina.</p>",
+  "study_questions": [
+   {
+    "question": "Kiki ekyatuuka ku Amanda bwe yatambula okugenda ku ssomero ku makya ga ttoggo agaali gannyogoga ennyo?",
+    "answer": "Yawulira obunnyogovu bungi nnyo mu muzira omunene, nga tasobola na kwogera bwe yatuuka ku luggi. Omulenzi omu yamuggulira, era emikono egy’ekisa ne gimubugumya."
+   },
+   {
+    "question": "Amanda yakozesa atya empapula z’amawulire za kitaawe okuyiga okusoma?",
+    "answer": "Yasalangamu ennukuta ennene, n’aziteeka ku mbiriizi z’eddirisa, n’asaba maama we amuyambe okuzigatta zifuuke ebigambo."
+   },
+   {
+    "question": "Kiki ekikukaluubirira okuyiga kati? Kiki ekyandikuyambye okweyongera okugezaako?",
+    "answer": "Ensonga y’essuula eno: okuyiga kirabo okuva eri Katonda, era ekintu bwe kiba ekizibu, weeyongere okugezaako — omutima omugumiikiriza gusobola okukola ebintu eby’ekitalo."
+   }
+  ],
+  "word_count": 206
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "lg"
+  ],
+  "order": 5,
+  "title": "Okusabira mu Kisenge eky’Omu Ttaka",
+  "body_html": "<blockquote><p><em>“buli ajja gye ndi sirimugobera bweru”</em> — Yokaana 6:37</p></blockquote> <p>Amanda bwe yakula, yayagala okusinga ekintu kyonna okuba owa Katonda. Naye yalina omutima ogw’amalala era ogw’ekyejo, era okumala ebbanga ddene yali ayagala okulokolebwa mu ngeri ye ku bubwe, mu kasirise, nga tewali kayoogaano.</p> <p>Yasaba era n’asaba. Mu mutima gwe yawuliranga nti si mulungi ekimala, era eddoboozi eryali limuwunyamulira lyeyongeranga okumugamba nti, “Katonda tajja kukuwulira.” Gye yakoma okufuba, Katonda gye yakoma okulabika nga ali wala.</p> <p>Ku nkomerero, ku lw’eggulo lumu bwe yali ng’akola mu maka g’ab’ekisa ab’ekibiina ky’Aba-Quaker, Amanda n’amalirira. Yateekateeka emmeeza, n’ateeka ebinika ku muliro, n’akka mu kisenge eky’omu ttaka okusaba. “Nteekwa okufuna obulokozi olw’eggulo lya leero,” bwe yagamba, “oba nja kusaba okutuusa lwe nnaabufuna.”</p> <p>Yayiwa omutima gwe gwonna eri Katonda. Awo n’asaba ebigambo ebisinga obwangu: “Ayi Mukama, bw’onoonnyamba, nja kukukkiriza.” Era mu kaseera ke kennyini bwe yagamba nti ajja kumwesiga — n’amwesiga ddala.</p> <p>Essanyu ne lijjula emmeeme ye ng’omusana. Omugugu omuzito ne gumuvaako. Yatunuulira emikono gye n’awulira nga muggya ddala ku mubiri gwonna. Yaddukira waggulu ku madaala ag’ekisenge eky’omu ttaka, era oluvannyuma n’atunula mu ndabirwamu ennene, ng’akakasa nti ne mu maaso yali alabika nga akyuse.</p> <p>Amanda yalowooza nti alina okwefuula omulungi ekimala eri Katonda. Naye Yesu ayaniriza buli muntu ajja gy’ali obujja n’amwesiga. Tekikwetaagisa kusooka kuba mulungi ekimala. Kye weetaaga kwe kujja bujja.</p> <p>Yesu omwagalwa, weebale nti tolina gw’ogoba. Nze nzuuno — nzija gy’oli, era nkwesiga. Amiina.</p>",
+  "study_questions": [
+   {
+    "question": "Amanda yagenda wa okusaba ku lw’eggulo lwe yamalirira?",
+    "answer": "Yateekateeka emmeeza, n’ateeka ebinika ku muliro, n’akka mu kisenge eky’omu ttaka okusaba, ng’agamba nti ajja kusaba okutuusa lw’anaafuna obulokozi."
+   },
+   {
+    "question": "Amanda yasaba bigambo ki ebyangu, era kiki ekyabaawo bwe yabisaba?",
+    "answer": "Yasaba nti, “Ayi Mukama, bw’onoonnyamba, nja kukukkiriza.” Mu kaseera ke kennyini bwe yamwesiga, essanyu ne lijjula emmeeme ye era omugugu gwe ne gumuvaako."
+   },
+   {
+    "question": "Olowooza oteekwa okusooka okuba omulungi ekimala nga tonnajja eri Yesu? Lwaki oba lwaki nedda?",
+    "answer": "Ensonga y’essuula eno: Yesu ayaniriza buli muntu ajja gy’ali obujja n’amwesiga. Tekikwetaagisa kusooka kuba mulungi ekimala — kye weetaaga kwe kujja bujja."
+   }
+  ],
+  "word_count": 227
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "lg"
+  ],
+  "order": 6,
+  "title": "Ssente ku Wansi mu Ffumbiro",
+  "body_html": "<blockquote><p><em>“Omuntu omwesigwa mu kintu ekitono, abeera mwesigwa ne mu kinene”</em> — Lukka 16:10</p></blockquote> <p>Amanda yalina muto we ayitibwa Frances, era Amanda yamwagalanga nnyo. Okumuwa eddembe, Amanda yalina okusasula ssente nnyingi nnyo — okusinga ze yali alina. Bw’atyo n’ayeewola doola amakumi ataano, era kati yali alina ebbanja eryo. Lyamweraliikirizanga emisana n’ekiro.</p> <p>Lumu olw’eggulo, omusajja ow’ekisa era omugagga ayitibwa Omwami Robert yakyalira ab’omu maka ago. Oluvannyuma lw’ekyeggulo yazannyira mu ffumbiro, era nga tamanyi, yasuula wansi akapapula akazingiddwa. Kaali kalabika ng’ekintu ekitali kya mugaso.</p> <p>Oluvannyuma, Amanda bwe yakutama okukakwata, amaaso ge ne gagaziwa. Zaali ssente — doola ebikumi bisatu! Era tewaali muntu mulala yenna mu kisenge.</p> <p>Ekirowoozo eky’obukujjukujju ne kiyingira: “Zitwale. Kati osobola okusasula ebbanja lyo, era tewali alimanya.” Naye Amanda n’addamu amangu ago nti, “Nedda. Saagala kweyingiza mu buzibu bwonna ku lwa ssente zino.”</p> <p>Omwami Robert bwe yakomawo eka ng’anoonya buli wantu, Amanda yayingiza mpola omukono mu nsawo ye n’amukwasa buli doola. Yasanyuka nnyo era ne yeebaza nnyo, n’amuwa doola amakumi ataano ng’ekirabo eky’okwebaza — omuwendo nnyini gwe yali yeetaaga okusasula ebbanja lye!</p> <p>Amanda yakola eky’obwesigwa, ne bwe waali tewali amulaba era ne bwe yali yeetaaga nnyo ssente. Katonda yalaba, era Katonda n’amulabirira. Bw’oba omwesigwa mu bintu ebitono, naawe osobola okumwesiga okukulabirira.</p> <p>Katonda omwagalwa, nnyamba okuba omwesigwa ne bwe kiba kizibu, era ne bwe waba nga tewali andaba. Weebale nti bulijjo nsobola okukwesiga. Amiina.</p>",
+  "study_questions": [
+   {
+    "question": "Lwaki Amanda yali abanjibwa doola amakumi ataano?",
+    "answer": "Yazeewola okuyamba okusasula ssente ezaali zeetaagisa okuwa muto we Frances eddembe, era ebbanja eryo lyamweraliikirizanga emisana n’ekiro."
+   },
+   {
+    "question": "Amanda yakola ki ne doola ebikumi bisatu bye yasanga wansi mu ffumbiro?",
+    "answer": "Yagaana okuzitwala, n’azzaayo buli doola eri Omwami Robert. Yasanyuka nnyo n’amuwa doola amakumi ataano — nnyini ze yali yeetaaga okusasula ebbanja lye."
+   },
+   {
+    "question": "Kizibu okuba omwesigwa nga tewali muntu akulaba? Kiki ekiyinza okukuyamba okukola ekituufu?",
+    "answer": "Ensonga y’essuula eno: Amanda yali mwesigwa ne bwe waali tewali amulaba era nga yali yeetaaga nnyo ssente. Katonda yalaba, era Katonda n’amulabirira — naffe tusobola okumwesiga."
+   }
+  ],
+  "word_count": 222
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "lg"
+  ],
+  "order": 7,
+  "title": "Okwesiga Katonda ku Lw’Omwana Omuwere",
+  "body_html": "<blockquote><p><em>“Buli lwe ntya, neesiga ggwe.”</em> — Zabbuli 56:3</p></blockquote> <p>Ku Ssande lumu ku makya, Amanda yayagala nnyo okugenda okuwuliriza omubuulizi omu eyali mu kitundu ekirala eky’ekibuga. Yanaaza omwana we omuwere, Will, n’amugalamiza mpola mu kitanda kye eky’abaana. Awo n’asaba muwala we omukulu, Mazie, okumulabirira. “Bw’anaakaaba,” bwe yagamba, “tomusitula; muwuubaawuube buwuubaawuubi.”</p> <p>N’agenda mu kkanisa. Naye omubuulizi bwe yali ng’ayogera, okuwulira okw’entiisa ne kumujjira. Yakakasa nti yali awulira omwana we omuwere ng’akaaba nnyo wala eyo. Eddoboozi ne limuwunyamulira nti, “Mazie amusudde! Waliwo ekintu ekibi ennyo ekibaddewo! Dduka oddeyo eka kaakano!”</p> <p>Omutima gwa Amanda ne gukuba nnyo. Yabulako katono okubuuka adduke addeyo eka. Naye n’ajjukira — yali agambye abantu abalala okwesiga Katonda. Ye kennyini yandilemereddwa okumwesiga?</p> <p>“Nja kwesiga Mukama,” bwe yagamba mpola, “ne ku lw’omwana wange omuwere.” Ebirowoozo eby’entiisa ne biddamu okujja, era n’addamu nate nti, “Nagamba nti nja kwesiga Mukama, era nja kumwesiga.” Bw’atyo n’asigalawo, n’awuliriza, era Katonda n’ajjuza omutima gwe emirembe egy’ekitalo.</p> <p>Amanda bwe yamala n’ayanguwa okuddayo eka n’aggulawo oluggi, n’asanga Will omuto nga yeebase bulungi mu kitanda kye eky’abaana. Yali tazuukuseeko n’akatono. Yali bulungi ddala, nga tali mu kabi konna.</p> <p>Oluusi ebirowoozo byaffe bijjula eby’entiisa eby’“oba ate…”. Bw’otya, osobola okukola nga Amanda bwe yakola: kwasa Katonda okweraliikirira kwo era omwesige. Akwagala, era bulijjo akulabirira.</p> <p>Katonda omwagalwa, bwe ntya, nnyamba okujjukira nti oli kumpi. Nkukwasa okweraliikirira kwange, kubanga mmanyi nti ondabirira bulungi. Amiina.</p>",
+  "study_questions": [
+   {
+    "question": "Amanda bwe yali mu kkanisa, birowoozo ki eby’entiisa ebyamujjira?",
+    "answer": "Yakakasa nti yali awulira omwana we omuwere ng’akaaba nnyo, era eddoboozi ne limuwunyamulira nti Mazie amusudde, era nti ateekwa okudduka addeyo eka mangu ddala."
+   },
+   {
+    "question": "Amanda yasalawo kukola ki mu kifo ky’okudduka okuddayo eka, era kiki kye yasanga oluvannyuma?",
+    "answer": "Yagamba nti, “Nja kwesiga Mukama, ne ku lw’omwana wange omuwere,” n’asigalawo. Bwe yatuuka eka, Will omuto yali yeebase bulungi, nga tali mu kabi konna."
+   },
+   {
+    "question": "Birowoozo ki eby’“oba ate…” ebikutiisa oluusi? Osobola kukola ki n’okweraliikirira okwo?",
+    "answer": "Ensonga y’essuula eno: bw’otya, kwasa Katonda okweraliikirira kwo era omwesige, nga Amanda bwe yakola. Akwagala era bulijjo akulabirira."
+   }
+  ],
+  "word_count": 221
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "lg"
+  ],
+  "order": 8,
+  "title": "Engatto Ze Yasabira",
+  "body_html": "<blockquote><p><em>“buli kye munaasabanga, mukkirize nti mukiweereddwa”</em> — Makko 11:24</p></blockquote> <p>Lumu Amanda yakakasa nti Katonda ayagala agende abuulire abantu ebya Yesu mu kabuga akayitibwa Salem. Kaali wala nnyo, era yali tamanyiiyo muntu n’omu. Naye yeesiga Katonda, n’atandika okwetegekera olugendo.</p> <p>Waaliwo obuzibu bumu bwokka. Engatto ze zaali zaayulika ddala — nga zirina ebituli wansi. Singa ebigere bye bitoba mu lugendo, yali amanyi nti yandirwadde.</p> <p>Amanda yali talina ssente za kugula ngatto mpya. Kyeyava akola kye yakolanga bulijjo: n’akibuulira Katonda. “Mukama,” bwe yasaba, “bwe kiba nga kye kyagala kyo, nkwegayiridde mpa ssente ez’engatto.” Era n’akkiriza nti ajja kuzimuwa.</p> <p>Nga wayise ennaku ntono, mu lukuŋŋaana, omusajja omukadde omwagalwa ayitibwa Taata Brummell yamukwata ku mukono ng’amusiibula. Bwe yali akola ekyo, n’amukwasa mpola ekintu mu kibatu. Amanda n’amwebaza, n’akiteeka mu nsawo ye nga tatunuddeko.</p> <p>Ekiro ekyo ng’ali ku muliro, n’akijjukira. N’akiggyayo n’abala — emu, bbiri, ssatu, nnya, doola ttaano! Zaali zimala ddala okugula engatto empya. Yali musanyufu nnyo nga tasobola na kwebaka bulungi. Katonda yali azzeemu essaala ye.</p> <p>Katonda tabeera mukwatibwa nnyo n’atafaayo ku bintu ebitono mu bulamu bwo. Buli ky’weetaaga ddala, osobola okukimubuulira n’omwesiga okukuyamba — ne ku kintu ekya bulijjo ng’engatto.</p> <p>Katonda omwagalwa, weebale nti ofaayo ku bintu ebitono bye nneetaaga. Nnyamba okuleeta buli kimu gy’oli n’okukwesiga okumpa eky’okuddamu. Amiina.</p>",
+  "study_questions": [
+   {
+    "question": "Lwaki Amanda yali yeetaaga engatto empya nga tannagenda Salem?",
+    "answer": "Engatto ze zaali zirina ebituli wansi, era yali amanyi nti singa ebigere bye bitoba mu lugendo, yandirwadde."
+   },
+   {
+    "question": "Katonda yaddamu atya essaala ya Amanda ey’engatto?",
+    "answer": "Mu lukuŋŋaana, Taata Brummell yamukwata ku mukono n’amukwasa ekintu mu kibatu. Ekiro ekyo n’akibala: doola ttaano, nnyini ezaali zimala okugula engatto empya."
+   },
+   {
+    "question": "Waliwo ekintu ekitono ky’weetaaga? Olowooza Katonda afaayo ku kyo?",
+    "answer": "Ensonga y’essuula eno: Katonda tabeera mukwatibwa nnyo n’atafaayo ku bintu ebitono. Buli kye twetaaga ddala, tusobola okukimubuulira ne tumwesiga okutuyamba — ne ku ngatto."
+   }
+  ],
+  "word_count": 206
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "lg"
+  ],
+  "order": 9,
+  "title": "Okutya Amazzi Amawanvu",
+  "body_html": "<blockquote><p><em>“Bw’onooyitanga mu mazzi amawanvu nnaabeeranga naawe”</em> — Isaaya 43:2</p></blockquote> <p>Mu kiseera kino, buli muntu yali amanyi Amanda ng’omukazi eyagambanga abalala okwesiga Katonda, ka kibe ki. Awo, lumu, mikwano gye egimu ne bagamba nti, “Amanda, tukkiriza nti Katonda ayagala osaabale ku nnyanja ennene ennyo ogende e Bungereza, obuulire abantu b’eyo ebya Yesu.”</p> <p>Naye waaliwo ekyama mu mutima gwa Amanda. Yali atya ennyanja empanvu era engazi. Yeeyongeranga okwekwasa ensonga. Yatuuka n’okuwandiika ebbaluwa ng’agamba nti tajja kugenda.</p> <p>Akawungeezi ako ennaku ennyingi ne zimujjira, era nga tategeera lwaki. N’afukamira n’agamba nti, “Mukama, sijja kwebaka okutuusa lwe nnaamanya ekinsobeddeko.”</p> <p>Era mu bukkakkamu, Katonda n’amulaga amazima. Kyali ng’eddoboozi eryagamba nti, “Otambula ng’ogamba abantu abalala okwesiga Mukama mu kizikiza. Naye obagamba okukola ggwe kennyini ky’otayagala kukola. Otya okunneesiga n’okusomoka ennyanja.”</p> <p>Amanda n’akwatibwa ensonyi. “Mukama, ago ge mazima,” bwe yagamba. “Nsonyiwa, ompe omukisa omulala, era nja kugenda.” Era bw’atyo bwe yakola — yasaabala okusomoka ennyanja yonna okutuuka e Bungereza, era Katonda yagenda naye olugendo lwonna.</p> <p>Kyangu okugamba abalala okuba abazira. Kizibu okusingawo okuba omuzira ggwe kennyini! Katonda bw’akusaba okumwesiga mu kintu ekitiisa, jjukira nti ayita naawe ddala mu mazzi amawanvu.</p> <p>Katonda omwagalwa, bwe ntya ekintu ekinene, nnyamba nange nzennyini okukwesiga. Weebale nti bulijjo oli ku lusegere lwange. Amiina.</p>",
+  "study_questions": [
+   {
+    "question": "Mikwano gya Amanda bwe baagamba nti Katonda ayagala agende e Bungereza, kiki kye yali atya mu kyama?",
+    "answer": "Yali atya ennyanja empanvu era engazi. Yeeyongeranga okwekwasa ensonga, era n’awandiika n’ebbaluwa ng’agamba nti tajja kugenda."
+   },
+   {
+    "question": "Katonda yalaga atya Amanda mu bukkakkamu bwe yafukamira okusaba ekiro ekyo?",
+    "answer": "Nti yagambanga abantu abalala okwesiga Mukama mu kizikiza naye ye kennyini nga takikola — yali atya okumwesiga n’okusomoka ennyanja."
+   },
+   {
+    "question": "Wali ogambyeko omuntu omulala okuba omuzira ku kintu naawe ekikutiisa? Kiki ekiyinza okukuyamba okuba omuzira?",
+    "answer": "Ensonga y’essuula eno: kyangu okugamba abalala okuba abazira okusinga okuba omuzira ggwe kennyini. Katonda bw’akusaba okumwesiga mu kintu ekitiisa, ayita naawe mu mazzi amawanvu."
+   }
+  ],
+  "word_count": 200
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "lg"
+  ],
+  "order": 10,
+  "title": "Ssanduuko Eyabbibwa",
+  "body_html": "<blockquote><p><em>“Omuntu omugumiikiriza asinga omutabaazi, n’oyo afuga obusungu bwe akira awamba ekibuga.”</em> — Engero 16:32</p></blockquote> <p>Katonda yatwala Amanda mu lugendo olulala oluwanvu — ku mulundi guno ng’asaabala ku lyato okutuuka mu Afirika. Engoye ze n’ebintu bye byali bipakiddwa n’obwegendereza mu ssanduuko ye, wansi ddala mu lyato.</p> <p>Naye eryato bwe lyali liteekebwamu emigugu, abasajja abamu baamenya kkufulu ku ssanduuko ye ne babba ebintu bye bingi — ne ku ngatto ze. Amanda bwe yakitegeera, yanakuwala nnyo okufiirwa ebintu ebyo. Ebimu ku byo teyabiddizibwa n’akatono.</p> <p>Kaakano, buli muntu yali asuubira nti ajja kuleekaana, akube ebigere wansi, era anyiige nnyo. Ne kapiteeni w’eryato yamutunuulira ng’awuniikiridde, n’agamba nti, “Mukyala Smith, saategeera ngeri gy’osobola kwefuga n’otonyiiga!”</p> <p>Amanda n’amwenya n’addamu nti, “Kapiteeni, nnakuwadde okufiirwa ebintu byange. Naye singa okunyiiga n’okusunguwala kwandibizzizzaawo, ddala wandindabye nga ndeekaana! Okuva bwe kitandibizzizzaawo, lwaki nnyiiga?” Era Katonda n’akuuma omutima gwe nga muteefu era nga mukkakkamu.</p> <p>Ekintu bwe kibbibwa, oba bwe kimenyeka, oba bwe kiba si kya bwenkanya, kyangu okubwatuka n’obusungu. Naye obusungu tebutereeza bintu — butuleetera kuwulira bubi n’okusingawo. Katonda asobola okukuyamba okusigala ng’oli mukkakkamu era omuwombeefu, ne bwe wabaawo ekitatambudde bulungi. Ago ge maanyi amatuufu.</p> <p>Katonda omwagalwa, ebintu bwe bitatambula bulungi ne mpulira obusungu, nnyamba okusigala nga ndi mukkakkamu nga Amanda. Fuga omutima gwange n’emirembe gyo. Amiina.</p>",
+  "study_questions": [
+   {
+    "question": "Kiki ekyatuuka ku ssanduuko ya Amanda ku lyato eryali ligenda mu Afirika?",
+    "answer": "Abasajja abamu baamenya kkufulu yaayo ne babba ebintu bye bingi, ne ku ngatto ze. Ebimu ku byo teyabiddizibwa n’akatono."
+   },
+   {
+    "question": "Lwaki Amanda yagamba kapiteeni nti tajja kunyiiga?",
+    "answer": "Yagamba nti singa okunyiiga kwandizzizzaawo ebintu bye, yandimulabye ng’anyiiga nnyo — naye okuva bwe kitandibizzizzaawo, lwaki yandinyiize?"
+   },
+   {
+    "question": "Owulira nga oyagala kukola ki ng’ekintu kyo kimenyese oba kitwaliddwa? Kiki ky’oyinza okukola mu kifo ky’ekyo?",
+    "answer": "Ensonga y’essuula eno: obusungu tebutereeza bintu era butuleetera kuwulira bubi n’okusingawo. Katonda asobola okutuyamba okusigala nga tuli bakkakkamu era abawombeefu ebintu bwe bitatambula bulungi — ago ge maanyi amatuufu."
+   }
+  ],
+  "word_count": 205
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "lg"
+  ],
+  "order": 11,
+  "title": "Akagaali Akaagaana Okutambula",
+  "body_html": "<blockquote><p><em>“Kubanga Mukama aliragira bamalayika be bakukuume mu makubo go gonna.”</em> — Zabbuli 91:11</p></blockquote> <p>Amanda yatambula n’okusingawo, okutuuka ddala mu nsi ey’ewala eya Buyindi, okubuulira abantu ebya Yesu. Ekiro kimu ye ne mukwano gwe Miss Frow baali batambulira ku kkubo ery’omu kyalo eryali eribi, mu kagaali akaali kasikibwa ente ennume ennene ezitambula empola.</p> <p>Kwali kizikiza nnyo nnyo. Tewaaliwo ttaala za ku kkubo, era tewaaliwo mwezi okubayamba okulaba ekkubo eryali mu maaso.</p> <p>Mangu ago, ente ennume ne ziyimirira. Zaagaana ddala okugenda mu maaso wadde akagere kamu. Eyali azivuga n’azigamba okweyongerayo, naye ensolo ne zigaana. Amanda ne mukwano gwe ne batandika okwetamwa. “Lwaki akagaali kano tekatambula?” bwe beebuuza.</p> <p>Ku nkomerero ne bakka wansi okulaba bo bennyini. Baatambula mu maaso bigere bitono bitono mu kizikiza — era emitima gyabwe ne gyagala okuyimirira. Mu maaso gaabwe ddala waaliwo omukutu omuwanvu era ogw’akabi ogwali gusala ekkubo lyonna! Singa ente ennume zeeyongerayo okutambula, akagaali kandigudde, era buli muntu yandiyinzizza okulumizibwa ennyo.</p> <p>Nga baatendereza nnyo Katonda olwo! Ensolo ezo ezaalabika ng’ezikakanyavu, tezaali nkakanyavu n’akatono. Katonda yali azikozesezza okuyimiriza akagaali n’okukuuma abatambuze be obutatuukibwako kabi ke baali batasobola na kulaba.</p> <p>Oluusi Katonda akukuuma mu ngeri z’otamanya, era oluusi “nedda” oba okulwawo kuba nga ye Katonda akukuuma. Osobola okwesiga nti akulabirira mu buli kkubo lyo.</p> <p>Katonda omwagalwa, weebale okundabirira, ne bwe mba nga sisobola kulaba kabi. Nnyamba okukwesiga nti bulijjo onkuuma. Amiina.</p>",
+  "study_questions": [
+   {
+    "question": "Ente ennume zaakola ki ku kkubo eryali mu kizikiza mu Buyindi?",
+    "answer": "Mangu ago zaayimirira ne zigaana okugenda mu maaso wadde akagere kamu, ne bwe yazilagira okweyongerayo oyo eyali azivuga."
+   },
+   {
+    "question": "Amanda ne Miss Frow baasanga ki bwe baatambula mu maaso mu kizikiza?",
+    "answer": "Omukutu omuwanvu era ogw’akabi ogwali gusala ekkubo lyonna. Singa ente ennume zeeyongerayo, akagaali kandigudde mu gwo."
+   },
+   {
+    "question": "Osobola okujjukira ekiseera okulinda oba okugambibwa nti “nedda” bwe kyakuganyula?",
+    "answer": "Ensonga y’essuula eno: oluusi Katonda atukuuma mu ngeri ze tutategeera, era “nedda” oba okulwawo kuyinza okuba nga ye Katonda atukuuma. Atukuuma mu makubo gaffe gonna."
+   }
+  ],
+  "word_count": 222
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "lg"
+  ],
+  "order": 12,
+  "title": "Omulenzi ku Mulyango",
+  "body_html": "<blockquote><p><em>“Na buli asembeza omwana omuto ng’ono mu linnya lyange ng’asembeza Nze.”</em> — Matayo 18:5</p></blockquote> <p>Amanda bwe yali ng’abeera mu Afirika, abalenzi babiri abato baajjanga okumukyalira. Omu ku bo yali ayitibwa Bob. Olususu lwe lwali lugonvu era luddugavu, era yalina akamwenyo akasinga okumasamasa. Emirundi mingi Amanda yaterekeranga abalenzi obutundu bw’emmere, era bulijjo baasanyukanga nnyo. Yatuuka okubaagala ennyo nnyo.</p> <p>Lumu kitaawe wa Bob, Jack, yajja eri Amanda. N’amugamba, mu nnaku, nti ye kennyini teyayiga ku bya Katonda. “Saagala mulenzi wange omuto akule nga tamanyi Katonda, nga nze bwe nnali,” bwe yagamba. “Nkwegayiridde, onoomutwala n’omuyigiriza?”</p> <p>Amanda yayagala okuyamba. Naye emirundi mingi yabanga munafu era ng’alwadde omusujja, era yalina ssente ntono nnyo. “Nnyinza ntya okulabirira omwana?” bwe yeebuuza. Kyeyava atwala ekibuuzo ekyo eri Katonda mu kusaba.</p> <p>Era Katonda n’addamu omutima gwe mu bukkakkamu: “Ggwe kola ky’osobola, era w’onookoma, Katonda ajja kuyimusa omuntu omulala okukola ebisigaddeyo.”</p> <p>“Ekyo kya bwenkanya,” Amanda bwe yagamba. “Nja kwesiga Mukama ntwale omwana, era nkole kyonna kye nsobola.” Bw’atyo Bob omuto n’afuuka omwana we ddala, gw’anaakuza era gw’anaayagala.</p> <p>Katonda takusaba kukola buli kimu ggwe wekka. Akusaba kukola ky’osobola kyokka, n’oluvannyuma omwesige mu ebyo ebisigadde. Bw’oyaniriza omwana n’omuyamba, Yesu agamba nti kiba ng’omwanirizza Ye.</p> <p>Katonda omwagalwa, nnyamba okukola ebirungi bye nsobola, n’okukwesiga mu ebyo bye siyinza. Weebale okwagala ennyo abaana. Amiina.</p>",
+  "study_questions": [
+   {
+    "question": "Kitaawe wa Bob, Jack, yasaba Amanda kukola ki?",
+    "answer": "Ye kennyini yali tayigangako bya Katonda, era nga tayagala Bob akule bw’atyo, kyeyava asaba Amanda atwale omulenzi we omuto amuyigirize."
+   },
+   {
+    "question": "Lwaki Amanda yasooka kubuusabuusa, era Katonda yamugamba ki?",
+    "answer": "Emirundi mingi yalwalanga era yalina ssente ntono. Katonda n’amuddamu nti, “Ggwe kola ky’osobola, era w’onookoma, Katonda ajja kuyimusa omuntu omulala okukola ebisigaddeyo.”"
+   },
+   {
+    "question": "Kintu ki ekirungi kimu ky’oyinza okukola okuyamba omuntu wiiki eno, ne bwe kiba kitono?",
+    "answer": "Ensonga y’essuula eno: Katonda tatusaba kukola buli kimu ffekka — wabula kye tusobola kyokka, ne tumwesiga mu ebyo ebisigadde. Okwaniriza omwana kuli ng’okwaniriza Yesu."
+   }
+  ],
+  "word_count": 209
+ }
+}
+]

@@ -143,12 +143,21 @@
       "The title quotes the shipped lg edition faithful-with-little.lg.json verbatim (Omwesigwa mu Bintu Ebitono), and the themes reuse its part and chapter titles, so the card and the book agree. Written with the translation (Ochorus Original, 2026-11)."
     ]
   },
+  "family-devotions-pilgrims-journey": {
+    "title": "Okusinza kw’Amaka: Olugendo lw’Omutambuze",
+    "description": "Okusinza kw’amaka okw’eddakiika ttaano eri abaana n’abakulu abasoma nabo, okumala ebiro nga wiiki ssatu n’ekitundu. Musome mu ddoboozi essuula emu entono: okusooka omutambuze wa Bunyan ku luguudo olugenda mu Kibuga eky’Eggulu (“Olugendo lw’Omutambuze (Eri Abaana)”), oluvannyuma ebifaananyi bya Spurgeon okuva mu nnimiro (“Ebigambo eri Omulimi (Eri Abaana)”). Buli ssuula ekomekkerezebwa n’okusaba n’ebibuuzo bisatu eby’okwogerako wamu.",
+    "note": [
+      "AI-drafted (2026-11-28); awaiting native review. pilgrims-progress-children.lg (job #8444) completes the plan's two lg source books (talks-to-the-farmer-children.lg ships), so seed_plans creates the lg row and this prose ships in the same PR.",
+      "Series name «Okusinza kw’Amaka» as in the lg heroes plan; titles quoted verbatim from the two lg editions; «Ekibuga eky’Eggulu» as in pilgrims-progress.lg; Bunyan / Spurgeon as in the lg corpus."
+    ]
+  },
   "family-devotions-heroes-who-trusted-god": {
     "title": "Okusinza kw’Amaka: Abazira Abeesiga Katonda",
-    "description": "Wiiki ttaano ez’okusinza kw’amaka okw’eddakiika ttaano: emboozi ez’amazima ez’abantu basatu abeesiga Katonda mu buli kintu, nga musoma mu ddoboozi essuula emu entono buli kiro — George Müller n’abaana be bamulekwa (“Obulamu obw’Okwesiga (Eri Abaana)”), Hudson Taylor ku lugendo lwe okugenda e China (“Okutunula Emabega (Eri Abaana)”), ne Amanda Smith, eyazaalibwa mu buddu, eyasaba Katonda engatto. Buli ssuula ekomekkerezebwa n’okusaba n’ebibuuzo bisatu eby’okwogerako wamu.",
+    "description": "Wiiki ttaano ez’okusinza kw’amaka okw’eddakiika ttaano: emboozi ez’amazima ez’abantu basatu abeesiga Katonda mu buli kintu, nga musoma mu ddoboozi essuula emu entono buli kiro — George Müller n’abaana be bamulekwa (“Obulamu obw’Okwesiga (Eri Abaana)”), Hudson Taylor ku lugendo lwe okugenda e China (“Okutunula Emabega (Eri Abaana)”), ne Amanda Smith, eyazaalibwa mu buddu, eyasaba Katonda engatto (“Emboozi ya Amanda Smith (Eri Abaana)”). Buli ssuula ekomekkerezebwa n’okusaba n’ebibuuzo bisatu eby’okwogerako wamu.",
     "note": [
       "AI-drafted; awaiting native review. Ships with a-retrospect-children.lg (job #8434) and the-life-of-trust-children.lg (job #8438); their titles are quoted verbatim. amanda-smith-autobiography-children has no lg edition yet (job #8441 queued), so seed_plans will not create the lg row until it ships; that job should check this prose against its title.",
-      "Names as in the lg editions (George Müller, Hudson Taylor, China); «Mwogere wamu» is the editions' own study-question opener."
+      "Names as in the lg editions (George Müller, Hudson Taylor, China); «Mwogere wamu» is the editions' own study-question opener.",
+      "2026-11-28: amanda-smith-autobiography-children.lg (job #8441) ships, completing the set; its title is now quoted like the other two."
     ]
   }
 }
