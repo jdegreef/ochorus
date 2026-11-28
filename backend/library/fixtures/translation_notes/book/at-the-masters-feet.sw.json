@@ -1,0 +1,147 @@
+{
+ "kind": "book",
+ "slug": "at-the-masters-feet",
+ "language": "sw",
+ "job_issue": 8494,
+ "references": [
+  {
+   "reference": "John 13:13",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "John 14:9-10",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "John 6:63",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "John 10:28",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "Revelation 1:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 22:39",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "Matthew 10:16",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "John 10:10",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "John 6:55",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "John 16:22",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "Matthew 19:17",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "Genesis 2:7",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "Ecclesiastes 12:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "Matthew 24:20",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "John 13:35",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "John 14:19",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "1 Peter 1:12",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "Luke 6:26",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "Luke 23:21",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "Deuteronomy 30:14",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "Colossians 2:8",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "1 Corinthians 15:50",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  },
+  {
+   "reference": "Romans 14:17",
+   "status": "mined",
+   "source_file": "Open Word Bible (OWB), Balanced edition, Swahili"
+  }
+ ]
+}

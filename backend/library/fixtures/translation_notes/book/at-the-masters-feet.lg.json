@@ -1,0 +1,93 @@
+{
+ "kind": "book",
+ "slug": "at-the-masters-feet",
+ "language": "lg",
+ "job_issue": 8495,
+ "references": [
+  {
+   "reference": "John 13:13",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  },
+  {
+   "reference": "John 14:9-10",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  },
+  {
+   "reference": "Matthew 22:39",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  },
+  {
+   "reference": "John 10:28",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  },
+  {
+   "reference": "Revelation 1:8",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  },
+  {
+   "reference": "Matthew 10:16",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  },
+  {
+   "reference": "John 6:55",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  },
+  {
+   "reference": "John 16:22",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  },
+  {
+   "reference": "Matthew 19:17",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  },
+  {
+   "reference": "Matthew 24:20",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  },
+  {
+   "reference": "Luke 23:21",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  },
+  {
+   "reference": "Deuteronomy 30:14",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  },
+  {
+   "reference": "Colossians 2:8",
+   "status": "mined",
+   "source_file": "OLCB (lug) Bible text"
+  }
+ ]
+}

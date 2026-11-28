@@ -7002,6 +7002,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ar/at-the-masters-feet": {
+			"ground": "635d82a9f37f7a1afdb4bbe1b7cdefd376ce4cdfc395bee77ddefa4523a4a5f3",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[104, 102, 496, 131]
+				],
+				"title": [
+					[102, 316, 498, 422]
+				],
+				"subtitle": [
+					[110, 505, 490, 544]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				254,
+				541
+			]
+		},
 		"ar/baptism-with-the-holy-spirit": {
 			"ground": "6a4ac8ef05e96a4e1debfc36c06dab49aa21c86ba0d9eb8a41d84ceea7e990c8",
 			"style": "revival",
@@ -24204,6 +24237,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"hi/at-the-masters-feet": {
+			"ground": "df1cc609c827df6b4b74a936fa76518c303c0addb22d8cd6f0d39bf4b6c86d7f",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "f36feae5363a90b83288a44fbd3d4f2a1b774d41f412b88d508596e52f368b4b",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[104, 102, 496, 131]
+				],
+				"title": [
+					[136, 332, 464, 408]
+				],
+				"subtitle": [
+					[92, 497, 508, 519]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				269,
+				525
+			]
+		},
 		"hi/baptism-with-the-holy-spirit": {
 			"ground": "0c5fe91208eaec515e305a28adfcfa81a8cb6ee66c31ccc78ebcabb065e37589",
 			"style": "revival",
@@ -34489,6 +34555,42 @@
 			"bar": 0.025,
 			"caps": false,
 			"sitemark": null
+		},
+		"lg/at-the-masters-feet": {
+			"ground": "877a7c768af83219f8f7e8456c294d10bbe40a2d228a6d4b452eb9eb75b76a38",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[104, 102, 496, 131]
+				],
+				"title": [
+					[163, 278, 437, 360],
+					[122, 349, 478, 431]
+				],
+				"subtitle": [
+					[141, 504, 459, 525],
+					[97, 525, 503, 546],
+					[128, 546, 472, 567]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				228,
+				567
+			]
 		},
 		"lg/baptism-with-the-holy-spirit": {
 			"ground": "335163a94dfa80d3cda69ccb2a2f9304da48185e905bb7ae7ee608f509c5fa9a",
@@ -46614,6 +46716,41 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"sw/at-the-masters-feet": {
+			"ground": "9282e0ca757a04f41e03b864d8fc90e4a17f62a5169b5bac61da07ed1f8862cc",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[104, 102, 496, 131]
+				],
+				"title": [
+					[159, 275, 441, 372],
+					[140, 359, 460, 456]
+				],
+				"subtitle": [
+					[87, 527, 513, 548],
+					[82, 548, 518, 569]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				225,
+				569
+			]
+		},
 		"sw/baptism-with-the-holy-spirit": {
 			"ground": "93f3eee1cd33427f4e3df13f9a3256783af0034421e097a862dc1f41fc1b0330",
 			"style": "revival",
@@ -53260,6 +53397,41 @@
 			"bar": 0.025,
 			"caps": false,
 			"sitemark": null
+		},
+		"uk/at-the-masters-feet": {
+			"ground": "2a37094beee7973d62bb7154f2f0e713e8e04d7665e658afc72cf02d8b65660e",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[104, 102, 496, 131]
+				],
+				"title": [
+					[164, 273, 436, 370],
+					[151, 357, 449, 454]
+				],
+				"subtitle": [
+					[73, 526, 527, 547],
+					[110, 549, 490, 570]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				223,
+				571
+			]
 		},
 		"uk/baptism-with-the-holy-spirit": {
 			"ground": "a562b4836e2431fd420dac71ef9e83d726ec511d479f56384cb88672a0dcc8b9",
