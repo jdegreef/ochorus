@@ -106,6 +106,8 @@
   "reader_scripture_omitted": "Mstari huu haumo katika Open Word Bible, inayofuata miswada ya zamani zaidi. Tafsiri za zamani kama King James zinao.",
   "reader_scripture_page": "Vitabu vya kale vinasema nini kuhusu kifungu hiki",
   "reader_glossary_words": "Maneno katika sura hii",
+  "reader_table_question": "Swali la mezani",
+  "reader_table_note": "Liulize wakati wa chakula, na kila mtu ajibu.",
   "reader_related_passages": "Vifungu vinavyohusiana",
   "reader_crossrefs_credit": "Marejeo mtambuka kutoka %source%, CC BY",
   "reader_catena_heading": "Kile Kanisa limesema",

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { glossaryHref, glossaryTermsIn, titleCase } from '$lib/glossary';
+	import { tableQuestion } from '$lib/tableQuestions';
 	import { assetHtml } from '$lib/assetUrl';
 	import { hasVerseNumbers, markVerse } from '$lib/verse';
 	import { anchorParagraphs, paragraphFromHash } from '$lib/paragraphAnchor';
@@ -1982,6 +1983,10 @@
 	const glossaryWords = $derived(
 		language === 'en' || edition === 'modern' ? glossaryTermsIn(chapter.body_html ?? '') : []
 	);
+	// "A question for the table" (Brave for God): one for a parent to ask at
+	// dinner after the story. Only the original text (a modern edition is
+	// another wording of it) and only where this language has one.
+	const tableQ = $derived(edition === 'modern' ? null : tableQuestion(slug, chapter.order, language));
 	$effect.pre(() => {
 		readerPrefs.scripture = verseNumbered;
 	});
@@ -2700,6 +2705,14 @@
 				</section>
 			{/if}
 
+			{#if tableQ}
+				<aside class="table-q mt-10" aria-labelledby="table-q-label" data-nosnippet>
+					<p id="table-q-label" class="eyebrow table-q-label">{t('reader.tableQuestion')}</p>
+					<p class="table-q-text font-display mt-1.5" dir="auto">{tableQ}</p>
+					<p class="mt-1.5 text-small text-muted">{t('reader.tableNote')}</p>
+				</aside>
+			{/if}
+
 			<!-- The glossary words this chapter uses, as plain links to their pages.
 			     The tap-to-define popover reaches the same pages, but only after a
 			     tap, which a crawler never makes; this is the term pages' path in
@@ -3032,6 +3045,21 @@
 <NotesDrawer {slug} {edition} bind:open={notesOpen} />
 
 <style>
+	/* "A question for the table": a quiet card in the series' gold, under the
+	   story and above the chapter's end. */
+	.table-q {
+		padding: 1rem 1.25rem;
+		border-inline-start: 3px solid var(--color-gold);
+		border-radius: var(--radius-sm);
+		background: var(--color-surface);
+	}
+	.table-q-label {
+		color: var(--color-gold);
+	}
+	.table-q-text {
+		font-size: var(--fs-h3);
+		line-height: 1.4;
+	}
 	/* "Previously:" / "In this chapter" under the title: the reader's own size
 	   (so Aa scales it with the text), a step down from it, muted, behind a
 	   hairline start rule. */

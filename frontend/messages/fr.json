@@ -106,6 +106,8 @@
   "reader_scripture_omitted": "Ce verset ne figure pas dans l’Open Word Bible, qui suit les manuscrits les plus anciens. Des traductions plus anciennes, comme la Segond, l’incluent.",
   "reader_scripture_page": "Ce que disent les classiques sur ce passage",
   "reader_glossary_words": "Mots de ce chapitre",
+  "reader_table_question": "Une question pour la table",
+  "reader_table_note": "Posez-la au dîner, et laissez chacun répondre.",
   "reader_related_passages": "Passages liés",
   "reader_crossrefs_credit": "Références croisées de %source%, CC BY",
   "reader_catena_heading": "Ce qu’a dit l’Église",

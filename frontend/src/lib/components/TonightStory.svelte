@@ -7,6 +7,8 @@
 	import { dayIndex } from '$lib/quoteText';
 	import type { HubPerson } from '$lib/library-public';
 	import Portrait from '$lib/components/Portrait.svelte';
+	import { tableQuestion } from '$lib/tableQuestions';
+	import { lang } from '$lib/lang.svelte';
 
 	/**
 	 * "Tonight's story": one true story a day from the people strip, for a
@@ -25,6 +27,8 @@
 		at = dayIndex(new Date(), people.length);
 	});
 	const p = $derived(people[at % Math.max(people.length, 1)]);
+	// The story's question for the table, where this language has one.
+	const ask = $derived(p ? tableQuestion(p.book, p.chapter, lang.current) : null);
 </script>
 
 {#if p}
@@ -44,6 +48,7 @@
 			<h2 id="tonight-heading" class="eyebrow label">{t('audience.tonightStory')}</h2>
 			<p class="name font-display" dir="auto">{p.name}</p>
 			<p class="hook" dir="auto">{p.hook}</p>
+			{#if ask}<p class="ask" dir="auto"><span class="ask-label">{t('reader.tableQuestion')}:</span> {ask}</p>{/if}
 		</div>
 		<div class="cta">
 			<a href={localizeHref(bookChapterPath(p.book, p.chapter, false))} class="btn btn-solid">{t('audience.readTonight')}</a>
@@ -95,6 +100,15 @@
 	.hook {
 		margin-top: 0.15rem;
 		color: rgb(245 241 230 / 0.82);
+	}
+	.ask {
+		margin-top: 0.5rem;
+		font-size: var(--fs-small);
+		color: rgb(245 241 230 / 0.82);
+	}
+	.ask-label {
+		color: #f3e2a9;
+		font-weight: 600;
 	}
 	.cta {
 		position: relative;

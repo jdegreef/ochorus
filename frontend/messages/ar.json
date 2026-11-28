@@ -106,6 +106,8 @@
   "reader_scripture_omitted": "هذه الآية غير موجودة في Open Word Bible، التي تتبع أقدم المخطوطات. وترد في ترجمات أقدم مثل ترجمة الملك جيمس.",
   "reader_scripture_page": "ما تقوله الكتب الكلاسيكية عن هذا المقطع",
   "reader_glossary_words": "كلمات في هذا الفصل",
+  "reader_table_question": "سؤال للمائدة",
+  "reader_table_note": "اطرحه على العشاء، ودع الجميع يجيبون.",
   "reader_related_passages": "مقاطع ذات صلة",
   "reader_crossrefs_credit": "الشواهد المرجعية من %source%، بترخيص CC BY",
   "reader_catena_heading": "ما قالته الكنيسة",

@@ -106,6 +106,8 @@
   "reader_scripture_omitted": "This verse is not in the Open Word Bible, which follows the oldest manuscripts. Older translations such as the King James include it.",
   "reader_scripture_page": "What the classics say on this passage",
   "reader_glossary_words": "Words in this chapter",
+  "reader_table_question": "A question for the table",
+  "reader_table_note": "Ask it at dinner, and let everyone answer.",
   "reader_related_passages": "Related passages",
   "reader_crossrefs_credit": "Cross-references from %source%, CC BY",
   "reader_catena_heading": "What the Church has said",

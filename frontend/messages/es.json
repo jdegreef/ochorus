@@ -106,6 +106,8 @@
   "reader_scripture_omitted": "Este versículo no está en la Open Word Bible, que sigue los manuscritos más antiguos. Traducciones más antiguas, como la Reina-Valera, sí lo incluyen.",
   "reader_scripture_page": "Lo que dicen los clásicos sobre este pasaje",
   "reader_glossary_words": "Palabras de este capítulo",
+  "reader_table_question": "Una pregunta para la mesa",
+  "reader_table_note": "Hazla en la cena y deja que todos respondan.",
   "reader_related_passages": "Pasajes relacionados",
   "reader_crossrefs_credit": "Referencias cruzadas de %source%, CC BY",
   "reader_catena_heading": "Lo que ha dicho la Iglesia",
