@@ -15,6 +15,7 @@
 	import QuoteText from '$lib/components/QuoteText.svelte';
 	import TopicPill from '$lib/components/TopicPill.svelte';
 	import FeaturedQuote from '$lib/components/FeaturedQuote.svelte';
+	import WhoseWords from '$lib/components/WhoseWords.svelte';
 	import { chapterSuffix } from '$lib/quoteSource';
 	import { quoteHref } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
@@ -133,6 +134,18 @@
 		</section>
 	{/if}
 
+	<!-- Today's "Whose words?", playable here: the game was a text link under
+	     the chips, and a game nobody finds is not played. It fills in after
+	     mount (the reader's local day), so the prerendered page is unchanged. -->
+	<section class="game mb-10" aria-labelledby="game-heading">
+		<div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+			<h2 id="game-heading" class="font-display text-h2 font-semibold">{t('game.title')}</h2>
+			<a class="text-small font-semibold" href="/quotes/game/">{t('game.open')} <Arrow /></a>
+		</div>
+		<p class="mb-4 mt-1 max-w-prose text-small text-muted">{t('game.tagline')}</p>
+		<WhoseWords />
+	</section>
+
 	<!-- A card per author. The accent bar wears the author's era hue, the same
 	     colour their row carries on the Biographies shelf and their quote page's
 	     groups — one consistent visual key for "when". -->
@@ -212,6 +225,13 @@
 </div>
 
 <style>
+	.game {
+		padding: 1.25rem 1.5rem;
+		border: 1px solid var(--color-border);
+		border-block-start: 3px solid var(--color-gold);
+		border-radius: var(--radius-card);
+		background: var(--color-surface);
+	}
 	/* --hue is the era's hex (eras.ts); every use goes through color-mix, never
 	   raw, the same rule the author quote page states. */
 	.browse {
