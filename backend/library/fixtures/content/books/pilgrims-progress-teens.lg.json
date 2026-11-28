@@ -1,0 +1,385 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "john-bunyan"
+  ],
+  "slug": "pilgrims-progress-teens",
+  "language": "lg",
+  "title": "Olugendo lw’Omutambuze (Eri Abavubuka)",
+  "subtitle": "",
+  "description": "John Bunyan yawandiika ekitabo kino ng’ali mu kaduukulu — olugero lw’omusajja omu, Omukristaayo, alekawo buli kimu n’atwala omugugu omuzito ogumumenya okwolekera omulyango oguli ewala, n’asanga obulamu obw’amazima nga bumulindiridde mu kkubo. Olugero luno olw’abavubuka terubuusa kifo na kimu ekizibu — ekinnya eky’okuggwaamu essuubi, omuliro mu Katale k’Obutaliimu, ekkomera ly’omuwagguufu — era lukubuuza buli kimu ku byo kye kitegeeza gy’oli.",
+  "hook": "Kyawandiikibwa mu kaduukulu: omusajja omu, omugugu omuzito ennyo, n’ekkubo erigenda eri obulamu obw’amazima.",
+  "qa": [
+   {
+    "question": "Kino si lugero bugero olw’ekitalo olulimu amannya ag’ekyewuunyo?",
+    "answer": "Buli kifo na buli muntu omwo kifaananyi kya kintu ekiriwo ddala. Ekinnya, ekisolo ekitiisa, omuwagguufu n’akatale y’engeri Bunyan gy’akubamu ekifaananyi ky’ebyo ebituukira ddala ku muntu munda mu ye bw’asalawo okugoberera Katonda — era kyekiva kisigala nga kisomebwa okusinga kumpi ebitabo byonna ebyawandiikibwa oluvannyuma lwakyo."
+   },
+   {
+    "question": "Omugugu oguli ku mugongo gw’Omukristaayo gutegeeza ki?",
+    "answer": "Bwe buzito bw’omusango gwe yennyini — okuwulira nti waliwo ekintu ekikyamu ennyo, era nga tasobola kukitereeza yekka. Agwetikka okumala ebbanga ddene, era okufuba ennyo oba okufuna amagezi amalungi tekigukendeeza buzito n’akatono."
+   },
+   {
+    "question": "Lwaki omugugu teguvaako ku mulyango, wabula ku Musaalaba wokka?",
+    "answer": "Kubanga okutandika okufaayo ku Katonda, oba okwegatta ku balala, oba okukola ebintu by’eddiini ebituufu tekiggyako muntu musango gwe. Bunyan ayogera bulungi nnyo: omugugu gwekulukuta ne gugenda mu kifo kimu kyokka — ku Musaalaba, Yesu gye yagwetikka dda."
+   },
+   {
+    "question": "Lwaki Omukristaayo adduka n’aleka ab’omu maka ge?",
+    "answer": "Abeegayirira bajje naye ne bagaana, bw’atyo n’agenda yekka mu kifo ky’okusigala n’azikirira wamu n’ekibuga. Kino kye kifaananyi ekisinga obuzibu mu kitabo: okugoberera Katonda kiyinza okukufiiriza okukkirizibwa abantu b’osinga okwagala, era oluusi olina okutambula nga tebannaba kwetegeka."
+   },
+   {
+    "question": "Omwesigwa abonyaabonyezebwa n’attibwa mu Katale k’Obutaliimu — ekyo kiyinza kitya okuba enkomerero ennungi gy’ali?",
+    "answer": "Mu kaseera ke yafiiramu, eggaali limutwala butereevu mu Kibuga eky’Eggulu ng’asooka abalala bonna. Bunyan ayagala tutegeere ekintu ekyewuunyisa era eky’amaanyi: omuntu eyafiirwa buli kimu ye yawangula ddala, era ye yasooka okutuuka ewaka."
+   },
+   {
+    "question": "Ekigo ky’Okubuusabuusa ddala kyogera ku ki?",
+    "answer": "Kifaananyi kya kuggwaamu essuubi — obunnya mw’owulirira ng’asibiddwa, nga tolina mugaso, era ng’okakasa nti tekiriba kirungi nate. Ekkubo ery’okufuluma kye kisumuluzo ekiyitibwa Ekisuubizo, abasibe kye baali nakyo mu nsawo zaabwe ekiseera kyonna — Bunyan ky’ayagala okugamba nti okuggwaamu essuubi kukulimba ku ebyo by’olina edda."
+   },
+   {
+    "question": "Obutamanya alabika ng’omuvubuka omulungi ddala — lwaki tayingira ku nkomerero?",
+    "answer": "Yali yeesiga obulamu bwe obulungi n’enneewulira ze ennungi mu kifo ky’okwesiga Kristo, era teyayingirira ku mulyango n’akatono. Ye kulabula okukakkanya omutima okw’ekitabo kyonna: osobola okutambula mu kkubo okumala emyaka, ne weewulira bulungi, naye ne weesigama ku kintu ekikyamu."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of John Bunyan’s The Pilgrim's Progress, which is in the public domain. The telling is our own, free to read and share. Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved.",
+  "cover_url": "/covers/art/pilgrims-progress-teens.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 28,
+  "is_published": true,
+  "created_at": "2026-11-28T12:00:00Z",
+  "updated_at": "2026-11-28T12:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-teens",
+   "lg"
+  ],
+  "order": 1,
+  "title": "Omugugu n’Omulyango Omufunda",
+  "body_html": "<blockquote>“Omusango gwe nzizizza guyitiridde, gunzitoowerera ng’omugugu omunene oguteetikkika.” — Zabbuli 38:4</blockquote> <p>Olugero lutandika n’omusajja ayambadde enziina, ng’ayimiridde mu nnimiro ng’akutte ekitabo ekiggule mu mikono gye, ng’alina omugugu omunene era omuzito ogusibiddwa ku mugongo gwe. Bw’asoma, atandika okukankana, ku nkomerero n’agwamu amaanyi n’akaaba n’eddoboozi ery’omwanguka nti, “Nnaakola ki?” Yakategeera ekintu ky’atasobola kwerabira: Ekibuga mw’abeera — Ekibuga eky’Okuzikirira — kigenda kwokebwa, naye agenda kwokebwa wamu nakyo, era obuzito obuli ku mugongo gwe bumusika wansi okwolekera okuzikirira okwo.</p> <p>Agezaako okubuulira ab’omu maka ge. Basalawo nti agudde eddalu. Bamusekerera, oluvannyuma ne banyiiga, oluvannyuma ne bamubuusa buusa amaaso nga basuubira nti anaakomawo mu magezi ge. Bw’atyo n’atambulatambula mu nnimiro yekka, ng’akaaba, okutuusa omusajja ayitibwa Omubuulizi lw’amusanga n’amubuuza lwaki akaaba. Omusajja n’agamba nti, “Nsaliddwako omusango, era simanyi gye nnaagenda.” Omubuulizi n’asonga emitala w’ennimiro engazi ennyo. “Olaba ekitangaala kiri ekimasamasa?” Omusajja n’akanula amaaso. “Ndowooza nkiraba.” “Kuuma ekitangaala ekyo mu maaso go ogende butereevu gye kiri, ojja kusanga Omulyango Omufunda. Okonkone awo.”</p> <p>Awo omusajja n’adduka. Era kano ke kantu k’otalina kubuuka: mukazi we n’abaana be bafuluma ne bamuleekaanira akomewo — naye n’assa engalo mu matu ge n’adduka bw’atyo, ng’aleekaana nti, “Obulamu! Obulamu! Obulamu obutaggwaawo!” Baliraanwa babiri bamugoberera ne bamutuukako. Omukakanyavu agaana n’okukyogerako, n’addayo eka ng’akuba ebigere olw’obusungu. Naye Akyukakyuka asikirizibwa essanyu ly’ekiseera ekyo, n’agenda naye. Erinnya ly’omusajja, tukitegeera, ye Omukristaayo.</p> <p>Kale — kino kyogera ku ki ddala? <strong>Omugugu gwe musango.</strong> Bwe buzito obw’amazima omuntu bw’awulira bw’alekera awo okwefuula nti ali bulungi: okuwulira nti waliwo ekikyamu mu nze era nga sisobola kukitereeza. Obuzito buno obumanyi. Oboolyawo tonnabwogerako mu bigambo by’eddiini, naye omanyi bwe kiba okwetikka ekintu ky’otasobola kussa wansi — ekintu kye wakola, omuntu ky’oli, okutya kw’otasobola kugoba na nsonga. Bunyan ky’ayagala tutegeere mu kifo kino ekisooka kiri nti abantu abasinga bamala obulamu bwabwe nga bagezaako <em>obutawulira</em> buzito obwo, era olugendo lw’Omukristaayo lutandika mu kaseera ke kennyini lw’agaana okubuzibiikiriza.</p> <p>Laba abantu abamwetoolodde bwe beeyisa, kubanga kituufu ddala, era kiruma. Bw’otandika okutwala Katonda — oba emmeeme yo — nga kintu kya maanyi, abantu batera obutasooka kukukyawa. Basooka kugamba nti <em>okola bintu bya kyewuunyo</em>. Basooka kukusekerera, oluvannyuma ne bakunyiigira, oluvannyuma ne basalawo kasirise okulinda okutuusa lw’onoddamu okuba owa bulijjo. Ekyo kyennyini ab’omu maka g’Omukristaayo kye bakola. Tabakyawa; abakaabira. Naye tasobola kusigala ne yeefuula, bw’atyo n’agenda.</p> <p>Era weetegereze engeri ebbiri baliraanwa be gye beeyisaamu, kubanga zombi ojja kuzisanga mu ggwe wennyini. <strong>Omukakanyavu tayagala na kukirowoozaako</strong> — ebibuuzo ng’ebyo bimukaluubiriza, bw’atyo n’abiggalawo byonna n’addayo eka. <strong>Akyukakyuka kizibu kya ludda lulala</strong> — akkiriza amangu ddala, asanyuka nnyo, akkiriza buli kimu, era (nga bw’onoolaba mu ssuula eddako) talina mirandira n’akatono ebintu bwe bitandika okukaluba. Eby’amazima tebiri mu bulamu bwa n’omu ku bo: Omukristaayo talina luyoogaano era tabuusa maaso nsonga. Afaayo nnyo ddala, era atambula.</p> <p>N’engalo mu matu nazo zirina amakulu. Oluusi okukola ekituufu kitegeeza okutambula <em>nga</em> abantu abakwetoolodde tebannakkiriza, era okutambula nga bakyakuyita okomewo. Ekyo si malala. Kwe kuba nti ebintu ebimu bikulu nnyo okulonzesebwa.</p> <p><strong>Ekintu kimu eky’okukola wiiki eno:</strong> lekera awo okuzibiikiriza obuzito okumala olunaku lumu. Buli ky’otera okukwata amangu ddala ng’otandise okuwulira ng’ennyiike, nga teweetegeka, ng’eriyo ekitali kituufu — essimu gy’osikasika, oluyoogaano, akasaze, ekikuwugula — kissa wansi omulundi gumu, osigale ddala n’ekibuuzo Omukristaayo kye yabuuza: <em>Nnaakola ki?</em> Tosobola kussa wansi mugugu gw’ogaana okukkiriza nti ogwetisse. Okugutuuma erinnya lye ddaala erisooka okwolekera omulyango.</p>",
+  "study_questions": [
+   {
+    "question": "Ab’omu maka g’Omukristaayo ne baliraanwa be ababiri, Omukakanyavu ne Akyukakyuka, bakola ki bw’asalawo okugenda?",
+    "answer": "Ab’omu maka ge balowooza nti agudde eddalu, ne bamusekerera, oluvannyuma ne bamubuusa amaaso. Omukakanyavu agaana n’okukyogerako n’addayo eka; Akyukakyuka asikirizibwa essanyu ly’ekiseera ekyo n’agenda naye."
+   },
+   {
+    "question": "Omugugu oguli ku mugongo gw’Omukristaayo gutegeeza ki, era lwaki olugendo lwe lutandika ng’amaze okuguwulira?",
+    "answer": "Omugugu gwe musango — okuwulira nti waliwo ekikyamu mu nze era nga sisobola kukitereeza. Bunyan ky’ayagala tutegeere kiri nti abantu abasinga bagezaako obutaguwulira; olugendo lw’Omukristaayo lutandika lw’agaana okuguzibiikiriza."
+   },
+   {
+    "question": "Ggwe kiki ky’oddukira okwewala okuwulira ng’oli mu kweraliikirira oba ng’olina omusango? Kyandibadde kitya singa mu kifo ky’ekyo osigala n’ekibuuzo ky’Omukristaayo?",
+    "answer": "Essuula eno etuwa amagezi okussa wansi ekikuwugula okumala olunaku lumu, n’obuuza mu bwesimbu nti, “Nnaakola ki?” Tosobola kussa wansi mugugu gw’ogaana okukkiriza nti ogwetisse — okugutuuma erinnya lye ddaala erisooka okwolekera omulyango."
+   }
+  ],
+  "word_count": 530
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-teens",
+   "lg"
+  ],
+  "order": 2,
+  "title": "Ekinnya ky’Okuggwaamu-Essuubi",
+  "body_html": "<blockquote>“n’anziggya mu kinnya eky’entiisa, n’annyinyulula mu bitosi, n’anteeka ku lwazi olugumu kwe nyimiridde.” — Zabbuli 40:2</blockquote> <p>Omukristaayo ne Akyukakyuka batambula nga bwe boogera ku bintu eby’ekitiibwa ebibalindiridde ku nkomerero — engule, obwakabaka obutaggwaawo, obutaddamu kukaaba — awo bombi ne batambulira butereevu mu kitosi. Si kidiba kirungi kya kulabako. Kitosi ekiwunya, ekinyuunyunta, wakati ddala mu kkubo, era erinnya lyakyo ye Ekinnya ky’Okuggwaamu-Essuubi. Beekuluggusa. Omukristaayo, olw’omugugu oguli ku mugongo gwe, atandika okukka.</p> <p>Era awo Akyukakyuka w’avaamu. “Kino <em>kye</em> nsi ey’ekitalo gye wansuubiza?” bw’agamba n’obusungu. “Bwe kiba nga kibi bwe kiti dda, kitwale.” Yeesika omulundi gumu oba ebiri n’amaanyi ge gonna, yeekuluggusa n’afuluma ku ludda oluli okumpi n’ewaka, n’agenda — era Omukristaayo tamuddamu kumulaba. Ng’asigadde yekka, Omukristaayo agenda mu maaso n’okulwana ng’ayolekedde oludda olw’ewala, oludda oluli okumpi n’omulyango, kubanga ne bw’aba ng’akka, akyatunudde mu kkubo ettuufu. Ku nkomerero omusajja ayitibwa Omuyambi akka wansi, n’amukwata ku mukono, n’amusikayo n’amuteeka ku ttaka eggumu.</p> <p>Bunyan annyonnyola ekitosi kino kye ki. Omuntu bw’azuukuka ddala n’ategeera ekikyamu ekiri mu ye, mu mmeeme ye mujjamu “okutya kungi n’okubuusabuusa, n’ebirowoozo ebimuggwaamu amaanyi” — era byonna ebyo bikulukuta ne bikuŋŋaanira mu kifo kino ekimu ekya wansi. <strong>Ekinnya ky’Okuggwaamu-Essuubi kwe kuggwaamu essuubi okujja ku ntandikwa ddala.</strong> Ke kaseera okutandika okufaayo ennyo ku Katonda lwe kukufuula okuwulira <em>obubi</em> okusinga, so si obulungi — ng’ojjudde omusango, okubuusabuusa, n’okuwulira okukuluma nti tolikyuka ddala. Weetegereze ekiseera: kituuka ku Mukristaayo ku ntandikwa, so si ku nkomerero. Ekyo kigenderere. Abantu bangi bavaamu wano, nga balowooza nti, “Bwe kiba nga kizitowa bwe kiti nga tukyatandika, kiveeko.”</p> <p>Laba enjawulo wakati w’abasajja bano ababiri, kubanga ekubuulira buli kimu ku mirandira. Akyukakyuka yeewandiisa olw’engule. Yali agenderedde kuwulira bulungi, era mu kaseera ke kennyini ebitosi lwe byajja mu kifo ky’ekitiibwa, n’adduka — era Bunyan agamba nti yaddayo eka nga mubi <em>okusinga</em> singa teyagezaako n’akatono. Omukristaayo naye asibiddwa nga ye, ajjudde obucaafu nga ye, akka mangu n’okusingawo olw’omugugu gwe — naye agenda mu maaso n’okwekulula ng’ayolekedde oludda olutuufu. Eyo y’enjawulo yonna. Si nti yali awulira nga wa maanyi. Wabula nti yatunula mu maaso ng’awulira bubi nnyo.</p> <p>Nga yakava mu kitosi, Omukristaayo asisinkana omusajja ayogera obulungi, alabika ng’alina amagezi: Omwami Ow’amagezi-g’ensi. “Olabika ng’ali mu buyinike,” bw’agamba. “Ka nkuwonye obuzibu buno. Ve ku mulyango ogwo — kkubo lya kabi, lijjudde empologoma n’ebisota. Mu kyalo ekiddako mulimu omwami ayitibwa Amateeka asobola okukuggyako omugugu ogwo amangu ddala, awatali luyoogaano.” Era Omukristaayo, ng’akooye era ng’ayagala nnyo okuwummula, amukkiriza n’akyama okuva mu kkubo — okwolekera olusozi olutandika okumuwanirira waggulu ng’olugenda okumubetenta, nga lumyansa omuliro.</p> <p>Guno gwe mutego, era mutego gwa magezi, n’olwekyo gusome mpola. Omwami Ow’amagezi-g’ensi tagamba Mukristaayo kulekayo Katonda. Amugamba nti waliwo <strong>ekkubo eryangu, ery’amagezi, eritali lya bbeeyi nnyo</strong> ery’okuggyako omusango — beera bubeezi muntu mulungi, ow’ekitiibwa, ow’empisa (ekyo “Amateeka” kye kitegeeza), obuuke ekkubo ekizibu. Kiwulikika ng’eky’abantu abakulu. Kiwulikika ng’okukendeeza ku kunyigirizibwa. Era kumpi kumuzikiriza, kubanga okugezaako okutereeza omusango gwo nga weefuula bufuula muntu mulungi lwe lusozi olukomekkereza nga lukubetenta — tosobola kuba mulungi kimala okwetikkula obuzito obwo wekka, era munda mu ggwe ekyo okimanyi.</p> <p>Omubuulizi amusanga nate, era tamwogerera mpola. Alaga Omukristaayo nti yali asigazza amadaala abiri okutuuka mu kuzikirira, n’alyoka ayogera ekigambo ekisaanidde okukuumibwa: omusajja ali ku mulyango “alina omwoyo omulungi eri abantu” — osobola okukomawo ne bw’oba nga wakyama. Omukristaayo tagobebwa olw’okukyama okwo. Azzibwa buzzibwa mu kkubo.</p> <p><strong>Ekintu kimu eky’okukola:</strong> okuggwaamu essuubi bwe kujja nga okyatandika — era eri abantu bangi kujja — tokitwala ng’obukakafu nti olina okuvaamu. Kola ekintu ekimu Omukristaayo kye yakola: weeyongere okutunula mu maaso, era leka omuntu akugololere omukono. Weereza obubaka omuntu ddala akusonga eri Katonda, so si oli akuwa ekkubo ery’ekyekubiira eryangu era ery’ekitiibwa. Okukwata omukono okukuggya mu kitosi si bunafu. Ogwo gwe mugaso gwonna ogw’ekitosi.</p>",
+  "study_questions": [
+   {
+    "question": "Lwaki Akyukakyuka avaamu ku Kinnya ky’Okuggwaamu-Essuubi, era Omukristaayo akola ki ekyawukana?",
+    "answer": "Akyukakyuka yeewandiisa olw’engule, era adduka bw’asanga ebitosi mu kifo ky’ekitiibwa. Omukristaayo naye asibiddwa nga ye, era akka mangu okumusinga, naye agenda mu maaso n’okulwana ng’ayolekedde oludda oluli okumpi n’omulyango okutuusa Omuyambi lw’amusikayo."
+   },
+   {
+    "question": "“Amateeka” ga Omwami Ow’amagezi-g’ensi gawa ki, era lwaki mutego?",
+    "answer": "Ekkubo eryangu era ery’ekitiibwa ery’okuggyako omusango: beera bubeezi muntu mulungi ow’empisa, obuuke ekkubo ekizibu. Kumpi kubetenta Omukristaayo, kubanga tosobola kuba mulungi kimala okwetikkula obuzito obwo wekka."
+   },
+   {
+    "question": "Singa okugoberera Katonda kukufudde okuwulira obubi okusinga, mu kifo ky’obulungi, mu kusooka, essuula eno egamba okole ki?",
+    "answer": "Tolowooza nti okuggwaamu essuubi ku ntandikwa bwe bukakafu nti olina okuvaamu. Weeyongere okutunula mu maaso, era leka omuntu akugololere omukono — genda eri omuntu akusonga eri Katonda, so si eri ekkubo eryangu ery’ekyekubiira."
+   }
+  ],
+  "word_count": 595
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-teens",
+   "lg"
+  ],
+  "order": 3,
+  "title": "Omulyango n’Ennyumba y’Omuvvuunuzi",
+  "body_html": "<blockquote>“Musabe, munaaweebwa. Munoonye, munaazuula. Era mukonkone munaggulirwawo.” — Matayo 7:7</blockquote> <p>Ku nkomerero Omukristaayo atuuka ku Mulyango Omufunda. Waggulu waagwo wawandiikiddwako ebigambo bino: “Mukonkone munaggulirwawo.” Bw’atyo n’akonkona — omulundi ogusukka mu gumu, kubanga atya nnyo nti bajja kumugoba — omusajja ayitibwa Ow’omwoyo-omulungi n’aggulawo, era nga Omukristaayo tannamaliriza na kwetonda, n’amusika munda. Omukristaayo atandika okwatula ebyafaayo bye byonna ebitali birungi: ekitosi, ekkubo ery’ekyekubiira, okukyama. Okuddamu kwa Ow’omwoyo-omulungi kwe kumu ku bigambo ebisinga obulungi mu kitabo: “Tetugaana muntu yenna, newakubadde nga bakoze ki nga tebannatuuka wano; tetubagobera bweru n’akatono.”</p> <p>Yimirira ku kino, kubanga kigendereddwamu butereevu buli muntu alowooza nti yeggyeeko ebisaanyizo. Omukristaayo atuuka ng’ajjudde obucaafu, ng’alwawo, era ng’akava mu nsobi ey’amaanyi — era n’oluggi lugguka. <strong>Omulyango kye kifo w’okyukira ddala eri Kristo, era ekisaanyizo kimu kyokka kwe kujja.</strong> Si kutuuka ng’oli mulongoofu. Si kusooka kwetereeza. Okonkona, ne lugguka. Buli kye wakola nga tonnatuuka ku mulyango kisigala emabega w’omulyango.</p> <p>Naye weetegereze ekitabaawo <em>n’akatono</em>: omugugu teguvaako. Omukristaayo asaba — kumpi yeegayirira — Ow’omwoyo-omulungi aguggyeko, n’amuddamu nti, “Gumiikiriza ogusitule okutuusa lw’olituuka mu kifo eky’okununulibwa; eyo gulikuva ku mugongo gwokka.” Okuyita mu mulyango kya mazima, naye obuzito bw’omusango buggibwako mu kifo ekirala ewala mu kkubo. Kijjukire ekyo; kikulu mu ssuula eddako.</p> <p>Ow’omwoyo-omulungi amusindika mu Nnyumba y’Omuvvuunuzi, ng’ekisenge ky’ebifaananyi eby’ekyewuunyo, by’otoyinza kwerabira — ng’okutambula ng’olaba firimu ennyimpi Katonda ze yakukolera ggwe wennyini. Ebimu ku byo:</p> <p><strong>Ekisenge ekijjudde enfuufu ennyo nga tewali asobola kussa, okutuusa amazzi lwe gamansirwamu.</strong> Omusajja ayera, enfuufu ebuuka n’etuga buli muntu; awo omuntu n’amansira amazzi, ekisenge ne kiyonja. Enfuufu kye kibi. Okuyera kwe kugezaako okwetereeza ng’okozesa amateeka n’okufuba — kikoma ku kwongera kusiikuula kavuyo. Amazzi kye kisa. Tosobola kwesiimuula mutima gwo n’ogutukuza ng’okozesa amaanyi go; kirina okufukibwa munda.</p> <p><strong>Abaana babiri, Okwegomba n’Obugumiikiriza.</strong> Okwegomba ayagala ebintu bye byonna ebirungi <em>kaakano</em>, era akuba ebiwoobe okutuusa lw’aweebwa ensawo ey’obugagga — gy’amalawo mangu n’akomekkereza ng’ayambadde enziina. Obugumiikiriza mwetegefu okulinda ebyo ebiwangaala. Bunyan annyonnyola enjawulo esinga obuziba eriwo: abantu abateekwa okufuna buli kimu mu nsi eno kaakano ddala, n’abantu abeetegefu okulinda ekintu ekitaggwaawo. Kumpi buli kintu ensi ky’ekutunda kye kyokulabisa kya Okwegomba.</p> <p><strong>Omusajja asibiddwa mu kiguli eky’ekyuma.</strong> Edda, mu maaso ge yennyini, yali agenda mu ggulu — naye kaakano “musajja eyaggwaamu essuubi,” akakasa nti takyasobola kuyambibwa. Yatuuka atya awo? “Nnalekera awo okutunula. Nnagondera bye nnali njagala. Mpola mpola nnakakanyaza omutima gwange.” Kye kifaananyi ekisinga okutiisa mu nnyumba, era Omuvvuunuzi agamba Omukristaayo akijjukirenga ng’okulabula. Kino tekyogera ku kibi kimu kinene eky’olwatu. Kyogera ku kuzibiikiriza mpola, kasirise, omuntu wo ow’omunda okutuusa lw’otakyamuwulira.</p> <p>Ennyumba yonna ky’eyigiriza kiri nti <em>okulaba ebintu obulungi</em> kya kulwanyisa. Omukristaayo tafuna wano kitabo kya mateeka. Afuna ebifaananyi ebimwokebwa mu birowoozo — eby’engeri ekisa gye kikolamu, eby’engeri okuggwaamu essuubi gye kujjamu, eby’omuwendo gw’okulinda — bw’anaabisanga mu kkubo, abitegeere. Abantu abasinga batomera ebintu bino nga bazibe. Omukristaayo afuna omukisa okubiyiga nga tannabituukako.</p> <p><strong>Ekintu kimu eky’okukola:</strong> londa ekifaananyi kimu ekisinga okukutabula — enfuufu etuga, abaana ababiri, oba ekiguli — onoonye lwaki. Okwekanga okwo bubaka. Enfuufu kitegeeza nti obadde ogezaako okwesiimuula n’amaanyi go. Abaana kitegeeza nti oli muddu wa <em>kaakano</em>. Ekiguli kitegeeza nti obadde okakanyala kasirise ku kintu ekimu. Tuuma erinnya ky’oli ku byo, era oba ofunye ekirabo kye kimu Omukristaayo kye yafuna: okukiraba nga kijja.</p>",
+  "study_questions": [
+   {
+    "question": "Ow’omwoyo-omulungi agamba ki Omukristaayo bw’ayatula ebyafaayo bye ebitali birungi ku mulyango?",
+    "answer": "“Tetugaana muntu yenna, newakubadde nga bakoze ki nga tebannatuuka wano; tetubagobera bweru n’akatono.” N’asika Omukristaayo munda."
+   },
+   {
+    "question": "Mu kisenge ky’Omuvvuunuzi ekijjudde enfuufu, okuyera n’amazzi bitegeeza ki?",
+    "answer": "Enfuufu kye kibi; okuyera kwe kugezaako okwetereeza ng’okozesa amateeka n’okufuba, ekikoma ku kugisitula bugisitula. Amazzi kye kisa — tosobola kwesiimuula mutima gwo n’ogutukuza ng’okozesa amaanyi go; kirina okufukibwa munda."
+   },
+   {
+    "question": "Ku bifaananyi by’Omuvvuunuzi — enfuufu, Okwegomba n’Obugumiikiriza, oba omusajja mu kiguli — kiruwa ekisinga okukukwatako, era lwaki?",
+    "answer": "Essuula eno etwala okwekanga okwo ng’obubaka: enfuufu kitegeeza okugezaako okwetukuza n’amaanyi go, abaana kitegeeza okuba omuddu wa kaakano, ekiguli kitegeeza okukakanyala mpola. Bw’okituuma erinnya, okiraba nga kijja."
+   }
+  ],
+  "word_count": 516
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-teens",
+   "lg"
+  ],
+  "order": 4,
+  "title": "Omusaalaba",
+  "body_html": "<blockquote>“Yesu Kristo yennyini yeetikka ebibi byaffe mu mubiri gwe bwe yatufiirira ku musaalaba, naffe tulyoke tufe eri ekibi, tube abalamu eri obutuukirivu. Olw’ebiwundu bye, muwonyezebbwa.” — 1 Peetero 2:24</blockquote> <p>Kino kye kifo ekisinga obumpi, era ye nsonda ekitabo kyonna kwe kyesigamye, n’olwekyo genda mpola.</p> <p>Omukristaayo alinnya ekkubo eriziyiziddwa ku njuyi zombi bbugwe ayitibwa Obulokozi, ng’akyakutamiddwa omugugu, n’atuuka ku kasozi akatono. Ku kko kuyimiriddeko Omusaalaba, era wansi waagwo katono, entaana eggule. Era kino kye kigambo kya Bunyan, kumpi nga bwe kiri: “Omukristaayo olwatuuka ku musaalaba, omugugu gwe ne gusumulukuka ku bibegabega bye, ne guva ku mugongo gwe, ne gutandika okuyiringita, ne gweyongera okuyiringita okutuusa lwe gwatuuka ku mumwa gw’entaana, ne gugwamu, ne sikyagulaba nate.”</p> <p>Guweddewo. Ekintu kye yali awalula ng’ayita mu kitosi, okutuuka ku mulyango, ng’ayita mu buli kugezaako kwe okukyeggyako — kiyiringita ne kigenda kyokka mu kaseera ke kennyini lw’atunula ku Musaalaba. Ayimirira buyimirizi awo. Oluvannyuma atandika okukaaba, oluvannyuma n’abuuka emirundi esatu ddala olw’essanyu. Abamasamasa basatu bajja ne bakola ebintu bisatu: omu agamba nti, “Ebibi byo bikusonyiyiddwa,” omulala amwambulamu enziina ze enkyafu n’amwambaza ebyambalo ebiggya, n’ow’okusatu amuteekako akabonero ku kyenyi n’amukwasa omuzingo oguliko envumbo agusomenga mu kkubo era agulage ku mulyango gw’Ekibuga.</p> <p>Wuuno lwaki eno ye nsonda. Goberera omugugu we gwaviirako ne we gutaaviirako. Okutya olw’emmeeme yo ng’oli mu Kibuga — tekyagusitula. Okufuna amagezi amalungi okuva eri Omubuulizi — tekyagusitula. Okwekulula okuva mu Kinnya — tekyagusitula. Okugezaako okuba omuntu ow’ekitiibwa era ow’empisa ewa Amateeka — kumpi kwamubetenta. Ne bwe yayita mu mulyango — tekyagusitula. <strong>Omusango gwekulukuta ne gugenda mu kifo kimu kyokka: ku Musaalaba.</strong> Si lwa kufuba nnyo, si lwa kuwulira bubi okusingawo, si lwa kusooka kwerongoosa, si lwa kuba wa ddiini. Wabula lwa kutunuulira Yesu kye yakola dda.</p> <p>Kino kye kintu abantu kye batera okusubwa ku bukristaayo, nga mw’otwalidde n’abo abakulidde munda mu bwo. Balowooza nti kitegeeza <em>beera mulungi, Katonda ajja kukukkiriza</em>. Bunyan akakulaga ekyo ddala ekikontana nakyo. Omukristaayo akkirizibwa, asonyiyibwa, era ayambazibwa buggya <em>nga</em> tannakola kirungi kyonna mu lugendo — ekitabo ekisigadde kyonna, entalo zonna n’ensozi, bibaawo <em>oluvannyuma</em> lw’omugugu okuba nga gwagenda dda. Talwanyisa Apolwoni asobole okufuna okusonyiyibwa. Alwana ng’omuntu eyasonyiyibwa dda. Entegeka eyo ye buli kimu.</p> <p>Weetegereze era nti teyalina ky’<em>akola</em> ku Musaalaba. Teyeeyoleka, teyatuuka ku kintu, era teyasasula. Yatunula, ne kimutuukako. Ekyo kye kikifuula amawulire amalungi mu kifo ky’okuba okunyigirizibwa okulala. Singa okuggibwako omusango gwo kwesigamye ku kuba mulungi kimala, wandiddeyo ku lusozi lwa Amateeka ng’amayinja gawanikiddwa waggulu w’omutwe gwo. Kwesigamye ku muntu omulala eyagwetikka dda — “Yesu Kristo yennyini yeetikka ebibi byaffe mu mubiri gwe bwe yatufiirira ku musaalaba.” Olunyiriri lukyogera kaati: obuzito bwagenda ku ye, ne buva ku ggwe.</p> <p>Era tunuulira ebirabo ebisatu, kubanga bye kifaananyi ky’ekyo ekituuka ddala ku muntu yenna eyeesiga Kristo. Ebyafaayo ebirongoofu (“ebibi byo bikusonyiyiddwa”). Obuntu obuggya (ebyambalo ebiggya — tosonyiyibwa busonyiyibwa, wabula oyambazibwa buggya). N’akabonero n’omuzingo — okuba owa Katonda, n’obukakafu bw’osobola okusoma ng’obuusabuusa. Omuzingo ogwo gujja kuba mukulu nnyo ku Lusozi Oluzibu, n’olwekyo jjukira nti kaakano agulina.</p> <p><strong>Ekintu kimu eky’okukola:</strong> bw’oba ng’obadde ogezaako mu kyama okwegula okuva mu musango — ng’oyitiriza obulungi, ng’obonereza wekka, ng’olinda okutuusa lw’onoowulira ng’oli mulongoofu ekimala okusisinkana Katonda — lekera awo, okole Omukristaayo kye yakola: totunula kirala wabula kutunula bututunuzi. Soma olunyiriri oluli waggulu ku ssuula eno mpola, emirundi esatu, mu ddoboozi bw’oba ng’osobola, olukkirize lutegeeze ekyo kye lugamba. Omugugu gwategekebwa okugwa ku Musaalaba so si walala wonna. Osobola okussa wansi ekitiiyo ky’obadde okozesa okugugezaako okuguziika wekka.</p>",
+  "study_questions": [
+   {
+    "question": "Kiki ekituuka ku mugugu gw’Omukristaayo ku Musaalaba, era Abamasamasa abasatu bakola ki?",
+    "answer": "Gusumulukuka, ne guyiringita ne gugwa mu ntaana eggule, ne guggwaawo. Omu agamba nti ebibi bye bimusonyiyiddwa, omulala amuwa ebyambalo ebiggya, n’ow’okusatu amuteekako akabonero ku kyenyi n’amuwa omuzingo oguliko envumbo."
+   },
+   {
+    "question": "Lwaki entegeka eno nkulu — nti Omukristaayo asonyiyibwa nga entalo n’ensozi tebinnatuuka?",
+    "answer": "Kiraga nti obukristaayo si “beera mulungi, Katonda ajja kukukkiriza.” Omukristaayo asonyiyibwa nga tannakola kirungi kyonna mu lugendo; alwanyisa Apolwoni ng’omuntu eyasonyiyibwa dda, so si okusobola okusonyiyibwa."
+   },
+   {
+    "question": "Ogezaako okwegula okuva mu musango ng’oyitiriza obulungi oba ng’obonereza wekka? Essuula eno ekuyita okukola ki?",
+    "answer": "Kola Omukristaayo kye yakola — totunula kirala wabula kutunula bututunuzi. Omugugu gugwa ku Musaalaba so si walala wonna, kubanga omuntu omulala yagwetikka dda: “Yesu Kristo yennyini yeetikka ebibi byaffe mu mubiri gwe bwe yatufiirira ku musaalaba.”"
+   }
+  ],
+  "word_count": 555
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-teens",
+   "lg"
+  ],
+  "order": 5,
+  "title": "Olusozi Oluzibu n’Ennyumba Ennungi",
+  "body_html": "<blockquote>“…twambulengamu buli ekizitowa, awamu n’ekibi ekitwesibako amangu, tuddukenga n’okugumiikiriza embiro ez’empaka ezatutegekerwa.” — Abaebbulaniya 12:1</blockquote> <p>Ng’amaze okusumululwa omugugu era kumpi ng’abuuka, Omukristaayo atuuka wansi w’olusozi oluwanvu oluyitibwa Oluzibu. Wansi eyo waliwo ensulo (anywa) era, ekikulu, waliwo amakubo amalala abiri agakyama ne geetooloola ku mbiriizi — erimu liyitibwa Akabi, eddala Okuzikirira. Ekkubo effunda lyambuka butereevu <em>waggulu</em>. Abatambuze abalala babiri, Ow’empisa-ez’ebweru n’Obukuusa, bakwata amakubo amangu ageetooloola era tebaddamu kuwulirwako. Omukristaayo atandika okulinnya, era Bunyan akyogera bulungi nnyo: “yava ku kudduka n’atambula, n’ava ku kutambula n’atandika okwewalula ku mikono ne ku maviivi.”</p> <p>Essomo erisooka, eri buli muntu eyalowooza nti okugoberera Katonda kwali kugenda kuba ssanyu eritaggwaawo: <strong>amangu ddala ng’oyise ku ntikko y’olusozi, ojja okulinnya okuzibu.</strong> Essanyu ku Musaalaba lyali lya mazima. Wabula teryali lugendo lwonna. N’amakubo ago agakyama abiri kye kikemo ekitaggwaawo — <em>bulijjo</em> wabaawo ekkubo erirabika ng’eryangu eryewala ekitundu ekiwanvu. Naye teligenda gy’olaga. Ekizibu-naye-ekituufu kisinga ekyangu-naye-ekikyamu buli mulundi, era Bunyan akiraga mu ngeri ey’amaanyi ennyo: abasajja abaakwata ekkubo eryangu baabula.</p> <p>Wakati mu kulinnya waliwo ekifo eky’okuwummuliramu ekirimu ekisiikirize, Mukama w’olusozi kye yazimba olw’abatambuze abakooye. Omukristaayo atuula, aggyayo omuzingo gwe, agusoma, awummula — n’ebaka otulo tungi ddala, omuzingo ne gumuseerera mu mukono. Azuukuka nga bulwadde, n’ayanguwa okulinnya olusozi ng’atidde, oluvannyuma n’agolola omukono okukwata omuzingo gwe okwezzaamu amaanyi, nga <em>gubuze</em>. Ateekwa okuddayo wansi yonna, ng’ennaku emuluma, ng’aguyigga — “Ebigere bimeka bye ntambudde bwereere!” Agusanga, Katonda yeebazibwe, naye afiiriddwa essaawa nnyingi era ateekwa okulinnya ekitundu kye kimu emirundi esatu.</p> <p>Kino kitukwatako nnyo, era kiruma. Okuwummula kirungi — Katonda ye <em>yazimba</em> ekifo eky’okuwummuliramu. Naye waliwo enjawulo wakati w’okuwummula n’okuseeyeeya ne weetaba mu bugayaavu. Omukristaayo tayonoona mu ngeri ey’olwatu; afuna buwulizi bugonvu, n’alagajjalira, n’afiirwa obukakafu bwe (omuzingo ogwo gwe gumugamba nti wa Katonda era gwe gunaamuyingiza mu Kibuga). Essomo si “towummulanga.” Wabula nti okulagajjalira mu biseera ebyangu kiyinza okukufiiriza okusinga ebiseera ebizibu byonna, era ojja kumala ebiseera bingi ddala ng’oddamu okulinnya ettaka lye wayitako dda. Era weetegereze ekisa: yabuza omuzingo, naye teyagubuza lubeerera. Yaddayo, ne yeenenya, n’agusanga.</p> <p>Okumpi n’entikko asisinkana abasajja babiri abadduka nga bakutte ekkubo <em>ekikyamu</em> — Omutiitiizi ne Atalina-Bwesige — abamugamba nti mu maaso eyo waliyo empologoma, era ateekwa okuddayo. Omukristaayo atya ddala. Naye alowooza n’amagezi: okuddayo emabega kitegeeza kufa kwa nkalakkalira, okugenda mu maaso kitegeeza <em>kutya</em> kwokka okufa, n’obulamu oluvannyuma lwakwo. “Nja kweyongera mu maaso.” Bw’atuuka ku mpologoma, alaba nga zisibiddwa mu njegere (newakubadde ng’abatiitiizi abo ababiri tebaasembera kumpi kimala okukiraba). <strong>Kumpi kimu kyakubiri ku bintu ebireetera abantu okuvaamu mpologoma ezisibiddwa mu njegere</strong> — za mazima ekimala okuwuluguma, naye ddala tezisobola kukutuukako. Abasajja abatiitiizi tebaakimanya n’akatono kubanga baakyuka mangu nnyo.</p> <p>Ku ntikko eyo kuyimiriddeko Ennyumba Ennungi, eyazimbibwa olw’ensonga eno ddala — ekifo ky’abatambuze abakooye. Omukristaayo yaniriza abantu abayitibwa Obwegendereza, Omutukuvu, Amagezi, n’Okwagala, bamuliisa, bamubuuza ebibuuzo n’ekisa, ne bamusuza mu kisenge ekiyitibwa Emirembe ng’eddirisa lyakyo liggukira ebuvanjuba enjuba gy’evaayo. Bamulaga ennyumba ey’ebyokulwanyisa ejjudde ebyokulwanyisa n’ebyambalo by’olutalo, ne bamwambaza byo okuva ku mutwe okutuuka ku bigere nga tannagenda — kubanga balaba ekigenda okujja mu kiwonvu wansi.</p> <p>Kino kye kifaananyi ky’omukwano ogw’amazima mu Bakristaayo n’ekkanisa nga eri mu mbeera yaayo esinga obulungi: ekifo eky’okumanyibwa mu bwesimbu, okuzzibwamu amaanyi, okujjukizibwa ggwe ani, n’okuweebwa <em>eby’okulwanyisa</em> ng’ekitundu ekizibu ekiddako tekinnatuuka. Omukristaayo takka mu kiwonvu yekka nga talina kya kulwanyisa. Agenda ng’awummudde, ng’amanyiddwa, era ng’ayambadde eby’olutalo. Ekyo si kya kwejalabya. Mu ssuula eddako y’ensonga yokka lwaki awona.</p> <p><strong>Ekintu kimu eky’okukola:</strong> noonya Ennyumba yo Ennungi nga tonnagyetaaga, so si oluvannyuma. Londa ekifo kimu oba ekibinja ky’abantu kimu w’osobola okumanyibwa ddala — so si ggwe ow’okweyoleka — ogendeyo mu bugenderevu wiiki eno, naddala bw’oba ng’obadde oseeyeeya. Tokka mu kiwonvu wekka bw’oba ng’osobola okukyewala. Sooka okwambale eby’okulwanyisa.</p>",
+  "study_questions": [
+   {
+    "question": "Omukristaayo abuza atya omuzingo gwe ku Lusozi Oluzibu, era kimufiiriza ki?",
+    "answer": "Awummulira mu kasiisira, n’ebaka, omuzingo ne gumuseerera mu mukono. Ateekwa okuddayo wansi okugunoonya, n’afiirwa essaawa nnyingi era n’alinnya ekitundu kye kimu emirundi esatu."
+   },
+   {
+    "question": "Empologoma ezisibiddwa mu njegere zitegeeza ki?",
+    "answer": "Ebintu ebireetera abantu okuvaamu — eby’amazima ekimala okuwuluguma naye nga tebisobola kukutuukako. Omutiitiizi ne Atalina-Bwesige baddayo emabega mangu nnyo, ne batamanya nti empologoma zaali zisibiddwa."
+   },
+   {
+    "question": "“Ennyumba Ennungi” yo eri ludda wa — ekifo oba abantu b’osobola okumanyibwa mu bwesimbu? Oyinza otya okugendayo mu bugenderevu?",
+    "answer": "Essuula eno ekuba ekifaananyi ky’ekkanisa n’omukwano ogw’amazima ng’ekifo eky’okumanyibwa, okuzzibwamu amaanyi n’okuweebwa eby’okulwanyisa ng’ekitundu ekizibu ekiddako tekinnatuuka. Kinoonye nga tonnakyetaaga, naddala bw’oba ng’obadde oseeyeeya."
+   }
+  ],
+  "word_count": 585
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-teens",
+   "lg"
+  ],
+  "order": 6,
+  "title": "Ebiwonvu Ebibiri",
+  "body_html": "<blockquote>“Newaakubadde nga ntambulira mu kiwonvu eky’ekisiikirize eky’olumbe, siritya kabi konna; kubanga ggwe oli nange. Oluga lwo n’omuggo gwo bye binsanyusa.” — Zabbuli 23:4</blockquote> <p>Wansi w’Ennyumba Ennungi ekkubo likka mu Kiwonvu ky’Okwetoowaza — era ekisolo ekitiisa kisala ennimiro okujja okusisinkana Omukristaayo. Apolwoni: alina amagamba ng’ag’ekyennyanja, ebiwaawaatiro ng’eby’ogusota, ebigere ng’eby’eddubu, ng’omuliro n’omukka bimufulumamu. Omukristaayo ekisooka ky’ayagala kwe kudduka, okutuusa lw’ajjukira nti eby’olutalo bye tebirina kye bikuuma ku mugongo. Bw’atyo n’ayimirira.</p> <p>Okulumba kwa Apolwoni kusinga kuba kwa bigambo, era enkola ye y’esinga obukadde. Okusooka yeegamba nti Omukristaayo wuwe: “Oli wange, wazaalibwa mu nsi yange.” Oluvannyuma amuwa endagaano: komawo, nja kusonyiwa byonna. Oluvannyuma amukwata ku bulago, ng’amubalira buli nsobi Omukristaayo gye yakola <em>okutuusa kaakano mu kitabo kino kyennyini</em>: okuggwaamu amaanyi mu Kinnya, okugezaako ekkubo ery’ekyekubiira, okwebaka n’abuza omuzingo, okwewaana mu kyama bw’anyumya olugero lwe. Era wuuno ekintu — <strong>buli kuvunaana kwa mazima.</strong></p> <p>Ekyo kyennyini bwe kiba bw’ogezaako okugoberera Katonda. Eddoboozi ery’omu mutwe gwo terigunja bintu; likozesa ebyafaayo byo <em>eby’amazima</em> okukulumba. Wasaba n’oluvannyuma n’ogwa. Omuzannyo gwa Apolwoni gwonna kwe kukuleetera okusala omusango ogw’obulimba okuva mu bintu eby’amazima: <em>kale oli mukumpanya, kale lekayo.</em> Laba Omukristaayo bw’addamu, kubanga eryo lye ddamu. Tewali ky’awakanya: “Ebyo byonna bya mazima, n’ebirala bingi by’olese — naye Omulangira gwe mpeereza musaasizi, era mwetegefu okusonyiwa.” Akkiriza okuvunaanibwa n’ayita waggulu waakwo butereevu okutuuka ku kusonyiyibwa. Tawakana nti ye mulungi. Awakana nti Kristo ye mulungi.</p> <p>Oluvannyuma ebigambo bikoma. Obusaale bubuuka nga bungi ng’omuzira; olutalo lumala ekitundu ky’olunaku n’okusingawo; Omukristaayo alumizibwa ku mutwe, ku mukono ne ku kigere, akubibwa wansi, ekitala kye ne kimuva mu mukono, Apolwoni n’agamba nti, “Kaakano nkukutte ddala.” Mu kaseera akasembayo omukono gw’Omukristaayo gukwata nate ekitala, n’aleekaana nti — “wadde ngudde, nnaayimuka” — n’akimufumita ddala. Apolwoni abuuka n’agenda. <strong>Ojja kukubibwa. Oyinza n’okukubibwa wansi.</strong> Obuwanguzi si kuba nti tolikka wansi; kwe kugolola omukono okukwata ekitala omulundi gumu okusinga omulabe bw’asuubira. Nga Bayibuli bw’egamba — mulwanyisenga Setaani, ajja kubaddukanga.</p> <p>Naye ekkubo terikkakkana. Ekiddako kye Kiwonvu ky’Ekisiikirize ky’Okufa — era Bunyan agamba nti kino kye <em>kisinga</em> obubi. Si kisolo kitiisa ky’osobola kulwanyisa. Kizikiza: ekkubo effunda ennyo nga ku ludda olumu waliwo olusalosalo olutalina ntobo, ku ludda olulala ekitosi ekinyuunyunta, ekizikiza ekikutte, n’omumwa gwa ggeyeena nga guli ku mabbali g’ekkubo nga gutulisa ennimi z’omuliro. Wano Omukristaayo tasobola kukozesa kitala kye n’akatono; akyusa n’akwata eky’okulwanyisa ekiyitibwa Essaala-Zonna, n’agenda mu maaso n’okutambula bw’atyo, ng’akaaba nti, “Ayi Mukama, ndokola.”</p> <p>Ekiwonvu kino kwe kwennyamira, okubuusabuusa n’ekizikiza — ebiseera mw’otasobola <em>kuwulira</em> Katonda n’akatono era buli kirowoozo ekibi ennyo kirabika ng’ekiva munda mu mutwe gwo. Bunyan ateekamu ekintu ekisinga obukambwe: omu ku babi amusooberera emabega n’amuwunyamuunya ebigambo ebivuma Katonda mpola nnyo, Omukristaayo n’alowooza nti <em>ye yennyini</em> y’abirowooza, era kimutiisa nnyo. Bw’oba wali olumbiddwa ebirowoozo eby’ekizikiza by’otandironze, n’oluvannyuma ne weekyawa olw’“okubirowooza,” Bunyan yakiraba ebyasa by’emyaka emabega, era akugamba nti oyinza okuba nga tebiva mu ggwe n’akatono.</p> <p>Awo — eddoboozi mu maaso eyo mu kizikiza, omuntu omulala atambula mu kiwonvu kye kimu, ng’agamba nti, “siritya kabi konna; kubanga ggwe oli nange.” Omukristaayo tamulaba, naye kaakano amanyi ebintu bibiri: si ye yekka ali mu kifo kino, era Katonda aba n’abantu mu kiwonvu kino ne bwe baba nga tebasobola kumuwulira. Oluvannyuma enjuba evaayo, n’alaba emitego gye yayisibwako mirembe mu kizikiza.</p> <p><strong>Ekintu kimu eky’okukola ng’oli mu kiwonvu eky’ekizikiza:</strong> ebintu bibiri, byombi okuva ku Mukristaayo. Bw’oba tosobola kulwana, kyusa eky’okulwanyisa — lekera awo okugezaako okwetaasa ng’olowooza, osabe essaala esinga obwangu eriwo: <em>Mukama, mpisaamu.</em> Era noonya eddoboozi eriri mu maaso go — obujulirwa obw’amazima obw’omuntu omu eyayita mu kino n’awona — kubanga ekintu ekisinga obukulu okumanya mu kiwonvu ekyo kiri nti si ggwe osoose okukibeeramu.</p>",
+  "study_questions": [
+   {
+    "question": "Omukristaayo addamu atya Apolwoni bw’amubalira ensobi ze ez’amazima?",
+    "answer": "Tewali ky’awakanya: “Ebyo byonna bya mazima, n’ebirala bingi by’olese — naye Omulangira gwe mpeereza musaasizi, era mwetegefu okusonyiwa.” Tawakana nti ye mulungi, wabula nti Kristo ye mulungi."
+   },
+   {
+    "question": "Oyo ayogerera mu kaama mu Kiwonvu ky’Ekisiikirize ky’Okufa alaga ki ku birowoozo eby’ekizikiza?",
+    "answer": "Omu ku babi avuma Katonda mu kaama mpola nnyo, Omukristaayo n’alowooza nti birowoozo bye yennyini. Bunyan alaga nti ebirowoozo eby’ekizikiza by’otandironze oyinza okuba nga tebiva mu ggwe n’akatono."
+   },
+   {
+    "question": "Bw’owulira ng’ebyafaayo byo bikuvunaana oba ng’osibiddwa mu kiseera eky’ekizikiza, essuula eno ekuwa amagezi ki abiri?",
+    "answer": "Bw’oba tosobola kulwana, kyusa eky’okulwanyisa osabe essaala esinga obwangu: Mukama, mpisaamu. Era noonya eddoboozi eriri mu maaso go — omuntu eyayita mu kino n’awona — omanye nti si ggwe osoose okubeera omwo."
+   }
+  ],
+  "word_count": 577
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-teens",
+   "lg"
+  ],
+  "order": 7,
+  "title": "Omwesigwa, n’Ekibi Ekiyitibwa Ensonyi",
+  "body_html": "<blockquote>“Era buli muntu yenna ankwatirwa ensonyi, n’ebigambo byange ne bimukwasa ensonyi mu mulembe guno ogutali mwesigwa era ogujjudde ebibi, Omwana w’Omuntu alimukwatirwa ensonyi bw’alijja mu kitiibwa kya Kitaawe ne bamalayika abatukuvu.” — Makko 8:38</blockquote> <p>Ng’avudde mu kiwonvu, Omukristaayo alengera omuntu mu maaso n’amuleekaanira amulindeko. Ye Omwesigwa — ow’omu kibuga kye kimu. Omukristaayo asanyuka nnyo n’amuyitako, oluvannyuma n’eesittala n’agwa wansi ku maaso olw’amalala, n’ayambibwa okuyimuka (Bunyan ateekamu akasaze ako mu bugenderevu). Okuva wano batambulira wamu, era ekkubo ne liwewuka olw’okuba balitambulira wamu. <strong>Olugendo lwonna lukyuka mu kaseera ke kennyini Omukristaayo lw’atakyalutambula yekka.</strong> Ababiri basinga omu — mujja kugenda wala, era muwone ebintu nga muli wamu bye wandiwonye nga oli wekka.</p> <p>Banyumyagana ebyabatuukako, era ebya Omwesigwa bisaanidde okuwulirwa kubanga yalwana n’abalabe abalala ab’enjawulo ku ba Mukristaayo. Teyayita mu Kinnya n’akatono, naye kumpi azikirizibwe ebintu Omukristaayo by’ataasisinkana. Ekimu kyali omusajja ayitibwa Adamu Eyasooka, eyamuwa obulamu obulungi ennyo — “jjangu onkolere, owase bawala bange basatu.” Amannya g’abawala abo gaali Okwegomba kw’Omubiri, Okwegomba kw’Amaaso, n’Okwekuluntaza okw’Obulamu, era Omwesigwa yakemebwa ddala, n’atandika okugenda — okutuusa lwe yasoma gye kyali kikulembera n’ategeera nti yandiguliddwa ng’omuddu. Ekyo kye kikemo ddala. Tekirangirira kitundu kya buddu. Kirangirira bawala. Enjegere ziri mu biwandiiko ebitonotono wansi.</p> <p>Naye omulabe Omwesigwa gw’atasobola kwesumulula mangu ggwe ojja okumutegeera ddala. Erinnya lye ye <strong>Ensonyi</strong>. Era kino kye kimufuula owa kabi — talumba Katonda butereevu. Afuula bufuuzi okugoberera Katonda okulabika ng’<em>ekikwasa ensonyi</em>. Omwesigwa abala Ensonyi bye yamugamba, era kyusa bukyusa engeri y’okwogera, ojja kulaba nga bwe bubaka mu kibinja kyo eky’oku ssimu: eddiini “kintu kya wansi, kya bukodyo.” Okuba n’omwoyo omugonvu “si kya busajja.” Okwekuuma mu bigambo byo ne mu mpisa zo kujja kukufuula “ekisekererwa mu mulembe gwo.” Kumpi tewali n’omu ku bantu ab’amagezi, abagagga n’abamanyifu ayagala bino. Ensonyi okulabika ng’akwatiddwako, ensonyi okwetonda, ensonyi okufaayo ennyo bw’otyo.</p> <p>Ddamu okisome, kubanga okwo kwe kunyigiriza kwa bannaffe nga kwambuddwamu akakookolo. Kumpi tekujja nga “Katonda taliiyo.” Kujja nga <em>ebikolwa byo bikwasa ensonyi.</em> Kujja ng’ebisige ebiwanikiddwa, ekibinja nga kisirise, okuwulira nti okufaayo ku kino mu lwatu kujja kukufiiriza ekifo kyo. Omwesigwa akkiriza nti Ensonyi kumpi yamuwangula — “omusaayi gwange ne gulinnya mu maaso gange” — ago ge mazima: ono <em>akola</em>, ku buli muntu. Ekyamusumulula ku nkomerero kwe kutegeera ekintu kimu: <strong>Ensonyi ambuulira abantu kye balowooza; tambuulira kintu kyonna ku Katonda ky’alowooza.</strong> Era ku lunaku olukulu, tojja kusalirwa musango mu maloboozi agasinga okuleekaana mu kisenge — ojja kusalirwa musango Katonda. Kale: “Ensonyi, genda, oli mulabe w’obulokozi bwange.”</p> <p>Oluvannyuma bombi basisinkana Ayogerayogera — omuvubuka ayogera obulungi ennyo asobola okwogera ku Katonda mu ngeri ey’ekitalo okumala essaawa nnyingi. Omwesigwa yeewuunya nnyo. Omukristaayo, amumanyi, talimbibwa: “byonna by’alina biri ku lulimi lwe.” Ewaka wa kabi nnyo — mukambwe, mulimba, muntu mulala ddala. Okugezesa Omukristaayo kw’ayigiriza tekulina kusaasira: buuza oba ng’ekintu ekyo kiri mu bulamu bwe obw’amazima, so si mu bigambo bye byokka. Mu kaseera ke kennyini Omwesigwa lw’abuuza Ayogerayogera ku bulamu bwe obw’amazima mu kifo ky’endowooza ze, Ayogerayogera anyiiga n’agenda. Kubanga, nga Bayibuli bw’egamba, Mubeerenga bakozi ba kigambo, so si abakiwulira ne batakikola. <strong>Okwogera obulungi ku kukkiriza n’okukutambuliramu byawukana nga omubiri omulamu n’omulambo.</strong> Osobola okuteeka olunyiriri ku mutimbagano ate n’oba mubi nnyo ewaka.</p> <p><strong>Ekintu kimu eky’okukola:</strong> tuuma Ensonyi yo erinnya mu ddoboozi — waakiri eri ggwe wennyini. Kiki ddala ky’osinga okukwatirwa ensonyi okulabibwa ng’okifaako mu maaso g’abantu bo? Ensonyi eyo gwe mulabe Omwesigwa gwe yawangula mu kaseera akasembayo, era awangula abantu abasinga kasirise, awatali kuwakana na kumu. Oluvannyuma salawo ekkubo erimu ettono ly’onoogaana okufugibwa ensonyi eyo wiiki eno — ekintu ky’onookola oba ky’onooyogera oba ky’otojja kukweka, ng’omanyi nti endowooza y’abantu abali mu kisenge si gwe musango ogw’olubeerera.</p>",
+  "study_questions": [
+   {
+    "question": "Adamu Eyasooka yawa Omwesigwa ki, era lwaki Omwesigwa yakigaana?",
+    "answer": "Okumukolera n’okuwasa bawala be basatu — Okwegomba kw’Omubiri, Okwegomba kw’Amaaso, n’Okwekuluntaza okw’Obulamu. Omwesigwa yalaba gye kyali kikulembera: yandiguliddwa ng’omuddu."
+   },
+   {
+    "question": "Okusinziira ku ssuula eno, lwaki Ensonyi mulabe wa kabi nnyo?",
+    "answer": "Talumba Katonda butereevu; afuula okugoberera Katonda okulabika ng’ekikwasa ensonyi. Omwesigwa yamuwangula bwe yategeera nti Ensonyi akubuulira abantu kye balowooza, so si Katonda ky’alowooza."
+   },
+   {
+    "question": "Kiki ky’osinga okukwatirwa ensonyi okulabibwa ng’okifaako mu maaso ga mikwano gyo? Kkubo ki erimu ettono ly’oyinza okugaana okufugibwa ekyo?",
+    "answer": "Essuula ekusaba otuume Ensonyi yo erinnya, oluvannyuma okole oba oyogere ekintu kimu ky’otojja kukweka wiiki eno — ng’ojjukira nti endowooza y’abantu abali mu kisenge si gwe musango ogw’olubeerera."
+   }
+  ],
+  "word_count": 585
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-teens",
+   "lg"
+  ],
+  "order": 8,
+  "title": "Akatale k’Obutaliimu",
+  "body_html": "<blockquote>“Temutya n’akatono ebyo bye mugenda okubonaabona… Mubeere beesigwa okutuusa okufa, nange ndibawa engule ey’obulamu.” — Okubikkulirwa 2:10</blockquote> <p>Nga tebannakatuukako, Omubuulizi abasisinkana omulundi ogusembayo, era by’abagamba tebibasanyusa — bya mazima. Ekibuga ekizibu kijja, bw’abagamba. Mujja kuyisibwa bubi nnyo eyo, era “omu ku mmwe oba mwembi muteekwa okuteeka akabonero ku bujulirwa bwe mulina n’omusaayi.” Mu bigambo ebirala: omu ku mmwe agenda kufiira wano. Mubeere beesigwa okutuusa okufa, era Kabaka alibawa engule ey’obulamu. Oluvannyuma n’abasindika bayingire bw’atyo.</p> <p>Ekibuga kiyitibwa Obutaliimu, era kirina akatale akatasiibira — Akatale k’Obutaliimu, akaateekebwa mu kkubo lyennyini erigenda mu Kibuga eky’Eggulu, nga katunda buli kimu: ennyumba, ebitiibwa, ebitiibwa by’amannya, obwakabaka, ebinyumu, ebifo, emibiri, emmeeme — “n’ebirala bingi.” Buli kwegomba kulina omudaala gwakwo. Era ekkubo erigenda eri Katonda liyita wakati ddala mu kyo, kubanga, Bunyan bw’agamba, ekkubo lyokka ery’okwewala akatale kano ddala kwe kuva mu nsi yonna. Tosobola. Oteekwa okukayitamu.</p> <p>Wuuno lwaki kino kiyinza okuba ekifo ekisinga okukukwatako mu kitabo. <strong>Akatale k’Obutaliimu y’ensi ng’akatale kamu akanene ennyo, akakuleekaanira ogule obuntu.</strong> Buli kimu kitundibwa era buli kimu kikugamba nti <em>kino</em> — endabika eno, ekitiibwa kino, ekintu kino, obungi buno obw’okufiibwako — kye kinaakufuula omuntu ku nkomerero. Akatale ka Bunyan kaalina enguudo ez’ebyamaguzi. Akako kakwata mu nsawo yo era kakyuka buli lw’oddamu okukaggulawo. Okwekubiira kwe kumu: omuwendo gwo gutundibwa wano, jjangu ogule.</p> <p>Laba ekibaawo abasajja bano ababiri bwe bayitamu, kubanga eyo ye nsonga yonna. Baleeta akavuyo amangu ago — ate nga tebalina kye bakoze. Tebasaanira busaanizi. <em>Engoye</em> zaabwe zaawukana (ebyambalo okuva ku Musaalaba). <em>Enjogera</em> yaabwe yaawukana — tewali n’omu abategeera. Era okusinga byonna: abatunzi bwe babayita nti, “Mugula ki?”, abatambuze bassa engalo mu matu gaabwe ne baddamu nti, “Tugula amazima.”</p> <p>Ekyo kyokka. Tebeekalakaasa, tebaabuulira, era tebaamenya mudaala. Baali tebakifaako bufaayo — era <em>obutakifaako</em> kye kyali ekisinga okunyiiza kye bandikoze. Akatale kasobola okugumikiriza abalabe. Kye katasobola kugumikiriza muntu atunuulira buli kimu ky’etunda n’atakemebwa kasirise. Bw’oba wali osazeewo obutagula ekyo buli muntu akwetoolodde ky’agula — obutagoberera kintu ekyo, obuteeyoleka olw’okufiibwako — omanyi engeri Omukristaayo gye yayisibwamu. Si kusikambula bibegabega. Bukyayi. Abantu abeewaddeyo ddala eri akatale batwala obutafaayo bwo ng’okubavuma.</p> <p>Kifuuka eky’obukambwe. Bakuba abasajja bano ababiri, babasiiga ettaka, babateeka mu kiguli, ne babalaga mu lwatu basekererwe. Era engeri abatambuze gye baddamu — obugumiikiriza, obutavuma nabo, ekisa mu kifo ky’obukambwe — ddala ekyusa abantu abamu ne babeegattako, ekyongera okunyiiza ekibiina. Wabaawo omusango, ab’olukiiko abaalondebwa mu bukumpanya (Omwami Omuzibe-w’amaaso, Omwami Akyawa-Ekitangaala, Omwami Ettima, Omwami Atakkaanyizibwa), Omwesigwa n’asalirwa omusango. Bamukuba embooko, bamufumita, bamukuba amayinja, ne bamwokya ku kikondo.</p> <p>Awo Bunyan n’akola ekintu ekikyusa engeri gy’osomamu ekitabo kyonna. Mu kaseera ke kennyini Omwesigwa lw’afa, eggaali n’embalaasi biri emabega w’ekibiina nga birindiridde, n’asitulibwa n’atwalibwa “mu kkubo erisinga okumpi okutuuka ku Mulyango gw’Eggulu” — n’atuuka ewaka ng’asoose bonna. <strong>Oyo eyafiirwa buli kimu ye yawangula ddala, era ye yasooka okutuukayo.</strong> Ensi yali ekakasa ddala nti emuzikirizza. Yali emusitudde. Omukristaayo ye, wakati aw’o, awona n’atambula mu maaso, ekyakizuulibwa nti lye kkubo erisinga obuzibu, so si eryangu.</p> <p>Kino kye kitundu eky’amazima ennyimba ezisinga obugonvu ze zireka: okugoberera Katonda kiyinza okukufiiriza ddala — emikwano, ekitiibwa, era mu bifo ebimu ebisingawo nnyo. Bunyan tajja kwefuula nti si bwe kiri. Naye akyusa olubaawo lw’obubonero. Ekirabika ng’okufiirwa buli kimu, ng’otunudde ku ludda lw’akatale, kwe kuwangula buli kimu ng’otunudde ku ludda lwa Katonda.</p> <p><strong>Ekintu kimu eky’okukola:</strong> londa ekintu kimu akatale kye kakugamba nti weetaaga osobole okuba omuntu — ekitiibwa kimu, endabika emu, omuwendo gumu, ekintu kimu — ogaane okukigula mu bugenderevu, okumala ekiseera ekigere. Weetegereze bw’owulira, era weetegereze abantu bwe beeyisa nga tokyagala. Akatundu ako aka “linda, lwaki tofaayo ku kino?” — okuva eri abalala n’okuva mu ggwe wennyini — ggwe ng’oyiga okwogera olulimi olulala mu kibuga ekitunda obutaliimu bwokka.</p>",
+  "study_questions": [
+   {
+    "question": "Omukristaayo n’Omwesigwa bakola ki ekireeta akavuyo mu Katale k’Obutaliimu?",
+    "answer": "Tebakola kya bukambwe — engoye zaabwe n’enjogera yaabwe byawukana, era abatunzi bwe babayita nti, “Mugula ki?”, bassa engalo mu matu gaabwe ne baddamu nti, “Tugula amazima.”"
+   },
+   {
+    "question": "Okufa kw’Omwesigwa n’eggaali eryali limulindiridde biraga ki ku ngeri ey’okubalamu obuwanguzi?",
+    "answer": "Ensi yali ekakasa nti emuzikirizza, naye yatwalibwa “mu kkubo erisinga okumpi okutuuka ku Mulyango gw’Eggulu,” n’atuuka ewaka ng’asoose bonna. Ekirabika ng’okufiirwa buli kimu ng’otunudde ku ludda lw’akatale, kwe kuwangula ng’otunudde ku ludda lwa Katonda."
+   },
+   {
+    "question": "“Akatale” mu bulamu bwo kakugamba kugula ki osobole okufuuka omuntu? Okugaana kyandikufiiriza ki?",
+    "answer": "Essuula ekuwa amagezi okugaana mu bugenderevu okumala ekiseera ekitundu kimu — ekitiibwa, endabika, omuwendo oba ekintu — n’otegeeza abantu bwe beeyisa. Obutayagala ekyo buli muntu ky’agula kiyinza okuleeta obukyayi — naye oyiga olulimi olulala."
+   }
+  ],
+  "word_count": 591
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-teens",
+   "lg"
+  ],
+  "order": 9,
+  "title": "Eyeenoonyeza n’Olusozi lw’Amagoba",
+  "body_html": "<blockquote>“Tewali n’omu ayinza kuweereza bakulu babiri, kubanga alikyawako omu n’ayagala omulala oba aliwulirako omu n’anyooma omulala. Toyinza kuweereza Katonda na mamona.” — Matayo 6:24</blockquote> <p>Omukristaayo tatambula yekka. Okuva mu kibiina ky’omu Katale k’Obutaliimu — okuva mu vvu ly’ekyo kye baakola Omwesigwa — munne omuggya amwegattako: Asuubira, eyasalawo okugoberera bwe yalaba engeri Omukristaayo n’Omwesigwa gye beeyisaamu mu kubonaabona kwabwe. Ekyo kisaanidde okuyimirirako. Okufa kw’Omwesigwa tekwali nkomerero ya kye yakola. Waliwo eyali alaba, n’afuuka omutambuze olw’ekyo. Ekyalabika ng’okufiirwa okw’enkomeredde kyazaala omutambuze omuggya. Bwe kitera okuba.</p> <p>Mangu ddala babeera batuuka ku mwami omulungi ennyo mu mbeera, amanyiganye n’abakulu, ayitibwa Eyeenoonyeza, ow’omu Kibuga ky’Ebigambo-Ebiwoomu. Asanyuka okutambula nabo — naye ng’alina obukwakkulizo. Era Omukristaayo bw’amunyigiriza, Eyeenoonyeza ayanjula eddiini ye mu bwesimbu obwewuunyisa. Ayawukana ku “abakakanyavu,” bw’agamba, mu nsonga bbiri zokka entono: <strong>“Ekisooka, tetulwanagana na mpewo n’amayengo. Ekyokubiri, bulijjo tusinga okuba abanyiikivu eddiini bw’etambula mu ngatto zaayo eza ffeeza” — bwe wabaawo omusana, ng’eyagalibwa, era nga buli muntu agikubira mu ngalo.</strong></p> <p>Kisome emirundi ebiri, kubanga Eyeenoonyeza si mubi mu ngeri eyeeyolekera. Tawakanya Katonda. Ayagala Katonda bwokka <em>nga kimwanguyira era nga kimulabisa bulungi.</em> Okukkiriza nga kyalaba; okukkiriza okutalina ky’okufiiriza; okukkiriza kw’olabikamu ng’ekisenge kikkiriza, n’okuleka kasirise empewo bw’ekyuka. Bunyan ky’ayagala tutegeere kiri nti eno y’emu ku mbeera ezisinga okubunye era ez’akabi ennyo — si kugaana Katonda, wabula okumukuumira mu biseera byokka mw’akugasa mu bantu. Obukwakkulizo bw’Omukristaayo bukontana n’ebyo: bw’oba otambula naffe, “oteekwa okukkiriza Eddiini ng’eri mu bikunta byayo, nga bw’ogikkiriza ng’eri mu ngatto zaayo eza ffeeza.” Onoogoberera ne bw’eba nga tekukugasa? Eyeenoonyeza teyeewaayo, bw’atyo ne bamuleka emabega.</p> <p>Eyeenoonyeza mangu asanga ekibinja kye ddala — bayizi banne basatu ab’edda, Omwami Akwata-Ensi, Omwami Ayagala-Ssente, n’Omwami Akuŋŋaanya-Byonna, bonna abaayigirizibwa omukulu w’essomero ayitibwa Omwami Anyaga mu kibuga Ayagala-Amagoba. Balina endowooza yonna enteekeddwateekeddwa ey’okukozesa eddiini okugaggawala: fuuka “omunyiikivu ekitalo” mu kukkiriza kwo mu kiseera kyennyini lwe kinaakufunira omulimu omulungi, omwagalwa omugagga, abaguzi abangi. Bwe bawa Omukristaayo ensonga eyo nga beekakasa, agimenyaamenya: okufuula Katonda ekikozesebwa okufuna ensi y’eddiini ya Yuda, eyagoberera olw’ensimbi n’atunda Mukama we olw’ezo. <strong>Toyinza kuweereza Katonda na mamona; era omuntu akwata okukkiriza olw’ebyo bye kumufunira ajja kukuleka mu kaseera ke kennyini ekintu ekirala lwe kinaamugasa okusingawo.</strong></p> <p>Awo Bunyan n’akulaga okwagala ssente gye kukoma. Ekkubo liyita ku lusozi oluyitibwa Amagoba olulimu ekirombe kya ffeeza, n’omusajja ayogera obulungi ayitibwa Dema ng’ayimiridde ku mabbali gaalwo ng’ayita nti, “Mujje mulabe obugagga! Ng’osimyeko katono osobola okwegaggawaza obulamu bwo bwonna.” Omukristaayo tajja kukyama — yawulira bangi bameka abaafiira mu kinnya ekyo, era nti obugagga obwo “mutego eri abo ababunoonya.” Naye Eyeenoonyeza n’ekibinja kye bwe batuuka, bagenda butereevu ku luyita olusooka, era tebaddamu kulabibwa mu kkubo. Okugoberera ssente kwabaggya ddala ku lugendo emirembe gyonna.</p> <p>Bw’omala okuyitawo katono, wayimiridde ekijjukizo eky’ekyewuunyo — omukazi eyafuuka empagi ey’omunnyo. Ye mukazi wa Lutti, eyawona ekibuga ekyali kigenda okuzikirizibwa naye n’azikirizibwa bwe kityo, kubanga mu kaseera akasembayo yatunula emabega okukyolekera n’omutima ogwegomba. Asuubira akankana: “Ekibi kye n’ekyange byawukana mu ki? Ye yatunula butunuzi emabega — nange nnayagala okugenda okulaba ekirombe.” Eryo lye ssomo ekkakkamu eriwandiikiddwa mu jjinja. Oyinza okuba mu kkubo ettuufu mu ngeri ey’okungulu ate n’okyusa kasirise omutima gwo okudda eri kye walina okuleka. Ekirombe tekirina <em>kukukwata</em>. Okukyegomba kuyinza okumala.</p> <p><strong>Ekintu kimu eky’okukola:</strong> weebuuze butereevu ekibuuzo kya Eyeenoonyeza — <em>Ofaayo ku Katonda kyokka nga kikugasa?</em> Okukkiriza bwe kuba nga kwandikufiirizza ekintu mu bantu, oba nga tekukufunira kintu kyonna ky’osobola kuteeka ku mutimbagano, okwagala kwo kubulawo kasirise? Oluvannyuma wiiki eno, kolera Katonda ekintu kimu mu bugenderevu nga tekikufunira <em>kintu kyonna</em> — tewali balaba, tewali magoba, tewali kukubirwa mu ngalo. Ekikolwa ekyo ekimu, ekikoleddwa mu bikunta mu kifo ky’engatto eza ffeeza, kye kikulaga oba oli mutambuze oba oli Eyeenoonyeza.</p>",
+  "study_questions": [
+   {
+    "question": "Nsonga ki “bbiri entono” Eyeenoonyeza z’ayawukanamu n’abakkiriza abakakanyavu?",
+    "answer": "Talwanagana na mpewo n’amayengo, era asinga okuba omunyiikivu eddiini bw’etambula “mu ngatto zaayo eza ffeeza” — bw’eba nga eyagalibwa era ng’ekubirwa mu ngalo."
+   },
+   {
+    "question": "Empagi ey’omunnyo okumpi n’Olusozi lw’Amagoba eyigiriza ki Omukristaayo ne Asuubira?",
+    "answer": "Ye mukazi wa Lutti, eyazikirizibwa olw’okutunula emabega n’omutima ogwegomba. Asuubira alaba nti okwegomba obwegombi ekirombe kya ffeeza kyali kumpi n’ekibi kye — oyinza okuba mu kkubo ettuufu ng’omutima gwo gukyuka okudda emabega."
+   },
+   {
+    "question": "Ofaayo ku Katonda okusinga ng’ekyo kikugasa mu bantu? Kkubo ki erimu ly’oyinza okukyekebejjamu wiiki eno?",
+    "answer": "Omukristaayo agamba nti oteekwa okukkiriza eddiini “ng’eri mu bikunta byayo” nga bw’ogikkiriza ng’eri mu ngatto zaayo eza ffeeza. Essuula ekuwa amagezi okukolera Katonda ekintu kimu ekitakuwa balaba, magoba wadde kukubirwa mu ngalo."
+   }
+  ],
+  "word_count": 586
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-teens",
+   "lg"
+  ],
+  "order": 10,
+  "title": "Ekigo ky’Okubuusabuusa",
+  "body_html": "<blockquote>“Lwaki oweddemu amaanyi ggwe emmeeme yange? Lwaki otabusetabuse mu nda yange? Essuubi lyo liteeke mu Katonda, kubanga natenderezanga omulokozi wange era Katonda wange; ye mubeezi wange.” — Zabbuli 42:5</blockquote> <p>Omukristaayo ne Asuubira batuuka ku mugga omulungi ennyo ne bawummula — amazzi amalungi, emiti egy’ebibala, ekiseera ddala eky’okuweweera. Oluvannyuma ekkubo likyuka ne liyita ku ttaka eddiba ery’amayinja, ebigere byabwe ne bibaluma, ne batandika okwegomba ekintu ekyangu okusingawo. Era awo ddala, ku mukono ogwa kkono, waliwo akakubo akalabika ng’akagonvu emitala w’olukomera, akagendera ku mabbali g’ekkubo ery’amazima. Ettale ly’Ekkubo ery’oku Mabbali. Omukristaayo agamba nti, “Bwe liba nga ligendera ku mabbali g’ekkubo lyaffe, ka tusale.” Asuubira alonzalonza — “naye singa litukyamya okuva mu kkubo?” — n’akkiriza okusendebwasendebwa, kubanga Omukristaayo ye mukulu era awulikika ng’akakasa.</p> <p>Bwe kityo bwe kitandika. Si na kujeema okw’olwatu — wabula n’ekkubo limu ettono ery’ekyekubiira, eriwulikika ng’ery’amagezi, erironderwa mu bukoowu okwewala ekitundu ekizibu. Buli kintu eky’entiisa mu ssuula eno kiva mu kusalawo okwo okumu okubuuka olukomera.</p> <p>Ekiro kikwata. Enkuba etonnya ennyo. Ekkubo litwala omusajja ali mu maaso gaabwe mu kinnya n’afiiramu, ne bombi ne babula mu kizikiza, mu mazzi ageeyongera okujjula, nga bategedde kikeerezi nti bakyamye nnyo. Nga bakooye nnyo, bagalamira okwebaka — wakati ddala ku ttaka ly’Ekigo ky’Okubuusabuusa, ekya kisolo ekitiisa ekiyitibwa <strong>Omuwagguufu Okuggwaamu-Essuubi</strong>. Abasanga ku makya n’abasuula mu kkomera: ekizikiza, obucaafu, tewali mmere, tewali mazzi, tewali kitangaala, tewali n’omu amanyi nti bali eyo.</p> <p>Kino kye kifaananyi kya Bunyan eky’okuggwaamu essuubi, era kituufu ddala mu ngeri etiisa. Weetegereze engeri gy’oyingiramu: ng’oseeyeeya okuva ku kkubo ekizibu ng’okooye era ng’oweddemu amaanyi, oluvannyuma n’okwatibwa mu kizikiza. Omuwagguufu Okuggwaamu-Essuubi abakuba awatali kusaasira. Oluvannyuma — kisome n’obwegendereza — mukazi we (erinnya lye Nnyabo Entiisa, ekitegeeza obuteeyesiga) amuwa amagezi okubuulirira abasibe <strong>beetta</strong>. Abagamba nti okuva bwe batalifuluma, kyandibadde kirungi okukomya obulamu bwabwe — “oba n’akambe, oba n’omuguwa, oba n’obutwa.”</p> <p>Bunyan teyeeyongeza. Amanyi nti okuggwaamu essuubi, nga kuli mu mbeera yaakwo esinga obubi, tekukoma ku kukunakuwaza — kutandika <em>okuwakana</em> nti kyandibadde kirungi ng’ofudde. Bw’oba wali owulidde eddoboozi eryo, tegeera Bunyan ky’akugamba: <em>oyo y’omuwagguufu ayogera, so si mazima.</em> Alimba. Laba engeri gye bawonamu. Omukristaayo kumpi yeewaayo — ye yali kumpi okumenyeka. Ye <strong>Asuubira</strong>, omusajja omunafu mu buzaaliranwa, akuuma bombi nga balamu ng’ayogera ne mukwano gwe okumuzza okuva ku mabbali g’obunnya: jjukira by’owonye dda — Apolwoni, ekiwonvu, akatale. Ekkomera lino si y’enkomerero y’olugero lwo. Eno y’ensonga lwaki toyita mu kizikiza wekka. Mu kinnya, mukwano gwo atakukkiriza kuvaamu y’enjawulo wakati w’obulamu n’okufa.</p> <p>Awo ne kujja ekintu ekisinga obukulu mu kitabo kyonna. Ku Lwomukaaga ekiro ekikeesezza, oluvannyuma lw’essaawa nnyingi ez’okusaba, Omukristaayo agolokoka mangu: <strong>“Nga ndi musirusiru nnyo, okugalamira mu kkomera lino eriwunya nga nsobola okutambula nga ndi wa ddembe! Nnina ekisumuluzo mu kifuba kyange, ekiyitibwa Ekisuubizo, ekinaasumulula buli kkufulu mu Kigo ky’Okubuusabuusa.”</strong> Akiggyayo. Kiggulawo oluggi lw’ekkomera, oluggi lw’oluggya, n’omulyango ogw’ekyuma omukakanyavu. Ne bafuluma.</p> <p>Yali alina ekisumuluzo ekiseera kyonna. Kirowoozeeko, kubanga ago ge mazima okuggwaamu essuubi ge kusinga okufuba okukweka. Ekkubo ery’okufuluma lyali mu kifuba kye yennyini okuva mu kaseera lwe yasuulibwa omwo — wabula teyasobola kulaba, kubanga okuggwaamu essuubi kukukakasa nti by’olina tebirina mugaso era tewali kinaakola. Ekisumuluzo kiyitibwa Ekisuubizo: ebintu Katonda bye yayogera ddala, ebiri eby’amazima ne bw’oba ng’osobola okubiwulira oba nedda. Amaanyi gonna ag’okuggwaamu essuubi kwe kukwerabiza nti okutte ekisumuluzo.</p> <p><strong>Ekintu kimu eky’okukola — nga tonnaba mu kkomera:</strong> teeka ekisumuluzo mu kifuba kyo nga bukyali. Noonya ekisuubizo kimu eky’amazima ekya Katonda — wandiika Zabbuli 42:5 ku mukono gwo, ku ndabirwamu yo, mu biwandiiko byo — omuwagguufu bw’anaakugamba nti tewali ssuubi, osobole okukwata ekintu ekiriwo dda. Era kwata etteeka eddala ery’essuula eno: mu kinnya, obuulirako omuntu. Omukristaayo teyafuluma yekka, naawe tojja kufuluma wekka. Eddoboozi eryo erisinga ekizikiza bwe linaajja, ako ke kaseera ak’okuliyogera mu ddoboozi eri omuntu asobola okuyamba — kubanga eddoboozi eryo ye muwagguufu, alimba, era okutte ekisumuluzo.</p>",
+  "study_questions": [
+   {
+    "question": "Omukristaayo ne Asuubira batuuka batya mu kkomera ly’Omuwagguufu Okuggwaamu-Essuubi?",
+    "answer": "Nga bakooye ettaka ery’amayinja, basala ne bayingira mu Ttale ly’Ekkubo ery’oku Mabbali, babula mu kibuyaga, ne beebaka ku ttaka ly’Ekigo ky’Okubuusabuusa, Omuwagguufu Okuggwaamu-Essuubi n’abakwata."
+   },
+   {
+    "question": "Ekisumuluzo ekiyitibwa Ekisuubizo kye ki, era lwaki Omukristaayo teyakikozesa mangu?",
+    "answer": "Bye bintu Katonda bye yayogera ddala, ebiri eby’amazima ne bw’oba ng’obiwulira oba tobiwulira. Yali akirina ekiseera kyonna, naye okuggwaamu essuubi kukukakasa nti by’olina tebirina mugaso — amaanyi gaakwo gonna kwe kukwerabiza ekisumuluzo."
+   },
+   {
+    "question": "Ebirowoozo ebitaliimu ssuubi bwe bijja, essuula eno egamba okole ki — nga tebinnajja ne mu kaseera ako?",
+    "answer": "Teeka ekisuubizo eky’amazima mu “kifuba” kyo nga bukyali, nga Zabbuli 42:5. Era mu kinnya, buulirako omuntu: Asuubira ye yakuuma Omukristaayo nga mulamu. Eddoboozi erisinga ekizikiza bwe lijja, liyogere mu ddoboozi eri omuntu asobola okuyamba — eddoboozi eryo limba."
+   }
+  ],
+  "word_count": 612
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-teens",
+   "lg"
+  ],
+  "order": 11,
+  "title": "Ensozi Ennungi Ennyo n’Ettaka Eddogo",
+  "body_html": "<blockquote>“Noolwekyo tuleme kwebaka ng’abalala naye tutunulenga okwegomba kuleme okutufuga.” — 1 Abasessaloniika 5:6</blockquote> <p>Oluvannyuma lw’ekkomera, Omukristaayo ne Asuubira batuuka ku Nsozi Ennungi Ennyo — ensi empanvu, eya kiragala, ejjudde ensuku n’ensulo, nga ku nkomerero balengera Ekibuga eky’Eggulu. Wano wabeera abasumba, abayitibwa Okumanya, Obumanyirivu, Omukuumi, n’Omwesimbu, era baaniriza abatambuze ne babalaga ebyetoolodde. Kye kifo ekisooka mu bbanga ddene Omukristaayo w’asobola okussa omukka obulungi. <strong>Oluvannyuma lw’ekinnya, wajja ettaka eriri waggulu.</strong> Okuggwaamu essuubi kwawulikika ng’okw’olubeerera; tekwali bwe kutyo. Okuva waggulu wano, takyasobola na kulaba Kigo ky’Okubuusabuusa.</p> <p>Naye abasumba tebakoma ku kubalaga birungi bya kulaba — babalaga mu bugenderevu ebifaananyi ebimu ebizibu, kubanga ensozi ziriwo okufuna <em>okulaba okugazi</em>. Babalaga ekigulumu ekiyitibwa Okukyama, nga wansi waakyo waliyo emirambo — abantu abaagwa nga bakkiriza ebitali bya mazima. Babalaga ekifo ekiyitibwa Okwegendereza, abasajja abazibe b’amaaso gye batambulatambula wakati mu malaalo — abatambuze abaakwata Ekkubo lyennyini ery’oku Mabbali Omukristaayo lye yakwata, Omuwagguufu Okuggwaamu-Essuubi n’abakwata. Era baggulawo oluggi mu lusozi oluggukira ku mukka n’omuliro: “Lino kkubo ery’oku mabbali erigenda mu ggeyeena, ekkubo bannanfuusi mwe bayingirira” — abantu <em>abaali beeyolekamu</em> ng’abatambuze, abaakikuumira ebbanga ddene, naye ne babula bwe batyo.</p> <p>Ekyo ekisembayo kikuba nnyo, era kigenderere. “Bano baali beeyolekamu ng’abatambuze, nga ffe bwe tuli kaakano?” Asuubira bw’abuuza. “Weewaawo,” ne baddamu, “era baakikuumira ebbanga ddene.” Oyinza okuba mu kkubo, n’olabika ng’omutambuze, n’okikuuma okumala emyaka, naye n’oba nga weesigamye ku kintu ekikyamu ku mirandira. Kyogerwa osobole okwekebejja w’oyimiridde ng’okyasobola okulaba obulungi. Amagezi abasumba ge babawa nga basiibula mampi: musome obulagirizi bwe mwaweebwa, mwekuume Omuwaanirizi, era — kino kye kibakwata — <em>temwebakanga ku Ttaka Eddogo.</em></p> <p>Mangu ddala basisinkana “omuvubuka omujjumbizi” ayitibwa Obutamanya, omusanyufu era akakasa nti ajja kuyingizibwa mu Kibuga ng’ayita mu kakubo akampi. Lwaki? “Mbadde n’obulamu obulungi. Buli muntu mmusasula ekikye, nsaba, ngaba eri abaavu.” Omukristaayo amulabula nti teyayingirira ku mulyango n’akatono — naye Obutamanya akibuusa amaaso: “Mumatire okugoberera eddiini y’ensi yammwe, nange nja kugoberera ey’ensi yange. Nsuubira nti byonna binaaba bulungi.” Mukwate mu birowoozo. Mulungi, wa mazima, wa mpisa, era yeesiga ddala obulamu bwe obulungi mu kifo ky’okwesiga Kristo — era Bunyan tannamumalako.</p> <p>Era banyumyagana olugero lwa Akkiriza-Kitono, omukkiriza ow’amazima eyakwatibwa ababbi ne bamunyagako ssente ze ez’okukozesa — naye ababbi tebaatwala <em>mayinja ge ag’omuwendo</em>, ekintu kimu kyokka ekyandimuyingizizza mu Kibuga. Yatambula ekkubo eryasigalawo ng’awenyera, ng’aweddemu amaanyi era nga talina kantu, naye n’atuuka. Essomo ggonvu: oyinza okuba omutambuze ow’amazima ng’olina okukkiriza okutono, okukubiddwakubiddwa, ng’onyagiddwako essanyu lyo n’obuvumu bwo, era <em>n’olokolebwa</em>. Okukkiriza okutono kukyali kukkiriza kwa mazima.</p> <p>Oluvannyuma batuuka ku Ttaka Eddogo — era kino kye kifo ky’osinga okwetaaga. Tekitiisa. Ako ke kabi. Empewo ya wano ekukwasa bukwasi <em>otulo</em>. Asuubira, ng’akooye nnyo, agamba nti, “Tugalamire wano tuwugulemu otulo katono.” Era Omukristaayo, ng’ajjukira okulabula, agaana n’amaanyi: “Nedda n’akatono — sikulwa nga twebaka ne tutazuukuka nate.” Okusobola obuteebaka, beewaliriza okunyumya — Asuubira ng’anyumya olugero lwonna olw’engeri gye yajja eri Katonda — era emboozi eyo ye ebakuuma nga bazibudde amaaso.</p> <p>Wuuno lwaki kino kikulu nnyo gy’oli. Ekintu ekisinga okuyinza okukomya okutambula kwo ne Katonda si kisolo kitiisa oba omuwagguufu oba omuliro. Kwe <strong>kuseeyeeya. Okwenyumirwa. Okukwatibwa otulo.</strong> Si kusalawo kulekayo — wabula mpola, mu ngeri ewoomu, okuvaamu. Okubuuka ekintu, oluvannyuma n’okibuuka nate, oluvannyuma n’otakitegeera nti walekera awo. Ettaka Eddogo litta abatambuze bangi okusinga Apolwoni bwe yali, kubanga liwulikika ng’eritaliimu kizibu. Eddagala lya Bunyan lya bulijjo: osigala nga tewebase ng’osigala <em>ng’oli mu nsonga</em> — ng’onyumya ddala n’omuntu omulala ali mu kkubo. Ng’ali yekka era ng’alina otulo, Asuubira akkiriza, yandigalamidde n’afa.</p> <p><strong>Ekintu kimu eky’okukola:</strong> tegeera mulabe ki ddala gw’olwana naye kaakano — kubanga eri abantu abasinga ab’emyaka gyo si y’oyo ow’olwatu, wabula y’oyo ow’otulo. Bw’oba ng’obadde oseeyeeya, so si kujeema — ng’ofuuka kasirise atawulira — twala ekyo ng’ekizibu eky’amangu abasumba kye baagamba nti kye kiri. Kola ekintu kyennyini ekyakuuma Asuubira nga tewebase: nyumya omulundi gumu ddala wiiki eno n’omuntu omulala atambulira mu kkubo. Okwetaba mu nsonga kwe kukuuma nga tewebase ku ttaka eryategekebwa okukwebasa.</p>",
+  "study_questions": [
+   {
+    "question": "Bifaananyi ki ebizibu abasumba bye balaga abatambuze ku Nsozi Ennungi Ennyo?",
+    "answer": "Ekigulumu ekiyitibwa Okukyama nga wansi waakyo waliyo emirambo, abazibe b’amaaso abatambulatambula mu malaalo ku Kwegendereza abaakwata Ekkubo ery’oku Mabbali, n’oluggi olw’omukka n’omuliro — ekkubo ery’oku mabbali erigenda mu ggeyeena bannanfuusi mwe bayingirira."
+   },
+   {
+    "question": "Okusinziira ku ssuula eno, lwaki Ettaka Eddogo lya kabi okusinga Apolwoni?",
+    "answer": "Teritiisa — likukwasa bukwasi otulo. Litegeeza okuseeyeeya n’okwenyumirwa, okuvaamu mpola awatali kusalawo kulekayo, ekiwulikika ng’ekitaliimu kizibu kyonna."
+   },
+   {
+    "question": "Kaakano oli mu lutalo olw’olwatu, oba mu kuseeyeeya okw’otulo? Kiki ekyakuuma Asuubira nga tebasse otulo?",
+    "answer": "Twala okuseeyeeya ng’ekizibu eky’amangu abasumba kye baagamba nti kye kiri. Omukristaayo ne Asuubira tebeebaka kubanga baanyumyanga wamu mu bwesimbu — essuula ekuwa amagezi okunyumya omulundi gumu ddala wiiki eno n’omuntu omulala atambulira mu kkubo."
+   }
+  ],
+  "word_count": 628
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-teens",
+   "lg"
+  ],
+  "order": 12,
+  "title": "Omugga n’Ekibuga eky’Eggulu",
+  "body_html": "<blockquote>“Bw’onooyitanga mu mazzi amawanvu nnaabeeranga naawe, ne bw’onooyitanga mu migga tegirikusaanyaawo; bw’onooyitanga mu muliro tegukwokyenga, ennimi z’omuliro tezirikwokya.” — Isaaya 43:2</blockquote> <p>Nga bayise Ettaka Eddogo, Omukristaayo ne Asuubira bayingira mu nsi ya Beula — era buli kimu kikyuka. Empewo ewooma, enjuba eyaka emisana n’ekiro, era ebinyonyi tebirekera awo kuyimba. Kaakano balengera Ekibuga eky’Eggulu, nga bali kumpi nnyo ekitangaala kyakyo ne kibalwaza olw’okwegomba — Bunyan agamba nti “ne balwala” olw’okukyagala. Eno ye nsi eri ku nsalo y’eggulu, era ensonga ya kisa: eri omuntu atambula ne Katonda, ekitundu ekisembayo eky’olugendo si kye kisinga ekizikiza — kye kisinga obuwoomi.</p> <p>Naye wakati waabwe n’omulyango waliwo ekintu kimu ekisembayo: omugga omuwanvu, nga tegulina lutindo. Bagambibwa kaati — “Muteekwa okuyita mu gwo, oba si ekyo temuyinza kutuuka ku mulyango.” Omugga guno kwe kufa. Bunyan takulungamya: buli muntu okuggyako abantu babiri bokka mu byafaayo byonna yalina okugusomoka, era tewali kkubo lya kugwetooloola.</p> <p>Bagubbira — era wuuno ekitundu eky’amazima. <strong>Omukristaayo, omuzira w’ekitabo kyonna, kumpi abbira.</strong> Oyo eyawangula Apolwoni n’amenya n’afuluma mu Kigo ky’Okubuusabuusa atya nnyo mu mazzi. Ekizikiza ekinene kigwa ku ye; tasobola kukoma ku ttaka wansi; ebibi bye byonna eby’edda bimukomawo nga mataba; akakasa nti Katonda amulese era akaaba nti amayengo gamuyitako waggulu w’omutwe. Era ye Asuubira — nate, oyo omusirifu — amuwanirira omutwe waggulu w’amazzi, ng’agamba nti, “Guma omwoyo, muganda wange: mpulira wansi ku ttaka, era lirungi.”</p> <p>Kirowoozeeko, kubanga kiyinza okuba ekintu ekisinga okugumya omutima mu kitabo. Ne mukkiriza ow’amazima, ow’amaanyi, omwesigwa ayinza okuyita mu kufa kwennyini ng’atidde, ng’azitoowereddwa, ng’awalulwa okuyita mu musango ogw’edda. Okulwana ku nkomerero si kabonero nti wali mukumpanya; n’abasinga obulungi bayitamu nga <em>beekwata</em>, so si nga batambula n’amaanyi. Ekiwonya Omukristaayo si buvumu bwe. Kwe kuba nti Asuubira tamuta, era nti wakati mu byo awulira ekisuubizo — “Bw’onooyitanga mu mazzi amawanvu nnaabeeranga naawe” — n’akikwata. Mu kaseera ke kennyini lw’akikwata, ebigere bye bikoma wansi, n’omugga ogusigaddeyo ne guba omunyogovu. Basomoka.</p> <p>Ku lubalama olw’emitala, abamasamasa babakulembera okulinnya okutuuka mu Kibuga. Bwe balinnya, babuulirwa ekibalindiridde: engule, ebyambalo ebyeru, omuti ogw’obulamu, enkomerero y’ennaku n’obulwadde n’okufa emirembe gyonna, era — okusinga byonna — “buli lunaku okutambula n’okwogera ne Kabaka.” Eggye ery’omu ggulu lifuluma n’amakondeere, omulyango ne guggulwawo, ne bayingira — nga bafuusiddwa, nga bambadde zaabu — ng’ebide byonna eby’omu Kibuga bivuga olw’essanyu. Oluvannyuma emiryango ne giggalwa, Bunyan, eyali alaba, n’agamba bugambi nti, “ne neegomba okubeera mu bo.” Ogwo gwe mukolo ekitabo kyonna kwe kibadde kitambula: ewaka, mu bukuumi, Kabaka maaso ku maaso emirembe gyonna, wamu na buli muntu gwe wayagala eyadduka mu kkubo lye limu.</p> <p>Naye Bunyan agaana okukomekkereza ku ky’essanyu kyokka, era weetaaga ekifo ekisembayo. Jjukira Obutamanya — omuvubuka omusanyufu, ow’empisa ennungi, eyali yeesiga obulamu bwe obulungi? Naye atuuka ku mugga, n’agusomoka mangu, ng’asomosebwa omusomosa ayitibwa Essuubi-ery’Obwereere. Alinnya yekka okutuuka ku mulyango, akonkona, ne bamusaba ekiwandiiko kye — obukakafu bw’ofunira ku Musaalaba n’obutwala olugendo lwonna. Akwatakwata mu kifuba kye. Talina. Era Bunyan awandiika ekigambo ekisinga okukakkanya omutima mu kitabo: “Awo ne ndaba nga waliwo ekkubo erigenda mu ggeyeena, ne ku mulyango gw’eggulu gwennyini.” <strong>Oyinza okutambula ekkubo lyonna, n’olabika ng’omutambuze, ne weewulira bulungi, n’otuuka ku mulyango gwennyini — naye ng’oyesigamye ku kintu ekikyamu.</strong> Obutamanya yali yeesiga empisa ze ennungi. Teyajja ku Musaalaba n’akatono; teyalina kiwandiiko. Okuba omulungi tekwali kiwandiiko n’akatono.</p> <p><strong>Ekintu kimu ekitabo kino kyonna kye kikomekkerezaako:</strong> kakasa nti olina ekiwandiiko — kakasa nti essuubi lyo liri mu ekyo Kristo kye yakola ku Musaalaba, so si mu bulamu bwo obulungi, mu nneewulira zo ennungi ez’obuzaaliranwa, mu ngeri gy’owulira obulungi ku ggwe wennyini. Buli kirala mu ssuula zino ekkumi n’ebbiri kikwata ku kutambula obulungi. Kino kikwata ku kuyingira oba obutayingira n’akatono. Kimaliriza ekyo — genda ku Musaalaba osigale awo — era omugga ku nkomerero ya byonna tegulina kya kutiisa. Waliwo Ekibuga emitala w’eyo, era ebide bitandise dda okuvuga.</p>",
+  "study_questions": [
+   {
+    "question": "Kiki ekituuka ku Mukristaayo mu mugga, era Asuubira amuyamba atya?",
+    "answer": "Omukristaayo kumpi abbira — ekizikiza kigwa ku ye, ebibi bye eby’edda bimukomawo nga mataba, era atya nti Katonda amulese. Asuubira amuwanirira omutwe waggulu, ng’agamba nti, “Guma omwoyo, muganda wange: mpulira wansi ku ttaka, era lirungi.”"
+   },
+   {
+    "question": "Lwaki Obutamanya agobebwa ku mulyango gw’Ekibuga gwennyini?",
+    "answer": "Talina kiwandiiko — obukakafu obufunibwa ku Musaalaba. Yeesiga obulamu bwe obulungi era teyajja ku Musaalaba n’akatono: “waliwo ekkubo erigenda mu ggeyeena, ne ku mulyango gw’eggulu gwennyini.”"
+   },
+   {
+    "question": "Essuubi lyo ddala lyesigamye ku ki — ku bulamu bwo obulungi, oba ku ekyo Kristo kye yakola? Lwaki ekitabo kikomekkerezebwa awo?",
+    "answer": "Essuula egamba nti ebirala byonna bikwata ku kutambula obulungi, naye kino kikwata ku kuyingira oba obutayingira n’akatono. Kakasa nti essuubi lyo liri mu ekyo Kristo kye yakola ku Musaalaba, era omugga ku nkomerero tegulina kya kutiisa."
+   }
+  ],
+  "word_count": 611
+ }
+}
+]

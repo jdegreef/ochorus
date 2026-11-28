@@ -8028,6 +8028,39 @@
 				517
 			]
 		},
+		"ar/pilgrims-progress-teens": {
+			"ground": "7d7a85a96b2290b8e4de38859ca17d31b862d7deb07b4bc8e15605fb9c4ac8e0",
+			"style": "press",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1.15,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[177, 102, 423, 131]
+				],
+				"title": [
+					[107, 320, 493, 421]
+				],
+				"edition": [
+					[277, 449, 323, 474]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				278,
+				517
+			]
+		},
 		"ar/power-through-prayer": {
 			"ground": "e04c38459dc7643bdd19628cbd9fb4fb149672d267063e1a0494303afd8b44a8",
 			"style": "devotional",
@@ -25451,6 +25484,39 @@
 				498
 			]
 		},
+		"hi/pilgrims-progress-teens": {
+			"ground": "d2c80504d4da614c040493474b06554b3920275f8d4227be38ff53bfe305099b",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "f36feae5363a90b83288a44fbd3d4f2a1b774d41f412b88d508596e52f368b4b",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1.15,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[177, 102, 423, 131]
+				],
+				"title": [
+					[119, 337, 481, 410]
+				],
+				"edition": [
+					[227, 434, 373, 459]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				297,
+				498
+			]
+		},
 		"hi/power-through-prayer": {
 			"ground": "54263128fd280791463794320ec4f8598ae2b31dfc4813792080dab41df7aec2",
 			"style": "devotional",
@@ -35720,6 +35786,40 @@
 				],
 				"edition": [
 					[214, 456, 386, 481]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				279,
+				516
+			]
+		},
+		"lg/pilgrims-progress-teens": {
+			"ground": "eda3d1f79381af0623f1a88b5e29c6816ddd46a7f30562683a5e0c60a88c2c5f",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1.15,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[177, 102, 423, 131]
+				],
+				"title": [
+					[170, 305, 430, 383],
+					[90, 369, 510, 447]
+				],
+				"edition": [
+					[186, 456, 414, 481]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -54518,6 +54618,40 @@
 				],
 				"edition": [
 					[227, 456, 373, 481]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				278,
+				517
+			]
+		},
+		"uk/pilgrims-progress-teens": {
+			"ground": "bf55ad486117631c0203379966ca057845aa42e8c9d41fa0dc7450a4fa072d46",
+			"style": "press",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1.15,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[177, 102, 423, 131]
+				],
+				"title": [
+					[157, 304, 443, 382],
+					[172, 368, 428, 446]
+				],
+				"edition": [
+					[197, 456, 403, 481]
 				],
 				"mark": [
 					[232, 664, 368, 746]
