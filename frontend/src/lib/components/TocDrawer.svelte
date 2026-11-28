@@ -1,3 +1,8 @@
+<script lang="ts" module>
+	/** A chapter this long lists its own sections under it in the drawer. */
+	export const LONG_CHAPTER_WORDS = 8000;
+</script>
+
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
 	import DrawerShell from '$lib/components/DrawerShell.svelte';
@@ -24,12 +29,16 @@
 		slug,
 		currentOrder,
 		edition = null,
+		sections = [],
 		open = $bindable(false)
 	}: {
 		slug: string;
 		currentOrder: number;
 		/** 'modern' keeps the TOC on the Modern English edition. */
 		edition?: 'modern' | null;
+		/** The current chapter's headings, by block index (`?p=`), when it is
+		 *  long enough to need them; listed under it. */
+		sections?: { title: string; p: number }[];
 		open?: boolean;
 	} = $props();
 
@@ -185,6 +194,21 @@
 								</span>
 							</span>
 						</a>
+						{#if ch.order === currentOrder && sections.length}
+							<ol class="toc-sections">
+								{#each sections as s (s.p)}
+									<li>
+										<a
+											href={localizeHref(`${chapterHref(currentOrder)}?p=${s.p}`)}
+											class="toc-section block truncate text-small text-muted"
+											dir="auto"
+											lang={shownLang}
+											onclick={close}>{s.title}</a
+										>
+									</li>
+								{/each}
+							</ol>
+						{/if}
 					</li>
 				{/each}
 			</ol>
@@ -194,6 +218,20 @@
 </DrawerShell>
 
 <style>
+	.toc-sections {
+		margin: 0 0 0.4rem;
+		padding-inline-start: 0;
+		border-inline-start: 2px solid var(--border);
+		margin-inline-start: 1.6rem;
+	}
+	.toc-section {
+		padding: 0.3rem 1.25rem 0.3rem 0.75rem;
+		text-decoration: none;
+	}
+	.toc-section:hover {
+		background: var(--surface-2);
+		color: var(--text);
+	}
 	.toc-part {
 		margin: 0.9rem 0 0.2rem;
 		padding-inline: 1.25rem;

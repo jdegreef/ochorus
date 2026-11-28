@@ -117,7 +117,7 @@
 	import GoalPips from '$lib/components/GoalPips.svelte';
 	import { readingActivity } from '$lib/readingActivity.svelte';
 	import { currentStreak, localToday } from '$lib/streak';
-	import TocDrawer from '$lib/components/TocDrawer.svelte';
+	import TocDrawer, { LONG_CHAPTER_WORDS } from '$lib/components/TocDrawer.svelte';
 	import SearchDrawer from '$lib/components/SearchDrawer.svelte';
 	import NotesDrawer from '$lib/components/NotesDrawer.svelte';
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
@@ -323,6 +323,27 @@
 	);
 
 	let body: HTMLDivElement | undefined = $state();
+
+	// A long chapter's own sections, for the contents drawer (bug #21): some
+	// "chapters" are a whole treatise (Against Marcion IV is 60,000 words, 429
+	// pages), and the headings inside them were the only way through, with no
+	// way to reach one. Read off the rendered body, so a block's index is the
+	// `?p=` a deep link already lands on. A DOM read, hence the effect.
+	let sections = $state<{ title: string; p: number }[]>([]);
+	$effect(() => {
+		void chapter.body_html;
+		const el = body;
+		if (!el || (chapter.word_count ?? 0) < LONG_CHAPTER_WORDS) {
+			sections = [];
+			return;
+		}
+		const found = [...el.children].flatMap((child, p) =>
+			/^H[2-4]$/.test(child.tagName) && child.textContent?.trim()
+				? [{ title: child.textContent.trim().replace(/\s+/g, ' '), p }]
+				: []
+		);
+		sections = found.length >= 3 ? found : [];
+	});
 	let titleEl: HTMLHeadingElement | undefined = $state();
 
 	// The chapter order read-aloud rolled over INTO, so the per-chapter effect
@@ -3004,7 +3025,7 @@
 
 <ReaderOverlays {reader} container={body} {language} />
 
-<TocDrawer {slug} currentOrder={chapter.order} {edition} bind:open={tocOpen} />
+<TocDrawer {slug} currentOrder={chapter.order} {edition} {sections} bind:open={tocOpen} />
 
 <SearchDrawer {slug} bind:open={searchOpen} />
 
