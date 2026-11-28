@@ -159,6 +159,29 @@ export function situationGroups(
 	})).filter((g) => g.items.length >= 2);
 }
 
+/**
+ * "New to faith? Read these in order" — one numbered path from the good news
+ * to the first steps in a church. Unlike the situations (a door per need, in
+ * any order), the order here IS the content: each step assumes the one before.
+ * Slugs are shared across languages; a locale shows the steps it has, and the
+ * path is hidden below three (a two-step "path" is just two links).
+ */
+export const NEW_BELIEVER_PATH = [
+	'what-is-the-gospel',
+	'how-to-be-born-again',
+	'how-to-have-assurance-of-salvation',
+	'how-to-read-the-bible-for-beginners',
+	'how-to-grow-in-your-faith',
+	'what-is-the-church',
+	'what-is-baptism'
+] as const;
+
+export function newBelieverPath(articles: ArticleSummary[], min = 3): ArticleSummary[] {
+	const bySlug = new Map(articles.map((a) => [a.slug, a]));
+	const steps = NEW_BELIEVER_PATH.flatMap((s) => bySlug.get(s) ?? []);
+	return steps.length >= min ? steps : [];
+}
+
 export function featuredArticles(articles: ArticleSummary[], count = 3): ArticleSummary[] {
 	const bySlug = new Map(articles.map((a) => [a.slug, a]));
 	const picks = FEATURED_ARTICLES.map((s) => bySlug.get(s)).filter(
