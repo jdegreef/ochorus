@@ -94,3 +94,20 @@ describe('glossaryTermsIn', () => {
 		expect(glossaryTermsIn('<p>nothing here</p>')).toEqual([]);
 	});
 });
+
+describe('key words and find', () => {
+	it('keeps all ten key words, each a glossary word, in the curated order', async () => {
+		const { KEY_WORDS, isGlossaryTerm } = await import('./glossary');
+		expect(KEY_WORDS).toHaveLength(10);
+		expect(KEY_WORDS.every(isGlossaryTerm)).toBe(true);
+		expect(KEY_WORDS[0]).toBe('covenant');
+	});
+	it('ranks words that begin with the query, then contain it, then define it', async () => {
+		const { findTerms, definitionOf } = await import('./glossary');
+		const hits = findTerms('Quick');
+		expect(hits.slice(0, 2)).toEqual(['quicken', 'quickened']);
+		expect(findTerms('  ')).toEqual([]);
+		const tail = findTerms('mercy').filter((t) => !t.includes('mercy'));
+		expect(tail.every((t) => definitionOf(t).toLowerCase().includes('mercy'))).toBe(true);
+	});
+});
