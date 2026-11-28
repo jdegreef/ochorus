@@ -114,6 +114,43 @@ const cut = CURATED.indexOf(FAITH_FROM);
 export const OLD_WORDS: string[] = cut > 0 ? CURATED.slice(0, cut) : [];
 export const FAITH_WORDS: string[] = cut > 0 ? CURATED.slice(cut) : [];
 
+/**
+ * "Ten words every new Christian should know": the great words of the gospel in
+ * the order they tell it (God's covenant, the Mediator, the atonement, and what
+ * it gives the believer). Editorial, so a list in code; a word dropped from the
+ * glossary is skipped rather than shown as a dead link.
+ */
+const TEN_WORDS = [
+	'covenant',
+	'mediator',
+	'atonement',
+	'propitiation',
+	'regeneration',
+	'justification',
+	'adoption',
+	'sanctification',
+	'intercession',
+	'providence'
+];
+export const KEY_WORDS: string[] = TEN_WORDS.filter(isGlossaryTerm);
+
+/**
+ * The index's find-as-you-type: words that begin with the query first, then
+ * words that contain it, then words whose definition uses it. Case-insensitive;
+ * an empty query matches nothing (the page shows the full A–Z instead).
+ */
+export function findTerms(query: string): string[] {
+	const q = query.trim().toLowerCase();
+	if (!q) return [];
+	const starts = GLOSSARY_TERMS.filter((t) => t.startsWith(q));
+	const contains = GLOSSARY_TERMS.filter((t) => !t.startsWith(q) && t.includes(q));
+	const seen = new Set([...starts, ...contains]);
+	const inDefinition = GLOSSARY_TERMS.filter(
+		(t) => !seen.has(t) && definitionOf(t).toLowerCase().includes(q)
+	);
+	return [...starts, ...contains, ...inDefinition];
+}
+
 /** The word of the day, the same for every reader on a date (`dayIndex`). */
 export const wordOfTheDay = (index: number): string => GLOSSARY_TERMS[index % GLOSSARY_TERMS.length];
 
