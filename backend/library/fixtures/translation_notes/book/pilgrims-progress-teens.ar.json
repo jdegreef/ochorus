@@ -1,0 +1,103 @@
+{
+ "kind": "book",
+ "slug": "pilgrims-progress-teens",
+ "language": "ar",
+ "job_issue": 8507,
+ "references": [
+  {
+   "reference": "Psalms 38:4",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Psalms 40:2",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Mark 2:5",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Psalms 23:4",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Micah 7:8",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "James 4:7",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Psalms 116:4",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Mark 8:38",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Ecclesiastes 4:9",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "James 1:22",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Revelation 2:10",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Matthew 6:24",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Psalms 42:5",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:6",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  }
+ ]
+}
