@@ -519,7 +519,7 @@
 	}
 	.meet-name {
 		color: var(--color-text);
-		font-size: 1.125rem;
+		font-size: var(--fs-h3);
 		line-height: 1.2;
 	}
 	.meet-name:hover {
