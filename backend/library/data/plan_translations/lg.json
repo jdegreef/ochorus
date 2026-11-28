@@ -124,6 +124,14 @@
       "Queue job #2852. AI-drafted; awaiting native review. Neither source book (around-the-wicket-gate, men-and-women-who-gave-everything-2) has an lg edition yet, so seed_plans will not create the (first-steps-for-teens, lg) row until both ship; their translators should check this prose against those titles."
     ]
   },
+  "new-to-the-faith": {
+    "title": "Omupya mu Kukkiriza",
+    "description": "Wiiki ttaano n'ekitundu eri buli muntu akyatandika obulamu ne Kristo. Charles Spurgeon akusisinkana ku Mulyango Omufunda n'obuyambi obusingayo obwangu obw'okwesiga Yesu; oluvannyuma R. A. Torrey, ng'awandiikira abakkiriza abapya, alaga engeri y'okutandika obulungi — okukakasa obulokozi, Omwoyo Omutukuvu, ekkanisa, Bayibuli, okusaba n'okujulira. Ebiwandiiko ebimpi mu kkubo biddamu ebibuuzo buli Mukristaayo omupya by'abuuza: enjiri kye ki, lwaki Yesu yafa, okubatizibwa n'Ekyeggulo kya Mukama bitegeeza ki, n'engeri y'okweyongera okukula.",
+    "note": [
+      "Job #8487 (how-to-succeed-in-the-christian-life → lg), which backs this plan. AI-drafted, awaiting native review. «Ku Mulyango Omufunda» is the shipped lg title of around-the-wicket-gate, the plan's opening book; «Ekyeggulo kya Mukama» and «Bayibuli» are the terms the lg starter articles in this batch use.",
+      "seed_plans creates the (new-to-the-faith, lg) row only once every source is published in lg: the twelve lg starter articles ship in this batch's two article PRs, and the-morning-watch is already in lg."
+    ]
+  },
   "days-of-heaven-upon-earth-year": {
     "title": "Omwaka Gumu: Ennaku ez’Eggulu ku Nsi",
     "description": "Omwaka gwa A. B. Simpson ogw’okusinza okwa buli lunaku: olunyiriri lumu n’okufumiitiriza okumpi ku bujjuvu bwa Kristo ku buli lunaku. Tandika ku lunaku lwonna: olunaku olusooka kye kisomebwa kya nga 1 Janwali, era buli lunaku oluddako lutwala ekiddako. Eddakiika emu oba bbiri buli lunaku."
