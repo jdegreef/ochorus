@@ -14,7 +14,13 @@
 	import BookCover from '$lib/components/BookCover.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { articleHasTopic, articleCollectionLd } from '$lib/articleTopics';
-	import { featuredArticles, isGuide, situationGroups, topicGroups } from '$lib/articleIndex';
+	import {
+		featuredArticles,
+		isGuide,
+		newBelieverPath,
+		situationGroups,
+		topicGroups
+	} from '$lib/articleIndex';
 	import { readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { page } from '$app/stores';
@@ -59,7 +65,10 @@
 	const guides = $derived(articles.filter(isGuide));
 	const featured = $derived(featuredArticles(articles));
 	const groups = $derived(topicGroups(articles));
-	const situations = $derived(situationGroups(articles, featured));
+	const beginnerPath = $derived(newBelieverPath(articles));
+	// The path's steps are skipped by the situations, so "When you are new to
+	// faith" (the same articles, unordered) steps aside where the path shows.
+	const situations = $derived(situationGroups(articles, [...featured, ...beginnerPath]));
 	/** The guides rail: the first few, in curated order, that have a cover. */
 	const guideRail = $derived(
 		guides.flatMap((g) => (g.lead_book ? [{ slug: g.slug, book: g.lead_book }] : [])).slice(0, 10)
@@ -171,6 +180,30 @@
 				</section>
 			{/if}
 
+			<!-- One numbered path for a new believer: the order is the point, so
+			     it reads as numbered steps, not another grid of cards. -->
+			{#if beginnerPath.length}
+				<section class="mb-10" aria-labelledby="new-path">
+					<h2 id="new-path" class="section-label">{t('articles.pathTitle')}</h2>
+					<p class="mb-4 max-w-prose text-small text-muted">{t('articles.pathNote')}</p>
+					<ol class="path">
+						{#each beginnerPath as a, i (a.slug)}
+							<li>
+								<a href={localizeHref(`/articles/${a.slug}/`)} class="step text-inherit hover:no-underline">
+									<span class="num" aria-hidden="true">{i + 1}</span>
+									<span class="flex min-w-0 flex-col">
+										<span class="eyebrow text-accent">
+											{t('articles.pathStep').replace('%n%', String(i + 1))}<span class="sep">{' · '}</span>{readingTime(a.word_count)}
+										</span>
+										<span class="step-title text-body font-semibold text-text">{a.h1}</span>
+									</span>
+								</a>
+							</li>
+						{/each}
+					</ol>
+				</section>
+			{/if}
+
 			<!-- The questions readers arrive with, by the situation they are in —
 			     the doors after Start here, before the topics' filing. -->
 			{#if situations.length > 1}
@@ -269,6 +302,43 @@
 </div>
 
 <style>
+	/* The path: numbered rings in the accent, so the order reads at a glance.
+	   Logical properties throughout (Arabic is a routed locale). */
+	.path {
+		display: grid;
+		gap: 0.25rem;
+	}
+	@media (min-width: 768px) {
+		.path {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			column-gap: 2rem;
+		}
+	}
+	.step {
+		display: flex;
+		align-items: center;
+		gap: 0.875rem;
+		padding-block: 0.625rem;
+	}
+	.num {
+		flex: none;
+		display: grid;
+		place-items: center;
+		inline-size: 2.25rem;
+		block-size: 2.25rem;
+		border-radius: var(--radius-pill);
+		border: 2px solid var(--accent);
+		color: var(--accent);
+		font-family: var(--font-display);
+		font-weight: 600;
+	}
+	.step:hover .num {
+		background: var(--accent);
+		color: var(--accent-contrast);
+	}
+	.step:hover .step-title {
+		color: var(--accent);
+	}
 	/* A rule over each situation, in the accent: a heading and its questions,
 	   not another boxed card beside the topic cards below. */
 	.situation {
