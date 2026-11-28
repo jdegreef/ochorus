@@ -10,6 +10,7 @@
 	import { foldText } from '$lib/searchNormalize';
 	import { SvelteSet } from 'svelte/reactivity';
 	import { tick } from 'svelte';
+	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import { ORIGINALS_SLUG } from '$lib/originals';
 	import { OWB_SLUG } from '$lib/openWordBible';
 	import type { PageData } from './$types';
@@ -25,6 +26,8 @@
 	import AzRail from '$lib/components/AzRail.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import AuthorsFaceWall from '$lib/components/AuthorsFaceWall.svelte';
+	import { meetFirst, timeline } from '$lib/authorsMeet';
+	import { ERA_HUE } from '$lib/eras';
 
 	// The library A–Z: every writer and, under each, every book of theirs in
 	// this language — see $lib/authorIndex for why this page exists. It used to
@@ -57,6 +60,12 @@
 			.map((e) => e.author)
 			.sort((a, b) => (a.birth_year ?? 9999) - (b.birth_year ?? 9999))
 	);
+
+	// Two doors in above the A–Z: a few writers to meet first, each with the
+	// book to open, and every pictured writer on one line by era.
+	const listed = $derived(groups.flatMap((g) => g.entries).map((e) => e.author));
+	const meet = $derived(meetFirst(listed, data.books));
+	const eras = $derived(timeline(listed));
 
 	// The filter only narrows what is SHOWN, after hydration: the prerendered
 	// HTML is always the full, unfiltered index (the query starts blank).
@@ -221,6 +230,71 @@
 		<p class="mb-6 text-small">
 			<a href={localizeHref('/biographies')}>{t('authors.biosLink')} <Arrow /></a>
 		</p>
+
+		{#if meet.length}
+			<section class="mb-10" aria-labelledby="meet-first">
+				<h2 id="meet-first" class="section-label">{t('authors.meetFirst')}</h2>
+				<p class="-mt-1 mb-4 max-w-prose text-small text-muted">{t('authors.meetNote')}</p>
+				<ul class="meet">
+					{#each meet as m (m.author.slug)}
+						{@const life = formatLifespan(m.author.birth_year, m.author.death_year, t('common.bornPrefix'))}
+						<li class="meet-card card-lift">
+							<Portrait
+								slug={m.author.slug}
+								name={m.author.name}
+								url={m.author.photo_url}
+								px={56}
+								decorative
+								class="h-14 w-14 shrink-0"
+							/>
+							<div class="min-w-0">
+								<a class="meet-name font-display font-semibold" href={localizeHref(`/authors/${m.author.slug}`)}
+									>{m.author.name}</a
+								>
+								{#if life}<p class="text-small text-muted">{life}</p>{/if}
+								<a class="mt-1 block text-small font-semibold" href={localizeHref(`/books/${m.book.slug}`)}
+									>{t('authors.startWith').replace('%title%', m.book.title)} <Arrow /></a
+								>
+							</div>
+						</li>
+					{/each}
+				</ul>
+			</section>
+		{/if}
+
+		<!-- The timeline: each era a column on one ruled line, its pictured
+		     writers earliest-born first, and the era's page for the rest. A row
+		     that scrolls sideways on a phone, like a timeline should. -->
+		{#if eras.length > 1}
+			<section class="mb-10" aria-labelledby="timeline">
+				<h2 id="timeline" class="section-label">{t('authors.timeline')}</h2>
+				<p class="-mt-1 mb-4 max-w-prose text-small text-muted">{t('authors.timelineNote')}</p>
+				<ol class="timeline" use:scrollEdges>
+					{#each eras as row (row.era.id)}
+						<li class="era" style="--era-hue: {ERA_HUE[row.era.id]}">
+							<a class="era-head" href={localizeHref(`/biographies/era/${row.era.id}`)}>
+								<span class="era-name font-display">{t(row.era.k)}</span>
+								<span class="era-range">{row.era.range}</span>
+							</a>
+							<ul class="era-faces">
+								{#each row.faces as f (f.slug)}
+									<li>
+										<a href={localizeHref(`/authors/${f.slug}`)} title={f.name} class="face block">
+											<Portrait slug={f.slug} name={f.name} url={f.photo_url} px={40} tone="hover" class="h-10 w-10" />
+										</a>
+									</li>
+								{/each}
+							</ul>
+							{#if row.more}
+								<a class="mt-2 inline-block text-small text-muted" href={localizeHref(`/biographies/era/${row.era.id}`)}
+									>{t('authors.timelineMore').replace('%n%', String(row.more))}</a
+								>
+							{/if}
+						</li>
+					{/each}
+				</ol>
+			</section>
+		{/if}
 
 		<!-- Traditions and regions, above the pinned bar rather than in it: two
 		     wrapped rows of chips would have followed the reader down the page. -->
@@ -420,6 +494,91 @@
 </div>
 
 <style>
+	.meet {
+		display: grid;
+		gap: 0.75rem;
+	}
+	@media (min-width: 640px) {
+		.meet {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+	@media (min-width: 1024px) {
+		.meet {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+	}
+	.meet-card {
+		display: flex;
+		gap: 0.875rem;
+		align-items: flex-start;
+		padding: 1rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-card);
+		background: var(--color-surface);
+	}
+	.meet-name {
+		color: var(--color-text);
+		font-size: 1.125rem;
+		line-height: 1.2;
+	}
+	.meet-name:hover {
+		color: var(--color-accent);
+	}
+	/* One ruled line through the era heads; each era wears its own hue. */
+	.timeline {
+		display: grid;
+		grid-auto-flow: column;
+		grid-auto-columns: minmax(10.5rem, 1fr);
+		gap: 1rem;
+		overflow-x: auto;
+		padding-block-end: 0.5rem;
+		list-style: none;
+		margin: 0;
+		padding-inline: 0;
+	}
+	.era-head {
+		display: block;
+		padding-block: 0.5rem 0.6rem;
+		border-block-start: 4px solid var(--era-hue);
+		color: var(--color-text);
+		text-decoration: none;
+	}
+	.era-head:hover .era-name {
+		color: var(--color-accent);
+	}
+	.era-name {
+		display: block;
+		font-weight: 600;
+		line-height: 1.2;
+	}
+	.era-range {
+		font-size: var(--fs-small);
+		color: var(--color-muted);
+		font-variant-numeric: tabular-nums;
+	}
+	.era-faces {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.375rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.face {
+		border-radius: var(--radius-pill);
+		transition: transform var(--duration-base);
+	}
+	.face:hover,
+	.face:focus-visible {
+		transform: scale(1.12);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.face {
+			transition: none;
+		}
+	}
+
 	/* Jumps land the letter heading below the app nav AND the pinned controls. */
 	.az-group {
 		scroll-margin-top: calc(var(--pinned-offset, var(--appnav-h, 0px)) + 1rem);
