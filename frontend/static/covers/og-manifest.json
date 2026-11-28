@@ -8837,6 +8837,39 @@
 				555
 			]
 		},
+		"ar/the-practice-of-the-presence-of-god": {
+			"ground": "733e6ec552862a377f7d8b15e26e0341ab3802e4aa8deccb991608ff54fd52af",
+			"style": "press",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[79, 317, 521, 418]
+				],
+				"subtitle": [
+					[209, 484, 391, 523]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
+		},
 		"ar/the-pursuit-of-god": {
 			"ground": "3f35313a363e72fd90fc86fd4eb010b26b634d15049aa1c15d513450f1e3937a",
 			"style": "revival",
@@ -36405,6 +36438,42 @@
 				552
 			]
 		},
+		"lg/the-practice-of-the-presence-of-god": {
+			"ground": "8b7f59b8b38e629b6c7085b00f258e9000d03c07176ea48fac95f77d7891aaad",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[126, 267, 474, 340],
+					[149, 327, 451, 400],
+					[147, 386, 453, 459]
+				],
+				"subtitle": [
+					[168, 512, 432, 533],
+					[178, 533, 422, 554]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				241,
+				554
+			]
+		},
 		"lg/the-pursuit-of-god": {
 			"ground": "274f24e3d4f1a122c56bc09ebab2781dc23f1093562a33182e563317e26830f0",
 			"style": "revival",
@@ -49592,6 +49661,40 @@
 				519
 			]
 		},
+		"sw/the-practice-of-the-presence-of-god": {
+			"ground": "15ccdb3d7a23166886554c0c27fbef07e4750697d1cbc0a8f519f92fadcd0ae0",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[92, 303, 508, 381],
+					[150, 367, 450, 445]
+				],
+				"subtitle": [
+					[75, 497, 525, 518]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				277,
+				518
+			]
+		},
 		"sw/the-practice-of-the-presence-of-god-children": {
 			"ground": "324ba20a9dafa2e09877041ab2f6035c8762c3fb30eba544392e429713979d55",
 			"style": "young",
@@ -54944,6 +55047,40 @@
 			"middle": [
 				275,
 				519
+			]
+		},
+		"uk/the-practice-of-the-presence-of-god": {
+			"ground": "7789c86810484ec434ed053010ae857dbad4882c0c663baf44c384a7f60c81cb",
+			"style": "press",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[177, 306, 423, 379],
+					[67, 366, 533, 439]
+				],
+				"subtitle": [
+					[88, 492, 512, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				514
 			]
 		},
 		"uk/the-pursuit-of-god": {
