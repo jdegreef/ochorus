@@ -103,6 +103,14 @@
       "Reader address «вас» follows the uk Spurgeon editions. AI-drafted, awaiting native review."
     ]
   },
+  "brave-for-god-24-true-stories": {
+    "title": "Відважні для Бога: 24 правдиві історії",
+    "description": "Три з половиною тижні правдивих історій для юних читачів, по одній щодня: усі чотири книжки «Відважні для Бога» — двадцять четверо звичайних людей з усіх куточків світу, які довіряли Богові й стали відважними.",
+    "note": [
+      "AI-drafted (2026-11-28); awaiting native review. Queue batch of 2026-11-28: brave-for-god-3.uk and brave-for-god-4.uk (jobs #8448, #8450) complete the four-book set in Ukrainian, so seed_plans creates the uk row and this prose ships in the same PR.",
+      "The series name is quoted verbatim from the uk book titles and series row «Відважні для Бога» (Книжка друга/третя/четверта)."
+    ]
+  },
   "faithful-with-little": {
     "title": "Вірний у малому: гроші й серце",
     "description": "Три тижні з тим, що вся Біблія каже про гроші, — по одному короткому розділу щодня. Усе належить Богові; серце за гаманцем; чесна праця, планування й борги; щедрі, як Бог; і скарб, що не минає, — а в дорозі поруч Джон Веслі, Джордж Мюллер, Чарлз Сперджен і А. В. Тозер. Кожен день закінчується однією справою на практиці, а тридцять ключових віршів книги дають ще місяць читання.",

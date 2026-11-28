@@ -24155,6 +24155,76 @@
 				574
 			]
 		},
+		"hi/brave-for-god-3": {
+			"ground": "08d8df0515386b32fe4a305a4e1c2cf79828c6e2fa5c3f0c4a0aa1ec3800d222",
+			"style": "young",
+			"volume": "3",
+			"script": "devanagari",
+			"fonts": "f36feae5363a90b83288a44fbd3d4f2a1b774d41f412b88d508596e52f368b4b",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 233, 310, 277],
+					[143, 322, 457, 391],
+					[104, 403, 496, 472]
+				],
+				"subtitle": [
+					[104, 545, 496, 567]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				221,
+				574
+			]
+		},
+		"hi/brave-for-god-4": {
+			"ground": "65facd70f896a747069d858b8bac84c5d6af4269a055da62547d8f435531273b",
+			"style": "young",
+			"volume": "4",
+			"script": "devanagari",
+			"fonts": "f36feae5363a90b83288a44fbd3d4f2a1b774d41f412b88d508596e52f368b4b",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 233, 311, 277],
+					[143, 322, 457, 391],
+					[107, 403, 493, 472]
+				],
+				"subtitle": [
+					[104, 545, 496, 567]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				221,
+				574
+			]
+		},
 		"hi/cheque-book": {
 			"ground": "c32dd75a9953a303a120e10e57510fb3eb940ee183120aeb4dd1352bec890cb0",
 			"style": "revival",
@@ -52958,6 +53028,76 @@
 					[289, 256, 311, 300],
 					[69, 331, 531, 406],
 					[130, 393, 470, 468]
+				],
+				"subtitle": [
+					[52, 523, 548, 551]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				244,
+				551
+			]
+		},
+		"uk/brave-for-god-3": {
+			"ground": "a81fb17fb2c5490861f996f9723b600e12fe5c451488c17db7bf9cec09b0c2ef",
+			"style": "young",
+			"volume": "3",
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 256, 310, 300],
+					[69, 331, 531, 406],
+					[132, 393, 468, 468]
+				],
+				"subtitle": [
+					[52, 523, 548, 551]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				244,
+				551
+			]
+		},
+		"uk/brave-for-god-4": {
+			"ground": "7b868cc0e6b63652e4214a8ddb0eab00c764dcffe38c82bfc6f60ebf682ff4f0",
+			"style": "young",
+			"volume": "4",
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 256, 311, 300],
+					[69, 331, 531, 406],
+					[90, 393, 510, 468]
 				],
 				"subtitle": [
 					[52, 523, 548, 551]
