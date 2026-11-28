@@ -6,9 +6,11 @@
 	import {
 		FAITH_WORDS,
 		GLOSSARY_TERMS,
+		KEY_WORDS,
 		OLD_WORDS,
 		byLetter,
 		definitionOf,
+		findTerms,
 		glossaryHref,
 		headOf,
 		wordOfTheDay
@@ -36,6 +38,12 @@
 	const canonical = `${SITE_URL}${path}`;
 	const hreflang = hreflangFor(path, ['en']);
 	const groups = byLetter();
+
+	// Find as you type. The full A–Z stays in the prerendered page (the crawl's
+	// way to every word); a query swaps it for the matches, in the browser only.
+	let query = $state('');
+	const matches = $derived(findTerms(query));
+	const searching = $derived(query.trim() !== '');
 
 	// English literals: the words, their definitions and this description are
 	// English content (the chrome around them is catalogued).
@@ -84,6 +92,38 @@
 	/>
 	{#snippet count()}{t('glossary.count').replace('%count%', String(GLOSSARY_TERMS.length))}{/snippet}
 
+	<!-- Find as you type, first: a reader who came for one word goes straight
+	     to it. A query swaps the whole page below for its matches. -->
+	<div class="find mb-8">
+		<label for="glossary-find" class="eyebrow text-muted">{t('glossary.find')}</label>
+		<input
+			id="glossary-find"
+			type="search"
+			class="filter-field mt-1.5 w-full max-w-md"
+			placeholder={t('glossary.findPlaceholder')}
+			autocomplete="off"
+			spellcheck="false"
+			bind:value={query}
+		/>
+		<p class="mt-1.5 text-small text-muted" aria-live="polite">
+			{#if searching}
+				{matches.length
+					? t('glossary.matches').replace('%n%', String(matches.length))
+					: t('glossary.noMatch').replace('%q%', query.trim())}
+			{/if}
+		</p>
+	</div>
+
+	{#if searching}
+		<dl class="terms mb-10">
+			{#each matches as term (term)}
+				<div class="term">
+					<dt><a class="font-display text-h3" href={glossaryHref(term)} lang="en">{term}</a></dt>
+					<dd class="text-small text-muted" lang="en">{definitionOf(term)}</dd>
+				</div>
+			{/each}
+		</dl>
+	{:else}
 	<!-- One word first, set as a dictionary entry: the page's promise. -->
 	<section class="wotd mb-10" aria-labelledby="wotd-label">
 		<p id="wotd-label" class="eyebrow wotd-label">{t('glossary.wordOfDay')}</p>
@@ -97,6 +137,26 @@
 			>{t('glossary.seeWord')} <Arrow /></a
 		>
 	</section>
+
+	<!-- The ten words a new believer meets first, numbered: a short course
+	     rather than another shelf to browse. -->
+	{#if KEY_WORDS.length}
+		<section class="ten mb-10" aria-labelledby="ten-words">
+			<h2 id="ten-words" class="font-display text-h3 font-semibold">{t('glossary.tenWords')}</h2>
+			<p class="mt-0.5 text-small text-muted">{t('glossary.tenWordsNote')}</p>
+			<ol class="ten-list mt-4" lang="en">
+				{#each KEY_WORDS as w, i (w)}
+					<li>
+						<span class="ten-num" aria-hidden="true">{i + 1}</span>
+						<span>
+							<a class="ten-term font-display" href={glossaryHref(w)}>{w}</a>
+							<span class="block text-small text-muted">{definitionOf(w)}</span>
+						</span>
+					</li>
+				{/each}
+			</ol>
+		</section>
+	{/if}
 
 	<!-- The two kinds of word the glossary holds, each a shelf of its own. -->
 	{#if OLD_WORDS.length && FAITH_WORDS.length}
@@ -136,6 +196,7 @@
 			</dl>
 		</section>
 	{/each}
+	{/if}
 </div>
 
 <style>
@@ -174,6 +235,47 @@
 		font-family: var(--font-display, Georgia, serif);
 		font-size: var(--fs-h3);
 		line-height: 1.45;
+	}
+	.ten {
+		padding: 1.25rem 1.5rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-card);
+		background: var(--color-surface);
+	}
+	.ten-list {
+		display: grid;
+		gap: 0.75rem 2rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	@media (min-width: 768px) {
+		.ten-list {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+	.ten-list li {
+		display: flex;
+		gap: 0.75rem;
+		align-items: baseline;
+	}
+	.ten-num {
+		flex: none;
+		inline-size: 1.5rem;
+		text-align: end;
+		font-family: var(--font-display, Georgia, serif);
+		font-weight: 600;
+		color: var(--color-gold);
+	}
+	.ten-term {
+		font-size: var(--fs-h3);
+		font-weight: 600;
+		color: var(--color-text);
+		text-decoration: none;
+	}
+	.ten-term:hover {
+		color: var(--color-accent);
+		text-decoration: underline;
 	}
 	.shelves {
 		display: grid;
