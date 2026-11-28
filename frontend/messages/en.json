@@ -1274,6 +1274,7 @@
   "game_tomorrow": "A new quotation tomorrow.",
   "game_last_week": "Your last seven days",
   "game_cta": "Play today’s quotation game, Whose words?",
+  "game_open": "Its own page",
   "game_unavailable": "Today’s quotation isn’t ready yet. Come back a little later.",
   "quotes_clip_chapter": ", chapter %n%",
   "quotes_featured_eyebrow": "A line from the library",
