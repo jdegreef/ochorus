@@ -93,6 +93,28 @@ class ReferenceTests(SimpleTestCase):
             rq.local_citations("(Kumbukumbu la Torati 6:5)", "sw")[0].usfm, "DEU"
         )
 
+    def test_russian_citations_name_both_bibles(self):
+        # Synodal's "3 Царств" and OWB-ru's "1 Царей" are the same book.
+        self.assertEqual(rq.local_citations("(3 Царств 19:12)", "ru")[0].usfm, "1KI")
+        self.assertEqual(rq.local_citations("(1 Царей 19:12)", "ru")[0].usfm, "1KI")
+        self.assertEqual(
+            rq.local_citations("(Римлянам 8:28; Псалом 23:1)", "ru")[0].label,
+            "Romans 8:28",
+        )
+
+    def test_an_article_loads_like_a_sermon(self):
+        row = {
+            "model": "library.article",
+            "fields": {"slug": "t", "language": "ru", "body_html": "<p>а</p><p>б</p>"},
+        }
+        work = rq.load_work(
+            "article",
+            "t",
+            "ru",
+            lambda p: render_rows([row]) if "articles" in str(p) else None,
+        )
+        self.assertEqual(len(work.blocks), 2)
+
 
 class BlockTests(SimpleTestCase):
     def test_blocks_are_the_admin_views_blocks(self):

@@ -5,94 +5,88 @@
  "job_issue": 9080,
  "references": [
   {
-   "reference": "Proverbs 24:30a",
+   "reference": "Isaiah 9:3",
    "status": "mined",
+   "chapter_order": 9,
    "block_index": 0,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Proverbs 24:31a",
+   "reference": "Matthew 13:30",
    "status": "mined",
+   "chapter_order": 12,
    "block_index": 0,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Proverbs 24:30a",
+   "reference": "Proverbs 24:30-31",
    "status": "mined",
+   "chapter_order": 1,
    "block_index": 0,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Proverbs 24:31",
+   "reference": "Proverbs 24:30-31",
    "status": "mined",
-   "block_index": 8,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Psalm 147:16a",
+   "reference": "Psalm 147:16-18",
    "status": "mined",
-   "block_index": 19,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Psalm 147:18a",
+   "reference": "John 12:24",
    "status": "mined",
-   "block_index": 19,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "John 12:24b",
+   "reference": "Luke 8:5",
    "status": "mined",
-   "block_index": 28,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Luke 8:5a",
+   "reference": "Psalm 65:9-10",
    "status": "mined",
-   "block_index": 37,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Psalm 65:9a",
+   "reference": "Isaiah 53:7",
    "status": "mined",
-   "block_index": 48,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Psalm 65:10d",
+   "reference": "Psalm 104:14",
    "status": "mined",
-   "block_index": 48,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Isaiah 53:7c",
+   "reference": "Ruth 2:15-16",
    "status": "mined",
-   "block_index": 56,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Psalm 104:14a",
+   "reference": "Isaiah 28:28",
    "status": "mined",
-   "block_index": 67,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Isaiah 9:3b",
-   "status": "mined",
-   "block_index": 76,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Ruth 2:15b",
-   "status": "mined",
-   "block_index": 85,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Ruth 2:15c",
-   "status": "mined",
-   "block_index": 85,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
    "reference": "Ruth 2:16",
@@ -103,12 +97,7 @@
    "reference": "Isaiah 28:28a",
    "status": "self_rendered",
    "block_index": 93
-  },
-  {
-   "reference": "Matthew 13:30c",
-   "status": "mined",
-   "block_index": 101,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
   }
- ]
+ ],
+ "note": "Re-quoted 2026-11-28 from the Synodal translation to the Open Word Bible (OWB), Balanced, Russian (founder decision: Russian quotes OWB everywhere). Mined rows are verbatim owb-ru at English verse numbering; self_rendered rows are allusions, the author's paraphrase, or quotations the translator renders."
 }
