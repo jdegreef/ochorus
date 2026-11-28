@@ -7516,6 +7516,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ar/how-to-succeed-in-the-christian-life": {
+			"ground": "eb02377dc25529d2e422888e4b42eadcfdf3a9bae4b12e0b95f1bc1091a9b873",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "ebaa8266fbf9c81056d706f1167947feb843be101f97d1744e22960f81007206",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ar/humility-2": {
 			"ground": "fc05c52b74288e69337e1a72ac9e32aade44acd1e796f062b8626eef48169582",
 			"style": "devotional",
@@ -35140,6 +35155,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"lg/how-to-succeed-in-the-christian-life": {
+			"ground": "fb35b788f072f62b7ab03c51fc18c0a87040cc8b2ebf821a01ef765e54cab65b",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"lg/humility-2": {
 			"ground": "e9f459f7d8a34e63e8e7103295e889c4944b2502bc3bfd8386001a2605088e67",
 			"style": "devotional",
@@ -47682,6 +47712,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"sw/how-to-succeed-in-the-christian-life": {
+			"ground": "7d75702709ab26e7ce36f0e5cb7a8c1b5d9b63cf97a4ebb6c2a8154cf5773d7f",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"sw/humility-2": {
 			"ground": "e7f751b43aeb0f7b23856bfa4b613356fb6d2f815da0789adaa7a14ee23c880c",
 			"style": "devotional",
@@ -53932,6 +53977,21 @@
 			"medallion": null,
 			"layout": "diagonal/ochre",
 			"bar": 0.055,
+			"caps": false,
+			"sitemark": null
+		},
+		"uk/how-to-succeed-in-the-christian-life": {
+			"ground": "08d2494be553dd0211b7392f3ce8af41786c2bdeb0e41694f46537557289d003",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e2505b6416608a7d2de159aeb3c3c2b29c8caa5ea84e7cd0a776a13b03577fcd",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
 			"caps": false,
 			"sitemark": null
 		},

@@ -103,6 +103,14 @@
       "Reader address «вас» follows the uk Spurgeon editions. AI-drafted, awaiting native review."
     ]
   },
+  "new-to-the-faith": {
+    "title": "Новим у вірі",
+    "description": "П'ять із половиною тижнів для кожного, хто лише починає життя з Христом. Чарлз Сперджен зустрічає вас біля Тісної Брами з найпростішою допомогою, щоб довіритися Ісусові; а тоді Р. А. Торрі, який писав для новонавернених, показує, як добре почати, — певність спасіння, Святий Дух, церква, Біблія, молитва і свідчення. Короткі статті дорогою відповідають на питання, які ставить кожен новий християнин: що таке Євангеліє, чому помер Ісус, що означають хрещення і Вечеря Господня і як далі зростати.",
+    "note": [
+      "Job #8489 (how-to-succeed-in-the-christian-life → uk, «Як досягти успіху в християнському житті»), which backs this plan. AI-drafted, awaiting native review. «біля Тісної Брами» echoes the shipped uk title of around-the-wicket-gate («Біля Тісної Брами») as the first-steps-for-teens card does; «Що таке Євангеліє» echoes the shipped uk article title; reader address «вас» follows the uk Spurgeon editions.",
+      "seed_plans creates the (new-to-the-faith, uk) row only once every source is published in uk."
+    ]
+  },
   "brave-for-god-24-true-stories": {
     "title": "Відважні для Бога: 24 правдиві історії",
     "description": "Три з половиною тижні правдивих історій для юних читачів, по одній щодня: усі чотири книжки «Відважні для Бога» — двадцять четверо звичайних людей з усіх куточків світу, які довіряли Богові й стали відважними.",
