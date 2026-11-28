@@ -9,6 +9,8 @@ import {
 	matchesQuery,
 	ofKind,
 	situationGroups,
+	newBelieverPath,
+	NEW_BELIEVER_PATH,
 	sortArticles,
 	topicGroups
 } from './articleIndex';
@@ -163,5 +165,24 @@ describe('topicGroups', () => {
 	it('drops a topic with nothing to preview and honours the limit', () => {
 		expect(topicGroups(shelf).some((g) => g.slug === 'classics')).toBe(false);
 		expect(topicGroups(shelf, 2).map((g) => g.slug)).toEqual(['prayer', 'grace']);
+	});
+});
+
+describe('newBelieverPath', () => {
+	const slugs = (xs: ArticleSummary[]) => xs.map((x) => x.slug);
+	it('keeps the curated order, whatever order the shelf is in', () => {
+		const shelf = [...NEW_BELIEVER_PATH].reverse().map((s) => art(s));
+		expect(slugs(newBelieverPath(shelf))).toEqual([...NEW_BELIEVER_PATH]);
+	});
+	it('shows the steps a locale has, and hides a path under three', () => {
+		const three = ['what-is-baptism', 'what-is-the-gospel', 'how-to-be-born-again'].map((s) =>
+			art(s)
+		);
+		expect(slugs(newBelieverPath(three))).toEqual([
+			'what-is-the-gospel',
+			'how-to-be-born-again',
+			'what-is-baptism'
+		]);
+		expect(newBelieverPath(three.slice(0, 2))).toEqual([]);
 	});
 });
