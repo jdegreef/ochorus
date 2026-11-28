@@ -162,6 +162,13 @@
       "Job #7626 (book:mortification-of-sin -> uk) wrote this: mortification-of-sin is one of the plan's three source books, so the plan prose ships with it. all-things-for-good.uk («Усе на добро») has shipped; the plan row will not appear in uk until the-bruised-reed.uk also ships, and that job should keep or deliberately revise this wording. «усе допомагає до доброго» is Kulish Rom 8:28 as all-things-for-good.uk quotes it (9×); Ватсон is that edition's spelling; Овен matches «Про умертвіння гріха у віруючих». AI-drafted."
     ]
   },
+  "voices-of-the-early-church": {
+    "title": "Голоси ранньої Церкви",
+    "description": "Перші християнські століття їхніми власними словами. Климент Римський пише від церкви в Римі, коли ще жило покоління самих апостолів, Ігнатій Антіохійський надсилає свої послання дорогою на мученицьку смерть, а Афанасій Олександрійський викладає серце віри — чому Сам Бог став людиною — у творі «Про втілення Слова». Короткі щоденні читання протягом приблизно чотирьох місяців.",
+    "note": [
+      "AI-drafted (2026-11-28), awaiting native review. Added with the book:on-the-incarnation -> uk job (#8505), which completes the set (Clement and Ignatius already ship in uk) and makes this plan creatable in uk. Titles follow the uk editions."
+    ]
+  },
   "family-devotions-heroes-who-trusted-god": {
     "title": "Сімейні читання: герої, які довіряли Богові",
     "description": "П’ять тижнів п’ятихвилинних сімейних читань: правдиві історії трьох людей, які в усьому довіряли Богові, — щовечора один короткий розділ уголос. Джордж Мюллер і його сироти («Життя довіри (Для дітей)»), Гадсон Тейлор на шляху до Китаю («Погляд назад (Для дітей)») та Аманда Сміт, народжена в рабстві, яка молилася про пару черевиків («Історія Аманди Сміт (Для дітей)»). Кожен розділ закінчується молитвою і трьома питаннями, щоб поговорити разом.",
