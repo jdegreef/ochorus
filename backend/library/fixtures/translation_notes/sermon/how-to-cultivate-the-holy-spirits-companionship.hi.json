@@ -1,0 +1,38 @@
+{
+ "kind": "sermon",
+ "slug": "how-to-cultivate-the-holy-spirits-companionship",
+ "language": "hi",
+ "job_issue": 8546,
+ "references": [
+  {
+   "reference": "Amos 3:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "John 14:16-17",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "John 14:18",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Isaiah 60:13",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Peter 3:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  }
+ ]
+}

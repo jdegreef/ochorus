@@ -1,0 +1,23 @@
+{
+ "kind": "sermon",
+ "slug": "breaking-up-the-fallow-ground",
+ "language": "hi",
+ "job_issue": 8545,
+ "references": [
+  {
+   "reference": "Hosea 10:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Luke 6:31",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  }
+ ]
+}

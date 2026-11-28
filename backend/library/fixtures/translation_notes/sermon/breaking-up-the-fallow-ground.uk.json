@@ -1,0 +1,18 @@
+{
+ "kind": "sermon",
+ "slug": "breaking-up-the-fallow-ground",
+ "language": "uk",
+ "job_issue": 8567,
+ "references": [
+  {
+   "reference": "Hosea 10:12",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  }
+ ]
+}
