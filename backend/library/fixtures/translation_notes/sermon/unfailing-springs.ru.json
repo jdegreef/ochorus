@@ -8,49 +8,53 @@
    "reference": "John 4:10",
    "status": "mined",
    "block_index": 1,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "John 4:14",
-   "status": "mined",
-   "block_index": 2,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Revelation 22:17b",
+   "reference": "Revelation 22:17",
    "status": "mined",
    "block_index": 5,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "John 4:17a",
+   "reference": "John 3:16",
    "status": "mined",
-   "block_index": 7,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
    "reference": "John 4:10",
    "status": "mined",
-   "block_index": 1,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "John 3:16a",
+   "reference": "Matthew 28:20",
    "status": "mined",
    "block_index": 9,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Matthew 28:20b",
+   "reference": "Psalm 18:30",
    "status": "mined",
    "block_index": 9,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Psalm 18:30a",
+   "reference": "John 7:38",
    "status": "mined",
-   "block_index": 9,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "block_index": 13,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "John 4:17a",
+   "status": "self_rendered",
+   "block_index": 7
   },
   {
    "reference": "John 4:13",
@@ -59,21 +63,18 @@
   },
   {
    "reference": "John 4:14a",
-   "status": "mined",
-   "block_index": 2,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 2
   },
   {
    "reference": "John 4:14b",
-   "status": "mined",
-   "block_index": 2,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 2
   },
   {
    "reference": "John 6:35",
-   "status": "mined",
-   "block_index": 13,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 13
   },
   {
    "reference": "John 6:35b",
@@ -82,32 +83,24 @@
   },
   {
    "reference": "John 1:18a",
-   "status": "mined",
-   "block_index": 13,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 13
   },
   {
    "reference": "John 7:37b",
-   "status": "mined",
-   "block_index": 13,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "John 7:38",
-   "status": "mined",
-   "block_index": 13,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 13
   },
   {
    "reference": "John 7:39a",
-   "status": "mined",
-   "block_index": 13,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 13
   },
   {
    "reference": "1 Corinthians 1:30",
    "status": "self_rendered",
    "block_index": 14
   }
- ]
+ ],
+ "note": "Re-quoted 2026-11-28 from the Synodal translation to the Open Word Bible (OWB), Balanced, Russian (founder decision: Russian quotes OWB everywhere). Mined rows are verbatim owb-ru at English verse numbering; self_rendered rows are allusions, the author's paraphrase, or quotations the translator renders."
 }

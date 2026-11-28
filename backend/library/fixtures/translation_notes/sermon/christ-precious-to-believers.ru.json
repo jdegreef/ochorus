@@ -5,10 +5,99 @@
  "job_issue": 9626,
  "references": [
   {
-   "reference": "1 Peter 2:7a",
+   "reference": "Numbers 23:23",
    "status": "mined",
-   "block_index": 0,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "block_index": 1,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Song of Solomon 5:16",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Matthew 10:38",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Lamentations 4:1",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Acts 26:29",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Job 2:4",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 63:1",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Isaiah 32:2",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Ecclesiastes 11:7",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "John 11:25",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Isaiah 46:4",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "John 21:17",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 119:9",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "1 Peter 2:7a",
+   "status": "self_rendered",
+   "block_index": 0
   },
   {
    "reference": "Zechariah 3:2",
@@ -21,12 +110,6 @@
    "block_index": 1
   },
   {
-   "reference": "Numbers 23:23",
-   "status": "mined",
-   "block_index": 1,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
    "reference": "Isaiah 60:22",
    "status": "self_rendered",
    "block_index": 1
@@ -35,12 +118,6 @@
    "reference": "Psalm 116:18-19",
    "status": "self_rendered",
    "block_index": 2
-  },
-  {
-   "reference": "Song of Solomon 5:16",
-   "status": "mined",
-   "block_index": 4,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
   },
   {
    "reference": "Revelation 22:13",
@@ -79,9 +156,8 @@
   },
   {
    "reference": "Matthew 10:37-38",
-   "status": "mined",
-   "block_index": 8,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 8
   },
   {
    "reference": "Hebrews 11:36",
@@ -99,40 +175,14 @@
    "block_index": 10
   },
   {
-   "reference": "Lamentations 4:1",
-   "status": "mined",
-   "block_index": 10,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
    "reference": "1 Samuel 4:21",
-   "status": "mined",
-   "block_index": 10,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 10
   },
   {
    "reference": "John 20:13",
-   "status": "mined",
-   "block_index": 11,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Acts 26:29a",
-   "status": "mined",
-   "block_index": 15,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Acts 26:29b",
-   "status": "mined",
-   "block_index": 15,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Job 2:4",
-   "status": "mined",
-   "block_index": 15,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 11
   },
   {
    "reference": "Galatians 6:14",
@@ -141,15 +191,8 @@
   },
   {
    "reference": "Isaiah 40:15",
-   "status": "mined",
-   "block_index": 16,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Psalm 63:1",
-   "status": "mined",
-   "block_index": 17,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 16
   },
   {
    "reference": "Psalm 84:2",
@@ -158,9 +201,8 @@
   },
   {
    "reference": "Luke 10:42",
-   "status": "mined",
-   "block_index": 17,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 17
   },
   {
    "reference": "Psalm 23:2",
@@ -168,22 +210,9 @@
    "block_index": 20
   },
   {
-   "reference": "Isaiah 32:2",
-   "status": "mined",
-   "block_index": 20,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
    "reference": "Hebrews 11:32",
-   "status": "mined",
-   "block_index": 20,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Ecclesiastes 11:7",
-   "status": "mined",
-   "block_index": 21,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 20
   },
   {
    "reference": "Luke 7:47-48",
@@ -201,60 +230,20 @@
    "block_index": 22
   },
   {
-   "reference": "John 11:25",
-   "status": "mined",
-   "block_index": 22,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Isaiah 46:4",
-   "status": "self_rendered",
-   "block_index": 22
-  },
-  {
-   "reference": "Psalm 23:4",
-   "status": "mined",
-   "block_index": 22,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "1 John 3:2",
-   "status": "mined",
-   "block_index": 22,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Psalm 119:9a",
-   "status": "mined",
-   "block_index": 25,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Psalm 119:9b",
-   "status": "self_rendered",
-   "block_index": 25
-  },
-  {
    "reference": "John 3:18",
    "status": "self_rendered",
    "block_index": 25
   },
   {
    "reference": "John 21:16",
-   "status": "mined",
-   "block_index": 25,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "John 21:17",
-   "status": "mined",
-   "block_index": 25,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 25
   },
   {
    "reference": "1 John 4:19",
    "status": "self_rendered",
    "block_index": 25
   }
- ]
+ ],
+ "note": "Re-quoted 2026-11-28 from the Synodal translation to the Open Word Bible (OWB), Balanced, Russian (founder decision: Russian quotes OWB everywhere). Mined rows are verbatim owb-ru at English verse numbering; self_rendered rows are allusions, the author's paraphrase, or quotations the translator renders."
 }

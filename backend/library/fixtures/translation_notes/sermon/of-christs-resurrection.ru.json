@@ -5,82 +5,89 @@
  "job_issue": 9128,
  "references": [
   {
-   "reference": "Mark 16:1a",
+   "reference": "Mark 16:1",
    "status": "mined",
    "block_index": 0,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Genesis 1:5b",
-   "status": "mined",
-   "block_index": 0,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Genesis 1:8b",
-   "status": "mined",
-   "block_index": 0,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Genesis 1:13b",
-   "status": "mined",
-   "block_index": 0,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
    "reference": "Romans 4:25",
    "status": "mined",
    "block_index": 6,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Romans 4:25b",
-   "status": "mined",
-   "block_index": 6,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "John 1:29b",
+   "reference": "Genesis 3:15",
    "status": "mined",
    "block_index": 7,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Genesis 3:15a",
+   "reference": "John 1:29",
    "status": "mined",
    "block_index": 7,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Genesis 22:18a",
+   "reference": "Romans 4:25",
    "status": "mined",
    "block_index": 7,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "1 Corinthians 15:54b",
+   "reference": "Romans 4:25",
    "status": "mined",
-   "block_index": 10,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "block_index": 9,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "1 Corinthians 15:55",
+   "reference": "1 Corinthians 15:54",
    "status": "mined",
    "block_index": 10,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "1 Corinthians 15:56b",
+   "reference": "1 Corinthians 15:56",
    "status": "mined",
    "block_index": 10,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
    "reference": "Hebrews 11:1",
    "status": "mined",
    "block_index": 13,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Genesis 1:5b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Genesis 1:8b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Genesis 1:13b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Genesis 22:18a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "1 Corinthians 15:55",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Genesis 1:5",
+   "status": "self_rendered",
+   "block_index": 0
   }
- ]
+ ],
+ "note": "Re-quoted 2026-11-28 from the Synodal translation to the Open Word Bible (OWB), Balanced, Russian (founder decision: Russian quotes OWB everywhere). Mined rows are verbatim owb-ru at English verse numbering; self_rendered rows are allusions, the author's paraphrase, or quotations the translator renders."
 }
