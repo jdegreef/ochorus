@@ -5,16 +5,130 @@
  "job_issue": 9125,
  "references": [
   {
-   "reference": "Psalm 23:6a",
+   "reference": "Psalm 23:6",
    "status": "mined",
    "block_index": 1,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
-   "reference": "Psalm 23:6b",
+   "reference": "Romans 5:3",
    "status": "mined",
-   "block_index": 1,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Job 1:8",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Job 2:3",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Job 1:9",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Job 2:9",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Job 1:11",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Job 2:5",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "John 18:11",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Job 2:3",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Job 2:4",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Job 19:17",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Genesis 1:5",
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Psalm 30:5",
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
+  },
+  {
+   "reference": "Romans 8:31",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "Open Word Bible (OWB), Balanced edition, Russian"
   },
   {
    "reference": "Psalm 23:6 (RV margin)",
@@ -22,75 +136,19 @@
    "block_index": 1
   },
   {
-   "reference": "Romans 8:28",
+   "reference": "Romans 5:4",
    "status": "self_rendered",
    "block_index": 2
   },
   {
-   "reference": "Romans 5:3b",
-   "status": "mined",
-   "block_index": 2,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Romans 5:4",
-   "status": "mined",
-   "block_index": 2,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Romans 5:5",
-   "status": "mined",
-   "block_index": 2,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Job 1:21a",
-   "status": "mined",
-   "block_index": 5,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Job 1:21b",
-   "status": "mined",
-   "block_index": 5,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Job 1:8",
-   "status": "mined",
-   "block_index": 6,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Job 2:3b",
-   "status": "mined",
-   "block_index": 6,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Job 1:9",
-   "status": "mined",
-   "block_index": 15,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
    "reference": "Job 1:12a",
-   "status": "mined",
-   "block_index": 16,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 16
   },
   {
    "reference": "Job 1:12b",
-   "status": "mined",
-   "block_index": 16,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Job 2:9",
-   "status": "mined",
-   "block_index": 19,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 16
   },
   {
    "reference": "Job 1:21 (paraphrase)",
@@ -98,51 +156,14 @@
    "block_index": 22
   },
   {
-   "reference": "Job 1:11",
-   "status": "mined",
-   "block_index": 22,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Job 2:5",
-   "status": "mined",
-   "block_index": 22,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
    "reference": "Acts 2:23",
    "status": "self_rendered",
    "block_index": 23
   },
   {
-   "reference": "John 18:11",
-   "status": "mined",
-   "block_index": 24,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Romans 8:28b",
-   "status": "mined",
-   "block_index": 2,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Job 2:3a",
-   "status": "mined",
-   "block_index": 27,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
    "reference": "Job 2:4-5",
-   "status": "mined",
-   "block_index": 27,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Job 19:17",
-   "status": "mined",
-   "block_index": 29,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 27
   },
   {
    "reference": "Job 42:6",
@@ -151,62 +172,54 @@
   },
   {
    "reference": "Philippians 4:4a",
-   "status": "mined",
-   "block_index": 12,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 12
   },
   {
    "reference": "Philippians 4:5a",
-   "status": "mined",
-   "block_index": 12,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 12
   },
   {
    "reference": "Philippians 4:5b",
-   "status": "mined",
-   "block_index": 12,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Philippians 4:6",
-   "status": "mined",
-   "block_index": 12,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 12
   },
   {
    "reference": "Philippians 4:7",
-   "status": "mined",
-   "block_index": 12,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Psalm 30:5b",
-   "status": "mined",
-   "block_index": 34,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Genesis 1:5b",
-   "status": "mined",
-   "block_index": 34,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 12
   },
   {
    "reference": "Ephesians 6:12",
-   "status": "mined",
-   "block_index": 35,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
-  },
-  {
-   "reference": "Romans 8:31b",
-   "status": "mined",
-   "block_index": 36,
-   "source_file": "Синодальный перевод (Take Root synodal) Bible text"
+   "status": "self_rendered",
+   "block_index": 35
   },
   {
    "reference": "Romans 8:37",
    "status": "self_rendered",
    "block_index": 36
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Philippians 4:4-5",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Job 2:7",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Job 1:12",
+   "status": "self_rendered",
+   "block_index": 16
   }
- ]
+ ],
+ "note": "Re-quoted 2026-11-28 from the Synodal translation to the Open Word Bible (OWB), Balanced, Russian (founder decision: Russian quotes OWB everywhere). Mined rows are verbatim owb-ru at English verse numbering; self_rendered rows are allusions, the author's paraphrase, or quotations the translator renders."
 }
