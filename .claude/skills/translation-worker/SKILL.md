@@ -768,11 +768,11 @@ So when the English does not say what it should:
    `source_file: "Open Word Bible (OWB), Balanced edition, <Language>"`.
    Arabic (85 verses drafted) and Luganda (no text) have none yet: there the
    Original quotes the language's registry Bible (`arb-vd`, `lug`), as before.
-   This rule is for Originals only; a classic in es/fr/pt/hi/uk/ko/ru keeps
-   its registry Bible (am, sw, ja and vi quote OWB for every work, below).
-   **Amharic, Swahili, Japanese and Vietnamese are OWB for EVERY work** (founder
+   This rule is for Originals only; a classic in es/fr/pt/hi/uk/ko keeps
+   its registry Bible (am, sw, ja, vi and ru quote OWB for every work, below).
+   **Amharic, Swahili, Japanese, Vietnamese and Russian are OWB for EVERY work** (founder
    decisions: Amharic 2026-11-18; Swahili and Japanese 2026-11-19; Vietnamese
-   2026-11-21): an Original or a
+   2026-11-21; Russian 2026-11-28): an Original or a
    classic alike quotes that language's OWB Balanced text verbatim. Each is
    bundled, so fetch it with `fetch_verse_text("owb-sw", "John 3:16")` (or
    `fetch_chapter("owb-ja", Ref(...))`), with no network and no crib. For a
@@ -803,6 +803,15 @@ So when the English does not say what it should:
      "times of refreshing" Acts 3:20. Keep the English citation and record the
      OWB verse in the notes. The Cadman entries further down describe the
      pre-OWB world.
+   - **Russian quotes `owb-ru`, not the Synodal** (Take Root `synodal`). OWB-ru
+     uses ENGLISH verse numbering, so the Synodal numbering trap is gone for new
+     work: cite Psalm 23 as Псалом 23 (not Пс 22), Rom 16:25-27 and 2 Cor 13:14
+     as in English. Citations keep the ru library's short names (Иоанна,
+     Римлянам, Евреям, 2 Коринфянам, Иуды, Деяния, Псалом). OWB-ru prints the
+     divine name as ГОСПОДЬ and spells places its own way (Эфес, Куш); inside a
+     quotation OWB's words win, the glossary governs the prose. The ~100 ru
+     works shipped before 2026-11-28 quote Synodal (in Synodal numbering) and
+     are candidates for re-quoting; the Synodal notes above describe that world.
    - **Japanese wording and register follow OWB**, which mixes である and
      です・ます by book; the translator's own prose stays です・ます. The bundle
      already drops the space OWB's exporter puts between poetic lines.
